@@ -1,23 +1,28 @@
-# Dossiê Completo de Auditoria Matemática e Computacional
-## Resolução da Conjectura de Stănică–Maitra para HRSBF Cúbicas ($n \not\equiv 0 \pmod{32}$)
+# Inexistência de HRSBF Cúbicas Bent para $v_2(n) \le 4$: Prova Analítico-Computacional
+## Resolução da Conjectura de Stănică–Maitra em Dimensões Pares $n \not\equiv 0 \pmod{32}$
 
-**Data de Consolidação:** 2 de outubro de 2026  
-**Status do Trabalho:** Auditado, matematicamente delimitado e reproduzível com Python >= 3.10 e NumPy  
-**Escopo do Teorema Principal:** Inexistência incondicional de Funções Bent Homogêneas Simétricas por Rotação (HRSBF) de grau 3 em todas as dimensões pares $n = 2m, 4m, 8m, 16m$ (para todo $m \ge 1$ ímpar).
+**Data de Consolidação:** 3 de outubro de 2026  
+**Status do Trabalho:** Prova analítica com lemas finitos certificados computacionalmente; reproduzível em Python >= 3.10 (biblioteca padrão e NumPy) e via Google Colab.  
+**Escopo do Teorema Principal:** Não-existência de Funções Bent Homogêneas Simétricas por Rotação (HRSBF) de grau 3 em todas as dimensões pares com valoração 2-ádica $v_2(n) \in \{1, 2, 3, 4\}$, ou seja, $n \in \{2m, 4m, 8m, 16m\}$ para todo $m \ge 1$ ímpar.
 
 ---
 
 ## Sumário Executivo
 
-Este documento reúne todas as informações necessárias para uma auditoria matemática e computacional cega e independente da prova de não-existência de HRSBF cúbicas para $n$ par não divisível por 32. Ele contém:
-1. **O Teorema Principal e o Grafo Lógico da Demonstração.**
-2. **As Demonstrações Algébricas Rigorosas** de todos os Lemas e Teoremas (com a invariância do radical simplético, a integridade dos estabilizadores, o cancelamento de paridade de $q_{t/2}$ e a geração de $L$).
-3. **A Classificação Completa da Imagem da Restrição e a Independência Linear dos 43 Geradores.**
-4. **A Teoria de Códigos Divisíveis de Ward** e a prova de anulação no subespaço antipodal.
-5. **As Tabelas Exaustivas dos 43 Geradores** em $t = 16$ e dos espaços reduzidos $t \in \{2, 4, 8\}$.
-6. **O Código-Fonte Completo do Verificador Independente** (`verificador_hrsbf.py`) e seu registro de execução reproduzível.
-7. **A Fronteira Estrutural em $t = 32$** documentada com o contraexemplo explícito à divisibilidade direta por 2048.
-8. **Quadro Comparativo com a Literatura e Bibliografia Completa com DOIs.**
+Este documento reúne a fundamentação matemática analítica e o protocolo de certificação computacional que estabelecem a não-existência de HRSBF cúbicas para $n$ par não divisível por 32. A estrutura do documento é dividida em três eixos:
+1. **Artigo Teórico (§1–3):**
+   * O Teorema Principal e o Grafo Lógico da demonstração.
+   * As demonstrações analíticas à mão dos Lemas 2.1 a 2.5 (redução simplética invariante, preservação de bentness, cancelamento estrutural da órbita antipodal $q_{t/2}$, classificação da imagem e anulação no subespaço antipodal $V_{t/2}$).
+   * A teoria de códigos divisíveis de Ward e a obstrução espectral em $t = 16$.
+2. **Apêndice de Certificação e Reprodutibilidade (§4–7):**
+   * Proposição unificada de divisibilidade para $t \in \{2, 4, 8, 16\}$ e busca exaustiva de controles em baixas dimensões.
+   * A relação canônica dos 43 geradores em $t = 16$.
+   * Código-fonte dos verificadores independentes (`verificador_standalone.py` em Python puro e `verificador_hrsbf.py` com NumPy) e caderno interativo no Google Colab.
+   * Hashes criptográficos SHA-256 e logs reproduzíveis.
+3. **Fronteiras Matemáticas, Aplicações e Bibliografia (§8–12):**
+   * A barreira teórica em $t = 32$ (análise 2-ádica e contraexemplo à divisibilidade).
+   * Impacto em criptografia (S-boxes), códigos quânticos (portas transversais) e telecomunicações.
+   * Relação com a literatura recente (Sun et al., DCC 2026) e referências centrais.
 
 ---
 
@@ -31,10 +36,10 @@ Este documento reúne todas as informações necessárias para uma auditoria mat
 ```mermaid
 graph TD
     A["f cúbica, HRSBF bent em V = F_2^n (n = 2^s * m, m ímpar, s ∈ {1,2,3,4})"] --> B["1. Derivadas direcionais D_a f (a ∈ U \ {0}) têm grau ≤ 2 e são balanceadas em V"]
-    B --> C["2. Lema 3.1 (Redução da Ordem Ímpar): S_V(q) = S_U(q|_U) · S_K(q|_K) com S_K ≠ 0 (invariância de R_K)"]
-    C --> D["3. Teorema 4.1 (Restrição de Bentness): D_a(f|_U) é balanceada para todo a ≠ 0 ⟹ g = f|_U é BENT em U ≅ F_2^t"]
+    B --> C["2. Lema 2.1 (Redução da Ordem Ímpar): S_V(q) = S_U(q|_U) · S_K(q|_K) com S_K ≠ 0 (invariância de R_K)"]
+    C --> D["3. Teorema 2.2 (Restrição de Bentness): D_a(f|_U) é balanceada para todo a ≠ 0 ⟹ g = f|_U é BENT em U ≅ F_2^t"]
     D --> E["4. Propriedade Fundamental de Bent: |W_g(0)| = 2^(t/2)"]
-    F["5. Filtro de Paridade: órbitas curtas cancelam mod 2; multiplicidade de q_{t/2} é 2m/|H| ≡ 0 mod 2"] --> G["g ∈ span{35 cúbicas, 7 quadráticas, L = ∑ y_i}"]
+    F["5. Filtro de Paridade (Lema 2.3): multiplicidade de q_{t/2} é 2m/|H| ≡ 0 mod 2 (cancelamento antipodal)"] --> G["g ∈ span{35 cúbicas, 7 quadráticas, L = ∑ y_i}"]
     G --> H["6. Teorema de Ward (t=16): g|_{V_8} ≡ 0 e código 16-divisível (136.697 subconjuntos, 0 falhas)"]
     H --> I["wt(g) ≡ 0 mod 256 ⟹ W_g(0) ≡ 0 mod 512"]
     G --> J["7. Enumeração Exaustiva (t ∈ {2,4,8}): W_g(0) nunca atinge ±2^(t/2)"]
@@ -48,7 +53,7 @@ graph TD
 
 # 2. Demonstrações Algébricas Rigorosas
 
-### 2.1 Lema 3.1 (Lema de Redução da Ordem Ímpar)
+### 2.1 Lema 2.1 (Lema de Redução da Ordem Ímpar)
 **Enunciado:** Seja $V = \mathbb{F}_2^n$ com $n$ par. Seja $T \in \mathrm{GL}(V)$ um automorfismo linear de ordem ímpar $m$ ($\gcd(m, 2) = 1$). Seja $U = \mathrm{Fix}(T) = \{x \in V : Tx = x\}$ o subespaço fixo de $T$. Seja $q: V \to \mathbb{F}_2$ uma função Booleana quadrática ($\deg(q) \le 2$) tal que $q(0) = 0$ e $q(Tx) = q(x)$ para todo $x \in V$. Então:
 $$q \text{ é balanceada em } V \iff q|_U \text{ é balanceada em } U.$$
 
@@ -92,21 +97,26 @@ $$q \text{ é balanceada em } V \iff q|_U \text{ é balanceada em } U.$$
 
 ---
 
-### 2.2 Teorema 4.1 (Preservação de Bentness sob Restrição de Ordem Ímpar)
-**Enunciado:** Seja $V = \mathbb{F}_2^n$ com $n$ par. Seja $T \in \mathrm{GL}(V)$ de ordem ímpar $m$. Seja $f: V \to \mathbb{F}_2$ uma função com $\deg(f) \le 3$ tal que $f \circ T = f$. Se $f$ é bent em $V$, então sua restrição $g = f|_U$ a $U = \mathrm{Fix}(T)$ é bent em $U$, desde que $\dim(U)$ seja par.
+### 2.2 Teorema 2.2 (Preservação de Bentness sob Restrição de Ordem Ímpar)
+**Enunciado Geral (Resultado Autônomo):** Seja $V = \mathbb{F}_2^n$ com $n$ par. Seja $T \in \mathrm{GL}(V)$ um automorfismo linear qualquer de ordem ímpar $m$. Seja $f: V \to \mathbb{F}_2$ **qualquer** função Booleana com $\deg(f) \le 3$ (não necessariamente homogênea, nem necessariamente simétrica por rotação) tal que $f \circ T = f$. Se $f$ é bent em $V$, então sua restrição $g = f|_U$ a $U = \mathrm{Fix}(T)$ é bent em $U$, desde que $\dim(U)$ seja par.
 
 **Demonstração:**
-1. Para qualquer $a \in U \setminus \{0\}$, a derivada direcional $D_a f(x) = f(x \oplus a) \oplus f(x)$ possui $\deg(D_a f) \le 2$ e é $T$-invariante, pois $Ta = a$ e $f(Tx) = f(x)$.
+1. Para qualquer direção não-nula $a \in U \setminus \{0\}$, a derivada direcional $D_a f(x) = f(x \oplus a) \oplus f(x)$ possui $\deg(D_a f) \le 2$ e é $T$-invariante, pois $Ta = a$ e $f(Tx) = f(x)$.
 2. Defina $q(x) = D_a f(x) \oplus D_a f(0)$. Então $q(0) = 0$, $\deg(q) \le 2$, e $q$ é $T$-invariante.
 3. Como $f$ é bent em $V$, toda derivada direcional $D_a f$ é balanceada em $V$ (Meier & Staffelbach, 1989; Carlet, 2021). Somar a constante $D_a f(0)$ apenas permuta as pre-imagens de 0 e 1, logo $q$ é balanceada em $V$.
-4. Pelo Lema 3.1, $q|_U$ é balanceada em $U$. Consequentemente, $(D_a f)|_U = q|_U \oplus D_a f(0)$ é balanceada em $U$.
+4. Pelo Lema 2.1, $q|_U$ é balanceada em $U$. Consequentemente, $(D_a f)|_U = q|_U \oplus D_a f(0)$ é balanceada em $U$.
 5. Mas para todo $u \in U$, $(D_a f)|_U(u) = f(u \oplus a) \oplus f(u) = D_a(f|_U)(u) = D_a g(u)$.
 6. Como toda derivada direcional não-nula $D_a g$ ($a \in U \setminus \{0\}$) é balanceada em $U$, a caracterização clássica de funções bent via derivadas balanceadas (Meier & Staffelbach, 1989; Carlet, 2021) estabelece que $g$ é bent em $U$. $\blacksquare$
 
+*Controles Positivos do Teorema 2.2:* O Teorema 2.2 é exato e não "prova demais". Verificações computacionais exaustivas confirmam que funções bent reais de grau 3 não-homogêneas preservam perfeitamente a bentness após restrição:
+* Em $n = 6$ invariantes por $\sigma^2$ (ordem ímpar $m = 3$): todas as 5.120 funções bent de grau $\le 3$ restringem-se a funções bent em $U \cong \mathbb{F}_2^2$.
+* Em $n = 6$ simétricas por rotação: todas as 48 funções bent de grau $\le 3$ restringem-se a bent em $U$.
+* Em $n = 10$ simétricas por rotação: todas as 6.336 funções bent de grau $\le 3$ restringem-se a bent em $U$.
+
 ---
 
-### 2.3 Cancelamento Exato da Órbita Antipodal $q_{t/2}$
-**Lema (Cancelamento de Paridade de $q_{t/2}$):** Seja $n = t \cdot m$ com $t = 2^s$ e $m$ ímpar. A órbita antipodal de tamanho $t/2$:
+### 2.3 Cancelamento Exato da Órbita Antipodal $q_{t/2}$ (O Ponto Crítico da Demonstração)
+**Lema 2.3 (Cancelamento de Paridade de $q_{t/2}$):** Seja $n = t \cdot m$ com $t = 2^s$ e $m$ ímpar. A órbita antipodal de tamanho $t/2$:
 $$q_{t/2}(y) = \sum_{r=0}^{t/2 - 1} y_r y_{r + t/2}$$
 tem coeficiente estritamente zero na restrição de qualquer HRSBF cúbica de $n$ variáveis.
 
@@ -120,6 +130,14 @@ tem coeficiente estritamente zero na restrição de qualquer HRSBF cúbica de $n
 6. Assim:
    $$\frac{2m}{|H|} = 2 \left( \frac{m}{|H|} \right) \equiv 0 \pmod 2.$$
 7. Em $\mathbb{F}_2$, essa multiplicidade par anula-se identicamente ($2 \equiv 0$). Somando sobre todas as órbitas cúbicas de $f$, o coeficiente de cada monômio $y_r y_{r+t/2}$ é nulo mod 2. Logo, $q_{t/2}$ **nunca aparece**. $\blacksquare$
+
+*Significado Estrutural e Teste de Consistência com Funções Bent Quadráticas:*  
+Este lema é o **eixo analítico central** da prova. Note-se que a órbita antipodal $q_{t/2}$ é ela própria uma função bent em $t$ variáveis (com $\mathrm{wt}(q_{t/2}) = 2^{t-1} - 2^{t/2-1}$ e valoração 2-ádica $v_2(\mathrm{wt}) = t/2 - 1$). Se $q_{t/2}$ pudesse aparecer na restrição, ela violaria a barreira de divisibilidade por $2^{t/2}$ e destruiria a prova.  
+O contraste com as quadráticas ilustra a precisão do resultado:
+* Para a clássica função bent quadrática $f_0(x) = \sum_{i=0}^{n/2-1} x_i x_{i+n/2}$, o monômio é $\{0, n/2\}$ com $|\mathrm{Stab}| = 2$ e órbita de tamanho $L = n/2 = tm/2$.
+* A contagem de translações que incidem sobre $\{0, t/2\}$ é:
+  $$\frac{L}{t/2} = \frac{tm/2}{t/2} = m \equiv 1 \pmod 2 \quad (\text{pois } m \text{ é ímpar!})$$
+* Como $m$ é ímpar, $q_{t/2}$ **sobrevive** na restrição de quadráticas bent (multiplicidade 1), o que é coerente com o fato de existirem quadráticas bent simétricas por rotação. Já nas cúbicas, o fator 2 forçado por $|H| \mid 3$ cancela $q_{t/2}$ identicamente, bloqueando a emergência de funções bent.
 
 ---
 
@@ -159,14 +177,14 @@ $$\frac{65.280}{16} = 4.080 \text{ órbitas completas de comprimento 16}.$$
 Sejam $r_1, \dots, r_{4080}$ representantes dessas órbitas. Cada geradora $v_j \in \mathcal{F}_{16}$ define uma palavra-código $w_j \in \mathbb{F}_2^{4080}$ dada por $(w_j)_k = v_j(r_k)$. O peso de Hamming no espaço original relaciona-se com o peso da palavra-código $c = \sum_{j \in I} w_j$ por:
 $$\mathrm{wt}(g) = 16 \cdot \mathrm{wt}(c).$$
 
-*Independência Linear dos 43 Geradores:* Toda função $g \in \mathcal{F}_{16}$ é $\sigma$-invariante e anula-se identicamente no subespaço antipodal $V_8$. Consequentemente, $g$ é univocamente determinada pelos seus valores nos 4.080 representantes das órbitas completas em $\mathbb{F}_2^{16} \setminus V_8$. Como os 43 geradores (35 cúbicas, 7 quadráticas e a forma linear $L$) possuem monômios líderes distintos na Forma Normal Algébrica (ANF), eles formam uma base livre sobre $\mathbb{F}_2$ no espaço quociente. Isso garante posto exato 43 da matriz de avaliação de palavras-código e dimensão $\dim(\mathcal{F}_{16}) = 43$, totalizando $2^{43} \approx 8,79 \times 10^{12}$ funções.
+*Independência Linear dos 43 Geradores:* Toda função $g \in \mathcal{F}_{16}$ é $\sigma$-invariante e anula-se identicamente no subespaço antipodal $V_8$. Consequentemente, se $g$ é nula em $V_8$ e nos 4.080 representantes das órbitas completas em $\mathbb{F}_2^{16} \setminus V_8$, então $g$ é a função identicamente nula, o que implica que sua ANF é identicamente nula. Como os 43 geradores (35 cúbicas, 7 quadráticas e a forma linear $L$) possuem monômios líderes distintos na Forma Normal Algébrica (ANF), eles formam uma base livre sobre $\mathbb{F}_2$ no espaço quociente. Isso garante posto exato 43 da matriz de avaliação de palavras-código e dimensão $\dim(\mathcal{F}_{16}) = 43$, totalizando $2^{43} \approx 8,80 \times 10^{12}$ funções.
 
 *Nota sobre a Redundância Teórica da Forma Linear $L$:* Como a propriedade de bentness é invariante por translação afim (isto é, $g \oplus \ell$ é bent se e somente se $g$ é bent para qualquer forma afim $\ell$), a exclusão de bentness sobre o espaço gerado pelas 42 órbitas cúbicas e quadráticas já seria teoricamente suficiente para impedir funções bent. A inclusão explícita de $L$ como 43ª geradora garante que o espaço $\mathcal{F}_{16}$ contenha a imagem completa da restrição de monômios com índices congruentes mod $t$, tornando o argumento estritamente linear e autocontido. Ambas as configurações foram exaustivamente auditadas pelo Teorema de Ward com zero falhas: 124.313 subconjuntos para os 42 geradores e 136.697 subconjuntos para os 43 geradores.
 
 ### 3.2 A Expansão de Polarização de Pesos de Ward (1981, 1990)
-Para qualquer subconjunto de geradores $I$, a fórmula de inclusão-exclusão para pesos de códigos lineares estabelece:
+Para qualquer subconjunto de geradores $I$, a identidade de polarização de Ward para códigos lineares binários estabelece:
 $$\mathrm{wt}(c) = \sum_{J \subseteq I, J \ne \emptyset} (-2)^{|J|-1} \mathrm{wt}\left( \bigcap_{j \in J} w_j \right).$$
-Como $(-2)^{|J|-1} \equiv 0 \pmod{16}$ para todo $|J| \ge 5$, a congruência $\mathrm{wt}(c) \equiv 0 \pmod{16}$ é satisfeita se e somente se as primeiras 4 ordens cumprirem:
+Como $(-2)^{|J|-1} \equiv 0 \pmod{16}$ para todo $|J| \ge 5$, a congruência de 16-divisibilidade $\mathrm{wt}(c) \equiv 0 \pmod{16}$ é formalmente garantida pela condição suficiente exata de que as interseções das primeiras 4 ordens satisfaçam (Ward, 1990):
 * $|J| = 1$: $\mathrm{wt}(w_i) \equiv 0 \pmod{16}$
 * $|J| = 2$: $\mathrm{wt}(w_i \cap w_j) \equiv 0 \pmod 8$
 * $|J| = 3$: $\mathrm{wt}(w_i \cap w_j \cap w_l) \equiv 0 \pmod 4$
@@ -190,18 +208,21 @@ Como uma função bent em 16 variáveis exige $|W_g(0)| = 2^{16/2} = 256$, e $\p
 
 ---
 
-# 4. Bases Finitas e Exclusões de Baixa Dimensão
+# 4. Bases Finitas e Proposição Unificada de Divisibilidade
 
-### 4.1 Casos $t \in \{2, 4, 8\}$ (com a forma linear $L$)
-* **$t = 2$ ($n = 2m$):** 1 geradora ($L(y) = y_0 \oplus y_1$).  
-  $2^1 = 2$ funções. Valores de Walsh na origem: $W_g(0) \in \{0, 4\}$.  
-  Exigência bent: $|W_g(0)| = 2^{2/2} = 2$. Como $\pm 2 \notin \{0, 4\}$, **0 bent**.
-* **$t = 4$ ($n = 4m$):** 3 geradoras (1 quadrática, 1 cúbica, 1 $L$).  
-  $2^3 = 8$ funções. Valores de Walsh na origem: $W_g(0) \in \{-8, 0, 8, 16\}$.  
-  Exigência bent: $|W_g(0)| = 2^{4/2} = 4$. Como $\pm 4 \notin \{-8, 0, 8, 16\}$, **0 bent**.
-* **$t = 8$ ($n = 8m$):** 11 geradoras (3 quadráticas, 7 cúbicas, 1 $L$).  
-  $2^{11} = 2.048$ funções. Todos os $W_g(0) \in 32\mathbb{Z}$.  
-  Exigência bent: $|W_g(0)| = 2^{8/2} = 16$. Como $\pm 16 \not\equiv 0 \pmod{32}$, **0 bent**.
+### 4.1 Proposição Unificada de Divisibilidade ($t \in \{2, 4, 8, 16\}$)
+**Proposição 4.1 (Divisibilidade Espectral Unificada):**
+Para todo $t \in \{2, 4, 8, 16\}$ e para qualquer função $g \in \mathcal{F}_t$, a valoração 2-ádica do peso de Hamming satisfaz:
+$$v_2(\mathrm{wt}(g)) \ge \frac{t}{2}, \quad \text{isto é, } 2^{t/2} \mid \mathrm{wt}(g).$$
+Consequentemente:
+$$W_g(0) = 2^t - 2\,\mathrm{wt}(g) \equiv 0 \pmod{2^{t/2 + 1}}.$$
+Como a condição necessária de bentness exige $|W_g(0)| = 2^{t/2} \not\equiv 0 \pmod{2^{t/2 + 1}}$, **nenhuma função em $\mathcal{F}_t$ pode ser bent para $t \in \{2, 4, 8, 16\}$.**
+
+*Detalhamento por Dimensão:*
+* **$t = 2$ ($n = 2m$):** 1 geradora ($L$). $W_g(0) \in \{0, 4\} \subset 4\mathbb{Z}$. Alvo bent $\pm 2 \not\equiv 0 \pmod 4 \implies$ **0 bent**.
+* **$t = 4$ ($n = 4m$):** 3 geradoras. $W_g(0) \in \{-8, 0, 8, 16\} \subset 8\mathbb{Z}$. Alvo bent $\pm 4 \not\equiv 0 \pmod 8 \implies$ **0 bent**.
+* **$t = 8$ ($n = 8m$):** 11 geradoras. Todos os $W_g(0) \in 32\mathbb{Z}$. Alvo bent $\pm 16 \not\equiv 0 \pmod{32} \implies$ **0 bent**.
+* **$t = 16$ ($n = 16m$):** 43 geradoras. Todos os $W_g(0) \in 512\mathbb{Z}$. Alvo bent $\pm 256 \not\equiv 0 \pmod{512} \implies$ **0 bent**.
 
 ### 4.2 Varredura Exaustiva de Ponta a Ponta (Baixa Dimensão)
 As buscas em código de Gray percorrem todas as combinações de geradores não-nulas (a combinação nula $f \equiv 0$ é omitida e possui $W_0(0) = 2^n \ne 2^{n/2}$, não sendo bent). As buscas quárticas em $n = 8, 10$ servem como reprodução independente dos controles de Stănică & Maitra (2008):
@@ -583,15 +604,21 @@ A robustez do método inaugurado neste dossiê possibilita o desenvolvimento ime
 
 # 11. Fronteiras Teóricas e Questões Abertas
 
-1. **A Fronteira Estrutural em $t = 32$ e a Falha da Divisibilidade Direta:**  
+1. **A Fronteira Estrutural em $t = 32$ e a Falha Profunda da Divisibilidade:**  
    Em $t = 32$, há exatamente $\binom{32}{3}/32 = 155$ órbitas cúbicas, 15 quadráticas completas e 1 linear $L$, totalizando 171 geradores (170 sem $L$).  
-   A barreira para $n \equiv 0 \pmod{32}$ **não é custo computacional**, mas a falha conceitual da extensão direta de Ward:
-   - Para a órbita cúbica elementar $H(x) = \sum_{i=0}^{31} x_i x_{i+1} x_{i+2} \pmod{32}$:
-     $$W_H(0) = 85.032.960, \quad \mathrm{wt}(H) = 2.104.967.168.$$
-     $$\frac{\mathrm{wt}(H)}{32} = 65.780.224 \equiv 512 \pmod{2048}.$$
-   Como o resto é $512 \not\equiv 0 \pmod{2048}$, a divisibilidade por 2048 necessária para excluir bentness pelo valor de Walsh atinge um **contraexemplo explícito**. A exclusão em $t = 32$ não pode ser obtida por simples divisibilidade de Ward e requer métodos teóricos inteiramente novos.
+   A barreira para $n \equiv 0 \pmod{32}$ **não é custo computacional**, mas o esgotamento do método de códigos divisíveis lineares:
+   * **Colapso da Valoração 2-ádica:** Uma suposta função bent em 32 variáveis exigiria $|W_g(0)| = 2^{32/2} = 2^{16} = 65.536$, o que imporia peso $\mathrm{wt}(g) = 2^{31} \pm 2^{15}$, forçando valoração 2-ádica $v_2(\mathrm{wt}(g)) \ge 15$. Contudo, para a órbita elementar $H(x) = \sum_{i=0}^{31} x_i x_{i+1} x_{i+2}$, o cálculo analítico exato via traço da matriz de transferência fornece:
+     $$W_H(0) = 85.032.960 \implies \mathrm{wt}(H) = 2.104.967.168 = 2^{14} \times 128.477.$$
+     Portanto, $v_2(\mathrm{wt}(H)) = 14 < 15$. O código gerado em $\mathbb{F}_2^{32}$ sequer é $2^{15}$-divisível! A falha da divisibilidade direta não é marginal: uma única órbita elementar já perde uma potência inteira de 2 em divisibilidade.
+   * **Falha no Código Comprimido:** No código reduzido sobre as órbitas completas, temos $\mathrm{wt}(H)/32 = 65.780.224 \equiv 512 \pmod{2048}$, violando a congruência $0 \pmod{2048}$ exigida por Ward.
+   * **Pista Estrutural (Fórmula de Poisson e Fixação de Sinal):**  
+     Como qualquer função candidata anula-se identicamente no subespaço antipodal $V_{16} = \{x \in \mathbb{F}_2^{32} : x_{i+16} = x_i\}$, e esse subespaço é auto-dual ($V_{16}^\perp = V_{16}$), a fórmula de soma de Poisson estabelece:
+     $$\sum_{a \in V_{16}} W_g(a) = 2^{32} \cdot |V_{16}|^{-1} \cdot \sum_{x \in V_{16}} (-1)^{g(x)} = 2^{32} \cdot 2^{-16} \cdot 2^{16} = 2^{32}.$$
+     Essa soma contém exatamente $|V_{16}| = 2^{16}$ termos. Se $g$ fosse bent ($W_g(a) \in \{\pm 2^{16}\}$ para todo $a$), a única forma de a soma de $2^{16}$ termos limitados por $\pm 2^{16}$ resultar exatamente em $2^{32}$ é se **todos os termos forem estritamente positivos**:
+     $$W_g(a) = +2^{16} = +65.536 \quad \forall a \in V_{16}.$$
+     Isso fixa rigidamente o sinal do valor de Walsh em zero ($W_g(0) = +65.536$, nunca negativo) e determina o peso exato de qualquer suposta bent como $\mathrm{wt}(g) = 2^{31} - 2^{15} = 2.147.450.880$. Embora isso não exclua bentness por si só, reduz dramaticamente o alvo para investigações futuras.
 2. **Graus $d \ge 4$:**  
-   Quando $\deg(f) \ge 4$, as primeiras derivadas direcionais $D_a f$ *podem* ter grau $\ge 3$. Como não há garantia de que todas as derivadas sejam quadráticas, o Lema 3.1 não se aplica universalmente. A não-existência em grau 4 permanece um controle computacional em $n = 8$ e $n = 10$.
+   Quando $\deg(f) \ge 4$, as primeiras derivadas direcionais $D_a f$ *podem* ter grau $\ge 3$. Como não há garantia de que todas as derivadas sejam quadráticas, o Lema 2.1 não se aplica universalmente. A não-existência em grau 4 permanece um controle computacional em $n = 8$ e $n = 10$.
 3. **Status do Arquivo Lean 4 (`HRSBF.lean`):**  
    O arquivo `HRSBF.lean` incluído no pacote é um esboço conceitual de especificação de tipos em desenvolvimento e não constitui parte da cadeia de prova formal entregue (a qual é estritamente analítica com lemas finitos certificados pelos verificadores computacionais independentes).
 
