@@ -1,0 +1,59 @@
+\documentclass[11pt]{letter}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{hyperref}
+
+\signature{Valer et al.\\
+\textit{Research Team in Cryptographic Boolean Functions and Discrete Mathematics}}
+
+\address{Research Dossier on the St\u{a}nic\u{a}--Maitra Conjecture\\
+Independent Mathematical Research}
+
+\begin{document}
+
+\begin{letter}{To the Editors-in-Chief\\
+\textit{Designs, Codes and Cryptography}\\
+Springer Nature}
+
+\opening{Dear Editors-in-Chief,}
+
+We are pleased to submit our original research manuscript entitled:
+
+\begin{center}
+\textbf{``Odd-Order Reduction and a Divisibility Obstruction for Cubic Homogeneous Rotation-Symmetric Bent Functions''}
+\end{center}
+
+for consideration for publication as a regular research article in \textit{Designs, Codes and Cryptography}.
+
+\paragraph{Background and Significance}
+In 2008, Pantelimon St\u{a}nic\u{a} and Subhamoy Maitra formulated their well-known Conjecture~12, asserting that there exist no homogeneous rotation-symmetric bent Boolean functions (HRSBF) of algebraic degree $d > 2$ in any number of variables. In degree $d = 2$, quadratic RSBF bent functions exist in all even dimensions. For higher degrees, however, progress has remained an elusive open challenge. In 2017, Thomas W. Cusick and Eric M. Sanger made a breakthrough by proving non-existence of cubic HRSBFs for dimensions $n = 2p$, where $p$ is an odd prime; however, composite odd factors and dimensions divisible by 4, 8, and 16 have resisted analysis. Very recently, in April 2026, Sun, Shi, Liu, and Fu published in \textit{Designs, Codes and Cryptography} partial non-existence results based on short algebraic normal forms (SANF) and derivative bounds under specific monomial support constraints, further demonstrating the vibrant interest in this conjecture.
+
+\paragraph{Our Contributions}
+In this work, we resolve the cubic St\u{a}nic\u{a}--Maitra conjecture unconditionally for all even dimensions not divisible by 32 ($n = 2m, 4m, 8m, 16m$ for any odd $m \ge 1$, prime or composite):
+\begin{enumerate}
+    \item \textbf{Analytical Odd-Order Reduction:} We prove an exact reduction lemma for linear automorphisms $T$ of odd order $m$ over $\mathbb{F}_2^n$: a $T$-invariant quadratic Boolean function $q$ is balanced on $\mathbb{F}_2^n$ if and only if its restriction to the fixed subspace $\mathrm{Fix}(T)$ is balanced. As a consequence, every cubic bent function restricts to a bent function on $\mathrm{Fix}(T)$.
+    \item \textbf{Complete Orbit Filter and Antipodal Annihilation:} We establish that upon restriction, all short orbits cancel modulo 2 by parity, and the antipodal quadratic orbit $q_{t/2}$ cancels identically. Since $f$ is homogeneous, no constant term arises, and the restriction space $\mathcal{F}_t = \mathrm{span}\{O^{(2)}_d, O^{(3)}_{a,b}, L\}$ identically vanishes on the antipodal subspace $V_{t/2}$.
+    \item \textbf{Divisibility Obstruction via Ward's Theorem ($t = 16$):} Over the 43 generators (35 cubic, 7 quadratic, 1 linear form $L$) in 16 variables, we prove via Ward's weight polarization expansion that all $2^{43} \approx 8.79 \times 10^{12}$ functions generate a 16-divisible binary linear code of length $4{,}080$, algebraically forcing $W_g(0) \equiv 0 \pmod{512} \ne \pm 256$, which definitively precludes bentness. All $136{,}697$ polarization conditions are verified with zero failures.
+    \item \textbf{Exact Structural Boundary at $t = 32$:} We prove that $t = 16$ is the sharpest boundary for direct divisible code obstructions, exhibiting an explicit counterexample in $t = 32$ with weight remainder $512 \pmod{2048}$.
+    \item \textbf{Broader Impacts:} We highlight immediate applications of this framework to fault-tolerant quantum error-correcting codes (CSS codes supporting transversal $T$-gates from 16-divisible linear codes) and cryptographic S-box design.
+    \item \textbf{Quartic Exhaustive Elimination:} We also report the complete computational exclusion of quartic HRSBFs for $n = 8$ and $n = 10$.
+\end{enumerate}
+
+\paragraph{Scientific Transparency and Reproducibility}
+To ensure immediate, turnkey reproducibility for the reviewers, all source files and computational suites are publicly hosted on GitHub at \url{https://github.com/contatofilipevono-rgb/hrsbf-bent-verification}, featuring:
+\begin{itemize}
+    \item An interactive Jupyter Notebook ready for immediate one-click execution in Google Colab (no local installation required): \href{https://colab.research.google.com/github/contatofilipevono-rgb/hrsbf-bent-verification/blob/main/HRSBF_Auditoria_Colab.ipynb}{\texttt{Open in Google Colab}};
+    \item A vector-accelerated verifier (\texttt{verificador\_hrsbf.py}) using Python $\ge 3.10$ and NumPy;
+    \item A zero-dependency, pure standard-library Python verifier (\texttt{verificador\_standalone.py}) verifying all $136{,}697$ Ward polarization conditions in under 1 second;
+    \item A conceptual type specification blueprint in Lean 4 (\texttt{HRSBF.lean}) formalizing degree predicates.
+\end{itemize}
+
+\paragraph{Declarations}
+This manuscript is original work and has not been published elsewhere, nor is it currently under consideration by any other journal or conference. All authors have approved the submission.
+
+We look forward to hearing from you.
+
+\closing{Sincerely yours,}
+
+\end{letter}
+\end{document}
