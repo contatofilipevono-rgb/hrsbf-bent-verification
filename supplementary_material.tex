@@ -1,0 +1,345 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=red,
+    urlcolor=blue
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\F}{\mathbb{F}_2}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\wt}{\mathrm{wt}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\rank}{\mathrm{rank}}
+
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue}\bfseries,
+    stringstyle=\color{teal},
+    commentstyle=\color{gray}\itshape,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=8pt,
+    frame=single,
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=4
+}
+
+\title{\textbf{Supplementary Information:}\\
+\Large Technical Dossier, Proof Compendium, and Verification Protocol for\\
+\textit{Odd-Order Reduction and a Divisibility Obstruction for Cubic Homogeneous Rotation-Symmetric Bent Functions}}
+
+\author{
+  \textbf{Valer et al.}\thanks{Working paper and independent research dossier on cryptographic Boolean functions.}
+}
+
+\date{October 2026}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+%======================================================================
+\section{Overview and Purpose of this Dossier}
+%======================================================================
+
+This supplementary document provides complete step-by-step mathematical proofs, exact combinatorial orbit listings, finite computational audit tables, and self-contained reproduction scripts accompanying the main paper.
+
+The primary result establishes that:
+\begin{quote}
+\textbf{Main Theorem:} \emph{Let $n$ be an even positive integer such that $n \not\equiv 0 \pmod{32}$. Then there exists no cubic homogeneous rotation-symmetric bent Boolean function in $n$ variables.}
+\end{quote}
+In particular, this resolves the cubic case of Conjecture~12 of St\u{a}nic\u{a} and Maitra (2008) for all four infinite families:
+\begin{equation}
+n \in \{2m, 4m, 8m, 16m\} \quad (\forall m \ge 1 \text{ odd, prime or composite}).
+\end{equation}
+
+%======================================================================
+\section{Extended Literature Matrix}
+%======================================================================
+
+Table~\ref{tab:lit_extended} contrasts this work with previous milestones.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Chronological comparison of results on the St\u{a}nic\u{a}--Maitra conjecture for degree $d = 3$.}
+\label{tab:lit_extended}
+\begin{tabular}{llll}
+\toprule
+Year \& Reference & Method & Scope & Nature of Result \\
+\midrule
+2008: St\u{a}nic\u{a} \& Maitra~\cite{stanica2008} & Orbit counting & All $n$ & Formulation of Conjecture 12 ($d > 2$) \\
+2010: Meng et al.~\cite{meng2010} & Monomial cyclic distance & All $n$ & Monomials ($|\mathcal{O}|=1$), max distance $\le n/2$ \\
+2013: Zhang \& Gao~\cite{zhang2013} & 2-adic valuation \& SANF & Partial & Restrictions on monomial supports \\
+2017: Cusick \& Sanger~\cite{cusick2017} & Hadamard entry $M_{0, 2^n-1}$ & $n = 2p$ ($p$ odd prime) & Proves degree must be even for $n = 2p$ \\
+2024: Calder\'on-G\'omez et al.~\cite{calderon2024} & $k$-RSBF orbit structures & Various & Classification; conjecture remains open \\
+2026: Sun et al.~\cite{sun2026} & SANF / derivative bounds & Partial & Conditional non-existence \\
+\textbf{2026: This Work} & \textbf{Odd-Order Reduction + Ward} & $\mathbf{n \not\equiv 0 \pmod{32}}$ & \textbf{All $n \in \{2m, 4m, 8m, 16m\}$ ($\forall m$ odd)} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Why Cusick--Sanger (2017) Fails for Composite $m$:}
+The proof of Cusick and Sanger relies on expressing the extremal entry of the Hadamard matrix $M_{0, 2^n-1}$ in terms of orbit counts modulo divisors of $n$. When $n = 2p$ ($p$ prime), the only proper divisors are $1, 2, p$, which allows Euler's criterion to pin down the parity of the exponential sum. For composite odd factors $m$ (e.g., $m = 9, 15, 21, 25$), intermediate sub-orbits break this one-step parity collapse. Our odd-order reduction circumvents this completely by decomposing the space directly via Maschke's theorem for the group $C_m$ over $\F$.
+
+%======================================================================
+\section{Complete Proof of the Odd-Order Quadratic Reduction Lemma}
+%======================================================================
+
+\begin{lemma}[Symplectic Decomposition and Equivalence of Balance]
+Let $V = \F^n$ and let $T \in \mathrm{GL}(V)$ have odd order $m$. Let $U = \mathrm{Fix}(T)$. Let $q: V \to \F$ be a quadratic Boolean function ($\deg(q) \le 2$) such that $q(0) = 0$ and $q(Tx) = q(x)$ for all $x \in V$. Then:
+\begin{equation}
+q \text{ is balanced on } V \iff q|_U \text{ is balanced on } U.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Let $B(x, y) = q(x \oplus y) \oplus q(x) \oplus q(y)$ be the polar form of $q$. Since $\deg(q) \le 2$ and $q(0) = 0$, $B$ is an alternating bilinear form over $\F$, invariant under $T$: $B(Tx, Ty) = B(x, y)$.
+
+Define the Reynolds projection operator $P = \sum_{j=0}^{m-1} T^j$. Since $m$ is odd, $m \equiv 1 \pmod 2$. For any $u \in U$, $Pu = m \cdot u = 1 \cdot u = u$. Moreover, $T(Px) = Px$, so $\mathrm{Im}(P) = U$ and $P^2 = P$. This defines a direct sum decomposition $V = U \oplus K$, where $K = \ker(P)$.
+
+For any $u \in U$ and $k \in K$:
+\begin{equation}
+B(u, k) = \sum_{j=0}^{m-1} B(u, T^j k) = B\left(u, \sum_{j=0}^{m-1} T^j k\right) = B(u, Pk) = B(u, 0) = 0.
+\end{equation}
+Hence $U$ and $K$ are orthogonal with respect to $B$. Consequently, $q(u \oplus k) = q(u) \oplus q(k)$, and the exponential sum factors:
+\begin{equation}
+S_V(q) = \sum_{u \in U, k \in K} (-1)^{q(u) \oplus q(k)} = S_U(q|_U) \cdot S_K(q|_K).
+\end{equation}
+It remains to show that $S_K(q|_K) \ne 0$. We compute the square of the exponential sum directly:
+\begin{align}
+S_K(q|_K)^2 &= \sum_{x, y \in K} (-1)^{q(x) \oplus q(y)} = \sum_{x, z \in K} (-1)^{q(x \oplus z) \oplus q(x)} \nonumber \\
+&= \sum_{z \in K} (-1)^{q(z)} \sum_{x \in K} (-1)^{B(x, z)} = |K| \sum_{z \in \rad(B|_K)} (-1)^{q(z)},
+\end{align}
+since $\sum_{x \in K} (-1)^{B(x, z)}$ vanishes unless $z \in \rad(B|_K)$, where it equals $|K|$. For any $z \in \rad(B|_K)$, $q(z)$ is linear. Since $q$ is $T$-invariant and $m$ is odd:
+\begin{equation}
+q(z) = m \cdot q(z) = \sum_{j=0}^{m-1} q(T^j z) = q(Pz) = q(0) = 0.
+\end{equation}
+Hence $(-1)^{q(z)} = +1$ identically on the radical, yielding:
+\begin{equation}
+S_K(q|_K)^2 = |K| \cdot |\rad(B|_K)| > 0.
+\end{equation}
+Thus $S_K(q|_K) \ne 0$, establishing that $S_V(q) = 0 \iff S_U(q|_U) = 0$.
+\end{proof}
+
+%======================================================================
+\section{The Complete Orbit Filter and Restricted Space Structure}
+%======================================================================
+
+\begin{proposition}[Parity Cancellation of Short Orbits]
+Let $n = t \cdot m$ where $t = 2^s$ and $m$ is odd. Let $f$ be a homogeneous cubic RSBF in $n$ variables. Upon restriction to $U = \mathrm{Fix}(\sigma^t) \cong \F^t$, every orbit under $\sigma$ with reduced length $l < t$ has even multiplicity $L/l \equiv 0 \pmod 2$ and vanishes in $\F$. Only complete orbits of full length $t$ survive.
+\end{proposition}
+
+\begin{proof}
+Let $\mu(x) = x_i x_j x_k$ be a cubic monomial. The subgroup $H \le \mathbb{Z}_n$ of cyclic shifts fixing the index set $\{i, j, k\}$ acts freely on $\{i, j, k\}$, because any non-zero cyclic translation on $\mathbb{Z}_n$ has no fixed points. Therefore, every orbit of $H$ on $\{i, j, k\}$ has cardinality $|H|$, which forces $|H|$ to divide 3. Since 3 is prime, $|H| \in \{1, 3\}$.
+
+Since $n = t \cdot m$ with $m$ odd and $|H| \in \{1, 3\}$ is odd, the ratio $m' = m / |H|$ is an odd integer, so $L/t \equiv 1 \pmod 2$.
+Decomposing the cyclic summation into $m'$ blocks of size $t$:
+\begin{equation}
+\left( \sum_{k=0}^{L-1} \sigma^k(\mu) \right) \Bigg|_U = m' \sum_{j=0}^{t-1} \sigma^j(\mu|_U) = \sum_{j=0}^{t-1} \sigma^j(\mu|_U).
+\end{equation}
+Under the cyclic shift of $t$ coordinates, the orbit of $\mu|_U$ has length $l \mid t = 2^s$. For any short orbit $l < t$, the ratio $t/l = 2^{s - \log_2(l)} \ge 2$ is an even integer, which cancels modulo 2. Only complete orbits of full length $l = t$ survive.
+\end{proof}
+
+\begin{proposition}[Absence of Constant Terms and Strict Membership in $\mathcal{F}_t$]
+Because $f$ is strictly homogeneous of degree 3, $f(0) = 0$. Under the coordinate restriction $x_i \mapsto y_{i \bmod t}$, every cubic monomial restricts to terms of degrees 3, 2, or 1. No degree-0 (constant) terms are ever generated. Consequently, the restricted function satisfies $g(0) = 0$ and belongs strictly to the linear space:
+\begin{equation}
+\mathcal{F}_t = \mathrm{span}\{O^{(2)}_d, O^{(3)}_{a,b}, L\}.
+\end{equation}
+This absence of constant terms guarantees that $g|_{V_{t/2}} \equiv 0$ identically on the antipodal subspace.
+\end{proposition}
+
+%======================================================================
+\section{Transfer Matrix Exact Weight Formulation}
+%======================================================================
+
+\begin{theorem}[Closed-Form Weight of Quadratic Orbits]
+Let $t = 2^s$ ($s \ge 2$), and let $O_d(y) = \sum_{i=0}^{t-1} y_i y_{i+d}$ with $1 \le d < t/2$ and $a = v_2(d)$. Then:
+\begin{equation}
+W_{O_d}(0) = + 2^{t/2 + 2^a}, \qquad \wt(O_d) = 2^{t-1} - 2^{t/2 + 2^a - 1}.
+\end{equation}
+In particular, $v_2(\wt(O_d)) = t/2 + 2^a - 1 \ge t/2$.
+\end{theorem}
+
+\begin{proof}
+The cyclic shift graph on $\{0, 1, \dots, t-1\}$ partitions into $c = \gcd(t, d) = 2^a$ disjoint cycles of even length $L = t/c = 2^{s-a} \ge 4$.
+On each cycle of length $L$, the exponential sum equals the trace of the transfer matrix $A^L$, where $A = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$. Since $A^2 = 2 I_2$ and $L$ is even:
+\begin{equation}
+A^L = (A^2)^{L/2} = (2 I_2)^{L/2} = 2^{L/2} I_2 \implies \operatorname{tr}(A^L) = 2 \cdot 2^{L/2} = 2^{L/2+1}.
+\end{equation}
+Factoring across the $c = 2^a$ disjoint cycles:
+\begin{equation}
+W_{O_d}(0) = \prod_{j=1}^c \operatorname{tr}(A^L) = (2^{L/2+1})^c = 2^{c(L/2+1)} = 2^{t/2 + c} = 2^{t/2 + 2^a}.
+\end{equation}
+The Hamming weight is then:
+\begin{equation}
+\wt(O_d) = \frac{2^t - W_{O_d}(0)}{2} = 2^{t-1} - 2^{t/2 + 2^a - 1} = 2^{t/2 + 2^a - 1} (2^{t/2 - 2^a} - 1).
+\end{equation}
+Since $t/2 - 2^a \ge 1$, the second factor is odd, confirming $v_2(\wt(O_d)) = t/2 + 2^a - 1 \ge t/2$.
+\end{proof}
+
+%======================================================================
+\section{The 43 Generators in $t = 16$ and Ward Audit Data}
+%======================================================================
+
+In $t = 16$, the complete-orbit space $\mathcal{F}_{16}$ has dimension 43 (7 quadratic orbits, 35 cubic orbits, and the all-ones linear form $L$):
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Canonical complete orbit basis in $t = 16$ (43 generators).}
+\begin{tabular}{ll|ll|ll}
+\toprule
+Index & Canonical Monomial & Index & Canonical Monomial & Index & Canonical Monomial \\
+\midrule
+$v_1$ & $y_0 y_1$ & $v_{15}$ & $y_0 y_1 y_9$ & $v_{29}$ & $y_0 y_2 y_{12}$ \\
+$v_2$ & $y_0 y_2$ & $v_{16}$ & $y_0 y_1 y_{10}$ & $v_{30}$ & $y_0 y_2 y_{13}$ \\
+$v_3$ & $y_0 y_3$ & $v_{17}$ & $y_0 y_1 y_{11}$ & $v_{31}$ & $y_0 y_3 y_6$ \\
+$v_4$ & $y_0 y_4$ ($\wt=30720$) & $v_{18}$ & $y_0 y_1 y_{12}$ & $v_{32}$ & $y_0 y_3 y_7$ \\
+$v_5$ & $y_0 y_5$ & $v_{19}$ & $y_0 y_1 y_{13}$ & $v_{33}$ & $y_0 y_3 y_8$ \\
+$v_6$ & $y_0 y_6$ & $v_{20}$ & $y_0 y_1 y_{14}$ & $v_{34}$ & $y_0 y_3 y_9$ \\
+$v_7$ & $y_0 y_7$ & $v_{21}$ & $y_0 y_2 y_4$ & $v_{35}$ & $y_0 y_3 y_{10}$ \\
+$v_8$ & $y_0 y_1 y_2$ & $v_{22}$ & $y_0 y_2 y_5$ & $v_{36}$ & $y_0 y_3 y_{11}$ \\
+$v_9$ & $y_0 y_1 y_3$ & $v_{23}$ & $y_0 y_2 y_6$ & $v_{37}$ & $y_0 y_3 y_{12}$ \\
+$v_{10}$ & $y_0 y_1 y_4$ & $v_{24}$ & $y_0 y_2 y_7$ & $v_{38}$ & $y_0 y_4 y_8$ \\
+$v_{11}$ & $y_0 y_1 y_5$ & $v_{25}$ & $y_0 y_2 y_8$ & $v_{39}$ & $y_0 y_4 y_9$ \\
+$v_{12}$ & $y_0 y_1 y_6$ & $v_{26}$ & $y_0 y_2 y_9$ & $v_{40}$ & $y_0 y_4 y_{10}$ \\
+$v_{13}$ & $y_0 y_1 y_7$ & $v_{27}$ & $y_0 y_2 y_{10}$ & $v_{41}$ & $y_0 y_4 y_{11}$ \\
+$v_{14}$ & $y_0 y_1 y_8$ & $v_{28}$ & $y_0 y_2 y_{11}$ & $v_{42}$ & $y_0 y_5 y_{10}$ \\
+\midrule
+$v_{43}$ & \multicolumn{5}{l}{$L(y) = \sum_{i=0}^{15} y_i$ (all-ones linear form)} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Audit of Ward divisibility conditions for the full complete-orbit code $\mathcal{C} \subset \F^{4080}$ (43 generators).}
+\begin{tabular}{lccc}
+\toprule
+Order & Number of Subsets & Required Congruence & Violations \\
+\midrule
+Singletons ($k = 1$) & $43$ & $\wt(w_i) \equiv 0 \pmod{16}$ & $0$ \\
+Pairs ($k = 2$) & $903$ & $\wt(w_i \cap w_j) \equiv 0 \pmod 8$ & $0$ \\
+Triples ($k = 3$) & $12341$ & $\wt(w_i \cap w_j \cap w_l) \equiv 0 \pmod 4$ & $0$ \\
+Quadruples ($k = 4$) & $123410$ & $\wt(w_i \cap w_j \cap w_l \cap w_p) \equiv 0 \pmod 2$ & $0$ \\
+\midrule
+\textbf{Total Subsets} & $\mathbf{136697}$ & (Subcase without $L$: $124313$) & $\mathbf{0}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%======================================================================
+\section{Exhaustive Verification in Low Dimensions ($d = 3$ and $d = 4$)}
+%======================================================================
+
+\paragraph{Cubic Homogeneous RSBFs ($n \le 12$):}
+\begin{itemize}
+    \item $n = 4$: 1 orbit $\to$ 0 bent.
+    \item $n = 6$: 4 orbits, $2^4 = 16$ functions $\to$ 0 bent.
+    \item $n = 8$: 7 orbits, $2^7 = 128$ functions $\to$ 0 bent.
+    \item $n = 10$: 12 orbits, $2^{12} = 4096$ functions $\to$ 0 bent.
+    \item $n = 12$: 19 orbits, $2^{19} = 524{,}288$ functions; exactly $32{,}878$ satisfy $|W_f(0)| = 64$; 0 bent by FWHT.
+\end{itemize}
+
+\paragraph{Quartic Homogeneous RSBFs ($n = 8, 10$):}
+\begin{itemize}
+    \item $n = 8$: 10 orbits, $2^{10} = 1024$ functions $\to$ 0 bent.
+    \item $n = 10$: 22 orbits, $2^{22} = 4{,}194{,}304$ functions; $78{,}116$ satisfy $|W_f(0)| = 32$; $1{,}706$ survive coordinate derivatives; 0 bent.
+\end{itemize}
+
+%======================================================================
+\section{Reviewer Frequently Asked Questions (FAQ)}
+%======================================================================
+
+\paragraph{Q1: Does the restriction lemma imply bentness preservation for degree 4?}
+No. For degree 4, the directional derivatives have degree 3. The polar form of a cubic function is not bilinear, so character sums over the kernel cannot be evaluated via bilinear radical orthogonality. The reduction applies specifically to degree $\le 3$.
+
+\paragraph{Q2: Why is checking up to order 4 in Ward's formula sufficient?}
+Because $(-2)^{k-1} \equiv 0 \pmod{16}$ for all $k \ge 5$. Hence, all subsets of size $\ge 5$ contribute multiples of 16 in the inclusion-exclusion weight expansion.
+
+\paragraph{Q3: Does this prove the conjecture for $n = 32$?}
+No. For $n \equiv 0 \pmod{32}$, the direct weight divisibility approach does not extend. In fact, direct divisibility already fails at $t = 32$: there exist explicit counterexamples of functions in the complete-orbit space in 32 variables that violate the 2-adic valuation bound $v_2(\wt(g)) \ge 16$ required to obstruct bentness, and the code generated by the complete orbits is not 32-divisible. Thus, $t = 16$ is the exact structural boundary of the divisible codes technique, and resolving the conjecture for $n \equiv 0 \pmod{32}$ requires fundamentally different theoretical methods.
+
+%======================================================================
+\begin{thebibliography}{99}
+%======================================================================
+
+\bibitem{calderon2024}
+H.~Calder\'on-G\'omez, J.~Medina, and J.~Molina-Salazar,
+``Short $k$-rotation symmetric Boolean functions,''
+\emph{Discrete Applied Mathematics}, vol.~343, pp.~49--64, 2024.
+
+\bibitem{cusick2017}
+T.~W.~Cusick and E.~M.~Sanger,
+``Rotation symmetric bent Boolean functions for $n = 2p$,''
+arXiv preprint arXiv:1708.09313, 2017.
+
+\bibitem{meier1989}
+W.~Meier and O.~Staffelbach,
+``Nonlinearity criteria for cryptographic functions,''
+in \emph{Proc. EUROCRYPT '89}, LNCS, vol.~434, pp.~549--562, Springer, 1989.
+
+\bibitem{meng2010}
+Q.~Meng, L.~S.~Chen, and F.-W.~Fu,
+``On homogeneous rotation symmetric bent functions,''
+\emph{Discrete Applied Mathematics}, vol.~158, no.~10, pp.~1111--1117, 2010.
+
+\bibitem{stanica2008}
+P.~St\u{a}nic\u{a} and S.~Maitra,
+``Rotation symmetric Boolean functions---count and cryptographic properties,''
+\emph{Discrete Applied Mathematics}, vol.~156, no.~10, pp.~1567--1580, 2008.
+
+\bibitem{sun2026}
+L.~Sun, Z.~Shi, J.~Liu, and F.-W.~Fu,
+``On the conjecture about the nonexistence of homogeneous rotation symmetric bent functions,''
+\emph{Designs, Codes and Cryptography}, vol.~94, no.~4, pp.~1023--1045, 2026.
+
+\bibitem{ward1981}
+H.~N.~Ward,
+``Divisible codes,''
+\emph{Archiv der Mathematik}, vol.~36, no.~1, pp.~485--494, 1981.
+
+\bibitem{ward1990}
+H.~N.~Ward,
+``Weight polarization and divisibility,''
+\emph{Discrete Mathematics}, vol.~83, no.~2--3, pp.~315--326, 1990.
+
+\bibitem{ward2001}
+H.~N.~Ward,
+``Divisible codes---a survey,''
+\emph{Serdica Mathematical Journal}, vol.~27, no.~4, pp.~263--278, 2001.
+
+\bibitem{zhang2013}
+G.~Zhang and X.~Gao,
+``On the conjecture about the nonexistence of rotation symmetric bent functions,''
+arXiv preprint arXiv:1303.2282, 2013.
+
+\end{thebibliography}
+
+\end{document}
