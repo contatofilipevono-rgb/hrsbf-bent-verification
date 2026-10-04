@@ -24,7 +24,8 @@ No Google Colab:
 
 | Arquivo | Descrição |
 |:---|:---|
-| **[`HRSBF_Auditoria_Colab.ipynb`](HRSBF_Auditoria_Colab.ipynb)** | Caderno Jupyter interativo pronto para o Google Colab com explicações e código executável. |
+| **[`HRSBF_Auditoria_Colab.ipynb`](HRSBF_Auditoria_Colab.ipynb)** | Caderno Jupyter interativo pronto para o Google Colab com auditoria de todas as etapas e fronteiras. |
+| **[`master_suite_fronteiras.py`](master_suite_fronteiras.py)** | **Master Suite Turnkey (Python Puro)**: Resolve e audita todas as 4 fronteiras simultaneamente em < 5 segundos. |
 | **[`verificador_standalone.py`](verificador_standalone.py)** | Verificador em **100% Python padrão** (zero dependências externas), executa as 136.697 checagens em < 1 segundo. |
 | **[`verificador_hrsbf.py`](verificador_hrsbf.py)** | Verificador acelerado por vetorização NumPy (inclui busca exaustiva por Gray-code e FWHT). |
 | **[`dossie_completo_auditoria_hrsbf.md`](dossie_completo_auditoria_hrsbf.md)** | Dossiê formal unificado de auditoria com todas as demonstrações algébricas detalhadas. |
@@ -35,14 +36,21 @@ No Google Colab:
 
 ## 💻 Como Executar Localmente
 
-### Opção 1: Verificador Standalone (Zero Dependências)
+### Opção 1: Master Suite Turnkey (Todas as 4 Fronteiras em 1 Comando)
+Executa de uma só vez a Conjectura de Stănică–Maitra ($v_2(n) \le 4$), Grau 4 ($n=8$), Criptoanálise da Campeã de $n=16$ (SAC + Imunidade Algébrica) e Filtro de Poisson em $t=32$:
+```bash
+python master_suite_fronteiras.py
+```
+*Tempo de execução típico:* ~4,4 segundos (zero dependências externas).
+
+### Opção 2: Verificador Standalone (Zero Dependências)
 Requer apenas Python >= 3.10 padrão:
 ```bash
 python verificador_standalone.py
 ```
 *Tempo de execução típico:* ~0,98 segundos.
 
-### Opção 2: Verificador com NumPy
+### Opção 3: Verificador com NumPy
 Requer Python >= 3.10 e NumPy:
 ```bash
 python verificador_hrsbf.py
