@@ -1,0 +1,31 @@
+{
+  "status": "verified",
+  "source": "Sun-Shi-Liu-Fu 2026, Eq. (21), page 17",
+  "scope": "Concrete identity check for a full orbit; no global refutation of the paper.",
+  "cases": [
+    {
+      "n": 8,
+      "cubic_SANF": "[0,1,2]",
+      "original_derivative_weight": 96,
+      "equation_21_without_linear_mismatches": 128,
+      "corrected_identity_mismatches": 0,
+      "at_e0": {
+        "original_derivative": 1,
+        "quadratic_only": 0
+      },
+      "corrected_identity": "D_ones f = Q_2 + sum_i x_i"
+    },
+    {
+      "n": 16,
+      "cubic_SANF": "[0,1,2]",
+      "original_derivative_weight": 32256,
+      "equation_21_without_linear_mismatches": 32768,
+      "corrected_identity_mismatches": 0,
+      "at_e0": {
+        "original_derivative": 1,
+        "quadratic_only": 0
+      },
+      "corrected_identity": "D_ones f = Q_2 + sum_i x_i"
+    }
+  ]
+}
