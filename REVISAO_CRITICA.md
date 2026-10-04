@@ -27,13 +27,13 @@ Publicado em **13 de abril de 2026**.
 DOI: [10.1007/s10623-026-01848-4](https://doi.org/10.1007/s10623-026-01848-4).
 Fonte primária: [Springer](https://link.springer.com/article/10.1007/s10623-026-01848-4).
 
-Autores, título, data e identificação editorial confirmados. A referência de páginas 1023–1045 no suplemento foi substituída pelo artigo 93. O resumo anuncia resultados parciais envolvendo SANF, derivadas e não linearidade. O texto integral não ficou acessível nas fontes consultadas; o endereço PDF redirecionou ao registro por assinatura. Buscas por DOI, título e autores não forneceram versão integral acessível. Não se inferem hipóteses ou teoremas a partir do resumo.
+Autores, título, data e identificação editorial confirmados. A referência de páginas 1023–1045 no suplemento foi substituída pelo artigo 93. **Atualização:** o PDF integral foi fornecido pelo usuário e sua leitura foi concluída. A comparação por teorema está em [COMPARACAO_SUN_2026.md](COMPARACAO_SUN_2026.md). O Corolário 2 já cobre todos os n=2p^a; o Teorema 6 tem um limite dependente de cada suporte. Não se pode apresentar fatores compostos como novidade por si só.
 
 **Cusick–Sanger (2017):** [texto primário](https://arxiv.org/pdf/1708.09313), Teorema 3.8. Para n=2p, p primo ímpar, bent homogênea precisa ter grau par. Exclui grau três nesse alcance; não autoriza dizer que a técnica “falha” para todo fator composto.
 
 **Zhang–Gao (2013):** [texto primário](https://arxiv.org/pdf/1303.2282), também fornecido pelo usuário nesta revisão. O Teorema 3.1 usa hipóteses de forma e exclusão de suportes para obter k(d−1)<n/2; a Proposição 3.2 dá exclusões para famílias específicas de SANFs. Não é uma exclusão universal de todos os suportes cúbicos. O Teorema 3.7 e a Observação 3.8 tratam o caso quadrático por coprimalidade e destacam o termo antipodal necessário. As iniciais no suplemento foram corrigidas para X. Zhang e G. Gao. O símbolo de união de suportes na extração textual não deve ser confundido com XOR: a operação definida por zero apenas quando ambos os bits são zero é OR.
 
-**Pendente:** obter o PDF Sun–Shi–Liu–Fu e comparar cada teorema por dimensão, grau, homogeneidade, hipóteses de SANF/suporte e conclusão. Até lá, nenhuma afirmação de prioridade, novidade ou alcance estritamente superior.
+**Concluído:** acesso ao PDF e comparação dos enunciados de Sun–Shi–Liu–Fu. **Ainda não estabelecido:** prioridade em toda a literatura ou ineditismo de cada certificado em n=32. A checagem da Eq. (21) identificou um termo linear omitido na fórmula impressa para uma órbita completa; isso não é uma refutação global do artigo.
 
 ## Reprodução local
 
