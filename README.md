@@ -101,3 +101,9 @@ Uma segunda implementação sem importar código dos verificadores existentes es
 Passaram todas as 136.697 interseções sobre tabelas completas em n=16, 80.640 pares invariantes quadráticos em dimensão quatro e 15.680 imagens de órbitas cúbicas. Os controles finitos complementam as provas gerais. Veja [`AUDITORIA_FINAL.md`](AUDITORIA_FINAL.md) para alcance e pendências de submissão.
 
 A comparação integral com Meng–Chen–Fu (2010) está em [COMPARACAO_MENG_2010.md](COMPARACAO_MENG_2010.md). A exclusão da cúbica contígua em n=32 já era conhecida; o exemplo é apenas controle de divisibilidade. A pendência de leitura desse artigo foi encerrada.
+
+## Verificação da versão de submissão e pesquisa em n=32
+
+Execute `python verify_submission.py` na cópia do repositório. A suíte exige todos os arquivos do manifesto SHA-256 e interrompe em ausência, divergência ou falha de qualquer verificador. Ela executa a auditoria integrada, o certificado de sete fibras e os controles diferenciais do novo verificador exato.
+
+[PREPARACAO_SUBMISSAO.md](PREPARACAO_SUBMISSAO.md) reúne os arquivos, os dados de autoria pendentes e o roteiro para leitura externa. A ferramenta [`avanco_t32/verificar_fibras_exato.py`](avanco_t32/verificar_fibras_exato.py) reconstrói ANF, polar, radical e balanceamento de fibras de um candidato. Uma fibra não balanceada exclui bentness; passar nas fibras não certifica bentness. O relatório distingue essas situações. Não foi incorporada a CNF incorreta proposta no chat.
