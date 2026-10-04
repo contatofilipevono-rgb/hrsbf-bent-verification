@@ -26,11 +26,11 @@ Sun, Shi, Liu and Fu~\cite{sun} give several support-dependent nonexistence crit
 \[
  p_i>2^{\,2p_1^{a_1}\cdots p_{i-1}^{a_{i-1}}}\quad (i\ge2).
 \]
-In particular, it already covers every $n=2p^a$ with $p$ an odd prime; an odd composite factor alone does not establish a new case. Their Theorem 6 fixes a finite SANF support $P$ and gives a support-dependent exponent $e_0(P)$ excluding its family for $2^{e_0(P)}\mid n$. This is not a uniform exclusion of all supports at a fixed dimension such as 32. Their Theorems 2--5 impose further orbit, distance, parity or support hypotheses. The full article was supplied and read for this revision. The present result is stated uniformly for all odd factors and all homogeneous cubic supports with $v_2(n)\in\{1,2,3,4\}$; its overlap with those results is acknowledged. This comparison with one article does not establish originality relative to the entire literature.
+In particular, it already covers every $n=2p^a$ with $p$ an odd prime; an odd composite factor alone does not establish a new case. Their Theorem 6 fixes a finite SANF support $P$ and gives a support-dependent exponent $e_0(P)$ excluding its family for $2^{e_0(P)}\mid n$. This is not a uniform exclusion of all supports at a fixed dimension such as 32. Their Theorems 2--5 impose further orbit, distance, parity or support hypotheses. The present result is stated uniformly for all odd factors and all homogeneous cubic supports with $v_2(n)\in\{1,2,3,4\}$; its overlap with those results is acknowledged. This comparison with one article does not establish originality relative to the entire literature.
 
 The computational proof below is independent of the derivative identity printed as Eq.~(21) in~\cite{sun}. For a full contiguous cubic orbit in even dimension, direct expansion retains a linear term: $D_{1^n}f=Q_2+L$. The supplementary comparison records a finite check of that identity. This observation about the printed formula is not claimed to refute all conclusions of that article.
 
-The argument combines algebraic reductions with finite exact calculations. It is not a Lean-certified proof. The accompanying incomplete Lean draft is excluded from the evidentiary basis. The supplementary quartic exclusion in eight variables is a reproduction check, not a new quartic result. Nonhomogeneity must not be conflated with homogeneity: known rotation-symmetric bent constructions allow higher degrees~\cite{sutang}. A nonhomogeneous cubic bent function in dimension twelve is included as a positive control in the verifier.
+The argument combines algebraic reductions with finite exact calculations. No proof-assistant certification is claimed. The supplementary quartic exclusion in eight variables is a reproduction check, not a new quartic result. Nonhomogeneity must not be conflated with homogeneity: known rotation-symmetric bent constructions allow higher degrees~\cite{sutang}. A nonhomogeneous cubic bent function in dimension twelve is included as a positive control in the verifier.
 
 \section{Notation}
 Let $V_n=\F^n$. The algebraic normal form (ANF) of a Boolean function is its unique multilinear polynomial over $\F$. Homogeneity of degree three means that every nonzero ANF term has degree three. The zero function may be included in spans without affecting any nonexistence assertion.
@@ -129,7 +129,7 @@ t & |\mathcal F_t| & \text{zero-frequency Walsh values}\\\hline
 \]
 None contains $\pm2^{t/2}$. The accompanying verifier enumerates all these functions, including zero, and checks the required exclusion.
 
-For $t=16$, there are $\binom{16}{3}/16=35$ cubic orbits and seven full quadratic orbits in $\mathcal H_{16}$. These 42 ANFs have disjoint nonempty monomial supports and are linearly independent. Any input orbit shorter than 16 has length dividing eight, hence lies in $A_{16}$. The remaining $2^{16}-2^8=65280$ inputs form 4080 full orbits. Evaluating on one representative from each defines codewords $w_1,\ldots,w_{42}\in\F^{4080}$ and a code $C$. By Lemma~\ref{lem:vanishing}, this evaluation is injective on $\mathcal H_{16}$, so $\dim C=42$, and
+For $t=16$, there are $\binom{16}{3}/16=35$ cubic orbits and seven full quadratic orbits in $\mathcal H_{16}$. These 42 ANFs have disjoint nonempty monomial supports and are linearly independent. Any input orbit shorter than 16 has length dividing eight, hence lies in $A_{16}$. The remaining $2^{16}-2^8=65280$ inputs form 4080 full orbits. Evaluating on one representative from each defines codewords $w_1,\ldots,w_{42}\in\F^{4080}$ and a code $C$. This evaluation is injective on $\mathcal H_{16}$: a function in its kernel vanishes on every full orbit by rotation symmetry and on every shorter orbit by Lemma~\ref{lem:vanishing}, hence is the zero Boolean function and has zero ANF coefficients. Therefore so $\dim C=42$, and
 \begin{equation}\label{eq:weights}
 \wt(g)=16\wt(c)\quad\text{for the codeword }c\text{ associated to }g.
 \end{equation}
@@ -219,6 +219,7 @@ times the compressed weight, then tests divisibility. It checks dimension
 43 and antipodal vanishing, and records intersection counts and hashes.
 These are two representations inside one program, not two independently
 maintained implementations or a formal proof certificate.
+A separately written verifier, \texttt{auditoria\_2026\_10\_04/auditoria\_independente.py}, enumerates cubic generators using cyclic gap necklaces and checks all 136697 intersections on full input tables using NumPy 2.3.5. It imports no code from the first verifier. Its recorded run also checks 80640 invariant quadratic map--function pairs in dimension four and 15680 folded cubic orbits across 24 dimensions. These are finite controls, not a replacement for the general proofs.\par
 The general algebraic lemmas are proved in the text; finite folding
 tests for odd multipliers 1, 3 and 5 are supplemental controls only.
 
@@ -249,3 +250,4 @@ For degrees at least four, derivatives need not be quadratic, so Lemma~\ref{lem:
 \bibitem{sutang} S.~Su and X.~Tang, On the Systematic Constructions of Rotation Symmetric Bent Functions with Any Possible Algebraic Degrees, IACR ePrint 2015/451. \href{https://eprint.iacr.org/2015/451.pdf}{Preprint consulted}.
 \end{thebibliography}
 \end{document}
+
