@@ -1,0 +1,567 @@
+{
+  "status": "passed",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "numpy": "2.3.5",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "script_sha256": "5bf31dacdc2d6ab3b56e0dedc0df77cdc8cdc4969937e3dea18a39cbe4f1d3ae",
+  "implementation_independence": "No imports from existing verifiers; gap enumeration, full input tables and NumPy popcounts.",
+  "stages": {
+    "small_bases": {
+      "seconds": 0.013,
+      "data": {
+        "2": {
+          "generators": 1,
+          "functions": 2,
+          "W0_values": [
+            0,
+            4
+          ]
+        },
+        "4": {
+          "generators": 3,
+          "functions": 8,
+          "W0_values": [
+            -8,
+            0,
+            8,
+            16
+          ]
+        },
+        "8": {
+          "generators": 11,
+          "functions": 2048,
+          "W0_values": [
+            -192,
+            -160,
+            -128,
+            -96,
+            -64,
+            -32,
+            0,
+            32,
+            64,
+            96,
+            128,
+            160,
+            192,
+            256
+          ]
+        }
+      }
+    },
+    "ward_n16": {
+      "seconds": 4.658,
+      "data": {
+        "generator_order": "oriented gap necklaces, then distances 1..7, then L",
+        "rank": 43,
+        "input_count": 65536,
+        "scalar_vector_entries_checked": 2818048,
+        "antipodal_entries_checked": 11008,
+        "orders": {
+          "1": {
+            "tested": 43,
+            "full_table_divisor": 256,
+            "violations": 0,
+            "weight_histogram": {
+              "28160": 6,
+              "30208": 4,
+              "30464": 16,
+              "30720": 2,
+              "32256": 6,
+              "32512": 8,
+              "32768": 1
+            },
+            "sha256_ordered_records": "52ca85f5e4d286bb45398a2fb66fb24f604a97197269a8023c3f9d9abde91ae6"
+          },
+          "2": {
+            "tested": 903,
+            "full_table_divisor": 128,
+            "violations": 0,
+            "weight_histogram": {
+              "12800": 4,
+              "12928": 4,
+              "13312": 10,
+              "13440": 16,
+              "13568": 8,
+              "13696": 36,
+              "13824": 42,
+              "13952": 20,
+              "14080": 20,
+              "14208": 8,
+              "14336": 55,
+              "14464": 24,
+              "14592": 44,
+              "14720": 28,
+              "14848": 64,
+              "14976": 40,
+              "15104": 52,
+              "15232": 8,
+              "15360": 100,
+              "15488": 16,
+              "15616": 36,
+              "15744": 32,
+              "15872": 85,
+              "16000": 16,
+              "16128": 56,
+              "16384": 16,
+              "16640": 20,
+              "16896": 10,
+              "17024": 8,
+              "17408": 10,
+              "17920": 4,
+              "18176": 2,
+              "18688": 2,
+              "19200": 2,
+              "19712": 2,
+              "19968": 3
+            },
+            "sha256_ordered_records": "e71c604b6be8c030470e87bd49a34aa5fe5a74cbc04e6fd3d805eb25e45ad414"
+          },
+          "3": {
+            "tested": 12341,
+            "full_table_divisor": 64,
+            "violations": 0,
+            "weight_histogram": {
+              "5824": 4,
+              "6080": 12,
+              "6144": 42,
+              "6208": 16,
+              "6272": 64,
+              "6336": 12,
+              "6400": 112,
+              "6464": 68,
+              "6528": 172,
+              "6592": 104,
+              "6656": 238,
+              "6720": 80,
+              "6784": 356,
+              "6848": 176,
+              "6912": 564,
+              "6976": 120,
+              "7040": 588,
+              "7104": 184,
+              "7168": 661,
+              "7232": 232,
+              "7296": 734,
+              "7360": 176,
+              "7424": 828,
+              "7488": 172,
+              "7552": 662,
+              "7616": 180,
+              "7680": 1026,
+              "7744": 180,
+              "7808": 644,
+              "7872": 120,
+              "7936": 720,
+              "8000": 112,
+              "8064": 544,
+              "8128": 108,
+              "8192": 551,
+              "8256": 64,
+              "8320": 280,
+              "8384": 36,
+              "8448": 204,
+              "8512": 44,
+              "8576": 208,
+              "8640": 16,
+              "8704": 240,
+              "8768": 8,
+              "8832": 88,
+              "8896": 16,
+              "8960": 148,
+              "9088": 56,
+              "9216": 100,
+              "9344": 16,
+              "9472": 28,
+              "9600": 52,
+              "9728": 59,
+              "9856": 8,
+              "9984": 24,
+              "10112": 28,
+              "10240": 12,
+              "10368": 8,
+              "10496": 16,
+              "10624": 4,
+              "10752": 6,
+              "11008": 6,
+              "11776": 4
+            },
+            "sha256_ordered_records": "dea8d86a0ac2888a647dd31cf72547fd49d6a500acddd638a0906217b41063db"
+          },
+          "4": {
+            "tested": 123410,
+            "full_table_divisor": 32,
+            "violations": 0,
+            "weight_histogram": {
+              "2560": 5,
+              "2624": 4,
+              "2688": 24,
+              "2752": 20,
+              "2816": 70,
+              "2880": 180,
+              "2944": 368,
+              "3008": 432,
+              "3072": 947,
+              "3136": 1160,
+              "3200": 1696,
+              "3264": 2660,
+              "3328": 3552,
+              "3392": 4248,
+              "3456": 5304,
+              "3520": 5560,
+              "3584": 6941,
+              "3648": 6092,
+              "3712": 8230,
+              "3776": 7088,
+              "3840": 8640,
+              "3904": 7368,
+              "3968": 7494,
+              "4032": 6328,
+              "4096": 6323,
+              "4160": 4496,
+              "4224": 4526,
+              "4288": 3616,
+              "4352": 3657,
+              "4416": 2710,
+              "4480": 2430,
+              "4544": 1754,
+              "4608": 1863,
+              "4672": 1068,
+              "4736": 1036,
+              "4800": 752,
+              "4864": 844,
+              "4928": 512,
+              "4992": 628,
+              "5056": 464,
+              "5120": 529,
+              "5184": 324,
+              "5248": 300,
+              "5312": 176,
+              "5376": 218,
+              "5440": 112,
+              "5504": 180,
+              "5568": 60,
+              "5632": 130,
+              "5696": 64,
+              "5760": 44,
+              "5824": 16,
+              "5888": 32,
+              "5952": 8,
+              "6016": 16,
+              "6080": 4,
+              "6144": 16,
+              "6272": 34,
+              "6336": 4,
+              "6400": 24,
+              "6528": 8,
+              "6656": 6,
+              "6912": 10,
+              "7424": 1,
+              "7552": 2,
+              "7680": 1,
+              "8192": 1
+            },
+            "sha256_ordered_records": "8c1bb17252967d668b1a4a02e15c6e5d4e1007fa0363f3675a3f7de45f573584"
+          }
+        },
+        "total_intersections": 136697,
+        "negative_control_antipodal_weight": 32640,
+        "arithmetic": "NumPy packed uint64 AND and exact popcounts; no compressed orbits"
+      }
+    },
+    "odd_order_quadratic": {
+      "seconds": 1.646,
+      "data": {
+        "dimension": 4,
+        "all_quadratic_functions": 2048,
+        "invertible_maps": 20160,
+        "odd_order_maps": 11025,
+        "orders": {
+          "1": 1,
+          "3": 1232,
+          "5": 1344,
+          "7": 5760,
+          "15": 2688
+        },
+        "invariant_map_function_pairs": 80640,
+        "distinct_cycle_partitions": 1074,
+        "violations": 0,
+        "negative_degree3_control": "xyz under a 3-cycle disproves extension beyond quadratics"
+      }
+    },
+    "folded_orbits": {
+      "seconds": 2.72,
+      "data": {
+        "scope": "Exhaustive orbit images for each listed dimension; finite controls only.",
+        "records": [
+          {
+            "t": 2,
+            "odd_multiplier": 1,
+            "source_dimension": 2,
+            "source_cubic_orbits": 0,
+            "folded_degree_counts": {}
+          },
+          {
+            "t": 2,
+            "odd_multiplier": 3,
+            "source_dimension": 6,
+            "source_cubic_orbits": 4,
+            "folded_degree_counts": {
+              "0": 3,
+              "1": 1
+            }
+          },
+          {
+            "t": 2,
+            "odd_multiplier": 5,
+            "source_dimension": 10,
+            "source_cubic_orbits": 12,
+            "folded_degree_counts": {
+              "0": 10,
+              "1": 2
+            }
+          },
+          {
+            "t": 2,
+            "odd_multiplier": 7,
+            "source_dimension": 14,
+            "source_cubic_orbits": 26,
+            "folded_degree_counts": {
+              "0": 21,
+              "1": 5
+            }
+          },
+          {
+            "t": 2,
+            "odd_multiplier": 9,
+            "source_dimension": 18,
+            "source_cubic_orbits": 46,
+            "folded_degree_counts": {
+              "0": 36,
+              "1": 10
+            }
+          },
+          {
+            "t": 2,
+            "odd_multiplier": 11,
+            "source_dimension": 22,
+            "source_cubic_orbits": 70,
+            "folded_degree_counts": {
+              "0": 55,
+              "1": 15
+            }
+          },
+          {
+            "t": 4,
+            "odd_multiplier": 1,
+            "source_dimension": 4,
+            "source_cubic_orbits": 1,
+            "folded_degree_counts": {
+              "3": 1
+            }
+          },
+          {
+            "t": 4,
+            "odd_multiplier": 3,
+            "source_dimension": 12,
+            "source_cubic_orbits": 19,
+            "folded_degree_counts": {
+              "0": 3,
+              "1": 1,
+              "2": 6,
+              "3": 9
+            }
+          },
+          {
+            "t": 4,
+            "odd_multiplier": 5,
+            "source_dimension": 20,
+            "source_cubic_orbits": 57,
+            "folded_degree_counts": {
+              "0": 10,
+              "1": 2,
+              "2": 20,
+              "3": 25
+            }
+          },
+          {
+            "t": 4,
+            "odd_multiplier": 7,
+            "source_dimension": 28,
+            "source_cubic_orbits": 117,
+            "folded_degree_counts": {
+              "0": 21,
+              "1": 5,
+              "2": 42,
+              "3": 49
+            }
+          },
+          {
+            "t": 4,
+            "odd_multiplier": 9,
+            "source_dimension": 36,
+            "source_cubic_orbits": 199,
+            "folded_degree_counts": {
+              "0": 36,
+              "1": 10,
+              "2": 72,
+              "3": 81
+            }
+          },
+          {
+            "t": 4,
+            "odd_multiplier": 11,
+            "source_dimension": 44,
+            "source_cubic_orbits": 301,
+            "folded_degree_counts": {
+              "0": 55,
+              "1": 15,
+              "2": 110,
+              "3": 121
+            }
+          },
+          {
+            "t": 8,
+            "odd_multiplier": 1,
+            "source_dimension": 8,
+            "source_cubic_orbits": 7,
+            "folded_degree_counts": {
+              "3": 7
+            }
+          },
+          {
+            "t": 8,
+            "odd_multiplier": 3,
+            "source_dimension": 24,
+            "source_cubic_orbits": 85,
+            "folded_degree_counts": {
+              "0": 3,
+              "1": 1,
+              "2": 18,
+              "3": 63
+            }
+          },
+          {
+            "t": 8,
+            "odd_multiplier": 5,
+            "source_dimension": 40,
+            "source_cubic_orbits": 247,
+            "folded_degree_counts": {
+              "0": 10,
+              "1": 2,
+              "2": 60,
+              "3": 175
+            }
+          },
+          {
+            "t": 8,
+            "odd_multiplier": 7,
+            "source_dimension": 56,
+            "source_cubic_orbits": 495,
+            "folded_degree_counts": {
+              "0": 21,
+              "1": 5,
+              "2": 126,
+              "3": 343
+            }
+          },
+          {
+            "t": 8,
+            "odd_multiplier": 9,
+            "source_dimension": 72,
+            "source_cubic_orbits": 829,
+            "folded_degree_counts": {
+              "0": 36,
+              "1": 10,
+              "2": 216,
+              "3": 567
+            }
+          },
+          {
+            "t": 8,
+            "odd_multiplier": 11,
+            "source_dimension": 88,
+            "source_cubic_orbits": 1247,
+            "folded_degree_counts": {
+              "0": 55,
+              "1": 15,
+              "2": 330,
+              "3": 847
+            }
+          },
+          {
+            "t": 16,
+            "odd_multiplier": 1,
+            "source_dimension": 16,
+            "source_cubic_orbits": 35,
+            "folded_degree_counts": {
+              "3": 35
+            }
+          },
+          {
+            "t": 16,
+            "odd_multiplier": 3,
+            "source_dimension": 48,
+            "source_cubic_orbits": 361,
+            "folded_degree_counts": {
+              "0": 3,
+              "1": 1,
+              "2": 42,
+              "3": 315
+            }
+          },
+          {
+            "t": 16,
+            "odd_multiplier": 5,
+            "source_dimension": 80,
+            "source_cubic_orbits": 1027,
+            "folded_degree_counts": {
+              "0": 10,
+              "1": 2,
+              "2": 140,
+              "3": 875
+            }
+          },
+          {
+            "t": 16,
+            "odd_multiplier": 7,
+            "source_dimension": 112,
+            "source_cubic_orbits": 2035,
+            "folded_degree_counts": {
+              "0": 21,
+              "1": 5,
+              "2": 294,
+              "3": 1715
+            }
+          },
+          {
+            "t": 16,
+            "odd_multiplier": 9,
+            "source_dimension": 144,
+            "source_cubic_orbits": 3385,
+            "folded_degree_counts": {
+              "0": 36,
+              "1": 10,
+              "2": 504,
+              "3": 2835
+            }
+          },
+          {
+            "t": 16,
+            "odd_multiplier": 11,
+            "source_dimension": 176,
+            "source_cubic_orbits": 5075,
+            "folded_degree_counts": {
+              "0": 55,
+              "1": 15,
+              "2": 770,
+              "3": 4235
+            }
+          }
+        ],
+        "total_source_orbits": 15680
+      }
+    }
+  },
+  "elapsed_seconds": 9.043
+}
