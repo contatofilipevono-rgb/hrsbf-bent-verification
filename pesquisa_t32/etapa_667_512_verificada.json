@@ -1,0 +1,7 @@
+{
+  "status": "certificates_reconstructed",
+  "verified_families": 618,
+  "target_families": 667,
+  "all_n32_cubics_excluded": false,
+  "seconds": 9.85
+}
