@@ -1,0 +1,161 @@
+{
+  "experiment": "Exemplo cubico HRSBF n=16 verificado; otimo na subclasse nao balanceada",
+  "date": "2026-10-03",
+  "dimension": 16,
+  "degree": 3,
+  "space_size": 65536,
+  "bent_target_theoretical": 32640,
+  "bent_feasibility": "Impossivel (Teorema de Ward impoe W(0) = 0 mod 512 != +-256)",
+  "achieved_nonlinearity": 32512,
+  "max_abs_walsh": 512,
+  "walsh_at_zero": 512,
+  "hamming_weight": 32512,
+  "balanced": false,
+  "winning_mask_binary": "0b10101011000000010001000111001011",
+  "winning_mask_hex": "0xAB0111CB",
+  "active_orbit_count": 13,
+  "total_orbits": 35,
+  "active_orbits": [
+    {
+      "index": 0,
+      "composition": [
+        1,
+        1,
+        14
+      ],
+      "monomial": "(0, 1, 2)"
+    },
+    {
+      "index": 1,
+      "composition": [
+        1,
+        2,
+        13
+      ],
+      "monomial": "(0, 1, 3)"
+    },
+    {
+      "index": 3,
+      "composition": [
+        1,
+        4,
+        11
+      ],
+      "monomial": "(0, 1, 5)"
+    },
+    {
+      "index": 6,
+      "composition": [
+        1,
+        7,
+        8
+      ],
+      "monomial": "(0, 1, 8)"
+    },
+    {
+      "index": 7,
+      "composition": [
+        1,
+        8,
+        7
+      ],
+      "monomial": "(0, 1, 9)"
+    },
+    {
+      "index": 8,
+      "composition": [
+        1,
+        9,
+        6
+      ],
+      "monomial": "(0, 1, 10)"
+    },
+    {
+      "index": 12,
+      "composition": [
+        1,
+        13,
+        2
+      ],
+      "monomial": "(0, 1, 14)"
+    },
+    {
+      "index": 16,
+      "composition": [
+        2,
+        5,
+        9
+      ],
+      "monomial": "(0, 2, 7)"
+    },
+    {
+      "index": 24,
+      "composition": [
+        3,
+        4,
+        9
+      ],
+      "monomial": "(0, 3, 7)"
+    },
+    {
+      "index": 25,
+      "composition": [
+        3,
+        5,
+        8
+      ],
+      "monomial": "(0, 3, 8)"
+    },
+    {
+      "index": 27,
+      "composition": [
+        3,
+        7,
+        6
+      ],
+      "monomial": "(0, 3, 10)"
+    },
+    {
+      "index": 29,
+      "composition": [
+        3,
+        9,
+        4
+      ],
+      "monomial": "(0, 3, 12)"
+    },
+    {
+      "index": 31,
+      "composition": [
+        4,
+        5,
+        7
+      ],
+      "monomial": "(0, 4, 9)"
+    }
+  ],
+  "walsh_spectrum_distribution": {
+    "-512": 1984,
+    "-256": 24576,
+    "0": 12288,
+    "256": 24576,
+    "512": 2112
+  },
+  "walsh_spectrum_support_size": 53248,
+  "parseval_identity_check": {
+    "expected_sum_squares": 4294967296,
+    "actual_sum_squares": 4294967296,
+    "passed": true
+  },
+  "winning_mask_decimal": 2868974027,
+  "mask_convention": "Bit i seleciona comps[i]; comps sao triplas positivas de soma 16, canonizadas por rotacao ciclica e ordenadas lexicograficamente; indice inicial 0.",
+  "reported_colab_execution": {
+    "hardware": "NVIDIA A100 GPU (Google Colab)",
+    "execution_time_seconds": 29.58,
+    "status": "Informacao do registro recebido; hardware e tempo nao certificados pela verificacao local."
+  },
+  "upper_bound_unbalanced_subclass": 32512,
+  "global_optimality": "Nao demonstrada: Ward em W(0) nao resolve o caso W(0)=0.",
+  "literature_record_status": "Nao estabelecido por comparacao bibliografica.",
+  "independent_verification": "Tabela completa de 65536 pontos, FWHT inteira, espectro e Parseval conferidos em 2026-10-03."
+}
