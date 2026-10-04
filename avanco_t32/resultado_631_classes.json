@@ -1,0 +1,40 @@
+{
+  "status": "verified",
+  "certificate_sha256": "f237439a778c03e6be808e5e5e75a2270f91f860158545140f1694881ff309c8",
+  "quotient_classes": 631,
+  "excluded": 607,
+  "excluded_by_type": {
+    "constant_ones_fiber": 19,
+    "linear_contradiction": 588
+  },
+  "not_excluded_by_this_search": [
+    "0x2000",
+    "0x8000",
+    "0x20000",
+    "0x80000",
+    "0x200000",
+    "0x100000000",
+    "0xa000",
+    "0x22000",
+    "0x82000",
+    "0x202000",
+    "0x40002000",
+    "0x28000",
+    "0x88000",
+    "0x40008000",
+    "0x100008000",
+    "0x220000",
+    "0x40020000",
+    "0x100020000",
+    "0x280000",
+    "0x40080000",
+    "0x100080000",
+    "0x40200000",
+    "0x100200000",
+    "0x140000000"
+  ],
+  "verified_equations": 30038,
+  "family_dimension_per_quotient": 120,
+  "seconds": 20.859,
+  "scope": "Quotient patterns of weight <=2 only. Sparse quotient does NOT mean sparse original function. Remaining is not an existence claim."
+}

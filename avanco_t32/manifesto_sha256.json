@@ -1,0 +1,54 @@
+{
+  "AVANCO_E_LIMITES.md": {
+    "bytes": 13509,
+    "sha256": "80480e1e36a203add4a32a1391ef724d088daeb1a08084206c4e8d95f06f7765"
+  },
+  "certificado_7_fibras.json": {
+    "bytes": 1120,
+    "sha256": "96c70b58a378664ed57474dd06ba7743450525448708a6427126de0e01fd2ecc"
+  },
+  "Certificados_T32_Colab.ipynb": {
+    "bytes": 33146,
+    "sha256": "10d9d5af0958482b342276e63bc6451987dda5f9b13c4623b5555cf2504f3f95"
+  },
+  "estrutura_remanescente.json": {
+    "bytes": 792,
+    "sha256": "41ffca0fd9aa3111ca3196fd21e4b58a9414e84325340a395ab97e9588706557"
+  },
+  "exploracao_631_classes.json": {
+    "bytes": 5165176,
+    "sha256": "f237439a778c03e6be808e5e5e75a2270f91f860158545140f1694881ff309c8"
+  },
+  "fibra_J_certificado.json": {
+    "bytes": 18657,
+    "sha256": "75f18ef5a49ac022c743331a6ebd799538a83b30f45178600bee59eb6a89fd23"
+  },
+  "gerador_certificados.py": {
+    "bytes": 3136,
+    "sha256": "1d90f7394861f4f4fef1875582e68a76a0e93a025ccfbb4c77969ffefedeb94d"
+  },
+  "resultado_631_classes.json": {
+    "bytes": 971,
+    "sha256": "5c9916d9cbb6d07a4913fadb114e846288a80788e4777276e0529b95ca14ce4f"
+  },
+  "resultado_7_fibras.json": {
+    "bytes": 1187,
+    "sha256": "f9e2bd9fedab22055a7208e7df363e1d1245768f6a63414542c92c4676d0fd3c"
+  },
+  "verificador_integrado.py": {
+    "bytes": 19373,
+    "sha256": "aa02897b3214f2411b5f5f709cc33bc06e911b906d2e0ae6afa99588cf57b64a"
+  },
+  "verificar_7_fibras.py": {
+    "bytes": 6500,
+    "sha256": "150f8e8783bf470a37d4758e533fdc6d286ea99f52e4a2be063036bacb216356"
+  },
+  "verificar_classes.py": {
+    "bytes": 4095,
+    "sha256": "4e2350859606be2488ea09f651028d559d1a27b88c62e972628450288a9826a8"
+  },
+  "verificar_fibra_antidiagonal.py": {
+    "bytes": 2482,
+    "sha256": "ebad4c577a72fceb9a810024ec1cf342b59c01ab5872f34712ed0a1e2a2fca4c"
+  }
+}

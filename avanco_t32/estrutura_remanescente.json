@@ -1,0 +1,55 @@
+{
+  "status": "verified",
+  "remaining_sparse_quotients": 24,
+  "parity_subspace_dimension": 7,
+  "parity_orbit_indices": [
+    13,
+    15,
+    17,
+    19,
+    21,
+    30,
+    32
+  ],
+  "parity_orbit_representatives": [
+    [
+      0,
+      2,
+      4
+    ],
+    [
+      0,
+      2,
+      6
+    ],
+    [
+      0,
+      2,
+      8
+    ],
+    [
+      0,
+      2,
+      10
+    ],
+    [
+      0,
+      2,
+      12
+    ],
+    [
+      0,
+      4,
+      8
+    ],
+    [
+      0,
+      4,
+      10
+    ]
+  ],
+  "ones_contraction_rank_on_subspace": 2,
+  "ones_fiber_excludes_of_128": 32,
+  "not_excluded_by_ones_of_128": 96,
+  "scope": "The 24 unexcluded sparse patterns lie in this subspace. No claim that every quotient outside it is excluded."
+}
