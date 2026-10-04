@@ -2,7 +2,7 @@
 
 ## Parecer
 
-Não foi encontrada uma nova falha bloqueante nas provas centrais da versão revisada. A evidência computacional foi reproduzida por uma segunda implementação. Isso não equivale a revisão externa por pares nem a certificação formal. Não recomendo tratar a versão como definitivamente pronta para submissão enquanto a comparação integral com Meng–Chen–Fu (2010), a definição da contribuição original e os dados editoriais dos autores estiverem pendentes.
+Não foi encontrada uma nova falha bloqueante nas provas centrais da versão revisada. A evidência computacional foi reproduzida por uma segunda implementação. Isso não equivale a revisão externa por pares nem a certificação formal. Não recomendo tratar a versão como definitivamente pronta para submissão enquanto os dados editoriais dos autores e a formulação final da contribuição estiverem pendentes. A comparação integral com Meng–Chen–Fu (2010) foi concluída após o fornecimento do PDF pelo usuário; não foi encontrada uma duplicação do alcance uniforme nos Teoremas 11–13.
 
 ## Provas revistas
 
@@ -45,9 +45,9 @@ Os controles em dimensões quatro e finitas de dobramento complementam a revisã
 2. Stănică (2008), texto integral em https://faculty.nps.edu/pstanica/research/rbent.pdf: Teorema 2 dá critérios de suporte específico ou de distância máxima. Não apresenta a exclusão uniforme de todos os suportes cúbicos para v₂(n)=1,2,3,4.
 3. Zhang–Gao (2013), arXiv:1303.2282: critérios condicionados ao suporte; não basta para certificar novidade global.
 4. Cusick–Sanger (2017), arXiv:1708.09313: o alcance específico consultado não equivale ao enunciado uniforme revisado.
-5. Meng, Q.; Chen, L.; Fu, F.-W., **On homogeneous rotation symmetric bent functions**, Discrete Applied Mathematics 158(10), 1111–1117 (2010), DOI https://doi.org/10.1016/j.dam.2010.02.009. Referência e resumo confirmados na editora; o acesso ao texto integral falhou nesta auditoria (HTTP 403). Não foi alegada uma comparação integral com seus teoremas.
+5. Meng, Q.; Chen, L.; Fu, F.-W., **On homogeneous rotation symmetric bent functions**, Discrete Applied Mathematics 158(10), 1111–1117 (2010), DOI https://doi.org/10.1016/j.dam.2010.02.009. O PDF integral foi fornecido pelo usuário e lido. Os Teoremas 11–13 excluem órbita única, a função elementar totalmente simétrica e suportes com maior lacuna circular ≤n/2. A H contígua em n=32 já é coberta pelo Teorema 11; essa não bentness não é novidade. Não há nesses enunciados a exclusão incondicional de todas as cúbicas em n=16 ou n=16m. Ver COMPARACAO_MENG_2010.md e o script reproduzível de contagens.
 
-Para a contribuição, a formulação defensável é o alcance uniforme para cúbicas homogêneas em todas as dimensões pares não divisíveis por 32, acompanhado do certificado finito e da redução demonstrada. Sua prioridade precisa ser confrontada com o item 5 antes da submissão.
+Para a contribuição, a formulação defensável é o alcance uniforme para cúbicas homogêneas em todas as dimensões pares não divisíveis por 32, acompanhado do certificado finito e da redução demonstrada. A comparação com o item 5 está concluída. A diferença de alcance em relação aos trabalhos consultados sustenta essa formulação, sem garantir prioridade em toda a literatura.
 
 Confirmar autoria, afiliações, autor correspondente e declarações exigidas pela revista. Revisar a versão final da carta de apresentação. O resultado em n=32 continua parcial. Nenhuma alegação de resolução completa da conjectura deve permanecer.
 
