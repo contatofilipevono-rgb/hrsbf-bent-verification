@@ -99,3 +99,5 @@ python master_suite_fronteiras.py
 Uma segunda implementação sem importar código dos verificadores existentes está em [`auditoria_2026_10_04/auditoria_independente.py`](auditoria_2026_10_04/auditoria_independente.py). Requer Python 3.10 ou superior e NumPy 2 (execução registrada: Python 3.12.14, NumPy 2.3.5). Execute `python auditoria_2026_10_04/auditoria_independente.py`. O programa grava um JSON no mesmo diretório.
 
 Passaram todas as 136.697 interseções sobre tabelas completas em n=16, 80.640 pares invariantes quadráticos em dimensão quatro e 15.680 imagens de órbitas cúbicas. Os controles finitos complementam as provas gerais. Veja [`AUDITORIA_FINAL.md`](AUDITORIA_FINAL.md) para alcance e pendências de submissão.
+
+A comparação integral com Meng–Chen–Fu (2010) está em [COMPARACAO_MENG_2010.md](COMPARACAO_MENG_2010.md). A exclusão da cúbica contígua em n=32 já era conhecida; o exemplo é apenas controle de divisibilidade. A pendência de leitura desse artigo foi encerrada.
