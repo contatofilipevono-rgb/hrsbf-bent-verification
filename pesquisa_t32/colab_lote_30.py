@@ -13,6 +13,28 @@ SUMMARY.pop('error', None)
 records = {record['h']: record for record in SUMMARY['families']}
 families = json.loads((project/'pesquisa_t32/familias_30_remanescentes.json').read_text())
 
+def check_serialized_cnf(path, expected_variables, expected_clauses):
+    """Reject incomplete or malformed DIMACS before accepting solver results."""
+    header = None
+    count = maximum = 0
+    with path.open() as stream:
+        for line in stream:
+            if not line.strip() or line.startswith('c'):
+                continue
+            if line.startswith('p'):
+                fields = line.split()
+                require(header is None and fields[:2] == ['p', 'cnf'] and len(fields) == 4, 'Cabeçalho DIMACS inválido.')
+                header = tuple(map(int, fields[2:]))
+                continue
+            require(header is not None, 'Cláusula antes do cabeçalho.')
+            literals = list(map(int, line.split()))
+            require(literals and literals[-1] == 0 and 0 not in literals[:-1], 'Cláusula DIMACS incompleta.')
+            maximum = max(maximum, max(map(abs, literals[:-1]), default=0))
+            count += 1
+    require(header == (expected_variables, expected_clauses), 'Cabeçalho difere dos metadados.')
+    require(count == expected_clauses and maximum <= expected_variables, 'CNF truncada ou contagem inválida.')
+    return {'clauses_read': count, 'maximum_variable': maximum}
+
 def save_batch():
     SUMMARY['families'] = [records[f['h']] for f in families if f['h'] in records]
     SUMMARY['verified_unsat_count'] = sum(r['status']=='UNSAT_PROOF_VERIFIED' for r in SUMMARY['families'])
@@ -75,6 +97,8 @@ try:
         h = family['h']; hvalue = int(h,16)
         prefix = OUT/('familia_'+h[2:])
         if records.get(h,{}).get('status')=='UNSAT_PROOF_VERIFIED':
+            previous = json.loads(prefix.with_suffix('.json').read_text())
+            check_serialized_cnf(prefix.with_suffix('.cnf'), previous['variables'], previous['clauses'])
             require(sha(prefix.with_suffix('.cnf'))==records[h]['cnf_sha256'],'CNF do certificado anterior mudou.')
             print(h,'já verificada; preservando prova.',flush=True)
             continue
@@ -112,6 +136,7 @@ try:
               'polar_rank_counts':ranks,'variables':formula.variables,'clauses':len(formula.clauses),
               'cnf_sha256':sha(cnf),'toy_assignments_checked':checked,'free_coordinate_checks':100,
               'full_formula_assignments_checked':8,'bentness_certified':False,'fibers':normalized}
+        info['serialized_cnf_check'] = check_serialized_cnf(cnf, info['variables'], info['clauses'])
         prefix.with_suffix('.json').write_text(json.dumps(info,indent=2))
         record.update({'cnf_sha256':info['cnf_sha256'],'variables':info['variables'],'clauses':info['clauses'],'status':'SOLVING'})
         save_batch()
