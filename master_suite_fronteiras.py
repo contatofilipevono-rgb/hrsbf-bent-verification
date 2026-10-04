@@ -177,28 +177,55 @@ def run_front_1():
                 word |= (1 << k)
         words.append(word)
 
-    f1 = sum(w.bit_count() % 16 != 0 for w in words)
-    f2 = sum((words[i] & words[j]).bit_count() % 8 != 0 
-             for i in range(43) for j in range(i + 1, 43))
-    f3 = 0
-    f4 = 0
-    for i in range(43):
-        wi = words[i]
-        for j in range(i + 1, 43):
-            wij = wi & words[j]
-            for l in range(j + 1, 43):
-                wijl = wij & words[l]
+    words_42 = words[:42]
+
+    # Prova Principal: 42 Geradoras (124.313 condicoes)
+    # Justificativa: W_{f+L}(u) = W_f(u+1) preserva bentness; logo 42 geradoras bastam!
+    f1_42 = sum(w.bit_count() % 16 != 0 for w in words_42)
+    f2_42 = sum((words_42[i] & words_42[j]).bit_count() % 8 != 0 
+                for i in range(42) for j in range(i + 1, 42))
+    f3_42 = 0
+    f4_42 = 0
+    for i in range(42):
+        wi = words_42[i]
+        for j in range(i + 1, 42):
+            wij = wi & words_42[j]
+            for l in range(j + 1, 42):
+                wijl = wij & words_42[l]
                 if wijl.bit_count() % 4 != 0:
-                    f3 += 1
-                for p in range(l + 1, 43):
-                    if (wijl & words[p]).bit_count() % 2 != 0:
-                        f4 += 1
+                    f3_42 += 1
+                for p in range(l + 1, 42):
+                    if (wijl & words_42[p]).bit_count() % 2 != 0:
+                        f4_42 += 1
 
-    total_ward = 43 + 903 + 12341 + 123410
-    if f1 != 0 or f2 != 0 or f3 != 0 or f4 != 0:
-        raise RuntimeError("Violacao detectada nas condicoes de Ward!")
+    total_core = 42 + 861 + 11480 + 111930
+    if f1_42 != 0 or f2_42 != 0 or f3_42 != 0 or f4_42 != 0:
+        raise RuntimeError("Violacao detectada nas condicoes de Ward (42 geradoras)!")
 
-    print(f"  [1.3] Teorema de Ward auditado: {total_ward:,} subconjuntos testados, 0 falhas [OK]")
+    # Conferencia Suplementar: 43 Geradoras (136.697 condicoes)
+    w_L = words[42]
+    f1_43 = f1_42 + (w_L.bit_count() % 16 != 0)
+    f2_43 = f2_42 + sum((words_42[i] & w_L).bit_count() % 8 != 0 for i in range(42))
+    f3_43 = f3_42
+    f4_43 = f4_42
+    for i in range(42):
+        wi = words_42[i]
+        for j in range(i + 1, 42):
+            wij = wi & words_42[j]
+            if (wij & w_L).bit_count() % 4 != 0:
+                f3_43 += 1
+            for l in range(j + 1, 42):
+                wijl = wij & words_42[l]
+                if (wijl & w_L).bit_count() % 2 != 0:
+                    f4_43 += 1
+
+    total_full = 43 + 903 + 12341 + 123410
+    if f1_43 != 0 or f2_43 != 0 or f3_43 != 0 or f4_43 != 0:
+        raise RuntimeError("Violacao detectada na conferencia de Ward (43 geradoras)!")
+
+    print(f"  [1.3] Teorema de Ward (42 geradoras, Prova Principal): {total_core:,} condicoes, 0 falhas [OK]")
+    print(f"        (Invariancia Linear: W_{{f+L}}(u) = W_f(u+1) preserva bentness; 42 geradoras bastam)")
+    print(f"  [1.4] Conferencia Suplementar (43 geradoras com L):    {total_full:,} condicoes, 0 falhas [OK]")
     print(f"  => Conclusao F1: wt(g) = 0 mod 256 => W_g(0) = 0 mod 512 != +-256 (0 BENT para v_2(n) <= 4).")
     print(f"  - Tempo F1: {time.time()-t0:.2f} s\n")
     return True

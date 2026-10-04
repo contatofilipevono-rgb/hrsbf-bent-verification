@@ -431,22 +431,24 @@ By Theorem~\ref{thm:ward_expansion}, $\wt(c) \equiv 0 \pmod{16}$ holds for all $
     \item $\wt(w_i \cap w_j \cap w_l) \equiv 0 \pmod 4$ for all $\binom{43}{3} = 12341$ generator triples.
     \item $\wt(w_i \cap w_j \cap w_l \cap w_p) \equiv 0 \pmod 2$ for all $\binom{43}{4} = 123410$ generator quadruples.
 \end{enumerate}
-We performed an exact computation of all $136697$ intersection weights on the indicator matrix of $\mathcal{C}$ in $\F^{4080}$ (as well as the $124313$ subsets of the 42-generator subspace without $L$). Every condition is satisfied with zero violations (see Table~\ref{tab:ward_audit}).
+We note a key structural simplification: adding an affine linear form $L(y) = \sum_{i=0}^{15} y_i$ preserves the bent property identically, because $W_{g \oplus L}(u) = W_g(u \oplus \mathbf{1})$ merely translates the Walsh spectrum. Therefore, establishing that no function in the 42-generator subspace $\mathcal{F}_{16}^0$ (spanned by the 35 cubic and 7 quadratic generators) is bent unconditionally guarantees that no function in the full 43-generator space $\mathcal{F}_{16}$ can be bent. 
+
+The core impossibility proof thus requires auditing only the $124313$ conditions on the 42-generator subspace. The full 43-generator audit ($136697$ conditions) is included as an exhaustive supplementary verification. Every condition in both cases is satisfied with zero violations (see Table~\ref{tab:ward_audit}).
 
 \begin{table}[htbp]
 \centering
-\caption{Audit of Ward divisibility conditions for the full complete-orbit code $\mathcal{C} \subset \F^{4080}$ (43 generators).}
+\caption{Audit of Ward divisibility conditions for the complete-orbit code $\mathcal{C} \subset \F^{4080}$.}
 \label{tab:ward_audit}
-\begin{tabular}{lccc}
+\begin{tabular}{lcccc}
 \toprule
-Intersection Order & Number of Subsets & Required Congruence & Violations \\
+Intersection Order & Required Congruence & Subsets (42 gens, Core) & Subsets (43 gens, Full) & Violations \\
 \midrule
-Singletons ($k = 1$) & $43$ & $\wt(w_i) \equiv 0 \pmod{16}$ & $0$ \\
-Pairs ($k = 2$) & $903$ & $\wt(w_i \cap w_j) \equiv 0 \pmod 8$ & $0$ \\
-Triples ($k = 3$) & $12341$ & $\wt(w_i \cap w_j \cap w_l) \equiv 0 \pmod 4$ & $0$ \\
-Quadruples ($k = 4$) & $123410$ & $\wt(w_i \cap w_j \cap w_l \cap w_p) \equiv 0 \pmod 2$ & $0$ \\
+Singletons ($k = 1$) & $\wt(w_i) \equiv 0 \pmod{16}$ & $42$ & $43$ & $0$ \\
+Pairs ($k = 2$) & $\wt(w_i \cap w_j) \equiv 0 \pmod 8$ & $861$ & $903$ & $0$ \\
+Triples ($k = 3$) & $\wt(w_i \cap w_j \cap w_l) \equiv 0 \pmod 4$ & $11480$ & $12341$ & $0$ \\
+Quadruples ($k = 4$) & $\wt(w_i \cap w_j \cap w_l \cap w_p) \equiv 0 \pmod 2$ & $111930$ & $123410$ & $0$ \\
 \midrule
-\textbf{Total Subsets} & $\mathbf{136697}$ & (Subcase without $L$: $124313$) & $\mathbf{0}$ \\
+\textbf{Total Subsets} & & $\mathbf{124313}$ & $\mathbf{136697}$ & $\mathbf{0}$ \\
 \bottomrule
 \end{tabular}
 \end{table}

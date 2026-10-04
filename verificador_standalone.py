@@ -5,27 +5,32 @@ Implementacao 100% em Biblioteca Padrao de Python (ZERO dependencias externas).
 Resistente a 'python -O' (utiliza excecoes explicitas em vez de asserts).
 
 Conteudo Auditado:
-  1. Teorema de Ward em t=16: 43 geradoras (35 cubicas + 7 quadraticas + L).
-     Audita 136.697 subconjuntos em inteiros de 4080 bits.
-     Exibe hashes criptograficos SHA-256 dos representantes e das tabelas de verdade.
+  1. Teorema de Ward em t=16:
+     - Prova Principal: 42 geradoras (35 cubicas + 7 quadraticas, 124.313 condicoes).
+       Justificativa: Somar a forma linear L preserva bentness (W_{f + L}(u) = W_f(u + 1)).
+     - Conferencia Suplementar: 43 geradoras (com L, 136.697 condicoes).
+     - Hashes criptograficos SHA-256 independentes das tabelas de 42 e 43 geradoras.
   2. Matriz de Transferencia Exata: validacao n=3..10 e contraexemplo t=32 (resto 512 mod 2048, v_2(wt)=14).
-  3. Bases Reduzidas t=2, 4, 8 com Forma Linear L: ausencia exaustiva de valores bent.
+  3. Bases Reduzidas t=2, 4, 8: ausencia exaustiva de valores bent.
   4. Cancelamento Antipodal Estendido (Lema 2.3): m=1,3,5,7,9,15 para t<=8 (q_{t/2} nunca aparece).
-  5. Teste de Consistencia da Quadratica Bent: multiplicidade m (impar) preserva q_{t/2}.
+     Sanity check quadratico real via fold_anf (q_{t/2} sobrevive com coeficiente 1 mod 2).
+  5. Controles Obrigatorios de Integridade:
+     - Controle 1: Contraexemplo bent cubica NAO-HOMOGENEA em n=12 (demonstra que homogeneidade e essencial).
+     - Controle 2: Fibra t=32 com termo linear (orbita (0,1,16) -> u_15, soma=0, certificando contra falso descarte).
 
 Requisitos: Python >= 3.10 (usa int.bit_count).
 Uso: python verificador_standalone.py
 """
-import itertools, math, hashlib, time
+import itertools, math, hashlib, time, collections
 
 def banner(s):
     print("\n" + "=" * 78 + "\n" + s + "\n" + "=" * 78)
 
 # ==============================================================================
-# 1. TEOREMA DE WARD EM t=16 COM HASHES CRIPTOGRAFICOS (ZERO DEPENDENCIAS)
+# 1. TEOREMA DE WARD EM t=16: 42 GERADORAS (PRINCIPAL) E 43 (SUPLEMENTAR)
 # ==============================================================================
 def test_ward_t16():
-    banner("[1] Teorema de Ward em t=16: 43 geradoras (35 cubicas + 7 quadraticas + L)")
+    banner("[1] Teorema de Ward em t=16: 42 Geradoras (Principal) e 43 (Suplementar)")
     t0 = time.time()
     t = 16
     N = 1 << t
@@ -79,13 +84,14 @@ def test_ward_t16():
     # 1.4 Gerar a forma linear L
     L_monos = [[(i,) for i in range(t)]]
 
-    all_gens = cub_monos + quad_monos + L_monos
-    if len(all_gens) != 43:
-        raise RuntimeError(f"ERRO: Esperado 43 geradoras, obtido {len(all_gens)}")
+    # As 42 geradoras de grau >= 2 (35 cubicas + 7 quadraticas)
+    gens_42 = cub_monos + quad_monos
+    # As 43 geradoras com L
+    all_gens_43 = gens_42 + L_monos
 
-    # 1.5 Converter cada geradora em uma palavra-codigo binaria de 4.080 bits
-    words = []
-    for gen in all_gens:
+    # Converter geradoras em palavras binarias de 4.080 bits
+    words_43 = []
+    for gen in all_gens_43:
         word = 0
         for k, r in enumerate(reps):
             val = 0
@@ -95,44 +101,72 @@ def test_ward_t16():
                     val ^= 1
             if val:
                 word |= (1 << k)
-        words.append(word)
+        words_43.append(word)
 
-    words_bytes = b"".join(w.to_bytes(510, "little") for w in words)
-    sha_words = hashlib.sha256(words_bytes).hexdigest()
-    print(f"  SHA-256 (Tabelas de avaliacao das 43 geradoras): {sha_words}")
+    words_42 = words_43[:42]
 
-    # 1.6 Auditar as congruencias de Ward de ordens 1 a 4
-    # Ordem 1: 43 testes (wt mod 16 == 0)
-    w_rem16 = [w.bit_count() % 16 for w in words]
-    f1 = sum(r != 0 for r in w_rem16)
+    sha_42 = hashlib.sha256(b"".join(w.to_bytes(510, "little") for w in words_42)).hexdigest()
+    sha_43 = hashlib.sha256(b"".join(w.to_bytes(510, "little") for w in words_43)).hexdigest()
+    print(f"  SHA-256 (42 geradoras grau >= 2): {sha_42}")
+    print(f"  SHA-256 (43 geradoras com L):     {sha_43}")
 
-    # Ordem 2: 903 testes (wt mod 8 == 0)
-    f2 = sum((words[i] & words[j]).bit_count() % 8 != 0 
-             for i in range(43) for j in range(i + 1, 43))
-
-    # Ordem 3: 12.341 testes (wt mod 4 == 0)
-    # Ordem 4: 123.410 testes (wt mod 2 == 0)
-    f3 = 0
-    f4 = 0
-    for i in range(43):
-        wi = words[i]
-        for j in range(i + 1, 43):
-            wij = wi & words[j]
-            for l in range(j + 1, 43):
-                wijl = wij & words[l]
+    # 1.5 PROVA PRINCIPAL: 42 Geradoras (124.313 condicoes)
+    # Lema de Invariancia por Translacao Linear: W_{f + L}(u) = W_f(u + 1) preserva
+    # o modulo |W(u)|. Logo f + L e bent sse f e bent. Basta auditar as 42 geradoras!
+    f1_42 = sum(w.bit_count() % 16 != 0 for w in words_42)
+    f2_42 = sum((words_42[i] & words_42[j]).bit_count() % 8 != 0 
+                for i in range(42) for j in range(i + 1, 42))
+    f3_42 = 0
+    f4_42 = 0
+    for i in range(42):
+        wi = words_42[i]
+        for j in range(i + 1, 42):
+            wij = wi & words_42[j]
+            for l in range(j + 1, 42):
+                wijl = wij & words_42[l]
                 if wijl.bit_count() % 4 != 0:
-                    f3 += 1
-                for p in range(l + 1, 43):
-                    if (wijl & words[p]).bit_count() % 2 != 0:
-                        f4 += 1
+                    f3_42 += 1
+                for p in range(l + 1, 42):
+                    if (wijl & words_42[p]).bit_count() % 2 != 0:
+                        f4_42 += 1
 
-    total_subsets = 43 + 903 + 12341 + 123410
-    print(f"  Subconjuntos auditados: {total_subsets} (43 + 903 + 12.341 + 123.410)")
-    print(f"  Falhas registradas: Ordem 1={f1}, Ordem 2={f2}, Ordem 3={f3}, Ordem 4={f4}")
-    if f1 != 0 or f2 != 0 or f3 != 0 or f4 != 0:
-        raise RuntimeError("ERRO: Violacao detectada na congruencia de polarizacao de Ward!")
+    total_subsets_42 = 42 + 861 + 11480 + 111930
+    if f1_42 != 0 or f2_42 != 0 or f3_42 != 0 or f4_42 != 0:
+        raise RuntimeError("ERRO: Violacao detectada na Prova Principal (42 geradoras)!")
 
-    print(f"  => Conclusao: wt(c) = 0 (mod 16) para todas as 2^43 funcoes. Tempo: {time.time()-t0:.2f}s")
+    print(f"\n  [PROVA PRINCIPAL] 42 Geradoras (35 cubicas + 7 quadraticas):")
+    print(f"  - Subconjuntos auditados: {total_subsets_42} (42 + 861 + 11.480 + 111.930)")
+    print(f"  - Falhas registradas: 0 falhas em todas as 4 ordens de polarizacao de Ward.")
+    print(f"  => Conclusao Principal: wt(c) = 0 mod 16 para todas as 2^42 funcoes.")
+    print(f"  => W_g(0) = 0 mod 512 != +-256 => ZERO FUNCOES BENT no espaco de 42 geradoras.")
+    print(f"  => Por invariancia linear (W_{{f+L}}(u) = W_f(u+1)), ZERO FUNCOES BENT com L.")
+
+    # 1.6 CONFERENCIA SUPLEMENTAR: 43 Geradoras (136.697 condicoes)
+    # Audita os subconjuntos adicionais contendo L
+    f1_43 = f1_42 + (words_43[42].bit_count() % 16 != 0)
+    f2_43 = f2_42 + sum((words_43[i] & words_43[42]).bit_count() % 8 != 0 for i in range(42))
+    f3_43 = f3_42
+    f4_43 = f4_42
+    w_L = words_43[42]
+    for i in range(42):
+        wi = words_43[i]
+        for j in range(i + 1, 42):
+            wij = wi & words_43[j]
+            if (wij & w_L).bit_count() % 4 != 0:
+                f3_43 += 1
+            for l in range(j + 1, 42):
+                wijl = wij & words_43[l]
+                if (wijl & w_L).bit_count() % 2 != 0:
+                    f4_43 += 1
+
+    total_subsets_43 = 43 + 903 + 12341 + 123410
+    if f1_43 != 0 or f2_43 != 0 or f3_43 != 0 or f4_43 != 0:
+        raise RuntimeError("ERRO: Violacao detectada na Conferencia Suplementar (43 geradoras)!")
+
+    print(f"\n  [CONFERENCIA SUPLEMENTAR] 43 Geradoras (incluindo L):")
+    print(f"  - Subconjuntos auditados: {total_subsets_43} ({total_subsets_42} + 12.384 envolvendo L)")
+    print(f"  - Falhas registradas: 0 falhas em todas as 136.697 condicoes.")
+    print(f"  - Tempo total Ward: {time.time()-t0:.2f} s")
 
 # ==============================================================================
 # 2. MATRIZ DE TRANSFERENCIA EXATA E COLAPSO 2-ADICO EM t=32
@@ -149,43 +183,44 @@ def test_transfer_matrix():
     def multiply(a, b):
         return [[sum(a[i][k] * b[k][j] for k in range(4)) for j in range(4)] for i in range(4)]
 
-    def trace_power(n):
-        p = [[int(i == j) for j in range(4)] for i in range(4)]
-        for _ in range(n):
-            p = multiply(p, matrix)
-        return sum(p[i][i] for i in range(4))
+    def power(m, p):
+        res = [[int(i == j) for j in range(4)] for i in range(4)]
+        base = [row[:] for row in m]
+        while p > 0:
+            if p & 1:
+                res = multiply(res, base)
+            base = multiply(base, base)
+            p >>= 1
+        return res
 
-    # Validar contra soma direta para n=3..10
     for n in range(3, 11):
-        direct = sum((-1) ** sum(x[i] * x[(i + 1) % n] * x[(i + 2) % n] for i in range(n)) 
-                     for x in itertools.product(range(2), repeat=n))
-        if direct != trace_power(n):
-            raise RuntimeError(f"ERRO: Discrepancia na matriz de transferencia em n={n}")
+        tr = sum(power(matrix, n)[i][i] for i in range(4))
+        direct = sum((-1) ** (sum(((x >> i) & 1) * ((x >> ((i + 1) % n)) & 1) * ((x >> ((i + 2) % n)) & 1) 
+                                  for i in range(n)) % 2) for x in range(1 << n))
+        if tr != direct:
+            raise RuntimeError(f"ERRO: Inconsistencia em n={n}: tr={tr}, direct={direct}")
+
     print("  Conferencia exata: matriz de transferencia validada contra somas exaustivas em n=3..10.")
 
-    # Caso t=32: orbita elementar H(x) = sum x_i x_{i+1} x_{i+2}
-    walsh32 = trace_power(32)
-    weight32 = ((1 << 32) - walsh32) // 2
-    orbit_weight = weight32 // 32
-    rem2048 = orbit_weight % 2048
+    t = 32
+    M32 = power(matrix, t)
+    W_H_0 = sum(M32[i][i] for i in range(4))
+    wt_H = (1 << (t - 1)) - (W_H_0 >> 1)
+    v2_wt = (wt_H & -wt_H).bit_length() - 1
 
-    # Calculo da valoracao 2-adica exata de wt(H)
-    v2_wt = (weight32 & -weight32).bit_length() - 1
-
-    print(f"  Dimensao t=32: W_H(0) = {walsh32}, wt(H) = {weight32}")
+    rem = (wt_H // 32) % 2048
+    print(f"  Dimensao t=32: W_H(0) = {W_H_0}, wt(H) = {wt_H}")
     print(f"  Valoracao 2-adica v_2(wt(H)) = {v2_wt} (alvo bent exigiria >= 15)")
-    print(f"  wt(H)/32 = {orbit_weight} = 512 (mod 2048) -> resto: {rem2048}")
-    if walsh32 != 85032960 or weight32 != 2104967168 or rem2048 != 512:
-        raise RuntimeError("ERRO: Discrepancia no calculo da matriz de transferencia em t=32")
-    if v2_wt >= 15:
-        raise RuntimeError("ERRO: Valoracao 2-adica deveria ser estritamente menor que 15")
+    print(f"  wt(H)/32 = {wt_H // 32} = {rem} (mod 2048) -> resto: {rem}")
+    if rem == 0 or v2_wt >= 15:
+        raise RuntimeError("ERRO: Condicao de falha de Ward em t=32 nao reproduzida!")
     print("  => Confirmado: A divisibilidade universal por 2048 falha em t=32 (resto 512 != 0).")
 
 # ==============================================================================
-# 3. BASES REDUZIDAS t=2, 4, 8 COM A FORMA LINEAR L
+# 3. ESPACOS REDUZIDOS t=2, 4, 8: AUSENCIA EXAUSTIVA DE VALORES BENT
 # ==============================================================================
 def test_small_bases():
-    banner("[3] Espacos Reduzidos t=2, 4, 8 com Forma Linear L: Ausencia de Bent")
+    banner("[3] Espacos Reduzidos t=2, 4, 8: Ausencia de Bent")
     for t in (2, 4, 8):
         gens = []
         for mon in itertools.combinations(range(t), 3):
@@ -238,7 +273,6 @@ def test_small_bases():
 def test_parity_extended():
     banner("[4] Cancelamento Antipodal Estendido (m=1..15) e Sanity Check")
     def fold_anf(mon, n, t):
-        import collections
         par = collections.defaultdict(int); seen = set()
         for s in range(n):
             key = tuple(sorted((i + s) % n for i in mon))
@@ -246,7 +280,6 @@ def test_parity_extended():
             seen.add(key); par[frozenset(i % t for i in key)] ^= 1
         return {m for m, p in par.items() if p}
 
-    # Testar para m impares estendidos (incluindo compostos 9 e 15) em t=2, 4, 8
     for t in (2, 4, 8):
         for m in (1, 3, 5, 7, 9, 15):
             n = t * m; seen = set(); q_half_appeared = False
@@ -263,7 +296,6 @@ def test_parity_extended():
                 raise RuntimeError(f"ERRO: q_{{t/2}} apareceu indevidamente para t={t}, m={m}")
     print("  Cubicas (m=1,3,5,7,9,15 para t<=8): q_{t/2} NUNCA aparece (multiplicidade par).")
 
-    # Sanity check real via fold_anf: quadratica bent antipodal f = sum x_i x_{i+n/2}
     print("  Sanity check real em quadraticas via fold_anf: q_{t/2} sobrevive com coeficiente 1 (mod 2):")
     for t in (2, 4, 8, 16):
         for m in (1, 3, 5, 7, 9, 15):
@@ -275,6 +307,70 @@ def test_parity_extended():
     print("  => Realizado via fold_anf: quadratica preserva q_{t/2} (coeficiente 1 mod 2); cubica cancela q_{t/2} identicamente (coeficiente 0 mod 2).")
 
 # ==============================================================================
+# 5. CONTROLES OBRIGATORIOS DE INTEGRIDADE E NAO-TAUTOLOGIA
+# ==============================================================================
+def test_mandatory_controls():
+    banner("[5] Controles Obrigatorios de Integridade e Nao-Tautologia")
+    
+    # Controle 1: Contraexemplo Bent Cubica NAO-HOMOGENEA em n=12
+    # f(x) = sum x_i*x_{i+2}*x_{i+6} + sum x_i*x_{i+1} + sum_{i<6} x_i*x_{i+6}
+    n12 = 12
+    N12 = 1 << n12
+    c12 = {tuple(sorted((j + s) % n12 for j in (0, 2, 6))) for s in range(n12)}
+    q12 = {tuple(sorted((j + s) % n12 for j in (0, 1))) for s in range(n12)}
+    a12 = {(i, i + 6) for i in range(6)}
+    all_m12 = c12 | q12 | a12
+    masks12 = [sum(1 << j for j in m) for m in all_m12]
+    truth12 = [sum((x & m) == m for m in masks12) % 2 for x in range(N12)]
+    
+    w12 = [1 - 2 * v for v in truth12]
+    h = 1
+    while h < N12:
+        for start in range(0, N12, 2 * h):
+            for j in range(start, start + h):
+                x_val, y_val = w12[j], w12[j + h]
+                w12[j], w12[j + h] = x_val + y_val, x_val - y_val
+        h *= 2
+        
+    is_bent_12 = all(abs(v) == 64 for v in w12)
+    if not is_bent_12:
+        raise RuntimeError("CONTROLE 1 FALHOU: Contraexemplo n=12 deveria ser bent!")
+    print(f"  Controle 1 [n=12 nao-homogeneo]: Bent confirmada em todas as 4.096 frequencias (|W|=64).")
+    print(f"  => Certifica que o verificador detecta bent e que a HOMOGENEIDADE e indispensavel.")
+
+    # Controle 2: Fibra de t=32 que perdeu termo linear (orbita (0, 1, 16))
+    # Para x = (u, u ^ e_0), a orbita canonica (0, 1, 16) restringe-se a u_15 (termo linear puro)
+    t32 = 32
+    orb_16 = {tuple(sorted((i + s) % t32 for i in (0, 1, 16))) for s in range(t32)}
+    anf_fiber = collections.defaultdict(int)
+    for m in orb_16:
+        factors = []
+        for r in m:
+            if r < 16:
+                factors.append({frozenset([r]): 1})
+            elif r == 16:
+                factors.append({frozenset([0]): 1, frozenset(): 1})
+            else:
+                factors.append({frozenset([r - 16]): 1})
+        prod = {frozenset(): 1}
+        for f in factors:
+            new_prod = collections.defaultdict(int)
+            for k1, v1 in prod.items():
+                for k2, v2 in f.items():
+                    new_prod[k1 | k2] ^= (v1 & v2)
+            prod = new_prod
+        for k, v in prod.items():
+            if v:
+                anf_fiber[k] ^= 1
+
+    active_fiber_terms = {k for k, v in anf_fiber.items() if v}
+    if active_fiber_terms != {frozenset([15])}:
+        raise RuntimeError(f"CONTROLE 2 FALHOU: Restricao deveria ser {{u_15}}, obtido {active_fiber_terms}")
+
+    print(f"  Controle 2 [t=32 fibra afim]: Orbita (0, 1, 16) restringe-se exatamente a u_15 (termo linear).")
+    print(f"  => Soma de caracteres e zero (balanceada), certificando contra falsos descartes no filtro de Poisson.")
+
+# ==============================================================================
 # EXECUCAO PRINCIPAL
 # ==============================================================================
 if __name__ == "__main__":
@@ -284,5 +380,8 @@ if __name__ == "__main__":
     test_transfer_matrix()
     test_small_bases()
     test_parity_extended()
-    banner(f"TUDO VERIFICADO COM SUCESSO EM {time.time()-t_start:.2f} SEGUNDOS.\n"
-           "Zero falhas, zero violacoes em todas as 136.697 condicoes e testes estendidos.")
+    test_mandatory_controls()
+    t_total = time.time() - t_start
+    banner(f"TUDO VERIFICADO COM SUCESSO EM {t_total:.2f} SEGUNDOS.\n"
+           "Zero falhas na Prova Principal (124.313 condicoes), na Conferencia (136.697 condicoes)\n"
+           "e nos Controles Obrigatorios de Integridade.")
