@@ -1,7 +1,11 @@
 # 🔬 Inexistência de Funções Bent Homogêneas Simétricas por Rotação Cúbicas para $v_2(n) \le 4$
-## Resolução da Conjectura de Stănică–Maitra em Dimensões Pares $n \not\equiv 0 \pmod{32}$ e Certificados de Obstrução em $t=32$
+## Exclusão assistida por computação em dimensões pares $n \not\equiv 0 \pmod{32}$ e Certificados de Obstrução em $t=32$
 
 Este repositório contém os artefatos de **auditoria matemática e computacional reproduzível** que demonstram a não-existência de Funções Bent Homogêneas Simétricas por Rotação (HRSBF) de grau 3 para todas as dimensões pares com $v_2(n) \le 4$, ou seja, $n \not\equiv 0 \pmod{32}$ ($n \in \{2m, 4m, 8m, 16m\}$, para todo $m \ge 1$ ímpar), bem como certificados exatos de obstrução algébrica em $t=32$ variáveis.
+
+A divisibilidade é demonstrada no espaço restrito de órbitas completas, não para todas as funções RS de grau até três. Em n=16 há oito órbitas quadráticas, mas a antipodal não pertence a esse espaço. O caso geral n=32 e a originalidade perante a literatura não estão estabelecidos.
+
+Veja [REVISAO_CRITICA.md](REVISAO_CRITICA.md) para a resposta à crítica e o estado da comparação bibliográfica. Manuscrito e suplemento são os documentos de referência desta revisão; arquivos históricos não ampliam automaticamente seu alcance.
 
 ---
 
@@ -41,6 +45,14 @@ Audita o certificado de 7 fibras ($0=1$ sobre $\mathbb{F}_2$, excluindo $2^{120}
 
 ---
 
+## Verificação principal recomendada
+
+```bash
+python avanco_t32/verificador_integrado.py
+```
+
+O verificador atual usa exceções que continuam ativas sob otimização do Python. Os registros locais desta revisão estão em [auditoria_2026_10_04](auditoria_2026_10_04/); não representam execução no Colab.
+
 ## 💻 Como Executar Localmente
 
 ### Opção 1: Certificados em 32 Variáveis ($t = 32$)
@@ -69,14 +81,14 @@ python master_suite_fronteiras.py
 ## 📊 Resumo dos Resultados Computacionais e Escopo Rigoroso
 
 * **Teorema de Ward ($t=16$, 43 geradores):**  
-  $\binom{43}{1} + \binom{43}{2} + \binom{43}{3} + \binom{43}{4} = \mathbf{136.697}$ condições testadas sobre os 4.080 representantes de órbitas de $\mathbb{F}_2^{16} \setminus V_8$.  
-  **Resultado:** **0 falhas**. Logo, $\mathrm{wt}(g) \equiv 0 \pmod{256} \implies W_g(0) \equiv 0 \pmod{512} \ne \pm 256$ (bent impossível).
+  $\binom{43}{1} + \binom{43}{2} + \binom{43}{3} + \binom{43}{4} = \mathbf{136.697}$ condições testadas sobre os 4.080 representantes de órbitas de $\mathbb{F}_2^{16} \setminus A_{16}$.  
+  **Resultado:** **0 falhas**. Aqui $A_{16}=\{y:y_{i+8}=y_i\}$. Logo, $\mathrm{wt}(g) \equiv 0 \pmod{256} \implies W_g(0) \equiv 0 \pmod{512} \ne \pm 256$ (bent impossível).
 * **Bases Finitas $t \in \{2, 4, 8\}$:**  
   Todas as funções no span satisfazem $W_g(0) \ne \pm 2^{t/2}$ (**0 bent**).
-* **Fronteira Estrutural em $t = 32$:**  
-  A extensão universal da divisibilidade por $2^{16}$ cessa em $t = 32$, pois a órbita elementar fornece resto $512 \pmod{2048} \ne 0$.
+* **Limite da extensão testada em $t=32$:**
+  O **peso comprimido** $\mathrm{wt}(H)/32$ da órbita cúbica contígua tem resto $512\pmod{2048}$. Isso refuta essa extensão universal específica; não estabelece uma fronteira definitiva para todos os métodos de códigos divisíveis.
 * **Certificados Parciais em $t = 32$:**  
-  - Certificado de 7 fibras: 7 equações somam $0=1$, excluindo a família inteira de dimensão 120 ($2^{120}$ funções).
+  - Certificado de 7 fibras: A anulação no subespaço diagonal força balanceamento nas outras fibras. Nas sete fibras de posto 14, as condições são equações cuja soma dá $0=1$, excluindo a família inteira de dimensão 120 ($2^{120}$ funções).
   - Obstrução antidiagonal: 6 formas lineares independentes excluem um subespaço de dimensão 149 ($2^{149}$ funções).
   - Quocientes de peso $\le 2$: 607 de 631 classes excluídas com 30.038 equações verificadas.
   - *Escopo delimitado:* Esses certificados em 32 variáveis são resultados parciais para as famílias examinadas; o caso geral $n \equiv 0 \pmod{32}$ permanece em aberto.
