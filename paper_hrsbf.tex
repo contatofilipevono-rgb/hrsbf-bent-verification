@@ -20,9 +20,9 @@ We give a computer-assisted proof that no homogeneous rotation-symmetric Boolean
 \noindent\textbf{Keywords:} Boolean functions; bent functions; rotation symmetry; divisible codes; computer-assisted proof.
 
 \section{Scope and relation to earlier work}
-St\u{a}nic\u{a} and Maitra~\cite{stanica} conjectured that homogeneous rotation-symmetric bent functions of degree greater than two do not exist. Earlier partial results include those of Meng, Chen and Fu~\cite{meng}, Zhang and Gao~\cite{zhang}, and Cusick and Sanger~\cite{cusick}. In particular, Cusick and Sanger exclude odd homogeneous degree in dimensions $n=2p$ for odd primes $p$. Their stated result does not itself address arbitrary odd composite factors.
+St\u{a}nic\u{a} and Maitra~\cite{stanica} conjectured that homogeneous rotation-symmetric bent functions of degree greater than two do not exist. Earlier partial results include those of Meng, Chen and Fu~\cite{meng}, Zhang and Gao~\cite{zhang}, and Cusick and Sanger~\cite{cusick}. In particular, Cusick and Sanger (Theorem 3.8) exclude odd homogeneous degree in dimensions $n=2p$ for odd primes $p$. Their stated result does not itself address arbitrary odd composite factors.
 
-Sun, Shi, Liu and Fu~\cite{sun} report further partial nonexistence results using short algebraic normal forms, derivatives and nonlinearity. The publisher's abstract and bibliographic record were checked for this revision, but the full text was not available. A theorem-by-theorem comparison remains necessary before asserting novelty relative to that paper. We therefore make no claim here that its scope is disjoint from, or strictly weaker than, the result proved below.
+Sun, Shi, Liu and Fu~\cite{sun} report further partial nonexistence results using short algebraic normal forms, derivatives and nonlinearity. The publisher's abstract and bibliographic record were checked on 4 October 2026 (volume 94, article 93, published 13 April 2026, DOI 10.1007/s10623-026-01848-4), but the full text was not available through the consulted sources. A theorem-by-theorem comparison remains necessary before asserting novelty relative to that paper. We therefore make no claim here that its scope is disjoint from, or strictly weaker than, the result proved below.
 
 The argument combines algebraic reductions with finite exact calculations. It is not a Lean-certified proof. The accompanying incomplete Lean draft is excluded from the evidentiary basis. The supplementary quartic exclusion in eight variables is a reproduction check, not a new quartic result. Nonhomogeneity must not be conflated with homogeneity: known rotation-symmetric bent constructions allow higher degrees~\cite{sutang}. A nonhomogeneous cubic bent function in dimension twelve is included as a positive control in the verifier.
 
@@ -80,6 +80,13 @@ Consider a cubic monomial with a three-element index set. Its stabilizer $H\le C
 The reduced monomial has degree one, two or three, and no constant term. If its orbit length is $l\mid t$, its distinct translates occur $t/l$ times. When $l<t$, this multiplicity is even and the sum vanishes. All cubic monomial orbits in $t$ variables have length $t$, because their stabilizer divides both three and $t$. Quadratic orbits have length $t$ except for the antipodal orbit, of length $t/2$, which cancels. A degree-one reduction gives $L$. This proves containment in $\mathcal F_t$; surjectivity of the restriction map is not required.
 \end{proof}
 
+\paragraph{Scope of the quadratic generators.}
+There are $t/2$ distinct quadratic monomial orbits in the full rotation-symmetric space. Only $t/2-1$ have full length $t$. The remaining orbit is
+\[
+ P_t(y)=\sum_{i=0}^{t/2-1}y_i y_{i+t/2}.
+\]
+It is absent from $\mathcal F_t$: its reduced translates occur twice and cancel. Thus the divisibility assertion below is not an assertion about all rotation-symmetric functions of degree at most three. For example, $P_{16}$ is bent, with weight $32640\equiv128\pmod{256}$. Lower-degree terms arising from the restriction must be retained, but arbitrary lower-degree terms cannot be added to the stated space.
+
 \begin{lemma}\label{lem:vanishing}
 Every $g\in\mathcal F_t$ vanishes on $A_t=\{y:y_{i+t/2}=y_i\}$.
 \end{lemma}
@@ -132,7 +139,10 @@ where the product is coordinatewise. In particular, divisibility of each $k$-fol
 \end{lemma}
 \begin{proof}
 At a coordinate occupied by $r$ selected vectors, the right-hand contribution is
-$\sum_{k=1}^r\binom rk(-2)^{k-1}=(1-(-1)^r)/2$, precisely its contribution to the XOR weight. Sum over coordinates. Terms with $k\ge5$ are divisible by 16; the stated conditions handle the other terms. This is the weight polarization criterion in the divisible-code framework~\cite{ward}.
+\[
+\sum_{k=1}^r\binom rk(-2)^{k-1}=(1-(-1)^r)/2,
+\]
+precisely its contribution to the XOR weight. Sum over coordinates. Terms with $k\ge5$ are divisible by 16; the stated conditions handle the other terms. This is the weight polarization criterion in the divisible-code framework~\cite{ward}.
 \end{proof}
 
 The exact computation on the 42 generators has the following results:
@@ -159,6 +169,34 @@ For every positive even integer $n$ with $32\nmid n$, there is no homogeneous ro
 \begin{proof}
 Write $n=2^s m$ with $m$ odd. The assumptions give $s\in\{1,2,3,4\}$ and $t=2^s\in\{2,4,8,16\}$. A hypothetical such bent function is invariant under $T=\sigma^t$. Proposition~\ref{prop:restriction} makes its restriction bent on the even-dimensional fixed space $\F^t$. Lemma~\ref{lem:orbit} places that restriction in $\mathcal F_t$, contradicting the finite obstructions above.
 \end{proof}
+
+\section{Hypotheses behind the supplementary fiber certificates}
+A fiber of an arbitrary bent function need not be balanced. The certificates in dimension 32 use the additional property that a homogeneous cubic rotation-symmetric function vanishes on the diagonal subspace $A=\{(u,u):u\in\F^{16}\}$.
+
+\begin{lemma}\label{lem:fiber}
+Let $f:\F^{2k}\to\F$ be bent and let $A$ be a $k$-dimensional linear subspace on which $f=0$. Every coset $v+A$ distinct from $A$ has zero sign sum.
+\end{lemma}
+\begin{proof}
+Character orthogonality gives
+\[
+ \sum_{b\in A^\perp}W_f(b)
+ =2^k\sum_{x\in A}(-1)^{f(x)}=2^{2k}.
+\]
+There are $2^k$ summands, each equal to $\pm2^k$, so all are $+2^k$. For a coset represented by $v$, Fourier inversion on the quotient gives
+\[
+ \sum_{x\in v+A}(-1)^{f(x)}
+ =2^{-k}\sum_{b\in A^\perp}(-1)^{b\cdot v}W_f(b).
+\]
+This equals zero for $v\notin A$.
+\end{proof}
+In the present homogeneous cubic space, paired half-turn monomials give $f(u,u)=0$ and $q_z(u)=f(u,u+z)$ has degree at most two. Its polar $B_z$ is determined by the fixed 35-coordinate cubic parameter described in the supplementary certificate notes. Also $q_z(u+z)=q_z(u)$, hence $z\in R_z=\operatorname{rad}B_z$ and $L_z(z)=0$, where $L_z(r)=q_z(r)+q_z(0)$.
+
+On $R_z$, $L_z$ is linear, and
+\[
+ \left(\sum_u(-1)^{q_z(u)}\right)^2
+ =2^{16}\sum_{r\in R_z}(-1)^{L_z(r)}.
+\]
+Thus balance is equivalent to $L_z$ being nonzero on $R_z$. In general this is a disjunction over a radical basis, not one equation. For the seven certified fibers, $\operatorname{rank}B_z=14$, so $R_z=\operatorname{span}\{z,r\}$ and balance is exactly $L_z(r)=1$. The independently reconstructed seven forms sum to zero, whereas seven required right-hand sides sum to one. This excludes only the fixed-parameter family documented by the certificate, not all homogeneous cubics in dimension 32.
 
 \section{Reproducibility and limits}
 The accompanying \texttt{verificador\_integrado.py} uses Python 3.10 or
