@@ -598,7 +598,7 @@ A robustez do método inaugurado neste dossiê possibilita o desenvolvimento ime
 4. **Ausência de Constante:**  
    Confirmar que $f(0) = 0$ impede o surgimento de constantes, assegurando $g|_{V_8} \equiv 0$ identicamente.
 5. **Divisibilidade de Ward:**  
-   Confirmar que $(-2)^4 = 16 \equiv 0 \pmod{16}$ torna a checagem das 4 ordens condição necessária e suficiente para divisibilidade mod 16 de todas as $2^{43}$ palavras-código.
+   Confirmar que $(-2)^4 = 16 \equiv 0 \pmod{16}$ torna a checagem das 4 ordens uma condição suficiente exata para a 16-divisibilidade de todas as $2^{43}$ palavras-código.
 
 ---
 

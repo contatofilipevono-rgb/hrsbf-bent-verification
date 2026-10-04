@@ -263,14 +263,16 @@ def test_parity_extended():
                 raise RuntimeError(f"ERRO: q_{{t/2}} apareceu indevidamente para t={t}, m={m}")
     print("  Cubicas (m=1,3,5,7,9,15 para t<=8): q_{t/2} NUNCA aparece (multiplicidade par).")
 
-    # Sanity check: quadratica bent antipodal f = sum x_i x_{i+n/2}
-    print("  Sanity check em quadraticas: multiplicidade m e sempre IMPAR (q_{t/2} sobrevive):")
+    # Sanity check real via fold_anf: quadratica bent antipodal f = sum x_i x_{i+n/2}
+    print("  Sanity check real em quadraticas via fold_anf: q_{t/2} sobrevive com coeficiente 1 (mod 2):")
     for t in (2, 4, 8, 16):
-        for m in (1, 3, 5, 7):
-            mult = m
-            if mult % 2 != 1:
-                raise RuntimeError("ERRO: Quadratica antipodal deveria ter multiplicidade impar m")
-    print("  => Quadratica bent preserva q_{t/2} com multiplicidade m = 1 (mod 2); cubica cancela com 2m/|H| = 0 (mod 2).")
+        for m in (1, 3, 5, 7, 9, 15):
+            n = t * m
+            S_quad = fold_anf((0, n // 2), n, t)
+            antipodal_pairs = {frozenset({j, (j + t // 2) % t}) for j in range(t)}
+            if not antipodal_pairs.issubset(S_quad):
+                raise RuntimeError(f"ERRO: q_{{t/2}} nao sobreviveu para quadratica em t={t}, m={m}")
+    print("  => Realizado via fold_anf: quadratica preserva q_{t/2} (coeficiente 1 mod 2); cubica cancela q_{t/2} identicamente (coeficiente 0 mod 2).")
 
 # ==============================================================================
 # EXECUCAO PRINCIPAL
