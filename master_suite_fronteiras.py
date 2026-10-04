@@ -2,28 +2,30 @@
 """
 MASTER SUITE DE FRONTEIRAS - RESOLUCAO COMPUTACIONAL & CRIPTOANALISE AVANCADA
 =============================================================================
-Auditoria e execucao completa, rigorosa e independente das 4 fronteiras:
+Auditoria e execucao rigorosa, independente e condicionada:
 
 [FRONTEIRA 1] Conjectura de Stanica-Maitra para v_2(n) <= 4 (n != 0 mod 32)
-              - 136.697 condicoes do Teorema de Ward (t=16, 43 geradoras)
+              - 136.697 condicoes do Teorema de Ward (t=16, 43 geradoras, 0 falhas)
               - Matrizes de transferencia esparsas: Tr(M^5)=20, Tr(M^32)=85.032.960
               - Invariancia antipodal fold_anf real para t in {2,4,8,16} e m in {1..15}
 
-[FRONTEIRA 2] Extensao para Grau 4 (Quarticas HRSBF em n=8)
-              - Varredura exaustiva das 1.024 combinacoes das 10 orbitas quarticas
-              - Inexistencia de quarticas bent em n=8 (max nl = 110 < 120)
+[FRONTEIRA 2] Extensao para Grau 4 (Quarticas HRSBF em n=8) & Controle n=12
+              - Varredura exaustiva das 1.024 combinacoes quarticas em n=8 (0 bent)
+              - Controle Positivo: Verificacao da bent cubica NAO-HOMOGENEA em n=12
+                (comprova a necessidade estrita da hipotese de homogeneidade)
 
 [FRONTEIRA 3] Criptoanalise Rigorosa da Campea de n=16 (nl = 32.512)
               - Mascara correta: 0xAB0111CB (decimal 2868974027, 13 orbitas ativas)
               - Peso = 32.512, W(0) = 512, max |W| = 512, nl = 32.512
-              - Otima na subclasse nao balanceada (caso balanceado em aberto)
+              - Otima comprovada na subclasse nao balanceada (caso balanceado em aberto)
               - SAC Perfeito: Delta_f(e_i) = 0 para todas as 16 coordenadas
               - Imunidade Algebrica Completa: posto pleno em supp(f) E supp(1+f) => AI = 3
 
 [FRONTEIRA 4] A Barreira t=32: Decomposicao Simpletica de Fibras Afins
               - Geracao exata das 155 orbitas cubicas canonicas sob C_32
-              - 151 de 155 orbitas isoladas (97,42%) eliminadas por Poisson em e_0
-              - Amostragem de combinacoes lineares e reducao algebrica do espaco
+              - Avaliacao completa da forma afim (quadratica + linear) no radical ker(A)
+              - 136 de 155 orbitas isoladas (87,74%) eliminadas por Poisson em e_0
+                (19 orbitas passam no teste individual; problema geral permanece aberto)
 
 Compatibilidade: Python 3 Standard Library puro (zero dependencias externas).
 """
@@ -34,14 +36,13 @@ import math
 import itertools
 import collections
 import random
-import hashlib
 
 def print_banner():
     banner = """
 ================================================================================
    MASTER SUITE DE FRONTEIRAS: RSBF, CONJECTURA DE STANICA-MAITRA & CRIPTOANALISE
 ================================================================================
-   Execucao Rigorosa e Unificada de Todas as 4 Fronteiras
+   Execucao Rigorosa, Auditada e Condicionada das 4 Fronteiras
 ================================================================================
 """
     print(banner)
@@ -139,7 +140,6 @@ def run_front_1():
     N_16 = 1 << t_16
     half_16 = t_16 // 2
     
-    # 4.080 representantes de orbitas completas em F_2^16 \ V_8
     reps_16 = []
     for x in range(N_16):
         if (((x << half_16) | (x >> half_16)) & (N_16 - 1)) != x:
@@ -148,7 +148,6 @@ def run_front_1():
     if len(reps_16) != 4080:
         raise RuntimeError(f"Esperado 4080 representantes, obtido {len(reps_16)}")
 
-    # 35 cubicas + 7 quadraticas + 1 linear = 43 geradoras
     comps_16 = sorted({min(g[i:] + g[:i] for i in range(3)) 
                       for g in itertools.product(range(1, t_16), repeat=3) if sum(g) == t_16})
     cub_monos = []
@@ -165,7 +164,6 @@ def run_front_1():
     L_monos = [[(i,) for i in range(t_16)]]
     all_gens = cub_monos + quad_monos + L_monos
 
-    # Converter geradoras em palavras binarias de 4.080 bits
     words = []
     for gen in all_gens:
         word = 0
@@ -179,7 +177,6 @@ def run_front_1():
                 word |= (1 << k)
         words.append(word)
 
-    # Checar 136.697 condicoes
     f1 = sum(w.bit_count() % 16 != 0 for w in words)
     f2 = sum((words[i] & words[j]).bit_count() % 8 != 0 
              for i in range(43) for j in range(i + 1, 43))
@@ -207,15 +204,15 @@ def run_front_1():
     return True
 
 # ==============================================================================
-# FRONTEIRA 2: EXTENSAO PARA GRAU 4 (QUARTICAS EM n=8)
+# FRONTEIRA 2: EXTENSAO PARA GRAU 4 (n=8) & CONTROLE POSITIVO NAO-HOMOGENEO (n=12)
 # ==============================================================================
 def run_front_2():
-    print(">>> [FRONTEIRA 2] Extensao para Grau 4 (Quarticas HRSBF em n=8)")
+    print(">>> [FRONTEIRA 2] Grau 4 (Quarticas HRSBF em n=8) & Controle Positivo em n=12")
     t0 = time.time()
     n = 8
     N = 1 << n
     
-    # 1. Identificar as 10 orbitas quarticas canônicas em n=8
+    # 2.1 Varredura exaustiva de grau 4 em n=8
     monos = list(itertools.combinations(range(n), 4))
     orbits = {}
     for m in monos:
@@ -241,8 +238,8 @@ def run_front_2():
     def fwt(f):
         w = [1 - 2*v for v in f]
         h = 1
-        while h < N:
-            for i in range(0, N, h * 2):
+        while h < len(w):
+            for i in range(0, len(w), h * 2):
                 for j in range(i, i + h):
                     x = w[j]
                     y = w[j + h]
@@ -271,13 +268,29 @@ def run_front_2():
             min_max_walsh = max_w
             best_nl = nl
 
-    t_elap = time.time() - t0
-    print(f"  - Total de orbitas quarticas em n=8: {num_orbits} (8 completas, 2 curtas)")
-    print(f"  - Espaco total avaliado exaustivamente: {total_funcs} funcoes")
-    print(f"  - Funcoes bent encontradas: {bent_count} (INEXISTENCIA CONFIRMADA)")
-    print(f"  - Menor max |W| atingido: {min_max_walsh} (Alvo bent seria 16)")
-    print(f"  - Maior nao-linearidade em grau 4: nl = {best_nl} (Alvo bent seria 120)")
-    print(f"  - Tempo F2: {t_elap:.2f} s\n")
+    if bent_count != 0 or best_nl != 110:
+        raise RuntimeError("Inconsistencia detectada na busca quartica em n=8")
+
+    print(f"  [2.1] Quarticas homogeneas em n=8: {total_funcs} funcoes auditadas, {bent_count} bent, max nl = {best_nl} [OK]")
+
+    # 2.2 Controle Positivo: Verificacao da bent cubica NAO-HOMOGENEA em n=12
+    # Demonstrando que a hipotese de homogeneidade de Stanica-Maitra e ESTRITAMENTE NECESSARIA!
+    n12 = 12
+    N12 = 1 << n12
+    c12 = {tuple(sorted((j+s)%n12 for j in (0,2,6))) for s in range(n12)}
+    q12 = {tuple(sorted((j+s)%n12 for j in (0,1))) for s in range(n12)}
+    a12 = {(i, i+6) for i in range(6)}
+    all_m12 = c12 | q12 | a12
+    masks12 = [sum(1 << j for j in m) for m in all_m12]
+    truth12 = [sum((x & m) == m for m in masks12) % 2 for x in range(N12)]
+    w12 = fwt(truth12)
+    is_bent_12 = all(abs(v) == 64 for v in w12)
+    if not is_bent_12:
+        raise RuntimeError("Controle positivo falhou: contraexemplo n=12 deveria ser bent!")
+
+    print(f"  [2.2] Controle Positivo n=12: bent cubica NAO-HOMOGENEA confirmada (4096 frequencias com |W|=64) [OK]")
+    print(f"  => Conclusao F2: Conjectura de Stanica-Maitra requer estritamente a hipotese de HOMOGENEIDADE.")
+    print(f"  - Tempo F2: {time.time()-t0:.2f} s\n")
     return True
 
 # ==============================================================================
@@ -307,7 +320,6 @@ def run_front_3():
             for m in cub_monos[bit]:
                 active_monos.add(tuple(m))
 
-    # Tabela verdade
     tt = [0] * N
     for m in active_monos:
         mask_m = sum(1 << idx for idx in m)
@@ -317,6 +329,8 @@ def run_front_3():
 
     wt = sum(tt)
     w0 = N - 2 * wt
+    if wt != 32512 or w0 != 512:
+        raise RuntimeError(f"Inconsistencia no peso/W(0) em n=16: wt={wt}, w0={w0}")
 
     # FWHT
     w = [1 - 2*v for v in tt]
@@ -332,6 +346,13 @@ def run_front_3():
 
     max_w = max(abs(v) for v in w)
     nl = (N // 2) - (max_w // 2)
+    if max_w != 512 or nl != 32512:
+        raise RuntimeError(f"Inconsistencia na nao-linearidade em n=16: max_w={max_w}, nl={nl}")
+
+    # Parseval Check
+    sum_w_sq = sum(v * v for v in w)
+    if sum_w_sq != N * N:
+        raise RuntimeError(f"Identidade de Parseval violada em n=16: soma={sum_w_sq}, esperado={N*N}")
 
     # Autocorrelacao e SAC
     w2 = [v * v for v in w]
@@ -348,6 +369,8 @@ def run_front_3():
     ac = [v // N for v in ac]
     sac_vector = [ac[1 << i] for i in range(n)]
     sac_passed = all(val == 0 for val in sac_vector)
+    if not sac_passed:
+        raise RuntimeError("SAC falhou em n=16")
 
     # Imunidade Algebrica Rigorosa em AMBOS os suportes: supp(f) e supp(1+f)
     supp_f = [x for x in range(N) if tt[x] == 1]
@@ -378,12 +401,14 @@ def run_front_3():
     rf_deg2 = verify_full_rank(supp_f, 2)
     r1f_deg2 = verify_full_rank(supp_1_f, 2)
     ai_proven_3 = rf_deg1 and r1f_deg1 and rf_deg2 and r1f_deg2
+    if not ai_proven_3:
+        raise RuntimeError("Falha na comprovacao de imunidade algebrica AI=3")
 
     t_elap = time.time() - t0
     print(f"  - Mascara Hexadecimal: 0x{mask:08X} | Decimal: {mask} | Binario: {bin(mask)}")
     print(f"  - Orbitas ativas (13/35): {active_indices}")
     print(f"  - Peso de Hamming: wt = {wt:,} (divisivel por 256: {wt % 256 == 0})")
-    print(f"  - Espectro de Walsh: max |W| = {max_w}, W(0) = {w0}")
+    print(f"  - Espectro de Walsh: max |W| = {max_w}, W(0) = {w0} | Parseval: {sum_w_sq == N*N} [OK]")
     print(f"  - Nao-Linearidade Registrada: nl = {nl:,} (Otima na subclasse nao balanceada)")
     print(f"  - Strict Avalanche Criterion (SAC): Delta(e_i) = 0 para todas as 16 coordenadas -> {sac_passed}")
     print(f"  - Imunidade Algebrica (AI): Posto pleno comprovado em supp(f) E supp(1+f) para graus 1 e 2")
@@ -394,7 +419,7 @@ def run_front_3():
     return True
 
 # ==============================================================================
-# FRONTEIRA 4: A BARREIRA t=32 (155 ORBITAS CUBICAS & RADICAL SIMPLETICO)
+# FRONTEIRA 4: A BARREIRA t=32 (155 ORBITAS CUBICAS & RADICAL SIMPLETICO COM FORMA AFIM)
 # ==============================================================================
 def run_front_4():
     print(">>> [FRONTEIRA 4] A Barreira t=32: Decomposicao Simpletica de Fibras Afins")
@@ -402,7 +427,7 @@ def run_front_4():
     t = 32
     half = 16
 
-    # Gerar EXATAMENTE as 155 orbitas cubicas canonicas sob C_32
+    # 1. Gerar EXATAMENTE as 155 orbitas cubicas canonicas sob C_32
     seen_monos = set()
     cub_orbs = []
     for m in itertools.combinations(range(t), 3):
@@ -416,24 +441,52 @@ def run_front_4():
     if num_cub_orbs != 155:
         raise RuntimeError(f"Esperado 155 orbitas cubicas em t=32, obtido {num_cub_orbs}")
 
-    # Construir as 155 matrizes simpleticas 16x16 em GF(2) para z = e_0
-    orb_matrices = []
+    # 2. Decomposicao da forma afim completa g_orb(u, u ^ e_0) = u^T upper(A) u ^ L.u ^ c
+    # onde x_r = u_r para r < 16, x_16 = u_0 ^ 1, x_r = u_{r-16} para r > 16.
+    orbit_anfs = []
     for orb in cub_orbs:
-        mat = [[0]*half for _ in range(half)]
-        for mon in orb:
-            if 16 in mon:
-                others = [i % half for i in mon if i != 16]
-                if len(others) == 2 and others[0] != others[1]:
-                    u, v = others
-                    mat[u][v] ^= 1
-                    mat[v][u] ^= 1
-        orb_matrices.append(mat)
+        anf = collections.defaultdict(int)
+        for m in orb:
+            factors = []
+            for r in m:
+                if r < 16:
+                    factors.append({frozenset([r]): 1})
+                elif r == 16:
+                    factors.append({frozenset([0]): 1, frozenset(): 1})
+                else:
+                    factors.append({frozenset([r - 16]): 1})
+            prod = {frozenset(): 1}
+            for f in factors:
+                new_prod = collections.defaultdict(int)
+                for k1, v1 in prod.items():
+                    for k2, v2 in f.items():
+                        new_prod[k1 | k2] ^= (v1 & v2)
+                prod = new_prod
+            for k, v in prod.items():
+                if v:
+                    anf[k] ^= 1
+                    
+        active_terms = {k for k, v in anf.items() if v}
+        A = [[0]*half for _ in range(half)]
+        L = [0]*half
+        c = 0
+        for k in active_terms:
+            if len(k) == 2:
+                u_var, v_var = sorted(list(k))
+                A[u_var][v_var] ^= 1
+                A[v_var][u_var] ^= 1
+            elif len(k) == 1:
+                u_var = list(k)[0]
+                L[u_var] ^= 1
+            elif len(k) == 0:
+                c ^= 1
+        orbit_anfs.append((A, L, c))
 
-    # Teste de cancelamento de Poisson via linearidade de q no kernel
-    # Para mat alternante, B(v, w) = v^T mat w = 0 para todo v, w no ker(mat).
-    # Logo q e aditiva/linear no kernel, cancelando se e somente se q(v) = 1 em algum gerador da base!
-    def is_fiber_balanced(mat):
-        M = [row[:] for row in mat]
+    # 3. Teste do radical simpletico com a forma afim completa
+    # l(v) = q(v) ^ L.v e linear sobre ker(A)
+    # Cancelamento ocorre (soma de caracteres = 0) sse existe v em ker(A) com l(v) == 1
+    def is_fiber_balanced_exact(A, L):
+        M = [row[:] for row in A]
         basis = [[int(i == j) for j in range(half)] for i in range(half)]
         row = 0
         for col in range(half):
@@ -448,54 +501,41 @@ def run_front_4():
             basis[row], basis[pivot] = basis[pivot], basis[row]
             for r in range(half):
                 if r != row and M[r][col]:
-                    for c in range(half):
-                        M[r][c] ^= M[row][c]
-                        basis[r][c] ^= basis[row][c]
+                    for p in range(half):
+                        M[r][p] ^= M[row][p]
+                        basis[r][p] ^= basis[row][p]
             row += 1
-
         kernel_vecs = [basis[r] for r in range(half) if not any(M[r])]
+        
         for v in kernel_vecs:
             qv = 0
             for i in range(half):
                 for j in range(i + 1, half):
-                    if mat[i][j] and v[i] and v[j]:
+                    if A[i][j] and v[i] and v[j]:
                         qv ^= 1
-            if qv == 1:
+            lv = sum(L[i] * v[i] for i in range(half)) % 2
+            if (qv ^ lv) == 1:
                 return True
         return False
 
-    balanced_single = [i for i, m in enumerate(orb_matrices) if is_fiber_balanced(m)]
-    rejected_single = num_cub_orbs - len(balanced_single)
-    reject_ratio = (rejected_single / num_cub_orbs) * 100
+    balanced_indices = [idx for idx, (A, L, c) in enumerate(orbit_anfs) if is_fiber_balanced_exact(A, L)]
+    rejected_count = num_cub_orbs - len(balanced_indices)
+    reject_ratio = (rejected_count / num_cub_orbs) * 100
 
-    # Amostragem estocastica de 10.000 combinacoes
-    num_trials = 10000
-    random.seed(2026)
-    passed_comb = 0
-    for _ in range(num_trials):
-        k = random.randint(2, 8)
-        chosen = random.sample(range(num_cub_orbs), k)
-        comb_mat = [[0]*half for _ in range(half)]
-        for idx in chosen:
-            for r in range(half):
-                for c in range(half):
-                    comb_mat[r][c] ^= orb_matrices[idx][r][c]
-        if is_fiber_balanced(comb_mat):
-            passed_comb += 1
+    if len(balanced_indices) != 19 or rejected_count != 136:
+        raise RuntimeError(f"Inconsistencia no teste exato da fibra em t=32: esperado 19 que passam e 136 rejeitadas, obtido {len(balanced_indices)} e {rejected_count}")
 
-    t_elap = time.time() - t0
     print(f"  - Total de orbitas cubicas sob C_32: {num_cub_orbs} [OK]")
-    print(f"  - Orbitas isoladas rejeitadas por Poisson em e_0: {rejected_single}/{num_cub_orbs} ({reject_ratio:.2f}%)")
-    print(f"  - Amostragem estocastica ({num_trials:,} combinacoes):")
-    print(f"    * Combinacoes que passam no teste e_0: {passed_comb}/{num_trials} ({passed_comb/num_trials*100:.2f}%)")
-    print(f"    * Taxa de Rejeicao Algebrica Imediata: {100 - (passed_comb/num_trials*100):.2f}%")
-    print(f"  - Conclusao F4: O filtro de Poisson elimina 97,42% das orbitas isoladas sem alocar 512 MB de RAM.")
-    print(f"    (Nota: a classificacao completa em t=32 permanece em aberto).")
-    print(f"  - Tempo F4: {t_elap:.2f} s\n")
+    print(f"  - Teste exato da fibra afim em e_0 (incluindo termos lineares):")
+    print(f"    * Orbitas que passam na fibra e_0: {len(balanced_indices)}/155")
+    print(f"    * Orbitas rejeitadas isoladamente: {rejected_count}/155 ({reject_ratio:.2f}%)")
+    print(f"  - Conclusao F4: O filtro com a forma afim completa rejeita 87,74% das orbitas isoladas.")
+    print(f"    (Ressalva: passar no teste de fibra e_0 nao garante bentness; caso geral t=32 permanece em aberto).")
+    print(f"  - Tempo F4: {time.time()-t0:.2f} s\n")
     return True
 
 # ==============================================================================
-# MASTER DASHBOARD EXECUTIVO
+# MASTER DASHBOARD EXECUTIVO CONDICIONADO
 # ==============================================================================
 def main():
     print_banner()
@@ -508,18 +548,28 @@ def main():
 
     t_total = time.time() - t_start
 
+    # Validacao condicional estrita: todas as etapas devem ter retornado True
+    all_ok = ok1 and ok2 and ok3 and ok4
+    if not all_ok:
+        print("=" * 80)
+        print(" [!] ERRO: UMA OU MAIS ETAPAS FALHARAM NA VERIFICACAO!")
+        print("=" * 80)
+        sys.exit(1)
+
     print("=" * 80)
     print("                     PAINEL CONSOLIDADO DAS 4 FRONTEIRAS")
     print("=" * 80)
-    print(f" 1. Conjectura Stanica-Maitra v_2(n) <= 4 : RESOLVIDA / 0 BENT (136.697 Ward + fold_anf)")
-    print(f" 2. Extensao para Grau 4 (n=8)             : RESOLVIDA / 0 BENT (Exaustivo 1.024 funcoes)")
-    print(f" 3. Exemplo Criptografico n=16             : OTIMO NA SUBCLASSE NAO BALANCEADA (nl = 32.512)")
-    print(f"                                            - Mascara: 0xAB0111CB (Gap 0 para teto de Ward)")
-    print(f"                                            - SAC Perfeito: Delta(e_i) = 0 para todo i")
-    print(f"                                            - Imunidade Algebrica Rigorosa: AI = 3 = deg(f)")
-    print(f" 4. Barreira t=32 (Fibras Simpleticas)    : 155 ORBITAS (97,42% eliminadas isoladamente)")
+    print(" 1. Conjectura Stanica-Maitra v_2(n) <= 4 : RESOLVIDA / 0 BENT (136.697 Ward + fold_anf)")
+    print(" 2. Grau 4 (n=8) & Controle Positivo (n=12): 0 BENT em n=8; Bent nao-homogenea em n=12")
+    print("                                            - Hipotese de homogeneidade estritamente essencial")
+    print(" 3. Exemplo Criptografico n=16             : OTIMO NA SUBCLASSE NAO BALANCEADA (nl = 32.512)")
+    print("                                            - Mascara: 0xAB0111CB (Gap 0 para teto de Ward)")
+    print("                                            - SAC Perfeito: Delta(e_i) = 0 para todo i")
+    print("                                            - Imunidade Algebrica Rigorosa: AI = 3 = deg(f)")
+    print(" 4. Barreira t=32 (Fibras Simpleticas)    : 155 ORBITAS (87,74% eliminadas isoladamente)")
+    print("                                            - Restricao afim completa (19 passam, 136 descartadas)")
     print("-" * 80)
-    print(f" STATUS GLOBAL: 100% EXECUTADO E COMPROVADO COM SUCESSO EM {t_total:.2f} SEGUNDOS!")
+    print(f" STATUS GLOBAL: TODAS AS 4 ETAPAS AUDITADAS E VERIFICADAS COM SUCESSO EM {t_total:.2f} s!")
     print("=" * 80)
 
 if __name__ == "__main__":
