@@ -1,698 +1,207 @@
 \documentclass[11pt,a4paper]{article}
-
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[margin=2.5cm]{geometry}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{mathtools}
-\usepackage{booktabs}
-\usepackage{hyperref}
-\usepackage{microtype}
-
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    citecolor=red,
-    urlcolor=blue
-}
-
-% Theorem Environments
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{example}[theorem]{Example}
-
-\newcommand{\F}{\mathbb{F}_2}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\V}{\mathbb{V}}
-\newcommand{\wt}{\mathrm{wt}}
-\newcommand{\rad}{\mathrm{rad}}
-\newcommand{\supp}{\mathrm{supp}}
-\newcommand{\rank}{\mathrm{rank}}
-
-\title{\textbf{Odd-Order Reduction and a Divisibility Obstruction for Cubic Homogeneous Rotation-Symmetric Bent Functions}}
-
-\author{
-  \textbf{Valer et al.}\thanks{Working paper and independent research dossier on cryptographic Boolean functions.}
-}
-
-\date{October 2026}
-
+\newcommand{\F}{\mathbb F_2}
+\newcommand{\wt}{\operatorname{wt}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\title{Odd-Order Reduction and a Divisibility Obstruction for Cubic Homogeneous Rotation-Symmetric Bent Functions}
+\author{Author details to be completed}
+\date{Revised working manuscript --- October 2026}
 \begin{document}
-
 \maketitle
-
 \begin{abstract}
-The St\u{a}nic\u{a}--Maitra conjecture (2008) asserts that there exist no homogeneous rotation-symmetric bent Boolean functions (HRSBF) of algebraic degree $d > 2$. While Cusick and Sanger (2017) proved the non-existence of cubic HRSBFs for dimensions $n = 2p$ ($p$ an odd prime), the conjecture has remained open for general composite dimensions and powers of two. In this paper, we establish an analytical odd-order reduction framework: for any linear automorphism $T$ of odd order $m$ acting on $\F^n$, a quadratic Boolean function $q$ is balanced on $\F^n$ if and only if its restriction to the fixed subspace $U = \mathrm{Fix}(T)$ is balanced on $U$. Consequently, any cubic bent function on $\F^n$ invariant under $T$ restricts to a bent function on $U$. Applying this to the cyclic shift $T = \sigma^t$ for $n = t \cdot m$ ($t = 2^s$, $m$ odd), we prove that all short orbits of length $l < t$ cancel modulo 2, so that the restriction is spanned strictly by complete orbits of full length $t$. By analyzing the resulting reduced spaces, we prove the non-existence of cubic HRSBFs for $t \in \{2, 4, 8\}$. Furthermore, for $t = 16$, we prove that the evaluation matrix of the 42 complete orbits generates a 16-divisible binary linear code; via an exact weight polarization expansion within the divisible codes framework of Ward~\cite{ward1981,ward2001}, every codeword satisfies $\wt(g) \equiv 0 \pmod{256}$, forcing the Walsh transform at zero to satisfy $W_g(0) \equiv 0 \pmod{512}$, which precludes bentness since $|W_g(0)| = 256$. Combining these reductions, we prove that no cubic HRSBF exists in $n$ variables for any even $n$ not divisible by 32, resolving the cubic case for the infinite families $n \in \{2m, 4m, 8m, 16m\}$ for all odd $m$. Finally, we report the complete computational exclusion of quartic HRSBFs for $n = 8$ and $n = 10$.
+We give a computer-assisted proof that no homogeneous rotation-symmetric Boolean function of degree three is bent in any positive even dimension not divisible by 32. For a quadratic Boolean function invariant under a linear automorphism of odd order, balance is equivalent to balance on the fixed subspace. Consequently, an invariant bent function of degree at most three restricts to a bent function on an even-dimensional fixed subspace. Writing $n=2^s m$ with $m$ odd reduces the problem to $t=2^s$ variables. The restricted function lies in the span of full-length cubic and quadratic monomial orbits and the total linear form. Exact enumeration excludes $t=2,4,8$. After removing the linear component by affine invariance of bentness, the 42 generators at $t=16$ define a binary code of length 4080. Verification of 124313 intersection conditions proves that this code is 16-divisible, so the corresponding truth-table weights are divisible by 256 and their zero-frequency Walsh coefficients are divisible by 512, contradicting bentness. An additional 12384 checks verify the stronger divisibility assertion with the linear generator included. We specify the finite verification and explain the limited obstruction to extending this particular divisibility argument to $t=32$.
 \end{abstract}
+\noindent\textbf{Keywords:} Boolean functions; bent functions; rotation symmetry; divisible codes; computer-assisted proof.
 
-\noindent\textbf{Keywords:} Cryptographic Boolean functions, Bent functions, Rotation-symmetric functions, St\u{a}nic\u{a}--Maitra conjecture, Odd-order reduction, Divisible codes.
+\section{Scope and relation to earlier work}
+St\u{a}nic\u{a} and Maitra~\cite{stanica} conjectured that homogeneous rotation-symmetric bent functions of degree greater than two do not exist. Earlier partial results include those of Meng, Chen and Fu~\cite{meng}, Zhang and Gao~\cite{zhang}, and Cusick and Sanger~\cite{cusick}. In particular, Cusick and Sanger exclude odd homogeneous degree in dimensions $n=2p$ for odd primes $p$. Their stated result does not itself address arbitrary odd composite factors.
 
-%======================================================================
-\section{Introduction}
-\label{sec:intro}
-%======================================================================
+Sun, Shi, Liu and Fu~\cite{sun} report further partial nonexistence results using short algebraic normal forms, derivatives and nonlinearity. The publisher's abstract and bibliographic record were checked for this revision, but the full text was not available. A theorem-by-theorem comparison remains necessary before asserting novelty relative to that paper. We therefore make no claim here that its scope is disjoint from, or strictly weaker than, the result proved below.
 
-Bent Boolean functions, introduced by Rothaus~\cite{rothaus1976}, achieve the maximum possible nonlinearity in even dimensions and play a central role in stream ciphers, S-box design, and coding theory. Rotation-symmetric Boolean functions (RSBFs), whose algebraic normal forms (ANF) are invariant under cyclic shifts of the input coordinates, were introduced by Pieprzyk and Qu~\cite{pieprzyk1999} and further investigated by St\u{a}nic\u{a} and Maitra~\cite{stanica2008} due to their hardware efficiency and compact representation.
+The argument combines algebraic reductions with finite exact calculations. It is not a Lean-certified proof. The accompanying incomplete Lean draft is excluded from the evidentiary basis. The supplementary quartic exclusion in eight variables is a reproduction check, not a new quartic result. Nonhomogeneity must not be conflated with homogeneity: known rotation-symmetric bent constructions allow higher degrees~\cite{sutang}. A nonhomogeneous cubic bent function in dimension twelve is included as a positive control in the verifier.
 
-In 2008, St\u{a}nic\u{a} and Maitra formulated the following well-known conjecture:
-\begin{quote}
-\textbf{Conjecture 12 (\cite{stanica2008}):} \emph{There exist no homogeneous rotation-symmetric bent Boolean functions of algebraic degree $d > 2$ in any number of variables.}
-\end{quote}
+\section{Notation}
+Let $V_n=\F^n$. The algebraic normal form (ANF) of a Boolean function is its unique multilinear polynomial over $\F$. Homogeneity of degree three means that every nonzero ANF term has degree three. The zero function may be included in spans without affecting any nonexistence assertion.
+For $a\in V_n$, set $D_a f(x)=f(x+a)+f(x)$. Define
+\[
+ W_f(b)=\sum_{x\in V_n}(-1)^{f(x)+b\cdot x},\qquad
+ W_f(0)=2^n-2\wt(f).
+\]
+A function is balanced if $W_f(0)=0$, and bent if $|W_f(b)|=2^{n/2}$ for every $b$. Equivalently, every nonzero directional derivative is balanced~\cite{rothaus}. Indeed, the Fourier transform of the autocorrelation $A_f(a)=\sum_x(-1)^{D_af(x)}$ is $W_f(b)^2$. Thus constant squared Walsh magnitude is equivalent to $A_f(0)=2^n$ and $A_f(a)=0$ for $a\ne0$.
 
-In degree $d = 2$, quadratic rotation-symmetric bent functions exist in all even dimensions; for instance, the antipodal function $f_0(x) = \sum_{i=0}^{n/2-1} x_i x_{i+n/2}$ is bent for every even $n$. For degrees $d > 2$, partial results have been achieved through various specialized techniques:
-\begin{enumerate}
-    \item \textbf{Monomial RSBFs:} Meng, Chen, and Fu~\cite{meng2010} proved that no monomial (single-orbit) homogeneous RSBF of degree $d > 2$ can be bent.
-    \item \textbf{Cyclic distance constraints:} Meng et al.~\cite{meng2010} also showed non-existence when the maximum cyclic distance between consecutive indices of each monomial is at most $n/2$.
-    \item \textbf{Prime-multiple dimensions $n = 2p$:} Cusick and Sanger~\cite{cusick2017} analyzed the Hadamard matrix $M = (\hat{f}(u \oplus v))$ and proved that for $n = 2p$ ($p$ an odd prime), every homogeneous RSBF that is bent must have even degree, thereby ruling out cubic HRSBFs for $n \in \{6, 10, 14, 22, 26, 34, \dots\}$.
-    \item \textbf{Recent SANF and derivative bounds:} Sun, Shi, Liu, and Fu~\cite{sun2026} studied the short algebraic normal form (SANF), derivatives, and nonlinearity bounds, deriving partial non-existence results. Calder\'on-G\'omez et al.~\cite{calderon2024} established orbit-counting structural results.
-\end{enumerate}
+Let $\sigma$ be cyclic rotation of the coordinates. Rotation symmetry means $f\circ\sigma=f$. Such functions are linear combinations of sums over distinct cyclic monomial orbits. All polynomial sums are in $\F$; exponential sums and weights are ordinary integers.
 
-Despite these efforts, the cubic case ($d = 3$) has remained unresolved for composite factors, power-of-two dimensions ($n = 8, 16, 32, \dots$), and mixed families ($n = 4m, 8m, 16m$ for odd $m$). Table~\ref{tab:lit_comparison} contextualizes our contribution within the literature.
+\section{Odd-order reduction}
+\begin{lemma}\label{lem:reduction}
+Let $V$ be a finite-dimensional vector space over $\F$, and let $T\in\operatorname{GL}(V)$ satisfy $T^m=I$ for an odd positive integer $m$. If $q:V\to\F$ has degree at most two and $q\circ T=q$, then $q$ is balanced on $V$ if and only if $q|_U$ is balanced on $U=\Fix(T)$.
+\end{lemma}
+\begin{proof}
+Adding $q(0)$ preserves balance both on $V$ and on $U$, so assume $q(0)=0$. Its polar form
+\[B(x,y)=q(x+y)+q(x)+q(y)\]
+is alternating bilinear and $T$-invariant. Set $P=\sum_{j=0}^{m-1}T^j$. Then $TP=PT=P$, $Pu=u$ for $u\in U$, and $P^2=P$. Hence $V=U\oplus K$, where $K=\ker P$. For $u\in U$ and $k\in K$, invariance and oddness give
+\[B(u,k)=\sum_{j=0}^{m-1}B(u,T^jk)=B(u,Pk)=0.\]
+It follows that $q(u+k)=q(u)+q(k)$, and thus
+\[S_V(q)=S_U(q|_U)S_K(q|_K),\qquad S_E(h)=\sum_{x\in E}(-1)^{h(x)}.\]
+We show $S_K(q|_K)\ne0$. Put $R=\{z\in K:B(z,k)=0\text{ for all }k\in K\}$. Since $P$ commutes with $T$, $K$ is invariant under $T$ and $T^{-1}$. If $z\in R$ and $k\in K$, then $B(Tz,k)=B(z,T^{-1}k)=0$, so $R$ is $T$-invariant. On $R$, the function $q$ is linear. Therefore, for $z\in R$,
+\[q(z)=\sum_{j=0}^{m-1}q(T^jz)=q(Pz)=q(0)=0.\]
+Character orthogonality now gives
+\begin{align*}
+ S_K(q|_K)^2
+ &=\sum_{z\in K}(-1)^{q(z)}\sum_{x\in K}(-1)^{B(x,z)}\\
+ &=|K|\sum_{z\in R}(-1)^{q(z)}=|K||R|>0.
+\end{align*}
+The factorization proves the equivalence of balance.
+\end{proof}
 
-\begin{table}[htbp]
-\centering
-\small
-\caption{Comparison of Non-existence Results for Cubic HRSBFs in the Literature.}
-\label{tab:lit_comparison}
-\begin{tabular}{llll}
+\begin{proposition}\label{prop:restriction}
+Under the hypotheses on $T$ above, let $f\circ T=f$, $\deg f\le3$, and suppose $f$ is bent. If $\dim U$ is even, then $f|_U$ is bent.
+\end{proposition}
+\begin{proof}
+For each $a\in U\setminus\{0\}$, $D_af$ is quadratic, balanced, and $T$-invariant: $Ta=a$ implies $D_af(Tx)=D_af(x)$. Lemma~\ref{lem:reduction} shows that $(D_af)|_U=D_a(f|_U)$ is balanced. Apply the derivative characterization of bentness.
+\end{proof}
+
+\section{The restricted orbit space}
+Write $n=tm$, where $t=2^s$, $s\ge1$, and $m$ is odd. The map $T=\sigma^t$ has order $m$, and its fixed subspace consists of repetitions of a block $y\in\F^t$. Under this identification $x_i=y_{i\bmod t}$.
+
+\begin{lemma}\label{lem:orbit}
+The restriction of any homogeneous cubic rotation-symmetric function belongs to the space $\mathcal F_t$ generated by all full-length cubic monomial orbit sums, the quadratic sums
+\[Q_d(y)=\sum_{i=0}^{t-1}y_i y_{i+d},\quad 1\le d<t/2,\]
+and $L(y)=\sum_{i=0}^{t-1}y_i$. Indices in these sums are modulo $t$.
+\end{lemma}
+\begin{proof}
+Consider a cubic monomial with a three-element index set. Its stabilizer $H\le C_n$ acts freely on that set, so $h=|H|$ divides three and $h\in\{1,3\}$. Since $h\mid n=tm$ and $\gcd(h,t)=1$, $h\mid m$. Its orbit length is $n/h=t(m/h)$, with $m/h$ odd. Upon restriction, its orbit sum is therefore the sum of $t$ cyclic translates of its reduced monomial.
+
+The reduced monomial has degree one, two or three, and no constant term. If its orbit length is $l\mid t$, its distinct translates occur $t/l$ times. When $l<t$, this multiplicity is even and the sum vanishes. All cubic monomial orbits in $t$ variables have length $t$, because their stabilizer divides both three and $t$. Quadratic orbits have length $t$ except for the antipodal orbit, of length $t/2$, which cancels. A degree-one reduction gives $L$. This proves containment in $\mathcal F_t$; surjectivity of the restriction map is not required.
+\end{proof}
+
+\begin{lemma}\label{lem:vanishing}
+Every $g\in\mathcal F_t$ vanishes on $A_t=\{y:y_{i+t/2}=y_i\}$.
+\end{lemma}
+\begin{proof}
+In a full orbit sum, pair the translate indexed by $i$ with that indexed by $i+t/2$. They evaluate equally on $A_t$ and cancel in characteristic two. The same pairing applies to the summands of $L$.
+\end{proof}
+
+
+\begin{lemma}[Removing the linear component]\label{lem:linear}
+For a Boolean function $h$ and an affine form $\ell(x)=a\cdot x+c$,
+\[W_{h+\ell}(b)=(-1)^c W_h(b+a).\]
+Consequently, $h+\ell$ is bent if and only if $h$ is bent.
+\end{lemma}
+\begin{proof}
+Substitute $h(x)+a\cdot x+c$ into the definition of the Walsh transform.
+The map $b\mapsto b+a$ permutes its frequencies and the constant factor
+does not change their absolute values.
+\end{proof}
+Define $\mathcal H_t$ to be the span of the full cubic and full quadratic
+orbit sums, without $L$. Since every $g\in\mathcal F_t$ is $h+\epsilon L$
+for $h\in\mathcal H_t$, excluding bent functions in $\mathcal H_t$ suffices.
+This observation is an application of standard affine invariance; no
+novelty is claimed for the identity itself.
+
+\section{Finite obstructions}
+For $t=2,4,8$, there are respectively 1, 3 and 11 generators of $\mathcal F_t$. Exact enumeration gives
+\[
+\begin{array}{c|c|c}
+t & |\mathcal F_t| & \text{zero-frequency Walsh values}\\\hline
+2&2&\{0,4\}\\
+4&8&\{-8,0,8,16\}\\
+8&2048&\text{all divisible by }32
+\end{array}
+\]
+None contains $\pm2^{t/2}$. The accompanying verifier enumerates all these functions, including zero, and checks the required exclusion.
+
+For $t=16$, there are $\binom{16}{3}/16=35$ cubic orbits and seven full quadratic orbits in $\mathcal H_{16}$. These 42 ANFs have disjoint nonempty monomial supports and are linearly independent. Any input orbit shorter than 16 has length dividing eight, hence lies in $A_{16}$. The remaining $2^{16}-2^8=65280$ inputs form 4080 full orbits. Evaluating on one representative from each defines codewords $w_1,\ldots,w_{42}\in\F^{4080}$ and a code $C$. By Lemma~\ref{lem:vanishing}, this evaluation is injective on $\mathcal H_{16}$, so $\dim C=42$, and
+\begin{equation}\label{eq:weights}
+\wt(g)=16\wt(c)\quad\text{for the codeword }c\text{ associated to }g.
+\end{equation}
+
+\begin{lemma}[Weight polarization]\label{lem:ward}
+For binary vectors $w_i$ and an index subset $I$,
+\[
+ \wt\Big(\sum_{i\in I}w_i\Big)=
+ \sum_{\varnothing\ne J\subseteq I}(-2)^{|J|-1}
+ \wt\Big(\prod_{j\in J}w_j\Big),
+\]
+where the product is coordinatewise. In particular, divisibility of each $k$-fold intersection weight by $2^{5-k}$ for $1\le k\le4$ implies that their binary span is 16-divisible.
+\end{lemma}
+\begin{proof}
+At a coordinate occupied by $r$ selected vectors, the right-hand contribution is
+$\sum_{k=1}^r\binom rk(-2)^{k-1}=(1-(-1)^r)/2$, precisely its contribution to the XOR weight. Sum over coordinates. Terms with $k\ge5$ are divisible by 16; the stated conditions handle the other terms. This is the weight polarization criterion in the divisible-code framework~\cite{ward}.
+\end{proof}
+
+The exact computation on the 42 generators has the following results:
+\begin{center}
+\begin{tabular}{rrrr}
 \toprule
-Reference & Method & Dimensions Covered & Scope / Hypotheses \\
+Intersection order & Subsets & Required divisor & Violations\\
 \midrule
-Meng et al. (2010)~\cite{meng2010} & Cyclic monomial distances & All $n$ & Monomials ($|\mathcal{O}|=1$), max distance $\le n/2$ \\
-Zhang \& Gao (2013)~\cite{zhang2013} & 2-adic valuation \& SANF & Various & Specific conditions on monomial supports \\
-Cusick \& Sanger (2017)~\cite{cusick2017} & Hadamard matrix entry $M_{0, 2^n-1}$ & $n = 2p$ ($p$ odd prime) & General cubic HRSBFs for $n=2p$ \\
-Calder\'on-G\'omez et al. (2024)~\cite{calderon2024} & Short $k$-rotation orbits & Various & Orbit enumerations; conjecture open \\
-Sun et al. (2026)~\cite{sun2026} & SANF / derivative bounds & Partial & Monomial support conditions \\
-\textbf{This Work} & \textbf{Odd-order reduction + Ward divisibility} & $\mathbf{n \not\equiv 0 \pmod{32}}$ & \textbf{All $n \in \{2m, 4m, 8m, 16m\}$ ($\forall m$ odd)} \\
+1&42&16&0\\
+2&861&8&0\\
+3&11480&4&0\\
+4&111930&2&0\\
+\midrule
+Total&124313&&0\\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{center}
+Thus $C$ is 16-divisible. Equation~\ref{eq:weights} implies $256\mid\wt(g)$ and $512\mid W_g(0)$. Since bentness in dimension 16 requires $|W_g(0)|=256$, no function in $\mathcal H_{16}$ is bent. Lemma~\ref{lem:linear} excludes bentness in $\mathcal F_{16}$ as well. The intersection table is the finite computational component of the proof; it is not inferred from random samples. The supplied verifier also checks the 12384 additional intersections involving $L$, for 136697 in total. Thus it additionally establishes $512\mid W_g(0)$ on all of $\mathcal F_{16}$, although this stronger assertion is unnecessary for the nonexistence proof.
 
-\subsection{Our Contributions}
-In this paper, we resolve the cubic St\u{a}nic\u{a}--Maitra conjecture for all even dimensions not divisible by 32. Our contributions are threefold:
-\begin{enumerate}
-    \item \textbf{Odd-Order Quadratic Reduction Lemma:} We prove an exact reduction lemma for linear automorphisms of odd order $m$ over $\F^n$: a $T$-invariant quadratic function $q$ is balanced on $\F^n$ if and only if its restriction to the fixed subspace $\mathrm{Fix}(T)$ is balanced. As a consequence, every directional derivative of a cubic bent function preserves its balance upon restriction, forcing the restriction of any cubic bent function to $\mathrm{Fix}(T)$ to remain bent.
-    \item \textbf{Complete Orbit Filter and Structural Reduction:} For cyclic shifts $T = \sigma^t$ ($n = t \cdot m$, $t = 2^s$, $m$ odd), we show that all short orbits of length $l < t$ cancel modulo 2, and the antipodal quadratic orbit $q_{t/2}$ cancels identically. Since $f$ is homogeneous, no constant term is generated, and the restriction $g = f|_U$ belongs strictly to the linear space $\mathcal{F}_t = \mathrm{span}\{O^{(2)}_d, O^{(3)}_{a,b}, L\}$, preserving identical vanishing on the antipodal subspace $V_{t/2}$.
-    \item \textbf{Spectral Divisibility Obstruction via Divisible Codes ($t = 16$):} We prove that the restricted complete-orbit space in 16 variables forms a 16-divisible binary linear code. Using an exact weight polarization expansion within the divisible codes framework of Ward~\cite{ward1981,ward2001}, we prove that every codeword satisfies $\wt(g) \equiv 0 \pmod{256}$, which algebraically forces $W_g(0) \equiv 0 \pmod{512} \ne \pm 256$, ruling out bentness for all $2^{43} \approx 8.79 \times 10^{12}$ functions (and $2^{42}$ in the subspace without $L$).
-\end{enumerate}
-Together with the analytical resolution of $t \in \{2, 4, 8\}$, this establishes the non-existence of cubic HRSBFs for all $n \in \{2m, 4m, 8m, 16m\}$ for all odd $m$. Notably, this covers $n = 2m$ where $m$ is composite (e.g., $n = 18, 30, 42, 50, \dots$), which was outside the reach of prime-based Hadamard arguments~\cite{cusick2017}, as well as the new families $n = 4m, 8m, 16m$.
-
-%======================================================================
-\section{Preliminaries}
-\label{sec:prelim}
-%======================================================================
-
-Let $\V_n = \F^n$ denote the $n$-dimensional vector space over $\F$. A Boolean function $f$ in $n$ variables is a mapping $f: \V_n \to \F$. The Hamming weight of $f$, denoted $\wt(f)$, is the cardinality of its support $\{x \in \V_n : f(x) = 1\}$. A function $f$ is \emph{balanced} if $\wt(f) = 2^{n-1}$.
-
-Every Boolean function has a unique representation as a multilinear polynomial over $\F$, its Algebraic Normal Form (ANF):
-\begin{equation}
-f(x) = \sum_{S \subseteq \{0, 1, \dots, n-1\}} c_S \prod_{i \in S} x_i, \quad c_S \in \F.
-\end{equation}
-The algebraic degree of $f$, denoted $\deg(f)$, is $\max\{|S| : c_S \ne 0\}$. The function $f$ is \emph{homogeneous of degree $d$} if $c_S = 0$ for all $|S| \ne d$.
-
-The directional derivative of $f$ in direction $a \in \V_n$ is defined by:
-\begin{equation}
-D_a f(x) = f(x \oplus a) \oplus f(x).
-\end{equation}
-If $\deg(f) = d$, then $\deg(D_a f) \le d - 1$ for all $a \in \V_n$.
-
-The Walsh transform of $f$ at $\omega \in \V_n$ is the discrete Fourier transform of its sign function $(-1)^{f(x)}$:
-\begin{equation}
-W_f(\omega) = \sum_{x \in \V_n} (-1)^{f(x) \oplus \omega \cdot x}.
-\end{equation}
-A function $f$ on $\V_n$ is \emph{bent} if $|W_f(\omega)| = 2^{n/2}$ for all $\omega \in \V_n$. Bent functions exist only when $n$ is even. By the well-known directional derivative characterization~\cite{meier1989,carlet2021}, $f$ is bent if and only if $D_a f$ is balanced on $\V_n$ for every non-zero direction $a \in \V_n \setminus \{0\}$.
-
-A function $f$ is \emph{rotation-symmetric} (RSBF) if $f(\sigma(x)) = f(x)$ for all $x \in \V_n$, where $\sigma(x_0, x_1, \dots, x_{n-1}) = (x_1, \dots, x_{n-1}, x_0)$ is the cyclic shift operator. Under the action of the cyclic group $C_n = \langle \sigma \rangle$, the set of monomials of degree $d$ is partitioned into disjoint orbits. A homogeneous RSBF of degree $d$ is an $\F$-linear combination of the orbit sums:
-\begin{equation}
-f(x) = \sum_{j} c_j O_j(x), \quad O_j(x) = \sum_{m \in \mathcal{O}_j} m(x).
-\end{equation}
-
-%======================================================================
-\section{The Odd-Order Quadratic Reduction Lemma}
-\label{sec:reduction}
-%======================================================================
-
-Let $V = \V_n = \F^n$. Let $T: V \to V$ be an invertible linear automorphism of odd order $m$ ($\gcd(m, 2) = 1$). Let $U = \mathrm{Fix}(T) = \{x \in V : Tx = x\}$ denote the fixed subspace of $T$.
-
-\begin{lemma}[Symplectic Decomposition and Exponential Sum Factorization]
-\label{lem:quadratic_reduction}
-Let $T \in \mathrm{GL}(V)$ have odd order $m$. Let $q: V \to \F$ be a quadratic Boolean function ($\deg(q) \le 2$) such that $q(0) = 0$ and $q(Tx) = q(x)$ for all $x \in V$. Then:
-\begin{equation}
-q \text{ is balanced on } V \iff q|_U \text{ is balanced on } U.
-\end{equation}
-\end{lemma}
-
-\begin{proof}
-Consider the polar form of $q$, defined by:
-\begin{equation}
-B(x, y) = q(x \oplus y) \oplus q(x) \oplus q(y).
-\end{equation}
-Since $\deg(q) \le 2$ and $q(0) = 0$, $B$ is a symmetric (alternating) bilinear form over $\F$. The $T$-invariance of $q$ implies that $B$ is $T$-invariant: $B(Tx, Ty) = B(x, y)$.
-
-Define the projection operator $P: V \to V$ by:
-\begin{equation}
-P = \sum_{j=0}^{m-1} T^j.
-\end{equation}
-Since $m$ is odd, $m \equiv 1 \pmod 2$. Consequently, for any $x \in V$, $T(Px) = P(Tx) = Px$, so $\mathrm{Im}(P) \subseteq U$. Conversely, for $u \in U$, $Pu = \sum_{j=0}^{m-1} u = m \cdot u = u$. Thus, $P^2 = P$ and $\mathrm{Im}(P) = U$. 
-
-This defines a direct sum decomposition $V = U \oplus K$, where $K = \ker(P)$. We now claim that $U$ and $K$ are orthogonal with respect to the bilinear form $B$. Indeed, let $u \in U$ and $k \in K$. Using the $T$-invariance of $B$ and the fact that $Tu = u$:
-\begin{equation}
-B(u, k) = \sum_{j=0}^{m-1} B(u, T^j k) = B\left(u, \sum_{j=0}^{m-1} T^j k\right) = B(u, Pk) = B(u, 0) = 0.
-\end{equation}
-Since $B(u, k) = 0$ for all $u \in U, k \in K$, we have $q(u \oplus k) = q(u) \oplus q(k) \oplus B(u, k) = q(u) \oplus q(k)$.
-
-Therefore, the exponential sum $S_V(q) = \sum_{x \in V} (-1)^{q(x)}$ factors as:
-\begin{equation}
-S_V(q) = \left( \sum_{u \in U} (-1)^{q(u)} \right) \left( \sum_{k \in K} (-1)^{q(k)} \right) = S_U(q|_U) \cdot S_K(q|_K).
-\end{equation}
-It remains to show that $S_K(q|_K) \ne 0$. We compute the square of the exponential sum directly:
-\begin{align}
-S_K(q|_K)^2 &= \left( \sum_{x \in K} (-1)^{q(x)} \right) \left( \sum_{y \in K} (-1)^{q(y)} \right) = \sum_{x, y \in K} (-1)^{q(x) \oplus q(y)} \nonumber \\
-&= \sum_{x, z \in K} (-1)^{q(x \oplus z) \oplus q(x)} = \sum_{z \in K} (-1)^{q(z)} \sum_{x \in K} (-1)^{B(x, z)},
-\end{align}
-where we substituted $y = x \oplus z$ and used $q(x \oplus z) \oplus q(x) = q(z) \oplus B(x, z)$. For each fixed $z \in K$, the mapping $x \mapsto B(x, z)$ is a linear form on $K$. By character orthogonality on $\F$, the inner sum satisfies:
-\begin{equation}
-\sum_{x \in K} (-1)^{B(x, z)} = \begin{cases} |K|, & \text{if } z \in \rad(B|_K), \\ 0, & \text{otherwise}. \end{cases}
-\end{equation}
-Therefore, letting $R_K = \rad(B|_K)$:
-\begin{equation}
-S_K(q|_K)^2 = |K| \sum_{z \in R_K} (-1)^{q(z)}.
-\end{equation}
-Since $B$ vanishes identically on $R_K$, the restriction $q|_{R_K}$ is a linear form. Using the $T$-invariance of $q$ and the fact that $m$ is odd:
-\begin{equation}
-q(z) = m \cdot q(z) = \sum_{j=0}^{m-1} q(T^j z) = q\left(\sum_{j=0}^{m-1} T^j z\right) = q(Pz).
-\end{equation}
-Since $z \in K = \ker(P)$, we have $Pz = 0$, and since $q(0) = 0$, we obtain $q(z) = 0$ for all $z \in R_K$. Consequently, $(-1)^{q(z)} = +1$ identically on $R_K$, yielding:
-\begin{equation}
-S_K(q|_K)^2 = |K| \cdot |R_K| > 0.
-\end{equation}
-Since $S_K(q|_K)^2 > 0$ over $\mathbb{R}$, we have $S_K(q|_K) \ne 0$. It follows immediately that $S_V(q) = 0 \iff S_U(q|_U) = 0$, which completes the proof.
-\end{proof}
-
-\begin{remark}[Algebraic Context and Literature Precedents]
-The linear decomposition $V = U \oplus K$ under an odd-order automorphism group $G$ is rooted in classical representation theory over fields of characteristic 2: since $\gcd(|G|, 2) = 1$, the group algebra $\F[G]$ is semisimple by Maschke's theorem. Furthermore, the orthogonality $B(u, k) = 0$ is a standard property of invariant bilinear forms under group actions. Dickson's classical theorem on quadratic forms over $\F$ provides the foundational structure for the non-vanishing exponential sum $S_K(q|_K) \ne 0$, exploiting the fact that $q$ vanishes identically on the radical $R_K$ because $P(R_K) = 0$. 
-
-However, the specific realization that $q$ is balanced on the full space if and only if its restriction to $\mathrm{Fix}(G)$ is balanced, and its application to transfer the bentness of cubic functions through the balance of their directional derivatives, is to the best of our knowledge new in the study of rotation-symmetric Boolean functions.
-\end{remark}
-
-\begin{remark}[Generalization to Arbitrary Odd-Order Groups]
-The proof of Lemma~\ref{lem:quadratic_reduction} does not require $T$ to be cyclic. For any finite group $G \le \mathrm{GL}(V)$ of odd order $|G|$, the Reynolds operator $P = \sum_{g \in G} g$ satisfies $P^2 = P$ in characteristic 2 and yields $B(u, k) = 0$ for all $u \in \mathrm{Fix}(G), k \in \ker(P)$. Thus, the quadratic balance reduction holds for any odd-order linear group action.
-\end{remark}
-
-%======================================================================
-\section{Restriction of Cubic Bent Functions}
-\label{sec:cubic_bent}
-%======================================================================
-
-We now state the key consequence for bent Boolean functions of degree at most 3.
-
-\begin{theorem}[Preservation of Bentness under Odd-Order Restriction]
-\label{thm:bent_restriction}
-Let $V = \F^n$ with $n$ even. Let $T \in \mathrm{GL}(V)$ have odd order $m$. Let $f: V \to \F$ be a Boolean function of degree $\deg(f) \le 3$ such that $f(Tx) = f(x)$ for all $x \in V$. If $f$ is bent, then its restriction $g = f|_U$ to the fixed subspace $U = \mathrm{Fix}(T)$ is bent on $U$, provided $\dim(U)$ is even.
+\section{Main result}
+\begin{theorem}
+For every positive even integer $n$ with $32\nmid n$, there is no homogeneous rotation-symmetric bent Boolean function of degree three in $n$ variables.
 \end{theorem}
-
 \begin{proof}
-Let $a \in U \setminus \{0\}$. Consider the directional derivative:
-\begin{equation}
-D_a f(x) = f(x \oplus a) \oplus f(x).
-\end{equation}
-Since $\deg(f) \le 3$, we have $\deg(D_a f) \le 2$. Furthermore, since $Ta = a$ and $f \circ T = f$:
-\begin{equation}
-D_a f(Tx) = f(Tx \oplus a) \oplus f(Tx) = f(T(x \oplus a)) \oplus f(Tx) = f(x \oplus a) \oplus f(x) = D_a f(x).
-\end{equation}
-Thus, $D_a f$ is $T$-invariant.
-
-To apply Lemma~\ref{lem:quadratic_reduction}, we normalize the constant term by setting:
-\begin{equation}
-q(x) = D_a f(x) \oplus D_a f(0).
-\end{equation}
-Then $q(0) = 0$, $\deg(q) \le 2$, and $q$ is $T$-invariant. Since $f$ is bent, $D_a f$ is balanced on $V$. Adding the constant $D_a f(0)$ merely swaps the preimages $0 \leftrightarrow 1$ if $D_a f(0) = 1$, so $q$ is balanced on $V$.
-
-By Lemma~\ref{lem:quadratic_reduction}, $q|_U$ is balanced on $U$. Consequently, $(D_a f)|_U = q|_U \oplus D_a f(0)$ is balanced on $U$. But for all $u \in U$:
-\begin{equation}
-(D_a f)|_U(u) = f(u \oplus a) \oplus f(u) = D_a(f|_U)(u) = D_a g(u).
-\end{equation}
-Therefore, every non-zero directional derivative $D_a g$ for $a \in U \setminus \{0\}$ is balanced on $U$. By the directional derivative characterization~\cite{meier1989,carlet2021}, $g$ is bent on $U$.
+Write $n=2^s m$ with $m$ odd. The assumptions give $s\in\{1,2,3,4\}$ and $t=2^s\in\{2,4,8,16\}$. A hypothetical such bent function is invariant under $T=\sigma^t$. Proposition~\ref{prop:restriction} makes its restriction bent on the even-dimensional fixed space $\F^t$. Lemma~\ref{lem:orbit} places that restriction in $\mathcal F_t$, contradicting the finite obstructions above.
 \end{proof}
 
-%======================================================================
-\section{Complete Orbit Filtering and Affine Invariance}
-\label{sec:orbit_filter}
-%======================================================================
-
-Let $n = t \cdot m$, where $t = 2^s$ ($s \ge 1$) and $m$ is odd. Let $T = \sigma^t$ be the cyclic shift by $t$ positions. The order of $T$ is $m$. The fixed subspace $U = \mathrm{Fix}(T)$ consists of all $x \in \V_n$ formed by $m$ repetitions of a binary block of length $t$:
-\begin{equation}
-x = (y, y, \dots, y) \in \V_n, \quad y = (y_0, y_1, \dots, y_{t-1}) \in \V_t.
-\end{equation}
-Thus, $U \cong \V_t$ has dimension $t = 2^s$, which is even for $s \ge 1$.
-
-\subsection{Parity Cancellation of Short Orbits}
-Let $f$ be a homogeneous cubic RSBF in $n$ variables:
-\begin{equation}
-f(x) = \sum_{j} c_j O_j(x), \quad O_j(x) = \sum_{k=0}^{L-1} \sigma^k(x_0 x_a x_b).
-\end{equation}
-The length $L$ of the orbit under $\sigma$ divides $n$. Under the cyclic action on triplets of coordinates, the stabilizer of $\{0, a, b\}$ has cardinality $h \in \{1, 3\}$. Hence $L \in \{n, n/3\}$. In both cases, the largest power of 2 dividing $L$ is $t = 2^s$.
-
-\begin{proposition}[Complete Orbit Filter]
-\label{prop:complete_orbit_filter}
-Upon restriction to $U = \mathrm{Fix}(\sigma^t) \cong \V_t$, only orbits of full length $t$ survive in $\F$.
-\end{proposition}
-
-\begin{proof}
-Let $\mu(x) = x_i x_j x_k$ be a cubic monomial in $V$. The subgroup $H \le \mathbb{Z}_n$ of cyclic shifts fixing the index set $\{i, j, k\}$ acts freely on $\{i, j, k\}$, because any non-zero cyclic translation on $\mathbb{Z}_n$ has no fixed points. Therefore, every orbit of the action of $H$ on $\{i, j, k\}$ has cardinality $|H|$, which implies that $|H|$ divides $|\{i, j, k\}| = 3$. Since 3 is prime, $|H| \in \{1, 3\}$.
-
-Since $n = t \cdot m$ with $m$ odd and $|H| \in \{1, 3\}$ is odd, the ratio $m' = m / |H|$ is an odd integer:
-\begin{equation}
-\frac{L}{t} = \frac{n / |H|}{t} = \frac{m}{|H|} \equiv 1 \pmod 2.
-\end{equation}
-Decomposing the cyclic summation of length $L = t \cdot m'$ into $m'$ blocks of size $t$:
-\begin{equation}
-\sum_{k=0}^{L-1} \sigma^k(\mu)(x) = \sum_{r=0}^{m'-1} \sum_{j=0}^{t-1} \sigma^{j + r t}(\mu)(x).
-\end{equation}
-Upon restriction to $U = \mathrm{Fix}(\sigma^t)$, the shift $\sigma^{rt}$ acts trivially. Since $m'$ is an odd integer, the summation in $\F$ reduces to:
-\begin{equation}
-\left( \sum_{k=0}^{L-1} \sigma^k(\mu) \right) \Bigg|_U = m' \sum_{j=0}^{t-1} \sigma^j(\mu|_U) = \sum_{j=0}^{t-1} \sigma^j(\mu|_U).
-\end{equation}
-That is, the restriction of the original orbit collapses to the cyclic shift sum over $\mathbb{Z}_t$ of the reduced monomial $\mu|_U$.
-
-Now, under the cyclic shift of $t$ coordinates, the orbit of $\mu|_U$ has length $l$, where $l \mid t = 2^s$. The cyclic sum of $t$ terms covers this reduced orbit exactly $t/l$ times. If $l < t$, then $l = 2^r$ with $r < s$, so $t/l = 2^{s-r} \ge 2 \equiv 0 \pmod 2$.
-Therefore, in $\F$, every short orbit with $l < t$ cancels out completely. Only orbits of full length $l = t$ survive.
-\end{proof}
-
-\begin{lemma}[Exact Parity Cancellation of the Antipodal Orbit $q_{t/2}$]
-\label{lem:cancellation_qt2}
-Let $n = t \cdot m$ with $t = 2^s$ and $m$ odd. The antipodal quadratic orbit $q_{t/2}(y) = \sum_{r=0}^{t/2-1} y_r y_{r+t/2}$ cannot appear in the restriction $g = f|_U$ of any homogeneous cubic RSBF $f$: its coefficient in $\F$ is strictly zero.
-\end{lemma}
-
-\begin{proof}
-A cubic monomial $\mu(x) = x_i x_j x_k$ in $\V_n$ restricts to a quadratic term on $U = \mathrm{Fix}(\sigma^t)$ if and only if two of its indices are congruent modulo $t$ and the third is distinct: $i \equiv j \pmod t$ with $k \not\equiv i \pmod t$. Let $a = i \bmod t$ and $b = k \bmod t$. Then $\mu|_U = y_a y_b$. For this term to belong to the antipodal quadratic orbit, the two indices must differ by $t/2$ modulo $t$, so $b \equiv a + t/2 \pmod t$.
-
-Under the cyclic shifts $\sigma^s$ of $\V_n$, the monomial $\sigma^s(\mu)$ restricts to $y_{(a+s)\bmod t} y_{(a+s+t/2)\bmod t}$. Consider a fixed antipodal pair $\{r, r + t/2\}$ of $q_{t/2}$. Because $\{r + t/2, (r + t/2) + t/2\} \equiv \{r, r + t/2\} \pmod t$, this pair is invariant under translation by $t/2$ in $\mathbb{Z}_t$. Therefore, a shift $\sigma^s(\mu)$ restricts to the pair $\{r, r + t/2\}$ if and only if $s \equiv r - a \pmod{t/2}$.
-
-The orbit of $\mu$ has length $L = n / |\mathrm{Stab}(\mu)| = t \cdot m / |\mathrm{Stab}(\mu)|$. Because $L$ is a multiple of $t/2$, the number of shifts $s \in \{0, \dots, L-1\}$ satisfying the congruence $s \equiv r - a \pmod{t/2}$ is exactly:
-\begin{equation}
-\frac{L}{t/2} = \frac{t \cdot m / |\mathrm{Stab}(\mu)|}{t/2} = \frac{2m}{|\mathrm{Stab}(\mu)|}.
-\end{equation}
-The cyclic stabilizer $H = \mathrm{Stab}(\mu) \le \mathbb{Z}_n$ acts freely on the index set $\{i, j, k\}$ (since non-zero translations in $\mathbb{Z}_n$ have no fixed points). Hence $|H|$ divides $|\{i, j, k\}| = 3$. Since 3 and $m$ are odd, $|H| \in \{1, 3\}$ is an odd divisor of $m$, so $m / |H|$ is an integer. Thus:
-\begin{equation}
-\frac{2m}{|H|} = 2 \left( \frac{m}{|H|} \right) \equiv 0 \pmod 2.
-\end{equation}
-In $\F$, this multiplicity cancels completely ($2 \equiv 0$). Summing over all cubic orbits in $f$, the coefficient of each pair $y_r y_{r+t/2}$ is $0 \pmod 2$. Hence, $q_{t/2}$ never appears in $g = f|_U$.
-\end{proof}
-
-\begin{proposition}[Appearance of the All-Ones Linear Form $L$]
-\label{prop:linear_form_L}
-Let $n = t \cdot m$ with $m \ge 3$ odd. Any cubic monomial $\mu(x) = x_i x_j x_k$ with $i \equiv j \equiv k \pmod t$ restricts on $U$ to $y_a^3 = y_a$, where $a = i \bmod t$. The number of shifts in the orbit of $\mu$ that project to a fixed residue $r \in \mathbb{Z}_t$ is:
-\begin{equation}
-\frac{L}{t} = \frac{m}{|\mathrm{Stab}(\mu)|} \equiv 1 \pmod 2,
-\end{equation}
-since both $m$ and $|\mathrm{Stab}(\mu)| \in \{1, 3\}$ are odd. Consequently, each such orbit contributes with coefficient 1 to every coordinate $y_r$, producing the full all-ones linear form:
-\begin{equation}
-L(y) = \sum_{r=0}^{t-1} y_r.
-\end{equation}
-All lower-degree terms generated upon restriction are therefore spanned strictly by the all-ones linear form $L(y)$.
-\end{proposition}
-
-\subsection{Absence of Constant Terms and the Restricted Space $\mathcal{F}_t$}
-Since the original function $f$ is strictly homogeneous of degree 3, we have $f(0) = 0$. Under the coordinate restriction mapping $x_i \mapsto y_{i \bmod t}$, every cubic monomial $x_i x_j x_k$ yields either a cubic term (if the three indices are distinct modulo $t$), a quadratic term (if two indices collide), or a linear term (if all three indices collide). In particular, no degree-0 (constant) terms can ever be generated upon restriction.
-
-Consequently, the restricted function satisfies $g(0) = f(0) = 0$, containing no constant term ($c_0 = 0$). The function $g = f|_U$ belongs strictly to the linear space:
-\begin{equation}
-\mathcal{F}_t = \mathrm{span}\{O^{(2)}_d, O^{(3)}_{a,b}, L\}.
-\end{equation}
-The strict absence of a constant term is mathematically essential: it ensures that the antipodal vanishing property $g|_{V_{t/2}} \equiv 0$ (established in Section~\ref{sec:t16}) holds without exception, as any non-zero constant $c_0 = 1$ would directly violate vanishing on $V_{t/2}$.
-
-%======================================================================
-\section{Exclusion of the Base Cases: $t \in \{2, 4, 8\}$}
-\label{sec:base_cases}
-%======================================================================
-
-We now examine the reduced spaces $\mathcal{F}_t$ for $t \in \{2, 4, 8\}$ including the linear form $L$.
-
-\begin{proposition}[Case $t = 2$ ($n = 2m$)]
-\label{prop:t2}
-In $t = 2$ variables, there are no complete orbits of degree 2 or 3. The space $\mathcal{F}_2$ is spanned solely by $L(y) = y_0 \oplus y_1$, containing $2^1 = 2$ functions ($g \equiv 0$ and $g = L$). Their Walsh values at zero are $W_g(0) \in \{0, 4\}$. Since bentness requires $|W_g(0)| = 2^{2/2} = 2$, no function in $\mathcal{F}_2$ is bent.
-\end{proposition}
-
-\begin{proposition}[Case $t = 4$ ($n = 4m$)]
-\label{prop:t4}
-In $t = 4$ variables, the generator set comprises 1 complete quadratic orbit $O_1^{(2)}$, 1 complete cubic orbit $O_1^{(3)}$, and the linear form $L(y) = \sum_{i=0}^3 y_i$. The space $\mathcal{F}_4$ contains $2^3 = 8$ functions. Exhaustive computation yields:
-\begin{equation}
-W_g(0) \in \{-8, 0, 8, 16\}.
-\end{equation}
-Since bentness in 4 variables requires $|W_g(0)| = 2^{4/2} = 4$, none of these 8 functions is bent.
-\end{proposition}
-
-\begin{proposition}[Case $t = 8$ ($n = 8m$)]
-\label{prop:t8}
-In $t = 8$ variables, there are 3 complete quadratic orbits ($d \in \{1, 2, 3\}$), 7 complete cubic orbits, and the linear form $L(y) = \sum_{i=0}^7 y_i$, spanning a space $\mathcal{F}_8$ of dimension 11 ($2^{11} = 2048$ functions). For all $g \in \mathcal{F}_8$, exact computation yields:
-\begin{equation}
-W_g(0) \in \{-192, -160, -128, -96, -64, -32, 0, 32, 64, 96, 128, 160, 192, 256\} \subset 32\Z.
-\end{equation}
-Since bentness in 8 variables requires $|W_g(0)| = 2^{8/2} = 16$, and $\pm 16 \not\equiv 0 \pmod{32}$, no function in $\mathcal{F}_8$ is bent.
-\end{proposition}
-
-%======================================================================
-\section{The 16-Divisibility Obstruction via Ward's Theorem ($t = 16$)}
-\label{sec:t16}
-%======================================================================
-
-In $t = 16$ variables, the complete-orbit space $\mathcal{F}_{16}$ is spanned by:
-\begin{itemize}
-    \item 7 complete quadratic orbits: $O_d(y) = \sum_{i=0}^{15} y_i y_{i+d}$ for $d \in \{1, 2, 3, 4, 5, 6, 7\}$.
-    \item 35 complete cubic orbits: $O_{a,b}(y) = \sum_{i=0}^{15} y_i y_{i+a} y_{i+b}$ for valid cyclic gap-partition representatives $1 \le a < b < 16$.
-    \item 1 all-ones linear form: $L(y) = \sum_{i=0}^{15} y_i$.
-\end{itemize}
-Thus, $\dim(\mathcal{F}_{16}) = 7 + 35 + 1 = 43$, representing $2^{43} \approx 8.79 \times 10^{12}$ candidate functions. Brute-force spectral evaluation is computationally intractable; we resolve this case analytically via coding theory.
-
-\subsection{The Antipodal Subspace Vanishing Theorem}
-Let $V_8 = \{y \in \V_{16} : y_{i+8} = y_i\}$ denote the antipodal subspace of dimension 8.
-
-\begin{lemma}[Antipodal Vanishing]
-\label{lem:antipodal_vanishing}
-Every function $g \in \mathcal{F}_{16}$ satisfies $g(y) = 0$ identically for all $y \in V_8$.
-\end{lemma}
-
-\begin{proof}
-Every complete orbit in $\mathcal{F}_{16}$ has length 16 and can be written as $\sum_{i=0}^7 (m_i(y) \oplus m_{i+8}(y))$. For $y \in V_8$, $y_{j+8} = y_j$ for all $j$, so $m_{i+8}(y) = m_i(y)$ identically. Thus, each pair cancels modulo 2, and $g|_{V_8} \equiv 0$.
-\end{proof}
-
-\subsection{Code Formulation and Weight Polarization}
-Since $g|_{V_8} \equiv 0$, the non-zero values of $g$ lie entirely in $\V_{16} \setminus V_8$, which consists of $2^{16} - 2^8 = 65280$ vectors. Under the cyclic shift $C_{16}$, these vectors partition into exactly $65280 / 16 = 4080$ orbits of length 16.
-
-Let $\mathcal{O}_1, \dots, \mathcal{O}_{4080}$ denote these orbits, with representatives $r_1, \dots, r_{4080}$. For each basis orbit $v_j \in \mathcal{F}_{16}$ ($1 \le j \le 42$), define its indicator codeword $w_j \in \F^{4080}$ by:
-\begin{equation}
-(w_j)_k = v_j(r_k), \quad 1 \le k \le 4080.
-\end{equation}
-Let $\mathcal{C} \subset \F^{4080}$ be the binary linear code generated by $\{w_1, \dots, w_{42}\}$. For any function $g = \sum_{j \in I} v_j$, its indicator codeword is $c = \sum_{j \in I} w_j \in \mathcal{C}$, and its Hamming weight on $\V_{16}$ is:
-\begin{equation}
-\wt(g) = 16 \cdot \wt(c).
-\end{equation}
-
-To determine the divisibility of $\wt(c)$, we employ the weight polarization expansion for binary codes within the divisible codes framework of Ward~\cite{ward1981,ward2001}:
-
-\begin{theorem}[Weight Polarization Expansion Modulo 16]
-\label{thm:ward_expansion}
-Let $\mathcal{C}$ be a binary linear code spanned by generators $w_1, \dots, w_k$. For any subset $I \subseteq \{1, \dots, k\}$, the Hamming weight of $c = \sum_{i \in I} w_i$ satisfies:
-\begin{equation}
-\label{eq:ward_formula}
-\wt(c) = \sum_{J \subseteq I, J \ne \emptyset} (-2)^{|J|-1} \wt\left( \bigcap_{j \in J} w_j \right).
-\end{equation}
-In particular, modulo 16:
-\begin{equation}
-\label{eq:ward_mod16}
-\wt(c) \equiv \sum_{i} \wt(w_i) - 2 \sum_{i < j} \wt(w_i \cap w_j) + 4 \sum_{i < j < l} \wt(w_i \cap w_j \cap w_l) - 8 \sum_{i < j < l < p} \wt(w_i \cap w_j \cap w_l \cap w_p) \pmod{16},
-\end{equation}
-since $(-2)^{|J|-1} \equiv 0 \pmod{16}$ for all $|J| \ge 5$.
-\end{theorem}
-
-\begin{proof}
-For any coordinate $x$, let $m(x) = |\{i \in I : (w_i)_x = 1\}|$ be the number of active generators at $x$. The coordinate $x$ belongs to $\supp(c)$ if and only if $m(x)$ is odd. Its contribution to the right-hand side of~\eqref{eq:ward_formula} is:
-\begin{equation}
-\sum_{k=1}^{m(x)} \binom{m(x)}{k} (-2)^{k-1} = -\frac{1}{2} \left[ (1 - 2)^{m(x)} - 1 \right] = \frac{1 - (-1)^{m(x)}}{2} = \begin{cases} 1, & m(x) \text{ odd}, \\ 0, & m(x) \text{ even}. \end{cases}
-\end{equation}
-Summing over all coordinates establishes~\eqref{eq:ward_formula}. Reducing modulo 16 eliminates all terms with $|J| \ge 5$ because $(-2)^4 = 16 \equiv 0 \pmod{16}$.
-\end{proof}
-
-\begin{theorem}[Spectral Obstruction for $t = 16$]
-\label{thm:t16_obstruction}
-For every function $g \in \mathcal{F}_{16}$, $\wt(g) \equiv 0 \pmod{256}$, and consequently $W_g(0) \equiv 0 \pmod{512}$. Therefore, no function in $\mathcal{F}_{16}$ is bent.
-\end{theorem}
-
-\begin{proof}
-By Theorem~\ref{thm:ward_expansion}, $\wt(c) \equiv 0 \pmod{16}$ holds for all $c \in \mathcal{C}$ if the following four conditions are satisfied:
-\begin{enumerate}
-    \item $\wt(w_i) \equiv 0 \pmod{16}$ for all 43 generators (35 cubic, 7 quadratic, and $L$).
-    \item $\wt(w_i \cap w_j) \equiv 0 \pmod 8$ for all $\binom{43}{2} = 903$ generator pairs.
-    \item $\wt(w_i \cap w_j \cap w_l) \equiv 0 \pmod 4$ for all $\binom{43}{3} = 12341$ generator triples.
-    \item $\wt(w_i \cap w_j \cap w_l \cap w_p) \equiv 0 \pmod 2$ for all $\binom{43}{4} = 123410$ generator quadruples.
-\end{enumerate}
-We note a key structural simplification: adding an affine linear form $L(y) = \sum_{i=0}^{15} y_i$ preserves the bent property identically, because $W_{g \oplus L}(u) = W_g(u \oplus \mathbf{1})$ merely translates the Walsh spectrum. Therefore, establishing that no function in the 42-generator subspace $\mathcal{F}_{16}^0$ (spanned by the 35 cubic and 7 quadratic generators) is bent unconditionally guarantees that no function in the full 43-generator space $\mathcal{F}_{16}$ can be bent. 
-
-The core impossibility proof thus requires auditing only the $124313$ conditions on the 42-generator subspace. The full 43-generator audit ($136697$ conditions) is included as an exhaustive supplementary verification. Every condition in both cases is satisfied with zero violations (see Table~\ref{tab:ward_audit}).
-
-\begin{table}[htbp]
-\centering
-\caption{Audit of Ward divisibility conditions for the complete-orbit code $\mathcal{C} \subset \F^{4080}$.}
-\label{tab:ward_audit}
-\begin{tabular}{lcccc}
-\toprule
-Intersection Order & Required Congruence & Subsets (42 gens, Core) & Subsets (43 gens, Full) & Violations \\
-\midrule
-Singletons ($k = 1$) & $\wt(w_i) \equiv 0 \pmod{16}$ & $42$ & $43$ & $0$ \\
-Pairs ($k = 2$) & $\wt(w_i \cap w_j) \equiv 0 \pmod 8$ & $861$ & $903$ & $0$ \\
-Triples ($k = 3$) & $\wt(w_i \cap w_j \cap w_l) \equiv 0 \pmod 4$ & $11480$ & $12341$ & $0$ \\
-Quadruples ($k = 4$) & $\wt(w_i \cap w_j \cap w_l \cap w_p) \equiv 0 \pmod 2$ & $111930$ & $123410$ & $0$ \\
-\midrule
-\textbf{Total Subsets} & & $\mathbf{124313}$ & $\mathbf{136697}$ & $\mathbf{0}$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Thus, $\wt(c) \equiv 0 \pmod{16}$ for every codeword $c \in \mathcal{C}$. It follows that:
-\begin{equation}
-\wt(g) = 16 \cdot \wt(c) \equiv 0 \pmod{256}.
-\end{equation}
-The Walsh transform at $\omega = 0$ is:
-\begin{equation}
-W_g(0) = 2^{16} - 2\,\wt(g) = 65536 - 2(256 k) \equiv 0 \pmod{512}.
-\end{equation}
-For $g$ to be bent on $\V_{16}$, it must satisfy $|W_g(0)| = 2^{16/2} = 2^8 = 256$. Since $\pm 256 \not\equiv 0 \pmod{512}$, no function in $\mathcal{F}_{16}$ can be bent.
-\end{proof}
-
-\subsection{Constructive Example and Subclass Optimality in Dimension 16}
-\label{subsec:max_nonlinearity_16}
-An explicit homogeneous cubic rotation-symmetric Boolean function $f^*$ in 16 variables has Hamming weight $\wt(f^*) = 32512$ and maximum absolute Walsh coefficient $\max_{u \in \F^{16}} |W_{f^*}(u)| = 512$, hence nonlinearity:
-\begin{equation}
-\mathrm{nl}(f^*) = 2^{15} - \frac{1}{2} \max_{u \in \F^{16}} |W_{f^*}(u)| = 32768 - 256 = 32512.
-\end{equation}
-Its canonical orbit mask is \texttt{0xAB0111CB}, equivalently \texttt{0b10101011000000010001000111001011} (decimal $2868974027$), activating exactly 13 canonical cubic orbits corresponding to the cyclic gap compositions:
-$\{(1, 1, 14), (1, 2, 13), (1, 4, 11), (1, 7, 8), (1, 8, 7), (1, 9, 6), (1, 13, 2), (2, 5, 9), (3, 4, 9), (3, 5, 8), (3, 7, 6), (3, 9, 4), (4, 5, 7)\}$.
-Full integer evaluation across all $2^{16} = 65536$ points reproduces its 5-valued Walsh spectrum: $-512$ (multiplicity $1984$), $-256$ ($24576$), $0$ ($12288$), $+256$ ($24576$), and $+512$ ($2112$).
-
-Since Ward divisibility gives $W_f(0) \equiv 0 \pmod{512}$, every unbalanced function in this class satisfies $|W_f(0)| \ge 512$, and therefore has nonlinearity at most $32512$. The function $f^*$ attains this bound with zero gap, establishing exact optimality within the unbalanced subclass of cubic HRSBFs in 16 variables. We note that this zero-frequency argument does not bound $\max_{u} |W_f(u)|$ for balanced functions ($W_f(0) = 0$), and our computational search was sampled over $150000$ combinations rather than exhaustive over the $2^{35}$ space. Consequently, global optimality across all cubic HRSBFs and bibliographic priority are not claimed.
-
-\subsection{Theoretical Structure: Circulant Rank Deficit and Coset Compression}
-To provide deeper structural insight into why the 16-divisibility conditions hold for the generators and their intersections, we establish two properties of the complete orbits.
-
-\begin{theorem}[Exact Weight and Spectral Value of Quadratic Orbits via Transfer Matrix]
-\label{thm:exact_quadratic_weight}
-Let $t = 2^s$ with $s \ge 2$, and let $O_d(y) = \sum_{i=0}^{t-1} y_i y_{i+d}$ be a complete quadratic orbit with $1 \le d < t/2$. Let $a = v_2(d)$. Then the Walsh coefficient at zero and the Hamming weight of $O_d$ are given exactly by:
-\begin{equation}
-W_{O_d}(0) = + 2^{t/2 + 2^a}, \qquad \wt(O_d) = 2^{t-1} - 2^{t/2 + 2^a - 1}.
-\end{equation}
-In particular, the 2-adic valuation of the Hamming weight satisfies:
-\begin{equation}
-v_2(\wt(O_d)) = \frac{t}{2} + 2^a - 1 \ge \frac{t}{2}.
-\end{equation}
-\end{theorem}
-
-\begin{proof}
-The coordinate shift graph on indices $\{0, 1, \dots, t-1\}$ defined by edges $(i, (i+d) \bmod t)$ partitions into $c = \gcd(t, d) = 2^a$ disjoint cycles of length $L = t/c = 2^{s-a}$. Since $1 \le d < t/2$, we have $L \ge 4$ and $L$ is even.
-
-Along any single cycle of length $L$, the exponential sum of the periodic 2-chain is given by the trace of the $L$-th power of the $2 \times 2$ transfer matrix:
-\begin{equation}
-\sum_{z \in \F^L} (-1)^{\sum_{i=0}^{L-1} z_i z_{i+1}} = \operatorname{tr}(A^L), \quad \text{where } A = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}.
-\end{equation}
-Since $A^2 = 2 I_2$ and $L$ is even, $A^L = (A^2)^{L/2} = (2 I_2)^{L/2} = 2^{L/2} I_2$. Therefore, the trace along a single cycle is:
-\begin{equation}
-\operatorname{tr}(A^L) = \operatorname{tr}(2^{L/2} I_2) = 2 \cdot 2^{L/2} = 2^{L/2 + 1}.
-\end{equation}
-Because the $c = 2^a$ cycles involve disjoint sets of variables, the complete exponential sum factors over the cycles:
-\begin{equation}
-W_{O_d}(0) = \prod_{j=1}^c \operatorname{tr}(A^L) = \left( 2^{L/2 + 1} \right)^c = 2^{c(L/2 + 1)} = 2^{t/2 + c} = 2^{t/2 + 2^a}.
-\end{equation}
-This explicitly fixes the positive sign. The Hamming weight is then:
-\begin{equation}
-\wt(O_d) = \frac{2^t - W_{O_d}(0)}{2} = 2^{t-1} - 2^{t/2 + 2^a - 1} = 2^{t/2 + 2^a - 1} \left( 2^{t/2 - 2^a} - 1 \right).
-\end{equation}
-Since $t/2 - 2^a \ge 1$, the factor $2^{t/2 - 2^a} - 1$ is odd, establishing that $v_2(\wt(O_d)) = t/2 + 2^a - 1 \ge t/2$.
-\end{proof}
-
-\begin{theorem}[Coset Degree Compression]
-\label{thm:coset_compression}
-Let $g \in \mathcal{F}_t$ with $t = 2^s$. For any coset transversal vector $w \in \F^{t/2}$, define the coset restriction $g_w: \F^{t/2} \to \F$ by $g_w(y) = g(y \oplus w, y)$. Then $\deg(g_w) \le 2$.
-\end{theorem}
-
-\begin{proof}
-Let $O_{a,b}(x) = \sum_{i=0}^{t-1} x_i x_{i+a} x_{i+b}$ be any complete cubic orbit. Under the affine substitution $x = (y \oplus w, y)$ with a fixed parameter $w \in \F^{t/2}$, the ANF coefficient of any cubic monomial $y_i y_j y_k$ (for distinct indices) is identically equal to its coefficient in the unshifted restriction $x = (y, y) \in V_{t/2}$, because the constant vector $w$ can only contribute to terms of lower degree in $y$. By Lemma~\ref{lem:antipodal_vanishing}, the restriction $O_{a,b}|_{V_{t/2}}$ vanishes identically, so all degree-3 coefficients vanish. Furthermore, coordinate identifications $y_i^2 = y_i$ resulting from index collisions modulo $t/2$ can only reduce monomial degree. Consequently, no degree-3 terms survive, establishing that $\deg(g_w) \le 2$ for all $w \in \F^{t/2}$. Structurally, this ensures that the restriction of $g$ to each affine coset of the antipodal subspace behaves as a quadratic form, providing algebraic motivation for the spectral divisibility.
-\end{proof}
-
-\subsection{Computational Protocol and Reproducibility}
-To ensure complete scientific transparency and independent reproducibility:
-\begin{enumerate}
-    \item \textbf{Orbit Enumeration:} Orbits under $C_{16}$ are enumerated by minimal lexicographic index representatives. Out of $\binom{16}{2} = 120$ quadratic pairs, exactly 7 form full orbits of length 16 (the antipodal distance $d = 8$ forms an orbit of length 8). Out of $\binom{16}{3} = 560$ cubic triplets, exactly 35 form full orbits of length 16 (none have shorter periods).
-    \item \textbf{Matrix Construction:} The $42$ generator orbits are evaluated over the $4080$ orbit representatives of $\V_{16} \setminus V_8$, generating a binary matrix $G \in \F^{42 \times 4080}$.
-    \item \textbf{Exact Subset Verification:} Rather than computing weights of all $2^{42}$ codewords, Theorem~\ref{thm:ward_expansion} establishes that checking the 124,313 intersection weights is mathematically equivalent to checking all $2^{42}$ codewords.
-    \item \textbf{Execution:} The verification protocol is implemented in a standalone, self-contained Python script (\texttt{verificador\_independente.py}) requiring zero external libraries. On a standard CPU, the complete suite executes in 1.1 seconds.
-\end{enumerate}
-
-%======================================================================
-\section{The Main Theorem}
-\label{sec:main_theorem}
-%======================================================================
-
-We now assemble the complete result.
-
-\begin{theorem}[Main Theorem]
-\label{thm:main}
-Let $n$ be an even positive integer such that $n \not\equiv 0 \pmod{32}$. Then there exists no cubic homogeneous rotation-symmetric bent Boolean function in $n$ variables.
-\end{theorem}
-
-\begin{proof}
-Let $n = 2^s \cdot m$, where $m$ is odd. Since $n$ is even and $n \not\equiv 0 \pmod{32}$, the 2-adic valuation satisfies $v_2(n) = s \in \{1, 2, 3, 4\}$. Set $t = 2^s \in \{2, 4, 8, 16\}$.
-
-Suppose there exists a cubic homogeneous RSBF $f$ in $n$ variables that is bent. Let $T = \sigma^t$. The order of $T$ is $m$, which is odd. By Theorem~\ref{thm:bent_restriction}, the restricted function $g = f|_U$ to the fixed subspace $U = \mathrm{Fix}(\sigma^t) \cong \V_t$ is bent on $\V_t$.
-
-By Proposition~\ref{prop:complete_orbit_filter}, all short orbits of length $l < t$ cancel modulo 2, and by Lemma~\ref{lem:cancellation_qt2}, the antipodal quadratic orbit $q_{t/2}$ has coefficient 0. Furthermore, because $f$ is homogeneous of degree 3, no constant term can arise upon restriction, so the restricted function $g = f|_U$ belongs strictly to the linear space $\mathcal{F}_t = \mathrm{span}\{O^{(2)}_d, O^{(3)}_{a,b}, L\}$.
-
-However:
-\begin{itemize}
-    \item If $s = 1$ ($t = 2$), Proposition~\ref{prop:t2} shows that $\mathcal{F}_2$ contains no bent functions.
-    \item If $s = 2$ ($t = 4$), Proposition~\ref{prop:t4} shows that $\mathcal{F}_4$ contains no bent functions.
-    \item If $s = 3$ ($t = 8$), Proposition~\ref{prop:t8} shows that $\mathcal{F}_8$ contains no bent functions.
-    \item If $s = 4$ ($t = 16$), Theorem~\ref{thm:t16_obstruction} shows that $\mathcal{F}_{16}$ contains no bent functions.
-\end{itemize}
-This contradiction establishes that no such bent function $f$ exists.
-\end{proof}
-
-%======================================================================
-\section{Exhaustive Computational Exclusions in Low Dimensions}
-\label{sec:low_dim}
-%======================================================================
-
-To complement our analytical reduction theorems and provide independent verification, we performed exhaustive end-to-end searches across all low-dimensional candidate spaces.
-
-\begin{proposition}[Low-Dimensional Cubic Homogeneous RSBFs ($n \le 12$)]
-\label{prop:cubic_low_dim}
-There exist no cubic homogeneous rotation-symmetric bent Boolean functions in $n \in \{4, 6, 8, 10, 12\}$ variables:
-\begin{itemize}
-    \item $n = 4$: 1 orbit, 2 functions $\to$ 0 bent.
-    \item $n = 6$: 4 orbits, $2^4 = 16$ functions evaluated via 64-point FWHT $\to$ 0 bent ($< 0.01$ s).
-    \item $n = 8$: 7 orbits, $2^7 = 128$ functions evaluated via 256-point FWHT $\to$ 0 bent ($< 0.05$ s).
-    \item $n = 10$: 12 orbits, $2^{12} = 4096$ functions evaluated via 1024-point FWHT $\to$ 0 bent ($< 0.3$ s).
-    \item $n = 12$: 19 orbits, spanning $2^{19} = 524{,}288$ functions. Testing the necessary zero-frequency condition $|W_f(0)| = 2^{12/2} = 64$ ($\wt(f) \in \{2016, 2080\}$) selects exactly $32{,}878$ candidates; verifying directional derivative balance and full 4096-point FWHT confirms that exactly 0 functions are bent ($13.1$ s).
-\end{itemize}
-\end{proposition}
-
-\begin{theorem}[Exclusion of Quartic HRSBFs for $n = 8$ and $n = 10$]
-\label{thm:quartic}
-There exist no quartic homogeneous rotation-symmetric bent Boolean functions in 8 or 10 variables:
-\begin{enumerate}
-    \item \textbf{Case $n = 8, d = 4$:} There are 10 rotation-symmetric orbits of degree 4, generating $2^{10} = 1024$ candidate functions. Exhaustive evaluation of the full 256-point fast Walsh-Hadamard transform (FWHT) across all 1024 functions confirms that exactly 0 functions are bent (execution time $< 0.3$ seconds).
-    \item \textbf{Case $n = 10, d = 4$:} There are 22 rotation-symmetric orbits of degree 4, spanning $2^{22} = 4{,}194{,}304$ candidate functions. Under the cyclic group $C_{10}$, the space $\V_{10}$ partitions into 108 orbits. Using an incremental Gray-code traversal over the 108-dimensional orbit basis:
-    \begin{itemize}
-        \item Testing the necessary spectral condition $|W_f(0)| = 2^{10/2} = 32$ ($\wt(f) \in \{496, 528\}$) filters the space down to exactly $78{,}116$ candidate functions.
-        \item Testing the balance of the directional derivatives $D_e f$ along the standard unit directions $e \in \{e_0, \dots, e_9\}$ further prunes the candidates to exactly $1{,}706$ surviving functions.
-        \item Computing the full 1024-point Walsh-Hadamard transform on all $1{,}706$ survivors reveals that exactly 0 functions are bent (total execution time $< 50$ seconds).
-    \end{itemize}
-\end{enumerate}
-\end{theorem}
-All verification routines are implemented in \texttt{verificador\_independente.py} and execute deterministically in seconds.
-
-%======================================================================
-\section{Broader Impacts and Cross-Disciplinary Applications}
-\label{sec:applications}
-%======================================================================
-
-Beyond the resolution of the St\u{a}nic\u{a}--Maitra conjecture for $n \not\equiv 0 \pmod{32}$, the mathematical framework developed in this work---uniting odd-order symplectic reductions, projective orbit filtering, and Ward's divisible codes---has immediate ramifications across several allied disciplines:
-
-\subsection{Cryptographic S-Box Design and Stream Cipher Security}
-In symmetric-key cryptography, bent functions, almost bent (AB) functions, and almost perfect nonlinear (APN) functions serve as foundational components for substitution boxes (S-boxes) and nonlinear filter generators in stream ciphers (e.g., Grain, Trivium, and SNOW) and lightweight block ciphers (e.g., LowMC, ASCON, and Clyde). A persistent design objective has been to utilize rotation-symmetric functions due to their minimal hardware implementation footprint and pipeline efficiency.
-Our Main Theorem proves definitively that designers cannot exploit cubic homogeneous rotation-symmetric functions as bent components, thereby establishing sharp architectural bounds for cryptographic primitives. Furthermore, the Odd-Order Quadratic Reduction Lemma (Lemma~\ref{lem:quadratic_reduction}) provides a universal tool to analyze the differential uniformity and algebraic immunity of vectorial RSBFs under sub-register decimation, allowing cryptanalysts to evaluate security against higher-order differential attacks without full-scale exponential sum computation.
-
-\subsection{Quantum Error-Correcting Codes and Transversal Quantum Gates}
-In fault-tolerant quantum computing, the implementation of transversal non-Clifford gates (specifically the $\pi/8$ phase gate $T = \mathrm{diag}(1, e^{i\pi/4})$) is essential for achieving universal quantum computation without prohibitive magic-state distillation overhead. By the Eastin-Knill theorem, transversal gates cannot achieve universality; however, Calderbank-Shor-Steane (CSS) quantum codes constructed from doubly-even, triply-even, or higher $2^k$-divisible binary linear codes enable transversal implementations of high-level Clifford hierarchy gates.
-Our construction in Theorem~\ref{thm:t16_obstruction} reveals that the 43 generators over the $4{,}080$ cyclic projective orbits in 16 variables span an explicit binary linear code that is strictly $16$-divisible ($4$-even). This code exhibits a large cyclic automorphism group and strict symplectic radical symmetries, offering a concrete blueprint for constructing new symmetric quantum CSS codes and quantum low-density parity-check (qLDPC) codes with natural transversal $T$-gates.
-
-\subsection{Pseudorandom Sequences and Spread-Spectrum Communications}
-Binary sequences with ideal periodic and aperiodic autocorrelation properties are critical in radar signal design, direct-sequence spread-spectrum communications (CDMA), and synchronization preambles in 5G/6G standards. Boolean functions invariant under cyclic group actions correspond directly to cyclically permuted sequences whose out-of-phase correlation values are governed by the Walsh-Hadamard transform.
-Our Fourier-Walsh restriction principle provides an algebraic mechanism for decomposing character sums of cyclic sequences into fixed-point sub-sequences and uncoupled symplectic radical spaces. This enables new lower bounds on the cross-correlation of decimation sequences and offers an analytic filter for constructing sequence families with optimal peak-to-average power ratios (PAPR).
-
-\subsection{Discrete Harmonic Analysis and Additive Combinatorics}
-From the perspective of harmonic analysis on finite abelian groups, Lemma~\ref{lem:quadratic_reduction} constitutes a discrete restriction theorem for quadratic exponential sums: whenever a quadratic form is invariant under a group of odd-order automorphisms, its character sum factorizes cleanly across the Reynolds projection. In additive combinatorics, this principle provides a powerful method for computing the Gowers uniformity norms ($U^2$ and $U^3$) of sets with cyclic and affine symmetries, establishing that quadratic pseudorandomness on the global space $\F^n$ is entirely controlled by its restriction to the fixed-point subspace.
-
-%======================================================================
-\section{Conclusion and Open Problems}
-\label{sec:conclusion}
-%======================================================================
-
-In this paper, we resolved the cubic St\u{a}nic\u{a}--Maitra conjecture for all even dimensions $n \not\equiv 0 \pmod{32}$. This result substantially expands beyond the previously known $n = 2p$ ($p$ prime) family of Cusick and Sanger~\cite{cusick2017}, providing uniform coverage for composite odd factors and power-of-two multiples $n \in \{2m, 4m, 8m, 16m\}$.
-
-Two natural open problems remain:
-\begin{enumerate}
-    \item \textbf{The Structural Boundary at $t = 32$ and Breakdown of Direct Divisibility:} While the odd-order reduction framework (Lemma~\ref{lem:quadratic_reduction} and Theorem~\ref{thm:bent_restriction}) holds universally for all even dimensions $n$, the spectral obstruction via direct weight divisibility cannot be extended to $t = 32$. Indeed, direct divisibility already fails at $t = 32$: there exist explicit counterexamples of functions in the complete-orbit space $\mathcal{F}_{32}$ whose weights violate the 2-adic valuation bound $v_2(\wt(g)) \ge 16$ required to obstruct bentness, and the associated code is not 32-divisible. Thus, $t = 16$ represents the exact structural boundary of the divisible codes technique. Resolving the cubic conjecture for $n \equiv 0 \pmod{32}$ is not merely a pending computational verification, but an open theoretical problem requiring new algebraic mechanisms beyond direct linear code divisibility.
-    \item \textbf{Degrees $d \ge 4$:} Extending the reduction framework to cubic or higher-degree derivatives requires non-quadratic exponential sum factorizations.
-\end{enumerate}
-
-%======================================================================
-\begin{thebibliography}{99}
-%======================================================================
-
-\bibitem{calderon2024}
-H.~Calder\'on-G\'omez, J.~Medina, and J.~Molina-Salazar,
-``Short $k$-rotation symmetric Boolean functions,''
-\emph{Discrete Applied Mathematics}, vol.~343, pp.~49--64, 2024.
-
-\bibitem{cusick2017}
-T.~W.~Cusick and E.~M.~Sanger,
-``Rotation symmetric bent Boolean functions for $n = 2p$,''
-arXiv preprint \href{https://arxiv.org/abs/1708.09313}{arXiv:1708.09313}, 2017.
-
-\bibitem{meier1989}
-W.~Meier and O.~Staffelbach,
-``Nonlinearity criteria for cryptographic functions,''
-in \emph{Proc. EUROCRYPT '89}, LNCS, vol.~434, pp.~549--562, Springer, 1989.
-
-\bibitem{meng2010}
-Q.~Meng, L.~S.~Chen, and F.-W.~Fu,
-``On homogeneous rotation symmetric bent functions,''
-\emph{Discrete Applied Mathematics}, vol.~158, no.~10, pp.~1111--1117, 2010.
-
-\bibitem{pieprzyk1999}
-J.~Pieprzyk and C.~X.~Qu,
-``Fast hashing and rotation-symmetric functions,''
-in \emph{Proc. Eurocrypt 1999}, LNCS, vol.~1592, pp.~95--105, Springer, 1999.
-
-\bibitem{rothaus1976}
-O.~S.~Rothaus,
-``On `bent' functions,''
-\emph{Journal of Combinatorial Theory, Series A}, vol.~20, no.~3, pp.~300--305, 1976.
-
-\bibitem{stanica2008}
-P.~St\u{a}nic\u{a} and S.~Maitra,
-``Rotation symmetric Boolean functions---count and cryptographic properties,''
-\emph{Discrete Applied Mathematics}, vol.~156, no.~10, pp.~1567--1580, 2008.
-
-\bibitem{sun2026}
-L.~Sun, Z.~Shi, J.~Liu, and F.-W.~Fu,
-``On the conjecture about the nonexistence of homogeneous rotation symmetric bent functions,''
-\emph{Designs, Codes and Cryptography}, vol.~94, no.~4, pp.~1023--1045, 2026.
-
-\bibitem{ward1981}
-H.~N.~Ward,
-``Divisible codes,''
-\emph{Archiv der Mathematik}, vol.~36, no.~1, pp.~485--494, 1981.
-
-\bibitem{ward1990}
-H.~N.~Ward,
-``Weight polarization and divisibility,''
-\emph{Discrete Mathematics}, vol.~83, no.~2--3, pp.~315--326, 1990.
-
-\bibitem{ward2001}
-H.~N.~Ward,
-``Divisible codes---a survey,''
-\emph{Serdica Mathematical Journal}, vol.~27, no.~4, pp.~263--278, 2001.
-
-\bibitem{zhang2013}
-G.~Zhang and X.~Gao,
-``On the conjecture about the nonexistence of rotation symmetric bent functions,''
-arXiv preprint \href{https://arxiv.org/abs/1303.2282}{arXiv:1303.2282}, 2013.
-
+\section{Reproducibility and limits}
+The accompanying \texttt{verificador\_integrado.py} uses Python 3.10 or
+later and only its standard library. It performs exact integer arithmetic,
+with explicit exceptions on failed conditions; its checks remain active
+under Python optimization. Run \texttt{python verificador\_integrado.py}.
+The equivalent supplied notebook can run in Colab on a CPU. The supplied
+local logs are not represented as Colab or GPU execution logs.
+
+The program constructs both full truth tables of length 65536 and a second
+representation evaluated directly on 4080 input-orbit representatives.
+For every tested intersection it checks that the full weight is sixteen
+times the compressed weight, then tests divisibility. It checks dimension
+43 and antipodal vanishing, and records intersection counts and hashes.
+These are two representations inside one program, not two independently
+maintained implementations or a formal proof certificate.
+The general algebraic lemmas are proved in the text; finite folding
+tests for odd multipliers 1, 3 and 5 are supplemental controls only.
+
+Other stages provide a nonhomogeneous cubic bent positive control in
+dimension twelve, all 1024 homogeneous quartic RS functions in dimension
+eight (including zero), and spectral, avalanche and algebraic-immunity
+checks on the documented sixteen-variable example. These checks are
+supplementary; they do not establish new bibliographic records or a global
+nonlinearity optimum. The program also checks complete quadratic fibers
+in dimension 32, retaining linear terms as described in the audit notes.
+
+For $t=32$, the analogous space has 155 cubic, 15 quadratic and one linear generator. Consider
+\[H(x)=\sum_{i=0}^{31}x_i x_{i+1}x_{i+2}\quad\text{in }\F,\]
+with indices modulo 32. Define a $4\times4$ integer matrix indexed by pairs $(a,b)\in\F^2$ by $M_{(a,b),(b,c)}=(-1)^{abc}$ and all incompatible-transition entries zero. Closed walks give $W_H(0)=\operatorname{tr}(M^{32})=85032960$, so
+\[\wt(H)=2104967168,\qquad \wt(H)/32=65780224\equiv512\pmod{2048}.\]
+This refutes the proposed universal divisibility by 2048 of the compressed code weights in dimension 32. Such divisibility would have implied $2^{16}\mid\wt(g)$ and excluded the bent values $W_g(0)=\pm2^{16}$. The example does not refute the bent conjecture and does not preclude refined uses of divisible codes or other Walsh coefficients.
+
+For degrees at least four, derivatives need not be quadratic, so Lemma~\ref{lem:reduction} no longer provides a general restriction theorem by the same argument. No construction of quantum codes, bounds on algebraic immunity or vectorial differential uniformity, or applications to periodic sequence correlation are established here. Those would require separate statements and proofs.
+
+\begin{thebibliography}{10}
+\bibitem{stanica} P.~St\u{a}nic\u{a} and S.~Maitra, Rotation symmetric Boolean functions---count and cryptographic properties, \emph{Discrete Applied Mathematics} 156(10) (2008), 1567--1580. \href{https://doi.org/10.1016/j.dam.2007.04.029}{doi:10.1016/j.dam.2007.04.029}.
+\bibitem{meng} Q.~Meng, L.~Chen and F.-W.~Fu, On homogeneous rotation symmetric bent functions, \emph{Discrete Applied Mathematics} 158(10) (2010), 1111--1117. \href{https://doi.org/10.1016/j.dam.2010.02.009}{doi:10.1016/j.dam.2010.02.009}.
+\bibitem{zhang} X.~Zhang and G.~Gao, On the conjecture about the nonexistence of rotation symmetric bent functions (2013). \href{https://arxiv.org/abs/1303.2282}{arXiv:1303.2282}.
+\bibitem{cusick} T.~W.~Cusick and E.~M.~Sanger, Rotation symmetric bent Boolean functions for $n=2p$ (2017). \href{https://arxiv.org/abs/1708.09313}{arXiv:1708.09313}.
+\bibitem{sun} L.~Sun, Z.~Shi, J.~Liu and F.-W.~Fu, On the conjecture about the nonexistence of homogeneous rotation symmetric bent functions, \emph{Designs, Codes and Cryptography} 94, article 93 (2026). \href{https://doi.org/10.1007/s10623-026-01848-4}{doi:10.1007/s10623-026-01848-4}.
+\bibitem{rothaus} O.~S.~Rothaus, On ``bent'' functions, \emph{Journal of Combinatorial Theory, Series A} 20(3) (1976), 300--305. \href{https://doi.org/10.1016/0097-3165(76)90024-8}{doi:10.1016/0097-3165(76)90024-8}.
+\bibitem{ward} H.~N.~Ward, Weight polarization and divisibility, \emph{Discrete Mathematics} 83(2--3) (1990), 315--326. \href{https://doi.org/10.1016/0012-365X(90)90015-A}{doi:10.1016/0012-365X(90)90015-A}.
+\bibitem{sutang} S.~Su and X.~Tang, On the Systematic Constructions of Rotation Symmetric Bent Functions with Any Possible Algebraic Degrees, IACR ePrint 2015/451. \href{https://eprint.iacr.org/2015/451.pdf}{Preprint consulted}.
 \end{thebibliography}
-
 \end{document}
