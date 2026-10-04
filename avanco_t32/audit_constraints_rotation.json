@@ -1,0 +1,180 @@
+{
+  "status": "passed",
+  "affine_action_directions_exhausted": 65536,
+  "nonzero_necklace_representatives": 4115,
+  "covered_nonzero_directions": 65535,
+  "original_generator_rotation_checks": 4960,
+  "full_65536_point_quadratic_truth_tables": 24,
+  "cases": [
+    {
+      "active_orbits": 0,
+      "z": 1,
+      "radical_dimension": 16,
+      "sign_sum": 65536,
+      "balanced": false
+    },
+    {
+      "active_orbits": 1,
+      "z": 1,
+      "radical_dimension": 12,
+      "sign_sum": 16384,
+      "balanced": false
+    },
+    {
+      "active_orbits": 1,
+      "z": 65535,
+      "radical_dimension": 4,
+      "sign_sum": 0,
+      "balanced": true
+    },
+    {
+      "active_orbits": 1,
+      "z": 60678,
+      "radical_dimension": 4,
+      "sign_sum": 0,
+      "balanced": true
+    },
+    {
+      "active_orbits": 1,
+      "z": 53295,
+      "radical_dimension": 2,
+      "sign_sum": 512,
+      "balanced": false
+    },
+    {
+      "active_orbits": 1,
+      "z": 64677,
+      "radical_dimension": 4,
+      "sign_sum": 0,
+      "balanced": true
+    },
+    {
+      "active_orbits": 2,
+      "z": 23285,
+      "radical_dimension": 6,
+      "sign_sum": 0,
+      "balanced": true
+    },
+    {
+      "active_orbits": 2,
+      "z": 56522,
+      "radical_dimension": 2,
+      "sign_sum": -512,
+      "balanced": false
+    },
+    {
+      "active_orbits": 2,
+      "z": 15132,
+      "radical_dimension": 2,
+      "sign_sum": 0,
+      "balanced": true
+    },
+    {
+      "active_orbits": 3,
+      "z": 33284,
+      "radical_dimension": 4,
+      "sign_sum": 0,
+      "balanced": true
+    },
+    {
+      "active_orbits": 3,
+      "z": 6220,
+      "radical_dimension": 2,
+      "sign_sum": 512,
+      "balanced": false
+    },
+    {
+      "active_orbits": 3,
+      "z": 40765,
+      "radical_dimension": 8,
+      "sign_sum": 0,
+      "balanced": true
+    },
+    {
+      "active_orbits": 5,
+      "z": 21214,
+      "radical_dimension": 2,
+      "sign_sum": 0,
+      "balanced": true
+    },
+    {
+      "active_orbits": 5,
+      "z": 34256,
+      "radical_dimension": 2,
+      "sign_sum": 512,
+      "balanced": false
+    },
+    {
+      "active_orbits": 5,
+      "z": 16024,
+      "radical_dimension": 2,
+      "sign_sum": 0,
+      "balanced": true
+    },
+    {
+      "active_orbits": 12,
+      "z": 65452,
+      "radical_dimension": 2,
+      "sign_sum": -512,
+      "balanced": false
+    },
+    {
+      "active_orbits": 12,
+      "z": 57124,
+      "radical_dimension": 4,
+      "sign_sum": 0,
+      "balanced": true
+    },
+    {
+      "active_orbits": 12,
+      "z": 28677,
+      "radical_dimension": 4,
+      "sign_sum": 0,
+      "balanced": true
+    },
+    {
+      "active_orbits": 40,
+      "z": 38041,
+      "radical_dimension": 2,
+      "sign_sum": 0,
+      "balanced": true
+    },
+    {
+      "active_orbits": 40,
+      "z": 21682,
+      "radical_dimension": 2,
+      "sign_sum": 0,
+      "balanced": true
+    },
+    {
+      "active_orbits": 40,
+      "z": 44288,
+      "radical_dimension": 2,
+      "sign_sum": 0,
+      "balanced": true
+    },
+    {
+      "active_orbits": 80,
+      "z": 47304,
+      "radical_dimension": 2,
+      "sign_sum": 512,
+      "balanced": false
+    },
+    {
+      "active_orbits": 80,
+      "z": 55172,
+      "radical_dimension": 2,
+      "sign_sum": 0,
+      "balanced": true
+    },
+    {
+      "active_orbits": 80,
+      "z": 42268,
+      "radical_dimension": 4,
+      "sign_sum": 0,
+      "balanced": true
+    }
+  ],
+  "seconds": 0.852,
+  "scope": "Algebraic implementation controls; no exclusion of a 32-variable family asserted."
+}

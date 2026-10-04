@@ -30,6 +30,8 @@ Audita o certificado de 7 fibras ($0=1$ sobre $\mathbb{F}_2$, excluindo $2^{120}
 | **[`HRSBF_Auditoria_Colab.ipynb`](HRSBF_Auditoria_Colab.ipynb)** | Notebook Colab com auditoria completa do caso $n \not\equiv 0 \pmod{32}$ e fronteiras. |
 | **[`avanco_t32/Certificados_T32_Colab.ipynb`](avanco_t32/Certificados_T32_Colab.ipynb)** | Notebook Colab dedicado aos certificados de obstrução em $t=32$. |
 | **[`avanco_t32/`](avanco_t32/)** | Scripts e dados dos certificados em 32 variáveis (`verificar_7_fibras.py`, `verificar_classes.py`, etc.). |
+| **[`avanco_t32/verificar_desacoplamento_paridade.py`](avanco_t32/verificar_desacoplamento_paridade.py)** | Prova do Lema de Desacoplamento por Paridade em $n=32$ ($2^{35}-1$ funções excluídas analiticamente). |
+| **[`avanco_t32/audit_constraints_rotation.py`](avanco_t32/audit_constraints_rotation.py)** | Controles algébricos da ação afim de rotação (65.536 direções, 4.115 colares, tabelas completas). |
 | **[`master_suite_fronteiras.py`](master_suite_fronteiras.py)** | Master Suite Turnkey em Python Puro: audita todas as 4 fronteiras em < 5 segundos. |
 | **[`verificador_standalone.py`](verificador_standalone.py)** | Verificador em 100% Python padrão (zero dependências externas), executa as 136.697 checagens em < 1 s. |
 | **[`verificador_hrsbf.py`](verificador_hrsbf.py)** | Verificador acelerado por vetorização NumPy (inclui busca exaustiva por Gray-code e FWHT). |

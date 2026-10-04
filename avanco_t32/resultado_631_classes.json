@@ -35,6 +35,6 @@
   ],
   "verified_equations": 30038,
   "family_dimension_per_quotient": 120,
-  "seconds": 20.859,
+  "seconds": 16.232,
   "scope": "Quotient patterns of weight <=2 only. Sparse quotient does NOT mean sparse original function. Remaining is not an existence claim."
 }
