@@ -5,7 +5,7 @@ Este repositório contém os artefatos de **auditoria matemática e computaciona
 
 A divisibilidade é demonstrada no espaço restrito de órbitas completas, não para todas as funções RS de grau até três. Em n=16 há oito órbitas quadráticas, mas a antipodal não pertence a esse espaço. O caso geral n=32 e a originalidade perante a literatura não estão estabelecidos.
 
-Veja [REVISAO_CRITICA.md](REVISAO_CRITICA.md) para a resposta à crítica e o estado da comparação bibliográfica. Manuscrito e suplemento são os documentos de referência desta revisão; arquivos históricos não ampliam automaticamente seu alcance.
+Veja [REVISAO_CRITICA.md](REVISAO_CRITICA.md) para a resposta à crítica e [COMPARACAO_SUN_2026.md](COMPARACAO_SUN_2026.md) para a comparação concluída com o texto integral de Sun–Shi–Liu–Fu. O Corolário 2 daquele artigo já cobre n=2p^a; o Teorema 6 tem um limite que depende do suporte. A originalidade em toda a literatura não é inferida dessa comparação. Manuscrito e suplemento são os documentos de referência desta revisão; arquivos históricos não ampliam automaticamente seu alcance.
 
 ---
 
