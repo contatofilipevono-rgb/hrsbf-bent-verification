@@ -5,7 +5,7 @@ Este repositório contém os artefatos de **auditoria matemática e computaciona
 
 A divisibilidade é demonstrada no espaço restrito de órbitas completas, não para todas as funções RS de grau até três. Em n=16 há oito órbitas quadráticas, mas a antipodal não pertence a esse espaço. O caso geral n=32 e a originalidade perante a literatura não estão estabelecidos.
 
-Veja [REVISAO_CRITICA.md](REVISAO_CRITICA.md) para a resposta à crítica e [COMPARACAO_SUN_2026.md](COMPARACAO_SUN_2026.md) para a comparação concluída com o texto integral de Sun–Shi–Liu–Fu. O Corolário 2 daquele artigo já cobre n=2p^a; o Teorema 6 tem um limite que depende do suporte. A originalidade em toda a literatura não é inferida dessa comparação. Manuscrito e suplemento são os documentos de referência desta revisão; arquivos históricos não ampliam automaticamente seu alcance.
+Veja [REVISAO_CRITICA.md](REVISAO_CRITICA.md) para a resposta à crítica e o estado da comparação bibliográfica. Manuscrito e suplemento são os documentos de referência desta revisão; arquivos históricos não ampliam automaticamente seu alcance.
 
 ---
 
@@ -92,3 +92,10 @@ python master_suite_fronteiras.py
   - Obstrução antidiagonal: 6 formas lineares independentes excluem um subespaço de dimensão 149 ($2^{149}$ funções).
   - Quocientes de peso $\le 2$: 607 de 631 classes excluídas com 30.038 equações verificadas.
   - *Escopo delimitado:* Esses certificados em 32 variáveis são resultados parciais para as famílias examinadas; o caso geral $n \equiv 0 \pmod{32}$ permanece em aberto.
+
+
+## Auditoria independente de 4 de outubro de 2026
+
+Uma segunda implementação sem importar código dos verificadores existentes está em [`auditoria_2026_10_04/auditoria_independente.py`](auditoria_2026_10_04/auditoria_independente.py). Requer Python 3.10 ou superior e NumPy 2 (execução registrada: Python 3.12.14, NumPy 2.3.5). Execute `python auditoria_2026_10_04/auditoria_independente.py`. O programa grava um JSON no mesmo diretório.
+
+Passaram todas as 136.697 interseções sobre tabelas completas em n=16, 80.640 pares invariantes quadráticos em dimensão quatro e 15.680 imagens de órbitas cúbicas. Os controles finitos complementam as provas gerais. Veja [`AUDITORIA_FINAL.md`](AUDITORIA_FINAL.md) para alcance e pendências de submissão.
