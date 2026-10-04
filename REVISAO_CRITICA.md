@@ -27,7 +27,7 @@ Publicado em **13 de abril de 2026**.
 DOI: [10.1007/s10623-026-01848-4](https://doi.org/10.1007/s10623-026-01848-4).
 Fonte primária: [Springer](https://link.springer.com/article/10.1007/s10623-026-01848-4).
 
-Autores, título, data e identificação editorial confirmados. A referência de páginas 1023–1045 no suplemento foi substituída pelo artigo 93. **Atualização:** o PDF integral foi fornecido pelo usuário e sua leitura foi concluída. A comparação por teorema está em [COMPARACAO_SUN_2026.md](COMPARACAO_SUN_2026.md). O Corolário 2 já cobre todos os n=2p^a; o Teorema 6 tem um limite dependente de cada suporte. Não se pode apresentar fatores compostos como novidade por si só.
+Autores, título, data e identificação editorial confirmados. Após o fornecimento do PDF pelo usuário, o texto integral foi lido e comparado. Ver COMPARACAO_SUN_2026.md para as hipóteses dos teoremas e a sobreposição com nosso alcance.
 
 **Cusick–Sanger (2017):** [texto primário](https://arxiv.org/pdf/1708.09313), Teorema 3.8. Para n=2p, p primo ímpar, bent homogênea precisa ter grau par. Exclui grau três nesse alcance; não autoriza dizer que a técnica “falha” para todo fator composto.
 
