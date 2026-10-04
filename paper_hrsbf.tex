@@ -22,11 +22,13 @@ We give a computer-assisted proof that no homogeneous rotation-symmetric Boolean
 \section{Scope and relation to earlier work}
 St\u{a}nic\u{a} and Maitra~\cite{stanica} conjectured that homogeneous rotation-symmetric bent functions of degree greater than two do not exist. Earlier partial results include those of Meng, Chen and Fu~\cite{meng}, Zhang and Gao~\cite{zhang}, and Cusick and Sanger~\cite{cusick}. In particular, Cusick and Sanger (Theorem 3.8) exclude odd homogeneous degree in dimensions $n=2p$ for odd primes $p$. Their stated result does not itself address arbitrary odd composite factors.
 
+Meng, Chen and Fu~\cite{meng} exclude three classes: a single monomial orbit (Theorem 11), the elementary symmetric function containing every degree-$d$ monomial (Theorem 12, attributed to Savick\'y), and supports whose largest circular gap is at most $n/2$ (Theorem 13). The last gap includes the interval crossing the cyclic origin. These statements do not give an unconditional exclusion of every cubic support at $n=16$, nor the uniform transfer over all odd factors proved here. In dimension 16, fourteen of the thirty-five cubic orbits satisfy their gap criterion. Direct application of the three stated criteria in the original coordinates covers $2^{14}-1+21+1=16405$ nonzero functions, whereas the homogeneous cubic space contains $2^{35}-1$ nonzero functions. This count does not include affine-equivalent cases or other results in the literature and is not itself a priority claim.
+
 Sun, Shi, Liu and Fu~\cite{sun} give several support-dependent nonexistence criteria. Their Corollary 2 excludes homogeneous cubics when $n=2p_1^{a_1}\cdots p_r^{a_r}$ and
 \[
  p_i>2^{\,2p_1^{a_1}\cdots p_{i-1}^{a_{i-1}}}\quad (i\ge2).
 \]
-In particular, it already covers every $n=2p^a$ with $p$ an odd prime; an odd composite factor alone does not establish a new case. Their Theorem 6 fixes a finite SANF support $P$ and gives a support-dependent exponent $e_0(P)$ excluding its family for $2^{e_0(P)}\mid n$. This is not a uniform exclusion of all supports at a fixed dimension such as 32. Their Theorems 2--5 impose further orbit, distance, parity or support hypotheses. The present result is stated uniformly for all odd factors and all homogeneous cubic supports with $v_2(n)\in\{1,2,3,4\}$; its overlap with those results is acknowledged. This comparison with one article does not establish originality relative to the entire literature.
+In particular, it already covers every $n=2p^a$ with $p$ an odd prime; an odd composite factor alone does not establish a new case. Their Theorem 6 fixes a finite SANF support $P$ and gives a support-dependent exponent $e_0(P)$ excluding its family for $2^{e_0(P)}\mid n$. This is not a uniform exclusion of all supports at a fixed dimension such as 32. Their Theorems 2--5 impose further orbit, distance, parity or support hypotheses. The present result is stated uniformly for all odd factors and all homogeneous cubic supports with $v_2(n)\in\{1,2,3,4\}$; its overlap with those results is acknowledged. These comparisons delimit overlap with the consulted works; they do not certify priority throughout the literature.
 
 The computational proof below is independent of the derivative identity printed as Eq.~(21) in~\cite{sun}. For a full contiguous cubic orbit in even dimension, direct expansion retains a linear term: $D_{1^n}f=Q_2+L$. The supplementary comparison records a finite check of that identity. This observation about the printed formula is not claimed to refute all conclusions of that article.
 
@@ -175,6 +177,8 @@ For every positive even integer $n$ with $32\nmid n$, there is no homogeneous ro
 \begin{proof}
 Write $n=2^s m$ with $m$ odd. The assumptions give $s\in\{1,2,3,4\}$ and $t=2^s\in\{2,4,8,16\}$. A hypothetical such bent function is invariant under $T=\sigma^t$. Proposition~\ref{prop:restriction} makes its restriction bent on the even-dimensional fixed space $\F^t$. Lemma~\ref{lem:orbit} places that restriction in $\mathcal F_t$, contradicting the finite obstructions above.
 \end{proof}
+
+The contiguous single-orbit cubic used in the supplementary dimension-32 calculation is already non-bent by Meng--Chen--Fu, Theorem 11. Its Walsh value is used only to test the proposed divisibility extension, not as a new nonexistence result.\par
 
 \section{Hypotheses behind the supplementary fiber certificates}
 A fiber of an arbitrary bent function need not be balanced. The certificates in dimension 32 use the additional property that a homogeneous cubic rotation-symmetric function vanishes on the diagonal subspace $A=\{(u,u):u\in\F^{16}\}$.
