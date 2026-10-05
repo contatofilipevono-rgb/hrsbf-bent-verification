@@ -9,6 +9,7 @@ import time
 import zipfile
 from derivative_balance_cnf import generate, read_dimacs, fixed_family
 from audit_derivative_balance import audit, witness_valid
+from audit_derivative_native import run_native
 
 
 def sha(path):
@@ -33,6 +34,11 @@ def run(args):
     save()
     try:
         summary['derivative_model_audit']=audit()
+        solver=args.base/'cadical/build/cadical'
+        checker=args.base/'drat-trim/drat-trim'
+        if not solver.is_file() or not checker.is_file():
+            raise ValueError('Prepare CaDiCaL and drat-trim before the pilot.')
+        summary['native_controls']=run_native(output,solver,checker)
         save()
         if not source.with_suffix('.cnf').exists() or not source.with_suffix('.json').exists():
             print('Construindo fibras originais para o representante',hex(args.h),flush=True)
@@ -105,6 +111,9 @@ def run(args):
             summary['status']='SAT_NECESSARY_CONDITIONS_ONLY'
         else:
             summary['status']='UNKNOWN_OR_INTERRUPTED'
+    except subprocess.TimeoutExpired as error:
+        # A subprocess wall-time limit is not a mathematical conclusion.
+        summary.update(status='UNKNOWN_OR_INTERRUPTED',interruption=repr(error))
     except Exception as error:
         summary.update(status='ERROR',error=repr(error))
     finally:
