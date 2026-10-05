@@ -1,0 +1,84 @@
+{
+  "scope": "Previously remaining 24 fixed-H weight-three families, n=32; not the whole conjecture",
+  "new_excluded_families": 8,
+  "remaining_families": 16,
+  "representatives": [
+    {
+      "h": "0x100022000",
+      "status": "UNSAT_PROOF_VERIFIED_AND_MODEL_AUDITED",
+      "members": [
+        "0x100022000",
+        "0x100082000"
+      ],
+      "original_audit": {
+        "h": "0x100022000",
+        "fiber_orbits_verified": 4115,
+        "direct_anf_basis_evaluations_verified": 24462,
+        "xor_gates_verified": 220460,
+        "balance_clauses_verified": 4080,
+        "cnf_sha256": "69ed46e21c314e24af3752afb6a0b9fc0a812d8547bbd017ca77d7cc19b7fe63",
+        "proof_checked_by_this_script": false
+      },
+      "serialization_audit": {
+        "xor_equations_checked": 19451,
+        "affine_clauses_checked": 4072,
+        "status": "PASS"
+      },
+      "proof_sha256": "3da719809462c9ebbcc0a5a9bfdfc3ad1f786ceff16f21205d8f53dfcf032968",
+      "xcnf_sha256": "270a6a5b2a8dccd8ffb179dfd0d249ddccfd6feb482e02af3c11af8bf26dcb21"
+    },
+    {
+      "h": "0x228000",
+      "status": "UNSAT_PROOF_VERIFIED_AND_MODEL_AUDITED",
+      "members": [
+        "0x228000",
+        "0x288000"
+      ],
+      "original_audit": {
+        "h": "0x228000",
+        "fiber_orbits_verified": 4115,
+        "direct_anf_basis_evaluations_verified": 24462,
+        "xor_gates_verified": 221871,
+        "balance_clauses_verified": 4080,
+        "cnf_sha256": "ebd9f77701171e8a83f36d18df6eae6e902e9366ea819d786a9f44fc1df32adf",
+        "proof_checked_by_this_script": false
+      },
+      "serialization_audit": {
+        "xor_equations_checked": 19459,
+        "affine_clauses_checked": 4072,
+        "status": "PASS"
+      },
+      "proof_sha256": "1b5eac1ee02f6b723ad5e70f6659ee94db53e9e6366b4245b2b2c884e686d3c9",
+      "xcnf_sha256": "37e37f5ba21ad0851cc2c587ff98d6cf16ff6a52c02f0acda6d3c952dc7a59d8"
+    },
+    {
+      "h": "0x4000a000",
+      "status": "UNSAT_PROOF_VERIFIED_AND_MODEL_AUDITED",
+      "members": [
+        "0x4000a000",
+        "0x40202000",
+        "0x140008000",
+        "0x140200000"
+      ],
+      "original_audit": {
+        "h": "0x4000a000",
+        "fiber_orbits_verified": 4115,
+        "direct_anf_basis_evaluations_verified": 24462,
+        "xor_gates_verified": 227498,
+        "balance_clauses_verified": 4080,
+        "cnf_sha256": "5ad30778b4d2ef84e48ed11cadbb6f3bb3fa03b8e70b8d0abbcfe84e55da32cf",
+        "proof_checked_by_this_script": false
+      },
+      "serialization_audit": {
+        "xor_equations_checked": 19481,
+        "affine_clauses_checked": 4072,
+        "status": "PASS"
+      },
+      "proof_sha256": "c66f65221630edfb5dbb3f43db9b029ddf042223f7173264d6c22a05eeb29c18",
+      "xcnf_sha256": "b96d6cedf72ee43ef1a775934db6a11e8e42242d31daf541ebaf6c90327f8889"
+    }
+  ],
+  "checker_source_commit": "855f3d0ae45fe37c3ad29e4a8ef56e62e1b5e4ad",
+  "solver_release": "5.16.0",
+  "solver_release_archive_sha256": "9599eea560305291cb593ba9d6733605fae763a7f7a1fcdd63191ef8089e9979"
+}
