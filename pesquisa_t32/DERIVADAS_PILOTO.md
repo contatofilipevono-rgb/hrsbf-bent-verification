@@ -77,3 +77,20 @@ Comparar tempos e estatísticas de busca com o modelo original sob o mesmo
 orçamento. Um único piloto não demonstra melhora geral. Se persistir o
 timeout, testar outras direções e uma implementação que trate XOR diretamente;
 se dividir em subcasos, exigir cobertura de todos os ramos e provas individuais.
+
+## Resultado observado do primeiro piloto
+
+O representante `0xa2000` foi executado localmente, primeiro com o modelo
+reforçado e depois com o original, usando o mesmo CaDiCaL e limite de 120 s.
+Ambos terminaram com `UNKNOWN_OR_INTERRUPTED`. Nenhuma nova exclusão foi obtida.
+
+| Modelo | Variáveis | Cláusulas | Pico de memória | Resultado |
+|---|---:|---:|---:|---|
+| Original | 167.157 | 672.238 | 265,94 MB | Timeout |
+| Original + 23 derivadas | 254.261 | 977.566 | 477,62 MB | Timeout |
+
+Os controles nativos passaram: UNSAT em n=4 com prova DRAT verificada e SAT
+para a bent conhecida em n=6, com todas as testemunhas conferidas. O piloto
+em n=32 não demonstrou aceleração; os 24 casos permanecem em aberto. Antes
+de ampliar o lote, medir o efeito de poucas direções adicionais selecionadas
+pela estrutura dos radicais.
