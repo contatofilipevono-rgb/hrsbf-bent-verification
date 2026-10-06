@@ -1,0 +1,31 @@
+{
+  "n": 16,
+  "degree": 5,
+  "orbits": 273,
+  "sample_size": 4096,
+  "balanced_derivatives": 147,
+  "balanced_complementary_fibers": 1630,
+  "both_balanced": 69,
+  "examples_satisfying_both": [
+    {
+      "coefficients": "0x194ddb68db2e16d4019fb0a5b1f962b6b4ad8ef571f0de8e7cb31c7b69fa6d1c0083d",
+      "derivative_weight": 32768,
+      "fiber_weight": 128,
+      "unbalanced_fiber_witness": {
+        "z": 3,
+        "weight": 104
+      }
+    },
+    {
+      "coefficients": "0x1416d9f2f08d2de64c387cf19017774ece89d181c3af09ae659356a125d2adb1fdca0",
+      "derivative_weight": 32768,
+      "fiber_weight": 128,
+      "unbalanced_fiber_witness": {
+        "z": 1,
+        "weight": 124
+      }
+    }
+  ],
+  "both_balanced_excluded_by_other_fiber": 69,
+  "scope": "Deterministic sample; not exhaustive and not a proof of degree-five nonexistence."
+}
