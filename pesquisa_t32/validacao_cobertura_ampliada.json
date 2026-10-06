@@ -1,0 +1,58 @@
+{
+  "n": 16,
+  "degree": 5,
+  "cover": [
+    5,
+    3,
+    15,
+    1
+  ],
+  "fresh_dense_draws": 65536,
+  "fresh_seed": 2026100699,
+  "survivors": 5,
+  "examples": [
+    {
+      "coefficients": "0x14cd7c618fd24b34c6bf773089f9c3e771afe049dbc9f0baa509f34ba558ab61e9f96",
+      "weights": [
+        128,
+        128,
+        128,
+        128
+      ],
+      "independent_anf_exclusion_witness": {
+        "z": 7,
+        "weight": 136,
+        "required": 128
+      }
+    },
+    {
+      "coefficients": "0x5a553cb69b5fb63a75082ff3811e454fd5ba32cb3f2053ef8a1bffb83cc9393c0b3f",
+      "weights": [
+        128,
+        128,
+        128,
+        128
+      ],
+      "independent_anf_exclusion_witness": {
+        "z": 9,
+        "weight": 96,
+        "required": 128
+      }
+    },
+    {
+      "coefficients": "0x1e9980be5b2ddc403c090d89b136718b4b3f8a790fc8dbc724573df4e44b753ff56e8",
+      "weights": [
+        128,
+        128,
+        128,
+        128
+      ],
+      "independent_anf_exclusion_witness": {
+        "z": 7,
+        "weight": 136,
+        "required": 128
+      }
+    }
+  ],
+  "interpretation": "Finite holdout; neither zero nor positive survivors settles bentness."
+}
