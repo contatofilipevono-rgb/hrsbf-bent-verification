@@ -1,0 +1,36 @@
+{
+  "date_utc": "2026-10-06",
+  "script": "full_derivative_compressed_d5.py",
+  "status": "PASS",
+  "method": "Compressed reconstruction from 35 representative fibers, independently compared with direct 65536-point truth-table derivative evaluations for selected directions.",
+  "controls": [
+    {
+      "coefficient_mask": "0x602809",
+      "balanced_derivative_rotation_classes": 0,
+      "minimum_derivative_weight": 20960,
+      "maximum_derivative_weight": 34048,
+      "ordered_direction_weight_sha256": "4528d45b8f1cbad330c474566b6bf82397392db346672af639fa4ccd91257bf5",
+      "direct_truth_table_matches": {
+        "0x1": 20960,
+        "0x2": 20960,
+        "0x3": 22240,
+        "0x101": 27712,
+        "0xffff": 34048,
+        "0x1234": 28112,
+        "0x5555": 28928,
+        "0x8001": 22240,
+        "0xff": 30112,
+        "0xff00": 30112
+      }
+    },
+    {
+      "coefficient_mask": "0x1b93d5a542da0dd31aa5e9bb862362c378c3509303971333987cfca4fbf49afd3e679",
+      "balanced_derivative_rotation_classes": 144,
+      "unbalanced_derivative_rotation_classes": 3971,
+      "minimum_derivative_weight": 31936,
+      "maximum_derivative_weight": 33664,
+      "ordered_direction_weight_sha256": "bccff92e1b4784ee53773fe33b83dca79b3a938c881340d6cb9534ca07d7fd28"
+    }
+  ],
+  "interpretation": "Implementation validation and exact candidate audits. No universal quintic nonexistence conclusion follows from these two candidates."
+}
