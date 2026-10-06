@@ -1,0 +1,37 @@
+{
+  "date_utc": "2026-10-06",
+  "n": 16,
+  "degree": 5,
+  "coefficient_dimension": 273,
+  "diagonal_direction_rank_histogram": {
+    "112": 1,
+    "188": 2,
+    "235": 4,
+    "247": 8,
+    "263": 16,
+    "265": 32,
+    "266": 192
+  },
+  "rotation_class_count": 35,
+  "all_ones_rank": 112,
+  "all_ones_is_unique_minimum": true,
+  "all_ones_degree_block_ranks": {
+    "0": 0,
+    "1": 1,
+    "2": 6,
+    "3": 34,
+    "4": 84
+  },
+  "all_ones_cumulative_gains_high_to_low": [
+    {"degree": 4, "gain": 84, "total": 84},
+    {"degree": 3, "gain": 27, "total": 111},
+    {"degree": 2, "gain": 0, "total": 111},
+    {"degree": 1, "gain": 1, "total": 112},
+    {"degree": 0, "gain": 0, "total": 112}
+  ],
+  "ambient_rotation_symmetric_degree_le_4_complement_invariant_dimension": 125,
+  "ambient_same_with_zero_origin_dimension": 124,
+  "all_ones_derivative_image_codimension_in_zero_origin_ambient": 12,
+  "status": "PASS",
+  "scope": "Exact GF(2) ranks of linear derivative maps; balance is nonlinear and no quintic nonexistence is claimed."
+}
