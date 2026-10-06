@@ -1,0 +1,29 @@
+{
+  "status": "verified",
+  "eta_subspace_dimension": 18,
+  "eta_subspace_size": 262144,
+  "eta_basis_indices": [13,15,17,19,21,30,32,1,2,5,22,33,20,11,31,8,14,27],
+  "eta_basis_representatives": [
+    [0,2,4],[0,2,6],[0,2,8],[0,2,10],[0,2,12],[0,4,8],[0,4,10],
+    [0,1,3],[0,1,4],[0,1,7],[0,2,13],[0,4,11],[0,2,11],
+    [0,1,13],[0,4,9],[0,1,10],[0,2,5],[0,3,10]
+  ],
+  "kernel_eta_dimension": 120,
+  "preimage_dimension_in_F2_155": 138,
+  "excluded_original_coefficient_vectors": "348449143727040986586495598010130648530944",
+  "excluded_nonzero_homogeneous_cubic_functions": "348449143727040986586495598010130648530943",
+  "directions": ["0x101","0x505","0x303","0xf0f","0x3333","0x1111","0x5555"],
+  "first_witness_counts": {
+    "antidiagonal": 4096,
+    "0x101": 109064,
+    "0x505": 65568,
+    "0x303": 40788,
+    "0xf0f": 19236,
+    "0x3333": 19836,
+    "0x1111": 2580,
+    "0x5555": 976
+  },
+  "unresolved_quotients_in_subspace": 0,
+  "identity": "AC_f((r,r)) = 2^16 * sum_{z in rad(B_r)} (-1)^{L_z(r)}",
+  "scope": "Complete exclusion of this explicit 18-dimensional eta subspace only. No claim that it is maximal; the full eta space has dimension 35 and general n=32 remains open."
+}
