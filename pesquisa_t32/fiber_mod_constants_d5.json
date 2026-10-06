@@ -1,0 +1,33 @@
+{
+  "date_utc": "2026-10-06",
+  "n": 16,
+  "degree": 5,
+  "coefficient_dimension": 273,
+  "quotient_by_fiber_constants_dimension": 266,
+  "common_kernel_dimension": 7,
+  "nonzero_fibers": 255,
+  "rank_histogram_mod_constants": {
+    "11": 1,
+    "19": 2,
+    "31": 4,
+    "32": 4,
+    "38": 4,
+    "54": 8,
+    "56": 16,
+    "57": 16,
+    "60": 16,
+    "62": 40,
+    "66": 56,
+    "68": 8,
+    "70": 80
+  },
+  "rotation_class_count": 35,
+  "greedy_quotient_determining_fibers": {
+    "z_hex": ["0x1f","0x37","0x2f","0x3b","0x3d","0x57","0x5b","0x7","0xb","0x15"],
+    "rank_history": [70,125,154,182,210,236,251,256,261,266],
+    "final_rank": 266,
+    "determines_266_dimensional_quotient": true
+  },
+  "status": "PASS",
+  "interpretation": "Fiber balance predicates factor through the 266-dimensional quotient because complementing an entire fiber preserves balance."
+}
