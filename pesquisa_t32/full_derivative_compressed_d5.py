@@ -28,6 +28,7 @@ from pathlib import Path
 
 N=16
 H=8
+SIZE=1<<N
 
 
 def toggle(container,value):
@@ -61,6 +62,13 @@ def rotate(value,shift,bits):
 
 def canonical_rotation(value,bits):
     return min(rotate(value,shift,bits) for shift in range(bits))
+
+
+def rotation_period(value,bits):
+    for period in range(1,bits+1):
+        if rotate(value,period,bits)==value:
+            return period
+    raise AssertionError
 
 
 MONOMIAL_TRUTH=[]
@@ -209,6 +217,25 @@ def audit(mask):
         digest.update(struct.pack("<HI",direction,weight))
 
     balanced=sum(weight==32768 for weight in weights.values())
+    global_weight=sum(truth.bit_count() for truth in fibers)
+    w0=SIZE-2*global_weight
+    signed_nonzero_autocorrelation=0
+    autocorrelation_energy=0
+    weighted_balanced_directions=0
+    for direction,weight in weights.items():
+        multiplicity=rotation_period(direction,N)
+        autocorrelation=SIZE-2*weight
+        signed_nonzero_autocorrelation+=multiplicity*autocorrelation
+        autocorrelation_energy+=multiplicity*autocorrelation*autocorrelation
+        if weight==SIZE//2:
+            weighted_balanced_directions+=multiplicity
+
+    # Standard autocorrelation identities:
+    # sum_a AC_f(a)=W_f(0)^2 and
+    # sum_b W_f(b)^4=2^n sum_a AC_f(a)^2.
+    assert signed_nonzero_autocorrelation==w0*w0-SIZE
+    walsh_fourth_moment=SIZE*(SIZE*SIZE+autocorrelation_energy)
+
     first_failures=[
         {"direction":hex(direction),"weight":weight}
         for direction,weight in sorted(weights.items())
@@ -220,13 +247,22 @@ def audit(mask):
         "degree":5,
         "coefficient_mask":hex(mask),
         "active_orbits":mask.bit_count(),
+        "global_weight":global_weight,
+        "zero_frequency_walsh":w0,
         "nonzero_direction_rotation_classes":len(weights),
+        "nonzero_directions":SIZE-1,
         "balanced_derivative_rotation_classes":balanced,
+        "balanced_nonzero_directions":weighted_balanced_directions,
         "unbalanced_derivative_rotation_classes":len(weights)-balanced,
         "minimum_derivative_weight":min(weights.values()),
         "maximum_derivative_weight":max(weights.values()),
+        "signed_nonzero_autocorrelation":signed_nonzero_autocorrelation,
+        "autocorrelation_energy_nonzero":autocorrelation_energy,
+        "walsh_fourth_moment":walsh_fourth_moment,
+        "bent_fourth_moment_baseline":SIZE**3,
+        "walsh_fourth_moment_excess":SIZE*autocorrelation_energy,
         "all_nonzero_derivatives_balanced":balanced==len(weights),
-        "bent_by_derivative_characterization":balanced==len(weights),
+        "bent_by_derivative_characterization":autocorrelation_energy==0,
         "ordered_direction_weight_sha256":digest.hexdigest(),
         "derivative_weight_histogram":{
             str(weight):count for weight,count in sorted(histogram.items())
@@ -250,10 +286,14 @@ def main():
     Path(args.output).write_text(json.dumps(report,indent=2)+"\n")
     print(json.dumps({
         key:report[key] for key in (
+            "global_weight",
             "nonzero_direction_rotation_classes",
             "balanced_derivative_rotation_classes",
+            "balanced_nonzero_directions",
             "minimum_derivative_weight",
             "maximum_derivative_weight",
+            "autocorrelation_energy_nonzero",
+            "walsh_fourth_moment_excess",
             "bent_by_derivative_characterization",
             "ordered_direction_weight_sha256",
         )
