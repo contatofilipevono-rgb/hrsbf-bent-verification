@@ -1,0 +1,147 @@
+{
+  "python": "3.12.14",
+  "status": "finite controls; general argument is algebraic",
+  "power_of_two": [
+    {
+      "n": 2,
+      "basis": 1,
+      "mixed_controls": 32,
+      "status": "PASS"
+    },
+    {
+      "n": 4,
+      "basis": 3,
+      "mixed_controls": 32,
+      "status": "PASS"
+    },
+    {
+      "n": 8,
+      "basis": 11,
+      "mixed_controls": 32,
+      "status": "PASS"
+    },
+    {
+      "n": 16,
+      "basis": 43,
+      "mixed_controls": 32,
+      "status": "PASS"
+    },
+    {
+      "n": 32,
+      "basis": 171,
+      "mixed_controls": 32,
+      "status": "PASS"
+    },
+    {
+      "n": 64,
+      "basis": 683,
+      "mixed_controls": 32,
+      "status": "PASS"
+    }
+  ],
+  "odd_fold": [
+    {
+      "n": 6,
+      "t": 2,
+      "odd_multiplier": 3,
+      "cubic_orbits": 4,
+      "status": "PASS"
+    },
+    {
+      "n": 10,
+      "t": 2,
+      "odd_multiplier": 5,
+      "cubic_orbits": 12,
+      "status": "PASS"
+    },
+    {
+      "n": 12,
+      "t": 4,
+      "odd_multiplier": 3,
+      "cubic_orbits": 19,
+      "status": "PASS"
+    },
+    {
+      "n": 18,
+      "t": 2,
+      "odd_multiplier": 9,
+      "cubic_orbits": 46,
+      "status": "PASS"
+    },
+    {
+      "n": 20,
+      "t": 4,
+      "odd_multiplier": 5,
+      "cubic_orbits": 57,
+      "status": "PASS"
+    },
+    {
+      "n": 24,
+      "t": 8,
+      "odd_multiplier": 3,
+      "cubic_orbits": 85,
+      "status": "PASS"
+    },
+    {
+      "n": 30,
+      "t": 2,
+      "odd_multiplier": 15,
+      "cubic_orbits": 136,
+      "status": "PASS"
+    },
+    {
+      "n": 40,
+      "t": 8,
+      "odd_multiplier": 5,
+      "cubic_orbits": 247,
+      "status": "PASS"
+    },
+    {
+      "n": 48,
+      "t": 16,
+      "odd_multiplier": 3,
+      "cubic_orbits": 361,
+      "status": "PASS"
+    },
+    {
+      "n": 80,
+      "t": 16,
+      "odd_multiplier": 5,
+      "cubic_orbits": 1027,
+      "status": "PASS"
+    },
+    {
+      "n": 96,
+      "t": 32,
+      "odd_multiplier": 3,
+      "cubic_orbits": 1489,
+      "status": "PASS"
+    }
+  ],
+  "small_exhaustive": [
+    {
+      "n": 2,
+      "generators": 1,
+      "functions": 2,
+      "bent": 0,
+      "antipodal_diagonal": "parity",
+      "status": "PASS"
+    },
+    {
+      "n": 4,
+      "generators": 3,
+      "functions": 8,
+      "bent": 0,
+      "antipodal_diagonal": "parity",
+      "status": "PASS"
+    },
+    {
+      "n": 8,
+      "generators": 11,
+      "functions": 2048,
+      "bent": 0,
+      "antipodal_diagonal": "parity",
+      "status": "PASS"
+    }
+  ]
+}
