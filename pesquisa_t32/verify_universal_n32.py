@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import sys
 from audit_independent_cnf import REPS32, evaluate_generators
+from audit_all_ones_obstruction import orbits
 
 if not __debug__:raise RuntimeError('Run without -O.')
 
@@ -12,6 +13,38 @@ def coeff(values,support):
     for n in range(len(support)+1):
         for sub in itertools.combinations(support,n):row^=values(sum(1<<i for i in sub))
     return row
+
+def walsh(values):
+    a=[1-2*v for v in values];step=1
+    while step<len(a):
+        for start in range(0,len(a),step*2):
+            for i in range(start,start+step):
+                x,y=a[i],a[i+step];a[i]=x+y;a[i+step]=x-y
+        step*=2
+    return a
+
+def controls():
+    oo=orbits(8,3);assert len(oo)==7
+    tables=[[sum(all(x>>i&1 for i in s) for s in orb)%2 for x in range(256)] for _,orb in oo]
+    for c in range(128):
+        table=[sum(tables[j][x] for j in range(7) if c>>j&1)%2 for x in range(256)]
+        assert not all(abs(w)==16 for w in walsh(table))
+    table=[]
+    for x in range(256):
+        u=x&15;v=x>>4;z=u^v
+        g=sum(all(z>>i&1 for i in s) for s in itertools.combinations(range(4),3))%2
+        table.append(((u&v).bit_count()%2)^g)
+    assert all(abs(w)==16 for w in walsh(table))
+    # The positive control is RS and genuinely nonhomogeneous of degree three.
+    assert all(table[x]==table[((x<<1)&255)|(x>>7)] for x in range(256))
+    anf=list(table)
+    for i in range(8):
+        for x in range(256):
+            if x>>i&1:anf[x]^=anf[x^(1<<i)]
+    assert {x.bit_count() for x,v in enumerate(anf) if v}=={2,3}
+    return {'homogeneous_cubic_RS_n8_exhaustive_cases':128,
+            'nonhomogeneous_cubic_RS_bent_n8_positive_control':'PASS',
+            'positive_control_Walsh_magnitude':16}
 
 def verify(path):
     cert=json.loads(path.read_text())
@@ -48,6 +81,7 @@ def verify(path):
     return {'status':'PASS','all_155_basis_generators_verified':True,
             'zero_diagonal_and_cubic_fiber_coefficients_checked':cube_checks,
             'nonconstant_fiber_coefficients_in_derivative_equation_span':136,
+            'controls':controls(),
             'scope':'Universal homogeneous cubic RS n=32 finite certificate; mathematical necessity is proved in the accompanying text.'}
 
 if __name__=='__main__':
