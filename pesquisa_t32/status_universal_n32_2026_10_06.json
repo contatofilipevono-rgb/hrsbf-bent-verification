@@ -1,0 +1,12 @@
+{
+  "date_utc": "2026-10-06",
+  "mathematical_scope": "Homogeneous cubic rotation-symmetric functions in n=32",
+  "all_H_weights_covered": true,
+  "covered_original_coefficient_space_dimension": 155,
+  "proof": "PROVA_CUBICA_N32_2026_10_06.md",
+  "universal_certificate": "certificado_universal_n32.json",
+  "independent_audit": "auditoria_universal_n32.json",
+  "proof_assistant_formalized": false,
+  "bibliographic_originality_established": false,
+  "does_not_cover": "Nonhomogeneous cubics, degrees >3, other dimensions, or the full Stanica-Maitra conjecture."
+}
