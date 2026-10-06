@@ -63,3 +63,5 @@ python3 verify_universal_n32.py certificado_universal_n32.json auditoria_univers
 São necessários os scripts acima e os auditores `audit_all_ones_obstruction.py` e `audit_independent_cnf.py` na mesma pasta. Não execute com `python -O`. Não há dependências externas nem necessidade de GPU.
 
 As exclusões de pesos zero a cinco foram obtidas e auditadas antes desta simplificação e fornecem controles independentes. O certificado universal substitui a necessidade de enumerar os outros pesos H. Trata-se de prova matemática acompanhada de auditoria computacional, não de formalização em Lean/Coq nem de certificado SAT de todo o espaço.
+
+O verificador também testa exaustivamente as 128 funções cúbicas homogêneas RS em oito variáveis e confirma um controle positivo cúbico RS **não homogêneo**, cujo espectro tem magnitude 16. Isso verifica que a auditoria reconhece bentness quando a hipótese de homogeneidade é retirada.
