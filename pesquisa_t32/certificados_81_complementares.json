@@ -1,0 +1,8463 @@
+{
+  "scope": "The 81 weight-three H passing the all-ones cross-polar filter; prior exact fiber certificates",
+  "source_sha256": {
+    "triagem_t32_peso3.json": "01002d3fefd453a02548aa778e38530ff05a4ee09ecf9fcef605b27c391240e5",
+    "etapa_667_512.json": "e15e3170ed689dc1c551d336d9b3a0ce1554776465e26282f68ecff480022478",
+    "etapa_49_orbitas.json": "e6ef188d63533af346eb60730dfa31daa3bdce9765786fd2d454aefa3ad1e397"
+  },
+  "families": [
+    {
+      "h": "0x2a000",
+      "status": "excluded_by_forced_zero_radical",
+      "family_dimension": 120,
+      "polar_rank": 0,
+      "z": 65535,
+      "base_equations": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        }
+      ],
+      "reason": "All normalized evaluations on a radical basis are forced to zero."
+    },
+    {
+      "h": "0x8a000",
+      "status": "excluded_by_forced_zero_radical",
+      "family_dimension": 120,
+      "polar_rank": 0,
+      "z": 65535,
+      "base_equations": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        }
+      ],
+      "reason": "All normalized evaluations on a radical basis are forced to zero."
+    },
+    {
+      "h": "0x222000",
+      "status": "excluded_by_forced_zero_radical",
+      "family_dimension": 120,
+      "polar_rank": 0,
+      "z": 65535,
+      "base_equations": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        }
+      ],
+      "reason": "All normalized evaluations on a radical basis are forced to zero."
+    },
+    {
+      "h": "0x282000",
+      "status": "excluded_by_forced_zero_radical",
+      "family_dimension": 120,
+      "polar_rank": 0,
+      "z": 65535,
+      "base_equations": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        }
+      ],
+      "reason": "All normalized evaluations on a radical basis are forced to zero."
+    },
+    {
+      "h": "0x800060",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 8,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 2293,
+          "r": 63242
+        },
+        {
+          "kind": "fiber",
+          "z": 4678,
+          "r": 60857
+        }
+      ]
+    },
+    {
+      "h": "0x8000a0",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 8,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "fiber",
+          "z": 911,
+          "r": 64624
+        },
+        {
+          "kind": "fiber",
+          "z": 2801,
+          "r": 62734
+        },
+        {
+          "kind": "fiber",
+          "z": 3491,
+          "r": 62044
+        },
+        {
+          "kind": "fiber",
+          "z": 3645,
+          "r": 61890
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        }
+      ]
+    },
+    {
+      "h": "0x800140",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 10,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 636,
+          "r": 64899
+        },
+        {
+          "kind": "fiber",
+          "z": 2293,
+          "r": 63242
+        },
+        {
+          "kind": "fiber",
+          "z": 2737,
+          "r": 62798
+        },
+        {
+          "kind": "fiber",
+          "z": 9804,
+          "r": 55731
+        },
+        {
+          "kind": "fiber",
+          "z": 17120,
+          "r": 48415
+        }
+      ]
+    },
+    {
+      "h": "0x800180",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 8,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 2293,
+          "r": 63242
+        },
+        {
+          "kind": "fiber",
+          "z": 4678,
+          "r": 60857
+        }
+      ]
+    },
+    {
+      "h": "0x820001",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 7,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "fiber",
+          "z": 4464,
+          "r": 61071
+        },
+        {
+          "kind": "fiber",
+          "z": 12030,
+          "r": 53505
+        }
+      ]
+    },
+    {
+      "h": "0x860000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 14,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "fiber",
+          "z": 3491,
+          "r": 62044
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 16125,
+          "r": 49410
+        }
+      ]
+    },
+    {
+      "h": "0x880001",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 8,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 2293,
+          "r": 63242
+        },
+        {
+          "kind": "fiber",
+          "z": 4678,
+          "r": 60857
+        }
+      ]
+    },
+    {
+      "h": "0x8c0000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 14,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "fiber",
+          "z": 3645,
+          "r": 61890
+        },
+        {
+          "kind": "fiber",
+          "z": 4528,
+          "r": 61007
+        },
+        {
+          "kind": "fiber",
+          "z": 8869,
+          "r": 56666
+        },
+        {
+          "kind": "fiber",
+          "z": 10253,
+          "r": 55282
+        }
+      ]
+    },
+    {
+      "h": "0x1000044",
+      "status": "excluded_by_forced_zero_radical",
+      "family_dimension": 120,
+      "polar_rank": 0,
+      "z": 65535,
+      "base_equations": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        }
+      ],
+      "reason": "All normalized evaluations on a radical basis are forced to zero."
+    },
+    {
+      "h": "0x1000084",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 8,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 2293,
+          "r": 63242
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 11686,
+          "r": 53849
+        },
+        {
+          "kind": "fiber",
+          "z": 18822,
+          "r": 46713
+        }
+      ]
+    },
+    {
+      "h": "0x1000840",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 9,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 2801,
+          "r": 62734
+        },
+        {
+          "kind": "fiber",
+          "z": 4678,
+          "r": 60857
+        }
+      ]
+    },
+    {
+      "h": "0x1000880",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 8,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 12030,
+          "r": 53505
+        },
+        {
+          "kind": "fiber",
+          "z": 14304,
+          "r": 51231
+        }
+      ]
+    },
+    {
+      "h": "0x200000c",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 9,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "fiber",
+          "z": 1438,
+          "r": 64097
+        },
+        {
+          "kind": "fiber",
+          "z": 3645,
+          "r": 61890
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 9804,
+          "r": 55731
+        },
+        {
+          "kind": "fiber",
+          "z": 9866,
+          "r": 55669
+        }
+      ]
+    },
+    {
+      "h": "0x2000404",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 12,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 636,
+          "r": 64899
+        },
+        {
+          "kind": "fiber",
+          "z": 1438,
+          "r": 64097
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 9804,
+          "r": 55731
+        },
+        {
+          "kind": "fiber",
+          "z": 16936,
+          "r": 48599
+        },
+        {
+          "kind": "fiber",
+          "z": 18822,
+          "r": 46713
+        }
+      ]
+    },
+    {
+      "h": "0x2000808",
+      "status": "excluded_by_forced_zero_radical",
+      "family_dimension": 120,
+      "polar_rank": 0,
+      "z": 65535,
+      "base_equations": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        }
+      ],
+      "reason": "All normalized evaluations on a radical basis are forced to zero."
+    },
+    {
+      "h": "0x2000c00",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 11,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "fiber",
+          "z": 1394,
+          "r": 64141
+        },
+        {
+          "kind": "fiber",
+          "z": 1438,
+          "r": 64097
+        },
+        {
+          "kind": "fiber",
+          "z": 2737,
+          "r": 62798
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 8869,
+          "r": 56666
+        },
+        {
+          "kind": "fiber",
+          "z": 11265,
+          "r": 54270
+        }
+      ]
+    },
+    {
+      "h": "0x2004001",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 8,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 2293,
+          "r": 63242
+        },
+        {
+          "kind": "fiber",
+          "z": 4678,
+          "r": 60857
+        }
+      ]
+    },
+    {
+      "h": "0x2044000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 13,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 2801,
+          "r": 62734
+        },
+        {
+          "kind": "fiber",
+          "z": 4678,
+          "r": 60857
+        }
+      ]
+    },
+    {
+      "h": "0x2400001",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 13,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 2293,
+          "r": 63242
+        },
+        {
+          "kind": "fiber",
+          "z": 4678,
+          "r": 60857
+        }
+      ]
+    },
+    {
+      "h": "0x2440000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 12,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "fiber",
+          "z": 3461,
+          "r": 62074
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 4528,
+          "r": 61007
+        },
+        {
+          "kind": "fiber",
+          "z": 4678,
+          "r": 60857
+        },
+        {
+          "kind": "fiber",
+          "z": 10253,
+          "r": 55282
+        }
+      ]
+    },
+    {
+      "h": "0x1000000c",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 12,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "fiber",
+          "z": 4464,
+          "r": 61071
+        },
+        {
+          "kind": "fiber",
+          "z": 12030,
+          "r": 53505
+        }
+      ]
+    },
+    {
+      "h": "0x10000404",
+      "status": "excluded_by_forced_zero_radical",
+      "family_dimension": 120,
+      "polar_rank": 0,
+      "z": 65535,
+      "base_equations": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        }
+      ],
+      "reason": "All normalized evaluations on a radical basis are forced to zero."
+    },
+    {
+      "h": "0x10000808",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 9,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "fiber",
+          "z": 1438,
+          "r": 64097
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 9866,
+          "r": 55669
+        },
+        {
+          "kind": "fiber",
+          "z": 17951,
+          "r": 47584
+        }
+      ]
+    },
+    {
+      "h": "0x10000c00",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 11,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "fiber",
+          "z": 2737,
+          "r": 62798
+        },
+        {
+          "kind": "fiber",
+          "z": 3645,
+          "r": 61890
+        },
+        {
+          "kind": "fiber",
+          "z": 4678,
+          "r": 60857
+        },
+        {
+          "kind": "fiber",
+          "z": 15131,
+          "r": 50404
+        }
+      ]
+    },
+    {
+      "h": "0x10004001",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 16,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 2143,
+          "r": 63392
+        },
+        {
+          "kind": "fiber",
+          "z": 2261,
+          "r": 63274
+        },
+        {
+          "kind": "fiber",
+          "z": 2293,
+          "r": 63242
+        },
+        {
+          "kind": "fiber",
+          "z": 10125,
+          "r": 55410
+        }
+      ]
+    },
+    {
+      "h": "0x10044000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 11,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 911,
+          "r": 64624
+        },
+        {
+          "kind": "fiber",
+          "z": 2261,
+          "r": 63274
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 10125,
+          "r": 55410
+        }
+      ]
+    },
+    {
+      "h": "0x10400001",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 13,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "fiber",
+          "z": 2173,
+          "r": 63362
+        },
+        {
+          "kind": "fiber",
+          "z": 2737,
+          "r": 62798
+        },
+        {
+          "kind": "fiber",
+          "z": 2801,
+          "r": 62734
+        },
+        {
+          "kind": "fiber",
+          "z": 10125,
+          "r": 55410
+        }
+      ]
+    },
+    {
+      "h": "0x10440000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 15,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 2143,
+          "r": 63392
+        },
+        {
+          "kind": "fiber",
+          "z": 2261,
+          "r": 63274
+        },
+        {
+          "kind": "fiber",
+          "z": 2293,
+          "r": 63242
+        },
+        {
+          "kind": "fiber",
+          "z": 10125,
+          "r": 55410
+        }
+      ]
+    },
+    {
+      "h": "0x20000044",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 11,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "fiber",
+          "z": 3491,
+          "r": 62044
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 16125,
+          "r": 49410
+        }
+      ]
+    },
+    {
+      "h": "0x20000084",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 12,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "fiber",
+          "z": 3491,
+          "r": 62044
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 16125,
+          "r": 49410
+        }
+      ]
+    },
+    {
+      "h": "0x20000840",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 11,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "fiber",
+          "z": 2293,
+          "r": 63242
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 5997,
+          "r": 59538
+        },
+        {
+          "kind": "fiber",
+          "z": 24592,
+          "r": 40943
+        }
+      ]
+    },
+    {
+      "h": "0x20000880",
+      "status": "excluded_by_forced_zero_radical",
+      "family_dimension": 120,
+      "polar_rank": 0,
+      "z": 65535,
+      "base_equations": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        }
+      ],
+      "reason": "All normalized evaluations on a radical basis are forced to zero."
+    },
+    {
+      "h": "0x400000c0",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 9,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "fiber",
+          "z": 14304,
+          "r": 51231
+        },
+        {
+          "kind": "fiber",
+          "z": 41725,
+          "r": 23810
+        }
+      ]
+    },
+    {
+      "h": "0x40000120",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 10,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "fiber",
+          "z": 636,
+          "r": 64899
+        },
+        {
+          "kind": "fiber",
+          "z": 2293,
+          "r": 63242
+        },
+        {
+          "kind": "fiber",
+          "z": 5997,
+          "r": 59538
+        },
+        {
+          "kind": "fiber",
+          "z": 14304,
+          "r": 51231
+        },
+        {
+          "kind": "fiber",
+          "z": 16125,
+          "r": 49410
+        },
+        {
+          "kind": "fiber",
+          "z": 18822,
+          "r": 46713
+        }
+      ]
+    },
+    {
+      "h": "0x40000210",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 9,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 4528,
+          "r": 61007
+        },
+        {
+          "kind": "fiber",
+          "z": 9804,
+          "r": 55731
+        },
+        {
+          "kind": "fiber",
+          "z": 10253,
+          "r": 55282
+        },
+        {
+          "kind": "fiber",
+          "z": 11686,
+          "r": 53849
+        }
+      ]
+    },
+    {
+      "h": "0x40000408",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 14,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "fiber",
+          "z": 3491,
+          "r": 62044
+        },
+        {
+          "kind": "fiber",
+          "z": 3645,
+          "r": 61890
+        },
+        {
+          "kind": "fiber",
+          "z": 5997,
+          "r": 59538
+        },
+        {
+          "kind": "fiber",
+          "z": 15131,
+          "r": 50404
+        },
+        {
+          "kind": "fiber",
+          "z": 37219,
+          "r": 28316
+        }
+      ]
+    },
+    {
+      "h": "0x40000804",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 9,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "fiber",
+          "z": 1438,
+          "r": 64097
+        },
+        {
+          "kind": "fiber",
+          "z": 3491,
+          "r": 62044
+        },
+        {
+          "kind": "fiber",
+          "z": 9804,
+          "r": 55731
+        },
+        {
+          "kind": "fiber",
+          "z": 11686,
+          "r": 53849
+        }
+      ]
+    },
+    {
+      "h": "0x40001002",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 14,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 2261,
+          "r": 63274
+        },
+        {
+          "kind": "fiber",
+          "z": 3645,
+          "r": 61890
+        },
+        {
+          "kind": "fiber",
+          "z": 18642,
+          "r": 46893
+        },
+        {
+          "kind": "fiber",
+          "z": 19421,
+          "r": 46114
+        },
+        {
+          "kind": "fiber",
+          "z": 32706,
+          "r": 32829
+        }
+      ]
+    },
+    {
+      "h": "0x40040001",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 10,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "fiber",
+          "z": 636,
+          "r": 64899
+        },
+        {
+          "kind": "fiber",
+          "z": 2293,
+          "r": 63242
+        },
+        {
+          "kind": "fiber",
+          "z": 5997,
+          "r": 59538
+        },
+        {
+          "kind": "fiber",
+          "z": 14304,
+          "r": 51231
+        },
+        {
+          "kind": "fiber",
+          "z": 16125,
+          "r": 49410
+        },
+        {
+          "kind": "fiber",
+          "z": 18822,
+          "r": 46713
+        }
+      ]
+    },
+    {
+      "h": "0x400a0000",
+      "status": "excluded_by_forced_zero_radical",
+      "family_dimension": 120,
+      "polar_rank": 0,
+      "z": 65535,
+      "base_equations": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        }
+      ],
+      "reason": "All normalized evaluations on a radical basis are forced to zero."
+    },
+    {
+      "h": "0x40110000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 14,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "fiber",
+          "z": 2261,
+          "r": 63274
+        },
+        {
+          "kind": "fiber",
+          "z": 3645,
+          "r": 61890
+        },
+        {
+          "kind": "fiber",
+          "z": 18143,
+          "r": 47392
+        },
+        {
+          "kind": "fiber",
+          "z": 26601,
+          "r": 38934
+        },
+        {
+          "kind": "fiber",
+          "z": 32706,
+          "r": 32829
+        }
+      ]
+    },
+    {
+      "h": "0x40208000",
+      "status": "excluded_by_forced_zero_radical",
+      "family_dimension": 120,
+      "polar_rank": 0,
+      "z": 65535,
+      "base_equations": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        }
+      ],
+      "reason": "All normalized evaluations on a radical basis are forced to zero."
+    },
+    {
+      "h": "0x40404000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 9,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "fiber",
+          "z": 11265,
+          "r": 54270
+        },
+        {
+          "kind": "fiber",
+          "z": 19421,
+          "r": 46114
+        }
+      ]
+    },
+    {
+      "h": "0x4c000000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 7,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "fiber",
+          "z": 17951,
+          "r": 47584
+        },
+        {
+          "kind": "fiber",
+          "z": 19233,
+          "r": 46302
+        }
+      ]
+    },
+    {
+      "h": "0x52000000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 8,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "fiber",
+          "z": 14304,
+          "r": 51231
+        },
+        {
+          "kind": "fiber",
+          "z": 41725,
+          "r": 23810
+        }
+      ]
+    },
+    {
+      "h": "0x61000000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 11,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "fiber",
+          "z": 2261,
+          "r": 63274
+        },
+        {
+          "kind": "fiber",
+          "z": 3491,
+          "r": 62044
+        },
+        {
+          "kind": "fiber",
+          "z": 14899,
+          "r": 50636
+        },
+        {
+          "kind": "fiber",
+          "z": 15131,
+          "r": 50404
+        },
+        {
+          "kind": "fiber",
+          "z": 19233,
+          "r": 46302
+        },
+        {
+          "kind": "fiber",
+          "z": 27084,
+          "r": 38451
+        }
+      ]
+    },
+    {
+      "h": "0x80000048",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 13,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "fiber",
+          "z": 2261,
+          "r": 63274
+        },
+        {
+          "kind": "fiber",
+          "z": 3645,
+          "r": 61890
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 5997,
+          "r": 59538
+        },
+        {
+          "kind": "fiber",
+          "z": 14304,
+          "r": 51231
+        }
+      ]
+    },
+    {
+      "h": "0x80000088",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 12,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "fiber",
+          "z": 1394,
+          "r": 64141
+        },
+        {
+          "kind": "fiber",
+          "z": 2293,
+          "r": 63242
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 4464,
+          "r": 61071
+        },
+        {
+          "kind": "fiber",
+          "z": 4528,
+          "r": 61007
+        },
+        {
+          "kind": "fiber",
+          "z": 16125,
+          "r": 49410
+        }
+      ]
+    },
+    {
+      "h": "0x80000440",
+      "status": "excluded_by_forced_zero_radical",
+      "family_dimension": 120,
+      "polar_rank": 0,
+      "z": 65535,
+      "base_equations": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        }
+      ],
+      "reason": "All normalized evaluations on a radical basis are forced to zero."
+    },
+    {
+      "h": "0x80000480",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 8,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 2293,
+          "r": 63242
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 11686,
+          "r": 53849
+        },
+        {
+          "kind": "fiber",
+          "z": 18822,
+          "r": 46713
+        }
+      ]
+    },
+    {
+      "h": "0x83000000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 12,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 636,
+          "r": 64899
+        },
+        {
+          "kind": "fiber",
+          "z": 1438,
+          "r": 64097
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 9804,
+          "r": 55731
+        },
+        {
+          "kind": "fiber",
+          "z": 16936,
+          "r": 48599
+        },
+        {
+          "kind": "fiber",
+          "z": 18822,
+          "r": 46713
+        }
+      ]
+    },
+    {
+      "h": "0x91000000",
+      "status": "excluded_by_forced_zero_radical",
+      "family_dimension": 120,
+      "polar_rank": 0,
+      "z": 65535,
+      "base_equations": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        }
+      ],
+      "reason": "All normalized evaluations on a radical basis are forced to zero."
+    },
+    {
+      "h": "0xa2000000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 10,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "fiber",
+          "z": 11265,
+          "r": 54270
+        },
+        {
+          "kind": "fiber",
+          "z": 19421,
+          "r": 46114
+        }
+      ]
+    },
+    {
+      "h": "0xb0000000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 10,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 1438,
+          "r": 64097
+        },
+        {
+          "kind": "fiber",
+          "z": 3491,
+          "r": 62044
+        },
+        {
+          "kind": "fiber",
+          "z": 11265,
+          "r": 54270
+        }
+      ]
+    },
+    {
+      "h": "0x100028000",
+      "status": "excluded_by_forced_zero_radical",
+      "family_dimension": 120,
+      "polar_rank": 0,
+      "z": 65535,
+      "base_equations": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        }
+      ],
+      "reason": "All normalized evaluations on a radical basis are forced to zero."
+    },
+    {
+      "h": "0x100088000",
+      "status": "excluded_by_forced_zero_radical",
+      "family_dimension": 120,
+      "polar_rank": 0,
+      "z": 65535,
+      "base_equations": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        }
+      ],
+      "reason": "All normalized evaluations on a radical basis are forced to zero."
+    },
+    {
+      "h": "0x100220000",
+      "status": "excluded_by_forced_zero_radical",
+      "family_dimension": 120,
+      "polar_rank": 0,
+      "z": 65535,
+      "base_equations": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        }
+      ],
+      "reason": "All normalized evaluations on a radical basis are forced to zero."
+    },
+    {
+      "h": "0x100280000",
+      "status": "excluded_by_forced_zero_radical",
+      "family_dimension": 120,
+      "polar_rank": 0,
+      "z": 65535,
+      "base_equations": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        }
+      ],
+      "reason": "All normalized evaluations on a radical basis are forced to zero."
+    },
+    {
+      "h": "0x140002000",
+      "status": "excluded_by_forced_zero_radical",
+      "family_dimension": 120,
+      "polar_rank": 0,
+      "z": 65535,
+      "base_equations": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        }
+      ],
+      "reason": "All normalized evaluations on a radical basis are forced to zero."
+    },
+    {
+      "h": "0x200000048",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 11,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "fiber",
+          "z": 2293,
+          "r": 63242
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 5997,
+          "r": 59538
+        },
+        {
+          "kind": "fiber",
+          "z": 24592,
+          "r": 40943
+        }
+      ]
+    },
+    {
+      "h": "0x200000088",
+      "status": "excluded_by_forced_zero_radical",
+      "family_dimension": 120,
+      "polar_rank": 0,
+      "z": 65535,
+      "base_equations": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        }
+      ],
+      "reason": "All normalized evaluations on a radical basis are forced to zero."
+    },
+    {
+      "h": "0x200000440",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 8,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 2801,
+          "r": 62734
+        },
+        {
+          "kind": "fiber",
+          "z": 4678,
+          "r": 60857
+        }
+      ]
+    },
+    {
+      "h": "0x200000480",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 12,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "fiber",
+          "z": 1394,
+          "r": 64141
+        },
+        {
+          "kind": "fiber",
+          "z": 8869,
+          "r": 56666
+        },
+        {
+          "kind": "fiber",
+          "z": 9804,
+          "r": 55731
+        },
+        {
+          "kind": "fiber",
+          "z": 14899,
+          "r": 50636
+        }
+      ]
+    },
+    {
+      "h": "0x203000000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 9,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "fiber",
+          "z": 636,
+          "r": 64899
+        },
+        {
+          "kind": "fiber",
+          "z": 2261,
+          "r": 63274
+        },
+        {
+          "kind": "fiber",
+          "z": 9804,
+          "r": 55731
+        },
+        {
+          "kind": "fiber",
+          "z": 11265,
+          "r": 54270
+        },
+        {
+          "kind": "fiber",
+          "z": 17120,
+          "r": 48415
+        },
+        {
+          "kind": "fiber",
+          "z": 19411,
+          "r": 46124
+        }
+      ]
+    },
+    {
+      "h": "0x211000000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 11,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 11686,
+          "r": 53849
+        },
+        {
+          "kind": "fiber",
+          "z": 15131,
+          "r": 50404
+        },
+        {
+          "kind": "fiber",
+          "z": 16936,
+          "r": 48599
+        }
+      ]
+    },
+    {
+      "h": "0x222000000",
+      "status": "excluded_by_forced_zero_radical",
+      "family_dimension": 120,
+      "polar_rank": 0,
+      "z": 65535,
+      "base_equations": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 2
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 11
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        }
+      ],
+      "reason": "All normalized evaluations on a radical basis are forced to zero."
+    },
+    {
+      "h": "0x230000000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 9,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "fiber",
+          "z": 1438,
+          "r": 64097
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 9866,
+          "r": 55669
+        },
+        {
+          "kind": "fiber",
+          "z": 17951,
+          "r": 47584
+        }
+      ]
+    },
+    {
+      "h": "0x2c0000000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 8,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "fiber",
+          "z": 1438,
+          "r": 64097
+        },
+        {
+          "kind": "fiber",
+          "z": 9804,
+          "r": 55731
+        },
+        {
+          "kind": "fiber",
+          "z": 9866,
+          "r": 55669
+        },
+        {
+          "kind": "fiber",
+          "z": 14899,
+          "r": 50636
+        },
+        {
+          "kind": "fiber",
+          "z": 19233,
+          "r": 46302
+        },
+        {
+          "kind": "fiber",
+          "z": 20368,
+          "r": 45167
+        }
+      ]
+    },
+    {
+      "h": "0x400000060",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 12,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "fiber",
+          "z": 911,
+          "r": 64624
+        },
+        {
+          "kind": "fiber",
+          "z": 2143,
+          "r": 63392
+        },
+        {
+          "kind": "fiber",
+          "z": 10125,
+          "r": 55410
+        },
+        {
+          "kind": "fiber",
+          "z": 14899,
+          "r": 50636
+        },
+        {
+          "kind": "fiber",
+          "z": 17951,
+          "r": 47584
+        }
+      ]
+    },
+    {
+      "h": "0x4000000a0",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 8,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 2293,
+          "r": 63242
+        },
+        {
+          "kind": "fiber",
+          "z": 4678,
+          "r": 60857
+        }
+      ]
+    },
+    {
+      "h": "0x400000140",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 6,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 2801,
+          "r": 62734
+        },
+        {
+          "kind": "fiber",
+          "z": 4678,
+          "r": 60857
+        }
+      ]
+    },
+    {
+      "h": "0x400000180",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 11,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 1
+        },
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 12
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 17
+        },
+        {
+          "kind": "h",
+          "index": 19
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 636,
+          "r": 64899
+        },
+        {
+          "kind": "fiber",
+          "z": 1438,
+          "r": 64097
+        },
+        {
+          "kind": "fiber",
+          "z": 2143,
+          "r": 63392
+        },
+        {
+          "kind": "fiber",
+          "z": 3491,
+          "r": 62044
+        },
+        {
+          "kind": "fiber",
+          "z": 4215,
+          "r": 61320
+        },
+        {
+          "kind": "fiber",
+          "z": 4528,
+          "r": 61007
+        },
+        {
+          "kind": "fiber",
+          "z": 5997,
+          "r": 59538
+        },
+        {
+          "kind": "fiber",
+          "z": 9866,
+          "r": 55669
+        },
+        {
+          "kind": "fiber",
+          "z": 10125,
+          "r": 55410
+        }
+      ]
+    },
+    {
+      "h": "0x400020001",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 10,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 2293,
+          "r": 63242
+        },
+        {
+          "kind": "fiber",
+          "z": 4678,
+          "r": 60857
+        }
+      ]
+    },
+    {
+      "h": "0x400060000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 8,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 5
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 8
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "fiber",
+          "z": 1394,
+          "r": 64141
+        },
+        {
+          "kind": "fiber",
+          "z": 2173,
+          "r": 63362
+        },
+        {
+          "kind": "fiber",
+          "z": 2261,
+          "r": 63274
+        },
+        {
+          "kind": "fiber",
+          "z": 3645,
+          "r": 61890
+        },
+        {
+          "kind": "fiber",
+          "z": 7324,
+          "r": 58211
+        }
+      ]
+    },
+    {
+      "h": "0x400080001",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 9,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 15
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 21
+        },
+        {
+          "kind": "h",
+          "index": 23
+        },
+        {
+          "kind": "h",
+          "index": 24
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 29
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "h",
+          "index": 34
+        },
+        {
+          "kind": "fiber",
+          "z": 2801,
+          "r": 62734
+        },
+        {
+          "kind": "fiber",
+          "z": 4678,
+          "r": 60857
+        }
+      ]
+    },
+    {
+      "h": "0x4000c0000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 7,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 3
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 10
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 16
+        },
+        {
+          "kind": "h",
+          "index": 20
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 31
+        },
+        {
+          "kind": "h",
+          "index": 33
+        },
+        {
+          "kind": "fiber",
+          "z": 2143,
+          "r": 63392
+        },
+        {
+          "kind": "fiber",
+          "z": 3491,
+          "r": 62044
+        },
+        {
+          "kind": "fiber",
+          "z": 3645,
+          "r": 61890
+        }
+      ]
+    },
+    {
+      "h": "0x440800000",
+      "status": "excluded_fixed_H_family",
+      "family_dimension": 120,
+      "rank14_fibers_processed": 9,
+      "certificate": [
+        {
+          "kind": "h",
+          "index": 0
+        },
+        {
+          "kind": "h",
+          "index": 4
+        },
+        {
+          "kind": "h",
+          "index": 6
+        },
+        {
+          "kind": "h",
+          "index": 7
+        },
+        {
+          "kind": "h",
+          "index": 9
+        },
+        {
+          "kind": "h",
+          "index": 13
+        },
+        {
+          "kind": "h",
+          "index": 14
+        },
+        {
+          "kind": "h",
+          "index": 18
+        },
+        {
+          "kind": "h",
+          "index": 22
+        },
+        {
+          "kind": "h",
+          "index": 25
+        },
+        {
+          "kind": "h",
+          "index": 26
+        },
+        {
+          "kind": "h",
+          "index": 27
+        },
+        {
+          "kind": "h",
+          "index": 28
+        },
+        {
+          "kind": "h",
+          "index": 30
+        },
+        {
+          "kind": "h",
+          "index": 32
+        },
+        {
+          "kind": "fiber",
+          "z": 11265,
+          "r": 54270
+        },
+        {
+          "kind": "fiber",
+          "z": 19421,
+          "r": 46114
+        }
+      ]
+    }
+  ]
+}
