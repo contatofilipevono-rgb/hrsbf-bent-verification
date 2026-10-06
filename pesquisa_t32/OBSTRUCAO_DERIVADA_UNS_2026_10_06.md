@@ -51,3 +51,13 @@ As oito exclusões SAT anteriores permanecem válidas como confirmação indepen
 ## Próximo filtro de pesquisa
 
 A condição necessária B_{D₁f}=0 impõe 14 equações lineares independentes nos 155 coeficientes cúbicos originais, deixando um subespaço de dimensão 141. A condição cruzada em H impõe seis equações independentes nos 35 coeficientes, deixando dimensão 29. Entre os 6.545 H de peso três, 6.464 são excluídos apenas por este filtro e 81 o satisfazem. Esses 81 não são novos casos abertos: precisam ser cruzados com os certificados de exclusão anteriores. Satisfazer este teste não implica bentness. As equações e a lista de 81 parâmetros constam em `filtro_global_derivada_uns.json`.
+
+## Cobertura consolidada dos 6.545 parâmetros de peso três
+
+Os 81 parâmetros que passam pelo filtro foram extraídos dos certificados anteriores e novamente verificados, por avaliação direta da ANF e álgebra linear independente. Todos os 81 foram excluídos. Logo o filtro novo (6.464 exclusões) e os certificados complementares (81 exclusões) cobrem todos os 6.545 parâmetros H de peso três. Não é necessário reutilizar os seis certificados SAT antigos para esta cobertura.
+
+A condição de balanceamento usada nos certificados de fibras tem aqui uma hipótese específica: f(u,u)=0. Para uma função cúbica homogênea RS em 32 coordenadas, cada monômio emparelha com seu deslocamento de 16 posições, que é distinto e tem o mesmo valor na diagonal, portanto a igualdade vale. Na parametrização x=(u,u+z), a fibra z=0 é nula. Se f fosse bent, Parseval na transformação sobre z daria Σ_z W_{f_z}(0)²=2³². O termo z=0 já vale 2³², forçando todas as outras fibras a serem balanceadas.
+
+Uma fibra quadrática é balanceada exatamente quando sua forma normalizada é não nula no radical da polar. Em posto 14, esse radical de dimensão dois contém z, onde o valor normalizado é zero por invariância sob a troca das metades. O outro gerador r deve então ter valor 1, produzindo a equação linear usada no certificado. A soma das equações certificadas dá 0=1. Nos certificados de posto zero, as equações de base forçam o valor normalizado a ser zero em toda uma base do radical; a fibra é constante e não balanceada. O auditor verifica essas premissas e contradições para cada registro.
+
+Para reproduzir a cobertura: `python3 verify_weight_three_cover.py`. São necessários o auditor `audit_independent_cnf.py`, o novo auditor `audit_all_ones_obstruction.py` e `certificados_81_complementares.json`, todos na mesma pasta. O resultado é uma cobertura das famílias cujo **parâmetro projetado H tem peso três**, independentemente dos 120 coeficientes livres. Não é uma afirmação de que f tenha somente três órbitas nem uma resolução de todos os pesos H.
