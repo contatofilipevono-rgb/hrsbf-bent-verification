@@ -21,6 +21,15 @@ Audita o certificado de 7 fibras ($0=1$ sobre $\mathbb{F}_2$, excluindo $2^{120}
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/contatofilipevono-rgb/hrsbf-bent-verification/blob/main/avanco_t32/Certificados_T32_Colab.ipynb)  
 👉 **[ABRIR NOTEBOOK DE $t=32$ NO GOOGLE COLAB](https://colab.research.google.com/github/contatofilipevono-rgb/hrsbf-bent-verification/blob/main/avanco_t32/Certificados_T32_Colab.ipynb)**
 
+### 3. Worker automático Colab ↔ GitHub
+
+Mantém uma sessão do Colab consultando `jobs/queue.json`, executando scripts Python do repositório e enviando status e resultados de volta ao GitHub:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/contatofilipevono-rgb/hrsbf-bent-verification/blob/main/Colab_GitHub_Worker.ipynb)  
+👉 **[ABRIR WORKER AUTOMÁTICO NO GOOGLE COLAB](https://colab.research.google.com/github/contatofilipevono-rgb/hrsbf-bent-verification/blob/main/Colab_GitHub_Worker.ipynb)**
+
+O worker executa somente arquivos `.py` existentes dentro deste repositório. A fila inicial contém um teste de GPU + `verificador_standalone.py`.
+
 ---
 
 ## 📁 Estrutura dos Arquivos
