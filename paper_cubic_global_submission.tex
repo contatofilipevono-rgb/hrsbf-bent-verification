@@ -36,7 +36,7 @@ The third ingredient is a rigidity theorem in the opposite direction: every rota
 
 This mechanism is related to the derivative viewpoint of Sun, Shi, Liu and Fu~\cite{sun}, but the odd part of the dimension is removed before the power-of-two rigidity argument is applied. Consequently, the theorem below has no arithmetic restriction on the odd part of \(n\) and no restriction on \(v_2(n)\). Based on the literature reviewed here, we are not aware of an earlier result establishing this degree-three nonexistence statement uniformly for every even dimension. We deliberately phrase this as a literature-based novelty statement rather than an absolute priority claim.
 
-Earlier exact computations in dimensions \(16\) and \(32\), together with independent low-dimensional and folding checks, are retained as supplementary validation. They are not logical premises of the theorem. This distinction is important: nonhomogeneous cubic rotation-symmetric bent functions are known. In particular, Gao, Zhang, Liu and Carlet~\cite{gao2012} construct an infinite family of cubic rotation-symmetric bent functions in the Maiorana--McFarland class. Their defining family contains the antipodal quadratic coupling \(\sum_{i=0}^{m-1}x_i x_{m+i}\), so it provides a useful positive control consistent with the Antipodal Rule rather than a counterexample to it. The obstruction proved here concerns the interaction between homogeneity, cyclic orbit folding and low-degree bent rigidity.
+Nonhomogeneous cubic rotation-symmetric bent functions are known. In particular, Gao, Zhang, Liu and Carlet~\cite{gao2012} construct an infinite family in the Maiorana--McFarland class whose defining ANF contains the antipodal quadratic coupling \(\sum_{i=0}^{m-1}x_i x_{m+i}\). This is structurally consistent with the Antipodal Rule: the obstruction below is not cubic rotation symmetry by itself, but the interaction between homogeneity, orbit folding and low-degree bent rigidity.
 
 \section{Notation}
 Let $V_n=\F^n$. The algebraic normal form (ANF) of a Boolean function is its unique multilinear polynomial over $\F$. Homogeneity of degree three means that every nonzero ANF term has degree three. The zero function may be included in spans without affecting any nonexistence assertion.
@@ -181,13 +181,6 @@ Finally,
 Thus \(Q\), and hence \(q\), is not balanced, a contradiction. Therefore \(B=0\).
 \end{proof}
 
-\begin{corollary}[Balanced quadratic RS functions at powers of two]\label{cor:quad-affine}
-Let \(N=2^k\). Every balanced rotation-symmetric Boolean function of degree at most two is affine.
-\end{corollary}
-\begin{proof}
-By Lemma~\ref{lem:quad-rigidity}, its polar form is zero. A Boolean function of degree at most two with zero polar has no quadratic ANF terms, hence is affine.
-\end{proof}
-
 \begin{lemma}[Complementary-fiber balance]\label{lem:fiber-balance}
 Let \(N=2h\), let \(g:\F^N\to\F\) be bent, and suppose \(g(u,u)\) is constant. Define \(F_z(u)=g(u,u+z)\). Then \(F_z\) is balanced for every \(z\ne0\).
 \end{lemma}
@@ -296,16 +289,10 @@ Gao, Zhang, Liu and Carlet~\cite{gao2012} construct and characterize a nonhomoge
 \paragraph{Relation to Sun--Shi--Liu--Fu (2026).}
 Sun, Shi, Liu and Fu~\cite{sun} obtain additional conditional nonexistence results, including cubic criteria based on balanced derivatives, SANF/orbit structure and arithmetic hypotheses on \(n\). The proof above shares the derivative viewpoint but removes the odd part of \(n\) through the fixed-space reduction and then uses antipodal rigidity in the remaining power-of-two dimension. The comparison describes mechanism and scope; it is not an exhaustive priority claim.
 
-\paragraph{Computational status.}
-The earlier exact \(t=16\) divisible-code proof and the independent \(n=32\) certificates remain useful validation and historical motivation, but they are no longer logical premises of Theorem~\ref{thm:global}.
-
-\section{Computational validation and supplementary material}
-The proof of Theorem~\ref{thm:global} is entirely algebraic. Exact computations in dimensions 16 and 32, exhaustive low-dimensional checks, folding tests for odd multipliers, and nonhomogeneous cubic rotation-symmetric bent positive controls are retained in the repository as independent validation and historical documentation. None is a premise of the main theorem.
-
 \section{Discussion}
 The proof separates the cubic conjecture into two mechanisms. The odd-order fixed-space reduction removes the odd part of the dimension while preserving bentness because derivatives of cubic functions are quadratic. Cubic orbit folding then forbids the antipodal quadratic orbit in the restricted homogeneous space, whereas the Antipodal Rule forces precisely that orbit in every low-degree rotation-symmetric bent function in power-of-two dimension.
 
-Homogeneity is essential to the folding obstruction, not to the Antipodal Rule. This is consistent with known nonhomogeneous cubic rotation-symmetric bent functions. For degree at least four, derivatives need not be quadratic, so the present fixed-space argument does not extend directly.
+Homogeneity is essential to the folding obstruction, not to the Antipodal Rule. This is consistent with known nonhomogeneous cubic rotation-symmetric bent functions. The quadratic rigidity step is also compatible with the broader classification program for quadratic rotation-symmetric functions developed by Chirvasitu and Cusick~\cite{chircusick}; we make no separate novelty claim for that auxiliary lemma. For degree at least four, derivatives need not be quadratic, so the present fixed-space argument does not extend directly.
 
 \begin{thebibliography}{10}
 \bibitem{stanica} P.~St\u{a}nic\u{a} and S.~Maitra, Rotation symmetric Boolean functions---count and cryptographic properties, \emph{Discrete Applied Mathematics} 156(10) (2008), 1567--1580. \href{https://doi.org/10.1016/j.dam.2007.04.029}{doi:10.1016/j.dam.2007.04.029}.
