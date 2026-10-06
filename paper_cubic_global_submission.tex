@@ -56,8 +56,10 @@ Let $V$ be a finite-dimensional vector space over $\F$, and let $T\in\operatorna
 \begin{proof}
 Adding $q(0)$ preserves balance both on $V$ and on $U$, so assume $q(0)=0$. Its polar form
 \[B(x,y)=q(x+y)+q(x)+q(y)\]
-is alternating bilinear and $T$-invariant. Set $P=\sum_{j=0}^{m-1}T^j$. Then $TP=PT=P$, $Pu=u$ for $u\in U$, and $P^2=P$. Hence $V=U\oplus K$, where $K=\ker P$. For $u\in U$ and $k\in K$, invariance and oddness give
-\[B(u,k)=\sum_{j=0}^{m-1}B(u,T^jk)=B(u,Pk)=0.\]
+is alternating bilinear and $T$-invariant. Set $P=\sum_{j=0}^{m-1}T^j$. Then $TP=PT=P$, $Pu=u$ for $u\in U$, and $P^2=P$. Hence $V=U\oplus K$, where $K=\ker P$. For $u\in U$ and $k\in K$, $T$-invariance gives $B(u,T^jk)=B(T^{-j}u,k)=B(u,k)$. Since $m$ is odd,
+\[
+B(u,k)=mB(u,k)=\sum_{j=0}^{m-1}B(u,T^jk)=B(u,Pk)=0.
+\]
 It follows that $q(u+k)=q(u)+q(k)$, and thus
 \[S_V(q)=S_U(q|_U)S_K(q|_K),\qquad S_E(h)=\sum_{x\in E}(-1)^{h(x)}.\]
 We show $S_K(q|_K)\ne0$. Put $R=\{z\in K:B(z,k)=0\text{ for all }k\in K\}$. Since $P$ commutes with $T$, $K$ is invariant under $T$ and $T^{-1}$. If $z\in R$ and $k\in K$, then $B(Tz,k)=B(z,T^{-1}k)=0$, so $R$ is $T$-invariant. On $R$, the function $q$ is linear. More explicitly, if $z\in R$, then all $T^jz$ lie in $R$, so every cross-polar term $B(T^iz,T^jz)$ vanishes. Hence
@@ -67,7 +69,7 @@ q(Pz)=q\!\left(\sum_{j=0}^{m-1}T^jz\right)
      =m q(z)=q(z).
 \]
 Since $z\in K$, $Pz=0$, and therefore $q(z)=q(0)=0$.
-Character orthogonality now gives
+Thus the only possible obstruction to a nonzero quadratic character sum on $K$ disappears: $q$ vanishes identically on the radical of its polar form. Character orthogonality now gives
 \begin{align*}
  S_K(q|_K)^2
  &=\sum_{z\in K}(-1)^{q(z)}\sum_{x\in K}(-1)^{B(x,z)}\\
