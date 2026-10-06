@@ -193,6 +193,34 @@ O verificador `verificar_subespaco_eta_dim18.py` percorre os 2^18 quocientes por
 
 O resultado é estritamente mais forte que o fechamento do subespaço de dimensão sete e que o recorte de peso ≤2. Não se afirma que dimensão 18 seja máxima; o espaço completo de η tem dimensão 35, portanto o caso geral n=32 permanece em aberto.
 
+
+## 7D. Ampliação exata para dimensão 21
+
+A mesma arquitetura foi ampliada novamente. Acrescentando as três coordenadas de η correspondentes às órbitas cúbicas `012`, `015` e `016`, obtemos um subespaço coordenado explícito de dimensão 21 em F₂^35.
+
+Esse subespaço contém exatamente 2^21 = 2.097.152 quocientes. Todos foram verificados por aritmética exata em CPU e todos são excluídos pela união da fibra antidiagonal com as mesmas sete direções de autocorrelação diagonal
+
+`0x0101, 0x0505, 0x0303, 0x0F0F, 0x3333, 0x1111, 0x5555`.
+
+A contagem do primeiro testemunho encontrado é:
+
+- antidiagonal: 32.768;
+- `0x0101`: 892.160;
+- `0x0505`: 525.176;
+- `0x0303`: 306.648;
+- `0x0F0F`: 157.992;
+- `0x3333`: 155.024;
+- `0x1111`: 19.352;
+- `0x5555`: 8.032.
+
+A soma é 2.097.152 e não há sobreviventes.
+
+Como ker(η) tem dimensão 120, a preimagem deste subespaço no espaço original F₂^155 tem dimensão **141**. Portanto a obstrução exclui todos os 2^141 vetores de coeficientes desse subespaço; retirando o vetor zero, são **2^141−1 funções cúbicas homogêneas não nulas**.
+
+O verificador é `verificar_subespaco_eta_dim21.py`; a saída consolidada está em `resultado_subespaco_eta_dim21.json`. A enumeração de desenvolvimento foi concluída em blocos contíguos exatos cobrindo os 2^21 casos; o script comprometido reproduz a mesma enumeração integral em uma única execução com cache de radicais limitado em memória.
+
+Ainda não se afirma que dimensão 21 seja máxima. O espaço de quocientes completo tem dimensão 35 e o caso geral n=32 permanece em aberto.
+
 ## 8. Reproduzir e interpretar corretamente
 
 Use Python 3.10 ou superior. Todas as contas são inteiras; nenhum pacote externo ou GPU é necessário.
@@ -203,6 +231,7 @@ Use Python 3.10 ou superior. Todas as contas são inteiras; nenhum pacote extern
 4. `python verificar_derivadas_diagonais.py` — confere os 24 testemunhos restantes por autocorrelação diagonal e grava `resultado_derivadas_diagonais_24.json`.
 5. `python verificar_subespaco_eta_paridade.py` — audita os 128 valores do subespaço de mesma paridade e confirma a cobertura completa 128/128 pela união das duas obstruções.
 6. `python verificar_subespaco_eta_dim18.py` — percorre exaustivamente 2^18=262.144 quocientes de um subespaço explícito de dimensão 18 e confirma 0 sobreviventes.
+7. `python verificar_subespaco_eta_dim21.py` — percorre exaustivamente 2^21=2.097.152 quocientes de um subespaço explícito de dimensão 21 e confirma 0 sobreviventes.
 
 No ambiente local, a primeira checagem levou cerca de 2,3 segundos e a checagem ampliada, cerca de 23 segundos. Os tempos dependem do computador. O notebook entregue permite reproduzir o certificado curto e a obstrução antidiagonal; não foi executado no Colab e vem sem saídas preenchidas. O pacote contém as saídas locais reais.
 
