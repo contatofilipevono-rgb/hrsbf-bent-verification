@@ -174,11 +174,11 @@ for every \(b\). Parseval for the unnormalized Walsh transform on \(\F^h\) there
 But \(A_0=2^h\), so \(A_0^2=2^N\) exhausts the sum. Hence \(A_z=0\) for every \(z\ne0\).
 \end{proof}
 
-\begin{lemma}[Complementary-fiber rigidity]\label{lem:fiber-rigidity}
-Let \(N=2^k\), \(k\ge2\), and let \(g:\F^N\to\F\) be rotation-symmetric with \(\deg g\le3\). Suppose \(g(u,u)\) is constant and \(g\) is bent. Then \(F_{\mathbf1}(u)=g(u,u+\mathbf1)\) is constant.
+\begin{lemma}[Local complementary-fiber rigidity]\label{lem:fiber-rigidity}
+Let \(N=2h\) be any positive even integer, and let \(g:\F^N\to\F\) be rotation-symmetric with \(\deg g\le3\). Suppose \(g(u,u)\) is constant. If the polar form of \(D_Jg\), where \(J=\mathbf1^N\), is zero, then \(F_{\mathbf1}(u)=g(u,u+\mathbf1)\) is constant.
 \end{lemma}
 \begin{proof}
-Adding a constant, assume \(g(u,u)=0\). Put \(d(u)=(u,u)\), \(e(z)=(0,z)\), and \(J=\mathbf1^N\). Bentness implies \(D_Jg\) is balanced; it is rotation-symmetric and has degree at most two. Lemma~\ref{lem:quad-rigidity} therefore gives \(B_{D_Jg}=0\).
+Adding a constant, assume \(g(u,u)=0\). Put \(d(u)=(u,u)\), \(e(z)=(0,z)\), and \(J=\mathbf1^N\). By hypothesis, \(B_{D_Jg}=0\).
 
 For degree at most three,
 \[
@@ -237,7 +237,7 @@ Write \(N=2h\), and let \(\alpha\) be the coefficient of \(P_N\). On the diagona
 \[
 g(u,u)=c+\alpha\sum_i u_i.
 \]
-If \(\alpha=0\), the diagonal is constant. Lemma~\ref{lem:fiber-balance} makes \(F_{\mathbf1}\) balanced, whereas Lemma~\ref{lem:fiber-rigidity} makes it constant, a contradiction. Therefore \(\alpha=1\).
+If \(\alpha=0\), the diagonal is constant. Lemma~\ref{lem:fiber-balance} makes \(F_{\mathbf1}\) balanced. Moreover, bentness makes \(D_Jg\) balanced; since \(N=2^k\), Lemma~\ref{lem:quad-rigidity} gives \(B_{D_Jg}=0\), and Lemma~\ref{lem:fiber-rigidity} then makes \(F_{\mathbf1}\) constant. This is a contradiction. Therefore \(\alpha=1\).
 \end{proof}
 
 \begin{theorem}[Main theorem]\label{thm:global}
