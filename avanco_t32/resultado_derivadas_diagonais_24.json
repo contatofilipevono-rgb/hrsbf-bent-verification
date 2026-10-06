@@ -1,0 +1,42 @@
+{
+  "status": "verified",
+  "newly_excluded_previous_remainder": 24,
+  "previously_verified_excluded": 607,
+  "sparse_quotient_classes_weight_le_2": 631,
+  "combined_excluded": 631,
+  "family_dimension_per_quotient": 120,
+  "witness_types": {
+    "d4_w6": 16,
+    "d8_w120": 8
+  },
+  "identity": "AC_f((r,r)) = 2^16 * sum_{z in rad(B_r)} (-1)^{L_z(r)}",
+  "criterion": "Bentness requires zero autocorrelation in every nonzero direction, hence exactly half of the L_z(r) values on rad(B_r) must equal 1.",
+  "details": [
+    {"h":"0x2000","r":"0x3333","radical_dimension":4,"radical_size":16,"ones_in_L_vector":6,"required_for_bent":8,"autocorrelation":262144,"free_lift_dependence_rank":0},
+    {"h":"0x8000","r":"0xf0f","radical_dimension":4,"radical_size":16,"ones_in_L_vector":6,"required_for_bent":8,"autocorrelation":262144,"free_lift_dependence_rank":0},
+    {"h":"0xa000","r":"0xf0f","radical_dimension":8,"radical_size":256,"ones_in_L_vector":120,"required_for_bent":128,"autocorrelation":1048576,"free_lift_dependence_rank":0},
+    {"h":"0x20000","r":"0x3333","radical_dimension":8,"radical_size":256,"ones_in_L_vector":120,"required_for_bent":128,"autocorrelation":1048576,"free_lift_dependence_rank":0},
+    {"h":"0x22000","r":"0x303","radical_dimension":4,"radical_size":16,"ones_in_L_vector":6,"required_for_bent":8,"autocorrelation":262144,"free_lift_dependence_rank":0},
+    {"h":"0x28000","r":"0x303","radical_dimension":4,"radical_size":16,"ones_in_L_vector":6,"required_for_bent":8,"autocorrelation":262144,"free_lift_dependence_rank":0},
+    {"h":"0x80000","r":"0x3333","radical_dimension":8,"radical_size":256,"ones_in_L_vector":120,"required_for_bent":128,"autocorrelation":1048576,"free_lift_dependence_rank":0},
+    {"h":"0x82000","r":"0x303","radical_dimension":4,"radical_size":16,"ones_in_L_vector":6,"required_for_bent":8,"autocorrelation":262144,"free_lift_dependence_rank":0},
+    {"h":"0x88000","r":"0x303","radical_dimension":4,"radical_size":16,"ones_in_L_vector":6,"required_for_bent":8,"autocorrelation":262144,"free_lift_dependence_rank":0},
+    {"h":"0x200000","r":"0xf0f","radical_dimension":4,"radical_size":16,"ones_in_L_vector":6,"required_for_bent":8,"autocorrelation":262144,"free_lift_dependence_rank":0},
+    {"h":"0x202000","r":"0xf0f","radical_dimension":8,"radical_size":256,"ones_in_L_vector":120,"required_for_bent":128,"autocorrelation":1048576,"free_lift_dependence_rank":0},
+    {"h":"0x220000","r":"0x303","radical_dimension":4,"radical_size":16,"ones_in_L_vector":6,"required_for_bent":8,"autocorrelation":262144,"free_lift_dependence_rank":0},
+    {"h":"0x280000","r":"0x303","radical_dimension":4,"radical_size":16,"ones_in_L_vector":6,"required_for_bent":8,"autocorrelation":262144,"free_lift_dependence_rank":0},
+    {"h":"0x40002000","r":"0x303","radical_dimension":4,"radical_size":16,"ones_in_L_vector":6,"required_for_bent":8,"autocorrelation":262144,"free_lift_dependence_rank":0},
+    {"h":"0x40008000","r":"0x303","radical_dimension":4,"radical_size":16,"ones_in_L_vector":6,"required_for_bent":8,"autocorrelation":262144,"free_lift_dependence_rank":0},
+    {"h":"0x40020000","r":"0xf0f","radical_dimension":8,"radical_size":256,"ones_in_L_vector":120,"required_for_bent":128,"autocorrelation":1048576,"free_lift_dependence_rank":0},
+    {"h":"0x40080000","r":"0xf0f","radical_dimension":8,"radical_size":256,"ones_in_L_vector":120,"required_for_bent":128,"autocorrelation":1048576,"free_lift_dependence_rank":0},
+    {"h":"0x40200000","r":"0x303","radical_dimension":4,"radical_size":16,"ones_in_L_vector":6,"required_for_bent":8,"autocorrelation":262144,"free_lift_dependence_rank":0},
+    {"h":"0x100000000","r":"0x3333","radical_dimension":4,"radical_size":16,"ones_in_L_vector":6,"required_for_bent":8,"autocorrelation":262144,"free_lift_dependence_rank":0},
+    {"h":"0x100008000","r":"0xf0f","radical_dimension":8,"radical_size":256,"ones_in_L_vector":120,"required_for_bent":128,"autocorrelation":1048576,"free_lift_dependence_rank":0},
+    {"h":"0x100020000","r":"0x303","radical_dimension":4,"radical_size":16,"ones_in_L_vector":6,"required_for_bent":8,"autocorrelation":262144,"free_lift_dependence_rank":0},
+    {"h":"0x100080000","r":"0x303","radical_dimension":4,"radical_size":16,"ones_in_L_vector":6,"required_for_bent":8,"autocorrelation":262144,"free_lift_dependence_rank":0},
+    {"h":"0x100200000","r":"0xf0f","radical_dimension":8,"radical_size":256,"ones_in_L_vector":120,"required_for_bent":128,"autocorrelation":1048576,"free_lift_dependence_rank":0},
+    {"h":"0x140000000","r":"0x303","radical_dimension":4,"radical_size":16,"ones_in_L_vector":6,"required_for_bent":8,"autocorrelation":262144,"free_lift_dependence_rank":0}
+  ],
+  "seconds": 0.134,
+  "scope": "Closes exactly the 631 quotient parameters eta of Hamming weight <=2. This is not a complete classification of all 2^35 quotient parameters and does not solve general n=32."
+}
