@@ -41,6 +41,7 @@ O worker executa somente arquivos `.py` existentes dentro deste repositório. A 
 | **[`avanco_t32/`](avanco_t32/)** | Scripts e dados dos certificados em 32 variáveis (`verificar_7_fibras.py`, `verificar_classes.py`, etc.). |
 | **[`avanco_t32/verificar_desacoplamento_paridade.py`](avanco_t32/verificar_desacoplamento_paridade.py)** | Prova do Lema de Desacoplamento por Paridade em $n=32$ ($2^{35}-1$ funções excluídas analiticamente). |
 | **[`avanco_t32/verificar_derivadas_diagonais.py`](avanco_t32/verificar_derivadas_diagonais.py)** | Fecha por autocorrelação diagonal as 24 classes que restavam no recorte $\mathrm{wt}(\eta)\le2$. |
+| **[`avanco_t32/verificar_subespaco_eta_paridade.py`](avanco_t32/verificar_subespaco_eta_paridade.py)** | Audita todo o subespaço de 7 dimensões de quocientes de mesma paridade: 125/128 famílias excluídas; 3 quocientes permanecem explícitos. |
 | **[`avanco_t32/audit_constraints_rotation.py`](avanco_t32/audit_constraints_rotation.py)** | Controles algébricos da ação afim de rotação (65.536 direções, 4.115 colares, tabelas completas). |
 | **[`master_suite_fronteiras.py`](master_suite_fronteiras.py)** | Master Suite Turnkey em Python Puro: audita todas as 4 fronteiras em < 5 segundos. |
 | **[`verificador_standalone.py`](verificador_standalone.py)** | Verificador em 100% Python padrão (zero dependências externas), executa as 136.697 checagens em < 1 s. |
@@ -60,6 +61,7 @@ python verificar_7_fibras.py
 python verificar_fibra_antidiagonal.py
 python verificar_classes.py
 python verificar_derivadas_diagonais.py
+python verificar_subespaco_eta_paridade.py
 ```
 *Tempo total:* ~15 a 20 segundos em CPU convencional (zero pacotes externos necessários).
 
@@ -90,4 +92,5 @@ python master_suite_fronteiras.py
   - Certificado de 7 fibras: 7 equações somam $0=1$, excluindo a família inteira de dimensão 120 ($2^{120}$ funções).
   - Obstrução antidiagonal: 6 formas lineares independentes excluem um subespaço de dimensão 149 ($2^{149}$ funções).
   - Quocientes de peso $\le 2$: **631 de 631 classes excluídas**. As primeiras 607 são certificadas por fibra antidiagonal/contradições lineares; as 24 restantes por testemunhos de autocorrelação diagonal não nula.
+  - Subespaço de mesma paridade de dimensão 7 em $\eta$: **125 de 128** quocientes excluídos; restam explicitamente `0x2a8000`, `0x1000a2000` e `0x10020a000` por esse método.
   - *Escopo delimitado:* Esses certificados em 32 variáveis são resultados parciais para as famílias examinadas; o caso geral $n \equiv 0 \pmod{32}$ permanece em aberto.
