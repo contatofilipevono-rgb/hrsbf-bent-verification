@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "instructions": "Fila da branch integrada A100. Incremente revision para reexecutar.",
+  "jobs": [
+    {
+      "id": "a100_smoke",
+      "revision": 1,
+      "enabled": true,
+      "description": "Confirma CUDA/A100 e executa um teste curto em GPU.",
+      "require_gpu": true,
+      "timeout_seconds": 300,
+      "script": "pesquisa_t32/gpu_probe.py",
+      "args": []
+    }
+  ]
+}
