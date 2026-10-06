@@ -22,7 +22,7 @@ We settle the degree-three case of the homogeneous rotation-symmetric bent-funct
 \section{Introduction and relation to earlier work}
 Rotation-symmetric Boolean functions form a natural class in the study of symmetric cryptographic constructions: cyclic invariance gives a compact algebraic description while retaining nontrivial Walsh-spectral behavior. A long-standing conjecture of St\u{a}nic\u{a} and Maitra~\cite{stanica} asserts that a homogeneous rotation-symmetric bent function cannot have algebraic degree greater than two. The conjecture has motivated a sequence of partial nonexistence results. Meng, Chen and Fu~\cite{meng} excluded several support-dependent classes; Zhang and Gao~\cite{zhang} obtained further restrictions supporting the conjecture; Cusick and Sanger~\cite{cusick} treated substantial families in dimensions \(n=2p\); and Sun, Shi, Liu and Fu~\cite{sun} recently established additional conditional criteria, including results for homogeneous cubic functions based on balanced derivatives, orbit structure and arithmetic conditions on the dimension.
 
-In this paper we settle the cubic case for every even number of variables:
+We prove the cubic case for every even number of variables:
 \[
 \boxed{\text{there is no homogeneous cubic rotation-symmetric bent Boolean function.}}
 \]
@@ -32,7 +32,7 @@ The second ingredient is a mismatch created by cubic orbit folding. Restricting 
 \[
 P_N(x)=\sum_{i=0}^{N/2-1}x_i x_{i+N/2}.
 \]
-The third ingredient is a rigidity theorem in the opposite direction: every rotation-symmetric bent function of degree at most three in power-of-two dimension \(N\ge4\) must contain \(P_N\). We call this the Antipodal Rule. Its proof combines diagonal and complementary fibers, Parseval, a rigidity lemma for balanced rotation-symmetric quadratics, third differences, and a twisted action of cyclic rotation on the complementary fiber. The two conclusions are incompatible, proving the main theorem.
+The third ingredient is a rigidity theorem in the opposite direction: every rotation-symmetric bent function of degree at most three in power-of-two dimension \(N\ge4\) must contain \(P_N\). We call this the Antipodal Rule. Its proof combines diagonal and complementary fibers, Parseval, a rigidity lemma for balanced rotation-symmetric quadratics, third differences, and a twisted action of cyclic rotation on the complementary fiber. Folding and antipodal necessity are incompatible, which proves the main theorem.
 
 This mechanism is related to the derivative viewpoint of Sun, Shi, Liu and Fu~\cite{sun}, but the odd part of the dimension is removed before the power-of-two rigidity argument is applied. Consequently, the theorem below has no arithmetic restriction on the odd part of \(n\) and no restriction on \(v_2(n)\). Within the literature reviewed for this manuscript, we have not identified an earlier theorem establishing this homogeneous degree-three nonexistence statement uniformly for every even dimension. This is a scope comparison, not an absolute priority claim.
 
@@ -120,24 +120,9 @@ By Lemma~\ref{lem:short-cubic}, every short cubic orbit restricts exactly to $L$
 The reduced monomial has degree one, two or three, and no constant term. If its orbit length is $l\mid t$, its distinct translates occur $t/l$ times. When $l<t$, this multiplicity is even and the sum vanishes. All cubic monomial orbits in $t$ variables have length $t$, because their stabilizer divides both three and $t$. Quadratic orbits have length $t$ except for the antipodal orbit, of length $t/2$, which cancels. Equivalently, in the full-length case every antipodal monomial has total preimage multiplicity $2m$, hence even coefficient. A degree-one reduction gives $L$. This proves containment in $\mathcal F_t$; surjectivity of the restriction map is not required.
 \end{proof}
 
-\paragraph{Scope of the quadratic generators.}
-There are $t/2$ distinct quadratic monomial orbits in the full rotation-symmetric space. Only $t/2-1$ have full length $t$. The remaining orbit is
-\[
- P_t(y)=\sum_{i=0}^{t/2-1}y_i y_{i+t/2}.
-\]
-It is absent from $\mathcal F_t$: its reduced translates occur twice and cancel. Thus the divisibility assertion below is not an assertion about all rotation-symmetric functions of degree at most three. For example, $P_{16}$ is bent, with weight $32640\equiv128\pmod{256}$. Lower-degree terms arising from the restriction must be retained, but arbitrary lower-degree terms cannot be added to the stated space.
-
-\begin{lemma}\label{lem:vanishing}
-Every $g\in\mathcal F_t$ vanishes on $A_t=\{y:y_{i+t/2}=y_i\}$.
-\end{lemma}
-\begin{proof}
-In a full orbit sum, pair the translate indexed by $i$ with that indexed by $i+t/2$. They evaluate equally on $A_t$ and cancel in characteristic two. The same pairing applies to the summands of $L$.
-\end{proof}
-
-
 \section{Global cubic nonexistence theorem}
 
-We now state the structural result that supersedes the earlier dimension-by-dimension obstruction.
+The proof now reduces to a power-of-two rigidity statement. We first isolate the quadratic input, then compare the diagonal and complementary fibers of a low-degree rotation-symmetric bent function.
 
 \begin{lemma}[Quadratic rotation-symmetric rigidity]\label{lem:quad-rigidity}
 Let \(N=2^k\). If \(q:\F^N\to\F\) is rotation-symmetric, balanced, and \(\deg q\le2\), then the polar form of \(q\) is zero.
