@@ -1,0 +1,363 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\F}{\mathbb F_2}
+\newcommand{\wt}{\operatorname{wt}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\title{Odd-Order Restriction and Diagonal Fiber Obstructions for Cubic Rotation-Symmetric Bent Functions}
+\author{Filipe Martins Vono}
+\date{Consolidated working manuscript --- 6 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We give an algebraic nonexistence argument for homogeneous cubic rotation-symmetric bent Boolean functions in every positive even dimension. The argument has two parts. For a quadratic function invariant under an odd-order linear automorphism, its character sum factors over the fixed space and an invariant complement, and the complementary factor is nonzero. This makes restriction preserve bentness for invariant functions of degree at most three. In power-of-two dimension, a rotation-symmetric function of degree at most three that vanishes on the half-turn diagonal cannot be bent: Parseval forces its nonzero diagonal cosets to be balanced, while cubic polarization and the all-ones derivative make the complementary fiber affine, and twisted rotation makes it constant. The two statements combine because diagonal vanishing is retained by odd-period restriction, even when lower-degree terms appear. As a consequence, a rotation-symmetric bent function of degree at most three must contain the antipodal quadratic orbit. We also retain exact divisible-code verification in sixteen variables and document the failure of one proposed divisibility extension in dimension thirty-two. These computations support a separate finite result and are not assumptions of the general algebraic argument.
+\end{abstract}
+\noindent\textbf{Keywords:} Boolean functions; bent functions; rotation symmetry; diagonal fibers; odd-order restriction; divisible codes.
+
+\section{Scope and relation to earlier work}
+St\u{a}nic\u{a} and Maitra~\cite{stanica} conjectured that homogeneous rotation-symmetric bent functions of degree greater than two do not exist. Earlier partial results include those of Meng, Chen and Fu~\cite{meng}, Zhang and Gao~\cite{zhang}, and Cusick and Sanger~\cite{cusick}. In particular, Cusick and Sanger (Theorem 3.8) exclude odd homogeneous degree in dimensions $n=2p$ for odd primes $p$. The odd-order restriction step below applies to arbitrary odd factors; comparison with these particular earlier statements does not by itself establish priority.
+
+Meng, Chen and Fu~\cite{meng} exclude three classes: a single monomial orbit (Theorem 11), the elementary symmetric function containing every degree-$d$ monomial (Theorem 12, attributed to Savick\'y), and supports whose largest circular gap is at most $n/2$ (Theorem 13). The last gap includes the interval crossing the cyclic origin. These statements do not give an unconditional exclusion of every cubic support at $n=16$, nor the unrestricted cubic statement obtained by the arguments below. In dimension 16, fourteen of the thirty-five cubic orbits satisfy their gap criterion. Direct application of the three stated criteria in the original coordinates covers $2^{14}-1+21+1=16405$ nonzero functions, whereas the homogeneous cubic space contains $2^{35}-1$ nonzero functions. This count does not include affine-equivalent cases or other results in the literature and is not itself a priority claim.
+
+Sun, Shi, Liu and Fu~\cite{sun} give several support-dependent nonexistence criteria. Their Corollary 2 excludes homogeneous cubics when $n=2p_1^{a_1}\cdots p_r^{a_r}$ and
+\[
+ p_i>2^{\,2p_1^{a_1}\cdots p_{i-1}^{a_{i-1}}}\quad (i\ge2).
+\]
+In particular, it already covers every $n=2p^a$ with $p$ an odd prime; an odd composite factor alone does not establish a new case. Their Theorem 6 fixes a finite SANF support $P$ and gives a support-dependent exponent $e_0(P)$ excluding its family for $2^{e_0(P)}\mid n$. This is not a uniform exclusion of all supports at a fixed dimension such as 32. Their Theorems 2--5 impose further orbit, distance, parity or support hypotheses. The algebraic argument below is uniform in the even dimension and in the homogeneous cubic support; its overlap with these results is acknowledged. These comparisons delimit overlap with the consulted works; they do not certify priority throughout the literature.
+
+The computational proof below is independent of the derivative identity printed as Eq.~(21) in~\cite{sun}. For a full contiguous cubic orbit in even dimension, direct expansion retains a linear term: $D_{1^n}f=Q_2+L$. The supplementary comparison records a finite check of that identity. This observation about the printed formula is not claimed to refute all conclusions of that article.
+
+The main argument is algebraic. A separate finite divisible-code calculation is retained as complementary evidence and as an independently reproducible result in sixteen variables. No proof-assistant certification is claimed. The supplementary quartic exclusion in eight variables is a reproduction check, not a new quartic result. Nonhomogeneity must not be conflated with homogeneity: known rotation-symmetric bent constructions allow higher degrees~\cite{sutang}. A nonhomogeneous cubic bent function in dimension twelve is included as a positive control in the verifier.
+
+\section{Notation}
+Let $V_n=\F^n$. The algebraic normal form (ANF) of a Boolean function is its unique multilinear polynomial over $\F$. Homogeneity of degree three means that every nonzero ANF term has degree three. The zero function may be included in spans without affecting any nonexistence assertion.
+For $a\in V_n$, set $D_a f(x)=f(x+a)+f(x)$. Define
+\[
+ W_f(b)=\sum_{x\in V_n}(-1)^{f(x)+b\cdot x},\qquad
+ W_f(0)=2^n-2\wt(f).
+\]
+A function is balanced if $W_f(0)=0$, and bent if $|W_f(b)|=2^{n/2}$ for every $b$. Equivalently, every nonzero directional derivative is balanced~\cite{rothaus}. Indeed, the Fourier transform of the autocorrelation $A_f(a)=\sum_x(-1)^{D_af(x)}$ is $W_f(b)^2$. Thus constant squared Walsh magnitude is equivalent to $A_f(0)=2^n$ and $A_f(a)=0$ for $a\ne0$.
+
+Let $\sigma$ be cyclic rotation of the coordinates. Rotation symmetry means $f\circ\sigma=f$. Such functions are linear combinations of sums over distinct cyclic monomial orbits. All polynomial sums are in $\F$; exponential sums and weights are ordinary integers.
+
+\section{Odd-order reduction}
+\begin{lemma}\label{lem:reduction}
+Let $V$ be a finite-dimensional vector space over $\F$, and let $T\in\operatorname{GL}(V)$ satisfy $T^m=I$ for an odd positive integer $m$. If $q:V\to\F$ has degree at most two and $q\circ T=q$, then $q$ is balanced on $V$ if and only if $q|_U$ is balanced on $U=\Fix(T)$.
+\end{lemma}
+\begin{proof}
+Adding $q(0)$ preserves balance both on $V$ and on $U$, so assume $q(0)=0$. Its polar form
+\[B(x,y)=q(x+y)+q(x)+q(y)\]
+is alternating bilinear and $T$-invariant. Set $P=\sum_{j=0}^{m-1}T^j$. Then $TP=PT=P$, $Pu=u$ for $u\in U$, and $P^2=P$. Hence $V=U\oplus K$, where $K=\ker P$. For $u\in U$ and $k\in K$, invariance and oddness give
+\[B(u,k)=\sum_{j=0}^{m-1}B(u,T^jk)=B(u,Pk)=0.\]
+It follows that $q(u+k)=q(u)+q(k)$, and thus
+\[S_V(q)=S_U(q|_U)S_K(q|_K),\qquad S_E(h)=\sum_{x\in E}(-1)^{h(x)}.\]
+We show $S_K(q|_K)\ne0$. Put $R=\{z\in K:B(z,k)=0\text{ for all }k\in K\}$. Since $P$ commutes with $T$, $K$ is invariant under $T$ and $T^{-1}$. If $z\in R$ and $k\in K$, then $B(Tz,k)=B(z,T^{-1}k)=0$, so $R$ is $T$-invariant. On $R$, the function $q$ is linear. Therefore, for $z\in R$,
+\[q(z)=\sum_{j=0}^{m-1}q(T^jz)=q(Pz)=q(0)=0.\]
+Character orthogonality now gives
+\begin{align*}
+ S_K(q|_K)^2
+ &=\sum_{z\in K}(-1)^{q(z)}\sum_{x\in K}(-1)^{B(x,z)}\\
+ &=|K|\sum_{z\in R}(-1)^{q(z)}=|K||R|>0.
+\end{align*}
+The factorization proves the equivalence of balance.
+\end{proof}
+
+\begin{proposition}\label{prop:restriction}
+Under the hypotheses on $T$ above, let $f\circ T=f$, $\deg f\le3$, and suppose $f$ is bent. If $\dim U$ is even, then $f|_U$ is bent.
+\end{proposition}
+\begin{proof}
+For each $a\in U\setminus\{0\}$, $D_af$ is quadratic, balanced, and $T$-invariant: $Ta=a$ implies $D_af(Tx)=D_af(x)$. Lemma~\ref{lem:reduction} shows that $(D_af)|_U=D_a(f|_U)$ is balanced. Apply the derivative characterization of bentness.
+\end{proof}
+
+
+\section{Diagonal vanishing and the power-of-two obstruction}
+\begin{lemma}[Half-turn cancellation]\label{lem:diagonal}
+Let $n=2h$. A homogeneous rotation-symmetric Boolean function of odd degree vanishes on $A_n=\{(u,u):u\in\F^h\}$.
+\end{lemma}
+\begin{proof}
+The half-turn $S_n^h$ is a fixed-point-free involution of the coordinate indices. A support preserved by this involution is a union of pairs and has even cardinality. No odd-degree ANF monomial is therefore fixed. Rotation invariance pairs each present monomial with its distinct half-turn translate, which evaluates identically on $(u,u)$. The pair cancels over $\F$.
+\end{proof}
+Throughout this section $S_n$ denotes the right shift, $(S_nx)_i=x_{i-1\pmod n}$.
+
+\begin{lemma}[A quadratic cyclic obstruction]\label{lem:cyclicquadratic}
+Let $n=2^s$ with $s\ge1$. If a rotation-symmetric Boolean function $q:\F^n\to\F$ of degree at most two is balanced, its polar form is zero.
+\end{lemma}
+\begin{proof}
+Normalize $Q=q+q(0)$ and put $B(x,y)=Q(x+y)+Q(x)+Q(y)$. The radical $K=\operatorname{rad}B$ is $S_n$-invariant. If $B\ne0$, this is a proper invariant subspace. Identify $\F^n$ with
+\[
+ \mathcal R_n=\F[X]/(X^n+1)=\F[X]/((X+1)^n),
+\]
+where $S_n$ is multiplication by $X$. An invariant subspace is an ideal of this cyclic module. Every polynomial of odd weight has value one at $X=1$, so is a unit in $\mathcal R_n$; it cannot lie in a proper ideal. Thus $K$ lies in the even-weight subspace, which is $\operatorname{im}(S_n+I)$: both spaces have dimension $n-1$, and containment is immediate.
+
+For $r\in K$, choose $y$ with $r=S_ny+y$. Invariance of $Q$, alternation of $B$, and radical membership give
+\[
+ Q(r)=Q(S_ny)+Q(y)+B(S_ny,y)
+     =B(r+y,y)=0.
+\]
+Writing $A(q)=\sum_x(-1)^{q(x)}$, character orthogonality gives
+\[
+ A(q)^2=\sum_r(-1)^{Q(r)}\sum_x(-1)^{B(x,r)}
+        =2^n\sum_{r\in K}(-1)^{Q(r)}=2^n|K|>0.
+\]
+This contradicts balance and proves the assertion. The argument retains all affine terms.
+\end{proof}
+The lemma is used as a self-contained preliminary fact, without a novelty claim. The algebra and spectra of quadratic rotation-symmetric functions are studied in~\cite{cc2020,cc2024}.
+
+\begin{proposition}[Diagonal fiber obstruction]\label{prop:diagonalobstruction}
+Let $t=2^s$, $s\ge1$, and let $g:\F^t\to\F$ be rotation symmetric with $\deg g\le3$. If $g(u,u)=0$ for all $u\in\F^{t/2}$, then $g$ is not bent. Homogeneity is not required in this proposition.
+\end{proposition}
+\begin{proof}
+Put $t=2h$, $d(u)=(u,u)$, $e(z)=(0,z)$, and $F_z(u)=g(d(u)+e(z))$. The diagonal hypothesis gives $F_0=0$ and
+\[
+ F_z(u)=D_{e(z)}g(d(u)),\qquad \deg F_z\le2.
+\]
+Assume $g$ is bent. The linear map $(u,z)\mapsto(u,u+z)$ is invertible. With $A_z=\sum_u(-1)^{F_z(u)}$, the Fourier transform in $z$ satisfies
+\[
+ \widehat A(b)=W_{\widetilde g}(0,b),\qquad |\widehat A(b)|=2^h.
+\]
+Parseval therefore yields
+\[
+ \sum_z A_z^2=2^{-h}\sum_b\widehat A(b)^2=2^{2h}.
+\]
+Since $A_0^2=2^{2h}$ already exhausts the sum, every nonzero fiber is balanced. In particular $A_{\mathbf1_h}=0$.
+
+Let $a=\mathbf1_t=d(\mathbf1_h)$. The function $D_ag$ has degree at most two, is rotation symmetric because $S_ta=a$, and is balanced by bentness of $g$. Lemma~\ref{lem:cyclicquadratic} implies $B_{D_ag}=0$.
+
+For a Boolean polynomial of degree at most three, the function
+\[
+ T(p,q,r)=D_pD_qD_rg(0)
+\]
+is symmetric trilinear; terms of degree at most two contribute zero. Expansion of a squarefree cubic monomial proves this directly. The second derivative is affine in its evaluation point and satisfies
+\[
+ D_pD_qg(r)=D_pD_qg(0)+T(p,q,r).
+\]
+The zero restriction $g\circ d=0$ makes $D_{d(u)}D_{d(v)}g(0)=0$. Hence
+\[
+ B_{F_{\mathbf1_h}}(u,v)=T(d(u),d(v),e(\mathbf1_h)).
+\]
+Writing $a=(\mathbf1_h,0)+(0,\mathbf1_h)$ and using half-turn invariance on the first term gives
+\begin{align*}
+ B_{D_ag}(d(u),e(v))
+ &=T(d(u),e(v),(\mathbf1_h,0))+T(d(u),e(v),(0,\mathbf1_h))\\
+ &=T(d(u),(v,0),(0,\mathbf1_h))+T(d(u),(0,v),(0,\mathbf1_h))\\
+ &=T(d(u),d(v),e(\mathbf1_h))=B_{F_{\mathbf1_h}}(u,v).
+\end{align*}
+Thus $F_{\mathbf1_h}$ has zero polar. As its degree is at most two, it is affine, say $L(u)+c$.
+
+The right-shift convention gives
+\[
+ S_t(u,u+\mathbf1_h)=
+ (S_hu+e_0,S_hu+e_0+\mathbf1_h).
+\]
+Invariance implies $L(S_hu)+L(u)=L(e_0)$. Substitution of $u=0$ gives $L(e_0)=0$; then $L\circ S_h=L$. All coefficients of a shift-invariant linear form are equal, so $L(u)=\beta\sum_i u_i$, with $\beta=L(e_0)=0$. This makes the fiber constant, giving $A_{\mathbf1_h}=\pm2^h$, a contradiction.
+\end{proof}
+
+\section{The general cubic result}
+\begin{theorem}\label{thm:general}
+For every positive even integer $n$, no homogeneous cubic rotation-symmetric Boolean function in $n$ variables is bent.
+\end{theorem}
+\begin{proof}
+Write $n=tm$ with $t=2^s$, $s\ge1$, and $m$ odd. Let $\iota:\F^t\to\F^n$ repeat a block $m$ times, and put $g=f\circ\iota$. The image of $\iota$ is the fixed subspace of $S_n^t$, an automorphism of odd order $m$. If $f$ were bent, Proposition~\ref{prop:restriction} would make $g$ bent. The block repetition is linear, so $\deg g\le3$; it intertwines one-step rotations, so $g$ is rotation symmetric.
+
+It remains to check the diagonal condition, rather than assuming that the restriction stays homogeneous. For $y=(u,u)\in\F^t$, its repeated image $\iota(y)$ has period $t/2$ and is fixed by $S_n^{n/2}$, since $n/2=(t/2)m$. Hence it lies in $A_n$. Lemma~\ref{lem:diagonal} gives $f(\iota(y))=0$, and therefore $g(u,u)=0$. Proposition~\ref{prop:diagonalobstruction} now contradicts bentness of $g$.
+\end{proof}
+The proof covers all odd multipliers through the quadratic restriction lemma. It does not assume that an arbitrary restriction of a bent function is bent. The power-of-two obstruction is stated for degree at most three, including the lower-degree terms that block repetition can create.
+
+\begin{corollary}\label{cor:antipodal}
+Let $n$ be positive and even. Every rotation-symmetric bent Boolean function of degree at most three has coefficient one on the antipodal quadratic orbit
+\[
+ P_n(x)=\sum_{i=0}^{n/2-1}x_ix_{i+n/2}.
+\]
+\end{corollary}
+\begin{proof}
+In degree at most three, the half-turn fixes no odd-degree monomial. It fixes a quadratic monomial precisely when its two indices are antipodal. All other nonconstant terms cancel on $A_n$. Rotation symmetry makes all antipodal coefficients equal, say $\epsilon$, and thus
+\[
+ f(u,u)=f(0)+\epsilon\sum_i u_i.
+\]
+If $\epsilon=0$, subtract the constant and apply the same restriction and diagonal-obstruction arguments as in Theorem~\ref{thm:general}; their proofs use only degree at most three and zero diagonal. This contradicts bentness. Therefore $\epsilon=1$.
+\end{proof}
+The result addresses the cubic case of the St\u{a}nic\u{a}--Maitra conjecture. No conclusion for homogeneous degrees four or higher follows from these proofs.
+
+\appendix
+\section{The restricted orbit space}
+Write $n=tm$, where $t=2^s$, $s\ge1$, and $m$ is odd. The map $T=\sigma^t$ has order $m$, and its fixed subspace consists of repetitions of a block $y\in\F^t$. Under this identification $x_i=y_{i\bmod t}$.
+
+\begin{lemma}\label{lem:orbit}
+The restriction of any homogeneous cubic rotation-symmetric function belongs to the space $\mathcal F_t$ generated by all full-length cubic monomial orbit sums, the quadratic sums
+\[Q_d(y)=\sum_{i=0}^{t-1}y_i y_{i+d},\quad 1\le d<t/2,\]
+and $L(y)=\sum_{i=0}^{t-1}y_i$. Indices in these sums are modulo $t$.
+\end{lemma}
+\begin{proof}
+Consider a cubic monomial with a three-element index set. Its stabilizer $H\le C_n$ acts freely on that set, so $h=|H|$ divides three and $h\in\{1,3\}$. Since $h\mid n=tm$ and $\gcd(h,t)=1$, $h\mid m$. Its orbit length is $n/h=t(m/h)$, with $m/h$ odd. Upon restriction, its orbit sum is therefore the sum of $t$ cyclic translates of its reduced monomial.
+
+The reduced monomial has degree one, two or three, and no constant term. If its orbit length is $l\mid t$, its distinct translates occur $t/l$ times. When $l<t$, this multiplicity is even and the sum vanishes. All cubic monomial orbits in $t$ variables have length $t$, because their stabilizer divides both three and $t$. Quadratic orbits have length $t$ except for the antipodal orbit, of length $t/2$, which cancels. A degree-one reduction gives $L$. This proves containment in $\mathcal F_t$; surjectivity of the restriction map is not required.
+\end{proof}
+
+\paragraph{Scope of the quadratic generators.}
+There are $t/2$ distinct quadratic monomial orbits in the full rotation-symmetric space. Only $t/2-1$ have full length $t$. The remaining orbit is
+\[
+ P_t(y)=\sum_{i=0}^{t/2-1}y_i y_{i+t/2}.
+\]
+It is absent from $\mathcal F_t$: its reduced translates occur twice and cancel. Thus the divisibility assertion below is not an assertion about all rotation-symmetric functions of degree at most three. For example, $P_{16}$ is bent, with weight $32640\equiv128\pmod{256}$. Lower-degree terms arising from the restriction must be retained, but arbitrary lower-degree terms cannot be added to the stated space.
+
+\begin{lemma}\label{lem:vanishing}
+Every $g\in\mathcal F_t$ vanishes on $A_t=\{y:y_{i+t/2}=y_i\}$.
+\end{lemma}
+\begin{proof}
+In a full orbit sum, pair the translate indexed by $i$ with that indexed by $i+t/2$. They evaluate equally on $A_t$ and cancel in characteristic two. The same pairing applies to the summands of $L$.
+\end{proof}
+
+
+\begin{lemma}[Removing the linear component]\label{lem:linear}
+For a Boolean function $h$ and an affine form $\ell(x)=a\cdot x+c$,
+\[W_{h+\ell}(b)=(-1)^c W_h(b+a).\]
+Consequently, $h+\ell$ is bent if and only if $h$ is bent.
+\end{lemma}
+\begin{proof}
+Substitute $h(x)+a\cdot x+c$ into the definition of the Walsh transform.
+The map $b\mapsto b+a$ permutes its frequencies and the constant factor
+does not change their absolute values.
+\end{proof}
+Define $\mathcal H_t$ to be the span of the full cubic and full quadratic
+orbit sums, without $L$. Since every $g\in\mathcal F_t$ is $h+\epsilon L$
+for $h\in\mathcal H_t$, excluding bent functions in $\mathcal H_t$ suffices.
+This observation is an application of standard affine invariance; no
+novelty is claimed for the identity itself.
+
+\section{A separate finite divisibility result}
+For $t=2,4,8$, there are respectively 1, 3 and 11 generators of $\mathcal F_t$. Exact enumeration gives
+\[
+\begin{array}{c|c|c}
+t & |\mathcal F_t| & \text{zero-frequency Walsh values}\\\hline
+2&2&\{0,4\}\\
+4&8&\{-8,0,8,16\}\\
+8&2048&\text{all divisible by }32
+\end{array}
+\]
+None contains $\pm2^{t/2}$. The accompanying verifier enumerates all these functions, including zero, and checks the required exclusion.
+
+For $t=16$, there are $\binom{16}{3}/16=35$ cubic orbits and seven full quadratic orbits in $\mathcal H_{16}$. These 42 ANFs have disjoint nonempty monomial supports and are linearly independent. Any input orbit shorter than 16 has length dividing eight, hence lies in $A_{16}$. The remaining $2^{16}-2^8=65280$ inputs form 4080 full orbits. Evaluating on one representative from each defines codewords $w_1,\ldots,w_{42}\in\F^{4080}$ and a code $C$. This evaluation is injective on $\mathcal H_{16}$: a function in its kernel vanishes on every full orbit by rotation symmetry and on every shorter orbit by Lemma~\ref{lem:vanishing}, hence is the zero Boolean function and has zero ANF coefficients. Therefore $\dim C=42$, and
+\begin{equation}\label{eq:weights}
+\wt(g)=16\wt(c)\quad\text{for the codeword }c\text{ associated to }g.
+\end{equation}
+
+\begin{lemma}[Weight polarization]\label{lem:ward}
+For binary vectors $w_i$ and an index subset $I$,
+\[
+ \wt\Big(\sum_{i\in I}w_i\Big)=
+ \sum_{\varnothing\ne J\subseteq I}(-2)^{|J|-1}
+ \wt\Big(\prod_{j\in J}w_j\Big),
+\]
+where the product is coordinatewise. In particular, divisibility of each $k$-fold intersection weight by $2^{5-k}$ for $1\le k\le4$ implies that their binary span is 16-divisible.
+\end{lemma}
+\begin{proof}
+At a coordinate occupied by $r$ selected vectors, the right-hand contribution is
+\[
+\sum_{k=1}^r\binom rk(-2)^{k-1}=(1-(-1)^r)/2,
+\]
+precisely its contribution to the XOR weight. Sum over coordinates. Terms with $k\ge5$ are divisible by 16; the stated conditions handle the other terms. This is the weight polarization criterion in the divisible-code framework~\cite{ward}.
+\end{proof}
+
+The exact computation on the 42 generators has the following results:
+\begin{center}
+\begin{tabular}{rrrr}
+\toprule
+Intersection order & Subsets & Required divisor & Violations\\
+\midrule
+1&42&16&0\\
+2&861&8&0\\
+3&11480&4&0\\
+4&111930&2&0\\
+\midrule
+Total&124313&&0\\
+\bottomrule
+\end{tabular}
+\end{center}
+These recorded finite checks establish that $C$ is 16-divisible. Equation~\ref{eq:weights} implies $256\mid\wt(g)$ and $512\mid W_g(0)$. Since bentness in dimension 16 requires $|W_g(0)|=256$, no function in $\mathcal H_{16}$ is bent. Lemma~\ref{lem:linear} excludes bentness in $\mathcal F_{16}$ as well. The intersection table is the finite computational component of the proof; it is not inferred from random samples. The supplied verifier also checks the 12384 additional intersections involving $L$, for 136697 in total. Thus it additionally establishes $512\mid W_g(0)$ on all of $\mathcal F_{16}$, although this stronger assertion is unnecessary for the nonexistence proof.
+
+\section{Hypotheses behind the supplementary fiber certificates}
+A fiber of an arbitrary bent function need not be balanced. The certificates in dimension 32 use the additional property that a homogeneous cubic rotation-symmetric function vanishes on the diagonal subspace $A=\{(u,u):u\in\F^{16}\}$.
+
+\begin{lemma}\label{lem:fiber}
+Let $f:\F^{2k}\to\F$ be bent and let $A$ be a $k$-dimensional linear subspace on which $f=0$. Every coset $v+A$ distinct from $A$ has zero sign sum.
+\end{lemma}
+\begin{proof}
+Character orthogonality gives
+\[
+ \sum_{b\in A^\perp}W_f(b)
+ =2^k\sum_{x\in A}(-1)^{f(x)}=2^{2k}.
+\]
+There are $2^k$ summands, each equal to $\pm2^k$, so all are $+2^k$. For a coset represented by $v$, Fourier inversion on the quotient gives
+\[
+ \sum_{x\in v+A}(-1)^{f(x)}
+ =2^{-k}\sum_{b\in A^\perp}(-1)^{b\cdot v}W_f(b).
+\]
+This equals zero for $v\notin A$.
+\end{proof}
+In the present homogeneous cubic space, paired half-turn monomials give $f(u,u)=0$ and $q_z(u)=f(u,u+z)$ has degree at most two. Its polar $B_z$ is determined by the fixed 35-coordinate cubic parameter described in the supplementary certificate notes. Also $q_z(u+z)=q_z(u)$, hence $z\in R_z=\operatorname{rad}B_z$ and $L_z(z)=0$, where $L_z(r)=q_z(r)+q_z(0)$.
+
+On $R_z$, $L_z$ is linear, and
+\[
+ \left(\sum_u(-1)^{q_z(u)}\right)^2
+ =2^{16}\sum_{r\in R_z}(-1)^{L_z(r)}.
+\]
+Thus balance is equivalent to $L_z$ being nonzero on $R_z$. In general this is a disjunction over a radical basis, not one equation. For the seven certified fibers, $\operatorname{rank}B_z=14$, so $R_z=\operatorname{span}\{z,r\}$ and balance is exactly $L_z(r)=1$. The independently reconstructed seven forms sum to zero, whereas seven required right-hand sides sum to one. This seven-fiber certificate excludes its documented fixed-parameter family. The universal cubic exclusion in dimension 32 instead follows from Theorem~\ref{thm:general}, without these certificates or SAT solving.
+
+\section{Reproducibility and limits}
+The algebraic proof in Sections 3--5 does not use computational certificates. The new companion program \texttt{audit\_bridge.py} checks diagonal vanishing, the degree bound, polar transfer and twisted invariance on generator polynomials and deterministic mixed controls, including the induced quadratic and linear terms. It exhausts the smaller induced spaces and checks odd-period folding over a documented finite list of dimensions. These are finite regression controls rather than a proof of the universal quantifier. Their results are recorded in \texttt{audit\_bridge.json}.
+
+The following earlier checks remain separately reproducible and support the finite divisibility and family-specific results. 
+The accompanying \texttt{verificador\_integrado.py} uses Python 3.10 or
+later and only its standard library. It performs exact integer arithmetic,
+with explicit exceptions on failed conditions; its checks remain active
+under Python optimization. Run \texttt{python verificador\_integrado.py}.
+The equivalent supplied notebook can run in Colab on a CPU. The supplied
+local logs are not represented as Colab or GPU execution logs.
+
+The program constructs both full truth tables of length 65536 and a second
+representation evaluated directly on 4080 input-orbit representatives.
+For every tested intersection it checks that the full weight is sixteen
+times the compressed weight, then tests divisibility. It checks dimension
+43 and antipodal vanishing, and records intersection counts and hashes.
+These are two representations inside one program, not two independently
+maintained implementations or a formal proof certificate.
+A separately written verifier, \texttt{auditoria\_2026\_10\_04/auditoria\_independente.py}, enumerates cubic generators using cyclic gap necklaces and checks all 136697 intersections on full input tables using NumPy 2.3.5. It imports no code from the first verifier. Its recorded run also checks 80640 invariant quadratic map--function pairs in dimension four and 15680 folded cubic orbits across 24 dimensions. These are finite controls, not a replacement for the general proofs.\par
+The general algebraic lemmas are proved in the text; finite folding
+tests for odd multipliers 1, 3 and 5 are supplemental controls only.
+
+Other stages provide a nonhomogeneous cubic bent positive control in
+dimension twelve, all 1024 homogeneous quartic RS functions in dimension
+eight (including zero), and spectral, avalanche and algebraic-immunity
+checks on the documented sixteen-variable example. These checks are
+supplementary; they do not establish new bibliographic records or a global
+nonlinearity optimum. The program also checks complete quadratic fibers
+in dimension 32, retaining linear terms as described in the audit notes.
+
+For $t=32$, the analogous space has 155 cubic, 15 quadratic and one linear generator. Consider
+\[H(x)=\sum_{i=0}^{31}x_i x_{i+1}x_{i+2}\quad\text{in }\F,\]
+with indices modulo 32. Define a $4\times4$ integer matrix indexed by pairs $(a,b)\in\F^2$ by $M_{(a,b),(b,c)}=(-1)^{abc}$ and all incompatible-transition entries zero. Closed walks give $W_H(0)=\operatorname{tr}(M^{32})=85032960$, so
+\[\wt(H)=2104967168,\qquad \wt(H)/32=65780224\equiv512\pmod{2048}.\]
+This refutes the particular proposed universal divisibility by 2048 of compressed code weights in dimension 32; it does not establish an intrinsic barrier for every use of Ward divisibility. Such divisibility would have implied $2^{16}\mid\wt(g)$ and excluded the bent values $W_g(0)=\pm2^{16}$. The example does not refute the bent conjecture and does not preclude refined uses of divisible codes or other Walsh coefficients.
+
+For degrees at least four, derivatives need not be quadratic, so Lemma~\ref{lem:reduction} no longer provides a restriction theorem by the same argument. In particular, diagonal cancellation in odd degree alone does not justify an induction to higher degrees.
+
+\begin{thebibliography}{12}
+\bibitem{cc2020} A.~Chirvasitu and T.~W.~Cusick, Affine equivalence for quadratic rotation symmetric Boolean functions, \emph{Designs, Codes and Cryptography} 88 (2020), 1301--1329. \href{https://doi.org/10.1007/s10623-020-00748-5}{doi:10.1007/s10623-020-00748-5}.
+\bibitem{cc2024} A.~Chirvasitu and T.~W.~Cusick, Quadratic rotation symmetric Boolean functions, \emph{Discrete Applied Mathematics} 343 (2024), 91--105. \href{https://arxiv.org/abs/2304.12734}{arXiv:2304.12734}.
+\bibitem{stanica} P.~St\u{a}nic\u{a} and S.~Maitra, Rotation symmetric Boolean functions---count and cryptographic properties, \emph{Discrete Applied Mathematics} 156(10) (2008), 1567--1580. \href{https://doi.org/10.1016/j.dam.2007.04.029}{doi:10.1016/j.dam.2007.04.029}.
+\bibitem{meng} Q.~Meng, L.~Chen and F.-W.~Fu, On homogeneous rotation symmetric bent functions, \emph{Discrete Applied Mathematics} 158(10) (2010), 1111--1117. \href{https://doi.org/10.1016/j.dam.2010.02.009}{doi:10.1016/j.dam.2010.02.009}.
+\bibitem{zhang} X.~Zhang and G.~Gao, On the conjecture about the nonexistence of rotation symmetric bent functions (2013). \href{https://arxiv.org/abs/1303.2282}{arXiv:1303.2282}.
+\bibitem{cusick} T.~W.~Cusick and E.~M.~Sanger, Rotation symmetric bent Boolean functions for $n=2p$ (2017). \href{https://arxiv.org/abs/1708.09313}{arXiv:1708.09313}.
+\bibitem{sun} L.~Sun, Z.~Shi, J.~Liu and F.-W.~Fu, On the conjecture about the nonexistence of homogeneous rotation symmetric bent functions, \emph{Designs, Codes and Cryptography} 94, article 93 (2026). \href{https://doi.org/10.1007/s10623-026-01848-4}{doi:10.1007/s10623-026-01848-4}.
+\bibitem{rothaus} O.~S.~Rothaus, On ``bent'' functions, \emph{Journal of Combinatorial Theory, Series A} 20(3) (1976), 300--305. \href{https://doi.org/10.1016/0097-3165(76)90024-8}{doi:10.1016/0097-3165(76)90024-8}.
+\bibitem{ward} H.~N.~Ward, Weight polarization and divisibility, \emph{Discrete Mathematics} 83(2--3) (1990), 315--326. \href{https://doi.org/10.1016/0012-365X(90)90015-A}{doi:10.1016/0012-365X(90)90015-A}.
+\bibitem{sutang} S.~Su and X.~Tang, On the Systematic Constructions of Rotation Symmetric Bent Functions with Any Possible Algebraic Degrees, IACR ePrint 2015/451. \href{https://eprint.iacr.org/2015/451.pdf}{Preprint consulted}.
+\end{thebibliography}
+\end{document}
+
