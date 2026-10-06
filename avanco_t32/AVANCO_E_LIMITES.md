@@ -157,11 +157,18 @@ O resultado exato é:
 - 124 dos 127 valores não nulos: excluídos por autocorrelação diagonal constante e não nula;
 - 3 valores permanecem sem exclusão por este teste: `0x2a8000`, `0x1000a2000` e `0x10020a000`.
 
-Logo, **125 de 128 valores de η** nesse subespaço estão agora excluídos, cada um correspondendo a uma família afim de dimensão 120 no espaço original de 155 coeficientes.
+Na verdade, os três valores que não tinham testemunho pelas três direções diagonais simples pertencem todos ao núcleo da contração antidiagonal B_J. Assim, a união das duas obstruções fecha o subespaço inteiro:
 
-O conferidor é `verificar_subespaco_eta_paridade.py` e a saída resumida está em `resultado_subespaco_eta_paridade.json`.
+- 32 valores de η têm B_J=0 e são excluídos pela fibra antidiagonal;
+- 124 valores têm testemunho de autocorrelação diagonal constante e não nula;
+- há sobreposição de 28 valores entre os dois conjuntos;
+- portanto a união contém **128 de 128 valores de η**.
 
-Este resultado ainda é parcial: os três valores listados permanecem abertos por esse método, e o espaço completo possui 2^35 valores de η.
+Os quatro valores cobertos apenas pela obstrução antidiagonal são `0x0`, `0x2a8000`, `0x1000a2000` e `0x10020a000`. Em particular, os três casos anteriormente listados como restantes estão agora excluídos.
+
+Logo, **todo o subespaço de dimensão sete de mesma paridade está excluído**, cada quociente correspondendo a uma família afim de dimensão 120 no espaço original de 155 coeficientes.
+
+O conferidor `verificar_subespaco_eta_paridade.py` agora audita explicitamente os dois mecanismos e confirma a cobertura 128/128. O espaço completo ainda possui 2^35 valores de η, portanto o caso geral n=32 continua em aberto.
 
 ## 8. Reproduzir e interpretar corretamente
 
