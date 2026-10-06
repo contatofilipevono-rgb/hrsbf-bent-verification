@@ -170,6 +170,29 @@ Logo, **todo o subespaço de dimensão sete de mesma paridade está excluído**,
 
 O conferidor `verificar_subespaco_eta_paridade.py` agora audita explicitamente os dois mecanismos e confirma a cobertura 128/128. O espaço completo ainda possui 2^35 valores de η, portanto o caso geral n=32 continua em aberto.
 
+
+## 7C. Ampliação para um subespaço explícito de dimensão 18
+
+A combinação da obstrução antidiagonal com um conjunto fixo de sete direções de autocorrelação diagonal permite ampliar drasticamente o resultado anterior. Foi encontrado e verificado exaustivamente um subespaço coordenado H de dimensão 18 em F₂^35, portanto com 2^18 = 262.144 valores de η.
+
+Uma base explícita de H é dada pelos índices de órbita
+
+`[13, 15, 17, 19, 21, 30, 32, 1, 2, 5, 22, 33, 20, 11, 31, 8, 14, 27]`,
+
+correspondentes aos representantes cúbicos em 16 variáveis
+
+`024, 026, 028, 02(10), 02(12), 048, 04(10), 013, 014, 017, 02(13), 04(11), 02(11), 01(13), 049, 01(10), 025, 03(10)`.
+
+Para cada um dos 262.144 quocientes, o verificador usa primeiro a fibra antidiagonal e, quando necessário, procura um testemunho entre as sete direções
+
+`0x0101, 0x0505, 0x0303, 0x0F0F, 0x3333, 0x1111, 0x5555`.
+
+Todos os 262.144 quocientes são excluídos. Como ker(η) tem dimensão 120, a preimagem de H no espaço original F₂^155 tem dimensão 18+120=138. Assim a obstrução cobre exatamente um subespaço de **2^138 vetores de coeficientes originais**; retirando o vetor zero, são 2^138−1 funções cúbicas homogêneas não nulas excluídas.
+
+O verificador `verificar_subespaco_eta_dim18.py` percorre os 2^18 quocientes por Gray code, reconstrói as contrações polares e as formas L_z(r) a partir das 155 órbitas cúbicas originais e exige um certificado para cada quociente. A saída resumida está em `resultado_subespaco_eta_dim18.json`.
+
+O resultado é estritamente mais forte que o fechamento do subespaço de dimensão sete e que o recorte de peso ≤2. Não se afirma que dimensão 18 seja máxima; o espaço completo de η tem dimensão 35, portanto o caso geral n=32 permanece em aberto.
+
 ## 8. Reproduzir e interpretar corretamente
 
 Use Python 3.10 ou superior. Todas as contas são inteiras; nenhum pacote externo ou GPU é necessário.
@@ -178,7 +201,8 @@ Use Python 3.10 ou superior. Todas as contas são inteiras; nenhum pacote extern
 2. `python verificar_fibra_antidiagonal.py` — confere as seis formas e todas as 64 possibilidades normalizadas.
 3. `python verificar_classes.py` — confere os 607 certificados obtidos por fibras de posto 14 e pela fibra antidiagonal; grava `resultado_631_classes.json`.
 4. `python verificar_derivadas_diagonais.py` — confere os 24 testemunhos restantes por autocorrelação diagonal e grava `resultado_derivadas_diagonais_24.json`.
-5. `python verificar_subespaco_eta_paridade.py` — audita os 128 valores do subespaço de mesma paridade e confirma 125 exclusões, deixando três quocientes explícitos sem exclusão por esse teste.
+5. `python verificar_subespaco_eta_paridade.py` — audita os 128 valores do subespaço de mesma paridade e confirma a cobertura completa 128/128 pela união das duas obstruções.
+6. `python verificar_subespaco_eta_dim18.py` — percorre exaustivamente 2^18=262.144 quocientes de um subespaço explícito de dimensão 18 e confirma 0 sobreviventes.
 
 No ambiente local, a primeira checagem levou cerca de 2,3 segundos e a checagem ampliada, cerca de 23 segundos. Os tempos dependem do computador. O notebook entregue permite reproduzir o certificado curto e a obstrução antidiagonal; não foi executado no Colab e vem sem saídas preenchidas. O pacote contém as saídas locais reais.
 
