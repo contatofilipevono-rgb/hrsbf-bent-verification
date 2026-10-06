@@ -150,6 +150,27 @@ Finally,
 Thus \(Q\), and hence \(q\), is not balanced, a contradiction. Therefore \(B=0\).
 \end{proof}
 
+\begin{remark}[Sharpness of the power-of-two hypothesis]\label{rem:quad-sharp}
+Among even dimensions, the hypothesis \(N=2^k\) in Lemma~\ref{lem:quad-rigidity} is exact. Indeed, if
+\[
+N=dm,\qquad d=2^{v_2(N)},\qquad m>1\text{ odd},
+\]
+then
+\[
+q_d(x)=\sum_{i=0}^{N-1}x_i x_{i+d}
+\]
+is rotation-symmetric and quadratic. Its underlying graph is the disjoint union of \(d\) odd cycles of length \(m\). The radical of its polar consists of vectors constant independently on these cycles. Hence it has dimension \(d\), while on a vector supported as \(1\) on one cycle,
+\[
+q_d(r)=m=1\pmod2.
+\]
+Thus \(q_d\) restricts to a nonzero linear form on the radical. Using
+\[
+\left(\sum_x(-1)^{q_d(x)}\right)^2
+=2^N\sum_{r\in\operatorname{rad}(B_{q_d})}(-1)^{q_d(r)},
+\]
+the right-hand side vanishes, so \(q_d\) is balanced. Its polar is nonzero. Therefore, for even \(N\), every balanced rotation-symmetric quadratic having zero polar is a rigidity phenomenon valid for all such functions precisely when \(N\) is a power of two.
+\end{remark}
+
 \begin{lemma}[Complementary-fiber balance]\label{lem:fiber-balance}
 Let \(N=2h\), let \(g:\F^N\to\F\) be bent, and suppose \(g(u,u)\) is constant. Define \(F_z(u)=g(u,u+z)\). Then \(F_z\) is balanced for every \(z\ne0\).
 \end{lemma}
