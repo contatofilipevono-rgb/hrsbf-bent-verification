@@ -132,67 +132,96 @@ novelty is claimed for the identity itself.
 
 We now state the structural result that supersedes the earlier dimension-by-dimension obstruction.
 
+\begin{lemma}[Quadratic rotation-symmetric rigidity]\label{lem:quad-rigidity}
+Let \(N=2^k\). If \(q:\F^N\to\F\) is rotation-symmetric, balanced, and \(\deg q\le2\), then the polar form of \(q\) is zero.
+\end{lemma}
+\begin{proof}
+Adding a constant does not affect balance or the polar, so put \(Q=q+q(0)\), with \(Q(0)=0\), and let \(B\) be its polar. Let \(R=\{r:B(r,x)=0\ \forall x\}\). If \(B\ne0\), then \(R\) is a proper rotation-invariant subspace.
+
+Identify \(\F^N\) with \(A=\F[X]/((X+1)^N)\), with cyclic rotation \(S\) represented by multiplication by \(X\). Since \(A\) is local with maximal ideal \((X+1)\), a vector of odd Hamming weight represents a unit: its polynomial evaluates to \(1\) at \(X=1\). A rotation-invariant subspace containing a unit contains all its cyclic shifts, whose span is the whole module. Hence a proper \(R\) contains no odd-weight vector and
+\[
+R\subseteq (X+1)A=\operatorname{im}(S+I).
+\]
+For \(r\in R\), write \(r=Sy+y\). Rotation invariance gives \(Q(Sy)=Q(y)\), so
+\[
+Q(r)=Q(Sy)+Q(y)+B(Sy,y)=B(r+y,y)=0,
+\]
+because \(B(r,y)=B(y,y)=0\).
+
+Finally,
+\[
+\left(\sum_x(-1)^{Q(x)}\right)^2
+=\sum_{z}(-1)^{Q(z)}\sum_x(-1)^{B(x,z)}
+=2^N\sum_{z\in R}(-1)^{Q(z)}
+=2^N|R|>0.
+\]
+Thus \(Q\), and hence \(q\), is not balanced, a contradiction. Therefore \(B=0\).
+\end{proof}
+
+\begin{lemma}[Complementary-fiber balance]\label{lem:fiber-balance}
+Let \(N=2h\), let \(g:\F^N\to\F\) be bent, and suppose \(g(u,u)\) is constant. Define \(F_z(u)=g(u,u+z)\). Then \(F_z\) is balanced for every \(z\ne0\).
+\end{lemma}
+\begin{proof}
+After adding a constant assume \(g(u,u)=0\). Put \(A_z=\sum_u(-1)^{F_z(u)}\). Under the invertible change \((u,z)\mapsto(u,u+z)\),
+\[
+\widehat A(b)=\sum_z A_z(-1)^{b\cdot z}
+\]
+is the Walsh coefficient of the transformed \(g\) at frequency \((0,b)\), hence has magnitude \(2^h\). Parseval on \(\F^h\) gives
+\[
+\sum_zA_z^2=2^{-h}\sum_b\widehat A(b)^2=2^{-h}2^h2^{2h}=2^N.
+\]
+But \(A_0=2^h\), so \(A_0^2=2^N\) exhausts the sum. Hence \(A_z=0\) for every \(z\ne0\).
+\end{proof}
+
+\begin{lemma}[Complementary-fiber rigidity]\label{lem:fiber-rigidity}
+Let \(N=2^k\), \(k\ge2\), and let \(g:\F^N\to\F\) be rotation-symmetric with \(\deg g\le3\). Suppose \(g(u,u)\) is constant and \(g\) is bent. Then \(F_{\mathbf1}(u)=g(u,u+\mathbf1)\) is constant.
+\end{lemma}
+\begin{proof}
+Adding a constant, assume \(g(u,u)=0\). Put \(d(u)=(u,u)\), \(e(z)=(0,z)\), and \(J=\mathbf1^N\). Bentness implies \(D_Jg\) is balanced; it is rotation-symmetric and has degree at most two. Lemma~\ref{lem:quad-rigidity} therefore gives \(B_{D_Jg}=0\).
+
+For degree at most three,
+\[
+\Delta_3(p,q,r)=D_pD_qD_rg(0)
+\]
+is independent of the base point and is a symmetric trilinear form. Put \(p=d(u)\), \(q=d(v)\), \(w=e(\mathbf1)\). Then
+\[
+B_{F_{\mathbf1}}(u,v)=D_pD_qg(w)
+=B_g(p,q)+\Delta_3(p,q,w).
+\]
+The first term is zero because \(0,p,q,p+q\) are diagonal points and \(g\) vanishes there. Thus
+\[
+B_{F_{\mathbf1}}(u,v)=\Delta_3(d(u),d(v),e(\mathbf1)).
+\]
+Also
+\[
+B_{D_Jg}(d(u),e(v))=\Delta_3(d(u),e(v),J).
+\]
+Writing \(e'(z)=(z,0)\), half-rotation fixes \(d(u)\), exchanges \(e(v)\) with \(e'(v)\), and exchanges \(e(\mathbf1)\) with \(e'(\mathbf1)\). Hence invariance and trilinearity give
+\[
+\Delta_3(d(u),e(v),J)
+=\Delta_3(d(u),d(v),e(\mathbf1)).
+\]
+Since \(B_{D_Jg}=0\), the polar of \(F_{\mathbf1}\) is zero; hence \(F_{\mathbf1}\) is affine.
+
+With \((\sigma x)_i=x_{i-1\pmod N}\), direct calculation gives
+\[
+\sigma(u,u+\mathbf1)=(Ru+e_0,Ru+e_0+\mathbf1),
+\]
+where \(R\) is cyclic rotation on \(\F^{N/2}\). Thus \(F_{\mathbf1}(Ru+e_0)=F_{\mathbf1}(u)\). If \(F_{\mathbf1}(u)=a\cdot u+c\), then \(R^Ta=a\), so \(a\) is constant on the single cycle of \(R\); the translation condition gives \(a\cdot e_0=0\), forcing \(a=0\). Therefore \(F_{\mathbf1}\) is constant.
+\end{proof}
+
 \begin{theorem}[Antipodal Rule]\label{thm:antipodal}
-Let \(N=2^k\) with \(k\ge2\). If \(g:\F^N\to\F\) is rotation-symmetric, bent, and \(\deg g\le3\), then its ANF contains the antipodal quadratic orbit
+Let \(N=2^k\) with \(k\ge2\). If \(g:\F^N\to\F\) is rotation-symmetric, bent, and \(\deg g\le3\), then its ANF contains
 \[
 P_N(x)=\sum_{i=0}^{N/2-1}x_i x_{i+N/2}.
 \]
 \end{theorem}
-
 \begin{proof}
-Write \(N=2h\), \(d(u)=(u,u)\), and \(e(z)=(0,z)\). If the antipodal coefficient is zero, half-rotation pairing shows that, after adding a constant, \(g(d(u))=0\) for all \(u\). Put
+Write \(N=2h\), and let \(\alpha\) be the coefficient of \(P_N\). On the diagonal \(d(u)=(u,u)\), linear orbit sums cancel in pairs, non-antipodal quadratic orbit sums cancel under half-rotation, and cubic orbit sums cancel because every cubic orbit has full length when \(N\) is a power of two. The antipodal orbit restricts to \(\sum_i u_i\). Hence
 \[
-F_z(u)=g(u,u+z),\qquad A_z=\sum_u(-1)^{F_z(u)}.
+g(u,u)=c+\alpha\sum_i u_i.
 \]
-The invertible change \((u,z)\mapsto(u,u+z)\) preserves bentness. The Walsh transform of \(z\mapsto A_z\) is a Walsh slice of the transformed bent function; Parseval therefore gives
-\[
-\sum_z A_z^2=2^N.
-\]
-Since \(A_0=2^h\), every \(A_z\) with \(z\ne0\) vanishes. Thus \(F_{\mathbf1}\) is balanced.
-
-Let \(J=\mathbf1^N\). Then \(D_Jg\) is balanced, rotation-symmetric and quadratic. A balanced rotation-symmetric quadratic in \(2^k\) variables has zero polar: if its polar \(B\) were nonzero, its radical \(R\) would be a proper rotation-invariant submodule of
-\[
-\F[X]/((X+1)^N),
-\]
-hence \(R\subseteq\operatorname{im}(S+I)\). For \(r=Sy+y\in R\), rotation invariance and alternation give \(Q(r)=B(r+y,y)=0\). The quadratic character identity would then give a nonzero zero-frequency Walsh sum, contradicting balance. Hence \(B_{D_Jg}=0\).
-
-For \(\deg g\le3\), the third difference
-\[
-\Delta_3(p,q,r)=D_pD_qD_rg(0)
-\]
-is independent of the base point and is a symmetric trilinear form. Since \(g\circ d=0\),
-\[
-B_{F_{\mathbf1}}(u,v)
-=\Delta_3(d(u),d(v),e(\mathbf1)).
-\]
-Moreover,
-\[
-B_{D_Jg}(d(u),e(v))=\Delta_3(d(u),e(v),J).
-\]
-Write \(e'(z)=(z,0)\), so \(J=e'(\mathbf1)+e(\mathbf1)\). The half-rotation fixes \(d(u)\) and exchanges \(e(v)\leftrightarrow e'(v)\) and \(e(\mathbf1)\leftrightarrow e'(\mathbf1)\). By invariance and trilinearity of \(\Delta_3\),
-\[
-\begin{aligned}
-\Delta_3(d(u),e(v),J)
-&=\Delta_3(d(u),e(v),e'(\mathbf1))+\Delta_3(d(u),e(v),e(\mathbf1))\\
-&=\Delta_3(d(u),e'(v),e(\mathbf1))+\Delta_3(d(u),e(v),e(\mathbf1))\\
-&=\Delta_3(d(u),d(v),e(\mathbf1)).
-\end{aligned}
-\]
-Thus
-\[
-B_{F_{\mathbf1}}(u,v)=B_{D_Jg}(d(u),e(v))=0.
-\]
-A Boolean function with identically zero polar has no ANF terms of degree at least two, so \(F_{\mathbf1}\) is affine.
-
-With the convention \((\sigma x)_i=x_{i-1\pmod N}\), write \(u=(u_0,\ldots,u_{h-1})\). A direct coordinate calculation gives
-\[
-\sigma(u,u+\mathbf1)
-=(Ru+e_0,\;Ru+e_0+\mathbf1),
-\]
-where \(R\) is cyclic rotation on \(\F^h\) and \(e_0=(1,0,\ldots,0)\) (with the opposite rotation convention the unit vector occurs at the opposite endpoint). Hence \(F_{\mathbf1}(Ru+e_0)=F_{\mathbf1}(u)\). If
-\(F_{\mathbf1}(u)=L(u)+c\), then \(L\circ R=L\), so
-\(L(u)=\gamma\sum_i u_i\); the translation by \(e_0\) forces
-\(\gamma=0\). Therefore \(F_{\mathbf1}\) is constant, contradicting its balance. The antipodal coefficient must be one.
+If \(\alpha=0\), the diagonal is constant. Lemma~\ref{lem:fiber-balance} makes \(F_{\mathbf1}\) balanced, whereas Lemma~\ref{lem:fiber-rigidity} makes it constant, a contradiction. Therefore \(\alpha=1\).
 \end{proof}
 
 \begin{theorem}[Main theorem]\label{thm:global}
