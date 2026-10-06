@@ -1,0 +1,99 @@
+{
+  "homogeneous_quintic_RS_orbit_representatives": [
+    [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    [
+      0,
+      1,
+      2,
+      3,
+      7
+    ],
+    [
+      0,
+      1,
+      2,
+      4,
+      5
+    ],
+    [
+      0,
+      1,
+      2,
+      4,
+      7
+    ],
+    [
+      0,
+      1,
+      2,
+      5,
+      6
+    ],
+    [
+      0,
+      1,
+      2,
+      5,
+      7
+    ]
+  ],
+  "complementary_fiber_ANF_supports": [
+    [
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      3
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      4
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      5
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      0,
+      6
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      1,
+      7
+    ],
+    [
+      5,
+      7
+    ]
+  ],
+  "fiber_weight": 128,
+  "fiber_degree": 2,
+  "twisted_rotation_invariant": true,
+  "ordinary_rotation_invariant": false,
+  "original_function_weight": 22528,
+  "original_function_W0": 20480,
+  "status": "Exact counterexample to claiming all balanced quadratic complementary fibers are impossible. It is NOT a bent quintic."
+}
