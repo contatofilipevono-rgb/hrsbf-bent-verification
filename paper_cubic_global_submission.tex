@@ -161,7 +161,7 @@ Let \(N=2^k\). If \(q:\F^N\to\F\) is rotation-symmetric, balanced, and \(\deg q\
 \begin{proof}
 Adding a constant does not affect balance or the polar, so put \(Q=q+q(0)\), with \(Q(0)=0\), and let \(B\) be its polar. Let \(R=\{r:B(r,x)=0\ \forall x\}\). If \(B\ne0\), then \(R\) is a proper rotation-invariant subspace.
 
-Identify \(\F^N\) with \(A=\F[X]/((X+1)^N)\), with cyclic rotation \(S\) represented by multiplication by \(X\). Since \(A\) is local with maximal ideal \((X+1)\), a vector of odd Hamming weight represents a unit: its polynomial evaluates to \(1\) at \(X=1\). A rotation-invariant subspace containing a unit contains all its cyclic shifts, whose span is the whole module. Hence a proper \(R\) contains no odd-weight vector and
+Identify \(\F^N\) with \(A=\F[X]/((X+1)^N)\), with cyclic rotation \(S\) represented by multiplication by \(X\). Since \(A\) is local with maximal ideal \((X+1)\), a vector of odd Hamming weight represents a unit: its polynomial evaluates to \(1\) at \(X=1\). If a rotation-invariant subspace contains a unit \(u\), it contains \(u,Xu,\ldots,X^{N-1}u\). Multiplication by \(u\) is an automorphism of \(A\), while \(1,X,\ldots,X^{N-1}\) span \(A\); consequently \(u,Xu,\ldots,X^{N-1}u\) also span \(A\). Thus every proper rotation-invariant subspace contains no unit, equivalently no odd-weight vector, and
 \[
 R\subseteq (X+1)A=\operatorname{im}(S+I).
 \]
@@ -179,6 +179,13 @@ Finally,
 =2^N|R|>0.
 \]
 Thus \(Q\), and hence \(q\), is not balanced, a contradiction. Therefore \(B=0\).
+\end{proof}
+
+\begin{corollary}[Balanced quadratic RS functions at powers of two]\label{cor:quad-affine}
+Let \(N=2^k\). Every balanced rotation-symmetric Boolean function of degree at most two is affine.
+\end{corollary}
+\begin{proof}
+By Lemma~\ref{lem:quad-rigidity}, its polar form is zero. A Boolean function of degree at most two with zero polar has no quadratic ANF terms, hence is affine.
 \end{proof}
 
 \begin{lemma}[Complementary-fiber balance]\label{lem:fiber-balance}
@@ -298,6 +305,7 @@ Homogeneity is essential to the folding obstruction, not to the Antipodal Rule. 
 \bibitem{cusick} T.~W.~Cusick and E.~M.~Sanger, Rotation symmetric bent Boolean functions for $n=2p$ (2017). \href{https://arxiv.org/abs/1708.09313}{arXiv:1708.09313}.
 \bibitem{sun} L.~Sun, Z.~Shi, J.~Liu and F.-W.~Fu, On the conjecture about the nonexistence of homogeneous rotation symmetric bent functions, \emph{Designs, Codes and Cryptography} 94, article 93 (2026). \href{https://doi.org/10.1007/s10623-026-01848-4}{doi:10.1007/s10623-026-01848-4}.
 \bibitem{gao2012} G.~Gao, X.~Zhang, W.~Liu and C.~Carlet, Constructions of Quadratic and Cubic Rotation Symmetric Bent Functions, \emph{IEEE Transactions on Information Theory} 58(7) (2012), 4908--4913. \href{https://doi.org/10.1109/TIT.2012.2193377}{doi:10.1109/TIT.2012.2193377}.
+\bibitem{chircusick} A.~Chirvasitu and T.~W.~Cusick, Quadratic rotation symmetric Boolean functions, \emph{Discrete Applied Mathematics} 343 (2024), 91--105. \href{https://doi.org/10.1016/j.dam.2023.10.010}{doi:10.1016/j.dam.2023.10.010}.
 \bibitem{rothaus} O.~S.~Rothaus, On ``bent'' functions, \emph{Journal of Combinatorial Theory, Series A} 20(3) (1976), 300--305. \href{https://doi.org/10.1016/0097-3165(76)90024-8}{doi:10.1016/0097-3165(76)90024-8}.
 \bibitem{sutang} S.~Su and X.~Tang, On the Systematic Constructions of Rotation Symmetric Bent Functions with Any Possible Algebraic Degrees, IACR ePrint 2015/451. \href{https://eprint.iacr.org/2015/451.pdf}{Preprint consulted}.
 \end{thebibliography}
