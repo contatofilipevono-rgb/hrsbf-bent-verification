@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "instructions": "Adicione jobs aqui. Para reexecutar um job concluido, incremente revision.",
+  "jobs": [
+    {
+      "id": "gpu_smoke_and_standalone",
+      "revision": 1,
+      "enabled": true,
+      "description": "Confirma GPU e executa o verificador standalone do repositorio.",
+      "require_gpu": true,
+      "timeout_seconds": 600,
+      "command": "nvidia-smi -L && python verificador_standalone.py"
+    }
+  ]
+}
