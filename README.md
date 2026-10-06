@@ -43,6 +43,7 @@ O worker executa somente arquivos `.py` existentes dentro deste repositório. A 
 | **[`avanco_t32/verificar_derivadas_diagonais.py`](avanco_t32/verificar_derivadas_diagonais.py)** | Fecha por autocorrelação diagonal as 24 classes que restavam no recorte $\mathrm{wt}(\eta)\le2$. |
 | **[`avanco_t32/verificar_subespaco_eta_paridade.py`](avanco_t32/verificar_subespaco_eta_paridade.py)** | Audita todo o subespaço de 7 dimensões de quocientes de mesma paridade: **128/128 famílias excluídas** pela união de duas obstruções exatas. |
 | **[`avanco_t32/verificar_subespaco_eta_dim18.py`](avanco_t32/verificar_subespaco_eta_dim18.py)** | Verifica exaustivamente um subespaço explícito de dimensão 18 em $\eta$: **262.144/262.144 quocientes excluídos**, cobrindo uma preimagem de dimensão 138 no espaço original. |
+| **[`avanco_t32/verificar_subespaco_eta_dim21.py`](avanco_t32/verificar_subespaco_eta_dim21.py)** | Verifica exaustivamente um subespaço explícito de dimensão 21 em $\eta$: **2.097.152/2.097.152 quocientes excluídos**, cobrindo uma preimagem de dimensão 141. |
 | **[`avanco_t32/audit_constraints_rotation.py`](avanco_t32/audit_constraints_rotation.py)** | Controles algébricos da ação afim de rotação (65.536 direções, 4.115 colares, tabelas completas). |
 | **[`master_suite_fronteiras.py`](master_suite_fronteiras.py)** | Master Suite Turnkey em Python Puro: audita todas as 4 fronteiras em < 5 segundos. |
 | **[`verificador_standalone.py`](verificador_standalone.py)** | Verificador em 100% Python padrão (zero dependências externas), executa as 136.697 checagens em < 1 s. |
@@ -64,6 +65,7 @@ python verificar_classes.py
 python verificar_derivadas_diagonais.py
 python verificar_subespaco_eta_paridade.py
 python verificar_subespaco_eta_dim18.py
+python verificar_subespaco_eta_dim21.py
 ```
 *Tempo total:* ~15 a 20 segundos em CPU convencional (zero pacotes externos necessários).
 
@@ -96,4 +98,5 @@ python master_suite_fronteiras.py
   - Quocientes de peso $\le 2$: **631 de 631 classes excluídas**. As primeiras 607 são certificadas por fibra antidiagonal/contradições lineares; as 24 restantes por testemunhos de autocorrelação diagonal não nula.
   - Subespaço de mesma paridade de dimensão 7 em $\eta$: **128 de 128 quocientes excluídos** pela união da obstrução antidiagonal com testemunhos de autocorrelação diagonal.
   - Subespaço explícito de dimensão 18 em $\eta$: **262.144 de 262.144 quocientes excluídos** usando a mesma arquitetura com sete direções diagonais; sua preimagem em $\mathbb F_2^{155}$ tem dimensão 138.
+  - Subespaço explícito de dimensão 21 em $\eta$: **2.097.152 de 2.097.152 quocientes excluídos**, sem sobreviventes; sua preimagem em $\mathbb F_2^{155}$ tem dimensão 141.
   - *Escopo delimitado:* Esses certificados em 32 variáveis são resultados parciais para as famílias examinadas; o caso geral $n \equiv 0 \pmod{32}$ permanece em aberto.
