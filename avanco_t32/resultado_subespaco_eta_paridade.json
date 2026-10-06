@@ -1,0 +1,38 @@
+{
+  "status": "verified",
+  "eta_subspace_dimension": 7,
+  "eta_subspace_size": 128,
+  "zero_quotient_excluded_by_antidiagonal_obstruction": 1,
+  "nonzero_quotients_excluded_by_constant_diagonal_autocorrelation": 124,
+  "total_excluded_in_subspace": 125,
+  "unresolved_in_subspace": 3,
+  "unresolved_eta_hex": [
+    "0x2a8000",
+    "0x1000a2000",
+    "0x10020a000"
+  ],
+  "unresolved_7bit_masks": [
+    "0b11110",
+    "0b1001101",
+    "0b1010011"
+  ],
+  "family_dimension_per_quotient": 120,
+  "directions_tested": [
+    "0x303",
+    "0xf0f",
+    "0x3333"
+  ],
+  "witness_type_counts": {
+    "r=0x303,d=4,A/2^16=4": 32,
+    "r=0x303,d=8,A/2^16=16": 24,
+    "r=0x3333,d=4,A/2^16=4": 16,
+    "r=0x3333,d=8,A/2^16=16": 8,
+    "r=0x3333,d=12,A/2^16=64": 8,
+    "r=0xf0f,d=4,A/2^16=4": 16,
+    "r=0xf0f,d=8,A/2^16=16": 16,
+    "r=0xf0f,d=12,A/2^16=64": 4
+  },
+  "identity": "AC_f((r,r)) = 2^16 * sum_{z in rad(B_r)} (-1)^{L_z(r)}",
+  "certificate_condition": "After imposing eta(c)=h, all nonconstant residual characters in the radical sum cancel exactly and the remaining constant coefficient is nonzero.",
+  "scope": "125/128 quotient values in the 7-dimensional same-parity eta subspace only. The three listed quotient values remain unresolved here. This does not solve all 2^35 quotient parameters or general n=32."
+}
