@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "source_sha256": "1b24c6f41bd9c1032ac793a0946bfda56d85e24d0b127bf3187e540b24fde5ed",
+  "weights": {
+    "0": {
+      "total": 1,
+      "excluded_by_cross_polar": 0,
+      "fiber_cases_tested": 1,
+      "additional_certificates": 1,
+      "unresolved": 0
+    },
+    "1": {
+      "total": 35,
+      "excluded_by_cross_polar": 34,
+      "fiber_cases_tested": 1,
+      "additional_certificates": 1,
+      "unresolved": 0
+    },
+    "2": {
+      "total": 595,
+      "excluded_by_cross_polar": 578,
+      "fiber_cases_tested": 17,
+      "additional_certificates": 17,
+      "unresolved": 0
+    },
+    "4": {
+      "total": 52360,
+      "excluded_by_cross_polar": 51504,
+      "fiber_cases_tested": 856,
+      "additional_certificates": 856,
+      "unresolved": 0
+    },
+    "5": {
+      "total": 324632,
+      "excluded_by_cross_polar": 319776,
+      "fiber_cases_tested": 4856,
+      "additional_certificates": 4856,
+      "unresolved": 0
+    }
+  },
+  "all_n32_cubics_excluded": false,
+  "scope": "Only the reported H weights; unresolved does not imply bentness."
+}
