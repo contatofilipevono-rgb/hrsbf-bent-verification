@@ -186,9 +186,13 @@ For degree at most three,
 is independent of the base point and is a symmetric trilinear form. Put \(p=d(u)\), \(q=d(v)\), \(w=e(\mathbf1)\). Then
 \[
 B_{F_{\mathbf1}}(u,v)=D_pD_qg(w)
-=B_g(p,q)+\Delta_3(p,q,w).
+=D_pD_qg(0)+\Delta_3(p,q,w).
 \]
-The first term is zero because \(0,p,q,p+q\) are diagonal points and \(g\) vanishes there. Thus
+Here
+\[
+D_pD_qg(0)=g(0)+g(p)+g(q)+g(p+q)=0,
+\]
+because \(0,p,q,p+q\) are all diagonal points and the normalized \(g\) vanishes on the diagonal. Thus
 \[
 B_{F_{\mathbf1}}(u,v)=\Delta_3(d(u),d(v),e(\mathbf1)).
 \]
@@ -196,7 +200,18 @@ Also
 \[
 B_{D_Jg}(d(u),e(v))=\Delta_3(d(u),e(v),J).
 \]
-Writing \(e'(z)=(z,0)\), half-rotation fixes \(d(u)\), exchanges \(e(v)\) with \(e'(v)\), and exchanges \(e(\mathbf1)\) with \(e'(\mathbf1)\). Hence invariance and trilinearity give
+Writing \(e'(z)=(z,0)\), half-rotation fixes \(d(u)\), exchanges \(e(v)\) with \(e'(v)\), and exchanges \(e(\mathbf1)\) with \(e'(\mathbf1)\). Since \(J=e'(\mathbf1)+e(\mathbf1)\), trilinearity gives
+\[
+\Delta_3(d(u),e(v),J)
+=\Delta_3(d(u),e(v),e'(\mathbf1))
+ +\Delta_3(d(u),e(v),e(\mathbf1)).
+\]
+Applying the half-rotation simultaneously to all three arguments in the first term yields
+\[
+\Delta_3(d(u),e(v),e'(\mathbf1))
+=\Delta_3(d(u),e'(v),e(\mathbf1)).
+\]
+A final use of trilinearity, with \(d(v)=e(v)+e'(v)\), therefore gives
 \[
 \Delta_3(d(u),e(v),J)
 =\Delta_3(d(u),d(v),e(\mathbf1)).
