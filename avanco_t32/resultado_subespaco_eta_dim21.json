@@ -1,0 +1,31 @@
+{
+  "status": "verified",
+  "eta_subspace_dimension": 21,
+  "eta_subspace_size": 2097152,
+  "eta_basis_indices": [13,15,17,19,21,30,32,1,2,5,22,33,20,11,31,8,14,27,0,3,4],
+  "eta_basis_representatives": [
+    [0,2,4],[0,2,6],[0,2,8],[0,2,10],[0,2,12],[0,4,8],[0,4,10],
+    [0,1,3],[0,1,4],[0,1,7],[0,2,13],[0,4,11],[0,2,11],
+    [0,1,13],[0,4,9],[0,1,10],[0,2,5],[0,3,10],
+    [0,1,2],[0,1,5],[0,1,6]
+  ],
+  "kernel_eta_dimension": 120,
+  "preimage_dimension_in_F2_155": 141,
+  "excluded_original_coefficient_vectors": "2787593149816327892691964784081045188247552",
+  "excluded_nonzero_homogeneous_cubic_functions": "2787593149816327892691964784081045188247551",
+  "directions": ["0x101","0x505","0x303","0xf0f","0x3333","0x1111","0x5555"],
+  "first_witness_counts": {
+    "antidiagonal": 32768,
+    "0x101": 892160,
+    "0x505": 525176,
+    "0x303": 306648,
+    "0xf0f": 157992,
+    "0x3333": 155024,
+    "0x1111": 19352,
+    "0x5555": 8032
+  },
+  "unresolved_quotients_in_subspace": 0,
+  "verification_note": "The 2^21 quotient enumeration was independently completed in exact contiguous CPU chunks during development; the committed verifier reproduces the same full enumeration in one run with bounded radical-basis caching.",
+  "identity": "AC_f((r,r)) = 2^16 * sum_{z in rad(B_r)} (-1)^{L_z(r)}",
+  "scope": "Complete exclusion of this explicit 21-dimensional eta subspace only. No claim that it is maximal; the full eta space has dimension 35 and general n=32 remains open."
+}
