@@ -1,24 +1,28 @@
 """Exact CPU verifier for the 7-dimensional same-parity quotient subspace in n=32.
 
-The quotient eta(c) has 35 coordinates. We restrict eta to the seven cubic
-rotation-symmetric orbit coordinates whose representatives in 16 variables
-have all indices of the same parity. For each quotient h in this 7-dimensional
-subspace, except h=0 handled by the antidiagonal zero-polar obstruction, we
-test three diagonal autocorrelation directions r.
+This checker combines two exact necessary conditions for bentness over the full
+affine family eta(c)=h:
 
-For fixed h and r:
-    AC_f((r,r)) / 2^16 = sum_{z in rad(B_r)} (-1)^L_z(r),
-where L_z(r)=f_c(r,r+z)+f_c(0,z).
+(1) Antidiagonal fiber z=J=0xffff.
+    If B_J=0, rotation invariance forces q_J(u)=f(u,u+J) to be constant,
+    hence not balanced. The checker also confirms directly from the 155
+    original orbit coordinates that all 16 radical functionals L_J(e_i)
+    vanish modulo eta(c)=h.
 
-Under eta(c)=h, each L_z(r) is an affine linear form in the 120 free lift
-coordinates. Grouping equal residual linear forms gives a signed character
-distribution. If every nonzero residual character cancels and only the
-constant coefficient remains nonzero, the autocorrelation is the same
-nonzero integer for every one of the 2^120 lifts. That excludes the entire
-affine family from bentness.
+(2) Diagonal autocorrelation.
+    For fixed h and nonzero r,
+        AC_f((r,r)) / 2^16 = sum_{z in rad(B_r)} (-1)^L_z(r).
+    After imposing eta(c)=h, each L_z(r) is affine linear in the 120 free
+    lift coordinates. If all nonconstant residual characters cancel and a
+    nonzero constant remains, AC is nonzero for every lift in that family.
 
-Everything is recomputed from the 155 original cubic C_32 orbit coordinates.
-Python >= 3.10, standard library only; no GPU.
+The seven eta coordinates are the cubic C_16 orbit classes whose
+representatives have all indices of the same parity. There are 128 quotient
+values in this subspace. The union of the two conditions below excludes all
+128 exactly.
+
+Everything is rebuilt from the 155 original cubic C_32 orbit coordinates.
+Python >=3.10, standard library only; no GPU.
 """
 from itertools import combinations
 from functools import lru_cache
@@ -29,7 +33,10 @@ import json, time
 BASE = Path(__file__).resolve().parent
 R_CANDIDATES = (0x0303, 0x0F0F, 0x3333)
 PARITY_ETA_INDICES = (13, 15, 17, 19, 21, 30, 32)
-EXPECTED_UNRESOLVED = {0x2A8000, 0x1000A2000, 0x10020A000}
+J = 0xFFFF
+EXPECTED_ANTIDIAGONAL_ONLY = {
+    0x0, 0x2A8000, 0x1000A2000, 0x10020A000
+}
 
 def check(ok, msg):
     if not ok:
@@ -123,8 +130,6 @@ def main():
     def L_direct(r, z):
         return value_row(lift(r,z)) ^ value_row(lift(0,z))
 
-    # L_z(r) is quadratic in z. Reconstruct it from 137 exact evaluations
-    # so all subsequent 2^d radical evaluations are cheap.
     def L_polynomial(r):
         c0 = L_direct(r, 0)
         lin = [L_direct(r, 1 << i) ^ c0 for i in range(16)]
@@ -147,8 +152,7 @@ def main():
 
     Lpolys = {r:L_polynomial(r) for r in R_CANDIDATES}
 
-    # Independent positive controls for the quadratic reconstruction.
-    controls = (0, 1, 3, 0x1234, 0xFFFF)
+    controls = (0, 1, 3, 0x1234, J)
     for r in R_CANDIDATES:
         for z in controls:
             check(L_eval(Lpolys[r], z) == L_direct(r, z),
@@ -173,8 +177,6 @@ def main():
                     rows[i] ^= mats[k][i]
         return rows
 
-    # Canonical elimination of the 35 quotient equations eta(c)=h.
-    # The residual row is a linear form on the 120-dimensional kernel.
     def eta_pivots(h):
         piv = {}
         for j, row0 in enumerate(hrows):
@@ -227,42 +229,61 @@ def main():
         hs.append(h)
     check(len(set(hs)) == 128, "Parity quotient subspace is not 7-dimensional")
 
-    witnesses = {}
-    unresolved = []
+    antidiagonal = set()
+    diagonal = {}
     for h in hs:
-        if h == 0:
-            continue
-        found = None
-        for r in R_CANDIDATES:
-            found = constant_autocorrelation_witness(h, r, Lpolys[r])
-            if found:
-                break
-        if found:
-            witnesses[h] = found
-        else:
-            unresolved.append(h)
+        mats = polar_matrices(h)
+        if not any(polar(mats, J)):
+            piv = eta_pivots(h)
+            # Direct original-ANF audit: q_J is affine when B_J=0, and all
+            # its linear derivatives vanish throughout the eta-fiber.
+            for i in range(16):
+                residual, const = reduce_eta(piv, L_direct(1 << i, J))
+                check(residual == 0 and const == 0,
+                      "Antidiagonal affine fiber is not constant")
+            antidiagonal.add(h)
 
-    check(len(witnesses) == 124, f"Expected 124 diagonal exclusions, got {len(witnesses)}")
-    check(set(unresolved) == EXPECTED_UNRESOLVED,
-          "Unexpected unresolved quotient masks in parity subspace")
+        if h != 0:
+            for r in R_CANDIDATES:
+                found = constant_autocorrelation_witness(h, r, Lpolys[r])
+                if found:
+                    diagonal[h] = found
+                    break
+
+    A, D = antidiagonal, set(diagonal)
+    union = A | D
+    antidiagonal_only = A - D
+    diagonal_only = D - A
+    overlap = A & D
+
+    check(len(A) == 32, f"Expected 32 antidiagonal quotient values, got {len(A)}")
+    check(len(D) == 124, f"Expected 124 diagonal-autocorrelation exclusions, got {len(D)}")
+    check(len(overlap) == 28, f"Expected overlap 28, got {len(overlap)}")
+    check(len(diagonal_only) == 96, f"Expected 96 diagonal-only exclusions, got {len(diagonal_only)}")
+    check(antidiagonal_only == EXPECTED_ANTIDIAGONAL_ONLY,
+          "Unexpected antidiagonal-only quotient values")
+    check(len(union) == 128 and set(hs) == union,
+          "The combined certificate does not cover the full 7-dimensional subspace")
 
     type_counts = Counter(
         (w["r"], w["radical_dimension"], w["normalized_autocorrelation"])
-        for w in witnesses.values()
+        for w in diagonal.values()
     )
 
     report = {
         "status": "verified",
         "eta_subspace_dimension": 7,
         "eta_subspace_size": 128,
-        "zero_quotient_excluded_by_antidiagonal_obstruction": 1,
-        "nonzero_quotients_excluded_by_constant_diagonal_autocorrelation": 124,
-        "total_excluded_in_subspace": 125,
-        "unresolved_in_subspace": len(unresolved),
-        "unresolved_eta_hex": [hex(h) for h in unresolved],
-        "unresolved_7bit_masks": [
-            bin(sum(((h >> j) & 1) << k for k,j in enumerate(PARITY_ETA_INDICES)))
-            for h in unresolved
+        "antidiagonal_zero_polar_quotients": len(A),
+        "diagonal_autocorrelation_quotients": len(D),
+        "overlap": len(overlap),
+        "antidiagonal_only": len(antidiagonal_only),
+        "diagonal_only": len(diagonal_only),
+        "combined_excluded": len(union),
+        "unresolved": 0,
+        "antidiagonal_only_eta_hex": [hex(h) for h in sorted(antidiagonal_only)],
+        "formerly_unresolved_now_antidiagonal": [
+            "0x2a8000", "0x1000a2000", "0x10020a000"
         ],
         "family_dimension_per_quotient": 120,
         "directions_tested": [hex(r) for r in R_CANDIDATES],
@@ -271,8 +292,8 @@ def main():
             for (r,d,a),n in sorted(type_counts.items())
         },
         "identity": "AC_f((r,r)) = 2^16 * sum_{z in rad(B_r)} (-1)^{L_z(r)}",
-        "certificate_condition": "After imposing eta(c)=h, all nonconstant residual characters in the radical sum cancel exactly and the remaining constant coefficient is nonzero.",
-        "scope": "125/128 quotient values in the 7-dimensional same-parity eta subspace only. The three listed quotient values remain unresolved here. This does not solve all 2^35 quotient parameters or general n=32.",
+        "antidiagonal_condition": "B_J=0 implies q_J is affine; rotation invariance forces it constant. Direct ANF reduction verifies all 16 linear derivatives vanish on every such eta-fiber.",
+        "scope": "Closes all 128 quotient values in the 7-dimensional same-parity eta subspace. This still does not classify all 2^35 eta values and does not solve general n=32.",
         "seconds": round(time.perf_counter() - started, 3),
     }
 
