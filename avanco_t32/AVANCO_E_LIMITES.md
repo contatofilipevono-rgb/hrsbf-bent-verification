@@ -11,8 +11,8 @@ Este é um avanço em relação ao material anteriormente auditado. **A original
 | Decomposição dos 155 coeficientes em um parâmetro de dimensão 35 e 120 graus de liberdade por fibra desse parâmetro | Todo o espaço cúbico homogêneo RS em 32 variáveis | Argumento algébrico e conferência das 155 formas polares originais nas 16 direções básicas |
 | Fibra antidiagonal | Exclui um subespaço de dimensão 149: 2¹⁴⁹ vetores de coeficientes, incluindo zero | Prova estrutural; seis formas lineares explícitas; classificação exata das 64 fibras módulo constantes |
 | Certificado de sete fibras | Exclui os 2¹²⁰ membros da família cujo parâmetro é a órbita cúbica contígua em 16 variáveis | Sete formas lineares somam zero e seriam todas iguais a um se a função fosse bent |
-| Todas as classes com até duas órbitas ativas no parâmetro de 35 coordenadas | 607 das 631 classes excluídas; cada classe tem 2¹²⁰ funções | 19 exclusões antidiagonais e 588 contradições lineares; 30.038 equações conferidas |
-| Estrutura dos 24 casos restantes nesse recorte | Todos pertencem ao subespaço de dimensão sete de triplas de mesma paridade | Classificação dos representantes e identificação algébrica do motivo pelo qual o posto 14 não aparece |
+| Todas as classes com até duas órbitas ativas no parâmetro de 35 coordenadas | **631 de 631 classes excluídas**; cada classe tem 2¹²⁰ funções | 19 exclusões antidiagonais, 588 contradições lineares e 24 testemunhos de autocorrelação diagonal não nula |
+| Fechamento dos 24 casos antes restantes | 16 classes têm radical de dimensão 4 com peso fixo 6 em vez de 8; 8 classes têm radical de dimensão 8 com peso fixo 120 em vez de 128 | `verificar_derivadas_diagonais.py` reconstrói as formas lineares a partir das 155 órbitas originais e prova independência dos 120 parâmetros livres |
 
 A condição “até duas órbitas” refere-se **ao parâmetro de 35 coordenadas**, não à quantidade de órbitas da função original. Uma função das famílias examinadas pode conter muitas das 155 órbitas originais. As 631 classes não são uma enumeração de todo o espaço de parâmetros, que tem 2³⁵ elementos.
 
@@ -115,19 +115,34 @@ Logo B_J=0 impõe seis condições lineares independentes em c. Seu núcleo tem 
 
 Adicionalmente, o verificador enumera as 64 formas normalizadas possíveis: a nula é constante; as outras 63 são balanceadas. A imagem incluindo constantes tem dimensão sete. Isso caracteriza exatamente o que **esse teste isolado** exclui; não caracteriza todas as funções não bent.
 
-## 7. Ampliação e limite encontrado
+## 7. Ampliação por derivadas diagonais e fechamento do recorte de peso ≤ 2
 
-Foram examinados todos os 1+35+595=631 valores de η com peso no máximo dois. O arquivo de busca conserva os certificados; o programa `verificar_classes.py` recalcula suas equações usando as ANFs originais. O resultado foi:
+Foram examinados todos os 1+35+595=631 valores de η com peso no máximo dois. O procedimento baseado em fibras de posto 14 excluía 607 deles:
 
-- 19 classes excluídas por B_J=0;
-- 588 classes excluídas por contradição linear;
-- 24 classes não excluídas por esse procedimento.
+- 19 classes por B_J=0;
+- 588 classes por contradição linear;
+- 24 classes permaneciam sem exclusão por esse procedimento.
 
-As 24 restantes são combinações das sete órbitas representadas por 024, 026, 028, 02(10), 02(12), 048 e 04(10), em índices módulo 16. Todas as triplas têm índices da mesma paridade. Para h nesse subespaço, a 3-forma se separa nos oito índices pares e nos oito ímpares. Cada contração não nula em um bloco de dimensão oito é alternada e tem um vetor não nulo no radical, portanto posto no máximo seis. A matriz inteira tem posto no máximo 12. Se a direção em um bloco for zero, esse bloco da contração é zero. **O teste baseado em posto 14 não pode tratar esse subespaço.**
+Essas 24 classes pertencem ao subespaço de dimensão sete gerado pelas órbitas representadas por 024, 026, 028, 02(10), 02(12), 048 e 04(10), em índices módulo 16. Nesse subespaço, o teste de posto 14 é estruturalmente inadequado porque as contrações se decompõem por paridade e têm posto no máximo 12.
 
-Nesse subespaço de 128 valores de η, a contração por J tem posto dois como aplicação sobre os parâmetros: 32 valores são excluídos pela fibra antidiagonal e 96 passam por ela. Isso não estabelece a existência de funções bent para nenhum deles.
+Para fechar exatamente essas 24 classes usamos a autocorrelação na direção diagonal (r,r). Se R_r=rad(B_r), então
 
-O próximo alvo matemático concreto é tratar radicais de dimensão quatro ou maior. Neles, balanceamento exige que pelo menos uma das avaliações em uma base do radical seja um, o que fornece disjunções de equações lineares. Um resolvedor com certificado, ou uma identidade estrutural que combine essas condições, pode avançar sobre os casos restantes. Outro alvo é caracterizar para quais η os certificados de posto 14 existem; ainda não foi demonstrado que todos os valores fora do subespaço de mesma paridade sejam excluídos.
+\[
+AC_f((r,r))=2^{16}\sum_{z\in R_r}(-1)^{L_z(r)},
+\]
+
+onde L_z(r)=f_c(r,r+z)+f_c(0,z). Bentness exige AC_f((r,r))=0 para todo r≠0.
+
+O novo verificador `verificar_derivadas_diagonais.py` mostra que, para cada uma das 24 classes restantes, existe uma direção r em que todos os valores L_z(r), z∈R_r, ficam completamente determinados por η(c)=h: a dependência nos 120 parâmetros livres desaparece.
+
+Os certificados caem em apenas dois tipos:
+
+- 16 classes: dim R_r=4, portanto |R_r|=16, mas exatamente 6 dos 16 valores L_z(r) são 1. Bentness exigiria 8. Assim AC=2^18≠0.
+- 8 classes: dim R_r=8, portanto |R_r|=256, mas exatamente 120 valores são 1. Bentness exigiria 128. Assim AC=2^20≠0.
+
+Logo as 24 classes antes restantes também são excluídas. **Conclusão do recorte:** todas as 631 classes de η com peso de Hamming ≤2 são não-bent, e cada uma representa uma família afim de 2^120 funções originais.
+
+Isto ainda não classifica os 2^35 possíveis valores de η. O caso geral n=32 permanece em aberto nesta investigação.
 
 ## 8. Reproduzir e interpretar corretamente
 
@@ -135,7 +150,8 @@ Use Python 3.10 ou superior. Todas as contas são inteiras; nenhum pacote extern
 
 1. `python verificar_7_fibras.py` — confere o certificado curto e grava `resultado_7_fibras.json`.
 2. `python verificar_fibra_antidiagonal.py` — confere as seis formas e todas as 64 possibilidades normalizadas.
-3. `python verificar_classes.py` — confere os certificados de todas as classes excluídas no recorte de 631; grava `resultado_631_classes.json`.
+3. `python verificar_classes.py` — confere os 607 certificados obtidos por fibras de posto 14 e pela fibra antidiagonal; grava `resultado_631_classes.json`.
+4. `python verificar_derivadas_diagonais.py` — confere os 24 testemunhos restantes por autocorrelação diagonal e grava `resultado_derivadas_diagonais_24.json`.
 
 No ambiente local, a primeira checagem levou cerca de 2,3 segundos e a checagem ampliada, cerca de 23 segundos. Os tempos dependem do computador. O notebook entregue permite reproduzir o certificado curto e a obstrução antidiagonal; não foi executado no Colab e vem sem saídas preenchidas. O pacote contém as saídas locais reais.
 
