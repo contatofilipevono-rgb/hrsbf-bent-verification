@@ -144,6 +144,25 @@ Logo as 24 classes antes restantes também são excluídas. **Conclusão do reco
 
 Isto ainda não classifica os 2^35 possíveis valores de η. O caso geral n=32 permanece em aberto nesta investigação.
 
+
+## 7B. Extensão ao subespaço de mesma paridade
+
+O mecanismo de autocorrelação diagonal foi ampliado de forma exata para todo o subespaço de dimensão sete de parâmetros η gerado pelas sete órbitas cúbicas em 16 variáveis cujos representantes têm índices da mesma paridade.
+
+Esse subespaço contém 128 valores de η. Para cada valor não nulo, o verificador testa as direções diagonais r em {0x0303, 0x0F0F, 0x3333} e agrupa as formas L_z(r) por sua dependência residual nos 120 parâmetros livres do levantamento. Quando todos os caracteres residuais não constantes cancelam exatamente e sobra apenas um coeficiente constante não nulo, a autocorrelação AC_f((r,r)) = 2^16 * sum_{z in rad(B_r)} (-1)^{L_z(r)} é o mesmo inteiro não nulo para todos os 2^120 levantamentos daquele η.
+
+O resultado exato é:
+
+- η=0: excluído pela obstrução antidiagonal já demonstrada;
+- 124 dos 127 valores não nulos: excluídos por autocorrelação diagonal constante e não nula;
+- 3 valores permanecem sem exclusão por este teste: `0x2a8000`, `0x1000a2000` e `0x10020a000`.
+
+Logo, **125 de 128 valores de η** nesse subespaço estão agora excluídos, cada um correspondendo a uma família afim de dimensão 120 no espaço original de 155 coeficientes.
+
+O conferidor é `verificar_subespaco_eta_paridade.py` e a saída resumida está em `resultado_subespaco_eta_paridade.json`.
+
+Este resultado ainda é parcial: os três valores listados permanecem abertos por esse método, e o espaço completo possui 2^35 valores de η.
+
 ## 8. Reproduzir e interpretar corretamente
 
 Use Python 3.10 ou superior. Todas as contas são inteiras; nenhum pacote externo ou GPU é necessário.
@@ -152,6 +171,7 @@ Use Python 3.10 ou superior. Todas as contas são inteiras; nenhum pacote extern
 2. `python verificar_fibra_antidiagonal.py` — confere as seis formas e todas as 64 possibilidades normalizadas.
 3. `python verificar_classes.py` — confere os 607 certificados obtidos por fibras de posto 14 e pela fibra antidiagonal; grava `resultado_631_classes.json`.
 4. `python verificar_derivadas_diagonais.py` — confere os 24 testemunhos restantes por autocorrelação diagonal e grava `resultado_derivadas_diagonais_24.json`.
+5. `python verificar_subespaco_eta_paridade.py` — audita os 128 valores do subespaço de mesma paridade e confirma 125 exclusões, deixando três quocientes explícitos sem exclusão por esse teste.
 
 No ambiente local, a primeira checagem levou cerca de 2,3 segundos e a checagem ampliada, cerca de 23 segundos. Os tempos dependem do computador. O notebook entregue permite reproduzir o certificado curto e a obstrução antidiagonal; não foi executado no Colab e vem sem saídas preenchidas. O pacote contém as saídas locais reais.
 
