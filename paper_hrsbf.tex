@@ -192,6 +192,12 @@ with indices modulo 32. Define a $4\times4$ integer matrix indexed by pairs $(a,
 \[\wt(H)=2104967168,\qquad \wt(H)/32=65780224\equiv512\pmod{2048}.\]
 This refutes the proposed universal divisibility by 2048 of the compressed code weights in dimension 32. Such divisibility would have implied $2^{16}\mid\wt(g)$ and excluded the bent values $W_g(0)=\pm2^{16}$. The example does not refute the bent conjecture and does not preclude refined uses of divisible codes or other Walsh coefficients.
 
+A separate exact CPU computation studies the quotient parameter $\eta\in\F^{35}$ arising from the quadratic fibers $q_z(u)=f(u,u+z)$. For all $1+35+\binom{35}{2}=631$ quotient values of Hamming weight at most two, the associated affine family of dimension 120 is excluded. Earlier rank-14 fiber certificates eliminate 607 classes. The remaining 24 are excluded by diagonal autocorrelation witnesses: for a suitable nonzero $r$, the identity
+\[
+ A_f((r,r))=2^{16}\sum_{z\in\operatorname{rad} B_r}(-1)^{L_z(r)}
+\]
+has a value fixed by $\eta$ alone and nonzero for every lift $c$ with that quotient. Sixteen of the 24 classes have $\dim\operatorname{rad} B_r=4$ and six ones among the 16 values $L_z(r)$, instead of the eight required for zero autocorrelation; the other eight have radical dimension eight and 120 ones among 256, instead of 128. The independent script \texttt{avanco\_t32/verificar\_derivadas\_diagonais.py} recomputes these witnesses directly from the 155 original cubic orbit coordinates. This closes the weight-at-most-two quotient recut only; it does not classify all $2^{35}$ quotient values and does not solve the full $n=32$ case.
+
 For degrees at least four, derivatives need not be quadratic, so Lemma~\ref{lem:reduction} no longer provides a general restriction theorem by the same argument. No construction of quantum codes, bounds on algebraic immunity or vectorial differential uniformity, or applications to periodic sequence correlation are established here. Those would require separate statements and proofs.
 
 \begin{thebibliography}{10}
