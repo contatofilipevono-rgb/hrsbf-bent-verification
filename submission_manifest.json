@@ -2,7 +2,7 @@
   "schema_version": 1,
   "scope": "Required files for exact checks; integrity is not an authenticity signature.",
   "files": {
-    "paper_hrsbf.tex": "0912bc13a80dff6da0f977efdd2c00281d39ec8f20c6fd4bb299bb3ca06c53e9",
+    "paper_hrsbf.tex": "2c73fd5ae4a9f8c3db55cc84ad260ff613f704b58fb89a3fd67a63db0d339e12",
     "cover_letter_dcc.tex": "1ccf900eeab2868463c8b8549bba6e163dac999270c15eec15265970486d6bb4",
     "supplementary_material.tex": "a7c6a2b62238124056230d69b70d9de1f23e55064ddfd538d845ee98c24aa4f2",
     "avanco_t32/verificador_integrado.py": "96df47152671477d4e9f2780474b4003e8a7626a0b3802bdb0b6bd9f80970ed5",
