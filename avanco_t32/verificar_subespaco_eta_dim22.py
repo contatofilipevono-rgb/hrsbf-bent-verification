@@ -52,6 +52,17 @@ EXPECTED_REPRESENTATIVES = (
 J = 0xFFFF
 R_DIRECTIONS = (0x0101, 0x0505, 0x0303, 0x0F0F, 0x3333, 0x1111, 0x5555)
 
+EXPECTED_COUNTS = {
+    "antidiagonal": 65536,
+    "0x101": 1884208,
+    "0x505": 1017336,
+    "0x303": 585388,
+    "0xf0f": 297134,
+    "0x3333": 290956,
+    "0x1111": 37082,
+    "0x5555": 16664,
+}
+
 def check(ok, msg):
     if not ok:
         raise RuntimeError(msg)
@@ -317,6 +328,7 @@ def main():
         checked += 1
 
     check(checked == 1 << 22, "Incomplete quotient enumeration")
+    check(dict(counts) == EXPECTED_COUNTS, f"Witness count regression: {dict(counts)}")
     check(sum(counts.values()) == 1 << 22, "Coverage is not complete")
 
     result = {
