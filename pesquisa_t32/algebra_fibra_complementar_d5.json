@@ -1,0 +1,122 @@
+{
+  "n": 16,
+  "degree": 5,
+  "input_orbit_count": 273,
+  "image_rank": 12,
+  "kernel_dimension": 261,
+  "image_profile_count": 4096,
+  "weight_histogram": {
+    "0": 1,
+    "32": 8,
+    "64": 252,
+    "96": 952,
+    "128": 1670,
+    "160": 952,
+    "192": 252,
+    "224": 8,
+    "256": 1
+  },
+  "degree_counts": {
+    "-1": 1,
+    "4": 3840,
+    "3": 240,
+    "2": 14,
+    "0": 1
+  },
+  "balanced_profile_degrees": {
+    "4": 1568,
+    "3": 88,
+    "2": 14
+  },
+  "balanced_witnesses": {
+    "4": {
+      "fiber_truth_hex": "0xffffd557d111911ff1018103c10181ffff818083c081808ff889888beaabffff",
+      "coefficient_mask": "0x8",
+      "active_orbit_representatives": [
+        [
+          0,
+          1,
+          2,
+          3,
+          7
+        ]
+      ],
+      "degree": 4,
+      "weight": 128
+    },
+    "3": {
+      "fiber_truth_hex": "0x2cf2f72675970416bf91c11f8092abb66dd54901f88389fd6820e9ae64ef4f34",
+      "coefficient_mask": "0x2002",
+      "active_orbit_representatives": [
+        [
+          0,
+          1,
+          2,
+          3,
+          5
+        ],
+        [
+          0,
+          1,
+          2,
+          4,
+          7
+        ]
+      ],
+      "degree": 3,
+      "weight": 128
+    },
+    "2": {
+      "fiber_truth_hex": "0xac6fa36f5c605365f93509ca093af9c39f5c905390ac9fa6ca063af6c5f6350",
+      "coefficient_mask": "0x602809",
+      "active_orbit_representatives": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          0,
+          1,
+          2,
+          3,
+          7
+        ],
+        [
+          0,
+          1,
+          2,
+          4,
+          5
+        ],
+        [
+          0,
+          1,
+          2,
+          4,
+          7
+        ],
+        [
+          0,
+          1,
+          2,
+          5,
+          6
+        ],
+        [
+          0,
+          1,
+          2,
+          5,
+          7
+        ]
+      ],
+      "degree": 2,
+      "weight": 128
+    }
+  },
+  "scope": "Complementary fiber only, not complete bentness conditions.",
+  "method": "Independent orbit enumeration, exact GF(2) elimination with generator provenance, complete image enumeration and ANF transform."
+}
