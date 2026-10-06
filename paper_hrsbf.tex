@@ -9,13 +9,13 @@
 \newcommand{\F}{\mathbb F_2}
 \newcommand{\wt}{\operatorname{wt}}
 \newcommand{\Fix}{\operatorname{Fix}}
-\title{Odd-Order Reduction and a Divisibility Obstruction for Cubic Homogeneous Rotation-Symmetric Bent Functions}
+\title{The Cubic Case of the Homogeneous Rotation-Symmetric Bent Function Conjecture}
 \author{Author details to be completed}
 \date{Revised working manuscript --- October 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
-We give a computer-assisted proof that no homogeneous rotation-symmetric Boolean function of degree three is bent in any positive even dimension not divisible by 32. For a quadratic Boolean function invariant under a linear automorphism of odd order, balance is equivalent to balance on the fixed subspace. Consequently, an invariant bent function of degree at most three restricts to a bent function on an even-dimensional fixed subspace. Writing $n=2^s m$ with $m$ odd reduces the problem to $t=2^s$ variables. The restricted function lies in the span of full-length cubic and quadratic monomial orbits and the total linear form. Exact enumeration excludes $t=2,4,8$. After removing the linear component by affine invariance of bentness, the 42 generators at $t=16$ define a binary code of length 4080. Verification of 124313 intersection conditions proves that this code is 16-divisible, so the corresponding truth-table weights are divisible by 256 and their zero-frequency Walsh coefficients are divisible by 512, contradicting bentness. An additional 12384 checks verify the stronger divisibility assertion with the linear generator included. We specify the finite verification and explain the limited obstruction to extending this particular divisibility argument to $t=32$.
+We prove that no homogeneous rotation-symmetric Boolean function of algebraic degree three is bent in any positive even dimension. Writing \(n=2^s m\) with \(m\) odd, an odd-order fixed-space argument reduces a hypothetical cubic homogeneous rotation-symmetric bent function to a rotation-symmetric bent function of degree at most three in \(2^s\) variables. Cubic orbit folding cannot produce the antipodal quadratic orbit, whereas an antipodal rigidity theorem proved here shows that every rotation-symmetric bent function of degree at most three in power-of-two dimension at least four must contain that orbit. The remaining two-variable case is immediate. Earlier exact computations in dimensions 16 and 32 are retained as independent validation, not as logical ingredients.
 \end{abstract}
 \noindent\textbf{Keywords:} Boolean functions; bent functions; rotation symmetry; divisible codes; computer-assisted proof.
 
@@ -170,15 +170,74 @@ Total&124313&&0\\
 \end{center}
 Thus $C$ is 16-divisible. Equation~\ref{eq:weights} implies $256\mid\wt(g)$ and $512\mid W_g(0)$. Since bentness in dimension 16 requires $|W_g(0)|=256$, no function in $\mathcal H_{16}$ is bent. Lemma~\ref{lem:linear} excludes bentness in $\mathcal F_{16}$ as well. The intersection table is the finite computational component of the proof; it is not inferred from random samples. The supplied verifier also checks the 12384 additional intersections involving $L$, for 136697 in total. Thus it additionally establishes $512\mid W_g(0)$ on all of $\mathcal F_{16}$, although this stronger assertion is unnecessary for the nonexistence proof.
 
-\section{Main result}
-\begin{theorem}
-For every positive even integer $n$ with $32\nmid n$, there is no homogeneous rotation-symmetric bent Boolean function of degree three in $n$ variables.
+\section{Global cubic nonexistence theorem}
+
+We now state the structural result that supersedes the earlier dimension-by-dimension obstruction.
+
+\begin{theorem}[Antipodal Rule]\label{thm:antipodal}
+Let \(N=2^k\) with \(k\ge2\). If \(g:\F^N\to\F\) is rotation-symmetric, bent, and \(\deg g\le3\), then its ANF contains the antipodal quadratic orbit
+\[
+P_N(x)=\sum_{i=0}^{N/2-1}x_i x_{i+N/2}.
+\]
 \end{theorem}
+
 \begin{proof}
-Write $n=2^s m$ with $m$ odd. The assumptions give $s\in\{1,2,3,4\}$ and $t=2^s\in\{2,4,8,16\}$. A hypothetical such bent function is invariant under $T=\sigma^t$. Proposition~\ref{prop:restriction} makes its restriction bent on the even-dimensional fixed space $\F^t$. Lemma~\ref{lem:orbit} places that restriction in $\mathcal F_t$, contradicting the finite obstructions above.
+Write \(N=2h\), \(d(u)=(u,u)\), and \(e(z)=(0,z)\). If the antipodal coefficient is zero, half-rotation pairing shows that, after adding a constant, \(g(d(u))=0\) for all \(u\). Put
+\[
+F_z(u)=g(u,u+z),\qquad A_z=\sum_u(-1)^{F_z(u)}.
+\]
+The invertible change \((u,z)\mapsto(u,u+z)\) preserves bentness. The Walsh transform of \(z\mapsto A_z\) is a Walsh slice of the transformed bent function; Parseval therefore gives
+\[
+\sum_z A_z^2=2^N.
+\]
+Since \(A_0=2^h\), every \(A_z\) with \(z\ne0\) vanishes. Thus \(F_{\mathbf1}\) is balanced.
+
+Let \(J=\mathbf1^N\). Then \(D_Jg\) is balanced, rotation-symmetric and quadratic. A balanced rotation-symmetric quadratic in \(2^k\) variables has zero polar: if its polar \(B\) were nonzero, its radical \(R\) would be a proper rotation-invariant submodule of
+\[
+\F[X]/((X+1)^N),
+\]
+hence \(R\subseteq\operatorname{im}(S+I)\). For \(r=Sy+y\in R\), rotation invariance and alternation give \(Q(r)=B(r+y,y)=0\). The quadratic character identity would then give a nonzero zero-frequency Walsh sum, contradicting balance. Hence \(B_{D_Jg}=0\).
+
+For \(\deg g\le3\), the third difference
+\[
+T(p,q,r)=D_pD_qD_rg(0)
+\]
+is symmetric trilinear. Using \(g\circ d=0\), the half-rotation symmetry, and
+\(J=(\mathbf1,0)+(0,\mathbf1)\), one obtains
+\[
+B_{F_{\mathbf1}}(u,v)
+=T(d(u),d(v),e(\mathbf1))
+=B_{D_Jg}(d(u),e(v))=0.
+\]
+Thus \(F_{\mathbf1}\) is affine.
+
+With the convention \((\sigma x)_i=x_{i-1\pmod N}\), rotation on the complementary fiber induces
+\[
+u\mapsto Ru+e_0.
+\]
+Hence \(F_{\mathbf1}(Ru+e_0)=F_{\mathbf1}(u)\). If
+\(F_{\mathbf1}(u)=L(u)+c\), then \(L\circ R=L\), so
+\(L(u)=\gamma\sum_i u_i\); the translation by \(e_0\) forces
+\(\gamma=0\). Therefore \(F_{\mathbf1}\) is constant, contradicting its balance. The antipodal coefficient must be one.
 \end{proof}
 
-The contiguous single-orbit cubic used in the supplementary dimension-32 calculation is already non-bent by Meng--Chen--Fu, Theorem 11. Its Walsh value is used only to test the proposed divisibility extension, not as a new nonexistence result.\par
+\begin{theorem}[Main theorem]\label{thm:global}
+For every positive even integer \(n\), there is no homogeneous rotation-symmetric bent Boolean function of degree three in \(n\) variables.
+\end{theorem}
+
+\begin{proof}
+Write \(n=2^s m\), where \(m\) is odd, and put \(t=2^s\). Let \(T=\sigma^t\). By Proposition~\ref{prop:restriction}, a hypothetical cubic homogeneous rotation-symmetric bent function \(f\) restricts to a bent rotation-symmetric function \(g=f|_{\Fix(T)}\) of degree at most three in \(t\) variables.
+
+Lemma~\ref{lem:orbit} shows more specifically that the antipodal quadratic orbit is absent from \(g\): it has orbit length \(t/2\), so its \(t\) reduced translates occur twice and cancel. Equivalently, in a full cubic orbit each antipodal monomial receives \(2m\) preimages. Short cubic orbits have stabilizer three; since \(3\mid m\), their three support indices coincide modulo \(t\) and they reduce only to the total linear form.
+
+If \(s\ge2\), Theorem~\ref{thm:antipodal} requires the antipodal orbit to be present in \(g\), a contradiction. If \(s=1\), then \(t=2\); folding leaves only degree at most one because the sole quadratic orbit is antipodal and cancels. Such a function cannot be bent in two variables. This proves the theorem.
+\end{proof}
+
+\paragraph{Relation to Sun--Shi--Liu--Fu (2026).}
+Sun, Shi, Liu and Fu~\cite{sun} obtain additional conditional nonexistence results, including cubic criteria based on balanced derivatives, SANF/orbit structure and arithmetic hypotheses on \(n\). The proof above shares the derivative viewpoint but removes the odd part of \(n\) through the fixed-space reduction and then uses antipodal rigidity in the remaining power-of-two dimension. The comparison describes mechanism and scope; it is not an exhaustive priority claim.
+
+\paragraph{Computational status.}
+The earlier exact \(t=16\) divisible-code proof and the independent \(n=32\) certificates remain useful validation and historical motivation, but they are no longer logical premises of Theorem~\ref{thm:global}.
 
 \section{Hypotheses behind the supplementary fiber certificates}
 A fiber of an arbitrary bent function need not be balanced. The certificates in dimension 32 use the additional property that a homogeneous cubic rotation-symmetric function vanishes on the diagonal subspace $A=\{(u,u):u\in\F^{16}\}$.
