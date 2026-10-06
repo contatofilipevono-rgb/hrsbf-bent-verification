@@ -9,7 +9,8 @@
       "description": "Confirma GPU e executa o verificador standalone do repositorio.",
       "require_gpu": true,
       "timeout_seconds": 600,
-      "command": "nvidia-smi -L && python verificador_standalone.py"
+      "script": "verificador_standalone.py",
+      "args": []
     }
   ]
 }
