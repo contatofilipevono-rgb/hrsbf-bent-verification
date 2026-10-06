@@ -1,0 +1,32 @@
+name: Verify eta dimension 23
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'avanco_t32/verificar_subespaco_eta_dim23.py'
+      - '.github/workflows/verify_eta_dim23.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact CPU verification
+        run: |
+          python avanco_t32/verificar_subespaco_eta_dim23.py
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eta-dim23-result
+          path: avanco_t32/resultado_subespaco_eta_dim23.json
+          if-no-files-found: ignore
