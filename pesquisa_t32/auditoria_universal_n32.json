@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "all_155_basis_generators_verified": true,
+  "zero_diagonal_and_cubic_fiber_coefficients_checked": 1256,
+  "nonconstant_fiber_coefficients_in_derivative_equation_span": 136,
+  "scope": "Universal homogeneous cubic RS n=32 finite certificate; mathematical necessity is proved in the accompanying text."
+}
