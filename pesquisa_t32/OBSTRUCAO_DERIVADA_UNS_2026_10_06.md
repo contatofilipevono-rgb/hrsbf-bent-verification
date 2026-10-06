@@ -42,8 +42,12 @@ Cada registro do certificado fornece uma entrada não nula de M_H, a forma linea
 
 ## Reprodução e limites
 
-Execute `python3 audit_all_ones_obstruction.py symmetry_certificate_24.json certificado_derivada_uns_24.json`.
+Execute `python3 audit_all_ones_obstruction.py familias_24_derivada_uns.json certificado_derivada_uns_24.json`.
 
 Além das 155 identidades, o auditor examina todas as funções quadráticas simétricas por rotação em n=4,8,16,32, incluindo o gerador antipodal e termos lineares e constantes. Em n=4 e 8, compara o critério de radical com somas diretamente nas tabelas-verdade. Os testes apoiam a implementação; a prova do lema é algébrica.
 
 As oito exclusões SAT anteriores permanecem válidas como confirmação independente. A derivada de todos os uns exclui também as outras 16 famílias. Os resultados são certificados finitos acompanhados de prova matemática, não uma formalização em um assistente de provas. A classificação de todos os outros parâmetros H e a conjectura geral permanecem fora deste certificado.
+
+## Próximo filtro de pesquisa
+
+A condição necessária B_{D₁f}=0 impõe 14 equações lineares independentes nos 155 coeficientes cúbicos originais, deixando um subespaço de dimensão 141. A condição cruzada em H impõe seis equações independentes nos 35 coeficientes, deixando dimensão 29. Entre os 6.545 H de peso três, 6.464 são excluídos apenas por este filtro e 81 o satisfazem. Esses 81 não são novos casos abertos: precisam ser cruzados com os certificados de exclusão anteriores. Satisfazer este teste não implica bentness. As equações e a lista de 81 parâmetros constam em `filtro_global_derivada_uns.json`.
