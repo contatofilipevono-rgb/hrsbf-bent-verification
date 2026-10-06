@@ -1,0 +1,80 @@
+{
+  "date_utc": "2026-10-06",
+  "n": 16,
+  "degree": 5,
+  "coefficient_dimension": 273,
+  "fiber_variable_dimension": 8,
+  "nonzero_fibers": 255,
+  "rank_histogram": {
+    "12": 1,
+    "20": 2,
+    "32": 4,
+    "33": 4,
+    "39": 4,
+    "55": 8,
+    "57": 16,
+    "58": 16,
+    "61": 16,
+    "63": 40,
+    "67": 56,
+    "69": 8,
+    "71": 80
+  },
+  "rotation_class_count": 35,
+  "rotation_classes": [
+    {"representative":"0x1","orbit_size":8,"weight":1,"period":8,"rank":63},
+    {"representative":"0x3","orbit_size":8,"weight":2,"period":8,"rank":57},
+    {"representative":"0x5","orbit_size":8,"weight":2,"period":8,"rank":55},
+    {"representative":"0x7","orbit_size":8,"weight":3,"period":8,"rank":67},
+    {"representative":"0x9","orbit_size":8,"weight":2,"period":8,"rank":57},
+    {"representative":"0xb","orbit_size":8,"weight":3,"period":8,"rank":67},
+    {"representative":"0xd","orbit_size":8,"weight":3,"period":8,"rank":67},
+    {"representative":"0xf","orbit_size":8,"weight":4,"period":8,"rank":58},
+    {"representative":"0x11","orbit_size":4,"weight":2,"period":4,"rank":32},
+    {"representative":"0x13","orbit_size":8,"weight":3,"period":8,"rank":67},
+    {"representative":"0x15","orbit_size":8,"weight":3,"period":8,"rank":67},
+    {"representative":"0x17","orbit_size":8,"weight":4,"period":8,"rank":63},
+    {"representative":"0x19","orbit_size":8,"weight":3,"period":8,"rank":67},
+    {"representative":"0x1b","orbit_size":8,"weight":4,"period":8,"rank":61},
+    {"representative":"0x1d","orbit_size":8,"weight":4,"period":8,"rank":63},
+    {"representative":"0x1f","orbit_size":8,"weight":5,"period":8,"rank":71},
+    {"representative":"0x25","orbit_size":8,"weight":3,"period":8,"rank":67},
+    {"representative":"0x27","orbit_size":8,"weight":4,"period":8,"rank":61},
+    {"representative":"0x2b","orbit_size":8,"weight":4,"period":8,"rank":63},
+    {"representative":"0x2d","orbit_size":8,"weight":4,"period":8,"rank":58},
+    {"representative":"0x2f","orbit_size":8,"weight":5,"period":8,"rank":71},
+    {"representative":"0x33","orbit_size":4,"weight":4,"period":4,"rank":33},
+    {"representative":"0x35","orbit_size":8,"weight":4,"period":8,"rank":63},
+    {"representative":"0x37","orbit_size":8,"weight":5,"period":8,"rank":71},
+    {"representative":"0x3b","orbit_size":8,"weight":5,"period":8,"rank":71},
+    {"representative":"0x3d","orbit_size":8,"weight":5,"period":8,"rank":71},
+    {"representative":"0x3f","orbit_size":8,"weight":6,"period":8,"rank":71},
+    {"representative":"0x55","orbit_size":2,"weight":4,"period":2,"rank":20},
+    {"representative":"0x57","orbit_size":8,"weight":5,"period":8,"rank":71},
+    {"representative":"0x5b","orbit_size":8,"weight":5,"period":8,"rank":71},
+    {"representative":"0x5f","orbit_size":8,"weight":6,"period":8,"rank":69},
+    {"representative":"0x6f","orbit_size":8,"weight":6,"period":8,"rank":71},
+    {"representative":"0x77","orbit_size":4,"weight":6,"period":4,"rank":39},
+    {"representative":"0x7f","orbit_size":8,"weight":7,"period":8,"rank":71},
+    {"representative":"0xff","orbit_size":1,"weight":8,"period":1,"rank":12}
+  ],
+  "exact_low_rank_balance_profiles": {
+    "0xff": {
+      "rank": 12,
+      "image_profiles": 4096,
+      "balanced_profiles": 1670
+    },
+    "0x55": {
+      "rank": 20,
+      "image_profiles": 1048576,
+      "balanced_profiles": 288195
+    }
+  },
+  "greedy_injective_fiber_set": {
+    "z_hex": ["0x1f","0x37","0x2f","0x3b","0x3d","0x57","0x5b","0x7","0xb","0x15"],
+    "rank_history": [71,127,157,186,215,242,258,263,268,273],
+    "final_joint_rank": 273,
+    "injective_on_273_coefficients": true
+  },
+  "interpretation": "Exact linear-map ranks only. Rank and injectivity do not imply bentness or nonexistence."
+}
