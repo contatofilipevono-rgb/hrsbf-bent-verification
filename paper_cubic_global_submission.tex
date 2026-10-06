@@ -192,13 +192,22 @@ By Lemma~\ref{lem:quad-rigidity}, its polar form is zero. A Boolean function of 
 Let \(N=2h\), let \(g:\F^N\to\F\) be bent, and suppose \(g(u,u)\) is constant. Define \(F_z(u)=g(u,u+z)\). Then \(F_z\) is balanced for every \(z\ne0\).
 \end{lemma}
 \begin{proof}
-After adding a constant assume \(g(u,u)=0\). Put \(A_z=\sum_u(-1)^{F_z(u)}\). Under the invertible change \((u,z)\mapsto(u,u+z)\),
+After adding a constant assume \(g(u,u)=0\). Put \(A_z=\sum_u(-1)^{F_z(u)}\). Under the invertible linear change \(\Phi(u,z)=(u,u+z)\), put \(G(u,z)=g(\Phi(u,z))=g(u,u+z)\). Then
 \[
 \widehat A(b)=\sum_z A_z(-1)^{b\cdot z}
+=\sum_{u,z}(-1)^{G(u,z)+b\cdot z}
+=W_G(0,b).
 \]
-is the Walsh coefficient of the transformed \(g\) at frequency \((0,b)\), hence has magnitude \(2^h\). Parseval on \(\F^h\) gives
+Bentness is preserved by the invertible linear change \(\Phi\), so, since \(G\) has \(N=2h\) variables,
 \[
-\sum_zA_z^2=2^{-h}\sum_b\widehat A(b)^2=2^{-h}2^h2^{2h}=2^N.
+|\widehat A(b)|=|W_G(0,b)|=2^{N/2}=2^h
+\]
+for every \(b\). Parseval for the unnormalized Walsh transform on \(\F^h\) therefore gives
+\[
+\sum_zA_z^2
+=2^{-h}\sum_b\widehat A(b)^2
+=2^{-h}\cdot 2^h\cdot 2^{2h}
+=2^{2h}=2^N.
 \]
 But \(A_0=2^h\), so \(A_0^2=2^N\) exhausts the sum. Hence \(A_z=0\) for every \(z\ne0\).
 \end{proof}
