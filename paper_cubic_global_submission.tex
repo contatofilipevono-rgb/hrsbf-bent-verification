@@ -118,57 +118,6 @@ for $h\in\mathcal H_t$, excluding bent functions in $\mathcal H_t$ suffices.
 This observation is an application of standard affine invariance; no
 novelty is claimed for the identity itself.
 
-\section{Finite obstructions}
-For $t=2,4,8$, there are respectively 1, 3 and 11 generators of $\mathcal F_t$. Exact enumeration gives
-\[
-\begin{array}{c|c|c}
-t & |\mathcal F_t| & \text{zero-frequency Walsh values}\\\hline
-2&2&\{0,4\}\\
-4&8&\{-8,0,8,16\}\\
-8&2048&\text{all divisible by }32
-\end{array}
-\]
-None contains $\pm2^{t/2}$. The accompanying verifier enumerates all these functions, including zero, and checks the required exclusion.
-
-For $t=16$, there are $\binom{16}{3}/16=35$ cubic orbits and seven full quadratic orbits in $\mathcal H_{16}$. These 42 ANFs have disjoint nonempty monomial supports and are linearly independent. Any input orbit shorter than 16 has length dividing eight, hence lies in $A_{16}$. The remaining $2^{16}-2^8=65280$ inputs form 4080 full orbits. Evaluating on one representative from each defines codewords $w_1,\ldots,w_{42}\in\F^{4080}$ and a code $C$. This evaluation is injective on $\mathcal H_{16}$: a function in its kernel vanishes on every full orbit by rotation symmetry and on every shorter orbit by Lemma~\ref{lem:vanishing}, hence is the zero Boolean function and has zero ANF coefficients. Therefore $\dim C=42$, and
-\begin{equation}\label{eq:weights}
-\wt(g)=16\wt(c)\quad\text{for the codeword }c\text{ associated to }g.
-\end{equation}
-
-\begin{lemma}[Weight polarization]\label{lem:ward}
-For binary vectors $w_i$ and an index subset $I$,
-\[
- \wt\Big(\sum_{i\in I}w_i\Big)=
- \sum_{\varnothing\ne J\subseteq I}(-2)^{|J|-1}
- \wt\Big(\prod_{j\in J}w_j\Big),
-\]
-where the product is coordinatewise. In particular, divisibility of each $k$-fold intersection weight by $2^{5-k}$ for $1\le k\le4$ implies that their binary span is 16-divisible.
-\end{lemma}
-\begin{proof}
-At a coordinate occupied by $r$ selected vectors, the right-hand contribution is
-\[
-\sum_{k=1}^r\binom rk(-2)^{k-1}=(1-(-1)^r)/2,
-\]
-precisely its contribution to the XOR weight. Sum over coordinates. Terms with $k\ge5$ are divisible by 16; the stated conditions handle the other terms. This is the weight polarization criterion in the divisible-code framework~\cite{ward}.
-\end{proof}
-
-The exact computation on the 42 generators has the following results:
-\begin{center}
-\begin{tabular}{rrrr}
-\toprule
-Intersection order & Subsets & Required divisor & Violations\\
-\midrule
-1&42&16&0\\
-2&861&8&0\\
-3&11480&4&0\\
-4&111930&2&0\\
-\midrule
-Total&124313&&0\\
-\bottomrule
-\end{tabular}
-\end{center}
-Thus $C$ is 16-divisible. Equation~\ref{eq:weights} implies $256\mid\wt(g)$ and $512\mid W_g(0)$. Since bentness in dimension 16 requires $|W_g(0)|=256$, no function in $\mathcal H_{16}$ is bent. Lemma~\ref{lem:linear} excludes bentness in $\mathcal F_{16}$ as well. The intersection table is the finite computational component of the proof; it is not inferred from random samples. The supplied verifier also checks the 12384 additional intersections involving $L$, for 136697 in total. Thus it additionally establishes $512\mid W_g(0)$ on all of $\mathcal F_{16}$, although this stronger assertion is unnecessary for the nonexistence proof.
-
 \section{Global cubic nonexistence theorem}
 
 We now state the structural result that supersedes the earlier dimension-by-dimension obstruction.
@@ -254,68 +203,13 @@ Sun, Shi, Liu and Fu~\cite{sun} obtain additional conditional nonexistence resul
 \paragraph{Computational status.}
 The earlier exact \(t=16\) divisible-code proof and the independent \(n=32\) certificates remain useful validation and historical motivation, but they are no longer logical premises of Theorem~\ref{thm:global}.
 
-\section{Hypotheses behind the supplementary fiber certificates}
-A fiber of an arbitrary bent function need not be balanced. The certificates in dimension 32 use the additional property that a homogeneous cubic rotation-symmetric function vanishes on the diagonal subspace $A=\{(u,u):u\in\F^{16}\}$.
+\section{Computational validation and supplementary material}
+The proof of Theorem~\ref{thm:global} is entirely algebraic. Exact computations in dimensions 16 and 32, exhaustive low-dimensional checks, folding tests for odd multipliers, and nonhomogeneous cubic rotation-symmetric bent positive controls are retained in the repository as independent validation and historical documentation. None is a premise of the main theorem.
 
-\begin{lemma}\label{lem:fiber}
-Let $f:\F^{2k}\to\F$ be bent and let $A$ be a $k$-dimensional linear subspace on which $f=0$. Every coset $v+A$ distinct from $A$ has zero sign sum.
-\end{lemma}
-\begin{proof}
-Character orthogonality gives
-\[
- \sum_{b\in A^\perp}W_f(b)
- =2^k\sum_{x\in A}(-1)^{f(x)}=2^{2k}.
-\]
-There are $2^k$ summands, each equal to $\pm2^k$, so all are $+2^k$. For a coset represented by $v$, Fourier inversion on the quotient gives
-\[
- \sum_{x\in v+A}(-1)^{f(x)}
- =2^{-k}\sum_{b\in A^\perp}(-1)^{b\cdot v}W_f(b).
-\]
-This equals zero for $v\notin A$.
-\end{proof}
-In the present homogeneous cubic space, paired half-turn monomials give $f(u,u)=0$ and $q_z(u)=f(u,u+z)$ has degree at most two. Its polar $B_z$ is determined by the fixed 35-coordinate cubic parameter described in the supplementary certificate notes. Also $q_z(u+z)=q_z(u)$, hence $z\in R_z=\operatorname{rad}B_z$ and $L_z(z)=0$, where $L_z(r)=q_z(r)+q_z(0)$.
+\section{Discussion}
+The proof separates the cubic conjecture into two mechanisms. The odd-order fixed-space reduction removes the odd part of the dimension while preserving bentness because derivatives of cubic functions are quadratic. Cubic orbit folding then forbids the antipodal quadratic orbit in the restricted homogeneous space, whereas the Antipodal Rule forces precisely that orbit in every low-degree rotation-symmetric bent function in power-of-two dimension.
 
-On $R_z$, $L_z$ is linear, and
-\[
- \left(\sum_u(-1)^{q_z(u)}\right)^2
- =2^{16}\sum_{r\in R_z}(-1)^{L_z(r)}.
-\]
-Thus balance is equivalent to $L_z$ being nonzero on $R_z$. In general this is a disjunction over a radical basis, not one equation. For the seven certified fibers, $\operatorname{rank}B_z=14$, so $R_z=\operatorname{span}\{z,r\}$ and balance is exactly $L_z(r)=1$. The independently reconstructed seven forms sum to zero, whereas seven required right-hand sides sum to one. This excludes only the fixed-parameter family documented by the certificate, not all homogeneous cubics in dimension 32.
-
-\section{Reproducibility and limits}
-The accompanying \texttt{verificador\_integrado.py} uses Python 3.10 or
-later and only its standard library. It performs exact integer arithmetic,
-with explicit exceptions on failed conditions; its checks remain active
-under Python optimization. Run \texttt{python verificador\_integrado.py}.
-The equivalent supplied notebook can run in Colab on a CPU. The supplied
-local logs are not represented as Colab or GPU execution logs.
-
-The program constructs both full truth tables of length 65536 and a second
-representation evaluated directly on 4080 input-orbit representatives.
-For every tested intersection it checks that the full weight is sixteen
-times the compressed weight, then tests divisibility. It checks dimension
-43 and antipodal vanishing, and records intersection counts and hashes.
-These are two representations inside one program, not two independently
-maintained implementations or a formal proof certificate.
-A separately written verifier, \texttt{auditoria\_2026\_10\_04/auditoria\_independente.py}, enumerates cubic generators using cyclic gap necklaces and checks all 136697 intersections on full input tables using NumPy 2.3.5. It imports no code from the first verifier. Its recorded run also checks 80640 invariant quadratic map--function pairs in dimension four and 15680 folded cubic orbits across 24 dimensions. These are finite controls, not a replacement for the general proofs.\par
-The general algebraic lemmas are proved in the text; finite folding
-tests for odd multipliers 1, 3 and 5 are supplemental controls only.
-
-Other stages provide a nonhomogeneous cubic bent positive control in
-dimension twelve, all 1024 homogeneous quartic RS functions in dimension
-eight (including zero), and spectral, avalanche and algebraic-immunity
-checks on the documented sixteen-variable example. These checks are
-supplementary; they do not establish new bibliographic records or a global
-nonlinearity optimum. The program also checks complete quadratic fibers
-in dimension 32, retaining linear terms as described in the audit notes.
-
-For $t=32$, the analogous space has 155 cubic, 15 quadratic and one linear generator. Consider
-\[H(x)=\sum_{i=0}^{31}x_i x_{i+1}x_{i+2}\quad\text{in }\F,\]
-with indices modulo 32. Define a $4\times4$ integer matrix indexed by pairs $(a,b)\in\F^2$ by $M_{(a,b),(b,c)}=(-1)^{abc}$ and all incompatible-transition entries zero. Closed walks give $W_H(0)=\operatorname{tr}(M^{32})=85032960$, so
-\[\wt(H)=2104967168,\qquad \wt(H)/32=65780224\equiv512\pmod{2048}.\]
-This refutes the proposed universal divisibility by 2048 of the compressed code weights in dimension 32. Such divisibility would have implied $2^{16}\mid\wt(g)$ and excluded the bent values $W_g(0)=\pm2^{16}$. The example does not refute the bent conjecture and does not preclude refined uses of divisible codes or other Walsh coefficients.
-
-For degrees at least four, derivatives need not be quadratic, so Lemma~\ref{lem:reduction} no longer provides a general restriction theorem by the same argument. No construction of quantum codes, bounds on algebraic immunity or vectorial differential uniformity, or applications to periodic sequence correlation are established here. Those would require separate statements and proofs.
+Homogeneity is essential to the folding obstruction, not to the Antipodal Rule. This is consistent with known nonhomogeneous cubic rotation-symmetric bent functions. For degree at least four, derivatives need not be quadratic, so the present fixed-space argument does not extend directly.
 
 \begin{thebibliography}{10}
 \bibitem{stanica} P.~St\u{a}nic\u{a} and S.~Maitra, Rotation symmetric Boolean functions---count and cryptographic properties, \emph{Discrete Applied Mathematics} 156(10) (2008), 1567--1580. \href{https://doi.org/10.1016/j.dam.2007.04.029}{doi:10.1016/j.dam.2007.04.029}.
