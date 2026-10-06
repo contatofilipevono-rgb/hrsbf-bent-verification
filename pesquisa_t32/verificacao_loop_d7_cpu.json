@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "controls": [
+    {
+      "n": 8,
+      "degree": 3,
+      "nonzero_functions": 127,
+      "bent": 0,
+      "semibent_0_32": 0,
+      "actual_backend": "numpy-cpu",
+      "status": "PASS"
+    },
+    {
+      "n": 8,
+      "degree": 5,
+      "nonzero_functions": 127,
+      "bent": 0,
+      "semibent_0_32": 0,
+      "actual_backend": "numpy-cpu",
+      "status": "PASS"
+    }
+  ],
+  "quadratic_bent_positive_control": "PASS",
+  "round_witness": {
+    "status": "PASS",
+    "row": 42,
+    "z": 1,
+    "direct_anf_weight": 100,
+    "balanced_weight_required": 128
+  }
+}
