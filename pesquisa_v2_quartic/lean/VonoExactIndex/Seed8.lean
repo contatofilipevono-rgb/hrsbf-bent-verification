@@ -220,6 +220,5 @@ theorem paperFr_eq_blockSum_comp_linearEquiv
   funext x
   rw [paperFr_eq_blockSum]
   congr 1
-  exact (paperBlockLinearEquiv_apply r x).symm
 
 end VonoExactIndex
