@@ -11,6 +11,19 @@
       "timeout_seconds": 300,
       "script": "pesquisa_t32/gpu_probe.py",
       "args": []
+    },
+    {
+      "id": "rs_bent_n12",
+      "revision": 1,
+      "enabled": true,
+      "description": "Exhaustive RS degree<=3 bent search at n=12; tests antipodal rule and homogeneous cubic nonexistence.",
+      "require_gpu": true,
+      "timeout_seconds": 7200,
+      "script": "rs_bent_exhaustive.py",
+      "args": [
+        "12",
+        "16"
+      ]
     }
   ]
 }
