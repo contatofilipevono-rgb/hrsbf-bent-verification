@@ -1,91 +1,87 @@
 # Lean formalization status — 2026-10-07
 
-Scope: structural proof of the V2 exact-index theorem.
+Scope: V2 exact-index formalization and reproducible Lean verification.
 
-## Formalized source files
+## Green checkpoint
 
-- VonoExactIndex/FiniteDifference.lean
-  - Boolean finite difference over ZMod 2.
-  - D_a D_a f = 0.
-  - direction-addition correction identity, explicitly preventing the false bilinearity argument.
+The branch `v2-quartic-mm-index-2026-10-07` reached a successful full GitHub Actions build on commit:
 
-- VonoExactIndex/BlockSum.lean
-  - exact decomposition of second finite differences for sums on disjoint blocks.
-  - selected one-direction-per-block construction gives zero second derivative.
+    48506b6697b056d9584842c1873e9455dc34d1b9
 
-- VonoExactIndex/MSubspace.lean
-  - definitions of M-subspace and relaxed M-subspace.
-  - ordinary M-subspace implies relaxed.
-  - if a sum of disjoint-coordinate functions is constant, each coordinate function is constant.
-  - projection of a relaxed M-subspace of a block sum is relaxed for every block.
+GitHub Actions run:
 
-## Trust status
+    37674550863
 
-A repository scan on 2026-10-07 finds NO `sorry` in any committed .lean source under this directory.
+Result:
 
-However, this environment does not currently provide the Lean/lake executable, so the source has NOT YET been certified by an actual `lake build`. Therefore the correct status is:
+    completed / success
 
-    source-level formalization, no sorry, build pending.
+Environment used by CI:
+- Lean 4.19.0
+- Mathlib resolved by the repository lake configuration
 
-Do not describe it as a machine-checked certificate until CI or a Lean-enabled environment completes `lake build` successfully.
+This commit is the preserved green checkpoint for subsequent V2 work.
 
-## Next theorem layer
+## Compiler-verified theorem layers
 
-Once compilation is available:
-1. repair any Mathlib API/type errors revealed by the compiler;
-2. formalize finite-dimensional dimension bounds for block projections;
-3. state/prove the abstract theorem:
-       seed relaxed index <= 1
-       => direct-sum ind = relaxed-ind = number of blocks;
-4. connect the finite 8-variable seed certificate.
+The successful build includes the current committed Lean source tree, in particular:
+
+- `VonoExactIndex/FiniteDifference.lean`
+  - finite differences over `ZMod 2`;
+  - `D_a D_a f = 0`;
+  - correction identity for direction addition, avoiding the invalid general bilinearity claim.
+
+- `VonoExactIndex/BlockSum.lean`
+  - decomposition of second differences over disjoint blocks;
+  - one selected direction per block gives zero second difference.
+
+- `VonoExactIndex/MSubspace.lean`
+  - M-subspace and relaxed M-subspace definitions;
+  - ordinary implies relaxed;
+  - coordinate constancy for a constant disjoint-coordinate sum;
+  - relaxed block-subspace projections are relaxed.
+
+- `VonoExactIndex/DimensionBound.lean`
+  - injective map from a subspace to the product of coordinate images;
+  - finrank bound by the sum of projection finranks;
+  - block upper bound under the seed relaxed-index hypothesis.
+
+- `VonoExactIndex/LowerBound.lean`
+  - explicit selected-direction linear map;
+  - injectivity for nonzero selected directions;
+  - its range is an ordinary M-subspace;
+  - the range has one dimension per block.
+
+## Important correction established during formalization
+
+An earlier informal justification used a false general bilinearity claim for second finite differences in the direction variables. The Lean development does not rely on that claim. The lower-bound construction was replaced by a direct disjoint-block argument: in each block both directions lie on the same one-dimensional `F₂` line, so the block second difference vanishes.
+
+Thus the green checkpoint verifies the corrected argument, not the invalid bilinearity shortcut.
+
+## Trust boundary
+
+The successful CI build establishes that the committed Lean development at the green checkpoint is accepted by Lean/Mathlib.
+
+Before describing the entire mathematical paper as a fully closed formal certificate, perform one final dependency audit of:
+- `Seed8.lean`;
+- `ExactIndex.lean`;
+- the bridge from the finite Seed8 obstruction to the abstract hypothesis that every relaxed seed M-subspace has finrank at most 1;
+- all occurrences of `axiom`, `sorry`, `admit`, or theorem hypotheses that still encode an unproved mathematical step.
+
+A green build alone does not imply that every paper-level premise has been internally derived; it certifies the Lean statements actually present in the dependency chain.
+
+## Reproducibility record
+
+Green checkpoint commit:
+
+    48506b6697b056d9584842c1873e9455dc34d1b9
+
+Successful CI run:
+
+    37674550863
+
+Branch:
+
+    v2-quartic-mm-index-2026-10-07
 
 V1 remains untouched.
-
-
-## Exact-index layer update
-
-The abstract exact-index theorem is now present at:
-
-    VonoExactIndex/ExactIndex.lean
-
-It proves the certificate form needed for exact equality:
-- every relaxed M-subspace of the block sum has finrank <= number of blocks;
-- an ordinary M-subspace of exactly that finrank exists;
-- a uniform-seed specialization reduces the infinite-family theorem to the seed hypothesis that every relaxed seed subspace has finrank <= 1.
-
-Audit note: an earlier tool call reported creation of ExactIndex.lean but the file was not actually present, while the umbrella module imported it. This was detected by direct fetch (404), corrected, and then rechecked against the recursive Git tree.
-
-Correction commit:
-
-    1bc959c781f7f80377f0c390bd529ade592ddc13
-
-Post-correction repository check:
-- 7 committed .lean files;
-- ExactIndex.lean present in the recursive tree;
-- 0 occurrences of `sorry` in committed .lean files.
-
-Compilation remains pending because this execution environment does not expose Lean/lake.
-
-
-## Seed8 executable layer
-
-Added:
-
-    VonoExactIndex/Seed8.lean
-
-It defines the explicit 8-variable quartic RS seed from the four orbit representatives and states a complete finite obstruction:
-
-    no distinct nonzero directions a,b have constant D_a D_b seed.
-
-The theorem is discharged in source with `native_decide`, so after successful compilation Lean will evaluate the complete finite proposition rather than a sample. This is the executable counterpart of the Python 32,385-pair certificate.
-
-Current boundary:
-- the finite seed obstruction is encoded;
-- the generic block exact-index theorem is encoded;
-- the small abstract bridge from the finite obstruction to the statement that every relaxed seed subspace has finrank <= 1 is not yet committed, because its implementation should be compiler-guided against the exact Mathlib API rather than guessed.
-
-Seed source commit:
-
-    81c8ddaf795ff717835184d2c64b2c0876f9ac40
-
-As before, no machine-check claim is made until `lake build` succeeds.
