@@ -66,6 +66,7 @@ theorem IsMSubspace.map_linearEquiv
   rcases hb with ⟨b, hb, rfl⟩
   have h := hS a ha b hb
   have htransport := secondDiff_comp_linear e.toLinearMap a b f
+  change diff a (diff b (f ∘ e.toLinearMap)) = 0 at h
   rw [h] at htransport
   funext y
   have hy := congrFun htransport (e.symm y)
@@ -84,6 +85,7 @@ theorem IsRelaxedMSubspace.map_linearEquiv
   refine ⟨c, ?_⟩
   funext y
   have htransport := secondDiff_comp_linear e.toLinearMap a b f
+  change diff a (diff b (f ∘ e.toLinearMap)) = fun _ => c at hc
   rw [hc] at htransport
   have hy := congrFun htransport (e.symm y)
   simpa using hy.symm
