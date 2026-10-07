@@ -54,4 +54,38 @@ theorem IsRelaxedMSubspace.comap_linearEquiv
   rw [hc]
   rfl
 
+
+/-- The forward image of an M-subspace under a coordinate equivalence is an M-subspace. -/
+theorem IsMSubspace.map_linearEquiv
+    (e : V ≃ₗ[ZMod 2] W) (f : W → ZMod 2)
+    (S : Submodule (ZMod 2) V)
+    (hS : IsMSubspace (f ∘ e) S) :
+    IsMSubspace f (S.map e.toLinearMap) := by
+  intro a ha b hb
+  rcases ha with ⟨a, ha, rfl⟩
+  rcases hb with ⟨b, hb, rfl⟩
+  have h := hS a ha b hb
+  have htransport := secondDiff_comp_linear e.toLinearMap a b f
+  rw [h] at htransport
+  funext y
+  have hy := congrFun htransport (e.symm y)
+  simpa using hy.symm
+
+/-- The forward image of a relaxed M-subspace remains relaxed. -/
+theorem IsRelaxedMSubspace.map_linearEquiv
+    (e : V ≃ₗ[ZMod 2] W) (f : W → ZMod 2)
+    (S : Submodule (ZMod 2) V)
+    (hS : IsRelaxedMSubspace (f ∘ e) S) :
+    IsRelaxedMSubspace f (S.map e.toLinearMap) := by
+  intro a ha b hb
+  rcases ha with ⟨a, ha, rfl⟩
+  rcases hb with ⟨b, hb, rfl⟩
+  rcases hS a ha b hb with ⟨c, hc⟩
+  refine ⟨c, ?_⟩
+  funext y
+  have htransport := secondDiff_comp_linear e.toLinearMap a b f
+  rw [hc] at htransport
+  have hy := congrFun htransport (e.symm y)
+  simpa using hy.symm
+
 end VonoExactIndex
