@@ -21,6 +21,18 @@ theorem secondDiff_blockSum
       ∑ i, diff (a i) (diff (b i) (f i)) (x i) := by
   simp [diff, blockSum, sum_add_distrib, add_assoc, add_comm, add_left_comm]
 
+lemma zmod2_smul_eq_zero_or_self
+    {A : Type*} [AddCommGroup A] [Module (ZMod 2) A]
+    (c : ZMod 2) (v : A) :
+    c • v = 0 ∨ c • v = v := by
+  have hc : c = 0 ∨ c = 1 := by
+    exact ZMod.eq_zero_or_eq_one c
+  rcases hc with rfl | rfl
+  · left
+    simp
+  · right
+    simp
+
 theorem selectedDirections_secondDiff_zero
     (f : ∀ i, W i → ZMod 2)
     (e : ∀ i, W i)
@@ -31,15 +43,13 @@ theorem selectedDirections_secondDiff_zero
   rw [secondDiff_blockSum]
   apply Finset.sum_eq_zero
   intro i hi
-  have hα : α i = 0 ∨ α i = 1 := by
-    fin_cases h : α i
-    · exact Or.inl rfl
-    · exact Or.inr rfl
-  have hβ : β i = 0 ∨ β i = 1 := by
-    fin_cases h : β i
-    · exact Or.inl rfl
-    · exact Or.inr rfl
-  rcases hα with hα | hα <;> rcases hβ with hβ | hβ
-  all_goals simp [hα, hβ]
+  rcases zmod2_smul_eq_zero_or_self (α i) (e i) with hα | hα
+  · rw [hα]
+    simp
+  rcases zmod2_smul_eq_zero_or_self (β i) (e i) with hβ | hβ
+  · rw [hβ]
+    simp
+  · rw [hα, hβ]
+    simpa using congrFun (diff_self (e i) (f i)) (x i)
 
 end VonoExactIndex
