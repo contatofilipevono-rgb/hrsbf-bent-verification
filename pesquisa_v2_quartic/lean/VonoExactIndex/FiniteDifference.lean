@@ -7,11 +7,8 @@ variable {V : Type*} [AddCommGroup V] [Module (ZMod 2) V]
 def diff (a : V) (f : V → ZMod 2) : V → ZMod 2 :=
   fun x => f (x + a) + f x
 
-lemma two_eq_zero_zmod2 : (2 : ZMod 2) = 0 := by
-  norm_num [ZMod.natCast_self]
-
 @[simp] theorem add_self_zmod2 (z : ZMod 2) : z + z = 0 := by
-  rw [← two_mul, two_eq_zero_zmod2, zero_mul]
+  exact ZMod.add_self z
 
 @[simp] theorem diff_zero (f : V → ZMod 2) :
     diff (0 : V) f = (0 : V → ZMod 2) := by
@@ -22,7 +19,12 @@ lemma two_eq_zero_zmod2 : (2 : ZMod 2) = 0 := by
     diff a (diff a f) = (0 : V → ZMod 2) := by
   funext x
   have haa : a + a = 0 := by
-    rw [← two_smul (ZMod 2) a, two_eq_zero_zmod2, zero_smul]
+    have hchar : (1 : ZMod 2) + 1 = 0 := by
+      exact ZMod.add_self 1
+    calc
+      a + a = (1 : ZMod 2) • a + (1 : ZMod 2) • a := by simp
+      _ = ((1 : ZMod 2) + 1) • a := by rw [add_smul]
+      _ = 0 := by rw [hchar, zero_smul]
   simp only [diff]
   have hxaa : x + a + a = x := by
     rw [add_assoc, haa, add_zero]
@@ -56,5 +58,7 @@ theorem diff_add_direction (a b : V) (f : V → ZMod 2) :
           + ((f (x + b + a) + f (x + b)) + (f (x + a) + f x)) := by abel
     _ = (f (x + a) + f x) + (f (x + b) + f x)
           + ((f (x + a + b) + f (x + b)) + (f (x + a) + f x)) := by rw [hba]
+    _ = (f (x + a) + f x) + (f (x + b) + f x)
+          + (f (x + a + b) + f (x + a) + (f (x + b) + f x)) := by abel
 
 end VonoExactIndex
