@@ -124,6 +124,7 @@ Write $n=tm$, where $t=2^s$, $s\ge1$, and $m$ is odd. The map $T=\sigma^t$ has o
 \[
 x_i=y_{i\bmod t}.
 \]
+Since Boolean ANFs are multilinear, the substitution is interpreted with $y_j^2=y_j$; folding can therefore preserve or lower degree, but never raise it.
 The following lemma is the precise orbit-counting statement needed later.
 
 \begin{lemma}[Exact antipodal coefficient transport]\label{lem:antipodal-transport}
@@ -163,7 +164,7 @@ times. In particular, this ratio is automatically an integer, even when collisio
 \tag{*}
 \]
 
-It remains only to identify when the target orbit $O_B$ can be $P_t$. The stabilizer of $A$ acts freely on $A$, so $h\mid |A|$: in degree one $h=1$; in degree two $h=1$ except for the antipodal orbit $P_n$, where $h=2$; and in degree three $h=1$ or $3$.
+It remains only to identify when the target orbit $O_B$ can be $P_t$. For supports of size at most three, an antipodal target can arise only from a non-antipodal quadratic support whose reduced separation is $t/2$, from a cubic support with exactly one collision leaving an antipodal pair, or from $P_n$ itself. The stabilizer of $A$ acts freely on $A$, so $h\mid |A|$: in degree one $h=1$; in degree two $h=1$ except for the antipodal orbit $P_n$, where $h=2$; and in degree three $h=1$ or $3$.
 
 If a non-antipodal quadratic orbit reduces to an antipodal pair, then $h=1$ and $b=2$, so the multiplicity in \((*)\) is $2m$, hence even. If a cubic orbit reduces, after collisions, to an antipodal pair, then again its target has $b=2$. Such an orbit cannot have $h=3$: the case $h=3$ is the short cubic support
 \[
@@ -200,7 +201,7 @@ Let \(N=2^k\). If \(q:\F^N\to\F\) is rotation-symmetric, balanced, and \(\deg q\
 \begin{proof}
 Adding a constant does not affect balance or the polar, so put \(Q=q+q(0)\), with \(Q(0)=0\), and let \(B\) be its polar. Let \(R=\{r:B(r,x)=0\ \forall x\}\). If \(B\ne0\), then \(R\) is a proper rotation-invariant subspace.
 
-Identify \(\F^N\) with \(A=\F[X]/((X+1)^N)\), with cyclic rotation \(S\) represented by multiplication by \(X\). Since \(A\) is local with maximal ideal \((X+1)\), a vector of odd Hamming weight represents a unit: its polynomial evaluates to \(1\) at \(X=1\). If a rotation-invariant subspace contains a unit \(u\), it contains \(u,Xu,\ldots,X^{N-1}u\). Multiplication by \(u\) is an automorphism of \(A\), while \(1,X,\ldots,X^{N-1}\) span \(A\); consequently \(u,Xu,\ldots,X^{N-1}u\) also span \(A\). Thus every proper rotation-invariant subspace contains no unit, equivalently no odd-weight vector, and
+Identify \(\F^N\) with the cyclic module \(A=\F[X]/((X+1)^N)\), with cyclic rotation \(S\) represented by multiplication by \(X\). Because \(N=2^k\), in characteristic two one has \(X^N+1=(X+1)^N\), so this is the usual quotient by the cyclic relation \(X^N=1\). The ring \(A\) is local with maximal ideal \((X+1)\), a vector of odd Hamming weight represents a unit: its polynomial evaluates to \(1\) at \(X=1\). If a rotation-invariant subspace contains a unit \(u\), it contains \(u,Xu,\ldots,X^{N-1}u\). Multiplication by \(u\) is an automorphism of \(A\), while \(1,X,\ldots,X^{N-1}\) span \(A\); consequently \(u,Xu,\ldots,X^{N-1}u\) also span \(A\). Thus every proper rotation-invariant subspace contains no unit, equivalently no odd-weight vector, and
 \[
 R\subseteq (X+1)A=\operatorname{im}(S+I).
 \]
@@ -238,7 +239,7 @@ Thus \(q_d\) restricts to a nonzero linear form on the radical. Using
 \left(\sum_x(-1)^{q_d(x)}\right)^2
 =2^N\sum_{r\in\operatorname{rad}(B_{q_d})}(-1)^{q_d(r)},
 \]
-the right-hand side vanishes, so \(q_d\) is balanced. Its polar is nonzero. Therefore, for even \(N\), every balanced rotation-symmetric quadratic having zero polar is a rigidity phenomenon valid for all such functions precisely when \(N\) is a power of two.
+the right-hand side vanishes, so \(q_d\) is balanced. Its polar is nonzero. Therefore, among even \(N\), the implication "rotation-symmetric, balanced, and degree at most two $\Longrightarrow$ zero polar" holds for all such functions exactly when \(N\) is a power of two.
 \end{remark}
 
 \begin{lemma}[Complementary-fiber balance]\label{lem:fiber-balance}
@@ -275,7 +276,7 @@ For degree at most three,
 \[
 \Delta_3(p,q,r)=D_pD_qD_rg(0)
 \]
-is independent of the base point and is a symmetric trilinear form. Put \(p=d(u)\), \(q=d(v)\), \(w=e(\mathbf1)\). Then
+is independent of the base point and is a symmetric trilinear form. Indeed, third differences of a degree-at-most-three Boolean polynomial are constant; symmetry follows because difference operators commute, and additivity in each direction follows from $D_{a+b}h(x)=D_a h(x+b)+D_b h(x)$. Put \(p=d(u)\), \(q=d(v)\), \(w=e(\mathbf1)\). Then
 \[
 B_{F_{\mathbf1}}(u,v)=D_pD_qg(w)
 =D_pD_qg(0)+\Delta_3(p,q,w).
@@ -324,7 +325,7 @@ P_N(x)=\sum_{i=0}^{N/2-1}x_i x_{i+N/2}.
 \]
 \end{theorem}
 \begin{proof}
-Write \(N=2h\), and let \(\alpha\) be the coefficient of \(P_N\). On the diagonal \(d(u)=(u,u)\), linear orbit sums cancel in pairs, non-antipodal quadratic orbit sums cancel under half-rotation, and cubic orbit sums cancel because every cubic orbit has full length when \(N\) is a power of two. The antipodal orbit restricts to \(\sum_i u_i\). Hence
+Write \(N=2h\), and let \(\alpha\) be the coefficient of \(P_N\). On the diagonal \(d(u)=(u,u)\), linear orbit sums cancel in pairs, non-antipodal quadratic orbit sums cancel under half-rotation, and cubic orbit sums cancel because every cubic orbit has full length when \(N\) is a power of two. Indeed, the stabilizer of a three-element support has order dividing $3$, whereas a cyclic group of power-of-two order has no nontrivial subgroup of order $3$. The antipodal orbit restricts to \(\sum_i u_i\). Hence
 \[
 g(u,u)=c+\alpha\sum_i u_i.
 \]
@@ -348,7 +349,7 @@ The case $n=2$ is immediate. Write $n=tm$ with $t=2^s$, $s\ge1$, and $m$ odd, an
 For every positive even integer $n$, there is no homogeneous rotation-symmetric bent Boolean function of degree three in $n$ variables.
 \end{theorem}
 \begin{proof}
-If such a function $f$ existed, Theorem~\ref{thm:universal-antipodal} would force $[P_n]f=1$. Homogeneity of degree three forces every quadratic ANF coefficient, in particular $[P_n]f$, to be zero. This contradiction proves the theorem.
+For $n=2$ the claim is immediate, since a Boolean function in two variables has algebraic degree at most two. Assume $n\ge4$. If such a function $f$ existed, Theorem~\ref{thm:universal-antipodal} would force $[P_n]f=1$. Homogeneity of degree three forces every quadratic ANF coefficient, in particular $[P_n]f$, to be zero. This contradiction proves the theorem.
 \end{proof}
 
 \paragraph{Relation to earlier antipodal necessity results.}
