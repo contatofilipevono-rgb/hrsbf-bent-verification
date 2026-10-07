@@ -1,0 +1,37 @@
+{
+  "date_utc": "2026-10-06",
+  "script": "kernel_coset_optimize_d5.py",
+  "status": "PASS",
+  "base_coefficient_mask": "0x1b93d5a542da0dd31aa5e9bb862362c378c3509303971333987cfca4fbf49afd3e679",
+  "base_bad_nonzero_fibers": 87,
+  "variants_evaluated": 128,
+  "global_weight_range": [31552, 32064],
+  "target_weight_32640_variant_count": 0,
+  "original_variant": {
+    "kernel_choice": 0,
+    "global_weight": 31936,
+    "autocorrelation_energy_nonzero": 9915138048,
+    "balanced_derivative_rotation_classes": 144,
+    "balanced_nonzero_directions": 2304
+  },
+  "best_energy_variant": {
+    "kernel_choice": 23,
+    "kernel_choice_binary": "0010111",
+    "kernel_mask_273": "0x1810084035401f801000c080098009001102400380064090904170001e0c4452370f",
+    "resulting_coefficient_mask": "0x1a12d521418e0c2b1ba5e5b386bb625379d374933b97773a9178eba4fa145eb81d176",
+    "global_weight": 31680,
+    "autocorrelation_energy_nonzero": 9100001280,
+    "balanced_derivative_rotation_classes": 140,
+    "balanced_nonzero_directions": 2240
+  },
+  "max_balanced_classes_variant": {
+    "kernel_choice": 19,
+    "kernel_choice_binary": "0010011",
+    "kernel_mask_273": "0x1010004035400e80100080800900090001020001800640109041300016084412330b",
+    "resulting_coefficient_mask": "0x1a92d5a1418e0d3b1ba5e1b386b3625378d370931b9777329178efa4fa941ebc1d572",
+    "global_weight": 31680,
+    "autocorrelation_energy_nonzero": 9508945920,
+    "balanced_derivative_rotation_classes": 166
+  },
+  "interpretation": "The seven kernel bits materially affect non-diagonal derivatives while leaving all fiber-balance predicates and diagonal derivative truth tables invariant."
+}

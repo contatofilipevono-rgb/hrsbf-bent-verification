@@ -1,0 +1,208 @@
+{
+  "status": "PASS",
+  "seed": 20261007,
+  "candidate_count": 32,
+  "all_255_nonzero_fibers_per_candidate": true,
+  "all_35_diagonal_derivative_classes_per_candidate": true,
+  "invalid_masks_rejected": 4,
+  "source_sha256": {
+    "compressed_quintic_constraints.py": "7bd1b1aac07f050163683685464e66ac551915241152da97f268a6af1ae3a8fc",
+    "audit_quintic_candidate_constraints.py": "ec30cf2938971e18163794387e38443864e965b8f40ffb85e8b9992b5e0f917d",
+    "validate_quintic_batch.py": "d8792d15502018b9f2668a9d5b468bb2839c941d7de6f933c54fe203b71b7c73"
+  },
+  "records": [
+    {
+      "mask": "0x0",
+      "total_weight": 0,
+      "bad_nonzero_fibers": 255,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x1",
+      "total_weight": 10272,
+      "bad_nonzero_fibers": 255,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x100000000000000000000000000000000000000000000000000000000000000000000",
+      "total_weight": 10272,
+      "bad_nonzero_fibers": 255,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "total_weight": 16384,
+      "bad_nonzero_fibers": 127,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x602809",
+      "total_weight": 22528,
+      "bad_nonzero_fibers": 254,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x168529f58ec819be28cd64a90895b1386766b5acbe650d38a1821d0daec8e3a7b0649",
+      "total_weight": 31104,
+      "bad_nonzero_fibers": 238,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x1005420dbe1bdd0b962a0dd67bc3047b2104419f3bb19bef204f0906ff6d8d03d083c",
+      "total_weight": 30656,
+      "bad_nonzero_fibers": 230,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x1fd08e2568eb579801ffd1a6ad5b0d24f0ea51a1043d3c0733a7dd2c9f0958e4c098a",
+      "total_weight": 31104,
+      "bad_nonzero_fibers": 231,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x11581ff123df7f6da545d1ea95924b8fa87dcea29fce130c1b713a1cd208701778524",
+      "total_weight": 31488,
+      "bad_nonzero_fibers": 206,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x133525cd20f39fc12e89232737315b1eee66850ca67f61c2498b42d124e6a2a87b7a9",
+      "total_weight": 31456,
+      "bad_nonzero_fibers": 215,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x1175abd97e15b43e5066c567107d49060f04700ae5f483c0df934e46a912b7bc01cd1",
+      "total_weight": 31520,
+      "bad_nonzero_fibers": 213,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x1471164e83fdba6b19d30c64ee410edc5bc38bf6229d36a556c70c1da528a89c0f30",
+      "total_weight": 31232,
+      "bad_nonzero_fibers": 217,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x3ab6745af63106bf6a79f47e0559ed4e7eb482d418640963dbcdfcf4c4700450287b",
+      "total_weight": 31424,
+      "bad_nonzero_fibers": 226,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x19d60d904d93a0de213c52ba4f8fe54c347e0c56774849f19d0fdaf012b6a3a01f7a",
+      "total_weight": 31744,
+      "bad_nonzero_fibers": 235,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x1d3b1bbc13c5d80d0a77a6175efdaed96067f81eba8dd314261f775eace69bd198c79",
+      "total_weight": 30560,
+      "bad_nonzero_fibers": 244,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x1420163e00fee8c72d6aaf7fb16eb89b15f34ffec752738ffb4aa21adb3d565221cc9",
+      "total_weight": 30784,
+      "bad_nonzero_fibers": 239,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x10475f377fada1e6bdf38e13053380f0f27116b711bdfeb72d6b234123d3f4946df8",
+      "total_weight": 32256,
+      "bad_nonzero_fibers": 214,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x190b10f8a2c50f69733f79bbb6f4370bcd93858ef436047b8585b765c0668f7dd80e9",
+      "total_weight": 31616,
+      "bad_nonzero_fibers": 172,
+      "status": "PASS"
+    },
+    {
+      "mask": "0xf2d977746fd33b82191fdfe78612e6314a45bc1576b6592277465849937c683948bd",
+      "total_weight": 31392,
+      "bad_nonzero_fibers": 231,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x19f2c6d11219f8e3d0cdc133170326a7169d06693cdd5e410389f4be03c0532149497",
+      "total_weight": 30592,
+      "bad_nonzero_fibers": 214,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x18687de850dd17b336f38a13d91055bcbd04227ee481a7bbd8ea007186d00c4128a7",
+      "total_weight": 31168,
+      "bad_nonzero_fibers": 219,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x1e976f531adab0174ffe25f51f920cfe41a5c44fd3266306881e61b9563b59df1a34b",
+      "total_weight": 31616,
+      "bad_nonzero_fibers": 227,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x3c32253d79a8d52933270ef50d224bcfe238429a259c820a3b67d8b224a1fd6b66e8",
+      "total_weight": 31328,
+      "bad_nonzero_fibers": 251,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x1457dcdd689232fc6a357a5a3dac4c5fca21c2305d0dec45ed6ddbae9da560fc8a9af",
+      "total_weight": 31424,
+      "bad_nonzero_fibers": 206,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x10c6b5c323a4e64e29608f7c6b0866b6c5e2accd1e516da301d1853c8b97581df29e5",
+      "total_weight": 31840,
+      "bad_nonzero_fibers": 215,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x1d3f69bb5c35b68214c022becd15b4a09fbdb06f79e82cc323c82c0d728de828d16fd",
+      "total_weight": 30848,
+      "bad_nonzero_fibers": 223,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x1ad413f7beb4f4632f0548f53a4ebd270e7252b341d15bebf0def08000d790357198e",
+      "total_weight": 31104,
+      "bad_nonzero_fibers": 211,
+      "status": "PASS"
+    },
+    {
+      "mask": "0xc99c706d219ce09650b24b4b1382243da12665c75e35eba7b3d21e1af1861023c953",
+      "total_weight": 31520,
+      "bad_nonzero_fibers": 215,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x1ce3f56b15f39f1d291535fcc42da16d0e772cbab9d4de3c48cb90a4012b9e2baa99",
+      "total_weight": 32256,
+      "bad_nonzero_fibers": 222,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x147c52c6e0d937588723766ad6f3697c114244313a9d318b975905abcac8c0fc3f4f6",
+      "total_weight": 31328,
+      "bad_nonzero_fibers": 239,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x1a7aab236bd6dadfd80e526264bcdc468633583630461b384ae2f81b10310afb2f623",
+      "total_weight": 30880,
+      "bad_nonzero_fibers": 211,
+      "status": "PASS"
+    },
+    {
+      "mask": "0x1310dba70cdedb97119873dadf5aa699cb473f0f0c9c9b33518acd2a6e05448d3ae83",
+      "total_weight": 32064,
+      "bad_nonzero_fibers": 208,
+      "status": "PASS"
+    }
+  ],
+  "scope": "Implementation differential validation of 32 fixed candidates, not exhaustive over 2^273 functions and not a nonexistence proof."
+}

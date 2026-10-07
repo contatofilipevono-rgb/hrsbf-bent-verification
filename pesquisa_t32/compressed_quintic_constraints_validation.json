@@ -1,0 +1,24 @@
+{
+  "date_utc": "2026-10-06",
+  "script": "compressed_quintic_constraints.py",
+  "status": "PASS",
+  "crosscheck": {
+    "candidate_mask": "0x1b93d5a542da0dd31aa5e9bb862362c378c3509303971333987cfca4fbf49afd3e679",
+    "compressed_total_weight": 31936,
+    "full_total_weight": 31936,
+    "compressed_bad_nonzero_fibers": 87,
+    "full_bad_nonzero_fibers": 87,
+    "compressed_complementary_fiber_weight": 96,
+    "full_complementary_fiber_weight": 96,
+    "all_35_diagonal_derivative_class_weights_match": true
+  },
+  "known_witness_control": {
+    "candidate_mask": "0x602809",
+    "total_weight": 22528,
+    "bad_nonzero_fibers": 254,
+    "balanced_fiber_classes": 1,
+    "complementary_fiber_weight": 128,
+    "balanced_diagonal_derivative_classes": 0
+  },
+  "scope": "Cross-check of the compressed evaluator against the independent full truth-table auditor. This is implementation validation, not a nonexistence proof."
+}

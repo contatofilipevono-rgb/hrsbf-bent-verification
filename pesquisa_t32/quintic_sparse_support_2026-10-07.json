@@ -1,0 +1,147 @@
+{
+  "status": "COMPLETE",
+  "n": 16,
+  "homogeneous_degree": 5,
+  "zero_function_included": true,
+  "basis_orbits": 273,
+  "max_active_orbits": 3,
+  "expected": 3391298,
+  "tested": 3391298,
+  "fiber_representatives_in_test_order": [
+    "0x1",
+    "0x11",
+    "0xff",
+    "0x3",
+    "0x5",
+    "0x7",
+    "0x9",
+    "0xb",
+    "0xd",
+    "0xf",
+    "0x13",
+    "0x15",
+    "0x17",
+    "0x19",
+    "0x1b",
+    "0x1d",
+    "0x1f",
+    "0x25",
+    "0x27",
+    "0x2b",
+    "0x2d",
+    "0x2f",
+    "0x33",
+    "0x35",
+    "0x37",
+    "0x3b",
+    "0x3d",
+    "0x3f",
+    "0x55",
+    "0x57",
+    "0x5b",
+    "0x5f",
+    "0x6f",
+    "0x77",
+    "0x7f"
+  ],
+  "counts": [
+    {
+      "active_orbits": 0,
+      "tested": 1,
+      "rejected_by_first_unbalanced_fiber": {
+        "0x1": 1
+      },
+      "fiber_survivors": 0
+    },
+    {
+      "active_orbits": 1,
+      "tested": 273,
+      "rejected_by_first_unbalanced_fiber": {
+        "0x1": 273
+      },
+      "fiber_survivors": 0
+    },
+    {
+      "active_orbits": 2,
+      "tested": 37128,
+      "rejected_by_first_unbalanced_fiber": {
+        "0x1": 37128
+      },
+      "fiber_survivors": 0
+    },
+    {
+      "active_orbits": 3,
+      "tested": 3353896,
+      "rejected_by_first_unbalanced_fiber": {
+        "0x1": 3353861,
+        "0xff": 8,
+        "0x11": 27
+      },
+      "fiber_survivors": 0
+    }
+  ],
+  "fiber_survivor_masks": [],
+  "independent_witness_checks": [
+    {
+      "active_orbits": 0,
+      "support": [],
+      "fiber": "0x1",
+      "weight": 0
+    },
+    {
+      "active_orbits": 1,
+      "support": [
+        0
+      ],
+      "fiber": "0x1",
+      "weight": 36
+    },
+    {
+      "active_orbits": 2,
+      "support": [
+        0,
+        1
+      ],
+      "fiber": "0x1",
+      "weight": 48
+    },
+    {
+      "active_orbits": 3,
+      "support": [
+        0,
+        1,
+        2
+      ],
+      "fiber": "0x1",
+      "weight": 60
+    },
+    {
+      "active_orbits": 3,
+      "support": [
+        45,
+        46,
+        203
+      ],
+      "fiber": "0xff",
+      "weight": 0
+    },
+    {
+      "active_orbits": 3,
+      "support": [
+        45,
+        101,
+        244
+      ],
+      "fiber": "0x11",
+      "weight": 64
+    }
+  ],
+  "independent_basis_fiber_bitstrings_checked": 9555,
+  "elapsed_seconds": 3.1426899389998653,
+  "source_sha256": {
+    "search_quintic_sparse.py": "846789cc8b2a45a01d22fa2018388ae46b567fd98bf4146d7605ebee306058eb",
+    "compressed_quintic_constraints.py": "7bd1b1aac07f050163683685464e66ac551915241152da97f268a6af1ae3a8fc",
+    "audit_quintic_candidate_constraints.py": "ec30cf2938971e18163794387e38443864e965b8f40ffb85e8b9992b5e0f917d"
+  },
+  "scope": "Exhaustive only over supports with at most max_active_orbits distinct cyclic quintic monomial orbits. A fiber survivor is not certified bent. No global degree-5 theorem."
+}

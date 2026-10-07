@@ -1,0 +1,328 @@
+{
+  "source": "https://arxiv.org/pdf/1708.09313, Theorem 3.10 (attributed there to Meng et al.)",
+  "n": 16,
+  "degree": 5,
+  "total_orbits": 273,
+  "orbits_max_gap_le_8": 238,
+  "nonzero_support_le_3_covered_by_gap_criterion": 2247077,
+  "nonzero_support_le_3_total": 3391297,
+  "triples_balanced_on_z1": [
+    {
+      "orbit_ids": [
+        45,
+        46,
+        203
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        45,
+        99,
+        198
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        45,
+        101,
+        244
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        45,
+        144,
+        259
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        45,
+        176,
+        242
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        46,
+        51,
+        101
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        46,
+        106,
+        144
+      ],
+      "max_cyclic_gap": 6,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        46,
+        149,
+        176
+      ],
+      "max_cyclic_gap": 6,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        46,
+        181,
+        198
+      ],
+      "max_cyclic_gap": 6,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        51,
+        106,
+        193
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        51,
+        149,
+        249
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        51,
+        181,
+        264
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        51,
+        203,
+        244
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        99,
+        141,
+        242
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        99,
+        181,
+        203
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        99,
+        244,
+        264
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        99,
+        256,
+        259
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        101,
+        144,
+        193
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        101,
+        176,
+        249
+      ],
+      "max_cyclic_gap": 6,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        101,
+        198,
+        264
+      ],
+      "max_cyclic_gap": 6,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        106,
+        149,
+        172
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        106,
+        181,
+        256
+      ],
+      "max_cyclic_gap": 6,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        106,
+        203,
+        259
+      ],
+      "max_cyclic_gap": 6,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        141,
+        149,
+        181
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        141,
+        172,
+        256
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        141,
+        176,
+        198
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        141,
+        249,
+        264
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        144,
+        172,
+        176
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        144,
+        198,
+        256
+      ],
+      "max_cyclic_gap": 6,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        149,
+        203,
+        242
+      ],
+      "max_cyclic_gap": 6,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        172,
+        193,
+        249
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        172,
+        242,
+        259
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        193,
+        244,
+        259
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        193,
+        256,
+        264
+      ],
+      "max_cyclic_gap": 7,
+      "covered_by_gap_criterion": true
+    },
+    {
+      "orbit_ids": [
+        242,
+        244,
+        249
+      ],
+      "max_cyclic_gap": 6,
+      "covered_by_gap_criterion": true
+    }
+  ],
+  "source_sha256": "fa67c160ce2a19c6b71af931cb27928c1786b6324a571b608b487e717ed9841b",
+  "scope": "Overlap count with one published sufficient exclusion criterion only; noncoverage does not establish novelty."
+}
