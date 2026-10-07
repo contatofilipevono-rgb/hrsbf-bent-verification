@@ -8,7 +8,9 @@ def diff (a : V) (f : V → ZMod 2) : V → ZMod 2 :=
   fun x => f (x + a) + f x
 
 @[simp] theorem add_self_zmod2 (z : ZMod 2) : z + z = 0 := by
-  exact ZMod.add_self z
+  have h : -z = z := ZMod.neg_eq_self_mod_two z
+  rw [← h]
+  exact neg_add_cancel z
 
 @[simp] theorem diff_zero (f : V → ZMod 2) :
     diff (0 : V) f = (0 : V → ZMod 2) := by
@@ -18,9 +20,8 @@ def diff (a : V) (f : V → ZMod 2) : V → ZMod 2 :=
 @[simp] theorem diff_self (a : V) (f : V → ZMod 2) :
     diff a (diff a f) = (0 : V → ZMod 2) := by
   funext x
+  have hchar : (1 : ZMod 2) + 1 = 0 := add_self_zmod2 1
   have haa : a + a = 0 := by
-    have hchar : (1 : ZMod 2) + 1 = 0 := by
-      exact ZMod.add_self 1
     calc
       a + a = (1 : ZMod 2) • a + (1 : ZMod 2) • a := by simp
       _ = ((1 : ZMod 2) + 1) • a := by rw [add_smul]
