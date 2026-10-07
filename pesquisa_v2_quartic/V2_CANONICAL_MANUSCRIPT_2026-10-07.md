@@ -38,11 +38,13 @@ Let Q be the homogeneous quartic part of f and put V=F_2^8. Define
 
     T(a,b,c,d)=D_aD_bD_cD_d Q.
 
-Because Q has degree four, T is independent of the evaluation point and is multilinear. In characteristic two, repeated directions annihilate finite differences:
+Because Q is a homogeneous squarefree quartic Boolean form, its fourth finite difference is independent of the evaluation point. For a squarefree quartic monomial x_i x_j x_k x_l, the fourth difference is the polarization obtained by assigning the four directions to the four distinct coordinates; hence it is F_2-multilinear in a,b,c,d. Summing over the quartic monomials of Q shows that T is a four-linear form.
+
+Moreover, in characteristic two repeated directions annihilate finite differences:
 
     D_aD_a h = 0.
 
-Hence T vanishes whenever two arguments coincide and induces a well-defined map
+Thus T is alternating (in particular, it vanishes whenever two arguments coincide) and induces a well-defined map
 
     Phi: Lambda^2 V -> (Lambda^2 V)^*
 
@@ -50,7 +52,7 @@ through
 
     Phi(a wedge b)(c wedge d)=T(a,b,c,d).
 
-Exact row reduction in the standard 28-dimensional wedge basis gives
+In the standard 28-dimensional wedge basis, the matrix of Phi is the same 28 x 28 binary contraction matrix that sends the Pluecker coordinates of a wedge a wedge b to the coefficients of the homogeneous quadratic part of D_aD_b Q. Exact row reduction gives
 
     rank(Phi)=22,
     dim ker(Phi)=6.
