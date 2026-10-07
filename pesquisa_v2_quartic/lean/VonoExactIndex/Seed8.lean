@@ -1,4 +1,6 @@
 import VonoExactIndex.ExactIndex
+import Mathlib.LinearAlgebra.Dimension.FreeAndStrongRankCondition
+import Mathlib.LinearAlgebra.FiniteDimensional.Basic
 
 namespace VonoExactIndex
 
