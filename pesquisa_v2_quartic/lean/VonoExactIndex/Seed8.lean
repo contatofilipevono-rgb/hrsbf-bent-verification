@@ -160,4 +160,29 @@ theorem seed8_paper_exact_index_corollary
   rcases seed8_r_blocks_has_exact_indices r e0 he0 with ⟨hM, hR⟩
   exact ⟨hM, hR, seed8_r_blocks_index_equals_n_div_eight r⟩
 
+
+/-- Paper coordinate block B_j = (x_j, x_{j+r}, ..., x_{j+7r}). -/
+def paperBlock (r : Nat) (x : Fin (8 * r) → ZMod 2) (j : Fin r) : SeedVec :=
+  fun k => x ⟨j.1 + k.1 * r, by
+    have hj : j.1 < r := j.2
+    have hk : k.1 < 8 := k.2
+    omega⟩
+
+/-- The interleaved paper presentation of the r-fold Seed8 direct sum. -/
+def paperFr (r : Nat) (x : Fin (8 * r) → ZMod 2) : ZMod 2 :=
+  ∑ j : Fin r, seed (paperBlock r x j)
+
+/-- paperFr is definitionally the Seed8 block sum after interleaved blocking. -/
+theorem paperFr_eq_blockSum
+    (r : Nat) (x : Fin (8 * r) → ZMod 2) :
+    paperFr r x =
+      blockSum (fun _ : Fin r => seed) (fun j => paperBlock r x j) := by
+  rfl
+
+/-- The paper family has n = 8r coordinates, hence n/8 = r. -/
+theorem paperFr_variable_count
+    (r : Nat) :
+    (8 * r) / 8 = r := by
+  omega
+
 end VonoExactIndex
