@@ -45,7 +45,11 @@ theorem finrank_le_sum_projection_finrank
       Module.finrank (ZMod 2) U ≤
         Module.finrank (ZMod 2) (∀ i, U.map (LinearMap.proj i)) :=
     LinearMap.finrank_le_finrank_of_injective hinj
-  simpa using hle
+  calc
+    Module.finrank (ZMod 2) U
+        ≤ Module.finrank (ZMod 2) (∀ i, U.map (LinearMap.proj i)) := hle
+    _ = ∑ i, Module.finrank (ZMod 2) (U.map (LinearMap.proj i)) :=
+      Module.finrank_pi_fintype (ZMod 2)
 
 /--
 Abstract upper bound for a relaxed M-subspace of a disjoint block sum when
