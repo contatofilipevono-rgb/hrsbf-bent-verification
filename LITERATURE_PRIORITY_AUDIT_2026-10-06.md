@@ -51,13 +51,28 @@ G. Gao, X. Zhang, W. Liu, C. Carlet, *Constructions of Quadratic and Cubic Rotat
 
 Known nonhomogeneous cubic RS bent constructions contain an antipodal quadratic coupling. This is consistent with the current theorem, but is a construction result rather than a universal antipodal-necessity theorem.
 
-### Sun–Shi–Liu–Fu (2026)
+### Sun–Shi–Liu–Fu (2026) — full-text audit completed
 
 L. Sun, Z. Shi, J. Liu, F.-W. Fu, *On the conjecture about the nonexistence of homogeneous rotation symmetric bent functions*, Designs, Codes and Cryptography 94(4), article 93 (2026), DOI 10.1007/s10623-026-01848-4.
 
-This is the highest-priority overlap risk. The published abstract says that the paper obtains new nonexistence results that solve the conjecture **partially**. Focused searches in the indexed text did not locate the strings “cubic” or “degree 3”, nor a theorem statement claiming uniform exclusion of homogeneous cubics in all even dimensions.
+The complete 22-page paper was checked theorem by theorem, with special attention to Section 3.3, “Nonexistence results of cubic homogeneous rotation symmetric bent functions,” and Table 1.
 
-**Caution:** the accessible indexed material is not a theorem-by-theorem reading of the complete publisher PDF. Therefore this audit does not justify an absolute “first ever” priority claim. Before submission, the complete Sun–Shi–Liu–Fu paper should be checked line by line, especially every theorem/corollary concerning degree 3.
+The cubic results are conditional:
+
+- **Theorem 5:** for a cubic homogeneous RSBF with an even number of SANF terms, nonexistence follows under the additional valuations (v_2(r_i),v_2(s_i)ge v_2(n)).
+- **Theorem 6:** for any fixed finite set of cubic generator pairs (P), there exists (e_0) such that the corresponding family is non-bent whenever (nequiv0pmod{2^{e_0}}). This excludes a divisibility subfamily of dimensions, not all even dimensions.
+- **Corollary 2:** excludes cubic homogeneous RS bent functions when (n=2p_1^{n_1}cdots p_t^{n_t}) and the odd primes satisfy the paper’s strong recursive size inequalities. Again this is an arithmetic subfamily, not every even (n).
+
+Table 1 records these cubic results as rows 16 and 17 with their explicit extra conditions. The conclusion states that solving the conjecture remains “an extremely difficult problem” and proposes further work.
+
+Accordingly, Sun–Shi–Liu–Fu (2026) **does not contain a uniform theorem excluding homogeneous cubic RS bent functions in every positive even dimension**.
+
+A focused full-text search also found no antipodal-orbit theorem analogous to the current statement
+[
+	ext{RS bent}, deg fle3Longrightarrow [P_n]f=1.
+]
+
+This materially lowers the principal overlap risk identified in the first literature pass.
 
 ### Polujan–Kudin–Pašalić (2026)
 
@@ -114,5 +129,5 @@ or any equivalent absolute priority statement.
 
 - Proof correctness: independently audited elsewhere in the repository.
 - Literature search result: **no prior global cubic theorem or universal degree-(le3) antipodal theorem located**.
-- Priority confidence: **high but not final**.
-- Required final check before journal submission: full-text theorem-by-theorem audit of Sun–Shi–Liu–Fu (2026), plus citation chaining from its references and papers citing it.
+- Priority confidence: **high** after full-text theorem-by-theorem audit of Sun–Shi–Liu–Fu (2026).
+- Remaining bibliographic check before journal submission: citation chaining from Sun–Shi–Liu–Fu’s references and later papers citing it; avoid absolute “first ever” wording unless that broader check is also completed.
