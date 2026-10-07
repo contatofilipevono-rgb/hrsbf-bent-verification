@@ -69,22 +69,40 @@ theorem seed_relaxed_finrank_le_one
     (S : Submodule (ZMod 2) SeedVec)
     (hS : IsRelaxedMSubspace seed S) :
     Module.finrank (ZMod 2) S ≤ 1 := by
-  rw [Module.finrank_le_one_iff]
-  rcases eq_or_ne S ⊥ with hbot | hbot
-  · subst S
+  classical
+  apply (_root_.finrank_le_one_iff (K := ZMod 2) (V := S)).2
+  by_cases hex : ∃ v : S, v ≠ 0
+  · obtain ⟨v, hv⟩ := hex
+    refine ⟨v, ?_⟩
+    intro w
+    by_cases hw : w = 0
+    · refine ⟨0, ?_⟩
+      simpa only [zero_smul] using hw.symm
+    by_cases hwv : w = v
+    · refine ⟨1, ?_⟩
+      simpa only [one_smul] using hwv.symm
+    exfalso
+    have hw0 : (w : SeedVec) ≠ 0 := by
+      intro h
+      exact hw (Subtype.ext h)
+    have hv0 : (v : SeedVec) ≠ 0 := by
+      intro h
+      exact hv (Subtype.ext h)
+    have hwv0 : (w : SeedVec) ≠ (v : SeedVec) := by
+      intro h
+      exact hwv (Subtype.ext h)
+    have hc : IsConstant
+        (diff (w : SeedVec) (diff (v : SeedVec) seed)) := by
+      exact hS w.1 w.property v.1 v.property
+    exact seed_no_independent_constant_pair_prop
+      (w : SeedVec) (v : SeedVec) hw0 hv0 hwv0 hc
+  · refine ⟨0, ?_⟩
+    intro w
+    have hw : w = 0 := by
+      by_contra h
+      exact hex ⟨w, h⟩
     refine ⟨0, ?_⟩
-    intro w
-    exact ⟨0, by simp⟩
-  · obtain ⟨v, hvS, hv0⟩ := Submodule.exists_mem_ne_zero_of_ne_bot hbot
-    refine ⟨⟨v, hvS⟩, ?_⟩
-    intro w
-    by_cases hw0 : w.1 = 0
-    · exact ⟨0, by ext; simp [hw0]⟩
-    · by_cases hwv : w.1 = v
-      · exact ⟨1, by ext; simp [hwv]⟩
-      · exfalso
-        have hc := hS v hvS w.1 w.2
-        exact seed_no_independent_constant_pair_prop v w.1 hv0 hw0 hwv hc
+    simpa only [zero_smul] using hw.symm
 
 /-- Fully closed repeated-block certificate for the explicit eight-variable seed. -/
 theorem seed8_exact_repeated_block_index_certificate
