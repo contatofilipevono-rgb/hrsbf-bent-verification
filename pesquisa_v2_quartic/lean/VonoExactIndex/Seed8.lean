@@ -37,4 +37,64 @@ theorem seed_no_independent_constant_pair :
     seedNoIndependentConstantPair = true := by
   native_decide
 
+
+/-- Propositional form of the exhaustive Seed8 obstruction. -/
+theorem seed_no_independent_constant_pair_prop
+    (a b : SeedVec) (ha : a ≠ 0) (hb : b ≠ 0) (hab : a ≠ b) :
+    ¬ IsConstant (diff a (diff b seed)) := by
+  intro hc
+  have hbool : secondDerivativeConstant a b = true := by
+    unfold secondDerivativeConstant
+    simp only [Bool.decide_eq_true]
+    rcases hc with ⟨v, hv⟩
+    intro x
+    rw [hv x, hv 0]
+  have hall : ∀ a b : SeedVec,
+      a ≠ 0 → b ≠ 0 → a ≠ b →
+      secondDerivativeConstant a b = false := by
+    have h := seed_no_independent_constant_pair
+    unfold seedNoIndependentConstantPair at h
+    simpa only [Bool.decide_eq_true] using h
+  have := hall a b ha hb hab
+  rw [this] at hbool
+  contradiction
+
+/-- The exhaustive Seed8 obstruction closes the relaxed-index hypothesis. -/
+theorem seed_relaxed_finrank_le_one
+    (S : Submodule (ZMod 2) SeedVec)
+    (hS : IsRelaxedMSubspace seed S) :
+    Module.finrank (ZMod 2) S ≤ 1 := by
+  rw [Module.finrank_le_one_iff]
+  rcases eq_or_ne S ⊥ with hbot | hbot
+  · subst S
+    refine ⟨0, ?_⟩
+    intro w
+    exact ⟨0, by simp⟩
+  · obtain ⟨v, hvS, hv0⟩ := Submodule.exists_mem_ne_zero_of_ne_bot hbot
+    refine ⟨⟨v, hvS⟩, ?_⟩
+    intro w
+    by_cases hw0 : w.1 = 0
+    · exact ⟨0, by ext; simp [hw0]⟩
+    · by_cases hwv : w.1 = v
+      · exact ⟨1, by ext; simp [hwv]⟩
+      · exfalso
+        have hc := hS v hvS w.1 w.2
+        exact seed_no_independent_constant_pair_prop v w.1 hv0 hw0 hwv hc
+
+/-- Fully closed repeated-block certificate for the explicit eight-variable seed. -/
+theorem seed8_exact_repeated_block_index_certificate
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (e0 : SeedVec) (he0 : e0 ≠ 0) :
+    (∀ U : Submodule (ZMod 2) (ι → SeedVec),
+        IsRelaxedMSubspace (blockSum (fun _ : ι => seed)) U →
+        Module.finrank (ZMod 2) U ≤ Fintype.card ι)
+    ∧
+    (∃ M : Submodule (ZMod 2) (ι → SeedVec),
+        IsMSubspace (blockSum (fun _ : ι => seed)) M ∧
+        Module.finrank (ZMod 2) M = Fintype.card ι) := by
+  exact exact_repeated_block_index_certificate
+    (f := seed)
+    (hseed := seed_relaxed_finrank_le_one)
+    e0 he0
+
 end VonoExactIndex
