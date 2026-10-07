@@ -30,7 +30,7 @@ As an immediate consequence, no homogeneous rotation-symmetric Boolean function 
 \noindent\textbf{Keywords:} Boolean functions; bent functions; rotation symmetry; antipodal quadratic orbit; homogeneous Boolean functions; derivatives; fixed spaces.
 
 \section{Introduction and relation to earlier work}
-Rotation-symmetric Boolean functions form a natural class in symmetric cryptographic constructions: cyclic invariance gives a compact algebraic description while retaining nontrivial Walsh-spectral behavior. A long-standing conjecture of St\u{a}nic\u{a} and Maitra~\cite{stanica} asserts that a homogeneous rotation-symmetric bent function cannot have algebraic degree greater than two. The conjecture has motivated a sequence of partial nonexistence results. Meng, Chen and Fu~\cite{meng} obtained lower-degree restrictions; Zhang and Gao~\cite{zhang} derived further support-dependent exclusions; and Cusick and Sanger~\cite{cusick} proved substantial cases in dimensions $n=2p$ together with an antipodal necessity result for quadratic rotation-symmetric bent functions and related short-cycle families.
+Rotation-symmetric Boolean functions form a natural class in symmetric cryptographic constructions: cyclic invariance gives a compact algebraic description while retaining nontrivial Walsh-spectral behavior. A long-standing conjecture of St\u{a}nic\u{a} and Maitra~\cite{stanica} asserts that a homogeneous rotation-symmetric bent function cannot have algebraic degree greater than two. The conjecture has motivated a sequence of partial nonexistence results. Meng, Chen and Fu~\cite{meng} presented partial results toward the conjecture; Zhang and Gao~\cite{zhang} derived further support-dependent exclusions; and Cusick and Sanger~\cite{cusick} proved, for every even dimension $n=2m$, that a quadratic rotation-symmetric bent function must contain the antipodal orbit, together with analogous necessity results for sums of short-cycle MRS functions, before treating most cases of the homogeneous conjecture in dimensions $n=2p$ with $p>2$ prime.
 
 Our main result is stronger than the homogeneous cubic nonexistence statement. For every positive even $n$, we prove
 \[
@@ -74,6 +74,15 @@ For even $n$, define the antipodal quadratic orbit
 P_n(x)=\sum_{i=0}^{n/2-1}x_i x_{i+n/2}.
 \]
 For any Boolean function $f$, write $[P_n]f\in\F$ for the coefficient of this orbit in the ANF of $f$.
+
+\begin{remark}[Self-contained quadratic antipodal necessity]\label{rem:quadratic-antipodal}
+Let $n$ be positive and even. If a rotation-symmetric Boolean function $q$ has degree at most two and is bent, then $[P_n]q=1$. After adding a constant we may assume $q(0)=0$, which does not affect bentness or the polar form. For every non-antipodal quadratic orbit, the associated circulant graph has degree two at every vertex, so its adjacency row sum is zero in $\F$. The antipodal orbit $P_n$ has degree one at every vertex. Consequently, with $J=\mathbf1^n$,
+\[
+B_q(J,y)=[P_n]q\sum_{j=0}^{n-1}y_j
+\qquad (y\in\F^n).
+\]
+If $[P_n]q=0$, then $J$ lies in the radical of $B_q$. Since $J\ne0$, the derivative $D_Jq(x)=q(J)$ is constant rather than balanced, contradicting bentness. Hence $[P_n]q=1$.
+\end{remark}
 
 \section{Odd-order fixed-space reduction}
 \begin{lemma}\label{lem:reduction}
@@ -164,23 +173,26 @@ times. In particular, this ratio is automatically an integer, even when collisio
 \tag{*}
 \]
 
-It remains only to identify when the target orbit $O_B$ can be $P_t$. For supports of size at most three, an antipodal target can arise only from a non-antipodal quadratic support whose reduced separation is $t/2$, from a cubic support with exactly one collision leaving an antipodal pair, or from $P_n$ itself. The stabilizer of $A$ acts freely on $A$, so $h\mid |A|$: in degree one $h=1$; in degree two $h=1$ except for the antipodal orbit $P_n$, where $h=2$; and in degree three $h=1$ or $3$.
+It remains only to identify when the target orbit $O_B$ can be $P_t$. Because Boolean folding uses $y_j^2=y_j$, it cannot increase algebraic degree, so constants and linear terms cannot create a quadratic term. If $O_B=P_t$, then its reduced support is an antipodal pair $B=\{j,j+t/2\}$ and therefore $b=2$. Exactly three source families can project onto such a support.
 
-If a non-antipodal quadratic orbit reduces to an antipodal pair, then $h=1$ and $b=2$, so the multiplicity in \((*)\) is $2m$, hence even. If a cubic orbit reduces, after collisions, to an antipodal pair, then again its target has $b=2$. Such an orbit cannot have $h=3$: the case $h=3$ is the short cubic support
+First, the antipodal orbit $P_n$ itself has $|A|=2$, $h=2$, and
 \[
-\{a,a+n/3,a+2n/3\},
+\frac n2=\frac{tm}{2}\equiv\frac t2\pmod t
 \]
-which requires $3\mid m$ and collapses modulo $t$ to a singleton. Hence every cubic orbit that reduces to an antipodal pair has $h=1$, so its multiplicity is again $2m$ and it cancels.
+because $m$ is odd. Hence it reduces to an antipodal pair with multiplicity
+\[
+\frac{mb}{h}=\frac{2m}{2}=m\equiv1\pmod2.
+\]
 
-Finally consider $P_n$. Here $h=2$. When $t=2$, the target $P_2=y_0y_1$ has orbit size $t/b=1$, exactly as the same formula predicts. Since
+Second, a non-antipodal quadratic orbit can reduce to an antipodal pair only when its separation is congruent to $t/2$ modulo $t$. Since it is not $P_n$, its stabilizer is trivial, so $h=1$. With $b=2$, the multiplicity is $2m$, which is even, and the contribution cancels in $\F$.
+
+Third, suppose a cubic orbit reduces, after one collision, to an antipodal pair. The stabilizer order $h$ divides $|A|=3$. If $h=3$, then
 \[
-\frac n2=\frac{tm}{2}\equiv \frac t2\pmod t
+A=\{a,a+n/3,a+2n/3\}.
 \]
-because $m$ is odd, its reduced support is antipodal, so $b=2$. Formula \((*)\) gives multiplicity
-\[
-\frac{mb}{h}=\frac{2m}{2}=m,
-\]
-which is odd. Therefore
+This requires $3\mid n=tm$. Since $t=2^s$, one has $\gcd(3,t)=1$, so $3\mid m$, and therefore $n/3=t(m/3)\equiv0\pmod t$. All three support points then collapse to a singleton modulo $t$, not to an antipodal pair. Thus every cubic orbit reducing to an antipodal pair has $h=1$, and its multiplicity is again $2m$, hence even.
+
+For $t=2$, the target $P_2=y_0y_1$ has orbit size $t/b=1$, consistent with the same counting formula. Therefore
 \[
 \operatorname{Fold}(P_n)=P_t.
 \]
@@ -272,11 +284,11 @@ Let \(N=2h\) be any positive even integer, and let \(g:\F^N\to\F\) be rotation-s
 \begin{proof}
 Adding a constant, assume \(g(u,u)=0\). Put \(d(u)=(u,u)\), \(e(z)=(0,z)\), and \(J=\mathbf1^N\). By hypothesis, \(B_{D_Jg}=0\).
 
-For degree at most three,
+For any $q,r\in V_N$, the second directional derivative $h=D_qD_rg$ has algebraic degree at most one. For an affine Boolean function $h(x)=\ell(x)+c$, the derivative $D_ph(x)=\ell(p)$ is independent of $x$ and linear in $p$. Since directional derivatives commute, the third difference
 \[
 \Delta_3(p,q,r)=D_pD_qD_rg(0)
 \]
-is independent of the base point and is a symmetric trilinear form. Indeed, third differences of a degree-at-most-three Boolean polynomial are constant; symmetry follows because difference operators commute, and additivity in each direction follows from $D_{a+b}h(x)=D_a h(x+b)+D_b h(x)$. Put \(p=d(u)\), \(q=d(v)\), \(w=e(\mathbf1)\). Then
+is independent of the base point, symmetric under permutations of $(p,q,r)$, and additive in each argument. Hence $\Delta_3$ is a symmetric trilinear form on $V_N$. Put \(p=d(u)\), \(q=d(v)\), \(w=e(\mathbf1)\). Then
 \[
 B_{F_{\mathbf1}}(u,v)=D_pD_qg(w)
 =D_pD_qg(0)+\Delta_3(p,q,w).
@@ -325,7 +337,7 @@ P_N(x)=\sum_{i=0}^{N/2-1}x_i x_{i+N/2}.
 \]
 \end{theorem}
 \begin{proof}
-Write \(N=2h\), and let \(\alpha\) be the coefficient of \(P_N\). On the diagonal \(d(u)=(u,u)\), linear orbit sums cancel in pairs, non-antipodal quadratic orbit sums cancel under half-rotation, and cubic orbit sums cancel because every cubic orbit has full length when \(N\) is a power of two. Indeed, the stabilizer of a three-element support has order dividing $3$, whereas a cyclic group of power-of-two order has no nontrivial subgroup of order $3$. The antipodal orbit restricts to \(\sum_i u_i\). Hence
+Write \(N=2h\), and let \(\alpha\) be the coefficient of \(P_N\). On the diagonal \(d(u)=(u,u)\), linear orbit sums cancel in pairs and non-antipodal quadratic orbit sums cancel under half-rotation. For a cubic orbit with three-element support, the stabilizer order divides $3$; since $N=2^k$, Lagrange's theorem forces the stabilizer to be trivial. Every cubic orbit therefore has full length $N$, and under the diagonal substitution its terms pair under the half-period shift $i\mapsto i+N/2$, with equal paired monomials canceling in $\F$. The antipodal orbit restricts to \(\sum_i u_i\). Hence
 \[
 g(u,u)=c+\alpha\sum_i u_i.
 \]
@@ -353,7 +365,7 @@ For $n=2$ the claim is immediate, since a Boolean function in two variables has 
 \end{proof}
 
 \paragraph{Relation to earlier antipodal necessity results.}
-Cusick and Sanger~\cite{cusick} prove that every quadratic rotation-symmetric bent function in even dimension must contain the antipodal quadratic orbit and obtain related necessity results for sums of short-cycle MRS functions. Theorems~\ref{thm:antipodal} and~\ref{thm:universal-antipodal} extend the antipodal necessity mechanism to arbitrary rotation-symmetric bent functions of algebraic degree at most three, first in power-of-two dimension and then in every positive even dimension.
+Cusick and Sanger~\cite{cusick}, in their Section~2 for $n=2m$, prove that every quadratic rotation-symmetric bent function must contain the antipodal orbit and obtain related necessity results for sums of short-cycle MRS functions. Remark~\ref{rem:quadratic-antipodal} gives a short self-contained radical proof of the quadratic statement. Theorems~\ref{thm:antipodal} and~\ref{thm:universal-antipodal} extend this necessity to arbitrary rotation-symmetric bent functions of algebraic degree at most three, first in power-of-two dimension and then in every positive even dimension.
 
 \paragraph{Relation to the 2026 partial cubic results.}
 Sun, Shi, Liu and Fu~\cite{sun} derive several nonexistence criteria for homogeneous cubic rotation-symmetric functions from the balancedness of the derivative in the all-one direction. Their cubic conclusions require additional restrictions on SANF generators or on the arithmetic of $n$. By contrast, the fixed-space reduction used here removes the odd part of the dimension and converts the problem to a power-of-two antipodal necessity statement; the exact folding lemma then returns that necessity to the original dimension without an arithmetic restriction on the odd part.
