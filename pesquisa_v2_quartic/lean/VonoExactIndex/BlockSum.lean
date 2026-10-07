@@ -25,13 +25,28 @@ lemma zmod2_smul_eq_zero_or_self
     {A : Type*} [AddCommGroup A] [Module (ZMod 2) A]
     (c : ZMod 2) (v : A) :
     c • v = 0 ∨ c • v = v := by
-  have hc : c = 0 ∨ c = 1 := by
-    exact ZMod.eq_zero_or_eq_one c
-  rcases hc with rfl | rfl
+  by_cases hc : c = 0
   · left
-    simp
+    simp [hc]
   · right
+    have hc1 : c = 1 := by
+      apply ZMod.eq_one_iff_not_zero.mpr
+      exact hc
+    simp [hc1]
+
+lemma secondDiff_same_line_zero
+    {A : Type*} [AddCommGroup A] [Module (ZMod 2) A]
+    (f : A → ZMod 2) (e : A) (α β : ZMod 2) (x : A) :
+    diff (α • e) (diff (β • e) f) x = 0 := by
+  rcases zmod2_smul_eq_zero_or_self α e with hα | hα
+  · rw [hα]
     simp
+  rcases zmod2_smul_eq_zero_or_self β e with hβ | hβ
+  · rw [hβ]
+    change diff (α • e) (fun _ => 0) x = 0
+    simp [diff]
+  · rw [hα, hβ]
+    simpa using congrFun (diff_self e f) x
 
 theorem selectedDirections_secondDiff_zero
     (f : ∀ i, W i → ZMod 2)
@@ -43,13 +58,6 @@ theorem selectedDirections_secondDiff_zero
   rw [secondDiff_blockSum]
   apply Finset.sum_eq_zero
   intro i hi
-  rcases zmod2_smul_eq_zero_or_self (α i) (e i) with hα | hα
-  · rw [hα]
-    simp
-  rcases zmod2_smul_eq_zero_or_self (β i) (e i) with hβ | hβ
-  · rw [hβ]
-    simp
-  · rw [hα, hβ]
-    simpa using congrFun (diff_self (e i) (f i)) (x i)
+  exact secondDiff_same_line_zero (f i) (e i) (α i) (β i) (x i)
 
 end VonoExactIndex
