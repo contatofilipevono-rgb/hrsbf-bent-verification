@@ -1,62 +1,58 @@
-# Preparação para submissão
+# Preparação para preprint e submissão — 2026-10-06
 
-## Resultado que o manuscrito sustenta
+## Resultado sustentado pelo manuscrito atual
 
-Não existência de funções bent cúbicas homogêneas simétricas por rotação em toda dimensão positiva par n com 32∤n. A prova combina redução por ordem ímpar, descrição exata do espaço restrito e divisibilidade comprovada por cálculo finito. Não se afirma a resolução da conjectura inteira.
+O manuscrito principal prova dois resultados.
 
-A comparação integral com Meng–Chen–Fu (2010) e Sun–Shi–Liu–Fu (2026) está registrada. A não bentness da cúbica de uma órbita contígua em n=32 já é conhecida; seu cálculo é um controle de divisibilidade.
+1. **Necessidade antipodal universal até grau 3.** Para todo inteiro positivo par \(n\), se \(f:\mathbb F_2^n\to\mathbb F_2\) é rotation-symmetric, bent e \(\deg f\le 3\), então sua ANF contém a órbita quadrática antipodal
+   \[
+   P_n(x)=\sum_{i=0}^{n/2-1}x_i x_{i+n/2}.
+   \]
 
-## Arquivos da versão
+2. **Caso cúbico homogêneo global.** Como consequência, não existe função bent homogênea rotation-symmetric de grau 3 em nenhuma dimensão positiva par.
 
-- paper_hrsbf.tex: manuscrito principal.
-- supplementary_material.tex: suplemento.
-- cover_letter_dcc.tex: carta em rascunho.
-- COMPARACAO_MENG_2010.md e COMPARACAO_SUN_2026.md: documentação da comparação bibliográfica.
-- AUDITORIA_FINAL.md: alcance da auditoria e suas limitações.
-- submission_manifest.json: SHA-256 dos arquivos obrigatórios da verificação.
-- verify_submission.py: verifica integridade e executa os verificadores matemáticos.
-- avanco_t32/verificar_fibras_exato.py: ferramenta de pesquisa para candidatos em n=32.
-- avanco_t32/validar_fibras_exato.py: controles diferenciais dessa ferramenta.
+A versão atual não contém a antiga restrição \(32\nmid n\). Documentos ou manifests mais antigos que ainda a mencionem são históricos e não devem ser usados para descrever o alcance do preprint v1.
 
-Comando da suíte padrão, sem bibliotecas externas:
+## Arquivos canônicos do preprint v1
 
-    python verify_submission.py
+- `paper_arxiv_v1.tex`: fonte destinada ao preprint.
+- `paper_cubic_global_submission.tex`: cópia de submissão, mantida sincronizada com a fonte do preprint.
+- `LITERATURE_PRIORITY_AUDIT_2026-10-06.md`: auditoria de anterioridade/novidade.
+- `END_TO_END_ADVERSARIAL_AUDIT_2026_10_06.md`: auditoria matemática adversarial da cadeia principal.
+- `ANTIPODAL_RULE_AUDIT.md`, `ODD_ORDER_REDUCTION_AUDIT.md`, `QUADRATIC_RS_RIGIDITY_AUDIT.md` e `SHORT_CUBIC_FOLDING_AUDIT.md`: auditorias locais dos pilares.
 
-Somente integridade, sem fazer alegação de verificação matemática:
+O arquivo `submission_manifest.json` pertence a uma trilha anterior e **não é o manifesto canônico do preprint v1 global**.
 
-    python verify_submission.py --integrity-only
+## Estado da anterioridade
 
-Todos os arquivos do manifesto são obrigatórios. Ausência ou divergência interrompe a suíte antes da execução dos verificadores. Os hashes conferem bytes relativos à versão registrada, não são uma assinatura de autoria nem uma demonstração de correção. Se arquivos cobertos forem legitimamente alterados, regenerar o manifesto e revisar essas mudanças; não copiar hashes de outra versão.
+A busca direcionada até 2026-10-06 não localizou resultado anterior que prove, simultaneamente, o caso cúbico homogêneo para toda dimensão par ou a necessidade antipodal para toda RS bent de grau no máximo 3.
 
-A implementação independente com NumPy continua disponível como verificação adicional; não é dependência da suíte padrão.
+Antecedentes que devem permanecer citados e distinguidos:
 
-## Dados ainda necessários
+- Meng–Chen–Fu (2010): resultados parciais.
+- Cusick–Sanger (2017): necessidade antipodal quadrática e grandes subfamílias, em particular \(n=2p\).
+- Sun–Shi–Liu–Fu (2026): resultados cúbicos condicionais; o artigo declara a conjectura geral ainda aberta.
+- Polujan–Kudin–Pašalić (2026): classificação/construção de RS cúbicas bent em 10 variáveis e exemplos fora da classe Maiorana–McFarland completada; não é um resultado de não existência homogênea global.
 
-A lista de autores, a ordem de autoria, afiliações, e-mail do autor correspondente, financiamento e declarações aplicáveis devem ser fornecidos pelos autores. Não foram inferidos a partir da conta do GitHub. A carta não deve ser enviada com esses campos pendentes. A publicação não foi submetida por esta revisão.
+Formulação de prioridade recomendada:
 
-## Roteiro para leitura externa
+> To the best of our knowledge, and within the literature reviewed through October 2026, no previous result excludes homogeneous cubic rotation-symmetric bent functions uniformly in every even dimension. Our stronger antipodal theorem extends the known quadratic antipodal necessity to arbitrary rotation-symmetric bent functions of algebraic degree at most three.
 
-Sem envio automático a terceiros, o pacote pode ser apresentado a um leitor externo com quatro perguntas:
+Evitar alegações absolutas como “first proof ever”.
 
-1. O lema quadrático de ordem ímpar permanece correto para polares degeneradas e termos constantes?
-2. O estabilizador do suporte cúbico e a multiplicidade do dobramento justificam todas as órbitas quadráticas e lineares admitidas, sem introduzir a quadrática antipodal?
-3. A passagem dos representantes de órbitas para a divisibilidade da tabela completa, inclusive as interseções de ordem maior que quatro, está suficientemente explícita?
-4. O alcance uniforme e o reconhecimento das sobreposições com os resultados consultados estão claros e a contribuição é apropriada para avaliação editorial?
+## Antes de enviar ao arXiv ou a um periódico
 
-Essa leitura não foi simulada nem chamada de revisão por pares.
+Ainda precisam ser preenchidos pelos autores:
 
-## Próxima pesquisa: n=32
+- nomes e ordem de autoria;
+- afiliações;
+- e-mail do autor correspondente;
+- ORCID, se desejado;
+- financiamento e acknowledgements aplicáveis;
+- declarações exigidas pelo periódico.
 
-A ferramenta exata aceita um JSON com n=32, coordinate_base=0 e sanf como lista de suportes cúbicos de três coordenadas. Cada órbita deve aparecer uma vez. Coordenadas repetidas, duplicatas de órbita e entradas não homogêneas são recusadas.
+Também deve ser feita uma compilação final do LaTeX, inspeção visual do PDF e conferência dos links/DOIs.
 
-Exemplo:
+## Status editorial
 
-    python avanco_t32/verificar_fibras_exato.py avanco_t32/exemplo_fibras32.json --z 2261 --enumerate-sum --output auditoria_2026_10_04/exemplo_fibras32_resultado.json
-
-O programa expande f(u,u+z) na ANF de 16 variáveis com u_i²=u_i, preserva termos constantes e lineares, reconstrói a polar alternante e calcula uma base do radical. Balanceamento equivale à parte linear normalizada ser não nula nesse radical. A opção --enumerate-sum calcula também a soma de sinais sobre os 65.536 pontos da fibra usando percurso Gray.
-
-Sem --z, são testadas as 16 direções coordenadas, com interrupção na primeira fibra não balanceada. --all seleciona todas as 65.535 direções não nulas, também com interrupção na primeira obstrução; o tempo depende do candidato. Nenhum prazo universal de cinco segundos é prometido.
-
-Uma fibra não balanceada fornece uma obstrução necessária à bentness, válida porque a cúbica homogênea RS se anula no subespaço diagonal de meia dimensão. Todas as fibras balanceadas não bastam para concluir bentness. O relatório sempre registra bentness_certified=false; não deve ser apresentado como busca completa de todas as funções em n=32.
-
-Antes de um gerador SAT, formalizar quais variáveis descrevem o candidato e quais relações de polar, radical e avaliação são necessárias. Comparar a codificação em famílias pequenas com enumeração direta. Restrições do certificado de sete fibras só podem ser aplicadas após verificar a condição de parâmetro fixado que lhes dá validade. Não adicionar uma contradição pronta como se fosse uma condição universal.
+A prova principal está fechada nas auditorias internas atuais, com caveats explicitamente documentados. Isso não equivale a revisão por pares. O próximo passo editorial correto é congelar um snapshot datado do preprint v1, preencher os metadados de autoria e então submetê-lo a um repositório de preprints.
