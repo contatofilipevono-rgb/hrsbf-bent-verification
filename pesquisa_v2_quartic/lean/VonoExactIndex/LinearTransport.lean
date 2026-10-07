@@ -101,10 +101,17 @@ theorem HasMIndex.comp_linearEquiv
   · intro T hT
     have hmap := IsMSubspace.map_linearEquiv e f T hT
     have hle := hupper (T.map e.toLinearMap) hmap
-    rwa [Submodule.finrank_map (LinearEquiv.injective e)] at hle
+    rwa [e.finrank_map_eq] at hle
   · refine ⟨S.comap e.toLinearMap, IsMSubspace.comap_linearEquiv e f S hS, ?_⟩
-    rw [← Submodule.finrank_map (LinearEquiv.injective e)]
-    simpa using hdim
+    have hcomap : (S.comap e.toLinearMap).map e.toLinearMap = S := by
+      ext y
+      constructor
+      · rintro ⟨x, hx, rfl⟩
+        exact hx
+      · intro hy
+        exact ⟨e.symm y, by simpa using hy, by simp⟩
+    rw [← hcomap, e.finrank_map_eq] at hdim
+    exact hdim
 
 /-- Exact relaxed M-index is invariant under an invertible linear change of variables. -/
 theorem HasRelaxedMIndex.comp_linearEquiv
@@ -116,9 +123,16 @@ theorem HasRelaxedMIndex.comp_linearEquiv
   · intro T hT
     have hmap := IsRelaxedMSubspace.map_linearEquiv e f T hT
     have hle := hupper (T.map e.toLinearMap) hmap
-    rwa [Submodule.finrank_map (LinearEquiv.injective e)] at hle
+    rwa [e.finrank_map_eq] at hle
   · refine ⟨S.comap e.toLinearMap, IsRelaxedMSubspace.comap_linearEquiv e f S hS, ?_⟩
-    rw [← Submodule.finrank_map (LinearEquiv.injective e)]
-    simpa using hdim
+    have hcomap : (S.comap e.toLinearMap).map e.toLinearMap = S := by
+      ext y
+      constructor
+      · rintro ⟨x, hx, rfl⟩
+        exact hx
+      · intro hy
+        exact ⟨e.symm y, by simpa using hy, by simp⟩
+    rw [← hcomap, e.finrank_map_eq] at hdim
+    exact hdim
 
 end VonoExactIndex
