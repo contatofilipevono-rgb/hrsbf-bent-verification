@@ -1,0 +1,103 @@
+{
+  "status": "PASS",
+  "diagonal_basis_checks": [
+    {
+      "n": 2,
+      "orbit_generators_checked": 2,
+      "diagonal_points_per_generator": 2
+    },
+    {
+      "n": 4,
+      "orbit_generators_checked": 4,
+      "diagonal_points_per_generator": 4
+    },
+    {
+      "n": 6,
+      "orbit_generators_checked": 8,
+      "diagonal_points_per_generator": 8
+    },
+    {
+      "n": 8,
+      "orbit_generators_checked": 12,
+      "diagonal_points_per_generator": 16
+    },
+    {
+      "n": 10,
+      "orbit_generators_checked": 18,
+      "diagonal_points_per_generator": 32
+    },
+    {
+      "n": 12,
+      "orbit_generators_checked": 26,
+      "diagonal_points_per_generator": 64
+    },
+    {
+      "n": 14,
+      "orbit_generators_checked": 34,
+      "diagonal_points_per_generator": 128
+    },
+    {
+      "n": 16,
+      "orbit_generators_checked": 44,
+      "diagonal_points_per_generator": 256
+    }
+  ],
+  "tang_first_family_controls": [
+    {
+      "n": 10,
+      "t": 2,
+      "odd_repetitions": 5,
+      "gamma_degree": 4,
+      "full_bent": true,
+      "restriction_bent": true,
+      "formula_matches": true
+    },
+    {
+      "n": 10,
+      "t": 2,
+      "odd_repetitions": 5,
+      "gamma_degree": 5,
+      "full_bent": true,
+      "restriction_bent": true,
+      "formula_matches": true
+    },
+    {
+      "n": 12,
+      "t": 4,
+      "odd_repetitions": 3,
+      "gamma_degree": 4,
+      "full_bent": true,
+      "restriction_bent": true,
+      "formula_matches": true
+    },
+    {
+      "n": 12,
+      "t": 4,
+      "odd_repetitions": 3,
+      "gamma_degree": 5,
+      "full_bent": true,
+      "restriction_bent": true,
+      "formula_matches": true
+    },
+    {
+      "n": 18,
+      "t": 6,
+      "odd_repetitions": 3,
+      "gamma_degree": 4,
+      "full_bent": true,
+      "restriction_bent": true,
+      "formula_matches": true
+    },
+    {
+      "n": 18,
+      "t": 6,
+      "odd_repetitions": 3,
+      "gamma_degree": 5,
+      "full_bent": true,
+      "restriction_bent": true,
+      "formula_matches": true
+    }
+  ],
+  "scope": "Finite controls only. Diagonal formula checked on every degree<=3 orbit generator for even n<=16. Pair-sum restriction checked on six degree4/5 constructions. No general quartic transfer claimed.",
+  "source_sha256": "0bb5bfd720b0924030331c47207b8cec7696661b535b279e695bc0a936c72f17"
+}

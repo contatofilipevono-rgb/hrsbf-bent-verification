@@ -70,3 +70,15 @@ A conclusão é uma exclusão computacional de suporte ≤3 em n=16. Não resolv
 3. Estudar as 35 triplas que passam z=1 e obter certificados curtos para os dois filtros restantes.
 4. Extrair uma família quártica efetivamente distinta antes de gastar GPU procurando falha de transferência.
 5. Manter o n=12/A100 como experiência v2, sem custo/execução presumidos e sem condicionar a v1 a ela.
+
+## Comparação adicional executada: critério de lacunas cíclicas
+
+Cusick–Sanger, *Rotation Symmetric Bent Boolean Functions for n=2p*, [arXiv:1708.09313](https://arxiv.org/pdf/1708.09313), Teorema 3.10, reproduz um critério de Meng–Chen–Fu: se a maior lacuna cíclica entre índices consecutivos de todos os monômios de uma função homogênea RS de grau ≥3 é ≤n/2, a função não é bent. O enunciado desse critério é para n geral; não importamos para n=16 os outros resultados do artigo que exigem n=2p, p primo.
+
+`compare_sparse_gap_criterion.py` encontrou 238 das 273 órbitas com lacuna máxima ≤8. Consequentemente, o critério cobre 2.247.077 dos 3.391.297 candidatos não nulos com suporte ≤3. As 35 triplas que passam a primeira fibra z=1 estão TODAS nesse conjunto já excluído. As outras 1.144.220 combinações não estão cobertas por esse critério específico e são rejeitadas pela primeira fibra, mas podem estar cobertas por outros trabalhos. Não se infere novidade da não cobertura por um único teorema. A comparação é com o enunciado reproduzido por Cusick–Sanger; a prova original de Meng–Chen–Fu não foi reauditada nesta etapa.
+
+O mesmo artigo fornece antecedentes diretos da regra antipodal: Teorema 2.11 para somas de órbitas curtas e Teorema 4.1 sob hipóteses em n=2p. A v1 deve ser posicionada pelo seu alcance específico — todos os n pares em grau ≤3 — sem caracterizar a presença obrigatória de P_n como ideia sem antecedentes.
+
+## Controles positivos executados
+
+`validate_literature_controls.py` passou em todos os 148 geradores orbitais de graus 1, 2 e 3 nas dimensões pares de 2 a 16. A identidade diagonal foi conferida em todos os pontos de cada diagonal. Seis funções da primeira família de Tang et al., de graus 4 e 5 em n=10,12,18, tiveram Walsh completo bent, fórmula restrita correta e restrição bent em t=2,4,6, respectivamente. Dados em `literature_controls_2026-10-07.json`. Esses são controles finitos das implementações, não uma prova por amostragem.
