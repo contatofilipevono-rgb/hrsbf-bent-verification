@@ -53,4 +53,41 @@ theorem exact_repeated_block_index_certificate
     (e := fun _ : ι => e0)
     (hne := fun _ => he0)
 
+
+/-- Certificate-style statement that the ordinary M-index of g is exactly d. -/
+def HasMIndex
+    {V : Type*} [AddCommGroup V] [Module (ZMod 2) V]
+    (g : V → ZMod 2) (d : Nat) : Prop :=
+  (∀ S : Submodule (ZMod 2) V,
+      IsMSubspace g S → Module.finrank (ZMod 2) S ≤ d) ∧
+  (∃ S : Submodule (ZMod 2) V,
+      IsMSubspace g S ∧ Module.finrank (ZMod 2) S = d)
+
+/-- Certificate-style statement that the relaxed M-index of g is exactly d. -/
+def HasRelaxedMIndex
+    {V : Type*} [AddCommGroup V] [Module (ZMod 2) V]
+    (g : V → ZMod 2) (d : Nat) : Prop :=
+  (∀ S : Submodule (ZMod 2) V,
+      IsRelaxedMSubspace g S → Module.finrank (ZMod 2) S ≤ d) ∧
+  (∃ S : Submodule (ZMod 2) V,
+      IsRelaxedMSubspace g S ∧ Module.finrank (ZMod 2) S = d)
+
+/-- The abstract exact-index certificate states both indices directly. -/
+theorem exact_block_has_indices
+    (f : ∀ i, W i → ZMod 2)
+    (hseed : ∀ i (S : Submodule (ZMod 2) (W i)),
+      IsRelaxedMSubspace (f i) S → Module.finrank (ZMod 2) S ≤ 1)
+    (e : ∀ i, W i) (hne : ∀ i, e i ≠ 0) :
+    HasMIndex (blockSum f) (Fintype.card ι) ∧
+    HasRelaxedMIndex (blockSum f) (Fintype.card ι) := by
+  rcases exact_block_index_certificate f hseed e hne with ⟨hupper, M, hM, hdim⟩
+  constructor
+  · constructor
+    · intro S hS
+      exact hupper S (mSubspace_isRelaxed hS)
+    · exact ⟨M, hM, hdim⟩
+  · constructor
+    · exact hupper
+    · exact ⟨M, mSubspace_isRelaxed hM, hdim⟩
+
 end VonoExactIndex
