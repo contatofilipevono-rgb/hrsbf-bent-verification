@@ -25,14 +25,19 @@ lemma zmod2_smul_eq_zero_or_self
     {A : Type*} [AddCommGroup A] [Module (ZMod 2) A]
     (c : ZMod 2) (v : A) :
     c • v = 0 ∨ c • v = v := by
-  by_cases hc : c = 0
+  have hv : c.val = 0 ∨ c.val = 1 := by
+    omega
+  rcases hv with hv | hv
   · left
+    have hc : c = 0 := by
+      apply ZMod.val_injective
+      simp [hv]
     simp [hc]
   · right
-    have hc1 : c = 1 := by
-      apply ZMod.eq_one_iff_not_zero.mpr
-      exact hc
-    simp [hc1]
+    have hc : c = 1 := by
+      apply ZMod.val_injective
+      simp [hv]
+    simp [hc]
 
 lemma secondDiff_same_line_zero
     {A : Type*} [AddCommGroup A] [Module (ZMod 2) A]
@@ -43,7 +48,7 @@ lemma secondDiff_same_line_zero
     simp
   rcases zmod2_smul_eq_zero_or_self β e with hβ | hβ
   · rw [hβ]
-    change diff (α • e) (fun _ => 0) x = 0
+    rw [diff_zero]
     simp [diff]
   · rw [hα, hβ]
     simpa using congrFun (diff_self e f) x
