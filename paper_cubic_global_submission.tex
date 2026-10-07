@@ -134,19 +134,54 @@ h=|\operatorname{Stab}_{\mathbb Z_n}(A)|,\qquad
 B=\{a\bmod t:a\in A\},\qquad
 b=|\operatorname{Stab}_{\mathbb Z_t}(B)|.
 \]
-Write $O_A,O_B$ for the sums over distinct translates. The stabilizer of $A$ acts freely on $A$, so $h\mid |A|$. Hence $h=1$ in degree one; in degree two $h=1$ except for the antipodal orbit, where $h=2$; and in degree three $h=1$ or $3$.
+Write $O_A,O_B$ for the sums over distinct translates.
 
-Suppose first that $h$ is odd. Then $h\mid m$, and $O_A$ has $n/h=t(m/h)$ distinct monomials. The reduced sequence has minimal period $t/b$, so each distinct reduced monomial occurs exactly
+Reduction modulo $t$ is equivariant for the natural homomorphism
 \[
-\frac{n/h}{t/b}=\frac{mb}{h}
+\mathbb Z_n\longrightarrow\mathbb Z_t.
 \]
-times. Therefore
+Hence it induces a surjective map from the distinct monomials in $O_A$ onto those in $O_B$. Since both source and target are transitive cyclic orbits, all fibers have the same cardinality. Therefore every monomial in $O_B$ occurs exactly
 \[
-\operatorname{Fold}(O_A)=\left(\frac{mb}{h}\bmod2\right)O_B. \tag{*}
+\frac{|O_A|}{|O_B|}
+=
+\frac{n/h}{t/b}
+=
+\frac{mb}{h}
 \]
-For a singleton $B$, $b=1$. For a two-element $B$, $b=2$ exactly when $B$ is antipodal; hence every non-antipodal quadratic orbit that reduces to an antipodal pair has even multiplicity and contributes zero to $P_t$. For a full cubic orbit the same formula applies: if its reduced support has size two and is antipodal, then $b=2$ and the contribution again vanishes. A short cubic orbit has $h=3$, necessarily $3\mid m$, and support $\{a,a+n/3,a+2n/3\}$; all three indices coincide modulo $t$, so it reduces only to the linear orbit.
+times. In particular, this ratio is automatically an integer, even when collisions lower the degree of the reduced monomial. Thus uniformly for every nonempty $A$ with $|A|\le3$,
+\[
+\boxed{
+\operatorname{Fold}(O_A)
+=
+\left(\frac{mb}{h}\bmod2\right)O_B.
+}
+\tag{*}
+\]
 
-The unique even-stabilizer case is $P_n$. Since $n/2\equiv t/2\pmod t$, its $n/2$ distinct monomials reduce onto the $t/2$ antipodal monomials, each with multiplicity $(n/2)/(t/2)=m$, which is odd. Hence $\operatorname{Fold}(P_n)=P_t$. Constants and linear terms cannot contribute a quadratic term. Thus only $P_n$ contributes to $[P_t]g$, and it contributes with coefficient one. Linearity excludes interference between distinct original orbits.
+It remains only to identify when the target orbit $O_B$ can be $P_t$. The stabilizer of $A$ acts freely on $A$, so $h\mid |A|$: in degree one $h=1$; in degree two $h=1$ except for the antipodal orbit $P_n$, where $h=2$; and in degree three $h=1$ or $3$.
+
+If a non-antipodal quadratic orbit reduces to an antipodal pair, then $h=1$ and $b=2$, so the multiplicity in \((*)\) is $2m$, hence even. If a cubic orbit reduces, after collisions, to an antipodal pair, then again its target has $b=2$. Such an orbit cannot have $h=3$: the case $h=3$ is the short cubic support
+\[
+\{a,a+n/3,a+2n/3\},
+\]
+which requires $3\mid m$ and collapses modulo $t$ to a singleton. Hence every cubic orbit that reduces to an antipodal pair has $h=1$, so its multiplicity is again $2m$ and it cancels.
+
+Finally consider $P_n$. Here $h=2$. Since
+\[
+\frac n2=\frac{tm}{2}\equiv \frac t2\pmod t
+\]
+because $m$ is odd, its reduced support is antipodal, so $b=2$. Formula \((*)\) gives multiplicity
+\[
+\frac{mb}{h}=\frac{2m}{2}=m,
+\]
+which is odd. Therefore
+\[
+\operatorname{Fold}(P_n)=P_t.
+\]
+Constants and linear terms cannot contribute a quadratic term. Hence $P_n$ is the unique original orbit whose fold contributes nontrivially to $P_t$, and consequently
+\[
+[P_t]g=[P_n]f.
+\]
 \end{proof}
 
 \begin{lemma}\label{lem:orbit}
