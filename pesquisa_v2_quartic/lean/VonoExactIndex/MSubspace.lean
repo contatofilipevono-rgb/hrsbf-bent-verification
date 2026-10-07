@@ -4,13 +4,16 @@ namespace VonoExactIndex
 
 variable {V : Type*} [AddCommGroup V] [Module (ZMod 2) V]
 
+def IsConstant (g : V → ZMod 2) : Prop :=
+  ∃ c : ZMod 2, g = fun _ => c
+
 /-- A subspace on which every second finite difference vanishes. -/
 def IsMSubspace (f : V → ZMod 2) (U : Submodule (ZMod 2) V) : Prop :=
   ∀ a ∈ U, ∀ b ∈ U, D[a] (D[b] f) = 0
 
 /-- A subspace on which every second finite difference is constant. -/
 def IsRelaxedMSubspace (f : V → ZMod 2) (U : Submodule (ZMod 2) V) : Prop :=
-  ∀ a ∈ U, ∀ b ∈ U, ∃ c : ZMod 2, D[a] (D[b] f) = fun _ => c
+  ∀ a ∈ U, ∀ b ∈ U, IsConstant (D[a] (D[b] f))
 
 theorem IsMSubspace.relaxed {f : V → ZMod 2} {U : Submodule (ZMod 2) V}
     (h : IsMSubspace f U) : IsRelaxedMSubspace f U := by
@@ -23,8 +26,40 @@ variable {W : ι → Type*}
 variable [∀ i, AddCommGroup (W i)] [∀ i, Module (ZMod 2) (W i)]
 
 /--
-If U is relaxed for a sum on disjoint blocks, then every block projection of U
-is relaxed for the corresponding seed function.
+A sum of functions on disjoint coordinates can be constant only if every
+coordinate function is constant.
+-/
+theorem coordinate_constant_of_sum_constant
+    (g : ∀ i, W i → ZMod 2)
+    (h : IsConstant (fun x : BlockVec (ι := ι) (W := W) => ∑ i, g i (x i)))
+    (i : ι) :
+    IsConstant (g i) := by
+  rcases h with ⟨c, hc⟩
+  let x0 : BlockVec (ι := ι) (W := W) := fun _ => 0
+  refine ⟨g i 0, ?_⟩
+  funext y
+  let xy : BlockVec (ι := ι) (W := W) := Function.update x0 i y
+  have hy : (∑ j, g j (xy j)) = c := by
+    simpa using congrFun hc xy
+  have h0 : (∑ j, g j (x0 j)) = c := by
+    simpa using congrFun hc x0
+  have hdiff : (∑ j, g j (xy j)) = (∑ j, g j (x0 j)) := hy.trans h0.symm
+  have hsplit_y :
+      (∑ j, g j (xy j)) = g i y + ∑ j ∈ Finset.univ.erase i, g j 0 := by
+    rw [Finset.sum_eq_add_sum_diff_singleton (s := Finset.univ) (a := i)]
+    · simp [xy, x0]
+    · simp
+  have hsplit_0 :
+      (∑ j, g j (x0 j)) = g i 0 + ∑ j ∈ Finset.univ.erase i, g j 0 := by
+    rw [Finset.sum_eq_add_sum_diff_singleton (s := Finset.univ) (a := i)]
+    · simp [x0]
+    · simp
+  rw [hsplit_y, hsplit_0] at hdiff
+  exact add_right_cancel hdiff
+
+/--
+If U is relaxed for a sum on disjoint blocks, every block projection of U is
+relaxed for the corresponding block function.
 -/
 theorem relaxed_projection
     (f : ∀ i, W i → ZMod 2)
@@ -35,20 +70,9 @@ theorem relaxed_projection
   intro ai hai bi hbi
   rcases hai with ⟨a, haU, rfl⟩
   rcases hbi with ⟨b, hbU, rfl⟩
-  rcases hU a haU b hbU with ⟨c, hc⟩
-  -- The global constant second derivative decomposes into independent blocks.
-  -- Varying only block i shows the i-th block derivative is constant.
-  let x0 : BlockVec (ι := ι) (W := W) := fun _ => 0
-  let embedAt (y : W i) : BlockVec (ι := ι) (W := W) :=
-    Function.update x0 i y
-  refine ⟨D[a i] (D[b i] (f i)) 0, ?_⟩
-  funext y
-  have hglobal_y := congrFun hc (embedAt y)
-  have hglobal_0 := congrFun hc x0
-  have hdecomp_y := secondDiff_blockSum f a b (embedAt y)
-  have hdecomp_0 := secondDiff_blockSum f a b x0
-  -- Subtracting the two constant global values cancels every block except i.
-  -- Over ZMod 2 subtraction equals addition.
-  sorry
+  have hconst := hU a haU b hbU
+  rw [secondDiff_blockSum] at hconst
+  exact coordinate_constant_of_sum_constant
+    (g := fun j => D[a j] (D[b j] (f j))) hconst i
 
 end VonoExactIndex
