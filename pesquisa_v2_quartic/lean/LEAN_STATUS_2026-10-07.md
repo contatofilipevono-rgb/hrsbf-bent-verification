@@ -40,3 +40,28 @@ Once compilation is available:
 4. connect the finite 8-variable seed certificate.
 
 V1 remains untouched.
+
+
+## Exact-index layer update
+
+The abstract exact-index theorem is now present at:
+
+    VonoExactIndex/ExactIndex.lean
+
+It proves the certificate form needed for exact equality:
+- every relaxed M-subspace of the block sum has finrank <= number of blocks;
+- an ordinary M-subspace of exactly that finrank exists;
+- a uniform-seed specialization reduces the infinite-family theorem to the seed hypothesis that every relaxed seed subspace has finrank <= 1.
+
+Audit note: an earlier tool call reported creation of ExactIndex.lean but the file was not actually present, while the umbrella module imported it. This was detected by direct fetch (404), corrected, and then rechecked against the recursive Git tree.
+
+Correction commit:
+
+    1bc959c781f7f80377f0c390bd529ade592ddc13
+
+Post-correction repository check:
+- 7 committed .lean files;
+- ExactIndex.lean present in the recursive tree;
+- 0 occurrences of `sorry` in committed .lean files.
+
+Compilation remains pending because this execution environment does not expose Lean/lake.
