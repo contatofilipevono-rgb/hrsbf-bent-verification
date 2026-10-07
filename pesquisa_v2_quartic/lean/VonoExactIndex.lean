@@ -3,3 +3,4 @@ import VonoExactIndex.BlockSum
 import VonoExactIndex.MSubspace
 import VonoExactIndex.DimensionBound
 import VonoExactIndex.LowerBound
+import VonoExactIndex.ExactIndex
