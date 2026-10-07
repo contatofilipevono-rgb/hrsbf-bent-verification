@@ -120,4 +120,17 @@ theorem seed8_exact_repeated_block_index_certificate
     (hseed := seed_relaxed_finrank_le_one)
     e0 he0
 
+
+/-- Direct index statement for every finite repeated block sum of the explicit Seed8 seed. -/
+theorem seed8_has_exact_indices
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (e0 : SeedVec) (he0 : e0 ≠ 0) :
+    HasMIndex (blockSum (fun _ : ι => seed)) (Fintype.card ι) ∧
+    HasRelaxedMIndex (blockSum (fun _ : ι => seed)) (Fintype.card ι) := by
+  exact exact_block_has_indices
+    (f := fun _ : ι => seed)
+    (hseed := fun _ S hS => seed_relaxed_finrank_le_one S hS)
+    (e := fun _ : ι => e0)
+    (hne := fun _ => he0)
+
 end VonoExactIndex
