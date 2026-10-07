@@ -1,0 +1,371 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\F}{\mathbb F_2}
+\newcommand{\wt}{\operatorname{wt}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\title{Antipodal Necessity and the Cubic Case of the Homogeneous Rotation-Symmetric Bent Function Conjecture}
+\author{Author details to be completed}
+\date{Preprint version 1.0 --- October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We prove a structural antipodal necessity theorem for low-degree rotation-symmetric bent functions. In every positive even dimension $n$, if a rotation-symmetric Boolean function $f$ is bent and $\deg f\le3$, then its algebraic normal form contains the antipodal quadratic orbit
+\[
+P_n(x)=\sum_{i=0}^{n/2-1}x_i x_{i+n/2}.
+\]
+As an immediate consequence, no homogeneous rotation-symmetric Boolean function of algebraic degree three is bent in any positive even dimension, settling the cubic case of the homogeneous rotation-symmetric bent-function conjecture. The proof is algebraic and uniform in the dimension. Writing $n=2^s m$ with $m$ odd, we first transfer bentness to the fixed space of the odd-order rotation $\sigma^{2^s}$. In the resulting power-of-two dimension, a fiber argument forces the antipodal orbit. An exact orbit-folding formula then transports its coefficient back to the original dimension. No computational classification is used.
+\end{abstract}
+\noindent\textbf{Keywords:} Boolean functions; bent functions; rotation symmetry; antipodal quadratic orbit; homogeneous Boolean functions; derivatives; fixed spaces.
+
+\section{Introduction and relation to earlier work}
+Rotation-symmetric Boolean functions form a natural class in symmetric cryptographic constructions: cyclic invariance gives a compact algebraic description while retaining nontrivial Walsh-spectral behavior. A long-standing conjecture of St\u{a}nic\u{a} and Maitra~\cite{stanica} asserts that a homogeneous rotation-symmetric bent function cannot have algebraic degree greater than two. The conjecture has motivated a sequence of partial nonexistence results. Meng, Chen and Fu~\cite{meng} obtained lower-degree restrictions; Zhang and Gao~\cite{zhang} derived further support-dependent exclusions; and Cusick and Sanger~\cite{cusick} proved substantial cases in dimensions $n=2p$ together with an antipodal necessity result for quadratic rotation-symmetric bent functions and related short-cycle families.
+
+Our main result is stronger than the homogeneous cubic nonexistence statement. For every positive even $n$, we prove
+\[
+\boxed{
+f\text{ rotation-symmetric and bent},\quad \deg f\le3
+\quad\Longrightarrow\quad
+[P_n]f=1,
+}
+\]
+where
+\[
+P_n(x)=\sum_{i=0}^{n/2-1}x_i x_{i+n/2}
+\]
+is the unique antipodal quadratic orbit. A homogeneous cubic has no quadratic ANF terms, so the cubic case of the homogeneous conjecture follows immediately.
+
+The proof separates into three structural steps. First, write $n=2^s m$ with $m$ odd and restrict to the fixed space of the odd-order rotation $\sigma^{2^s}$. For functions of degree at most three, bentness survives this restriction because every nonzero derivative is a balanced quadratic and balance of an invariant quadratic transfers exactly to the odd-order fixed space. Second, in power-of-two dimension we prove an Antipodal Rule: every rotation-symmetric bent function of degree at most three must contain the antipodal quadratic orbit. Its proof combines a diagonal/fiber decomposition, Parseval, rigidity of balanced rotation-symmetric quadratics, third differences, and cyclic covariance of a complementary fiber. Third, an exact folding formula for distinct monomial orbits shows that the coefficient of the antipodal orbit is preserved under the fixed-space restriction:
+\[
+[P_{2^s}](f|_{\Fix(\sigma^{2^s})})=[P_n]f.
+\]
+These three ingredients yield the universal antipodal theorem and then the homogeneous cubic corollary.
+
+The closest recent overlap is Sun, Shi, Liu and Fu~\cite{sun}. Their 2026 paper explicitly treats cubic homogeneous rotation-symmetric functions, but its cubic theorems remain conditional: their Theorem~5 assumes additional parity and $2$-adic conditions on the SANF generators, their Theorem~6 excludes divisibility subfamilies of dimensions for each fixed generator pattern, and their Corollary~2 imposes strong arithmetic restrictions on the odd prime factors of $n$. Their conclusion states that the general conjecture remains open. Our argument removes these arithmetic and support restrictions in degree three. Within the literature reviewed for this manuscript, we have not identified an earlier theorem excluding homogeneous cubic rotation-symmetric bent functions uniformly in every positive even dimension, nor an earlier antipodal necessity theorem for arbitrary rotation-symmetric bent functions of algebraic degree at most three. This is a scope statement rather than an absolute priority claim.
+
+Nonhomogeneous cubic rotation-symmetric bent functions are known. Gao, Zhang, Liu and Carlet~\cite{gao2012} construct an infinite family in the Maiorana--McFarland class whose ANF contains the antipodal quadratic coupling, and Wang et al.~\cite{wang2015} construct power-of-two-variable cubic rotation-symmetric bent families with the same structural feature. These positive constructions are consistent with the theorem proved here: cubic rotation symmetry and bentness can coexist, but in degree at most three the antipodal quadratic component is unavoidable.
+
+\section{Notation}
+Let $V_n=\F^n$. The algebraic normal form (ANF) of a Boolean function is its unique multilinear polynomial over $\F$. Homogeneity of degree three means that every nonzero ANF term has degree three. The zero function may be included in spans without affecting any nonexistence assertion.
+For $a\in V_n$, set $D_a f(x)=f(x+a)+f(x)$. Define
+\[
+ W_f(b)=\sum_{x\in V_n}(-1)^{f(x)+b\cdot x},\qquad
+ W_f(0)=2^n-2\wt(f).
+\]
+A function is balanced if $W_f(0)=0$, and bent if $|W_f(b)|=2^{n/2}$ for every $b$. Equivalently, every nonzero directional derivative is balanced~\cite{rothaus}. Indeed, the Fourier transform of the autocorrelation $A_f(a)=\sum_x(-1)^{D_af(x)}$ is $W_f(b)^2$. Thus constant squared Walsh magnitude is equivalent to $A_f(0)=2^n$ and $A_f(a)=0$ for $a\ne0$.
+
+Let $\sigma$ be cyclic rotation of the coordinates. Rotation symmetry means $f\circ\sigma=f$. Such functions are linear combinations of sums over distinct cyclic monomial orbits. All polynomial sums are in $\F$; exponential sums and weights are ordinary integers.
+
+For even $n$, define the antipodal quadratic orbit
+\[
+P_n(x)=\sum_{i=0}^{n/2-1}x_i x_{i+n/2}.
+\]
+For any Boolean function $f$, write $[P_n]f\in\F$ for the coefficient of this orbit in the ANF of $f$.
+
+\section{Odd-order fixed-space reduction}
+\begin{lemma}\label{lem:reduction}
+Let $V$ be a finite-dimensional vector space over $\F$, and let $T\in\operatorname{GL}(V)$ satisfy $T^m=I$ for an odd positive integer $m$. If $q:V\to\F$ has degree at most two and $q\circ T=q$, then $q$ is balanced on $V$ if and only if $q|_U$ is balanced on $U=\Fix(T)$.
+\end{lemma}
+\begin{proof}
+Adding $q(0)$ preserves balance both on $V$ and on $U$, so assume $q(0)=0$. Its polar form
+\[B(x,y)=q(x+y)+q(x)+q(y)\]
+is alternating bilinear and $T$-invariant. Set $P=\sum_{j=0}^{m-1}T^j$. Then $TP=PT=P$, $Pu=u$ for $u\in U$, and $P^2=P$. Hence $V=U\oplus K$, where $K=\ker P$. For $u\in U$ and $k\in K$, $T$-invariance gives $B(u,T^jk)=B(T^{-j}u,k)=B(u,k)$. Since $m$ is odd,
+\[
+B(u,k)=mB(u,k)=\sum_{j=0}^{m-1}B(u,T^jk)=B(u,Pk)=0.
+\]
+It follows that $q(u+k)=q(u)+q(k)$, and thus
+\[S_V(q)=S_U(q|_U)S_K(q|_K),\qquad S_E(h)=\sum_{x\in E}(-1)^{h(x)}.\]
+We show $S_K(q|_K)\ne0$. Put $R=\{z\in K:B(z,k)=0\text{ for all }k\in K\}$. Since $P$ commutes with $T$, $K$ is invariant under $T$ and $T^{-1}$. If $z\in R$ and $k\in K$, then $B(Tz,k)=B(z,T^{-1}k)=0$, so $R$ is $T$-invariant. On $R$, the function $q$ is linear. More explicitly, if $z\in R$, then all $T^jz$ lie in $R$, so every cross-polar term $B(T^iz,T^jz)$ vanishes. Hence
+\[
+q(Pz)=q\!\left(\sum_{j=0}^{m-1}T^jz\right)
+     =\sum_{j=0}^{m-1}q(T^jz)
+     =m q(z)=q(z).
+\]
+Since $z\in K$, $Pz=0$, and therefore $q(z)=q(0)=0$.
+Thus the only possible obstruction to a nonzero quadratic character sum on $K$ disappears: $q$ vanishes identically on the radical of its polar form. Character orthogonality now gives
+\begin{align*}
+ S_K(q|_K)^2
+ &=\sum_{z\in K}(-1)^{q(z)}\sum_{x\in K}(-1)^{B(x,z)}\\
+ &=|K|\sum_{z\in R}(-1)^{q(z)}=|K||R|>0.
+\end{align*}
+The factorization proves the equivalence of balance.
+\end{proof}
+
+\begin{proposition}\label{prop:restriction}
+Under the hypotheses on $T$ above, let $f\circ T=f$, $\deg f\le3$, and suppose $f$ is bent. Then every nonzero derivative of $p=f|_U$ is balanced. Consequently $\dim U$ is even and $p$ is bent (with the usual spectral convention also covering $\dim U=0$).
+\end{proposition}
+\begin{proof}
+For each $a\in U\setminus\{0\}$, $D_af$ is quadratic, balanced, and $T$-invariant: $Ta=a$ implies $D_af(Tx)=D_af(x)$. Lemma~\ref{lem:reduction} shows that $(D_af)|_U=D_a(f|_U)$ is balanced. If $d=\dim U$ and
+\[
+C_p(a)=\sum_{x\in U}(-1)^{p(x)+p(x+a)},
+\]
+then $C_p(0)=2^d$ and $C_p(a)=0$ for $a\ne0$. Fourier inversion of autocorrelation gives
+\[
+W_p(b)^2=\sum_{a\in U}C_p(a)(-1)^{b\cdot a}=2^d.
+\]
+Thus $d$ must be even (unless $d=0$), because Walsh coefficients are integers, and $|W_p(b)|=2^{d/2}$ for every $b$. Hence $p$ is bent.
+\end{proof}
+
+\section{Exact antipodal coefficient transport under folding}
+Write $n=tm$, where $t=2^s$, $s\ge1$, and $m$ is odd. The map $T=\sigma^t$ has order $m$, and its fixed subspace consists of repetitions of a block $y\in\F^t$. Under the identification $\Fix(T)\cong\F^t$, the restriction is the folding substitution
+\[
+x_i=y_{i\bmod t}.
+\]
+The following lemma is the precise orbit-counting statement needed later.
+
+\begin{lemma}[Exact antipodal coefficient transport]\label{lem:antipodal-transport}
+Let $n=tm$, where $t=2^s$ with $s\ge1$ and $m$ is odd. Let $f:\F^n\to\F$ be rotation-symmetric with $\deg f\le3$, and let $g$ be its restriction under $x_i=y_{i\bmod t}$. Then
+\[
+\boxed{[P_t]g=[P_n]f.}
+\]
+\end{lemma}
+\begin{proof}
+By linearity it suffices to fold one distinct cyclic monomial orbit. Let $A\subseteq\mathbb Z_n$ be a nonempty support with $|A|\le3$, let
+\[
+h=|\operatorname{Stab}_{\mathbb Z_n}(A)|,\qquad
+B=\{a\bmod t:a\in A\},\qquad
+b=|\operatorname{Stab}_{\mathbb Z_t}(B)|.
+\]
+Write $O_A,O_B$ for the sums over distinct translates.
+
+Reduction modulo $t$ is equivariant for the natural homomorphism
+\[
+\mathbb Z_n\longrightarrow\mathbb Z_t.
+\]
+Hence it induces a surjective map from the distinct monomials in $O_A$ onto those in $O_B$. Since both source and target are transitive cyclic orbits, all fibers have the same cardinality. Therefore every monomial in $O_B$ occurs exactly
+\[
+\frac{|O_A|}{|O_B|}
+=
+\frac{n/h}{t/b}
+=
+\frac{mb}{h}
+\]
+times. In particular, this ratio is automatically an integer, even when collisions lower the degree of the reduced monomial. Thus uniformly for every nonempty $A$ with $|A|\le3$,
+\[
+\boxed{
+\operatorname{Fold}(O_A)
+=
+\left(\frac{mb}{h}\bmod2\right)O_B.
+}
+\tag{*}
+\]
+
+It remains only to identify when the target orbit $O_B$ can be $P_t$. The stabilizer of $A$ acts freely on $A$, so $h\mid |A|$: in degree one $h=1$; in degree two $h=1$ except for the antipodal orbit $P_n$, where $h=2$; and in degree three $h=1$ or $3$.
+
+If a non-antipodal quadratic orbit reduces to an antipodal pair, then $h=1$ and $b=2$, so the multiplicity in \((*)\) is $2m$, hence even. If a cubic orbit reduces, after collisions, to an antipodal pair, then again its target has $b=2$. Such an orbit cannot have $h=3$: the case $h=3$ is the short cubic support
+\[
+\{a,a+n/3,a+2n/3\},
+\]
+which requires $3\mid m$ and collapses modulo $t$ to a singleton. Hence every cubic orbit that reduces to an antipodal pair has $h=1$, so its multiplicity is again $2m$ and it cancels.
+
+Finally consider $P_n$. Here $h=2$. Since
+\[
+\frac n2=\frac{tm}{2}\equiv \frac t2\pmod t
+\]
+because $m$ is odd, its reduced support is antipodal, so $b=2$. Formula \((*)\) gives multiplicity
+\[
+\frac{mb}{h}=\frac{2m}{2}=m,
+\]
+which is odd. Therefore
+\[
+\operatorname{Fold}(P_n)=P_t.
+\]
+Constants and linear terms cannot contribute a quadratic term. Hence $P_n$ is the unique original orbit whose fold contributes nontrivially to $P_t$, and consequently
+\[
+[P_t]g=[P_n]f.
+\]
+\end{proof}
+
+
+\section{Antipodal necessity in power-of-two dimension}
+
+We first isolate the quadratic input, then compare the diagonal and complementary fibers of a low-degree rotation-symmetric bent function.
+
+\begin{lemma}[Quadratic rotation-symmetric rigidity]\label{lem:quad-rigidity}
+Let \(N=2^k\). If \(q:\F^N\to\F\) is rotation-symmetric, balanced, and \(\deg q\le2\), then the polar form of \(q\) is zero.
+\end{lemma}
+\begin{proof}
+Adding a constant does not affect balance or the polar, so put \(Q=q+q(0)\), with \(Q(0)=0\), and let \(B\) be its polar. Let \(R=\{r:B(r,x)=0\ \forall x\}\). If \(B\ne0\), then \(R\) is a proper rotation-invariant subspace.
+
+Identify \(\F^N\) with \(A=\F[X]/((X+1)^N)\), with cyclic rotation \(S\) represented by multiplication by \(X\). Since \(A\) is local with maximal ideal \((X+1)\), a vector of odd Hamming weight represents a unit: its polynomial evaluates to \(1\) at \(X=1\). If a rotation-invariant subspace contains a unit \(u\), it contains \(u,Xu,\ldots,X^{N-1}u\). Multiplication by \(u\) is an automorphism of \(A\), while \(1,X,\ldots,X^{N-1}\) span \(A\); consequently \(u,Xu,\ldots,X^{N-1}u\) also span \(A\). Thus every proper rotation-invariant subspace contains no unit, equivalently no odd-weight vector, and
+\[
+R\subseteq (X+1)A=\operatorname{im}(S+I).
+\]
+For \(r\in R\), write \(r=Sy+y\). Rotation invariance gives \(Q(Sy)=Q(y)\), so
+\[
+Q(r)=Q(Sy)+Q(y)+B(Sy,y)=B(r+y,y)=0,
+\]
+because \(B(r,y)=B(y,y)=0\).
+
+Finally,
+\[
+\left(\sum_x(-1)^{Q(x)}\right)^2
+=\sum_{z}(-1)^{Q(z)}\sum_x(-1)^{B(x,z)}
+=2^N\sum_{z\in R}(-1)^{Q(z)}
+=2^N|R|>0.
+\]
+Thus \(Q\), and hence \(q\), is not balanced, a contradiction. Therefore \(B=0\).
+\end{proof}
+
+\begin{remark}[Sharpness of the power-of-two hypothesis]\label{rem:quad-sharp}
+Among even dimensions, the hypothesis \(N=2^k\) in Lemma~\ref{lem:quad-rigidity} is exact. This sharpness is consistent with, and can also be deduced from, the known balancing theory for quadratic monomial rotation-symmetric functions; in particular, Chirvasitu and Cusick characterize when \((0,t)_N\) is balanced in terms of the exact power of two dividing \(N\) and \(t\). We include the following direct radical argument because it matches the mechanism used here and makes no novelty claim for the balancing construction. If
+\[
+N=dm,\qquad d=2^{v_2(N)},\qquad m>1\text{ odd},
+\]
+then
+\[
+q_d(x)=\sum_{i=0}^{N-1}x_i x_{i+d}
+\]
+is rotation-symmetric and quadratic. Its underlying graph is the disjoint union of \(d\) odd cycles of length \(m\). The radical of its polar consists of vectors constant independently on these cycles. Hence it has dimension \(d\), while on a vector supported as \(1\) on one cycle,
+\[
+q_d(r)=m=1\pmod2.
+\]
+Thus \(q_d\) restricts to a nonzero linear form on the radical. Using
+\[
+\left(\sum_x(-1)^{q_d(x)}\right)^2
+=2^N\sum_{r\in\operatorname{rad}(B_{q_d})}(-1)^{q_d(r)},
+\]
+the right-hand side vanishes, so \(q_d\) is balanced. Its polar is nonzero. Therefore, for even \(N\), every balanced rotation-symmetric quadratic having zero polar is a rigidity phenomenon valid for all such functions precisely when \(N\) is a power of two.
+\end{remark}
+
+\begin{lemma}[Complementary-fiber balance]\label{lem:fiber-balance}
+Let \(N=2h\), let \(g:\F^N\to\F\) be bent, and suppose \(g(u,u)\) is constant. Define \(F_z(u)=g(u,u+z)\). Then \(F_z\) is balanced for every \(z\ne0\).
+\end{lemma}
+\begin{proof}
+After adding a constant assume \(g(u,u)=0\). Put \(A_z=\sum_u(-1)^{F_z(u)}\). Under the invertible linear change \(\Phi(u,z)=(u,u+z)\), put \(G(u,z)=g(\Phi(u,z))=g(u,u+z)\). Then
+\[
+\widehat A(b)=\sum_z A_z(-1)^{b\cdot z}
+=\sum_{u,z}(-1)^{G(u,z)+b\cdot z}
+=W_G(0,b).
+\]
+Bentness is preserved by the invertible linear change \(\Phi\), so, since \(G\) has \(N=2h\) variables,
+\[
+|\widehat A(b)|=|W_G(0,b)|=2^{N/2}=2^h
+\]
+for every \(b\). Parseval for the unnormalized Walsh transform on \(\F^h\) therefore gives
+\[
+\sum_zA_z^2
+=2^{-h}\sum_b\widehat A(b)^2
+=2^{-h}\cdot 2^h\cdot 2^{2h}
+=2^{2h}=2^N.
+\]
+But \(A_0=2^h\), so \(A_0^2=2^N\) exhausts the sum. Hence \(A_z=0\) for every \(z\ne0\).
+\end{proof}
+
+\begin{lemma}[Local complementary-fiber rigidity]\label{lem:fiber-rigidity}
+Let \(N=2h\) be any positive even integer, and let \(g:\F^N\to\F\) be rotation-symmetric with \(\deg g\le3\). Suppose \(g(u,u)\) is constant. If the polar form of \(D_Jg\), where \(J=\mathbf1^N\), is zero, then \(F_{\mathbf1}(u)=g(u,u+\mathbf1)\) is constant.
+\end{lemma}
+\begin{proof}
+Adding a constant, assume \(g(u,u)=0\). Put \(d(u)=(u,u)\), \(e(z)=(0,z)\), and \(J=\mathbf1^N\). By hypothesis, \(B_{D_Jg}=0\).
+
+For degree at most three,
+\[
+\Delta_3(p,q,r)=D_pD_qD_rg(0)
+\]
+is independent of the base point and is a symmetric trilinear form. Put \(p=d(u)\), \(q=d(v)\), \(w=e(\mathbf1)\). Then
+\[
+B_{F_{\mathbf1}}(u,v)=D_pD_qg(w)
+=D_pD_qg(0)+\Delta_3(p,q,w).
+\]
+Here
+\[
+D_pD_qg(0)=g(0)+g(p)+g(q)+g(p+q)=0,
+\]
+because \(0,p,q,p+q\) are all diagonal points and the normalized \(g\) vanishes on the diagonal. Thus
+\[
+B_{F_{\mathbf1}}(u,v)=\Delta_3(d(u),d(v),e(\mathbf1)).
+\]
+Also
+\[
+B_{D_Jg}(d(u),e(v))=\Delta_3(d(u),e(v),J).
+\]
+Writing \(e'(z)=(z,0)\), half-rotation fixes \(d(u)\), exchanges \(e(v)\) with \(e'(v)\), and exchanges \(e(\mathbf1)\) with \(e'(\mathbf1)\). Since \(J=e'(\mathbf1)+e(\mathbf1)\), trilinearity gives
+\[
+\Delta_3(d(u),e(v),J)
+=\Delta_3(d(u),e(v),e'(\mathbf1))
+ +\Delta_3(d(u),e(v),e(\mathbf1)).
+\]
+Applying the half-rotation simultaneously to all three arguments in the first term yields
+\[
+\Delta_3(d(u),e(v),e'(\mathbf1))
+=\Delta_3(d(u),e'(v),e(\mathbf1)).
+\]
+A final use of trilinearity, with \(d(v)=e(v)+e'(v)\), therefore gives
+\[
+\Delta_3(d(u),e(v),J)
+=\Delta_3(d(u),d(v),e(\mathbf1)).
+\]
+Since \(B_{D_Jg}=0\), the polar of \(F_{\mathbf1}\) is zero; hence \(F_{\mathbf1}\) is affine.
+
+With \((\sigma x)_i=x_{i-1\pmod N}\), direct calculation gives
+\[
+\sigma(u,u+\mathbf1)=(Ru+e_0,Ru+e_0+\mathbf1),
+\]
+where \(R\) is cyclic rotation on \(\F^{N/2}\). Thus \(F_{\mathbf1}(Ru+e_0)=F_{\mathbf1}(u)\). If \(F_{\mathbf1}(u)=a\cdot u+c\), then \(R^Ta=a\), so \(a\) is constant on the single cycle of \(R\); the translation condition gives \(a\cdot e_0=0\), forcing \(a=0\). Therefore \(F_{\mathbf1}\) is constant.
+\end{proof}
+
+\begin{theorem}[Antipodal Rule]\label{thm:antipodal}
+Let \(N=2^k\) with \(k\ge2\). If \(g:\F^N\to\F\) is rotation-symmetric, bent, and \(\deg g\le3\), then its ANF contains
+\[
+P_N(x)=\sum_{i=0}^{N/2-1}x_i x_{i+N/2}.
+\]
+\end{theorem}
+\begin{proof}
+Write \(N=2h\), and let \(\alpha\) be the coefficient of \(P_N\). On the diagonal \(d(u)=(u,u)\), linear orbit sums cancel in pairs, non-antipodal quadratic orbit sums cancel under half-rotation, and cubic orbit sums cancel because every cubic orbit has full length when \(N\) is a power of two. The antipodal orbit restricts to \(\sum_i u_i\). Hence
+\[
+g(u,u)=c+\alpha\sum_i u_i.
+\]
+If \(\alpha=0\), the diagonal is constant. Lemma~\ref{lem:fiber-balance} makes \(F_{\mathbf1}\) balanced. Moreover, bentness makes \(D_Jg\) balanced; since \(N=2^k\), Lemma~\ref{lem:quad-rigidity} gives \(B_{D_Jg}=0\), and Lemma~\ref{lem:fiber-rigidity} then makes \(F_{\mathbf1}\) constant. This is a contradiction. Therefore \(\alpha=1\).
+\end{proof}
+
+\section{Universal antipodal necessity and the cubic homogeneous case}
+
+\begin{theorem}[Universal antipodal necessity through degree three]\label{thm:universal-antipodal}
+Let $n$ be a positive even integer. If $f:\F^n\to\F$ is rotation-symmetric, bent, and $\deg f\le3$, then
+\[
+[P_n]f=1.
+\]
+Equivalently, the ANF of $f$ contains the antipodal quadratic orbit $P_n$.
+\end{theorem}
+\begin{proof}
+The case $n=2$ is immediate. Write $n=tm$ with $t=2^s$, $s\ge1$, and $m$ odd, and put $T=\sigma^t$. By Proposition~\ref{prop:restriction}, the restriction $g=f|_{\Fix(T)}$, identified with a rotation-symmetric function on $\F^t$, is bent and has degree at most three. If $t\ge4$, Theorem~\ref{thm:antipodal} gives $[P_t]g=1$. If $t=2$, every bent Boolean function in two variables contains $P_2=y_0y_1$, so again $[P_t]g=1$. Lemma~\ref{lem:antipodal-transport} gives $[P_t]g=[P_n]f$, and therefore $[P_n]f=1$.
+\end{proof}
+
+\begin{theorem}[Main theorem]\label{thm:global}
+For every positive even integer $n$, there is no homogeneous rotation-symmetric bent Boolean function of degree three in $n$ variables.
+\end{theorem}
+\begin{proof}
+If such a function $f$ existed, Theorem~\ref{thm:universal-antipodal} would force $[P_n]f=1$. Homogeneity of degree three forces every quadratic ANF coefficient, in particular $[P_n]f$, to be zero. This contradiction proves the theorem.
+\end{proof}
+
+\paragraph{Relation to earlier antipodal necessity results.}
+Cusick and Sanger~\cite{cusick} prove that every quadratic rotation-symmetric bent function in even dimension must contain the antipodal quadratic orbit and obtain related necessity results for sums of short-cycle MRS functions. Theorems~\ref{thm:antipodal} and~\ref{thm:universal-antipodal} extend the antipodal necessity mechanism to arbitrary rotation-symmetric bent functions of algebraic degree at most three, first in power-of-two dimension and then in every positive even dimension.
+
+\paragraph{Relation to the 2026 partial cubic results.}
+Sun, Shi, Liu and Fu~\cite{sun} derive several nonexistence criteria for homogeneous cubic rotation-symmetric functions from the balancedness of the derivative in the all-one direction. Their cubic conclusions require additional restrictions on SANF generators or on the arithmetic of $n$. By contrast, the fixed-space reduction used here removes the odd part of the dimension and converts the problem to a power-of-two antipodal necessity statement; the exact folding lemma then returns that necessity to the original dimension without an arithmetic restriction on the odd part.
+
+\section{Discussion}
+The universal antipodal theorem isolates the structural reason that homogeneous cubics fail. Homogeneity is not used in the power-of-two Antipodal Rule or in the odd-order fixed-space transfer; it enters only at the final step, where a homogeneous cubic cannot contain the quadratic orbit that every low-degree rotation-symmetric bent function is forced to contain.
+
+The proof also identifies the point at which the present method is genuinely degree-sensitive. For $\deg f\le3$, every derivative $D_af$ is quadratic, so the odd-order fixed-space balance-transfer lemma applies. For degree at least four, derivatives need not be quadratic, and no analogous fixed-space transfer theorem is currently available from this argument alone. Thus the cubic theorem does not by itself extend to higher degree.
+
+The quadratic rigidity input is compatible with the established theory of quadratic rotation-symmetric Boolean functions developed by Chirvasitu and Cusick~\cite{chircusick}; we make no separate novelty claim for the known balancing phenomena underlying that auxiliary step. The new contribution is the combination of fixed-space transfer, power-of-two antipodal rigidity, and exact coefficient transport, culminating in the all-even-dimensional degree-at-most-three antipodal necessity theorem.
+
+\begin{thebibliography}{10}
+\bibitem{stanica} P.~St\u{a}nic\u{a} and S.~Maitra, Rotation symmetric Boolean functions---count and cryptographic properties, \emph{Discrete Applied Mathematics} 156(10) (2008), 1567--1580. \href{https://doi.org/10.1016/j.dam.2007.04.029}{doi:10.1016/j.dam.2007.04.029}.
+\bibitem{meng} Q.~Meng, L.~Chen and F.-W.~Fu, On homogeneous rotation symmetric bent functions, \emph{Discrete Applied Mathematics} 158(10) (2010), 1111--1117. \href{https://doi.org/10.1016/j.dam.2010.02.009}{doi:10.1016/j.dam.2010.02.009}.
+\bibitem{zhang} X.~Zhang and G.~Gao, On the conjecture about the nonexistence of rotation symmetric bent functions (2013). \href{https://arxiv.org/abs/1303.2282}{arXiv:1303.2282}.
+\bibitem{cusick} T.~W.~Cusick and E.~M.~Sanger, Rotation symmetric bent Boolean functions for $n=2p$ (2017). \href{https://arxiv.org/abs/1708.09313}{arXiv:1708.09313}.
+\bibitem{sun} L.~Sun, Z.~Shi, J.~Liu and F.-W.~Fu, On the conjecture about the nonexistence of homogeneous rotation symmetric bent functions, \emph{Designs, Codes and Cryptography} 94, article 93 (2026). \href{https://doi.org/10.1007/s10623-026-01848-4}{doi:10.1007/s10623-026-01848-4}.
+\bibitem{wang2015} T.~Wang, M.~Liu, S.~Zhao and D.~Lin, Construction of cubic rotation symmetric bent functions in power-of-two variables, in \emph{2015 IEEE International Symposium on Information Theory (ISIT)}, pp.~486--490. \href{https://doi.org/10.1109/ISIT.2015.7282502}{doi:10.1109/ISIT.2015.7282502}.
+\bibitem{gao2012} G.~Gao, X.~Zhang, W.~Liu and C.~Carlet, Constructions of Quadratic and Cubic Rotation Symmetric Bent Functions, \emph{IEEE Transactions on Information Theory} 58(7) (2012), 4908--4913. \href{https://doi.org/10.1109/TIT.2012.2193377}{doi:10.1109/TIT.2012.2193377}.
+\bibitem{chircusick} A.~Chirvasitu and T.~W.~Cusick, Quadratic rotation symmetric Boolean functions, \emph{Discrete Applied Mathematics} 343 (2024), 91--105. \href{https://doi.org/10.1016/j.dam.2023.10.010}{doi:10.1016/j.dam.2023.10.010}.
+\bibitem{rothaus} O.~S.~Rothaus, On ``bent'' functions, \emph{Journal of Combinatorial Theory, Series A} 20(3) (1976), 300--305. \href{https://doi.org/10.1016/0097-3165(76)90024-8}{doi:10.1016/0097-3165(76)90024-8}.
+\end{thebibliography}
+\end{document}
+
