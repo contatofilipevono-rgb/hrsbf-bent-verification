@@ -25,6 +25,8 @@ lemma zmod2_smul_eq_zero_or_self
     {A : Type*} [AddCommGroup A] [Module (ZMod 2) A]
     (c : ZMod 2) (v : A) :
     c • v = 0 ∨ c • v = v := by
+  have hlt : c.val < 2 := by
+    exact ZMod.val_lt c
   have hv : c.val = 0 ∨ c.val = 1 := by
     omega
   rcases hv with hv | hv
@@ -36,7 +38,8 @@ lemma zmod2_smul_eq_zero_or_self
   · right
     have hc : c = 1 := by
       apply ZMod.val_injective
-      simp [hv]
+      rw [hv]
+      norm_num
     simp [hc]
 
 lemma secondDiff_same_line_zero
