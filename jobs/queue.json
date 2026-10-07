@@ -14,7 +14,7 @@
     },
     {
       "id": "rs_bent_n12",
-      "revision": 1,
+      "revision": 2,
       "enabled": true,
       "description": "Exhaustive RS degree<=3 bent search at n=12; tests antipodal rule and homogeneous cubic nonexistence.",
       "require_gpu": true,
@@ -22,7 +22,17 @@
       "script": "rs_bent_exhaustive.py",
       "args": [
         "12",
-        "16"
+        "12",
+        "--backend",
+        "cuda",
+        "--resume",
+        "--output-dir",
+        "results/rs_bent_n12/rev_2"
+      ],
+      "artifacts": [
+        "results/rs_bent_n12/rev_2/result_n12.json",
+        "results/rs_bent_n12/rev_2/bent_ids_n12.npy",
+        "results/rs_bent_n12/rev_2/checkpoint_n12.json"
       ]
     }
   ]

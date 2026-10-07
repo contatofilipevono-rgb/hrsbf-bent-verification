@@ -36,6 +36,11 @@ def run_git(args, check=True):
 
 
 def sync_repo():
+    if BRANCH != "colab-a100-2026-10-06":
+        raise RuntimeError("v2 worker may only update colab-a100-2026-10-06")
+    current = run_git(["branch", "--show-current"]).stdout.strip()
+    if current != BRANCH:
+        raise RuntimeError("check out the v2 branch before starting the worker")
     p = run_git(["pull", "--rebase", "--autostash", "origin", BRANCH], check=False)
     if p.returncode:
         raise RuntimeError("git pull failed:\n" + p.stdout)
@@ -58,18 +63,19 @@ def push_files(paths, message):
 
 
 def gpu_info():
-    p = subprocess.run(
-        ["nvidia-smi", "--query-gpu=name,memory.total", "--format=csv,noheader"],
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-    )
+    try:
+        p = subprocess.run(
+            ["nvidia-smi", "--query-gpu=name,memory.total", "--format=csv,noheader"],
+            text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+        )
+    except FileNotFoundError:
+        return {"available": False, "details": "nvidia-smi not installed"}
     return {"available": p.returncode == 0, "details": p.stdout.strip()}
 
 
 def read_queue():
     data = json.loads(QUEUE.read_text(encoding="utf-8"))
-    return data.get("jobs", data if isinstance(data, list) else [])
+    return data if isinstance(data, list) else data.get("jobs", [])
 
 
 def status_path(job_id):
@@ -106,6 +112,7 @@ def is_pending(job):
     rev = int(job.get("revision", 1))
     return job.get("enabled", True) and (
         old is None or int(old.get("job_revision", -1)) != rev
+        or old.get("state") == "waiting_gpu"
     )
 
 
@@ -165,6 +172,10 @@ def process_one():
         if job.get("require_gpu", False) and not gpu["available"]:
             jid, _, _ = validate_job(job)
             rev = int(job.get("revision", 1))
+            previous = load_status(jid)
+            if previous and previous.get("state") == "waiting_gpu" and previous.get("job_revision") == rev:
+                print(f"{jid}: still waiting for GPU")
+                continue
             sp = status_path(jid)
             waiting = {
                 "job_id": jid,
@@ -204,7 +215,18 @@ def process_one():
             "result_dir": str(meta_path.parent.relative_to(ROOT)),
         }
         save_json(sp, finished)
-        push_files([sp, log, meta_path], f"colab: finish {jid} r{rev} [{state}]")
+        artifacts = []
+        for name in job.get("artifacts", []):
+            artifact = (ROOT / name).resolve()
+            if outdir.resolve() not in artifact.parents:
+                raise ValueError("artifacts must be inside the job result directory")
+            if artifact.is_file():
+                artifacts.append(artifact)
+            elif rc == 0:
+                finished["state"] = state = "failed"
+                finished.setdefault("missing_artifacts", []).append(name)
+        save_json(sp, finished)
+        push_files([sp, log, meta_path, *artifacts], f"colab: finish {jid} r{rev} [{state}]")
         print(f"{jid}: {state}")
         return True
 
