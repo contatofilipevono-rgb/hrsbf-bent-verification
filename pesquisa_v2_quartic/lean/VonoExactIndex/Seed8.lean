@@ -133,4 +133,31 @@ theorem seed8_has_exact_indices
     (e := fun _ : ι => e0)
     (hne := fun _ => he0)
 
+
+/-- For r eight-variable blocks, both exact indices are r. -/
+theorem seed8_r_blocks_has_exact_indices
+    (r : Nat) (e0 : SeedVec) (he0 : e0 ≠ 0) :
+    HasMIndex (blockSum (fun _ : Fin r => seed)) r ∧
+    HasRelaxedMIndex (blockSum (fun _ : Fin r => seed)) r := by
+  simpa using (seed8_has_exact_indices (ι := Fin r) e0 he0)
+
+/-- Arithmetic form matching n = 8r: the block count is n/8. -/
+theorem seed8_r_blocks_index_equals_n_div_eight
+    (r : Nat) :
+    (8 * r) / 8 = r := by
+  omega
+
+/--
+Paper-facing corollary: for n = 8r variables arranged in r Seed8 blocks,
+both the ordinary and relaxed exact-index certificates have value
+r = n/8.
+-/
+theorem seed8_paper_exact_index_corollary
+    (r : Nat) (e0 : SeedVec) (he0 : e0 ≠ 0) :
+    HasMIndex (blockSum (fun _ : Fin r => seed)) r ∧
+    HasRelaxedMIndex (blockSum (fun _ : Fin r => seed)) r ∧
+    (8 * r) / 8 = r := by
+  rcases seed8_r_blocks_has_exact_indices r e0 he0 with ⟨hM, hR⟩
+  exact ⟨hM, hR, seed8_r_blocks_index_equals_n_div_eight r⟩
+
 end VonoExactIndex
