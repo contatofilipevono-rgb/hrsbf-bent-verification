@@ -9,11 +9,11 @@ def IsConstant (g : V → ZMod 2) : Prop :=
 
 /-- A subspace on which every second finite difference vanishes. -/
 def IsMSubspace (f : V → ZMod 2) (U : Submodule (ZMod 2) V) : Prop :=
-  ∀ a ∈ U, ∀ b ∈ U, D[a] (D[b] f) = 0
+  ∀ a ∈ U, ∀ b ∈ U, diff a (diff b f) = 0
 
 /-- A subspace on which every second finite difference is constant. -/
 def IsRelaxedMSubspace (f : V → ZMod 2) (U : Submodule (ZMod 2) V) : Prop :=
-  ∀ a ∈ U, ∀ b ∈ U, IsConstant (D[a] (D[b] f))
+  ∀ a ∈ U, ∀ b ∈ U, IsConstant (diff a (diff b f))
 
 theorem IsMSubspace.relaxed {f : V → ZMod 2} {U : Submodule (ZMod 2) V}
     (h : IsMSubspace f U) : IsRelaxedMSubspace f U := by
@@ -73,6 +73,6 @@ theorem relaxed_projection
   have hconst := hU a haU b hbU
   rw [secondDiff_blockSum] at hconst
   exact coordinate_constant_of_sum_constant
-    (g := fun j => D[a j] (D[b j] (f j))) hconst i
+    (g := fun j => diff a j (diff b j (f j))) hconst i
 
 end VonoExactIndex
