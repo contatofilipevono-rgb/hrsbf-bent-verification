@@ -31,14 +31,14 @@ coordinate function is constant.
 -/
 theorem coordinate_constant_of_sum_constant
     (g : ∀ i, W i → ZMod 2)
-    (h : IsConstant (fun x : BlockVec (ι := ι) (W := W) => ∑ i, g i (x i)))
+    (h : IsConstant (fun x : BlockVec ι W => ∑ i, g i (x i)))
     (i : ι) :
     IsConstant (g i) := by
   rcases h with ⟨c, hc⟩
-  let x0 : BlockVec (ι := ι) (W := W) := fun _ => 0
+  let x0 : BlockVec ι W := fun _ => 0
   refine ⟨g i 0, ?_⟩
   funext y
-  let xy : BlockVec (ι := ι) (W := W) := Function.update x0 i y
+  let xy : BlockVec ι W := Function.update x0 i y
   have hy : (∑ j, g j (xy j)) = c := by
     simpa using congrFun hc xy
   have h0 : (∑ j, g j (x0 j)) = c := by
@@ -46,12 +46,12 @@ theorem coordinate_constant_of_sum_constant
   have hdiff : (∑ j, g j (xy j)) = (∑ j, g j (x0 j)) := hy.trans h0.symm
   have hsplit_y :
       (∑ j, g j (xy j)) = g i y + ∑ j ∈ Finset.univ.erase i, g j 0 := by
-    rw [Finset.sum_eq_add_sum_diff_singleton (s := Finset.univ) (a := i)]
+    rw [Finset.sum_eq_add_sum_diff_singleton (s := Finset.univ) i]
     · simp [xy, x0]
     · simp
   have hsplit_0 :
       (∑ j, g j (x0 j)) = g i 0 + ∑ j ∈ Finset.univ.erase i, g j 0 := by
-    rw [Finset.sum_eq_add_sum_diff_singleton (s := Finset.univ) (a := i)]
+    rw [Finset.sum_eq_add_sum_diff_singleton (s := Finset.univ) i]
     · simp [x0]
     · simp
   rw [hsplit_y, hsplit_0] at hdiff
@@ -63,7 +63,7 @@ relaxed for the corresponding block function.
 -/
 theorem relaxed_projection
     (f : ∀ i, W i → ZMod 2)
-    (U : Submodule (ZMod 2) (BlockVec (ι := ι) (W := W)))
+    (U : Submodule (ZMod 2) (BlockVec ι W))
     (hU : IsRelaxedMSubspace (blockSum f) U)
     (i : ι) :
     IsRelaxedMSubspace (f i) (U.map (LinearMap.proj i)) := by
@@ -71,8 +71,16 @@ theorem relaxed_projection
   rcases hai with ⟨a, haU, rfl⟩
   rcases hbi with ⟨b, hbU, rfl⟩
   have hconst := hU a haU b hbU
-  rw [secondDiff_blockSum] at hconst
+  rcases hconst with ⟨c, hc⟩
+  have hsum : IsConstant
+      (fun x : BlockVec ι W =>
+        ∑ j, diff (a j) (diff (b j) (f j)) (x j)) := by
+    refine ⟨c, ?_⟩
+    funext x
+    have hx := congrFun hc x
+    rw [secondDiff_blockSum] at hx
+    exact hx
   exact coordinate_constant_of_sum_constant
-    (g := fun j => diff (a j) (diff (b j) (f j))) hconst i
+    (g := fun j => diff (a j) (diff (b j) (f j))) hsum i
 
 end VonoExactIndex
