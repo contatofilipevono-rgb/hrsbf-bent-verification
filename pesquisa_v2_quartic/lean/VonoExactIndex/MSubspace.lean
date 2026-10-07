@@ -48,7 +48,7 @@ theorem coordinate_constant_of_sum_constant
     simp [xy]
   have hxy_ne : ∀ j ≠ i, xy j = x0 j := by
     intro j hji
-    simp [xy, Function.update_noteq hji]
+    simp [xy, Function.update_of_ne hji]
   have hrest :
       (∑ j ∈ Finset.univ.erase i, g j (xy j)) =
         ∑ j ∈ Finset.univ.erase i, g j (x0 j) := by
@@ -61,7 +61,8 @@ theorem coordinate_constant_of_sum_constant
       (∑ j, g j (xy j)) =
         g i y + ∑ j ∈ Finset.univ.erase i, g j (x0 j) := by
     rw [Finset.sum_eq_add_sum_diff_singleton (s := Finset.univ) (by simp : i ∈ Finset.univ)]
-    rw [hxy_i, hrest]
+    rw [hxy_i]
+    simpa [Finset.erase_eq] using congrArg (fun z => g i y + z) hrest
   have hsplit_0 :
       (∑ j, g j (x0 j)) =
         g i 0 + ∑ j ∈ Finset.univ.erase i, g j (x0 j) := by
