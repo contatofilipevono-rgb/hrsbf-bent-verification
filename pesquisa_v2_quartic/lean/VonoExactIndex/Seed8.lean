@@ -185,4 +185,41 @@ theorem paperFr_variable_count
     (8 * r) / 8 = r := by
   omega
 
+
+/-- Swap the two function indices, as a linear equivalence. -/
+def swapPiLinearEquiv (r : Nat) :
+    (Fin 8 → Fin r → ZMod 2) ≃ₗ[ZMod 2] (Fin r → SeedVec) where
+  toFun f j k := f k j
+  invFun f k j := f j k
+  left_inv _ := rfl
+  right_inv _ := rfl
+  map_add' _ _ := rfl
+  map_smul' _ _ := rfl
+
+/--
+Linear coordinate equivalence from the paper's flat interleaved coordinates
+to the r blocks of eight coordinates. The underlying Fin equivalence sends
+(k,j) to j + r*k.
+-/
+def paperBlockLinearEquiv (r : Nat) :
+    (Fin (8 * r) → ZMod 2) ≃ₗ[ZMod 2] (Fin r → SeedVec) :=
+  (LinearEquiv.piCongrLeft (ZMod 2) (fun _ : Fin (8 * r) => ZMod 2)
+      (finProdFinEquiv : Fin 8 × Fin r ≃ Fin (8 * r))).symm ≪≫ₗ
+    LinearEquiv.curry (ZMod 2) (ZMod 2) (Fin 8) (Fin r) ≪≫ₗ
+    swapPiLinearEquiv r
+
+/-- The linear coordinate equivalence acts exactly as the paper block B_j. -/
+theorem paperBlockLinearEquiv_apply
+    (r : Nat) (x : Fin (8 * r) → ZMod 2) :
+    paperBlockLinearEquiv r x = fun j => paperBlock r x j := by
+  rfl
+
+/-- The interleaved paper function is the certified block sum after a linear coordinate change. -/
+theorem paperFr_eq_blockSum_comp_linearEquiv
+    (r : Nat) :
+    paperFr r =
+      (blockSum (fun _ : Fin r => seed)) ∘ paperBlockLinearEquiv r := by
+  funext x
+  rfl
+
 end VonoExactIndex
