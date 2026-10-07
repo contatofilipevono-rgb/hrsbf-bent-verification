@@ -20,8 +20,8 @@ def seed : SeedVec → ZMod 2 := fun x =>
   orbitValue [0,1,3,5] x
 
 def secondDerivativeConstant (a b : SeedVec) : Bool :=
-  let v := D[a] (D[b] seed) 0
-  decide (∀ x : SeedVec, D[a] (D[b] seed) x = v)
+  let v := diff a (diff b seed) 0
+  decide (∀ x : SeedVec, diff a (diff b seed) x = v)
 
 /-- Complete finite obstruction for the seed. -/
 def seedNoIndependentConstantPair : Bool :=
