@@ -65,3 +65,27 @@ Post-correction repository check:
 - 0 occurrences of `sorry` in committed .lean files.
 
 Compilation remains pending because this execution environment does not expose Lean/lake.
+
+
+## Seed8 executable layer
+
+Added:
+
+    VonoExactIndex/Seed8.lean
+
+It defines the explicit 8-variable quartic RS seed from the four orbit representatives and states a complete finite obstruction:
+
+    no distinct nonzero directions a,b have constant D_a D_b seed.
+
+The theorem is discharged in source with `native_decide`, so after successful compilation Lean will evaluate the complete finite proposition rather than a sample. This is the executable counterpart of the Python 32,385-pair certificate.
+
+Current boundary:
+- the finite seed obstruction is encoded;
+- the generic block exact-index theorem is encoded;
+- the small abstract bridge from the finite obstruction to the statement that every relaxed seed subspace has finrank <= 1 is not yet committed, because its implementation should be compiler-guided against the exact Mathlib API rather than guessed.
+
+Seed source commit:
+
+    81c8ddaf795ff717835184d2c64b2c0876f9ac40
+
+As before, no machine-check claim is made until `lake build` succeeds.
