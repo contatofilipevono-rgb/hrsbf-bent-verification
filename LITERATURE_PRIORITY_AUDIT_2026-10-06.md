@@ -2,7 +2,7 @@
 
 Date: 2026-10-06  
 Branch audited: `colab-a100-2026-10-06`  
-Starting HEAD: `af510e59ef4ea3b9cde596227864d3f9cf7b454e`
+Baseline manuscript snapshot rechecked before the final preprint edits: `bb412393524fab26653a52f1e0eb92fe00c84325`
 
 ## Questions
 
@@ -76,7 +76,7 @@ This materially lowers the principal overlap risk identified in the first litera
 
 ### Polujan–Kudin–Pašalić (2026)
 
-A. Polujan, M. Kudin, E. Pašalić, *Rotation-Symmetric Bent Functions Outside the Completed Maiorana-McFarland Class*, IEEE Trans. Inf. Theory 72(6) (2026).
+A. Polujan, S. Kudin, E. Pašalić, *Rotation-Symmetric Bent Functions Outside the Completed Maiorana-McFarland Class*, IEEE Trans. Inf. Theory 72(6) (2026), 4341–4351, DOI 10.1109/TIT.2026.3685133.
 
 They classify RS cubic bent functions in 10 variables and obtain 1572 functions in 8 EA-equivalence classes. The published representatives displayed in their table all contain the antipodal quadratic term (x_1x_6). This is a strong independent consistency check for the current antipodal theorem in dimension 10, but the paper does not state the all-even-dimensional degree-(le3) necessity theorem.
 
@@ -129,5 +129,5 @@ or any equivalent absolute priority statement.
 
 - Proof correctness: independently audited elsewhere in the repository.
 - Literature search result: **no prior global cubic theorem or universal degree-(le3) antipodal theorem located**.
-- Priority confidence: **high** after full-text theorem-by-theorem audit of Sun–Shi–Liu–Fu (2026).
+- Priority confidence: **high** after full-text theorem-by-theorem audit of Sun–Shi–Liu–Fu (2026).\n- Follow-up indexed search on 2026-10-06 checked current web/arXiv/Springer/IEEE records for the exact homogeneous-cubic and antipodal claims; no later global theorem was located. This remains a literature-qualified conclusion, not an absolute priority guarantee.
 - Remaining bibliographic check before journal submission: citation chaining from Sun–Shi–Liu–Fu’s references and later papers citing it; avoid absolute “first ever” wording unless that broader check is also completed.
