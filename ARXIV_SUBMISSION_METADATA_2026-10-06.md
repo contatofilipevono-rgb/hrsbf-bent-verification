@@ -29,7 +29,11 @@ As an immediate consequence, no homogeneous rotation-symmetric Boolean function 
 
 ## Comments
 
-9 pages, no figures. Preprint version 1.0. Source and audit materials: https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/tree/preprint-v1-final-2026-10-06
+10 pages, no figures. Preprint version 1.0. Source and audit materials: https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/tree/preprint-v1-final-2026-10-06
+
+## AI disclosure
+
+The manuscript contains a dedicated declaration of AI-assisted research and manuscript preparation. It identifies OpenAI ChatGPT as the principal AI research assistant, Google Gemini as a more limited auxiliary adversarial reviewer, and Anthropic Claude as an additional independent adversarial referee used to attempt falsification and identify logical gaps. The author retains full responsibility for all claims and arguments.
 
 ## License
 
