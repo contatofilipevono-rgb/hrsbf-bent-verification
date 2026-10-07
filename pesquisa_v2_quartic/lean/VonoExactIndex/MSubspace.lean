@@ -73,6 +73,6 @@ theorem relaxed_projection
   have hconst := hU a haU b hbU
   rw [secondDiff_blockSum] at hconst
   exact coordinate_constant_of_sum_constant
-    (g := fun j => diff a j (diff b j (f j))) hconst i
+    (g := fun j => diff (a j) (diff (b j) (f j))) hconst i
 
 end VonoExactIndex
