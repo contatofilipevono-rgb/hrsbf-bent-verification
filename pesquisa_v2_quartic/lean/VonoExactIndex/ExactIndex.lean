@@ -84,10 +84,10 @@ theorem exact_block_has_indices
   constructor
   · constructor
     · intro S hS
-      exact hupper S (mSubspace_isRelaxed hS)
+      exact hupper S (hS.relaxed)
     · exact ⟨M, hM, hdim⟩
   · constructor
     · exact hupper
-    · exact ⟨M, mSubspace_isRelaxed hM, hdim⟩
+    · exact ⟨M, hM.relaxed, hdim⟩
 
 end VonoExactIndex
