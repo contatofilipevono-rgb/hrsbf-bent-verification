@@ -42,24 +42,27 @@ theorem seed_no_independent_constant_pair :
 
 /-- Propositional form of the exhaustive Seed8 obstruction. -/
 theorem seed_no_independent_constant_pair_prop
-    (a b : SeedVec) (ha : a ≠ 0) (hb : b ≠ 0) (hab : a ≠ b) :
+    (a b : SeedVec)
+    (ha : a ≠ 0) (hb : b ≠ 0) (hab : a ≠ b) :
     ¬ IsConstant (diff a (diff b seed)) := by
-  intro hc
-  have hbool : secondDerivativeConstant a b = true := by
-    unfold secondDerivativeConstant
-    simp only [Bool.decide_eq_true]
-    rcases hc with ⟨v, hv⟩
+  have hcert :
+      ∀ a b : SeedVec,
+        a ≠ 0 → b ≠ 0 → a ≠ b →
+        secondDerivativeConstant a b = false := by
+    apply of_decide_eq_true
+    exact seed_no_independent_constant_pair
+  intro hconstant
+  rcases hconstant with ⟨c, hc⟩
+  have htrue : secondDerivativeConstant a b = true := by
+    change decide (∀ x : SeedVec,
+      diff a (diff b seed) x = diff a (diff b seed) 0) = true
+    apply decide_eq_true
     intro x
-    rw [hv x, hv 0]
-  have hall : ∀ a b : SeedVec,
-      a ≠ 0 → b ≠ 0 → a ≠ b →
-      secondDerivativeConstant a b = false := by
-    have h := seed_no_independent_constant_pair
-    unfold seedNoIndependentConstantPair at h
-    simpa only [Bool.decide_eq_true] using h
-  have := hall a b ha hb hab
-  rw [this] at hbool
-  contradiction
+    exact (congrFun hc x).trans (congrFun hc 0).symm
+  have hfalse : secondDerivativeConstant a b = false :=
+    hcert a b ha hb hab
+  have hcontr : (false : Bool) = true := hfalse.symm.trans htrue
+  cases hcontr
 
 /-- The exhaustive Seed8 obstruction closes the relaxed-index hypothesis. -/
 theorem seed_relaxed_finrank_le_one
