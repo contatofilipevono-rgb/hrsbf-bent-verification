@@ -85,3 +85,37 @@ Branch:
     v2-quartic-mm-index-2026-10-07
 
 V1 remains untouched.
+
+
+## Definitive Seed8 bridge checkpoint
+
+The explicit Seed8 bridge is now compiler-verified.
+
+Checkpoint commit:
+
+    9c54dcd3619df762027327598f5212a389b44b89
+
+Successful GitHub Actions run:
+
+    37682139274
+
+Result:
+
+    completed / success
+
+The verified dependency chain now includes:
+
+    seed_no_independent_constant_pair
+      -> seed_no_independent_constant_pair_prop
+      -> seed_relaxed_finrank_le_one
+      -> exact_repeated_block_index_certificate
+      -> seed8_exact_repeated_block_index_certificate
+
+Thus the exhaustive finite Seed8 obstruction, discharged by native_decide, is connected inside Lean to the abstract exact repeated-block index certificate.
+
+A repository code search after the successful build found:
+- 0 occurrences of `sorry`;
+- 0 occurrences of `admit`;
+- 0 occurrences of `axiom`.
+
+The earlier green checkpoint 48506b6697b056d9584842c1873e9455dc34d1b9 remains a reproducible historical checkpoint. The Seed8-closed checkpoint above supersedes it for the current V2 formal verification state.
