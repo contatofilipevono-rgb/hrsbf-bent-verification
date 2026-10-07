@@ -9,8 +9,9 @@ def diff (a : V) (f : V → ZMod 2) : V → ZMod 2 :=
 
 @[simp] theorem add_self_zmod2 (z : ZMod 2) : z + z = 0 := by
   have h : -z = z := ZMod.neg_eq_self_mod_two z
-  rw [← h]
-  exact neg_add_cancel z
+  calc
+    z + z = -z + z := by rw [h]
+    _ = 0 := neg_add_cancel z
 
 @[simp] theorem diff_zero (f : V → ZMod 2) :
     diff (0 : V) f = (0 : V → ZMod 2) := by
