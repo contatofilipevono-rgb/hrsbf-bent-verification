@@ -30,6 +30,35 @@ D_aD_bg=0qquad	ext{for all }a,bin U.
 
 The linearity index (operatorname{ind}(g)) is the maximum dimension of an M-subspace. The relaxed linearity index (r	ext{-}operatorname{ind}(g)) is defined analogously with (D_aD_bg) only required to be constant. These notions and the direct-sum inequalities used below are those of Polujan--Pott (2020).
 
+
+## Rotation-symmetry lemma
+
+### Lemma
+For every r >= 1, F_r is rotation-symmetric under the ordinary one-position cyclic shift of its n=8r variables.
+
+### Proof
+Let rho be the cyclic shift defined by (rho x)_i=x_{i+1 mod n}, and write
+
+    T_j(x)=f(x_j,x_{j+r},...,x_{j+7r}),  0<=j<r,
+
+so F_r=sum_j T_j. If j<r-1, then directly
+
+    T_j(rho x)=T_{j+1}(x).
+
+For j=r-1, put y_k=x_{kr}, 0<=k<=7. Reduction modulo n=8r gives
+
+    T_{r-1}(rho x)=f(y_1,y_2,...,y_7,y_0).
+
+Since the 8-variable block f is rotation-symmetric,
+
+    f(y_1,...,y_7,y_0)=f(y_0,...,y_7)=T_0(x).
+
+Thus rho cyclically permutes the r summands T_0,...,T_{r-1}, and therefore
+
+    F_r(rho x)=F_r(x).
+
+This argument uses only rotation symmetry of the base block, so it holds for any rotation-symmetric 8-variable f repeated with the same interleaving. QED.
+
 ## 2. Base-block certificate
 
 ### Lemma 1
