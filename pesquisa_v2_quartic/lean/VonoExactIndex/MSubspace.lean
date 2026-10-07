@@ -44,16 +44,29 @@ theorem coordinate_constant_of_sum_constant
   have h0 : (∑ j, g j (x0 j)) = c := by
     simpa using congrFun hc x0
   have hdiff : (∑ j, g j (xy j)) = (∑ j, g j (x0 j)) := hy.trans h0.symm
+  have hxy_i : xy i = y := by
+    simp [xy]
+  have hxy_ne : ∀ j ≠ i, xy j = x0 j := by
+    intro j hji
+    simp [xy, Function.update_noteq hji]
+  have hrest :
+      (∑ j ∈ Finset.univ.erase i, g j (xy j)) =
+        ∑ j ∈ Finset.univ.erase i, g j (x0 j) := by
+    apply Finset.sum_congr rfl
+    intro j hj
+    have hji : j ≠ i := by
+      simpa using (Finset.mem_erase.mp hj).1
+    rw [hxy_ne j hji]
   have hsplit_y :
-      (∑ j, g j (xy j)) = g i y + ∑ j ∈ Finset.univ.erase i, g j 0 := by
+      (∑ j, g j (xy j)) =
+        g i y + ∑ j ∈ Finset.univ.erase i, g j (x0 j) := by
     rw [Finset.sum_eq_add_sum_diff_singleton (s := Finset.univ) (by simp : i ∈ Finset.univ)]
-    · simp [xy, x0]
-    · simp
+    rw [hxy_i, hrest]
   have hsplit_0 :
-      (∑ j, g j (x0 j)) = g i 0 + ∑ j ∈ Finset.univ.erase i, g j 0 := by
+      (∑ j, g j (x0 j)) =
+        g i 0 + ∑ j ∈ Finset.univ.erase i, g j (x0 j) := by
     rw [Finset.sum_eq_add_sum_diff_singleton (s := Finset.univ) (by simp : i ∈ Finset.univ)]
-    · simp [x0]
-    · simp
+    simp [x0]
   rw [hsplit_y, hsplit_0] at hdiff
   exact add_right_cancel hdiff
 
