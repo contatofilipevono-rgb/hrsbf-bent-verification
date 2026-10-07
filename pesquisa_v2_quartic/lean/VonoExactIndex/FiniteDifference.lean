@@ -8,8 +8,10 @@ def diff (a : V) (f : V → ZMod 2) : V → ZMod 2 :=
   fun x => f (x + a) + f x
 
 @[simp] theorem add_self_zmod2 (z : ZMod 2) : z + z = 0 := by
-  change 2 * z = 0
-  simp
+  calc
+    z + z = (1 : ZMod 2) * z + (1 : ZMod 2) * z := by simp
+    _ = ((1 : ZMod 2) + 1) * z := by rw [add_mul]
+    _ = 0 := by norm_num
 
 @[simp] theorem diff_zero (f : V → ZMod 2) :
     diff (0 : V) f = (0 : V → ZMod 2) := by
@@ -19,13 +21,17 @@ def diff (a : V) (f : V → ZMod 2) : V → ZMod 2 :=
 @[simp] theorem diff_self (a : V) (f : V → ZMod 2) :
     diff a (diff a f) = (0 : V → ZMod 2) := by
   funext x
-  simp only [diff]
   have haa : a + a = 0 := by
-    have h2 : (2 : ZMod 2) = 0 := by decide
-    have := two_smul (ZMod 2) a
-    simpa [h2] using this.symm
-  rw [show x + a + a = x by abel]
-  simp
+    calc
+      a + a = (1 : ZMod 2) • a + (1 : ZMod 2) • a := by simp
+      _ = ((1 : ZMod 2) + 1) • a := by rw [add_smul]
+      _ = 0 := by norm_num
+  simp only [diff]
+  rw [show x + a + a = x by simpa [add_assoc, haa]]
+  calc
+    f x + f (x + a) + (f (x + a) + f x)
+        = (f x + f x) + (f (x + a) + f (x + a)) := by abel
+    _ = 0 := by simp
 
 theorem diff_add (a : V) (f g : V → ZMod 2) :
     diff a (fun x => f x + g x) = fun x => diff a f x + diff a g x := by
@@ -39,6 +45,13 @@ theorem diff_add_direction (a b : V) (f : V → ZMod 2) :
   funext x
   simp only [diff]
   rw [show x + (a + b) = (x + b) + a by abel]
-  abel
+  calc
+    f (x + b + a) + f x
+        = f (x + b + a) + f x
+            + (f (x + a) + f (x + a))
+            + (f (x + b) + f (x + b))
+            + (f x + f x) := by simp
+    _ = (f (x + a) + f x) + (f (x + b) + f x)
+          + ((f (x + b + a) + f (x + b)) + (f (x + a) + f x)) := by abel
 
 end VonoExactIndex
