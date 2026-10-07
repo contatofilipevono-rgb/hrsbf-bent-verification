@@ -46,12 +46,12 @@ theorem coordinate_constant_of_sum_constant
   have hdiff : (∑ j, g j (xy j)) = (∑ j, g j (x0 j)) := hy.trans h0.symm
   have hsplit_y :
       (∑ j, g j (xy j)) = g i y + ∑ j ∈ Finset.univ.erase i, g j 0 := by
-    rw [Finset.sum_eq_add_sum_diff_singleton (s := Finset.univ) i]
+    rw [Finset.sum_eq_add_sum_diff_singleton (s := Finset.univ) (by simp : i ∈ Finset.univ)]
     · simp [xy, x0]
     · simp
   have hsplit_0 :
       (∑ j, g j (x0 j)) = g i 0 + ∑ j ∈ Finset.univ.erase i, g j 0 := by
-    rw [Finset.sum_eq_add_sum_diff_singleton (s := Finset.univ) i]
+    rw [Finset.sum_eq_add_sum_diff_singleton (s := Finset.univ) (by simp : i ∈ Finset.univ)]
     · simp [x0]
     · simp
   rw [hsplit_y, hsplit_0] at hdiff
