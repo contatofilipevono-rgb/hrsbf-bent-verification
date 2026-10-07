@@ -30,6 +30,7 @@ theorem IsMSubspace.comap_linearEquiv
   intro a ha b hb
   have hea : e a ∈ S := ha
   have heb : e b ∈ S := hb
+  change diff a (diff b (f ∘ e.toLinearMap)) = 0
   rw [secondDiff_comp_linear e.toLinearMap a b f]
   have hzero := hS (e a) hea (e b) heb
   rw [hzero]
@@ -46,6 +47,7 @@ theorem IsRelaxedMSubspace.comap_linearEquiv
   have heb : e b ∈ S := hb
   rcases hS (e a) hea (e b) heb with ⟨c, hc⟩
   refine ⟨c, ?_⟩
+  change diff a (diff b (f ∘ e.toLinearMap)) = fun _ => c
   rw [secondDiff_comp_linear e.toLinearMap a b f, hc]
   rfl
 
