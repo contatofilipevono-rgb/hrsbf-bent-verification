@@ -20,39 +20,36 @@ def selectedDirectionMap (e : ∀ i, W i) :
     funext i
     simp [mul_smul]
 
+lemma zmod2_eq_zero_or_one (c : ZMod 2) : c = 0 ∨ c = 1 := by
+  have hlt : c.val < 2 := ZMod.val_lt c
+  have hv : c.val = 0 ∨ c.val = 1 := by
+    omega
+  rcases hv with hv | hv
+  · left
+    calc
+      c = (c.val : ZMod 2) := (ZMod.natCast_zmod_val c).symm
+      _ = 0 := by rw [hv]; norm_num
+  · right
+    calc
+      c = (c.val : ZMod 2) := (ZMod.natCast_zmod_val c).symm
+      _ = 1 := by rw [hv]; norm_num
+
 theorem selectedDirectionMap_injective
     (e : ∀ i, W i) (hne : ∀ i, e i ≠ 0) :
     Function.Injective (selectedDirectionMap e) := by
   intro α β h
   funext i
   have hi : α i • e i = β i • e i := congrFun h i
-  by_contra hab
-  have hsum_ne : α i + β i ≠ 0 := by
-    intro hz
-    have : α i = β i := by
-      have := congrArg (fun z => z + β i) hz
-      simpa [add_assoc] using this
-    exact hab this
-  have hsum_self : (α i + β i) • e i = e i := by
-    rcases zmod2_smul_eq_zero_or_self (α i + β i) (e i) with hz | hz
-    · exfalso
-      apply hsum_ne
-      have he : e i ≠ 0 := hne i
-      apply smul_left_cancel₀ (R := ZMod 2) he
-      simpa using hz
-    · exact hz
-  have hz : (α i + β i) • e i = 0 := by
-    rw [add_smul]
-    have hchar (z : W i) : z + z = 0 := by
-      have htwo : (1 : ZMod 2) + 1 = 0 := add_self_zmod2 1
-      calc
-        z + z = (1 : ZMod 2) • z + (1 : ZMod 2) • z := by simp
-        _ = ((1 : ZMod 2) + 1) • z := by rw [add_smul]
-        _ = 0 := by rw [htwo, zero_smul]
-    rw [hi]
-    exact hchar (β i • e i)
-  rw [hsum_self] at hz
-  exact hne i hz
+  rcases zmod2_eq_zero_or_one (α i) with hα | hα <;>
+    rcases zmod2_eq_zero_or_one (β i) with hβ | hβ
+  · simp [hα, hβ]
+  · exfalso
+    apply hne i
+    simpa [hα, hβ] using hi.symm
+  · exfalso
+    apply hne i
+    simpa [hα, hβ] using hi
+  · simp [hα, hβ]
 
 /-- The selected-direction image is an ordinary M-subspace of a block sum. -/
 theorem selectedDirectionRange_isM
@@ -78,6 +75,6 @@ theorem selectedDirectionRange_finrank
   calc
     Module.finrank (ZMod 2) (LinearMap.range (selectedDirectionMap e))
         = Module.finrank (ZMod 2) (ι → ZMod 2) := hrange
-    _ = Fintype.card ι := Module.finrank_pi
+    _ = Fintype.card ι := Module.finrank_pi (ZMod 2)
 
 end VonoExactIndex
