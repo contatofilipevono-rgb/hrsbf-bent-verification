@@ -13,6 +13,7 @@ reported conditions is necessary, not sufficient, for bentness.
 import argparse
 import itertools
 import json
+from functools import lru_cache
 from pathlib import Path
 
 N = 16
@@ -102,6 +103,7 @@ def derivative_weight8(truth, direction):
     return (truth ^ xor_shift_truth(truth, direction)).bit_count()
 
 
+@lru_cache(maxsize=1)
 def build_basis():
     orbits = cyclic_orbits()
     assert len(orbits) == 273
@@ -116,6 +118,8 @@ def build_basis():
 
 
 def profiles_from_mask(mask, profiles):
+    if not isinstance(mask, int) or not 0 <= mask < (1 << len(profiles)):
+        raise ValueError('coefficient mask must be a nonnegative integer within the orbit basis')
     output = [0] * 35
     value = mask
     while value:
@@ -141,6 +145,8 @@ def diagonal_derivative_weights(fiber_profiles, reps, periods):
 
 
 def audit(mask):
+    if not isinstance(mask, int) or not 0 <= mask < (1 << 273):
+        raise ValueError('coefficient mask must be a nonnegative 273-bit integer')
     _, reps, periods, basis = build_basis()
     fibers = profiles_from_mask(mask, basis)
     fiber_weights = [truth.bit_count() for truth in fibers]

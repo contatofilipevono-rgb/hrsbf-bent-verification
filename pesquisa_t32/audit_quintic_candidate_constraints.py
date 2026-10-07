@@ -126,6 +126,8 @@ def parse_candidate(args, orbits):
     raise SystemExit("JSON does not contain a supported coefficient encoding")
 
 def audit(mask):
+    if not isinstance(mask, int) or not 0 <= mask < (1 << 273):
+        raise ValueError('coefficient mask must be a nonnegative 273-bit integer')
     orbits = cyclic_orbits()
     assert len(orbits) == 273
     truth_tables = orbit_truth_tables(orbits)
