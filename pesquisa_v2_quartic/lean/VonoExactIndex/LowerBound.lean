@@ -25,15 +25,33 @@ theorem selectedDirectionMap_injective
     Function.Injective (selectedDirectionMap e) := by
   intro α β h
   funext i
-  have hi := congrFun h i
+  have hi : α i • e i = β i • e i := congrFun h i
   by_contra hab
-  have hαβ : α i + β i = 1 := by
-    fin_cases hα : α i <;> fin_cases hβ : β i
-    all_goals simp_all
+  have hsum_ne : α i + β i ≠ 0 := by
+    intro hz
+    have : α i = β i := by
+      have := congrArg (fun z => z + β i) hz
+      simpa [add_assoc] using this
+    exact hab this
+  have hsum_self : (α i + β i) • e i = e i := by
+    rcases zmod2_smul_eq_zero_or_self (α i + β i) (e i) with hz | hz
+    · exfalso
+      apply hsum_ne
+      have he : e i ≠ 0 := hne i
+      apply smul_left_cancel₀ (R := ZMod 2) he
+      simpa using hz
+    · exact hz
   have hz : (α i + β i) • e i = 0 := by
     rw [add_smul]
-    simpa [hi]
-  rw [hαβ, one_smul] at hz
+    have hchar (z : W i) : z + z = 0 := by
+      have htwo : (1 : ZMod 2) + 1 = 0 := add_self_zmod2 1
+      calc
+        z + z = (1 : ZMod 2) • z + (1 : ZMod 2) • z := by simp
+        _ = ((1 : ZMod 2) + 1) • z := by rw [add_smul]
+        _ = 0 := by rw [htwo, zero_smul]
+    rw [hi]
+    exact hchar (β i • e i)
+  rw [hsum_self] at hz
   exact hne i hz
 
 /-- The selected-direction image is an ordinary M-subspace of a block sum. -/
@@ -56,7 +74,10 @@ theorem selectedDirectionRange_finrank
     Module.finrank (ZMod 2) (LinearMap.range (selectedDirectionMap e)) =
       Fintype.card ι := by
   have hinj := selectedDirectionMap_injective e hne
-  rw [LinearMap.finrank_range_of_injective _ hinj]
-  simp
+  have hrange := LinearMap.finrank_range_of_inj hinj
+  calc
+    Module.finrank (ZMod 2) (LinearMap.range (selectedDirectionMap e))
+        = Module.finrank (ZMod 2) (ι → ZMod 2) := hrange
+    _ = Fintype.card ι := Module.finrank_pi
 
 end VonoExactIndex
