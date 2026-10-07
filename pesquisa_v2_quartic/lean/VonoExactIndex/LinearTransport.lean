@@ -1,4 +1,4 @@
-import VonoExactIndex.MSubspace
+import VonoExactIndex.ExactIndex
 
 namespace VonoExactIndex
 
@@ -89,5 +89,36 @@ theorem IsRelaxedMSubspace.map_linearEquiv
   rw [hc] at htransport
   have hy := congrFun htransport (e.symm y)
   simpa using hy.symm
+
+
+/-- Exact ordinary M-index is invariant under an invertible linear change of variables. -/
+theorem HasMIndex.comp_linearEquiv
+    (e : V ≃ₗ[ZMod 2] W) (f : W → ZMod 2) (d : Nat)
+    (hf : HasMIndex f d) :
+    HasMIndex (f ∘ e) d := by
+  rcases hf with ⟨hupper, S, hS, hdim⟩
+  constructor
+  · intro T hT
+    have hmap := IsMSubspace.map_linearEquiv e f T hT
+    have hle := hupper (T.map e.toLinearMap) hmap
+    rwa [Submodule.finrank_map (LinearEquiv.injective e)] at hle
+  · refine ⟨S.comap e.toLinearMap, IsMSubspace.comap_linearEquiv e f S hS, ?_⟩
+    rw [← Submodule.finrank_map (LinearEquiv.injective e)]
+    simpa using hdim
+
+/-- Exact relaxed M-index is invariant under an invertible linear change of variables. -/
+theorem HasRelaxedMIndex.comp_linearEquiv
+    (e : V ≃ₗ[ZMod 2] W) (f : W → ZMod 2) (d : Nat)
+    (hf : HasRelaxedMIndex f d) :
+    HasRelaxedMIndex (f ∘ e) d := by
+  rcases hf with ⟨hupper, S, hS, hdim⟩
+  constructor
+  · intro T hT
+    have hmap := IsRelaxedMSubspace.map_linearEquiv e f T hT
+    have hle := hupper (T.map e.toLinearMap) hmap
+    rwa [Submodule.finrank_map (LinearEquiv.injective e)] at hle
+  · refine ⟨S.comap e.toLinearMap, IsRelaxedMSubspace.comap_linearEquiv e f S hS, ?_⟩
+    rw [← Submodule.finrank_map (LinearEquiv.injective e)]
+    simpa using hdim
 
 end VonoExactIndex
