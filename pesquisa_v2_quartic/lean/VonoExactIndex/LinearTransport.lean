@@ -33,6 +33,7 @@ theorem IsMSubspace.comap_linearEquiv
   change diff a (diff b (f ∘ e.toLinearMap)) = 0
   rw [secondDiff_comp_linear e.toLinearMap a b f]
   have hzero := hS (e a) hea (e b) heb
+  change (diff (e a) (diff (e b) f)) ∘ e.toLinearMap = 0
   rw [hzero]
   rfl
 
@@ -48,7 +49,9 @@ theorem IsRelaxedMSubspace.comap_linearEquiv
   rcases hS (e a) hea (e b) heb with ⟨c, hc⟩
   refine ⟨c, ?_⟩
   change diff a (diff b (f ∘ e.toLinearMap)) = fun _ => c
-  rw [secondDiff_comp_linear e.toLinearMap a b f, hc]
+  rw [secondDiff_comp_linear e.toLinearMap a b f]
+  change (diff (e a) (diff (e b) f)) ∘ e.toLinearMap = fun _ => c
+  rw [hc]
   rfl
 
 end VonoExactIndex
