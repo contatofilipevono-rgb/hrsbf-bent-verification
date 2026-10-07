@@ -37,9 +37,9 @@ lemma zmod2_smul_eq_zero_or_self
     simp [hc]
   · right
     have hc : c = 1 := by
-      apply ZMod.val_injective
-      rw [hv]
-      norm_num
+      calc
+        c = (c.val : ZMod 2) := (ZMod.natCast_zmod_val c).symm
+        _ = 1 := by rw [hv]; norm_num
     simp [hc]
 
 lemma secondDiff_same_line_zero
