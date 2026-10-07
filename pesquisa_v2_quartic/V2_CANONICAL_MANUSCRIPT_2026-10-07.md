@@ -259,7 +259,7 @@ The result established here is quantitative: for this explicit infinite quartic 
 
     ind(F_r)=r-ind(F_r)=n/8.
 
-Claims of priority should remain conservative unless a dedicated bibliographic comparison establishes more.
+Claims of priority should remain conservative unless a dedicated bibliographic comparison establishes more. In particular, Polujan--Kudin--Pasalic (IEEE Trans. Inf. Theory, 2026) already prove rotation-symmetric bent families outside M# and treat a quartic Carlet--Gao--Liu family for infinitely many dimensions. A contemporaneous 2026 ePrint by Deng Tang on rotation-symmetric bent functions outside M# with any possible algebraic degree has also been flagged for mandatory formula-level comparison. Until that comparison is complete, the candidate contribution asserted here is the exact quantitative identity ind(F_r)=r-ind(F_r)=n/8, not a first-existence claim.
 
 ## 6. Computational supplement
 
