@@ -163,10 +163,7 @@ theorem seed8_paper_exact_index_corollary
 
 /-- Paper coordinate block B_j = (x_j, x_{j+r}, ..., x_{j+7r}). -/
 def paperBlock (r : Nat) (x : Fin (8 * r) → ZMod 2) (j : Fin r) : SeedVec :=
-  fun k => x ⟨j.1 + k.1 * r, by
-    have hj : j.1 < r := j.2
-    have hk : k.1 < 8 := k.2
-    omega⟩
+  fun k => x (finProdFinEquiv (k, j))
 
 /-- The interleaved paper presentation of the r-fold Seed8 direct sum. -/
 def paperFr (r : Nat) (x : Fin (8 * r) → ZMod 2) : ZMod 2 :=
@@ -212,6 +209,7 @@ def paperBlockLinearEquiv (r : Nat) :
 theorem paperBlockLinearEquiv_apply
     (r : Nat) (x : Fin (8 * r) → ZMod 2) :
     paperBlockLinearEquiv r x = fun j => paperBlock r x j := by
+  ext j k
   rfl
 
 /-- The interleaved paper function is the certified block sum after a linear coordinate change. -/
@@ -220,6 +218,8 @@ theorem paperFr_eq_blockSum_comp_linearEquiv
     paperFr r =
       (blockSum (fun _ : Fin r => seed)) ∘ paperBlockLinearEquiv r := by
   funext x
-  rfl
+  rw [paperFr_eq_blockSum]
+  congr 1
+  exact (paperBlockLinearEquiv_apply r x).symm
 
 end VonoExactIndex
