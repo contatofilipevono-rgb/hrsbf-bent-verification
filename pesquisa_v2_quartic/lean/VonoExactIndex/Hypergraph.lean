@@ -54,4 +54,25 @@ theorem hypergraphIndependent_mono {n : Nat}
   intro S hS i hi j hj hiS hjS
   exact hI S hS i (hJI hi) j (hJI hj) hiS hjS
 
+/-- The directions supported on an independent vertex set form a submodule. -/
+def independentCoordinateSubmodule {n : Nat} (I : Finset (Fin n)) :
+    Submodule (ZMod 2) (Fin n → ZMod 2) where
+  carrier := {a | ∀ i, i ∉ I → a i = 0}
+  zero_mem' := by
+    intro i hi
+    rfl
+  add_mem' := by
+    intro a b ha hb i hi
+    simp [ha i hi, hb i hi]
+  smul_mem' := by
+    intro t a ha i hi
+    simp [ha i hi]
+
+/-- A coordinate direction belongs to the independent-coordinate submodule
+exactly when it vanishes off the selected vertices. -/
+theorem mem_independentCoordinateSubmodule {n : Nat}
+    (I : Finset (Fin n)) (a : Fin n → ZMod 2) :
+    a ∈ independentCoordinateSubmodule I ↔
+      ∀ i, i ∉ I → a i = 0 := Iff.rfl
+
 end VonoExactIndex
