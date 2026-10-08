@@ -7,3 +7,5 @@ import VonoExactIndex.ExactIndex
 import VonoExactIndex.LinearTransport
 import VonoExactIndex.Seed8
 import VonoExactIndex.PaperIndex
+
+import VonoExactIndex.Hypergraph
