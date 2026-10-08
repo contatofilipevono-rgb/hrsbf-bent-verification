@@ -10,7 +10,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-We give an explicit family of quartic vectorial Boolean functions indexed by oriented simple graphs. A computationally certified eight-variable seed yields exact relaxed second-derivative index, robust EA indecomposability for connected graphs, and classification of canonical representatives by oriented-graph isomorphism. The construction provides a quantitative lower bound on inequivalent indecomposable functions.
+We give an explicit family of quartic vectorial Boolean functions indexed by oriented simple graphs. An eight-variable seed with an independently checkable finite certificate yields exact relaxed second-derivative index, robust EA indecomposability for connected graphs, and classification of canonical representatives by oriented-graph isomorphism. The construction provides a quantitative lower bound on inequivalent indecomposable functions.
 \end{abstract}
 \section{Definitions and construction}
 Let $D_aF(x)=F(x+a)+F(x)$ for a vectorial Boolean function $F:V\to W$. Define
@@ -51,12 +51,12 @@ Condition \eqref{A} implies $\phi_i$ has zero radical. If $a\in V_j$ and $b,c,d\
 
 Under $H(x)=B F(Ax+t)+L(x)$, fourth derivatives transform as $T_H=B T_F(A\cdot,A\cdot,A\cdot,A\cdot)$, hence $\mathcal C(T_H)=A^{-1}\mathcal C(T_F)A$. Any EA equivalence between functions of form \eqref{construction}, even with quadratic perturbations, therefore permutes input blocks.
 
-For $i\ne j$, $a,b\in V_i$, $c\in V_j$, the third derivative is independent of the base point:
+For $i\ne j$, $a,b\in V_i$, $c\in V_j$, the \emph{restricted mixed} third derivative is independent of the base point (the unrestricted third derivative of a quartic function need not be constant):
 \[
 D_aD_bD_cF_{\vec G}
 =\mathbf1_{i\to j}e_i(a_0b_1+a_1b_0)c_0.
 \]
-Its nonvanishing is equivalent to $i\to j$. It is preserved by blockwise invertible changes of input coordinates, invertible output transformations, translations and quadratic perturbations. Therefore EA equivalence induces oriented-graph isomorphism. Conversely, an oriented-graph isomorphism simultaneously permutes the identical input seed blocks and output coordinates, yielding linear equivalence of canonical representatives. This proves (3) and (4).
+Its nonvanishing is equivalent to $i\to j$. More intrinsically, define the directed relation $i\rightsquigarrow j$ by the nonvanishing of the restricted trilinear map $V_i\times V_i\times V_j\to W$. The centroid recovers the unordered family of input blocks, so an EA input equivalence permutes those blocks. Under such a block permutation, the trilinear map is carried by invertible changes in each of its three arguments and by the invertible output map $B$. Translation does not change this mixed restriction: the fourth derivative with two directions in $V_i$ and two in $V_j$ vanishes, because the quartic part is block-separated. A quadratic perturbation has zero third derivative. Thus the relation $i\rightsquigarrow j$ is an EA invariant and recovers the orientation. Therefore EA equivalence induces oriented-graph isomorphism. Conversely, an oriented-graph isomorphism simultaneously permutes the identical input seed blocks and output coordinates, yielding linear equivalence of canonical representatives. This proves (3) and (4).
 
 Finally, an EA direct-product decomposition induces a nontrivial centroid idempotent by transporting the input projection onto one factor. It must partition entire blocks. If the underlying graph is connected, some directed edge crosses that partition, giving a nonzero mixed third derivative. A direct product has zero mixed derivatives across its input factors, a contradiction. The argument is unaffected by quadratic perturbations, proving (2).
 \end{proof}
@@ -71,9 +71,9 @@ pairwise EA-inequivalent, EA-indecomposable canonical functions $\F_2^{8r}\to\F_
 Fix the star edges $1\to j$ for $2\le j\le r$. For each of the $\binom{r-1}{2}$ remaining unordered pairs choose no edge or one of its two directions. All resulting graphs are connected. An oriented-graph isomorphism class has at most $r!$ labeled members. Apply Theorem~\ref{main}.
 \end{proof}
 \section{Finite seed certificate and reproducibility}
-The associated contraction $C_\phi:\bigwedge^2\F_2^8\to(\bigwedge^2\F_2^8)^*$ has rank $22$ and kernel dimension $6$. The $63$ nonzero kernel bivectors have alternating-matrix ranks $4$ (three) and $8$ (sixty), never $2$. Since a nonzero decomposable bivector has rank $2$, this certifies \eqref{A}. The accompanying script \texttt{V2\_graph\_no\_extra\_output.py} supplies the finite verification; the infinite-family proof is mathematical and is not formally checked in Lean.
+The associated contraction $C_\phi:\bigwedge^2\F_2^8\to(\bigwedge^2\F_2^8)^*$ has rank $22$ and kernel dimension $6$. The $63$ nonzero kernel bivectors have alternating-matrix ranks $4$ (three) and $8$ (sixty), never $2$. Since a nonzero decomposable bivector has rank $2$, this certifies \eqref{A}. The accompanying script \texttt{V2\_graph\_no\_extra\_output.py} explicitly constructs the quartic polarization from the stated rotation orbits, performs binary elimination, enumerates all 63 nonzero kernel elements, and checks their alternating-matrix ranks. Its successful execution is a reproducible computational certificate of \eqref{A}; the infinite-family proof is mathematical and is not formally checked in Lean.
 \section{Scope and related literature}
-Relaxed $\mathcal M$-subspaces and the scalar relaxed linearity index are established concepts, as are EA-equivalence invariants and algorithms. The proposed contribution is the specific graph-indexed quartic vectorial construction and its classification by oriented-graph isomorphism. Bibliographic priority remains to be verified. The equivalence biconditional is asserted only for canonical representatives; for arbitrary quadratic perturbations we prove necessity, not sufficiency.
+Relaxed $\mathcal M$-subspaces and the scalar relaxed linearity index are established concepts, as are EA-equivalence invariants and algorithms. The proposed contribution is the specific graph-indexed quartic vectorial construction and its classification by oriented-graph isomorphism. Bibliographic priority remains to be verified. Tensor-centroid decomposition, graph-based equivalence encodings, and relaxed subspace invariants have antecedents; no novelty is claimed for those general methods. The specific combination of this quartic seed, exact index, and oriented-graph classification requires a targeted priority check. The equivalence biconditional is asserted only for canonical representatives; for arbitrary quadratic perturbations we prove necessity, not sufficiency.
 \begin{thebibliography}{9}
 \bibitem{polujan} A. Polujan and A. Pott, \emph{Cubic bent functions outside the completed Maiorana--McFarland class}, Designs, Codes and Cryptography (2020). Bibliographic details to verify.
 \bibitem{kaleyski} N. Kaleyski, \emph{Deciding EA-equivalence via invariants}, Cryptography and Communications (2022), \url{https://doi.org/10.1007/s12095-021-00513-y}.
