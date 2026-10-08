@@ -1,0 +1,42 @@
+name: Lean V2 graph EA classification
+on:
+  push:
+    branches:
+      - v2-graph-ea-isomorphism-2026-10-08
+    paths:
+      - 'pesquisa_v2_quartic/lean/**'
+      - '.github/workflows/lean-v2-graph-classification.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: pesquisa_v2_quartic/lean
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Fetch pinned dependencies and Mathlib cache
+        run: |
+          lean --version
+          lake exe cache get
+      - name: Build V2 and audit theorem dependencies
+        run: |
+          lake build
+          lake env lean SeedPropertyAAudit.lean
+          lake env lean GraphFamilyAudit.lean
+          lake env lean GraphClassificationAudit.lean
+      - name: Check for forbidden proof placeholders
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          for p in Path('VonoExactIndex').glob('*.lean'):
+              assert not re.search(r'\b(sorry|admit|axiom|unsafe)\b', p.read_text()), p
+          PY

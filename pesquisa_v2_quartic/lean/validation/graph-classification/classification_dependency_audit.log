@@ -1,0 +1,55 @@
+VonoExactIndex.GraphFamily.EAEquivalent.{u_1} {ι : Type u_1} (F G : Input ι → Output ι) : Prop
+VonoExactIndex.GraphFamily.QuadraticEA.{u_1} {ι : Type u_1} (F G : Input ι → Output ι) : Prop
+VonoExactIndex.GraphFamily.GraphIsomorphic.{u_1} {ι : Type u_1} (adjG adjH : ι → ι → Bool) : Prop
+VonoExactIndex.GraphFamily.recover_blocks.{u_1} {ι : Type u_1} [Fintype ι] [DecidableEq ι]
+  (A : Input ι ≃ₗ[ZMod 2] Input ι) (hA : ∀ (a b : Input ι), PairDependent a b ↔ PairDependent (A a) (A b)) :
+  ∃ p, ∀ (i : ι), ∃ e, ∀ (v : VonoExactIndex.SeedVec), A (Pi.single i v) = Pi.single (p i) (e v)
+VonoExactIndex.GraphFamily.quadraticEA_implies_graph_isomorphic.{u_1} {ι : Type u_1} [Fintype ι] [DecidableEq ι]
+  (adjG adjH : ι → ι → Bool) (hG : Loopless adjG) (hH : Loopless adjH)
+  (h : QuadraticEA (graphMap adjG) (graphMap adjH)) : GraphIsomorphic adjG adjH
+VonoExactIndex.GraphFamily.graph_isomorphic_implies_EA.{u_1} {ι : Type u_1} [Fintype ι] [DecidableEq ι]
+  (adjG adjH : ι → ι → Bool) (h : GraphIsomorphic adjG adjH) : EAEquivalent (graphMap adjG) (graphMap adjH)
+VonoExactIndex.GraphFamily.canonical_EA_iff_graph_isomorphic.{u_1} {ι : Type u_1} [Fintype ι] [DecidableEq ι]
+  (adjG adjH : ι → ι → Bool) (hG : Loopless adjG) (hH : Loopless adjH) :
+  EAEquivalent (graphMap adjG) (graphMap adjH) ↔ GraphIsomorphic adjG adjH
+VonoExactIndex.GraphFamily.perturbed_EA_implies_graph_isomorphic.{u_1} {ι : Type u_1} [Fintype ι] [DecidableEq ι]
+  (adjG adjH : ι → ι → Bool) (hG : Loopless adjG) (hH : Loopless adjH) (QG QH : Input ι → Output ι)
+  (hQG : HasConstantSecondDifferences QG) (hQH : HasConstantSecondDifferences QH)
+  (h : EAEquivalent (addVector (graphMap adjG) QG) (addVector (graphMap adjH) QH)) : GraphIsomorphic adjG adjH
+VonoExactIndex.GraphFamily.ANF_perturbed_EA_implies_graph_isomorphic.{u_1, u_2} {ι : Type u_1} [Fintype ι]
+  [DecidableEq ι] {κ : Type u_2} [Fintype κ] (adjG adjH : ι → ι → Bool) (hG : Loopless adjG) (hH : Loopless adjH)
+  (cG cH : Output ι) (LG LH : Input ι →ₗ[ZMod 2] Output ι) (lG mG lH mH : κ → Input ι →ₗ[ZMod 2] ZMod 2)
+  (wG wH : κ → Output ι)
+  (h :
+    EAEquivalent (addVector (graphMap adjG) fun x i => cG i + LG x i + ∑ k, wG k i * ((lG k) x * (mG k) x))
+      (addVector (graphMap adjH) fun x i => cH i + LH x i + ∑ k, wH k i * ((lH k) x * (mH k) x))) :
+  GraphIsomorphic adjG adjH
+'VonoExactIndex.GraphFamily.representation_pair' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+'VonoExactIndex.GraphFamily.recover_blocks' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+'VonoExactIndex.GraphFamily.edge_detected_iff' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+'VonoExactIndex.GraphFamily.representation_edges' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+'VonoExactIndex.GraphFamily.graph_isomorphic_implies_EA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VonoExactIndex.GraphFamily.canonical_EA_iff_graph_isomorphic' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+'VonoExactIndex.GraphFamily.perturbed_EA_implies_graph_isomorphic' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+'VonoExactIndex.GraphFamily.ANF_perturbed_EA_implies_graph_isomorphic' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]

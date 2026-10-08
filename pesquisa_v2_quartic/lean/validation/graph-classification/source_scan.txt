@@ -1,0 +1,4 @@
+Every VonoExactIndex/*.lean source passed the forbidden proof-placeholder scan.
+All three audits exited 0; the full build exited 0.
+Dependencies restricted to propext, Classical.choice, Quot.sound and Lean.ofReduceBool.
+Git diff --check passed.

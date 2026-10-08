@@ -1,0 +1,19 @@
+import VonoExactIndex
+open VonoExactIndex.GraphFamily
+#check EAEquivalent
+#check QuadraticEA
+#check GraphIsomorphic
+#check recover_blocks
+#check quadraticEA_implies_graph_isomorphic
+#check graph_isomorphic_implies_EA
+#check canonical_EA_iff_graph_isomorphic
+#check perturbed_EA_implies_graph_isomorphic
+#check ANF_perturbed_EA_implies_graph_isomorphic
+#print axioms representation_pair
+#print axioms recover_blocks
+#print axioms edge_detected_iff
+#print axioms representation_edges
+#print axioms graph_isomorphic_implies_EA
+#print axioms canonical_EA_iff_graph_isomorphic
+#print axioms perturbed_EA_implies_graph_isomorphic
+#print axioms ANF_perturbed_EA_implies_graph_isomorphic
