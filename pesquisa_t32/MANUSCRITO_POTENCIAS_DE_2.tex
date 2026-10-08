@@ -1,0 +1,104 @@
+\documentclass[11pt]{article}
+\usepackage[margin=2.7cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\F}{\mathbb F_2}
+\newcommand{\rad}{\operatorname{rad}}
+\title{A Fiber Obstruction to Homogeneous Cubic Rotation-Symmetric Bent Functions in Power-of-Two Dimensions}
+\author{Author details to be completed}
+\date{Working manuscript --- October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We prove that no homogeneous cubic rotation-symmetric Boolean function is bent in \(n=2^k\) variables, for \(k\ge2\). The proof combines a quadratic cyclic-module lemma with a diagonal fiber decomposition. Homogeneity and the half-turn make the diagonal fiber zero; Parseval then forces every other fiber to be balanced. The all-ones derivative and cubic polarization force the complementary fiber to be affine, while one-step rotation forces that affine function to be constant, giving a contradiction. Finite computations in dimensions up to 64 audit the identities used in the proof but are not needed for the theorem.
+\end{abstract}
+
+\section{Definitions}
+All vector spaces and Boolean polynomials are over \(\F\), while character sums are over the integers. Let \(S_m\) be the right cyclic shift on \(\F^m\), \((S_mx)_i=x_{i-1\pmod m}\). A Boolean function is rotation symmetric if it is invariant under \(S_m\). Its Walsh transform is
+\[
+W_f(b)=\sum_x(-1)^{f(x)+b\cdot x}.
+\]
+For even \(m\), the function is bent if \(|W_f(b)|=2^{m/2}\) at every frequency. Equivalently, every nonzero directional derivative \(D_af(x)=f(x+a)+f(x)\) is balanced.
+
+\section{A quadratic cyclic lemma}
+\begin{lemma}\label{lem:q}
+Let \(n=2^k\). If a rotation-symmetric Boolean function \(q:\F^n\to\F\) has degree at most two and is balanced, then its polar form is zero.
+\end{lemma}
+\begin{proof}
+Put \(Q(x)=q(x)+q(0)\), \(B(x,y)=Q(x+y)+Q(x)+Q(y)\), and \(K=\rad B\). If \(B\ne0\), then \(K\) is a proper \(S_n\)-invariant subspace. Identify \(\F^n\) with
+\[
+\mathcal R_n=\F[X]/(X^n+1)=\F[X]/((X+1)^n),
+\]
+where \(S_n\) is multiplication by \(X\). An odd-weight vector has value one at \(X=1\), hence is a unit of \(\mathcal R_n\). If \(K\) contained such a vector, its shifts would span the whole module. Thus \(K\) consists of even-weight vectors.
+
+The even-weight subspace equals \(\operatorname{im}(S_n+I)\): containment is immediate and both spaces have dimension \(n-1\). For \(r\in K\), write \(r=S_ny+y\). Rotation invariance and alternation give
+\[
+Q(r)=Q(S_ny)+Q(y)+B(S_ny,y)=B(r+y,y)=0.
+\]
+If \(A(q)=\sum_x(-1)^{q(x)}\), character orthogonality yields
+\[
+A(q)^2=\sum_r(-1)^{Q(r)}\sum_x(-1)^{B(x,r)}
+=2^n\sum_{r\in K}(-1)^{Q(r)}=2^n|K|>0.
+\]
+So \(B\ne0\) prevents balance. The contrapositive proves the claim. Affine terms are fully retained in this argument.
+\end{proof}
+
+\section{The fiber obstruction}
+\begin{theorem}\label{thm:main}
+For every \(k\ge2\), no homogeneous cubic rotation-symmetric Boolean function on \(\F^{2^k}\) is bent.
+\end{theorem}
+\begin{proof}
+Put \(n=2^k=2h\). For \(u,z\in\F^h\), define
+\[
+d(u)=(u,u),\qquad e(z)=(0,z),\qquad F_z(u)=f(u,u+z).
+\]
+The half-turn \(S_n^h\) pairs the cubic ANF monomials without fixed monomials: a fixed-point-free involution cannot preserve a support of odd size. Both members of each pair agree on \(d(u)\), so
+\[
+f(d(u))=0,\qquad F_0=0.
+\]
+Furthermore, \(F_z(u)=D_{e(z)}f(d(u))\), and hence \(\deg F_z\le2\).
+
+Let \(A_z=\sum_u(-1)^{F_z(u)}\). The map \((u,z)\mapsto(u,u+z)\) is invertible. If \(f\) were bent, then
+\[
+\widehat A(b)=\sum_z(-1)^{b\cdot z}A_z=W_{\widetilde f}(0,b),
+\qquad |\widehat A(b)|=2^h.
+\]
+Parseval gives
+\[
+\sum_z A_z^2=2^{-h}\sum_b\widehat A(b)^2=2^{2h}.
+\]
+The term \(A_0^2=(2^h)^2\) already equals the right side, so \(A_z=0\) for every \(z\ne0\). In particular, \(F_{\mathbf1_h}\) is balanced.
+
+Set \(a=d(\mathbf1_h)=\mathbf1_n\). The derivative \(D_af\) is a balanced rotation-symmetric function of degree at most two. Lemma~\ref{lem:q} implies \(B_{D_af}=0\).
+
+Let \(T(p,q,r)=D_pD_qD_rf(0)\), the symmetric trilinear polarization of \(f\). The zero diagonal restriction and half-turn invariance give
+\begin{align*}
+B_{F_{\mathbf1_h}}(u,v)
+ &=T(d(u),d(v),e(\mathbf1_h))\\
+ &=T(d(u),e(v),d(\mathbf1_h))\\
+ &=B_{D_af}(d(u),e(v))=0.
+\end{align*}
+For completeness, the middle equality follows after splitting \(d(\mathbf1_h)=(\mathbf1_h,0)+(0,\mathbf1_h)\), applying the half-turn simultaneously to the first resulting term, and recombining \((v,0)+(0,v)=d(v)\). Thus the quadratic fiber has zero polar and is affine: \(F_{\mathbf1_h}(u)=L(u)+c\).
+
+Finally,
+\[
+S_n(u,u+\mathbf1_h)=
+\bigl(S_hu+e_0,S_hu+e_0+\mathbf1_h\bigr),
+\]
+so rotation symmetry gives \(F_{\mathbf1_h}(S_hu+e_0)=F_{\mathbf1_h}(u)\). Taking \(u=0\) yields \(L(e_0)=0\), and comparison of linear parts yields \(L(S_hu)=L(u)\). A shift-invariant linear form equals \(\beta\sum_i u_i\), while \(L(e_0)=\beta\); hence \(L=0\). The fiber is constant, so \(A_{\mathbf1_h}=\pm2^h\), contradicting its required balance.
+\end{proof}
+
+\section{Positioning and verification}
+The cyclic-module structure and the balancing behavior of quadratic rotation-symmetric functions are related to the work of Chirvasitu and Cusick~\cite{cc2020,cc2024}. Lemma~\ref{lem:q} is therefore presented as a self-contained preliminary result, without a claim that its substance is new. Recent work of Sun, Shi, Liu and Fu obtains support-dependent nonexistence results for homogeneous rotation-symmetric bent functions~\cite{sun2026}. A broader literature review is still required before claiming priority for Theorem~\ref{thm:main} or for its fiber-polarization mechanism.
+
+The accompanying standard-library program \texttt{audit\_power\_of\_two\_theorem.py} checks the generator-level diagonal cancellation, degree drop, polar-transfer identity and twisted-fiber invariance for \(n=4,8,16,32,64\). It exhausts the homogeneous cubic rotation-symmetric spaces for \(n=4,8\), exhausts the quadratic check through \(n=16\), and uses deterministic controls at \(n=32,64\). The theorem itself is algebraic and does not depend on these computations.
+
+The scope is degree three, homogeneity, full one-step rotation symmetry and power-of-two dimension. No claim is made here for arbitrary even dimensions, nonhomogeneous cubics or higher degrees.
+
+\begin{thebibliography}{9}
+\bibitem{cc2020} A. Chirvasitu and T. W. Cusick, Affine equivalence for quadratic rotation symmetric Boolean functions, \emph{Designs, Codes and Cryptography} 88 (2020), 1301--1329. \href{https://doi.org/10.1007/s10623-020-00748-5}{doi:10.1007/s10623-020-00748-5}.
+\bibitem{cc2024} A. Chirvasitu and T. W. Cusick, Quadratic rotation symmetric Boolean functions, \emph{Discrete Applied Mathematics} 343 (2024), 91--105. \href{https://arxiv.org/abs/2304.12734}{arXiv:2304.12734}.
+\bibitem{sun2026} L. Sun, Z. Shi, J. Liu and F.-W. Fu, On the conjecture about the nonexistence of homogeneous rotation symmetric bent functions, \emph{Designs, Codes and Cryptography} 94, article 93 (2026). \href{https://doi.org/10.1007/s10623-026-01848-4}{doi:10.1007/s10623-026-01848-4}.
+\end{thebibliography}
+\end{document}

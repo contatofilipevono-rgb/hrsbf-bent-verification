@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-06",
+  "batch_size": 24,
+  "previously_SAT_certified": 8,
+  "new_analytic_exclusions": 16,
+  "remaining_in_this_batch": 0,
+  "scope": "Only the named fixed-H weight-three batch; not all cubic HRSBF n=32.",
+  "certificate": "certificado_derivada_uns_24.json",
+  "proof": "OBSTRUCAO_DERIVADA_UNS_2026_10_06.md",
+  "previous_16_now_excluded": [
+    "0xa2000",
+    "0xa8000",
+    "0x20a000",
+    "0x2a0000",
+    "0x40022000",
+    "0x40028000",
+    "0x40082000",
+    "0x40088000",
+    "0x40220000",
+    "0x40280000",
+    "0x10000a000",
+    "0x1000a0000",
+    "0x100202000",
+    "0x100208000",
+    "0x140020000",
+    "0x140080000"
+  ]
+}

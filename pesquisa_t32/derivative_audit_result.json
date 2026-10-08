@@ -1,0 +1,12 @@
+{
+  "gate_truth_assignments": 64,
+  "witness_checks": 56496,
+  "truth_table_balance_checks": 1074,
+  "n32_derivative_point_checks": 1242,
+  "positive_controls": [
+    "quadratic bent in n=4",
+    "Maiorana-McFarland cubic bent in n=6 (inhomogeneous)"
+  ],
+  "status": "PASS",
+  "limitations": "Finite differential audit; not an UNSAT certificate or a bentness result in n=32."
+}

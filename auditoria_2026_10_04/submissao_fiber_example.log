@@ -1,0 +1,16 @@
+{
+  "candidate_sha256": "e10a203ef3f2a070afa5d1cf6b04ae190c00fa9b7e8b30f02c62cfff84ab71dc",
+  "sanf": [
+    [
+      0,
+      1,
+      2
+    ]
+  ],
+  "selected_orbits": 1,
+  "ANF_monomials": 32,
+  "status": "proved_non_bent_by_fiber",
+  "all_nonzero_fibers_checked": false,
+  "bentness_certified": false,
+  "scope": "An unbalanced nonzero coset excludes bentness. Passing these conditions is not sufficient to prove bentness."
+}

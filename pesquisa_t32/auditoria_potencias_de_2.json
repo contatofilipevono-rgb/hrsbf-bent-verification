@@ -1,0 +1,82 @@
+{
+  "claim": "No homogeneous cubic rotation-symmetric bent Boolean function exists in n=2^k variables (k>=2).",
+  "proof_status": "algebraic; these are finite controls, not a formal proof",
+  "generator_identities": [
+    {
+      "n": 4,
+      "cubic_orbits": 1,
+      "identities": "PASS"
+    },
+    {
+      "n": 8,
+      "cubic_orbits": 7,
+      "identities": "PASS"
+    },
+    {
+      "n": 16,
+      "cubic_orbits": 35,
+      "identities": "PASS"
+    },
+    {
+      "n": 32,
+      "cubic_orbits": 155,
+      "identities": "PASS"
+    },
+    {
+      "n": 64,
+      "cubic_orbits": 651,
+      "identities": "PASS"
+    }
+  ],
+  "quadratic_lemma_controls": [
+    {
+      "n": 4,
+      "mode": "exhaustive",
+      "quadratics_checked": 8,
+      "nonzero_polar_cases": 6,
+      "status": "PASS"
+    },
+    {
+      "n": 8,
+      "mode": "exhaustive",
+      "quadratics_checked": 32,
+      "nonzero_polar_cases": 30,
+      "status": "PASS"
+    },
+    {
+      "n": 16,
+      "mode": "exhaustive",
+      "quadratics_checked": 512,
+      "nonzero_polar_cases": 510,
+      "status": "PASS"
+    },
+    {
+      "n": 32,
+      "mode": "deterministic sample",
+      "quadratics_checked": 4096,
+      "nonzero_polar_cases": 4096,
+      "status": "PASS"
+    },
+    {
+      "n": 64,
+      "mode": "deterministic sample",
+      "quadratics_checked": 1024,
+      "nonzero_polar_cases": 1024,
+      "status": "PASS"
+    }
+  ],
+  "complete_small_dimension_controls": [
+    {
+      "n": 4,
+      "functions": 2,
+      "bent": 0,
+      "status": "PASS"
+    },
+    {
+      "n": 8,
+      "functions": 128,
+      "bent": 0,
+      "status": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "scope": "Literal original-coordinate criteria only; no affine-equivalence or novelty test.",
+  "records": [
+    {
+      "n": 16,
+      "cubic_orbits": 35,
+      "orbits_with_max_circular_gap_at_most_half": 14,
+      "nonzero_cubic_RS_functions": 34359738367,
+      "direct_union_Theorems_11_12_13": 16405,
+      "outside_direct_union": 34359721962
+    },
+    {
+      "n": 32,
+      "cubic_orbits": 155,
+      "orbits_with_max_circular_gap_at_most_half": 50,
+      "nonzero_cubic_RS_functions": 45671926166590716193865151022383844364247891967,
+      "direct_union_Theorems_11_12_13": 1125899906842729,
+      "outside_direct_union": 45671926166590716193865151022382718464341049238
+    }
+  ]
+}

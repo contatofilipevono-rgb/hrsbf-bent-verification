@@ -1,0 +1,466 @@
+[
+  {
+    "h": "0xc0000004",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "2": 4,
+      "4": 23,
+      "6": 120,
+      "8": 448,
+      "10": 1984,
+      "12": 1536
+    }
+  },
+  {
+    "h": "0x60000008",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "2": 4,
+      "4": 23,
+      "6": 120,
+      "8": 448,
+      "10": 1984,
+      "12": 1536
+    }
+  },
+  {
+    "h": "0x50000040",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "2": 5,
+      "4": 46,
+      "6": 480,
+      "8": 64,
+      "10": 3008,
+      "12": 512
+    }
+  },
+  {
+    "h": "0x42000080",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "2": 5,
+      "4": 46,
+      "6": 480,
+      "8": 64,
+      "10": 3008,
+      "12": 512
+    }
+  },
+  {
+    "h": "0x41000400",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "2": 4,
+      "4": 23,
+      "6": 120,
+      "8": 448,
+      "10": 1984,
+      "12": 1536
+    }
+  },
+  {
+    "h": "0x240000800",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "2": 4,
+      "4": 23,
+      "6": 120,
+      "8": 448,
+      "10": 1984,
+      "12": 1536
+    }
+  },
+  {
+    "h": "0x20a000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "4": 8,
+      "6": 27,
+      "8": 156,
+      "10": 1269,
+      "12": 2655
+    }
+  },
+  {
+    "h": "0x4000a000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "2": 3,
+      "4": 25,
+      "6": 140,
+      "8": 815,
+      "10": 1836,
+      "12": 1296
+    }
+  },
+  {
+    "h": "0x10000a000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "4": 4,
+      "6": 31,
+      "8": 30,
+      "10": 621,
+      "12": 3429
+    }
+  },
+  {
+    "h": "0xa2000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "4": 8,
+      "6": 27,
+      "8": 156,
+      "10": 1269,
+      "12": 2655
+    }
+  },
+  {
+    "h": "0x40022000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "4": 4,
+      "6": 31,
+      "8": 30,
+      "10": 621,
+      "12": 3429
+    }
+  },
+  {
+    "h": "0x100022000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "2": 3,
+      "4": 25,
+      "6": 140,
+      "8": 815,
+      "10": 1836,
+      "12": 1296
+    }
+  },
+  {
+    "h": "0x40082000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "4": 4,
+      "6": 31,
+      "8": 30,
+      "10": 621,
+      "12": 3429
+    }
+  },
+  {
+    "h": "0x100082000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "2": 3,
+      "4": 25,
+      "6": 140,
+      "8": 815,
+      "10": 1836,
+      "12": 1296
+    }
+  },
+  {
+    "h": "0x40202000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "2": 3,
+      "4": 25,
+      "6": 140,
+      "8": 815,
+      "10": 1836,
+      "12": 1296
+    }
+  },
+  {
+    "h": "0x100202000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "4": 4,
+      "6": 31,
+      "8": 30,
+      "10": 621,
+      "12": 3429
+    }
+  },
+  {
+    "h": "0xa8000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "4": 4,
+      "6": 31,
+      "8": 30,
+      "10": 621,
+      "12": 3429
+    }
+  },
+  {
+    "h": "0x228000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "2": 3,
+      "4": 25,
+      "6": 140,
+      "8": 815,
+      "10": 1836,
+      "12": 1296
+    }
+  },
+  {
+    "h": "0x40028000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "4": 8,
+      "6": 27,
+      "8": 156,
+      "10": 1269,
+      "12": 2655
+    }
+  },
+  {
+    "h": "0x288000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "2": 3,
+      "4": 25,
+      "6": 140,
+      "8": 815,
+      "10": 1836,
+      "12": 1296
+    }
+  },
+  {
+    "h": "0x40088000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "4": 8,
+      "6": 27,
+      "8": 156,
+      "10": 1269,
+      "12": 2655
+    }
+  },
+  {
+    "h": "0x100208000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "4": 8,
+      "6": 27,
+      "8": 156,
+      "10": 1269,
+      "12": 2655
+    }
+  },
+  {
+    "h": "0x140008000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "2": 3,
+      "4": 25,
+      "6": 140,
+      "8": 815,
+      "10": 1836,
+      "12": 1296
+    }
+  },
+  {
+    "h": "0x2a0000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "4": 4,
+      "6": 31,
+      "8": 30,
+      "10": 621,
+      "12": 3429
+    }
+  },
+  {
+    "h": "0x1000a0000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "4": 8,
+      "6": 27,
+      "8": 156,
+      "10": 1269,
+      "12": 2655
+    }
+  },
+  {
+    "h": "0x40220000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "4": 8,
+      "6": 27,
+      "8": 156,
+      "10": 1269,
+      "12": 2655
+    }
+  },
+  {
+    "h": "0x140020000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "4": 4,
+      "6": 31,
+      "8": 30,
+      "10": 621,
+      "12": 3429
+    }
+  },
+  {
+    "h": "0x40280000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "4": 8,
+      "6": 27,
+      "8": 156,
+      "10": 1269,
+      "12": 2655
+    }
+  },
+  {
+    "h": "0x140080000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "4": 4,
+      "6": 31,
+      "8": 30,
+      "10": 621,
+      "12": 3429
+    }
+  },
+  {
+    "h": "0x140200000",
+    "status": "unresolved_by_linear_and_forced_radical_conditions",
+    "family_dimension": 120,
+    "linear_rank": 35,
+    "remaining_linear_dimension": 120,
+    "lower_rank_fibers_tested": 4115,
+    "polar_rank_counts": {
+      "2": 3,
+      "4": 25,
+      "6": 140,
+      "8": 815,
+      "10": 1836,
+      "12": 1296
+    }
+  }
+]

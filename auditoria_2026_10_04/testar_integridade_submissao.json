@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "case": "missing",
+      "returncode": 1,
+      "expected_returncode": 1
+    },
+    {
+      "case": "mismatched",
+      "returncode": 1,
+      "expected_returncode": 1
+    },
+    {
+      "case": "matching",
+      "returncode": 0,
+      "expected_returncode": 0
+    }
+  ],
+  "scope": "Isolated negative integrity controls; no changes to repository artifacts."
+}

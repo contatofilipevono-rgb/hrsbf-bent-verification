@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "imports_production_modules": false,
+  "cubic_orbits_32": 155,
+  "cubic_orbits_16": 35,
+  "four_lift_groups": 35,
+  "zero_polar_orbits": 15,
+  "free_dimension": 120,
+  "certificates": {
+    "triagem_t32_peso3.json": {
+      "families": 6546,
+      "certificates_verified": 5879,
+      "weight3_certificates_verified": 5878,
+      "sha256": "01002d3fefd453a02548aa778e38530ff05a4ee09ecf9fcef605b27c391240e5"
+    },
+    "etapa_667_512.json": {
+      "families": 667,
+      "certificates_verified": 618,
+      "weight3_certificates_verified": 618,
+      "sha256": "e15e3170ed689dc1c551d336d9b3a0ce1554776465e26282f68ecff480022478"
+    },
+    "etapa_49_orbitas.json": {
+      "families": 49,
+      "certificates_verified": 19,
+      "weight3_certificates_verified": 19,
+      "sha256": "e6ef188d63533af346eb60730dfa31daa3bdce9765786fd2d454aefa3ad1e397"
+    }
+  },
+  "model": {
+    "h": "0xc0000004",
+    "fiber_orbits_verified": 4115,
+    "direct_anf_basis_evaluations_verified": 23164,
+    "xor_gates_verified": 211280,
+    "balance_clauses_verified": 4082,
+    "cnf_sha256": "9c074ea6127aa610afc35aa889c53021e86afcf882a9110554e7a4e573c67d25",
+    "proof_checked_by_this_script": false
+  },
+  "seconds": 92.256
+}

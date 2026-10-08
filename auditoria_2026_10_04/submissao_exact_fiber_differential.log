@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "differential_ANF_points": 2304,
+  "differential_polar_pairs": 2304,
+  "full_coset_points": 65536,
+  "direct_coset_sign_sum": 512,
+  "quadratic_sum_controls": [
+    65536,
+    -65536,
+    0,
+    32768,
+    256
+  ],
+  "original_orbits": 155,
+  "reconstructed_certificate_rows": 7,
+  "certificate_sha256": "bc17579328d0d389a50af3bd55662596bc7e16c78cfb7dbeb53c6d9462786234",
+  "certificate_representative_ranks": [
+    14,
+    14,
+    14,
+    14,
+    14,
+    14,
+    14
+  ],
+  "XOR_rows": 0,
+  "XOR_rhs": 1,
+  "invalid_inputs_rejected": 4,
+  "scope": "Differential implementation checks and seven row reconstruction; use verificar_7_fibras.py for the full fixed-H family proof.",
+  "seconds": 1.516
+}

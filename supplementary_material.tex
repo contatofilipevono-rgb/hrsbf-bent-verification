@@ -29,6 +29,7 @@
 \newcommand{\wt}{\mathrm{wt}}
 \newcommand{\supp}{\mathrm{supp}}
 \newcommand{\rank}{\mathrm{rank}}
+\DeclareMathOperator{\rad}{rad}
 
 \lstset{
     language=Python,
@@ -50,9 +51,7 @@
 \Large Technical Dossier, Proof Compendium, and Verification Protocol for\\
 \textit{Odd-Order Reduction and a Divisibility Obstruction for Cubic Homogeneous Rotation-Symmetric Bent Functions}}
 
-\author{
-  \textbf{Valer et al.}\thanks{Working paper and independent research dossier on cryptographic Boolean functions.}
-}
+\author{Author details to be completed}
 
 \date{October 2026}
 
@@ -82,33 +81,15 @@ n \in \{2m, 4m, 8m, 16m\} \quad (\forall m \ge 1 \text{ odd, prime or composite}
 \section{Extended Literature Matrix}
 %======================================================================
 
-Table~\ref{tab:lit_extended} contrasts this work with previous milestones.
+This comparison distinguishes consulted statements from unresolved overlap.
+Cusick--Sanger~\cite{cusick2017}, Theorem 3.8, excludes odd homogeneous degree for $n=2p$, $p$ an odd prime. That theorem's stated scope does not include arbitrary odd composite factors. Zhang--Gao~\cite{zhang2013} supplies support-dependent nonexistence criteria; it is not being used here as a complete exclusion for all cubic supports.
 
-\begin{table}[htbp]
-\centering
-\small
-\caption{Chronological comparison of results on the St\u{a}nic\u{a}--Maitra conjecture for degree $d = 3$.}
-\label{tab:lit_extended}
-\begin{tabular}{llll}
-\toprule
-Year \& Reference & Method & Scope & Nature of Result \\
-\midrule
-2008: St\u{a}nic\u{a} \& Maitra~\cite{stanica2008} & Orbit counting & All $n$ & Formulation of Conjecture 12 ($d > 2$) \\
-2010: Meng et al.~\cite{meng2010} & Monomial cyclic distance & All $n$ & Monomials ($|\mathcal{O}|=1$), max distance $\le n/2$ \\
-2013: Zhang \& Gao~\cite{zhang2013} & 2-adic valuation \& SANF & Partial & Restrictions on monomial supports \\
-2017: Cusick \& Sanger~\cite{cusick2017} & Hadamard entry $M_{0, 2^n-1}$ & $n = 2p$ ($p$ odd prime) & Proves degree must be even for $n = 2p$ \\
-2024: Calder\'on-G\'omez et al.~\cite{calderon2024} & $k$-RSBF orbit structures & Various & Classification; conjecture remains open \\
-2026: Sun et al.~\cite{sun2026} & SANF / derivative bounds & Partial & Conditional non-existence \\
-\textbf{2026: This Work} & \textbf{Odd-Order Reduction + Ward} & $\mathbf{n \not\equiv 0 \pmod{32}}$ & \textbf{All $n \in \{2m, 4m, 8m, 16m\}$ ($\forall m$ odd)} \\
-\bottomrule
-\end{tabular}
-\end{table}
+The full article of Sun--Shi--Liu--Fu~\cite{sun2026} was supplied and read on 4 October 2026. Corollary 2 covers $n=2p_1^{a_1}\cdots p_r^{a_r}$ under the inequalities $p_i>2^{\,2p_1^{a_1}\cdots p_{i-1}^{a_{i-1}}}$ for $i\ge2$, including all $n=2p^a$. Theorem 6 fixes a support $P$ and provides a bound $e_0(P)$ for exclusion in dimensions divisible by $2^{e_0(P)}$. Its quantifiers do not supply one exponent for every support. Theorems 2--5 add orbit and support conditions. The present uniform statement for $v_2(n)=1,2,3,4$ has a different declared scope, but this is not a claim of priority throughout the literature.
 
-\paragraph{Why Cusick--Sanger (2017) Fails for Composite $m$:}
-The proof of Cusick and Sanger relies on expressing the extremal entry of the Hadamard matrix $M_{0, 2^n-1}$ in terms of orbit counts modulo divisors of $n$. When $n = 2p$ ($p$ prime), the only proper divisors are $1, 2, p$, which allows Euler's criterion to pin down the parity of the exponential sum. For composite odd factors $m$ (e.g., $m = 9, 15, 21, 25$), intermediate sub-orbits break this one-step parity collapse. Our odd-order reduction circumvents this completely by decomposing the space directly via Maschke's theorem for the group $C_m$ over $\F$.
+The repository file \texttt{COMPARACAO\_SUN\_2026.md} records the statement-by-statement comparison, examples of overlap ($n=18,50,402$), and the failed prime-separation hypothesis at $n=30$. It also documents a missing linear term in the printed Eq.~(21): for the full contiguous cubic orbit, direct expansion gives $D_{1^n}f=Q_2+L$. An independent full truth-table check at $n=8,16$ confirms this identity; no general refutation of Theorem 6 is inferred from that observation.
 
 %======================================================================
-\section{Complete Proof of the Odd-Order Quadratic Reduction Lemma}
+\section{Proof of the odd-order reduction lemma}
 %======================================================================
 
 \begin{lemma}[Symplectic Decomposition and Equivalence of Balance]
@@ -136,7 +117,7 @@ It remains to show that $S_K(q|_K) \ne 0$. We compute the square of the exponent
 S_K(q|_K)^2 &= \sum_{x, y \in K} (-1)^{q(x) \oplus q(y)} = \sum_{x, z \in K} (-1)^{q(x \oplus z) \oplus q(x)} \nonumber \\
 &= \sum_{z \in K} (-1)^{q(z)} \sum_{x \in K} (-1)^{B(x, z)} = |K| \sum_{z \in \rad(B|_K)} (-1)^{q(z)},
 \end{align}
-since $\sum_{x \in K} (-1)^{B(x, z)}$ vanishes unless $z \in \rad(B|_K)$, where it equals $|K|$. For any $z \in \rad(B|_K)$, $q(z)$ is linear. Since $q$ is $T$-invariant and $m$ is odd:
+since $\sum_{x \in K} (-1)^{B(x, z)}$ vanishes unless $z \in \rad(B|_K)$, where it equals $|K|$. The radical is $T$-invariant: for $z$ in the radical and $k\in K$, $B(Tz,k)=B(z,T^{-1}k)=0$. The restriction of $q$ to this radical is linear. Since $q$ is $T$-invariant and $m$ is odd:
 \begin{equation}
 q(z) = m \cdot q(z) = \sum_{j=0}^{m-1} q(T^j z) = q(Pz) = q(0) = 0.
 \end{equation}
@@ -171,7 +152,7 @@ Because $f$ is strictly homogeneous of degree 3, $f(0) = 0$. Under the coordinat
 \begin{equation}
 \mathcal{F}_t = \mathrm{span}\{O^{(2)}_d, O^{(3)}_{a,b}, L\}.
 \end{equation}
-This absence of constant terms guarantees that $g|_{V_{t/2}} \equiv 0$ identically on the antipodal subspace.
+Define $A_t=\{y\in\F^t:y_{i+t/2}=y_i\}$. The generators above have full-length orbits; pairing the translates indexed by $i$ and $i+t/2$ proves $g|_{A_t}=0$. Absence of a constant term alone would not imply this property. There are eight quadratic monomial orbits at $t=16$, but only the seven full-length ones occur here; the antipodal orbit cancels in the restriction.
 \end{proposition}
 
 %======================================================================
@@ -204,7 +185,10 @@ Since $t/2 - 2^a \ge 1$, the second factor is odd, confirming $v_2(\wt(O_d)) = t
 \end{proof}
 
 %======================================================================
-\section{The 43 Generators in $t = 16$ and Ward Audit Data}
+\paragraph{Comparison with Meng--Chen--Fu (2010).}
+The full text of~\cite{meng2010} was also reviewed. Theorem 11 excludes all degree-greater-than-two single-orbit homogeneous functions; Theorem 12 concerns the elementary symmetric function, and Theorem 13 requires that the largest circular support gap be at most half the dimension. These conditions do not yield an unconditional exclusion of every cubic SANF in dimension 16. The contiguous dimension-32 example is already excluded by Theorem 11 and is only a divisibility control. The detailed comparison and exact orbit counts are recorded in \texttt{COMPARACAO\_MENG\_2010.md}.
+
+\section{The 43 generators in \texorpdfstring{$t=16$}{t=16} and Ward audit data}
 %======================================================================
 
 In $t = 16$, the complete-orbit space $\mathcal{F}_{16}$ has dimension 43 (7 quadratic orbits, 35 cubic orbits, and the all-ones linear form $L$):
@@ -255,23 +239,12 @@ Quadruples ($k = 4$) & $123410$ & $\wt(w_i \cap w_j \cap w_l \cap w_p) \equiv 0 
 \end{table}
 
 %======================================================================
-\section{Exhaustive Verification in Low Dimensions ($d = 3$ and $d = 4$)}
+\section{Verification in low dimensions}
 %======================================================================
 
-\paragraph{Cubic Homogeneous RSBFs ($n \le 12$):}
-\begin{itemize}
-    \item $n = 4$: 1 orbit $\to$ 0 bent.
-    \item $n = 6$: 4 orbits, $2^4 = 16$ functions $\to$ 0 bent.
-    \item $n = 8$: 7 orbits, $2^7 = 128$ functions $\to$ 0 bent.
-    \item $n = 10$: 12 orbits, $2^{12} = 4096$ functions $\to$ 0 bent.
-    \item $n = 12$: 19 orbits, $2^{19} = 524{,}288$ functions; exactly $32{,}878$ satisfy $|W_f(0)| = 64$; 0 bent by FWHT.
-\end{itemize}
+The current evidence is the standard-library program \texttt{avanco\_t32/verificador\_integrado.py}. It exhaustively checks $\mathcal F_t$ for $t=2,4,8$ (respectively 2, 8 and 2048 functions), all 136697 required generator intersections at $t=16$, and all 1024 homogeneous quartic RS functions at $n=8$, including zero. It also verifies the nonhomogeneous cubic bent positive control at $n=12$ (weight 2080 and Walsh values $\pm64$). The quartic check is a reproduction control; no novelty is claimed.
 
-\paragraph{Quartic Homogeneous RSBFs ($n = 8, 10$):}
-\begin{itemize}
-    \item $n = 8$: 10 orbits, $2^{10} = 1024$ functions $\to$ 0 bent.
-    \item $n = 10$: 22 orbits, $2^{22} = 4{,}194{,}304$ functions; $78{,}116$ satisfy $|W_f(0)| = 32$; $1{,}706$ survive coordinate derivatives; 0 bent.
-\end{itemize}
+Historical exhaustive counts for other dimensions are not included in the current evidentiary summary without a matching execution record and specified verifier. The infinite-dimensional conclusion relies on the algebraic odd-order reduction, not on sampled odd multipliers.
 
 %======================================================================
 \section{Reviewer Frequently Asked Questions (FAQ)}
@@ -284,7 +257,15 @@ No. For degree 4, the directional derivatives have degree 3. The polar form of a
 Because $(-2)^{k-1} \equiv 0 \pmod{16}$ for all $k \ge 5$. Hence, all subsets of size $\ge 5$ contribute multiples of 16 in the inclusion-exclusion weight expansion.
 
 \paragraph{Q3: Does this prove the conjecture for $n = 32$?}
-No. For $n \equiv 0 \pmod{32}$, the direct weight divisibility approach does not extend. In fact, direct divisibility already fails at $t = 32$: there exist explicit counterexamples of functions in the complete-orbit space in 32 variables that violate the 2-adic valuation bound $v_2(\wt(g)) \ge 16$ required to obstruct bentness, and the code generated by the complete orbits is not 32-divisible. Thus, $t = 16$ is the exact structural boundary of the divisible codes technique, and resolving the conjecture for $n \equiv 0 \pmod{32}$ requires fundamentally different theoretical methods.
+No. For $H=\sum_{i=0}^{31}x_ix_{i+1}x_{i+2}$, the exact values are
+\[
+ W_H(0)=85032960,\quad \wt(H)=2104967168,\quad
+ \wt(H)/32=65780224\equiv512\pmod{2048}.
+\]
+This disproves the proposed universal divisibility by 2048 of compressed weights. It does not prove that all divisible-code methods fail, or that a fundamentally different method is required. The general case $n=32$ remains unresolved in this investigation.
+
+\paragraph{Q4: Must a fiber of a bent function be balanced?}
+Not in general. The certificates here additionally use $f|_A=0$ on a half-dimensional subspace. The main manuscript now gives a character-orthogonality proof that every other coset has zero sign sum. For a quadratic fiber, balance means that $q(r)+q(0)$ is nonzero on its polar radical. This is generally a disjunction of evaluations. It becomes a single equation only for the certified rank-14 fibers, because the radical has dimension two and the half-turn already forces one independent evaluation to zero.
 
 %======================================================================
 \begin{thebibliography}{99}
@@ -318,7 +299,8 @@ P.~St\u{a}nic\u{a} and S.~Maitra,
 \bibitem{sun2026}
 L.~Sun, Z.~Shi, J.~Liu, and F.-W.~Fu,
 ``On the conjecture about the nonexistence of homogeneous rotation symmetric bent functions,''
-\emph{Designs, Codes and Cryptography}, vol.~94, no.~4, pp.~1023--1045, 2026.
+\emph{Designs, Codes and Cryptography}, vol.~94, article~93, 2026.
+\href{https://doi.org/10.1007/s10623-026-01848-4}{doi:10.1007/s10623-026-01848-4}.
 
 \bibitem{ward1981}
 H.~N.~Ward,
@@ -336,7 +318,7 @@ H.~N.~Ward,
 \emph{Serdica Mathematical Journal}, vol.~27, no.~4, pp.~263--278, 2001.
 
 \bibitem{zhang2013}
-G.~Zhang and X.~Gao,
+X.~Zhang and G.~Gao,
 ``On the conjecture about the nonexistence of rotation symmetric bent functions,''
 arXiv preprint arXiv:1303.2282, 2013.
 

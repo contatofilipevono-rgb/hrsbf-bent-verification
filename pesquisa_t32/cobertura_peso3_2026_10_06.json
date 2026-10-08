@@ -1,0 +1,16 @@
+{
+  "scope": "All fixed-H weight-three families in the 35-dimensional H projection, not all cubic HRSBF n32",
+  "H_weight": 3,
+  "total": 6545,
+  "excluded_by_all_ones_cross_polar": 6464,
+  "complementary_exact_fiber_certificates_verified": 81,
+  "remaining": 0,
+  "complement_audit": {
+    "certificados_81_complementares.json": {
+      "families": 81,
+      "certificates_verified": 81,
+      "weight3_certificates_verified": 81,
+      "sha256": "3e1ba19511231f14d3d333817712194c6cadbf06b80684ea48e7be47bc65140a"
+    }
+  }
+}
