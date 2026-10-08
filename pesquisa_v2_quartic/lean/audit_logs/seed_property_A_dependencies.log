@@ -1,0 +1,34 @@
+VonoExactIndex.SeedPropertyABridge.seed_property_A (a b : VonoExactIndex.SeedVec)
+  (h :
+    ∀ (c d : VonoExactIndex.SeedVec),
+      VonoExactIndex.diff a (VonoExactIndex.diff b (VonoExactIndex.diff c (VonoExactIndex.diff d VonoExactIndex.seed)))
+          0 =
+        0) :
+  a = 0 ∨ b = 0 ∨ a = b
+'VonoExactIndex.SeedPropertyABridge.seed_property_A' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+'VonoExactIndex.QuarticSeedPropertyA.seed_property_A' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+'VonoExactIndex.seed_relaxed_finrank_le_one' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+'VonoExactIndex.seed8_r_blocks_has_exact_indices' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+'VonoExactIndex.SeedPropertyABridge.exact_indices_via_property_A' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+VonoExactIndex.SeedPropertyABridge.exact_indices_canonical_via_property_A (r : ℕ) :
+  VonoExactIndex.HasMIndex (VonoExactIndex.blockSum fun x => VonoExactIndex.seed) r ∧
+    VonoExactIndex.HasRelaxedMIndex (VonoExactIndex.blockSum fun x => VonoExactIndex.seed) r
+'VonoExactIndex.SeedPropertyABridge.exact_indices_canonical_via_property_A' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]

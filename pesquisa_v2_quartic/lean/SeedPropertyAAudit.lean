@@ -1,0 +1,11 @@
+import VonoExactIndex
+
+#check VonoExactIndex.SeedPropertyABridge.seed_property_A
+#print axioms VonoExactIndex.SeedPropertyABridge.seed_property_A
+#print axioms VonoExactIndex.QuarticSeedPropertyA.seed_property_A
+#print axioms VonoExactIndex.seed_relaxed_finrank_le_one
+#print axioms VonoExactIndex.seed8_r_blocks_has_exact_indices
+#print axioms VonoExactIndex.SeedPropertyABridge.exact_indices_via_property_A
+
+#check VonoExactIndex.SeedPropertyABridge.exact_indices_canonical_via_property_A
+#print axioms VonoExactIndex.SeedPropertyABridge.exact_indices_canonical_via_property_A

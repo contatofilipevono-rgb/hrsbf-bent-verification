@@ -119,7 +119,10 @@ theorem hyperedge_secondDiff_zero_of_card_le_one {n : Nat}
     diff a (diff b (hyperedgeMonomial S)) x = 0 := by
   classical
   have hsplit : (S ∩ I) = ∅ ∨ ∃ i, S ∩ I = {i} := by
-    exact Finset.card_le_one.mp hcard
+    rcases (S ∩ I).eq_empty_or_nonempty with he | ⟨i, hi⟩
+    · exact Or.inl he
+    · exact Or.inr ⟨i, Finset.eq_singleton_iff_unique_mem.mpr
+        ⟨hi, fun j hj => Finset.card_le_one.mp hcard j hj i hi⟩⟩
   rcases hsplit with hempty | ⟨i, hone⟩
   · have hzeroa : ∀ j ∈ S, a j = 0 := by
       intro j hj
@@ -139,7 +142,7 @@ theorem hyperedge_secondDiff_zero_of_card_le_one {n : Nat}
       rw [this]
       abel
     rw [hcomm, hzero]
-    simp
+    simp [diff]
   · have hother : ∀ j ∈ S, j ≠ i → a j = 0 ∧ b j = 0 := by
       intro j hj hji
       have hjnot : j ∉ I := by
@@ -167,23 +170,26 @@ theorem hyperedge_secondDiff_zero_of_card_le_one {n : Nat}
       have hji : j ≠ i := (Finset.mem_erase.mp hj).1
       simp [Pi.add_apply, hd j hjs hji]
     let c : ZMod 2 := ∏ j ∈ S.erase i, x j
-    have hvalue (u v : Fin n → ZMod 2) :
-        hyperedgeMonomial S (x + u + v) =
-          (x i + u i + v i) * c := by
-      rw [hfact]
-      have hc : (∏ j ∈ S.erase i, (x + u + v) j) = c := by
-        apply Finset.prod_congr rfl
-        intro j hj
-        have hjs : j ∈ S := (Finset.mem_erase.mp hj).2
-        have hji : j ≠ i := (Finset.mem_erase.mp hj).1
-        have hzeroa := (hother j hjs hji).1
-        have hzerob := (hother j hjs hji).2
-        simp [Pi.add_apply, hzeroa, hzerob, c]
-      rw [hc]
-      simp [Pi.add_apply, c]
+    have hza : ∀ j ∈ S, j ≠ i → a j = 0 :=
+      fun j hj hji => (hother j hj hji).1
+    have hzb : ∀ j ∈ S, j ≠ i → b j = 0 :=
+      fun j hj hji => (hother j hj hji).2
+    have hx : hyperedgeMonomial S x = x i * c := hfact x
+    have hxa : hyperedgeMonomial S (x + a) = (x i + a i) * c := by
+      rw [hfact, hconst x a hza]
+      rfl
+    have hxb : hyperedgeMonomial S (x + b) = (x i + b i) * c := by
+      rw [hfact, hconst x b hzb]
+      rfl
+    have hxab : hyperedgeMonomial S (x + a + b) =
+        (x i + a i + b i) * c := by
+      rw [hfact, hconst (x + a) b hzb, hconst x a hza]
+      rfl
     simp only [diff]
-    rw [show x + a + b = x + b + a by abel]
-    rw [hvalue b a, hvalue b 0, hvalue a 0, hvalue 0 0]
-    ring
+    rw [hxab, hxa, hxb, hx]
+    calc
+      _ = ((x i * c + x i * c) + (x i * c + x i * c)) +
+          (a i * c + a i * c) + (b i * c + b i * c) := by ring
+      _ = 0 := by simp
 
 end VonoExactIndex

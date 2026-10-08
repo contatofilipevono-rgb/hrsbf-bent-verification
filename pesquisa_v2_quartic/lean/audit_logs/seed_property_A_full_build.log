@@ -1,0 +1,71 @@
+⚠ [6653/6667] Replayed VonoExactIndex.FiniteDifference
+warning: ././././VonoExactIndex/FiniteDifference.lean:16:8: automatically included section variable(s) unused in theorem 'VonoExactIndex.diff_zero':
+  [Module (ZMod 2) V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Module (ZMod 2) V] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoExactIndex/FiniteDifference.lean:39:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.diff_add':
+  [Module (ZMod 2) V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Module (ZMod 2) V] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoExactIndex/FiniteDifference.lean:45:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.diff_add_direction':
+  [Module (ZMod 2) V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Module (ZMod 2) V] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [6654/6667] Replayed VonoExactIndex.BlockSum
+warning: ././././VonoExactIndex/BlockSum.lean:17:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.secondDiff_blockSum':
+  [DecidableEq ι]
+  [(i : ι) → Module (ZMod 2) (W i)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] [(i : ι) → Module (ZMod 2) (W i)] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoExactIndex/BlockSum.lean:57:4: try 'simp' instead of 'simpa'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [6655/6667] Replayed VonoExactIndex.MSubspace
+warning: ././././VonoExactIndex/MSubspace.lean:32:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.coordinate_constant_of_sum_constant':
+  [(i : ι) → Module (ZMod 2) (W i)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [(i : ι) → Module (ZMod 2) (W i)] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [6656/6667] Replayed VonoExactIndex.DimensionBound
+warning: ././././VonoExactIndex/DimensionBound.lean:27:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.projectionRangeMap_injective':
+  [Fintype ι]
+  [DecidableEq ι]
+  [∀ (i : ι), FiniteDimensional (ZMod 2) (W i)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] [∀ (i : ι), FiniteDimensional (ZMod 2) (W i)] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [6657/6667] Replayed VonoExactIndex.LowerBound
+warning: ././././VonoExactIndex/LowerBound.lean:37:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.selectedDirectionMap_injective':
+  [Fintype ι]
+  [DecidableEq ι]
+  [∀ (i : ι), FiniteDimensional (ZMod 2) (W i)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] [∀ (i : ι), FiniteDimensional (ZMod 2) (W i)] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoExactIndex/LowerBound.lean:55:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.selectedDirectionRange_isM':
+  [∀ (i : ι), FiniteDimensional (ZMod 2) (W i)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [∀ (i : ι), FiniteDimensional (ZMod 2) (W i)] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [6662/6667] Replayed VonoExactIndex.Hypergraph
+warning: ././././VonoExactIndex/Hypergraph.lean:133:6: try 'simp at this' instead of 'simpa using this'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+ℹ [6664/6667] Replayed VonoExactIndex.SeedPropertyAComputations
+info: ././././VonoExactIndex/SeedPropertyAComputations.lean:99:0: 'VonoExactIndex.SeedPropertyABridge.fullFourth_matches_quartic_basis' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+ℹ [6665/6667] Built VonoExactIndex.SeedPropertyABridge
+info: ././././VonoExactIndex/SeedPropertyABridge.lean:139:0: 'VonoExactIndex.SeedPropertyABridge.seed_property_A' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+info: ././././VonoExactIndex/SeedPropertyABridge.lean:140:0: 'VonoExactIndex.SeedPropertyABridge.exact_indices_canonical_via_property_A' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+✔ [6666/6667] Built VonoExactIndex
+Build completed successfully.

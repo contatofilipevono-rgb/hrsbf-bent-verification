@@ -1,0 +1,8 @@
+quartic_monomials: 24
+matrix_rows: 28
+ordered_pairs: 65536
+zero_contractions: 766
+independent_zero_pairs: 0
+expected_dependent_pairs: 766
+PASS: property (A) for contraction matrix
+PASS: direct fourth differences = parity contractions for all 1,835,008 pair/basis cases

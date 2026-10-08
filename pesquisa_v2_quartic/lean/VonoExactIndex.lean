@@ -9,3 +9,6 @@ import VonoExactIndex.Seed8
 import VonoExactIndex.PaperIndex
 
 import VonoExactIndex.Hypergraph
+
+import VonoExactIndex.QuarticSeedPropertyA
+import VonoExactIndex.SeedPropertyABridge

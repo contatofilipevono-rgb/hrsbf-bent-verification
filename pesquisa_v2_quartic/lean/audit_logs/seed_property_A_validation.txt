@@ -1,0 +1,6 @@
+PASS: lake build, exit code 0
+PASS: lake env lean SeedPropertyAAudit.lean, exit code 0
+PASS: no sorry/admit/axiom/unsafe declarations in Lean source
+PASS: no sorryAx in final theorem dependencies
+Dependencies: propext, Classical.choice, Lean.ofReduceBool, Quot.sound
+V1 source files unchanged; integration is on a separate branch.
