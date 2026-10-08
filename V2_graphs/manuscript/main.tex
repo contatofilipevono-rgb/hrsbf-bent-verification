@@ -1,0 +1,82 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry,hyperref}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\F}{\mathbb F}
+\title{Exact Relaxed Second-Derivative Indices and EA-Rigid Quartic Vectorial Boolean Functions}
+\author{Filipe Martins Vono}
+\date{Working draft, October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We give an explicit family of quartic vectorial Boolean functions indexed by oriented simple graphs. A computationally certified eight-variable seed yields exact relaxed second-derivative index, robust EA indecomposability for connected graphs, and classification of canonical representatives by oriented-graph isomorphism. The construction provides a quantitative lower bound on inequivalent indecomposable functions.
+\end{abstract}
+\section{Definitions and construction}
+Let $D_aF(x)=F(x+a)+F(x)$ for a vectorial Boolean function $F:V\to W$. Define
+\[
+R_2(F)=\max\{\dim U:\ D_aD_bF\text{ is constant for all }a,b\in U\}.
+\]
+Let $f:\F_2^8\to\F_2$ be
+\[
+f=\operatorname{Orb}(01)+\operatorname{Orb}(0123)+\operatorname{Orb}(0125)+\operatorname{Orb}(0135),
+\]
+where $\operatorname{Orb}$ sums the distinct cyclic shifts of a squarefree monomial. Set $\phi=D^4f$, a symmetric alternating four-linear form. Our local seed condition is
+\begin{equation}\label{A}
+\phi(a,b,\cdot,\cdot)=0\Longrightarrow a,b\text{ are linearly dependent}.
+\end{equation}
+For an oriented simple graph $\vec G$ on $r\ge2$ vertices, set $V=\bigoplus_{i=1}^rV_i$, $V_i=\F_2^8$, and define $F_{\vec G}:V\to\F_2^r$ by
+\begin{equation}\label{construction}
+(F_{\vec G})_i(x)=f(x_i)+x_{i,0}x_{i,1}\sum_{j:i\to j}x_{j,0}.
+\end{equation}
+We use EA equivalence $H(x)=B F(Ax+t)+L(x)$ with invertible $A,B$ and affine $L$.
+\section{The main theorem}
+\begin{theorem}\label{main}
+Assume \eqref{A}. For every vectorial polynomial $Q$ of degree at most two:
+\begin{enumerate}
+\item $R_2(F_{\vec G}+Q)=r$.
+\item If the underlying graph of $\vec G$ is connected, $F_{\vec G}+Q$ is EA-indecomposable.
+\item $F_{\vec G}\sim_{\mathrm{EA}}F_{\vec H}$ if and only if $\vec G\cong\vec H$.
+\item $F_{\vec G}+Q\sim_{\mathrm{EA}}F_{\vec H}+Q'$ implies $\vec G\cong\vec H$ for arbitrary quadratic $Q,Q'$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Let $S$ be relaxed for $F_{\vec G}+Q$. For $a,b\in S$, constancy of $D_aD_b(F_{\vec G}+Q)$ implies $D_aD_bD_cD_d(F_{\vec G}+Q)=0$ for all $c,d$. Cubic and quadratic terms disappear; choosing $c,d\in V_i$ in output coordinate $i$ yields $\phi(a_i,b_i,c_i,d_i)=0$. By \eqref{A}, $\dim\pi_i S\le1$, so $\dim S\le r$. Conversely, $U=\bigoplus_i\langle e_{i,2}\rangle$ has dimension $r$. Couplings ignore coordinate $2$, and within each block any two projected directions are dependent, so their second seed difference is zero. Quadratic $Q$ contributes only constants. This proves (1).
+
+Write $T=D^4F_{\vec G}=\sum_i e_i\phi_i$ and define
+\[
+\mathcal C(T)=\{P\in\operatorname{End}(V):T(Pa,b,c,d)=T(a,Pb,c,d)\ \forall a,b,c,d\}.
+\]
+Condition \eqref{A} implies $\phi_i$ has zero radical. If $a\in V_j$ and $b,c,d\in V_i$, $i\ne j$, the $i$-th coordinate of the centroid identity gives $\phi_i(P_{ij}a,b,c,d)=0$, hence $P_{ij}=0$. Every centroid element is therefore block diagonal. For a centroid idempotent $P$, each diagonal block is idempotent. If $P_{ii}\notin\{0,I\}$, choose nonzero $a\in\operatorname{im}P_{ii}$ and $b\in\ker P_{ii}$. These are independent, and the centroid identity gives $\phi_i(a,b,\cdot,\cdot)=0$, contradicting \eqref{A}. Conversely, all projections onto unions of blocks lie in the centroid. Thus its minimal nonzero idempotents are precisely the projections onto the individual $V_i$.
+
+Under $H(x)=B F(Ax+t)+L(x)$, fourth derivatives transform as $T_H=B T_F(A\cdot,A\cdot,A\cdot,A\cdot)$, hence $\mathcal C(T_H)=A^{-1}\mathcal C(T_F)A$. Any EA equivalence between functions of form \eqref{construction}, even with quadratic perturbations, therefore permutes input blocks.
+
+For $i\ne j$, $a,b\in V_i$, $c\in V_j$, the third derivative is independent of the base point:
+\[
+D_aD_bD_cF_{\vec G}
+=\mathbf1_{i\to j}e_i(a_0b_1+a_1b_0)c_0.
+\]
+Its nonvanishing is equivalent to $i\to j$. It is preserved by blockwise invertible changes of input coordinates, invertible output transformations, translations and quadratic perturbations. Therefore EA equivalence induces oriented-graph isomorphism. Conversely, an oriented-graph isomorphism simultaneously permutes the identical input seed blocks and output coordinates, yielding linear equivalence of canonical representatives. This proves (3) and (4).
+
+Finally, an EA direct-product decomposition induces a nontrivial centroid idempotent by transporting the input projection onto one factor. It must partition entire blocks. If the underlying graph is connected, some directed edge crosses that partition, giving a nonzero mixed third derivative. A direct product has zero mixed derivatives across its input factors, a contradiction. The argument is unaffected by quadratic perturbations, proving (2).
+\end{proof}
+\begin{theorem}[Counting bound]
+For each $r\ge2$, there exist at least
+\[
+\left\lceil\frac{3^{(r-1)(r-2)/2}}{r!}\right\rceil
+\]
+pairwise EA-inequivalent, EA-indecomposable canonical functions $\F_2^{8r}\to\F_2^r$ with $R_2=r$.
+\end{theorem}
+\begin{proof}
+Fix the star edges $1\to j$ for $2\le j\le r$. For each of the $\binom{r-1}{2}$ remaining unordered pairs choose no edge or one of its two directions. All resulting graphs are connected. An oriented-graph isomorphism class has at most $r!$ labeled members. Apply Theorem~\ref{main}.
+\end{proof}
+\section{Finite seed certificate and reproducibility}
+The associated contraction $C_\phi:\bigwedge^2\F_2^8\to(\bigwedge^2\F_2^8)^*$ has rank $22$ and kernel dimension $6$. The $63$ nonzero kernel bivectors have alternating-matrix ranks $4$ (three) and $8$ (sixty), never $2$. Since a nonzero decomposable bivector has rank $2$, this certifies \eqref{A}. The accompanying script \texttt{V2\_graph\_no\_extra\_output.py} supplies the finite verification; the infinite-family proof is mathematical and is not formally checked in Lean.
+\section{Scope and related literature}
+Relaxed $\mathcal M$-subspaces and the scalar relaxed linearity index are established concepts, as are EA-equivalence invariants and algorithms. The proposed contribution is the specific graph-indexed quartic vectorial construction and its classification by oriented-graph isomorphism. Bibliographic priority remains to be verified. The equivalence biconditional is asserted only for canonical representatives; for arbitrary quadratic perturbations we prove necessity, not sufficiency.
+\begin{thebibliography}{9}
+\bibitem{polujan} A. Polujan and A. Pott, \emph{Cubic bent functions outside the completed Maiorana--McFarland class}, Designs, Codes and Cryptography (2020). Bibliographic details to verify.
+\bibitem{kaleyski} N. Kaleyski, \emph{Deciding EA-equivalence via invariants}, Cryptography and Communications (2022), \url{https://doi.org/10.1007/s12095-021-00513-y}.
+\bibitem{ea} \emph{Recovering or Testing Extended-Affine Equivalence}, IEEE Transactions on Information Theory 68 (2022), 6187--6206. Author metadata to verify.
+\end{thebibliography}
+\end{document}
