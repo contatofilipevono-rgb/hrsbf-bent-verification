@@ -37,4 +37,21 @@ theorem hypergraphMap_apply {n : Nat}
     (H : Finset (Finset (Fin n))) (x : Fin n → ZMod 2) (S : H) :
     hypergraphMap H x S = hyperedgeMonomial S.1 x := rfl
 
+/-- An independent vertex set meets each hyperedge in at most one vertex. -/
+theorem independent_edge_unique {n : Nat}
+    (H : Finset (Finset (Fin n))) (I : Finset (Fin n))
+    (hI : HypergraphIndependent H I)
+    (S : Finset (Fin n)) (hS : S ∈ H)
+    {i j : Fin n} (hiI : i ∈ I) (hjI : j ∈ I)
+    (hiS : i ∈ S) (hjS : j ∈ S) : i = j :=
+  hI S hS i hiI j hjI hiS hjS
+
+/-- Independence is inherited by subsets of vertices. -/
+theorem hypergraphIndependent_mono {n : Nat}
+    (H : Finset (Finset (Fin n))) {I J : Finset (Fin n)}
+    (hI : HypergraphIndependent H I) (hJI : J ⊆ I) :
+    HypergraphIndependent H J := by
+  intro S hS i hi j hj hiS hjS
+  exact hI S hS i (hJI hi) j (hJI hj) hiS hjS
+
 end VonoExactIndex
