@@ -1,0 +1,3 @@
+All VonoExactIndex/*.lean passed the forbidden proof-placeholder scan.
+No sorry, admit, axiom or unsafe declarations.
+Git diff --check passed.

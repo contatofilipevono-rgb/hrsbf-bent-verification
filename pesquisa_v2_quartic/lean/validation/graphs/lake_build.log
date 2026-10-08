@@ -1,0 +1,150 @@
+⚠ [6653/6673] Replayed VonoExactIndex.FiniteDifference
+warning: ././././VonoExactIndex/FiniteDifference.lean:16:8: automatically included section variable(s) unused in theorem 'VonoExactIndex.diff_zero':
+  [Module (ZMod 2) V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Module (ZMod 2) V] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoExactIndex/FiniteDifference.lean:39:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.diff_add':
+  [Module (ZMod 2) V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Module (ZMod 2) V] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoExactIndex/FiniteDifference.lean:45:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.diff_add_direction':
+  [Module (ZMod 2) V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Module (ZMod 2) V] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [6654/6673] Replayed VonoExactIndex.BlockSum
+warning: ././././VonoExactIndex/BlockSum.lean:17:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.secondDiff_blockSum':
+  [DecidableEq ι]
+  [(i : ι) → Module (ZMod 2) (W i)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] [(i : ι) → Module (ZMod 2) (W i)] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoExactIndex/BlockSum.lean:57:4: try 'simp' instead of 'simpa'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [6655/6673] Replayed VonoExactIndex.MSubspace
+warning: ././././VonoExactIndex/MSubspace.lean:32:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.coordinate_constant_of_sum_constant':
+  [(i : ι) → Module (ZMod 2) (W i)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [(i : ι) → Module (ZMod 2) (W i)] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [6656/6673] Replayed VonoExactIndex.DimensionBound
+warning: ././././VonoExactIndex/DimensionBound.lean:27:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.projectionRangeMap_injective':
+  [Fintype ι]
+  [DecidableEq ι]
+  [∀ (i : ι), FiniteDimensional (ZMod 2) (W i)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] [∀ (i : ι), FiniteDimensional (ZMod 2) (W i)] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [6657/6673] Replayed VonoExactIndex.LowerBound
+warning: ././././VonoExactIndex/LowerBound.lean:37:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.selectedDirectionMap_injective':
+  [Fintype ι]
+  [DecidableEq ι]
+  [∀ (i : ι), FiniteDimensional (ZMod 2) (W i)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] [∀ (i : ι), FiniteDimensional (ZMod 2) (W i)] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoExactIndex/LowerBound.lean:55:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.selectedDirectionRange_isM':
+  [∀ (i : ι), FiniteDimensional (ZMod 2) (W i)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [∀ (i : ι), FiniteDimensional (ZMod 2) (W i)] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [6662/6673] Replayed VonoExactIndex.Hypergraph
+warning: ././././VonoExactIndex/Hypergraph.lean:133:6: try 'simp at this' instead of 'simpa using this'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+ℹ [6664/6673] Replayed VonoExactIndex.SeedPropertyAComputations
+info: ././././VonoExactIndex/SeedPropertyAComputations.lean:99:0: 'VonoExactIndex.SeedPropertyABridge.fullFourth_matches_quartic_basis' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+ℹ [6665/6673] Replayed VonoExactIndex.SeedPropertyABridge
+info: ././././VonoExactIndex/SeedPropertyABridge.lean:139:0: 'VonoExactIndex.SeedPropertyABridge.seed_property_A' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+info: ././././VonoExactIndex/SeedPropertyABridge.lean:140:0: 'VonoExactIndex.SeedPropertyABridge.exact_indices_canonical_via_property_A' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+⚠ [6666/6673] Replayed VonoExactIndex.GraphFunction
+warning: ././././VonoExactIndex/GraphFunction.lean:71:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.GraphFamily.fourth_component':
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoExactIndex/GraphFunction.lean:149:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.GraphFamily.coupling_selected_zero':
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+info: ././././VonoExactIndex/GraphFunction.lean:186:0: 'VonoExactIndex.GraphFamily.graph_has_exact_index' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+⚠ [6667/6673] Replayed VonoExactIndex.GraphSplitting
+warning: ././././VonoExactIndex/GraphSplitting.lean:85:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.GraphFamily.single_mem_left':
+  [Fintype ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+ℹ [6668/6673] Built VonoExactIndex.GraphConnected
+info: ././././VonoExactIndex/GraphConnected.lean:65:0: 'VonoExactIndex.GraphFamily.graph_no_relaxed_split' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+⚠ [6669/6673] Built VonoExactIndex.GraphQuadratic
+warning: ././././VonoExactIndex/GraphQuadratic.lean:13:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.GraphFamily.second_constant_add':
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoExactIndex/GraphQuadratic.lean:68:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.GraphFamily.linear_second_zero':
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoExactIndex/GraphQuadratic.lean:85:0: automatically included section variable(s) unused in theorem 'VonoExactIndex.GraphFamily.product_linear_second_constant':
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+info: ././././VonoExactIndex/GraphQuadratic.lean:127:0: 'VonoExactIndex.GraphFamily.graph_quadratic_exact_index' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+info: ././././VonoExactIndex/GraphQuadratic.lean:128:0: 'VonoExactIndex.GraphFamily.graph_quadratic_no_relaxed_split' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+⚠ [6670/6673] Built VonoExactIndex.GraphEA
+warning: ././././VonoExactIndex/GraphEA.lean:11:8: automatically included section variable(s) unused in theorem '_private.VonoExactIndex.GraphEA.0.VonoExactIndex.GraphFamily.product_core_second_zero':
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoExactIndex/GraphEA.lean:74:37: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+note: this linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+info: ././././VonoExactIndex/GraphEA.lean:114:0: 'VonoExactIndex.GraphFamily.graph_not_EA_product' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+info: ././././VonoExactIndex/GraphEA.lean:115:0: 'VonoExactIndex.GraphFamily.graph_quadratic_not_EA_product' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+ℹ [6671/6673] Built VonoExactIndex.GraphStarFamily
+info: ././././VonoExactIndex/GraphStarFamily.lean:60:0: 'VonoExactIndex.GraphFamily.star_exact_index' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+info: ././././VonoExactIndex/GraphStarFamily.lean:61:0: 'VonoExactIndex.GraphFamily.star_no_relaxed_split' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+✔ [6672/6673] Built VonoExactIndex
+Build completed successfully.

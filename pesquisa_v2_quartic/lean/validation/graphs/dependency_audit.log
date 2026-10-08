@@ -1,0 +1,55 @@
+VonoExactIndex.GraphFamily.graph_has_exact_index.{u_1} {ι : Type u_1} [Fintype ι] [DecidableEq ι] (adj : ι → ι → Bool) :
+  HasVectorRelaxedIndex (graphMap adj) (Fintype.card ι)
+VonoExactIndex.GraphFamily.graph_not_EA_product.{u_1, u_2, u_3, u_4, u_5} {ι : Type u_1} [Fintype ι] [DecidableEq ι]
+  {V₁ : Type u_2} {V₂ : Type u_3} {W₁ : Type u_4} {W₂ : Type u_5} [AddCommGroup V₁] [Module (ZMod 2) V₁]
+  [AddCommGroup V₂] [Module (ZMod 2) V₂] [AddCommGroup W₁] [Module (ZMod 2) W₁] [AddCommGroup W₂] [Module (ZMod 2) W₂]
+  [Nontrivial V₁] [Nontrivial V₂] (adj : ι → ι → Bool) (hconn : CutConnected adj) (A : Input ι ≃ₗ[ZMod 2] V₁ × V₂)
+  (t : V₁ × V₂) (B : W₁ × W₂ →ₗ[ZMod 2] ι → ZMod 2) (g : V₁ → W₁) (h : V₂ → W₂) (L : Input ι →ₗ[ZMod 2] ι → ZMod 2)
+  (k : ι → ZMod 2) : ¬∀ (x : Input ι), graphMap adj x = B (g (A x + t).1, h (A x + t).2) + L x + k
+VonoExactIndex.GraphFamily.graph_quadratic_not_EA_product.{u_1, u_2, u_3, u_4, u_5} {ι : Type u_1} [Fintype ι]
+  [DecidableEq ι] {V₁ : Type u_2} {V₂ : Type u_3} {W₁ : Type u_4} {W₂ : Type u_5} [AddCommGroup V₁] [Module (ZMod 2) V₁]
+  [AddCommGroup V₂] [Module (ZMod 2) V₂] [AddCommGroup W₁] [Module (ZMod 2) W₁] [AddCommGroup W₂] [Module (ZMod 2) W₂]
+  [Nontrivial V₁] [Nontrivial V₂] (adj : ι → ι → Bool) (hconn : CutConnected adj) (Q : Input ι → ι → ZMod 2)
+  (hQ : HasConstantSecondDifferences Q) (A : Input ι ≃ₗ[ZMod 2] V₁ × V₂) (t : V₁ × V₂)
+  (B : W₁ × W₂ →ₗ[ZMod 2] ι → ZMod 2) (g : V₁ → W₁) (h : V₂ → W₂) (L : Input ι →ₗ[ZMod 2] ι → ZMod 2) (k : ι → ZMod 2) :
+  ¬∀ (x : Input ι), addVector (graphMap adj) Q x = B (g (A x + t).1, h (A x + t).2) + L x + k
+VonoExactIndex.GraphFamily.graph_ANF_certified.{u_1, u_2} {ι : Type u_1} [Fintype ι] [DecidableEq ι] {κ : Type u_2}
+  [Fintype κ] (adj : ι → ι → Bool) (hconn : CutConnected adj) (c : ι → ZMod 2) (L : Input ι →ₗ[ZMod 2] ι → ZMod 2)
+  (l m : κ → Input ι →ₗ[ZMod 2] ZMod 2) (w : κ → ι → ZMod 2) :
+  let Q := fun x i => c i + L x i + ∑ k, w k i * ((l k) x * (m k) x);
+  HasVectorRelaxedIndex (addVector (graphMap adj) Q) (Fintype.card ι) ∧ ¬HasRelaxedSplit (addVector (graphMap adj) Q)
+VonoExactIndex.GraphFamily.star_exact_index (r : ℕ) : HasVectorRelaxedIndex (graphMap (starAdj r)) (r + 2)
+VonoExactIndex.GraphFamily.star_cut_connected (r : ℕ) : CutConnected (starAdj r)
+'VonoExactIndex.GraphFamily.graph_has_exact_index' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+'VonoExactIndex.GraphFamily.graph_no_relaxed_split' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+'VonoExactIndex.GraphFamily.EA_product_has_relaxed_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VonoExactIndex.GraphFamily.graph_not_EA_product' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+'VonoExactIndex.GraphFamily.graph_quadratic_exact_index' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+'VonoExactIndex.GraphFamily.graph_quadratic_not_EA_product' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+'VonoExactIndex.GraphFamily.graph_ANF_certified' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+'VonoExactIndex.GraphFamily.star_exact_index' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]
+'VonoExactIndex.GraphFamily.star_quadratic_no_relaxed_split' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Quot.sound]

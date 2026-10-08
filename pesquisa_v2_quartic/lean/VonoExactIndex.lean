@@ -12,3 +12,5 @@ import VonoExactIndex.Hypergraph
 
 import VonoExactIndex.QuarticSeedPropertyA
 import VonoExactIndex.SeedPropertyABridge
+
+import VonoExactIndex.GraphStarFamily
