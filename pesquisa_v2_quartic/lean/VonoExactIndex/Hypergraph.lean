@@ -75,4 +75,24 @@ theorem mem_independentCoordinateSubmodule {n : Nat}
     a ∈ independentCoordinateSubmodule I ↔
       ∀ i, i ∉ I → a i = 0 := Iff.rfl
 
+/-- The product of two Boolean affine factors has zero mixed second
+difference if one of the factors is unchanged in both directions. -/
+theorem diff_mul_const_right {V : Type*} [AddCommGroup V]
+    [Module (ZMod 2) V] (f : V → ZMod 2) (c : ZMod 2)
+    (a : V) :
+    diff a (fun x => f x * c) = fun x => diff a f x * c := by
+  funext x
+  simp only [diff]
+  ring
+
+/-- A monomial is unchanged under a direction vanishing on its support. -/
+theorem hyperedgeMonomial_add_of_zero_on_edge {n : Nat}
+    (S : Finset (Fin n)) (x a : Fin n → ZMod 2)
+    (ha : ∀ i ∈ S, a i = 0) :
+    hyperedgeMonomial S (x + a) = hyperedgeMonomial S x := by
+  unfold hyperedgeMonomial
+  apply Finset.prod_congr rfl
+  intro i hi
+  simp [Pi.add_apply, ha i hi]
+
 end VonoExactIndex
