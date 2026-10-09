@@ -69,3 +69,16 @@ C-build.log and C-axioms.log record successful build/audit. The first extension
 to arbitrary y failed because rewriting the coordinate decomposition on both
 sides also rewrote the target; a one-sided decomposition of B y and a single-term
 sum proof fixed it. C-first-attempt.log records the earlier failure.
+
+## D: directed mixed third derivatives (compiled)
+
+`cubic_third` is an algebraic identity. `mixed_third` proves the exact vector
+formula at every base point, for arbitrary internal directions. `edge_detected_iff`
+identifies nonzero mixed derivatives with the directed adjacency bit for i≠j.
+`representation_edges` transports the detection through arbitrary invertible
+internal block maps. No restriction on the reverse edge is used.
+
+D-build.log and D-axioms.log record successful build/audit. D-first-attempt.log
+records two elaboration failures: the linear-map application needed explicit
+unfolding before a finite-sum rewrite, and simplification of the zero seed term
+had unfolded the cubic derivatives too soon. Both were corrected in new code.

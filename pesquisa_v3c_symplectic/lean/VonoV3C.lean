@@ -7,3 +7,5 @@ import VonoV3C.GraphMap
 import VonoV3C.GraphEATransport
 
 import VonoV3C.GraphOutputRecovery
+
+import VonoV3C.GraphEdgeRecovery
