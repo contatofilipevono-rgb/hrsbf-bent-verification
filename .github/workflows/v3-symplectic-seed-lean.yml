@@ -1,0 +1,40 @@
+name: V3 symplectic finite Lean gate
+on:
+  push:
+    branches:
+      - v3-symplectic-seed-lean-ci-20261008
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  seed-finite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    defaults:
+      run:
+        working-directory: pesquisa_v2_quartic/lean
+    steps:
+      - uses: actions/checkout@v4
+      - name: Record pinned toolchain and commit
+        run: |
+          git rev-parse HEAD
+          cat lean-toolchain
+      - name: Install elan
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Restore Mathlib cache
+        run: |
+          lake exe cache get
+      - name: Check V3 finite proofs
+        run: |
+          lake env lean V3SeedFiniteChecks.lean
+      - name: Scan V3 source for proof holes
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s = Path("V3SeedFiniteChecks.lean").read_text()
+          assert not re.search(r"\b(sorry|admit|axiom|unsafe)\b", s)
+          print("V3 finite proof source scan passed")
+          PY
