@@ -17,3 +17,7 @@ import VonoV3C.GraphRelaxedIndex
 import VonoV3C.KernelDimension
 
 import VonoV3C.GraphQuadratic
+
+import VonoV3C.GraphSplitting
+
+import VonoV3C.GraphIndecomposability

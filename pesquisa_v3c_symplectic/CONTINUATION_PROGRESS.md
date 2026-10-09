@@ -105,9 +105,8 @@ heterogeneous EA definition and a transport/reindex bridge; that convenience
 extension is not part of the current theorem. No graph-only classification of
 arbitrary quadratic perturbations is asserted.
 
-The remaining original goal is indecomposability under arbitrary quadratic
-perturbations. The graph fourth-derivative radical and its dimension are
-certified below. The exact relaxed graph index is proved as an independent
+The original dimension, index, and quadratic-robust indecomposability goals
+are now certified below. The exact relaxed graph index is proved as an independent
 theorem; it is not used in the classification proof. No novelty,
 literature-priority, or
 publication-readiness claim is made. Builds have only nonfatal Mathlib linter
@@ -226,6 +225,57 @@ with `rw`; an explicit definitional `change` fixed it. Logs:
 and `quadratic-axioms.log`. The full build and `GraphQuadraticAudit.lean`
 succeeded, using only `propext`, `Classical.choice`, and `Quot.sound`.
 
+## Quadratic-robust EA indecomposability (compiled, 2026-10-09)
+
+`GraphSplitting.lean` defines weak connectivity by crossing arcs for every
+nonempty proper cut. It proves `graph_no_relaxed_split` and
+`graph_quadratic_no_relaxed_split`. The quartic zero-pair relation forces a
+partition of whole input blocks via the existing `Blocks.projection_partition`
+and `Blocks.single_mem_left`. On a crossing arc, `edge_detected_iff` gives a
+nonzero mixed D³. Constant cross second differences would make this D³ zero.
+Both orientations of the crossing arc are handled; bidirectional arcs are allowed.
+
+`GraphIndecomposability.lean` proves `EA_product_has_relaxed_split` for an
+explicit input linear equivalence to a product of two nontrivial modules,
+arbitrary input translation, separate factor functions, arbitrary linear output
+mixing, and affine correction. Its pullbacks of the two coordinate kernels are
+nonzero and cover the input. Product separation makes cross second differences
+zero, while the affine correction also has zero second differences.
+
+`graph_not_EA_product` certifies the canonical family.
+`graph_quadratic_not_EA_product` certifies perturbations with constant second
+differences. `graph_quadratic_ANF_not_EA_product` discharges this condition for
+arbitrary explicit quadratic ANFs; it assumes no tensor, block, or edge
+preservation result. Its only substantive family hypotheses are m≥2 and weak
+connectivity. Both candidate input factors must be nontrivial, as required by
+the standard indecomposability notion. Output mixing need not be invertible,
+so ordinary invertible EA output maps are covered as a special case.
+
+The splitting and product-bridge modules compiled on their first attempts.
+Logs: `splitting-first-attempt.log`, `indecomposability-first-attempt.log`,
+`indecomposability-build.log`, `indecomposability-axioms.log`, and
+`indecomposability-existing-axioms.log`, all in `lean/logs/continuation/`.
+The final default `lake build` and both audits exited 0. Standard axioms only:
+`propext`, `Classical.choice`, and `Quot.sound`. No prior proof module was edited.
+
+Mathematical boundaries: no converse for arbitrary quadratic perturbations of
+disconnected graphs is claimed; no graph-only ordinary EA classification of
+those perturbations is claimed. Empty and one-vertex graphs are handled by the
+cut convention and nontrivial factor requirement. A separate link to Mathlib's
+polynomial-degree API has not been supplied, while arbitrary quadratic ANFs
+have explicit certificates. Novelty and publication readiness are not inferred
+from compilation.
+
+To reuse the cached runtime in this container, run from `lean/`:
+
+```sh
+LD_PRELOAD=$PWD/.lake/v3c-path-shim.so PATH=$PWD/.lake/lean-4.19.0-linux/bin:$PATH $PWD/.lake/lean-4.19.0-linux/bin/lake build
+LD_PRELOAD=$PWD/.lake/v3c-path-shim.so PATH=$PWD/.lake/lean-4.19.0-linux/bin:$PATH $PWD/.lake/lean-4.19.0-linux/bin/lake env $PWD/.lake/lean-4.19.0-linux/bin/lean GraphContinuationAudit.lean
+```
+
+The cached runtime is ignored by Git; the portable pinned project is unchanged.
+On an ordinary Lean 4.19.0 installation, use the ordinary `lake` commands above.
+
 ## Handoff
 
 1. Checkout v3c-ea-transport-continuation; verify the remote SHA and clean status.
@@ -237,12 +287,12 @@ succeeded, using only `propext`, `Classical.choice`, and `Quot.sound`.
    `representation_output` has inverse output orientation relative to the input
    permutation. `mixed_third` is constant only for the cross-block directions
    it specifies, not for arbitrary third derivatives of the quartic seed.
-4. Continue on this branch with indecomposability modulo quadratic perturbations:
-   first certify quadratic D³/D⁴ annihilation, then define a nontrivial product
-   decomposition under ordinary EA. Extract input block partitions using the
-   certified quartic relation and exclude crossing directed edges using mixed
-   D³ and weak connectivity. Ordinary `EAEquivalent` allows only affine
-   corrections; quadratic perturbations require separate functions and
-   annihilation lemmas. State the graph size/nontrivial-factor conventions
-   explicitly, including empty and one-vertex cases.
+4. Read GraphQuadratic, GraphSplitting, and GraphIndecomposability in that order.
+   Run GraphQuadraticAudit and the expanded GraphContinuationAudit. The original
+   proof obligations are complete within their recorded scope. Further tasks
+   are a heterogeneous vertex-type bridge, a polynomial-degree API bridge if
+   needed, and a manuscript/literature/independent-review pass. Keep arbitrary
+   quadratic perturbations separate from canonical graph classification; the
+   indecomposability theorem is a forward connectedness obstruction, not a
+   classification or a claimed converse.
 5. Never modify or merge into V1, V2, or the V3-C reference branch automatically.

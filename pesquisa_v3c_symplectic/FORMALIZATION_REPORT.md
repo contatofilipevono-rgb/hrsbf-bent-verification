@@ -33,6 +33,8 @@ No alternative seed or extra hypothesis on the seed is used.
 | Graph E | `GraphFamily.canonical_EA_iff_graph_isomorphic` | For canonical loopless graphs on any common finite vertex type and m≥2, ordinary EA iff graph isomorphism. |
 | Graph index | `GraphFamily.graph_has_exact_relaxed_index` | Exact vector relaxed index `card ι` for every finite vertex type, m≥2, and every adjacency function. |
 | Kernel dimension | `GraphFamily.graph_fourth_radical_dimension` | For each input a, the actual fourth-derivative radical at all base points is a linear subspace of dimension `2*m*card ι - (2*m-1)*supportCount a`. |
+| Quadratic stability | `GraphFamily.quadratic_ANF_second_constant`, `quadratic_add_third`, `quadratic_add_fourth`, `graph_quadratic_exact_index` | Arbitrary explicit affine-plus-quadratic ANFs have vanishing D³/D⁴; these derivatives and the exact vector relaxed index are unchanged after addition. |
+| Indecomposability | `GraphFamily.graph_quadratic_ANF_not_EA_product` | For every finite weakly connected directed graph and m≥2, the quadratic-perturbed function admits no ordinary EA product representation with two nontrivial input factors. |
 
 Over F₂, `a=0 ∨ b=0 ∨ a=b` is the explicit dependent-pair criterion. The
 certificates use this disjunction directly; they do not state a separate theorem
@@ -68,12 +70,47 @@ the local dimensions 2m and 1, producing the claimed formula. Support counts
 nonzero vertex blocks, not nonzero scalar coordinates. Empty vertex types and
 the zero input are covered. No looplessness hypothesis is needed here.
 
-## Remaining gaps
+## Quadratic-robust indecomposability (certified)
 
-5. **Indecomposability with quadratic perturbations:** formalize quadratic
-   annihilation by D³/D⁴, extract a block partition from a product decomposition,
-   and rule out crossing edges for a weakly connected graph. No graph
-   indecomposability certificate is delivered.
+`HasConstantSecondDifferences Q` means that every scalar output coordinate of
+Q has constant second differences for all directions. This is a condition on
+Q alone, not a block-preservation or indecomposability premise. Every function
+of the explicit form
+`Q x i = c i + LQ x i + ∑ j, w j i * (l j x * n j x)` is proved to satisfy it,
+for arbitrary finite term type, coefficients, and linear forms.
+
+`GraphSplitting.lean` proves that weak connectivity rules out every nontrivial
+full-covering split with constant cross second differences. The existing
+quartic Property A forces input blocks to lie entirely on one side of the
+split. A crossing directed arc is incompatible with the certified nonzero
+mixed third derivative. Reverse arcs are unrestricted.
+
+`EA_product_has_relaxed_split` supplies the missing link from an actual product
+representation: for any linear equivalence `A : Input ≃ₗ V₁ × V₂`, translation
+t, functions g and h on their separate factors, any linear output map B, and
+affine correction Lx+k, the representation
+`F x = B (g (A x+t).1, h (A x+t).2) + L x + k`
+would induce a relaxed split when both input factors are nontrivial.
+`graph_quadratic_not_EA_product` excludes this representation under the
+intrinsic quadratic condition; `graph_quadratic_ANF_not_EA_product` excludes
+it directly for arbitrary explicit quadratic ANFs, without that extra premise.
+Invertible EA output maps are included because B may be any linear map.
+
+Connectivity is the nonempty-proper-cut condition `CutConnected`.
+No looplessness premise is needed for this obstruction. Empty and one-vertex
+types are permitted; nontriviality belongs to both putative input factors.
+
+## Remaining scope extensions and review
+
+- Heterogeneous vertex-type classification needs a separate reindex bridge.
+- A bridge from a Mathlib polynomial-degree predicate to the intrinsic
+  quadratic condition is not supplied; arbitrary explicit quadratic ANFs are
+  already certified.
+- No converse for indecomposability of arbitrarily perturbed disconnected
+  graphs, and no graph-only ordinary EA classification of quadratic
+  perturbations, is asserted.
+- Literature priority, a publication manuscript, and independent referee
+  review remain separate from Lean kernel certification.
 
 No graph-classification or indecomposability statement is silently weakened by
 an artificial premise and then advertised as the requested unconditional result.
@@ -86,6 +123,7 @@ lake exe cache get Mathlib.Data.ZMod.Basic Mathlib.Algebra.BigOperators.Group.Fi
 lake build
 lake env lean Audit.lean
 lake env lean GraphContinuationAudit.lean
+lake env lean GraphQuadraticAudit.lean
 ```
 
 `logs/build.log` records a rebuild after deleting only this project's generated
@@ -107,6 +145,12 @@ characterization. `lean/logs/continuation/kernel-dimension-build.log` and
 The exported graph-radical dimension theorem uses only `propext`,
 `Classical.choice`, and `Quot.sound`. Failure logs and corrections are described
 in CONTINUATION_PROGRESS.md.
+
+`quadratic-build.log` and `quadratic-axioms.log` certify the perturbation stage;
+`indecomposability-build.log`, `indecomposability-axioms.log`, and
+`indecomposability-existing-axioms.log` record the final full build and audits.
+All new exported statements use only the same standard axioms. Existing
+seed, contraction, block, and classification proofs are unchanged.
 
 `logs/ENVIRONMENT.md` documents the local executable-path adapter necessitated
 by this execution container. It does not change Lean's kernel or proof objects.

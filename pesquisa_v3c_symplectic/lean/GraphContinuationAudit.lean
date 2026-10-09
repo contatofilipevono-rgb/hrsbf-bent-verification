@@ -5,6 +5,7 @@ import VonoV3C.GraphMap
 import VonoV3C.GraphEATransport
 import VonoV3C.GraphRelaxedIndex
 import VonoV3C.KernelDimension
+import VonoV3C.GraphIndecomposability
 #print axioms VonoV3C.GraphFamily.cubic_fourth_zero
 #print axioms VonoV3C.GraphFamily.fourth_component
 #print axioms VonoV3C.GraphFamily.representation_fourth
@@ -30,3 +31,13 @@ import VonoV3C.KernelDimension
 #print axioms VonoV3C.GraphFamily.finrank_pairKernelSpace_sum
 #print axioms VonoV3C.GraphFamily.finrank_pairKernelSpace
 #print axioms VonoV3C.GraphFamily.graph_fourth_radical_dimension
+#print axioms VonoV3C.GraphFamily.quadratic_ANF_second_constant
+#print axioms VonoV3C.GraphFamily.quadratic_add_third
+#print axioms VonoV3C.GraphFamily.quadratic_add_fourth
+#print axioms VonoV3C.GraphFamily.graph_quadratic_exact_index
+#print axioms VonoV3C.GraphFamily.graph_no_relaxed_split
+#print axioms VonoV3C.GraphFamily.graph_quadratic_no_relaxed_split
+#print axioms VonoV3C.GraphFamily.EA_product_has_relaxed_split
+#print axioms VonoV3C.GraphFamily.graph_not_EA_product
+#print axioms VonoV3C.GraphFamily.graph_quadratic_not_EA_product
+#print axioms VonoV3C.GraphFamily.graph_quadratic_ANF_not_EA_product
