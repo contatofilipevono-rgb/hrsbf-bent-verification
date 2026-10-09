@@ -57,4 +57,16 @@ theorem phi_self_first {m : ℕ} (a c d : Vec m) :
   simp only [phi, omega_self]
   ring
 
+/-- All linearly dependent pairs over F₂ annihilate the tensor. -/
+theorem phi_dependent_first {m : ℕ} (a b : Vec m)
+    (h : a = 0 ∨ b = 0 ∨ a = b) (c d : Vec m) :
+    phi a b c d = 0 := by
+  rcases h with ha | hb | hab
+  · subst a
+    exact phi_zero_left b c d
+  · subst b
+    simp [phi, omega]
+  · subst b
+    exact phi_self_first a c d
+
 end VonoV3General
