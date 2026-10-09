@@ -1,6 +1,10 @@
 # V3-C — symplectic graph family (research branch)
 
-This branch is separate from V1 and V2. **The seed polarization and Property A are Lean-compiled for variable m; graph classification, graph index, and graph indecomposability remain uncertified.**
+This branch is separate from V1 and V2. **The seed, intrinsic blocks, actual graph fourth derivative, ordinary EA transport, matched output permutation, directed-edge recovery and canonical EA classification are Lean-compiled for variable m≥2. Graph index, kernel dimension and graph indecomposability remain uncertified.**
+
+Continuation branch: `v3c-ea-transport-continuation`, based on reference SHA
+`83b53a57f47ae33d4694346dc0e315d2a4c38878`; reference branch unchanged.
+See CONTINUATION_PROGRESS.md and lean/logs/continuation/E-{build,axioms}.log.
 
 Let m≥2, V=F₂^(2m), f_m=Σ_{i<j}p_iq_i p_jq_j, and (F_G,m)_i=f_m(x_i)+p_{i,1}q_{i,1}Σ_{i→j}p_{j,1} for finite loopless directed G.
 
@@ -11,10 +15,12 @@ The isolated project is `lean/`, with namespace `VonoV3C` and Lean/Mathlib 4.19.
 
 - `seed_fourth`: the requested fourth-polarization identity, at every base point, for every m.
 - `seed_property_A`, `fourth_pair_zero_iff`, `constant_second_iff`: uniform m≥2 certificates, without seed/vector enumeration.
-- `Blocks.recover_blocks_from_quartic`: block recovery for invertible linear maps preserving the intrinsic direct-sum quartic zero-pair relation. The derivation of that preservation premise from graph EA equivalence remains uncertified.
-- Build and axiom logs: `lean/logs/build.log`, `lean/logs/axioms.log`.
+- `Blocks.recover_blocks_from_quartic`: block recovery for invertible linear maps preserving the intrinsic direct-sum quartic zero-pair relation. GraphFamily.representation_pair and EA_recovers_blocks now derive that premise from actual graph EA equivalence.
+- `GraphFamily.canonical_EA_iff_graph_isomorphic`: complete ordinary EA classification of canonical loopless directed graph representatives on a common finite vertex type; bidirectional arcs allowed.
+- New build and axiom logs: `lean/logs/continuation/`; new audit: `lean/GraphContinuationAudit.lean`.
+- Original build and axiom logs: `lean/logs/build.log`, `lean/logs/axioms.log`.
 
-## Original target claims (graph portions remain uncertified)
+## Target claims (1, 2 and 4 certified; block recovery in 3 certified, dimension pending)
 
 1. D⁴f_m(a,b,c,d)=ω(a,b)ω(c,d)+ω(a,c)ω(b,d)+ω(a,d)ω(b,c).
 2. D⁴f_m(a,b,.,.)=0 iff a,b are linearly dependent, m≥2.
@@ -32,4 +38,7 @@ The isolated project is `lean/`, with namespace `VonoV3C` and Lean/Mathlib 4.19.
 
 ## Lean next steps
 
-The seed and algebraic block-recovery stages are completed. Next define the graph family for variable m, certify annihilation of the cubic coupling by D⁴, and establish EA transport of the zero-pair relation. Then certify edge recovery, canonical classification, the graph index, and quadratic-robust indecomposability. Do not promote the compiled block-recovery criterion into a graph EA theorem before certifying the transport bridge.
+Stages A–E from EA_TRANSPORT_PROOF_OBLIGATIONS.md are compiled. Next independent
+goals: the kernel dimension formula, exact relaxed graph index, and
+quadratic-robust indecomposability. Follow the handoff in CONTINUATION_PROGRESS.md.
+Do not extend the canonical classification to arbitrary quadratic perturbations.

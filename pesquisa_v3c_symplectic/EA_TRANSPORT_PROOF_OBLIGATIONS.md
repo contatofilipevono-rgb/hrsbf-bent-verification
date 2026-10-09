@@ -1,6 +1,11 @@
 # V3-C — EA transport and directed-edge recovery: exact proof obligations
 
-Status: **mathematical derivation only, not Lean-compiled**. This file is an implementation specification for the next V3-C module; do not count it as a certificate.
+Status: **stages 1–5 below are Lean-compiled on `v3c-ea-transport-continuation`**.
+Base reference SHA: `83b53a57f47ae33d4694346dc0e315d2a4c38878`.
+This file remains the mathematical specification; certificates are the actual
+Graph*.lean modules, full E-build.log and E-axioms.log under lean/logs/continuation.
+FORMALIZATION_REPORT.md and CONTINUATION_PROGRESS.md record exact scope.
+Existing seed/block proofs are unchanged; no V1/V2 or reference-branch writes.
 
 ## 1. Canonical graph map
 
