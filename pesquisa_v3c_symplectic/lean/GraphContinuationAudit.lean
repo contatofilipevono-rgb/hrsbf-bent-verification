@@ -3,6 +3,7 @@ import VonoV3C.GraphEdgeRecovery
 import VonoV3C.GraphOutputRecovery
 import VonoV3C.GraphMap
 import VonoV3C.GraphEATransport
+import VonoV3C.GraphRelaxedIndex
 #print axioms VonoV3C.GraphFamily.cubic_fourth_zero
 #print axioms VonoV3C.GraphFamily.fourth_component
 #print axioms VonoV3C.GraphFamily.representation_fourth
@@ -19,3 +20,6 @@ import VonoV3C.GraphEATransport
 #print axioms VonoV3C.GraphFamily.EA_implies_graph_isomorphic
 #print axioms VonoV3C.GraphFamily.graph_isomorphic_implies_EA
 #print axioms VonoV3C.GraphFamily.canonical_EA_iff_graph_isomorphic
+#print axioms VonoV3C.GraphFamily.graph_relaxed_lower_bound
+#print axioms VonoV3C.GraphFamily.graph_relaxed_upper_bound
+#print axioms VonoV3C.GraphFamily.graph_has_exact_relaxed_index

@@ -105,12 +105,56 @@ heterogeneous EA definition and a transport/reindex bridge; that convenience
 extension is not part of the current theorem. No graph-only classification of
 arbitrary quadratic perturbations is asserted.
 
-The separate original goals still pending are the kernel-dimension formula,
-exact relaxed graph index, and indecomposability under arbitrary quadratic
-perturbations. None is used or claimed in the classification proof. No novelty,
-literature-priority, or publication-readiness claim is made. Builds have only
-nonfatal Mathlib linter warnings (unused section parameters and tactic style).
-Remote CI is distinct from these local kernel-checked builds.
+The separate original goals still pending are the kernel-dimension formula and
+indecomposability under arbitrary quadratic perturbations. The exact relaxed
+graph index is now proved as an independent theorem below; it is not used in
+the classification proof. No novelty, literature-priority, or
+publication-readiness claim is made. Builds have only nonfatal Mathlib linter
+warnings (unused section parameters and tactic style). Remote CI is distinct
+from these local kernel-checked builds.
+
+## Exact vector relaxed index (compiled)
+
+`VonoV3C/GraphRelaxedIndex.lean` defines vector relaxed subspaces and proves
+`graph_relaxed_lower_bound`, `graph_relaxed_upper_bound`, and
+`graph_has_exact_relaxed_index`. For every finite vertex type `ι`, every
+`m ≥ 2`, and every directed adjacency function, the exact vector relaxed
+index of `graphMap hm adj` is `Fintype.card ι`. No looplessness hypothesis is
+needed for this result.
+
+The proposed value is `Fintype.card ι`. There is a viable lower-bound witness:
+in each vertex block, use the vector supported at the second local pair
+`⟨1, ...⟩`, with value `(1,0)`. This coordinate is outside the two selected by
+`p` and `q`, so the graph cubic coupling is unchanged along every linear
+combination of these witness directions. In one output component, the seed
+depends only on that same vertex block; the projection of the witness span to
+that block is a single line. Its second difference along two vectors on the
+line is constant (over `ZMod 2`, the two scalars are each zero or one). The
+selected directions are nonzero and have disjoint vertex support, so the
+resulting span has dimension `card ι`.
+
+For the upper bound, adapt the V2 projection argument, but prove it using the
+V3-C `fourth_component` and `Blocks` property-(A) result. Every pair of
+vectors in a vector-relaxed subspace projects at each vertex to zero/equal
+vectors; hence each projected subspace has dimension at most one. Injectivity
+of the product of coordinate projections gives dimension at most `card ι`.
+
+The witness uses the first component at local pair index 1, where `p` and `q`
+both vanish. Thus all graph couplings vanish on the witness space. The seed
+term in output coordinate `i` sees only the `i`th input block, and its
+projection of the witness space is one-dimensional; over `ZMod 2`, its second
+differences on that line vanish. This proves the lower bound. For the upper
+bound, constant second differences imply zero fourth differences. The
+certified V3-C polarization and Property (A) then force every projected pair
+to be zero/equal, so each coordinate image has dimension at most one. The
+injective product of the coordinate projections gives the global upper bound.
+
+Verification: the complete `lake build` succeeded after adding the module;
+`GraphContinuationAudit.lean` reports only `propext`, `Classical.choice`, and
+`Quot.sound` for all three index theorems. Logs are
+`lean/logs/continuation/exact-index-build.log` and
+`lean/logs/continuation/exact-index-axioms.log`. The module contains no
+`sorry`, `admit`, or new axiom.
 
 ## Handoff
 
@@ -123,10 +167,8 @@ Remote CI is distinct from these local kernel-checked builds.
    `representation_output` has inverse output orientation relative to the input
    permutation. `mixed_third` is constant only for the cross-block directions
    it specifies, not for arbitrary third derivatives of the quartic seed.
-4. Continue the remaining independent goals in a fresh branch from this result.
-   For the index upper bound, use fourth_component plus certified Property A.
-   For its lower bound, test the span of the local q_0 directions against the
-   actual coupling, then prove it algebraically. For indecomposability modulo
-   quadratic perturbations, first certify quadratic D³/D⁴ annihilation; ordinary
-   EAEquivalent currently allows only affine corrections.
+4. Continue the remaining independent goals in a fresh branch from this result:
+   the kernel-dimension formula and indecomposability modulo quadratic
+   perturbations. For the latter, first certify quadratic D³/D⁴ annihilation;
+   ordinary `EAEquivalent` currently allows only affine corrections.
 5. Never modify or merge into V1, V2, or the V3-C reference branch automatically.

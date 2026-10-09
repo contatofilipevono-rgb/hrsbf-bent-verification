@@ -11,3 +11,5 @@ import VonoV3C.GraphOutputRecovery
 import VonoV3C.GraphEdgeRecovery
 
 import VonoV3C.GraphClassification
+
+import VonoV3C.GraphRelaxedIndex
