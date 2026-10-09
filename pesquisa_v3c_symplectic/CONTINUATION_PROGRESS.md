@@ -276,6 +276,24 @@ LD_PRELOAD=$PWD/.lake/v3c-path-shim.so PATH=$PWD/.lake/lean-4.19.0-linux/bin:$PA
 The cached runtime is ignored by Git; the portable pinned project is unchanged.
 On an ordinary Lean 4.19.0 installation, use the ordinary `lake` commands above.
 
+## Publication preparation (2026-10-09)
+
+Restored the clean checkout to remote `7924bc8` before proceeding. Confirmed
+that the new mathematical results and the preliminary positioning note already
+existed, while a V3-C manuscript did not. Added `MANUSCRIPT_DRAFT.md` with
+explicit hypotheses, proofs, declaration correspondence, and reproduction
+instructions. Added `PUBLICATION_REVIEW_2026-10-09.md` with primary-source
+comparison, unresolved novelty questions, and a precise pre-submission checklist.
+V1, V2, the reference branch, and existing Lean proof sources are unchanged.
+
+The full build passed again; `publication-baseline-build.log` is in
+`lean/logs/continuation/`. The continuation and original axiom audits are
+recorded in `publication-axioms.log` and `publication-existing-axioms.log`.
+The 2026/940 full PDF remained inaccessible (direct HTTP 403), so the review
+uses only its official abstract and implementation README and explicitly leaves
+the full-paper comparison pending. No priority or publication-readiness claim
+has been added. This advance is manuscript/review work, not a new Lean theorem.
+
 ## Handoff
 
 1. Checkout v3c-ea-transport-continuation; verify the remote SHA and clean status.
