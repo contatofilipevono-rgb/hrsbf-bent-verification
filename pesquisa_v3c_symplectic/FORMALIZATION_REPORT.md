@@ -31,6 +31,8 @@ No alternative seed or extra hypothesis on the seed is used.
 | Graph C | `GraphFamily.representation_output_basis`, `representation_output` | Output coordinate permutation matches the recovered input permutation with inverse orientation. |
 | Graph D | `GraphFamily.mixed_third`, `edge_detected_iff`, `representation_edges` | Exact mixed third derivative and directed edge recovery, reverse arcs unrestricted. |
 | Graph E | `GraphFamily.canonical_EA_iff_graph_isomorphic` | For canonical loopless graphs on any common finite vertex type and m≥2, ordinary EA iff graph isomorphism. |
+| Graph index | `GraphFamily.graph_has_exact_relaxed_index` | Exact vector relaxed index `card ι` for every finite vertex type, m≥2, and every adjacency function. |
+| Kernel dimension | `GraphFamily.graph_fourth_radical_dimension` | For each input a, the actual fourth-derivative radical at all base points is a linear subspace of dimension `2*m*card ι - (2*m-1)*supportCount a`. |
 
 Over F₂, `a=0 ∨ b=0 ∨ a=b` is the explicit dependent-pair criterion. The
 certificates use this disjunction directly; they do not state a separate theorem
@@ -55,15 +57,19 @@ Its preservation premise is explicit. No EA classification theorem is inferred
 without proving that premise for the actual graph maps. The continuation now
 proves it in GraphEATransport.lean before applying this theorem.
 
+## Kernel dimension (certified)
+
+`pairKernelSpace a` is the product of unrestricted local spaces when `a i = 0`
+and singleton spans when `a i ≠ 0`. `pairKernelPiEquiv` gives the linear
+equivalence to that product. `mem_pairKernelSpace_iff_graphFourth_zero` connects
+this subspace to the actual graph map's fourth derivative for all remaining
+directions, output coordinates, and base points. `finrank_pairKernelSpace` sums
+the local dimensions 2m and 1, producing the claimed formula. Support counts
+nonzero vertex blocks, not nonzero scalar coordinates. Empty vertex types and
+the zero input are covered. No looplessness hypothesis is needed here.
+
 ## Remaining gaps
 
-2. **Kernel dimension:** the graph fourth-derivative radical is identified with
-   the already certified blockwise quartic pair relation
-   (`GraphFourthPairZero` iff membership in `PairKernel`). The numerical formula
-   dim K(a)=2mr−(2m−1)support(a) is not yet certified.
-4. **Graph index:** certified as `graph_has_exact_relaxed_index`, with upper and
-   lower bounds for every finite vertex type and m≥2. This is an exact vector
-   relaxed index result, not a claim about quadratic perturbations.
 5. **Indecomposability with quadratic perturbations:** formalize quadratic
    annihilation by D³/D⁴, extract a block partition from a product decomposition,
    and rule out crossing edges for a weakly connected graph. No graph
@@ -95,10 +101,12 @@ First-attempt failure logs and their corrections are explained in
 CONTINUATION_PROGRESS.md. All five requested graph modules are included in the
 default library target. Nonfatal tactic/unused-parameter linter warnings remain.
 
-`lean/logs/continuation/kernel-radical-build.log` records the successful
-compilation of the graph radical characterization. Its axiom audit is included
-in `lean/GraphContinuationAudit.lean`; it reuses the certified fourth-component
-identity and block-pair relation, and does not claim the radical's dimension.
+`lean/logs/continuation/kernel-radical-build.log` records the earlier radical
+characterization. `lean/logs/continuation/kernel-dimension-build.log` and
+`kernel-dimension-axioms.log` record the full dimension build and axiom audit.
+The exported graph-radical dimension theorem uses only `propext`,
+`Classical.choice`, and `Quot.sound`. Failure logs and corrections are described
+in CONTINUATION_PROGRESS.md.
 
 `logs/ENVIRONMENT.md` documents the local executable-path adapter necessitated
 by this execution container. It does not change Lean's kernel or proof objects.

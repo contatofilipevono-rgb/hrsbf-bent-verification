@@ -1,0 +1,30 @@
+warning: batteries: repository '././.lake/packages/batteries' has local changes
+⚠ [1135/1164] Replayed VonoV3C.GraphMap
+warning: ././././VonoV3C/GraphMap.lean:52:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.component_formula':
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoV3C/GraphMap.lean:87:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.fourth_component':
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [1386/1386] Built VonoV3C.KernelDimension
+warning: ././././VonoV3C/KernelDimension.lean:74:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.mem_pairKernelSpace':
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoV3C/KernelDimension.lean:109:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.finrank_pairKernelSpace_sum':
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoV3C/KernelDimension.lean:119:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.supportCount_eq_sum':
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+Build completed successfully.

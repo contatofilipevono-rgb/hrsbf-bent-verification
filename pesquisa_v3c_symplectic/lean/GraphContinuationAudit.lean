@@ -25,3 +25,8 @@ import VonoV3C.KernelDimension
 #print axioms VonoV3C.GraphFamily.graph_relaxed_upper_bound
 #print axioms VonoV3C.GraphFamily.graph_has_exact_relaxed_index
 #print axioms VonoV3C.GraphFamily.mem_pairKernel_iff_graphFourthPairZero
+#print axioms VonoV3C.GraphFamily.mem_pairKernelSpace_iff_graphFourth_zero
+#print axioms VonoV3C.GraphFamily.pairKernelPiEquiv
+#print axioms VonoV3C.GraphFamily.finrank_pairKernelSpace_sum
+#print axioms VonoV3C.GraphFamily.finrank_pairKernelSpace
+#print axioms VonoV3C.GraphFamily.graph_fourth_radical_dimension

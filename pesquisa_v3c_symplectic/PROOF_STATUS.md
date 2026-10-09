@@ -1,6 +1,6 @@
 # V3-C — symplectic graph family (research branch)
 
-This branch is separate from V1 and V2. **The seed, intrinsic blocks, actual graph fourth derivative, ordinary EA transport, matched output permutation, directed-edge recovery, canonical EA classification, and exact vector relaxed graph index are Lean-compiled for variable m≥2. The fourth-derivative radical is identified with the blockwise pair kernel. The kernel-dimension formula and quadratic-robust graph indecomposability remain uncertified.**
+This branch is separate from V1 and V2. **The seed, intrinsic blocks, actual graph fourth derivative, ordinary EA transport, matched output permutation, directed-edge recovery, canonical EA classification, exact vector relaxed graph index, and kernel-dimension formula are Lean-compiled for variable m≥2. Quadratic-robust graph indecomposability remains uncertified.**
 
 Continuation branch: `v3c-ea-transport-continuation`, based on reference SHA
 `83b53a57f47ae33d4694346dc0e315d2a4c38878`; reference branch unchanged.
@@ -17,16 +17,18 @@ The isolated project is `lean/`, with namespace `VonoV3C` and Lean/Mathlib 4.19.
 - `seed_property_A`, `fourth_pair_zero_iff`, `constant_second_iff`: uniform m≥2 certificates, without seed/vector enumeration.
 - `Blocks.recover_blocks_from_quartic`: block recovery for invertible linear maps preserving the intrinsic direct-sum quartic zero-pair relation. GraphFamily.representation_pair and EA_recovers_blocks now derive that premise from actual graph EA equivalence.
 - `GraphFamily.canonical_EA_iff_graph_isomorphic`: complete ordinary EA classification of canonical loopless directed graph representatives on a common finite vertex type; bidirectional arcs allowed.
+- `GraphFamily.graph_fourth_radical_dimension`: the actual graph fourth-derivative radical, at every base point, is a linear subspace of dimension `2*m*card ι - (2*m-1)*supportCount a`, where support counts nonzero vertex blocks.
+- `GraphFamily.graph_has_exact_relaxed_index`: exact vector relaxed index `card ι`.
 - New build and axiom logs: `lean/logs/continuation/`; new audit: `lean/GraphContinuationAudit.lean`.
 - Original build and axiom logs: `lean/logs/build.log`, `lean/logs/axioms.log`.
 
-## Target claims (1, 2 and 4 certified; block recovery in 3 certified, dimension pending)
+## Target claims (1–5 certified; 6 pending)
 
 1. D⁴f_m(a,b,c,d)=ω(a,b)ω(c,d)+ω(a,c)ω(b,d)+ω(a,d)ω(b,c).
 2. D⁴f_m(a,b,.,.)=0 iff a,b are linearly dependent, m≥2.
-3. Intrinsic block recovery via K(a)={b:D⁴F(a,b,.,.)=0} is certified, and the graph fourth-derivative radical is characterized. The dimension formula dim K(a)=2mr−(2m−1)support(a) remains pending.
+3. Intrinsic block recovery via K(a)={b:D⁴F(a,b,.,.)=0} and the dimension formula dim K(a)=2mr−(2m−1)support(a) are certified.
 4. Mixed D³ detects i→j, hence canonical EA classes classify loopless directed graphs.
-5. R₂(F_G,m)=r via upper bound from block projections and witness span(q_{i,1}).
+5. R₂(F_G,m)=r via upper bound from block projections and a witness with one safe direction at the second local coordinate pair in each block.
 6. If underlying graph is connected, F_G,m+Q is EA-indecomposable for any quadratic vectorial Q; use D⁴ to force block partition and D³ to exclude crossing edges. This remains pending.
 
 ## Boundaries
@@ -38,7 +40,8 @@ The isolated project is `lean/`, with namespace `VonoV3C` and Lean/Mathlib 4.19.
 
 ## Lean next steps
 
-Stages A–E from EA_TRANSPORT_PROOF_OBLIGATIONS.md are compiled. Next independent
-goals: the kernel-dimension formula and quadratic-robust indecomposability.
-The exact relaxed graph index is compiled. Follow CONTINUATION_PROGRESS.md.
+Stages A–E, the exact relaxed graph index, and the kernel-dimension formula are
+compiled. Next goal: quadratic-robust indecomposability. First formalize quadratic
+D³/D⁴ annihilation and the precise product-decomposition notion. Follow
+CONTINUATION_PROGRESS.md.
 Do not extend the canonical classification to arbitrary quadratic perturbations.

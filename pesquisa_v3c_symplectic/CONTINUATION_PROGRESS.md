@@ -105,14 +105,11 @@ heterogeneous EA definition and a transport/reindex bridge; that convenience
 extension is not part of the current theorem. No graph-only classification of
 arbitrary quadratic perturbations is asserted.
 
-The separate original goals still pending are the kernel-dimension formula and
-indecomposability under arbitrary quadratic perturbations. The graph
-fourth-derivative radical has since been explicitly characterized as the
-blockwise pair kernel in
-`GraphFamily.mem_pairKernel_iff_graphFourthPairZero`; this does not yet
-establish its dimension. The exact relaxed graph index is proved as an
-independent theorem below; it is not used in the classification proof. No
-novelty, literature-priority, or
+The remaining original goal is indecomposability under arbitrary quadratic
+perturbations. The graph fourth-derivative radical and its dimension are
+certified below. The exact relaxed graph index is proved as an independent
+theorem; it is not used in the classification proof. No novelty,
+literature-priority, or
 publication-readiness claim is made. Builds have only nonfatal Mathlib linter
 warnings (unused section parameters and tactic style). Remote CI is distinct
 from these local kernel-checked builds.
@@ -160,6 +157,50 @@ Verification: the complete `lake build` succeeded after adding the module;
 `lean/logs/continuation/exact-index-axioms.log`. The module contains no
 `sorry`, `admit`, or new axiom.
 
+## Kernel dimension (compiled, 2026-10-09)
+
+Resumed from remote commit `878a0b7fb704f414ab6092a3266b660d7e9dcb4d`.
+The local and remote previous commits had identical trees; the local branch
+was synchronized to the remote commit before editing. The existing reports
+and source search confirmed that the formula was still missing. Pinned Lean
+4.19.0 was restored from the official release because the temporary executable
+had disappeared. The baseline full build succeeded without any proof change.
+A pre-existing missing Batteries documentation symlink (`docs/README.md`) was
+restored from the pinned dependency commit; no dependency proof source changed.
+
+`KernelDimension.lean` now adds:
+
+- `blockPairKernel`, `mem_blockPairKernel`: local full-space/singleton-span
+  characterization over F₂.
+- `pairKernelSpace`, `mem_pairKernelSpace_iff_graphFourth_zero`: a genuine
+  submodule equal to the actual graph fourth-derivative radical at all base points.
+- `pairKernelPiEquiv`: explicit linear product decomposition.
+- `finrank_pairKernelSpace_sum`: sum of local dimensions 2m or 1.
+- `supportCount`, `finrank_pairKernelSpace`: the number of nonzero vertex blocks
+  and the exact formula `2*m*card ι - (2*m-1)*supportCount a`.
+- `graph_fourth_radical_dimension`: the exported existence, characterization,
+  and dimension statement for the actual graph function.
+
+All statements are uniform in the finite vertex type, m≥2, and arbitrary
+directed adjacency. Empty vertex types, the zero vector, and bidirectional
+arcs are included. No experimental enumeration is used. This proves the
+dimension claim for the canonical family; it asserts no classification of
+arbitrary quadratic perturbations.
+
+Two failed elaboration attempts are preserved. The first needed the root
+`finrank_top` name, the exact `Finset.card_filter` identity, and a type annotation
+for `Finset.sum_congr`. The second needed explicit `if_pos` rewriting beneath
+the finrank subtype and parentheses around the entire summand. These were
+syntax/API corrections; no mathematical premise was added.
+
+Logs: `lean/logs/continuation/kernel-dimension-baseline.log`,
+`kernel-dimension-first-attempt.log`, `kernel-dimension-second-attempt.log`,
+`kernel-dimension-module.log`, `kernel-dimension-build.log`,
+`kernel-dimension-axioms.log`, and `kernel-dimension-existing-axioms.log`.
+The full build and both audits succeeded. All audited new and existing
+declarations use only the standard foundations `propext`, `Classical.choice`,
+and `Quot.sound`. Earlier proof modules are unchanged.
+
 ## Handoff
 
 1. Checkout v3c-ea-transport-continuation; verify the remote SHA and clean status.
@@ -171,9 +212,12 @@ Verification: the complete `lake build` succeeded after adding the module;
    `representation_output` has inverse output orientation relative to the input
    permutation. `mixed_third` is constant only for the cross-block directions
    it specifies, not for arbitrary third derivatives of the quartic seed.
-4. Continue the remaining independent goals on this branch: compute the
-   dimension of the radical from its blockwise full-space/singleton-span
-   decomposition, then prove indecomposability modulo quadratic perturbations.
-   For the latter, first certify quadratic D³/D⁴ annihilation; ordinary
-   `EAEquivalent` currently allows only affine corrections.
+4. Continue on this branch with indecomposability modulo quadratic perturbations:
+   first certify quadratic D³/D⁴ annihilation, then define a nontrivial product
+   decomposition under ordinary EA. Extract input block partitions using the
+   certified quartic relation and exclude crossing directed edges using mixed
+   D³ and weak connectivity. Ordinary `EAEquivalent` allows only affine
+   corrections; quadratic perturbations require separate functions and
+   annihilation lemmas. State the graph size/nontrivial-factor conventions
+   explicitly, including empty and one-vertex cases.
 5. Never modify or merge into V1, V2, or the V3-C reference branch automatically.
