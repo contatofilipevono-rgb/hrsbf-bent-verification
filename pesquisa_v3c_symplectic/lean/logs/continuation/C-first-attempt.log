@@ -1,0 +1,74 @@
+⚠ [1136/1138] Replayed VonoV3C.GraphMap
+warning: ././././VonoV3C/GraphMap.lean:52:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.component_formula':
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoV3C/GraphMap.lean:87:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.fourth_component':
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [1137/1138] Built VonoV3C.GraphEATransport
+warning: ././././VonoV3C/GraphEATransport.lean:13:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.iterDiff_add':
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoV3C/GraphEATransport.lean:22:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.iterDiff_output':
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+info: ././././VonoV3C/GraphEATransport.lean:41:4: Try this: abel_nf
+warning: ././././VonoV3C/GraphEATransport.lean:31:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.iterDiff_input':
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoV3C/GraphEATransport.lean:40:4: 'congr 1' tactic does nothing
+note: this linter can be disabled with `set_option linter.unusedTactic false`
+warning: ././././VonoV3C/GraphEATransport.lean:49:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.affine_second_zero':
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+✖ [1138/1138] Building VonoV3C.GraphOutputRecovery
+trace: .> LEAN_PATH=././.lake/packages/Cli/.lake/build/lib/lean:././.lake/packages/batteries/.lake/build/lib/lean:././.lake/packages/Qq/.lake/build/lib/lean:././.lake/packages/aesop/.lake/build/lib/lean:././.lake/packages/proofwidgets/.lake/build/lib/lean:././.lake/packages/importGraph/.lake/build/lib/lean:././.lake/packages/LeanSearchClient/.lake/build/lib/lean:././.lake/packages/plausible/.lake/build/lib/lean:././.lake/packages/mathlib/.lake/build/lib/lean:././.lake/build/lib/lean /tmp/lean-4.19.0-linux/bin/lean ././././VonoV3C/GraphOutputRecovery.lean -R ./././. -o ././.lake/build/lib/lean/VonoV3C/GraphOutputRecovery.olean -i ././.lake/build/lib/lean/VonoV3C/GraphOutputRecovery.ilean -c ././.lake/build/ir/VonoV3C/GraphOutputRecovery.c --json
+warning: ././././VonoV3C/GraphOutputRecovery.lean:19:4: try 'simp at hh' instead of 'simpa using hh'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: ././././VonoV3C/GraphOutputRecovery.lean:21:4: try 'simp at hh' instead of 'simpa using hh'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: ././././VonoV3C/GraphOutputRecovery.lean:23:4: try 'simp at hh' instead of 'simpa using hh'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: ././././VonoV3C/GraphOutputRecovery.lean:52:4: try 'simp at hi' instead of 'simpa using hi'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+error: ././././VonoV3C/GraphOutputRecovery.lean:64:51: unsolved goals
+ι : Type u_1
+inst✝¹ : Fintype ι
+inst✝ : DecidableEq ι
+m : ℕ
+hm : 2 ≤ m
+adjG adjH : ι → ι → Bool
+A : Input ι m ≃ₗ[Scalar] Input ι m
+B : Output ι ≃ₗ[Scalar] Output ι
+t : Input ι m
+L : Input ι m →ₗ[Scalar] Output ι
+k : Output ι
+he : ∀ (x : Input ι m), graphMap hm adjH x = B (graphMap hm adjG (A x + t)) + (L x + k)
+perm : ι ≃ ι
+e : ι → Vec m ≃ₗ[Scalar] Vec m
+hblock : ∀ (i : ι) (v : Vec m), A (Pi.single i v) = Pi.single (perm i) ((e i) v)
+y : Output ι
+i : ι
+hdecomp : y = ∑ j, Pi.single j (y j)
+hterm : ∀ (j : ι), B (Pi.single j (y j)) i = Pi.single (perm.symm j) (y j) i
+⊢ ∑ i_1, Pi.single (perm.symm (perm i_1)) (y (perm i_1)) i = y (perm i)
+error: Lean exited with code 1
+Some required builds logged failures:
+- VonoV3C.GraphOutputRecovery
+error: build failed

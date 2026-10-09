@@ -1,3 +1,4 @@
+import VonoV3C.GraphOutputRecovery
 import VonoV3C.GraphMap
 import VonoV3C.GraphEATransport
 #print axioms VonoV3C.GraphFamily.cubic_fourth_zero
@@ -5,3 +6,6 @@ import VonoV3C.GraphEATransport
 #print axioms VonoV3C.GraphFamily.representation_fourth
 #print axioms VonoV3C.GraphFamily.representation_pair
 #print axioms VonoV3C.GraphFamily.EA_recovers_blocks
+
+#print axioms VonoV3C.GraphFamily.representation_output_basis
+#print axioms VonoV3C.GraphFamily.representation_output

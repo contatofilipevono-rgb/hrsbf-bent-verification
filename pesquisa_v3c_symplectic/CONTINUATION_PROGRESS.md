@@ -56,3 +56,16 @@ Implementation corrections: affine cancellation required scalar ring normalizati
 rather than a redundant simp after abel_nf, and Pi.zero_apply to normalize the
 output zero. Only new modules were changed. B-first-attempt.log records the first
 failure. No mathematical hypothesis was added to fix either elaboration issue.
+
+## C: matched output permutation (compiled)
+
+`exists_pfaffian_one` is deduced from certified Property A and two explicit
+independent coordinate vectors. `fourth_single` identifies the output coordinate
+line. `representation_output_basis` and `representation_output` prove
+B(single (perm i) 1)=single i 1 and (B y)(i)=y(perm i), respectively.
+No preservation of omega is assumed, including m=2.
+
+C-build.log and C-axioms.log record successful build/audit. The first extension
+to arbitrary y failed because rewriting the coordinate decomposition on both
+sides also rewrote the target; a one-sided decomposition of B y and a single-term
+sum proof fixed it. C-first-attempt.log records the earlier failure.
