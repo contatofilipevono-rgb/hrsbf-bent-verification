@@ -1,0 +1,5 @@
+'VonoV3C.GraphFamily.cubic_fourth_zero' depends on axioms: [propext, Quot.sound]
+'VonoV3C.GraphFamily.fourth_component' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VonoV3C.GraphFamily.representation_fourth' depends on axioms: [propext, Quot.sound]
+'VonoV3C.GraphFamily.representation_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VonoV3C.GraphFamily.EA_recovers_blocks' depends on axioms: [propext, Classical.choice, Quot.sound]

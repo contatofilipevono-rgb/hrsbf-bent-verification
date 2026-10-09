@@ -42,3 +42,17 @@ export PATH=/tmp/lean-4.19.0-linux/bin:$PATH
 
 Run from pesquisa_v3c_symplectic/lean. On ordinary Linux use lake build and
 lake env lean Audit.lean without the adapter. Do not change the reference branch.
+
+## B: EA transport and intrinsic blocks (compiled)
+
+`representation_fourth` handles arbitrary invertible input/output linear maps,
+translations and explicitly affine corrections. `representation_pair` derives
+quartic pair-zero preservation from actual graph-map equality. `EA_recovers_blocks`
+applies the existing Blocks theorem with that derived premise. `graph_fourth`
+is the vector-valued graph identity. Standard axioms only, as recorded in
+B-axioms.log; B-build.log is a full successful lake build.
+
+Implementation corrections: affine cancellation required scalar ring normalization
+rather than a redundant simp after abel_nf, and Pi.zero_apply to normalize the
+output zero. Only new modules were changed. B-first-attempt.log records the first
+failure. No mathematical hypothesis was added to fix either elaboration issue.
