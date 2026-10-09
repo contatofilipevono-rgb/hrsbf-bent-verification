@@ -1,0 +1,33 @@
+name: V3 orbit equivalence
+on:
+  push:
+    branches: [v3-independent-ea-audit-20261008]
+    paths:
+      - 'pesquisa_v2_quartic/lean/V3OrbitEquivalence.lean'
+      - '.github/workflows/v3-orbit-equivalence.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: pesquisa_v2_quartic/lean
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Restore Mathlib cache
+        run: lake exe cache get
+      - name: Build and kernel-check orbit equivalence
+        run: |
+          lake build
+          lake env lean V3CountingFoundations.lean
+          lake env lean V3OrbitBound.lean
+          lake env lean V3GraphOrbits.lean
+          lake env lean V3OrbitIsomorphism.lean
+          lake env lean V3OrbitEquivalence.lean
