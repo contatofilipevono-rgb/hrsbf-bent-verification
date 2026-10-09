@@ -29,4 +29,14 @@ theorem omega_symmetric {m : ℕ} (a b : Vec m) :
   intro i hi
   ring
 
+/-- The zero direction annihilates the symplectic form. -/
+theorem omega_zero_left {m : ℕ} (b : Vec m) :
+    omega (0 : Vec m) b = 0 := by
+  simp [omega]
+
+/-- The zero direction annihilates the quartic polarization tensor. -/
+theorem phi_zero_left {m : ℕ} (b c d : Vec m) :
+    phi (0 : Vec m) b c d = 0 := by
+  simp [phi, omega_zero_left]
+
 end VonoV3General
