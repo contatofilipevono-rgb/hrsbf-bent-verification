@@ -201,6 +201,31 @@ The full build and both audits succeeded. All audited new and existing
 declarations use only the standard foundations `propext`, `Classical.choice`,
 and `Quot.sound`. Earlier proof modules are unchanged.
 
+## Quadratic perturbations (compiled, 2026-10-09)
+
+Continued from `1befac8a6fa7d7e8ebea72949bdc9f5736d3c451`, after checking
+the clean local checkout and matching remote HEAD. The V2 GraphQuadratic,
+GraphSplitting, GraphConnected, and GraphEA modules were read as references.
+No V2 file was changed. The official pinned Lean runtime was restored inside
+the ignored `lean/.lake/lean-4.19.0-linux/` directory; its executable-path shim
+is `lean/.lake/v3c-path-shim.so`, built from the existing adapter source.
+The baseline build succeeded. A missing Batteries documentation symlink was
+restored from its pinned checkout; no dependency proof source was edited.
+
+`GraphQuadratic.lean` defines the intrinsic constant-second-difference
+condition and proves third/fourth derivative annihilation, invariance of those
+derivatives under quadratic addition, and preservation of the exact vector
+relaxed index. `quadratic_ANF_second_constant` proves the intrinsic condition
+for arbitrary affine terms plus finite sums of products of linear forms with
+arbitrary output coefficients. Thus standard quadratic ANFs are explicitly
+covered; the condition does not assume any indecomposability conclusion.
+
+The first attempt failed only when unfolding the function-valued `addVector`
+with `rw`; an explicit definitional `change` fixed it. Logs:
+`lean/logs/continuation/quadratic-first-attempt.log`, `quadratic-build.log`,
+and `quadratic-axioms.log`. The full build and `GraphQuadraticAudit.lean`
+succeeded, using only `propext`, `Classical.choice`, and `Quot.sound`.
+
 ## Handoff
 
 1. Checkout v3c-ea-transport-continuation; verify the remote SHA and clean status.

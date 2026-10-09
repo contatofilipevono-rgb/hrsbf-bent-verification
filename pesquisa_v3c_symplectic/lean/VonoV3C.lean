@@ -15,3 +15,5 @@ import VonoV3C.GraphClassification
 import VonoV3C.GraphRelaxedIndex
 
 import VonoV3C.KernelDimension
+
+import VonoV3C.GraphQuadratic

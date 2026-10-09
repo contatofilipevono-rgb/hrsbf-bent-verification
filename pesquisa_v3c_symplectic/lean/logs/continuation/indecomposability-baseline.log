@@ -1,0 +1,104 @@
+warning: batteries: repository '././.lake/packages/batteries' has local changes
+⚠ [1135/1157] Replayed VonoV3C.GraphMap
+warning: ././././VonoV3C/GraphMap.lean:52:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.component_formula':
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoV3C/GraphMap.lean:87:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.fourth_component':
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [1136/1157] Replayed VonoV3C.GraphEATransport
+warning: ././././VonoV3C/GraphEATransport.lean:13:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.iterDiff_add':
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoV3C/GraphEATransport.lean:22:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.iterDiff_output':
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+info: ././././VonoV3C/GraphEATransport.lean:41:4: Try this: abel_nf
+warning: ././././VonoV3C/GraphEATransport.lean:31:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.iterDiff_input':
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoV3C/GraphEATransport.lean:40:4: 'congr 1' tactic does nothing
+note: this linter can be disabled with `set_option linter.unusedTactic false`
+warning: ././././VonoV3C/GraphEATransport.lean:49:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.affine_second_zero':
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [1137/1157] Replayed VonoV3C.GraphOutputRecovery
+warning: ././././VonoV3C/GraphOutputRecovery.lean:19:4: try 'simp at hh' instead of 'simpa using hh'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: ././././VonoV3C/GraphOutputRecovery.lean:21:4: try 'simp at hh' instead of 'simpa using hh'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: ././././VonoV3C/GraphOutputRecovery.lean:23:4: try 'simp at hh' instead of 'simpa using hh'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: ././././VonoV3C/GraphOutputRecovery.lean:52:4: try 'simp at hi' instead of 'simpa using hi'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [1138/1157] Replayed VonoV3C.GraphEdgeRecovery
+warning: ././././VonoV3C/GraphEdgeRecovery.lean:59:40: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+note: this linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: ././././VonoV3C/GraphEdgeRecovery.lean:85:4: try 'simp at hh' instead of 'simpa using hh'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [1139/1157] Replayed VonoV3C.GraphClassification
+warning: ././././VonoV3C/GraphClassification.lean:34:8: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.reindexLinear_apply':
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoV3C/GraphClassification.lean:38:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.graphMap_reindex':
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [1388/1394] Replayed VonoV3C.GraphRelaxedIndex
+warning: ././././VonoV3C/GraphRelaxedIndex.lean:70:8: automatically included section variable(s) unused in theorem '_private.VonoV3C.GraphRelaxedIndex.0.VonoV3C.GraphFamily.p_selectedRelaxedDirections':
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoV3C/GraphRelaxedIndex.lean:79:8: automatically included section variable(s) unused in theorem '_private.VonoV3C.GraphRelaxedIndex.0.VonoV3C.GraphFamily.q_selectedRelaxedDirections':
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoV3C/GraphRelaxedIndex.lean:126:8: automatically included section variable(s) unused in theorem '_private.VonoV3C.GraphRelaxedIndex.0.VonoV3C.GraphFamily.selectedDirections_pair_dependent':
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoV3C/GraphRelaxedIndex.lean:187:8: automatically included section variable(s) unused in theorem '_private.VonoV3C.GraphRelaxedIndex.0.VonoV3C.GraphFamily.selectedRelaxedDirections_injective':
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoV3C/GraphRelaxedIndex.lean:262:8: automatically included section variable(s) unused in theorem '_private.VonoV3C.GraphRelaxedIndex.0.VonoV3C.GraphFamily.projectionRangeMap_injective':
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [1392/1394] Replayed VonoV3C.KernelDimension
+warning: ././././VonoV3C/KernelDimension.lean:144:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.finrank_pairKernelSpace':
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+Build completed successfully.
