@@ -26,8 +26,9 @@ jobs:
       - name: Build and kernel-check orbit equivalence
         run: |
           lake build
-          lake env lean V3CountingFoundations.lean
-          lake env lean V3OrbitBound.lean
-          lake env lean V3GraphOrbits.lean
-          lake env lean V3OrbitIsomorphism.lean
-          lake env lean V3OrbitEquivalence.lean
+          mkdir -p .lake/build/lib/lean
+          lake env lean -o .lake/build/lib/lean/V3CountingFoundations.olean V3CountingFoundations.lean
+          lake env lean -o .lake/build/lib/lean/V3OrbitBound.olean V3OrbitBound.lean
+          lake env lean -o .lake/build/lib/lean/V3GraphOrbits.olean V3GraphOrbits.lean
+          lake env lean -o .lake/build/lib/lean/V3OrbitIsomorphism.olean V3OrbitIsomorphism.lean
+          lake env lean -o .lake/build/lib/lean/V3OrbitEquivalence.olean V3OrbitEquivalence.lean
