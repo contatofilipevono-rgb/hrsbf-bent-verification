@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "scope": "Required files for exact checks; integrity is not an authenticity signature.",
+  "files": {
+    "paper_hrsbf.tex": "0912bc13a80dff6da0f977efdd2c00281d39ec8f20c6fd4bb299bb3ca06c53e9",
+    "cover_letter_dcc.tex": "1ccf900eeab2868463c8b8549bba6e163dac999270c15eec15265970486d6bb4",
+    "supplementary_material.tex": "a7c6a2b62238124056230d69b70d9de1f23e55064ddfd538d845ee98c24aa4f2",
+    "avanco_t32/verificador_integrado.py": "96df47152671477d4e9f2780474b4003e8a7626a0b3802bdb0b6bd9f80970ed5",
+    "avanco_t32/verificar_7_fibras.py": "bd366496d5efa6d00d90a543b71db124f5a7bb3c8ba2d5146ca4c091d4db441b",
+    "avanco_t32/certificado_7_fibras.json": "bc17579328d0d389a50af3bd55662596bc7e16c78cfb7dbeb53c6d9462786234",
+    "avanco_t32/verificar_fibras_exato.py": "f34fa85da5976a91cbae4533e15ebf1681fe7a13adbfc5701a2e823c27e80025",
+    "avanco_t32/validar_fibras_exato.py": "00e0babc3bd97fd55a1e7f10a66d816e6f080bf4dfe4d7382f0d47a055dff490",
+    "avanco_t32/exemplo_fibras32.json": "e10a203ef3f2a070afa5d1cf6b04ae190c00fa9b7e8b30f02c62cfff84ab71dc"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "status": "verified",
+  "certificate_sha256": "bc17579328d0d389a50af3bd55662596bc7e16c78cfb7dbeb53c6d9462786234",
+  "h": "0x1",
+  "h_cubic": "sum_(i=0)^15 u_i*u_(i+1)*u_(i+2), indices modulo16",
+  "family_dimension": 120,
+  "family_size": "1329227995784915872903807060280344576",
+  "H_projection_rank": 35,
+  "verified_original_orbit_tensors": 155,
+  "direct_matrix_basis_directions_per_orbit": 16,
+  "equations": 7,
+  "H_equations": 0,
+  "fiber_equations": 7,
+  "XOR_coefficients": 0,
+  "XOR_rhs": 1,
+  "seconds": 1.851,
+  "scope": "This fixed-H affine family only; neither all 32-variable HRS cubics nor literature novelty."
+}

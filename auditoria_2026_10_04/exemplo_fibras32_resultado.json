@@ -1,0 +1,55 @@
+{
+  "candidate_sha256": "e10a203ef3f2a070afa5d1cf6b04ae190c00fa9b7e8b30f02c62cfff84ab71dc",
+  "sanf": [
+    [
+      0,
+      1,
+      2
+    ]
+  ],
+  "selected_orbits": 1,
+  "ANF_monomials": 32,
+  "status": "proved_non_bent_by_fiber",
+  "all_nonzero_fibers_checked": false,
+  "bentness_certified": false,
+  "scope": "An unbalanced nonzero coset excludes bentness. Passing these conditions is not sufficient to prove bentness.",
+  "fibers": [
+    {
+      "z": 2261,
+      "polar_rank": 14,
+      "radical_dimension": 2,
+      "radical_basis": [
+        213,
+        2048
+      ],
+      "radical_linear_values": [
+        0,
+        0
+      ],
+      "balanced": false,
+      "absolute_sign_sum": 512,
+      "quadratic_terms": [
+        2,
+        3,
+        6,
+        8,
+        10,
+        12,
+        24,
+        40,
+        48,
+        160,
+        256,
+        320,
+        384,
+        768,
+        1536,
+        5120,
+        12288,
+        32770,
+        49152
+      ],
+      "sign_sum": 512
+    }
+  ]
+}
