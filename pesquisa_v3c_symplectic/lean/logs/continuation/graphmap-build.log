@@ -1,0 +1,12 @@
+⚠ [1136/1136] Built VonoV3C.GraphMap
+warning: ././././VonoV3C/GraphMap.lean:52:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.component_formula':
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././VonoV3C/GraphMap.lean:87:0: automatically included section variable(s) unused in theorem 'VonoV3C.GraphFamily.fourth_component':
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+Build completed successfully.
