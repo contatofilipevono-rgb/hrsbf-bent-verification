@@ -13,3 +13,5 @@ import VonoV3C.GraphEdgeRecovery
 import VonoV3C.GraphClassification
 
 import VonoV3C.GraphRelaxedIndex
+
+import VonoV3C.KernelDimension

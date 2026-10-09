@@ -57,12 +57,13 @@ proves it in GraphEATransport.lean before applying this theorem.
 
 ## Remaining gaps
 
-2. **Kernel dimension:** the formula dim K(a)=2mr−(2m−1)support(a) is not certified.
-   Block recovery above does not depend on claiming that dimension formula.
-4. **Graph index:** prove the upper bound for relaxed M-subspaces using the actual
-   graph fourth derivative and block projections, and the lower bound using the
-   span of the q_{i,0} directions. `constant_second_iff` is only a seed criterion;
-   it is not a proof of R₂(F_G,m)=r.
+2. **Kernel dimension:** the graph fourth-derivative radical is identified with
+   the already certified blockwise quartic pair relation
+   (`GraphFourthPairZero` iff membership in `PairKernel`). The numerical formula
+   dim K(a)=2mr−(2m−1)support(a) is not yet certified.
+4. **Graph index:** certified as `graph_has_exact_relaxed_index`, with upper and
+   lower bounds for every finite vertex type and m≥2. This is an exact vector
+   relaxed index result, not a claim about quadratic perturbations.
 5. **Indecomposability with quadratic perturbations:** formalize quadratic
    annihilation by D³/D⁴, extract a block partition from a product decomposition,
    and rule out crossing edges for a weakly connected graph. No graph
@@ -93,6 +94,11 @@ continuation build; the corresponding axiom logs record the kernel dependencies.
 First-attempt failure logs and their corrections are explained in
 CONTINUATION_PROGRESS.md. All five requested graph modules are included in the
 default library target. Nonfatal tactic/unused-parameter linter warnings remain.
+
+`lean/logs/continuation/kernel-radical-build.log` records the successful
+compilation of the graph radical characterization. Its axiom audit is included
+in `lean/GraphContinuationAudit.lean`; it reuses the certified fourth-component
+identity and block-pair relation, and does not claim the radical's dimension.
 
 `logs/ENVIRONMENT.md` documents the local executable-path adapter necessitated
 by this execution container. It does not change Lean's kernel or proof objects.

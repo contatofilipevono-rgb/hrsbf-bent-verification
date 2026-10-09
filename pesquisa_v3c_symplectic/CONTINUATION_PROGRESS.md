@@ -106,9 +106,13 @@ extension is not part of the current theorem. No graph-only classification of
 arbitrary quadratic perturbations is asserted.
 
 The separate original goals still pending are the kernel-dimension formula and
-indecomposability under arbitrary quadratic perturbations. The exact relaxed
-graph index is now proved as an independent theorem below; it is not used in
-the classification proof. No novelty, literature-priority, or
+indecomposability under arbitrary quadratic perturbations. The graph
+fourth-derivative radical has since been explicitly characterized as the
+blockwise pair kernel in
+`GraphFamily.mem_pairKernel_iff_graphFourthPairZero`; this does not yet
+establish its dimension. The exact relaxed graph index is proved as an
+independent theorem below; it is not used in the classification proof. No
+novelty, literature-priority, or
 publication-readiness claim is made. Builds have only nonfatal Mathlib linter
 warnings (unused section parameters and tactic style). Remote CI is distinct
 from these local kernel-checked builds.
@@ -167,8 +171,9 @@ Verification: the complete `lake build` succeeded after adding the module;
    `representation_output` has inverse output orientation relative to the input
    permutation. `mixed_third` is constant only for the cross-block directions
    it specifies, not for arbitrary third derivatives of the quartic seed.
-4. Continue the remaining independent goals in a fresh branch from this result:
-   the kernel-dimension formula and indecomposability modulo quadratic
-   perturbations. For the latter, first certify quadratic D³/D⁴ annihilation;
-   ordinary `EAEquivalent` currently allows only affine corrections.
+4. Continue the remaining independent goals on this branch: compute the
+   dimension of the radical from its blockwise full-space/singleton-span
+   decomposition, then prove indecomposability modulo quadratic perturbations.
+   For the latter, first certify quadratic D³/D⁴ annihilation; ordinary
+   `EAEquivalent` currently allows only affine corrections.
 5. Never modify or merge into V1, V2, or the V3-C reference branch automatically.

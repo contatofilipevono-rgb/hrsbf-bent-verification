@@ -1,6 +1,6 @@
 # V3-C — symplectic graph family (research branch)
 
-This branch is separate from V1 and V2. **The seed, intrinsic blocks, actual graph fourth derivative, ordinary EA transport, matched output permutation, directed-edge recovery and canonical EA classification are Lean-compiled for variable m≥2. Graph index, kernel dimension and graph indecomposability remain uncertified.**
+This branch is separate from V1 and V2. **The seed, intrinsic blocks, actual graph fourth derivative, ordinary EA transport, matched output permutation, directed-edge recovery, canonical EA classification, and exact vector relaxed graph index are Lean-compiled for variable m≥2. The fourth-derivative radical is identified with the blockwise pair kernel. The kernel-dimension formula and quadratic-robust graph indecomposability remain uncertified.**
 
 Continuation branch: `v3c-ea-transport-continuation`, based on reference SHA
 `83b53a57f47ae33d4694346dc0e315d2a4c38878`; reference branch unchanged.
@@ -24,10 +24,10 @@ The isolated project is `lean/`, with namespace `VonoV3C` and Lean/Mathlib 4.19.
 
 1. D⁴f_m(a,b,c,d)=ω(a,b)ω(c,d)+ω(a,c)ω(b,d)+ω(a,d)ω(b,c).
 2. D⁴f_m(a,b,.,.)=0 iff a,b are linearly dependent, m≥2.
-3. Intrinsic block recovery via K(a)={b:D⁴F(a,b,.,.)=0}, dim K(a)=2mr−(2m−1)support(a).
+3. Intrinsic block recovery via K(a)={b:D⁴F(a,b,.,.)=0} is certified, and the graph fourth-derivative radical is characterized. The dimension formula dim K(a)=2mr−(2m−1)support(a) remains pending.
 4. Mixed D³ detects i→j, hence canonical EA classes classify loopless directed graphs.
 5. R₂(F_G,m)=r via upper bound from block projections and witness span(q_{i,1}).
-6. If underlying graph is connected, F_G,m+Q is EA-indecomposable for any quadratic vectorial Q; use D⁴ to force block partition and D³ to exclude crossing edges.
+6. If underlying graph is connected, F_G,m+Q is EA-indecomposable for any quadratic vectorial Q; use D⁴ to force block partition and D³ to exclude crossing edges. This remains pending.
 
 ## Boundaries
 
@@ -39,6 +39,6 @@ The isolated project is `lean/`, with namespace `VonoV3C` and Lean/Mathlib 4.19.
 ## Lean next steps
 
 Stages A–E from EA_TRANSPORT_PROOF_OBLIGATIONS.md are compiled. Next independent
-goals: the kernel dimension formula, exact relaxed graph index, and
-quadratic-robust indecomposability. Follow the handoff in CONTINUATION_PROGRESS.md.
+goals: the kernel-dimension formula and quadratic-robust indecomposability.
+The exact relaxed graph index is compiled. Follow CONTINUATION_PROGRESS.md.
 Do not extend the canonical classification to arbitrary quadratic perturbations.
