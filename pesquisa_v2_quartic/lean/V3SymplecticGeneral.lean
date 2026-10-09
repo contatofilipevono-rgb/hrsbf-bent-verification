@@ -39,4 +39,22 @@ theorem phi_zero_left {m : ℕ} (b c d : Vec m) :
     phi (0 : Vec m) b c d = 0 := by
   simp [phi, omega_zero_left]
 
+/-- In characteristic two the symplectic form vanishes on the diagonal. -/
+theorem omega_self {m : ℕ} (a : Vec m) :
+    omega a a = 0 := by
+  unfold omega
+  apply Finset.sum_eq_zero
+  intro i hi
+  have h : (2 : Bit) = 0 := by decide
+  calc
+    (a i).1 * (a i).2 + (a i).2 * (a i).1
+        = (2 : Bit) * ((a i).1 * (a i).2) := by ring
+    _ = 0 := by rw [h]; ring
+
+/-- Repeating the first two arguments annihilates the fourth-order tensor. -/
+theorem phi_self_first {m : ℕ} (a c d : Vec m) :
+    phi a a c d = 0 := by
+  simp only [phi, omega_self]
+  ring
+
 end VonoV3General
