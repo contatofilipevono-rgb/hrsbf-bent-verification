@@ -114,17 +114,31 @@ the affine correction vanishes. Thus A preserves R in both directions.
 form A(singleᵢv)=single_{π(i)}(Eᵢv), where π permutes I and each Eᵢ is an
 invertible linear map of V.
 
-**Proof outline matching the formal proof.** Suppose U+T=X and every pair
+**Proof.** Suppose U+T=X and every pair
 a∈U,b∈T is blockwise dependent. For a fixed block i, if both projections are
 nonzero, choose such a,b. Every nonzero projection from either subspace must
 equal aᵢ=bᵢ. Their sum cannot cover V, which has dimension at least four.
-Hence one projection is zero. Decomposing single-block vectors through U+T
-then shows that the entire block belongs to the other side. Apply this fact to
-the inverse images under A of a target block and its coordinate complement.
-Every source block maps into one target block. The restriction is injective,
-and is surjective because source and target blocks have the same finite
-dimension. Injectivity of A prevents two source blocks from sharing a target;
-finiteness yields a permutation. ∎
+Hence one projection is zero. To justify the assertion about whole blocks,
+suppose T has zero projection at i and decompose singleᵢv=u+t. At i, uᵢ=v.
+At any other block k, uₖ+tₖ=0 and one of the two projections vanishes, so
+both components vanish. Therefore u=singleᵢv and the block lies in U.
+
+Fix a source block i and a nonzero v₀∈V. Since A is injective, A(singleᵢv₀)
+has a nonzero component at some target block j. Let U be the inverse image of
+the j-th target block and T the kernel of the j-th target projection composed
+with A. These two subspaces cover X. Their images have disjoint block support,
+so preservation of R gives blockwise dependence for every pair from U,T.
+The partition just proved applies to all source blocks. If the projection of
+U at i were zero, the i-th source block would lie in T, contradicting the
+choice of j. Thus T projects to zero at i, and that source block lies in U.
+It follows that A sends the entire i-th block into the j-th target block.
+
+The restriction Eᵢ is injective and hence surjective, since the two blocks
+have the same finite dimension. If two different source blocks were assigned
+the same target block, surjectivity of their restrictions would give two
+different preimages of a nonzero target vector, contradicting injectivity of A.
+The assignment is consequently injective on the finite set I and hence a
+permutation. ∎
 
 **Theorem 4 (contraction dimension).** Define the actual vector fourth radical
 
@@ -248,11 +262,23 @@ target is an explicit vectorial Boolean family under ordinary EA equivalence.
 Whether that distinction supplies a new theorem requires further comparison.
 
 Kaleyski and Sunde [KS26] give general EA/CCZ equivalence and automorphism
-algorithms. Their public implementation documents truth-table inputs of size
-2^N and also accepts Sage polynomials. Accepting polynomials alone does not
-establish a complexity guarantee polynomial in compact ANF length. The full
-paper could not be retrieved in this review; algorithmic comparison remains
-open. Polujan and Pott [PP20] provide the scalar relaxed-subspace framework.
+algorithms. At implementation commit
+`c9cec6515b3297abf5c15fedd23e55b43f2ba888`, the Python polynomial-input path
+evaluates all 2^N field elements into a truth table before EA search. It treats
+that path as a square field map; rectangular maps use explicit tables. This
+path therefore expands the input exponentially in N, unlike the compact ANF
+encoding above. This code observation is not a complexity theorem about the
+unretrieved full paper or every possible implementation.
+
+Canteaut, Couvreur and Perrin [CCP22] recover EA equivalences of quadratic
+functions using Jacobians and study ortho-derivatives for quadratic APN
+functions (Definition 33 and Proposition 36). Their derivative transport is
+relevant prior methodology. Our proof uses a fourth-contraction zero-pair
+relation to recover quartic input blocks and mixed third differences to read
+directed arcs. These are different mathematical objects; that distinction
+alone does not establish novelty.
+
+Polujan and Pott [PP20] provide the scalar relaxed-subspace framework.
 We do not claim novelty of that framework or infer bentness from the index.
 
 ## 6. Machine-checked scope and reproduction
@@ -295,6 +321,13 @@ separate matters.
   EA equivalence for arbitrary vectorial Boolean functions using the partition
   refinement framework*, IACR ePrint 2026/940.
   https://eprint.iacr.org/2026/940
-  Public implementation: https://github.com/zskiley/CCZ-EA-equivalence
-  The abstract and implementation README were inspected; full-paper comparison
-  is pending. The README was accessed on 2026-10-09 and is a mutable source.
+  Public implementation, fixed version:
+  https://github.com/zskiley/CCZ-EA-equivalence/tree/c9cec6515b3297abf5c15fedd23e55b43f2ba888
+  The abstract, README and Python input/search dispatch were inspected;
+  full-paper comparison is pending. See `LITERATURE_INPUT_MODEL_REVIEW.md`
+  for file hashes and reproduction instructions.
+- [CCP22] A. Canteaut, A. Couvreur and L. Perrin, *Recovering or Testing
+  Extended-Affine Equivalence*, arXiv:2103.00078v3, 16 May 2022.
+  https://arxiv.org/abs/2103.00078v3
+  Complete PDF retrieved; selected statements in Section 3 and Section 4.1.2
+  inspected for this comparison.

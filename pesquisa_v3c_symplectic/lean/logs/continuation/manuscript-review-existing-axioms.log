@@ -1,0 +1,7 @@
+'VonoV3C.seed_fourth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VonoV3C.pfaffian_property_A' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VonoV3C.seed_property_A' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VonoV3C.constant_second_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VonoV3C.fourth_pair_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VonoV3C.Blocks.quartic_pair_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VonoV3C.Blocks.recover_blocks_from_quartic' depends on axioms: [propext, Classical.choice, Quot.sound]

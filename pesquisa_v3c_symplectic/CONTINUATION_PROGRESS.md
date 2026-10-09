@@ -294,6 +294,35 @@ uses only its official abstract and implementation README and explicitly leaves
 the full-paper comparison pending. No priority or publication-readiness claim
 has been added. This advance is manuscript/review work, not a new Lean theorem.
 
+## Manuscript correspondence and input-model review (2026-10-09)
+
+Continued from remote `cd29f92c06f5a02122649765acb3a926a86793c3`, after a
+clean-tree fast-forward of the restored local checkpoint. Expanded Lemma 3's
+proof in `MANUSCRIPT_DRAFT.md`, following the already compiled projection
+partition and block-assignment argument. Rechecked its hypotheses and the
+classification, output orientation, index witness, radical, and quadratic
+product obstruction against the corresponding Lean sources. This was a
+self-review by the continuing agent, not an independent referee report.
+
+Added `LITERATURE_INPUT_MODEL_REVIEW.md`. The Kaleyski–Sunde implementation is
+fixed at `c9cec6515b3297abf5c15fedd23e55b43f2ba888`, with hashes and permanent
+links for the inspected files. Its polynomial-input wrapper materializes a
+complete truth table before EA search. This is a source observation about
+that wrapper, not a lower bound or a comparison of algorithm running times.
+The full 2026/940 paper still could not be accessed. Retrieved the versioned
+Canteaut–Couvreur–Perrin PDF (arXiv:2103.00078v3), inspected selected quadratic
+Jacobian/ortho-derivative statements, and added the comparison and citation.
+Novelty remains unresolved.
+
+The official pinned runtime and existing executable-path shim were restored
+in ignored `.lake/` paths; the missing pinned Batteries documentation symlink
+was restored. The full build and Audit, GraphQuadraticAudit, and
+GraphContinuationAudit all exited 0. New logs are
+`lean/logs/continuation/manuscript-review-{build,existing-axioms,quadratic-axioms,axioms}.log`.
+Standard foundations only: `propext`, `Classical.choice`, and `Quot.sound`.
+No new Lean theorem, proof-module change, or global configuration change was
+introduced. V1, V2, and the V3-C reference branch remain untouched.
+
 ## Handoff
 
 1. Checkout v3c-ea-transport-continuation; verify the remote SHA and clean status.
