@@ -9,3 +9,5 @@ import VonoV3C.GraphEATransport
 import VonoV3C.GraphOutputRecovery
 
 import VonoV3C.GraphEdgeRecovery
+
+import VonoV3C.GraphClassification

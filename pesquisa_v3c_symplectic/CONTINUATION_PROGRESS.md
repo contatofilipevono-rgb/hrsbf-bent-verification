@@ -82,3 +82,51 @@ D-build.log and D-axioms.log record successful build/audit. D-first-attempt.log
 records two elaboration failures: the linear-map application needed explicit
 unfolding before a finite-sum rewrite, and simplification of the zero seed term
 had unfolded the cubic derivatives too soon. Both were corrected in new code.
+
+## E: canonical EA classification (compiled)
+
+`EA_implies_graph_isomorphic` and `graph_isomorphic_implies_EA` give both directions.
+`canonical_EA_iff_graph_isomorphic` states their equivalence for every finite
+vertex type, all m≥2, and arbitrary loopless Boolean directed adjacency functions.
+The empty vertex type is permitted. Bidirectional arcs are permitted. Input and
+output maps, translation, and affine correction are quantified in EAEquivalent;
+there is no artificial tensor, block, edge, or symplectic-preservation premise.
+
+E-build.log is a full successful lake build. E-axioms.log audits the exported
+statements including the final equivalence: only propext, Classical.choice,
+Quot.sound. E-first-attempt.log records an explicit-unfolding correction in
+coupling reindexing. Existing Polarization/Contraction/Blocks proofs are unchanged.
+
+## Exact scope and remaining work
+
+All requested stages A–E are now compiled for graphs on a common finite vertex
+type. Classification of graphs presented on distinct vertex types would need a
+heterogeneous EA definition and a transport/reindex bridge; that convenience
+extension is not part of the current theorem. No graph-only classification of
+arbitrary quadratic perturbations is asserted.
+
+The separate original goals still pending are the kernel-dimension formula,
+exact relaxed graph index, and indecomposability under arbitrary quadratic
+perturbations. None is used or claimed in the classification proof. No novelty,
+literature-priority, or publication-readiness claim is made. Builds have only
+nonfatal Mathlib linter warnings (unused section parameters and tactic style).
+Remote CI is distinct from these local kernel-checked builds.
+
+## Handoff
+
+1. Checkout v3c-ea-transport-continuation; verify the remote SHA and clean status.
+2. In pesquisa_v3c_symplectic/lean, use pinned Lean/Mathlib 4.19.0 and the cache
+   command from FORMALIZATION_REPORT.md; run lake build, lake env lean Audit.lean,
+   and lake env lean GraphContinuationAudit.lean. Use the absolute-path adapter
+   above only for this container's executable-detection failure.
+3. Read the five Graph*.lean modules in A–E order and the E axiom/build logs.
+   `representation_output` has inverse output orientation relative to the input
+   permutation. `mixed_third` is constant only for the cross-block directions
+   it specifies, not for arbitrary third derivatives of the quartic seed.
+4. Continue the remaining independent goals in a fresh branch from this result.
+   For the index upper bound, use fourth_component plus certified Property A.
+   For its lower bound, test the span of the local q_0 directions against the
+   actual coupling, then prove it algebraically. For indecomposability modulo
+   quadratic perturbations, first certify quadratic D³/D⁴ annihilation; ordinary
+   EAEquivalent currently allows only affine corrections.
+5. Never modify or merge into V1, V2, or the V3-C reference branch automatically.

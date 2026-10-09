@@ -1,3 +1,4 @@
+import VonoV3C.GraphClassification
 import VonoV3C.GraphEdgeRecovery
 import VonoV3C.GraphOutputRecovery
 import VonoV3C.GraphMap
@@ -14,3 +15,7 @@ import VonoV3C.GraphEATransport
 #print axioms VonoV3C.GraphFamily.mixed_third
 #print axioms VonoV3C.GraphFamily.edge_detected_iff
 #print axioms VonoV3C.GraphFamily.representation_edges
+
+#print axioms VonoV3C.GraphFamily.EA_implies_graph_isomorphic
+#print axioms VonoV3C.GraphFamily.graph_isomorphic_implies_EA
+#print axioms VonoV3C.GraphFamily.canonical_EA_iff_graph_isomorphic
