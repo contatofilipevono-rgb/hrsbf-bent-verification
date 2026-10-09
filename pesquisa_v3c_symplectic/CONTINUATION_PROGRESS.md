@@ -323,6 +323,39 @@ Standard foundations only: `propext`, `Classical.choice`, and `Quot.sound`.
 No new Lean theorem, proof-module change, or global configuration change was
 introduced. V1, V2, and the V3-C reference branch remain untouched.
 
+## Adversarial review requested by the researcher (2026-10-09)
+
+Audited exact remote/local baseline
+`cf362db05d9a8dfda4a82a2360720ed370da1454`. Added
+`REFEREE_REVIEW_2026-10-09.md`: PASS WITH CAVEATS for the stated mathematical
+scope. This is a review by the same continuing agent, not an externally
+independent report. No central mathematical contradiction or circular premise
+was found. Three prose ambiguities were repaired: the bidirectional zero-pair
+preservation hypothesis, all factor/translation/function types in Theorem 6,
+and the compact-ANF bit encoding and exceptional GI instances.
+
+Added an explicit analytical counterexample to graph-only classification of
+arbitrary quadratic perturbations: the one-vertex m=2 seed has nonlinearity
+one, while adding p₁p₂ gives nonlinearity three. The manuscript supplies its
+counting/EA-invariance proof and labels it outside the Lean certificate scope.
+The report also records the m=2 non-symplectic quartic-stabilizer witness.
+
+Ran `lake clean VonoV3C` (only local package build products) and a full
+`lake build`; both exited 0. Dependencies were cached, not rebuilt from
+scratch. Pinned Mathlib was clean at
+`c44e0c8ee63ca166450922a373c7409c5d26b00b`.
+The three original axiom audits passed again. New `RefereeAudit.lean` compiled
+on its first attempt: it prints exact central theorem types and certifies
+empty/singleton and bidirected-edge boundary cases and the zero m=1 seed.
+It is not imported by the library. All audited foundations are subsets of
+`propext`, `Classical.choice`, and `Quot.sound`. Logs:
+`lean/logs/continuation/referee-{clean,build,existing-axioms,quadratic-axioms,axioms,boundaries}.log`.
+
+No old proof source, V1/V2 file, reference branch, dependency proof, or global
+configuration was changed. Novelty and full 2026/940 comparison remain open;
+no submission or merge was performed. The new certificates are review
+instantiations, not additional uniform classification claims.
+
 ## Handoff
 
 1. Checkout v3c-ea-transport-continuation; verify the remote SHA and clean status.

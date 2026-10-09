@@ -1,0 +1,49 @@
+VonoV3C.seed_fourth {m : ℕ} (a b c d x : Vec m) : fourth (seed m) a b c d x = pfaffian a b c d
+VonoV3C.pfaffian_property_A {m : ℕ} (hm : 2 ≤ m) (a b : Vec m) (h : ∀ (c d : Vec m), pfaffian a b c d = 0) :
+  a = 0 ∨ b = 0 ∨ a = b
+VonoV3C.Blocks.recover_blocks_from_quartic.{u_1} {ι : Type u_1} [Fintype ι] [DecidableEq ι] {m : ℕ} (hm : 2 ≤ m)
+  (A : Blocks.Input ι m ≃ₗ[ZMod 2] Blocks.Input ι m)
+  (hA : ∀ (a b : Blocks.Input ι m), Blocks.QuarticPairZero a b ↔ Blocks.QuarticPairZero (A a) (A b)) :
+  ∃ p, ∀ (i : ι), ∃ e, ∀ (v : Vec m), A (Pi.single i v) = Pi.single (p i) (e v)
+VonoV3C.GraphFamily.representation_fourth.{u_1} {ι : Type u_1} [Fintype ι] [DecidableEq ι] {m : ℕ}
+  (F G : Input ι m → Output ι) (A : Input ι m ≃ₗ[Scalar] Input ι m) (B : Output ι ≃ₗ[Scalar] Output ι) (t : Input ι m)
+  (L : Input ι m →ₗ[Scalar] Output ι) (k : Output ι) (he : ∀ (x : Input ι m), G x = B (F (A x + t)) + (L x + k))
+  (a b c d x : Input ι m) : iterDiff [a, b, c, d] G x = B (iterDiff [A a, A b, A c, A d] F (A x + t))
+VonoV3C.GraphFamily.representation_output.{u_1} {ι : Type u_1} [Fintype ι] [DecidableEq ι] {m : ℕ} (hm : 2 ≤ m)
+  (adjG adjH : ι → ι → Bool) (A : Input ι m ≃ₗ[Scalar] Input ι m) (B : Output ι ≃ₗ[Scalar] Output ι) (t : Input ι m)
+  (L : Input ι m →ₗ[Scalar] Output ι) (k : Output ι)
+  (he : ∀ (x : Input ι m), graphMap hm adjH x = B (graphMap hm adjG (A x + t)) + (L x + k)) (perm : ι ≃ ι)
+  (e : ι → Vec m ≃ₗ[Scalar] Vec m) (hblock : ∀ (i : ι) (v : Vec m), A (Pi.single i v) = Pi.single (perm i) ((e i) v))
+  (y : Output ι) (i : ι) : B y i = y (perm i)
+VonoV3C.GraphFamily.mixed_third.{u_1} {ι : Type u_1} [Fintype ι] [DecidableEq ι] {m : ℕ} (hm : 2 ≤ m)
+  (adj : ι → ι → Bool) (i j : ι) (hij : i ≠ j) (v w z : Vec m) (x : Input ι m) :
+  iterDiff [Pi.single i v, Pi.single i w, Pi.single j z] (graphMap hm adj) x =
+    Pi.single i (if adj i j = true then (p hm v * q hm w + q hm v * p hm w) * p hm z else 0)
+VonoV3C.GraphFamily.canonical_EA_iff_graph_isomorphic.{u_1} {ι : Type u_1} [Fintype ι] [DecidableEq ι] {m : ℕ}
+  (hm : 2 ≤ m) (adjG adjH : ι → ι → Bool) (hG : Loopless adjG) (hH : Loopless adjH) :
+  EAEquivalent (graphMap hm adjG) (graphMap hm adjH) ↔ GraphIsomorphic adjG adjH
+VonoV3C.GraphFamily.graph_fourth_radical_dimension.{u_1} {ι : Type u_1} [Fintype ι] [DecidableEq ι] {m : ℕ} (hm : 2 ≤ m)
+  (adj : ι → ι → Bool) (a : Input ι m) :
+  ∃ K,
+    (∀ (b : Input ι m), b ∈ K ↔ ∀ (c d x : Input ι m) (i : ι), fourth (fun y => graphMap hm adj y i) a b c d x = 0) ∧
+      Module.finrank Scalar ↥K = 2 * m * Fintype.card ι - (2 * m - 1) * supportCount a
+VonoV3C.GraphFamily.graph_quadratic_exact_index.{u_1} {ι : Type u_1} [Fintype ι] [DecidableEq ι] {m : ℕ} (hm : 2 ≤ m)
+  (adj : ι → ι → Bool) (Q : Input ι m → Output ι) (hQ : HasConstantSecondDifferences Q) :
+  HasVectorRelaxedIndex (addVector (graphMap hm adj) Q) (Fintype.card ι)
+VonoV3C.GraphFamily.graph_quadratic_ANF_not_EA_product.{u_1, u_2, u_3, u_4, u_5, u_6} {ι : Type u_1} [Fintype ι]
+  [DecidableEq ι] {m : ℕ} {V₁ : Type u_2} {V₂ : Type u_3} {W₁ : Type u_4} {W₂ : Type u_5} [AddCommGroup V₁]
+  [Module Scalar V₁] [AddCommGroup V₂] [Module Scalar V₂] [AddCommGroup W₁] [Module Scalar W₁] [AddCommGroup W₂]
+  [Module Scalar W₂] [Nontrivial V₁] [Nontrivial V₂] {κ : Type u_6} [Fintype κ] (hm : 2 ≤ m) (adj : ι → ι → Bool)
+  (hconn : CutConnected adj) (c : Output ι) (LQ : Input ι m →ₗ[Scalar] Output ι) (l n : κ → Input ι m →ₗ[Scalar] Scalar)
+  (w : κ → Output ι) (A : Input ι m ≃ₗ[Scalar] V₁ × V₂) (t : V₁ × V₂) (B : W₁ × W₂ →ₗ[Scalar] Output ι) (g : V₁ → W₁)
+  (h : V₂ → W₂) (L : Input ι m →ₗ[Scalar] Output ι) (k : Output ι) :
+  ¬∀ (x : Input ι m),
+      (graphMap hm adj x + fun i => c i + LQ x i + ∑ j, w j i * ((l j) x * (n j) x)) =
+        B (g (A x + t).1, h (A x + t).2) + L x + k
+'VonoV3C.RefereeAudit.seed_dimension_one_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VonoV3C.RefereeAudit.empty_cut' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VonoV3C.RefereeAudit.singleton_cut' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VonoV3C.RefereeAudit.empty_index' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VonoV3C.RefereeAudit.singleton_no_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VonoV3C.RefereeAudit.bidirected_forward' depends on axioms: [propext, Classical.choice, Quot.sound]
+'VonoV3C.RefereeAudit.bidirected_reverse' depends on axioms: [propext, Classical.choice, Quot.sound]

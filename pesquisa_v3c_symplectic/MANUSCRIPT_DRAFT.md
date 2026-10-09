@@ -65,6 +65,18 @@ G,H on I,
 This theorem concerns the displayed canonical maps. It does not claim an EA
 classification of F_G+Q by the graph alone for arbitrary quadratic Q.
 
+An elementary scope check shows why that restriction matters. For the
+loopless one-vertex graph at m=2, let f=p₁q₁p₂q₂ and Q=p₁p₂. The support of f
+has size one, while the support of f+Q has size three. Define nonlinearity as
+the minimum Hamming distance to an affine scalar function. A nonconstant
+affine function on four bits has support size eight, so its distance from
+these functions is at least seven and five, respectively. The zero constant
+attains distances one and three. Thus their nonlinearities are one and three.
+EA equivalence preserves this minimum: affine input permutations and affine
+addition permute the set of affine comparison functions. Hence f and f+Q are
+not EA-equivalent despite having the same underlying graph. This elementary
+counterexample is a prose argument, not an additional Lean certificate.
+
 ## 2. Fourth differences and intrinsic blocks
 
 Write
@@ -110,7 +122,8 @@ c,d,x, is therefore exactly blockwise linear dependence of aᵢ,bᵢ.
 EA transport gives D⁴H(a,b,c,d)(x)=B(D⁴F(Aa,Ab,Ac,Ad)(Ax+t));
 the affine correction vanishes. Thus A preserves R in both directions.
 
-**Lemma 3 (block recovery).** Every invertible linear map preserving R has the
+**Lemma 3 (block recovery).** Suppose A:X→X is invertible and linear and
+R(a,b)↔R(Aa,Ab) for all a,b∈X. Then A has the
 form A(singleᵢv)=single_{π(i)}(Eᵢv), where π permutes I and each Eᵢ is an
 invertible linear map of V.
 
@@ -225,9 +238,10 @@ F_G+Q has no representation
  F_G(x)+Q(x)=B\big(g((Ax+t)_1),h((Ax+t)_2)\big)+Lx+k,
 \]
 
-where A:X≃V₁×V₂ is a linear equivalence, both input factors are nontrivial,
-and B:W₁×W₂→Y is linear. B need not be invertible, so ordinary EA product
-representations are included.
+where V₁,V₂,W₁,W₂ are F₂-vector spaces, A:X≃V₁×V₂ is a linear equivalence,
+t∈V₁×V₂, g:V₁→W₁ and h:V₂→W₂ are arbitrary functions, B:W₁×W₂→Y and
+L:X→Y are linear, and k∈Y. Both input factors V₁,V₂ are nontrivial.
+B need not be invertible, so ordinary EA product representations are included.
 
 **Proof.** Pull back the two input factors to nonzero subspaces U,T with
 U+T=X. Product separation forces all cross second differences for a∈U,b∈T
@@ -253,6 +267,17 @@ size calculation is a mathematical consequence, not a Lean complexity theorem.
 For unequal graph orders, send the instance to a fixed pair of nonisomorphic
 equal-order graphs; Theorem 1 certifies the corresponding negative EA instance.
 No NP-hardness or unconditional superpolynomial lower bound follows.
+
+More explicitly, encode a vectorial ANF by its input/output dimensions and
+the list of variable indices in each monomial of each output coordinate.
+The construction scans the r×r adjacency matrix and emits r+2|E| monomials
+of length at most four; their indices require O(log(r+1)) bits each.
+The encoding therefore has O(r² log(r+1)) bits and is constructible in
+polynomial time. A fixed negative instance can use the edgeless graph and
+the one-edge graph on two vertices. If the target convention requires positive
+dimensions, an equal-order empty-graph instance is mapped to two copies of
+the same fixed canonical map. These encoding observations are not formalized
+in the Lean project.
 
 Agrawal and Saxena [AS05] already reduce graph isomorphism to cubic-form
 equivalence. Their target uses formal homogeneous polynomials and invertible
@@ -307,6 +332,12 @@ There are no added axioms or admitted proof holes. Compilation establishes
 the Lean statements; independent review must still check correspondence with
 the mathematical prose. Novelty, authorship, and publication readiness are
 separate matters.
+
+An additional review file, `RefereeAudit.lean`, records theorem types and
+certifies empty/singleton cases and both directions of a bidirected edge.
+It also checks that the seed is zero at m=1, illustrating why that excluded
+dimension cannot supply the zero-pair rigidity argument. Run it with
+`lake env lean RefereeAudit.lean`; it is separate from the default library.
 
 ## References consulted
 
