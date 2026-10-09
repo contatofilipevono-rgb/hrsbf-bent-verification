@@ -24,6 +24,7 @@ theorem finite_polarization :
 theorem finite_property_A :
     ∀ a b : Vec, (∀ c d : Vec, phi a b c d = 0) →
       (a = 0 ∨ b = 0 ∨ a = b) := by
-  native_decide
+  classical
+  decide
 
 end VonoV3Finite
