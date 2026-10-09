@@ -1,0 +1,4 @@
+.lake/
+logs/build-attempt-*.log
+logs/setup*.log
+logs/build-check.log

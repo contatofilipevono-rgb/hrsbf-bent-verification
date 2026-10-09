@@ -1,10 +1,20 @@
 # V3-C — symplectic graph family (research branch)
 
-This branch is separate from V1 and V2. **No V3-C theorem is claimed Lean-compiled.**
+This branch is separate from V1 and V2. **The seed polarization and Property A are Lean-compiled for variable m; graph classification, graph index, and graph indecomposability remain uncertified.**
 
 Let m≥2, V=F₂^(2m), f_m=Σ_{i<j}p_iq_i p_jq_j, and (F_G,m)_i=f_m(x_i)+p_{i,1}q_{i,1}Σ_{i→j}p_{j,1} for finite loopless directed G.
 
-## Mathematical claims requiring Lean certification
+## Certified scope
+
+See `FORMALIZATION_REPORT.md` for exact declarations, hypotheses, and remaining gaps.
+The isolated project is `lean/`, with namespace `VonoV3C` and Lean/Mathlib 4.19.0.
+
+- `seed_fourth`: the requested fourth-polarization identity, at every base point, for every m.
+- `seed_property_A`, `fourth_pair_zero_iff`, `constant_second_iff`: uniform m≥2 certificates, without seed/vector enumeration.
+- `Blocks.recover_blocks_from_quartic`: block recovery for invertible linear maps preserving the intrinsic direct-sum quartic zero-pair relation. The derivation of that preservation premise from graph EA equivalence remains uncertified.
+- Build and axiom logs: `lean/logs/build.log`, `lean/logs/axioms.log`.
+
+## Original target claims (graph portions remain uncertified)
 
 1. D⁴f_m(a,b,c,d)=ω(a,b)ω(c,d)+ω(a,c)ω(b,d)+ω(a,d)ω(b,c).
 2. D⁴f_m(a,b,.,.)=0 iff a,b are linearly dependent, m≥2.
@@ -22,4 +32,4 @@ Let m≥2, V=F₂^(2m), f_m=Σ_{i<j}p_iq_i p_jq_j, and (F_G,m)_i=f_m(x_i)+p_{i,1
 
 ## Lean next steps
 
-Create a new `VonoV3C` namespace/module hierarchy without editing existing V1/V2 modules. First certify polarization and pair-contraction theorem for variable m; then reuse V2 block-recovery and edge-recovery proof patterns; then index and indecomposability. Run `lake build` in a configured Lean 4/Mathlib environment before marking any statement certified.
+The seed and algebraic block-recovery stages are completed. Next define the graph family for variable m, certify annihilation of the cubic coupling by D⁴, and establish EA transport of the zero-pair relation. Then certify edge recovery, canonical classification, the graph index, and quadratic-robust indecomposability. Do not promote the compiled block-recovery criterion into a graph EA theorem before certifying the transport bridge.

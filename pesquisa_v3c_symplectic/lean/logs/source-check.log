@@ -1,0 +1,4 @@
+PASS: VonoV3C/Blocks.lean: no forbidden proof placeholders or native enumeration
+PASS: VonoV3C/Contraction.lean: no forbidden proof placeholders or native enumeration
+PASS: VonoV3C/Polarization.lean: no forbidden proof placeholders or native enumeration
+PASS: all seven audited declarations use only propext, Classical.choice, Quot.sound

@@ -1,0 +1,46 @@
+name: Lean V3-C symplectic seed
+on:
+  push:
+    branches:
+      - v3c-symplectic-generalization-2026-10-08
+    paths:
+      - 'pesquisa_v3c_symplectic/lean/**'
+      - '.github/workflows/lean-v3c-symplectic.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: pesquisa_v3c_symplectic/lean
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Fetch dependencies and cache
+        run: |
+          lean --version
+          lake exe cache get Mathlib.Data.ZMod.Basic Mathlib.Algebra.BigOperators.Group.Finset.Basic Mathlib.Algebra.BigOperators.Ring.Finset Mathlib.Tactic.Ring Mathlib.Tactic.Abel Mathlib.LinearAlgebra.Pi
+      - name: Build and audit kernel dependencies
+        run: |
+          set -o pipefail
+          lake build 2>&1 | tee logs/ci-build.log
+          lake env lean Audit.lean 2>&1 | tee logs/ci-axioms.log
+      - name: Reject proof placeholders and native enumeration
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          for p in Path('VonoV3C').glob('*.lean'):
+              assert not re.search(r'\b(sorry|admit|axiom|unsafe|native_decide)\b', p.read_text()), p
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v3c-lean-logs
+          path: pesquisa_v3c_symplectic/lean/logs/ci-*.log
