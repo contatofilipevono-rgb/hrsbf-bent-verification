@@ -7,6 +7,9 @@ namespace VonoV3Finite
 abbrev Bit := ZMod 2
 abbrev Vec := Fin 2 → Bit × Bit
 
+instance : DecidableEq Vec := inferInstance
+instance : Fintype Vec := inferInstance
+
 def q (x : Vec) (i : Fin 2) : Bit := (x i).1 * (x i).2
 def seed (x : Vec) : Bit := q x 0 * q x 1
 def omega (a b : Vec) : Bit :=
@@ -24,7 +27,6 @@ theorem finite_polarization :
 theorem finite_property_A :
     ∀ a b : Vec, (∀ c d : Vec, phi a b c d = 0) →
       (a = 0 ∨ b = 0 ∨ a = b) := by
-  classical
-  decide
+  native_decide
 
 end VonoV3Finite
