@@ -658,6 +658,15 @@
   "limitations": [
     "Does not include closed-access publisher PDFs",
     "Does not claim re-execution of Lean or Python",
-    "Conversation artifacts of 2026-10-13/14 not incorporated as PDF or .tex; indexed as pending"
+    "Other conversation artifacts of 2026-10-13/14 (including compiled PDFs and .tex) are not incorporated; only PARECER_PRIORIDADE_PTBR.md was imported intact from a conversation attachment"
+  ],
+  "conversation_imports": [
+    {
+      "destination": "ACERVO_CIENTIFICO/V1/auditorias/PARECER_PRIORIDADE_PTBR_2026-10-14.md",
+      "origin": "ChatGPT conversation attachment from 2026-10-14; author-generated research report",
+      "git_blob_sha": "4f6a9741336e78afb3705a79a4a649372b670a80",
+      "size_utf8_bytes": 4847,
+      "scientific_status": "editorial opinion and literature comparison; not an external peer-reviewed certificate"
+    }
   ]
 }
