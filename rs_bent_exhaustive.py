@@ -49,6 +49,7 @@ def main():
     ap.add_argument('--output-dir', type=Path, default=Path('.'))
     ap.add_argument('--resume', action='store_true')
     ap.add_argument('--max-chunks', type=int, help='stop early with exit 3; useful for checkpoint validation')
+    ap.add_argument('--max-tested', type=int, help='stop early when tested reaches or exceeds this number')
     args = ap.parse_args()
     n, chunk_log2 = args.n, args.chunk_log2
     if n < 2 or n % 2 or n > 16:
@@ -156,7 +157,7 @@ def main():
                 bent_hom += 1
 
         end = min(start + CH, 1 << k)
-        stop_early = args.max_chunks is not None and batch_number >= args.max_chunks
+        stop_early = (args.max_chunks is not None and batch_number >= args.max_chunks) or (args.max_tested is not None and tot >= args.max_tested)
         if batch_number == 1 or batch_number % 64 == 0 or end == 1 << k or stop_early:
             saved = {'n': n, 'source_sha256': source_hash, 'next_index': end,
                      'tested': tot, 'survivors': survivors, 'bent_ids': bent_ids,
