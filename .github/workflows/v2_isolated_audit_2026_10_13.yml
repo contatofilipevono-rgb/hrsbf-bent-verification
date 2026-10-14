@@ -1,0 +1,23 @@
+name: V2 isolated audit — symmetry and EA counting
+
+on:
+  push:
+    branches:
+      - audit/v2-ultra-rigidity-2026-10-13
+  workflow_dispatch:
+
+jobs:
+  verify-v2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout isolated audit branch
+        uses: actions/checkout@v4
+      - name: Python standard library
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify GF(2) seed automorphisms and stabilizers
+        run: python3 V2_graphs/auditoria_2026_10_13/certificar_ultrarrigidez_local.py
+      - name: Verify exact Burnside counts r=2..6
+        run: python3 V2_graphs/auditoria_2026_10_13/contagem_ea_quadraticas.py
