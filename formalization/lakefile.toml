@@ -1,0 +1,11 @@
+name = "hrsbf_antipodal"
+version = "0.1.0"
+defaultTargets = ["Antipodal"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "9837ca9d65d9de6fad1ef4381750ca688774e608"
+
+[[lean_lib]]
+name = "Antipodal"

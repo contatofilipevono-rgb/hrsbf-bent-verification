@@ -1,0 +1,15 @@
+ℹ [1074/1075] Replayed Antipodal
+info: ././././Antipodal.lean:3:0: 'HRSBF.Antipodal.third_term_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././Antipodal.lean:4:0: 'HRSBF.Antipodal.hasCubicRepresentation_of_monomials' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././Antipodal.lean:5:0: 'HRSBF.Antipodal.fiber_polar_eq_derivative_polar' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././Antipodal.lean:6:0: 'HRSBF.Antipodal.affine_twisted_invariant_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././Antipodal.lean:7:0: 'HRSBF.Antipodal.local_complementary_fiber_rigidity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././Antipodal.lean:8:0: 'HRSBF.Antipodal.character_orthogonality' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././Antipodal.lean:9:0: 'HRSBF.Antipodal.parseval' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././Antipodal.lean:10:0: 'HRSBF.Antipodal.diagonal_walsh_eq_fiber_transform' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././Antipodal.lean:11:0: 'HRSBF.Antipodal.complementary_fiber_balance' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././Antipodal.lean:12:0: 'HRSBF.Antipodal.not_bent_of_diagonal_and_derivative_polar_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: ././././Antipodal.lean:13:0: 'HRSBF.Antipodal.not_bent_of_monomials' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully.

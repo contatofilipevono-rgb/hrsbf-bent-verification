@@ -1,3 +1,5 @@
+> **Lean — núcleo de fibras compilado em 14/10/2026.** Comece por [formalization/README.md](formalization/README.md). O [arquivo único](formalization/Nucleo_Fibras.lean), os cinco módulos, as dependências fixadas e os logs estão preservados nesta branch. **52 resultados auditados; formalização global ainda parcial.** Integridade: [SHA256SUMS.txt](formalization/SHA256SUMS.txt). O preprint e o certificado concreto anterior continuam em `publications/v1-audited-2026-10-14/`.
+
 > **V1: audited preprint dated 14 October 2026.** See [publications/v1-audited-2026-10-14](publications/v1-audited-2026-10-14/README.md) for the full algebraic argument, fresh exact controls and the kernel-checked n=12 supplement. The general theorem is an algebraic preprint, not a completed global Lean formalization. The text below is retained as the historical description of the earlier computation-based scope.
 
 # 🔬 Inexistência de Funções Bent Homogêneas Simétricas por Rotação Cúbicas para $v_2(n) \le 4$
