@@ -1,0 +1,672 @@
+{
+  "created_at": "2026-10-14",
+  "repository": "contatofilipevono-rgb/hrsbf-bent-verification",
+  "baseline_main_commit": "226ffe8d240efc90452d225d0746905a5928e867",
+  "branch": "research/consolidacao-acervo-2026-10-14",
+  "source_snapshots": {
+    "v1": {
+      "branch": "audit/v1-release-gates-2026-10-11",
+      "commit": "db3d5b9f385dc96adf7df3f0a0483d4c611d90e8",
+      "url": "https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/tree/db3d5b9f385dc96adf7df3f0a0483d4c611d90e8"
+    },
+    "v2": {
+      "branch": "audit/v2-ultra-rigidity-2026-10-13",
+      "commit": "16309c4e692cf37427c189baf8e9050b64e85052",
+      "url": "https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/tree/16309c4e692cf37427c189baf8e9050b64e85052"
+    },
+    "v3": {
+      "branch": "v3c-ea-transport-continuation",
+      "commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "url": "https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/tree/01ea4b263a3cbe338df264b9d057a4edb3a980c8"
+    }
+  },
+  "copy_method": "Git tree links to original Git blob SHA in same repository; source content unchanged",
+  "copied_files": [
+    {
+      "destination": "artigos/README.md",
+      "origin_branch": "audit/v1-release-gates-2026-10-11",
+      "origin_commit": "db3d5b9f385dc96adf7df3f0a0483d4c611d90e8",
+      "origin_path": "artigos/README.md",
+      "git_blob_sha": "8522f87d2f9103b2d388878b1d0a1a700cb9e77d",
+      "bytes": 3363
+    },
+    {
+      "destination": "artigos/GAO_ZHANG_LIU_CARLET_2012.md",
+      "origin_branch": "audit/v1-release-gates-2026-10-11",
+      "origin_commit": "db3d5b9f385dc96adf7df3f0a0483d4c611d90e8",
+      "origin_path": "artigos/GAO_ZHANG_LIU_CARLET_2012.md",
+      "git_blob_sha": "9a83e0e20d3183a23b97b746b81bc143e3904f52",
+      "bytes": 2185
+    },
+    {
+      "destination": "artigos/WANG_LIU_ZHAO_LIN_2015.md",
+      "origin_branch": "audit/v1-release-gates-2026-10-11",
+      "origin_commit": "db3d5b9f385dc96adf7df3f0a0483d4c611d90e8",
+      "origin_path": "artigos/WANG_LIU_ZHAO_LIN_2015.md",
+      "git_blob_sha": "2af6187c6c563e52535682b82c88fd8b2c30554e",
+      "bytes": 1836
+    },
+    {
+      "destination": "artigos/POST_2015_ANTIPODAL_LITERATURE_AUDIT.md",
+      "origin_branch": "audit/v1-release-gates-2026-10-11",
+      "origin_commit": "db3d5b9f385dc96adf7df3f0a0483d4c611d90e8",
+      "origin_path": "artigos/POST_2015_ANTIPODAL_LITERATURE_AUDIT.md",
+      "git_blob_sha": "140607b1ebc371965ca619a66d62df7757272826",
+      "bytes": 3173
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V1/manuscritos/paper_cubic_global_submission.tex",
+      "origin_branch": "audit/v1-release-gates-2026-10-11",
+      "origin_commit": "db3d5b9f385dc96adf7df3f0a0483d4c611d90e8",
+      "origin_path": "paper_cubic_global_submission.tex",
+      "git_blob_sha": "54053a6c57fbe3279e62eab3139ab0edd9c5c81c",
+      "bytes": 26936
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V1/manuscritos/paper_arxiv_v1.tex",
+      "origin_branch": "audit/v1-release-gates-2026-10-11",
+      "origin_commit": "db3d5b9f385dc96adf7df3f0a0483d4c611d90e8",
+      "origin_path": "paper_arxiv_v1.tex",
+      "git_blob_sha": "2c69177b32ecf25f4d3ff527c64946d11ef398e8",
+      "bytes": 27053
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V1/manuscritos/paper_hrsbf_consolidated.tex",
+      "origin_branch": "audit/v1-release-gates-2026-10-11",
+      "origin_commit": "db3d5b9f385dc96adf7df3f0a0483d4c611d90e8",
+      "origin_path": "pesquisa_t32/revisao_artigo_geral_2026_10_06/paper_hrsbf_consolidated.tex",
+      "git_blob_sha": "b67eb32732e1e81a1645cd2a16fba38fed6e381a",
+      "bytes": 31450
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V1/auditorias/LITERATURE_PRIORITY_AUDIT_2026-10-06.md",
+      "origin_branch": "audit/v1-release-gates-2026-10-11",
+      "origin_commit": "db3d5b9f385dc96adf7df3f0a0483d4c611d90e8",
+      "origin_path": "LITERATURE_PRIORITY_AUDIT_2026-10-06.md",
+      "git_blob_sha": "e6a55339b5978f5373de64c88279974c5b63e80f",
+      "bytes": 8173
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V1/auditorias/COMPARACAO_SUN_2026.md",
+      "origin_branch": "audit/v1-release-gates-2026-10-11",
+      "origin_commit": "db3d5b9f385dc96adf7df3f0a0483d4c611d90e8",
+      "origin_path": "COMPARACAO_SUN_2026.md",
+      "git_blob_sha": "c7647fa8d3432f562beada2c5fd5a46ce9e97b4f",
+      "bytes": 7323
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V1/certificados/certificado_universal_n32.json",
+      "origin_branch": "audit/v1-release-gates-2026-10-11",
+      "origin_commit": "db3d5b9f385dc96adf7df3f0a0483d4c611d90e8",
+      "origin_path": "pesquisa_t32/certificado_universal_n32.json",
+      "git_blob_sha": "c839ff68add016cce4596a0e96f9086f349cd130",
+      "bytes": 36057
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V1/certificados/audit_end_to_end_n32.py",
+      "origin_branch": "audit/v1-release-gates-2026-10-11",
+      "origin_commit": "db3d5b9f385dc96adf7df3f0a0483d4c611d90e8",
+      "origin_path": "auditoria_end_to_end_n32/audit_end_to_end.py",
+      "git_blob_sha": "64d06a4e75670f84493c32485647d5fb189568d1",
+      "bytes": 10345
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V1/certificados/resultado_end_to_end_n32.json",
+      "origin_branch": "audit/v1-release-gates-2026-10-11",
+      "origin_commit": "db3d5b9f385dc96adf7df3f0a0483d4c611d90e8",
+      "origin_path": "auditoria_end_to_end_n32/resultado_end_to_end.json",
+      "git_blob_sha": "5bb7639afbef972ed2495798722a1bf3f28dc04b",
+      "bytes": 1241
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V1/auditorias/RESEARCH_STATE_2026-10-06.md",
+      "origin_branch": "audit/v1-release-gates-2026-10-11",
+      "origin_commit": "db3d5b9f385dc96adf7df3f0a0483d4c611d90e8",
+      "origin_path": "RESEARCH_STATE_2026-10-06.md",
+      "git_blob_sha": "a0cbd7afc316ca6de39765b207860054904efd49",
+      "bytes": 3416
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/MANUSCRIPT_DRAFT.md",
+      "origin_branch": "audit/v2-ultra-rigidity-2026-10-13",
+      "origin_commit": "16309c4e692cf37427c189baf8e9050b64e85052",
+      "origin_path": "V2_graphs/MANUSCRIPT_DRAFT.md",
+      "git_blob_sha": "4328759b802a66e05df063ade0b1105cabdfb3f2",
+      "bytes": 5909
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/THEOREM_AND_PROOF.md",
+      "origin_branch": "audit/v2-ultra-rigidity-2026-10-13",
+      "origin_commit": "16309c4e692cf37427c189baf8e9050b64e85052",
+      "origin_path": "V2_graphs/THEOREM_AND_PROOF.md",
+      "git_blob_sha": "e4e5e70f6b97b00b04776d0e49d096d9fd8618eb",
+      "bytes": 5224
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/manuscript/main.tex",
+      "origin_branch": "audit/v2-ultra-rigidity-2026-10-13",
+      "origin_commit": "16309c4e692cf37427c189baf8e9050b64e85052",
+      "origin_path": "V2_graphs/manuscript/main.tex",
+      "git_blob_sha": "2b855b8c3266386fad198521b5b976d48415776b",
+      "bytes": 8513
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/auditoria_2026_10_13/README.md",
+      "origin_branch": "audit/v2-ultra-rigidity-2026-10-13",
+      "origin_commit": "16309c4e692cf37427c189baf8e9050b64e85052",
+      "origin_path": "V2_graphs/auditoria_2026_10_13/README.md",
+      "git_blob_sha": "5b98edb5df77b44fa963afd64c57318d30b455f0",
+      "bytes": 1933
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/auditoria_2026_10_13/ADENDO_ULTRARRIGIDEZ_CERTIFICADA.md",
+      "origin_branch": "audit/v2-ultra-rigidity-2026-10-13",
+      "origin_commit": "16309c4e692cf37427c189baf8e9050b64e85052",
+      "origin_path": "V2_graphs/auditoria_2026_10_13/ADENDO_ULTRARRIGIDEZ_CERTIFICADA.md",
+      "git_blob_sha": "497bbabd76f05f5d03610e21c7c37e44740aaf1e",
+      "bytes": 9260
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/auditoria_2026_10_13/BURNSIDE_QUADRATIC_EA_CLASSES.md",
+      "origin_branch": "audit/v2-ultra-rigidity-2026-10-13",
+      "origin_commit": "16309c4e692cf37427c189baf8e9050b64e85052",
+      "origin_path": "V2_graphs/auditoria_2026_10_13/BURNSIDE_QUADRATIC_EA_CLASSES.md",
+      "git_blob_sha": "fa7977aff23ad72ba171103beee0a43513a743b3",
+      "bytes": 6735
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/auditoria_2026_10_13/certificar_ultrarrigidez_local.py",
+      "origin_branch": "audit/v2-ultra-rigidity-2026-10-13",
+      "origin_commit": "16309c4e692cf37427c189baf8e9050b64e85052",
+      "origin_path": "V2_graphs/auditoria_2026_10_13/certificar_ultrarrigidez_local.py",
+      "git_blob_sha": "199441bed188287789f58d790d9bcbaa26255902",
+      "bytes": 12201
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/auditoria_2026_10_13/contagem_ea_quadraticas.py",
+      "origin_branch": "audit/v2-ultra-rigidity-2026-10-13",
+      "origin_commit": "16309c4e692cf37427c189baf8e9050b64e85052",
+      "origin_path": "V2_graphs/auditoria_2026_10_13/contagem_ea_quadraticas.py",
+      "git_blob_sha": "db7893565f3f0769f3bee721d283e2d2ed48cda4",
+      "bytes": 3311
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/MANUSCRIPT_DRAFT.md",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/MANUSCRIPT_DRAFT.md",
+      "git_blob_sha": "cbfc98b9c62d0489913a916bc8f24daebdebbf2d",
+      "bytes": 18325
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/PROOF_STATUS.md",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/PROOF_STATUS.md",
+      "git_blob_sha": "0b9a33aa7453f5611d4afc0a65a8fa690c781f72",
+      "bytes": 5073
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/FORMALIZATION_REPORT.md",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/FORMALIZATION_REPORT.md",
+      "git_blob_sha": "e68c2a6cfdae7068b791b7be023bb3db193ae481",
+      "bytes": 11116
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/PUBLICATION_POSITIONING.md",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/PUBLICATION_POSITIONING.md",
+      "git_blob_sha": "a5753e83ed8318304a8ca7e0a8c804739c8455ee",
+      "bytes": 4341
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/PUBLICATION_REVIEW_2026-10-09.md",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/PUBLICATION_REVIEW_2026-10-09.md",
+      "git_blob_sha": "78ccb9ac1663c96c14cddce97b2ecb9c13c53f51",
+      "bytes": 6558
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/CONTINUATION_PROGRESS.md",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/CONTINUATION_PROGRESS.md",
+      "git_blob_sha": "07dada694c169e385d77b4f6e53251190af4b7b0",
+      "bytes": 22295
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/Audit.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/Audit.lean",
+      "git_blob_sha": "09b54ad91590d42acb4fdded9049bee190447176",
+      "bytes": 323
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/GraphContinuationAudit.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/GraphContinuationAudit.lean",
+      "git_blob_sha": "f4d1d2f7da8fe6d0c23d6505df577b4597f160f9",
+      "bytes": 2173
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/GraphQuadraticAudit.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/GraphQuadraticAudit.lean",
+      "git_blob_sha": "0ac01aae6e187c44569ec21d2c02134cca2c12b1",
+      "bytes": 377
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/RefereeAudit.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/RefereeAudit.lean",
+      "git_blob_sha": "91cfa282767d00dd9bb339f14a09f079dadfd7a8",
+      "bytes": 2023
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/VonoV3C.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/VonoV3C.lean",
+      "git_blob_sha": "12168670a3eec27e0f8c8a7d9f3bb5da1aefcf61",
+      "bytes": 408
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/VonoV3C/Blocks.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/VonoV3C/Blocks.lean",
+      "git_blob_sha": "be6f5a4f37a46e0e54f64fb0445261f90ea423f6",
+      "bytes": 9785
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/VonoV3C/Contraction.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/VonoV3C/Contraction.lean",
+      "git_blob_sha": "e933192da7c57100c7b0212594a9f35fc5a34c86",
+      "bytes": 7083
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/VonoV3C/GraphClassification.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/VonoV3C/GraphClassification.lean",
+      "git_blob_sha": "a4d740d3ddd653a2ad8cc94ab798e5af66618e6b",
+      "bytes": 3439
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/VonoV3C/GraphEATransport.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/VonoV3C/GraphEATransport.lean",
+      "git_blob_sha": "109d9b4a565b7c34026be8981bd23e684305856b",
+      "bytes": 6087
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/VonoV3C/GraphEdgeRecovery.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/VonoV3C/GraphEdgeRecovery.lean",
+      "git_blob_sha": "b2c7dca04046c5d7564583f6fcb2db41a2d9e538",
+      "bytes": 5349
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/VonoV3C/GraphIndecomposability.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/VonoV3C/GraphIndecomposability.lean",
+      "git_blob_sha": "8d42507563ed962c942a26592c76263a040bd91d",
+      "bytes": 6285
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/VonoV3C/GraphMap.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/VonoV3C/GraphMap.lean",
+      "git_blob_sha": "b7186d708525a7f3773d72351b5c5e13042facfc",
+      "bytes": 4177
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/VonoV3C/GraphOutputRecovery.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/VonoV3C/GraphOutputRecovery.lean",
+      "git_blob_sha": "df2c133a94f951006ed7e2148eb1b41a8f3aee62",
+      "bytes": 3945
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/VonoV3C/GraphQuadratic.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/VonoV3C/GraphQuadratic.lean",
+      "git_blob_sha": "c218dfb16dc67a8900906b995df98120643a1f5a",
+      "bytes": 6117
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/VonoV3C/GraphRelaxedIndex.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/VonoV3C/GraphRelaxedIndex.lean",
+      "git_blob_sha": "17ea6fd482937b14267a77aa8d0db3a7196b3a1b",
+      "bytes": 12844
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/VonoV3C/GraphSplitting.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/VonoV3C/GraphSplitting.lean",
+      "git_blob_sha": "0b652f1edf6ed7ebea00dcdba34b1decae6b0f00",
+      "bytes": 5834
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/VonoV3C/KernelDimension.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/VonoV3C/KernelDimension.lean",
+      "git_blob_sha": "400f9477504b1b1495543a57fe5104b6f225310e",
+      "bytes": 7162
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/VonoV3C/Polarization.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/VonoV3C/Polarization.lean",
+      "git_blob_sha": "2ea8321440707b4627d60a9938f357aa8b8bf676",
+      "bytes": 12284
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/lake-manifest.json",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/lake-manifest.json",
+      "git_blob_sha": "59e1297a64bb52d3cd6222bb5808fcd1b3058ed6",
+      "bytes": 3480
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/lakefile.toml",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/lakefile.toml",
+      "git_blob_sha": "a1768f562ffe0ee72785b041fcc5b12283b40866",
+      "bytes": 202
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V3-C/lean/lean-toolchain",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v3c_symplectic/lean/lean-toolchain",
+      "git_blob_sha": "fa64ce6f266b61b6849ff5f7957d939b74aae82e",
+      "bytes": 24
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/GraphClassificationAudit.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/GraphClassificationAudit.lean",
+      "git_blob_sha": "3123b13876176cb03082911ddc06326521537188",
+      "bytes": 680
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/GraphFamilyAudit.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/GraphFamilyAudit.lean",
+      "git_blob_sha": "be56e02ef99b16f54e755220978c8cb368f6457e",
+      "bytes": 575
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/SeedPropertyAAudit.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/SeedPropertyAAudit.lean",
+      "git_blob_sha": "2cb150e4c155aa97f0ceee7686e2e7e0a2c018bc",
+      "bytes": 579
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex.lean",
+      "git_blob_sha": "327814b1ce876cd1f3b3477d82ccc6094ebc9854",
+      "bytes": 515
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/BlockSum.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/BlockSum.lean",
+      "git_blob_sha": "98a34ffda1296ac4a4cb76159b13c80df669efaf",
+      "bytes": 2037
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/DimensionBound.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/DimensionBound.lean",
+      "git_blob_sha": "0f70c734db5654f1820be4fd4a5973e89c54b204",
+      "bytes": 2572
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/ExactIndex.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/ExactIndex.lean",
+      "git_blob_sha": "a3bb95d94993d7791fd184d7f905f72dec069074",
+      "bytes": 3637
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/FiniteDifference.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/FiniteDifference.lean",
+      "git_blob_sha": "d0776a9ccff94ba838a1f30c1fe4261d80a2d95b",
+      "bytes": 2071
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/GraphBlockRecovery.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/GraphBlockRecovery.lean",
+      "git_blob_sha": "dab2333f52ed2193753e40872de46bd054badd59",
+      "bytes": 4431
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/GraphClassification.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/GraphClassification.lean",
+      "git_blob_sha": "ea42886b8f168500a555700f163f71360c34582b",
+      "bytes": 3232
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/GraphConnected.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/GraphConnected.lean",
+      "git_blob_sha": "01c5f17d5cc9cc1cc34a61b578e7f98f6e7885a9",
+      "bytes": 2541
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/GraphEA.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/GraphEA.lean",
+      "git_blob_sha": "74064ae7f48665e8e1566ec33269bd2bbfd9a649",
+      "bytes": 5337
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/GraphEATransport.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/GraphEATransport.lean",
+      "git_blob_sha": "efbb2ad136345a2739c6702da393b19ec11dd20c",
+      "bytes": 5663
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/GraphEdgeRecovery.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/GraphEdgeRecovery.lean",
+      "git_blob_sha": "fc6be05cffa742e10ade06de92000405bc11a3bd",
+      "bytes": 4548
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/GraphFunction.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/GraphFunction.lean",
+      "git_blob_sha": "7853890a76326dc954f56554c84871362f171d88",
+      "bytes": 7897
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/GraphPerturbedClassification.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/GraphPerturbedClassification.lean",
+      "git_blob_sha": "be66e9772b14840005282c4a1cd14f07fc1fb1b2",
+      "bytes": 3674
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/GraphQuadratic.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/GraphQuadratic.lean",
+      "git_blob_sha": "d2d43afd2327c39229b107b5432b79e3bbe1b166",
+      "bytes": 5567
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/GraphSplitting.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/GraphSplitting.lean",
+      "git_blob_sha": "9a3fd04356b9da0b0ed15d02b6f1f59cbc09dd3e",
+      "bytes": 7504
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/GraphStarFamily.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/GraphStarFamily.lean",
+      "git_blob_sha": "6c1a20ef337a794b5f639e2fd028b5147c11de80",
+      "bytes": 2604
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/Hypergraph.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/Hypergraph.lean",
+      "git_blob_sha": "8525792e19440dadc71ffd4c894267660aa21a43",
+      "bytes": 7579
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/LinearTransport.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/LinearTransport.lean",
+      "git_blob_sha": "b6ff73d935caed349ee1dcbdd029c9fd284e25d6",
+      "bytes": 4967
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/LowerBound.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/LowerBound.lean",
+      "git_blob_sha": "d30a62f08f7739f2bb8e186a01bd4c98c2cdf0a6",
+      "bytes": 2538
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/MSubspace.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/MSubspace.lean",
+      "git_blob_sha": "eeffdfa9fba990f30264dc94af5bcc0e8927c0f4",
+      "bytes": 3468
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/PaperIndex.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/PaperIndex.lean",
+      "git_blob_sha": "61f254f89a7ffaa8875208d4a8f5a90466a7798f",
+      "bytes": 878
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/QuarticSeedPropertyA.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/QuarticSeedPropertyA.lean",
+      "git_blob_sha": "bad1cf4e56ab63a0d686aff04affda8c2e4e467d",
+      "bytes": 4355
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/Seed8.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/Seed8.lean",
+      "git_blob_sha": "216c13a7c4e0ae8940c4476c196774eb36896021",
+      "bytes": 7939
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/SeedPropertyABridge.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/SeedPropertyABridge.lean",
+      "git_blob_sha": "d3b6f53ce5b686ff177d14947ded5e33f614b2fc",
+      "bytes": 5593
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/VonoExactIndex/SeedPropertyAComputations.lean",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/VonoExactIndex/SeedPropertyAComputations.lean",
+      "git_blob_sha": "c3d2b6ae503c143f387532c4430398d3b9e553fd",
+      "bytes": 3745
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/lake-manifest.json",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/lake-manifest.json",
+      "git_blob_sha": "52a465d656e44363d6fb888fee4cfcf18f052c47",
+      "bytes": 3487
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/lakefile.toml",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/lakefile.toml",
+      "git_blob_sha": "04dd7ae783af8df22ede1542099d2848554b7364",
+      "bytes": 223
+    },
+    {
+      "destination": "ACERVO_CIENTIFICO/V2/lean_snapshot_2026-10-08/lean-toolchain",
+      "origin_branch": "v3c-ea-transport-continuation",
+      "origin_commit": "01ea4b263a3cbe338df264b9d057a4edb3a980c8",
+      "origin_path": "pesquisa_v2_quartic/lean/lean-toolchain",
+      "git_blob_sha": "fa64ce6f266b61b6849ff5f7957d939b74aae82e",
+      "bytes": 24
+    }
+  ],
+  "limitations": [
+    "Does not include closed-access publisher PDFs",
+    "Does not claim re-execution of Lean or Python",
+    "Other conversation artifacts of 2026-10-13/14 (including compiled PDFs and .tex) are not incorporated; only PARECER_PRIORIDADE_PTBR.md was imported intact from a conversation attachment"
+  ],
+  "conversation_imports": [
+    {
+      "destination": "ACERVO_CIENTIFICO/V1/auditorias/PARECER_PRIORIDADE_PTBR_2026-10-14.md",
+      "origin": "ChatGPT conversation attachment from 2026-10-14; author-generated research report",
+      "git_blob_sha": "4f6a9741336e78afb3705a79a4a649372b670a80",
+      "size_utf8_bytes": 4847,
+      "scientific_status": "editorial opinion and literature comparison; not an external peer-reviewed certificate"
+    }
+  ]
+}
