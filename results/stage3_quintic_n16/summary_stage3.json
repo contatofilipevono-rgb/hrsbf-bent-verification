@@ -1,0 +1,13 @@
+{
+  "n": 16,
+  "degree": 5,
+  "rounds": 100,
+  "batch": 2048,
+  "tested_total": 204800,
+  "basis_orbits": 273,
+  "basis_sha256": "4687570ee2501ec09f15308d71c542c1f18ea13aa26686622786bec37418fa65",
+  "backend": "torch-cuda",
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "elapsed_seconds": 28.02,
+  "status": "EXCLUDED_BY_FIBER"
+}
