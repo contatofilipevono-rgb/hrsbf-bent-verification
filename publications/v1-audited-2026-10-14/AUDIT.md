@@ -25,6 +25,7 @@ The conventional proof was reconstructed from the definitions. No fatal gap was 
 - Complementary-fiber checks cover 7,35,155 cubic orbits in n=8,16,32. Their polar and nonconstant maps have identical row spaces (ranks 0,2,6, respectively).
 - The n=32 trilinear control checks 155*16*16=39,680 basis contractions. By linearity these identities apply to every coefficient combination. They do not enumerate 2^155 functions or alone prove the global theorem.
 - Folding controls pass for n=6,10,12,18,20,24,30,40,48,64,96.
+- **Exhaustive n=12 control:** An exhaustive CUDA audit on an NVIDIA A100 GPU evaluated all $2^{25} = 33,554,432$ candidates of degree $\le 3$ in dimension 12. Exactly 14,336 affine representatives (57,344 bent functions including constant and linear terms) are bent. Exactly zero bent functions omit $P_{12}$ (`bent_without_Pn = 0`), and zero homogeneous cubics are bent (`homogeneous_cubic_bent = 0`). The full run completed with status `consistent` (SHA-256 of bent IDs: `dfc59083ce06bacae24822d167a03a47967638da1278324361980e7a0e806cd9`).
 - The existing independent odd-order validator was rerun: all odd-order invertible maps and invariant normalized quadratics in dimensions 1,2,3 passed. The log is included; the script remains at the baseline repository root.
 
 Pivot positions depend on the explicit ordering of orbit generators. The published control records its own lexicographic ordering; historical pivot lists are not treated as certificates for this run.

@@ -18,6 +18,7 @@ The complete argument was already present in the V1 manuscript at the baseline c
 |---|---|
 | General antipodal theorem and homogeneous cubic corollary | Algebraic proof in the manuscript; reconstructed in this audit; needs external expert scrutiny |
 | Explicit nonhomogeneous n=12 certificate and selected supporting lemmas | Compiled and kernel checked with Lean 4.15.0; 543 theorem axiom reports |
+| Exhaustive n=12 control across all 33,554,432 candidates ($\deg \le 3$) | Certified on NVIDIA A100 GPU (31.1s); exactly 14,336 bent representatives, 0 omit $P_{12}$, 0 homogeneous bent |
 | Quadratic rigidity / complementary-fiber identities in n=32 | Independent exact finite controls, all passing; supports the algebraic argument |
 | Full Lean formalization of the general theorem | **Not completed** |
 | `BitWalkBridge 32`, universal Ward certificate in n=16, bit-projection hypotheses in selected formal lemmas | **Still pending in Lean**; none is smuggled in as a proved global theorem |
