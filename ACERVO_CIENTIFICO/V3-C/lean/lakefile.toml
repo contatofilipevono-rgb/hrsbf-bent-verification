@@ -1,0 +1,11 @@
+name = "VonoV3C"
+version = "0.1.0"
+defaultTargets = ["VonoV3C"]
+
+[[lean_lib]]
+name = "VonoV3C"
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "v4.19.0"

@@ -1,0 +1,2134 @@
+{
+  "scope": "All homogeneous cubic rotation-symmetric Boolean functions in 32 variables, not all dimensions or degrees",
+  "basis_155": [
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      0,
+      1,
+      3
+    ],
+    [
+      0,
+      1,
+      4
+    ],
+    [
+      0,
+      1,
+      5
+    ],
+    [
+      0,
+      1,
+      6
+    ],
+    [
+      0,
+      1,
+      7
+    ],
+    [
+      0,
+      1,
+      8
+    ],
+    [
+      0,
+      1,
+      9
+    ],
+    [
+      0,
+      1,
+      10
+    ],
+    [
+      0,
+      1,
+      11
+    ],
+    [
+      0,
+      1,
+      12
+    ],
+    [
+      0,
+      1,
+      13
+    ],
+    [
+      0,
+      1,
+      14
+    ],
+    [
+      0,
+      1,
+      15
+    ],
+    [
+      0,
+      1,
+      16
+    ],
+    [
+      0,
+      1,
+      17
+    ],
+    [
+      0,
+      1,
+      18
+    ],
+    [
+      0,
+      1,
+      19
+    ],
+    [
+      0,
+      1,
+      20
+    ],
+    [
+      0,
+      1,
+      21
+    ],
+    [
+      0,
+      1,
+      22
+    ],
+    [
+      0,
+      1,
+      23
+    ],
+    [
+      0,
+      1,
+      24
+    ],
+    [
+      0,
+      1,
+      25
+    ],
+    [
+      0,
+      1,
+      26
+    ],
+    [
+      0,
+      1,
+      27
+    ],
+    [
+      0,
+      1,
+      28
+    ],
+    [
+      0,
+      1,
+      29
+    ],
+    [
+      0,
+      1,
+      30
+    ],
+    [
+      0,
+      2,
+      4
+    ],
+    [
+      0,
+      2,
+      5
+    ],
+    [
+      0,
+      2,
+      6
+    ],
+    [
+      0,
+      2,
+      7
+    ],
+    [
+      0,
+      2,
+      8
+    ],
+    [
+      0,
+      2,
+      9
+    ],
+    [
+      0,
+      2,
+      10
+    ],
+    [
+      0,
+      2,
+      11
+    ],
+    [
+      0,
+      2,
+      12
+    ],
+    [
+      0,
+      2,
+      13
+    ],
+    [
+      0,
+      2,
+      14
+    ],
+    [
+      0,
+      2,
+      15
+    ],
+    [
+      0,
+      2,
+      16
+    ],
+    [
+      0,
+      2,
+      17
+    ],
+    [
+      0,
+      2,
+      18
+    ],
+    [
+      0,
+      2,
+      19
+    ],
+    [
+      0,
+      2,
+      20
+    ],
+    [
+      0,
+      2,
+      21
+    ],
+    [
+      0,
+      2,
+      22
+    ],
+    [
+      0,
+      2,
+      23
+    ],
+    [
+      0,
+      2,
+      24
+    ],
+    [
+      0,
+      2,
+      25
+    ],
+    [
+      0,
+      2,
+      26
+    ],
+    [
+      0,
+      2,
+      27
+    ],
+    [
+      0,
+      2,
+      28
+    ],
+    [
+      0,
+      2,
+      29
+    ],
+    [
+      0,
+      3,
+      6
+    ],
+    [
+      0,
+      3,
+      7
+    ],
+    [
+      0,
+      3,
+      8
+    ],
+    [
+      0,
+      3,
+      9
+    ],
+    [
+      0,
+      3,
+      10
+    ],
+    [
+      0,
+      3,
+      11
+    ],
+    [
+      0,
+      3,
+      12
+    ],
+    [
+      0,
+      3,
+      13
+    ],
+    [
+      0,
+      3,
+      14
+    ],
+    [
+      0,
+      3,
+      15
+    ],
+    [
+      0,
+      3,
+      16
+    ],
+    [
+      0,
+      3,
+      17
+    ],
+    [
+      0,
+      3,
+      18
+    ],
+    [
+      0,
+      3,
+      19
+    ],
+    [
+      0,
+      3,
+      20
+    ],
+    [
+      0,
+      3,
+      21
+    ],
+    [
+      0,
+      3,
+      22
+    ],
+    [
+      0,
+      3,
+      23
+    ],
+    [
+      0,
+      3,
+      24
+    ],
+    [
+      0,
+      3,
+      25
+    ],
+    [
+      0,
+      3,
+      26
+    ],
+    [
+      0,
+      3,
+      27
+    ],
+    [
+      0,
+      3,
+      28
+    ],
+    [
+      0,
+      4,
+      8
+    ],
+    [
+      0,
+      4,
+      9
+    ],
+    [
+      0,
+      4,
+      10
+    ],
+    [
+      0,
+      4,
+      11
+    ],
+    [
+      0,
+      4,
+      12
+    ],
+    [
+      0,
+      4,
+      13
+    ],
+    [
+      0,
+      4,
+      14
+    ],
+    [
+      0,
+      4,
+      15
+    ],
+    [
+      0,
+      4,
+      16
+    ],
+    [
+      0,
+      4,
+      17
+    ],
+    [
+      0,
+      4,
+      18
+    ],
+    [
+      0,
+      4,
+      19
+    ],
+    [
+      0,
+      4,
+      20
+    ],
+    [
+      0,
+      4,
+      21
+    ],
+    [
+      0,
+      4,
+      22
+    ],
+    [
+      0,
+      4,
+      23
+    ],
+    [
+      0,
+      4,
+      24
+    ],
+    [
+      0,
+      4,
+      25
+    ],
+    [
+      0,
+      4,
+      26
+    ],
+    [
+      0,
+      4,
+      27
+    ],
+    [
+      0,
+      5,
+      10
+    ],
+    [
+      0,
+      5,
+      11
+    ],
+    [
+      0,
+      5,
+      12
+    ],
+    [
+      0,
+      5,
+      13
+    ],
+    [
+      0,
+      5,
+      14
+    ],
+    [
+      0,
+      5,
+      15
+    ],
+    [
+      0,
+      5,
+      16
+    ],
+    [
+      0,
+      5,
+      17
+    ],
+    [
+      0,
+      5,
+      18
+    ],
+    [
+      0,
+      5,
+      19
+    ],
+    [
+      0,
+      5,
+      20
+    ],
+    [
+      0,
+      5,
+      21
+    ],
+    [
+      0,
+      5,
+      22
+    ],
+    [
+      0,
+      5,
+      23
+    ],
+    [
+      0,
+      5,
+      24
+    ],
+    [
+      0,
+      5,
+      25
+    ],
+    [
+      0,
+      5,
+      26
+    ],
+    [
+      0,
+      6,
+      12
+    ],
+    [
+      0,
+      6,
+      13
+    ],
+    [
+      0,
+      6,
+      14
+    ],
+    [
+      0,
+      6,
+      15
+    ],
+    [
+      0,
+      6,
+      16
+    ],
+    [
+      0,
+      6,
+      17
+    ],
+    [
+      0,
+      6,
+      18
+    ],
+    [
+      0,
+      6,
+      19
+    ],
+    [
+      0,
+      6,
+      20
+    ],
+    [
+      0,
+      6,
+      21
+    ],
+    [
+      0,
+      6,
+      22
+    ],
+    [
+      0,
+      6,
+      23
+    ],
+    [
+      0,
+      6,
+      24
+    ],
+    [
+      0,
+      6,
+      25
+    ],
+    [
+      0,
+      7,
+      14
+    ],
+    [
+      0,
+      7,
+      15
+    ],
+    [
+      0,
+      7,
+      16
+    ],
+    [
+      0,
+      7,
+      17
+    ],
+    [
+      0,
+      7,
+      18
+    ],
+    [
+      0,
+      7,
+      19
+    ],
+    [
+      0,
+      7,
+      20
+    ],
+    [
+      0,
+      7,
+      21
+    ],
+    [
+      0,
+      7,
+      22
+    ],
+    [
+      0,
+      7,
+      23
+    ],
+    [
+      0,
+      7,
+      24
+    ],
+    [
+      0,
+      8,
+      16
+    ],
+    [
+      0,
+      8,
+      17
+    ],
+    [
+      0,
+      8,
+      18
+    ],
+    [
+      0,
+      8,
+      19
+    ],
+    [
+      0,
+      8,
+      20
+    ],
+    [
+      0,
+      8,
+      21
+    ],
+    [
+      0,
+      8,
+      22
+    ],
+    [
+      0,
+      8,
+      23
+    ],
+    [
+      0,
+      9,
+      18
+    ],
+    [
+      0,
+      9,
+      19
+    ],
+    [
+      0,
+      9,
+      20
+    ],
+    [
+      0,
+      9,
+      21
+    ],
+    [
+      0,
+      9,
+      22
+    ],
+    [
+      0,
+      10,
+      20
+    ],
+    [
+      0,
+      10,
+      21
+    ]
+  ],
+  "derivative_polar_equations": [
+    {
+      "column": 1,
+      "row_155": "0x1ffffffe",
+      "rhs": 0
+    },
+    {
+      "column": 2,
+      "row_155": "0x7fffffd0000003",
+      "rhs": 0
+    },
+    {
+      "column": 3,
+      "row_155": "0x3fffff40000058000006",
+      "rhs": 0
+    },
+    {
+      "column": 4,
+      "row_155": "0x3ffffa00001200000ac00000c",
+      "rhs": 0
+    },
+    {
+      "column": 5,
+      "row_155": "0x7fffa000090000250000146000018",
+      "rhs": 0
+    },
+    {
+      "column": 6,
+      "row_155": "0x1fff400090001080004a8000283000030",
+      "rhs": 0
+    },
+    {
+      "column": 7,
+      "row_155": "0xffd00120010800224000914000501800060",
+      "rhs": 0
+    },
+    {
+      "column": 8,
+      "row_155": "0xfe8048021002040045200120a000a00c000c0",
+      "rhs": 0
+    },
+    {
+      "column": 9,
+      "row_155": "0x1e8240840408042200889002405001400600180",
+      "rhs": 0
+    },
+    {
+      "column": 10,
+      "row_155": "0x524421020804085101104804802802800300300",
+      "rhs": 0
+    },
+    {
+      "column": 11,
+      "row_155": "0xc2812011042108882202409001405000180600",
+      "rhs": 0
+    },
+    {
+      "column": 12,
+      "row_155": "0x2c000c00a0a1210444401212000a0a0000c0c00",
+      "rhs": 0
+    },
+    {
+      "column": 13,
+      "row_155": "0x12280c100110c20228800924000514000061800",
+      "rhs": 0
+    },
+    {
+      "column": 14,
+      "row_155": "0x1441228a208c401010004c80002a8000033000",
+      "rhs": 0
+    },
+    {
+      "column": 15,
+      "row_155": "0x82a14514052800aa0002d000011000001e000",
+      "rhs": 0
+    },
+    {
+      "column": 16,
+      "row_155": "0x0",
+      "rhs": 0
+    },
+    {
+      "column": 17,
+      "row_155": "0x82a14514052800aa0002d000011000001e000",
+      "rhs": 0
+    },
+    {
+      "column": 18,
+      "row_155": "0x1441228a208c401010004c80002a8000033000",
+      "rhs": 0
+    },
+    {
+      "column": 19,
+      "row_155": "0x12280c100110c20228800924000514000061800",
+      "rhs": 0
+    },
+    {
+      "column": 20,
+      "row_155": "0x2c000c00a0a1210444401212000a0a0000c0c00",
+      "rhs": 0
+    },
+    {
+      "column": 21,
+      "row_155": "0xc2812011042108882202409001405000180600",
+      "rhs": 0
+    },
+    {
+      "column": 22,
+      "row_155": "0x524421020804085101104804802802800300300",
+      "rhs": 0
+    },
+    {
+      "column": 23,
+      "row_155": "0x1e8240840408042200889002405001400600180",
+      "rhs": 0
+    },
+    {
+      "column": 24,
+      "row_155": "0xfe8048021002040045200120a000a00c000c0",
+      "rhs": 0
+    },
+    {
+      "column": 25,
+      "row_155": "0xffd00120010800224000914000501800060",
+      "rhs": 0
+    },
+    {
+      "column": 26,
+      "row_155": "0x1fff400090001080004a8000283000030",
+      "rhs": 0
+    },
+    {
+      "column": 27,
+      "row_155": "0x7fffa000090000250000146000018",
+      "rhs": 0
+    },
+    {
+      "column": 28,
+      "row_155": "0x3ffffa00001200000ac00000c",
+      "rhs": 0
+    },
+    {
+      "column": 29,
+      "row_155": "0x3fffff40000058000006",
+      "rhs": 0
+    },
+    {
+      "column": 30,
+      "row_155": "0x7fffffd0000003",
+      "rhs": 0
+    },
+    {
+      "column": 31,
+      "row_155": "0x1ffffffe",
+      "rhs": 0
+    }
+  ],
+  "derivative_polar_constraint_rank": 14,
+  "complementary_fiber_nonconstant_coefficient_identities": [
+    {
+      "fiber_term_mask": "0x1",
+      "coefficient_row_155": "0x0",
+      "derivative_polar_columns": []
+    },
+    {
+      "fiber_term_mask": "0x2",
+      "coefficient_row_155": "0x82a14514052800aa0002d000011001ffe1ffe",
+      "derivative_polar_columns": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x4",
+      "coefficient_row_155": "0x1c6b36db60dec01ab00061807fc47fcffd2ffd",
+      "derivative_polar_columns": [
+        2,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x8",
+      "coefficient_row_155": "0x13eebf7db71d2e038383f0c3f3f953f97fb37fb",
+      "derivative_polar_columns": [
+        2,
+        5,
+        7,
+        9,
+        11,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x10",
+      "coefficient_row_155": "0x3feeb37d17bc0f383839e2d1e1f359f3bf73bf7",
+      "derivative_polar_columns": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        11,
+        12,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x20",
+      "coefficient_row_155": "0x33c6a17c0781e010ba10c6d8c4e75ce7def3def",
+      "derivative_polar_columns": [
+        2,
+        4,
+        7,
+        9,
+        12,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x40",
+      "coefficient_row_155": "0x61828061f0c5e8d1bb100edc0e4f5e4fedf3edf",
+      "derivative_polar_columns": [
+        2,
+        4,
+        6,
+        7,
+        9,
+        10,
+        12,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x80",
+      "coefficient_row_155": "0x7f003f35f5ededfbbbbadededf5f5f5ff3f3f3f",
+      "derivative_polar_columns": [
+        2,
+        4,
+        6,
+        10,
+        12,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x100",
+      "coefficient_row_155": "0x7f003f35f5ededfbbbbadededf5f5f5ff3f3f3f",
+      "derivative_polar_columns": [
+        2,
+        4,
+        6,
+        10,
+        12,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x200",
+      "coefficient_row_155": "0x61828061f0c5e8d1bb100edc0e4f5e4fedf3edf",
+      "derivative_polar_columns": [
+        2,
+        4,
+        6,
+        7,
+        9,
+        10,
+        12,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x400",
+      "coefficient_row_155": "0x33c6a17c0781e010ba10c6d8c4e75ce7def3def",
+      "derivative_polar_columns": [
+        2,
+        4,
+        7,
+        9,
+        12,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x800",
+      "coefficient_row_155": "0x3feeb37d17bc0f383839e2d1e1f359f3bf73bf7",
+      "derivative_polar_columns": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        11,
+        12,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x1000",
+      "coefficient_row_155": "0x13eebf7db71d2e038383f0c3f3f953f97fb37fb",
+      "derivative_polar_columns": [
+        2,
+        5,
+        7,
+        9,
+        11,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x2000",
+      "coefficient_row_155": "0x1c6b36db60dec01ab00061807fc47fcffd2ffd",
+      "derivative_polar_columns": [
+        2,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x4000",
+      "coefficient_row_155": "0x82a14514052800aa0002d000011001ffe1ffe",
+      "derivative_polar_columns": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x8000",
+      "coefficient_row_155": "0x0",
+      "derivative_polar_columns": []
+    },
+    {
+      "fiber_term_mask": "0x3",
+      "coefficient_row_155": "0x82a14514052800aa0002d000011001ffe1ffe",
+      "derivative_polar_columns": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x5",
+      "coefficient_row_155": "0x1441228a208c401010004c807fd57fd0033003",
+      "derivative_polar_columns": [
+        2,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x9",
+      "coefficient_row_155": "0x12280c100110c2022883f6dbf40514058061806",
+      "derivative_polar_columns": [
+        3,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x11",
+      "coefficient_row_155": "0x2c000c00a0a1213bbbba1212120a0a0ac0c0c0c",
+      "derivative_polar_columns": [
+        4,
+        12
+      ]
+    },
+    {
+      "fiber_term_mask": "0x21",
+      "coefficient_row_155": "0xc281201103def2882292409251405146180618",
+      "derivative_polar_columns": [
+        5,
+        11
+      ]
+    },
+    {
+      "fiber_term_mask": "0x41",
+      "coefficient_row_155": "0x5244211df74408c10100c804caa802a83300330",
+      "derivative_polar_columns": [
+        6,
+        10
+      ]
+    },
+    {
+      "fiber_term_mask": "0x81",
+      "coefficient_row_155": "0x1e82bf540528052a00aad002d11001101e001e0",
+      "derivative_polar_columns": [
+        7,
+        9
+      ]
+    },
+    {
+      "fiber_term_mask": "0x101",
+      "coefficient_row_155": "0x0",
+      "derivative_polar_columns": []
+    },
+    {
+      "fiber_term_mask": "0x201",
+      "coefficient_row_155": "0x1e82bf540528052a00aad002d11001101e001e0",
+      "derivative_polar_columns": [
+        7,
+        9
+      ]
+    },
+    {
+      "fiber_term_mask": "0x401",
+      "coefficient_row_155": "0x5244211df74408c10100c804caa802a83300330",
+      "derivative_polar_columns": [
+        6,
+        10
+      ]
+    },
+    {
+      "fiber_term_mask": "0x801",
+      "coefficient_row_155": "0xc281201103def2882292409251405146180618",
+      "derivative_polar_columns": [
+        5,
+        11
+      ]
+    },
+    {
+      "fiber_term_mask": "0x1001",
+      "coefficient_row_155": "0x2c000c00a0a1213bbbba1212120a0a0ac0c0c0c",
+      "derivative_polar_columns": [
+        4,
+        12
+      ]
+    },
+    {
+      "fiber_term_mask": "0x2001",
+      "coefficient_row_155": "0x12280c100110c2022883f6dbf40514058061806",
+      "derivative_polar_columns": [
+        3,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x4001",
+      "coefficient_row_155": "0x1441228a208c401010004c807fd57fd0033003",
+      "derivative_polar_columns": [
+        2,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x8001",
+      "coefficient_row_155": "0x82a14514052800aa0002d000011001ffe1ffe",
+      "derivative_polar_columns": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x6",
+      "coefficient_row_155": "0x82a14514052800aa0002d000011001ffe1ffe",
+      "derivative_polar_columns": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0xa",
+      "coefficient_row_155": "0x1441228a208c401010004c807fd57fd0033003",
+      "derivative_polar_columns": [
+        2,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x12",
+      "coefficient_row_155": "0x12280c100110c2022883f6dbf40514058061806",
+      "derivative_polar_columns": [
+        3,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x22",
+      "coefficient_row_155": "0x2c000c00a0a1213bbbba1212120a0a0ac0c0c0c",
+      "derivative_polar_columns": [
+        4,
+        12
+      ]
+    },
+    {
+      "fiber_term_mask": "0x42",
+      "coefficient_row_155": "0xc281201103def2882292409251405146180618",
+      "derivative_polar_columns": [
+        5,
+        11
+      ]
+    },
+    {
+      "fiber_term_mask": "0x82",
+      "coefficient_row_155": "0x5244211df74408c10100c804caa802a83300330",
+      "derivative_polar_columns": [
+        6,
+        10
+      ]
+    },
+    {
+      "fiber_term_mask": "0x102",
+      "coefficient_row_155": "0x1e82bf540528052a00aad002d11001101e001e0",
+      "derivative_polar_columns": [
+        7,
+        9
+      ]
+    },
+    {
+      "fiber_term_mask": "0x202",
+      "coefficient_row_155": "0x0",
+      "derivative_polar_columns": []
+    },
+    {
+      "fiber_term_mask": "0x402",
+      "coefficient_row_155": "0x1e82bf540528052a00aad002d11001101e001e0",
+      "derivative_polar_columns": [
+        7,
+        9
+      ]
+    },
+    {
+      "fiber_term_mask": "0x802",
+      "coefficient_row_155": "0x5244211df74408c10100c804caa802a83300330",
+      "derivative_polar_columns": [
+        6,
+        10
+      ]
+    },
+    {
+      "fiber_term_mask": "0x1002",
+      "coefficient_row_155": "0xc281201103def2882292409251405146180618",
+      "derivative_polar_columns": [
+        5,
+        11
+      ]
+    },
+    {
+      "fiber_term_mask": "0x2002",
+      "coefficient_row_155": "0x2c000c00a0a1213bbbba1212120a0a0ac0c0c0c",
+      "derivative_polar_columns": [
+        4,
+        12
+      ]
+    },
+    {
+      "fiber_term_mask": "0x4002",
+      "coefficient_row_155": "0x12280c100110c2022883f6dbf40514058061806",
+      "derivative_polar_columns": [
+        3,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x8002",
+      "coefficient_row_155": "0x1441228a208c401010004c807fd57fd0033003",
+      "derivative_polar_columns": [
+        2,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0xc",
+      "coefficient_row_155": "0x82a14514052800aa0002d000011001ffe1ffe",
+      "derivative_polar_columns": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x14",
+      "coefficient_row_155": "0x1441228a208c401010004c807fd57fd0033003",
+      "derivative_polar_columns": [
+        2,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x24",
+      "coefficient_row_155": "0x12280c100110c2022883f6dbf40514058061806",
+      "derivative_polar_columns": [
+        3,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x44",
+      "coefficient_row_155": "0x2c000c00a0a1213bbbba1212120a0a0ac0c0c0c",
+      "derivative_polar_columns": [
+        4,
+        12
+      ]
+    },
+    {
+      "fiber_term_mask": "0x84",
+      "coefficient_row_155": "0xc281201103def2882292409251405146180618",
+      "derivative_polar_columns": [
+        5,
+        11
+      ]
+    },
+    {
+      "fiber_term_mask": "0x104",
+      "coefficient_row_155": "0x5244211df74408c10100c804caa802a83300330",
+      "derivative_polar_columns": [
+        6,
+        10
+      ]
+    },
+    {
+      "fiber_term_mask": "0x204",
+      "coefficient_row_155": "0x1e82bf540528052a00aad002d11001101e001e0",
+      "derivative_polar_columns": [
+        7,
+        9
+      ]
+    },
+    {
+      "fiber_term_mask": "0x404",
+      "coefficient_row_155": "0x0",
+      "derivative_polar_columns": []
+    },
+    {
+      "fiber_term_mask": "0x804",
+      "coefficient_row_155": "0x1e82bf540528052a00aad002d11001101e001e0",
+      "derivative_polar_columns": [
+        7,
+        9
+      ]
+    },
+    {
+      "fiber_term_mask": "0x1004",
+      "coefficient_row_155": "0x5244211df74408c10100c804caa802a83300330",
+      "derivative_polar_columns": [
+        6,
+        10
+      ]
+    },
+    {
+      "fiber_term_mask": "0x2004",
+      "coefficient_row_155": "0xc281201103def2882292409251405146180618",
+      "derivative_polar_columns": [
+        5,
+        11
+      ]
+    },
+    {
+      "fiber_term_mask": "0x4004",
+      "coefficient_row_155": "0x2c000c00a0a1213bbbba1212120a0a0ac0c0c0c",
+      "derivative_polar_columns": [
+        4,
+        12
+      ]
+    },
+    {
+      "fiber_term_mask": "0x8004",
+      "coefficient_row_155": "0x12280c100110c2022883f6dbf40514058061806",
+      "derivative_polar_columns": [
+        3,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x18",
+      "coefficient_row_155": "0x82a14514052800aa0002d000011001ffe1ffe",
+      "derivative_polar_columns": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x28",
+      "coefficient_row_155": "0x1441228a208c401010004c807fd57fd0033003",
+      "derivative_polar_columns": [
+        2,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x48",
+      "coefficient_row_155": "0x12280c100110c2022883f6dbf40514058061806",
+      "derivative_polar_columns": [
+        3,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x88",
+      "coefficient_row_155": "0x2c000c00a0a1213bbbba1212120a0a0ac0c0c0c",
+      "derivative_polar_columns": [
+        4,
+        12
+      ]
+    },
+    {
+      "fiber_term_mask": "0x108",
+      "coefficient_row_155": "0xc281201103def2882292409251405146180618",
+      "derivative_polar_columns": [
+        5,
+        11
+      ]
+    },
+    {
+      "fiber_term_mask": "0x208",
+      "coefficient_row_155": "0x5244211df74408c10100c804caa802a83300330",
+      "derivative_polar_columns": [
+        6,
+        10
+      ]
+    },
+    {
+      "fiber_term_mask": "0x408",
+      "coefficient_row_155": "0x1e82bf540528052a00aad002d11001101e001e0",
+      "derivative_polar_columns": [
+        7,
+        9
+      ]
+    },
+    {
+      "fiber_term_mask": "0x808",
+      "coefficient_row_155": "0x0",
+      "derivative_polar_columns": []
+    },
+    {
+      "fiber_term_mask": "0x1008",
+      "coefficient_row_155": "0x1e82bf540528052a00aad002d11001101e001e0",
+      "derivative_polar_columns": [
+        7,
+        9
+      ]
+    },
+    {
+      "fiber_term_mask": "0x2008",
+      "coefficient_row_155": "0x5244211df74408c10100c804caa802a83300330",
+      "derivative_polar_columns": [
+        6,
+        10
+      ]
+    },
+    {
+      "fiber_term_mask": "0x4008",
+      "coefficient_row_155": "0xc281201103def2882292409251405146180618",
+      "derivative_polar_columns": [
+        5,
+        11
+      ]
+    },
+    {
+      "fiber_term_mask": "0x8008",
+      "coefficient_row_155": "0x2c000c00a0a1213bbbba1212120a0a0ac0c0c0c",
+      "derivative_polar_columns": [
+        4,
+        12
+      ]
+    },
+    {
+      "fiber_term_mask": "0x30",
+      "coefficient_row_155": "0x82a14514052800aa0002d000011001ffe1ffe",
+      "derivative_polar_columns": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x50",
+      "coefficient_row_155": "0x1441228a208c401010004c807fd57fd0033003",
+      "derivative_polar_columns": [
+        2,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x90",
+      "coefficient_row_155": "0x12280c100110c2022883f6dbf40514058061806",
+      "derivative_polar_columns": [
+        3,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x110",
+      "coefficient_row_155": "0x2c000c00a0a1213bbbba1212120a0a0ac0c0c0c",
+      "derivative_polar_columns": [
+        4,
+        12
+      ]
+    },
+    {
+      "fiber_term_mask": "0x210",
+      "coefficient_row_155": "0xc281201103def2882292409251405146180618",
+      "derivative_polar_columns": [
+        5,
+        11
+      ]
+    },
+    {
+      "fiber_term_mask": "0x410",
+      "coefficient_row_155": "0x5244211df74408c10100c804caa802a83300330",
+      "derivative_polar_columns": [
+        6,
+        10
+      ]
+    },
+    {
+      "fiber_term_mask": "0x810",
+      "coefficient_row_155": "0x1e82bf540528052a00aad002d11001101e001e0",
+      "derivative_polar_columns": [
+        7,
+        9
+      ]
+    },
+    {
+      "fiber_term_mask": "0x1010",
+      "coefficient_row_155": "0x0",
+      "derivative_polar_columns": []
+    },
+    {
+      "fiber_term_mask": "0x2010",
+      "coefficient_row_155": "0x1e82bf540528052a00aad002d11001101e001e0",
+      "derivative_polar_columns": [
+        7,
+        9
+      ]
+    },
+    {
+      "fiber_term_mask": "0x4010",
+      "coefficient_row_155": "0x5244211df74408c10100c804caa802a83300330",
+      "derivative_polar_columns": [
+        6,
+        10
+      ]
+    },
+    {
+      "fiber_term_mask": "0x8010",
+      "coefficient_row_155": "0xc281201103def2882292409251405146180618",
+      "derivative_polar_columns": [
+        5,
+        11
+      ]
+    },
+    {
+      "fiber_term_mask": "0x60",
+      "coefficient_row_155": "0x82a14514052800aa0002d000011001ffe1ffe",
+      "derivative_polar_columns": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0xa0",
+      "coefficient_row_155": "0x1441228a208c401010004c807fd57fd0033003",
+      "derivative_polar_columns": [
+        2,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x120",
+      "coefficient_row_155": "0x12280c100110c2022883f6dbf40514058061806",
+      "derivative_polar_columns": [
+        3,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x220",
+      "coefficient_row_155": "0x2c000c00a0a1213bbbba1212120a0a0ac0c0c0c",
+      "derivative_polar_columns": [
+        4,
+        12
+      ]
+    },
+    {
+      "fiber_term_mask": "0x420",
+      "coefficient_row_155": "0xc281201103def2882292409251405146180618",
+      "derivative_polar_columns": [
+        5,
+        11
+      ]
+    },
+    {
+      "fiber_term_mask": "0x820",
+      "coefficient_row_155": "0x5244211df74408c10100c804caa802a83300330",
+      "derivative_polar_columns": [
+        6,
+        10
+      ]
+    },
+    {
+      "fiber_term_mask": "0x1020",
+      "coefficient_row_155": "0x1e82bf540528052a00aad002d11001101e001e0",
+      "derivative_polar_columns": [
+        7,
+        9
+      ]
+    },
+    {
+      "fiber_term_mask": "0x2020",
+      "coefficient_row_155": "0x0",
+      "derivative_polar_columns": []
+    },
+    {
+      "fiber_term_mask": "0x4020",
+      "coefficient_row_155": "0x1e82bf540528052a00aad002d11001101e001e0",
+      "derivative_polar_columns": [
+        7,
+        9
+      ]
+    },
+    {
+      "fiber_term_mask": "0x8020",
+      "coefficient_row_155": "0x5244211df74408c10100c804caa802a83300330",
+      "derivative_polar_columns": [
+        6,
+        10
+      ]
+    },
+    {
+      "fiber_term_mask": "0xc0",
+      "coefficient_row_155": "0x82a14514052800aa0002d000011001ffe1ffe",
+      "derivative_polar_columns": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x140",
+      "coefficient_row_155": "0x1441228a208c401010004c807fd57fd0033003",
+      "derivative_polar_columns": [
+        2,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x240",
+      "coefficient_row_155": "0x12280c100110c2022883f6dbf40514058061806",
+      "derivative_polar_columns": [
+        3,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x440",
+      "coefficient_row_155": "0x2c000c00a0a1213bbbba1212120a0a0ac0c0c0c",
+      "derivative_polar_columns": [
+        4,
+        12
+      ]
+    },
+    {
+      "fiber_term_mask": "0x840",
+      "coefficient_row_155": "0xc281201103def2882292409251405146180618",
+      "derivative_polar_columns": [
+        5,
+        11
+      ]
+    },
+    {
+      "fiber_term_mask": "0x1040",
+      "coefficient_row_155": "0x5244211df74408c10100c804caa802a83300330",
+      "derivative_polar_columns": [
+        6,
+        10
+      ]
+    },
+    {
+      "fiber_term_mask": "0x2040",
+      "coefficient_row_155": "0x1e82bf540528052a00aad002d11001101e001e0",
+      "derivative_polar_columns": [
+        7,
+        9
+      ]
+    },
+    {
+      "fiber_term_mask": "0x4040",
+      "coefficient_row_155": "0x0",
+      "derivative_polar_columns": []
+    },
+    {
+      "fiber_term_mask": "0x8040",
+      "coefficient_row_155": "0x1e82bf540528052a00aad002d11001101e001e0",
+      "derivative_polar_columns": [
+        7,
+        9
+      ]
+    },
+    {
+      "fiber_term_mask": "0x180",
+      "coefficient_row_155": "0x82a14514052800aa0002d000011001ffe1ffe",
+      "derivative_polar_columns": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x280",
+      "coefficient_row_155": "0x1441228a208c401010004c807fd57fd0033003",
+      "derivative_polar_columns": [
+        2,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x480",
+      "coefficient_row_155": "0x12280c100110c2022883f6dbf40514058061806",
+      "derivative_polar_columns": [
+        3,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x880",
+      "coefficient_row_155": "0x2c000c00a0a1213bbbba1212120a0a0ac0c0c0c",
+      "derivative_polar_columns": [
+        4,
+        12
+      ]
+    },
+    {
+      "fiber_term_mask": "0x1080",
+      "coefficient_row_155": "0xc281201103def2882292409251405146180618",
+      "derivative_polar_columns": [
+        5,
+        11
+      ]
+    },
+    {
+      "fiber_term_mask": "0x2080",
+      "coefficient_row_155": "0x5244211df74408c10100c804caa802a83300330",
+      "derivative_polar_columns": [
+        6,
+        10
+      ]
+    },
+    {
+      "fiber_term_mask": "0x4080",
+      "coefficient_row_155": "0x1e82bf540528052a00aad002d11001101e001e0",
+      "derivative_polar_columns": [
+        7,
+        9
+      ]
+    },
+    {
+      "fiber_term_mask": "0x8080",
+      "coefficient_row_155": "0x0",
+      "derivative_polar_columns": []
+    },
+    {
+      "fiber_term_mask": "0x300",
+      "coefficient_row_155": "0x82a14514052800aa0002d000011001ffe1ffe",
+      "derivative_polar_columns": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x500",
+      "coefficient_row_155": "0x1441228a208c401010004c807fd57fd0033003",
+      "derivative_polar_columns": [
+        2,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x900",
+      "coefficient_row_155": "0x12280c100110c2022883f6dbf40514058061806",
+      "derivative_polar_columns": [
+        3,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x1100",
+      "coefficient_row_155": "0x2c000c00a0a1213bbbba1212120a0a0ac0c0c0c",
+      "derivative_polar_columns": [
+        4,
+        12
+      ]
+    },
+    {
+      "fiber_term_mask": "0x2100",
+      "coefficient_row_155": "0xc281201103def2882292409251405146180618",
+      "derivative_polar_columns": [
+        5,
+        11
+      ]
+    },
+    {
+      "fiber_term_mask": "0x4100",
+      "coefficient_row_155": "0x5244211df74408c10100c804caa802a83300330",
+      "derivative_polar_columns": [
+        6,
+        10
+      ]
+    },
+    {
+      "fiber_term_mask": "0x8100",
+      "coefficient_row_155": "0x1e82bf540528052a00aad002d11001101e001e0",
+      "derivative_polar_columns": [
+        7,
+        9
+      ]
+    },
+    {
+      "fiber_term_mask": "0x600",
+      "coefficient_row_155": "0x82a14514052800aa0002d000011001ffe1ffe",
+      "derivative_polar_columns": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0xa00",
+      "coefficient_row_155": "0x1441228a208c401010004c807fd57fd0033003",
+      "derivative_polar_columns": [
+        2,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x1200",
+      "coefficient_row_155": "0x12280c100110c2022883f6dbf40514058061806",
+      "derivative_polar_columns": [
+        3,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x2200",
+      "coefficient_row_155": "0x2c000c00a0a1213bbbba1212120a0a0ac0c0c0c",
+      "derivative_polar_columns": [
+        4,
+        12
+      ]
+    },
+    {
+      "fiber_term_mask": "0x4200",
+      "coefficient_row_155": "0xc281201103def2882292409251405146180618",
+      "derivative_polar_columns": [
+        5,
+        11
+      ]
+    },
+    {
+      "fiber_term_mask": "0x8200",
+      "coefficient_row_155": "0x5244211df74408c10100c804caa802a83300330",
+      "derivative_polar_columns": [
+        6,
+        10
+      ]
+    },
+    {
+      "fiber_term_mask": "0xc00",
+      "coefficient_row_155": "0x82a14514052800aa0002d000011001ffe1ffe",
+      "derivative_polar_columns": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x1400",
+      "coefficient_row_155": "0x1441228a208c401010004c807fd57fd0033003",
+      "derivative_polar_columns": [
+        2,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x2400",
+      "coefficient_row_155": "0x12280c100110c2022883f6dbf40514058061806",
+      "derivative_polar_columns": [
+        3,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x4400",
+      "coefficient_row_155": "0x2c000c00a0a1213bbbba1212120a0a0ac0c0c0c",
+      "derivative_polar_columns": [
+        4,
+        12
+      ]
+    },
+    {
+      "fiber_term_mask": "0x8400",
+      "coefficient_row_155": "0xc281201103def2882292409251405146180618",
+      "derivative_polar_columns": [
+        5,
+        11
+      ]
+    },
+    {
+      "fiber_term_mask": "0x1800",
+      "coefficient_row_155": "0x82a14514052800aa0002d000011001ffe1ffe",
+      "derivative_polar_columns": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x2800",
+      "coefficient_row_155": "0x1441228a208c401010004c807fd57fd0033003",
+      "derivative_polar_columns": [
+        2,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x4800",
+      "coefficient_row_155": "0x12280c100110c2022883f6dbf40514058061806",
+      "derivative_polar_columns": [
+        3,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x8800",
+      "coefficient_row_155": "0x2c000c00a0a1213bbbba1212120a0a0ac0c0c0c",
+      "derivative_polar_columns": [
+        4,
+        12
+      ]
+    },
+    {
+      "fiber_term_mask": "0x3000",
+      "coefficient_row_155": "0x82a14514052800aa0002d000011001ffe1ffe",
+      "derivative_polar_columns": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x5000",
+      "coefficient_row_155": "0x1441228a208c401010004c807fd57fd0033003",
+      "derivative_polar_columns": [
+        2,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0x9000",
+      "coefficient_row_155": "0x12280c100110c2022883f6dbf40514058061806",
+      "derivative_polar_columns": [
+        3,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0x6000",
+      "coefficient_row_155": "0x82a14514052800aa0002d000011001ffe1ffe",
+      "derivative_polar_columns": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ]
+    },
+    {
+      "fiber_term_mask": "0xa000",
+      "coefficient_row_155": "0x1441228a208c401010004c807fd57fd0033003",
+      "derivative_polar_columns": [
+        2,
+        14
+      ]
+    },
+    {
+      "fiber_term_mask": "0xc000",
+      "coefficient_row_155": "0x82a14514052800aa0002d000011001ffe1ffe",
+      "derivative_polar_columns": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ]
+    }
+  ],
+  "identities_verified": 136,
+  "direct_anf_and_invariance_checks": 19995,
+  "status": "PASS",
+  "conclusion": "Every solution of the necessary derivative-polar equations has a constant complementary-diagonal fiber; with the zero diagonal fiber this contradicts bentness."
+}
