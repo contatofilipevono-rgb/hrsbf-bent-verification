@@ -1,0 +1,13 @@
+{
+  "job_id": "rs_bent_n12",
+  "job_revision": 2,
+  "state": "done",
+  "started_at": "2026-10-14T22:50:00Z",
+  "finished_at": "2026-10-14T22:50:31Z",
+  "returncode": 0,
+  "result_dir": "results/rs_bent_n12/rev_2",
+  "gpu": {
+    "available": true,
+    "details": "NVIDIA A100-SXM4-40GB"
+  }
+}
