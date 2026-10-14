@@ -59,3 +59,35 @@ These results are conditional on the EA classification theorem and do not indepe
 ## Research importance
 
 The earlier V2 bound counts graph-indexed canonical representatives. The formulas here count every quadratic perturbation, and—in the fixed-graph case—reduce an exponentially large search to the cycle structure of \(\operatorname{Aut}(G)\). These are exact class counts, not lower bounds. Preserve the original manuscript unchanged until a mathematical and bibliographic delta review has been completed.
+
+
+## Theorem C: strong asymptotics and generic loss of all EA symmetries
+
+Let \(M=\binom{8r}{2}\), \(D=rM\), and let \(G\) be a loopless digraph with no isolated vertices. For any nonidentity \(\pi\in S_r\), at least two output vertices are moved by \(\pi\), so at least \(2M\) labels in \(\Omega=[r]\times\binom{[r]\times[8]}2\) lie in nontrivial cycles. A permutation of \(D\) labels with \(L\) moved labels has at most \(D-L/2\) cycles: every nontrivial cycle of length \(\ell\ge2\) loses \(\ell-1\ge\ell/2\) cycles compared with the identity. Therefore
+\[
+\boxed{c_2(\pi)\le D-M\quad\text{for every }\pi\ne\mathrm{id}.}
+\]
+
+For a uniformly chosen homogeneous quadratic perturbation \(Q\), the probability that a given nonidentity graph automorphism \(\pi\) preserves \(Q\) is exactly \(2^{c_2(\pi)-D}\le2^{-M}\). By the union bound,
+\[
+\boxed{\Pr[\mathrm{Stab}_{\operatorname{Aut}(G)}([Q]_2)\ne1]
+\le (|\operatorname{Aut}(G)|-1)\,2^{-\binom{8r}{2}}.}
+\]
+Thus a uniformly random quadratic perturbation has **trivial EA stabilizer modulo affine output changes** with overwhelming probability, even when \(G\) has nontrivial graph automorphisms.
+
+For the total EA-class count across all weakly connected digraphs, the identity contribution to Burnside is \(d_r\,2^D/r!\). Since \(C_r(\pi)\le d_r\), the preceding bound yields the explicit nonasymptotic inequalities
+\[
+\boxed{
+\frac{d_r\,2^D}{r!}
+\le\mathcal N_r
+\le \frac{d_r\,2^D}{r!}
+\left(1+(r!-1)\,2^{-\binom{8r}{2}}\right).
+}
+\]
+Using the elementary fact that almost all four-state loopless digraphs are weakly connected, \(d_r\sim4^{\binom r2}\), we obtain
+\[
+\boxed{\mathcal N_r\sim
+\frac{4^{\binom r2}\,2^{4r^2(8r-1)}}{r!}\quad(r\to\infty).}
+\]
+
+This asymptotic is drastically stronger than merely a lower bound on canonical graph classes: it incorporates *all* degree-at-most-two vectorial perturbations and shows that corrections from permutation stabilizers decay at least as \(r!\,2^{-\binom{8r}{2}}\). As above, its EA interpretation is conditional on the companion ultra-rigidity theorem, and novelty claims require a prior-art check.
