@@ -1,0 +1,15 @@
+rank M 4
+KL [14, 49] KR [14, 49]
+all gl4 20160 generated 0.09728741645812988
+preserve kernels counts 360 360
+valid P,Q for (2,2) part 1080 time 0.09
+AUT result 1920 pqs 60 stats Counter({'1,3 inconsistent': 1020, ('1,3 dim', 6): 60, ('surviving Y', 32): 60}) time 1.1
+translation cubics distinct 256
+G_le2 40 details Counter({(True, True): 40}) time 0.48
+stabilizer e0 1 w01 1
+translation nonzero []
+G element orders {1: 1, 2: 1, 4: 10, 8: 20, 10: 4, 5: 4}
+rotate order 8 is member True
+S P S^-1 = P^ 3
+centroid constraint rank 63 dimension 1
+CERTIFICATE_SUMMARY {"Aut_phi_sha256": "200158067ff5d56280557080e3652a0f6cd1d8574f4659815b8a6f93166e2580", "Aut_phi_size": 1920, "GL4_size": 20160, "G_le2_all_exact_f_symmetry": true, "G_le2_all_zero_translation": true, "G_le2_orders": {"1": 1, "2": 1, "4": 10, "5": 4, "8": 20, "10": 4}, "G_le2_sha256": "ba3af188c83029ba711a29c66fa666926ae988df81ca2dd2e6812843a21c6627", "G_le2_size": 40, "G_le2_stab_e0": 1, "G_le2_stab_e0_wedge_e1": 1, "PQ_13_solvable": 60, "PQ_22_compatible": 1080, "P_candidates": 360, "Q_candidates": 360, "centralizer_dim": 1, "contraction_nullity": 6, "contraction_rank": 22, "cubic_translation_signatures": 256, "rank_4_kernel_elements": 3, "seed_quartic_monomials": 24, "third_derivative_f_at_origin_nonzero_example": 1}

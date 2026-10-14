@@ -1,0 +1,126 @@
+======================================================================
+1. AUDITORIA LOCAL DO ZERO E TEOREMA C3 (ESTRUTURA DE Aut(phi) E 1-COCICLO)
+======================================================================
+[OK] Aut(phi) (1920) e G_{<=2}(f) (40) reconstruídos e verificados em 2.23s.
+     SHA-256 Aut(phi): 200158067ff5d56280557080e3652a0f6cd1d8574f4659815b8a6f93166e2580
+     SHA-256 G_{<=2}(f): ba3af188c83029ba711a29c66fa666926ae988df81ca2dd2e6812843a21c6627
+
+======================================================================
+2. TEOREMA C1: CLASSIFICAÇÃO EA E BURNSIDE COM VÉRTICES ISOLADOS
+======================================================================
+  r=1, k=0 isolados: N_{r,k} = 0
+  r=1, k=1 isolados: N_{r,k} = 6712624
+  r=2, k=0 isolados: N_{r,k} = 265027059716757649437494625111... (bits=241)
+  r=2, k=1 isolados: N_{r,k} = 0
+  r=2, k=2 isolados: N_{r,k} = 552139707743245102994780472550... (bits=229)
+  r=3, k=0 isolados: N_{r,k} = 161093834541421656774855659626... (bits=832)
+  r=3, k=1 isolados: N_{r,k} = 671224310589256903228565248445... (bits=824)
+  r=3, k=2 isolados: N_{r,k} = 0
+  r=3, k=3 isolados: N_{r,k} = 466127993464761738353170311420... (bits=810)
+  r=4, k=0 isolados: N_{r,k} = 281838265384286036050349489195... (bits=1992)
+  r=4, k=1 isolados: N_{r,k} = 394179392145854595874614670204... (bits=1982)
+  r=4, k=2 isolados: N_{r,k} = 821207066970530408072113896258... (bits=1973)
+  r=4, k=3 isolados: N_{r,k} = 0
+  r=4, k=4 isolados: N_{r,k} = 285141342698100836136150658423... (bits=1959)
+  r=2 sem arcos (k=2): Total = 552139707743245102994780472550281390914704795606767025910233988251648
+    -> Decomponíveis = 22529663839000
+    -> Indecomponíveis = 552139707743245102994780472550281390914704795606767025887704324412648
+[OK] Teorema C1 e contagens estratificadas N_{r,k} certificados em 0.04s.
+
+======================================================================
+3. TEOREMA C2: INVARIANTE DE SUBESPAÇOS R_2-MAXIMAIS |M_2(F_G+Q)|
+======================================================================
+  Edgeless r=2              : |M_2(F_G+Q)| = 65025
+  Single arc 0->1 (r=2)     : |M_2(F_G+Q)| = 40449
+  2-cycle 0<->1 (r=2)       : |M_2(F_G+Q)| = 32257
+  Directed 3-cycle (r=3)    : |M_2(F_G+Q)| = 5120767
+  Star 0->1, 0->2 (r=3)     : |M_2(F_G+Q)| = 7193343
+  In-star 1->0, 2->0 (r=3)  : |M_2(F_G+Q)| = 8766207
+
+[SUCESSO TOTAL] Suíte executada em 2.27s.
+======================================================================
+1. VALIDAÇÃO CRUZADA DE C_r(pi): INVERSÃO DE MÖBIUS vs. BFS DIRETO (r=2,3,4)
+======================================================================
+  r=2: d_2 = 3 | Todas as 2 permutações coincidem entre BFS direto e Möbius!
+  r=3: d_3 = 54 | Todas as 6 permutações coincidem entre BFS direto e Möbius!
+  r=4: d_4 = 3834 | Todas as 24 permutações coincidem entre BFS direto e Möbius!
+
+======================================================================
+2. CODIMENSÃO EXATA DE TRANSPOSIÇÕES E DECOMPOSIÇÃO DE ERRO ASSINTÓTICO
+======================================================================
+  r=2: D=  240, c_2(tau)=  120, D-c_2(tau)= 120 bits | log2(erro_desconexo)~  -1.0 vs log2(erro_Aut)~ -121.0
+  r=3: D=  828, c_2(tau)=  432, D-c_2(tau)= 396 bits | log2(erro_desconexo)~  -2.4 vs log2(erro_Aut)~ -397.4
+  r=4: D= 1984, c_2(tau)= 1120, D-c_2(tau)= 864 bits | log2(erro_desconexo)~  -4.0 vs log2(erro_Aut)~ -866.4
+  r=5: D= 3900, c_2(tau)= 2376, D-c_2(tau)=1524 bits | log2(erro_desconexo)~  -5.7 vs log2(erro_Aut)~-1527.7
+  r=6: D= 6768, c_2(tau)= 4392, D-c_2(tau)=2376 bits | log2(erro_desconexo)~  -7.4 vs log2(erro_Aut)~-2381.1
+  r=7: D=10780, c_2(tau)= 7360, D-c_2(tau)=3420 bits | log2(erro_desconexo)~  -9.2 vs log2(erro_Aut)~-3426.6
+
+[OK] Verificação de Burnside e Assintótica concluída em 0.10s.
+======================================================================
+1. AUDITORIA LOCAL DO ZERO E TEOREMA C3 (ESTRUTURA DE Aut(phi) E 1-COCICLO)
+======================================================================
+[OK] Aut(phi) (1920) e G_{<=2}(f) (40) reconstruídos e verificados em 2.22s.
+     SHA-256 Aut(phi): 200158067ff5d56280557080e3652a0f6cd1d8574f4659815b8a6f93166e2580
+     SHA-256 G_{<=2}(f): ba3af188c83029ba711a29c66fa666926ae988df81ca2dd2e6812843a21c6627
+
+======================================================================
+2. TEOREMA C1: CLASSIFICAÇÃO EA E BURNSIDE COM VÉRTICES ISOLADOS
+======================================================================
+  r=1, k=0 isolados: N_{r,k} = 0
+  r=1, k=1 isolados: N_{r,k} = 6712624
+  r=2, k=0 isolados: N_{r,k} = 265027059716757649437494625111... (bits=241)
+  r=2, k=1 isolados: N_{r,k} = 0
+  r=2, k=2 isolados: N_{r,k} = 552139707743245102994780472550... (bits=229)
+  r=3, k=0 isolados: N_{r,k} = 161093834541421656774855659626... (bits=832)
+  r=3, k=1 isolados: N_{r,k} = 671224310589256903228565248445... (bits=824)
+  r=3, k=2 isolados: N_{r,k} = 0
+  r=3, k=3 isolados: N_{r,k} = 466127993464761738353170311420... (bits=810)
+  r=4, k=0 isolados: N_{r,k} = 281838265384286036050349489195... (bits=1992)
+  r=4, k=1 isolados: N_{r,k} = 394179392145854595874614670204... (bits=1982)
+  r=4, k=2 isolados: N_{r,k} = 821207066970530408072113896258... (bits=1973)
+  r=4, k=3 isolados: N_{r,k} = 0
+  r=4, k=4 isolados: N_{r,k} = 285141342698100836136150658423... (bits=1959)
+  r=2 sem arcos (k=2): Total = 552139707743245102994780472550281390914704795606767025910233988251648
+    -> Decomponíveis = 22529663839000
+    -> Indecomponíveis = 552139707743245102994780472550281390914704795606767025887704324412648
+[OK] Teorema C1 e contagens estratificadas N_{r,k} certificados em 0.04s.
+
+======================================================================
+3. TEOREMA C2: INVARIANTE DE SUBESPAÇOS R_2-MAXIMAIS |M_2(F_G+Q)|
+======================================================================
+  Edgeless r=2              : |M_2(F_G+Q)| = 65025
+  Single arc 0->1 (r=2)     : |M_2(F_G+Q)| = 40449
+  2-cycle 0<->1 (r=2)       : |M_2(F_G+Q)| = 32257
+  Directed 3-cycle (r=3)    : |M_2(F_G+Q)| = 5120767
+  Star 0->1, 0->2 (r=3)     : |M_2(F_G+Q)| = 7193343
+  In-star 1->0, 2->0 (r=3)  : |M_2(F_G+Q)| = 8766207
+
+[SUCESSO TOTAL] Suíte executada em 2.26s.
+======================================================================
+1. VERIFICAÇÃO DAS DUAS TESTEMUNHAS HUMANAS DO TEOREMA C3 (SCHUR + ISOTIPIA)
+======================================================================
+  Testemunha 1 (C_3, ordem 3): cols = (188, 123, 242, 237, 203, 183, 47, 222)
+    -> delta_3(C_3) != 0 (monômio cúbico testemunha x_0 x_1 x_3 presente), delta_3(C_3) in Im(iota_phi) = False
+  Testemunha 2 (U_0 in K_Y^0, ordem 2): cols = (16, 70, 38, 247, 1, 100, 98, 127)
+    -> delta_3(U_0) != 0 (monômio cúbico testemunha x_0 x_1 x_2 presente), delta_3(U_0) in Im(iota_phi) = False
+  Órbitas sob G_40: |Orb(e_0^*)| = 40, |Orb(e_0^* ^ e_1^*)| = 40 => Estabilizadores triviais por Órbita-Estabilizador!
+
+======================================================================
+2. ALGORITMO POLINOMIAL O(r^3) DE DECOMPOSIÇÃO PRIMÁRIA K(G, Q) (TEOREMA C2)
+======================================================================
+  Contraexemplo r=2 (G vazio, Q=(x_{1,0}x_{2,0}, 0)): componentes = [(0, 1)] (EA-indecomponível confirmado)
+  Caso r=4 (arco 0->1 e Q_2 = x_{2,0}x_{3,0}): decomposição primária canônica = [(0, 1), (2, 3)]
+
+======================================================================
+3. VERIFICAÇÃO DIRETA DE D_u D_v (F_G + Q) EM r=2 (TABELA-VERDADE 2^16)
+======================================================================
+  Edgeless       : pares diretos (u,v) = 65025 == fórmula fechada 65025
+  Arc 0->1       : pares diretos (u,v) = 40449 == fórmula fechada 40449
+  2-cycle 0<->1  : pares diretos (u,v) = 32257 == fórmula fechada 32257
+
+======================================================================
+4. ENUMERAÇÃO EXATA BENT RS EM n=8 EM NUMPY PURO (SEM NUMBA)
+======================================================================
+  Quárticas RS não nulas: 1023 | Bent-completáveis RS <=3: 211 | Grassmann-free bent-completáveis por posto: {24: 32, 22: 32} (em 0.99s)
+
+[SUCESSO] Verificação adicional concluída em 1.21s.

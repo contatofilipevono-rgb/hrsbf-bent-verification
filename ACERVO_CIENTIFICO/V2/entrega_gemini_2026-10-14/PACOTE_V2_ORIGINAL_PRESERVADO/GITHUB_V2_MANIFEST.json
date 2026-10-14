@@ -1,0 +1,82 @@
+{
+  "verified_via": "GitHub connected account tree, PR #4 and commit SHA (2026-10-14)",
+  "repo": "contatofilipevono-rgb/hrsbf-bent-verification",
+  "original_commit": "1a921c586903f4adf6cdb9c8668e7813f10512cb",
+  "audit_head_commit": "16309c4e692cf37427c189baf8e9050b64e85052",
+  "pull_request": "https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/pull/4",
+  "source_archive_url": "https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/archive/16309c4e692cf37427c189baf8e9050b64e85052.zip",
+  "files": [
+    {
+      "blob_sha1": "f0af0ae2b19cfef02016159fd382099a703f75ea",
+      "bytes": 1834,
+      "path": "V2_graphs/LITERATURE_AND_SCOPE.md",
+      "url": "https://raw.githubusercontent.com/contatofilipevono-rgb/hrsbf-bent-verification/16309c4e692cf37427c189baf8e9050b64e85052/V2_graphs/LITERATURE_AND_SCOPE.md"
+    },
+    {
+      "blob_sha1": "4328759b802a66e05df063ade0b1105cabdfb3f2",
+      "bytes": 5909,
+      "path": "V2_graphs/MANUSCRIPT_DRAFT.md",
+      "url": "https://raw.githubusercontent.com/contatofilipevono-rgb/hrsbf-bent-verification/16309c4e692cf37427c189baf8e9050b64e85052/V2_graphs/MANUSCRIPT_DRAFT.md"
+    },
+    {
+      "blob_sha1": "1259808b456fbb02a6bbe40c13771f807394cc39",
+      "bytes": 2076,
+      "path": "V2_graphs/SOL_AUDIT_INTEGRATION.md",
+      "url": "https://raw.githubusercontent.com/contatofilipevono-rgb/hrsbf-bent-verification/16309c4e692cf37427c189baf8e9050b64e85052/V2_graphs/SOL_AUDIT_INTEGRATION.md"
+    },
+    {
+      "blob_sha1": "e4e5e70f6b97b00b04776d0e49d096d9fd8618eb",
+      "bytes": 5224,
+      "path": "V2_graphs/THEOREM_AND_PROOF.md",
+      "url": "https://raw.githubusercontent.com/contatofilipevono-rgb/hrsbf-bent-verification/16309c4e692cf37427c189baf8e9050b64e85052/V2_graphs/THEOREM_AND_PROOF.md"
+    },
+    {
+      "blob_sha1": "1a87d4f07461ef8705f7af5bb4f702a5c65076f1",
+      "bytes": 3890,
+      "path": "V2_graphs/V2_cubic_chain_certificate.py",
+      "url": "https://raw.githubusercontent.com/contatofilipevono-rgb/hrsbf-bent-verification/16309c4e692cf37427c189baf8e9050b64e85052/V2_graphs/V2_cubic_chain_certificate.py"
+    },
+    {
+      "blob_sha1": "ef60cb76edae7b81825f6ce8b0fecbbcdf1aeccf",
+      "bytes": 4020,
+      "path": "V2_graphs/V2_graph_no_extra_output.py",
+      "url": "https://raw.githubusercontent.com/contatofilipevono-rgb/hrsbf-bent-verification/16309c4e692cf37427c189baf8e9050b64e85052/V2_graphs/V2_graph_no_extra_output.py"
+    },
+    {
+      "blob_sha1": "497bbabd76f05f5d03610e21c7c37e44740aaf1e",
+      "bytes": 9260,
+      "path": "V2_graphs/auditoria_2026_10_13/ADENDO_ULTRARRIGIDEZ_CERTIFICADA.md",
+      "url": "https://raw.githubusercontent.com/contatofilipevono-rgb/hrsbf-bent-verification/16309c4e692cf37427c189baf8e9050b64e85052/V2_graphs/auditoria_2026_10_13/ADENDO_ULTRARRIGIDEZ_CERTIFICADA.md"
+    },
+    {
+      "blob_sha1": "fa7977aff23ad72ba171103beee0a43513a743b3",
+      "bytes": 6735,
+      "path": "V2_graphs/auditoria_2026_10_13/BURNSIDE_QUADRATIC_EA_CLASSES.md",
+      "url": "https://raw.githubusercontent.com/contatofilipevono-rgb/hrsbf-bent-verification/16309c4e692cf37427c189baf8e9050b64e85052/V2_graphs/auditoria_2026_10_13/BURNSIDE_QUADRATIC_EA_CLASSES.md"
+    },
+    {
+      "blob_sha1": "5b98edb5df77b44fa963afd64c57318d30b455f0",
+      "bytes": 1933,
+      "path": "V2_graphs/auditoria_2026_10_13/README.md",
+      "url": "https://raw.githubusercontent.com/contatofilipevono-rgb/hrsbf-bent-verification/16309c4e692cf37427c189baf8e9050b64e85052/V2_graphs/auditoria_2026_10_13/README.md"
+    },
+    {
+      "blob_sha1": "199441bed188287789f58d790d9bcbaa26255902",
+      "bytes": 12201,
+      "path": "V2_graphs/auditoria_2026_10_13/certificar_ultrarrigidez_local.py",
+      "url": "https://raw.githubusercontent.com/contatofilipevono-rgb/hrsbf-bent-verification/16309c4e692cf37427c189baf8e9050b64e85052/V2_graphs/auditoria_2026_10_13/certificar_ultrarrigidez_local.py"
+    },
+    {
+      "blob_sha1": "db7893565f3f0769f3bee721d283e2d2ed48cda4",
+      "bytes": 3311,
+      "path": "V2_graphs/auditoria_2026_10_13/contagem_ea_quadraticas.py",
+      "url": "https://raw.githubusercontent.com/contatofilipevono-rgb/hrsbf-bent-verification/16309c4e692cf37427c189baf8e9050b64e85052/V2_graphs/auditoria_2026_10_13/contagem_ea_quadraticas.py"
+    },
+    {
+      "blob_sha1": "2b855b8c3266386fad198521b5b976d48415776b",
+      "bytes": 8513,
+      "path": "V2_graphs/manuscript/main.tex",
+      "url": "https://raw.githubusercontent.com/contatofilipevono-rgb/hrsbf-bent-verification/16309c4e692cf37427c189baf8e9050b64e85052/V2_graphs/manuscript/main.tex"
+    }
+  ]
+}
