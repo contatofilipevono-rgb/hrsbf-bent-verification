@@ -8,6 +8,7 @@
 - [Certificado universal n=32](certificados/certificado_universal_n32.json), [verificador independente](certificados/audit_end_to_end_n32.py), [resultado](certificados/resultado_end_to_end_n32.json).
 - [Estado de pesquisa](auditorias/RESEARCH_STATE_2026-10-06.md), [revisão de prioridade](auditorias/LITERATURE_PRIORITY_AUDIT_2026-10-06.md), [comparação Sun](auditorias/COMPARACAO_SUN_2026.md).
 - [Nota de continuidade — fibras n=16, outubro de 2026](NOTA_ADENDO_FIBRAS_2026-10-14.md).
+- [Parecer de originalidade — 14/10/2026](auditorias/PARECER_PRIORIDADE_PTBR_2026-10-14.md), importado integralmente do arquivo de conversa com atribuição, mas não submetido à arbitragem externa.
 
 ## Distinguir afirmação e evidência
 
