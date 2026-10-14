@@ -1,0 +1,13 @@
+{
+  "n": 10,
+  "degree": 4,
+  "homogeneous": true,
+  "backend": "torch-cuda",
+  "tested": 4194304,
+  "quartic_orbits": 22,
+  "passed_DJ_filter": 1148928,
+  "homogeneous_quartic_bent": 0,
+  "bent_ids": [],
+  "elapsed_seconds": 1.74,
+  "status": "CONSISTENT_NO_BENT"
+}
