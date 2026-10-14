@@ -51,8 +51,8 @@ def main():
     ap.add_argument('--max-chunks', type=int, help='stop early with exit 3; useful for checkpoint validation')
     args = ap.parse_args()
     n, chunk_log2 = args.n, args.chunk_log2
-    if n < 2 or n % 2 or n > 12:
-        ap.error('supported dimensions are positive even n from 2 through 12')
+    if n < 2 or n % 2 or n > 16:
+        ap.error('supported dimensions are positive even n from 2 through 16')
     if not 0 <= chunk_log2 <= 16:
         ap.error('chunk_log2 must be between 0 and 16')
     if args.max_chunks is not None and args.max_chunks < 1:
