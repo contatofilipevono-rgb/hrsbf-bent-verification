@@ -1,0 +1,187 @@
+{
+  "method": "independent exact GF(2) bit arithmetic; no numerical floating point",
+  "quadratic_rigidity": [
+    {
+      "n": 4,
+      "quadratic_parts": 4,
+      "quadratic_and_linear_parts": 8,
+      "constant_term": "both values follow without changing balance",
+      "balanced_normalized_functions": 1,
+      "balanced_with_nonzero_polar": 0,
+      "rank_histogram": {
+        "0": 1,
+        "2": 1,
+        "4": 2
+      }
+    },
+    {
+      "n": 8,
+      "quadratic_parts": 16,
+      "quadratic_and_linear_parts": 32,
+      "constant_term": "both values follow without changing balance",
+      "balanced_normalized_functions": 1,
+      "balanced_with_nonzero_polar": 0,
+      "rank_histogram": {
+        "0": 1,
+        "6": 4,
+        "4": 2,
+        "2": 1,
+        "8": 8
+      }
+    },
+    {
+      "n": 16,
+      "quadratic_parts": 256,
+      "quadratic_and_linear_parts": 512,
+      "constant_term": "both values follow without changing balance",
+      "balanced_normalized_functions": 1,
+      "balanced_with_nonzero_polar": 0,
+      "rank_histogram": {
+        "0": 1,
+        "14": 64,
+        "12": 32,
+        "10": 16,
+        "8": 8,
+        "6": 4,
+        "4": 2,
+        "2": 1,
+        "16": 128
+      }
+    },
+    {
+      "n": 32,
+      "quadratic_parts": 65536,
+      "quadratic_and_linear_parts": 131072,
+      "constant_term": "both values follow without changing balance",
+      "balanced_normalized_functions": 1,
+      "balanced_with_nonzero_polar": 0,
+      "rank_histogram": {
+        "0": 1,
+        "30": 16384,
+        "28": 8192,
+        "26": 4096,
+        "24": 2048,
+        "22": 1024,
+        "20": 512,
+        "18": 256,
+        "16": 128,
+        "14": 64,
+        "12": 32,
+        "10": 16,
+        "8": 8,
+        "6": 4,
+        "4": 2,
+        "2": 1,
+        "32": 32768
+      }
+    }
+  ],
+  "complementary_fiber": [
+    {
+      "n": 8,
+      "cubic_orbits": 7,
+      "zero_diagonal_orbits": 7,
+      "trilinear_basis_checks": 112,
+      "polar_rank": 0,
+      "nonconstant_rank": 0,
+      "kernel_dimension": 7,
+      "exact_rowspace_equality": true,
+      "pivots": [],
+      "scope": "all coefficient combinations by linearity; balanced-derivative and fiber-balance implications are algebraic lemmas in the paper"
+    },
+    {
+      "n": 16,
+      "cubic_orbits": 35,
+      "zero_diagonal_orbits": 35,
+      "trilinear_basis_checks": 2240,
+      "polar_rank": 2,
+      "nonconstant_rank": 2,
+      "kernel_dimension": 33,
+      "exact_rowspace_equality": true,
+      "pivots": [
+        0,
+        1
+      ],
+      "scope": "all coefficient combinations by linearity; balanced-derivative and fiber-balance implications are algebraic lemmas in the paper"
+    },
+    {
+      "n": 32,
+      "cubic_orbits": 155,
+      "zero_diagonal_orbits": 155,
+      "trilinear_basis_checks": 39680,
+      "polar_rank": 6,
+      "nonconstant_rank": 6,
+      "kernel_dimension": 149,
+      "exact_rowspace_equality": true,
+      "pivots": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "scope": "all coefficient combinations by linearity; balanced-derivative and fiber-balance implications are algebraic lemmas in the paper"
+    }
+  ],
+  "folding": {
+    "6": {
+      "t": 2,
+      "odd_factor": 3,
+      "orbits_tested": 8
+    },
+    "10": {
+      "t": 2,
+      "odd_factor": 5,
+      "orbits_tested": 18
+    },
+    "12": {
+      "t": 4,
+      "odd_factor": 3,
+      "orbits_tested": 26
+    },
+    "18": {
+      "t": 2,
+      "odd_factor": 9,
+      "orbits_tested": 56
+    },
+    "20": {
+      "t": 4,
+      "odd_factor": 5,
+      "orbits_tested": 68
+    },
+    "24": {
+      "t": 8,
+      "odd_factor": 3,
+      "orbits_tested": 98
+    },
+    "30": {
+      "t": 2,
+      "odd_factor": 15,
+      "orbits_tested": 152
+    },
+    "40": {
+      "t": 8,
+      "odd_factor": 5,
+      "orbits_tested": 268
+    },
+    "48": {
+      "t": 16,
+      "odd_factor": 3,
+      "orbits_tested": 386
+    },
+    "64": {
+      "t": 64,
+      "odd_factor": 1,
+      "orbits_tested": 684
+    },
+    "96": {
+      "t": 32,
+      "odd_factor": 3,
+      "orbits_tested": 1538
+    }
+  },
+  "elapsed_seconds": 19.931,
+  "script_sha256": "2cb9b33abc729a3e2813d60de4c19709c5a25ae0fd957c0293e0fdf80dc81ee4",
+  "passed": true
+}

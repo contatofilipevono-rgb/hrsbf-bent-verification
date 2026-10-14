@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "Please cite the preprint and exact repository commit."
+title: "Antipodal Necessity and the Cubic Case of the Homogeneous Rotation-Symmetric Bent Function Conjecture"
+authors:
+  - family-names: "Vono"
+    given-names: "Filipe Martins"
+version: "1.2"
+date-released: "2026-10-14"
+repository-code: "https://github.com/contatofilipevono-rgb/hrsbf-bent-verification"
+preferred-citation:
+  type: article
+  title: "Antipodal Necessity and the Cubic Case of the Homogeneous Rotation-Symmetric Bent Function Conjecture"
+  authors:
+    - family-names: "Vono"
+      given-names: "Filipe Martins"
+  year: 2026

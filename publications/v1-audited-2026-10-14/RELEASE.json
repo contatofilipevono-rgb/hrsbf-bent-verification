@@ -1,0 +1,15 @@
+{
+  "version": "1.2",
+  "date": "2026-10-14",
+  "baseline_commit": "db3d5b9f385dc96adf7df3f0a0483d4c611d90e8",
+  "author": "Filipe Martins Vono",
+  "release_status": "public preprint for expert review",
+  "mathematical_scope": "degree <=3 antipodal necessity in all positive even dimensions; homogeneous cubic nonexistence as corollary",
+  "formal_scope": "n=12 concrete certificate and selected supporting lemmas only; global theorem not fully formalized",
+  "lean_source_sha256": "ff6284e2756dfaac7f240c8d0d43bc765bfc9f308262e1aa8f8c66b6b66413cd",
+  "lean_theorems_audited": 543,
+  "lean_exit_code": 0,
+  "external_peer_review": false,
+  "arxiv_submission": false,
+  "maturity_gate": "PASS for public preprint; no journal acceptance or absolute priority claim"
+}

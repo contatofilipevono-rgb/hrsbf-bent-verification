@@ -1,3 +1,5 @@
+> **V1: audited preprint dated 14 October 2026.** See [publications/v1-audited-2026-10-14](publications/v1-audited-2026-10-14/README.md) for the full algebraic argument, fresh exact controls and the kernel-checked n=12 supplement. The general theorem is an algebraic preprint, not a completed global Lean formalization. The text below is retained as the historical description of the earlier computation-based scope.
+
 # 🔬 Inexistência de Funções Bent Homogêneas Simétricas por Rotação Cúbicas para $v_2(n) \le 4$
 ## Exclusão assistida por computação em dimensões pares $n \not\equiv 0 \pmod{32}$ e Certificados de Obstrução em $t=32$
 

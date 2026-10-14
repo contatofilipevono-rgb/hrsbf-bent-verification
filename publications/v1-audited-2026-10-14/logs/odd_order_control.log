@@ -1,0 +1,4 @@
+d=1: odd-order GL maps=1, invariant quadratics=2, PASS
+d=2: odd-order GL maps=3, invariant quadratics=12, PASS
+d=3: odd-order GL maps=105, invariant quadratics=336, PASS
+ALL EXHAUSTIVE ODD-ORDER REDUCTION CHECKS PASS

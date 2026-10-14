@@ -1,0 +1,545 @@
+'HRSBF_Formalizacao_Real.band_eq_true_left' does not depend on any axioms
+'HRSBF_Formalizacao_Real.band_eq_true_right' does not depend on any axioms
+'HRSBF_Formalizacao_Real.allUpTo_sound' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.diff_of_squares' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.sq_lt_sq_of_nonneg' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.neg_sq_eq_sq' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.walsh_zero_sq_ne_65536_of_dvd_256' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.not_bent_n16_of_ward_certificate' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.walsh32_sq_ne_of_walsh16_sq_ne' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.not_bent_n32_of_parity_decoupling' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.sumNatUpTo_add' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.sumIntUpTo_add' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.bxor_assoc' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xorUpTo_add' does not depend on any axioms
+'HRSBF_Formalizacao_Real.allUpTo_add' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.sumNatTree_eq' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.sumIntTree_eq' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.xorTree_eq' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.allTree_eq' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.sumInt_congr' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.sumNat_congr' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.xor_congr' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.sumInt_add' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.sumInt_swap' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.sumInt_blocks' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.listSumI_append' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.listSumI_perm' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.sumInt_list' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.sumInt_reindex' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.bitAt_testBit' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.bitAt_xor' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.dotParity_xor_right' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.dotParity_comm' depends on axioms: [Quot.sound]
+'HRSBF_Formalizacao_Real.bitAt_join_low' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.bitAt_join_high' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.dotParity_join' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.dotParity_xor_left' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.sumInt_mul_right' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.signInt_bxor' does not depend on any axioms
+'HRSBF_Formalizacao_Real.character_five' does not depend on any axioms
+'HRSBF_Formalizacao_Real.bxor_zero_right' does not depend on any axioms
+'HRSBF_Formalizacao_Real.bxor_zero_left' does not depend on any axioms
+'HRSBF_Formalizacao_Real.subset_even' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.subset_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.xor_even_odd' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.xor_bxor' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_false' does not depend on any axioms
+'HRSBF_Formalizacao_Real.anfCoeffDirect_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.anfCoeff_congr' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.truth_check_0' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_1' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_2' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_3' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_4' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_5' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_6' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_7' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_8' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_9' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_10' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_11' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_12' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_13' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_14' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_15' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_16' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_17' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_18' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_19' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_20' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_21' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_22' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_23' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_24' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_25' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_26' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_27' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_28' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_29' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_30' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_31' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_32' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_33' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_34' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_35' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_36' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_37' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_38' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_39' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_40' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_41' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_42' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_43' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_44' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_45' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_46' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_47' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_48' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_49' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_50' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_51' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_52' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_53' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_54' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_55' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_56' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_57' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_58' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_59' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_60' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_61' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_62' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truth_check_63' does not depend on any axioms
+'HRSBF_Formalizacao_Real.degree_check_0' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_0' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_0' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_0' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_1' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_1' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_1' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_1' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_2' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_2' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_2' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_2' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_3' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_3' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_3' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_3' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_4' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_4' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_4' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_4' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_5' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_5' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_5' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_5' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_6' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_6' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_6' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_6' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_7' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_7' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_7' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_7' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_8' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_8' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_8' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_8' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_9' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_9' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_9' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_9' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_10' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_10' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_10' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_10' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_11' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_11' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_11' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_11' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_12' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_12' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_12' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_12' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_13' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_13' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_13' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_13' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_14' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_14' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_14' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_14' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_15' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_15' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_15' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_15' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_16' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_16' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_16' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_16' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_17' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_17' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_17' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_17' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_18' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_18' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_18' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_18' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_19' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_19' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_19' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_19' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_20' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_20' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_20' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_20' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_21' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_21' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_21' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_21' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_22' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_22' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_22' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_22' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_23' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_23' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_23' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_23' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_24' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_24' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_24' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_24' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_25' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_25' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_25' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_25' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_26' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_26' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_26' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_26' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_27' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_27' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_27' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_27' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_28' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_28' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_28' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_28' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_29' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_29' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_29' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_29' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_30' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_30' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_30' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_30' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_31' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_31' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_31' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_31' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_32' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_32' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_32' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_32' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_33' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_33' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_33' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_33' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_34' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_34' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_34' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_34' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_35' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_35' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_35' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_35' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_36' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_36' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_36' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_36' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_37' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_37' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_37' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_37' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_38' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_38' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_38' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_38' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_39' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_39' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_39' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_39' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_40' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_40' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_40' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_40' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_41' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_41' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_41' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_41' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_42' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_42' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_42' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_42' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_43' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_43' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_43' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_43' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_44' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_44' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_44' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_44' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_45' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_45' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_45' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_45' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_46' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_46' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_46' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_46' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_47' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_47' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_47' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_47' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_48' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_48' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_48' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_48' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_49' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_49' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_49' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_49' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_50' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_50' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_50' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_50' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_51' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_51' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_51' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_51' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_52' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_52' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_52' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_52' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_53' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_53' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_53' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_53' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_54' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_54' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_54' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_54' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_55' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_55' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_55' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_55' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_56' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_56' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_56' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_56' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_57' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_57' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_57' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_57' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_58' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_58' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_58' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_58' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_59' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_59' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_59' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_59' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_60' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_60' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_60' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_60' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_61' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_61' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_61' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_61' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_62' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_62' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_62' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_62' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.degree_check_63' does not depend on any axioms
+'HRSBF_Formalizacao_Real.mm_check_63' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.rot_check_63' does not depend on any axioms
+'HRSBF_Formalizacao_Real.spectrum_check_63' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.xor_perm_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_0' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_1' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_2' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_3' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_4' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_5' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_6' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_6' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_7' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_7' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_8' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_8' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_9' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_9' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_10' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_10' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_11' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_11' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_12' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_12' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_13' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_13' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_14' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_14' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_15' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_15' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_16' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_16' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_17' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_17' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_18' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_18' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_19' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_19' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_20' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_20' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_21' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_21' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_22' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_22' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_23' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_23' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_24' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_24' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_25' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_25' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_26' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_26' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_27' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_27' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_28' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_28' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_29' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_29' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_30' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_30' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_31' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_31' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_32' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_32' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_33' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_33' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_34' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_34' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_35' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_35' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_36' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_36' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_37' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_37' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_38' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_38' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_39' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_39' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_40' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_40' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_41' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_41' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_42' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_42' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_43' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_43' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_44' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_44' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_45' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_45' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_46' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_46' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_47' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_47' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_48' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_48' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_49' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_49' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_50' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_50' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_51' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_51' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_52' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_52' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_53' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_53' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_54' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_54' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_55' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_55' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_56' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_56' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_57' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_57' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_58' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_58' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_59' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_59' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_60' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_60' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_61' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_61' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_62' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_62' does not depend on any axioms
+'HRSBF_Formalizacao_Real.xor_perm_63' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orth_63' does not depend on any axioms
+'HRSBF_Formalizacao_Real.pi6_bound_check' does not depend on any axioms
+'HRSBF_Formalizacao_Real.truthBlock' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.degreeBlock' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.mmBlock' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.rotBlock' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.spectrumBlock' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.xorPerm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.orthogonal6' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.f12_eq_truth' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.pi6_bound' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.f12_mm_identity' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.f12_has_degree_at_most_3' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.f12_walsh_mm_sq_proved' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.sumNat_le' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.rotShift12_bound' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.f12_is_rotation_symmetric' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.f12_hamming_weight_eq_2080' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.f12_anf_cubic_and_quad_witnesses' does not depend on any axioms
+'HRSBF_Formalizacao_Real.f12_not_homogeneous_cubic' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.mm_character' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.xor_ne_zero_of_ne' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.mm_inner' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.walsh12_join' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.walshMM12_join' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.walsh12_eq_walshMM12' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.f12_is_bent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF_Formalizacao_Real.counterexample_n12_certificate_proved' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'HRSBF_Formalizacao_Real.matrix_steps_check' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.matrix_step' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.mat4Mul_congr_left' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.mat4Pow_certified' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.trace_certified' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.trace_M_H32_pow32_eq_85032960' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.openWalkSum_eq_mat4Pow' depends on axioms: [propext]
+'HRSBF_Formalizacao_Real.closedCycleWalsh_eq_trace' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.closedCycleWalsh_32_eq_85032960' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.bitWalkBridge_n6_n8_proved' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.elementary_orbit_H32_barrier_from_bridge' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.bxor_four_rearrange' does not depend on any axioms
+'HRSBF_Formalizacao_Real.sumIntUpTo_mul_right' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.sumIntUpTo_mul_left' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.sumIntUpTo_product_factor' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.walshSplit2D_eq_mul' depends on axioms: [propext, Quot.sound]
+'HRSBF_Formalizacao_Real.split_xor_closed' does not depend on any axioms
+'HRSBF_Formalizacao_Real.sameParityOrbit32_splits' does not depend on any axioms
+'HRSBF_Formalizacao_Real.f12_is_cubic' depends on axioms: [propext, Quot.sound]

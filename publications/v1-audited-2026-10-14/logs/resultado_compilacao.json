@@ -1,0 +1,8 @@
+{
+  "lean_version": "4.15.0",
+  "lean_commit": "11651562caae",
+  "exit_code": 0,
+  "elapsed_seconds": 416.325,
+  "source_sha256": "ff6284e2756dfaac7f240c8d0d43bc765bfc9f308262e1aa8f8c66b6b66413cd",
+  "runtime_compatibility": "LD_PRELOAD only redirects readlink(/proc/<pid>/exe) to /proc/self/exe; official compiler and kernel unchanged."
+}
