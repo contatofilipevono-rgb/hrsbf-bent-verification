@@ -103,3 +103,8 @@ python master_suite_fronteiras.py
   - Subespaço explícito de dimensão 21 em $\eta$: **2.097.152 de 2.097.152 quocientes excluídos**, sem sobreviventes; sua preimagem em $\mathbb F_2^{155}$ tem dimensão 141.
   - Subespaço explícito de dimensão 22 em $\eta$: **4.194.304 de 4.194.304 quocientes excluídos**, sem sobreviventes; sua preimagem em $\mathbb F_2^{155}$ tem dimensão 142.
   - *Escopo delimitado:* Esses certificados em 32 variáveis são resultados parciais para as famílias examinadas; o caso geral $n \equiv 0 \pmod{32}$ permanece em aberto.
+
+
+## Acervo científico consolidado (14/10/2026)
+
+Os manuscritos, auditorias, referências bibliográficas e instantâneos de fontes Lean 4 de **V1, V2 e V3-C** estão catalogados em [ACERVO_CIENTIFICO/README.md](ACERVO_CIENTIFICO/README.md). Consulte o [manifesto de proveniência](ACERVO_CIENTIFICO/MANIFESTO_ORIGENS.json) para commits e hashes de origem, e o [catálogo de artigos](artigos/CATALOGO_E_DIREITOS_2026-10-14.md). Esta pasta é um acervo de pesquisa, não aprovação automática para publicação.
