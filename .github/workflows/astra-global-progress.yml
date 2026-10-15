@@ -1,0 +1,54 @@
+name: Global antipodal progress kernel check
+on:
+  push:
+    branches:
+      - formal/astra-global-antipodal-2026-10-15
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  kernel-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain leanprover/lean4:v4.15.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Obtain pinned Mathlib cache
+        working-directory: formalization
+        run: |
+          lean --version
+          lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 9837ca9d65d9de6fad1ef4381750ca688774e608
+      - name: Build complete library and check exact theorem axioms
+        working-directory: formalization
+        run: |
+          set -euo pipefail
+          lake build
+          lake env lean Antipodal/CyclicQuadraticRigidity.lean | tee cyclic_quadratic_axioms.log
+          lake env lean Antipodal/DerivativeBridge.lean | tee cubic_bridge_axioms.log
+          lake env lean Antipodal/Autocorrelation.lean | tee autocorrelation_axioms.log
+          lake env lean Antipodal/FixedFreeQuadratic.lean | tee fixed_free_axioms.log
+          python - <<'PY_AUDIT'
+          import re
+          from pathlib import Path
+          allowed = {'propext', 'Classical.choice', 'Quot.sound'}
+          text = '\n'.join(p.read_text() for p in Path('.').glob('*_axioms.log'))
+          target = 'HRSBF.Antipodal.balanced_rotation_invariant_quadratic_polar_zero'
+          reports = re.findall(r"'([^']+)' depends on axioms:\s*\[([^\]]*)\]", text)
+          names = {name for name, _ in reports}
+          assert target in names
+          assert 'HRSBF.Antipodal.bent_cyclic_cubic_derivative_polar_zero' in names
+          assert 'HRSBF.Antipodal.fixed_free_invariant_quadratic_unbalanced' in names
+          for name, deps in reports:
+              assert {d.strip() for d in deps.split(',') if d.strip()} <= allowed, (name, deps)
+          assert 'sorryAx' not in text and 'Lean.ofReduceBool' not in text
+          print('Final theorem and all printed declarations use only the three allowed axioms.')
+          PY_AUDIT
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: global-progress-kernel-logs
+          path: formalization/*_axioms.log

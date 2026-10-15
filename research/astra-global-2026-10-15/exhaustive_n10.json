@@ -1,0 +1,9 @@
+{
+  "n": 10,
+  "rotation_step": 1,
+  "dimension": 19,
+  "tested": 524288,
+  "bent": 6336,
+  "bent_without_antipodal": 0,
+  "bent_restriction_failures": "not applicable"
+}

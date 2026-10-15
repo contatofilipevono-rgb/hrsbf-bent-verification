@@ -1,4 +1,5 @@
-import Antipodal.DerivativeBridge
+import Antipodal.Autocorrelation
+import Antipodal.FixedFreeQuadratic
 
 #print axioms HRSBF.Antipodal.third_term_formula
 #print axioms HRSBF.Antipodal.hasCubicRepresentation_of_monomials
