@@ -10,7 +10,8 @@ namespace HRSBF.Antipodal
 private theorem end_add_self_zero {V : Type*} [AddCommGroup V] [Module F₂ V]
     (A : Module.End F₂ V) : A + A = 0 := by
   ext x
-  have hz : ((1 : F₂) + 1) • (A x) = 0 := by simp
+  have h11 : (1 : F₂) + 1 = 0 := by decide
+  have hz : ((1 : F₂) + 1) • (A x) = 0 := by rw [h11]; simp
   simpa only [add_smul, one_smul] using hz
 
 private theorem end_add_one_square {V : Type*} [AddCommGroup V] [Module F₂ V]
