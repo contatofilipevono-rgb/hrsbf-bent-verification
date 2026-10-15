@@ -94,7 +94,7 @@ theorem bent_implies_antipodal_in_two_variables
   calc
     f (ones, ones) + f (ones, 0) + f (0, ones) + f 0 =
         f 0 + (f (ones, ones) + (f (ones, 0) + f (0, ones))) := by ring
-    _ = 1 := hp
+    _ = 1 := by simpa [add_comm, add_left_comm, add_assoc] using hp
 
 end HRSBF.Antipodal
 
