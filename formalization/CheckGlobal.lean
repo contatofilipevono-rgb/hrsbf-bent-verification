@@ -1,4 +1,4 @@
-import Antipodal.GlobalAntipodal
+import Antipodal.WalshNormalization
 
 #check @HRSBF.Antipodal.universal_antipodal
 #check @HRSBF.Antipodal.universal_antipodal_2h
@@ -12,3 +12,8 @@ import Antipodal.GlobalAntipodal
 #print axioms HRSBF.Antipodal.universal_antipodal
 #print axioms HRSBF.Antipodal.universal_antipodal_canonical
 #print axioms HRSBF.Antipodal.no_homogeneous_cubic_rotation_symmetric_bent
+
+#check @HRSBF.Antipodal.universal_antipodal_walsh_absolute
+#check @HRSBF.Antipodal.no_homogeneous_cubic_rotation_symmetric_bent_absolute
+#print axioms HRSBF.Antipodal.universal_antipodal_walsh_absolute
+#print axioms HRSBF.Antipodal.no_homogeneous_cubic_rotation_symmetric_bent_absolute

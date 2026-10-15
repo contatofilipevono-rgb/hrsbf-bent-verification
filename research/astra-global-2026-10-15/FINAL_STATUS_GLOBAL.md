@@ -1,8 +1,8 @@
-# GLOBAL RESULT: KERNEL-PROVED LOCALLY; CLEAN CI PENDING
+# GLOBAL RESULT: PROVED
 
 Scientific manuscript author: **Filipe Martins Vono**. Independent mathematical/Lean continuation, 15 October 2026.
 
-The exact universal antipodal theorem and the universal homogeneous cubic nonexistence corollary now type-check locally in Lean 4.15.0 with pinned Mathlib. Their printed axiom sets are exactly `propext`, `Classical.choice`, `Quot.sound`. The release certificate will be completed after a fresh clean GitHub Actions build of this source commit, including `GlobalAntipodal.lean` as a root-library dependency.
+The exact universal antipodal theorem and the universal homogeneous cubic nonexistence corollary type-check locally and in clean CI in Lean 4.15.0 with pinned Mathlib. Their printed axiom sets are exactly `propext`, `Classical.choice`, `Quot.sound`. A fresh clean GitHub Actions build of source commit `9f186bc871361b263a9356a8d80cbcc837db21de` succeeded: [run 38682075049](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/38682075049). The job log was retrieved and inspected; `GlobalAntipodal.lean` is a root-library dependency.
 
 ## Exact result
 

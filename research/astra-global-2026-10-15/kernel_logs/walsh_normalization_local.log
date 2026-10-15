@@ -1,0 +1,5 @@
+'HRSBF.Antipodal.isBent_iff_walsh_absolute' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF.Antipodal.universal_antipodal_walsh_absolute' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF.Antipodal.no_homogeneous_cubic_rotation_symmetric_bent_absolute' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,184 @@
+# Actual GitHub Actions job-log excerpts
+# Source: 9f186bc871361b263a9356a8d80cbcc837db21de
+# Run: https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/38682075049
+# Job: 116248619552
+# The full job log and uploaded axiom artifacts are preserved by GitHub Actions.
+2026-10-15T04:34:31.3468597Z Checked 35 Lean files: no forbidden proof shortcuts.
+2026-10-15T04:34:47.6301381Z info: ././././Antipodal/QuadraticPolar.lean:52:0: 'HRSBF.Antipodal.quadratic_polar_add_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:34:47.6304156Z info: ././././Antipodal/QuadraticPolar.lean:53:0: 'HRSBF.Antipodal.quadratic_polar_add_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:34:50.2330922Z info: ././././Antipodal/QuadraticRadical.lean:71:0: 'HRSBF.Antipodal.radical_image_value_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:34:50.2333212Z info: ././././Antipodal/QuadraticRadical.lean:72:0: 'HRSBF.Antipodal.radical_vanishes_of_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:34:50.2335803Z info: ././././Antipodal/QuadraticRadical.lean:73:0: 'HRSBF.Antipodal.sum_sign_additive' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:34:52.0339899Z info: ././././Antipodal/QuadraticGauss.lean:104:0: 'HRSBF.Antipodal.quadratic_walsh_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:34:53.5355989Z info: ././././Antipodal/QuadraticBalanceBridge.lean:73:0: 'HRSBF.Antipodal.quadratic_unbalanced_of_radical_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:34:53.5415258Z info: ././././Antipodal/QuadraticBalanceBridge.lean:74:0: 'HRSBF.Antipodal.balanced_polar_zero_of_proper_radical_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:34:54.7369540Z info: ././././Antipodal/NilpotentNakayama.lean:63:0: 'HRSBF.Antipodal.nilpotent_stable_decomposition_forces_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:34:55.6368110Z info: ././././Antipodal/PowerTwoNilpotence.lean:49:0: 'HRSBF.Antipodal.shift_plus_one_nilpotent' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:34:55.6369768Z info: ././././Antipodal/NilpotentHyperplane.lean:33:0: 'HRSBF.Antipodal.proper_stable_le_range_of_nilpotent_hyperplane' depends on axioms: [propext,
+2026-10-15T04:34:55.6370791Z  Classical.choice,
+2026-10-15T04:34:55.6371027Z  Quot.sound]
+2026-10-15T04:34:55.8370406Z info: ././././Antipodal/RadicalInvariant.lean:72:0: 'HRSBF.Antipodal.radical_stable_under_linear_equiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:34:55.8372041Z info: ././././Antipodal/RadicalInvariant.lean:73:0: 'HRSBF.Antipodal.radical_proper_of_nonzero_polar' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:34:58.4402447Z info: ././././Antipodal/CyclicQuadraticRigidity.lean:159:0: 'HRSBF.Antipodal.cyclicShift_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:34:58.4404927Z info: ././././Antipodal/CyclicQuadraticRigidity.lean:160:0: 'HRSBF.Antipodal.cyclic_range_eq_parity_ker' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:34:58.4407054Z info: ././././Antipodal/CyclicQuadraticRigidity.lean:161:0: 'HRSBF.Antipodal.cyclic_quadratic_radical_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:34:58.4409129Z info: ././././Antipodal/CyclicQuadraticRigidity.lean:162:0: 'HRSBF.Antipodal.balanced_rotation_invariant_quadratic_polar_zero' depends on axioms: [propext,
+2026-10-15T04:34:58.4410374Z  Classical.choice,
+2026-10-15T04:34:58.4410742Z  Quot.sound]
+2026-10-15T04:34:59.9416836Z info: ././././Antipodal/FixedFreeQuadratic.lean:63:0: 'HRSBF.Antipodal.fixed_free_radical_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:34:59.9419064Z info: ././././Antipodal/FixedFreeQuadratic.lean:64:0: 'HRSBF.Antipodal.fixed_free_invariant_quadratic_unbalanced' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:00.9427796Z info: ././././Antipodal/DerivativeBridge.lean:48:0: 'HRSBF.Antipodal.bent_forces_derivative_polar_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:00.9429888Z info: ././././Antipodal/DerivativeBridge.lean:49:0: 'HRSBF.Antipodal.bent_forces_nonconstant_diagonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:00.9431917Z info: ././././Antipodal/DerivativeBridge.lean:110:0: 'HRSBF.Antipodal.cubic_derivative_third_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:00.9434387Z info: ././././Antipodal/DerivativeBridge.lean:111:0: 'HRSBF.Antipodal.cubic_derivative_polar_zero_in_cyclic_coordinates' depends on axioms: [propext,
+2026-10-15T04:35:00.9435622Z  Classical.choice,
+2026-10-15T04:35:00.9435985Z  Quot.sound]
+2026-10-15T04:35:00.9437044Z info: ././././Antipodal/DerivativeBridge.lean:112:0: 'HRSBF.Antipodal.not_bent_of_diagonal_and_balanced_cyclic_derivative' depends on axioms: [propext,
+2026-10-15T04:35:00.9438225Z  Classical.choice,
+2026-10-15T04:35:00.9438578Z  Quot.sound]
+2026-10-15T04:35:03.2452921Z info: ././././Antipodal/Autocorrelation.lean:135:0: 'HRSBF.Antipodal.transform_inversion' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:03.2455224Z info: ././././Antipodal/Autocorrelation.lean:136:0: 'HRSBF.Antipodal.transform_autocorrelation' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:03.2457302Z info: ././././Antipodal/Autocorrelation.lean:137:0: 'HRSBF.Antipodal.bent_iff_derivative_balanced' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:03.2459762Z info: ././././Antipodal/Autocorrelation.lean:138:0: 'HRSBF.Antipodal.bent_cyclic_cubic_derivative_polar_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:03.4455270Z info: ././././Antipodal/FiniteQuadratic.lean:228:0: 'HRSBF.Antipodal.finite_quadratic_walsh_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:03.4457609Z info: ././././Antipodal/FiniteQuadratic.lean:229:0: 'HRSBF.Antipodal.finite_fixed_free_invariant_quadratic_unbalanced' depends on axioms: [propext,
+2026-10-15T04:35:03.4458724Z  Classical.choice,
+2026-10-15T04:35:03.4459275Z  Quot.sound]
+2026-10-15T04:35:05.0473033Z info: ././././Antipodal/CanonicalANF.lean:106:0: 'HRSBF.Antipodal.booleanMobius_involution' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:05.0475189Z info: ././././Antipodal/CanonicalANF.lean:107:0: 'HRSBF.Antipodal.anf_reconstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:05.0477054Z info: ././././Antipodal/CanonicalANF.lean:108:0: 'HRSBF.Antipodal.anfCoefficient_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:05.0479081Z info: ././././Antipodal/CanonicalANF.lean:109:0: 'HRSBF.Antipodal.homogeneous_cubic_antipodal_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:05.3475643Z info: ././././Antipodal/OddProjector.lean:74:0: 'HRSBF.Antipodal.orbitAverage_fixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:05.3477438Z info: ././././Antipodal/OddProjector.lean:75:0: 'HRSBF.Antipodal.orbitAverage_of_fixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:05.3479242Z info: ././././Antipodal/OddProjector.lean:76:0: 'HRSBF.Antipodal.orbitAverage_idempotent' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:05.3481124Z info: ././././Antipodal/OddProjector.lean:77:0: 'HRSBF.Antipodal.orbitAverage_kernel_fixed_free' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:05.3482967Z info: ././././Antipodal/OddProjector.lean:78:0: 'HRSBF.Antipodal.orbitAverage_decomposition' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:06.0483431Z info: ././././Antipodal/ANFPermutation.lean:63:0: 'HRSBF.Antipodal.anfCoefficient_permutation' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:06.0485767Z info: ././././Antipodal/ANFPermutation.lean:64:0: 'HRSBF.Antipodal.anfCoefficient_rotation' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:07.6501238Z info: ././././Antipodal/ANFPolynomial.lean:82:0: 'HRSBF.Antipodal.anf_polynomial_evaluation' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:07.6504037Z info: ././././Antipodal/ANFPolynomial.lean:83:0: 'HRSBF.Antipodal.hasCubicRepresentation_of_anf_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:09.5545136Z info: ././././Antipodal/HomogeneousDiagonal.lean:81:0: 'HRSBF.Antipodal.cubic_support_not_fixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:09.5547606Z info: ././././Antipodal/HomogeneousDiagonal.lean:82:0: 'HRSBF.Antipodal.homogeneous_cubic_vanishes_on_fixed_vectors' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:10.2555119Z info: ././././Antipodal/BlockCoordinates.lean:79:0: 'HRSBF.Antipodal.joinBlocks' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:10.2557657Z info: ././././Antipodal/BlockCoordinates.lean:80:0: 'HRSBF.Antipodal.walsh_joinBlocks' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:10.2559741Z info: ././././Antipodal/BlockCoordinates.lean:81:0: 'HRSBF.Antipodal.bentPair_of_bent_joinBlocks' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:10.2561898Z info: ././././Antipodal/BlockCoordinates.lean:151:0: 'HRSBF.Antipodal.joinBlocks_blockShift' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:11.0554036Z info: ././././Antipodal/OddRestriction.lean:219:0: 'HRSBF.Antipodal.averagingEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:11.0556203Z info: ././././Antipodal/OddRestriction.lean:220:0: 'HRSBF.Antipodal.fixed_kernel_polar_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:11.0558412Z info: ././././Antipodal/OddRestriction.lean:222:0: 'HRSBF.Antipodal.odd_order_quadratic_balance_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:11.0560764Z info: ././././Antipodal/OddRestriction.lean:224:0: 'HRSBF.Antipodal.odd_order_cubic_fixed_derivatives_balanced' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:11.0563034Z info: ././././Antipodal/OddRestriction.lean:225:0: 'HRSBF.Antipodal.odd_order_bent_restriction' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:11.0566391Z info: ././././Antipodal/DiagonalANF.lean:87:0: 'HRSBF.Antipodal.constant_on_fixed_vectors_of_antipodal_absence' depends on axioms: [propext,
+2026-10-15T04:35:11.0567528Z  Classical.choice,
+2026-10-15T04:35:11.0567881Z  Quot.sound]
+2026-10-15T04:35:12.3567940Z info: ././././Antipodal/CubicTransport.lean:39:0: 'HRSBF.Antipodal.hasCubicRepresentation_comp_linear' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:12.3570182Z info: ././././Antipodal/CubicTransport.lean:40:0: 'HRSBF.Antipodal.odd_order_bent_restriction_of_anf_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:13.5580076Z info: ././././Antipodal/CyclicOddCoordinates.lean:168:0: 'HRSBF.Antipodal.cyclicPower_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:13.5582160Z info: ././././Antipodal/CyclicOddCoordinates.lean:169:0: 'HRSBF.Antipodal.repeatBlock_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:13.5584517Z info: ././././Antipodal/CyclicOddCoordinates.lean:170:0: 'HRSBF.Antipodal.repeatBlock_fixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:13.5586529Z info: ././././Antipodal/CyclicOddCoordinates.lean:171:0: 'HRSBF.Antipodal.repeatBlock_rotate' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:13.5588611Z info: ././././Antipodal/CyclicOddCoordinates.lean:172:0: 'HRSBF.Antipodal.rotationSymmetric_fold' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:13.5590653Z info: ././././Antipodal/CyclicOddCoordinates.lean:174:0: 'HRSBF.Antipodal.cyclicFixedEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:13.5592641Z info: ././././Antipodal/CyclicOddCoordinates.lean:175:0: 'HRSBF.Antipodal.bent_cyclic_odd_fold' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:16.2607946Z info: ././././Antipodal/PowerTwoCubic.lean:211:0: 'HRSBF.Antipodal.not_bent_constant_diagonal_power_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:16.2609389Z info: ././././Antipodal/PowerTwoCubic.lean:213:0: 'HRSBF.Antipodal.not_bent_homogeneous_cubic_power_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:16.2611235Z info: ././././Antipodal/PowerTwoCubic.lean:215:0: 'HRSBF.Antipodal.bent_power_two_antipodal_coefficient_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:18.9633321Z info: ././././Antipodal/GlobalAntipodal.lean:170:0: 'HRSBF.Antipodal.antipodal_necessity_factored' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:18.9635137Z info: ././././Antipodal/GlobalAntipodal.lean:172:0: 'HRSBF.Antipodal.universal_antipodal' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:18.9636224Z info: ././././Antipodal/GlobalAntipodal.lean:173:0: 'HRSBF.Antipodal.universal_antipodal_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:18.9637252Z info: ././././Antipodal/GlobalAntipodal.lean:174:0: 'HRSBF.Antipodal.no_homogeneous_cubic_rotation_symmetric_bent' depends on axioms: [propext,
+2026-10-15T04:35:18.9637879Z  Classical.choice,
+2026-10-15T04:35:18.9638087Z  Quot.sound]
+2026-10-15T04:35:20.0646814Z info: ././././Antipodal/Nonvacuity.lean:34:0: 'HRSBF.Antipodal.universal_premises_nonvacuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:21.8665326Z info: ././././Antipodal.lean:8:0: 'HRSBF.Antipodal.third_term_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:21.8667305Z info: ././././Antipodal.lean:9:0: 'HRSBF.Antipodal.hasCubicRepresentation_of_monomials' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:21.8668677Z info: ././././Antipodal.lean:10:0: 'HRSBF.Antipodal.fiber_polar_eq_derivative_polar' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:21.8669732Z info: ././././Antipodal.lean:11:0: 'HRSBF.Antipodal.affine_twisted_invariant_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:21.8670866Z info: ././././Antipodal.lean:12:0: 'HRSBF.Antipodal.local_complementary_fiber_rigidity' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:21.8671921Z info: ././././Antipodal.lean:13:0: 'HRSBF.Antipodal.character_orthogonality' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:21.8672877Z info: ././././Antipodal.lean:14:0: 'HRSBF.Antipodal.parseval' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:21.8674139Z info: ././././Antipodal.lean:15:0: 'HRSBF.Antipodal.diagonal_walsh_eq_fiber_transform' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:21.8675202Z info: ././././Antipodal.lean:16:0: 'HRSBF.Antipodal.complementary_fiber_balance' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:21.8676564Z info: ././././Antipodal.lean:17:0: 'HRSBF.Antipodal.not_bent_of_diagonal_and_derivative_polar_zero' depends on axioms: [propext,
+2026-10-15T04:35:21.8677272Z  Classical.choice,
+2026-10-15T04:35:21.8677488Z  Quot.sound]
+2026-10-15T04:35:21.8678249Z info: ././././Antipodal.lean:18:0: 'HRSBF.Antipodal.not_bent_of_monomials' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:21.8681382Z Build completed successfully.
+2026-10-15T04:35:24.9429488Z 'HRSBF.Antipodal.cyclicShift_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:24.9430543Z 'HRSBF.Antipodal.cyclic_range_eq_parity_ker' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:24.9431299Z 'HRSBF.Antipodal.cyclic_quadratic_radical_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:24.9432016Z 'HRSBF.Antipodal.balanced_rotation_invariant_quadratic_polar_zero' depends on axioms: [propext,
+2026-10-15T04:35:24.9432762Z  Classical.choice,
+2026-10-15T04:35:24.9432966Z  Quot.sound]
+2026-10-15T04:35:27.8150820Z 'HRSBF.Antipodal.bent_forces_derivative_polar_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:27.8151697Z 'HRSBF.Antipodal.bent_forces_nonconstant_diagonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:27.8152454Z 'HRSBF.Antipodal.cubic_derivative_third_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:27.8153463Z 'HRSBF.Antipodal.cubic_derivative_polar_zero_in_cyclic_coordinates' depends on axioms: [propext,
+2026-10-15T04:35:27.8154429Z  Classical.choice,
+2026-10-15T04:35:27.8154641Z  Quot.sound]
+2026-10-15T04:35:27.8155035Z 'HRSBF.Antipodal.not_bent_of_diagonal_and_balanced_cyclic_derivative' depends on axioms: [propext,
+2026-10-15T04:35:27.8155511Z  Classical.choice,
+2026-10-15T04:35:27.8155708Z  Quot.sound]
+2026-10-15T04:35:30.5859919Z 'HRSBF.Antipodal.transform_inversion' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:30.5860782Z 'HRSBF.Antipodal.transform_autocorrelation' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:30.5861564Z 'HRSBF.Antipodal.bent_iff_derivative_balanced' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:30.5862364Z 'HRSBF.Antipodal.bent_cyclic_cubic_derivative_polar_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:32.5055649Z 'HRSBF.Antipodal.fixed_free_radical_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:32.5074861Z 'HRSBF.Antipodal.fixed_free_invariant_quadratic_unbalanced' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:36.3600770Z 'HRSBF.Antipodal.finite_quadratic_walsh_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:36.3601945Z 'HRSBF.Antipodal.finite_fixed_free_invariant_quadratic_unbalanced' depends on axioms: [propext,
+2026-10-15T04:35:36.3602786Z  Classical.choice,
+2026-10-15T04:35:36.3603133Z  Quot.sound]
+2026-10-15T04:35:38.6981525Z 'HRSBF.Antipodal.orbitAverage_fixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:38.6982298Z 'HRSBF.Antipodal.orbitAverage_of_fixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:38.6983024Z 'HRSBF.Antipodal.orbitAverage_idempotent' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:38.6984127Z 'HRSBF.Antipodal.orbitAverage_kernel_fixed_free' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:38.6984916Z 'HRSBF.Antipodal.orbitAverage_decomposition' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:43.8635919Z 'HRSBF.Antipodal.averagingEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:43.8654909Z 'HRSBF.Antipodal.fixed_kernel_polar_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:43.8656286Z 'HRSBF.Antipodal.odd_order_quadratic_balance_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:43.8657681Z 'HRSBF.Antipodal.odd_order_cubic_fixed_derivatives_balanced' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:43.8659054Z 'HRSBF.Antipodal.odd_order_bent_restriction' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:46.0407234Z 'HRSBF.Antipodal.booleanMobius_involution' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:46.0408690Z 'HRSBF.Antipodal.anf_reconstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:46.0409999Z 'HRSBF.Antipodal.anfCoefficient_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:46.0411314Z 'HRSBF.Antipodal.homogeneous_cubic_antipodal_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:47.5041421Z 'HRSBF.Antipodal.anfCoefficient_permutation' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:47.5042654Z 'HRSBF.Antipodal.anfCoefficient_rotation' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:49.4904473Z 'HRSBF.Antipodal.anf_polynomial_evaluation' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:49.4906098Z 'HRSBF.Antipodal.hasCubicRepresentation_of_anf_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:51.1156443Z 'HRSBF.Antipodal.cubic_support_not_fixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:51.1165433Z 'HRSBF.Antipodal.homogeneous_cubic_vanishes_on_fixed_vectors' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:54.1043323Z 'HRSBF.Antipodal.joinBlocks' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:54.1044396Z 'HRSBF.Antipodal.walsh_joinBlocks' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:54.1045172Z 'HRSBF.Antipodal.bentPair_of_bent_joinBlocks' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:54.1045928Z 'HRSBF.Antipodal.joinBlocks_blockShift' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:55.8120045Z 'HRSBF.Antipodal.hasCubicRepresentation_comp_linear' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:35:55.8121123Z 'HRSBF.Antipodal.odd_order_bent_restriction_of_anf_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:36:00.1767760Z 'HRSBF.Antipodal.not_bent_constant_diagonal_power_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:36:00.1768703Z 'HRSBF.Antipodal.not_bent_homogeneous_cubic_power_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:36:00.1769571Z 'HRSBF.Antipodal.bent_power_two_antipodal_coefficient_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:36:01.8296156Z 'HRSBF.Antipodal.constant_on_fixed_vectors_of_antipodal_absence' depends on axioms: [propext,
+2026-10-15T04:36:01.8296816Z  Classical.choice,
+2026-10-15T04:36:01.8297038Z  Quot.sound]
+2026-10-15T04:36:04.6704680Z 'HRSBF.Antipodal.cyclicPower_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:36:04.6705458Z 'HRSBF.Antipodal.repeatBlock_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:36:04.6706160Z 'HRSBF.Antipodal.repeatBlock_fixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:36:04.6706856Z 'HRSBF.Antipodal.repeatBlock_rotate' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:36:04.6707549Z 'HRSBF.Antipodal.rotationSymmetric_fold' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:36:04.6708228Z 'HRSBF.Antipodal.cyclicFixedEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:36:04.6708872Z 'HRSBF.Antipodal.bent_cyclic_odd_fold' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:36:07.8242853Z 'HRSBF.Antipodal.antipodal_necessity_factored' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:36:07.8244670Z 'HRSBF.Antipodal.universal_antipodal' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:36:07.8246062Z 'HRSBF.Antipodal.universal_antipodal_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:36:07.8247285Z 'HRSBF.Antipodal.no_homogeneous_cubic_rotation_symmetric_bent' depends on axioms: [propext,
+2026-10-15T04:36:07.8248064Z  Classical.choice,
+2026-10-15T04:36:07.8248441Z  Quot.sound]
+2026-10-15T04:36:09.6776163Z 'HRSBF.Antipodal.universal_antipodal' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:36:09.6776899Z 'HRSBF.Antipodal.universal_antipodal_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:36:09.6777577Z 'HRSBF.Antipodal.no_homogeneous_cubic_rotation_symmetric_bent' depends on axioms: [propext,
+2026-10-15T04:36:09.6778029Z  Classical.choice,
+2026-10-15T04:36:09.6778250Z  Quot.sound]
+2026-10-15T04:36:11.2610994Z 'HRSBF.Antipodal.universal_premises_nonvacuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-10-15T04:36:11.3215375Z UNIVERSAL antipodal theorem and homogeneous cubic corollary certified with only the three allowed axioms.
+

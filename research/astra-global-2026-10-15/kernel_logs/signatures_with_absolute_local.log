@@ -1,0 +1,51 @@
+HRSBF.Antipodal.universal_antipodal : ∀ (H : ℕ) (hH : 0 < H) (f : HRSBF.Antipodal.Vec (H + H) → HRSBF.Antipodal.F₂),
+  HRSBF.Antipodal.HasAlgebraicDegreeAtMostThree f →
+    HRSBF.Antipodal.IsRotationSymmetric f →
+      HRSBF.Antipodal.IsBent f → HRSBF.Antipodal.anfCoefficient f {⟨0, ⋯⟩, ⟨H, ⋯⟩} = 1
+HRSBF.Antipodal.universal_antipodal_2h : ∀ (H : ℕ) (hH : 0 < H) (f : HRSBF.Antipodal.Vec (2 * H) → HRSBF.Antipodal.F₂),
+  HRSBF.Antipodal.HasAlgebraicDegreeAtMostThree f →
+    HRSBF.Antipodal.IsRotationSymmetric f →
+      HRSBF.Antipodal.IsBent f → HRSBF.Antipodal.anfCoefficient f {⟨0, ⋯⟩, ⟨H, ⋯⟩} = 1
+HRSBF.Antipodal.universal_antipodal_canonical : ∀ (h : ℕ) (f : HRSBF.Antipodal.Vec (2 * (h + 1)) → HRSBF.Antipodal.F₂),
+  HRSBF.Antipodal.HasAlgebraicDegreeAtMostThree f →
+    HRSBF.Antipodal.IsRotationSymmetric f → HRSBF.Antipodal.IsBent f → HRSBF.Antipodal.antipodalANFCoefficient h f = 1
+HRSBF.Antipodal.no_homogeneous_cubic_rotation_symmetric_bent : ∀ (H : ℕ),
+  0 < H →
+    ∀ (f : HRSBF.Antipodal.Vec (H + H) → HRSBF.Antipodal.F₂),
+      HRSBF.Antipodal.IsHomogeneousCubic f → HRSBF.Antipodal.IsRotationSymmetric f → ¬HRSBF.Antipodal.IsBent f
+def HRSBF.Antipodal.IsBent : {n : ℕ} → (HRSBF.Antipodal.Vec n → HRSBF.Antipodal.F₂) → Prop :=
+fun {n} f => ∀ (b : HRSBF.Antipodal.Vec n), HRSBF.Antipodal.walsh f b ^ 2 = ↑(Fintype.card (HRSBF.Antipodal.Vec n))
+def HRSBF.Antipodal.HasAlgebraicDegreeAtMostThree : {n : ℕ} → (HRSBF.Antipodal.Vec n → HRSBF.Antipodal.F₂) → Prop :=
+fun {n} f => ∀ (s : Finset (Fin n)), 3 < s.card → HRSBF.Antipodal.anfCoefficient f s = 0
+def HRSBF.Antipodal.IsRotationSymmetric : {n : ℕ} → (HRSBF.Antipodal.Vec n → HRSBF.Antipodal.F₂) → Prop :=
+fun {n} f => ∀ (x : HRSBF.Antipodal.Vec n), f (HRSBF.Antipodal.rotate x) = f x
+def HRSBF.Antipodal.IsHomogeneousCubic : {n : ℕ} → (HRSBF.Antipodal.Vec n → HRSBF.Antipodal.F₂) → Prop :=
+fun {n} f =>
+  (∀ (s : Finset (Fin n)), s.card ≠ 3 → HRSBF.Antipodal.anfCoefficient f s = 0) ∧
+    ∃ s, s.card = 3 ∧ HRSBF.Antipodal.anfCoefficient f s = 1
+def HRSBF.Antipodal.antipodalANFCoefficient : (h : ℕ) →
+  (HRSBF.Antipodal.Vec (2 * (h + 1)) → HRSBF.Antipodal.F₂) → HRSBF.Antipodal.F₂ :=
+fun h f => HRSBF.Antipodal.anfCoefficient f {⟨0, ⋯⟩, ⟨h + 1, ⋯⟩}
+'HRSBF.Antipodal.universal_antipodal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF.Antipodal.universal_antipodal_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF.Antipodal.no_homogeneous_cubic_rotation_symmetric_bent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+HRSBF.Antipodal.universal_antipodal_walsh_absolute : ∀ (H : ℕ) (hH : 0 < H)
+  (f : HRSBF.Antipodal.Vec (2 * H) → HRSBF.Antipodal.F₂),
+  HRSBF.Antipodal.HasAlgebraicDegreeAtMostThree f →
+    HRSBF.Antipodal.IsRotationSymmetric f →
+      (∀ (b : HRSBF.Antipodal.Vec (2 * H)),
+          |∑ x : HRSBF.Antipodal.Vec (2 * H), HRSBF.Antipodal.sign (f x + HRSBF.Antipodal.dot b x)| = 2 ^ H) →
+        HRSBF.Antipodal.anfCoefficient f {⟨0, ⋯⟩, ⟨H, ⋯⟩} = 1
+HRSBF.Antipodal.no_homogeneous_cubic_rotation_symmetric_bent_absolute : ∀ (H : ℕ),
+  0 < H →
+    ∀ (f : HRSBF.Antipodal.Vec (2 * H) → HRSBF.Antipodal.F₂),
+      HRSBF.Antipodal.IsHomogeneousCubic f →
+        HRSBF.Antipodal.IsRotationSymmetric f →
+          ¬∀ (b : HRSBF.Antipodal.Vec (2 * H)),
+              |∑ x : HRSBF.Antipodal.Vec (2 * H), HRSBF.Antipodal.sign (f x + HRSBF.Antipodal.dot b x)| = 2 ^ H
+'HRSBF.Antipodal.universal_antipodal_walsh_absolute' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HRSBF.Antipodal.no_homogeneous_cubic_rotation_symmetric_bent_absolute' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

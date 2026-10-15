@@ -1,3 +1,13 @@
+# LATEST: universal antipodal theorem kernel-certified in clean CI (15 October 2026)
+
+The isolated branch `formal/astra-global-antipodal-2026-10-15` now contains the exact universal theorem and homogeneous cubic corollary. Core source: `9f186bc871361b263a9356a8d80cbcc837db21de`. Clean CI run 38682075049 completed successfully; its actual job log was retrieved and inspected. See `research/astra-global-2026-10-15/KERNEL_CERTIFICATE.md` and `FINAL_STATUS_GLOBAL.md`.
+
+The proof constructs the odd cyclic fixed-space coordinates and transports the zero-antipodal obstruction directly. It does not assume the full coefficient-folding identity. The historical open-gap notes below are superseded by the new branch's GAP_REGISTER.md.
+
+---
+
+## Historical checkpoints (superseded)
+
 # Lean global antipodal bridge — state of proof (14–15 October 2026)
 
 > **Independent quadratic completion:** `Antipodal/CyclicQuadraticRigidity.lean` now discharges the concrete cyclic order and parity-image obligations and proves unconditional quadratic rigidity. See [INDEPENDENT_QUADRATIC_RIGIDITY_REPORT.md](INDEPENDENT_QUADRATIC_RIGIDITY_REPORT.md). The historical entries below describe earlier checkpoints. The universal cubic theorem remains unproved.

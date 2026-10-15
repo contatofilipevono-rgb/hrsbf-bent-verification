@@ -2,7 +2,7 @@
 
 ## Global theorem proof
 
-**No unproved premise remains in `universal_antipodal`, `universal_antipodal_canonical`, or `no_homogeneous_cubic_rotation_symmetric_bent`.** The local kernel checks pass. Clean source-commit CI is the remaining release check at this checkpoint.
+**No unproved premise remains in `universal_antipodal`, `universal_antipodal_canonical`, or `no_homogeneous_cubic_rotation_symmetric_bent`.** The local kernel checks and clean source-commit CI 38682075049 pass.
 
 | Historical gap | Resolution |
 |---|---|
@@ -19,4 +19,4 @@ Also not claimed: equivalence of `HasCubicRepresentation` and the canonical degr
 
 ## Non-proof publication tasks
 
-The source-commit clean CI must be confirmed and recorded in KERNEL_CERTIFICATE.md. Independent full literature-priority review and manuscript revision around the shorter formal route remain editorial/research tasks, not Lean proof gaps. No acceptance/priority claim is made.
+Independent full literature-priority review and manuscript revision around the shorter formal route remain editorial/research tasks, not Lean proof gaps. No acceptance/priority claim is made.

@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - formal/astra-global-antipodal-2026-10-15
+    paths:
+      - 'formalization/**'
+      - '.github/workflows/astra-global-progress.yml'
+      - 'research/astra-global-2026-10-15/audit_lean_sources.py'
   workflow_dispatch:
 permissions:
   contents: read
@@ -47,6 +51,7 @@ jobs:
           lake env lean Antipodal/GlobalAntipodal.lean | tee global_axioms.log
           lake env lean CheckGlobal.lean | tee global_signature_axioms.log
           lake env lean Antipodal/Nonvacuity.lean | tee nonvacuity_axioms.log
+          lake env lean Antipodal/WalshNormalization.lean | tee walsh_normalization_axioms.log
           python - <<'PY_AUDIT'
           import re
           from pathlib import Path
@@ -64,6 +69,8 @@ jobs:
           assert 'HRSBF.Antipodal.odd_order_bent_restriction_of_anf_degree' in names
           assert 'HRSBF.Antipodal.universal_antipodal_canonical' in names
           assert 'HRSBF.Antipodal.no_homogeneous_cubic_rotation_symmetric_bent' in names
+          assert 'HRSBF.Antipodal.universal_antipodal_walsh_absolute' in names
+          assert 'HRSBF.Antipodal.no_homogeneous_cubic_rotation_symmetric_bent_absolute' in names
           for name, deps in reports:
               assert {d.strip() for d in deps.split(',') if d.strip()} <= allowed, (name, deps)
           assert 'sorryAx' not in text and 'Lean.ofReduceBool' not in text
