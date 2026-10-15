@@ -9,21 +9,29 @@ permissions:
 jobs:
   kernel-check:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v4
-      - uses: leanprover/lean-action@v1
-        with:
-          project-directory: formalization
-          build: false
+      - name: Install pinned Lean 4.15.0 with elan
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain leanprover/lean4:v4.15.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Confirm pinned Lean
+        working-directory: formalization
+        run: |
+          lean --version
+          lake --version
       - name: Obtain pinned Mathlib cache
         working-directory: formalization
-        run: lake exe cache get
+        run: |
+          lake update
+          lake exe cache get
       - name: Verify existing 52-result formal kernel
         working-directory: formalization
         run: lake build
       - name: Check exact n=2 endpoint without admitted axioms
         working-directory: formalization
         run: |
-          lake env lean Antipodal/Endpoint2.lean | tee endpoint2_axioms.log
+          set -o pipefail
+          lake env lean -T 200000 Antipodal/Endpoint2.lean | tee endpoint2_axioms.log
           if grep -E 'sorryAx|Lean.ofReduceBool' endpoint2_axioms.log; then exit 1; fi
