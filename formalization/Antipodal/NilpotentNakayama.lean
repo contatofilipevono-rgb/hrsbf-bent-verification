@@ -27,7 +27,7 @@ theorem nilpotent_stable_decomposition_forces_top
         intro r hr
         have ht := hstable r hr
         have hi := ih (T r) ht
-        simpa only [pow_succ, Module.End.mul_apply] using hi
+        simpa only [pow_succ, Module.End.mul_eq_comp, LinearMap.comp_apply] using hi
   have hiter : ∀ k : ℕ, ∀ x : V,
       ∃ r : V, r ∈ R ∧ ∃ y : V, x = r + (T ^ k) y := by
     intro k
@@ -45,7 +45,7 @@ theorem nilpotent_stable_decomposition_forces_top
           x = r + (T ^ k) y := hy
           _ = r + (T ^ k) (s + T z) := by rw [hz]
           _ = (r + (T ^ k) s) + (T ^ (k + 1)) z := by
-            simp only [map_add, pow_succ, Module.End.mul_apply]
+            simp only [map_add, pow_succ, Module.End.mul_eq_comp, LinearMap.comp_apply]
             abel
   ext x
   constructor
