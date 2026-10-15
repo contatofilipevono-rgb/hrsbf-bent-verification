@@ -17,8 +17,8 @@ def antipodalCoeff2 (f : PairSpace 1 → F₂) : F₂ :=
   polar f leftUnit2 rightUnit2
 
 private lemma vec1_zero_or_one (u : Vec 1) : u = 0 ∨ u = ones := by
-  have h : u (0 : Fin 1) = 0 ∨ u (0 : Fin 1) = 1 := by
-    fin_cases (u (0 : Fin 1)) <;> simp
+  have hc : ∀ a : F₂, a = 0 ∨ a = 1 := by decide
+  have h : u (0 : Fin 1) = 0 ∨ u (0 : Fin 1) = 1 := hc _
   rcases h with hz | ho
   · left
     funext i
@@ -71,7 +71,7 @@ private lemma four_sign_parity (a b c d : F₂)
     (h : (sign a + sign b + sign c + sign d) ^ 2 = 4) :
     a + b + c + d = 1 := by
   fin_cases a <;> fin_cases b <;> fin_cases c <;> fin_cases d <;>
-    norm_num [sign] at *
+    norm_num [sign] at * <;> decide
 
 /-- A bent Boolean function on F₂² must have its mixed quadratic term.
 No rotation assumption is necessary in dimension two. -/
@@ -83,7 +83,7 @@ theorem bent_implies_antipodal_in_two_variables
   have hp := four_sign_parity
     (f (0, 0)) (f (0, ones)) (f (ones, 0)) (f (ones, ones)) hs
   simpa [antipodalCoeff2, polar, leftUnit2, rightUnit2,
-    add_comm, add_left_comm, add_assoc, ones] using hp
+    Pi.add_apply, zero_add, add_zero, add_comm, add_left_comm, add_assoc, ones] using hp
 
 end HRSBF.Antipodal
 
