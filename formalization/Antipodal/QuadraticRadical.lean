@@ -28,7 +28,8 @@ theorem radical_image_value_zero {n : ℕ}
   have hz : Q r + Q 0 = 0 := by
     calc
       Q r + Q 0 = Q y + Q r + Q y + Q 0 := by
-        simp only [add_assoc, CharTwo.add_self_eq_zero, zero_add]
+        ring_nf
+        simp
       _ = 0 := hp
   have hq := congrArg (fun a : F₂ => a + Q 0) hz
   simpa only [add_assoc, CharTwo.add_self_eq_zero, add_zero, zero_add] using hq
@@ -57,8 +58,11 @@ theorem sum_sign_additive {n : ℕ} (l : Vec n → F₂)
     obtain ⟨a, ha⟩ := hz
     have h01 : ∀ b : F₂, b = 0 ∨ b = 1 := by decide
     have ha1 : l a = 1 := (h01 (l a)).resolve_left ha
+    have hshift (x : Vec n) : sign (l (x + a)) = -sign (l x) := by
+      rw [hl, sign_add, ha1]
+      norm_num [sign]
     have hs := Equiv.sum_comp (Equiv.addRight a) (fun x => sign (l x))
-    simp only [Equiv.coe_addRight, hl, sign_add, ha1, sign, mul_neg_one] at hs
+    simp only [Equiv.coe_addRight, hshift] at hs
     rw [sum_neg_distrib] at hs
     omega
 
