@@ -12,10 +12,28 @@
 - **New conditional consequences:** `Antipodal/DerivativeBridge.lean` contains `bent_forces_derivative_polar_witness` and `bent_forces_nonconstant_diagonal`, which use the existing 52-result fiber contradiction and express its contrapositive in a form ready for the quadratic rigidity bridge. Both compiled and passed `#print axioms` in run `38666055432`. They do not prove quadratic rigidity or the full antipodal theorem.
 - The material in the earlier A100 audit remains unchanged by this branch except for new files under `formalization/` and the new isolated CI workflow.
 
+## Quadratic rigidity progress — new Lean certificates
+
+**Clean kernel run:** https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/38668595156
+
+**Pinned Lean:** 4.15.0, Mathlib `9837ca9d65d9de6fad1ef4381750ca688774e608`.
+
+Five additional declarations are now compiled and have explicit `#print axioms` records limited to `propext`, `Classical.choice` and `Quot.sound`:
+
+1. `radical_image_value_zero`: if `r = S y + y`, `Q ∘ S = Q` and `polar Q r y = 0`, then `Q r = Q 0`.
+2. `radical_vanishes_of_image`: if the entire polar radical is in `im(S+I)`, then `Q` is constant on that radical.
+3. `sum_sign_additive`: exact vanishing of every nontrivial additive sign-character sum on `Vec n`.
+4. `quadratic_polar_add_right`: vanishing third differences imply additivity of the normalized polar in the second argument.
+5. `quadratic_polar_add_left`: the corresponding additivity in the first argument.
+
+**Not yet obtained:** the module-theoretic result that a *proper* cyclic invariant polar radical lies in `im(S+I)` when the dimension is a power of two; the exact integer quadratic Walsh-square/radical formula; their integration to give `IsBalanced Q → polar Q = 0`. These remain actual mathematical proof obligations, not `sorry` placeholders.
+
+**Boundary:** None of the above asserts that the universal cubic antipodal theorem has been formalized.
+
 ## Not yet proved in Lean — must not be described as kernel-certified
 
 1. **Odd-order fixed-space reduction:** if an invariant degree≤3 bent function is restricted to the fixed space of a cyclic subgroup of odd order, it remains bent. This needs an abstract linear equivariance/factorization construction and quadratic character-sum lemma.
-2. **Quadratic rigidity in power-of-two dimension:** invariant balanced quadratics have zero polar, including linear terms and short quadratic orbits. The polynomial-module argument still has to be formalized.
+2. **Quadratic rigidity in power-of-two dimension:** five new sublemmas now compile. The invariant-ideal inclusion and integer Walsh-square formula remain; hence the full rigidity theorem is not yet proved.
 3. **ANF coefficient transport by orbit folding:** establish source/target monomial orbit multiplicities (including short cubic orbits and degree drops), beyond the now-proved parity sublemmas.
 4. **Diagonal identity and derivative balance:** show the hypotheses `hd` and `hz` of `Antipodal/Main.lean` from RS bentness and absence of the antipodal monomial.
 5. **Universal final theorem:** combine all of the above with the 52-result core and obtain a theorem with no extra hypotheses.
