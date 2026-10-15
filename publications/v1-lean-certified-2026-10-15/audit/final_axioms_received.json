@@ -1,0 +1,32 @@
+{
+  "HRSBF.Antipodal.universal_antipodal": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "HRSBF.Antipodal.universal_antipodal_2h": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "HRSBF.Antipodal.universal_antipodal_canonical": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "HRSBF.Antipodal.no_homogeneous_cubic_rotation_symmetric_bent": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "HRSBF.Antipodal.universal_antipodal_walsh_absolute": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "HRSBF.Antipodal.no_homogeneous_cubic_rotation_symmetric_bent_absolute": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ]
+}

@@ -1,0 +1,234 @@
+[
+  {
+    "DOI": "10.1016/j.dam.2007.04.029",
+    "title": [
+      "Rotation symmetric Boolean functions—Count and cryptographic properties"
+    ],
+    "author": [
+      {
+        "given": "Pantelimon",
+        "family": "Stănică",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Subhamoy",
+        "family": "Maitra",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2008,
+          5
+        ]
+      ]
+    },
+    "volume": "156",
+    "issue": "10",
+    "page": "1567-1580"
+  },
+  {
+    "DOI": "10.1016/j.dam.2023.10.010",
+    "title": [
+      "Quadratic rotation symmetric Boolean functions"
+    ],
+    "author": [
+      {
+        "given": "Alexandru",
+        "family": "Chirvasitu",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-0087-8855",
+        "authenticated-orcid": false,
+        "given": "Thomas W.",
+        "family": "Cusick",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2024,
+          1
+        ]
+      ]
+    },
+    "volume": "343",
+    "issue": null,
+    "page": "91-105"
+  },
+  {
+    "DOI": "10.1109/isit.2015.7282502",
+    "title": [
+      "Construction of cubic rotation symmetric bent functions in power-of-two variables"
+    ],
+    "author": [
+      {
+        "given": "Tianze",
+        "family": "Wang",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ]
+      },
+      {
+        "given": "Meicheng",
+        "family": "Liu",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ]
+      },
+      {
+        "given": "Shangwei",
+        "family": "Zhao",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ]
+      },
+      {
+        "given": "Dongdai",
+        "family": "Lin",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2015,
+          6
+        ]
+      ]
+    },
+    "volume": null,
+    "issue": null,
+    "page": "486-490"
+  },
+  {
+    "DOI": "10.1109/TIT.2012.2193377",
+    "error": "HTTP Error 429: Too Many Requests"
+  },
+  {
+    "DOI": "10.1109/tit.2026.3685133",
+    "title": [
+      "Rotation-Symmetric Bent Functions Outside the Completed Maiorana-McFarland Class"
+    ],
+    "author": [
+      {
+        "ORCID": "https://orcid.org/0000-0002-0461-4793",
+        "authenticated-orcid": false,
+        "given": "Alexandr",
+        "family": "Polujan",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "Otto von Guericke University Magdeburg, Magdeburg, Germany"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0009-0000-4516-7160",
+        "authenticated-orcid": false,
+        "given": "Sadmir",
+        "family": "Kudin",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "FAMNIT and IAM, University of Primorska, Koper, Slovenia"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0001-6343-8796",
+        "authenticated-orcid": false,
+        "given": "Enes",
+        "family": "Pasalic",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "FAMNIT and IAM, University of Primorska, Koper, Slovenia"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2026,
+          6
+        ]
+      ]
+    },
+    "volume": "72",
+    "issue": "6",
+    "page": "4341-4351"
+  }
+]

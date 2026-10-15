@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-15",
+  "branch": "publication/antipodal-lean-revision-2026-10-15",
+  "base_sha": "6f9f66c2e6bba001490e5245f6eb039158a37ffa",
+  "certified_source_sha": "6dd183685ef8a5b033c1bcf8733496d57b853cc7",
+  "new_lean_build_performed": false,
+  "reason": "Editorial revision; certified Lean sources and original kernel workflow unchanged.",
+  "received_manifest_entries_verified": 42,
+  "cpp_tests": {
+    "command": "g++ -O3 -std=c++17 independent_tests.cpp -o independent_tests && ./independent_tests",
+    "exit_code": 0,
+    "output_identical_to_received": true,
+    "total_rs_functions": 533032,
+    "total_rs_bent": 6652,
+    "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+  },
+  "python_tests": {
+    "command": "python3 quadratic_tests.py",
+    "exit_code": 0,
+    "json_identical_to_received": true,
+    "python": "Python 3.12.14"
+  },
+  "latex": {
+    "command": "latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/tmp/antipodal-paper-build publications/v1-lean-certified-2026-10-15/paper/antipodal_necessity_v1_3.tex",
+    "exit_code": 0,
+    "pages": 10,
+    "overflow_boxes": 0,
+    "undefined_references": 0,
+    "undefined_citations": 0,
+    "all_pages_rendered_and_visually_reviewed": true,
+    "engine": "pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)"
+  },
+  "bibliography": {
+    "sun_prior_full_text_reading_record_preserved": true,
+    "sun_original_pdf_recovered_in_this_pass": false,
+    "tang_primary_abstract_rechecked": true,
+    "tang_pdf_http_status": 403,
+    "absolute_priority_certified": false
+  },
+  "academic_submission_performed": false
+}

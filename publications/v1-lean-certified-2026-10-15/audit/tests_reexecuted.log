@@ -1,0 +1,9 @@
+RS degree<=3 n=2 orbits=3 exhaustive=8 bent=4 homogeneous_exact3=0 zero_antipodal_fixed_tests=4 bent_folds=4 balanced_quadratic_rigidity=2
+RS degree<=3 n=4 orbits=5 exhaustive=32 bent=8 homogeneous_exact3=1 zero_antipodal_fixed_tests=16 bent_folds=8 balanced_quadratic_rigidity=2
+RS degree<=3 n=6 orbits=9 exhaustive=512 bent=48 homogeneous_exact3=15 zero_antipodal_fixed_tests=256 bent_folds=48 balanced_quadratic_rigidity=0
+RS degree<=3 n=8 orbits=13 exhaustive=8192 bent=256 homogeneous_exact3=127 zero_antipodal_fixed_tests=4096 bent_folds=256 balanced_quadratic_rigidity=2
+RS degree<=3 n=10 orbits=19 exhaustive=524288 bent=6336 homogeneous_exact3=4095 zero_antipodal_fixed_tests=262144 bent_folds=6336 balanced_quadratic_rigidity=0
+quadratic odd action n=0 shift=1 exhaustive=2 balanced=0
+quadratic odd action n=3 shift=1 exhaustive=8 balanced=4
+quadratic odd action n=6 shift=2 exhaustive=256 balanced=96
+quadratic odd action n=9 shift=3 exhaustive=65536 balanced=35840

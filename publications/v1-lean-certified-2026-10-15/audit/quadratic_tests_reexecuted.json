@@ -1,0 +1,69 @@
+{
+  "quadratics": [
+    {
+      "n": 0,
+      "quadratic_anfs": 2,
+      "gauss": 2,
+      "odd_linear_invariant_checks": 2,
+      "fixed_free_checks": 2
+    },
+    {
+      "n": 1,
+      "quadratic_anfs": 4,
+      "gauss": 4,
+      "odd_linear_invariant_checks": 4,
+      "fixed_free_checks": 0
+    },
+    {
+      "n": 2,
+      "quadratic_anfs": 16,
+      "gauss": 16,
+      "odd_linear_invariant_checks": 20,
+      "fixed_free_checks": 4
+    },
+    {
+      "n": 3,
+      "quadratic_anfs": 128,
+      "gauss": 128,
+      "odd_linear_invariant_checks": 136,
+      "fixed_free_checks": 0
+    },
+    {
+      "n": 4,
+      "quadratic_anfs": 2048,
+      "gauss": 2048,
+      "odd_linear_invariant_checks": 2112,
+      "fixed_free_checks": 32
+    }
+  ],
+  "cubic_GL_order3": [
+    {
+      "blocks": [
+        [
+          0,
+          1
+        ]
+      ],
+      "examined": 32768,
+      "invariant": 128,
+      "bent": 8,
+      "fixed_dimension": 2
+    },
+    {
+      "blocks": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "examined": 32768,
+      "invariant": 32,
+      "bent": 20,
+      "fixed_dimension": 0
+    }
+  ]
+}

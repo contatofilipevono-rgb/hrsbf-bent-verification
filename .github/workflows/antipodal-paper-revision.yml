@@ -1,0 +1,39 @@
+name: Antipodal paper and audit release
+on:
+  push:
+    branches:
+      - publication/antipodal-lean-revision-2026-10-15
+    paths:
+      - 'publications/v1-lean-certified-2026-10-15/**'
+      - '.github/workflows/antipodal-paper-revision.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publication-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify release, received evidence and unchanged Lean sources
+        run: python3 publications/v1-lean-certified-2026-10-15/checks/verify_release.py
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-extra texlive-fonts-recommended lmodern
+      - name: Compile manuscript from source
+        run: |
+          set -euo pipefail
+          latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/tmp/paper-build publications/v1-lean-certified-2026-10-15/paper/antipodal_necessity_v1_3.tex
+          if grep -Eq 'Overfull|LaTeX Warning:|Package .* Warning:' /tmp/paper-build/antipodal_necessity_v1_3.log; then
+            echo 'Unexpected LaTeX warning or overflow'
+            exit 1
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: antipodal-paper-v1-3-rebuilt
+          path: |
+            /tmp/paper-build/antipodal_necessity_v1_3.pdf
+            /tmp/paper-build/antipodal_necessity_v1_3.log
