@@ -1,4 +1,5 @@
 import Antipodal.QuadraticBalanceBridge
+import Mathlib.Algebra.Module.LinearMap.End
 
 /-!
 Elementary nilpotent Nakayama lemma for one endomorphism, without an
