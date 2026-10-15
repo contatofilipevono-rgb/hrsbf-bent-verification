@@ -16,7 +16,7 @@ theorem shift_plus_one_nilpotent {V : Type*} [AddCommGroup V] [Module F₂ V]
     (hpow : S ^ (2 ^ k) = 1) :
     (S + 1) ^ (2 ^ k) = 0 := by
   have hcomm : Commute S (1 : Module.End F₂ V) := Commute.one_right S
-  rw [Commute.add_pow_char_pow_of_commute 2 k hcomm]
+  rw [add_pow_char_pow_of_commute 2 k hcomm]
   rw [hpow, one_pow]
   exact CharTwo.add_self_eq_zero (1 : Module.End F₂ V)
 
