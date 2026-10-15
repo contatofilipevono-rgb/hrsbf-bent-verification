@@ -3,7 +3,9 @@
 ## Source and environment
 
 - Core universal proof source commit: `9f186bc871361b263a9356a8d80cbcc837db21de`.
+- Final conventional absolute-Walsh interface source commit: `6dd183685ef8a5b033c1bcf8733496d57b853cc7`.
 - Branch: `formal/astra-global-antipodal-2026-10-15`.
+- Second independent clean CI, including the absolute-Walsh theorems: https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/38682481132 — **SUCCESS**, completed 2026-10-15 04:40:52 UTC; job `116249898348`, actual log retrieved and inspected.
 - Lean: `leanprover/lean4:v4.15.0`, release commit `11651562caae`.
 - Mathlib: `9837ca9d65d9de6fad1ef4381750ca688774e608`, checked from both lake-manifest.json and the actual dependency checkout.
 - Core clean CI: https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/38682075049 — **SUCCESS**, completed 2026-10-15 04:36:14 UTC. Job `116248619552`; full job log retrieved and inspected.
@@ -83,7 +85,7 @@ lake env lean Antipodal/WalshNormalization.lean
 lake env lean CheckGlobal.lean
 ```
 
-For the immutable core commit, use `git checkout 9f186bc871361b263a9356a8d80cbcc837db21de`; omit WalshNormalization.lean because that semantic-equivalence interface is added in the next revision.
+For the full final proof and conventional Walsh interface, use `git checkout 6dd183685ef8a5b033c1bcf8733496d57b853cc7`. For the earlier immutable core commit, use `git checkout 9f186bc871361b263a9356a8d80cbcc837db21de`; omit WalshNormalization.lean because that semantic-equivalence interface is added in the next revision.
 
 ## Executed local checks
 
@@ -98,3 +100,9 @@ The local host required a path-resolution shim for locating executables through 
 ## Scope boundary
 
 The stronger standalone coefficient-folding equality for arbitrary non-bent RS functions remains separately unformalized. It is not assumed or used by this proof. The formal proof transports the zero-antipodal/constant-diagonal obstruction directly. This certificate concerns the exact global theorem above and its corollary; it is not a journal acceptance or an exhaustive priority certificate.
+
+## Final release gate
+
+Both independent clean CI jobs passed their complete library builds, explicit standalone global-file checks, signature dumps, required-name assertions and axiom allowlist checks. Actual log excerpts are in `kernel_logs/ci_core_excerpts.log` and `kernel_logs/ci_absolute_excerpts.log`. The second job also confirms the direct `|W|=2^H` premise and its homogeneous cubic corollary.
+
+The final documentation-only commit may follow the tested source commit; it does not change Lean source, dependencies or CI proof commands. `SHA256SUMS.txt` records the delivered proof sources and reports. Verify it from the repository root with `sha256sum -c research/astra-global-2026-10-15/SHA256SUMS.txt`.

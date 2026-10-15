@@ -1,6 +1,6 @@
 # Resultado global
 
-**O enunciado antipodal universal e o corolário de inexistência de bent homogêneas cúbicas RS passaram no kernel do Lean 4.15.0 e em CI limpo**, com Mathlib fixada e apenas `propext`, `Classical.choice` e `Quot.sound`. O CI confirmado é 38682075049, no commit 9f186bc871361b263a9356a8d80cbcc837db21de.
+**O enunciado antipodal universal e o corolário de inexistência de bent homogêneas cúbicas RS passaram no kernel do Lean 4.15.0 e em CI limpo**, com Mathlib fixada e apenas `propext`, `Classical.choice` e `Quot.sound`. Dois CIs limpos foram confirmados: 38682075049 (núcleo global) e 38682481132 (incluindo a formulação usual |W|=2^H). O commit final de fontes é 6dd183685ef8a5b033c1bcf8733496d57b853cc7.
 
 A prova cobre toda dimensão par positiva. As únicas hipóteses sobre a função são simetria pela rotação real, grau canônico ANF≤3 e bentness pelo Walsh inteiro real. Termos afins e constantes são permitidos. O corolário homogêneo vem da ausência de coeficientes quadráticos no ANF.
 

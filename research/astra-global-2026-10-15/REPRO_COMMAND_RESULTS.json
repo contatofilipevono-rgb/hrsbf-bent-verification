@@ -23,5 +23,14 @@
     "bent_without_antipodal": 0,
     "order_three_invariant_cubics_tested": 65536,
     "bent_restriction_counterexamples": 0
-  }
+  },
+  "final_source_sha": "6dd183685ef8a5b033c1bcf8733496d57b853cc7",
+  "absolute_walsh_ci": {
+    "run_id": 38682481132,
+    "job_id": 116249898348,
+    "conclusion": "success",
+    "completed_at": "2026-10-15T04:40:52Z",
+    "actual_job_logs_inspected": true
+  },
+  "lean_source_shortcut_audit_files": 36
 }

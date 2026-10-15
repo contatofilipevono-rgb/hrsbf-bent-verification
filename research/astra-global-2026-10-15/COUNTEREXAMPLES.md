@@ -25,4 +25,4 @@ python research/astra-global-2026-10-15/adversarial.py
 python -c "import runpy,json; a=runpy.run_path('research/astra-global-2026-10-15/adversarial.py'); print(json.dumps(a['exact_family'](10),indent=2))"
 ```
 
-Dependency: NumPy; all operations relevant to certification are exact integer/Boolean operations. No genuine failing case was found, so no fabricated witness/truth table is provided.
+Executed with Python 3.12.14 and NumPy 2.3.5. Dependency: NumPy; all operations relevant to certification are exact integer/Boolean operations. No genuine failing case was found, so no fabricated witness/truth table is provided.

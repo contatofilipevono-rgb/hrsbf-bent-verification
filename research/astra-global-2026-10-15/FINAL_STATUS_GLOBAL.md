@@ -2,7 +2,7 @@
 
 Scientific manuscript author: **Filipe Martins Vono**. Independent mathematical/Lean continuation, 15 October 2026.
 
-The exact universal antipodal theorem and the universal homogeneous cubic nonexistence corollary type-check locally and in clean CI in Lean 4.15.0 with pinned Mathlib. Their printed axiom sets are exactly `propext`, `Classical.choice`, `Quot.sound`. A fresh clean GitHub Actions build of source commit `9f186bc871361b263a9356a8d80cbcc837db21de` succeeded: [run 38682075049](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/38682075049). The job log was retrieved and inspected; `GlobalAntipodal.lean` is a root-library dependency.
+The exact universal antipodal theorem and the universal homogeneous cubic nonexistence corollary type-check locally and in clean CI in Lean 4.15.0 with pinned Mathlib. Their printed axiom sets are exactly `propext`, `Classical.choice`, `Quot.sound`. A fresh clean GitHub Actions build of source commit `9f186bc871361b263a9356a8d80cbcc837db21de` succeeded: [run 38682075049](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/38682075049). The job log was retrieved and inspected; `GlobalAntipodal.lean` is a root-library dependency. A second independent clean build of the conventional absolute-Walsh interface also passed: [run 38682481132](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/38682481132), source `6dd183685ef8a5b033c1bcf8733496d57b853cc7`. Both actual job logs were inspected.
 
 ## Exact result
 
@@ -40,3 +40,14 @@ The baseline fiber, quadratic Gauss, nilpotence and Nakayama proofs are reused. 
 ## Scope of certification
 
 The formal theorem's mathematical content is proved. This does not assert peer review, journal/arXiv acceptance, or exhaustive novelty verification. The auxiliary exact coefficient-folding formula is outside the chosen kernel proof route. Publication readiness still requires checking the manuscript's exposition against this final route and a proper literature/priority review.
+
+## Permanent progress commits
+
+| Milestone | Source commit |
+|---|---|
+| Reused independent Lemma 5.1 | [f3d41a59](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/commit/f3d41a59d4a699367fd0c40374e93f7ba230b0cb) |
+| Exact Fourier/derivative bridge and fixed-free quadratic complement | [2ef40d40](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/commit/2ef40d40da40a5ec1f4cde1b11d336c3c73cfbb4) |
+| Odd-order quadratic balance, abstract bent restriction, canonical ANF | [7b34d8c4](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/commit/7b34d8c4ff567b1e7587675f361cdf0782febecd) |
+| Power-of-two homogeneous cubic nonexistence | [a51798ed](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/commit/a51798ed38818ffa970a7bf2de54259b7b63490d) |
+| Universal antipodal necessity and universal homogeneous cubic corollary | [9f186bc8](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/commit/9f186bc871361b263a9356a8d80cbcc837db21de) |
+| Conventional absolute Walsh formulation and certificate | [6dd18368](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/commit/6dd183685ef8a5b033c1bcf8733496d57b853cc7) |

@@ -2,7 +2,7 @@
 
 ## Global theorem proof
 
-**No unproved premise remains in `universal_antipodal`, `universal_antipodal_canonical`, or `no_homogeneous_cubic_rotation_symmetric_bent`.** The local kernel checks and clean source-commit CI 38682075049 pass.
+**No unproved premise remains in `universal_antipodal`, `universal_antipodal_canonical`, or `no_homogeneous_cubic_rotation_symmetric_bent`.** The local kernel checks and two independent clean source-commit CIs (38682075049 and 38682481132) pass, including the conventional absolute-Walsh formulation.
 
 | Historical gap | Resolution |
 |---|---|
