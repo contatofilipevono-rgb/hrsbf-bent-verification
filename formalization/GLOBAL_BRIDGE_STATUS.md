@@ -7,17 +7,21 @@
 ## Proven, with original kernel evidence preserved
 
 - The baseline `formalization/Antipodal/*.lean` 52-result fiber core compiles in GitHub Actions (seen on runs `38663462356` and `38664372468`).
-- `Antipodal/OddMultiplicity.lean` formalizes two characteristic-two statements: even orbit multiplicity cancels, odd multiplicity preserves coefficients. In workflow run `38664372468`, both axiom audits contained only `propext`, `Classical.choice`, and `Quot.sound`, with no `sorryAx`.
+- `Antipodal/OddMultiplicity.lean` formalizes two characteristic-two statements: even orbit multiplicity cancels, odd multiplicity preserves coefficients. Axiom audits contain only `propext`, `Classical.choice`, and `Quot.sound`, with no `sorryAx`.
+- **New kernel-certified dimension-2 endpoint:** `Antipodal/Endpoint2.lean` now proves `HRSBF.Antipodal.bent_implies_antipodal_in_two_variables` from the exact four-term integer Walsh equation, using no reflective axioms. Compiled successfully in GitHub Actions run `38665788312`; the printed axioms are precisely `propext`, `Classical.choice`, and `Quot.sound`.
 - The material in the earlier A100 audit remains unchanged by this branch except for new files under `formalization/` and the new isolated CI workflow.
 
 ## Not yet proved in Lean — must not be described as kernel-certified
 
-1. **Two-variable endpoint:** `Antipodal/Endpoint2.lean` currently supplies definitions ONLY. The equivalence `IsBentPair f ↔ antipodalCoeff2 f = 1` is not asserted as a theorem because earlier reflective proof attempts failed to elaborate/reduce.
-2. **Odd-order fixed-space reduction:** if an invariant degree≤3 bent function is restricted to the fixed space of a cyclic subgroup of odd order, it remains bent. This needs an abstract linear equivariance/factorization construction and quadratic character-sum lemma.
-3. **Quadratic rigidity in power-of-two dimension:** invariant balanced quadratics have zero polar, including linear terms and short quadratic orbits. The polynomial-module argument still has to be formalized.
-4. **ANF coefficient transport by orbit folding:** establish source/target monomial orbit multiplicities (including short cubic orbits and degree drops), beyond the now-proved parity sublemmas.
-5. **Diagonal identity and derivative balance:** show the hypotheses `hd` and `hz` of `Antipodal/Main.lean` from RS bentness and absence of the antipodal monomial.
-6. **Universal final theorem:** combine all of the above with the 52-result core and obtain a theorem with no extra hypotheses.
+1. **Odd-order fixed-space reduction:** if an invariant degree≤3 bent function is restricted to the fixed space of a cyclic subgroup of odd order, it remains bent. This needs an abstract linear equivariance/factorization construction and quadratic character-sum lemma.
+2. **Quadratic rigidity in power-of-two dimension:** invariant balanced quadratics have zero polar, including linear terms and short quadratic orbits. The polynomial-module argument still has to be formalized.
+3. **ANF coefficient transport by orbit folding:** establish source/target monomial orbit multiplicities (including short cubic orbits and degree drops), beyond the now-proved parity sublemmas.
+4. **Diagonal identity and derivative balance:** show the hypotheses `hd` and `hz` of `Antipodal/Main.lean` from RS bentness and absence of the antipodal monomial.
+5. **Universal final theorem:** combine all of the above with the 52-result core and obtain a theorem with no extra hypotheses.
+
+## Remaining scope notes
+
+The *necessary direction* of the n=2 statement is proved; the stronger equivalence is not required by the paper and has not been formalized here. No claim is made that the power-of-two theorem for n≥4 or the global n=2^s*m transport is kernel-certified.
 
 ## Required release gate
 
