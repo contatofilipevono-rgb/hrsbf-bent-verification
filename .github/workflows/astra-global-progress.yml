@@ -35,6 +35,12 @@ jobs:
           lake env lean Antipodal/OddProjector.lean | tee odd_projector_axioms.log
           lake env lean Antipodal/OddRestriction.lean | tee odd_restriction_axioms.log
           lake env lean Antipodal/CanonicalANF.lean | tee canonical_anf_axioms.log
+          lake env lean Antipodal/ANFPermutation.lean | tee anf_permutation_axioms.log
+          lake env lean Antipodal/ANFPolynomial.lean | tee anf_polynomial_axioms.log
+          lake env lean Antipodal/HomogeneousDiagonal.lean | tee homogeneous_diagonal_axioms.log
+          lake env lean Antipodal/BlockCoordinates.lean | tee block_coordinates_axioms.log
+          lake env lean Antipodal/CubicTransport.lean | tee cubic_transport_axioms.log
+          lake env lean Antipodal/PowerTwoCubic.lean | tee power_two_cubic_axioms.log
           python - <<'PY_AUDIT'
           import re
           from pathlib import Path
@@ -48,6 +54,8 @@ jobs:
           assert 'HRSBF.Antipodal.fixed_free_invariant_quadratic_unbalanced' in names
           assert 'HRSBF.Antipodal.odd_order_bent_restriction' in names
           assert 'HRSBF.Antipodal.anf_reconstruction' in names
+          assert 'HRSBF.Antipodal.not_bent_homogeneous_cubic_power_two' in names
+          assert 'HRSBF.Antipodal.odd_order_bent_restriction_of_anf_degree' in names
           for name, deps in reports:
               assert {d.strip() for d in deps.split(',') if d.strip()} <= allowed, (name, deps)
           assert 'sorryAx' not in text and 'Lean.ofReduceBool' not in text

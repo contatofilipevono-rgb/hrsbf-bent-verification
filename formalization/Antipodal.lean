@@ -1,3 +1,4 @@
+import Antipodal.PowerTwoCubic
 import Antipodal.OddRestriction
 import Antipodal.CanonicalANF
 import Antipodal.Autocorrelation
