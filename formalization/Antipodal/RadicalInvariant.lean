@@ -46,13 +46,13 @@ theorem radical_stable_under_linear_equiv
     S r ∈ radicalSubmodule Q hq := by
   rw [mem_radicalSubmodule_iff] at hr ⊢
   intro y
-  have hy : S (S.symm y) = y := S.apply_symm_apply y
-  rw [← hy]
-  have hpolar : polar Q (S r) (S (S.symm y)) =
-      polar Q r (S.symm y) := by
-    simp [polar, ← map_add, ← map_zero, hS]
-  rw [hpolar]
-  exact hr (S.symm y)
+  calc
+    polar Q (S r) y =
+        polar Q (S r) (S (S.symm y)) := by rw [S.apply_symm_apply]
+    _ = polar (fun x => Q (S x)) r (S.symm y) := by
+      simp only [polar, map_add, map_zero]
+    _ = polar Q r (S.symm y) := by simp only [hS]
+    _ = 0 := hr _
 
 /-- A nonzero polar implies its radical is a proper submodule. -/
 theorem radical_proper_of_nonzero_polar
