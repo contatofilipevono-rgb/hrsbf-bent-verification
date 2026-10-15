@@ -1,6 +1,8 @@
 # Proposed elementary route: cyclic Nakayama argument over F₂
 
-**Status: mathematical reduction / proof plan — NOT Lean-certified.**
+**Completion update:** the concrete cyclic order, exact parity-image equality, and unconditional quadratic rigidity are now implemented in `Antipodal/CyclicQuadraticRigidity.lean`. See [the independent completion report](INDEPENDENT_QUADRATIC_RIGIDITY_REPORT.md) for the exact signature, audit, certification procedure, and remaining cubic scope.
+
+The original reduction below is preserved for provenance.
 
 Let N=2^k ≥2, V=F₂^N, S a cyclic coordinate rotation, T=S+I and p(v)=Σᵢvᵢ (mod 2). Let Q be rotation-invariant with zero third differences; B its polar; R=rad(B).
 

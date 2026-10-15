@@ -1,5 +1,7 @@
 # Lean global antipodal bridge — state of proof (14–15 October 2026)
 
+> **Independent quadratic completion:** `Antipodal/CyclicQuadraticRigidity.lean` now discharges the concrete cyclic order and parity-image obligations and proves unconditional quadratic rigidity. See [INDEPENDENT_QUADRATIC_RIGIDITY_REPORT.md](INDEPENDENT_QUADRATIC_RIGIDITY_REPORT.md). The historical entries below describe earlier checkpoints. The universal cubic theorem remains unproved.
+
 **Branch:** `formal/antipodal-global-completion-2026-10-14`  
 **Baseline:** `57d561393d546e00fbcd3c95cfce1158bfda9a23`  
 **Toolchain:** Lean `4.15.0`; Mathlib `9837ca9d65d9de6fad1ef4381750ca688774e608`.

@@ -1,0 +1,49 @@
+name: Independent quadratic rigidity kernel check
+on:
+  push:
+    branches:
+      - formal/astra-quadratic-rigidity-independent
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  kernel-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain leanprover/lean4:v4.15.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Obtain pinned Mathlib cache
+        working-directory: formalization
+        run: |
+          lean --version
+          lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 9837ca9d65d9de6fad1ef4381750ca688774e608
+      - name: Build complete library and check exact theorem axioms
+        working-directory: formalization
+        run: |
+          set -euo pipefail
+          lake build
+          lake env lean Antipodal/CyclicQuadraticRigidity.lean | tee cyclic_quadratic_axioms.log
+          lake env lean Antipodal/DerivativeBridge.lean | tee cubic_bridge_axioms.log
+          python - <<'PY_AUDIT'
+          import re
+          from pathlib import Path
+          allowed = {'propext', 'Classical.choice', 'Quot.sound'}
+          text = Path('cyclic_quadratic_axioms.log').read_text() + Path('cubic_bridge_axioms.log').read_text()
+          target = 'HRSBF.Antipodal.balanced_rotation_invariant_quadratic_polar_zero'
+          reports = re.findall(r"'([^']+)' depends on axioms:\s*\[([^\]]*)\]", text)
+          assert target in {name for name, _ in reports}
+          for name, deps in reports:
+              assert {d.strip() for d in deps.split(',') if d.strip()} <= allowed, (name, deps)
+          assert 'sorryAx' not in text and 'Lean.ofReduceBool' not in text
+          print('Final theorem and all printed declarations use only the three allowed axioms.')
+          PY_AUDIT
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: independent-quadratic-kernel-logs
+          path: formalization/*_axioms.log
