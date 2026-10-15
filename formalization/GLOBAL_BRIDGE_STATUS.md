@@ -30,10 +30,30 @@ Five additional declarations are now compiled and have explicit `#print axioms` 
 
 **Boundary:** None of the above asserts that the universal cubic antipodal theorem has been formalized.
 
+## Exact Gauss identity and conditional quadratic-rigidity closure — NEW
+
+**Certified GitHub Actions:** https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/38670063342
+**Tested commit:** `a951e0ed177e4a49aa29c53320481b28f7e46b68`
+
+Lean 4.15.0 and the pinned Mathlib version accept the three new statements; `#print axioms` reports only `propext`, `Classical.choice`, and `Quot.sound` for each, with zero `sorryAx`.
+
+- `Antipodal/QuadraticGauss.lean`: `quadratic_walsh_square` gives the **exact integer identity** for any finite binary vector space:
+  `(∑ x, sign (Q x))² = |V| * ∑ r, if (∀ x, polar Q r x = 0) then sign (Q r + Q 0) else 0`,
+  assuming vanishing third differences.
+- `Antipodal/QuadraticBalanceBridge.lean`: `quadratic_unbalanced_of_radical_constant` shows a quadratic constant on its polar radical cannot be balanced, since the nonempty radical contributes strictly positive Gauss weight.
+- `Antipodal/QuadraticBalanceBridge.lean`: `balanced_polar_zero_of_proper_radical_image` formalizes the desired quadratic-rigidity deduction **conditional on an explicit local-ring image premise**, quantified only when the polar is nonzero.
+
+**Exact remaining critical obligation:** for N=2^k and the actual cyclic permutation S, derive the premise
+`(∃ a b, polar Q a b ≠ 0) → ∀ r ∈ rad(B_Q), ∃ y, r = S y + y`,
+from rotation invariance, quadraticity and the power-of-two cyclic module, **without assuming it as a hypothesis**.
+
+This is the next mission assigned to independent Astra review at `ASTRA_MISSION_LEMMA_5_1.md`.
+No universal antipodal proof is claimed by this entry.
+
 ## Not yet proved in Lean — must not be described as kernel-certified
 
 1. **Odd-order fixed-space reduction:** if an invariant degree≤3 bent function is restricted to the fixed space of a cyclic subgroup of odd order, it remains bent. This needs an abstract linear equivariance/factorization construction and quadratic character-sum lemma.
-2. **Quadratic rigidity in power-of-two dimension:** five new sublemmas now compile. The invariant-ideal inclusion and integer Walsh-square formula remain; hence the full rigidity theorem is not yet proved.
+2. **Quadratic rigidity in power-of-two dimension:** the integer Walsh-square identity and conditional Gauss contradiction now compile. The **remaining missing step** is the power-of-two cyclic radical/image inclusion; the full unconditional rigidity theorem is not yet proved.
 3. **ANF coefficient transport by orbit folding:** establish source/target monomial orbit multiplicities (including short cubic orbits and degree drops), beyond the now-proved parity sublemmas.
 4. **Diagonal identity and derivative balance:** show the hypotheses `hd` and `hz` of `Antipodal/Main.lean` from RS bentness and absence of the antipodal monomial.
 5. **Universal final theorem:** combine all of the above with the 52-result core and obtain a theorem with no extra hypotheses.
