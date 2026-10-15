@@ -50,10 +50,27 @@ from rotation invariance, quadraticity and the power-of-two cyclic module, **wit
 This is the next mission assigned to independent Astra review at `ASTRA_MISSION_LEMMA_5_1.md`.
 No universal antipodal proof is claimed by this entry.
 
+## New certified cyclic-Nakayama bridge (October 15, 2026)
+
+**Clean source commit:** `0a6b8e1a3450562cbc455f2486e8131efea95dde`  
+**GitHub Actions:** https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/38671993921  
+**Outcome:** successful `lake build` and standalone module checks; all five new theorem axiom reports include only `propext`, `Classical.choice`, `Quot.sound`, without `sorryAx`.
+
+1. `RadicalInvariant.lean` proves `radical_stable_under_linear_equiv` and `radical_proper_of_nonzero_polar`; it also constructs `radicalSubmodule`.
+2. `PowerTwoNilpotence.lean` proves `shift_plus_one_nilpotent`: for any binary-module endomorphism S with S^(2^k)=I, (S+I)^(2^k)=0.
+3. `NilpotentNakayama.lean` proves `nilpotent_stable_decomposition_forces_top`: if T^m=0, R is T-stable and V=R+im(T), then R=V.
+4. `NilpotentHyperplane.lean` proves `proper_stable_le_range_of_nilpotent_hyperplane`: under an explicit codimension-one decomposition hypothesis, every proper T-stable R lies in im(T).
+
+**Crucial unproved bridge (not kernel-certified):** for the concrete cyclic shift S on `Vec (2^k)`, prove `S^(2^k)=I` and that `im(S+I)` equals the even-coordinate-parity subspace. With these in hand, the Nakayama theorem turns proper rotation-invariant polar radicals into `R ⊆ im(S+I)`, which then discharges the explicit `himage` premise of `balanced_polar_zero_of_proper_radical_image`.
+
+See `CYCLIC_NAKAYAMA_ROUTE.md` for the exact constructive parity recursion and no-local-ring proof plan.
+
+**Scope:** the complete unconditional Lemma 5.1, and therefore the universal cubic antipodal theorem, still are not Lean-certified.
+
 ## Not yet proved in Lean — must not be described as kernel-certified
 
 1. **Odd-order fixed-space reduction:** if an invariant degree≤3 bent function is restricted to the fixed space of a cyclic subgroup of odd order, it remains bent. This needs an abstract linear equivariance/factorization construction and quadratic character-sum lemma.
-2. **Quadratic rigidity in power-of-two dimension:** the integer Walsh-square identity and conditional Gauss contradiction now compile. The **remaining missing step** is the power-of-two cyclic radical/image inclusion; the full unconditional rigidity theorem is not yet proved.
+2. **Quadratic rigidity in power-of-two dimension:** Gauss, polar-radical stability/properness, abstract nilpotence, and nilpotent Nakayama now compile. The missing pieces are the concrete shift-order law and image=even-parity identification (which supply the unconditional radical/image inclusion). Full rigidity is not yet proved.
 3. **ANF coefficient transport by orbit folding:** establish source/target monomial orbit multiplicities (including short cubic orbits and degree drops), beyond the now-proved parity sublemmas.
 4. **Diagonal identity and derivative balance:** show the hypotheses `hd` and `hz` of `Antipodal/Main.lean` from RS bentness and absence of the antipodal monomial.
 5. **Universal final theorem:** combine all of the above with the 52-result core and obtain a theorem with no extra hypotheses.
