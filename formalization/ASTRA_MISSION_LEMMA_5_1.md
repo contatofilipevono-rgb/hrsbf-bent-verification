@@ -30,6 +30,20 @@ In `formalization/Antipodal/`:
 
 A precise kernel run established the printed axioms are exactly `propext, Classical.choice, Quot.sound`.
 
+## Update: new Lean-certified Nakayama route — do not duplicate
+
+**Clean CI:** https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/38671993921
+
+Already kernel-certified:
+- `RadicalInvariant.lean`: invariant proper radical submodule.
+- `PowerTwoNilpotence.lean`: `S^(2^k)=I → (S+I)^(2^k)=0`.
+- `NilpotentNakayama.lean`: stable R plus decomposition V=R+im(T) plus nilpotence implies R=V.
+- `NilpotentHyperplane.lean`: proper stable R sits in im(T) if im(T) is a hyperplane with the expected coset decomposition.
+
+**Your sharply reduced research target:** for cyclic rotation on `Fin (2^k) → ZMod 2`, prove (1) the order `S^(2^k)=I`, and (2) the exact image identity `range(S+I)=ker(parity)`, with `parity(v)=∑ᵢvᵢ`. A constructive proof should solve `y_{i+1}=y_i+v_i` and use even parity for the wraparound. Then instantiate the new certified lemmas and close quadratic rigidity unconditionally.
+
+See `CYCLIC_NAKAYAMA_ROUTE.md`. Prefer this small elementary route over lengthy local-ring quotient machinery, but conduct an independent adversarial mathematical audit regardless.
+
 ## Single critical missing mathematical theorem
 
 1. Show the polar radical R of a quadratic Q is an S-invariant F₂-linear subspace, and show nonzero polar forces R proper.
