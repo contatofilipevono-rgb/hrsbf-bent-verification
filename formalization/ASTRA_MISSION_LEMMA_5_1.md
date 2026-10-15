@@ -1,5 +1,7 @@
 # Independent Astra mission: prove the missing half of Lemma 5.1 in Lean
 
+> **Scope note:** This file addresses **Lemma 5.1 only**. For the complete end-to-end global theorem mission, use **[`ASTRA_MISSION_GLOBAL_LEAN4.md`](ASTRA_MISSION_GLOBAL_LEAN4.md)**. Completing this focused task alone is **not** success on the global theorem.
+
 **Repository:** https://github.com/contatofilipevono-rgb/hrsbf-bent-verification
 **Frozen starting branch:** `formal/antipodal-global-completion-2026-10-14`
 **Latest clean kernel run:** https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/38670063342
