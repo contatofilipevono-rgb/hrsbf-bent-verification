@@ -1,9 +1,9 @@
-# Resultado da missão
+# Resultado global
 
-**Teorema global: NÃO PROVADO em Lean nesta entrega.**
+**O enunciado antipodal universal e o corolário de inexistência de bent homogêneas cúbicas RS passaram no kernel local do Lean 4.15.0**, com Mathlib fixada e apenas `propext`, `Classical.choice` e `Quot.sound`. A confirmação do CI limpo será registrada no certificado.
 
-Avanços reais: a inexistência de bent homogêneas cúbicas RS em dimensões potência de dois foi formalizada; a transferência de balanceamento de quadráticas por simetrias de ordem ímpar e a preservação abstrata de bentness na restrição foram provadas; o ANF recebeu definição canônica, reconstrução, unicidade e covariância. As provas reutilizam o Lema 5.1 independente e a contradição de fibras existentes.
+A prova cobre toda dimensão par positiva. As únicas hipóteses sobre a função são simetria pela rotação real, grau canônico ANF≤3 e bentness pelo Walsh inteiro real. Termos afins e constantes são permitidos. O corolário homogêneo vem da ausência de coeficientes quadráticos no ANF.
 
-Faltam a necessidade antipodal geral em potência de dois, a identificação cíclica concreta na redução ímpar, o transporte do coeficiente antipodal e a montagem final em toda dimensão par. Os testes exatos não encontraram contraexemplos, mas não substituem essas provas.
+A montagem final usa uma rota mais curta: coeficiente antipodal zero torna a função constante no espaço fixo da meia-rotação; essa obstrução passa à diagonal da restrição de dimensão potência de dois, contrariando a prova das fibras. A redução ímpar usa coordenadas repetidas construídas explicitamente, não uma hipótese de bentness da restrição.
 
-A publicação é uma branch de progresso verificável. O artigo não deve ser apresentado como globalmente certificado pelo kernel. Os comandos, assinaturas e CI estão em KERNEL_CERTIFICATE.md; as lacunas exatas, em GAP_REGISTER.md.
+A igualdade completa de transporte de coeficientes sob folding continua como resultado auxiliar não formalizado separadamente, mas não é usada pela prova global. Isso está declarado em GAP_REGISTER.md. O artigo ainda exige revisão editorial e de prioridade bibliográfica; nenhuma aceitação ou publicação acadêmica foi realizada.

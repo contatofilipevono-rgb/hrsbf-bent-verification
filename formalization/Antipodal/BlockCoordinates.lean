@@ -149,3 +149,38 @@ theorem rotation_invariant_pow {N : ℕ} (f : Vec N → F₂)
 end HRSBF.Antipodal
 
 #print axioms HRSBF.Antipodal.joinBlocks_blockShift
+
+namespace HRSBF.Antipodal
+
+theorem cyclicShift_pow_apply_perm {N : ℕ} (k : ℕ) (x : Vec N) (i : Fin N) :
+    (((cyclicShift N).toLinearMap ^ k) x) i = x (((finRotate N)^k) i) := by
+  induction k generalizing i with
+  | zero => rfl
+  | succ k ih =>
+    rw [pow_succ' (cyclicShift N).toLinearMap]
+    change (((cyclicShift N).toLinearMap ^ k) x) (finRotate N i) = _
+    rw [ih]
+    simp only [pow_succ, Equiv.Perm.mul_apply]
+
+theorem finRotate_pow_mod {N : ℕ} (hN : 0 < N) (k : ℕ) (i : Fin N) :
+    ((finRotate N)^k) i = ⟨(i.val+k)%N, Nat.mod_lt _ hN⟩ := by
+  let j : Fin N := ⟨(i.val+k)%N, Nat.mod_lt _ hN⟩
+  have hh := cyclicShift_pow_apply_mod hN k (Pi.single j (1 : F₂)) i
+  rw [cyclicShift_pow_apply_perm] at hh
+  by_contra hne
+  have hne' : ((finRotate N)^k) i ≠ j := hne
+  simp [Pi.single_apply, hne', Ne.symm hne', j] at hh
+
+theorem anfCoefficient_rotation_pow {N : ℕ} (f : Vec N → F₂)
+    (hs : IsRotationSymmetric f) (k : ℕ) (s : Finset (Fin N)) :
+    anfCoefficient f (s.map ((finRotate N)^k).toEmbedding) = anfCoefficient f s := by
+  apply anfCoefficient_permutation
+  intro x
+  have he : (fun i => x (((finRotate N)^k) i)) =
+      ((cyclicShift N).toLinearMap ^ k) x := by
+    funext i
+    exact (cyclicShift_pow_apply_perm k x i).symm
+  rw [he]
+  exact rotation_invariant_pow f hs k x
+
+end HRSBF.Antipodal

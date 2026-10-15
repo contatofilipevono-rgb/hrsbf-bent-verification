@@ -1,3 +1,4 @@
+import Antipodal.Nonvacuity
 import Antipodal.PowerTwoCubic
 import Antipodal.OddRestriction
 import Antipodal.CanonicalANF

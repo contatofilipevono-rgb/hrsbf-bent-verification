@@ -1,3 +1,3 @@
-# Open gaps
+# Open items
 
-The global result is NOT PROVED. The maintained detailed list is [GAP_REGISTER.md](GAP_REGISTER.md). G1--G5 are still open.
+The universal theorem is kernel-proved locally. Confirm the clean source-commit CI. The standalone full coefficient-folding identity is not kernel-proved and is not used by the global proof. See [GAP_REGISTER.md](GAP_REGISTER.md).

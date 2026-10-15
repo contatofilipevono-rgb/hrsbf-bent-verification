@@ -1,37 +1,36 @@
-# Proof dependencies
+# End-to-end dependency graph
 
-## Certified analytic route
+## Canonical hypotheses
 
-`IsBent` (integer Walsh-square = cardinality) → `transform_autocorrelation` + `transform_inversion` → balanced nonzero derivatives.
+`anfCoefficient` = Boolean Mobius transform of truth-table evaluations on support vectors.
+`booleanMobius_involution` → ANF reconstruction and uniqueness.
+Canonical degree≤3 → explicit cubic polynomial representation.
+Actual cyclic symmetry → canonical coefficient permutation covariance.
 
-Canonical ANF degree≤3 → `hasCubicRepresentation_of_anf_degree` → `cubic_derivative_third_zero`.
+## Analytic route
 
-Cyclic invariance + bentness + cubic degree + N=2^k → balanced cyclic quadratic all-ones derivative → independent Lemma 5.1 → zero derivative polar.
+Integer Walsh definition → Fourier inversion + Wiener--Khinchin → balanced nonzero derivatives.
+Cubic representation → quadratic derivatives.
+Cyclic invariance + power-of-two dimension + balance → independent Lemma 5.1 → zero all-ones derivative polar.
 
-## Certified odd-order route
+## Odd-order restriction
 
-Odd order + S^m=I → `orbitAverage` → idempotent, image fixed, fixed/kernel direct decomposition.
+S^m=I with odd m → explicit averaging projector → fixed/kernel splitting and polar orthogonality.
+Kernel has no nonzero fixed vector → S+I is surjective on its polar radical → invariant quadratic is constant on radical → finite Gauss identity → kernel sign sum nonzero.
+Splitting + nonzero factor → quadratic balance transfer.
+Actual balanced derivatives of a bent cubic → balanced restricted derivatives → actual restricted bentness.
+Concrete S=rotation^t, N=t*m → proved order law and periodicity recurrence → explicit `cyclicFixedEquiv`; repeated blocks intertwine full rotations. No coordinate isomorphism is assumed in `bent_cyclic_odd_fold`.
 
-Invariant quadratic → fixed/kernel polar orthogonality.
+## Global route
 
-Kernel restricted symmetry + averaging identity → no nonzero fixed vector → S+I surjective on the **polar radical** → quadratic constant on radical → generic finite Gauss identity → nonzero kernel sign sum.
+1. Assume the canonical antipodal coefficient is zero.
+2. Rotation covariance makes every antipodal pair coefficient zero.
+3. Pair all ANF supports by the free coordinate half-turn. Nonfixed supports cancel; fixed nonempty supports of size≤3 are quadratic antipodal pairs. Therefore the function is constant on the entire half-turn fixed space.
+4. Factor every positive half-dimension H=2^r*m with m positive odd (proved by strong induction).
+5. Restrict to the actual cyclic fixed space of dimension 2^(r+1). Actual bentness, cyclic symmetry and cubic polynomial representation survive.
+6. Every repeated diagonal vector of the restriction is fixed by the original half-turn (proved by coordinate residues). The restriction consequently has constant diagonal.
+7. Concrete two-block coordinates + the power-of-two derivative polar theorem + the original complementary-fiber contradiction rule out this bent restriction.
+8. The zero coefficient is impossible. Since the coefficient lies in F₂, it equals 1.
+9. A homogeneous cubic has no degree-two canonical coefficients, so it cannot be bent.
 
-Actual decomposition + orthogonality + nonzero kernel sum → `odd_order_quadratic_balance_iff`.
-
-Balanced quadratic derivatives of actual bent cubic → balance transfer → balanced nonzero derivatives of restriction → `odd_order_bent_restriction`.
-
-## Certified power-of-two homogeneous corollary
-
-Canonical homogeneous cubic + coordinate half-turn → diagonal zero (`homogeneous_cubic_vanishes_on_fixed_vectors`).
-
-Explicit `joinBlocks` → coordinate/rotation/Walsh transport → existing fiber contradiction. All-ones derivative polar zero is derived by the analytic route. Therefore `not_bent_homogeneous_cubic_power_two`.
-
-## Missing global edges
-
-Canonical antipodal coefficient zero → full degree≤3 diagonal identity: G1.
-
-Concrete cyclic odd subgroup → explicit repeated-block coordinates and transported degree/symmetry: G2/G5.
-
-Canonical coefficients under odd folding: G3.
-
-All these edges + two-variable endpoint → universal theorem: G4, **not proved**.
+The standalone full equality of antipodal coefficients under odd folding is **not an edge in this graph**. No conjecture, pre-assumed restricted bentness, diagonal, zero polar, radical inclusion or artificial coefficient condition survives as a premise of the final universal theorem.

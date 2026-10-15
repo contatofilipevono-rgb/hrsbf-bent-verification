@@ -1,6 +1,7 @@
 import Antipodal.BlockCoordinates
 import Antipodal.CubicTransport
 import Antipodal.HomogeneousDiagonal
+import Antipodal.DiagonalANF
 
 namespace HRSBF.Antipodal
 
@@ -13,13 +14,12 @@ private theorem power_two_derivative_polar (N k : ℕ) (hk : 1 ≤ k) (hN : N = 
 /-- A genuine power-of-two nonexistence result under the remaining
 constant-diagonal condition. Balance, zero derivative polar, coordinate
 compatibility and cubic representation are all derived. -/
-theorem not_bent_constant_diagonal_power_two
+theorem not_bent_constant_diagonal_power_two_of_cubic
     (n k : ℕ) (hk : 1 ≤ k) (hN : (n+1)+(n+1) = 2^k)
     (f : Vec ((n+1)+(n+1)) → F₂)
-    (hd : HasAlgebraicDegreeAtMostThree f) (hs : IsRotationSymmetric f)
+    (hc : HasCubicRepresentation f) (hs : IsRotationSymmetric f)
     (hdiag : ∀ u, f (joinBlocks (n+1) (diagonal u)) = f 0) : ¬ IsBent f := by
   intro hb
-  have hc := hasCubicRepresentation_of_anf_degree f hd
   let g : PairSpace (n+1) → F₂ := fun x => f (joinBlocks (n+1) x)
   have hcG : HasCubicRepresentation g :=
     hasCubicRepresentation_comp_linear f hc (joinBlocks (n+1)).toLinearMap
@@ -41,6 +41,14 @@ theorem not_bent_constant_diagonal_power_two
   exact (not_bent_of_diagonal_and_derivative_polar_zero g hcG hrsG hdiagG hzG)
     (bentPair_of_bent_joinBlocks f hb)
 
+
+theorem not_bent_constant_diagonal_power_two
+    (n k : ℕ) (hk : 1 ≤ k) (hN : (n+1)+(n+1) = 2^k)
+    (f : Vec ((n+1)+(n+1)) → F₂)
+    (hd : HasAlgebraicDegreeAtMostThree f) (hs : IsRotationSymmetric f)
+    (hdiag : ∀ u, f (joinBlocks (n+1) (diagonal u)) = f 0) : ¬ IsBent f :=
+  not_bent_constant_diagonal_power_two_of_cubic n k hk hN f
+    (hasCubicRepresentation_of_anf_degree f hd) hs hdiag
 
 /-- Explicit half-turn of the coordinate cycle. -/
 def halfTurn (h : ℕ) : Equiv.Perm (Fin (h+h)) where
@@ -113,8 +121,95 @@ theorem not_bent_homogeneous_cubic_power_two
   rw [hzero] at hfzero
   exact (hv u).trans hfzero.symm
 
+
+/-- Actual antipodal necessity in power-of-two dimension, stated on the
+canonical coefficient of the pair {0,N/2}. Affine terms are unrestricted. -/
+theorem bent_power_two_antipodal_coefficient_one
+    (n k : ℕ) (hk : 1 ≤ k) (hN : (n+1)+(n+1) = 2^k)
+    (f : Vec ((n+1)+(n+1)) → F₂)
+    (hd : HasAlgebraicDegreeAtMostThree f) (hs : IsRotationSymmetric f)
+    (hb : IsBent f) :
+    anfCoefficient f {⟨0, by omega⟩, ⟨n+1, by omega⟩} = 1 := by
+  classical
+  let z : Fin ((n+1)+(n+1)) := ⟨0, by omega⟩
+  let j : Fin ((n+1)+(n+1)) := ⟨n+1, by omega⟩
+  by_contra hne
+  have hzero : anfCoefficient f {z,j} = 0 :=
+    ((by decide : ∀ c : F₂, c = 0 ∨ c = 1) (anfCoefficient f {z,j})).resolve_right hne
+  have hpairs : ∀ i, anfCoefficient f {i, halfTurn (n+1) i} = 0 := by
+    intro i
+    have hrot := anfCoefficient_rotation_pow f hs i.val {z,j}
+    have hz : ((finRotate ((n+1)+(n+1)))^i.val) z = i := by
+      rw [finRotate_pow_mod (by omega)]
+      apply Fin.ext
+      simp only [z, zero_add, Nat.mod_eq_of_lt i.isLt]
+    have hj : ((finRotate ((n+1)+(n+1)))^i.val) j = halfTurn (n+1) i := by
+      rw [finRotate_pow_mod (by omega)]
+      apply Fin.ext
+      dsimp [j]
+      rw [halfTurn_mod]
+      congr 1
+      omega
+    have hm : ({z,j} : Finset (Fin ((n+1)+(n+1)))).map
+        ((finRotate ((n+1)+(n+1)))^i.val).toEmbedding = {i, halfTurn (n+1) i} := by
+      simp only [Finset.map_insert, Finset.map_singleton, Equiv.toEmbedding_apply, hz, hj]
+    rw [hm, hzero] at hrot
+    exact hrot
+  apply (not_bent_constant_diagonal_power_two n k hk hN f hd hs) _ hb
+  intro u
+  exact constant_on_fixed_vectors_of_antipodal_absence f hd (halfTurn (n+1))
+    (halfTurn_involutive _) (halfTurn_free n) (rotation_invariant_halfTurn n f hs)
+    hpairs _ (diagonal_fixed_halfTurn n u)
+
+
+/-- Rotation makes all quadratic antipodal pairs have the same canonical coefficient. -/
+theorem antipodal_pairs_zero_of_base_zero
+    (H : ℕ) (hH : 0 < H) (f : Vec (H+H) → F₂) (hs : IsRotationSymmetric f)
+    (hz : anfCoefficient f {⟨0, by omega⟩, ⟨H, by omega⟩} = 0) :
+    ∀ i, anfCoefficient f {i, halfTurn H i} = 0 := by
+  cases H with
+  | zero => omega
+  | succ n =>
+    intro i
+    let z : Fin ((n+1)+(n+1)) := ⟨0, by omega⟩
+    let j : Fin ((n+1)+(n+1)) := ⟨n+1, by omega⟩
+    have hrot := anfCoefficient_rotation_pow f hs i.val {z,j}
+    have h0 : ((finRotate ((n+1)+(n+1)))^i.val) z = i := by
+      rw [finRotate_pow_mod (by omega)]
+      apply Fin.ext
+      simp only [z, zero_add, Nat.mod_eq_of_lt i.isLt]
+    have hj : ((finRotate ((n+1)+(n+1)))^i.val) j = halfTurn (n+1) i := by
+      rw [finRotate_pow_mod (by omega)]
+      apply Fin.ext
+      dsimp [j]
+      rw [halfTurn_mod]
+      congr 1
+      omega
+    have hm : ({z,j} : Finset (Fin ((n+1)+(n+1)))).map
+        ((finRotate ((n+1)+(n+1)))^i.val).toEmbedding = {i, halfTurn (n+1) i} := by
+      simp only [Finset.map_insert, Finset.map_singleton, Equiv.toEmbedding_apply, h0, hj]
+    rw [hm, hz] at hrot
+    exact hrot
+
+/-- A zero antipodal coefficient gives constancy on the whole half-turn
+fixed space, in every positive even dimension, without bentness. -/
+theorem constant_on_halfTurn_fixed_of_antipodal_zero
+    (H : ℕ) (hH : 0 < H) (f : Vec (H+H) → F₂)
+    (hd : HasAlgebraicDegreeAtMostThree f) (hs : IsRotationSymmetric f)
+    (hz : anfCoefficient f {⟨0, by omega⟩, ⟨H, by omega⟩} = 0)
+    (x : Vec (H+H)) (hx : ∀ i, x (halfTurn H i) = x i) : f x = f 0 := by
+  have hp := antipodal_pairs_zero_of_base_zero H hH f hs hz
+  cases H with
+  | zero => omega
+  | succ n =>
+    exact constant_on_fixed_vectors_of_antipodal_absence f hd (halfTurn (n+1))
+      (halfTurn_involutive _) (halfTurn_free n) (rotation_invariant_halfTurn n f hs)
+      hp x hx
+
 end HRSBF.Antipodal
 
 #print axioms HRSBF.Antipodal.not_bent_constant_diagonal_power_two
 
 #print axioms HRSBF.Antipodal.not_bent_homogeneous_cubic_power_two
+
+#print axioms HRSBF.Antipodal.bent_power_two_antipodal_coefficient_one

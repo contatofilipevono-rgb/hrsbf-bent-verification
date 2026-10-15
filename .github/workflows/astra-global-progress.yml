@@ -1,4 +1,4 @@
-name: Global antipodal progress kernel check
+name: Universal antipodal kernel certification
 on:
   push:
     branches:
@@ -26,6 +26,7 @@ jobs:
         working-directory: formalization
         run: |
           set -euo pipefail
+          python ../research/astra-global-2026-10-15/audit_lean_sources.py
           lake build
           lake env lean Antipodal/CyclicQuadraticRigidity.lean | tee cyclic_quadratic_axioms.log
           lake env lean Antipodal/DerivativeBridge.lean | tee cubic_bridge_axioms.log
@@ -41,6 +42,11 @@ jobs:
           lake env lean Antipodal/BlockCoordinates.lean | tee block_coordinates_axioms.log
           lake env lean Antipodal/CubicTransport.lean | tee cubic_transport_axioms.log
           lake env lean Antipodal/PowerTwoCubic.lean | tee power_two_cubic_axioms.log
+          lake env lean Antipodal/DiagonalANF.lean | tee diagonal_anf_axioms.log
+          lake env lean Antipodal/CyclicOddCoordinates.lean | tee cyclic_odd_axioms.log
+          lake env lean Antipodal/GlobalAntipodal.lean | tee global_axioms.log
+          lake env lean CheckGlobal.lean | tee global_signature_axioms.log
+          lake env lean Antipodal/Nonvacuity.lean | tee nonvacuity_axioms.log
           python - <<'PY_AUDIT'
           import re
           from pathlib import Path
@@ -56,10 +62,12 @@ jobs:
           assert 'HRSBF.Antipodal.anf_reconstruction' in names
           assert 'HRSBF.Antipodal.not_bent_homogeneous_cubic_power_two' in names
           assert 'HRSBF.Antipodal.odd_order_bent_restriction_of_anf_degree' in names
+          assert 'HRSBF.Antipodal.universal_antipodal_canonical' in names
+          assert 'HRSBF.Antipodal.no_homogeneous_cubic_rotation_symmetric_bent' in names
           for name, deps in reports:
               assert {d.strip() for d in deps.split(',') if d.strip()} <= allowed, (name, deps)
           assert 'sorryAx' not in text and 'Lean.ofReduceBool' not in text
-          print('Final theorem and all printed declarations use only the three allowed axioms.')
+          print('UNIVERSAL antipodal theorem and homogeneous cubic corollary certified with only the three allowed axioms.')
           PY_AUDIT
       - uses: actions/upload-artifact@v4
         if: always()
