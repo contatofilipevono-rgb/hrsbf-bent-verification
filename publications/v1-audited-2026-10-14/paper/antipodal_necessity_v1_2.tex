@@ -335,6 +335,10 @@ With \((\sigma x)_i=x_{i-1\pmod N}\), direct calculation gives
 where \(R\) is cyclic rotation on \(\F^{N/2}\) and \(e_0=(1,0,\dots,0)\in\F^{N/2}\) accounts for the cyclic wrap-around between the two blocks of length \(N/2\). Thus \(F_{\mathbf1}(Ru+e_0)=F_{\mathbf1}(u)\). If \(F_{\mathbf1}(u)=a\cdot u+c\), then \(R^Ta=a\), so \(a\) is constant on the single cycle of \(R\); the translation condition gives \(a\cdot e_0=0\), forcing \(a=0\). Therefore \(F_{\mathbf1}\) is constant.
 \end{proof}
 
+\begin{remark}\label{rem:fiber-bent-role}
+Lemma~\ref{lem:fiber-rigidity} does not claim that \(F_{\mathbf1}\) is constant for arbitrary cubic rotation-symmetric functions (indeed, for a generic non-bent cubic, \(F_{\mathbf1}\) is quadratic with non-vanishing polar form \(B_{F_{\mathbf1}}\ne0\)). Rather, the hypothesis \(B_{D_Jg}=0\) is the critical algebraic consequence supplied by bentness through Lemma~\ref{lem:quad-rigidity} in the Antipodal Rule below.
+\end{remark}
+
 \begin{theorem}[Antipodal Rule]\label{thm:antipodal}
 Let \(N=2^k\) with \(k\ge2\). If \(g:\F^N\to\F\) is rotation-symmetric, bent, and \(\deg g\le3\), then its ANF contains
 \[
@@ -346,7 +350,7 @@ Write \(N=2h\), and let \(\alpha\) be the coefficient of \(P_N\). On the diagona
 \[
 g(u,u)=c+\alpha\sum_i u_i.
 \]
-If \(\alpha=0\), the diagonal is constant. Lemma~\ref{lem:fiber-balance} makes \(F_{\mathbf1}\) balanced. Moreover, bentness makes \(D_Jg\) balanced. Since \(J=\mathbf1^N\) is fixed by cyclic rotation and \(g\) is rotation-symmetric, \(D_Jg\) is rotation-symmetric; also \(\deg D_Jg\le2\). Since \(N=2^k\), Lemma~\ref{lem:quad-rigidity} gives \(B_{D_Jg}=0\), and Lemma~\ref{lem:fiber-rigidity} then makes \(F_{\mathbf1}\) constant. This is a contradiction. Therefore \(\alpha=1\).
+If \(\alpha=0\), the diagonal is constant. Lemma~\ref{lem:fiber-balance} then forces \(F_{\mathbf1}\) to be balanced (by Parseval, the constant diagonal absorbs all available energy \(A_0^2 = 2^N\), leaving \(A_z = 0\) for every \(z\ne0\)). Crucially, bentness of \(g\) implies that every nonzero directional derivative is balanced, so \(D_Jg\) is balanced for \(J=\mathbf1^N\). Since \(J\) is fixed by cyclic rotation and \(g\) is rotation-symmetric, \(D_Jg\) is also rotation-symmetric, with \(\deg D_Jg\le2\). In the power-of-two dimension \(N=2^k\), Lemma~\ref{lem:quad-rigidity} applies to this balanced quadratic rotation-symmetric derivative, proving that its polar form vanishes identically: \(B_{D_Jg}=0\). With \(B_{D_Jg}=0\), Lemma~\ref{lem:fiber-rigidity} applies directly and forces \(F_{\mathbf1}\) to be constant. But a Boolean function on \(\F^{N/2}\) cannot be simultaneously balanced and constant. This contradiction proves that \(\alpha\ne0\), whence \(\alpha=1\).
 \end{proof}
 
 \section{Universal antipodal necessity and the cubic homogeneous case}
