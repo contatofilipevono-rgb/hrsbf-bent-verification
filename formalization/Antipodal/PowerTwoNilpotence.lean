@@ -1,24 +1,44 @@
-import Mathlib.Algebra.CharP.Lemmas
 import Antipodal.QuadraticBalanceBridge
 
 /-!
-An algebraic characteristic-two identity for power-of-two cyclic maps.
-This does not yet prove the geometric fact that every proper invariant
-submodule lies in the range of S+I, but it supplies its nilpotent operator.
+Elementary characteristic-two Frobenius for endomorphisms commuting with 1.
+This intentionally avoids requiring a CharP instance for Module.End.
 -/
 
 namespace HRSBF.Antipodal
 
-/-- In characteristic two the operator S+I is nilpotent whenever the
-order of S divides a power of two. The order hypothesis is explicit. -/
+private theorem end_add_self_zero {V : Type*} [AddCommGroup V] [Module F₂ V]
+    (A : Module.End F₂ V) : A + A = 0 := by
+  ext x
+  exact CharTwo.add_self_eq_zero (A x)
+
+private theorem end_add_one_square {V : Type*} [AddCommGroup V] [Module F₂ V]
+    (A : Module.End F₂ V) : (A + 1) ^ 2 = A ^ 2 + 1 := by
+  calc
+    (A + 1) ^ 2 = A * A + (A + A) + 1 := by
+      simp only [pow_two, mul_add, add_mul, mul_one, one_mul]
+      abel
+    _ = A ^ 2 + 1 := by rw [end_add_self_zero]; simp [pow_two]
+
+/-- Characteristic-two nilpotence whenever S has power-of-two order.
+The order hypothesis is explicit; the concrete cyclic-shift order is
+a separate finite-index proof obligation. -/
 theorem shift_plus_one_nilpotent {V : Type*} [AddCommGroup V] [Module F₂ V]
     (S : Module.End F₂ V) (k : ℕ)
     (hpow : S ^ (2 ^ k) = 1) :
     (S + 1) ^ (2 ^ k) = 0 := by
-  have hcomm : Commute S (1 : Module.End F₂ V) := Commute.one_right S
-  rw [add_pow_char_pow_of_commute 2 k hcomm]
-  rw [hpow, one_pow]
-  exact CharTwo.add_self_eq_zero (1 : Module.End F₂ V)
+  have hfrob (j : ℕ) : (S + 1) ^ (2 ^ j) = S ^ (2 ^ j) + 1 := by
+    induction j with
+    | zero => simp
+    | succ j ih =>
+      calc
+        (S + 1) ^ (2 ^ (j + 1)) = ((S + 1) ^ (2 ^ j)) ^ 2 := by
+          rw [pow_succ, pow_mul]
+        _ = (S ^ (2 ^ j) + 1) ^ 2 := by rw [ih]
+        _ = (S ^ (2 ^ j)) ^ 2 + 1 := end_add_one_square _
+        _ = S ^ (2 ^ (j + 1)) + 1 := by rw [pow_succ, pow_mul]
+  rw [hfrob, hpow]
+  exact end_add_self_zero (1 : Module.End F₂ V)
 
 end HRSBF.Antipodal
 
