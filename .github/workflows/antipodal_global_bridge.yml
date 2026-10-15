@@ -33,6 +33,6 @@ jobs:
         working-directory: formalization
         run: |
           set -o pipefail
-          lake env lean -T 200000 Antipodal/Endpoint2.lean | tee endpoint2_axioms.log
           lake env lean Antipodal/OddMultiplicity.lean | tee odd_multiplicity_axioms.log
+          lake env lean -T 200000 Antipodal/Endpoint2.lean | tee endpoint2_axioms.log
           if grep -E 'sorryAx|Lean.ofReduceBool' endpoint2_axioms.log odd_multiplicity_axioms.log; then exit 1; fi
