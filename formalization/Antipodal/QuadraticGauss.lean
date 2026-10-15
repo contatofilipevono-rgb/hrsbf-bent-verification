@@ -14,6 +14,11 @@ open Finset
 def polarRadical {n : ℕ} (Q : Vec n → F₂) (r : Vec n) : Prop :=
   ∀ x, polar Q r x = 0
 
+instance decidablePolarRadical {n : ℕ} (Q : Vec n → F₂) (r : Vec n) :
+    Decidable (polarRadical Q r) := by
+  unfold polarRadical
+  infer_instance
+
 private lemma quadratic_sign_pair {n : ℕ} (Q : Vec n → F₂)
     (r x : Vec n) :
     sign (Q (x + r)) * sign (Q x) =
@@ -21,7 +26,8 @@ private lemma quadratic_sign_pair {n : ℕ} (Q : Vec n → F₂)
   have heq : Q (x + r) + Q x = (Q r + Q 0) + polar Q r x := by
     unfold polar
     rw [add_comm x r]
-    ring
+    ring_nf
+    simp
   calc
     sign (Q (x + r)) * sign (Q x) = sign (Q (x + r) + Q x) := by
       rw [sign_add]
@@ -67,8 +73,9 @@ theorem quadratic_walsh_square {n : ℕ} (Q : Vec n → F₂)
       (∑ x : Vec n, sign (polar Q r x)) =
        if polarRadical Q r
        then (Fintype.card (Vec n) : ℤ) else 0 := by
-    exact sum_sign_additive (fun x => polar Q r x)
-      (quadratic_polar_add_right Q hq r)
+    simpa only [polarRadical] using
+      (sum_sign_additive (fun x => polar Q r x)
+        (quadratic_polar_add_right Q hq r))
   calc
     (∑ r : Vec n, ∑ x : Vec n,
       sign (Q (x + r)) * sign (Q x)) =
