@@ -37,7 +37,7 @@ theorem quadratic_unbalanced_of_radical_constant {n : ℕ}
         apply Finset.sum_congr rfl
         intro r hr
         have hqr := hconst r (Finset.mem_filter.mp hr).2
-        simp [hqr, sign]
+        simp [hqr, sign, CharTwo.add_self_eq_zero]
       _ = (R.card : ℤ) := by simp
   intro hbal
   have hgauss := quadratic_walsh_square Q hq
