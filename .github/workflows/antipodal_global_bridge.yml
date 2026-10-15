@@ -1,0 +1,29 @@
+name: Lean antipodal global bridge (isolated)
+on:
+  push:
+    branches:
+      - formal/antipodal-global-completion-2026-10-14
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  kernel-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          project-directory: formalization
+          build: false
+      - name: Obtain pinned Mathlib cache
+        working-directory: formalization
+        run: lake exe cache get
+      - name: Verify existing 52-result formal kernel
+        working-directory: formalization
+        run: lake build
+      - name: Check exact n=2 endpoint without admitted axioms
+        working-directory: formalization
+        run: |
+          lake env lean Antipodal/Endpoint2.lean | tee endpoint2_axioms.log
+          if grep -E 'sorryAx|Lean.ofReduceBool' endpoint2_axioms.log; then exit 1; fi
