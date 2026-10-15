@@ -1,3 +1,5 @@
+import Antipodal.OddRestriction
+import Antipodal.CanonicalANF
 import Antipodal.Autocorrelation
 import Antipodal.FixedFreeQuadratic
 
