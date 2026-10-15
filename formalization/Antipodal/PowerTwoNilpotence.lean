@@ -10,7 +10,8 @@ namespace HRSBF.Antipodal
 private theorem end_add_self_zero {V : Type*} [AddCommGroup V] [Module F₂ V]
     (A : Module.End F₂ V) : A + A = 0 := by
   ext x
-  exact CharTwo.add_self_eq_zero (A x)
+  have hz : ((1 : F₂) + 1) • (A x) = 0 := by simp
+  simpa only [add_smul, one_smul] using hz
 
 private theorem end_add_one_square {V : Type*} [AddCommGroup V] [Module F₂ V]
     (A : Module.End F₂ V) : (A + 1) ^ 2 = A ^ 2 + 1 := by
@@ -36,7 +37,9 @@ theorem shift_plus_one_nilpotent {V : Type*} [AddCommGroup V] [Module F₂ V]
           rw [pow_succ, pow_mul]
         _ = (S ^ (2 ^ j) + 1) ^ 2 := by rw [ih]
         _ = (S ^ (2 ^ j)) ^ 2 + 1 := end_add_one_square _
-        _ = S ^ (2 ^ (j + 1)) + 1 := by rw [pow_succ, pow_mul]
+        _ = S ^ (2 ^ (j + 1)) + 1 := by
+          have hm : 2 ^ (j + 1) = (2 ^ j) * 2 := pow_succ 2 j
+          rw [hm, pow_mul]
   rw [hfrob, hpow]
   exact end_add_self_zero (1 : Module.End F₂ V)
 
