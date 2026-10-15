@@ -1,0 +1,25 @@
+{
+  "lean_version": "Lean (version 4.15.0, x86_64-unknown-linux-gnu, commit 11651562caae, Release)",
+  "mathlib_commit": "9837ca9d65d9de6fad1ef4381750ca688774e608",
+  "build_exit_code": 0,
+  "audit_exit_code": 0,
+  "public_theorems_audited": 52,
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "build_seconds": 1.66,
+  "audit_seconds": 7.188,
+  "standalone_exit_code": 0,
+  "standalone_seconds": 22.379,
+  "scope": "Local fiber rigidity, Parseval, fiber balance, and conditional fiber contradiction. The universal antipodal theorem remains unformalized.",
+  "source_sha256": {
+    "Antipodal/Cyclic.lean": "67a3fdf834ddbd829ddd83ed8040ed6fb098a74ebe08e9339bbcbb6cfe4c22ee",
+    "Antipodal/Fourier.lean": "02cd24b160f0659f75bfc4a288c039669ba0c0fcffa5161d69f2ac829e9aa8a6",
+    "Antipodal/LocalRigidity.lean": "303b399c41b544a4988bf78c969936915057038f3cad0fc02bba2a123d029998",
+    "Antipodal/Main.lean": "0483cef335d470886a365d615d71237208360f2496d3a52cf51e9219fe561aeb",
+    "Antipodal/Polynomial.lean": "0a630a87d8fb5203cefa0a6a3338c254befb44d2facd24dfafb26affc71f1134",
+    "Nucleo_Fibras.lean": "667b5ea95bd444bda6ceefd4feb4a067bc5ce1d6b19b5ea1463788c21df88aa0"
+  }
+}

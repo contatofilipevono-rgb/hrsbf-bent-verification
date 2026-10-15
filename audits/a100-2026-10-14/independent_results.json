@@ -1,0 +1,58 @@
+{
+  "n14": {
+    "all_reported_positive_ids_have_P14": true,
+    "ids_verified_exactly": 25176,
+    "failed": [],
+    "spectra": [
+      -128,
+      128
+    ],
+    "weights": {
+      "8128": 12567,
+      "8256": 12609
+    },
+    "source_and_id_hashes_match": true,
+    "prefix_coverage_fraction": 0.058208465576171875,
+    "never_activated_orbits": [
+      [
+        0,
+        3,
+        9
+      ],
+      [
+        0,
+        3,
+        10
+      ],
+      [
+        0,
+        4,
+        8
+      ],
+      [
+        0,
+        4,
+        9
+      ]
+    ],
+    "quadratic_bent_representatives": 56,
+    "exact_cubic_bent_representatives": 25120,
+    "seconds": 11.704,
+    "scope": "All reported positive IDs checked; absence of other bent IDs within the tested prefix has not been independently repeated."
+  },
+  "quartic_n10": {
+    "tested": 4194304,
+    "passed_DJ_filter": 1148928,
+    "bent": 0,
+    "independently_exhaustive": true,
+    "seconds": 22.379
+  },
+  "quintic_n16": {
+    "basis_orbits": 273,
+    "basis_sha256_actual": "4687570ee2501ec09f15308d71c542c1f18ea13aa26686622786bec37418fa65",
+    "basis_hash_match": true,
+    "raw_candidates_or_fiber_witnesses_published": false,
+    "scope": "Only summary and basis hash checked; individual exclusions cannot be verified from the published files.",
+    "seconds": 0.105
+  }
+}

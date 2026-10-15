@@ -18,7 +18,7 @@ The complete argument was already present in the V1 manuscript at the baseline c
 |---|---|
 | General antipodal theorem and homogeneous cubic corollary | Algebraic proof in the manuscript; reconstructed in this audit; needs external expert scrutiny |
 | Explicit nonhomogeneous n=12 certificate and selected supporting lemmas | Compiled and kernel checked with Lean 4.15.0; 543 theorem axiom reports |
-| Exhaustive n=12 control across all 33,554,432 candidates ($\deg \le 3$) | Certified on NVIDIA A100 GPU (31.1s); exactly 14,336 bent representatives, 0 omit $P_{12}$, 0 homogeneous bent |
+| Exhaustive n=12 control across all 33,554,432 candidates ($\deg \le 3$) | Reported NVIDIA A100 GPU run (31.1s); exactly 14,336 bent representatives, 0 omit $P_{12}$, 0 homogeneous bent |
 | Quadratic rigidity / complementary-fiber identities in n=32 | Independent exact finite controls, all passing; supports the algebraic argument |
 | Full Lean formalization of the general theorem | **Not completed** |
 | `BitWalkBridge 32`, universal Ward certificate in n=16, bit-projection hypotheses in selected formal lemmas | **Still pending in Lean**; none is smuggled in as a proved global theorem |
@@ -55,3 +55,7 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error antipodal_necessity_v1_2.te
 ## Literature
 
 The manuscript credits the earlier quadratic/short-cycle antipodal phenomenon, the known nonhomogeneous cubic constructions, and the partial results of Sun–Shi–Liu–Fu (2026). No claim is made to solve homogeneous degrees four and above. See `AUDIT.md` for current-source checks and proof dependencies.
+
+## Independent A100 follow-up
+
+See [audits/a100-2026-10-14](../../audits/a100-2026-10-14/README.md). The full quartic n=10 search was independently repeated on CPU. All reported positive n=14 IDs passed exact CPU Walsh checks; that search covers only a deterministic prefix (5.82%). The quintic n=16 summary lacks the raw witnesses needed for independent exclusion checks. SHA256SUMS now refers to Git/LF bytes. The PDF remains the original snapshot; only the TeX source includes the subsequent computational paragraphs.

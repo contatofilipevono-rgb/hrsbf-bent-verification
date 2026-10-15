@@ -1,0 +1,7 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "numpy": "2.3.5",
+  "run": "CPU independent reconstruction; no CUDA needed",
+  "input_commit": "b04d6366a3cccede346b9f4005f495bff9871817",
+  "release_audited": "6951e4f760d78443a09c4db4caa8160d13c74e24"
+}

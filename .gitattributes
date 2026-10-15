@@ -1,0 +1,3 @@
+/publications/v1-audited-2026-10-14/** text eol=lf
+/publications/v1-audited-2026-10-14/paper/*.pdf -text
+/audits/a100-2026-10-14/** text eol=lf
