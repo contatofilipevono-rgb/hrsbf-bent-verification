@@ -82,8 +82,19 @@ theorem bent_implies_antipodal_in_two_variables
   rw [walsh_pair_zero_zero, vec1_card] at hs
   have hp := four_sign_parity
     (f (0, 0)) (f (0, ones)) (f (ones, 0)) (f (ones, ones)) hs
-  simpa [antipodalCoeff2, polar, leftUnit2, rightUnit2,
-    Pi.add_apply, zero_add, add_zero, add_comm, add_left_comm, add_assoc, ones] using hp
+  have hsum : leftUnit2 + rightUnit2 = ((ones : Vec 1), ones) := by
+    apply Prod.ext
+    · funext i
+      simp [leftUnit2, rightUnit2, ones]
+    · funext i
+      simp [leftUnit2, rightUnit2, ones]
+  unfold antipodalCoeff2 polar
+  rw [hsum]
+  change f (ones, ones) + f (ones, 0) + f (0, ones) + f 0 = 1
+  calc
+    f (ones, ones) + f (ones, 0) + f (0, ones) + f 0 =
+        f 0 + (f (ones, ones) + (f (ones, 0) + f (0, ones))) := by ring
+    _ = 1 := hp
 
 end HRSBF.Antipodal
 
