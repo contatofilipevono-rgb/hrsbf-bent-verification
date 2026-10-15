@@ -36,10 +36,11 @@ jobs:
           lake env lean Antipodal/OddMultiplicity.lean | tee odd_multiplicity_axioms.log
           lake env lean -T 200000 Antipodal/Endpoint2.lean | tee endpoint2_axioms.log
           lake env lean Antipodal/DerivativeBridge.lean | tee derivative_bridge_axioms.log
-          lake build Antipodal.RadicalInvariant
+          lake build Antipodal.RadicalInvariant Antipodal.PowerTwoNilpotence
           lake env lean Antipodal/QuadraticRadical.lean | tee quadratic_radical_axioms.log
           lake env lean Antipodal/QuadraticPolar.lean | tee quadratic_polar_axioms.log
           lake env lean Antipodal/QuadraticGauss.lean | tee quadratic_gauss_axioms.log
           lake env lean Antipodal/QuadraticBalanceBridge.lean | tee quadratic_balance_axioms.log
           lake env lean Antipodal/RadicalInvariant.lean | tee radical_invariant_axioms.log
-          if grep -E 'sorryAx|Lean.ofReduceBool' endpoint2_axioms.log odd_multiplicity_axioms.log derivative_bridge_axioms.log quadratic_radical_axioms.log quadratic_polar_axioms.log quadratic_gauss_axioms.log quadratic_balance_axioms.log radical_invariant_axioms.log; then exit 1; fi
+          lake env lean Antipodal/PowerTwoNilpotence.lean | tee pow2_nilpotence_axioms.log
+          if grep -E 'sorryAx|Lean.ofReduceBool' endpoint2_axioms.log odd_multiplicity_axioms.log derivative_bridge_axioms.log quadratic_radical_axioms.log quadratic_polar_axioms.log quadratic_gauss_axioms.log quadratic_balance_axioms.log radical_invariant_axioms.log pow2_nilpotence_axioms.log; then exit 1; fi
