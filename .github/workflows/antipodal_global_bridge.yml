@@ -35,4 +35,5 @@ jobs:
           set -o pipefail
           lake env lean Antipodal/OddMultiplicity.lean | tee odd_multiplicity_axioms.log
           lake env lean -T 200000 Antipodal/Endpoint2.lean | tee endpoint2_axioms.log
-          if grep -E 'sorryAx|Lean.ofReduceBool' endpoint2_axioms.log odd_multiplicity_axioms.log; then exit 1; fi
+          lake env lean Antipodal/DerivativeBridge.lean | tee derivative_bridge_axioms.log
+          if grep -E 'sorryAx|Lean.ofReduceBool' endpoint2_axioms.log odd_multiplicity_axioms.log derivative_bridge_axioms.log; then exit 1; fi
