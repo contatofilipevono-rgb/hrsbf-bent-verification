@@ -9,7 +9,8 @@ for all functions.
 
 namespace HRSBF.Antipodal
 
-def IsQuadratic (Q : Vec 1 → F₂) : Prop :=
+def IsQuadratic {V : Type*} [AddCommGroup V] [Module F₂ V]
+    (Q : V → F₂) : Prop :=
   ∀ a b c, third Q a b c = 0
 
 theorem quadratic_polar_add_right {V : Type*} [AddCommGroup V] [Module F₂ V]
@@ -20,7 +21,9 @@ theorem quadratic_polar_add_right {V : Type*} [AddCommGroup V] [Module F₂ V]
   have hi : third Q a b c =
       polar Q a (b + c) + polar Q a b + polar Q a c := by
     unfold third polar
-    ring
+    simp only [add_assoc]
+    ring_nf
+    simp
   rw [hi] at hh
   calc
     polar Q a (b + c) =
