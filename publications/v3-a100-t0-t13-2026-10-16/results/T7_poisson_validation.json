@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "positive_controls": [
+    {
+      "n": 12,
+      "P_n_positive_control": "PASS"
+    },
+    {
+      "n": 16,
+      "P_n_positive_control": "PASS"
+    },
+    {
+      "n": 20,
+      "P_n_positive_control": "PASS"
+    }
+  ],
+  "n12_random_full_Walsh_identity_checks": 1536,
+  "seed": 20261016
+}

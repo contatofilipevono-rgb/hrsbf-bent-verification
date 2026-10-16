@@ -1,0 +1,61 @@
+{
+  "n": 20,
+  "generator_count": 245,
+  "restrictions": [
+    {
+      "name": "g0",
+      "fibers": [
+        0
+      ],
+      "rank": 5,
+      "image_classes": 32,
+      "coefficient_space_dimension": 245,
+      "coset_size": 1766847064778384329583297500742918515827483896875618958121606201292619776
+    },
+    {
+      "name": "gJ",
+      "fibers": [
+        1023
+      ],
+      "rank": 13,
+      "image_classes": 8192,
+      "coefficient_space_dimension": 245,
+      "coset_size": 6901746346790563787434755862277025452451108972170386555162524223799296
+    },
+    {
+      "name": "galt",
+      "fibers": [
+        341
+      ],
+      "rank": 22,
+      "image_classes": 4194304,
+      "coefficient_space_dimension": 245,
+      "coset_size": 13479973333575319897333507543509815336818572211270286240551805124608
+    },
+    {
+      "name": "joint_ends",
+      "fibers": [
+        0,
+        1023
+      ],
+      "rank": 18,
+      "image_classes": 262144,
+      "coefficient_space_dimension": 245,
+      "coset_size": 215679573337205118357336120696157045389097155380324579848828881993728
+    },
+    {
+      "name": "joint_period2",
+      "fibers": [
+        0,
+        341,
+        682,
+        1023
+      ],
+      "rank": 32,
+      "image_classes": 4294967296,
+      "coefficient_space_dimension": 245,
+      "coset_size": 13164036458569648337239753460458804039861886925068638906788872192
+    }
+  ],
+  "scope": "Exact F2 ranks of restriction maps; no bentness exclusion asserted"
+}

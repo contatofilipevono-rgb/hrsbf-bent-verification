@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "frequencies_greedy": [
+    5,
+    23,
+    1,
+    0
+  ],
+  "newly_covered_counts": [
+    72496,
+    17312,
+    4416,
+    320
+  ],
+  "total": 94544,
+  "minimum_proved": false,
+  "scope": "Covers only 94544 extensions after the certified rank-41 prefix; not a standalone proof for 2^43"
+}

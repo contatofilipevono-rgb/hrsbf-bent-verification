@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "n12_full_Walsh_functions": 94544,
+  "n12_bent_count": 0,
+  "n20_sector_conditions": [
+    "c5=0",
+    "c2 XOR c4=1"
+  ],
+  "n20_excluded_fraction": "3/4",
+  "n20_complement_Walsh_divisor": 32,
+  "n20_min_abs_A_J": 64,
+  "stronger_divisor_64": "REFUTED by A_J=96",
+  "n20_closed": false,
+  "n16_closed": false
+}

@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "n12_all_points": 4096,
+  "n20_random_points": 256,
+  "oracle": "Original ANF CPU, all fibers and all frequencies"
+}

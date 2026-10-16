@@ -53,4 +53,38 @@ Somando inicialmente sobre $x \in \mathbb{F}_2^{p^r}$, obtém-se a **Dicotomia E
 
 - **Postos em $V_2 = \{0, 85, 170, 255\}$:** $\operatorname{rk}(g_0) = 4$, $\operatorname{rk}(g_{255}) = 8$, $\operatorname{rk}(g_{85}) = 14$, posto conjunto **21** (5 sizígias cruzadas).
 - **Eliminação de 12 dos 16 setores (75% de $2^{116}$):** Como $64 \mid A_{255}, A_{85}$, $W_{255}(255) = W_{85}(255) = 0$, e $32 \mid A_z, W_z(255)$ para $z \in \{17, 51, 119\}$, Parseval em $b = 0, 255 \pmod{2048}$ força **$64 \mid A_0$ e $64 \mid W_0(255)$**, deixando apenas os **4 setores** com $c_{115} = 0$ e $c_{57} \oplus c_{113} = 0$.
-- **Peneira em $V_1(255)$ e $V_2$:** Reduz $4.096 \to 864$ classes no posto 12 ($78,91\%$ eliminado) e $2.097.152 \to 228.444$ classes no posto 21 ($89,11\%$ eliminado).
+- **Peneira em $V_1(255)$ e $V_2$:** Reduz $4.096 \to 864$ classes no posto 12 ($78,91\%$ eliminado) e $2.097.152 \to 391.804$ classes em T11 ($81,32\%$ eliminado).
+
+---
+
+## 5. Síntese Pós-A100 (T0–T13) e Demonstrações Analíticas v4 ([`verify_t11_t13_and_v4_advances.py`](verify_t11_t13_and_v4_advances.py))
+
+### 5.1. Caracterização Analítica Exata das 6.144 Exceções em $n = 20$ (`T12_affine_exceptions.npz`)
+Na enumeração integral dos $2^{30} = 1.073.741.824$ estados da imagem de posto 32 sobre $V_2 = \{0, 341, 682, 1023\}$ após impor $c_{244} = 0$ e $c_{186} \oplus c_{242} = 1$, a A100 identificou que os sobreviventes formam o hiperplano $\tau(f) = 0$ ($2^{29} = 536.870.912$ estados) menos **6.144 exceções**, resultando em $536.864.768$ sobreviventes ($1.835.011 / 2.097.152 = 87,500143\%$ de exclusão). Demonstramos analiticamente (e verificamos bit-a-bit na CPU em $1,65\text{ s}$) que:
+- **Redundância de todas as 1.023 frequências $b \ne 0$:** Pelo Teorema Chinês dos Restos entre a divisibilidade 2-ádica ($8 \mid L_g(b)$) e a ação de $R_{20}^4$ de ordem 5 ($L_g(b) \equiv W_h(y(b,g)) \pmod{10}$), todo estado em $\tau(f) = 0$ satisfaz automaticamente $L_g(b) \equiv W_h(y(b,g)) + 20 \pmod{40}$, tornando todas as frequências $b \ne 0$ redundantes em $\tau(f) = 0$.
+- **Caracterização pela Desigualdade Triangular de Poisson em $b = 0$:** As **6.144 exceções** são **identicamente** os estados de $\tau(f) = 0$ que violam a cota $L_\infty$ de Poisson em $b = 0$:
+  $$\lvert A_0 \pm 2 A_{341} + A_{1023}\rvert \le 1024 \iff 2\lvert A_{341}\rvert + \lvert A_{1023}\rvert \le 1024.$$
+- **Decomposição Exata ($3.072 + 3.072 = 6.144$):** A projeção conjunta $(g_{341}, g_{1023})$ tem posto $27$ ($22 + 13 - 8$ sizígias cruzadas), de modo que cada estado de $g_{341}$ admite $2^5 = 32$ estados compatíveis de $g_{1023}$ e $2^3 = 8$ setores de $g_0$. Entre os $2^{21}$ estados de $g_{341}$ em $\tau(f)=0$, apenas $60$ possuem $\lvert A_{341}\rvert \ge 480$:
+  1. **12 estados** com $A_{341} = \pm 640$: todos os $32$ estados compatíveis de $g_{1023}$ têm $A_{1023} = \pm 64$, dando $2(640)+64 = 1344 > 1024$ e gerando $12 \times 32 \times 8 = \mathbf{3.072}$ exceções;
+  2. **48 estados** com $A_{341} = \pm 480$: exatamente $8$ dos $32$ estados compatíveis de $g_{1023}$ têm $A_{1023} = \pm 256$, dando $2(480)+256 = 1216 > 1024$ e gerando $48 \times 8 \times 8 = \mathbf{3.072}$ exceções.
+
+### 5.2. Extensão do Lema de Redução ao Período 4 para Potências de Primos $n = 4p^r$ ($p \ge 5$ primo, $r \ge 1$)
+- Sob a ação do grupo cíclico $G = \langle R_n^4 \rangle \cong C_{p^r}$ de ordem $p^r$ em $\mathbb{F}_2^{4p^r}$, toda órbita não fixa tem cardinalidade $p^k$ ($1 \le k \le r$), logo **múltipla de $p$**. Como $p^r$ é ímpar e $2^{2p^r} \equiv 4 \pmod p$ por Fermat para todo $r \ge 1$, vale para todo vetor de período 4 $a = (b, \dots, b)$:
+  $$W_f(b, \dots, b) \equiv W_h(b) \pmod p, \qquad h(y) = f(y, \dots, y) : \mathbb{F}_2^4 \to \mathbb{F}_2.$$
+- Para todo primo $p \ge 5$, $0, \pm 2 \not\equiv \pm 4 \pmod p$, logo $\lvert W_h(b)\rvert \ge 4$ para todo $b \in \mathbb{F}_2^4$; por Parseval em 4 variáveis ($\sum_b W_h(b)^2 = 256 = 16 \cdot 4^2$), segue $\lvert W_h(b)\rvert = 4$ ($h$ é bent) **e** o sinal dual fica travado nos 16 pontos de período 4: $f^*(y, \dots, y) = h^*(y)$.
+- Como toda órbita quártica em $\mathcal{H}_{4p^r}$ tem tamanho em $\{4p^r, 2p^r, p^r\}$ com $p^r$ ímpar e $2p^r \equiv 2 \pmod 4$, as três condições lineares independentes:
+  $$c_{p^r} = 0, \qquad \bigoplus_{\substack{1 \le d < p^r \\ d \text{ par}}} c_d = 1, \qquad \tau(f) = 0 \quad \left(\lvert\operatorname{supp}(\tau)\rvert = \frac{3(p^r - 1)}{2}p^{2r}\right)$$
+  excluem exatamente **$7/8$ ($87,5\%$) de $\mathcal{H}_{4p^r}$ para todo primo $p \ge 5$ e todo $r \ge 1$** (verificado exaustivamente até $p^r = 25, n = 100$ com $39.225$ geradores).
+
+### 5.3. Teorema Universal de Grau $\le 3$ e Divisibilidade de Stickelberger–McEliece nas Fibras $g_z$
+- Para todo $n = 2h$ par e toda $f \in \mathcal{H}_{2h}$, o pareamento pela involução $R_{2h}^h$ cancela identicamente todos os monômios de grau 4 em $u$ na restrição $g_z(u) = f(u, u \oplus z)$, provando que **$\deg(g_z) \le 3$ incondicionalmente para todo $z \in \mathbb{F}_2^h$**.
+- Para todo $z \ne 0$, como $g_z(u \oplus z) = g_z(u)$, $g_z \oplus \langle b, u\rangle$ (quando $\langle b, z\rangle = 0$) fatora por $\mathbb{F}_2^h / \langle z\rangle \cong \mathbb{F}_2^{h-1}$ com grau $\le 3$. Pelo teorema de Ax–Katz / Stickelberger–McEliece, segue incondicionalmente:
+  $$2^{\lceil (h-1)/3 \rceil + 1} \;\Big|\; W_{g_z}(b) \qquad \forall f \in \mathcal{H}_{2h}, \;\forall z \in \mathbb{F}_2^h \setminus \{0\}, \;\forall b \in \mathbb{F}_2^h,$$
+  garantindo $16 \mid W_{g_z}(b)$ em $n = 16, 20$, $32 \mid W_{g_z}(b)$ em $n = 24$, e $64 \mid W_{g_z}(b)$ em $n = 28$.
+
+### 5.4. Próxima Etapa Concreta em $n = 20$: Filtração sobre as 6 Órbitas de Período 5
+- Cada órbita de tamanho 5 em $z \in \{33, 99, 165, 231, 363, 495\}$ adiciona **posto zero** além do seu representante único (pois $g_{R_{10}(z)}(u) = g_z(R_{10}^{-1}(u \oplus \tau_1(z)))$).
+- A cadeia gulosa de incremento mínimo de posto sobre $V_2$ (posto 32) é:
+  $$32 \xrightarrow{+z_{33}\;(+29)} 61 \xrightarrow{+z_{231}\;(+16)} 77 \xrightarrow{+z_{363}\;(+4)} 81 \xrightarrow{+z_{99}\;(+15)} 96 \xrightarrow{+z_{165}\;(+5)} 101 \xrightarrow{+z_{495}\;(+0)} 101,$$
+  onde $z = 363$ adiciona apenas $+4$ parâmetros, $z = 165$ adiciona $+5$, e $z = 495$ é **100% determinado linearmente** ($\Delta\operatorname{rk} = 0$) pelas fibras anteriores.
+

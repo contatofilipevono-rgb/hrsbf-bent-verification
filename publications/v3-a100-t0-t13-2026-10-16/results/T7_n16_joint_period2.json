@@ -1,0 +1,27 @@
+{
+  "status": "EXACT_COMPLETE_IMAGE",
+  "n": 16,
+  "rank": 21,
+  "image_functions": 2097152,
+  "fibers": [
+    0,
+    85,
+    170,
+    255
+  ],
+  "frequencies_histogram": [
+    0,
+    85,
+    255
+  ],
+  "common_spectral_gcd": 16,
+  "zero_A_count_over_fibers": 3302912,
+  "minimum_abs_A": 0,
+  "seconds_this_session": 2.3074401520000265,
+  "partial_energy_survivors": 1983244,
+  "poisson_lineJ_survivors": 962560,
+  "combined_survivors": 942860,
+  "coefficient_coset_size": 39614081257132168796771975168,
+  "complete_functions_excluded_by_combined": 45726217082457605384763516760621056,
+  "scope": "Exact necessary filters on a complete restriction image; surviving classes are not asserted bent. Any full-dimensional exclusion requires zero survivors and verified filter soundness."
+}

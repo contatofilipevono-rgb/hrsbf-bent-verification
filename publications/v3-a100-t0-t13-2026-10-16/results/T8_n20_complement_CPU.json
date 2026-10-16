@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "complete_image_functions": 8192,
+  "full_frequency_coefficients_checked": 8388608,
+  "histograms_match_GPU": true,
+  "common_spectral_gcd": 32,
+  "minimum_abs_A": 64,
+  "seconds": 0.832758302000002
+}

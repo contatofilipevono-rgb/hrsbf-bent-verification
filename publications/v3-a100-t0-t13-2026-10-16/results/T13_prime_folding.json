@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "finite_prime_checks": [
+    {
+      "p": 5,
+      "n": 20,
+      "quartic_generators": 245,
+      "all_generator_foldings_match": true,
+      "folding_rank": 5,
+      "necessary_equations_rank": 3,
+      "fraction_satisfying_three_conditions": "1/8"
+    },
+    {
+      "p": 7,
+      "n": 28,
+      "quartic_generators": 735,
+      "all_generator_foldings_match": true,
+      "folding_rank": 5,
+      "necessary_equations_rank": 3,
+      "fraction_satisfying_three_conditions": "1/8"
+    },
+    {
+      "p": 11,
+      "n": 44,
+      "quartic_generators": 3091,
+      "all_generator_foldings_match": true,
+      "folding_rank": 5,
+      "necessary_equations_rank": 3,
+      "fraction_satisfying_three_conditions": "1/8"
+    },
+    {
+      "p": 13,
+      "n": 52,
+      "quartic_generators": 5213,
+      "all_generator_foldings_match": true,
+      "folding_rank": 5,
+      "necessary_equations_rank": 3,
+      "fraction_satisfying_three_conditions": "1/8"
+    },
+    {
+      "p": 17,
+      "n": 68,
+      "quartic_generators": 11985,
+      "all_generator_foldings_match": true,
+      "folding_rank": 5,
+      "necessary_equations_rank": 3,
+      "fraction_satisfying_three_conditions": "1/8"
+    },
+    {
+      "p": 19,
+      "n": 76,
+      "quartic_generators": 16891,
+      "all_generator_foldings_match": true,
+      "folding_rank": 5,
+      "necessary_equations_rank": 3,
+      "fraction_satisfying_three_conditions": "1/8"
+    }
+  ],
+  "four_variable_RS_zero_constant_functions_checked": 32,
+  "bent_count": 4,
+  "classification": "h=aL+bC+P; cubic and quartic coefficients zero",
+  "scope": "Finite checks of all generators and the base classification; the accompanying analytic orbit-congruence proof covers every prime p>=5. No nonexistence theorem or novelty claim."
+}

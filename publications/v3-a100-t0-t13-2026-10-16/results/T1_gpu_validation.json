@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "cupy": "14.0.1",
+  "fwht": [
+    {
+      "length": 64,
+      "rows": 35,
+      "exact_equal": true
+    },
+    {
+      "length": 256,
+      "rows": 35,
+      "exact_equal": true
+    },
+    {
+      "length": 1024,
+      "rows": 35,
+      "exact_equal": true
+    },
+    {
+      "length": 4096,
+      "rows": 35,
+      "exact_equal": true
+    }
+  ],
+  "packed_245_coefficients": "PASS",
+  "negative_phase_control": {
+    "z": 27,
+    "k": 2,
+    "b": 5,
+    "direct": -16,
+    "wrong": 16
+  }
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "n": 64,
+    "batch": 256,
+    "cpu_seconds": 0.0003768469999840818,
+    "gpu_resident_seconds": 9.11599999540158e-05,
+    "gpu_including_transfers_seconds": 0.00024492899996175765,
+    "speedup_including_transfers": 1.5385968996848938
+  },
+  {
+    "n": 64,
+    "batch": 4096,
+    "cpu_seconds": 0.006908307999992758,
+    "gpu_resident_seconds": 9.940599994706645e-05,
+    "gpu_including_transfers_seconds": 0.0005732390000048326,
+    "speedup_including_transfers": 12.05135728716036
+  },
+  {
+    "n": 64,
+    "batch": 32768,
+    "cpu_seconds": 0.07634881600000654,
+    "gpu_resident_seconds": 0.00022289600002523002,
+    "gpu_including_transfers_seconds": 0.0044093889999885505,
+    "speedup_including_transfers": 17.315055668757005
+  },
+  {
+    "n": 256,
+    "batch": 256,
+    "cpu_seconds": 0.0017257839999729185,
+    "gpu_resident_seconds": 9.851600003685235e-05,
+    "gpu_including_transfers_seconds": 0.0002883950000409641,
+    "speedup_including_transfers": 5.984098197707261
+  },
+  {
+    "n": 256,
+    "batch": 4096,
+    "cpu_seconds": 0.03805491200000688,
+    "gpu_resident_seconds": 0.00017190400001254602,
+    "gpu_including_transfers_seconds": 0.002124838999975509,
+    "speedup_including_transfers": 17.90955079441101
+  },
+  {
+    "n": 256,
+    "batch": 32768,
+    "cpu_seconds": 0.5630583079999951,
+    "gpu_resident_seconds": 0.0004116950000252473,
+    "gpu_including_transfers_seconds": 0.021520329999987098,
+    "speedup_including_transfers": 26.164018302708772
+  },
+  {
+    "n": 1024,
+    "batch": 256,
+    "cpu_seconds": 0.009959763000040311,
+    "gpu_resident_seconds": 0.00012513600000829683,
+    "gpu_including_transfers_seconds": 0.0005705269999793927,
+    "speedup_including_transfers": 17.457128234772508
+  },
+  {
+    "n": 1024,
+    "batch": 4096,
+    "cpu_seconds": 0.25946629899999607,
+    "gpu_resident_seconds": 0.00028708799999321855,
+    "gpu_including_transfers_seconds": 0.010836014000005889,
+    "speedup_including_transfers": 23.944810241095578
+  },
+  {
+    "n": 1024,
+    "batch": 32768,
+    "cpu_seconds": 2.873227706000023,
+    "gpu_resident_seconds": 0.0010057839999717544,
+    "gpu_including_transfers_seconds": 0.08511857799999234,
+    "speedup_including_transfers": 33.75558865657133
+  }
+]

@@ -1,0 +1,155 @@
+{
+  "status": "PASS",
+  "a100_package_sha256_verified_files": 110,
+  "n20_6144_exceptions_theorem": {
+    "total_states_in_tau0_hyperplane": 536870912,
+    "exceptions_total": 6144,
+    "survivors_total": 536864768,
+    "excluded_fraction": "1835011/2097152",
+    "excluded_percent": 87.50014305114746,
+    "exact_characterization": "2 * |A_341| + |A_1023| > 1024 at b = 0",
+    "decomposition": {
+      "abs_A341_640_abs_A1023_64": 3072,
+      "abs_A341_480_abs_A1023_256": 3072
+    },
+    "exact_match_with_T12_affine_exceptions_npz": true,
+    "cpu_verification_seconds": 1.6465
+  },
+  "n16_391804_theorem": {
+    "total_states_V2": 2097152,
+    "survivors_after_b0": 391888,
+    "exceptions_at_b85": 84,
+    "final_survivors": 391804,
+    "excluded_percent": 81.317329,
+    "dual_period2_constancy": "f*(0^16) = f*(1^16) = f*(85,85) = f*(170,170)"
+  },
+  "prime_power_period4_folding_4pr": [
+    {
+      "n": 20,
+      "p_power": 5,
+      "total_quartic_generators": 245,
+      "count_M_quartic_fold": 1,
+      "count_P_quadratic_opposite_fold": 2,
+      "count_T_cubic_fold_tau": 150,
+      "count_L_linear_fold": 1,
+      "count_C_quadratic_adjacent_fold": 40,
+      "count_zero_fold": 51,
+      "excluded_fraction": "7/8"
+    },
+    {
+      "n": 28,
+      "p_power": 7,
+      "total_quartic_generators": 735,
+      "count_M_quartic_fold": 1,
+      "count_P_quadratic_opposite_fold": 3,
+      "count_T_cubic_fold_tau": 441,
+      "count_L_linear_fold": 5,
+      "count_C_quadratic_adjacent_fold": 133,
+      "count_zero_fold": 152,
+      "excluded_fraction": "7/8"
+    },
+    {
+      "n": 44,
+      "p_power": 11,
+      "total_quartic_generators": 3091,
+      "count_M_quartic_fold": 1,
+      "count_P_quadratic_opposite_fold": 5,
+      "count_T_cubic_fold_tau": 1815,
+      "count_L_linear_fold": 30,
+      "count_C_quadratic_adjacent_fold": 605,
+      "count_zero_fold": 635,
+      "excluded_fraction": "7/8"
+    },
+    {
+      "n": 52,
+      "p_power": 13,
+      "total_quartic_generators": 5213,
+      "count_M_quartic_fold": 1,
+      "count_P_quadratic_opposite_fold": 6,
+      "count_T_cubic_fold_tau": 3042,
+      "count_L_linear_fold": 55,
+      "count_C_quadratic_adjacent_fold": 1040,
+      "count_zero_fold": 1069,
+      "excluded_fraction": "7/8"
+    },
+    {
+      "n": 68,
+      "p_power": 17,
+      "total_quartic_generators": 11985,
+      "count_M_quartic_fold": 1,
+      "count_P_quadratic_opposite_fold": 8,
+      "count_T_cubic_fold_tau": 6936,
+      "count_L_linear_fold": 140,
+      "count_C_quadratic_adjacent_fold": 2448,
+      "count_zero_fold": 2452,
+      "excluded_fraction": "7/8"
+    },
+    {
+      "n": 76,
+      "p_power": 19,
+      "total_quartic_generators": 16891,
+      "count_M_quartic_fold": 1,
+      "count_P_quadratic_opposite_fold": 9,
+      "count_T_cubic_fold_tau": 9747,
+      "count_L_linear_fold": 204,
+      "count_C_quadratic_adjacent_fold": 3477,
+      "count_zero_fold": 3453,
+      "excluded_fraction": "7/8"
+    },
+    {
+      "n": 92,
+      "p_power": 23,
+      "total_quartic_generators": 30383,
+      "count_M_quartic_fold": 1,
+      "count_P_quadratic_opposite_fold": 11,
+      "count_T_cubic_fold_tau": 17457,
+      "count_L_linear_fold": 385,
+      "count_C_quadratic_adjacent_fold": 6325,
+      "count_zero_fold": 6204,
+      "excluded_fraction": "7/8"
+    },
+    {
+      "n": 100,
+      "p_power": 25,
+      "total_quartic_generators": 39225,
+      "count_M_quartic_fold": 1,
+      "count_P_quadratic_opposite_fold": 12,
+      "count_T_cubic_fold_tau": 22500,
+      "count_L_linear_fold": 506,
+      "count_C_quadratic_adjacent_fold": 8200,
+      "count_zero_fold": 8006,
+      "excluded_fraction": "7/8"
+    }
+  ],
+  "n20_next_stage_period5_filtration": {
+    "base_V2_rank": 32,
+    "orbit_adds_zero_rank_beyond_representative": true,
+    "greedy_filtration_order": [
+      33,
+      231,
+      363,
+      99,
+      165,
+      495
+    ],
+    "cumulative_ranks": [
+      61,
+      77,
+      81,
+      96,
+      101,
+      101
+    ],
+    "incremental_ranks": [
+      29,
+      16,
+      4,
+      15,
+      5,
+      0
+    ],
+    "invariant_4dim_subspace_W5_rank": 69,
+    "invariant_5dim_subspace_U5_rank": 91
+  },
+  "total_elapsed_seconds": 3.4261
+}

@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "n20_image_rank": 32,
+  "n20_states_enumerated_after_prior_sector_filter": 1073741824,
+  "n20_survivors": 536864768,
+  "n20_excluded_fraction": "1835011/2097152",
+  "n20_excluded_percent": 87.50014305114746,
+  "all_6144_exceptions_CPU_checked": true,
+  "n16_survivors": 391804,
+  "n16_closed": false,
+  "n20_closed": false,
+  "analytic_family": "n=4p, prime p>=5: three independent necessary linear equations exclude 7/8; proof supplied separately; novelty not established"
+}

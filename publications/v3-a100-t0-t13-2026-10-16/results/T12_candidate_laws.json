@@ -1,0 +1,12 @@
+{
+  "status": "SAMPLE_ONLY",
+  "sample": 8192,
+  "accepted": 4116,
+  "affine_rank": 29,
+  "candidate_laws": [
+    [
+      32913392,
+      1
+    ]
+  ]
+}

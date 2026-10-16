@@ -1,0 +1,502 @@
+{
+  "status": "EXACT_FINITE_CLASSIFICATION",
+  "short_orbit_indices": [
+    100,
+    186,
+    228,
+    242,
+    244
+  ],
+  "short_orbit_supports": [
+    [
+      0,
+      1,
+      10,
+      11
+    ],
+    [
+      0,
+      2,
+      10,
+      12
+    ],
+    [
+      0,
+      3,
+      10,
+      13
+    ],
+    [
+      0,
+      4,
+      10,
+      14
+    ],
+    [
+      0,
+      5,
+      10,
+      15
+    ]
+  ],
+  "sectors": [
+    {
+      "mask": 0,
+      "short_coefficients": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "Wg0_J": 0,
+      "square_mod80": 0,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 1,
+      "short_coefficients": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "Wg0_J": 0,
+      "square_mod80": 0,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 2,
+      "short_coefficients": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "Wg0_J": 64,
+      "square_mod80": 16,
+      "condition_mod80": true,
+      "survivors_out_of_8192": 8192
+    },
+    {
+      "mask": 3,
+      "short_coefficients": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "Wg0_J": 64,
+      "square_mod80": 16,
+      "condition_mod80": true,
+      "survivors_out_of_8192": 8192
+    },
+    {
+      "mask": 4,
+      "short_coefficients": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "Wg0_J": 0,
+      "square_mod80": 0,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 5,
+      "short_coefficients": [
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "Wg0_J": 0,
+      "square_mod80": 0,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 6,
+      "short_coefficients": [
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "Wg0_J": -256,
+      "square_mod80": 16,
+      "condition_mod80": true,
+      "survivors_out_of_8192": 8192
+    },
+    {
+      "mask": 7,
+      "short_coefficients": [
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "Wg0_J": 64,
+      "square_mod80": 16,
+      "condition_mod80": true,
+      "survivors_out_of_8192": 8192
+    },
+    {
+      "mask": 8,
+      "short_coefficients": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "Wg0_J": 64,
+      "square_mod80": 16,
+      "condition_mod80": true,
+      "survivors_out_of_8192": 8192
+    },
+    {
+      "mask": 9,
+      "short_coefficients": [
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "Wg0_J": -256,
+      "square_mod80": 16,
+      "condition_mod80": true,
+      "survivors_out_of_8192": 8192
+    },
+    {
+      "mask": 10,
+      "short_coefficients": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "Wg0_J": 0,
+      "square_mod80": 0,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 11,
+      "short_coefficients": [
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "Wg0_J": 0,
+      "square_mod80": 0,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 12,
+      "short_coefficients": [
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "Wg0_J": 64,
+      "square_mod80": 16,
+      "condition_mod80": true,
+      "survivors_out_of_8192": 8192
+    },
+    {
+      "mask": 13,
+      "short_coefficients": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "Wg0_J": 64,
+      "square_mod80": 16,
+      "condition_mod80": true,
+      "survivors_out_of_8192": 8192
+    },
+    {
+      "mask": 14,
+      "short_coefficients": [
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "Wg0_J": 0,
+      "square_mod80": 0,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 15,
+      "short_coefficients": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "Wg0_J": 0,
+      "square_mod80": 0,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 16,
+      "short_coefficients": [
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "Wg0_J": -32,
+      "square_mod80": 64,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 17,
+      "short_coefficients": [
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "Wg0_J": -32,
+      "square_mod80": 64,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 18,
+      "short_coefficients": [
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "Wg0_J": 32,
+      "square_mod80": 64,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 19,
+      "short_coefficients": [
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "Wg0_J": -128,
+      "square_mod80": 64,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 20,
+      "short_coefficients": [
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "Wg0_J": -32,
+      "square_mod80": 64,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 21,
+      "short_coefficients": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "Wg0_J": -512,
+      "square_mod80": 64,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 22,
+      "short_coefficients": [
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "Wg0_J": 32,
+      "square_mod80": 64,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 23,
+      "short_coefficients": [
+        1,
+        1,
+        1,
+        0,
+        1
+      ],
+      "Wg0_J": 32,
+      "square_mod80": 64,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 24,
+      "short_coefficients": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "Wg0_J": 32,
+      "square_mod80": 64,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 25,
+      "short_coefficients": [
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "Wg0_J": 32,
+      "square_mod80": 64,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 26,
+      "short_coefficients": [
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "Wg0_J": 128,
+      "square_mod80": 64,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 27,
+      "short_coefficients": [
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "Wg0_J": -32,
+      "square_mod80": 64,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 28,
+      "short_coefficients": [
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "Wg0_J": -128,
+      "square_mod80": 64,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 29,
+      "short_coefficients": [
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "Wg0_J": 32,
+      "square_mod80": 64,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 30,
+      "short_coefficients": [
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "Wg0_J": -32,
+      "square_mod80": 64,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    },
+    {
+      "mask": 31,
+      "short_coefficients": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "Wg0_J": -32,
+      "square_mod80": 64,
+      "condition_mod80": false,
+      "survivors_out_of_8192": 0
+    }
+  ],
+  "sectors_with_any_survivor": 8,
+  "all_or_none_in_each_sector": true,
+  "mod80_matches_nonempty_sectors": true,
+  "necessary_sector_indicator_ANF_masks": [
+    2,
+    8,
+    18,
+    24
+  ],
+  "scope": "Exact n=20 classification of the necessary partial-energy and line-Poisson filters; generalization and novelty not claimed"
+}

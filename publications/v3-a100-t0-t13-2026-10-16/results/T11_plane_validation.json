@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "positive_controls": [
+    {
+      "n": 12,
+      "P_n": "PASS"
+    },
+    {
+      "n": 16,
+      "P_n": "PASS"
+    },
+    {
+      "n": 20,
+      "P_n": "PASS"
+    }
+  ],
+  "independent_full_Walsh_checks": 2048,
+  "formula": "N sum_z character(g,z) W_gz(b) = 4 sum_beta_in_coset W_f(b+beta,beta)",
+  "scope": "Orbit signed-sum tables are necessary relaxations; dual signs need not be coherent across b."
+}

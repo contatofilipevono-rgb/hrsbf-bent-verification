@@ -1,0 +1,23 @@
+================================================================================
+ SEGUNDA IMPLEMENTAÇÃO INDEPENDENTE DA CASCATA DE n = 12 (SEM TRANSPORTE)
+ Avaliação direta nas 64 fibras z in F_2^6 + Parametrização em F_2^{43}
+================================================================================
+
+Incrementos de posto por estágio (parametrizados diretamente em F_2^{43}): [12, 6, 6, 3, 4, 3, 2, 1, 4, 0, 1, 1]
+Estágio 1a (Posto 12, Plancherel): 712 | Estágio 1b (+ Poisson V_2): 361
+Estágio 2  (Posto 18, +O_9):       20,158
+Estágio 3  (Posto 24, +O_27):      212,296
+Estágio 4  (Posto 27, +O_7):       8,688
+Estágio 5  (Posto 31, +O_1) :      26,496
+Estágio 6  (Posto 34, +O_11):      94,936
+Estágio 7  (Posto 36, +O_13):      149,448
+Estágio 8  (Posto 37, +O_31):      106,552
+Estágio 9a (Posto 41, +O_3) :      349,680
+Estágio 9b (Posto 41, +O_5) :      23,636
+CHECKPOINT 5 (23636, 43)
+Estágio 9c (Posto 42, +O_15):      128
+CHECKPOINT 15 (128, 43)
+Estágio 9d (Posto 43, +O_23):      0
+
+Segunda implementação independente concluída em 323.94s: TODOS OS CONTADORES IDÊNTICOS (0 sobreviventes)!
+T3_reference_execution.json saved

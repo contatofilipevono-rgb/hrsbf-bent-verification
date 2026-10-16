@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "complete_functions": 94544,
+  "energy_counts": [
+    32176,
+    39520,
+    5552,
+    0
+  ],
+  "full_4096_Walsh_bent_count": 0,
+  "cpu_first_batch_comparison": "exact entire arrays",
+  "examples": [
+    {
+      "coefficient_mask": 6352946238516,
+      "bad_frequency": 0,
+      "W": 224
+    },
+    {
+      "coefficient_mask": 6400174364342,
+      "bad_frequency": 0,
+      "W": 32
+    },
+    {
+      "coefficient_mask": 1525238077944,
+      "bad_frequency": 0,
+      "W": -32
+    },
+    {
+      "coefficient_mask": 1606825417594,
+      "bad_frequency": 0,
+      "W": -32
+    },
+    {
+      "coefficient_mask": 1279890108904,
+      "bad_frequency": 1,
+      "W": 160
+    },
+    {
+      "coefficient_mask": 1361477448554,
+      "bad_frequency": 1,
+      "W": 160
+    },
+    {
+      "coefficient_mask": 2030981366312,
+      "bad_frequency": 1,
+      "W": 192
+    },
+    {
+      "coefficient_mask": 1983719686314,
+      "bad_frequency": 1,
+      "W": 192
+    }
+  ],
+  "seconds": 1.5541145900001538
+}

@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "seconds": 323.9541596490001,
+  "original_sha256": "0b6a15a7d74e782bdec59d6ae59a7b395aba0d49c67408205b2439e0cd7a98a3",
+  "instrumentation": "one checkpoint callback appended to rem_specs loop; no filter modified"
+}

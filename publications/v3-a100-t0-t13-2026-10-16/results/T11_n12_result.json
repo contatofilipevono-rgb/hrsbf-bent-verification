@@ -1,0 +1,20 @@
+{
+  "status": "EXACT_COMPLETE_IMAGE",
+  "n": 12,
+  "full_image_rank": 12,
+  "sector_restricted_rank": 12,
+  "enumerated": 4096,
+  "target": 4096,
+  "survivors": 361,
+  "table_build_seconds": 0.32790174100000513,
+  "session_seconds": 0.46752398600028755,
+  "filters": [
+    "prior necessary sector law for n20",
+    "four-fiber partial energy",
+    "line-J Poisson",
+    "plane Poisson with cyclic dual-sign grouping"
+  ],
+  "scope": "Necessary conditions only. Survivors are not asserted bent. A prefix pilot is not an exhaustive classification.",
+  "surviving_fraction_original": "361/4096",
+  "original_coefficient_coset_size": 2147483648
+}

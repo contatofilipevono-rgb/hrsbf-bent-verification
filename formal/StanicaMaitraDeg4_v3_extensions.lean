@@ -142,4 +142,85 @@ def check_n16_sector_elimination : Bool :=
 theorem theorem_n16_biantipodal_75pct_elimination : check_n16_sector_elimination = true := by
   decide
 
+/--
+  5. CLASSIFICAÇÃO EXATA DAS 32 FUNÇÕES RS EM 4 VARIÁVEIS (BASE DO LEMA DE REDUÇÃO AO PERÍODO 4):
+     Toda função RS h : F_2^4 → F_2 com h(0) = 0 escreve-se como:
+       h(y) = a*L(y) ⊕ b*C(y) ⊕ c*P(y) ⊕ d*T(y) ⊕ e*M(y),
+     onde (a, b, c, d, e) ∈ Bool^5 (32 funções).
+     Verificamos sobre todos os 16 pontos y ∈ F_2^4 e todas as 16 frequências β ∈ F_2^4 que:
+       (∀ β ∈ F_2^4, |W_h(β)| = 4) <==> (c = true ∧ d = false ∧ e = false),
+     o que em f ∈ H_{4p^r} (p ≥ 5 primo, r ≥ 1) traduz-se exatamente nas 3 condições lineares
+     independentes:
+       [M]h = c_{p^r} = 0,   [P]h = ⨁_{d par} c_d = 1,   [T]h = τ(f) = 0,
+     excluindo 7/8 (87,5%) de todo o espaço H_{4p^r}.
+-/
+def bit4 (y j : Nat) : Bool :=
+  ((y >>> j) &&& 1) == 1
+
+def eval_h4 (a b c d e : Bool) (y : Nat) : Bool :=
+  let y0 := bit4 y 0
+  let y1 := bit4 y 1
+  let y2 := bit4 y 2
+  let y3 := bit4 y 3
+  let L := xor (xor y0 y1) (xor y2 y3)
+  let C := xor (xor (y0 && y1) (y1 && y2)) (xor (y2 && y3) (y3 && y0))
+  let P := xor (y0 && y2) (y1 && y3)
+  let T := xor (xor (y0 && y1 && y2) (y0 && y1 && y3)) (xor (y0 && y2 && y3) (y1 && y2 && y3))
+  let M := y0 && y1 && y2 && y3
+  xor (xor (a && L) (b && C)) (xor (c && P) (xor (d && T) (e && M)))
+
+def dot4 (beta y : Nat) : Bool :=
+  let z := beta &&& y
+  xor (xor (bit4 z 0) (bit4 z 1)) (xor (bit4 z 2) (bit4 z 3))
+
+def walsh_h4 (a b c d e : Bool) (beta : Nat) : Int :=
+  (List.range 16).foldl (fun acc y =>
+    let s : Int := if xor (eval_h4 a b c d e y) (dot4 beta y) then -1 else 1
+    acc + s) 0
+
+def is_bent_h4 (a b c d e : Bool) : Bool :=
+  (List.range 16).all (fun beta =>
+    let w := walsh_h4 a b c d e beta
+    w == 4 || w == -4)
+
+def check_all_32_rs_functions_in_4_vars : Bool :=
+  let B := [false, true]
+  B.all (fun a => B.all (fun b => B.all (fun c => B.all (fun d => B.all (fun e =>
+    is_bent_h4 a b c d e == (c && (!d) && (!e)))))))
+
+theorem theorem_period4_rs_bent_classification : check_all_32_rs_functions_in_4_vars = true := by
+  decide
+
+/--
+  6. CARACTERIZAÇÃO ANALÍTICA EXATA DAS 6.144 EXCEÇÕES EM n = 20 (T11/T12):
+     No subespaço de codimensão 3 (c_244 = 0, c_186 ⊕ c_242 = 1, τ(f) = 0), que possui
+     2^29 = 536.870.912 estados na imagem de posto 32 sobre V_2 = {0, 341, 682, 1023},
+     A_0 = 0, A_{341} ∈ {0, ±160, ±320, ±480, ±640} e A_{1023} ∈ {±64, ±256}.
+     A condição de Poisson L_∞ em b = 0 exige |±2*A_{341} + A_{1023}| ≤ 1024 <==> 2*|A_{341}| + |A_{1023}| ≤ 1024,
+     que falha se, e somente se, (|A_{341}| = 640) ou (|A_{341}| = 480 ∧ |A_{1023}| = 256),
+     produzindo exatamente 12 * 32 * 8 + 48 * 8 * 8 = 3.072 + 3.072 = 6.144 exceções e
+     536.870.912 - 6.144 = 536.864.768 sobreviventes (fração excluída 1.835.011 / 2.097.152).
+-/
+def check_n20_6144_exception_arithmetic : Bool :=
+  let a341_abs_vals : List Int := [0, 160, 320, 480, 640]
+  let a1023_abs_vals : List Int := [64, 256]
+  let law_ok := a341_abs_vals.all (fun a1 =>
+    a1023_abs_vals.all (fun a3 =>
+      let violates := (2 * a1 + a3 > 1024)
+      let char_cond := (a1 == 640) || (a1 == 480 && a3 == 256)
+      violates == char_cond))
+  let count_640 : Nat := 12 * 32 * 8
+  let count_480 : Nat := 48 * 8 * 8
+  let total_exc : Nat := count_640 + count_480
+  let total_tau0 : Nat := 1 <<< 29
+  let survivors : Nat := total_tau0 - total_exc
+  let total_v2 : Nat := 1 <<< 32
+  let excluded : Nat := total_v2 - survivors
+  law_ok && (count_640 == 3072) && (count_480 == 3072) && (total_exc == 6144) &&
+  (survivors == 536864768) && (excluded * 2097152 == 1835011 * total_v2)
+
+theorem theorem_n20_6144_exceptions_and_fraction : check_n20_6144_exception_arithmetic = true := by
+  decide
+
 end StanicaMaitraDeg4Extensions
+

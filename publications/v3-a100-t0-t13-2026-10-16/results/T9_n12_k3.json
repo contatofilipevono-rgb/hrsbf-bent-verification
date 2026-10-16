@@ -1,0 +1,17 @@
+{
+  "n": 12,
+  "k": 3,
+  "image_rank": 5,
+  "generators_with_linear_characters": 11,
+  "checked_intersections": 231,
+  "counts_by_product_size": {
+    "1": 11,
+    "2": 55,
+    "3": 165
+  },
+  "status": "PASS",
+  "first_counterexample": null,
+  "conclusion_if_PASS": "Every word of span(g_J images, linear characters) has weight divisible by 8; therefore every W_gJ(b) is divisible by 16.",
+  "proof_rule": "XOR weight inclusion-exclusion; all higher-order coefficients vanish modulo 2^k",
+  "scope": "Finite n certificate, not a uniform theorem in n"
+}

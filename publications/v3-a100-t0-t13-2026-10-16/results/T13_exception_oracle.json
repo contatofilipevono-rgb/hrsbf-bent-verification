@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "all_exceptional_states_checked_on_CPU": 6144,
+  "original_ANF_all_fibers_all_frequencies": true,
+  "linear_law_is_folded_cubic_coefficient": true
+}
