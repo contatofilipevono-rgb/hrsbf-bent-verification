@@ -1,0 +1,8 @@
+auditoria_nova/StanicaMaitraDeg4_v2.lean:165:2: error: tactic 'decide' proved that the proposition
+  check_Tz_orbits_9_and_27 = true
+is false
+auditoria_nova/StanicaMaitraDeg4_v2.lean:240:2: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  a ≥ 3
+where
+ a := p

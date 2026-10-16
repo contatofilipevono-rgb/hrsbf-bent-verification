@@ -1,0 +1,16 @@
+{
+  "release_date": "2026-10-16",
+  "input_zip_sha256": "67f4bc6c181d73236ec5afcf84f6c78ec038e0aafb41c2a7019f03790d3785a3",
+  "received_sources_sha256": {
+    "StanicaMaitraDeg4_v2.lean": "0164a7619b73083cce9ec5f28a2a6a4a13df20de3d685ca955c63b6fc335cd43",
+    "verify_stanica_maitra_deg4_v2.py": "dd3610ddd1025984fd7e75f20ef3f949251d16596f673e06b6b890724d1078e3",
+    "verify_independent_n12_reimpl.py": "7f23f58186cfb08545e4391c0deeee2af998be1e909acf126b78c90b8b944c3a"
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "numpy": "2.3.5",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "lean": "4.15.0 (commit 11651562caae)",
+  "lean_release_archive_sha256": "af71a2569a9f68337de2434829b3008cd8e32c436e9cb6bd8c84a2c2ba3585c9",
+  "lean_status": "exit 0; no compiler errors; auxiliary scope only",
+  "scope": "n=12 computer-assisted exclusion; no global conjecture claim; priority not exhaustively certified"
+}

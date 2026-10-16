@@ -1,0 +1,5 @@
+Lean 4.15.0, commit 11651562caae
+Revised source compilation: exit 0.
+Command: lean code/StanicaMaitraDeg4_v2.lean
+Environment-only LD_PRELOAD workaround: audit/lean-proc-compat.c
+This redirects a failed /proc/PID/exe read to /proc/self/exe; it does not alter Lean proof checking.

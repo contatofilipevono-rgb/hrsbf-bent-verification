@@ -1,0 +1,416 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,longtable,array,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\F}{\mathbb F_2}
+\newcommand{\wt}{\operatorname{wt}}
+\newcommand{\rank}{\operatorname{rank}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\title{A reproducible spectral certificate for the nonexistence of\newline homogeneous quartic rotation symmetric bent functions\newline in twelve variables}
+\author{Filipe Martins Vono}
+\date{16 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We give a computer-assisted certificate excluding bent functions from the
+43-dimensional space of homogeneous quartic rotation symmetric Boolean
+functions in twelve variables. The argument uses the restrictions
+$g_z(u)=f(u,u+z)$, necessary energy identities at all 64 fiber frequencies,
+and finite Poisson constraints. A triangular parametrization covers all
+$2^{43}$ coefficient vectors without evaluating each complete truth table.
+The final two stages retain 128 classes and then none. Two implementations,
+one using signed spectral transport and one evaluating each fiber directly,
+reproduce the same stage counts. We state the necessity of every family of
+filters and distinguish exact computation from the auxiliary statements
+checked in Lean. The result concerns twelve variables; it does not settle
+the conjecture in arbitrary dimension.
+\end{abstract}
+
+\section{Scope and conventions}
+The nonexistence conjecture for homogeneous rotation symmetric bent
+functions of degree greater than two is discussed in
+\cite{SM,MCF,Sun}. This paper addresses the quartic case in twelve
+variables with a reproducible computational certificate. We do not claim
+priority over all earlier searches or claim a new general obstruction
+for every even dimension. The mathematical and executable descriptions
+below are intended to make the finite result independently assessable.
+
+Write $R_n$ for left rotation on $n$ bits. Integers encode vectors with
+coordinate zero in the least significant bit, and addition means XOR.
+For a Boolean function $f:\F^n\to\F$, put
+\[
+ W_f(a)=\sum_{x\in\F^n}(-1)^{f(x)+\langle a,x\rangle}.
+\]
+For even $n$, bentness means $|W_f(a)|=2^{n/2}$ for every $a$.
+In this paper $n=12$, $u,z,b\in\F^6$, and
+\[
+ g_z(u)=f(u,u+z),\quad W_z(b)=W_{g_z}(b),\quad A_z=W_z(0).
+\]
+Let $\mathcal H$ be the binary span of the rotation orbits of squarefree
+degree-four monomials. Orbits are ordered by the lexicographically smallest
+support tuple. There are 43 orbits: forty of size 12, two of size 6, and
+one of size 3. Thus $\dim\mathcal H=43$ and $|\mathcal H|=2^{43}$.
+The zero function is included and is harmless for the exclusion statement.
+
+\begin{theorem}\label{thm:main}
+No function in $\mathcal H$ is bent.
+\end{theorem}
+The proof consists of the necessary conditions in Sections 2--4, exhaustive
+enumeration in the triangular coordinates of Section 5, and the execution
+records supplied with the source. This is a computer-assisted theorem,
+not an end-to-end Lean formalization.
+
+\section{Fiber identities and signed transport}
+For any $\alpha,\beta\in\F^6$, changing variables from $(x,y)$ to
+$(u,z)=(x,x+y)$ gives
+\begin{equation}\label{eq:walsh}
+ W_f(\alpha,\beta)=\sum_z(-1)^{\langle\beta,z\rangle}W_z(\alpha+\beta).
+\end{equation}
+Consequently, if $f$ is bent, Parseval in the variable $z$ gives
+\begin{equation}\label{eq:energy}
+ \sum_z W_z(b)^2=4096\qquad(b\in\F^6).
+\end{equation}
+For any set $S$ of fibers, the partial energy
+$E_S(b)=\sum_{z\in S}W_z(b)^2$ is therefore at most 4096.
+These 64 identities are necessary for bentness; they are not a substitute
+for testing all 4096 coefficients of $W_f$.
+
+Rotation by six positions interchanges the two blocks, so
+$g_z(u+z)=g_z(u)$. Pairing $u$ with $u+z$ proves
+\begin{equation}\label{eq:zero}
+ \langle b,z\rangle=1\quad\Longrightarrow\quad W_z(b)=0.
+\end{equation}
+For $0\le k<6$, define $\tau_k(z)$ as the low six bits of $R_{12}^k(0,z)$.
+Rotation sends $(u,u+z)$ to
+$(R_6^ku+\tau_k(z),R_6^ku+\tau_k(z)+R_6^kz)$. Hence
+\begin{equation}\label{eq:transport}
+ W_{R_6^kz}(b)=(-1)^{\langle b,\tau_k(z)\rangle}
+                 W_z(R_6^{-k}b).
+\end{equation}
+The sign cannot be omitted. Squared energies do not detect its omission,
+but the Poisson sums below do. In particular, $A_z$ is constant on each
+cyclic orbit of $z$.
+
+\section{Finite algebraic foundations}
+All finite checks in this section are performed independently by
+\texttt{audit\_foundations.py}; their explicit orbit table and values are
+in \texttt{results/foundations.json}. These checks use only the 43
+generators or small restriction spaces, not a random sample of $\mathcal H$.
+
+\begin{lemma}\label{lem:div}
+For every $f\in\mathcal H$, $8\mid W_z(b)$ for all $z,b$.
+Moreover, $16\mid A_z$ for $z=9,27,63$,
+$W_9(63)=W_{63}(63)=0$, and $16\mid W_{27}(63)$.
+\end{lemma}
+\begin{proof}
+The algebraic normal form of every generator restricted to every fiber
+has degree at most three, as verified by the binary M\"obius transform.
+Degree at most three is preserved by binary linear combinations. For
+$z\ne0$, translation invariance makes $g_z$ a function on the
+five-dimensional quotient by $\langle z\rangle$. If $\langle b,z\rangle=0$,
+the same holds for $g_z+\langle b,u\rangle$. A polynomial of degree less
+than five on $\F^5$ has even weight: summing each monomial over the cube
+gives zero modulo two. Its Walsh sum is divisible by four, and lifting
+to $\F^6$ doubles this sum. Otherwise use \eqref{eq:zero}.
+
+At $z=0$, only the three short monomial orbits survive; their restrictions
+are $Q_1,Q_2,Q_3$, where
+\[
+ Q_d=\sum_{i=0}^5u_i u_{i+d}\ (d=1,2),\qquad
+ Q_3=u_0u_3+u_1u_4+u_2u_5.
+\]
+The eight combinations have all their Walsh coefficients divisible by eight.
+This is a finite check on $8\cdot64$ coefficients.
+
+For $z=9,27$, the induced affine map is
+$T_z(u)=R_6^3u+\tau_3(z)$, with \emph{correct} constants
+$\tau_3(9)=1$ and $\tau_3(27)=3$. It satisfies $T_z^2(u)=u+z$,
+so its sixteen orbits all have size four. The value of $g_z$ is constant
+on each orbit. Each of the 43 generators is one on an even number of
+these orbits. This parity condition is linear in the generator values,
+so it holds for every combination. Thus $8\mid\wt(g_z)$ and
+$16\mid A_z$. For $z=9$, $T_z$ reverses the parity of $u$, giving
+$W_9(63)=0$. For $z=27$, that parity is constant on each orbit and equals
+one on eight of the sixteen orbits; the same even-weight argument gives
+$16\mid W_{27}(63)$.
+
+For $z=63$, the negacyclic shift $u\mapsto R_6u+1$ has five orbits
+of length 12 and one of length 4, represented by $0,2,4,6,10,12$.
+Let their values be $v_1,\ldots,v_6$. Direct evaluation on each of
+the 43 generators gives $v_1+\cdots+v_6=0$ in $\F$; linearity
+extends this to every $f$. If $k=\sum_{i=1}^5v_i$ and $\delta=v_6$
+as integers, $k\equiv\delta\pmod2$ and
+\[
+ \wt(g_{63})=12k+4\delta=24q+16\delta,
+ \qquad A_{63}\in\{-64,-32,-16,16,32,64\}.
+\]
+The negacyclic shift reverses parity, so $W_{63}(63)=0$.
+\end{proof}
+For redundancy, enumerating the complete images of the three restriction
+maps gives ranks $9,10,5$ for $z=9,27,63$, respectively, and confirms
+the assertions on all $512+1024+32$ image functions.
+
+\begin{proposition}\label{prop:sector}
+If $f\in\mathcal H$ is bent, $16\mid A_0$ and
+$c_{40}+c_{26}c_{42}=1$ in $\F$, where indices are zero-based.
+\end{proposition}
+\begin{proof}
+The nonzero fiber orbits have representatives
+$1,3,5,7,9,11,13,15,21,23,27,31,63$. Only $9,27,63$ have odd
+orbit sizes. Divide \eqref{eq:energy} at $b=0$ by 64 and reduce
+modulo two; Lemma~\ref{lem:div} leaves $(A_0/8)^2=0$ modulo two.
+At $b=63$, all odd-weight fibers vanish. The even-weight fibers
+$9$ and $63$ also vanish. The only other nonzero orbits have
+representatives $3,5,15,23,27$; their total energies are divisible by
+$384$ (size six times $8^2$, or size three times $16^2$).
+Thus $W_0(63)^2\equiv4096\equiv256\pmod{384}$.
+The eight values for $(c_{26},c_{40},c_{42})$ in lexicographic order are
+\[
+\begin{array}{c|rrrrrrrr}
+(c_{26},c_{40},c_{42})&000&001&010&011&100&101&110&111\\\hline
+A_0&64&8&0&16&16&32&0&-8\\
+W_0(63)&0&-8&16&-16&0&-32&-32&8
+\end{array}
+\]
+and give the stated equivalence. Exactly four sectors remain.
+\end{proof}
+
+\section{Necessity of all sieve filters}
+\subsection{Subspace Poisson constraints}
+For any binary subspace $V\le\F^6$, any $b,\gamma\in\F^6$, define
+$L_V(b,\gamma)=\sum_{z\in V}(-1)^{\langle\gamma,z\rangle}W_z(b)$.
+Fourier inversion of \eqref{eq:walsh} gives
+\begin{equation}\label{eq:poisson}
+ L_V(b,\gamma)=\frac{|V|}{64}
+   \sum_{\beta\in\gamma+V^\perp}W_f(b+\beta,\beta).
+\end{equation}
+For bent $f$, each summand is $64$ times a sign. Rotation symmetry
+forces identical signs on each cyclic orbit of the 12-bit frequency.
+If the coset has orbit multiplicities $m_1,\ldots,m_t$, necessarily
+\begin{equation}\label{eq:allowed}
+ L_V(b,\gamma)\in
+ |V|\left\{\sum_{j=1}^t m_j\epsilon_j:\epsilon_j\in\{-1,1\}\right\}.
+\end{equation}
+Both programs construct this finite set by repeated signed addition.
+Allowing independent signs in separate tests enlarges the feasible set;
+it cannot discard a bent function. The code checks closure under XOR
+for each subspace before constructing its table.
+
+The 24 spaces used are the thirteen lines $\langle r\rangle$ for the
+nonzero representatives listed above, nine further spaces in the table,
+and the final two spaces $V_3'$ and $V_4$.
+\begin{center}\small
+\begin{tabular}{ll}
+\toprule
+Code name & Elements or basis (span over $\F$)\\\midrule
+\texttt{V2\_21} & $\{0,21,42,63\}$\\
+\texttt{V2\_27} & $\{0,27,45,54\}$\\
+\texttt{V2\_9a}, \texttt{V2\_9b} & $\langle9,18\rangle$, $\langle9,54\rangle$\\
+\texttt{V2\_7a}, \texttt{V2\_7b} & $\langle7,56\rangle$, $\langle7,14\rangle$\\
+\texttt{V2\_7c}, \texttt{V2\_7d} & $\langle7,21\rangle$, $\langle7,28\rangle$\\
+\texttt{V3} & $\langle9,18,36\rangle$\\
+$V_3'$ (\texttt{V3\_7a}) & $\langle63,9,7\rangle$\\
+$V_4$ (\texttt{V4}) & $\langle21,42,9,18\rangle$\\\bottomrule
+\end{tabular}
+\end{center}
+In particular, $V_2=\langle21,42\rangle$ and $V_3=\langle9,18,36\rangle$
+are not nested: $V_2\cap V_3=\langle63\rangle$ and $V_2+V_3=V_4$.
+
+\subsection{Energy congruences}
+For each cyclic set $S$ of fibers processed by the sieve, the following
+congruences are used only at the indicated stages.
+\begin{enumerate}
+\item After the initial fibers $0,63,21,42$, the residual energy at
+$b=0$ is divisible by 384. The unprocessed size-six orbits contribute
+multiples of $6\cdot64$, and the size-three orbits contribute
+multiples of $3\cdot256$ by Lemma~\ref{lem:div}.
+\item Once $9,18,36,27,54,45$ have also been processed, every
+remaining fiber orbit has length six. Residual energies at $b=0,63$
+are divisible by 384, since these frequencies are fixed by rotation
+and squares in \eqref{eq:transport} agree. The initial $b=63$ test
+is the stronger sector congruence in Proposition~\ref{prop:sector}.
+\item At $b=21$, $R_6^2b=b$. Outside $\{0,21,42,63\}$, the
+$R_6^2$-orbits have size three. Therefore residual energy is divisible
+by $3\cdot64=192$ at every stage after the initial one.
+\item After processing the size-three fiber orbits, residual energy
+summed over the three frequencies $\{9,18,36\}$ or $\{27,54,45\}$
+is divisible by 192. Indeed rotation acts on the remaining pairs
+$(z,b)$ in length-six orbits, and each squared term is divisible by 64;
+this even gives divisibility by 384.
+\end{enumerate}
+The size-three contribution at $b=21$ can be computed as $3W_{27}(21)^2$.
+Indeed, $R_6^{-2}21=21$, so two successive rotations preserve the
+squared coefficient in \eqref{eq:transport}. On a three-element
+fiber orbit, this implies equality of all three squares.
+This explains the prefilter in the direct implementation.
+
+\subsection{Autocorrelation and diagonal Walsh congruences}
+Equation~\eqref{eq:walsh} at $b=0$ says that the Fourier transform of
+$A$ consists of the diagonal coefficients $W_f(\beta,\beta)$.
+If $f$ is bent, inversion gives
+$\sum_z A_zA_{z+63}=0$. Dividing by two and grouping complementary
+orbits yields the initial necessary condition
+\[
+ A_0A_{63}+A_{21}^2\equiv0\pmod3.
+\]
+Once the size-three orbits are known it yields
+\begin{equation}\label{eq:ac}
+ A_0A_{63}+A_{21}^2+3A_9A_{27}\equiv0\pmod{192}.
+\end{equation}
+For distinct complementary size-six orbits the residual contribution
+is $6A_rA_s$; for a self-complementary orbit it is $3A_r^2$.
+Both are divisible by 192.
+
+The diagonal Walsh coefficients at $\beta=0,63$ are $\pm64$.
+All omitted terms in their cyclic orbit sums are divisible by 48:
+size-six orbits have $8\mid A_r$, and size-three orbits have
+$16\mid A_r$. Hence the initial tests are
+\begin{equation}\label{eq:w48}
+ A_0+A_{63}\pm2A_{21}\equiv16\ \text{or}\ 32\pmod{48}.
+\end{equation}
+These tests use $\beta=0,63$; $b=21$ in the energy tests is a different
+frequency variable.
+
+\section{Exhaustive triangular enumeration}
+Let $B$ be the $43\times4096$ matrix whose rows are generator truth
+tables, with columns ordered by $(z,u)$, grouping complete fiber
+orbits as in Table~\ref{tab:stages}. Row reduction over $\F$ gives
+$M=PB$, with $P$ invertible and 43 pivots. The direct implementation
+explicitly checks $PB=M$ and that the pivot submatrix of $M$ is the
+identity. Thus it also checks injectivity of the coefficient map.
+
+Group rows by the stage containing their pivot. A later group is zero
+on all earlier fiber columns. Enumerate all binary combinations of the
+first group, filter, and extend each survivor by all combinations of
+the next group. Every original coefficient vector has exactly one
+such sequence of extensions. No future choice can change a quantity
+already tested, and every test is necessary for bentness. Therefore a
+zero terminal count proves Theorem~\ref{thm:main}.
+
+\begin{table}[htbp]\centering
+\caption{Exact counts. Counts refer to classes of restrictions at the
+stated rank, not equally sized lists of complete functions.}\label{tab:stages}
+\begin{tabular}{lrrr}\toprule
+New fiber orbit(s) & Rank & Rank increment & Survivors\\\midrule
+$0,63,21,42$: initial congruences &12&12&712\\
+Same fibers: energy and Poisson &12&0&361\\
+$\mathcal O_9$ &18&6&20,158\\
+$\mathcal O_{27}$ &24&6&212,296\\
+$\mathcal O_7$ &27&3&8,688\\
+$\mathcal O_1$ &31&4&26,496\\
+$\mathcal O_{11}$ &34&3&94,936\\
+$\mathcal O_{13}$ &36&2&149,448\\
+$\mathcal O_{31}$ &37&1&106,552\\
+$\mathcal O_3$ &41&4&349,680\\
+$\mathcal O_5$ &41&0&23,636\\
+$\mathcal O_{15}$ &42&1&128\\
+$\mathcal O_{23}$ &43&1&0\\\bottomrule
+\end{tabular}
+\end{table}
+
+At rank 12 the initial conditions are the energy bounds at $b=0,21$,
+their residual congruences, the sector congruence at $b=63$, the
+autocorrelation condition modulo three, and \eqref{eq:w48}. The next
+filter adds all 64 energy bounds and Poisson on
+$\langle63\rangle,\langle21\rangle,V_2$.
+At rank 18 add all energy bounds and Poisson on $\langle9\rangle$.
+At rank 24 add the energy congruences, \eqref{eq:ac}, the aggregate
+energy congruences, and Poisson on the spaces named
+\texttt{V2\_27}, \texttt{V1\_27}, \texttt{V2\_9a},
+\texttt{V2\_9b}, \texttt{V3}.
+At rank 27 add the seven spaces involving 7 or $V_4$ in Section 4.
+Thereafter, each new orbit adds its energy and Poisson on its
+representative line. Residual congruences at $0,21$ remain active;
+the $63$ congruence is also applied after representatives $3,5,15$.
+At the last stage, all 64 energies must equal 4096.
+Every Poisson check covers all 64 frequencies and coset characters;
+early checks on subsets merely reject failures sooner.
+
+The rank-41 count after orbit 5 represents $23,636\cdot4=94,544$
+full coefficient vectors. Expanding these without the remaining
+Poisson tests gives 32,176 satisfying energy at $b=0$, 39,520 at
+$b=63$, 5,552 at both, and zero at all 64 values of $b$.
+This redundancy again uses necessary energy conditions, not an
+asserted equivalence with bentness.
+
+\section{Reproduction and trust boundary}
+The release contains three Python programs and the execution logs.
+The main sieve uses 14 representative fibers and the signed transport
+formula. The second sieve uses coefficient vectors in $\F^{43}$,
+all 64 fiber truth tables, and a butterfly Walsh transform; it never
+uses signed transport to obtain a fiber spectrum. They share the
+mathematical filters, so agreement addresses implementation errors
+but is not an independent proof that those filters are necessary.
+Section 4 supplies that proof.
+
+All arithmetic relevant to acceptance is exact. Walsh values on a
+fiber lie in $[-64,64]$, total fiber energy is at most 262,144, and
+all such quantities fit the signed 32-bit arrays used by the sieves.
+The binary matrix products in unsigned bytes are subsequently reduced
+modulo two; reduction modulo 256 preserves their parity. The foundation
+checks use signed 64-bit transforms.
+
+The main program tests sixteen quadratic RS bent functions against
+the 24 Poisson tables, and checks transport and Poisson identities
+against complete Walsh transforms on these and fifty deterministic
+random quartic examples. The quadratic controls are not asserted to
+pass quartic-specific sector conditions. The foundation script checks
+signed transport on all 43 generators, all fibers and frequencies,
+as well as complete Walsh exclusion for $n=4,6,8$.
+
+The Lean file proves finite arithmetic identities, the corrected
+quarter-period orbit assertion, and the parity syzygy evaluated on
+the actual list of 43 monomial orbit representatives. Its compilation
+does not formalize completeness of that list, the whole Fourier
+argument, the Python execution, or Theorem~\ref{thm:main}.
+The release records Lean 4.15.0 and the Python/NumPy versions.
+
+\section{Relation to smaller cases and earlier work}
+The case $n=4$ is elementary: the only nonzero homogeneous quartic
+function is $x_0x_1x_2x_3$, with $W_f(0)=14$, so it is not bent.
+It is a useful convention check, not evidence of a new general theorem.
+The supplied broader verifier also reproduces the $n=10$ correction:
+the residues of $\pm8$ and $\pm32$ modulo five form the same set.
+Its nonzero-frequency derivative checks, not the invalid sign argument,
+exclude the remaining branch. These computations are supplementary
+and are not required for Theorem~\ref{thm:main}.
+
+Sun et al.~\cite{Sun}, Theorem 2, give necessary orbit conditions under
+explicit prime-size hypotheses. Their condition for $n=2p^r$, $p\ge5$,
+already covers the odd number of short orbits condition in degree four:
+a stabilizer of a four-element support acts freely on that support,
+so its order divides both four and $2p^r$. Thus the only short
+quartic orbits have length $p^r$, and are bi-antipodal.
+For $n=12$ their stated hypothesis with $v_2(n)=2$ would require the
+odd prime factor to exceed 16, and therefore does not apply directly.
+This comparison with one theorem is not a claim that no other published
+result covers twelve variables. The contribution presented here is the
+explicit certificate and its auditable spectral reduction.
+
+\paragraph{Data and code.}
+Source files, exact output records, a checksum manifest, and reproduction
+instructions accompany this manuscript. No external dataset is needed.
+\paragraph{Limitations.}
+The certificate does not settle any dimension $n\ge14$. Tests on
+generators in larger dimensions establish only the specific linear
+identities checked; they are not exhaustive bentness searches over
+the full coefficient spaces.
+
+\begin{thebibliography}{9}
+\bibitem{SM} P. St\u{a}nic\u{a} and S. Maitra,
+Rotation symmetric Boolean functions---count and cryptographic applications,
+\emph{Discrete Applied Mathematics} 156(10), 1567--1580 (2008).
+\bibitem{MCF} Q. Meng, L. Chen and F.-W. Fu,
+On homogeneous rotation symmetric bent functions,
+\emph{Discrete Applied Mathematics} 158, 1111--1117 (2010).
+\bibitem{Sun} L. Sun, Z. Shi, J. Liu and F.-W. Fu,
+On the conjecture about the nonexistence of homogeneous rotation symmetric
+bent functions, \emph{Designs, Codes and Cryptography} 94, article 93 (2026).
+\url{https://doi.org/10.1007/s10623-026-01848-4}.
+\bibitem{Carlet} C. Carlet, \emph{Boolean Functions for Cryptography and
+Coding Theory}, Cambridge University Press (2021).
+\end{thebibliography}
+\end{document}

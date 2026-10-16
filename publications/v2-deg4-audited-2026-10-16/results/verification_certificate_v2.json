@@ -1,0 +1,276 @@
+{
+  "n8_min_S_e0e4": 32,
+  "n8_positive_controls_f34_f24_passed": true,
+  "n10_initial_branch32": 262144,
+  "n10_initial_branch8": 786432,
+  "n10_parseval_branch32": 170,
+  "n10_parseval_branch8": 45638,
+  "n10_diagonal_cascade": [
+    {
+      "a": 1,
+      "total": 31918,
+      "branch_32": 3936,
+      "branch_8": 27982
+    },
+    {
+      "a": 3,
+      "total": 3436,
+      "branch_32": 124,
+      "branch_8": 3312
+    },
+    {
+      "a": 5,
+      "total": 604,
+      "branch_32": 40,
+      "branch_8": 564
+    },
+    {
+      "a": 7,
+      "total": 122,
+      "branch_32": 18,
+      "branch_8": 104
+    },
+    {
+      "a": 11,
+      "total": 94,
+      "branch_32": 18,
+      "branch_8": 76
+    },
+    {
+      "a": 15,
+      "total": 18,
+      "branch_32": 18,
+      "branch_8": 0
+    },
+    {
+      "a": 31,
+      "total": 18,
+      "branch_32": 18,
+      "branch_8": 0
+    }
+  ],
+  "n12_exhaustive_g9_g27_g63": {
+    "9": {
+      "rank": 9,
+      "reachable_functions": 512,
+      "Az_values": [
+        -32,
+        -16,
+        0,
+        16,
+        32,
+        64
+      ],
+      "Wg_z_63_values": [
+        0
+      ],
+      "Wg_z_21_values": [
+        0
+      ]
+    },
+    "27": {
+      "rank": 10,
+      "reachable_functions": 1024,
+      "Az_values": [
+        -64,
+        -48,
+        -32,
+        -16,
+        0,
+        16,
+        32,
+        48,
+        64
+      ],
+      "Wg_z_63_values": [
+        -64,
+        -48,
+        -32,
+        -16,
+        0,
+        16,
+        32,
+        48,
+        64
+      ],
+      "Wg_z_21_values": [
+        -32,
+        -16,
+        0,
+        16,
+        32
+      ]
+    },
+    "63": {
+      "rank": 5,
+      "reachable_functions": 32,
+      "Az_values": [
+        -64,
+        -32,
+        -16,
+        16,
+        32,
+        64
+      ],
+      "Wg_z_63_values": [
+        0
+      ],
+      "Wg_z_21_values": [
+        0
+      ]
+    }
+  },
+  "n12_positive_controls_16_bent_passed": true,
+  "n12_random_50_walsh_identity_passed": true,
+  "n12_orbits_count": 43,
+  "n12_sectors": [
+    {
+      "sector": [
+        0,
+        0,
+        0
+      ],
+      "A0": 64,
+      "Wg0_63": 0,
+      "Wg0_21": 0,
+      "div16_A0": true,
+      "mod384_b63": false,
+      "status_b63": "ELIMINADO ANALITICAMENTE em b=63 (100%)",
+      "eliminated_at_stage": "Teorema 6.2 (b=63 mod 384 / 16|A0)"
+    },
+    {
+      "sector": [
+        0,
+        0,
+        1
+      ],
+      "A0": 8,
+      "Wg0_63": -8,
+      "Wg0_21": 8,
+      "div16_A0": false,
+      "mod384_b63": false,
+      "status_b63": "ELIMINADO ANALITICAMENTE em b=63 (100%)",
+      "eliminated_at_stage": "Teorema 6.2 (b=63 mod 384 / 16|A0)"
+    },
+    {
+      "sector": [
+        0,
+        1,
+        0
+      ],
+      "A0": 0,
+      "Wg0_63": 16,
+      "Wg0_21": 0,
+      "div16_A0": true,
+      "mod384_b63": true,
+      "status_b63": "ABERTO em b=63",
+      "eliminated_at_stage": "Estágio 4 (Posto 27, V_4)"
+    },
+    {
+      "sector": [
+        0,
+        1,
+        1
+      ],
+      "A0": 16,
+      "Wg0_63": -16,
+      "Wg0_21": -16,
+      "div16_A0": true,
+      "mod384_b63": true,
+      "status_b63": "ABERTO em b=63",
+      "eliminated_at_stage": "Estágios 9b-9d (Posto 41-43)"
+    },
+    {
+      "sector": [
+        1,
+        0,
+        0
+      ],
+      "A0": 16,
+      "Wg0_63": 0,
+      "Wg0_21": 0,
+      "div16_A0": true,
+      "mod384_b63": false,
+      "status_b63": "ELIMINADO ANALITICAMENTE em b=63 (100%)",
+      "eliminated_at_stage": "Teorema 6.2 (b=63 mod 384 / 16|A0)"
+    },
+    {
+      "sector": [
+        1,
+        0,
+        1
+      ],
+      "A0": 32,
+      "Wg0_63": -32,
+      "Wg0_21": 32,
+      "div16_A0": true,
+      "mod384_b63": true,
+      "status_b63": "ABERTO em b=63",
+      "eliminated_at_stage": "Estágios 9b-9d (Posto 41-43)"
+    },
+    {
+      "sector": [
+        1,
+        1,
+        0
+      ],
+      "A0": 0,
+      "Wg0_63": -32,
+      "Wg0_21": 0,
+      "div16_A0": true,
+      "mod384_b63": true,
+      "status_b63": "ABERTO em b=63",
+      "eliminated_at_stage": "Estágios 9b-9d (Posto 41-43)"
+    },
+    {
+      "sector": [
+        1,
+        1,
+        1
+      ],
+      "A0": -8,
+      "Wg0_63": 8,
+      "Wg0_21": 8,
+      "div16_A0": false,
+      "mod384_b63": false,
+      "status_b63": "ELIMINADO ANALITICAMENTE em b=63 (100%)",
+      "eliminated_at_stage": "Teorema 6.2 (b=63 mod 384 / 16|A0)"
+    }
+  ],
+  "n12_rank12_plancherel_survivors": 712,
+  "n12_rank12_poisson_survivors": 361,
+  "n12_rank18_survivors": 20158,
+  "n12_rank24_survivors": 212296,
+  "n12_rank24_sector_survivors": {
+    "(0,1,0)": 76800,
+    "(1,1,0)": 94464,
+    "(0,1,1)": 23040,
+    "(1,0,1)": 17992
+  },
+  "n12_rank27_survivors": 8688,
+  "n12_rank27_sector_survivors": {
+    "(0,1,0)": 0,
+    "(1,1,0)": 7492,
+    "(0,1,1)": 252,
+    "(1,0,1)": 944
+  },
+  "n12_stages_5_to_9": {
+    "stage5_rank31_z1": 26496,
+    "stage6_rank34_z11": 94936,
+    "stage7_rank36_z13": 149448,
+    "stage8_rank37_z31": 106552,
+    "stage9a_rank41_z3": 349680,
+    "stage9b_rank41_z5": 23636,
+    "stage9c_rank42_z15": 128,
+    "stage9d_rank43_z23": 0
+  },
+  "n12_direct_94544_audit": {
+    "total_functions_expanded": 94544,
+    "parseval_b0_only": 32176,
+    "parseval_b63_only": 39520,
+    "parseval_b0_and_b63": 5552,
+    "diagonal_energy_all_64_frequencies": 0
+  },
+  "n12_final_bent_survivors": 0,
+  "n20_generator_degree_and_invariance_verified": true
+}

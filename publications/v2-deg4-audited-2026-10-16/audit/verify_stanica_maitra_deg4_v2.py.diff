@@ -1,0 +1,70 @@
+--- received/verify_stanica_maitra_deg4_v2.py
++++ revised/verify_stanica_maitra_deg4_v2.py
+@@ -28,7 +28,7 @@
+    - Teoremas 6.3 e 6.4: Cascata triangular de 9 estágios (postos 12 -> 43) com transporte de Walsh
+      com sinal exato: 712 -> 361 -> 20.158 -> 212.296 -> 8.688 -> 26.496 -> 94.936 -> 149.448 ->
+      106.552 -> 349.680 -> 23.636 (z=5, d_rk=0, 94.544 funções, 0 bent) -> 128 (z=15) -> 0 (z=23).
+-4. Verificação Exaustiva das Famílias Infinitas n = 2p^r e n = 4p^r (h in {6,10,14,18,22} e Ax-Katz em n=20).
++4. Testes finitos das identidades das famílias infinitas n = 2p^r e n = 4p^r (h in {6,10,14,18,22} e Ax-Katz em n=20).
+ """
+ 
+ import os
+@@ -39,7 +39,7 @@
+ from collections import Counter
+ import numpy as np
+ 
+-OUT_DIR = "/working_dir/c_90b9930913d854af/artifacts/file_generation/ttl=63d/output"
++OUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "results")
+ os.makedirs(OUT_DIR, exist_ok=True)
+ 
+ def rot1(n, m):
+@@ -580,6 +580,8 @@
+             oid += 1
+ 
+     def build_subspace_lut(V_sub):
++        assert 0 in V_sub and len(set(V_sub)) == len(V_sub)
++        assert all((x ^ y) in V_sub for x in V_sub for y in V_sub)
+         k_perp = 64 // len(V_sub)
+         scale = 64 // k_perp
+         V_perp = [beta for beta in range(64) if all(bin(beta & z).count("1") % 2 == 0 for z in V_sub)]
+@@ -927,11 +929,11 @@
+                 "parseval_b0_only": int(np.sum(eb_full[:, 0] == 4096)),
+                 "parseval_b63_only": int(np.sum(eb_full[:, 63] == 4096)),
+                 "parseval_b0_and_b63": int(np.sum((eb_full[:, 0] == 4096) & (eb_full[:, 63] == 4096))),
+-                "bent_all_64_frequencies": int(np.sum(np.all(eb_full == 4096, axis=1))),
++                "diagonal_energy_all_64_frequencies": int(np.sum(np.all(eb_full == 4096, axis=1))),
+             }
+ 
+     final_bent_survivors = int(stage_counts["stage9d_rank43_z23"])
+-    assert final_bent_survivors == 0 and direct_94544_audit["bent_all_64_frequencies"] == 0
++    assert final_bent_survivors == 0 and direct_94544_audit["diagonal_energy_all_64_frequencies"] == 0
+ 
+     for item in sectors12_summary:
+         sec_tup = tuple(item["sector"])
+@@ -958,7 +960,7 @@
+     log(f"    * Estágio 9a (Posto 41, + Fibra g_3, peso 2):          {stage_counts['stage9a_rank41_z3']:7,d} / {1<<41:,d} classes sobrevivem")
+     log(f"    * Estágio 9b (Posto 41, + Fibra g_5, sizígia d_rk=0):  {stage_counts['stage9b_rank41_z5']:7,d} / {1<<41:,d} classes sobrevivem (= {direct_94544_audit['total_functions_expanded']:,d} funções)")
+     log(f"        [Auditoria Direta das {direct_94544_audit['total_functions_expanded']:,d} funções do Estágio 9b]:")
+-    log(f"          Satisfazem Parseval em b=0: {direct_94544_audit['parseval_b0_only']:,d} | em b=63: {direct_94544_audit['parseval_b63_only']:,d} | em ambos: {direct_94544_audit['parseval_b0_and_b63']:,d} | Bent (todos os 64 b): {direct_94544_audit['bent_all_64_frequencies']}")
++    log(f"          Satisfazem Parseval em b=0: {direct_94544_audit['parseval_b0_only']:,d} | em b=63: {direct_94544_audit['parseval_b63_only']:,d} | em ambos: {direct_94544_audit['parseval_b0_and_b63']:,d} | Energia diagonal (todos os 64 b): {direct_94544_audit['diagonal_energy_all_64_frequencies']}")
+     log(f"    * Estágio 9c (Posto 42, + Fibra g_15, peso 4):         {stage_counts['stage9c_rank42_z15']:7,d} / {1<<42:,d} classes sobrevivem (= 256 funções)")
+     log(f"    * Estágio 9d (Posto 43, + Fibra g_23, peso 4):         {stage_counts['stage9d_rank43_z23']:7,d} / {1<<43:,d} funções sobrevivem (100% ELIMINADO!)")
+     log(f"    => CONCLUSÃO (TEOREMA 6.4): ZERO funções RS bent homogêneas de grau 4 em n = 12 (0 / 8.796.093.022.208).")
+@@ -979,7 +981,7 @@
+     # -------------------------------------------------------------------------
+     # SEÇÃO 4: FAMÍLIAS INFINITAS n = 2p^k E n = 4p^k (VERIFICAÇÃO EXAUSTIVA)
+     # -------------------------------------------------------------------------
+-    log("\n--- [4] VERIFICAÇÃO EXAUSTIVA DAS FAMÍLIAS INFINITAS n = 2p^k E n = 4p^k (TEOREMAS 5.2, 6.5 E 6.6) ---")
++    log("\n--- [4] TESTES FINITOS DAS IDENTIDADES DAS FAMÍLIAS INFINITAS n = 2p^k E n = 4p^k (TEOREMAS 5.2, 6.5 E 6.6) ---")
+     for n_val, h_val, fam in [(6, 3, "2p^k (p=3,k=1)"), (10, 5, "2p^k (p=5,k=1)"),
+                               (14, 7, "2p^k (p=7,k=1)"), (18, 9, "2p^k (p=3,k=2)"),
+                               (22, 11, "2p^k (p=11,k=1)"), (12, 6, "4p^k (p=3,k=1)"),
+@@ -1036,7 +1038,7 @@
+         max_d = int(np.max(wt_lut10[active_cols])) if np.any(active_cols) else 0
+         assert max_d <= 3
+     log(f"    n = 20 (h = 10): D_z g_z = 0 e deg(g_z) <= 3 verificados exaustivamente nos 245 geradores x 107 órbitas de fibras (ceil(9/3)+1 = 4 => 16 | W_{{g_z}}(b)).")
+-    cert_data["n20_exhaustive_ax_katz_verified"] = True
++    cert_data["n20_generator_degree_and_invariance_verified"] = True
+ 
+     elapsed = time.time() - t0
+     log(f"\nVerificação concluída com sucesso em {elapsed:.2f} segundos. Zero erros encontrados.")

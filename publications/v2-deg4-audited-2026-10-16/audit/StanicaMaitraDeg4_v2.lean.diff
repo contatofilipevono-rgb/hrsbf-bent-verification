@@ -1,0 +1,118 @@
+--- received/StanicaMaitraDeg4_v2.lean
++++ revised/StanicaMaitraDeg4_v2.lean
+@@ -23,6 +23,9 @@
+   do Lean; ela é executada e certificada pelo script Python/NumPy `verify_stanica_maitra_deg4_v2.py`.
+ -/
+ 
++set_option maxRecDepth 100000
++set_option maxHeartbeats 10000000
++
+ namespace StanicaMaitraDeg4
+ 
+ /--
+@@ -43,7 +46,7 @@
+      As três formas lineares em F_2^3:
+        l_1(a,b,c) = a + b,  l_2(a,b,c) = a + c,  l_3(a,b,c) = b + c
+      satisfazem l_1 + l_2 + l_3 = 0 (mod 2). Logo, no máximo 2 são iguais a 1,
+-     garantindo S(e_0 + e_4) = 256 - 64*(# uns) >= 32 > 0.
++     sem identificar esta contagem abstrata com uma autocorrelação de f.
+ -/
+ def n8_triple_syzygy_holds : Bool :=
+   List.all [false, true] (fun a =>
+@@ -53,8 +56,7 @@
+         let l2 := xor a c
+         let l3 := xor b c
+         let count_ones : Nat := (if l1 then 1 else 0) + (if l2 then 1 else 0) + (if l3 then 1 else 0)
+-        let S_e0e4 : Int := 256 - 64 * (Int.ofNat count_ones)
+-        (xor (xor l1 l2) l3 == false) && (count_ones <= 2) && (S_e0e4 >= 32))))
++        (xor (xor l1 l2) l3 == false) && (count_ones <= 2))))
+ 
+ theorem theorem_4_6_n8_triple_syzygy : n8_triple_syzygy_holds = true := by
+   decide
+@@ -118,13 +120,13 @@
+ /--
+   5. TEOREMA 6.2(1) (OPERADOR DE QUARTO DE PERÍODO T_z EM z = 9 E z = 27):
+      Em F_2^6 (representado por Nat < 64), a rotação de 3 passos sigma_6^3(u) = ((u << 3) & 63) | (u >> 3)
+-     composta com tau_3(9) = 4 (para z = 9) ou tau_3(27) = 12 (para z = 27) define T_z(u).
++     composta com tau_3(9) = 1 (para z = 9) ou tau_3(27) = 3 (para z = 27) define T_z(u).
+      Verificamos exaustivamente para todos os 64 vetores u ∈ F_2^6 que:
+        - T_z^2(u) = u ^^^ z ≠ u  e  T_z^4(u) = u;
+        - Cada órbita {u, T_z(u), T_z^2(u), T_z^3(u)} possui exatamente 4 elementos distintos;
+-       - Em z = 9 (tau_3(9) = 4, peso ímpar 1), <1_6, T_9(u)> inverte a paridade de <1_6, u>,
++       - Em z = 9 (tau_3(9) = 1, peso ímpar 1), <1_6, T_9(u)> inverte a paridade de <1_6, u>,
+          anulando a soma de Walsh em b = 63 sobre cada órbita de tamanho 4 (logo W_{g_9}(63) = 0);
+-       - Em z = 27 (tau_3(27) = 12, peso par 2), <1_6, T_{27}(u)> preserva a paridade de <1_6, u>.
++       - Em z = 27 (tau_3(27) = 3, peso par 2), <1_6, T_{27}(u)> preserva a paridade de <1_6, u>.
+ -/
+ def rot6_3 (u : Nat) : Nat :=
+   ((u <<< 3) &&& 63) ||| (u >>> 3)
+@@ -144,18 +146,18 @@
+ def check_Tz_orbits_9_and_27 : Bool :=
+   let u_list := List.range 64
+   let ok9 := List.all u_list (fun u =>
+-    let u1 := T_z 4 u
+-    let u2 := T_z 4 u1
+-    let u3 := T_z 4 u2
+-    let u4 := T_z 4 u3
++    let u1 := T_z 1 u
++    let u2 := T_z 1 u1
++    let u3 := T_z 1 u2
++    let u4 := T_z 1 u3
+     (u2 == Nat.xor u 9) && (u4 == u) &&
+     (u != u1) && (u != u2) && (u != u3) && (u1 != u2) && (u1 != u3) && (u2 != u3) &&
+     (parity6 u1 == !(parity6 u)) && (parity6 u2 == parity6 u))
+   let ok27 := List.all u_list (fun u =>
+-    let u1 := T_z 12 u
+-    let u2 := T_z 12 u1
+-    let u3 := T_z 12 u2
+-    let u4 := T_z 12 u3
++    let u1 := T_z 3 u
++    let u2 := T_z 3 u1
++    let u3 := T_z 3 u2
++    let u4 := T_z 3 u3
+     (u2 == Nat.xor u 27) && (u4 == u) &&
+     (u != u1) && (u != u2) && (u != u3) && (u1 != u2) && (u1 != u3) && (u2 != u3) &&
+     (parity6 u1 == parity6 u) && (parity6 u2 == parity6 u))
+@@ -237,7 +239,16 @@
+ -/
+ theorem negacyclic_core_nonzero (p q k δ : Int) (hp : p ≥ 3) (hδ : δ = 0 ∨ δ = 1) :
+     p * (q - 2 * k) + (1 - 2 * δ) ≠ 0 := by
+-  omega
++  by_cases hn : q - 2 * k < 0
++  · have hb := Int.mul_le_mul_of_nonneg_left (show q - 2 * k ≤ -1 by omega) (show 0 ≤ p by omega)
++    simp only [Int.mul_neg_one] at hb
++    rcases hδ with hδ | hδ <;> omega
++  · by_cases hz : q - 2 * k = 0
++    · rw [hz, Int.mul_zero]
++      rcases hδ with hδ | hδ <;> omega
++    · have hb := Int.mul_le_mul_of_nonneg_left (show 1 ≤ q - 2 * k by omega) (show 0 ≤ p by omega)
++      simp only [Int.mul_one] at hb
++      rcases hδ with hδ | hδ <;> omega
+ 
+ def check_z2_radical_parity : Bool :=
+   List.all [false, true] (fun i_par =>
+@@ -249,4 +260,24 @@
+ theorem theorem_6_6_z2_radical_parity : check_z2_radical_parity = true := by
+   decide
+ 
++-- Direct bridge: these are the actual 43 lexicographic quartic orbit representatives.
++def quarticMasks12 : List Nat := [15, 23, 39, 71, 135, 263, 519, 1031, 27, 43, 75, 139, 267, 523, 1035, 51, 83, 147, 275, 531, 1043, 99, 163, 291, 547, 1059, 195, 323, 579, 1091, 643, 1155, 1283, 85, 149, 277, 533, 165, 293, 549, 325, 581, 585]
++
++def rotate12 (m : Nat) : Nat := ((m <<< 1) &&& 4095) ||| (m >>> 11)
++def orbit12 (m : Nat) : List Nat :=
++  ((List.range 12).foldl (fun st _ =>
++    (rotate12 st.1, if st.2.contains st.1 then st.2 else st.2 ++ [st.1]))
++    (m, ([] : List Nat))).2
++
++def orbitValue12 (m x : Nat) : Bool :=
++  (orbit12 m).foldl (fun acc t => xor acc ((x &&& t) == t)) false
++
++def generatorSyzygy12 : Bool :=
++  quarticMasks12.all (fun m =>
++    ([0,2,4,6,10,12] : List Nat).foldl (fun acc u =>
++      xor acc (orbitValue12 m (u ||| ((u ^^^ 63) <<< 6)))) false == false)
++
++theorem all_43_actual_generators_syzygy : generatorSyzygy12 = true := by
++  decide
++
+ end StanicaMaitraDeg4

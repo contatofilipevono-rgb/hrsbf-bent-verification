@@ -1,0 +1,924 @@
+{
+  "small_cases": {
+    "4": {
+      "orbits": 1,
+      "functions": 2,
+      "bent": 0
+    },
+    "6": {
+      "orbits": 3,
+      "functions": 8,
+      "bent": 0
+    },
+    "8": {
+      "orbits": 10,
+      "functions": 1024,
+      "bent": 0
+    }
+  },
+  "n12": {
+    "orbit_table": [
+      {
+        "index": 0,
+        "support": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "size": 12,
+        "complement_values": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 1,
+        "support": [
+          0,
+          1,
+          2,
+          4
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 2,
+        "support": [
+          0,
+          1,
+          2,
+          5
+        ],
+        "size": 12,
+        "complement_values": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 3,
+        "support": [
+          0,
+          1,
+          2,
+          6
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 4,
+        "support": [
+          0,
+          1,
+          2,
+          7
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 5,
+        "support": [
+          0,
+          1,
+          2,
+          8
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 6,
+        "support": [
+          0,
+          1,
+          2,
+          9
+        ],
+        "size": 12,
+        "complement_values": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 7,
+        "support": [
+          0,
+          1,
+          2,
+          10
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 8,
+        "support": [
+          0,
+          1,
+          3,
+          4
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 9,
+        "support": [
+          0,
+          1,
+          3,
+          5
+        ],
+        "size": 12,
+        "complement_values": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "index": 10,
+        "support": [
+          0,
+          1,
+          3,
+          6
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 11,
+        "support": [
+          0,
+          1,
+          3,
+          7
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 12,
+        "support": [
+          0,
+          1,
+          3,
+          8
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "index": 13,
+        "support": [
+          0,
+          1,
+          3,
+          9
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 14,
+        "support": [
+          0,
+          1,
+          3,
+          10
+        ],
+        "size": 12,
+        "complement_values": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "index": 15,
+        "support": [
+          0,
+          1,
+          4,
+          5
+        ],
+        "size": 12,
+        "complement_values": [
+          1,
+          0,
+          1,
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "index": 16,
+        "support": [
+          0,
+          1,
+          4,
+          6
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 17,
+        "support": [
+          0,
+          1,
+          4,
+          7
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 18,
+        "support": [
+          0,
+          1,
+          4,
+          8
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "index": 19,
+        "support": [
+          0,
+          1,
+          4,
+          9
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          1,
+          1,
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "index": 20,
+        "support": [
+          0,
+          1,
+          4,
+          10
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 21,
+        "support": [
+          0,
+          1,
+          5,
+          6
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 22,
+        "support": [
+          0,
+          1,
+          5,
+          7
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 23,
+        "support": [
+          0,
+          1,
+          5,
+          8
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "index": 24,
+        "support": [
+          0,
+          1,
+          5,
+          9
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "index": 25,
+        "support": [
+          0,
+          1,
+          5,
+          10
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "index": 26,
+        "support": [
+          0,
+          1,
+          6,
+          7
+        ],
+        "size": 6,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 27,
+        "support": [
+          0,
+          1,
+          6,
+          8
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 28,
+        "support": [
+          0,
+          1,
+          6,
+          9
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 29,
+        "support": [
+          0,
+          1,
+          6,
+          10
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 30,
+        "support": [
+          0,
+          1,
+          7,
+          9
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 31,
+        "support": [
+          0,
+          1,
+          7,
+          10
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 32,
+        "support": [
+          0,
+          1,
+          8,
+          10
+        ],
+        "size": 12,
+        "complement_values": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "index": 33,
+        "support": [
+          0,
+          2,
+          4,
+          6
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 34,
+        "support": [
+          0,
+          2,
+          4,
+          7
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 35,
+        "support": [
+          0,
+          2,
+          4,
+          8
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 36,
+        "support": [
+          0,
+          2,
+          4,
+          9
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 37,
+        "support": [
+          0,
+          2,
+          5,
+          7
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "index": 38,
+        "support": [
+          0,
+          2,
+          5,
+          8
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 39,
+        "support": [
+          0,
+          2,
+          5,
+          9
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 40,
+        "support": [
+          0,
+          2,
+          6,
+          8
+        ],
+        "size": 6,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 41,
+        "support": [
+          0,
+          2,
+          6,
+          9
+        ],
+        "size": 12,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "index": 42,
+        "support": [
+          0,
+          3,
+          6,
+          9
+        ],
+        "size": 3,
+        "complement_values": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "9": {
+      "rank": 9,
+      "A_values": [
+        -32,
+        -16,
+        0,
+        16,
+        32,
+        64
+      ],
+      "W63_values": [
+        0
+      ]
+    },
+    "27": {
+      "rank": 10,
+      "A_values": [
+        -64,
+        -48,
+        -32,
+        -16,
+        0,
+        16,
+        32,
+        48,
+        64
+      ],
+      "W63_values": [
+        -64,
+        -48,
+        -32,
+        -16,
+        0,
+        16,
+        32,
+        48,
+        64
+      ]
+    },
+    "63": {
+      "rank": 5,
+      "A_values": [
+        -64,
+        -32,
+        -16,
+        16,
+        32,
+        64
+      ],
+      "W63_values": [
+        0
+      ]
+    },
+    "sectors": [
+      {
+        "coefficients": [
+          0,
+          0,
+          0
+        ],
+        "A0": 64,
+        "W0_63": 0
+      },
+      {
+        "coefficients": [
+          1,
+          0,
+          0
+        ],
+        "A0": 16,
+        "W0_63": 0
+      },
+      {
+        "coefficients": [
+          0,
+          1,
+          0
+        ],
+        "A0": 0,
+        "W0_63": 16
+      },
+      {
+        "coefficients": [
+          1,
+          1,
+          0
+        ],
+        "A0": 0,
+        "W0_63": -32
+      },
+      {
+        "coefficients": [
+          0,
+          0,
+          1
+        ],
+        "A0": 8,
+        "W0_63": -8
+      },
+      {
+        "coefficients": [
+          1,
+          0,
+          1
+        ],
+        "A0": 32,
+        "W0_63": -32
+      },
+      {
+        "coefficients": [
+          0,
+          1,
+          1
+        ],
+        "A0": 16,
+        "W0_63": -16
+      },
+      {
+        "coefficients": [
+          1,
+          1,
+          1
+        ],
+        "A0": -8,
+        "W0_63": 8
+      }
+    ]
+  }
+}

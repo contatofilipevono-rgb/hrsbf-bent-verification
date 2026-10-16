@@ -1,0 +1,167 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,longtable,microtype}
+\usepackage[margin=25mm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\title{Auditoria adversarial e decisões editoriais\\Pacote de submissão: grau quatro, $n=12$}
+\author{Relatório técnico de revisão}
+\date{16 de outubro de 2026}
+\begin{document}\maketitle
+\section{Parecer}
+O resultado central em $n=12$ é sustentado por uma enumeração exata
+assistida por condições espectrais necessárias. A revisão prepara um
+manuscrito concentrado nesse resultado, com prova da validade dos filtros,
+dois verificadores e checagens adicionais dos fundamentos. Não apresenta
+a conjectura geral como resolvida, nem atribui à compilação Lean o alcance
+de uma formalização integral.
+
+O manuscrito amplo recebido foi substituído, na pasta de submissão, por
+um texto de escopo menor e mais defensável. As afirmações gerais sobre
+$n=2p^r$ e $n=4p^r$ não são usadas para sustentar a conclusão em $n=12$.
+Seus testes finitos permanecem no verificador suplementar e devem ser
+lidos com esse alcance. O arquivo original não foi alterado.
+
+\section{Falhas encontradas e tratamento}
+\begin{enumerate}
+\item \textbf{Operador afim incorreto no texto e no Lean.}
+Na convenção de bits usada, $\tau_3(9)=1$ e $\tau_3(27)=3$.
+Os valores recebidos, 4 e 12, produzem
+$T_4^2(u)=u\mathbin{\oplus}36$ e
+$T_{12}^2(u)=u\mathbin{\oplus}45$, contradizendo os alvos 9 e 27.
+Corrigimos as constantes e verificamos as órbitas e suas paridades.
+
+\item \textbf{Uso insuficiente de \texttt{omega}.}
+A afirmação $p(q-2k)+(1-2\delta)\ne0$ é verdadeira para
+$p\ge3$ e $\delta\in\{0,1\}$, mas a prova recebida entregava apenas
+\texttt{omega} a uma expressão com produto de variáveis. A nova prova
+separa $q-2k<0$, $=0$ e $>0$, usa monotonicidade da multiplicação
+por $p\ge0$ e termina por aritmética linear.
+
+\item \textbf{Identificação artificial de uma soma em $n=8$.}
+O Lean definia uma expressão $256-64k$ como se fosse a autocorrelação
+real e provava $k\le2$. Essa expressão tem mínimo 128 e não demonstra
+o mínimo real 32 citado no manuscrito. Retiramos essa identificação:
+o teorema Lean restante prova apenas a sizígia abstrata e a contagem.
+A exclusão em $n=8$ é confirmada por Walsh completo nas 1.024 funções.
+
+\item \textbf{Ponte incompleta entre a sizígia e os geradores.}
+O arquivo recebido definia $v_6$ como XOR dos outros cinco valores.
+Isso prova uma consequência aritmética, mas não prova que os 43
+geradores têm esses valores. Acrescentamos uma avaliação efetiva dos
+43 representantes de monômios em Lean, além da terceira checagem Python.
+A completude da lista de órbitas continua fora do teorema Lean.
+
+\item \textbf{Confusão entre energia e bentness.}
+O campo \texttt{bent\_all\_64\_frequencies} media 64 identidades
+de energia diagonal. Renomeamos o campo para:\par
+\noindent\texttt{diagonal\_energy\_all\_64\_frequencies}.\par
+Uma condição necessária sem sobreviventes basta para a exclusão;
+isso não torna a condição uma caracterização de bentness.
+
+\item \textbf{Órbitas curtas em $n=2p^r$.}
+A afirmação recebida de órbitas quárticas curtas de Tipos I e II para
+$r\ge2$ é falsa. O estabilizador age livremente no suporte de tamanho
+quatro; sua ordem divide quatro e $2p^r$, portanto só pode ser 1 ou 2.
+As únicas órbitas curtas têm tamanho $p^r$ e são bi-antipodais.
+O novo manuscrito contém esse argumento correto.
+
+\item \textbf{Avaliação diagonal indevidamente universal.}
+A frase $g_0(\mathbf1_6)=0$ para toda função em $n=12$ é falsa:
+a órbita $P_{12,4}$ dá $g_0(u)=u_0u_3+u_1u_4+u_2u_5$, cujo valor
+em $\mathbf1_6$ é 1. Essa justificativa foi eliminada.
+
+\item \textbf{Filtros sem demonstração completa de necessidade.}
+O manuscrito novo demonstra o transporte com sinal, Poisson,
+as congruências de energia módulo 384 e 192, a autocorrelação
+módulo 3 e 192 e a dualidade diagonal módulo 48.
+Também explica a cobertura exata por uma base triangular de posto 43.
+O código agora verifica a identidade da mudança de base e os pivôs,
+o fechamento de todos os subespaços e cada contador final da cascata.
+
+\item \textbf{Bibliografia e prioridade.}
+O artigo relevante de Sun, Shi, Liu e Fu de 2026 estava ausente;
+a referência de 2026 recebida era sobre construções 2-RS.
+A referência atribuída a Sun et al. em 2018 também misturava dados.
+O manuscrito de submissão usa uma bibliografia menor, pertinente,
+e inclui o DOI correto: \url{https://doi.org/10.1007/s10623-026-01848-4}.
+Retiramos qualificações automáticas como ``primeiro'' e ``novo demonstrado''.
+\end{enumerate}
+
+\section{Resultados e limites da reprodução}
+Os postos sucessivos são
+$12,18,24,27,31,34,36,37,41,41,42,43$.
+Os contadores de referência são
+\[
+712\to361\to20158\to212296\to8688\to26496\to94936
+\]
+\[
+\to149448\to106552\to349680\to23636\to128\to0.
+\]
+O crescimento de alguns contadores é esperado: cada extensão libera
+novas coordenadas. Eles contam classes em quocientes diferentes,
+não uma sequência de subconjuntos do mesmo tamanho inicial.
+
+Os logs finais acompanham o pacote. O verificador principal conserva
+o algoritmo recebido com correções de portabilidade, nomenclatura e
+checagem de subespaços. A segunda implementação calcula as fibras
+diretamente, sem transporte de Walsh, e verifica a transformação da base.
+Ambas usam as mesmas condições matemáticas; portanto, sua concordância
+não substitui a demonstração de necessidade dos filtros.
+
+A terceira implementação reconstrói os geradores sem importar os dois
+verificadores. Confere todas as 495 máscaras de grau quatro, as 43 órbitas,
+a redução de grau e a invariância nas 64 fibras, 1.056.768 identidades
+de transporte sobre os geradores, a sizígia complementar, os operadores
+$T_9,T_{27}$, as imagens de postos 9, 10 e 5, e os oito setores.
+Também testa Walsh completo em $n=4,6,8$.
+
+\paragraph{Controles positivos.}
+Os dezesseis exemplos quadráticos RS bent em $n=12$ passam nos
+24 testes de Poisson. Esses controles não são apresentados como
+validação das restrições específicas de homogeneidade quártica.
+As cinquenta amostras quárticas com semente fixa verificam identidades,
+não a exaustividade da busca.
+
+\paragraph{Certificação formal.}
+O arquivo revisado compila com Lean 4.15.0, sem \texttt{sorry}.
+Verifica identidades auxiliares e a sizígia nos geradores explicitamente
+listados. A prova de inexistência em todo o espaço $2^{43}$ continua
+dependendo do argumento matemático e da execução Python/NumPy.
+O log vazio de compilação é acompanhado do registro de versão e status.
+
+\paragraph{Caso $n=10$.}
+O verificador suplementar reproduz a falha do argumento módulo cinco:
+$8\equiv-32$ e $-8\equiv32\pmod5$.
+Reproduz também a cascata de derivadas diagonais que elimina o ramo
+$|A_{31}|=8$. Os 1.625 exemplos que satisfazem todos os testes diagonais
+de ordem zero mostram que \emph{esses testes específicos} não bastam.
+Isso não autoriza afirmar que nenhuma propriedade possível do vetor
+completo $(A_z)_z$ poderia distinguir as candidatas.
+
+\paragraph{Dimensões maiores.}
+Verificar os 245 geradores em $n=20$ permite estender por linearidade
+as identidades lineares efetivamente verificadas, como cancelamento
+de coeficientes e invariância. Não enumera $2^{245}$ funções, não prova
+inexistência bent em $n=20$ e não é uma verificação exaustiva de uma
+família infinita. A divisibilidade espectral exige ainda a passagem
+matemática por grau, quociente e teorema de divisibilidade apropriado.
+
+\section{Avaliação editorial}
+O ponto forte do pacote é uma exclusão finita reproduzível em $n=12$
+com todas as etapas expostas. O caso $n=4$ serve como controle elementar;
+acrescentá-lo não aumenta substancialmente a novidade do resultado.
+A relevância para publicação depende principalmente de a certificação
+em $n=12$ e o método oferecerem algo não coberto na literatura.
+
+O Teorema 2 de Sun et al. já cobre a condição de paridade de órbitas
+curtas em $n=2p^r$ para $p\ge5$. Em $n=12$, a hipótese de tamanho do
+primo daquela afirmação não se satisfaz. Isso distingue esse teorema
+específico, mas não estabelece prioridade contra toda a literatura.
+O pacote não promete aceitação editorial nem substitui revisão por pares.
+
+Para submissão, o autor deve completar apenas dados editoriais que não
+constam do material: periódico de destino, afiliação/endereço de contato
+e declarações exigidas pelo periódico. Não foram inventadas declarações
+de ineditismo, ausência de submissão simultânea ou conflitos de interesse.
+Nenhum arquivo foi enviado a periódico ou repositório público nesta etapa.
+\end{document}

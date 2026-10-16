@@ -1,0 +1,15 @@
+{
+  "main_sieve": "PASS, zero survivors",
+  "direct_sieve": "PASS, all stage counts matched; zero survivors",
+  "foundations": "PASS",
+  "lean_revised": "PASS, exit 0",
+  "lean_received": "EXPECTED FAILURE: false affine-map assertion and insufficient nonlinear proof",
+  "pdf_pages": {
+    "manuscript/manuscript.pdf": 7,
+    "manuscript/cover_letter.pdf": 1,
+    "audit/relatorio.pdf": 3
+  },
+  "pdf_total_pages": 11,
+  "pdf_layout": "rendered and visually inspected; no overfull boxes or undefined references",
+  "publication_scope": "n=12 computer-assisted certificate; not the full conjecture"
+}

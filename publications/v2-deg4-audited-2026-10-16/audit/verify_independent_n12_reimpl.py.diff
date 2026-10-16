@@ -1,0 +1,29 @@
+--- received/verify_independent_n12_reimpl.py
++++ revised/verify_independent_n12_reimpl.py
+@@ -135,6 +135,8 @@
+                 rk += 1
+                 break
+     assert rk == 43
++    assert np.array_equal((P @ A_mat) & 1, M)
++    assert np.array_equal(M[:, piv_cols], np.eye(43, dtype=np.uint8))
+ 
+     # Agrupar as linhas de P (vetores em F_2^{43}) pelo estágio em que seu pivô aparece:
+     stage_col_ranges = []
+@@ -166,6 +168,8 @@
+             oid += 1
+ 
+     def build_poisson_checker(V_sub):
++        assert 0 in V_sub and len(set(V_sub)) == len(V_sub)
++        assert all((x ^ y) in V_sub for x in V_sub for y in V_sub)
+         V_perp = [beta for beta in range(64) if all(bin(beta & z).count("1") % 2 == 0 for z in V_sub)]
+         scale = len(V_sub)
+         reps = []
+@@ -387,6 +391,8 @@
+         else:
+             c_cur = np.zeros((0, 43), dtype=np.uint8)
+             Eb_cur = np.zeros((0, 64), dtype=np.int32)
++        expected = {1:26496, 11:94936, 13:149448, 31:106552, 3:349680, 5:23636, 15:128, 23:0}
++        assert len(c_cur) == expected[z_rep]
+         print(f"{label}:      {len(c_cur):,d}")
+ 
+     assert len(c_cur) == 0
