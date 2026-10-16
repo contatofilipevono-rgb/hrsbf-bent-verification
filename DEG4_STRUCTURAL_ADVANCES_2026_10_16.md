@@ -19,17 +19,27 @@ $$g_0(x, x \oplus v) = \left\langle x,\; M_0(v) \oplus c_{p^r}(v \oplus 1_{p^r})
 Somando inicialmente sobre $x \in \mathbb{F}_2^{p^r}$, obtém-se a **Dicotomia Espectral Bi-Antipodal** para todo $n = 4p^r$:
 1. **Ramo $c_{p^r} = 0$ e $\bigoplus_{d \text{ par}} c_d = 0$ ($2^{p^r-2}$ setores, 25%):** A translação $v \mapsto v \oplus 1_{p^r}$ em $\ker(M_0)$ preserva $g_0$ e inverte $\langle 1_h, u\rangle = \langle 1_{p^r}, v\rangle$ (pois $p^r$ é ímpar), implicando identicamente **$W_{g_0}(1_h) = 0$**.
 2. **Ramo $c_{p^r} = 0$ e $\bigoplus_{d \text{ par}} c_d = 1$ ($2^{p^r-2}$ setores, 25%):** A translação $v \mapsto v \oplus 1_{p^r}$ inverte $g_0$ e preserva $\langle z_2, u\rangle$, implicando identicamente **$A_0 = W_{g_0}(z_2) = 0$** e $\lvert W_{g_0}(1_h)\rvert = 2^{p^r + 1 + m_0}$, onde $2m_0 = \dim(\ker M_0 / \langle 1_{p^r}\rangle)$ é par (módulos circulantes autodualizados sobre $\mathbb{F}_2[C_{p^r}]$).
-3. **Ramo $c_{p^r} = 1$ ($2^{p^r-1}$ setores, 50%):** Como $(M_0 \oplus I_{p^r})(1_{p^r}) = 1_{p^r} \ne 0$, tem-se $1_{p^r} \notin \ker(M_0 \oplus I_{p^r})$, logo $\dim\ker(M_0 \oplus I_{p^r}) = 2m_1$ é par e **$\lvert A_0\rvert = \lvert W_{g_0}(1_h)\rvert = \lvert W_{g_0}(z_2)\rvert = 2^{p^r + m_1}$** (valoração 2-ádica de paridade oposta ao caso $c_{p^r}=0$ para $m_0 = m_1 = 0$).
+3. **Ramo $c_{p^r} = 1$ ($2^{p^r-1}$ setores, 50%):** A soma sobre $x \in \mathbb{F}_2^{p^r}$ restringe a avaliação ao coset afim $\mathcal{A}_1 = 1_{p^r} \oplus \ker(M_0 \oplus I_{p^r})$. A magnitude exata de Walsh é dada pela dimensão simplética total $k = \dim\ker(B)$ da matriz alternada $B = (U \oplus U^T) \pmod 2$ sobre $\mathbb{F}_2^{2p^r}$:
+   $$\lvert A_0\rvert = \lvert W_{g_0}(1_h)\rvert = \lvert W_{g_0}(z_2)\rvert = 2^{(2p^r + k)/2} = 2^{p^r + k/2}.$$
+   Como $k$ é par e $k \ge \dim\ker(M_0 \oplus I_{p^r})$, em $n = 12$ ($p^r = 3$), para o setor $c_1 = c_3 = 1, c_2 = 0$, tem-se $\dim\ker(M_0 \oplus I_3) = 2$, mas a matriz simplética completa $6 \times 6$ tem defeito de posto $k = 4$, resultando na magnitude exata $2^{3 + 4/2} = 2^5 = 32$ (confirmada pela FWHT exata).
 
 ---
 
-## 2. Certificado Mínimo e Cadeia Matroidal Ótima em $n = 12$
+## 2. Suficiência vs. Minimalidade e Cadeias Matroidais Ótimas em $n = 12$
 
-1. **Redundância de 20 dos 24 Subespaços de Poisson:**
-   - A ablação exata demonstra que nos Estágios 1 a 4 apenas **4 subespaços canônicos** (`V2_21`, `V1_9`, `V3`, `V4`) são necessários para obter os mesmos contadores (`712 -> 361 -> 20.158 -> 212.296 -> 8.688`), sendo os 12 subespaços auxiliares (`V1_63, V1_21, V1_27, V2_27, V2_9a, V2_9b, V1_7, V2_7a..d, V3_7a`) 100% redundantes.
-   - Nos Estágios 5 a 9d (`z = 1, 11, 13, 31, 3, 5, 15, 23`), **todos os 8 filtros de Poisson (`V1_1` a `V1_23`) são 100% redundantes**: apenas os limites de energia diagonal $\sum_z W_z(b)^2 \le 4096$ e as congruências residuais em $b \in \{0, 21, 63\}$ reproduzem os mesmos contadores (`26.496 -> 94.936 -> 149.448 -> 106.552 -> 349.680 -> 23.636 -> 128 -> 0`).
-2. **Unicidade da Cadeia Matroidal Ótima e Redução de 57,3% no Pico:**
-   - Avaliando os postos de todos os $2^8 = 256$ subconjuntos das 8 órbitas finais após $V_4$ (posto 27), a sequência que permuta $O_5 \leftrightarrow O_3$ (`[1, 11, 13, 31, 5, 3, 15, 23]`) atinge o **posto cumulativo mínimo único** em cada etapa ($31 \to 34 \to 36 \to 37 \to 40 \to 41 \to 42 \to 43$), reduzindo o pico de sobreviventes de **`349.680`** para **`149.448`**.
+1. **Suficiência e Redução de Filtros de Poisson:**
+   - O conjunto de 4 subespaços canônicos (`V2_21`, `V1_9`, `V3`, `V4`) é **suficiente** para reproduzir os mesmos 13 contadores exatos da CPU (`712 -> 361 -> 20.158 -> 212.296 -> 8.688 -> 26.496 -> 94.936 -> 149.448 -> 106.552 -> 349.680 -> 23.636 -> 128 -> 0`), dispensando os 20 filtros auxiliares.
+   - **Ablação leave-one-out:** O filtro unidimensional `V1_9` (`{0, 9}`) é **100% redundante** diante dos limites de Bessel $\sum W_z^2 \le 4096$ e de `V2_21`. O conjunto de apenas **3 subespaços (`{V2_21, V3, V4}`)** — uma filtração estrita de dimensões 2, 3, 4 sem nenhum subespaço 1D — é o conjunto **mínimo** que preserva exatamente todos os 13 contadores intermediários.
+   - **Suficiência unissubespacial:** Como $V_2(21) \subset V_4$ e $V_3 \subset V_4$, o subespaço **$V_4$ sozinho** é suficiente para colapsar o espaço para os mesmos $8.688$ sobreviventes no Estágio 4 e zero no Estágio 9d (embora com contadores intermediários mais largos nos Estágios 1b a 3).
+2. **As Quatro Cadeias Matroidais de Posto Ótimo e Reduções de Pico:**
+   - A avaliação combinatória completa dos $2^8 = 256$ subconjuntos das 8 órbitas finais após $V_4$ revela exatamente **4 permutações ótimas** que atingem o perfil de posto cumulativo mínimo $[31, 34, 36, 37, 40, 41, 42, 43]$:
+     - $P_1 = [1, 11, 13, 31, 5, 3, 15, 23]$ (penúltimo estágio: 128 sobreviventes)
+     - $P_2 = [1, 13, 11, 31, 5, 3, 15, 23]$ (penúltimo estágio: 128 sobreviventes)
+     - $P_3 = [1, 11, 13, 31, 5, 3, 23, 15]$ (penúltimo estágio: 2.048 sobreviventes)
+     - $P_4 = [1, 13, 11, 31, 5, 3, 23, 15]$ (penúltimo estágio: 2.048 sobreviventes)
+   - **Distinção entre Pico Global e Pico do Sufixo:**
+     - **Pico do sufixo (Estágios 5 a 9d):** A troca $O_5 \leftrightarrow O_3$ reduz o pico tardio de **$349.680$** (em $z=3$) para **$149.448$** (em $z=13$, Estágio 7), uma redução de **$-57,26\%$**.
+     - **Pico global (todos os 13 estágios):** O pico máximo absoluto de toda a cascata ocorre no Estágio 3 ($z=27$), onde há **$212.296$** sobreviventes. Assim, o pico global cai de $349.680$ para $212.296$, uma redução global de **$-39,29\%$**.
 
 ---
 

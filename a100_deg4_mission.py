@@ -289,8 +289,9 @@ def run_n12_gpu_and_ablation(device_str="cuda"):
             t_transfer += time.perf_counter() - th0
 
             def eval_wz_gpu(c_t, z_rep):
-                # Exact integer matrix product mod 2: max sum is 43 <= 127 (zero overflow in int32)
-                gz = torch.matmul(c_t, ev_t[z_rep]) & 1
+                # Exact integer parity mod 2 without calling addmm_cuda on int32:
+                # Bitwise AND over the 43 generators in uint8 reduced in int32 (max sum is 43 <= 127).
+                gz = (c_t.to(torch.uint8).unsqueeze(2) & ev_t[z_rep].to(torch.uint8).unsqueeze(0)).sum(dim=1, dtype=torch.int32) & 1
                 W = fwht_torch(1 - 2 * gz)
                 return W
 
@@ -301,9 +302,12 @@ def run_n12_gpu_and_ablation(device_str="cuda"):
 
             def pass_poisson_gpu(W_dict, cname):
                 V_sub, signs_g, allowed_g = chk_t[cname]
-                W_st = torch.stack([W_dict[z] for z in V_sub], dim=1) # (N, |V|, 64)
-                # Exact int32 einsum: max |L| <= 16 * 64 = 1024
-                L = torch.einsum('gz,nzb->ngb', signs_g, W_st)
+                # Exact int32 linear combination without calling bmm_cuda/addmm_cuda on int32:
+                # max |L| <= 16 * 64 = 1024
+                L = sum(
+                    signs_g[None, :, z_i, None] * W_dict[z][:, None, :]
+                    for z_i, z in enumerate(V_sub)
+                )
                 idx = torch.clamp((L + 1024) >> 1, 0, 1024).to(torch.long)
                 b_idx = torch.arange(64, device=dev)[None, None, :]
                 g_idx = torch.arange(signs_g.shape[0], device=dev)[None, :, None]
@@ -637,6 +641,7 @@ def run_n12_gpu_and_ablation(device_str="cuda"):
             "swap_3_5": swap_3_5,
             "stage_counts": stage_counts,
             "peak_survivors": max(stage_counts),
+            "suffix_peak_survivors": max(stage_counts[5:]),
             "final_survivors": stage_counts[-1],
             "overflow_checks_ok": overflow_checks_ok,
             "transfer_seconds": round(t_transfer, 4),
@@ -654,18 +659,19 @@ def run_n12_gpu_and_ablation(device_str="cuda"):
     print(f"    Transferência H2D/D2H: {res_gpu_full['transfer_seconds']:.4f}s | Kernel: {res_gpu_full['kernel_seconds']:.4f}s | Total: {res_gpu_full['total_seconds']:.4f}s")
     assert res_gpu_full["stage_counts"] == ref_expected and res_gpu_full["overflow_checks_ok"]
 
-    # 2. Run GPU Minimal Certificate (ONLY 4 subspaces: V2_21, V1_9, V3, V4; ZERO V1 Poisson in stages 5..9d!)
+    # 2. Run GPU Sufficient 4-Subspace Certificate (V2_21, V1_9, V3, V4; ZERO V1 Poisson in stages 5..9d!)
     res_gpu_min4 = run_cascade_engine(backend="gpu", filter_mode="MINIMAL_4", swap_3_5=False)
-    print(f"\n[2] Certificado Mínimo (APENAS 4 subespaços: V2_21, V1_9, V3, V4; ZERO Poisson nos Estágios 5–9d):")
+    print(f"\n[2] Certificado Suficiente de 4 Subespaços (V2_21, V1_9, V3, V4; ZERO Poisson nos Estágios 5–9d):")
     print(f"    Contadores: {res_gpu_min4['stage_counts']}")
     print(f"    Igualdade exata com os 24 subespaços: {res_gpu_min4['stage_counts'] == ref_expected} | Tempo: {res_gpu_min4['total_seconds']:.4f}s")
     assert res_gpu_min4["stage_counts"] == ref_expected
 
-    # 3. Run GPU Minimal Certificate + Swapped (O_5 before O_3 -> 57.3% lower peak!)
+    # 3. Run GPU 4-Subspace Certificate + Swapped (O_5 before O_3 -> global peak -39.29%, suffix peak -57.26%!)
     res_gpu_swap = run_cascade_engine(backend="gpu", filter_mode="MINIMAL_4", swap_3_5=True)
-    print(f"\n[3] Certificado Mínimo + Permutação O_5 <-> O_3 (pico reduzido em 57,3%: 349.680 -> 149.448):")
+    print(f"\n[3] Certificado de 4 Subespaços + Permutação O_5 <-> O_3:")
     print(f"    Contadores: {res_gpu_swap['stage_counts']}")
-    print(f"    Pico máximo: {res_gpu_swap['peak_survivors']:,d} | Tempo: {res_gpu_swap['total_seconds']:.4f}s")
+    print(f"    Pico global (13 estágios): 349.680 -> {res_gpu_swap['peak_survivors']:,d} (-39,29%, Estágio 3)")
+    print(f"    Pico do sufixo (Estágios 5–9d): 349.680 -> {res_gpu_swap['suffix_peak_survivors']:,d} (-57,26%, Estágio 7) | Tempo: {res_gpu_swap['total_seconds']:.4f}s")
     assert res_gpu_swap["stage_counts"] == swap_expected
 
     # 4. Run CPU Reference comparison

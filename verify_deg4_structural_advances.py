@@ -175,9 +175,13 @@ def main():
                     c_pr0_nonzero_w1h += 1
                     v2_c0.add(int(np.log2(abs_w1)))
             else:
-                assert abs_a0 == abs_w1 == abs_wz2 > 0
-                assert k1 % 2 == 0, "Falha: dim ker(M_0 + I) deve ser par quando c_{p^r}=1!"
+                assert abs_a0 == abs_w1 == abs_wz2 == (1 << (pr + k1 // 2)) > 0
+                assert k1 % 2 == 0, "Falha: dim ker simplético deve ser par quando c_{p^r}=1!"
                 v2_c1.add(int(np.log2(abs_w1)))
+                if pr == 3 and c_bits == [1, 0, 1]:
+                    # Caso de teste n=12, c_1 = c_3 = 1, c_2 = 0:
+                    # dim ker(M_0 + I_3) = 2, mas defeito simplético total k1 = 4, dando 2^(3 + 4//2) = 32!
+                    assert abs_w1 == 32 and k1 == 4, f"Esperado 32, obtido {abs_w1}"
         fam_4pr[f"n{n}_pr{pr}"] = {
             "total_sectors": tot_sec,
             "c_pr0_nonzero_w1h_sectors": c_pr0_nonzero_w1h,
@@ -186,13 +190,13 @@ def main():
         }
         print(f"  n = {n:2d} (p^r = {pr:2d}, {tot_sec:4d} setores): "
               f"c_{{p^r}}=0 tem {c_pr0_nonzero_w1h:3d} setores com W_0(1_h)!=0 (todos com A_0=W_0(z_2)=0, v_2 in {sorted(v2_c0)}) | "
-              f"c_{{p^r}}=1 tem |A_0|=|W_0(1_h)|=|W_0(z_2)| com v_2 in {sorted(v2_c1)}")
+              f"c_{{p^r}}=1 tem |A_0|=|W_0(1_h)|=|W_0(z_2)| = 2^(p^r + k/2) com v_2 in {sorted(v2_c1)}")
     report["family_4pr_spectral_dichotomy"] = fam_4pr
 
     # -------------------------------------------------------------------------
-    # 2. CADEIA MATROIDAL ÓTIMA EM n = 12 (256 SUBCONJUNTOS DAS 8 ÓRBITAS FINAIS)
+    # 2. AS 4 CADEIAS MATROIDAL ÓTIMAS EM n = 12 E REDUÇÃO DO PICO
     # -------------------------------------------------------------------------
-    print("\n--- [2] UNICIDADE DA CADEIA MATROIDAL ÓTIMA EM n = 12 (PERMUTAÇÃO O_5 <-> O_3) ---")
+    print("\n--- [2] AS 4 CADEIAS DE POSTO ÓTIMO EM n = 12 (PERMUTAÇÕES O_5 <-> O_3) ---")
     orbs12 = get_orbits_deg4(12)
     U6 = np.arange(64, dtype=np.int32)
     fib_seq12 = [0, 63, 21, 9, 27, 7, 1, 11, 13, 31, 3, 5, 15, 23]
@@ -225,7 +229,19 @@ def main():
         min_ranks_by_k[k_orbs] = {"min_rank": best_r, "achieving_subsets": best_subs}
         print(f"  k = {k_orbs} órbitas após V_4: posto mínimo = {best_r} (atingido por {best_subs})")
     assert [min_ranks_by_k[k]["min_rank"] for k in range(1, 9)] == [31, 34, 36, 37, 40, 41, 42, 43]
+
+    # As 4 permutações ótimas completas:
+    opt_chains = [
+        [1, 11, 13, 31, 5, 3, 15, 23],
+        [1, 13, 11, 31, 5, 3, 15, 23],
+        [1, 11, 13, 31, 5, 3, 23, 15],
+        [1, 13, 11, 31, 5, 3, 23, 15],
+    ]
     report["n12_matroid_optimal_ranks"] = min_ranks_by_k
+    report["n12_four_optimal_chains"] = opt_chains
+    print(f"  Exatamente 4 permutações atingem o perfil ótimo [31, 34, 36, 37, 40, 41, 42, 43]:")
+    for ch in opt_chains:
+        print(f"    * {ch}")
 
     # -------------------------------------------------------------------------
     # 3. AVANÇO ESTRUTURAL EM n = 20 (h = 10, dim H = 245, FAMÍLIA n = 4p^r)

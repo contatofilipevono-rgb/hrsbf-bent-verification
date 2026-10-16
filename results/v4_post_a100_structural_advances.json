@@ -13,7 +13,7 @@
       "abs_A341_480_abs_A1023_256": 3072
     },
     "exact_match_with_T12_affine_exceptions_npz": true,
-    "cpu_verification_seconds": 1.6465
+    "cpu_verification_seconds": 1.7048
   },
   "n16_391804_theorem": {
     "total_states_V2": 2097152,
@@ -151,5 +151,5 @@
     "invariant_4dim_subspace_W5_rank": 69,
     "invariant_5dim_subspace_U5_rank": 91
   },
-  "total_elapsed_seconds": 3.4261
+  "total_elapsed_seconds": 2.665
 }
