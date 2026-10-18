@@ -69,3 +69,27 @@ roots = ["H12AffineCanonicalPilotData000", "H12AffineCanonicalPilotData001", "H1
 [[lean_lib]]
 name = "H12EmptyChartCertificate"
 roots = ["H12EmptyChartData000", "H12EmptyChartProof000", "H12EmptyChart"]
+
+[[lean_lib]]
+name = "H12RowCompositionTheory"
+roots = ["H12QuadraticCompose"]
+
+[[lean_lib]]
+name = "H12AffineRowTheory"
+roots = ["H12AffineRowState"]
+
+[[lean_lib]]
+name = "H12RowRootPilotCertificate"
+roots = ["H12RowRootPilotData000", "H12RowRootPilotData001", "H12RowRootPilotData002", "H12RowRootPilotData003", "H12RowRootPilotProof000", "H12RowRootPilot"]
+
+[[lean_lib]]
+name = "H12AffineRowScanTheory"
+roots = ["H12AffineRowScanState"]
+
+[[lean_lib]]
+name = "H12RowScanPilotCertificate"
+roots = ["H12RowScanPilotData000", "H12RowScanPilotProof000", "H12RowScanPilot"]
+
+[[lean_lib]]
+name = "H12RowScanEmptyChartCertificate"
+roots = ["H12RowScanEmptyChartData000", "H12RowScanEmptyChartProof000", "H12RowScanEmptyChart"]

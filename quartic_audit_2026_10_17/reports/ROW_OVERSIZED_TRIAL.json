@@ -1,0 +1,13 @@
+{
+  "status": "INTERRUPTED_RESOURCE_LIMIT_NOT_VERIFIED",
+  "engine": "H12AffineRowScanState",
+  "chart": 2,
+  "data_chunk_size": 6000,
+  "proof_chunk_size": 3000,
+  "modules_generated": 110,
+  "modules_verified": 0,
+  "observed_lean_private_memory_mb": 7071,
+  "host_physical_memory_kib": 8085560,
+  "reason": "Oversized first module caused paging on an8GB host. Only this trial process tree was stopped. Sources will be regenerated in smaller chunks; no result from the interrupted trial counts as verified.",
+  "first_module_source_sha256": "ac1f7f968172a8fde5e226acb39c9a223d166f03fcaa91e291ee0c05df3fc544"
+}

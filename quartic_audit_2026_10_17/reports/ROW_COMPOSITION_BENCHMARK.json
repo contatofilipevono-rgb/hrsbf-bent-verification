@@ -1,0 +1,26 @@
+{
+  "status": "PASS_LOCAL_KERNEL_DECISION_CHECKS",
+  "scope": "Same first16 concrete identities of chart2FullData000. Concurrent job load was not controlled. Times are observations, not universal speed guarantees or a global runtime estimate.",
+  "results": [
+    {
+      "engine": "H12AffineState.compose",
+      "checks": 16,
+      "exit_code": 0,
+      "seconds": 16.229
+    },
+    {
+      "engine": "H12QuadraticCompose.composeRows",
+      "checks": 16,
+      "exit_code": 0,
+      "seconds": 9.997
+    },
+    {
+      "engine": "composeRows+canonicalFast",
+      "checks": 16,
+      "exit_code": 0,
+      "seconds": 16.124,
+      "scope": "Local16-identities benchmark; no global coverage or runtime extrapolation."
+    }
+  ],
+  "baseline_module_sha256": "7055aa7587e18bbc8bfe0a02f8baa9b01eb60974cbf52c7e4ac5b8752bb4f658"
+}

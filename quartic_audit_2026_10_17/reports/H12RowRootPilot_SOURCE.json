@@ -1,0 +1,25 @@
+{
+  "status": "PASS_GENERATED_MODULES_KERNEL_REPLAY",
+  "chart": 0,
+  "subtree": 11,
+  "root_frame": true,
+  "scope": "Fixed-equation affine-environment subtree only; not global tree coverage.",
+  "full_recorded_chart_root": false,
+  "generator_sha256": "8cb5d3cff76e9201a6f30f19371fb2339c6ce980c9a5ec0c559a9c5efc28f030",
+  "statistics": {
+    "nodes": 3,
+    "states": 32,
+    "transitions": 31,
+    "terminal_candidates": 16
+  },
+  "modules": [
+    "H12RowRootPilotData000",
+    "H12RowRootPilotData001",
+    "H12RowRootPilotData002",
+    "H12RowRootPilotData003",
+    "H12RowRootPilotProof000",
+    "H12RowRootPilot"
+  ],
+  "audit_report": "LEAN_ROW_ROOT_PILOT_AUDIT.json",
+  "engine": "H12AffineRowState"
+}

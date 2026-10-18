@@ -5,7 +5,12 @@ from pathlib import Path
 import json,csv,itertools,argparse,re
 parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--node',type=int,default=11)
 parser.add_argument('--chart',type=int,default=0);parser.add_argument('--prefix',default='H12AffinePilot');parser.add_argument('--register',action='store_true');parser.add_argument('--root-frame',action='store_true');parser.add_argument('--chunk-size',type=int,default=60);parser.add_argument('--proof-chunk-size',type=int,default=200);parser.add_argument('--check-python-composition',action='store_true')
+parser.add_argument('--engine',choices=['H12AffineState','H12AffineRowState','H12AffineRowScanState'],default='H12AffineState')
 args=parser.parse_args()
+def render(source):
+ source=source.replace('H12AffineState',args.engine)
+ if args.engine=='H12AffineRowState':source=source.replace('scanCanonicalize','H12QuadraticCompose.canonicalFast')
+ return source
 if not re.fullmatch(r'[A-Z][A-Za-z0-9_]*',args.prefix):raise SystemExit('Prefix must be a Lean module name.')
 if args.chunk_size<1 or args.proof_chunk_size<1:raise SystemExit('Chunk sizes must be positive.')
 root=Path(__file__).resolve().parent.parent
@@ -195,7 +200,7 @@ ps=chosen[0];env=[pack(p) for p in chosenVariables] if args.root_frame else init
 header=[f'namespace {args.prefix}','open H12PackedPolynomial','set_option maxRecDepth 100000','set_option maxHeartbeats 1000000000'];modules=[]
 for begin in range(0,len(data),args.chunk_size):
  name=f'{args.prefix}Data{len(modules):03d}';prior=['import '+modules[-1]] if modules else ['import '+m for m in sorted(imports)]
- source='\n\n'.join(prior+header+data[begin:begin+args.chunk_size]+[f'end {args.prefix}']);file=root/'lean'/(name+'.lean')
+ source=render('\n\n'.join(prior+header+data[begin:begin+args.chunk_size]+[f'end {args.prefix}']));file=root/'lean'/(name+'.lean')
  if not file.exists() or file.read_text(encoding='utf-8')!=source:file.write_text(source,encoding='utf-8')
  modules.append(name)
 if args.root_frame and args.node!=cert['roots'][args.chart]:
@@ -206,7 +211,7 @@ proofModules=[]
 for begin in range(0,len(proofs),args.proof_chunk_size):
  name=f'{args.prefix}Proof{len(proofModules):03d}'
  prior=proofModules[-1] if proofModules else modules[-1]
- source='\n\n'.join(['import '+prior]+header+proofs[begin:begin+args.proof_chunk_size]+[f'end {args.prefix}'])
+ source=render('\n\n'.join(['import '+prior]+header+proofs[begin:begin+args.proof_chunk_size]+[f'end {args.prefix}']))
  file=root/'lean'/(name+'.lean')
  if not file.exists() or file.read_text(encoding='utf-8')!=source:file.write_text(source,encoding='utf-8')
  proofModules.append(name)
@@ -217,9 +222,12 @@ if args.node==cert['roots'][args.chart]:
            f'theorem rootObs_identity : rootObs = H12PackedRoots.rootEnv {args.chart} := by\n  exact beq_iff_eq.mp (by decide +kernel : (rootObs == H12PackedRoots.rootEnv {args.chart}) = true)',
            f'theorem refutation : H12AffineState.Refutes H12CertificateBridge.Target (H12PackedRoots.rootPS {args.chart}) (H12PackedRoots.rootEnv {args.chart}) H12AffineState.identityEnv := by\n  have h := ref0\n  rw [rootPS_identity, rootObs_identity] at h\n  exact h', '#print axioms refutation']
 final += [f'end {args.prefix}']
-file=root/'lean'/(args.prefix+'.lean');file.write_text('\n\n'.join(['import '+last]+header+final),encoding='utf-8')
+file=root/'lean'/(args.prefix+'.lean');file.write_text(render('\n\n'.join(['import '+last]+header+final)),encoding='utf-8')
 modules += proofModules
 report={'status':'GENERATED_NOT_YET_KERNEL_VERIFIED','chart':args.chart,'subtree':args.node,'root_frame':args.root_frame,'scope':'Fixed-equation affine-environment subtree only; not global tree coverage.','full_recorded_chart_root':args.node==cert['roots'][args.chart],'generator_sha256':__import__('hashlib').sha256(Path(__file__).read_bytes()).hexdigest(),'statistics':stats,'modules':modules+[args.prefix]}
+report['engine']=args.engine
+report['data_chunk_size']=args.chunk_size
+report['proof_chunk_size']=args.proof_chunk_size
 (root/'reports'/(args.prefix+'_SOURCE.json')).write_text(json.dumps(report,indent=2));print(report)
 if args.register:
  config=root/'lean/lakefile.toml';text=config.read_text(encoding='utf-8');name=args.prefix+'Certificate'

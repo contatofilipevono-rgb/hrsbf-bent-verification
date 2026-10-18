@@ -1,6 +1,6 @@
 {
   "status": "PASS_SOURCE_HASHES_AND_REPLAY_LOG_COVERAGE",
-  "modules": 147,
+  "modules": 162,
   "primary_modules": 28,
   "witness_modules": 42,
   "witnesses": 164288,
@@ -448,9 +448,55 @@
     ],
     "H12EmptyChart": [
       "LEAN_EMPTY_CHART_AUDIT.json"
+    ],
+    "H12QuadraticCompose": [
+      "LEAN_ROW_THEORY_AUDIT.json"
+    ],
+    "H12AffineRowState": [
+      "LEAN_ROW_THEORY_AUDIT.json"
+    ],
+    "H12AffineRowScanState": [
+      "LEAN_ROW_SCAN_THEORY_AUDIT.json"
+    ],
+    "H12RowRootPilotData000": [
+      "LEAN_ROW_ROOT_PILOT_AUDIT.json"
+    ],
+    "H12RowRootPilotData001": [
+      "LEAN_ROW_ROOT_PILOT_AUDIT.json"
+    ],
+    "H12RowRootPilotData002": [
+      "LEAN_ROW_ROOT_PILOT_AUDIT.json"
+    ],
+    "H12RowRootPilotData003": [
+      "LEAN_ROW_ROOT_PILOT_AUDIT.json"
+    ],
+    "H12RowRootPilotProof000": [
+      "LEAN_ROW_ROOT_PILOT_AUDIT.json"
+    ],
+    "H12RowRootPilot": [
+      "LEAN_ROW_ROOT_PILOT_AUDIT.json"
+    ],
+    "H12RowScanPilotData000": [
+      "H12RowScanPilot_KERNEL_AUDIT.json"
+    ],
+    "H12RowScanPilotProof000": [
+      "H12RowScanPilot_KERNEL_AUDIT.json"
+    ],
+    "H12RowScanPilot": [
+      "H12RowScanPilot_KERNEL_AUDIT.json"
+    ],
+    "H12RowScanEmptyChartData000": [
+      "H12RowScanEmptyChart_KERNEL_AUDIT.json"
+    ],
+    "H12RowScanEmptyChartProof000": [
+      "H12RowScanEmptyChart_KERNEL_AUDIT.json"
+    ],
+    "H12RowScanEmptyChart": [
+      "H12RowScanEmptyChart_KERNEL_AUDIT.json"
     ]
   },
   "unconditional_global_H12_theorem": false,
   "largest_tested_connected_subtree_nodes": 21,
-  "note": "The subtree pilots overlap; do not add their node or candidate counts. Log/source audit does not replace independent kernel replay."
+  "note": "The subtree pilots overlap; do not add their node or candidate counts. Log/source audit does not replace independent kernel replay.",
+  "excluded_unfinished_libraries": []
 }

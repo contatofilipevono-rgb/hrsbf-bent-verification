@@ -1,5 +1,7 @@
 # Retomada pelo colaborador — H(12,4)
 
+Checkpoint atual: [162 módulos conferidos pelo kernel](ESTADO_KERNEL_162.md). As variantes de composição por linhas e seus pilotos passaram; as três cartas completas necessárias ainda estão pendentes. O pacote de 147 módulos é um snapshot anterior testado.
+
 ## Objetivo e ponto de partida
 
 Concluir a prova Lean global de inexistência de funções bent no espaço de funções booleanas homogêneas quárticas invariantes por rotação em 12 variáveis, preservando os certificados e a auditoria adversarial. O resultado computacional global já está fechado; a formalização integral permanece em andamento.

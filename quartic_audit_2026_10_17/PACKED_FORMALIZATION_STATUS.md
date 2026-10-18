@@ -31,4 +31,4 @@ All 164,288 Walsh rejections and their 42 modules have passed the Lean kernel (`
 The optional executable `H12PackedChecker` is proved sound. A raw subtree benchmark is exploratory until its result is recorded. None of these local subtrees proves coverage of all root-chart assignments.
 
 
-The fixed-equation affine-state theory, both small subtree instances, the 21-node instance, the root-frame instance, and the empty fourth chart have all passed kernel replay. See ESTADO_KERNEL_147.md and LEAN_CHECKPOINT_COVERAGE.json. The complete three-root H(12,4) exclusion theorem is still pending.
+The fixed-equation affine-state theory, both small subtree instances, the 21-node instance, the root-frame instance, and the empty fourth chart have all passed kernel replay. The later row-composition theories and overlapping pilots also passed; see ESTADO_KERNEL_162.md and LEAN_CHECKPOINT_COVERAGE.json. The complete three-root H(12,4) exclusion theorem is still pending.

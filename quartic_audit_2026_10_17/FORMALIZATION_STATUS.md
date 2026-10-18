@@ -2,6 +2,8 @@
 
 O resultado computacional global é zero bent. O objetivo formal integral ainda não foi atingido. Esta tabela identifica as obrigações, sem substituir a prova global por uma coleção de lemas condicionais.
 
+O checkpoint atual cobre 162 módulos com reprodução pelo kernel; veja [ESTADO_KERNEL_162.md](ESTADO_KERNEL_162.md). As teorias de composição por linhas e os pilotos adicionais passaram. A instanciação completa das três cartas necessárias permanece pendente.
+
 | Obrigação | Estado e evidência atual |
 |---|---|
 | Definir a base correta de H(12,4) | `H12.quarticOrbits`, no arquivo `H12PeriodFour.lean`, contém os 43 geradores explícitos; `H12Orbit.all_supports_partitioned` cobre os 495 suportes exatamente uma vez e `cyclic_orbits_exact` verifica cada órbita cíclica distinta. |
