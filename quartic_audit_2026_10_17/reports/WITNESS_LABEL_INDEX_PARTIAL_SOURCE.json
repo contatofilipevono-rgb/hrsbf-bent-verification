@@ -1,0 +1,12 @@
+{
+  "status": "PASS_GENERATED_MODULES_KERNEL_REPLAY",
+  "entries": 4096,
+  "batches": 16,
+  "modules": [
+    "H12WitnessLabelData000",
+    "H12PartialWitnessLabelIndex"
+  ],
+  "scope": "Search-label index only. Good establishes sound rejection for a lookup hit, not global chart coverage.",
+  "generator_sha256": "49351c928eea26f06af1c94bd3c928afe2a58d80e1cd8def0fa122a46aaa673d",
+  "audit_report": "LEAN_WITNESS_LABEL_INDEX_PILOT_AUDIT.json"
+}

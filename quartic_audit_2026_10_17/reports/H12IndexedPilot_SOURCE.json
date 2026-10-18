@@ -1,0 +1,26 @@
+{
+  "status": "PASS_GENERATED_MODULES_KERNEL_REPLAY",
+  "chart": 0,
+  "subtree": 11,
+  "root_frame": true,
+  "scope": "Fixed-equation affine-environment subtree only; not global tree coverage.",
+  "full_recorded_chart_root": false,
+  "generator_sha256": "237be4cb5e4fc0a48ef51dbb122026d537334d4ae8c90cf4d0add9ec49d19840",
+  "statistics": {
+    "nodes": 3,
+    "states": 32,
+    "transitions": 31,
+    "terminal_candidates": 16
+  },
+  "modules": [
+    "H12IndexedPilotData000",
+    "H12IndexedPilotProof000",
+    "H12IndexedPilot"
+  ],
+  "engine": "H12AffineFastState",
+  "coefficient_label_leaves": false,
+  "global_coefficient_label_index": true,
+  "data_chunk_size": 1200,
+  "proof_chunk_size": 600,
+  "audit_report": "LEAN_INDEXED_PILOT_AUDIT.json"
+}

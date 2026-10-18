@@ -2,7 +2,7 @@
 
 O resultado computacional global é zero bent. O objetivo formal integral ainda não foi atingido. Esta tabela identifica as obrigações, sem substituir a prova global por uma coleção de lemas condicionais.
 
-O checkpoint atual cobre 162 módulos com reprodução pelo kernel; veja [ESTADO_KERNEL_162.md](ESTADO_KERNEL_162.md). As teorias de composição por linhas e os pilotos adicionais passaram. A instanciação completa das três cartas necessárias permanece pendente.
+O checkpoint atual cobre 218 módulos com reprodução pelo kernel; veja [ESTADO_KERNEL_218.md](ESTADO_KERNEL_162.md). As teorias de composição por linhas e os pilotos adicionais passaram. A instanciação completa das três cartas necessárias permanece pendente.
 
 | Obrigação | Estado e evidência atual |
 |---|---|

@@ -1,0 +1,196 @@
+import H12AffineEnvironment
+import H12Chart2FullData000
+open H12Chart2Full H12PackedPolynomial
+set_option maxRecDepth 100000
+set_option maxHeartbeats 1000000000
+theorem check0_1 : H12AffineEnvironment.transform 33 15147278706 env0 = env1 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 33 15147278706 env0 == env1) = true)
+
+theorem check1_2 : H12AffineEnvironment.transform 35 33563272 env1 = env2 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 35 33563272 env1 == env2) = true)
+
+theorem check2_3 : H12AffineEnvironment.transform 30 898831440 env2 = env3 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 30 898831440 env2 == env3) = true)
+
+theorem check3_4 : H12AffineEnvironment.transform 19 32768 env3 = env4 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 19 32768 env3 == env4) = true)
+
+theorem check4_5 : H12AffineEnvironment.transform 32 880939344 env4 = env5 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 32 880939344 env4 == env5) = true)
+
+theorem check5_6 : H12AffineEnvironment.transform 22 17664 env5 = env6 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 22 17664 env5 == env6) = true)
+
+theorem check6_7 : H12AffineEnvironment.transform 27 67130624 env6 = env7 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 27 67130624 env6 == env7) = true)
+
+theorem check7_8 : H12AffineEnvironment.transform 34 694534144 env7 = env8 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 34 694534144 env7 == env8) = true)
+
+theorem check8_9 : H12AffineEnvironment.transform 28 157794304 env8 = env9 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 28 157794304 env8 == env9) = true)
+
+theorem check9_10 : H12AffineEnvironment.transform 23 98564 env9 = env10 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 23 98564 env9 == env10) = true)
+
+theorem check10_11 : H12AffineEnvironment.transform 16 1344 env10 = env11 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 16 1344 env10 == env11) = true)
+
+theorem check11_12 : H12AffineEnvironment.transform 20 4096 env11 = env12 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 20 4096 env11 == env12) = true)
+
+theorem check12_13 : H12AffineEnvironment.transform 26 71582804 env12 = env13 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 26 71582804 env12 == env13) = true)
+
+theorem check13_14 : H12AffineEnvironment.transform 24 8328 env13 = env14 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 24 8328 env13 == env14) = true)
+
+theorem check14_15 : H12AffineEnvironment.transform 29 71396566 env14 = env15 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 29 71396566 env14 == env15) = true)
+
+theorem check15_16 : H12AffineEnvironment.transform 14 8460 env15 = env16 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 14 8460 env15 == env16) = true)
+
+theorem check16_17 : H12AffineEnvironment.transform 13 4176 env16 = env17 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 13 4176 env16 == env17) = true)
+
+theorem check17_18 : H12AffineEnvironment.transform 25 4199564 env17 = env18 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 25 4199564 env17 == env18) = true)
+
+theorem check18_19 : H12AffineEnvironment.transform 21 396 env18 = env19 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 21 396 env18 == env19) = true)
+
+theorem check19_20 : H12AffineEnvironment.transform 31 70758 env19 = env20 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 31 70758 env19 == env20) = true)
+
+theorem check20_21 : H12AffineEnvironment.transform 12 8 env20 = env21 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 12 8 env20 == env21) = true)
+
+theorem check21_22 : H12AffineEnvironment.transform 9 256 env21 = env22 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 9 256 env21 == env22) = true)
+
+theorem check22_23 : H12AffineEnvironment.transform 6 8 env22 = env23 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 6 8 env22 == env23) = true)
+
+theorem check23_24 : H12AffineEnvironment.transform 17 65536 env23 = env24 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 17 65536 env23 == env24) = true)
+
+theorem check24_25 : H12AffineEnvironment.transform 10 0 env24 = env25 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 10 0 env24 == env25) = true)
+
+theorem check25_26 : H12AffineEnvironment.transform 7 38 env25 = env26 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 7 38 env25 == env26) = true)
+
+theorem check26_27 : H12AffineEnvironment.transform 8 8 env26 = env27 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 8 8 env26 == env27) = true)
+
+theorem check27_28 : H12AffineEnvironment.transform 15 2 env27 = env28 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 15 2 env27 == env28) = true)
+
+theorem check28_29 : H12AffineEnvironment.transform 4 0 env28 = env29 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 4 0 env28 == env29) = true)
+
+theorem check29_30 : H12AffineEnvironment.transform 2 0 env29 = env30 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 2 0 env29 == env30) = true)
+
+theorem check30_31 : H12AffineEnvironment.transform 11 64 env30 = env31 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 11 64 env30 == env31) = true)
+
+theorem check31_32 : H12AffineEnvironment.transform 18 4 env31 = env32 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 18 4 env31 == env32) = true)
+
+theorem check32_33 : H12AffineEnvironment.transform 0 0 env32 = env33 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 0 0 env32 == env33) = true)
+
+theorem check31_34 : H12AffineEnvironment.transform 18 5 env31 = env34 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 18 5 env31 == env34) = true)
+
+theorem check34_35 : H12AffineEnvironment.transform 5 16 env34 = env35 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 5 16 env34 == env35) = true)
+
+theorem check34_36 : H12AffineEnvironment.transform 5 17 env34 = env36 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 5 17 env34 == env36) = true)
+
+theorem check36_37 : H12AffineEnvironment.transform 0 1 env36 = env37 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 0 1 env36 == env37) = true)
+
+theorem check29_38 : H12AffineEnvironment.transform 2 1 env29 = env38 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 2 1 env29 == env38) = true)
+
+theorem check38_39 : H12AffineEnvironment.transform 18 4166 env38 = env39 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 18 4166 env38 == env39) = true)
+
+theorem check39_40 : H12AffineEnvironment.transform 11 65 env39 = env40 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 11 65 env39 == env40) = true)
+
+theorem check40_41 : H12AffineEnvironment.transform 0 1 env40 = env41 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 0 1 env40 == env41) = true)
+
+theorem check28_42 : H12AffineEnvironment.transform 4 1 env28 = env42 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 4 1 env28 == env42) = true)
+
+theorem check42_43 : H12AffineEnvironment.transform 0 1 env42 = env43 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 0 1 env42 == env43) = true)
+
+theorem check43_44 : H12AffineEnvironment.transform 18 4116 env43 = env44 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 18 4116 env43 == env44) = true)
+
+theorem check44_45 : H12AffineEnvironment.transform 11 64 env44 = env45 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 11 64 env44 == env45) = true)
+
+theorem check45_46 : H12AffineEnvironment.transform 2 0 env45 = env46 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 2 0 env45 == env46) = true)
+
+theorem check44_47 : H12AffineEnvironment.transform 11 65 env44 = env47 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 11 65 env44 == env47) = true)
+
+theorem check47_48 : H12AffineEnvironment.transform 2 0 env47 = env48 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 2 0 env47 == env48) = true)
+
+theorem check48_49 : H12AffineEnvironment.transform 5 16 env48 = env49 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 5 16 env48 == env49) = true)
+
+theorem check24_50 : H12AffineEnvironment.transform 10 1 env24 = env50 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 10 1 env24 == env50) = true)
+
+theorem check50_51 : H12AffineEnvironment.transform 15 293 env50 = env51 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 15 293 env50 == env51) = true)
+
+theorem check51_52 : H12AffineEnvironment.transform 8 8 env51 = env52 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 8 8 env51 == env52) = true)
+
+theorem check52_53 : H12AffineEnvironment.transform 7 39 env52 = env53 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 7 39 env52 == env53) = true)
+
+theorem check53_54 : H12AffineEnvironment.transform 4 0 env53 = env54 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 4 0 env53 == env54) = true)
+
+theorem check54_55 : H12AffineEnvironment.transform 0 0 env54 = env55 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 0 0 env54 == env55) = true)
+
+theorem check55_56 : H12AffineEnvironment.transform 18 4117 env55 = env56 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 18 4117 env55 == env56) = true)
+
+theorem check56_57 : H12AffineEnvironment.transform 11 64 env56 = env57 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 11 64 env56 == env57) = true)
+
+theorem check57_58 : H12AffineEnvironment.transform 5 16 env57 = env58 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 5 16 env57 == env58) = true)
+
+theorem check58_59 : H12AffineEnvironment.transform 2 0 env58 = env59 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 2 0 env58 == env59) = true)
+
+theorem check56_60 : H12AffineEnvironment.transform 11 65 env56 = env60 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 11 65 env56 == env60) = true)
+
+theorem check60_61 : H12AffineEnvironment.transform 5 25 env60 = env61 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 5 25 env60 == env61) = true)
+
+theorem check61_62 : H12AffineEnvironment.transform 2 1 env61 = env62 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 2 1 env61 == env62) = true)
+
+theorem check53_63 : H12AffineEnvironment.transform 4 1 env53 = env63 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 4 1 env53 == env63) = true)
+
+theorem check63_64 : H12AffineEnvironment.transform 2 0 env63 = env64 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineEnvironment.transform 2 0 env63 == env64) = true)

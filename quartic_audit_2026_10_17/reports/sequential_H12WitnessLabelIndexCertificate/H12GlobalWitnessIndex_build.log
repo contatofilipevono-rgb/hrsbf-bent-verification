@@ -1,0 +1,1089 @@
+ℹ [1/51] Replayed H12Descent
+info: H12Descent.lean:96:0: 'H12Descent.sorted_partition' depends on axioms: [propext, Quot.sound]
+info: H12Descent.lean:97:0: 'H12Descent.descent_mod_three' depends on axioms: [propext, Quot.sound]
+info: H12Descent.lean:159:0: 'H12Descent.bent_rotational_descent' depends on axioms: [propext, Quot.sound]
+ℹ [2/51] Replayed H12BooleanPolynomial
+info: H12BooleanPolynomial.lean:99:0: 'H12BooleanPolynomial.evaluate_map_union' depends on axioms: [propext, Quot.sound]
+info: H12BooleanPolynomial.lean:100:0: 'H12BooleanPolynomial.evaluate_permutation' depends on axioms: [propext]
+ℹ [3/51] Replayed H12Weight
+info: H12Weight.lean:96:0: 'H12Weight.carry_polar' depends on axioms: [propext, Quot.sound]
+info: H12Weight.lean:97:0: 'H12Weight.polar_xor_right' depends on axioms: [propext, Quot.sound]
+info: H12Weight.lean:163:0: 'H12Weight.carry_of_combination' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [4/51] Replayed H12Bits
+info: H12Bits.lean:37:0: 'H12Bits.foldParity_sound' depends on axioms: [propext, Quot.sound]
+warning: H12Bits.lean:44:50: This simp argument is unused:
+  Bool.false_and
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all only [Nat.testBit_eq_decide_div_mod_eq, Nat.pow_zero, Nat.div_one, Nat.pow_one, decide_eq_true_eq,
+    decide_eq_false_iff_not, Bool.true_and, Bool.and_false, Bool.and_true, Bool.false_xor, Bool.true_xor,
+    Bool.not_false, Bool.not_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12Bits.lean:44:66: This simp argument is unused:
+  Bool.true_and
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all only [Nat.testBit_eq_decide_div_mod_eq, Nat.pow_zero, Nat.div_one, Nat.pow_one, decide_eq_true_eq,
+    decide_eq_false_iff_not, Bool.false_and, Bool.and_false, Bool.and_true, Bool.false_xor, Bool.true_xor,
+    Bool.not_false, Bool.not_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12Bits.lean:95:0: 'H12Bits.fastCarry_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [5/51] Replayed H12Popcount
+info: H12Popcount.lean:49:0: 'H12Popcount.add_sound' depends on axioms: [propext, Quot.sound]
+info: H12Popcount.lean:117:0: 'H12Popcount.fold_sound' depends on axioms: [propext, Quot.sound]
+info: H12Popcount.lean:149:0: 'H12Popcount.fastWeight_sound' depends on axioms: [propext, Quot.sound]
+info: H12Popcount.lean:161:0: 'H12Popcount.add_mod' depends on axioms: [propext, Quot.sound]
+info: H12Popcount.lean:173:0: 'H12Popcount.sum_mod_congr' depends on axioms: [propext]
+info: H12Popcount.lean:201:0: 'H12Popcount.fold_mod_sound' depends on axioms: [propext, Quot.sound]
+info: H12Popcount.lean:213:0: 'H12Popcount.fastWeightMod_sound' depends on axioms: [propext, Quot.sound]
+ℹ [6/51] Replayed H12TablePolynomial
+info: H12TablePolynomial.lean:47:0: 'H12TablePolynomial.fastPolynomial_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [7/51] Replayed H12PeriodFour
+info: H12PeriodFour.lean:223:0: 'H12.basis_periodic_columns' depends on axioms: [propext]
+info: H12PeriodFour.lean:224:0: 'H12.restriction_normal_form' depends on axioms: [propext, Quot.sound]
+info: H12PeriodFour.lean:225:0: 'H12.four_case_classification' depends on axioms: [propext, Quot.sound]
+info: H12PeriodFour.lean:226:0: 'H12.periodic_reduction' depends on axioms: [propext, Quot.sound]
+info: H12PeriodFour.lean:227:0: 'H12.quartic_periodic' depends on axioms: [propext, Quot.sound]
+ℹ [8/51] Replayed H12Quadratic
+info: H12Quadratic.lean:266:0: 'H12Quadratic.necessary_r1' depends on axioms: [propext, Quot.sound]
+info: H12Quadratic.lean:285:0: 'H12Quadratic.necessary_r2' depends on axioms: [propext]
+info: H12Quadratic.lean:441:0: 'H12Quadratic.necessary_r3' depends on axioms: [propext, Quot.sound]
+info: H12Quadratic.lean:474:0: 'H12Quadratic.short_product_zero' depends on axioms: [propext, Quot.sound]
+⚠ [9/51] Replayed H12CertificateTheory
+warning: H12CertificateTheory.lean:65:27: This simp argument is unused:
+  Nat.testBit_two_pow
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Nat.testBit_xor, h]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12CertificateTheory.lean:93:15: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Bool.false_eq_true, ↓reduceIte]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12CertificateTheory.lean:95:15: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [↓reduceIte]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12CertificateTheory.lean:141:0: 'H12CertificateTheory.evaluate_normalize' depends on axioms: [propext]
+info: H12CertificateTheory.lean:142:0: 'H12CertificateTheory.evaluate_substitute' depends on axioms: [propext, Quot.sound]
+info: H12CertificateTheory.lean:143:0: 'H12CertificateTheory.update_of_equation' depends on axioms: [propext, Quot.sound]
+ℹ [10/51] Replayed H12NumericFilters
+info: H12NumericFilters.lean:19:0: 'H12NumericFilters.check_0' depends on axioms: [propext]
+info: H12NumericFilters.lean:21:0: 'H12NumericFilters.check_1' depends on axioms: [propext]
+info: H12NumericFilters.lean:23:0: 'H12NumericFilters.check_2' depends on axioms: [propext]
+info: H12NumericFilters.lean:25:0: 'H12NumericFilters.check_3' depends on axioms: [propext]
+info: H12NumericFilters.lean:27:0: 'H12NumericFilters.check_4' depends on axioms: [propext]
+info: H12NumericFilters.lean:29:0: 'H12NumericFilters.check_5' depends on axioms: [propext]
+info: H12NumericFilters.lean:31:0: 'H12NumericFilters.check_6' depends on axioms: [propext]
+info: H12NumericFilters.lean:33:0: 'H12NumericFilters.check_7' depends on axioms: [propext]
+info: H12NumericFilters.lean:35:0: 'H12NumericFilters.check_8' depends on axioms: [propext]
+info: H12NumericFilters.lean:37:0: 'H12NumericFilters.check_9' depends on axioms: [propext]
+info: H12NumericFilters.lean:39:0: 'H12NumericFilters.check_10' depends on axioms: [propext]
+info: H12NumericFilters.lean:41:0: 'H12NumericFilters.check_11' depends on axioms: [propext]
+info: H12NumericFilters.lean:43:0: 'H12NumericFilters.check_12' depends on axioms: [propext]
+info: H12NumericFilters.lean:45:0: 'H12NumericFilters.check_13' depends on axioms: [propext]
+info: H12NumericFilters.lean:47:0: 'H12NumericFilters.check_14' depends on axioms: [propext]
+info: H12NumericFilters.lean:49:0: 'H12NumericFilters.check_15' depends on axioms: [propext]
+info: H12NumericFilters.lean:51:0: 'H12NumericFilters.check_16' depends on axioms: [propext]
+info: H12NumericFilters.lean:53:0: 'H12NumericFilters.check_17' depends on axioms: [propext]
+info: H12NumericFilters.lean:55:0: 'H12NumericFilters.check_18' depends on axioms: [propext]
+info: H12NumericFilters.lean:57:0: 'H12NumericFilters.check_19' depends on axioms: [propext]
+info: H12NumericFilters.lean:59:0: 'H12NumericFilters.check_20' depends on axioms: [propext]
+info: H12NumericFilters.lean:61:0: 'H12NumericFilters.check_21' depends on axioms: [propext]
+info: H12NumericFilters.lean:63:0: 'H12NumericFilters.check_22' depends on axioms: [propext]
+info: H12NumericFilters.lean:65:0: 'H12NumericFilters.check_23' depends on axioms: [propext]
+info: H12NumericFilters.lean:67:0: 'H12NumericFilters.check_24' depends on axioms: [propext]
+info: H12NumericFilters.lean:69:0: 'H12NumericFilters.check_25' depends on axioms: [propext]
+info: H12NumericFilters.lean:71:0: 'H12NumericFilters.check_26' depends on axioms: [propext]
+info: H12NumericFilters.lean:73:0: 'H12NumericFilters.check_27' depends on axioms: [propext]
+info: H12NumericFilters.lean:75:0: 'H12NumericFilters.check_28' depends on axioms: [propext]
+info: H12NumericFilters.lean:77:0: 'H12NumericFilters.check_29' depends on axioms: [propext]
+info: H12NumericFilters.lean:79:0: 'H12NumericFilters.check_30' depends on axioms: [propext]
+info: H12NumericFilters.lean:81:0: 'H12NumericFilters.check_31' depends on axioms: [propext]
+info: H12NumericFilters.lean:83:0: 'H12NumericFilters.check_32' depends on axioms: [propext]
+info: H12NumericFilters.lean:85:0: 'H12NumericFilters.check_33' depends on axioms: [propext]
+info: H12NumericFilters.lean:87:0: 'H12NumericFilters.check_34' depends on axioms: [propext]
+info: H12NumericFilters.lean:89:0: 'H12NumericFilters.check_35' depends on axioms: [propext]
+info: H12NumericFilters.lean:91:0: 'H12NumericFilters.check_36' depends on axioms: [propext]
+info: H12NumericFilters.lean:93:0: 'H12NumericFilters.check_37' depends on axioms: [propext]
+info: H12NumericFilters.lean:95:0: 'H12NumericFilters.check_38' depends on axioms: [propext]
+info: H12NumericFilters.lean:97:0: 'H12NumericFilters.check_39' depends on axioms: [propext]
+info: H12NumericFilters.lean:99:0: 'H12NumericFilters.check_40' depends on axioms: [propext]
+info: H12NumericFilters.lean:101:0: 'H12NumericFilters.check_41' depends on axioms: [propext]
+info: H12NumericFilters.lean:103:0: 'H12NumericFilters.check_42' depends on axioms: [propext]
+info: H12NumericFilters.lean:113:0: 'H12NumericFilters.all_filters_exact' depends on axioms: [propext, Quot.sound]
+ℹ [11/51] Replayed H12PlaneTables
+info: H12PlaneTables.lean:16:0: 'H12PlaneTables.variable_semantics' depends on axioms: [propext, Quot.sound]
+⚠ [12/51] Replayed H12Orbit
+warning: H12Orbit.lean:13:10: This simp argument is unused:
+  ← BitVec.getLsbD_eq_getElem
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [BitVec.getLsbD_rotateLeft, h, show ¬8 + i < 8 by omega, show 8 + i < 12 by omega,
+    show 8 + i - 8 = i by omega]
+
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12Orbit.lean:15:10: This simp argument is unused:
+  BitVec.getLsbD_rotateLeft
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [h, show i - 4 < 8 by omega, show 4 + (i - 4) = i by omega, hi]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12Orbit.lean:22:31: This simp argument is unused:
+  BitVec.getLsbD_rotateLeft
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [h, hi, Bool.and_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12Orbit.lean:22:65: This simp argument is unused:
+  Bool.and_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [BitVec.getLsbD_rotateLeft, h, hi]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12Orbit.lean:36:14: This simp argument is unused:
+  ← BitVec.getLsbD_eq_getElem
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [BitVec.getLsbD_rotateLeft, h, show ¬4 + i < 4 by omega, show 4 + i < 12 by omega,
+    show 4 + i - 4 = i by omega]
+
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12Orbit.lean:38:14: This simp argument is unused:
+  ← BitVec.getLsbD_eq_getElem
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [BitVec.getLsbD_rotateLeft, h, show i - 8 < 4 by omega, show 8 + (i - 8) = i by omega, hi]
+
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12Orbit.lean:66:0: 'H12Orbit.all_supports_partitioned' depends on axioms: [propext]
+info: H12Orbit.lean:73:0: 'H12Orbit.cyclic_orbits_exact' depends on axioms: [propext, Quot.sound]
+info: H12Orbit.lean:118:0: 'H12Orbit.quartic_rotational_four' depends on axioms: [propext, Quot.sound]
+⚠ [13/51] Replayed H12Truth
+info: H12Truth.lean:17:0: 'H12Truth.variable_semantics' depends on axioms: [propext, Quot.sound]
+warning: H12Truth.lean:32:11: exponent 4096 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12Truth.lean:57:14: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12Truth.lean:59:14: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hx]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12Truth.lean:91:0: 'H12Truth.basis_tables_exact' depends on axioms: [propext]
+info: H12Truth.lean:99:0: 'H12Truth.basis_semantics' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [14/51] Replayed H12Walsh
+info: H12Walsh.lean:92:0: 'H12Walsh.energy_identity' depends on axioms: [propext, Quot.sound]
+warning: H12Walsh.lean:180:25: Variable name `x` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _x
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+info: H12Walsh.lean:209:0: 'H12Walsh.bent_walsh_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12Walsh.lean:225:0: 'H12Walsh.bent_walsh_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12Walsh.lean:226:0: 'H12Walsh.walsh_witness_rejects' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [15/51] Replayed H12Restriction
+warning: H12Restriction.lean:105:45: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Int.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12Restriction.lean:156:0: 'H12Restriction.restriction_identity' depends on axioms: [propext, Quot.sound]
+info: H12Restriction.lean:157:0: 'H12Restriction.restriction_weight_mod_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [16/51] Replayed H12FilterBridge
+warning: H12FilterBridge.lean:28:14: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12FilterBridge.lean:29:14: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12FilterBridge.lean:87:0: 'H12FilterBridge.computed_filter_necessary' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [17/51] Replayed H12FilterLink
+info: H12FilterLink.lean:63:0: 'H12FilterLink.originalRows_family' depends on axioms: [propext]
+info: H12FilterLink.lean:82:0: 'H12FilterLink.cubeTable_bit' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: H12FilterLink.lean:150:46: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp [H12NumericFilters.explicitPolynomials]
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+info: H12FilterLink.lean:153:0: 'H12FilterLink.bent_passes' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [18/51] Replayed H12WalshTable
+warning: H12WalshTable.lean:22:32: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [familyRows]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12WalshTable.lean:48:12: This simp argument is unused:
+  ha
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12WalshTable.lean:49:17: This simp argument is unused:
+  ha
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [↓reduceIte, Bool.true_and]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12WalshTable.lean:79:0: 'H12WalshTable.truthTable_semantics' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12WalshTable.lean:80:0: 'H12WalshTable.phaseWeight_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12WalshTable.lean:81:0: 'H12WalshTable.rejects_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12WalshTable.lean:107:0: 'H12WalshTable.rejectsMod_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [19/51] Replayed H12WitnessTheory
+info: H12WitnessTheory.lean:25:0: 'H12WitnessTheory.checked_list_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [20/51] Replayed H12WitnessData000
+info: H12WitnessData000.lean:267:0: 'H12WitnessData000.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData000.lean:528:0: 'H12WitnessData000.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData000.lean:789:0: 'H12WitnessData000.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData000.lean:1050:0: 'H12WitnessData000.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData000.lean:1311:0: 'H12WitnessData000.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData000.lean:1572:0: 'H12WitnessData000.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData000.lean:1833:0: 'H12WitnessData000.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData000.lean:2094:0: 'H12WitnessData000.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData000.lean:2355:0: 'H12WitnessData000.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData000.lean:2616:0: 'H12WitnessData000.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData000.lean:2877:0: 'H12WitnessData000.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData000.lean:3138:0: 'H12WitnessData000.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData000.lean:3399:0: 'H12WitnessData000.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData000.lean:3660:0: 'H12WitnessData000.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData000.lean:3921:0: 'H12WitnessData000.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData000.lean:4182:0: 'H12WitnessData000.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData000.lean:4191:0: 'H12WitnessData000.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [21/51] Replayed H12WitnessSearch
+info: H12WitnessSearch.lean:51:0: 'H12WitnessSearch.checked_good' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12WitnessSearch.lean:52:0: 'H12WitnessSearch.node_good' depends on axioms: [propext]
+ℹ [22/51] Replayed H12WitnessLabels
+info: H12WitnessLabels.lean:20:0: 'H12WitnessLabels.label_good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [23/51] Replayed H12WitnessIndexLabels
+info: H12WitnessIndexLabels.lean:20:0: 'H12WitnessIndexLabels.good_of_coefficients' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [24/51] Replayed H12WitnessLabelData000
+info: H12WitnessLabelData000.lean:113:0: 'H12WitnessLabelData000.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [25/51] Replayed H12WitnessData001
+info: H12WitnessData001.lean:267:0: 'H12WitnessData001.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData001.lean:528:0: 'H12WitnessData001.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData001.lean:789:0: 'H12WitnessData001.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData001.lean:1050:0: 'H12WitnessData001.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData001.lean:1311:0: 'H12WitnessData001.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData001.lean:1572:0: 'H12WitnessData001.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData001.lean:1833:0: 'H12WitnessData001.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData001.lean:2094:0: 'H12WitnessData001.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData001.lean:2355:0: 'H12WitnessData001.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData001.lean:2616:0: 'H12WitnessData001.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData001.lean:2877:0: 'H12WitnessData001.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData001.lean:3138:0: 'H12WitnessData001.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData001.lean:3399:0: 'H12WitnessData001.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData001.lean:3660:0: 'H12WitnessData001.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData001.lean:3921:0: 'H12WitnessData001.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData001.lean:4182:0: 'H12WitnessData001.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData001.lean:4191:0: 'H12WitnessData001.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [26/51] Replayed H12WitnessLabelData001
+info: H12WitnessLabelData001.lean:113:0: 'H12WitnessLabelData001.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [27/51] Replayed H12WitnessData002
+info: H12WitnessData002.lean:267:0: 'H12WitnessData002.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData002.lean:528:0: 'H12WitnessData002.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData002.lean:789:0: 'H12WitnessData002.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData002.lean:1050:0: 'H12WitnessData002.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData002.lean:1311:0: 'H12WitnessData002.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData002.lean:1572:0: 'H12WitnessData002.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData002.lean:1833:0: 'H12WitnessData002.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData002.lean:2094:0: 'H12WitnessData002.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData002.lean:2355:0: 'H12WitnessData002.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData002.lean:2616:0: 'H12WitnessData002.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData002.lean:2877:0: 'H12WitnessData002.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData002.lean:3138:0: 'H12WitnessData002.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData002.lean:3399:0: 'H12WitnessData002.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData002.lean:3660:0: 'H12WitnessData002.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData002.lean:3921:0: 'H12WitnessData002.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData002.lean:4182:0: 'H12WitnessData002.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData002.lean:4191:0: 'H12WitnessData002.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [28/51] Replayed H12WitnessLabelData002
+info: H12WitnessLabelData002.lean:113:0: 'H12WitnessLabelData002.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [29/51] Replayed H12WitnessData003
+info: H12WitnessData003.lean:267:0: 'H12WitnessData003.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData003.lean:528:0: 'H12WitnessData003.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData003.lean:789:0: 'H12WitnessData003.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData003.lean:1050:0: 'H12WitnessData003.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData003.lean:1311:0: 'H12WitnessData003.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData003.lean:1572:0: 'H12WitnessData003.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData003.lean:1833:0: 'H12WitnessData003.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData003.lean:2094:0: 'H12WitnessData003.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData003.lean:2355:0: 'H12WitnessData003.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData003.lean:2616:0: 'H12WitnessData003.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData003.lean:2877:0: 'H12WitnessData003.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData003.lean:3138:0: 'H12WitnessData003.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData003.lean:3399:0: 'H12WitnessData003.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData003.lean:3660:0: 'H12WitnessData003.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData003.lean:3921:0: 'H12WitnessData003.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData003.lean:4182:0: 'H12WitnessData003.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData003.lean:4191:0: 'H12WitnessData003.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [30/51] Replayed H12WitnessLabelData003
+info: H12WitnessLabelData003.lean:113:0: 'H12WitnessLabelData003.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [31/51] Replayed H12WitnessData004
+info: H12WitnessData004.lean:267:0: 'H12WitnessData004.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData004.lean:528:0: 'H12WitnessData004.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData004.lean:789:0: 'H12WitnessData004.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData004.lean:1050:0: 'H12WitnessData004.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData004.lean:1311:0: 'H12WitnessData004.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData004.lean:1572:0: 'H12WitnessData004.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData004.lean:1833:0: 'H12WitnessData004.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData004.lean:2094:0: 'H12WitnessData004.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData004.lean:2355:0: 'H12WitnessData004.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData004.lean:2616:0: 'H12WitnessData004.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData004.lean:2877:0: 'H12WitnessData004.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData004.lean:3138:0: 'H12WitnessData004.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData004.lean:3399:0: 'H12WitnessData004.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData004.lean:3660:0: 'H12WitnessData004.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData004.lean:3921:0: 'H12WitnessData004.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData004.lean:4182:0: 'H12WitnessData004.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData004.lean:4191:0: 'H12WitnessData004.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [32/51] Replayed H12WitnessLabelData004
+info: H12WitnessLabelData004.lean:113:0: 'H12WitnessLabelData004.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [33/51] Replayed H12WitnessData005
+info: H12WitnessData005.lean:267:0: 'H12WitnessData005.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData005.lean:528:0: 'H12WitnessData005.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData005.lean:789:0: 'H12WitnessData005.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData005.lean:1050:0: 'H12WitnessData005.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData005.lean:1311:0: 'H12WitnessData005.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData005.lean:1572:0: 'H12WitnessData005.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData005.lean:1833:0: 'H12WitnessData005.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData005.lean:2094:0: 'H12WitnessData005.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData005.lean:2355:0: 'H12WitnessData005.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData005.lean:2616:0: 'H12WitnessData005.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData005.lean:2877:0: 'H12WitnessData005.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData005.lean:3138:0: 'H12WitnessData005.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData005.lean:3399:0: 'H12WitnessData005.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData005.lean:3660:0: 'H12WitnessData005.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData005.lean:3921:0: 'H12WitnessData005.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData005.lean:4182:0: 'H12WitnessData005.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData005.lean:4191:0: 'H12WitnessData005.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [34/51] Replayed H12WitnessLabelData005
+info: H12WitnessLabelData005.lean:113:0: 'H12WitnessLabelData005.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [35/51] Replayed H12WitnessData006
+info: H12WitnessData006.lean:267:0: 'H12WitnessData006.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData006.lean:528:0: 'H12WitnessData006.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData006.lean:789:0: 'H12WitnessData006.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData006.lean:1050:0: 'H12WitnessData006.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData006.lean:1311:0: 'H12WitnessData006.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData006.lean:1572:0: 'H12WitnessData006.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData006.lean:1833:0: 'H12WitnessData006.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData006.lean:2094:0: 'H12WitnessData006.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData006.lean:2355:0: 'H12WitnessData006.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData006.lean:2616:0: 'H12WitnessData006.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData006.lean:2877:0: 'H12WitnessData006.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData006.lean:3138:0: 'H12WitnessData006.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData006.lean:3399:0: 'H12WitnessData006.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData006.lean:3660:0: 'H12WitnessData006.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData006.lean:3921:0: 'H12WitnessData006.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData006.lean:4182:0: 'H12WitnessData006.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData006.lean:4191:0: 'H12WitnessData006.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [36/51] Replayed H12WitnessLabelData006
+info: H12WitnessLabelData006.lean:113:0: 'H12WitnessLabelData006.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [37/51] Replayed H12WitnessData007
+info: H12WitnessData007.lean:267:0: 'H12WitnessData007.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData007.lean:528:0: 'H12WitnessData007.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData007.lean:789:0: 'H12WitnessData007.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData007.lean:1050:0: 'H12WitnessData007.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData007.lean:1311:0: 'H12WitnessData007.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData007.lean:1572:0: 'H12WitnessData007.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData007.lean:1833:0: 'H12WitnessData007.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData007.lean:2094:0: 'H12WitnessData007.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData007.lean:2355:0: 'H12WitnessData007.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData007.lean:2616:0: 'H12WitnessData007.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData007.lean:2877:0: 'H12WitnessData007.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData007.lean:3138:0: 'H12WitnessData007.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData007.lean:3399:0: 'H12WitnessData007.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData007.lean:3660:0: 'H12WitnessData007.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData007.lean:3921:0: 'H12WitnessData007.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData007.lean:4182:0: 'H12WitnessData007.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData007.lean:4191:0: 'H12WitnessData007.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [38/51] Replayed H12WitnessLabelData007
+info: H12WitnessLabelData007.lean:113:0: 'H12WitnessLabelData007.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [39/51] Replayed H12WitnessData008
+info: H12WitnessData008.lean:267:0: 'H12WitnessData008.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData008.lean:528:0: 'H12WitnessData008.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData008.lean:789:0: 'H12WitnessData008.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData008.lean:1050:0: 'H12WitnessData008.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData008.lean:1311:0: 'H12WitnessData008.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData008.lean:1572:0: 'H12WitnessData008.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData008.lean:1833:0: 'H12WitnessData008.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData008.lean:2094:0: 'H12WitnessData008.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData008.lean:2355:0: 'H12WitnessData008.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData008.lean:2616:0: 'H12WitnessData008.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData008.lean:2877:0: 'H12WitnessData008.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData008.lean:3138:0: 'H12WitnessData008.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData008.lean:3399:0: 'H12WitnessData008.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData008.lean:3660:0: 'H12WitnessData008.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData008.lean:3921:0: 'H12WitnessData008.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData008.lean:4182:0: 'H12WitnessData008.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData008.lean:4191:0: 'H12WitnessData008.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [40/51] Replayed H12WitnessLabelData008
+info: H12WitnessLabelData008.lean:113:0: 'H12WitnessLabelData008.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [41/51] Replayed H12WitnessData009
+info: H12WitnessData009.lean:267:0: 'H12WitnessData009.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData009.lean:528:0: 'H12WitnessData009.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData009.lean:789:0: 'H12WitnessData009.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData009.lean:1050:0: 'H12WitnessData009.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData009.lean:1311:0: 'H12WitnessData009.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData009.lean:1572:0: 'H12WitnessData009.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData009.lean:1833:0: 'H12WitnessData009.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData009.lean:2094:0: 'H12WitnessData009.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData009.lean:2355:0: 'H12WitnessData009.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData009.lean:2616:0: 'H12WitnessData009.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData009.lean:2877:0: 'H12WitnessData009.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData009.lean:3138:0: 'H12WitnessData009.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData009.lean:3399:0: 'H12WitnessData009.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData009.lean:3660:0: 'H12WitnessData009.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData009.lean:3921:0: 'H12WitnessData009.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData009.lean:4182:0: 'H12WitnessData009.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData009.lean:4191:0: 'H12WitnessData009.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [42/51] Replayed H12WitnessLabelData009
+info: H12WitnessLabelData009.lean:113:0: 'H12WitnessLabelData009.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [43/51] Replayed H12WitnessData010
+info: H12WitnessData010.lean:267:0: 'H12WitnessData010.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:528:0: 'H12WitnessData010.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:789:0: 'H12WitnessData010.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:1050:0: 'H12WitnessData010.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:1311:0: 'H12WitnessData010.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:1572:0: 'H12WitnessData010.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:1833:0: 'H12WitnessData010.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:2094:0: 'H12WitnessData010.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:2355:0: 'H12WitnessData010.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:2616:0: 'H12WitnessData010.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:2877:0: 'H12WitnessData010.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:3138:0: 'H12WitnessData010.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:3399:0: 'H12WitnessData010.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:3660:0: 'H12WitnessData010.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:3921:0: 'H12WitnessData010.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:4182:0: 'H12WitnessData010.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:4191:0: 'H12WitnessData010.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [44/51] Replayed H12WitnessLabelData010
+info: H12WitnessLabelData010.lean:113:0: 'H12WitnessLabelData010.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [45/51] Replayed H12WitnessData011
+info: H12WitnessData011.lean:267:0: 'H12WitnessData011.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData011.lean:528:0: 'H12WitnessData011.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData011.lean:789:0: 'H12WitnessData011.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData011.lean:1050:0: 'H12WitnessData011.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData011.lean:1311:0: 'H12WitnessData011.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData011.lean:1572:0: 'H12WitnessData011.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData011.lean:1833:0: 'H12WitnessData011.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData011.lean:2094:0: 'H12WitnessData011.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData011.lean:2355:0: 'H12WitnessData011.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData011.lean:2616:0: 'H12WitnessData011.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData011.lean:2877:0: 'H12WitnessData011.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData011.lean:3138:0: 'H12WitnessData011.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData011.lean:3399:0: 'H12WitnessData011.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData011.lean:3660:0: 'H12WitnessData011.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData011.lean:3921:0: 'H12WitnessData011.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData011.lean:4182:0: 'H12WitnessData011.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData011.lean:4191:0: 'H12WitnessData011.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [46/51] Replayed H12WitnessLabelData011
+info: H12WitnessLabelData011.lean:113:0: 'H12WitnessLabelData011.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [47/51] Replayed H12WitnessData012
+info: H12WitnessData012.lean:267:0: 'H12WitnessData012.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData012.lean:528:0: 'H12WitnessData012.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData012.lean:789:0: 'H12WitnessData012.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData012.lean:1050:0: 'H12WitnessData012.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData012.lean:1311:0: 'H12WitnessData012.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData012.lean:1572:0: 'H12WitnessData012.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData012.lean:1833:0: 'H12WitnessData012.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData012.lean:2094:0: 'H12WitnessData012.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData012.lean:2355:0: 'H12WitnessData012.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData012.lean:2616:0: 'H12WitnessData012.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData012.lean:2877:0: 'H12WitnessData012.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData012.lean:3138:0: 'H12WitnessData012.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData012.lean:3399:0: 'H12WitnessData012.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData012.lean:3660:0: 'H12WitnessData012.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData012.lean:3921:0: 'H12WitnessData012.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData012.lean:4182:0: 'H12WitnessData012.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData012.lean:4191:0: 'H12WitnessData012.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [48/51] Replayed H12WitnessLabelData012
+info: H12WitnessLabelData012.lean:113:0: 'H12WitnessLabelData012.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [49/97] Replayed H12WitnessData013
+info: H12WitnessData013.lean:267:0: 'H12WitnessData013.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData013.lean:528:0: 'H12WitnessData013.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData013.lean:789:0: 'H12WitnessData013.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData013.lean:1050:0: 'H12WitnessData013.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData013.lean:1311:0: 'H12WitnessData013.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData013.lean:1572:0: 'H12WitnessData013.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData013.lean:1833:0: 'H12WitnessData013.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData013.lean:2094:0: 'H12WitnessData013.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData013.lean:2355:0: 'H12WitnessData013.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData013.lean:2616:0: 'H12WitnessData013.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData013.lean:2877:0: 'H12WitnessData013.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData013.lean:3138:0: 'H12WitnessData013.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData013.lean:3399:0: 'H12WitnessData013.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData013.lean:3660:0: 'H12WitnessData013.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData013.lean:3921:0: 'H12WitnessData013.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData013.lean:4182:0: 'H12WitnessData013.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData013.lean:4191:0: 'H12WitnessData013.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [50/97] Replayed H12WitnessLabelData013
+info: H12WitnessLabelData013.lean:113:0: 'H12WitnessLabelData013.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [51/97] Replayed H12WitnessData014
+info: H12WitnessData014.lean:267:0: 'H12WitnessData014.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData014.lean:528:0: 'H12WitnessData014.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData014.lean:789:0: 'H12WitnessData014.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData014.lean:1050:0: 'H12WitnessData014.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData014.lean:1311:0: 'H12WitnessData014.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData014.lean:1572:0: 'H12WitnessData014.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData014.lean:1833:0: 'H12WitnessData014.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData014.lean:2094:0: 'H12WitnessData014.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData014.lean:2355:0: 'H12WitnessData014.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData014.lean:2616:0: 'H12WitnessData014.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData014.lean:2877:0: 'H12WitnessData014.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData014.lean:3138:0: 'H12WitnessData014.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData014.lean:3399:0: 'H12WitnessData014.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData014.lean:3660:0: 'H12WitnessData014.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData014.lean:3921:0: 'H12WitnessData014.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData014.lean:4182:0: 'H12WitnessData014.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData014.lean:4191:0: 'H12WitnessData014.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [52/97] Replayed H12WitnessLabelData014
+info: H12WitnessLabelData014.lean:113:0: 'H12WitnessLabelData014.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [53/97] Replayed H12WitnessData015
+info: H12WitnessData015.lean:267:0: 'H12WitnessData015.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData015.lean:528:0: 'H12WitnessData015.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData015.lean:789:0: 'H12WitnessData015.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData015.lean:1050:0: 'H12WitnessData015.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData015.lean:1311:0: 'H12WitnessData015.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData015.lean:1572:0: 'H12WitnessData015.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData015.lean:1833:0: 'H12WitnessData015.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData015.lean:2094:0: 'H12WitnessData015.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData015.lean:2355:0: 'H12WitnessData015.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData015.lean:2616:0: 'H12WitnessData015.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData015.lean:2877:0: 'H12WitnessData015.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData015.lean:3138:0: 'H12WitnessData015.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData015.lean:3399:0: 'H12WitnessData015.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData015.lean:3660:0: 'H12WitnessData015.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData015.lean:3921:0: 'H12WitnessData015.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData015.lean:4182:0: 'H12WitnessData015.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData015.lean:4191:0: 'H12WitnessData015.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [54/97] Replayed H12WitnessLabelData015
+info: H12WitnessLabelData015.lean:113:0: 'H12WitnessLabelData015.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [55/97] Replayed H12WitnessData016
+info: H12WitnessData016.lean:267:0: 'H12WitnessData016.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData016.lean:528:0: 'H12WitnessData016.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData016.lean:789:0: 'H12WitnessData016.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData016.lean:1050:0: 'H12WitnessData016.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData016.lean:1311:0: 'H12WitnessData016.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData016.lean:1572:0: 'H12WitnessData016.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData016.lean:1833:0: 'H12WitnessData016.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData016.lean:2094:0: 'H12WitnessData016.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData016.lean:2355:0: 'H12WitnessData016.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData016.lean:2616:0: 'H12WitnessData016.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData016.lean:2877:0: 'H12WitnessData016.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData016.lean:3138:0: 'H12WitnessData016.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData016.lean:3399:0: 'H12WitnessData016.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData016.lean:3660:0: 'H12WitnessData016.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData016.lean:3921:0: 'H12WitnessData016.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData016.lean:4182:0: 'H12WitnessData016.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData016.lean:4191:0: 'H12WitnessData016.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [56/97] Replayed H12WitnessLabelData016
+info: H12WitnessLabelData016.lean:113:0: 'H12WitnessLabelData016.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [57/97] Replayed H12WitnessData017
+info: H12WitnessData017.lean:267:0: 'H12WitnessData017.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData017.lean:528:0: 'H12WitnessData017.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData017.lean:789:0: 'H12WitnessData017.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData017.lean:1050:0: 'H12WitnessData017.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData017.lean:1311:0: 'H12WitnessData017.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData017.lean:1572:0: 'H12WitnessData017.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData017.lean:1833:0: 'H12WitnessData017.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData017.lean:2094:0: 'H12WitnessData017.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData017.lean:2355:0: 'H12WitnessData017.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData017.lean:2616:0: 'H12WitnessData017.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData017.lean:2877:0: 'H12WitnessData017.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData017.lean:3138:0: 'H12WitnessData017.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData017.lean:3399:0: 'H12WitnessData017.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData017.lean:3660:0: 'H12WitnessData017.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData017.lean:3921:0: 'H12WitnessData017.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData017.lean:4182:0: 'H12WitnessData017.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData017.lean:4191:0: 'H12WitnessData017.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [58/97] Replayed H12WitnessLabelData017
+info: H12WitnessLabelData017.lean:113:0: 'H12WitnessLabelData017.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [59/97] Replayed H12WitnessData018
+info: H12WitnessData018.lean:267:0: 'H12WitnessData018.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData018.lean:528:0: 'H12WitnessData018.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData018.lean:789:0: 'H12WitnessData018.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData018.lean:1050:0: 'H12WitnessData018.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData018.lean:1311:0: 'H12WitnessData018.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData018.lean:1572:0: 'H12WitnessData018.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData018.lean:1833:0: 'H12WitnessData018.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData018.lean:2094:0: 'H12WitnessData018.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData018.lean:2355:0: 'H12WitnessData018.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData018.lean:2616:0: 'H12WitnessData018.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData018.lean:2877:0: 'H12WitnessData018.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData018.lean:3138:0: 'H12WitnessData018.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData018.lean:3399:0: 'H12WitnessData018.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData018.lean:3660:0: 'H12WitnessData018.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData018.lean:3921:0: 'H12WitnessData018.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData018.lean:4182:0: 'H12WitnessData018.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData018.lean:4191:0: 'H12WitnessData018.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [60/97] Replayed H12WitnessLabelData018
+info: H12WitnessLabelData018.lean:113:0: 'H12WitnessLabelData018.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [61/97] Replayed H12WitnessData019
+info: H12WitnessData019.lean:267:0: 'H12WitnessData019.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData019.lean:528:0: 'H12WitnessData019.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData019.lean:789:0: 'H12WitnessData019.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData019.lean:1050:0: 'H12WitnessData019.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData019.lean:1311:0: 'H12WitnessData019.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData019.lean:1572:0: 'H12WitnessData019.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData019.lean:1833:0: 'H12WitnessData019.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData019.lean:2094:0: 'H12WitnessData019.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData019.lean:2355:0: 'H12WitnessData019.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData019.lean:2616:0: 'H12WitnessData019.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData019.lean:2877:0: 'H12WitnessData019.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData019.lean:3138:0: 'H12WitnessData019.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData019.lean:3399:0: 'H12WitnessData019.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData019.lean:3660:0: 'H12WitnessData019.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData019.lean:3921:0: 'H12WitnessData019.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData019.lean:4182:0: 'H12WitnessData019.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData019.lean:4191:0: 'H12WitnessData019.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [62/97] Replayed H12WitnessLabelData019
+info: H12WitnessLabelData019.lean:113:0: 'H12WitnessLabelData019.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [63/97] Replayed H12WitnessData020
+info: H12WitnessData020.lean:267:0: 'H12WitnessData020.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData020.lean:528:0: 'H12WitnessData020.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData020.lean:789:0: 'H12WitnessData020.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData020.lean:1050:0: 'H12WitnessData020.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData020.lean:1311:0: 'H12WitnessData020.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData020.lean:1572:0: 'H12WitnessData020.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData020.lean:1833:0: 'H12WitnessData020.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData020.lean:2094:0: 'H12WitnessData020.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData020.lean:2355:0: 'H12WitnessData020.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData020.lean:2616:0: 'H12WitnessData020.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData020.lean:2877:0: 'H12WitnessData020.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData020.lean:3138:0: 'H12WitnessData020.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData020.lean:3399:0: 'H12WitnessData020.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData020.lean:3660:0: 'H12WitnessData020.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData020.lean:3921:0: 'H12WitnessData020.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData020.lean:4182:0: 'H12WitnessData020.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData020.lean:4191:0: 'H12WitnessData020.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [64/97] Replayed H12WitnessLabelData020
+info: H12WitnessLabelData020.lean:113:0: 'H12WitnessLabelData020.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [65/97] Replayed H12WitnessData021
+info: H12WitnessData021.lean:267:0: 'H12WitnessData021.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData021.lean:528:0: 'H12WitnessData021.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData021.lean:789:0: 'H12WitnessData021.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData021.lean:1050:0: 'H12WitnessData021.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData021.lean:1311:0: 'H12WitnessData021.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData021.lean:1572:0: 'H12WitnessData021.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData021.lean:1833:0: 'H12WitnessData021.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData021.lean:2094:0: 'H12WitnessData021.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData021.lean:2355:0: 'H12WitnessData021.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData021.lean:2616:0: 'H12WitnessData021.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData021.lean:2877:0: 'H12WitnessData021.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData021.lean:3138:0: 'H12WitnessData021.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData021.lean:3399:0: 'H12WitnessData021.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData021.lean:3660:0: 'H12WitnessData021.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData021.lean:3921:0: 'H12WitnessData021.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData021.lean:4182:0: 'H12WitnessData021.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData021.lean:4191:0: 'H12WitnessData021.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [66/97] Replayed H12WitnessLabelData021
+info: H12WitnessLabelData021.lean:113:0: 'H12WitnessLabelData021.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [67/97] Replayed H12WitnessData022
+info: H12WitnessData022.lean:267:0: 'H12WitnessData022.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData022.lean:528:0: 'H12WitnessData022.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData022.lean:789:0: 'H12WitnessData022.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData022.lean:1050:0: 'H12WitnessData022.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData022.lean:1311:0: 'H12WitnessData022.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData022.lean:1572:0: 'H12WitnessData022.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData022.lean:1833:0: 'H12WitnessData022.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData022.lean:2094:0: 'H12WitnessData022.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData022.lean:2355:0: 'H12WitnessData022.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData022.lean:2616:0: 'H12WitnessData022.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData022.lean:2877:0: 'H12WitnessData022.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData022.lean:3138:0: 'H12WitnessData022.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData022.lean:3399:0: 'H12WitnessData022.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData022.lean:3660:0: 'H12WitnessData022.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData022.lean:3921:0: 'H12WitnessData022.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData022.lean:4182:0: 'H12WitnessData022.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData022.lean:4191:0: 'H12WitnessData022.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [68/97] Replayed H12WitnessLabelData022
+info: H12WitnessLabelData022.lean:113:0: 'H12WitnessLabelData022.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [69/97] Replayed H12WitnessData023
+info: H12WitnessData023.lean:267:0: 'H12WitnessData023.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData023.lean:528:0: 'H12WitnessData023.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData023.lean:789:0: 'H12WitnessData023.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData023.lean:1050:0: 'H12WitnessData023.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData023.lean:1311:0: 'H12WitnessData023.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData023.lean:1572:0: 'H12WitnessData023.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData023.lean:1833:0: 'H12WitnessData023.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData023.lean:2094:0: 'H12WitnessData023.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData023.lean:2355:0: 'H12WitnessData023.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData023.lean:2616:0: 'H12WitnessData023.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData023.lean:2877:0: 'H12WitnessData023.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData023.lean:3138:0: 'H12WitnessData023.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData023.lean:3399:0: 'H12WitnessData023.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData023.lean:3660:0: 'H12WitnessData023.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData023.lean:3921:0: 'H12WitnessData023.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData023.lean:4182:0: 'H12WitnessData023.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData023.lean:4191:0: 'H12WitnessData023.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [70/97] Replayed H12WitnessLabelData023
+info: H12WitnessLabelData023.lean:113:0: 'H12WitnessLabelData023.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [71/97] Replayed H12WitnessData024
+info: H12WitnessData024.lean:267:0: 'H12WitnessData024.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData024.lean:528:0: 'H12WitnessData024.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData024.lean:789:0: 'H12WitnessData024.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData024.lean:1050:0: 'H12WitnessData024.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData024.lean:1311:0: 'H12WitnessData024.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData024.lean:1572:0: 'H12WitnessData024.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData024.lean:1833:0: 'H12WitnessData024.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData024.lean:2094:0: 'H12WitnessData024.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData024.lean:2355:0: 'H12WitnessData024.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData024.lean:2616:0: 'H12WitnessData024.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData024.lean:2877:0: 'H12WitnessData024.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData024.lean:3138:0: 'H12WitnessData024.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData024.lean:3399:0: 'H12WitnessData024.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData024.lean:3660:0: 'H12WitnessData024.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData024.lean:3921:0: 'H12WitnessData024.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData024.lean:4182:0: 'H12WitnessData024.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData024.lean:4191:0: 'H12WitnessData024.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [72/97] Replayed H12WitnessLabelData024
+info: H12WitnessLabelData024.lean:113:0: 'H12WitnessLabelData024.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [73/97] Replayed H12WitnessData025
+info: H12WitnessData025.lean:267:0: 'H12WitnessData025.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData025.lean:528:0: 'H12WitnessData025.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData025.lean:789:0: 'H12WitnessData025.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData025.lean:1050:0: 'H12WitnessData025.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData025.lean:1311:0: 'H12WitnessData025.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData025.lean:1572:0: 'H12WitnessData025.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData025.lean:1833:0: 'H12WitnessData025.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData025.lean:2094:0: 'H12WitnessData025.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData025.lean:2355:0: 'H12WitnessData025.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData025.lean:2616:0: 'H12WitnessData025.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData025.lean:2877:0: 'H12WitnessData025.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData025.lean:3138:0: 'H12WitnessData025.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData025.lean:3399:0: 'H12WitnessData025.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData025.lean:3660:0: 'H12WitnessData025.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData025.lean:3921:0: 'H12WitnessData025.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData025.lean:4182:0: 'H12WitnessData025.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData025.lean:4191:0: 'H12WitnessData025.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [74/97] Replayed H12WitnessLabelData025
+info: H12WitnessLabelData025.lean:113:0: 'H12WitnessLabelData025.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [75/97] Replayed H12WitnessData026
+info: H12WitnessData026.lean:267:0: 'H12WitnessData026.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData026.lean:528:0: 'H12WitnessData026.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData026.lean:789:0: 'H12WitnessData026.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData026.lean:1050:0: 'H12WitnessData026.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData026.lean:1311:0: 'H12WitnessData026.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData026.lean:1572:0: 'H12WitnessData026.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData026.lean:1833:0: 'H12WitnessData026.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData026.lean:2094:0: 'H12WitnessData026.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData026.lean:2355:0: 'H12WitnessData026.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData026.lean:2616:0: 'H12WitnessData026.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData026.lean:2877:0: 'H12WitnessData026.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData026.lean:3138:0: 'H12WitnessData026.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData026.lean:3399:0: 'H12WitnessData026.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData026.lean:3660:0: 'H12WitnessData026.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData026.lean:3921:0: 'H12WitnessData026.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData026.lean:4182:0: 'H12WitnessData026.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData026.lean:4191:0: 'H12WitnessData026.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [76/97] Replayed H12WitnessLabelData026
+info: H12WitnessLabelData026.lean:113:0: 'H12WitnessLabelData026.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [77/97] Replayed H12WitnessData027
+info: H12WitnessData027.lean:267:0: 'H12WitnessData027.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData027.lean:528:0: 'H12WitnessData027.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData027.lean:789:0: 'H12WitnessData027.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData027.lean:1050:0: 'H12WitnessData027.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData027.lean:1311:0: 'H12WitnessData027.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData027.lean:1572:0: 'H12WitnessData027.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData027.lean:1833:0: 'H12WitnessData027.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData027.lean:2094:0: 'H12WitnessData027.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData027.lean:2355:0: 'H12WitnessData027.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData027.lean:2616:0: 'H12WitnessData027.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData027.lean:2877:0: 'H12WitnessData027.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData027.lean:3138:0: 'H12WitnessData027.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData027.lean:3399:0: 'H12WitnessData027.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData027.lean:3660:0: 'H12WitnessData027.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData027.lean:3921:0: 'H12WitnessData027.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData027.lean:4182:0: 'H12WitnessData027.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData027.lean:4191:0: 'H12WitnessData027.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [78/97] Replayed H12WitnessLabelData027
+info: H12WitnessLabelData027.lean:113:0: 'H12WitnessLabelData027.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [79/97] Replayed H12WitnessData028
+info: H12WitnessData028.lean:267:0: 'H12WitnessData028.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData028.lean:528:0: 'H12WitnessData028.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData028.lean:789:0: 'H12WitnessData028.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData028.lean:1050:0: 'H12WitnessData028.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData028.lean:1311:0: 'H12WitnessData028.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData028.lean:1572:0: 'H12WitnessData028.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData028.lean:1833:0: 'H12WitnessData028.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData028.lean:2094:0: 'H12WitnessData028.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData028.lean:2355:0: 'H12WitnessData028.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData028.lean:2616:0: 'H12WitnessData028.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData028.lean:2877:0: 'H12WitnessData028.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData028.lean:3138:0: 'H12WitnessData028.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData028.lean:3399:0: 'H12WitnessData028.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData028.lean:3660:0: 'H12WitnessData028.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData028.lean:3921:0: 'H12WitnessData028.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData028.lean:4182:0: 'H12WitnessData028.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData028.lean:4191:0: 'H12WitnessData028.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [80/97] Replayed H12WitnessLabelData028
+info: H12WitnessLabelData028.lean:113:0: 'H12WitnessLabelData028.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [81/97] Replayed H12WitnessData029
+info: H12WitnessData029.lean:267:0: 'H12WitnessData029.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData029.lean:528:0: 'H12WitnessData029.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData029.lean:789:0: 'H12WitnessData029.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData029.lean:1050:0: 'H12WitnessData029.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData029.lean:1311:0: 'H12WitnessData029.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData029.lean:1572:0: 'H12WitnessData029.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData029.lean:1833:0: 'H12WitnessData029.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData029.lean:2094:0: 'H12WitnessData029.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData029.lean:2355:0: 'H12WitnessData029.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData029.lean:2616:0: 'H12WitnessData029.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData029.lean:2877:0: 'H12WitnessData029.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData029.lean:3138:0: 'H12WitnessData029.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData029.lean:3399:0: 'H12WitnessData029.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData029.lean:3660:0: 'H12WitnessData029.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData029.lean:3921:0: 'H12WitnessData029.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData029.lean:4182:0: 'H12WitnessData029.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData029.lean:4191:0: 'H12WitnessData029.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [82/97] Replayed H12WitnessLabelData029
+info: H12WitnessLabelData029.lean:113:0: 'H12WitnessLabelData029.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [83/97] Replayed H12WitnessData030
+info: H12WitnessData030.lean:267:0: 'H12WitnessData030.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData030.lean:528:0: 'H12WitnessData030.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData030.lean:789:0: 'H12WitnessData030.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData030.lean:1050:0: 'H12WitnessData030.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData030.lean:1311:0: 'H12WitnessData030.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData030.lean:1572:0: 'H12WitnessData030.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData030.lean:1833:0: 'H12WitnessData030.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData030.lean:2094:0: 'H12WitnessData030.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData030.lean:2355:0: 'H12WitnessData030.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData030.lean:2616:0: 'H12WitnessData030.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData030.lean:2877:0: 'H12WitnessData030.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData030.lean:3138:0: 'H12WitnessData030.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData030.lean:3399:0: 'H12WitnessData030.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData030.lean:3660:0: 'H12WitnessData030.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData030.lean:3921:0: 'H12WitnessData030.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData030.lean:4182:0: 'H12WitnessData030.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData030.lean:4191:0: 'H12WitnessData030.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [84/97] Replayed H12WitnessLabelData030
+info: H12WitnessLabelData030.lean:113:0: 'H12WitnessLabelData030.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [85/97] Replayed H12WitnessData031
+info: H12WitnessData031.lean:267:0: 'H12WitnessData031.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData031.lean:528:0: 'H12WitnessData031.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData031.lean:789:0: 'H12WitnessData031.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData031.lean:1050:0: 'H12WitnessData031.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData031.lean:1311:0: 'H12WitnessData031.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData031.lean:1572:0: 'H12WitnessData031.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData031.lean:1833:0: 'H12WitnessData031.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData031.lean:2094:0: 'H12WitnessData031.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData031.lean:2355:0: 'H12WitnessData031.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData031.lean:2616:0: 'H12WitnessData031.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData031.lean:2877:0: 'H12WitnessData031.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData031.lean:3138:0: 'H12WitnessData031.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData031.lean:3399:0: 'H12WitnessData031.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData031.lean:3660:0: 'H12WitnessData031.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData031.lean:3921:0: 'H12WitnessData031.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData031.lean:4182:0: 'H12WitnessData031.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData031.lean:4191:0: 'H12WitnessData031.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [86/97] Replayed H12WitnessLabelData031
+info: H12WitnessLabelData031.lean:113:0: 'H12WitnessLabelData031.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [87/97] Replayed H12WitnessData032
+info: H12WitnessData032.lean:267:0: 'H12WitnessData032.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData032.lean:528:0: 'H12WitnessData032.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData032.lean:789:0: 'H12WitnessData032.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData032.lean:1050:0: 'H12WitnessData032.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData032.lean:1311:0: 'H12WitnessData032.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData032.lean:1572:0: 'H12WitnessData032.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData032.lean:1833:0: 'H12WitnessData032.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData032.lean:2094:0: 'H12WitnessData032.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData032.lean:2355:0: 'H12WitnessData032.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData032.lean:2616:0: 'H12WitnessData032.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData032.lean:2877:0: 'H12WitnessData032.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData032.lean:3138:0: 'H12WitnessData032.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData032.lean:3399:0: 'H12WitnessData032.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData032.lean:3660:0: 'H12WitnessData032.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData032.lean:3921:0: 'H12WitnessData032.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData032.lean:4182:0: 'H12WitnessData032.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData032.lean:4191:0: 'H12WitnessData032.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [88/97] Replayed H12WitnessLabelData032
+info: H12WitnessLabelData032.lean:113:0: 'H12WitnessLabelData032.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [89/97] Replayed H12WitnessData033
+info: H12WitnessData033.lean:267:0: 'H12WitnessData033.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData033.lean:528:0: 'H12WitnessData033.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData033.lean:789:0: 'H12WitnessData033.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData033.lean:1050:0: 'H12WitnessData033.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData033.lean:1311:0: 'H12WitnessData033.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData033.lean:1572:0: 'H12WitnessData033.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData033.lean:1833:0: 'H12WitnessData033.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData033.lean:2094:0: 'H12WitnessData033.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData033.lean:2355:0: 'H12WitnessData033.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData033.lean:2616:0: 'H12WitnessData033.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData033.lean:2877:0: 'H12WitnessData033.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData033.lean:3138:0: 'H12WitnessData033.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData033.lean:3399:0: 'H12WitnessData033.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData033.lean:3660:0: 'H12WitnessData033.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData033.lean:3921:0: 'H12WitnessData033.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData033.lean:4182:0: 'H12WitnessData033.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData033.lean:4191:0: 'H12WitnessData033.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [90/97] Replayed H12WitnessLabelData033
+info: H12WitnessLabelData033.lean:113:0: 'H12WitnessLabelData033.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [91/97] Replayed H12WitnessData034
+info: H12WitnessData034.lean:267:0: 'H12WitnessData034.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData034.lean:528:0: 'H12WitnessData034.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData034.lean:789:0: 'H12WitnessData034.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData034.lean:1050:0: 'H12WitnessData034.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData034.lean:1311:0: 'H12WitnessData034.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData034.lean:1572:0: 'H12WitnessData034.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData034.lean:1833:0: 'H12WitnessData034.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData034.lean:2094:0: 'H12WitnessData034.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData034.lean:2355:0: 'H12WitnessData034.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData034.lean:2616:0: 'H12WitnessData034.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData034.lean:2877:0: 'H12WitnessData034.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData034.lean:3138:0: 'H12WitnessData034.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData034.lean:3399:0: 'H12WitnessData034.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData034.lean:3660:0: 'H12WitnessData034.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData034.lean:3921:0: 'H12WitnessData034.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData034.lean:4182:0: 'H12WitnessData034.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData034.lean:4191:0: 'H12WitnessData034.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [92/97] Replayed H12WitnessLabelData034
+info: H12WitnessLabelData034.lean:113:0: 'H12WitnessLabelData034.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [93/97] Replayed H12WitnessData035
+info: H12WitnessData035.lean:267:0: 'H12WitnessData035.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData035.lean:528:0: 'H12WitnessData035.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData035.lean:789:0: 'H12WitnessData035.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData035.lean:1050:0: 'H12WitnessData035.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData035.lean:1311:0: 'H12WitnessData035.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData035.lean:1572:0: 'H12WitnessData035.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData035.lean:1833:0: 'H12WitnessData035.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData035.lean:2094:0: 'H12WitnessData035.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData035.lean:2355:0: 'H12WitnessData035.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData035.lean:2616:0: 'H12WitnessData035.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData035.lean:2877:0: 'H12WitnessData035.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData035.lean:3138:0: 'H12WitnessData035.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData035.lean:3399:0: 'H12WitnessData035.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData035.lean:3660:0: 'H12WitnessData035.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData035.lean:3921:0: 'H12WitnessData035.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData035.lean:4182:0: 'H12WitnessData035.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData035.lean:4191:0: 'H12WitnessData035.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [94/97] Replayed H12WitnessLabelData035
+info: H12WitnessLabelData035.lean:113:0: 'H12WitnessLabelData035.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [95/97] Replayed H12WitnessData036
+info: H12WitnessData036.lean:267:0: 'H12WitnessData036.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData036.lean:528:0: 'H12WitnessData036.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData036.lean:789:0: 'H12WitnessData036.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData036.lean:1050:0: 'H12WitnessData036.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData036.lean:1311:0: 'H12WitnessData036.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData036.lean:1572:0: 'H12WitnessData036.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData036.lean:1833:0: 'H12WitnessData036.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData036.lean:2094:0: 'H12WitnessData036.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData036.lean:2355:0: 'H12WitnessData036.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData036.lean:2616:0: 'H12WitnessData036.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData036.lean:2877:0: 'H12WitnessData036.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData036.lean:3138:0: 'H12WitnessData036.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData036.lean:3399:0: 'H12WitnessData036.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData036.lean:3660:0: 'H12WitnessData036.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData036.lean:3921:0: 'H12WitnessData036.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData036.lean:4182:0: 'H12WitnessData036.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData036.lean:4191:0: 'H12WitnessData036.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [97/106] Replayed H12WitnessLabelData036
+info: H12WitnessLabelData036.lean:113:0: 'H12WitnessLabelData036.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [98/106] Replayed H12WitnessData037
+info: H12WitnessData037.lean:267:0: 'H12WitnessData037.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData037.lean:528:0: 'H12WitnessData037.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData037.lean:789:0: 'H12WitnessData037.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData037.lean:1050:0: 'H12WitnessData037.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData037.lean:1311:0: 'H12WitnessData037.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData037.lean:1572:0: 'H12WitnessData037.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData037.lean:1833:0: 'H12WitnessData037.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData037.lean:2094:0: 'H12WitnessData037.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData037.lean:2355:0: 'H12WitnessData037.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData037.lean:2616:0: 'H12WitnessData037.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData037.lean:2877:0: 'H12WitnessData037.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData037.lean:3138:0: 'H12WitnessData037.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData037.lean:3399:0: 'H12WitnessData037.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData037.lean:3660:0: 'H12WitnessData037.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData037.lean:3921:0: 'H12WitnessData037.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData037.lean:4182:0: 'H12WitnessData037.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData037.lean:4191:0: 'H12WitnessData037.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [99/106] Replayed H12WitnessLabelData037
+info: H12WitnessLabelData037.lean:113:0: 'H12WitnessLabelData037.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [100/106] Replayed H12WitnessData038
+info: H12WitnessData038.lean:267:0: 'H12WitnessData038.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData038.lean:528:0: 'H12WitnessData038.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData038.lean:789:0: 'H12WitnessData038.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData038.lean:1050:0: 'H12WitnessData038.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData038.lean:1311:0: 'H12WitnessData038.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData038.lean:1572:0: 'H12WitnessData038.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData038.lean:1833:0: 'H12WitnessData038.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData038.lean:2094:0: 'H12WitnessData038.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData038.lean:2355:0: 'H12WitnessData038.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData038.lean:2616:0: 'H12WitnessData038.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData038.lean:2877:0: 'H12WitnessData038.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData038.lean:3138:0: 'H12WitnessData038.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData038.lean:3399:0: 'H12WitnessData038.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData038.lean:3660:0: 'H12WitnessData038.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData038.lean:3921:0: 'H12WitnessData038.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData038.lean:4182:0: 'H12WitnessData038.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData038.lean:4191:0: 'H12WitnessData038.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [101/106] Replayed H12WitnessLabelData038
+info: H12WitnessLabelData038.lean:113:0: 'H12WitnessLabelData038.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [102/106] Replayed H12WitnessData039
+info: H12WitnessData039.lean:267:0: 'H12WitnessData039.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData039.lean:528:0: 'H12WitnessData039.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData039.lean:789:0: 'H12WitnessData039.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData039.lean:1050:0: 'H12WitnessData039.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData039.lean:1311:0: 'H12WitnessData039.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData039.lean:1572:0: 'H12WitnessData039.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData039.lean:1833:0: 'H12WitnessData039.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData039.lean:2094:0: 'H12WitnessData039.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData039.lean:2355:0: 'H12WitnessData039.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData039.lean:2616:0: 'H12WitnessData039.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData039.lean:2877:0: 'H12WitnessData039.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData039.lean:3138:0: 'H12WitnessData039.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData039.lean:3399:0: 'H12WitnessData039.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData039.lean:3660:0: 'H12WitnessData039.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData039.lean:3921:0: 'H12WitnessData039.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData039.lean:4182:0: 'H12WitnessData039.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData039.lean:4191:0: 'H12WitnessData039.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [103/106] Replayed H12WitnessLabelData039
+info: H12WitnessLabelData039.lean:113:0: 'H12WitnessLabelData039.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [104/106] Replayed H12WitnessData040
+info: H12WitnessData040.lean:267:0: 'H12WitnessData040.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData040.lean:464:0: 'H12WitnessData040.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData040.lean:473:0: 'H12WitnessData040.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [105/106] Replayed H12WitnessLabelData040
+info: H12WitnessLabelData040.lean:29:0: 'H12WitnessLabelData040.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [106/106] Built H12GlobalWitnessIndex (2.0s)
+info: H12GlobalWitnessIndex.lean:91:0: 'H12GlobalWitnessIndex.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (106 jobs).

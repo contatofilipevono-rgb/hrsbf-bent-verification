@@ -1,6 +1,6 @@
 {
   "status": "PASS_SOURCE_HASHES_AND_REPLAY_LOG_COVERAGE",
-  "modules": 162,
+  "modules": 218,
   "primary_modules": 28,
   "witness_modules": 42,
   "witnesses": 164288,
@@ -458,6 +458,18 @@
     "H12AffineRowScanState": [
       "LEAN_ROW_SCAN_THEORY_AUDIT.json"
     ],
+    "H12WitnessLabels": [
+      "LEAN_WITNESS_LABEL_THEORY_AUDIT.json"
+    ],
+    "H12AffineEnvironment": [
+      "LEAN_FAST_AFFINE_THEORY_AUDIT.json"
+    ],
+    "H12AffineFastState": [
+      "LEAN_FAST_AFFINE_THEORY_AUDIT.json"
+    ],
+    "H12WitnessIndexLabels": [
+      "LEAN_WITNESS_INDEX_LABEL_THEORY_AUDIT.json"
+    ],
     "H12RowRootPilotData000": [
       "LEAN_ROW_ROOT_PILOT_AUDIT.json"
     ],
@@ -493,6 +505,163 @@
     ],
     "H12RowScanEmptyChart": [
       "H12RowScanEmptyChart_KERNEL_AUDIT.json"
+    ],
+    "H12LabelPilotData000": [
+      "LEAN_LABEL_PILOT_AUDIT.json"
+    ],
+    "H12LabelPilotProof000": [
+      "LEAN_LABEL_PILOT_AUDIT.json"
+    ],
+    "H12LabelPilot": [
+      "LEAN_LABEL_PILOT_AUDIT.json"
+    ],
+    "H12FastPilotData000": [
+      "LEAN_FAST_PILOT_AUDIT.json"
+    ],
+    "H12FastPilotProof000": [
+      "LEAN_FAST_PILOT_AUDIT.json"
+    ],
+    "H12FastPilot": [
+      "LEAN_FAST_PILOT_AUDIT.json"
+    ],
+    "H12WitnessLabelData000": [
+      "LEAN_WITNESS_LABEL_INDEX_PILOT_AUDIT.json",
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12PartialWitnessLabelIndex": [
+      "LEAN_WITNESS_LABEL_INDEX_PILOT_AUDIT.json"
+    ],
+    "H12WitnessLabelData001": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData002": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData003": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData004": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData005": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData006": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData007": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData008": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData009": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData010": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData011": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData012": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData013": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData014": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData015": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData016": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData017": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData018": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData019": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData020": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData021": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData022": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData023": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData024": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData025": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData026": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData027": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData028": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData029": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData030": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData031": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData032": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData033": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData034": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData035": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData036": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData037": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData038": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData039": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12WitnessLabelData040": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12GlobalWitnessIndex": [
+      "LEAN_WITNESS_LABEL_INDEX_AUDIT.json"
+    ],
+    "H12IndexedPilotData000": [
+      "LEAN_INDEXED_PILOT_AUDIT.json"
+    ],
+    "H12IndexedPilotProof000": [
+      "LEAN_INDEXED_PILOT_AUDIT.json"
+    ],
+    "H12IndexedPilot": [
+      "LEAN_INDEXED_PILOT_AUDIT.json"
     ]
   },
   "unconditional_global_H12_theorem": false,

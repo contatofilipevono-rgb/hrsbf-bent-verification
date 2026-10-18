@@ -1,0 +1,17 @@
+{
+  "scope": "Same concrete affine-environment transitions; local timing with concurrent work, not a global speed guarantee.",
+  "results": [
+    {
+      "engine": "H12PackedSparse.directTransform",
+      "checks": 64,
+      "exit_code": 0,
+      "seconds": 5.35
+    },
+    {
+      "engine": "H12AffineEnvironment.transform",
+      "checks": 64,
+      "exit_code": 0,
+      "seconds": 2.981
+    }
+  ]
+}

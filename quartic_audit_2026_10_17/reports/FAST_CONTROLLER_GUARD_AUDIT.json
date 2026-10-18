@@ -1,0 +1,8 @@
+{
+  "status": "PASS_REFUSES_UNFINISHED_INDEX",
+  "controller_source_sha256": "e4f2e1b557302fce1d57f8933380145ae32b9c7c94c0aa3b7eb6d174e2262d2d",
+  "observed_prerequisite_status": "RUNNING",
+  "exit_code": 1,
+  "started_full_proof": false,
+  "scope": "Prerequisite guard only, not an end-to-end global proof run."
+}

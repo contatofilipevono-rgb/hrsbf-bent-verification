@@ -5,11 +5,14 @@ from pathlib import Path
 import json,csv,itertools,argparse,re
 parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--node',type=int,default=11)
 parser.add_argument('--chart',type=int,default=0);parser.add_argument('--prefix',default='H12AffinePilot');parser.add_argument('--register',action='store_true');parser.add_argument('--root-frame',action='store_true');parser.add_argument('--chunk-size',type=int,default=60);parser.add_argument('--proof-chunk-size',type=int,default=200);parser.add_argument('--check-python-composition',action='store_true')
-parser.add_argument('--engine',choices=['H12AffineState','H12AffineRowState','H12AffineRowScanState'],default='H12AffineState')
+parser.add_argument('--engine',choices=['H12AffineState','H12AffineRowState','H12AffineRowScanState','H12AffineFastState'],default='H12AffineState')
+parser.add_argument('--label-leaves',action='store_true',help='Use coefficient labels with rejection proofs from checked witness lists.')
+parser.add_argument('--global-label-index',action='store_true',help='Reuse the separately kernel-verified global coefficient index.')
 args=parser.parse_args()
 def render(source):
  source=source.replace('H12AffineState',args.engine)
  if args.engine=='H12AffineRowState':source=source.replace('scanCanonicalize','H12QuadraticCompose.canonicalFast')
+ if args.engine=='H12AffineFastState':source=source.replace('H12PackedSparse.directTransform','H12AffineEnvironment.transform')
  return source
 if not re.fullmatch(r'[A-Z][A-Za-z0-9_]*',args.prefix):raise SystemExit('Prefix must be a Lean module name.')
 if args.chunk_size<1 or args.proof_chunk_size<1:raise SystemExit('Chunk sizes must be positive.')
@@ -108,6 +111,10 @@ for file in sorted((root/'cpu_replay').glob('full_thread*.csv')):
 rows.sort();index={c:i for i,c in enumerate(rows)}
 imports={'H12AffineState'};data=[];proofs=[];counter=0;stats={'nodes':0,'states':0,'transitions':0,'terminal_candidates':0};witnessNames={}
 def witness(c):
+ if args.label_leaves:
+  position=index[c];module=f'H12WitnessData{position//4096:03d}';batch=f'{module}.batch{position%4096//256}';j=position%256
+  imports.add(module);imports.add('H12WitnessLabels')
+  return f'(H12WitnessLabels.label {c})',f'(H12WitnessLabels.label_good {batch} {batch}_checked {j} (by decide) {c} (by decide +kernel))'
  if c in witnessNames:return witnessNames[c]
  n=len(witnessNames);name=f'w{n}';witnessNames[c]=name
  position=index[c];module=f'H12WitnessData{position//4096:03d}';batch=f'{module}.batch{position%4096//256}';j=position%256;imports.add(module)
@@ -116,7 +123,11 @@ def witness(c):
  data.append(f'theorem {name}_good : H12WitnessSearch.Good (.leaf {name}) := by\n  intro c hc\n  have he : {name}.coefficient = c := beq_iff_eq.mp hc\n  rw [← he]\n  exact {name}_reject'.replace('\\n','\n'))
  return name
 def tree(items):
+ if args.global_label_index:
+  imports.add('H12GlobalWitnessIndex')
+  return 'H12GlobalWitnessIndex.tree','H12GlobalWitnessIndex.good'
  if len(items)==1:
+  if args.label_leaves:return witness(items[0])
   w=witness(items[0]);return f'(.leaf {w})',f'{w}_good'
  mid=len(items)//2;l,hl=tree(items[:mid]);r,hr=tree(items[mid:]);pivot=items[mid]
  return f'(.node {pivot} {l} {r})',f'(H12WitnessSearch.node_good {pivot} _ _ {hl} {hr})'
@@ -226,6 +237,8 @@ file=root/'lean'/(args.prefix+'.lean');file.write_text(render('\n\n'.join(['impo
 modules += proofModules
 report={'status':'GENERATED_NOT_YET_KERNEL_VERIFIED','chart':args.chart,'subtree':args.node,'root_frame':args.root_frame,'scope':'Fixed-equation affine-environment subtree only; not global tree coverage.','full_recorded_chart_root':args.node==cert['roots'][args.chart],'generator_sha256':__import__('hashlib').sha256(Path(__file__).read_bytes()).hexdigest(),'statistics':stats,'modules':modules+[args.prefix]}
 report['engine']=args.engine
+report['coefficient_label_leaves']=args.label_leaves
+report['global_coefficient_label_index']=args.global_label_index
 report['data_chunk_size']=args.chunk_size
 report['proof_chunk_size']=args.proof_chunk_size
 (root/'reports'/(args.prefix+'_SOURCE.json')).write_text(json.dumps(report,indent=2));print(report)

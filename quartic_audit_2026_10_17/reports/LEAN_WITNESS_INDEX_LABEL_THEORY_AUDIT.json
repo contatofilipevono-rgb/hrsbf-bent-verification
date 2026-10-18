@@ -1,0 +1,46 @@
+{
+  "status": "PASS_SELECTED_LIBRARIES_KERNEL_REPLAY",
+  "libraries": [
+    "H12WitnessIndexLabelTheory"
+  ],
+  "scope": "Selected extension modules only. This is not an unconditional global nonexistence theorem.",
+  "results": [
+    {
+      "step": "build_H12WitnessIndexLabelTheory",
+      "exit_code": 0,
+      "seconds": 7.05645160000131
+    },
+    {
+      "step": "kernel_H12WitnessIndexLabels",
+      "exit_code": 0,
+      "seconds": 11.945846399999937
+    }
+  ],
+  "dependencies": {
+    "H12WitnessIndexLabels": "cd1b86dd49011e809f90248fa967716afccbc58ae883d43a9aece08dfcd0c97f",
+    "H12WitnessLabels": "531442ec838e449dcb7a0ef810c2e463344244092ee12561c38d2db0eef9c3d2",
+    "H12WitnessSearch": "40fc57e6783a7491a6de692921893d69cffeeab476eea28536eb3892be815220",
+    "H12WitnessTheory": "c16371634479626479a4662ea01021f4d370c44d74771e5fac965b89c959d1ab",
+    "H12WalshTable": "4ccd462afba3d1b6e1cb7ea0c8b059f8f80e30d0c5f1a5d9fbbf7ce470b60e03",
+    "H12Popcount": "2ee4dd8eb136dd09009bf305187d3bbaf1fc89abeb731307f2dc6d731602f6fc",
+    "H12Bits": "1118f1577c0597f2963699b6ae39ebe5264e1e40468efa74b765f1af63f359ca",
+    "H12Weight": "d0493891b5a7a2f4096133842076619b8f6ed21808bdbcfa1629ba05e3d6aba6",
+    "H12BooleanPolynomial": "58585886557995ff4a22cc7c451955248b17c4513faa3c43ce512715f4e09ed3",
+    "H12Descent": "474404a10202517af186a206cbe6e96d0945e945046adf64e8b707a651b22667",
+    "H12FilterLink": "7edcf88d8f7e3ce3d64ec1db87a8b12cc56288c466c345cfeffed09f43f638fa",
+    "H12NumericFilters": "4b389d8e090eaae65482d205d08d2a03ae98fea6180eff57d7b5c87dc74a23f1",
+    "H12TablePolynomial": "267e35bea10aaefd6a4f712f3fb4beca70444d6cdf30218a068fcbfbde466199",
+    "H12Quadratic": "e9ee6accde671bfdcfac983ae4b4091cdb4b0092054ddf35cef22c9f95194e2d",
+    "H12PeriodFour": "d2fcfd4392478b5ce5a4b781a0d9c27dbbfcb54b7fbdee1a6c490a04d823a84e",
+    "H12CertificateTheory": "5157279bc8df9cc91b1264a8b9bcc571bf50a3708e5b30f08c0282b06b8d65cb",
+    "H12Truth": "04b5ed32fb7a9f67e20f91a1afe018583824f40df62b789038ed5cfc4c6016c5",
+    "H12PlaneTables": "65237e5e10969180184e082e8132a36be77e249944e30a3338f9c120a3455aa0",
+    "H12Orbit": "d26567bb8bfff7627414fd0d27e7c68e4bb0e6e807b466c9fcd1750dad84edcb",
+    "H12FilterBridge": "8cea7994c937b4465a23ab5165fb2eb3cbecef61c6b7dd52fbd5792d13044fc8",
+    "H12Restriction": "3d4024babb309ef3b0bf81727dba0d788738aa0b693ecf492db92a5c1abe1d07",
+    "H12Walsh": "7100af195a6e9bd15fc8d3f84bdb760b971b84cb81eb6a5212b0855aeb64955f"
+  },
+  "modules": [
+    "H12WitnessIndexLabels"
+  ]
+}

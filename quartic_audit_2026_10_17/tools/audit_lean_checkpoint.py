@@ -59,7 +59,12 @@ def main():
   for name,sha in r['dependencies'].items():source(name,sha)
   for name in r['modules']:
    assert any(e['step']=='kernel_'+name and e['exit_code']==0 for e in r['results']);clean(reports/'extensions'/('kernel_'+name+'.log'));record(name,filename)
- for filename in ['LEAN_ROW_ROOT_PILOT_AUDIT.json','H12RowScanPilot_KERNEL_AUDIT.json','H12RowScanEmptyChart_KERNEL_AUDIT.json']:
+ for filename in ['LEAN_WITNESS_LABEL_THEORY_AUDIT.json','LEAN_FAST_AFFINE_THEORY_AUDIT.json','LEAN_WITNESS_INDEX_LABEL_THEORY_AUDIT.json']:
+  r=json.loads((reports/filename).read_text());assert r['status']=='PASS_SELECTED_LIBRARIES_KERNEL_REPLAY',filename
+  for name,sha in r['dependencies'].items():source(name,sha)
+  for name in r['modules']:
+   assert any(e['step']=='kernel_'+name and e['exit_code']==0 for e in r['results']);clean(reports/'extensions'/('kernel_'+name+'.log'));record(name,filename)
+ for filename in ['LEAN_ROW_ROOT_PILOT_AUDIT.json','H12RowScanPilot_KERNEL_AUDIT.json','H12RowScanEmptyChart_KERNEL_AUDIT.json','LEAN_LABEL_PILOT_AUDIT.json','LEAN_FAST_PILOT_AUDIT.json','LEAN_WITNESS_LABEL_INDEX_PILOT_AUDIT.json','LEAN_WITNESS_LABEL_INDEX_AUDIT.json','LEAN_INDEXED_PILOT_AUDIT.json']:
   r=json.loads((reports/filename).read_text());assert r['status']=='PASS_ENTIRE_SELECTED_LIBRARY_KERNEL_REPLAY',filename
   assert r['modules_verified']==r['modules_total']==len(r['results']),filename
   for name,sha in r['dependencies'].items():source(name,sha)

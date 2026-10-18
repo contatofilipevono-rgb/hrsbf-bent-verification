@@ -1,0 +1,301 @@
+ℹ [2/25] Replayed H12Descent
+info: H12Descent.lean:96:0: 'H12Descent.sorted_partition' depends on axioms: [propext, Quot.sound]
+info: H12Descent.lean:97:0: 'H12Descent.descent_mod_three' depends on axioms: [propext, Quot.sound]
+info: H12Descent.lean:159:0: 'H12Descent.bent_rotational_descent' depends on axioms: [propext, Quot.sound]
+ℹ [3/25] Replayed H12BooleanPolynomial
+info: H12BooleanPolynomial.lean:99:0: 'H12BooleanPolynomial.evaluate_map_union' depends on axioms: [propext, Quot.sound]
+info: H12BooleanPolynomial.lean:100:0: 'H12BooleanPolynomial.evaluate_permutation' depends on axioms: [propext]
+ℹ [4/25] Replayed H12Weight
+info: H12Weight.lean:96:0: 'H12Weight.carry_polar' depends on axioms: [propext, Quot.sound]
+info: H12Weight.lean:97:0: 'H12Weight.polar_xor_right' depends on axioms: [propext, Quot.sound]
+info: H12Weight.lean:163:0: 'H12Weight.carry_of_combination' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [5/25] Replayed H12Bits
+info: H12Bits.lean:37:0: 'H12Bits.foldParity_sound' depends on axioms: [propext, Quot.sound]
+warning: H12Bits.lean:44:50: This simp argument is unused:
+  Bool.false_and
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all only [Nat.testBit_eq_decide_div_mod_eq, Nat.pow_zero, Nat.div_one, Nat.pow_one, decide_eq_true_eq,
+    decide_eq_false_iff_not, Bool.true_and, Bool.and_false, Bool.and_true, Bool.false_xor, Bool.true_xor,
+    Bool.not_false, Bool.not_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12Bits.lean:44:66: This simp argument is unused:
+  Bool.true_and
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all only [Nat.testBit_eq_decide_div_mod_eq, Nat.pow_zero, Nat.div_one, Nat.pow_one, decide_eq_true_eq,
+    decide_eq_false_iff_not, Bool.false_and, Bool.and_false, Bool.and_true, Bool.false_xor, Bool.true_xor,
+    Bool.not_false, Bool.not_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12Bits.lean:95:0: 'H12Bits.fastCarry_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [6/25] Replayed H12Popcount
+info: H12Popcount.lean:49:0: 'H12Popcount.add_sound' depends on axioms: [propext, Quot.sound]
+info: H12Popcount.lean:117:0: 'H12Popcount.fold_sound' depends on axioms: [propext, Quot.sound]
+info: H12Popcount.lean:149:0: 'H12Popcount.fastWeight_sound' depends on axioms: [propext, Quot.sound]
+info: H12Popcount.lean:161:0: 'H12Popcount.add_mod' depends on axioms: [propext, Quot.sound]
+info: H12Popcount.lean:173:0: 'H12Popcount.sum_mod_congr' depends on axioms: [propext]
+info: H12Popcount.lean:201:0: 'H12Popcount.fold_mod_sound' depends on axioms: [propext, Quot.sound]
+info: H12Popcount.lean:213:0: 'H12Popcount.fastWeightMod_sound' depends on axioms: [propext, Quot.sound]
+ℹ [7/25] Replayed H12TablePolynomial
+info: H12TablePolynomial.lean:47:0: 'H12TablePolynomial.fastPolynomial_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [8/25] Replayed H12PeriodFour
+info: H12PeriodFour.lean:223:0: 'H12.basis_periodic_columns' depends on axioms: [propext]
+info: H12PeriodFour.lean:224:0: 'H12.restriction_normal_form' depends on axioms: [propext, Quot.sound]
+info: H12PeriodFour.lean:225:0: 'H12.four_case_classification' depends on axioms: [propext, Quot.sound]
+info: H12PeriodFour.lean:226:0: 'H12.periodic_reduction' depends on axioms: [propext, Quot.sound]
+info: H12PeriodFour.lean:227:0: 'H12.quartic_periodic' depends on axioms: [propext, Quot.sound]
+ℹ [9/25] Replayed H12Quadratic
+info: H12Quadratic.lean:266:0: 'H12Quadratic.necessary_r1' depends on axioms: [propext, Quot.sound]
+info: H12Quadratic.lean:285:0: 'H12Quadratic.necessary_r2' depends on axioms: [propext]
+info: H12Quadratic.lean:441:0: 'H12Quadratic.necessary_r3' depends on axioms: [propext, Quot.sound]
+info: H12Quadratic.lean:474:0: 'H12Quadratic.short_product_zero' depends on axioms: [propext, Quot.sound]
+⚠ [10/25] Replayed H12CertificateTheory
+warning: H12CertificateTheory.lean:65:27: This simp argument is unused:
+  Nat.testBit_two_pow
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Nat.testBit_xor, h]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12CertificateTheory.lean:93:15: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Bool.false_eq_true, ↓reduceIte]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12CertificateTheory.lean:95:15: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [↓reduceIte]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12CertificateTheory.lean:141:0: 'H12CertificateTheory.evaluate_normalize' depends on axioms: [propext]
+info: H12CertificateTheory.lean:142:0: 'H12CertificateTheory.evaluate_substitute' depends on axioms: [propext, Quot.sound]
+info: H12CertificateTheory.lean:143:0: 'H12CertificateTheory.update_of_equation' depends on axioms: [propext, Quot.sound]
+ℹ [11/25] Replayed H12NumericFilters
+info: H12NumericFilters.lean:19:0: 'H12NumericFilters.check_0' depends on axioms: [propext]
+info: H12NumericFilters.lean:21:0: 'H12NumericFilters.check_1' depends on axioms: [propext]
+info: H12NumericFilters.lean:23:0: 'H12NumericFilters.check_2' depends on axioms: [propext]
+info: H12NumericFilters.lean:25:0: 'H12NumericFilters.check_3' depends on axioms: [propext]
+info: H12NumericFilters.lean:27:0: 'H12NumericFilters.check_4' depends on axioms: [propext]
+info: H12NumericFilters.lean:29:0: 'H12NumericFilters.check_5' depends on axioms: [propext]
+info: H12NumericFilters.lean:31:0: 'H12NumericFilters.check_6' depends on axioms: [propext]
+info: H12NumericFilters.lean:33:0: 'H12NumericFilters.check_7' depends on axioms: [propext]
+info: H12NumericFilters.lean:35:0: 'H12NumericFilters.check_8' depends on axioms: [propext]
+info: H12NumericFilters.lean:37:0: 'H12NumericFilters.check_9' depends on axioms: [propext]
+info: H12NumericFilters.lean:39:0: 'H12NumericFilters.check_10' depends on axioms: [propext]
+info: H12NumericFilters.lean:41:0: 'H12NumericFilters.check_11' depends on axioms: [propext]
+info: H12NumericFilters.lean:43:0: 'H12NumericFilters.check_12' depends on axioms: [propext]
+info: H12NumericFilters.lean:45:0: 'H12NumericFilters.check_13' depends on axioms: [propext]
+info: H12NumericFilters.lean:47:0: 'H12NumericFilters.check_14' depends on axioms: [propext]
+info: H12NumericFilters.lean:49:0: 'H12NumericFilters.check_15' depends on axioms: [propext]
+info: H12NumericFilters.lean:51:0: 'H12NumericFilters.check_16' depends on axioms: [propext]
+info: H12NumericFilters.lean:53:0: 'H12NumericFilters.check_17' depends on axioms: [propext]
+info: H12NumericFilters.lean:55:0: 'H12NumericFilters.check_18' depends on axioms: [propext]
+info: H12NumericFilters.lean:57:0: 'H12NumericFilters.check_19' depends on axioms: [propext]
+info: H12NumericFilters.lean:59:0: 'H12NumericFilters.check_20' depends on axioms: [propext]
+info: H12NumericFilters.lean:61:0: 'H12NumericFilters.check_21' depends on axioms: [propext]
+info: H12NumericFilters.lean:63:0: 'H12NumericFilters.check_22' depends on axioms: [propext]
+info: H12NumericFilters.lean:65:0: 'H12NumericFilters.check_23' depends on axioms: [propext]
+info: H12NumericFilters.lean:67:0: 'H12NumericFilters.check_24' depends on axioms: [propext]
+info: H12NumericFilters.lean:69:0: 'H12NumericFilters.check_25' depends on axioms: [propext]
+info: H12NumericFilters.lean:71:0: 'H12NumericFilters.check_26' depends on axioms: [propext]
+info: H12NumericFilters.lean:73:0: 'H12NumericFilters.check_27' depends on axioms: [propext]
+info: H12NumericFilters.lean:75:0: 'H12NumericFilters.check_28' depends on axioms: [propext]
+info: H12NumericFilters.lean:77:0: 'H12NumericFilters.check_29' depends on axioms: [propext]
+info: H12NumericFilters.lean:79:0: 'H12NumericFilters.check_30' depends on axioms: [propext]
+info: H12NumericFilters.lean:81:0: 'H12NumericFilters.check_31' depends on axioms: [propext]
+info: H12NumericFilters.lean:83:0: 'H12NumericFilters.check_32' depends on axioms: [propext]
+info: H12NumericFilters.lean:85:0: 'H12NumericFilters.check_33' depends on axioms: [propext]
+info: H12NumericFilters.lean:87:0: 'H12NumericFilters.check_34' depends on axioms: [propext]
+info: H12NumericFilters.lean:89:0: 'H12NumericFilters.check_35' depends on axioms: [propext]
+info: H12NumericFilters.lean:91:0: 'H12NumericFilters.check_36' depends on axioms: [propext]
+info: H12NumericFilters.lean:93:0: 'H12NumericFilters.check_37' depends on axioms: [propext]
+info: H12NumericFilters.lean:95:0: 'H12NumericFilters.check_38' depends on axioms: [propext]
+info: H12NumericFilters.lean:97:0: 'H12NumericFilters.check_39' depends on axioms: [propext]
+info: H12NumericFilters.lean:99:0: 'H12NumericFilters.check_40' depends on axioms: [propext]
+info: H12NumericFilters.lean:101:0: 'H12NumericFilters.check_41' depends on axioms: [propext]
+info: H12NumericFilters.lean:103:0: 'H12NumericFilters.check_42' depends on axioms: [propext]
+info: H12NumericFilters.lean:113:0: 'H12NumericFilters.all_filters_exact' depends on axioms: [propext, Quot.sound]
+ℹ [12/25] Replayed H12PlaneTables
+info: H12PlaneTables.lean:16:0: 'H12PlaneTables.variable_semantics' depends on axioms: [propext, Quot.sound]
+⚠ [13/25] Replayed H12Orbit
+warning: H12Orbit.lean:13:10: This simp argument is unused:
+  ← BitVec.getLsbD_eq_getElem
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [BitVec.getLsbD_rotateLeft, h, show ¬8 + i < 8 by omega, show 8 + i < 12 by omega,
+    show 8 + i - 8 = i by omega]
+
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12Orbit.lean:15:10: This simp argument is unused:
+  BitVec.getLsbD_rotateLeft
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [h, show i - 4 < 8 by omega, show 4 + (i - 4) = i by omega, hi]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12Orbit.lean:22:31: This simp argument is unused:
+  BitVec.getLsbD_rotateLeft
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [h, hi, Bool.and_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12Orbit.lean:22:65: This simp argument is unused:
+  Bool.and_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [BitVec.getLsbD_rotateLeft, h, hi]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12Orbit.lean:36:14: This simp argument is unused:
+  ← BitVec.getLsbD_eq_getElem
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [BitVec.getLsbD_rotateLeft, h, show ¬4 + i < 4 by omega, show 4 + i < 12 by omega,
+    show 4 + i - 4 = i by omega]
+
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12Orbit.lean:38:14: This simp argument is unused:
+  ← BitVec.getLsbD_eq_getElem
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [BitVec.getLsbD_rotateLeft, h, show i - 8 < 4 by omega, show 8 + (i - 8) = i by omega, hi]
+
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12Orbit.lean:66:0: 'H12Orbit.all_supports_partitioned' depends on axioms: [propext]
+info: H12Orbit.lean:73:0: 'H12Orbit.cyclic_orbits_exact' depends on axioms: [propext, Quot.sound]
+info: H12Orbit.lean:118:0: 'H12Orbit.quartic_rotational_four' depends on axioms: [propext, Quot.sound]
+⚠ [14/25] Replayed H12Truth
+info: H12Truth.lean:17:0: 'H12Truth.variable_semantics' depends on axioms: [propext, Quot.sound]
+warning: H12Truth.lean:32:11: exponent 4096 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12Truth.lean:57:14: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12Truth.lean:59:14: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hx]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12Truth.lean:91:0: 'H12Truth.basis_tables_exact' depends on axioms: [propext]
+info: H12Truth.lean:99:0: 'H12Truth.basis_semantics' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [15/25] Replayed H12Walsh
+info: H12Walsh.lean:92:0: 'H12Walsh.energy_identity' depends on axioms: [propext, Quot.sound]
+warning: H12Walsh.lean:180:25: Variable name `x` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _x
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+info: H12Walsh.lean:209:0: 'H12Walsh.bent_walsh_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12Walsh.lean:225:0: 'H12Walsh.bent_walsh_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12Walsh.lean:226:0: 'H12Walsh.walsh_witness_rejects' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [16/25] Replayed H12Restriction
+warning: H12Restriction.lean:105:45: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Int.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12Restriction.lean:156:0: 'H12Restriction.restriction_identity' depends on axioms: [propext, Quot.sound]
+info: H12Restriction.lean:157:0: 'H12Restriction.restriction_weight_mod_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [17/25] Replayed H12FilterBridge
+warning: H12FilterBridge.lean:28:14: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12FilterBridge.lean:29:14: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12FilterBridge.lean:87:0: 'H12FilterBridge.computed_filter_necessary' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [18/25] Replayed H12FilterLink
+info: H12FilterLink.lean:63:0: 'H12FilterLink.originalRows_family' depends on axioms: [propext]
+info: H12FilterLink.lean:82:0: 'H12FilterLink.cubeTable_bit' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: H12FilterLink.lean:150:46: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp [H12NumericFilters.explicitPolynomials]
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+info: H12FilterLink.lean:153:0: 'H12FilterLink.bent_passes' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [19/25] Replayed H12WalshTable
+warning: H12WalshTable.lean:22:32: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [familyRows]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12WalshTable.lean:48:12: This simp argument is unused:
+  ha
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12WalshTable.lean:49:17: This simp argument is unused:
+  ha
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [↓reduceIte, Bool.true_and]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12WalshTable.lean:79:0: 'H12WalshTable.truthTable_semantics' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12WalshTable.lean:80:0: 'H12WalshTable.phaseWeight_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12WalshTable.lean:81:0: 'H12WalshTable.rejects_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12WalshTable.lean:107:0: 'H12WalshTable.rejectsMod_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [20/25] Replayed H12WitnessTheory
+info: H12WitnessTheory.lean:25:0: 'H12WitnessTheory.checked_list_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [21/25] Replayed H12WitnessData010
+info: H12WitnessData010.lean:267:0: 'H12WitnessData010.batch0_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:528:0: 'H12WitnessData010.batch1_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:789:0: 'H12WitnessData010.batch2_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:1050:0: 'H12WitnessData010.batch3_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:1311:0: 'H12WitnessData010.batch4_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:1572:0: 'H12WitnessData010.batch5_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:1833:0: 'H12WitnessData010.batch6_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:2094:0: 'H12WitnessData010.batch7_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:2355:0: 'H12WitnessData010.batch8_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:2616:0: 'H12WitnessData010.batch9_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:2877:0: 'H12WitnessData010.batch10_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:3138:0: 'H12WitnessData010.batch11_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:3399:0: 'H12WitnessData010.batch12_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:3660:0: 'H12WitnessData010.batch13_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:3921:0: 'H12WitnessData010.batch14_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:4182:0: 'H12WitnessData010.batch15_checked' depends on axioms: [propext]
+info: H12WitnessData010.lean:4191:0: 'H12WitnessData010.rejects_every_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [22/25] Replayed H12WitnessSearch
+info: H12WitnessSearch.lean:51:0: 'H12WitnessSearch.checked_good' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12WitnessSearch.lean:52:0: 'H12WitnessSearch.node_good' depends on axioms: [propext]
+ℹ [23/25] Replayed H12WitnessLabels
+info: H12WitnessLabels.lean:20:0: 'H12WitnessLabels.label_good' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [24/25] Replayed H12WitnessIndexLabels
+info: H12WitnessIndexLabels.lean:20:0: 'H12WitnessIndexLabels.good_of_coefficients' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [25/25] Built H12WitnessLabelData010 (6.2s)
+info: H12WitnessLabelData010.lean:113:0: 'H12WitnessLabelData010.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (25 jobs).

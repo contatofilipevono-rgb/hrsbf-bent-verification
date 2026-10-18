@@ -1,0 +1,25 @@
+{
+  "status": "PASS_GENERATED_MODULES_KERNEL_REPLAY",
+  "chart": 0,
+  "subtree": 11,
+  "root_frame": true,
+  "scope": "Fixed-equation affine-environment subtree only; not global tree coverage.",
+  "full_recorded_chart_root": false,
+  "generator_sha256": "4069cf756f2a5e54e369e26ac042dfc2c0643a8eac6963194b5e571dfa30719e",
+  "statistics": {
+    "nodes": 3,
+    "states": 32,
+    "transitions": 31,
+    "terminal_candidates": 16
+  },
+  "modules": [
+    "H12LabelPilotData000",
+    "H12LabelPilotProof000",
+    "H12LabelPilot"
+  ],
+  "engine": "H12AffineRowScanState",
+  "coefficient_label_leaves": true,
+  "data_chunk_size": 1200,
+  "proof_chunk_size": 600,
+  "audit_report": "LEAN_LABEL_PILOT_AUDIT.json"
+}
