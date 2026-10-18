@@ -1,0 +1,23 @@
+{
+  "scope": "Synthetic regression demonstration; not evidence about actual cloud proof results.",
+  "observations": [
+    {
+      "requested_roots": [],
+      "existing_runner_status": "PASS_CHART_DEPENDENCIES_AND_ROOT_KERNEL_REPLAY",
+      "actual_checked_modules": 0,
+      "new_audit_rejection": "Empty or missing requested roots"
+    },
+    {
+      "requested_roots": [
+        "H12CloudChart2"
+      ],
+      "existing_runner_status": "PASS_CHART_DEPENDENCIES_AND_ROOT_KERNEL_REPLAY",
+      "actual_checked_modules": 0,
+      "new_audit_rejection": "Empty source manifest"
+    }
+  ],
+  "new_audit_tests_passed": 14,
+  "active_runner_modified": false,
+  "automatically_integrated_in_workflow": false,
+  "next_acceptance_step": "Run audit_cloud_report.py on the exported progress.json with --chart and --logs."
+}
