@@ -20,4 +20,52 @@ roots = ["H12PackedPolynomial"]
 
 [[lean_lib]]
 name = "H12PackedPilotCertificate"
-roots = ["H12PackedPilot"]
+roots = ["H12PackedPilotData000", "H12PackedPilotData001", "H12PackedPilotData002", "H12PackedPilotData003", "H12PackedPilotData004", "H12PackedPilot"]
+
+[[lean_lib]]
+name = "H12PackedTerminalCertificate"
+roots = ["H12PackedTerminal", "H12WitnessIndex", "H12PackedRoots"]
+
+[[lean_lib]]
+name = "H12ConcreteLeaf12Certificate"
+roots = ["H12ConcreteLeaf12"]
+
+[[lean_lib]]
+name = "H12PackedOptimization"
+roots = ["H12PackedSparse", "H12PackedChecker"]
+
+[[lean_lib]]
+name = "H12MixedPilotCertificate"
+roots = ["H12MixedPilotData000", "H12MixedPilotData001", "H12MixedPilotData002", "H12MixedPilotData003", "H12MixedPilotData004", "H12MixedPilotData005", "H12MixedPilot"]
+
+[[lean_lib]]
+name = "H12MixedWideCertificate"
+roots = ["H12MixedWideData000", "H12MixedWideData001", "H12MixedWideData002", "H12MixedWideData003", "H12MixedWideData004", "H12MixedWideData005", "H12MixedWideData006", "H12MixedWideData007", "H12MixedWideData008", "H12MixedWideData009", "H12MixedWideData010", "H12MixedWideData011", "H12MixedWideData012", "H12MixedWideData013", "H12MixedWideData014", "H12MixedWideData015", "H12MixedWideData016", "H12MixedWideData017", "H12MixedWide"]
+
+[[lean_lib]]
+name = "H12AffineStateTheory"
+roots = ["H12AffineState"]
+
+[[lean_lib]]
+name = "H12AffinePilotCertificate"
+roots = ["H12AffinePilotData000", "H12AffinePilotData001", "H12AffinePilotData002", "H12AffinePilotData003", "H12AffinePilot"]
+
+[[lean_lib]]
+name = "H12ShortProductTheory"
+roots = ["H12PackedProductOptimization"]
+
+[[lean_lib]]
+name = "H12AffineWideCertificate"
+roots = ["H12AffineWideData000", "H12AffineWideData001", "H12AffineWideData002", "H12AffineWideData003", "H12AffineWideData004", "H12AffineWideData005", "H12AffineWideData006", "H12AffineWideData007", "H12AffineWideData008", "H12AffineWideData009", "H12AffineWideData010", "H12AffineWideData011", "H12AffineWide"]
+
+[[lean_lib]]
+name = "H12AffineRootFrameCertificate"
+roots = ["H12AffineRootFrameData000", "H12AffineRootFrameData001", "H12AffineRootFrameData002", "H12AffineRootFrameData003", "H12AffineRootFrame"]
+
+[[lean_lib]]
+name = "H12AffineCanonicalPilotCertificate"
+roots = ["H12AffineCanonicalPilotData000", "H12AffineCanonicalPilotData001", "H12AffineCanonicalPilotData002", "H12AffineCanonicalPilotData003", "H12AffineCanonicalPilotData004", "H12AffineCanonicalPilotData005", "H12AffineCanonicalPilotProof000", "H12AffineCanonicalPilotProof001", "H12AffineCanonicalPilotProof002", "H12AffineCanonicalPilot"]
+
+[[lean_lib]]
+name = "H12EmptyChartCertificate"
+roots = ["H12EmptyChartData000", "H12EmptyChartProof000", "H12EmptyChart"]

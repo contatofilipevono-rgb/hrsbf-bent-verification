@@ -92,7 +92,7 @@ Os identificadores Txx variam entre colaboradores. Use o conteúdo matemático, 
 
 ## Conferência concreta de testemunhos
 
-Os 164288 testes gerados ficam em uma biblioteca opcional separada, para que a compilação normal dos lemas não exija a verificação numérica inteira. A execução completa ainda está em andamento neste checkpoint. Para reproduzir sequencialmente:
+Os 164288 testes gerados ficam em uma biblioteca opcional separada, para que a compilação normal dos lemas não exija a verificação numérica inteira. Todos os 164288 testes passaram na compilação e na reprodução independente pelo kernel Lean; os 41 módulos de dados e o agregador estão auditados em `reports/LEAN_WITNESS_KERNEL_AUDIT.json`. Para reproduzir sequencialmente:
 
 ```sh
 python tools/verify_lean_witnesses.py --lake lake --resume
@@ -105,4 +105,7 @@ Veja `KHOLOSHA_PAL_REVIEW.md` para a avaliação da referência de outubro de 20
 
 ## Later packed-theory checkpoint
 
-The optional packed polynomial theory has passed a separate build and kernel replay; see [PACKED_FORMALIZATION_STATUS.md](PACKED_FORMALIZATION_STATUS.md). The generated limited subtree pilot remains separate from the 28 primary modules and the previously tested handoff ZIP. The complete concrete Lean tree and unconditional nonexistence theorem remain pending. The latest fixed witness checkpoint is in `reports/LEAN_WITNESS_KERNEL_PROGRESS.json`; the ongoing run may have advanced locally.
+The optional packed polynomial theory has passed a separate build and kernel replay; see [PACKED_FORMALIZATION_STATUS.md](PACKED_FORMALIZATION_STATUS.md). The generated limited subtree pilot remains separate from the 28 primary modules and the previously tested handoff ZIP. The complete concrete Lean tree and unconditional nonexistence theorem remain pending. The latest fixed witness checkpoint is in `reports/LEAN_WITNESS_KERNEL_PROGRESS.json`; all 164,288 concrete Walsh rejections have now passed the Lean kernel; global tree coverage remains pending.
+
+
+O checkpoint posterior com 147 módulos conferidos está descrito em [ESTADO_KERNEL_147.md](ESTADO_KERNEL_147.md). Todos os testemunhos de Walsh passaram; a cobertura global no Lean permanece pendente.

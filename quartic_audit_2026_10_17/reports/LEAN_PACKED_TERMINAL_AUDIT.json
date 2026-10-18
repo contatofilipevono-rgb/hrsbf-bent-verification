@@ -1,0 +1,24 @@
+{
+  "status": "PASS_GENERIC_TERMINAL_AND_CONCRETE_LEAF12_KERNEL_REPLAY",
+  "scope": "Generic terminal bridge and one concrete 8-candidate leaf; no global tree coverage.",
+  "results": [
+    {
+      "module": "H12PackedTerminal",
+      "kernel_exit_code": 0,
+      "source_sha256": "accd7e66c52d0496a30998e2bd0bb853fc4d88a759a60a074da85bbfaf117142",
+      "seconds": 8.636037199999919
+    },
+    {
+      "module": "H12WitnessIndex",
+      "kernel_exit_code": 0,
+      "source_sha256": "93895fcbf0c1378dfeee453af1b52e9298d2a0da06a2cf71b2ed4fab3581eb44",
+      "seconds": 8.390190199999779
+    },
+    {
+      "module": "H12ConcreteLeaf12",
+      "kernel_exit_code": 0,
+      "source_sha256": "aeea8f2e041ec869c3ad11d8c0f8d1dd66ceadbcc260e087ef81a834ef37f7ab",
+      "seconds": 8.627886899999794
+    }
+  ]
+}

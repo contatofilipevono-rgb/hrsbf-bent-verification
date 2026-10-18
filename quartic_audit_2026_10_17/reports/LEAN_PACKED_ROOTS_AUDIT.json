@@ -1,0 +1,8 @@
+{
+  "status": "PASS_PACKED_ROOT_BRIDGE_KERNEL_REPLAY",
+  "source_sha256": "0fe82631014f2cf09781562253b21303506358a586c9cd4d180d5bfe5160bdbb",
+  "scope": "Three concrete chart systems and their original coefficient observations are represented soundly in packed form.",
+  "theorem": "H12PackedRoots.no_bent_of_packed_refutations",
+  "unconditional_global_theorem": false,
+  "remaining_hypothesis": "Concrete PackedRefutes proofs for all three roots."
+}

@@ -1,0 +1,13 @@
+{
+  "archive_sha256": "60837cd865bc5b27d6277043fb8b729c57cc32f55ad33df9328432bb88ce1dfe",
+  "scope": "Isolated archive integrity, recorded Lean source/replay-log coverage, and complete Python symbolic certificate. Lean replay itself was performed in the authoritative checkout.",
+  "fresh_lean_build_in_this_extraction": false,
+  "zip_manifest": "PASS",
+  "entries": 456,
+  "python_source_syntax": "PASS",
+  "manifest_exit_code": 0,
+  "lean_source_log_audit_exit_code": 0,
+  "symbolic_cover_and_walsh_exit_code": 0,
+  "status": "PASS_ISOLATED_KERNEL147_HANDOFF",
+  "seconds": 97.07562739999958
+}

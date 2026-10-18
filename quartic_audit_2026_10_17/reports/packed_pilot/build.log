@@ -1,0 +1,225 @@
+ℹ [2/12] Replayed H12Descent
+info: H12Descent.lean:96:0: 'H12Descent.sorted_partition' depends on axioms: [propext, Quot.sound]
+info: H12Descent.lean:97:0: 'H12Descent.descent_mod_three' depends on axioms: [propext, Quot.sound]
+info: H12Descent.lean:159:0: 'H12Descent.bent_rotational_descent' depends on axioms: [propext, Quot.sound]
+ℹ [3/12] Replayed H12BooleanPolynomial
+info: H12BooleanPolynomial.lean:99:0: 'H12BooleanPolynomial.evaluate_map_union' depends on axioms: [propext, Quot.sound]
+info: H12BooleanPolynomial.lean:100:0: 'H12BooleanPolynomial.evaluate_permutation' depends on axioms: [propext]
+⚠ [4/12] Replayed H12CertificateTheory
+warning: H12CertificateTheory.lean:65:27: This simp argument is unused:
+  Nat.testBit_two_pow
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Nat.testBit_xor, h]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12CertificateTheory.lean:93:15: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Bool.false_eq_true, ↓reduceIte]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12CertificateTheory.lean:95:15: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [↓reduceIte]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12CertificateTheory.lean:141:0: 'H12CertificateTheory.evaluate_normalize' depends on axioms: [propext]
+info: H12CertificateTheory.lean:142:0: 'H12CertificateTheory.evaluate_substitute' depends on axioms: [propext, Quot.sound]
+info: H12CertificateTheory.lean:143:0: 'H12CertificateTheory.update_of_equation' depends on axioms: [propext, Quot.sound]
+⚠ [5/12] Replayed H12PackedPolynomial
+warning: H12PackedPolynomial.lean:31:62: This simp argument is unused:
+  xor_interleave
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [unpack, Nat.testBit_xor, Nat.shiftRight_xor_distrib, ha, hb, Bool.false_xor, Bool.true_xor,
+    Bool.not_false, Bool.not_true, ↓reduceIte, evaluate_cons, ih, Bool.false_eq_true, cancel_double, Bool.xor_assoc,
+    Bool.xor_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12PackedPolynomial.lean:51:0: 'H12PackedPolynomial.value_xor' depends on axioms: [propext, Quot.sound]
+info: H12PackedPolynomial.lean:52:0: 'H12PackedPolynomial.matrix_semantics' depends on axioms: [propext, Quot.sound]
+warning: H12PackedPolynomial.lean:64:56: This simp argument is unused:
+  Nat.testBit_two_pow
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12PackedPolynomial.lean:102:0: 'H12PackedPolynomial.encode_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12PackedPolynomial.lean:103:0: 'H12PackedPolynomial.substitution_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: H12PackedPolynomial.lean:120:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: H12PackedPolynomial.lean:142:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: H12PackedPolynomial.lean:147:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+info: H12PackedPolynomial.lean:177:0: 'H12PackedPolynomial.quadratic_substitution_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: H12PackedPolynomial.lean:199:76: This simp argument is unused:
+  Nat.pow_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Nat.shiftLeft_eq, Nat.shiftRight_eq_div_pow, Nat.pow_succ]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12PackedPolynomial.lean:224:0: 'H12PackedPolynomial.value_block' depends on axioms: [propext, Quot.sound]
+info: H12PackedPolynomial.lean:278:0: 'H12PackedPolynomial.dense_substitution_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: H12PackedPolynomial.lean:293:47: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Bool.false_eq_true, ↓reduceIte, Nat.zero_testBit, Nat.testBit_two_pow, Bool.false_and,
+    Bool.true_and]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12PackedPolynomial.lean:325:0: 'H12PackedPolynomial.scatter_native' depends on axioms: [propext, Quot.sound]
+info: H12PackedPolynomial.lean:404:0: 'H12PackedPolynomial.rowNative_sound' depends on axioms: [propext, Quot.sound]
+info: H12PackedPolynomial.lean:405:0: 'H12PackedPolynomial.linearNative_sound' depends on axioms: [propext, Quot.sound]
+info: H12PackedPolynomial.lean:466:0: 'H12PackedPolynomial.productWord_sound' depends on axioms: [propext, Quot.sound]
+info: H12PackedPolynomial.lean:512:0: 'H12PackedPolynomial.applySparse_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: H12PackedPolynomial.lean:527:52: This simp argument is unused:
+  Nat.testBit_two_pow
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12PackedPolynomial.lean:596:0: 'H12PackedPolynomial.fastSubstitute_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: H12PackedPolynomial.lean:622:19: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Bool.false_eq_true, ↓reduceIte, value_zero, Bool.false_xor]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12PackedPolynomial.lean:624:19: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [↓reduceIte, hh]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12PackedPolynomial.lean:670:0: 'H12PackedPolynomial.canonicalize_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: H12PackedPolynomial.lean:736:5: Variable name `hb` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hb
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: H12PackedPolynomial.lean:744:5: Variable name `hb` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hb
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+info: H12PackedPolynomial.lean:814:0: 'H12PackedPolynomial.packedRefutes_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12PackedPolynomial.lean:816:0: 'H12PackedPolynomial.scanSubstitute_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12PackedPolynomial.lean:817:0: 'H12PackedPolynomial.scanCanonicalize_sound' depends on axioms: [propext, Quot.sound]
+ℹ [6/12] Replayed H12PackedPilotData000
+info: H12PackedPilotData000.lean:32:0: 'H12PackedPilot.trans0_1' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData000.lean:44:0: 'H12PackedPilot.trans1_2' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData000.lean:60:0: 'H12PackedPilot.trans2_3' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData000.lean:76:0: 'H12PackedPilot.trans3_4' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData000.lean:92:0: 'H12PackedPilot.trans4_5' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData000.lean:104:0: 'H12PackedPilot.trans5_6' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData000.lean:120:0: 'H12PackedPilot.trans6_7' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData000.lean:136:0: 'H12PackedPilot.trans7_8' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData000.lean:148:0: 'H12PackedPilot.trans5_9' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData000.lean:164:0: 'H12PackedPilot.trans9_10' depends on axioms: [propext, Quot.sound]
+ℹ [7/12] Replayed H12PackedPilotData001
+info: H12PackedPilotData001.lean:14:0: 'H12PackedPilot.trans10_11' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData001.lean:30:0: 'H12PackedPilot.trans11_12' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData001.lean:46:0: 'H12PackedPilot.trans12_13' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData001.lean:58:0: 'H12PackedPilot.trans1_14' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData001.lean:74:0: 'H12PackedPilot.trans14_15' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData001.lean:86:0: 'H12PackedPilot.trans15_16' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData001.lean:98:0: 'H12PackedPilot.trans16_17' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData001.lean:114:0: 'H12PackedPilot.trans17_18' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData001.lean:130:0: 'H12PackedPilot.trans18_19' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData001.lean:146:0: 'H12PackedPilot.trans19_20' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData001.lean:162:0: 'H12PackedPilot.trans20_21' depends on axioms: [propext, Quot.sound]
+ℹ [8/12] Replayed H12PackedPilotData002
+info: H12PackedPilotData002.lean:14:0: 'H12PackedPilot.trans21_22' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData002.lean:30:0: 'H12PackedPilot.trans22_23' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData002.lean:42:0: 'H12PackedPilot.trans16_24' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData002.lean:58:0: 'H12PackedPilot.trans24_25' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData002.lean:74:0: 'H12PackedPilot.trans25_26' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData002.lean:90:0: 'H12PackedPilot.trans26_27' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData002.lean:106:0: 'H12PackedPilot.trans27_28' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData002.lean:118:0: 'H12PackedPilot.trans15_29' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData002.lean:130:0: 'H12PackedPilot.trans29_30' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData002.lean:146:0: 'H12PackedPilot.trans30_31' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData002.lean:162:0: 'H12PackedPilot.trans31_32' depends on axioms: [propext, Quot.sound]
+ℹ [9/12] Replayed H12PackedPilotData003
+info: H12PackedPilotData003.lean:14:0: 'H12PackedPilot.trans32_33' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData003.lean:30:0: 'H12PackedPilot.trans33_34' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData003.lean:42:0: 'H12PackedPilot.trans29_35' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData003.lean:58:0: 'H12PackedPilot.trans35_36' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData003.lean:74:0: 'H12PackedPilot.trans36_37' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData003.lean:90:0: 'H12PackedPilot.trans37_38' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData003.lean:106:0: 'H12PackedPilot.trans38_39' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData003.lean:122:0: 'H12PackedPilot.trans39_40' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData003.lean:138:0: 'H12PackedPilot.trans40_41' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData003.lean:154:0: 'H12PackedPilot.trans41_42' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData003.lean:170:0: 'H12PackedPilot.trans42_43' depends on axioms: [propext, Quot.sound]
+ℹ [10/12] Replayed H12PackedPilotData004
+info: H12PackedPilotData004.lean:25:0: 'H12PackedPilot.trans43_44' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData004.lean:41:0: 'H12PackedPilot.trans44_45' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData004.lean:57:0: 'H12PackedPilot.trans45_46' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData004.lean:73:0: 'H12PackedPilot.trans46_47' depends on axioms: [propext, Quot.sound]
+info: H12PackedPilotData004.lean:89:0: 'H12PackedPilot.trans47_48' depends on axioms: [propext, Quot.sound]
+⚠ [11/12] Built H12PackedPilot (3.1s)
+warning: H12PackedPilot.lean:15:101: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:19:109: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:26:95: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:30:99: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:34:98: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:38:93: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:42:63: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:47:114: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:51:104: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:55:98: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:62:104: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:66:97: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:70:105: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:74:98: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:78:101: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:82:108: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:89:109: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:93:111: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:97:100: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:101:109: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:105:70: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:113:105: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:117:110: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:121:97: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:125:108: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:132:96: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:136:96: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:140:95: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:144:98: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:148:93: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:152:97: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:156:99: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:160:111: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:164:99: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:168:98: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:172:105: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:176:98: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:180:108: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:184:70: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:189:68: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:194:104: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:198:68: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+warning: H12PackedPilot.lean:203:124: exponent 1333 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+info: H12PackedPilot.lean:209:0: 'H12PackedPilot.no_model' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (12 jobs).

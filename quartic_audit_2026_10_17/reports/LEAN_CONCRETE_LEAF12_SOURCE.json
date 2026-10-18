@@ -1,0 +1,30 @@
+{
+  "scope": "Leaf node12, first chart only; not global tree coverage.",
+  "active": [
+    0,
+    8,
+    10
+  ],
+  "candidates": [
+    1099578736640,
+    3712572569669,
+    1649334550784,
+    4262328383813,
+    3577507687424,
+    1239475721285,
+    4127263501568,
+    1789231535429
+  ],
+  "data_modules": [
+    "H12WitnessData000",
+    "H12WitnessData001",
+    "H12WitnessData005",
+    "H12WitnessData007",
+    "H12WitnessData014",
+    "H12WitnessData015",
+    "H12WitnessData019",
+    "H12WitnessData021"
+  ],
+  "status": "PASS_CONCRETE_LEAF12_KERNEL_REPLAY",
+  "audit_report": "LEAN_PACKED_TERMINAL_AUDIT.json"
+}

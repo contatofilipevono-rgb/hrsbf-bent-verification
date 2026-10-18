@@ -1,0 +1,28 @@
+{
+  "status": "PASS_GENERATED_MODULES_KERNEL_REPLAY",
+  "chart": 0,
+  "subtree": 8,
+  "scope": "Fixed-equation affine-environment subtree only; not global tree coverage.",
+  "statistics": {
+    "nodes": 21,
+    "states": 122,
+    "transitions": 121,
+    "terminal_candidates": 32
+  },
+  "modules": [
+    "H12AffineWideData000",
+    "H12AffineWideData001",
+    "H12AffineWideData002",
+    "H12AffineWideData003",
+    "H12AffineWideData004",
+    "H12AffineWideData005",
+    "H12AffineWideData006",
+    "H12AffineWideData007",
+    "H12AffineWideData008",
+    "H12AffineWideData009",
+    "H12AffineWideData010",
+    "H12AffineWideData011",
+    "H12AffineWide"
+  ],
+  "audit_report": "LEAN_AFFINE_WIDE_AUDIT.json"
+}

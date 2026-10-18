@@ -21,7 +21,7 @@ O resultado computacional global é zero bent. O objetivo formal integral ainda 
 | Correção genérica do verificador da árvore | `H12Refutation.check_sound`: provado, com hipótese explícita sobre o teste terminal. |
 | Avaliação eficiente de pesos e tabelas dos geradores | `H12Bits.fastCarry_sound` e `foldParity_sound` provam os dois primeiros bits do peso por operações em blocos. `H12PlaneTables` e `H12Truth.basis_semantics` provam a semântica exata das tabelas; `H12TablePolynomial` liga o cálculo rápido aos polinômios de peso. `H12Popcount.fastWeight_sound` agora prova o peso inteiro, e `fastWeightMod_sound` prova todos os resíduos por potências de dois. `H12WalshTable.phaseWeight_sound` liga os cálculos à função e à fase originais; `rejectsMod_sound` prova a rejeição modular. |
 | Instanciar a árvore numérica global no Lean | Pendente. A árvore completa foi conferida pelo verificador independente Python, não por `H12Refutation.check`. |
-| Conferir os testemunhos Walsh numéricos no Lean | **Em execução.** A semântica e a rejeição modular estão provadas. `H12WitnessData000`–`040` contêm os 164288 testes concretos, agrupados em uma biblioteca opcional `H12WitnessCertificate`. A compilação/revisão sequencial completa ainda não terminou. Consultar o relatório de execução; não interpretar a geração dos fontes como aprovação de todos os dados. |
+| Conferir os testemunhos Walsh numéricos no Lean | **Concluído.** Os 164288 testes concretos nos 41 módulos de dados e no agregador passaram na compilação e na reprodução independente pelo kernel. Evidência: `reports/LEAN_WITNESS_KERNEL_AUDIT.json` e os registros completos em `reports/witness_kernel/`. Isso ainda não demonstra que a árvore Lean cobre todos os candidatos. |
 | Teorema Lean global de inexistência | **Ausente.** Não existe ainda uma declaração formal que conclua a inexistência em todo H(12,4). |
 
 ## Lógica e confiança
@@ -34,6 +34,11 @@ Veja os registros atuais em `reports/` e os nomes exatos em `lean/*.lean`. Os ar
 
 `H12TerminalTheory.terminal_sound` prova a cobertura por coordenadas livres sob uma verificação explícita de suporte. `H12WitnessSearch.checked_good` prova a correção da busca de testemunhos. `H12CertificateBridge.terminalCheck_sound` liga os dois testes; `root_observation` liga a observação à parametrização original. `no_bent_of_three_refutations` é um teorema **condicional**: falta fornecer as três refutações concretas. Ele não é o teorema global concluído.
 
-A biblioteca principal tem 28 módulos. A biblioteca opcional de testemunhos tem 42 módulos adicionais, cuja validação está em andamento.
+A biblioteca principal tem 28 módulos. A biblioteca opcional de testemunhos tem 42 módulos adicionais, cuja compilação e reprodução pelo kernel foram concluídas com sucesso.
 
 A avaliação de Kholosha–Pal está em `KHOLOSHA_PAL_REVIEW.md`. Poisson no subespaço autodual é uma compatibilidade necessária; a alegação de que isso, junto ao grau restrito baixo, resolve a inexistência não foi demonstrada e não é usada como premissa.
+
+
+## Ponte compacta e folha concreta
+
+`H12PackedTerminal.terminalCheckFast_sound` e `H12WitnessIndex.build_good` passaram na compilação e na reprodução pelo kernel. A folha 12 da primeira carta foi instanciada: três parâmetros livres, oito candidatos, rejeição comprovada desde a observação afim até os testemunhos das funções originais. Evidência: `reports/LEAN_PACKED_TERMINAL_AUDIT.json`. A folha isolada não substitui a prova dos caminhos da árvore global.

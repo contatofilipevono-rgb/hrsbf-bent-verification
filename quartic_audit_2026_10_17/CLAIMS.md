@@ -30,4 +30,4 @@ Os lemas são acompanhados de `#print axioms`. As provas finais desta entrega de
 
 ## Progresso do contador e dos testes terminais
 
-O contador exato e o modular estão provados em `H12Popcount`; a ligação aos valores Walsh originais está provada em `H12WalshTable`, incluindo `rejectsMod_sound`. A execução concreta dos 164288 testes ainda não terminou neste checkpoint. Os fontes gerados de `H12WitnessCertificate` não são evidência de aprovação por si. A ponte da árvore usa hipóteses explícitas e ainda não fornece um teorema global incondicional.
+O contador exato e o modular estão provados em `H12Popcount`; a ligação aos valores Walsh originais está provada em `H12WalshTable`, incluindo `rejectsMod_sound`. Os 164288 testes concretos passaram no kernel Lean, incluindo os 41 módulos de dados e o agregador. O relatório completo é `reports/LEAN_WITNESS_KERNEL_AUDIT.json`. Os fontes gerados de `H12WitnessCertificate` não são evidência de aprovação por si. A ponte da árvore usa hipóteses explícitas e ainda não fornece um teorema global incondicional.

@@ -1,0 +1,8 @@
+{
+  "states": 122,
+  "raw_bits": 344529,
+  "canonical_bits": 148055,
+  "raw_nonzero": 4823,
+  "canonical_nonzero": 4066,
+  "scope": "Subtree8 cost counts only, not proof or runtime."
+}

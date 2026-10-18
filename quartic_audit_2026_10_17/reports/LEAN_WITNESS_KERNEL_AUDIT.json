@@ -1,0 +1,323 @@
+{
+  "status": "PASS_ALL_WALSH_REJECTIONS_KERNEL_CHECKED",
+  "witnesses": 164288,
+  "dependency_sha256": "87ce3737f902653cd267c75e061280228ba8e12a2932a385eff3d39230640c29",
+  "dependencies": {
+    "H12WitnessTheory": "c16371634479626479a4662ea01021f4d370c44d74771e5fac965b89c959d1ab",
+    "H12WalshTable": "4ccd462afba3d1b6e1cb7ea0c8b059f8f80e30d0c5f1a5d9fbbf7ce470b60e03",
+    "H12Popcount": "2ee4dd8eb136dd09009bf305187d3bbaf1fc89abeb731307f2dc6d731602f6fc",
+    "H12Bits": "1118f1577c0597f2963699b6ae39ebe5264e1e40468efa74b765f1af63f359ca",
+    "H12Weight": "d0493891b5a7a2f4096133842076619b8f6ed21808bdbcfa1629ba05e3d6aba6",
+    "H12BooleanPolynomial": "58585886557995ff4a22cc7c451955248b17c4513faa3c43ce512715f4e09ed3",
+    "H12Descent": "474404a10202517af186a206cbe6e96d0945e945046adf64e8b707a651b22667",
+    "H12FilterLink": "7edcf88d8f7e3ce3d64ec1db87a8b12cc56288c466c345cfeffed09f43f638fa",
+    "H12NumericFilters": "4b389d8e090eaae65482d205d08d2a03ae98fea6180eff57d7b5c87dc74a23f1",
+    "H12TablePolynomial": "267e35bea10aaefd6a4f712f3fb4beca70444d6cdf30218a068fcbfbde466199",
+    "H12Quadratic": "e9ee6accde671bfdcfac983ae4b4091cdb4b0092054ddf35cef22c9f95194e2d",
+    "H12PeriodFour": "d2fcfd4392478b5ce5a4b781a0d9c27dbbfcb54b7fbdee1a6c490a04d823a84e",
+    "H12CertificateTheory": "5157279bc8df9cc91b1264a8b9bcc571bf50a3708e5b30f08c0282b06b8d65cb",
+    "H12Truth": "04b5ed32fb7a9f67e20f91a1afe018583824f40df62b789038ed5cfc4c6016c5",
+    "H12PlaneTables": "65237e5e10969180184e082e8132a36be77e249944e30a3338f9c120a3455aa0",
+    "H12Orbit": "d26567bb8bfff7627414fd0d27e7c68e4bb0e6e807b466c9fcd1750dad84edcb",
+    "H12FilterBridge": "8cea7994c937b4465a23ab5165fb2eb3cbecef61c6b7dd52fbd5792d13044fc8",
+    "H12Restriction": "3d4024babb309ef3b0bf81727dba0d788738aa0b693ecf492db92a5c1abe1d07",
+    "H12Walsh": "7100af195a6e9bd15fc8d3f84bdb760b971b84cb81eb6a5212b0855aeb64955f"
+  },
+  "results": [
+    {
+      "module": "H12WitnessData000",
+      "source_sha256": "06c1c1db15a2d5b8bb0d8e626eb2d77567d8921ee092165df79e0f0cf9f85878",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 384.299
+    },
+    {
+      "module": "H12WitnessData001",
+      "source_sha256": "da8db77769a60e726db62694d3089076b9a1be1243b70ff748d453fa05409156",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 468.425
+    },
+    {
+      "module": "H12WitnessData002",
+      "source_sha256": "d0dcdf0395efc815da4678df20285495b40e855e2257447fb32783b634573858",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 597.653
+    },
+    {
+      "module": "H12WitnessData003",
+      "source_sha256": "5d585e71b3afdc15e027ee6b8c8e356fc29182ff189857609852093c1889bc41",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 529.689
+    },
+    {
+      "module": "H12WitnessData004",
+      "source_sha256": "069848096cdb44340bef4d24a5020a9fa0702b52ed5eb2a9b303517302e741b9",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 777.656
+    },
+    {
+      "module": "H12WitnessData005",
+      "source_sha256": "dc4b7817d9b0863ee5ed3f03de0ffa9c62d8e7af55ebd938d1dad360078be82e",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 511.024
+    },
+    {
+      "module": "H12WitnessData006",
+      "source_sha256": "ae65375eb64d34c6f78270a480ee81ca9ef903aebcce8dfaa9aab6f201a7b05e",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 232.629
+    },
+    {
+      "module": "H12WitnessData007",
+      "source_sha256": "1007f4eb8812e0a5acb976f1a7f0b96dbb2f1a7fedc87c5cc413c51780a79335",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 223.706
+    },
+    {
+      "module": "H12WitnessData008",
+      "source_sha256": "c288e421c398b9e11799653c13b9590aa88ee6260ebdd9721062f90dfbf708c7",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 230.586
+    },
+    {
+      "module": "H12WitnessData009",
+      "source_sha256": "ae8ae12e058ceb4a9eac35d0405fce6a1751929ceb9a9775ffe4675e076b1c58",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 377.517
+    },
+    {
+      "module": "H12WitnessData010",
+      "source_sha256": "611199238b73482f338db7b3f17627eefea7922ee1e82bbc623f7bb5e2c02e04",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 435.603
+    },
+    {
+      "module": "H12WitnessData011",
+      "source_sha256": "b32067bc8cea40adfdd3d965d4ae10823d55f3fb5b5e7d7771a6a5b8c3a719c0",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 365.96
+    },
+    {
+      "module": "H12WitnessData012",
+      "source_sha256": "76eb6469a9e5b6883b8cb00225134bdf63722392c250972bc65dd97b0a397f16",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 934.132
+    },
+    {
+      "module": "H12WitnessData013",
+      "source_sha256": "daa9462d3a918b62d3cd5648263304ba389009f572a38253a575ccea6843ecba",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 304.703
+    },
+    {
+      "module": "H12WitnessData014",
+      "source_sha256": "ac2004783ee90928c2eda32757edda00178bdcd6c04c74fbab0be136ff4a03a9",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 959.093
+    },
+    {
+      "module": "H12WitnessData015",
+      "source_sha256": "41da2b80879a0d8808e79f84a4b9045aa77f0deb1f373069567575caf4f649e6",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 1441.532
+    },
+    {
+      "module": "H12WitnessData016",
+      "source_sha256": "b3c4e247f673d04e8ecf437e9a59cba8b8eb4dfcbbec76ad10598cd6b4c01cf0",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 218.01
+    },
+    {
+      "module": "H12WitnessData017",
+      "source_sha256": "ee4c4dab2e17b67b8a3188bc44b891c43d35812d8e473731b078913a8a2f1cd8",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 261.459
+    },
+    {
+      "module": "H12WitnessData018",
+      "source_sha256": "97da04f7d36246ab5d0c2902857434e9dc1f704ab9519863f65f3e68233155ea",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 205.183
+    },
+    {
+      "module": "H12WitnessData019",
+      "source_sha256": "ed02315c723eb49a8488d31f19f1f4b7153996593261b6746b39b23186de6d20",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 204.79
+    },
+    {
+      "module": "H12WitnessData020",
+      "source_sha256": "3a9aa40807d2f0935241bb55a76c7aceeff329ef7aba4dee823e665f203d250e",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 201.284
+    },
+    {
+      "module": "H12WitnessData021",
+      "source_sha256": "392ab90a7d9e721f28808399f187b5e4a27569682af1de04711e439bc970a91e",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 200.383
+    },
+    {
+      "module": "H12WitnessData022",
+      "source_sha256": "2179338433837254cdeb8cd7fd22c238b329437143e59147fc22abe8290934ca",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 198.008
+    },
+    {
+      "module": "H12WitnessData023",
+      "source_sha256": "e14f1ae32fc5a1b032ea36c9fa4c4b758edd05268de8e9f2a0abfe50e868b5a7",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 198.361
+    },
+    {
+      "module": "H12WitnessData024",
+      "source_sha256": "30fdfd3f2f156cb3bceeabbc5cb24141671eddd3935b6dce732e022d9bc121f6",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 202.995
+    },
+    {
+      "module": "H12WitnessData025",
+      "source_sha256": "16948ef8dae85211ae55ae62847cbc3e310a5d5e4624a56a393711c258b793ad",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 200.823
+    },
+    {
+      "module": "H12WitnessData026",
+      "source_sha256": "0fca0134db2a7ae1b91b0404dd1ebb511d6270bc4076892a34f76cd217978aac",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 211.143
+    },
+    {
+      "module": "H12WitnessData027",
+      "source_sha256": "7f0f7c1035a48f2048ebf921b64e84fe967f48705841c88f8f3f054b93ef1e70",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 206.243
+    },
+    {
+      "module": "H12WitnessData028",
+      "source_sha256": "9bc1330907716f24192470a0a4d806b66b5b310b0b820b3d546714751c17fa51",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 199.462
+    },
+    {
+      "module": "H12WitnessData029",
+      "source_sha256": "1d17a0f6c40123e77bf2cc3921e8f5a96304ce5c5e9a79350c5287dc2a0846fc",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 199.557
+    },
+    {
+      "module": "H12WitnessData030",
+      "source_sha256": "1bfa68927ba246098fceb1bb70d7dedd74a23a640f91930a2cd000896084d5a7",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 200.787
+    },
+    {
+      "module": "H12WitnessData031",
+      "source_sha256": "a31d64c7a3837c856a97ee310a3d0f861442798f409a8d5e3c3c5f17abf1fde9",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 203.368
+    },
+    {
+      "module": "H12WitnessData032",
+      "source_sha256": "b36a95560cfb748437c48eb8f68f96743ff5b62068e510faa68cbc96fc7790cc",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 199.821
+    },
+    {
+      "module": "H12WitnessData033",
+      "source_sha256": "944284496511ed63b25e69832595db98b279a002742e277d32ee534740d739f5",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 203.655
+    },
+    {
+      "module": "H12WitnessData034",
+      "source_sha256": "dd747b1a97870b1798a3168db9578681ff51f0fe96d99a7f75d04810cf851052",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 202.619
+    },
+    {
+      "module": "H12WitnessData035",
+      "source_sha256": "b5e0cb193fff253881b8148413124ad6aea725d1f671ff0eabf22bf7be978ebb",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 199.886
+    },
+    {
+      "module": "H12WitnessData036",
+      "source_sha256": "a304229fb017eb4e1da3dd138f72eae53fa63a0cd8502f796f0a2df479c30ba9",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 199.814
+    },
+    {
+      "module": "H12WitnessData037",
+      "source_sha256": "0db37e74ab4b4b5233da3ed7a181c6c5558f33005e2af7ba667ac596be16b05f",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 201.742
+    },
+    {
+      "module": "H12WitnessData038",
+      "source_sha256": "0835525ab1e03d283b1794a8cbf9f700ec9b8f68b015e4789cf8ca6ce1f1510b",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 203.214
+    },
+    {
+      "module": "H12WitnessData039",
+      "source_sha256": "85c08b830470119d6e3230c6313ea0ca474ed0df15a4bb9ac665c4c0f34b6836",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 202.856
+    },
+    {
+      "module": "H12WitnessData040",
+      "source_sha256": "767f6719b98cd83d2e8d42886a1b27e7cb3d2336370f88dba88332c567bfc813",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 29.605
+    },
+    {
+      "module": "H12Witnesses",
+      "source_sha256": "613bc8cb99348858663fe320538e32ff0ec6fe9354456ca56155661b85af864a",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 9.347
+    }
+  ],
+  "scope": "Concrete Walsh rejections only. Global algebraic tree coverage is a separate obligation."
+}

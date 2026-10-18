@@ -119,9 +119,19 @@ def walk(nid,ps,current):
   assert node['kind']=='split';form=int(node['form'],16);p=form.bit_length()-1;a=(form^(1<<p))<<1;children=[]
   for rhs,ch in enumerate(node['children']):
    pp=trans(ps,p,a^rhs);nxt=state(pp);tr=transition(current,nxt,p,a^rhs);walk(ch,pp,nxt);children.append((nxt,tr))
-  proofs.append(f'theorem ref{current} : PackedRefutes (fun _ => True) ps{current} [] := by\n  apply PackedRefutes.split ps{current} [] {p} {a} (by decide) bound{current} (by simp [packedBounded])\n  · simpa only [{children[0][1]}, packedTransform, List.map_nil] using ref{children[0][0]}\n  · simpa only [{children[1][1]}, packedTransform, List.map_nil] using ref{children[1][0]}')
+  proofs.append(f'theorem ref{current} : PackedRefutes (fun _ => True) ps{current} [] := by\n  apply PackedRefutes.split ps{current} [] {p} {a} (by decide) bound{current} (by simp [packedBounded])\n  · rw [{children[0][1]}]; exact ref{children[0][0]}\n  · rw [show {a} ^^^ 1 = {a^1} from by decide +kernel, {children[1][1]}]; exact ref{children[1][0]}')
  for old,nxt,p,a,inds,tr,identity in reversed(chain):
-  proofs.append(f'theorem ref{old} : PackedRefutes (fun _ => True) ps{old} [] := by\n  apply PackedRefutes.eliminate ps{old} [] {p} {a} (by decide) {fmt(inds)} selectedBound{old} {identity} bound{old} (by simp [packedBounded])\n  simpa only [{tr}, packedTransform, List.map_nil] using ref{nxt}')
-initial=state([pack(p) for p in selected]);walk(18,[pack(p) for p in selected],initial);out+=proofs
-out+=['theorem no_model (f : Nat → Bool) (hm : packedModels f ps0) : False :=\n  (packedRefutes_sound (fun _ => True) _ _ ref0 f hm) trivial','#print axioms no_model','end H12PackedPilot']
-file=root/'lean/H12PackedPilot.lean';file.write_text('\n\n'.join(out),encoding='utf-8');print(stats,'bytes',file.stat().st_size)
+  proofs.append(f'theorem ref{old} : PackedRefutes (fun _ => True) ps{old} [] := by\n  apply PackedRefutes.eliminate ps{old} [] {p} {a} (by decide) {fmt(inds)} selectedBound{old} {identity} bound{old} (by simp [packedBounded])\n  rw [{tr}]; exact ref{nxt}')
+initial=state([pack(p) for p in selected]);walk(18,[pack(p) for p in selected],initial)
+# Cache numeric lemmas in small modules so a linkage fix does not repeat arithmetic.
+header=out[:5];declarations=out[5:];modules=[]
+for start in range(0,len(declarations),60):
+ name=f'H12PackedPilotData{len(modules):03d}'
+ previous=modules[-1] if modules else 'H12PackedPolynomial'
+ source='\n\n'.join(['import '+previous]+header[1:]+declarations[start:start+60]+['end H12PackedPilot'])
+ file=root/'lean'/(name+'.lean')
+ if not file.exists() or file.read_text(encoding='utf-8')!=source:file.write_text(source,encoding='utf-8')
+ modules.append(name)
+proofs+=['theorem no_model (f : Nat → Bool) (hm : packedModels f ps0) : False :=\n  (packedRefutes_sound (fun _ => True) _ _ ref0 f hm) trivial','#print axioms no_model','end H12PackedPilot']
+file=root/'lean/H12PackedPilot.lean';file.write_text('\n\n'.join(['import '+modules[-1]]+header[1:]+proofs),encoding='utf-8')
+print(stats,'data_modules',modules,'proof_bytes',file.stat().st_size)

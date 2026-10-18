@@ -1,0 +1,34 @@
+{
+  "status": "PASS_GENERATED_MODULES_KERNEL_REPLAY",
+  "chart": 0,
+  "subtree": 8,
+  "scope": "Limited subtree only; paths from global roots remain separate obligations.",
+  "statistics": {
+    "nodes": 21,
+    "states": 122,
+    "transitions": 121,
+    "terminal_candidates": 32
+  },
+  "modules": [
+    "H12MixedWideData000",
+    "H12MixedWideData001",
+    "H12MixedWideData002",
+    "H12MixedWideData003",
+    "H12MixedWideData004",
+    "H12MixedWideData005",
+    "H12MixedWideData006",
+    "H12MixedWideData007",
+    "H12MixedWideData008",
+    "H12MixedWideData009",
+    "H12MixedWideData010",
+    "H12MixedWideData011",
+    "H12MixedWideData012",
+    "H12MixedWideData013",
+    "H12MixedWideData014",
+    "H12MixedWideData015",
+    "H12MixedWideData016",
+    "H12MixedWideData017",
+    "H12MixedWide"
+  ],
+  "audit_report": "LEAN_MIXED_WIDE_AUDIT.json"
+}

@@ -12,7 +12,7 @@
   ],
   "standard_axioms_only": true,
   "concrete_global_tree_instantiated": false,
-  "pilot_subtree_18": "RUNNING_NOT_YET_VALIDATED",
+  "pilot_subtree_18": "PASS_SUBTREE_18_KERNEL_REPLAY",
   "first_scan_transition": {
     "exit_code": 0,
     "seconds": 9.560127100000045,
@@ -22,6 +22,8 @@
   "scope": "One optional theory module. The primary 28-module audit and its previous isolated package remain separately scoped.",
   "superseded_pilots": {
     "T253": "Interrupted without proof result after >800 CPU seconds",
-    "T260": "Interrupted without proof result after >1200 CPU seconds"
-  }
+    "T260": "Interrupted without proof result after >1200 CPU seconds",
+    "T288": "Raw-checker benchmark interrupted after about147seconds, ~4GB private memory, no proof result."
+  },
+  "pilot_audit": "LEAN_PACKED_PILOT_AUDIT.json"
 }

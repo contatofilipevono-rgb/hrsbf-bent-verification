@@ -1,0 +1,20 @@
+{
+  "status": "PASS_GENERATED_MODULES_KERNEL_REPLAY",
+  "chart": 0,
+  "subtree": 11,
+  "scope": "Fixed-equation affine-environment subtree only; not global tree coverage.",
+  "statistics": {
+    "nodes": 3,
+    "states": 32,
+    "transitions": 31,
+    "terminal_candidates": 16
+  },
+  "modules": [
+    "H12AffinePilotData000",
+    "H12AffinePilotData001",
+    "H12AffinePilotData002",
+    "H12AffinePilotData003",
+    "H12AffinePilot"
+  ],
+  "audit_report": "LEAN_AFFINE_PILOT_AUDIT.json"
+}

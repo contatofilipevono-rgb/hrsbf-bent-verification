@@ -1,0 +1,196 @@
+import H12AffineWideData002
+
+namespace H12AffineWide
+
+open H12PackedPolynomial
+
+set_option maxRecDepth 100000
+
+set_option maxHeartbeats 1000000000
+
+theorem identity31 : scanCanonicalize (H12AffineState.compose env31 (packedSelected [0,4] rootPS)) = affineNative (2^(4+1) ^^^ 10) := by decide +kernel
+
+theorem selectedBound31 : packedSelected [0,4] rootPS < 2^1333 := by decide +kernel
+
+def env32 : List Nat := [2,4,8,16,10,16,2,4,512,21,2048,4096,8,4113,0,8,4097,2058,21,1048576,4112,10,16,16777216,33554432,16,134217728,268435456,536870912,1073741824,2147483648,4294967296,8589934592,17179869184,4113,68719476736]
+
+theorem envBound32 : H12AffineState.Bounded env32 := by
+  intro p hp
+  have h : env32.all (fun p => decide (p < 2^37)) = true := by decide +kernel
+  exact of_decide_eq_true (List.all_eq_true.mp h p hp)
+
+theorem envTrans31_32 : H12PackedSparse.directTransform 4 10 env31 = env32 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12PackedSparse.directTransform 4 10 env31 == env32) = true)
+
+theorem identity32 : scanCanonicalize (H12AffineState.compose env32 (packedSelected [1,5] rootPS)) = affineNative (2^(3+1) ^^^ 1) := by decide +kernel
+
+theorem selectedBound32 : packedSelected [1,5] rootPS < 2^1333 := by decide +kernel
+
+def env33 : List Nat := [2,4,8,1,10,1,2,4,512,4,2048,4096,8,4096,0,8,4097,2058,4,1048576,4097,10,1,16777216,33554432,1,134217728,268435456,536870912,1073741824,2147483648,4294967296,8589934592,17179869184,4096,68719476736]
+
+theorem envBound33 : H12AffineState.Bounded env33 := by
+  intro p hp
+  have h : env33.all (fun p => decide (p < 2^37)) = true := by decide +kernel
+  exact of_decide_eq_true (List.all_eq_true.mp h p hp)
+
+theorem envTrans32_33 : H12PackedSparse.directTransform 3 1 env32 = env33 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12PackedSparse.directTransform 3 1 env32 == env33) = true)
+
+theorem identity33 : scanCanonicalize (H12AffineState.compose env33 (packedSelected [0,7] rootPS)) = affineNative (2^(2+1) ^^^ 2) := by decide +kernel
+
+theorem selectedBound33 : packedSelected [0,7] rootPS < 2^1333 := by decide +kernel
+
+def env34 : List Nat := [2,4,2,1,0,1,2,4,512,4,2048,4096,2,4096,0,2,4097,2048,4,1048576,4097,0,1,16777216,33554432,1,134217728,268435456,536870912,1073741824,2147483648,4294967296,8589934592,17179869184,4096,68719476736]
+
+theorem envBound34 : H12AffineState.Bounded env34 := by
+  intro p hp
+  have h : env34.all (fun p => decide (p < 2^37)) = true := by decide +kernel
+  exact of_decide_eq_true (List.all_eq_true.mp h p hp)
+
+theorem envTrans33_34 : H12PackedSparse.directTransform 2 2 env33 = env34 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12PackedSparse.directTransform 2 2 env33 == env34) = true)
+
+theorem identity34 : scanCanonicalize (H12AffineState.compose env34 (packedSelected [0] rootPS)) = affineNative (2^(10+1) ^^^ 3) := by decide +kernel
+
+theorem selectedBound34 : packedSelected [0] rootPS < 2^1333 := by decide +kernel
+
+def env35 : List Nat := [2,4,2,1,0,1,2,4,512,4,3,4096,2,4096,0,2,4097,3,4,1048576,4097,0,1,16777216,33554432,1,134217728,268435456,536870912,1073741824,2147483648,4294967296,8589934592,17179869184,4096,68719476736]
+
+theorem envBound35 : H12AffineState.Bounded env35 := by
+  intro p hp
+  have h : env35.all (fun p => decide (p < 2^37)) = true := by decide +kernel
+  exact of_decide_eq_true (List.all_eq_true.mp h p hp)
+
+theorem envTrans34_35 : H12PackedSparse.directTransform 10 3 env34 = env35 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12PackedSparse.directTransform 10 3 env34 == env35) = true)
+
+theorem identity35 : scanCanonicalize (H12AffineState.compose env35 (packedSelected [1] rootPS)) = affineNative (2^(8+1) ^^^ 4) := by decide +kernel
+
+theorem selectedBound35 : packedSelected [1] rootPS < 2^1333 := by decide +kernel
+
+def env36 : List Nat := [2,4,2,1,0,1,2,4,4,4,3,4096,2,4096,0,2,4097,3,4,1048576,4097,0,1,16777216,33554432,1,134217728,268435456,536870912,1073741824,2147483648,4294967296,8589934592,17179869184,4096,68719476736]
+
+theorem envBound36 : H12AffineState.Bounded env36 := by
+  intro p hp
+  have h : env36.all (fun p => decide (p < 2^37)) = true := by decide +kernel
+  exact of_decide_eq_true (List.all_eq_true.mp h p hp)
+
+theorem envTrans35_36 : H12PackedSparse.directTransform 8 4 env35 = env36 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12PackedSparse.directTransform 8 4 env35 == env36) = true)
+
+def w8 : H12WitnessTheory.Witness := H12WitnessData002.batch14[49]'(by decide)
+
+theorem w8_reject : ¬H12Descent.BentAC (H12.quarticFunction (BitVec.ofNat 43 w8.coefficient)) :=
+  H12WitnessTheory.checked_list_sound H12WitnessData002.batch14 H12WitnessData002.batch14_checked _ (List.getElem_mem (by decide))
+
+theorem w8_good : H12WitnessSearch.Good (.leaf w8) := by
+  intro c hc
+  have he : w8.coefficient = c := beq_iff_eq.mp hc
+  rw [← he]
+  exact w8_reject
+
+def w9 : H12WitnessTheory.Witness := H12WitnessData004.batch4[166]'(by decide)
+
+theorem w9_reject : ¬H12Descent.BentAC (H12.quarticFunction (BitVec.ofNat 43 w9.coefficient)) :=
+  H12WitnessTheory.checked_list_sound H12WitnessData004.batch4 H12WitnessData004.batch4_checked _ (List.getElem_mem (by decide))
+
+theorem w9_good : H12WitnessSearch.Good (.leaf w9) := by
+  intro c hc
+  have he : w9.coefficient = c := beq_iff_eq.mp hc
+  rw [← he]
+  exact w9_reject
+
+def w10 : H12WitnessTheory.Witness := H12WitnessData009.batch8[53]'(by decide)
+
+theorem w10_reject : ¬H12Descent.BentAC (H12.quarticFunction (BitVec.ofNat 43 w10.coefficient)) :=
+  H12WitnessTheory.checked_list_sound H12WitnessData009.batch8 H12WitnessData009.batch8_checked _ (List.getElem_mem (by decide))
+
+theorem w10_good : H12WitnessSearch.Good (.leaf w10) := by
+  intro c hc
+  have he : w10.coefficient = c := beq_iff_eq.mp hc
+  rw [← he]
+  exact w10_reject
+
+def w11 : H12WitnessTheory.Witness := H12WitnessData010.batch14[108]'(by decide)
+
+theorem w11_reject : ¬H12Descent.BentAC (H12.quarticFunction (BitVec.ofNat 43 w11.coefficient)) :=
+  H12WitnessTheory.checked_list_sound H12WitnessData010.batch14 H12WitnessData010.batch14_checked _ (List.getElem_mem (by decide))
+
+theorem w11_good : H12WitnessSearch.Good (.leaf w11) := by
+  intro c hc
+  have he : w11.coefficient = c := beq_iff_eq.mp hc
+  rw [← he]
+  exact w11_reject
+
+def w12 : H12WitnessTheory.Witness := H12WitnessData011.batch6[171]'(by decide)
+
+theorem w12_reject : ¬H12Descent.BentAC (H12.quarticFunction (BitVec.ofNat 43 w12.coefficient)) :=
+  H12WitnessTheory.checked_list_sound H12WitnessData011.batch6 H12WitnessData011.batch6_checked _ (List.getElem_mem (by decide))
+
+theorem w12_good : H12WitnessSearch.Good (.leaf w12) := by
+  intro c hc
+  have he : w12.coefficient = c := beq_iff_eq.mp hc
+  rw [← he]
+  exact w12_reject
+
+def w13 : H12WitnessTheory.Witness := H12WitnessData012.batch13[19]'(by decide)
+
+theorem w13_reject : ¬H12Descent.BentAC (H12.quarticFunction (BitVec.ofNat 43 w13.coefficient)) :=
+  H12WitnessTheory.checked_list_sound H12WitnessData012.batch13 H12WitnessData012.batch13_checked _ (List.getElem_mem (by decide))
+
+theorem w13_good : H12WitnessSearch.Good (.leaf w13) := by
+  intro c hc
+  have he : w13.coefficient = c := beq_iff_eq.mp hc
+  rw [← he]
+  exact w13_reject
+
+def w14 : H12WitnessTheory.Witness := H12WitnessData018.batch0[149]'(by decide)
+
+theorem w14_reject : ¬H12Descent.BentAC (H12.quarticFunction (BitVec.ofNat 43 w14.coefficient)) :=
+  H12WitnessTheory.checked_list_sound H12WitnessData018.batch0 H12WitnessData018.batch0_checked _ (List.getElem_mem (by decide))
+
+theorem w14_good : H12WitnessSearch.Good (.leaf w14) := by
+  intro c hc
+  have he : w14.coefficient = c := beq_iff_eq.mp hc
+  rw [← he]
+  exact w14_reject
+
+def w15 : H12WitnessTheory.Witness := H12WitnessData019.batch6[235]'(by decide)
+
+theorem w15_reject : ¬H12Descent.BentAC (H12.quarticFunction (BitVec.ofNat 43 w15.coefficient)) :=
+  H12WitnessTheory.checked_list_sound H12WitnessData019.batch6 H12WitnessData019.batch6_checked _ (List.getElem_mem (by decide))
+
+theorem w15_good : H12WitnessSearch.Good (.leaf w15) := by
+  intro c hc
+  have he : w15.coefficient = c := beq_iff_eq.mp hc
+  rw [← he]
+  exact w15_reject
+
+def leafEnv36 : List Nat := [2,4,2,1,0,1,2,4,4,4,3,4096,2,4096,0,2,4097,3,4,0,4097,0,1,2,4,2,1,1,3,4097,4096,3,4,0,4,0,4,2,4096,4,1,4097,0]
+
+def active36 : List Nat := [0,1,11]
+
+def tree36 : H12WitnessSearch.Tree := (.node 3301694440488 (.node 2018052026282 (.node 1513149741165 (.leaf w8) (.leaf w9)) (.node 2153116908527 (.leaf w10) (.leaf w11))) (.node 3941661607850 (.node 3436759322733 (.leaf w12) (.leaf w13)) (.node 4076726490095 (.leaf w14) (.leaf w15))))
+
+theorem treeGood36 : H12WitnessSearch.Good tree36 := (H12WitnessSearch.node_good 3301694440488 _ _ (H12WitnessSearch.node_good 2018052026282 _ _ (H12WitnessSearch.node_good 1513149741165 _ _ w8_good w9_good) (H12WitnessSearch.node_good 2153116908527 _ _ w10_good w11_good)) (H12WitnessSearch.node_good 3941661607850 _ _ (H12WitnessSearch.node_good 3436759322733 _ _ w12_good w13_good) (H12WitnessSearch.node_good 4076726490095 _ _ w14_good w15_good)))
+
+theorem leafIdentity36 : H12AffineState.composeSystem env36 rootObs = leafEnv36 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12AffineState.composeSystem env36 rootObs == leafEnv36) = true)
+
+theorem terminalChecked36 : H12PackedTerminal.terminalCheckFast leafEnv36 active36 tree36 = true := by decide +kernel
+
+def env37 : List Nat := [2,4,8,16,32,64,128,252,512,1024,2048,4096,8192,16384,32768,65536,131072,262144,189617,1048576,2097152,41088,8388608,16777216,33554432,147537,134217728,268435456,536870912,1073741824,2147483648,4294967296,8589934592,17179869184,10662064,68719476736]
+
+theorem envBound37 : H12AffineState.Bounded env37 := by
+  intro p hp
+  have h : env37.all (fun p => decide (p < 2^37)) = true := by decide +kernel
+  exact of_decide_eq_true (List.all_eq_true.mp h p hp)
+
+theorem envTrans4_37 : H12PackedSparse.directTransform 18 189617 env4 = env37 := by
+  exact beq_iff_eq.mp (by decide +kernel : (H12PackedSparse.directTransform 18 189617 env4 == env37) = true)
+
+theorem identity37 : scanCanonicalize (H12AffineState.compose env37 (packedSelected [3,5,10] rootPS)) = affineNative (2^(20+1) ^^^ 115870) := by decide +kernel
+
+theorem selectedBound37 : packedSelected [3,5,10] rootPS < 2^1333 := by decide +kernel
+
+end H12AffineWide

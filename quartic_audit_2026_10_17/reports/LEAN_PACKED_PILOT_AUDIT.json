@@ -1,0 +1,21 @@
+{
+  "status": "PASS_SUBTREE_18_KERNEL_REPLAY",
+  "scope": "Subtree 18 only: 11 nodes, 48 transitions; no global nonexistence theorem.",
+  "sources": {
+    "H12PackedPolynomial": "37f994f462825bf72a3d5c7bcbedd2a1e3ad33fb1416e72855f78d6c8c019332",
+    "H12PackedPilotData000": "ab161ef40041153dbaab2f637cb990ea823d32f64cb2c0ed494bafe089df9f43",
+    "H12PackedPilotData001": "82420e07033f30dee15ed874b30780630aab9d615f60e2ad91cdf7b551679805",
+    "H12PackedPilotData002": "b003aa58be79dca07189f6eaf5428ae78584760630944e8e529e82ed2f44441f",
+    "H12PackedPilotData003": "fab8a1b859e2ed4499fe4b57b80e8963293d462d92c8b0fa5fcae99c286e00fb",
+    "H12PackedPilotData004": "0014623712b5bdb078e99b6d0c7080356727416e5edc8e087cc049cf167c319d",
+    "H12PackedPilot": "994e429c7215318b5142a26707c83526818a76e09a725ad78f21ab29d178670c"
+  },
+  "build_exit_code": 0,
+  "kernel_H12PackedPilotData000_exit_code": 0,
+  "kernel_H12PackedPilotData001_exit_code": 0,
+  "kernel_H12PackedPilotData002_exit_code": 0,
+  "kernel_H12PackedPilotData003_exit_code": 0,
+  "kernel_H12PackedPilotData004_exit_code": 0,
+  "kernel_H12PackedPilot_exit_code": 0,
+  "seconds": 278.59210939999866
+}

@@ -1,0 +1,22 @@
+{
+  "status": "PASS_GENERATED_MODULES_KERNEL_REPLAY",
+  "chart": 0,
+  "subtree": 11,
+  "scope": "Limited subtree only; paths from global roots remain separate obligations.",
+  "statistics": {
+    "nodes": 3,
+    "states": 32,
+    "transitions": 31,
+    "terminal_candidates": 16
+  },
+  "modules": [
+    "H12MixedPilotData000",
+    "H12MixedPilotData001",
+    "H12MixedPilotData002",
+    "H12MixedPilotData003",
+    "H12MixedPilotData004",
+    "H12MixedPilotData005",
+    "H12MixedPilot"
+  ],
+  "audit_report": "LEAN_MIXED_EXTENSION_AUDIT.json"
+}

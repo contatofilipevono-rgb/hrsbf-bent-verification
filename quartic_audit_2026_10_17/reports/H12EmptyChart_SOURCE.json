@@ -1,0 +1,19 @@
+{
+  "status": "PASS_GENERATED_MODULES_KERNEL_REPLAY",
+  "chart": 3,
+  "subtree": 67657,
+  "root_frame": true,
+  "scope": "Fixed-equation affine-environment subtree only; not global tree coverage.",
+  "statistics": {
+    "nodes": 1,
+    "states": 1,
+    "transitions": 0,
+    "terminal_candidates": 0
+  },
+  "modules": [
+    "H12EmptyChartData000",
+    "H12EmptyChartProof000",
+    "H12EmptyChart"
+  ],
+  "audit_report": "LEAN_EMPTY_CHART_AUDIT.json"
+}

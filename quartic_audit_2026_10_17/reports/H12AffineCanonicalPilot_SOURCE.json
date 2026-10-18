@@ -1,0 +1,26 @@
+{
+  "status": "PASS_GENERATED_MODULES_KERNEL_REPLAY",
+  "chart": 0,
+  "subtree": 8,
+  "root_frame": false,
+  "scope": "Fixed-equation affine-environment subtree only; not global tree coverage.",
+  "statistics": {
+    "nodes": 21,
+    "states": 122,
+    "transitions": 121,
+    "terminal_candidates": 32
+  },
+  "modules": [
+    "H12AffineCanonicalPilotData000",
+    "H12AffineCanonicalPilotData001",
+    "H12AffineCanonicalPilotData002",
+    "H12AffineCanonicalPilotData003",
+    "H12AffineCanonicalPilotData004",
+    "H12AffineCanonicalPilotData005",
+    "H12AffineCanonicalPilotProof000",
+    "H12AffineCanonicalPilotProof001",
+    "H12AffineCanonicalPilotProof002",
+    "H12AffineCanonicalPilot"
+  ],
+  "audit_report": "LEAN_AFFINE_CANONICAL_PILOT_AUDIT.json"
+}

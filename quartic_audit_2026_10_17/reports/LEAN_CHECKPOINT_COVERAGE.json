@@ -1,0 +1,456 @@
+{
+  "status": "PASS_SOURCE_HASHES_AND_REPLAY_LOG_COVERAGE",
+  "modules": 147,
+  "primary_modules": 28,
+  "witness_modules": 42,
+  "witnesses": 164288,
+  "module_evidence": {
+    "H12Audit": [
+      "T235_checker.log"
+    ],
+    "H12PeriodFour": [
+      "T235_checker.log"
+    ],
+    "H12Descent": [
+      "T235_checker.log"
+    ],
+    "H12Quadratic": [
+      "T235_checker.log"
+    ],
+    "H12BooleanPolynomial": [
+      "T235_checker.log"
+    ],
+    "H12CertificateTheory": [
+      "T235_checker.log"
+    ],
+    "H12Refutation": [
+      "T235_checker.log"
+    ],
+    "H12Orbit": [
+      "T235_checker.log"
+    ],
+    "H12Walsh": [
+      "T235_checker.log"
+    ],
+    "H12Restriction": [
+      "T235_checker.log"
+    ],
+    "H12Weight": [
+      "T235_checker.log"
+    ],
+    "H12FilterBridge": [
+      "T235_checker.log"
+    ],
+    "H12Bits": [
+      "T235_checker.log"
+    ],
+    "H12TablePolynomial": [
+      "T235_checker.log"
+    ],
+    "H12NumericFilters": [
+      "T235_checker.log"
+    ],
+    "H12PlaneTables": [
+      "T235_checker.log"
+    ],
+    "H12Truth": [
+      "T235_checker.log"
+    ],
+    "H12FilterLink": [
+      "T235_checker.log"
+    ],
+    "H12Affine": [
+      "T235_checker.log"
+    ],
+    "H12Compose": [
+      "T235_checker.log"
+    ],
+    "H12ChartFilters": [
+      "T235_checker.log"
+    ],
+    "H12Fourier": [
+      "T235_checker.log"
+    ],
+    "H12Popcount": [
+      "T235_checker.log"
+    ],
+    "H12WalshTable": [
+      "T235_checker.log"
+    ],
+    "H12WitnessTheory": [
+      "T235_checker.log"
+    ],
+    "H12TerminalTheory": [
+      "T235_checker.log"
+    ],
+    "H12WitnessSearch": [
+      "T235_checker.log"
+    ],
+    "H12CertificateBridge": [
+      "T235_checker.log"
+    ],
+    "H12WitnessData000": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData001": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData002": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData003": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData004": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData005": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData006": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData007": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData008": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData009": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData010": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData011": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData012": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData013": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData014": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData015": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData016": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData017": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData018": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData019": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData020": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData021": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData022": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData023": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData024": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData025": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData026": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData027": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData028": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData029": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData030": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData031": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData032": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData033": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData034": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData035": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData036": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData037": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData038": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData039": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12WitnessData040": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12Witnesses": [
+      "LEAN_WITNESS_KERNEL_AUDIT.json"
+    ],
+    "H12PackedPolynomial": [
+      "LEAN_PACKED_AUDIT.json"
+    ],
+    "H12PackedRoots": [
+      "LEAN_PACKED_ROOTS_AUDIT.json",
+      "LEAN_MIXED_EXTENSION_AUDIT.json"
+    ],
+    "H12PackedPilotData000": [
+      "LEAN_PACKED_PILOT_AUDIT.json"
+    ],
+    "H12PackedPilotData001": [
+      "LEAN_PACKED_PILOT_AUDIT.json"
+    ],
+    "H12PackedPilotData002": [
+      "LEAN_PACKED_PILOT_AUDIT.json"
+    ],
+    "H12PackedPilotData003": [
+      "LEAN_PACKED_PILOT_AUDIT.json"
+    ],
+    "H12PackedPilotData004": [
+      "LEAN_PACKED_PILOT_AUDIT.json"
+    ],
+    "H12PackedPilot": [
+      "LEAN_PACKED_PILOT_AUDIT.json"
+    ],
+    "H12PackedTerminal": [
+      "LEAN_PACKED_TERMINAL_AUDIT.json",
+      "LEAN_MIXED_EXTENSION_AUDIT.json"
+    ],
+    "H12WitnessIndex": [
+      "LEAN_PACKED_TERMINAL_AUDIT.json",
+      "LEAN_MIXED_EXTENSION_AUDIT.json"
+    ],
+    "H12ConcreteLeaf12": [
+      "LEAN_PACKED_TERMINAL_AUDIT.json"
+    ],
+    "H12PackedSparse": [
+      "LEAN_MIXED_EXTENSION_AUDIT.json"
+    ],
+    "H12PackedChecker": [
+      "LEAN_MIXED_EXTENSION_AUDIT.json"
+    ],
+    "H12MixedPilotData000": [
+      "LEAN_MIXED_EXTENSION_AUDIT.json"
+    ],
+    "H12MixedPilotData001": [
+      "LEAN_MIXED_EXTENSION_AUDIT.json"
+    ],
+    "H12MixedPilotData002": [
+      "LEAN_MIXED_EXTENSION_AUDIT.json"
+    ],
+    "H12MixedPilotData003": [
+      "LEAN_MIXED_EXTENSION_AUDIT.json"
+    ],
+    "H12MixedPilotData004": [
+      "LEAN_MIXED_EXTENSION_AUDIT.json"
+    ],
+    "H12MixedPilotData005": [
+      "LEAN_MIXED_EXTENSION_AUDIT.json"
+    ],
+    "H12MixedPilot": [
+      "LEAN_MIXED_EXTENSION_AUDIT.json"
+    ],
+    "H12MixedWideData000": [
+      "LEAN_MIXED_WIDE_AUDIT.json"
+    ],
+    "H12MixedWideData001": [
+      "LEAN_MIXED_WIDE_AUDIT.json"
+    ],
+    "H12MixedWideData002": [
+      "LEAN_MIXED_WIDE_AUDIT.json"
+    ],
+    "H12MixedWideData003": [
+      "LEAN_MIXED_WIDE_AUDIT.json"
+    ],
+    "H12MixedWideData004": [
+      "LEAN_MIXED_WIDE_AUDIT.json"
+    ],
+    "H12MixedWideData005": [
+      "LEAN_MIXED_WIDE_AUDIT.json"
+    ],
+    "H12MixedWideData006": [
+      "LEAN_MIXED_WIDE_AUDIT.json"
+    ],
+    "H12MixedWideData007": [
+      "LEAN_MIXED_WIDE_AUDIT.json"
+    ],
+    "H12MixedWideData008": [
+      "LEAN_MIXED_WIDE_AUDIT.json"
+    ],
+    "H12MixedWideData009": [
+      "LEAN_MIXED_WIDE_AUDIT.json"
+    ],
+    "H12MixedWideData010": [
+      "LEAN_MIXED_WIDE_AUDIT.json"
+    ],
+    "H12MixedWideData011": [
+      "LEAN_MIXED_WIDE_AUDIT.json"
+    ],
+    "H12MixedWideData012": [
+      "LEAN_MIXED_WIDE_AUDIT.json"
+    ],
+    "H12MixedWideData013": [
+      "LEAN_MIXED_WIDE_AUDIT.json"
+    ],
+    "H12MixedWideData014": [
+      "LEAN_MIXED_WIDE_AUDIT.json"
+    ],
+    "H12MixedWideData015": [
+      "LEAN_MIXED_WIDE_AUDIT.json"
+    ],
+    "H12MixedWideData016": [
+      "LEAN_MIXED_WIDE_AUDIT.json"
+    ],
+    "H12MixedWideData017": [
+      "LEAN_MIXED_WIDE_AUDIT.json"
+    ],
+    "H12MixedWide": [
+      "LEAN_MIXED_WIDE_AUDIT.json"
+    ],
+    "H12PackedProductOptimization": [
+      "LEAN_AFFINE_PILOT_AUDIT.json"
+    ],
+    "H12AffineState": [
+      "LEAN_AFFINE_PILOT_AUDIT.json"
+    ],
+    "H12AffinePilotData000": [
+      "LEAN_AFFINE_PILOT_AUDIT.json"
+    ],
+    "H12AffinePilotData001": [
+      "LEAN_AFFINE_PILOT_AUDIT.json"
+    ],
+    "H12AffinePilotData002": [
+      "LEAN_AFFINE_PILOT_AUDIT.json"
+    ],
+    "H12AffinePilotData003": [
+      "LEAN_AFFINE_PILOT_AUDIT.json"
+    ],
+    "H12AffinePilot": [
+      "LEAN_AFFINE_PILOT_AUDIT.json"
+    ],
+    "H12AffineWideData000": [
+      "LEAN_AFFINE_WIDE_AUDIT.json"
+    ],
+    "H12AffineWideData001": [
+      "LEAN_AFFINE_WIDE_AUDIT.json"
+    ],
+    "H12AffineWideData002": [
+      "LEAN_AFFINE_WIDE_AUDIT.json"
+    ],
+    "H12AffineWideData003": [
+      "LEAN_AFFINE_WIDE_AUDIT.json"
+    ],
+    "H12AffineWideData004": [
+      "LEAN_AFFINE_WIDE_AUDIT.json"
+    ],
+    "H12AffineWideData005": [
+      "LEAN_AFFINE_WIDE_AUDIT.json"
+    ],
+    "H12AffineWideData006": [
+      "LEAN_AFFINE_WIDE_AUDIT.json"
+    ],
+    "H12AffineWideData007": [
+      "LEAN_AFFINE_WIDE_AUDIT.json"
+    ],
+    "H12AffineWideData008": [
+      "LEAN_AFFINE_WIDE_AUDIT.json"
+    ],
+    "H12AffineWideData009": [
+      "LEAN_AFFINE_WIDE_AUDIT.json"
+    ],
+    "H12AffineWideData010": [
+      "LEAN_AFFINE_WIDE_AUDIT.json"
+    ],
+    "H12AffineWideData011": [
+      "LEAN_AFFINE_WIDE_AUDIT.json"
+    ],
+    "H12AffineWide": [
+      "LEAN_AFFINE_WIDE_AUDIT.json"
+    ],
+    "H12AffineRootFrameData000": [
+      "LEAN_AFFINE_ROOT_FRAME_AUDIT.json"
+    ],
+    "H12AffineRootFrameData001": [
+      "LEAN_AFFINE_ROOT_FRAME_AUDIT.json"
+    ],
+    "H12AffineRootFrameData002": [
+      "LEAN_AFFINE_ROOT_FRAME_AUDIT.json"
+    ],
+    "H12AffineRootFrameData003": [
+      "LEAN_AFFINE_ROOT_FRAME_AUDIT.json"
+    ],
+    "H12AffineRootFrame": [
+      "LEAN_AFFINE_ROOT_FRAME_AUDIT.json"
+    ],
+    "H12AffineCanonicalPilotData000": [
+      "LEAN_AFFINE_CANONICAL_PILOT_AUDIT.json"
+    ],
+    "H12AffineCanonicalPilotData001": [
+      "LEAN_AFFINE_CANONICAL_PILOT_AUDIT.json"
+    ],
+    "H12AffineCanonicalPilotData002": [
+      "LEAN_AFFINE_CANONICAL_PILOT_AUDIT.json"
+    ],
+    "H12AffineCanonicalPilotData003": [
+      "LEAN_AFFINE_CANONICAL_PILOT_AUDIT.json"
+    ],
+    "H12AffineCanonicalPilotData004": [
+      "LEAN_AFFINE_CANONICAL_PILOT_AUDIT.json"
+    ],
+    "H12AffineCanonicalPilotData005": [
+      "LEAN_AFFINE_CANONICAL_PILOT_AUDIT.json"
+    ],
+    "H12AffineCanonicalPilotProof000": [
+      "LEAN_AFFINE_CANONICAL_PILOT_AUDIT.json"
+    ],
+    "H12AffineCanonicalPilotProof001": [
+      "LEAN_AFFINE_CANONICAL_PILOT_AUDIT.json"
+    ],
+    "H12AffineCanonicalPilotProof002": [
+      "LEAN_AFFINE_CANONICAL_PILOT_AUDIT.json"
+    ],
+    "H12AffineCanonicalPilot": [
+      "LEAN_AFFINE_CANONICAL_PILOT_AUDIT.json"
+    ],
+    "H12EmptyChartData000": [
+      "LEAN_EMPTY_CHART_AUDIT.json"
+    ],
+    "H12EmptyChartProof000": [
+      "LEAN_EMPTY_CHART_AUDIT.json"
+    ],
+    "H12EmptyChart": [
+      "LEAN_EMPTY_CHART_AUDIT.json"
+    ]
+  },
+  "unconditional_global_H12_theorem": false,
+  "largest_tested_connected_subtree_nodes": 21,
+  "note": "The subtree pilots overlap; do not add their node or candidate counts. Log/source audit does not replace independent kernel replay."
+}

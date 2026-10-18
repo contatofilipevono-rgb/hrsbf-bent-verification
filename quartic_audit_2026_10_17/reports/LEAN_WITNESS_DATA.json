@@ -78,6 +78,7 @@
     }
   ],
   "rows_sha256": "1bbf09e9161f19669a76e26e1f306ff48294a0bc7b97e69769a50f609b46fdd8",
-  "status": "GENERATED_NOT_YET_KERNEL_VERIFIED",
-  "scope": "Concrete Walsh rejections only; tree coverage remains a separate obligation."
+  "status": "PASS_ALL_WALSH_REJECTIONS_KERNEL_CHECKED",
+  "scope": "Concrete Walsh rejections only; tree coverage remains a separate obligation.",
+  "audit_report": "LEAN_WITNESS_KERNEL_AUDIT.json"
 }

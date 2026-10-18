@@ -1,0 +1,21 @@
+{
+  "status": "PASS_GENERATED_MODULES_KERNEL_REPLAY",
+  "chart": 0,
+  "subtree": 11,
+  "root_frame": true,
+  "scope": "Fixed-equation affine-environment subtree only; not global tree coverage.",
+  "statistics": {
+    "nodes": 3,
+    "states": 32,
+    "transitions": 31,
+    "terminal_candidates": 16
+  },
+  "modules": [
+    "H12AffineRootFrameData000",
+    "H12AffineRootFrameData001",
+    "H12AffineRootFrameData002",
+    "H12AffineRootFrameData003",
+    "H12AffineRootFrame"
+  ],
+  "audit_report": "LEAN_AFFINE_ROOT_FRAME_AUDIT.json"
+}

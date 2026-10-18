@@ -41,7 +41,8 @@ def main():
  (lean/'H12Witnesses.lean').write_text(out,encoding='utf-8')
  lakefile=lean/'lakefile.toml';s=lakefile.read_text(encoding='utf-8-sig')
  marker='[[lean_lib]]\nname = "H12WitnessCertificate"'
- if marker in s:s=s[:s.index(marker)].rstrip()+'\n'
+ if marker in s:
+  s=re.sub(r'(?ms)^\[\[lean_lib\]\]\s*\nname = "H12WitnessCertificate".*?(?=^\[\[lean_lib\]\]|\Z)','',s).rstrip()+'\n'
  core=json.loads(re.search(r'roots\s*=\s*(\[[^\]]+\])',s).group(1))
  core=[m for m in core if not m.startswith('H12WitnessData') and m!='H12Witnesses']
  s=re.sub(r'roots\s*=\s*\[[^\]]+\]','roots = '+json.dumps(core),s,count=1)
