@@ -100,13 +100,15 @@
       "H12BooleanPolynomial",
       "H12CertificateTheory",
       "H12Refutation",
-      "H12Orbit"
+      "H12Orbit",
+      "H12Walsh"
     ],
     "printed_axioms_allowlist": [
       "propext",
-      "Quot.sound"
+      "Quot.sound",
+      "Classical.choice"
     ],
-    "scope": "Periodic reduction and descent, exact linear consequences, structural rotation invariance, Boolean substitution/normalization and generic tree-checker soundness. Global certificate and Walsh terminal test not yet instantiated; no global H12 Lean theorem."
+    "scope": "Periodic reduction and descent, exact linear consequences, structural rotation invariance, Boolean substitution/normalization, generic tree-checker soundness, autocorrelation-to-Walsh-flatness and witness-rejection bridge. Global numeric certificate and Walsh terminal computation not yet instantiated; no global H12 Lean theorem."
   },
   "global_H12": {
     "status": "AUDITED_GLOBAL_COMPUTATIONAL_RESULT",
@@ -346,5 +348,5 @@
     "all_payload_hashes_verified": true,
     "same_payload_manifest_as_isolated_pass": true
   },
-  "timestamp_utc": "2026-10-18T12:11:29.882190+00:00"
+  "timestamp_utc": "2026-10-18T12:32:37.216381+00:00"
 }

@@ -4,4 +4,4 @@ defaultTargets = ["H12Audit"]
 
 [[lean_lib]]
 name = "H12Audit"
-roots = ["H12Audit", "H12PeriodFour", "H12Descent", "H12Quadratic", "H12BooleanPolynomial", "H12CertificateTheory", "H12Refutation", "H12Orbit"]
+roots = ["H12Audit", "H12PeriodFour", "H12Descent", "H12Quadratic", "H12BooleanPolynomial", "H12CertificateTheory", "H12Refutation", "H12Orbit", "H12Walsh"]

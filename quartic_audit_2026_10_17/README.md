@@ -19,6 +19,8 @@ A base original tem 43 coordenadas. As cinco leis da antiga busca condicionada *
 
 Comece por [MATHEMATICAL_EXPLANATION.md](MATHEMATICAL_EXPLANATION.md), [CLAIMS.md](CLAIMS.md) e [ADVERSARIAL_AUDIT.md](ADVERSARIAL_AUDIT.md).
 
+Para assumir a continuação, leia [CONTINUAR_COLABORADOR.md](CONTINUAR_COLABORADOR.md) e [FORMALIZATION_STATUS.md](FORMALIZATION_STATUS.md). Eles registram comandos, evidências e obrigações formais ainda abertas.
+
 ## Reprodução rápida sem GPU
 
 Requer apenas Python 3.10 ou posterior:
@@ -54,7 +56,9 @@ lake build
 
 `H12Quadratic.lean` prova as três consequências lineares e a identidade curta que elimina o caso periódico 15. `H12Orbit.lean` prova a invariância por rotação mediante permutações de monômios. `H12Audit.lean` liga essas partes à função quártica original; a invariância já é demonstrada dentro do projeto. A condição de autocorrelação bent e, no teorema das três cartas, os filtros quadráticos ainda aparecem explicitamente como hipóteses.
 
-`H12CertificateTheory.lean` prova a correção da normalização e substituição de polinômios booleanos. `H12Refutation.lean` define um verificador executável de árvores e prova sua correção, condicionada à correção do teste terminal. A árvore numérica global e o teste de Walsh terminal ainda não foram instanciados nesse verificador. Os testes pequenos incluem certificados válidos e dados deliberadamente inválidos. As declarações finais compiladas dependem somente de `propext` e `Quot.sound`.
+`H12CertificateTheory.lean` prova a correção da normalização e substituição de polinômios booleanos. `H12Refutation.lean` define um verificador executável de árvores e prova sua correção, condicionada à correção do teste terminal. A árvore numérica global e o teste de Walsh terminal ainda não foram instanciados nesse verificador. Os testes pequenos incluem certificados válidos e dados deliberadamente inválidos.
+
+`H12Walsh.lean` prova que a autocorrelação bent implica Walsh ±64 e que uma frequência com quadrado diferente de 4096 rejeita bentness. Essa prova usa também `Classical.choice`, axioma lógico padrão herdado de um lema de permutações da biblioteca. As outras declarações finais usam `propext` e `Quot.sound`. Não há `sorry`, avaliação nativa como axioma ou axiomas particulares do projeto. A direção inversa da equivalência espectral ainda não foi formalizada.
 
 A compilação bem-sucedida desses lemas não transforma automaticamente o certificado Python em um teorema Lean. Ainda falta formalizar no Lean o verificador simbólico global, os testemunhos e as pontes necessárias.
 

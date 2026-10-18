@@ -3,6 +3,7 @@ import H12Descent
 import H12Quadratic
 import H12Orbit
 import H12Refutation
+import H12Walsh
 
 /-! A formal connection between the autocorrelation descent and the four-case
 classification. This module proves a necessary reduction, not global nonexistence.

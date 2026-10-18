@@ -1,0 +1,27 @@
+{
+  "status": "PASS_ISOLATED_HANDOFF_PACKAGE",
+  "package_sha256": "5f14f32740d951a4f44637c81533fdf6866cdc95d8aeb117a0c5b0168f5b27c0",
+  "tests": [
+    {
+      "test": "manifest",
+      "exit_code": 0,
+      "seconds": 1.549,
+      "output_tail": "PASS: 68 preserved files; hashes verify integrity only.\n"
+    },
+    {
+      "test": "symbolic_certificate",
+      "exit_code": 0,
+      "seconds": 70.195,
+      "output_tail": "  \"solution_leaves\": 6653\n  },\n  \"all_quad_zeros_covered\": 164288,\n  \"every_leaf_function_has_original_ANF_walsh_rejection\": true,\n  \"no_chart_domain_enumeration_used_by_checker\": true,\n  \"seconds\": 69.681,\n  \"certificate_sha256\": \"2f6790b88bd8003c81c305057f1a7d86b2073a698d167038822b15a714fc7633\",\n  \"checker_sha256\": \"e2f660d1ea8960e1e63b5ba2e24f4fc39be86d2c89781f472fbac4fdfc391b88\",\n  \"model_checker_sha256\": \"1aa340dc68087377965ba0bc144874c441e11fd5239ba59c3941d896e1a71241\",\n  \"initial_linear_and_periodic_certificates_rechecked\": true,\n  \"scope\": \"Complete finite certificate conditional on the separately checked necessary chart reductions. This Python checker is not itself a Lean proof.\"\n}\n"
+    },
+    {
+      "test": "fresh_lean_build",
+      "exit_code": 0,
+      "seconds": 36.052,
+      "output_tail": "unusedSimpArgs false`\ninfo: H12Orbit.lean:66:0: 'H12Orbit.all_supports_partitioned' depends on axioms: [propext]\ninfo: H12Orbit.lean:73:0: 'H12Orbit.cyclic_orbits_exact' depends on axioms: [propext, Quot.sound]\ninfo: H12Orbit.lean:118:0: 'H12Orbit.quartic_rotational_four' depends on axioms: [propext, Quot.sound]\n\u2139 [10/11] Built H12Audit (1.9s)\ninfo: H12Audit.lean:62:0: 'H12Audit.bent_rotational_four_cases' depends on axioms: [propext, Quot.sound]\ninfo: H12Audit.lean:63:0: 'H12Audit.quartic_bent_four_cases' depends on axioms: [propext, Quot.sound]\ninfo: H12Audit.lean:101:0: 'H12Audit.necessary_chart_constraints' depends on axioms: [propext, Quot.sound]\nBuild completed successfully (11 jobs).\n"
+    }
+  ],
+  "lean_version": "4.35.0",
+  "mathlib_required": false,
+  "scope": "Fresh isolated build of all nine Lean modules and complete symbolic certificate check. No global Lean nonexistence theorem is claimed."
+}

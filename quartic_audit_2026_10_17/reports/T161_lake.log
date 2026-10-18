@@ -1,0 +1,122 @@
+ℹ [2/11] Replayed H12PeriodFour
+info: H12PeriodFour.lean:223:0: 'H12.basis_periodic_columns' depends on axioms: [propext]
+info: H12PeriodFour.lean:224:0: 'H12.restriction_normal_form' depends on axioms: [propext, Quot.sound]
+info: H12PeriodFour.lean:225:0: 'H12.four_case_classification' depends on axioms: [propext, Quot.sound]
+info: H12PeriodFour.lean:226:0: 'H12.periodic_reduction' depends on axioms: [propext, Quot.sound]
+info: H12PeriodFour.lean:227:0: 'H12.quartic_periodic' depends on axioms: [propext, Quot.sound]
+ℹ [3/11] Replayed H12Descent
+info: H12Descent.lean:96:0: 'H12Descent.sorted_partition' depends on axioms: [propext, Quot.sound]
+info: H12Descent.lean:97:0: 'H12Descent.descent_mod_three' depends on axioms: [propext, Quot.sound]
+info: H12Descent.lean:159:0: 'H12Descent.bent_rotational_descent' depends on axioms: [propext, Quot.sound]
+ℹ [4/11] Replayed H12BooleanPolynomial
+info: H12BooleanPolynomial.lean:99:0: 'H12BooleanPolynomial.evaluate_map_union' depends on axioms: [propext, Quot.sound]
+info: H12BooleanPolynomial.lean:100:0: 'H12BooleanPolynomial.evaluate_permutation' depends on axioms: [propext]
+ℹ [5/11] Replayed H12Quadratic
+info: H12Quadratic.lean:266:0: 'H12Quadratic.necessary_r1' depends on axioms: [propext, Quot.sound]
+info: H12Quadratic.lean:285:0: 'H12Quadratic.necessary_r2' depends on axioms: [propext]
+info: H12Quadratic.lean:441:0: 'H12Quadratic.necessary_r3' depends on axioms: [propext, Quot.sound]
+info: H12Quadratic.lean:474:0: 'H12Quadratic.short_product_zero' depends on axioms: [propext, Quot.sound]
+⚠ [6/11] Replayed H12Orbit
+warning: H12Orbit.lean:13:10: This simp argument is unused:
+  ← BitVec.getLsbD_eq_getElem
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [BitVec.getLsbD_rotateLeft, h, show ¬8 + i < 8 by omega, show 8 + i < 12 by omega,
+    show 8 + i - 8 = i by omega]
+
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12Orbit.lean:15:10: This simp argument is unused:
+  BitVec.getLsbD_rotateLeft
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [h, show i - 4 < 8 by omega, show 4 + (i - 4) = i by omega, hi]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12Orbit.lean:22:31: This simp argument is unused:
+  BitVec.getLsbD_rotateLeft
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [h, hi, Bool.and_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12Orbit.lean:22:65: This simp argument is unused:
+  Bool.and_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [BitVec.getLsbD_rotateLeft, h, hi]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12Orbit.lean:36:14: This simp argument is unused:
+  ← BitVec.getLsbD_eq_getElem
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [BitVec.getLsbD_rotateLeft, h, show ¬4 + i < 4 by omega, show 4 + i < 12 by omega,
+    show 4 + i - 4 = i by omega]
+
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12Orbit.lean:38:14: This simp argument is unused:
+  ← BitVec.getLsbD_eq_getElem
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [BitVec.getLsbD_rotateLeft, h, show i - 8 < 4 by omega, show 8 + (i - 8) = i by omega, hi]
+
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12Orbit.lean:66:0: 'H12Orbit.all_supports_partitioned' depends on axioms: [propext]
+info: H12Orbit.lean:73:0: 'H12Orbit.cyclic_orbits_exact' depends on axioms: [propext, Quot.sound]
+info: H12Orbit.lean:118:0: 'H12Orbit.quartic_rotational_four' depends on axioms: [propext, Quot.sound]
+⚠ [7/11] Replayed H12CertificateTheory
+warning: H12CertificateTheory.lean:65:27: This simp argument is unused:
+  Nat.testBit_two_pow
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Nat.testBit_xor, h]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12CertificateTheory.lean:93:15: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Bool.false_eq_true, ↓reduceIte]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12CertificateTheory.lean:95:15: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [↓reduceIte]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12CertificateTheory.lean:141:0: 'H12CertificateTheory.evaluate_normalize' depends on axioms: [propext]
+info: H12CertificateTheory.lean:142:0: 'H12CertificateTheory.evaluate_substitute' depends on axioms: [propext, Quot.sound]
+info: H12CertificateTheory.lean:143:0: 'H12CertificateTheory.update_of_equation' depends on axioms: [propext, Quot.sound]
+⚠ [8/11] Replayed H12Refutation
+warning: H12Refutation.lean:100:4: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp [evaluate, monomial_zero] at he
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+info: H12Refutation.lean:120:0: 'H12Refutation.refutes_sound' depends on axioms: [propext, Quot.sound]
+info: H12Refutation.lean:173:0: 'H12Refutation.check_sound' depends on axioms: [propext, Quot.sound]
+⚠ [9/11] Built H12Walsh (2.4s)
+info: H12Walsh.lean:92:0: 'H12Walsh.energy_identity' depends on axioms: [propext, Quot.sound]
+warning: H12Walsh.lean:180:25: Variable name `x` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _x
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+info: H12Walsh.lean:209:0: 'H12Walsh.bent_walsh_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12Walsh.lean:225:0: 'H12Walsh.bent_walsh_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12Walsh.lean:226:0: 'H12Walsh.walsh_witness_rejects' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [10/11] Built H12Audit (2.4s)
+info: H12Audit.lean:62:0: 'H12Audit.bent_rotational_four_cases' depends on axioms: [propext, Quot.sound]
+info: H12Audit.lean:63:0: 'H12Audit.quartic_bent_four_cases' depends on axioms: [propext, Quot.sound]
+info: H12Audit.lean:101:0: 'H12Audit.necessary_chart_constraints' depends on axioms: [propext, Quot.sound]
+Build completed successfully (11 jobs).
