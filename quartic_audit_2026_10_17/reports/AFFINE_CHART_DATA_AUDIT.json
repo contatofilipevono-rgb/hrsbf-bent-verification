@@ -1,0 +1,13 @@
+{
+  "status": "PASS_LEAN_AFFINE_AND_ROOT_DATA_MATCH_MODEL",
+  "charts": 4,
+  "chart_variables": 36,
+  "coordinate_reconstruction_identities": 172,
+  "transformed_filters": 172,
+  "sha256": {
+    "cpu_replay/model.json": "5b2b7746648c7ee83815e7fcb863f6507f21f1c00dd00c64e6cf0577b804b529",
+    "lean/H12Affine.lean": "e0e4528e3bd133340f4052a3b691b41c2641ea3648328b9d5c229924fa26442a",
+    "lean/H12ChartFilters.lean": "902793491eb6a92df6816c00b4f4db77db525741866b5b93b40c779375c4df28"
+  },
+  "scope": "Data/provenance comparison. Lean proofs and kernel replay are recorded separately."
+}

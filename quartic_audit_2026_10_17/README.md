@@ -61,7 +61,9 @@ lake build
 
 `H12Walsh.lean` prova que a autocorrelação bent implica Walsh ±64 e que uma frequência com quadrado diferente de 4096 rejeita bentness. `H12Restriction` e `H12Weight` provam a passagem de Walsh aos polinômios de peso. `H12Bits` e `H12TablePolynomial` dão uma avaliação rápida com prova de correção; `H12PlaneTables` e `H12Truth` ligam as tabelas de verdade aos geradores; `H12NumericFilters` confere as 43 identidades numéricas.
 
-São 18 módulos formais. As dependências lógicas são apenas `propext`, `Quot.sound` e, em alguns lemas, `Classical.choice`. Não há `sorry`, avaliação nativa como axioma ou axiomas particulares do projeto. A direção inversa da equivalência espectral ainda não foi formalizada.
+`H12Affine` prova que todo possível bent é reconstruído por uma das cartas numéricas, com igualdade à fórmula XOR da CPU. `H12Compose` prova a substituição de polinômios; `H12ChartFilters` confere as 172 transformações e coloca o candidato em uma raiz do certificado.
+
+São 28 módulos formais na biblioteca principal. As dependências lógicas são apenas `propext`, `Quot.sound` e, em alguns lemas, `Classical.choice`. Não há `sorry`, avaliação nativa como axioma ou axiomas particulares do projeto. A equivalência entre autocorrelação bent e Walsh plano está provada em `H12Fourier.bent_iff_flat`.
 
 Para compilar e repetir as declarações de todos os módulos com uso de memória limitado, execute na raiz deste diretório:
 
@@ -71,7 +73,7 @@ python tools/verify_lean.py
 
 Esse procedimento requer `lake` do Lean 4.35.0 no PATH; aceita `--lake caminho/do/lake` para uma instalação específica. A repetição ocorre em sequência. O verificador é o núcleo Lean distribuído, não um segundo núcleo independente.
 
-A compilação bem-sucedida desses lemas não transforma automaticamente o certificado Python em um teorema Lean. Ainda falta formalizar no Lean o verificador simbólico global, os testemunhos e as pontes necessárias.
+A compilação bem-sucedida desses lemas não transforma automaticamente o certificado Python em um teorema Lean. Ainda falta instanciar a cobertura da árvore numérica e terminar a conferência de todos os testemunhos. As pontes semânticas dos pesos, das fases e das folhas estão provadas; `H12CertificateBridge.no_bent_of_three_refutations` deixa explícitas as três refutações ainda necessárias.
 
 O modelo de automação está em `ci/quartic-audit.yml`. Ele não foi ativado: o GitHub recusou a criação de workflows com a autorização OAuth disponível. Os testes e o Lean foram executados localmente; não se afirma aprovação por CI remoto.
 
@@ -87,3 +89,15 @@ O modelo de automação está em `ci/quartic-audit.yml`. Ele não foi ativado: o
 - `MANIFEST.json`: hashes SHA-256 dos arquivos preservados. Integridade de arquivo não equivale a validade matemática.
 
 Os identificadores Txx variam entre colaboradores. Use o conteúdo matemático, a proveniência e o hash para comparar certificados.
+
+## Conferência concreta de testemunhos
+
+Os 164288 testes gerados ficam em uma biblioteca opcional separada, para que a compilação normal dos lemas não exija a verificação numérica inteira. A execução completa ainda está em andamento neste checkpoint. Para reproduzir sequencialmente:
+
+```sh
+python tools/verify_lean_witnesses.py --lake lake --resume
+```
+
+O comando produz registros por módulo e relatório em `reports/LEAN_WITNESS_KERNEL_AUDIT.json`. Um arquivo fonte gerado não representa um teste aprovado; exigir o relatório final `PASS_ALL_WALSH_REJECTIONS_KERNEL_CHECKED`. Mesmo esse PASS não substitui a cobertura formal da árvore.
+
+Veja `KHOLOSHA_PAL_REVIEW.md` para a avaliação da referência de outubro de 2026 e a correção da inferência sobre o subespaço autodual.

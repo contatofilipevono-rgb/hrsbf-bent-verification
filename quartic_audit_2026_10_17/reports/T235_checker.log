@@ -1,0 +1,86 @@
+Lean (version 4.35.0, x86_64-w64-windows-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+MODULE_START 1/28 H12Audit
+replaying H12Audit
+MODULE_PASS H12Audit 32.350s
+MODULE_START 2/28 H12PeriodFour
+replaying H12PeriodFour
+MODULE_PASS H12PeriodFour 60.723s
+MODULE_START 3/28 H12Descent
+replaying H12Descent
+MODULE_PASS H12Descent 195.102s
+MODULE_START 4/28 H12Quadratic
+replaying H12Quadratic
+MODULE_PASS H12Quadratic 41.467s
+MODULE_START 5/28 H12BooleanPolynomial
+replaying H12BooleanPolynomial
+MODULE_PASS H12BooleanPolynomial 41.827s
+MODULE_START 6/28 H12CertificateTheory
+replaying H12CertificateTheory
+MODULE_PASS H12CertificateTheory 18.778s
+MODULE_START 7/28 H12Refutation
+replaying H12Refutation
+MODULE_PASS H12Refutation 25.737s
+MODULE_START 8/28 H12Orbit
+replaying H12Orbit
+MODULE_PASS H12Orbit 68.983s
+MODULE_START 9/28 H12Walsh
+replaying H12Walsh
+MODULE_PASS H12Walsh 16.974s
+MODULE_START 10/28 H12Restriction
+replaying H12Restriction
+MODULE_PASS H12Restriction 59.289s
+MODULE_START 11/28 H12Weight
+replaying H12Weight
+MODULE_PASS H12Weight 17.533s
+MODULE_START 12/28 H12FilterBridge
+replaying H12FilterBridge
+MODULE_PASS H12FilterBridge 65.230s
+MODULE_START 13/28 H12Bits
+replaying H12Bits
+MODULE_PASS H12Bits 9.047s
+MODULE_START 14/28 H12TablePolynomial
+replaying H12TablePolynomial
+MODULE_PASS H12TablePolynomial 6.397s
+MODULE_START 15/28 H12NumericFilters
+replaying H12NumericFilters
+MODULE_PASS H12NumericFilters 41.591s
+MODULE_START 16/28 H12PlaneTables
+replaying H12PlaneTables
+MODULE_PASS H12PlaneTables 15.631s
+MODULE_START 17/28 H12Truth
+replaying H12Truth
+MODULE_PASS H12Truth 7.895s
+MODULE_START 18/28 H12FilterLink
+replaying H12FilterLink
+MODULE_PASS H12FilterLink 6.332s
+MODULE_START 19/28 H12Affine
+replaying H12Affine
+MODULE_PASS H12Affine 7.092s
+MODULE_START 20/28 H12Compose
+replaying H12Compose
+MODULE_PASS H12Compose 6.085s
+MODULE_START 21/28 H12ChartFilters
+replaying H12ChartFilters
+MODULE_PASS H12ChartFilters 502.354s
+MODULE_START 22/28 H12Fourier
+replaying H12Fourier
+MODULE_PASS H12Fourier 14.111s
+MODULE_START 23/28 H12Popcount
+replaying H12Popcount
+MODULE_PASS H12Popcount 17.383s
+MODULE_START 24/28 H12WalshTable
+replaying H12WalshTable
+MODULE_PASS H12WalshTable 12.513s
+MODULE_START 25/28 H12WitnessTheory
+replaying H12WitnessTheory
+MODULE_PASS H12WitnessTheory 13.429s
+MODULE_START 26/28 H12TerminalTheory
+replaying H12TerminalTheory
+MODULE_PASS H12TerminalTheory 12.417s
+MODULE_START 27/28 H12WitnessSearch
+replaying H12WitnessSearch
+MODULE_PASS H12WitnessSearch 11.226s
+MODULE_START 28/28 H12CertificateBridge
+replaying H12CertificateBridge
+MODULE_PASS H12CertificateBridge 11.207s
+KERNEL_REPLAY_EXIT_CODE=0

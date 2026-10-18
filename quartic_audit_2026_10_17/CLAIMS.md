@@ -13,7 +13,8 @@
 | A soma sobre 4.096 entradas reduz à soma de 16 pontos fixos módulo três | Prova de partição e soma em Lean | `H12Descent.lean` | A aplicação à função exige a invariância correspondente |
 | A função quártica é invariante pela rotação usada na descida | Prova estrutural em Lean por permutação dos monômios | `H12Orbit.lean`, `quartic_rotational_four` | Vale para a base explícita do projeto |
 | As regras algébricas do verificador de árvores são corretas | Teorema genérico em Lean | `H12Refutation.check_sound` | O teste terminal exige sua própria prova; a árvore global ainda não foi instanciada |
-| Autocorrelação bent implica W(a)=±64; um valor de Walsh fora desse módulo rejeita bentness | Provado em Lean | `H12Walsh.bent_walsh_values`, `walsh_witness_rejects` | Não confere automaticamente os testemunhos numéricos; a direção Walsh plano → autocorrelação ainda está pendente |
+| Todo possível bent pertence a uma carta numérica e satisfaz seu sistema transformado | Provado em Lean, com construção explícita das coordenadas e 172 substituições exatas | `H12Affine.covers_bent_cpu`, `H12ChartFilters.bent_root` | Falta conferir a árvore e seus testes terminais no Lean |
+| Autocorrelação bent implica W(a)=±64; um valor de Walsh fora desse módulo rejeita bentness | Provado em Lean | `H12Walsh.bent_walsh_values`, `walsh_witness_rejects` | Não confere automaticamente os testemunhos numéricos; a direção Walsh plano → autocorrelação também está provada em `H12Fourier.bent_iff_flat` |
 | O peso em órbitas longas deve ser 165, 170, 172 ou 171 conforme o caso | Redução algébrica e verificação exata | `verify_periodic_reduction.py` | Não exclui todos os candidatos |
 | H(16,4) não contém bent | **Não demonstrada nesta pesquisa** | Há somente cotas certificadas de exclusão | Não converter percentuais em inexistência |
 | O sistema SAT experimental é UNSAT | **Não estabelecida** | Logs em `experiments/` | Interrupção/timeout não significa UNSAT |
@@ -26,3 +27,7 @@ Os novos quatro espaços de dimensão 36 não são a antiga busca condicionada: 
 ## O que significam os axiomas do Lean
 
 Os lemas são acompanhados de `#print axioms`. As provas finais desta entrega dependem apenas dos axiomas lógicos usuais `propext`, `Quot.sound` e, no módulo espectral, `Classical.choice`, sem `sorryAx`, avaliação nativa como axioma ou axiomas particulares do projeto. As primeiras tentativas locais que usavam `bv_decide` foram substituídas por identidades explícitas para retirar uma dependência de avaliação nativa. Os registros antigos de tentativas não devem ser confundidos com o registro final de compilação. A tabela completa das obrigações restantes está em `FORMALIZATION_STATUS.md`.
+
+## Progresso do contador e dos testes terminais
+
+O contador exato e o modular estão provados em `H12Popcount`; a ligação aos valores Walsh originais está provada em `H12WalshTable`, incluindo `rejectsMod_sound`. A execução concreta dos 164288 testes ainda não terminou neste checkpoint. Os fontes gerados de `H12WitnessCertificate` não são evidência de aprovação por si. A ponte da árvore usa hipóteses explícitas e ainda não fornece um teorema global incondicional.

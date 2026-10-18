@@ -1,27 +1,27 @@
 {
   "status": "PASS_ISOLATED_HANDOFF_PACKAGE",
-  "package_sha256": "ccb3805f5f222562c8f7594250a3734c7c1f8e0e16ee62101e64d29a9869d7b5",
+  "package_sha256": "8e2caeb5cee8b92e03c2413667487e5cb424edd556d7963c253c584d911b637f",
   "tests": [
     {
       "test": "manifest",
       "exit_code": 0,
-      "seconds": 1.383,
-      "output_tail": "PASS: 86 preserved files; hashes verify integrity only.\n"
+      "seconds": 2.522,
+      "output_tail": "PASS: 158 preserved files; hashes verify integrity only.\n"
     },
     {
       "test": "symbolic_certificate",
       "exit_code": 0,
-      "seconds": 72.868,
-      "output_tail": "  \"solution_leaves\": 6653\n  },\n  \"all_quad_zeros_covered\": 164288,\n  \"every_leaf_function_has_original_ANF_walsh_rejection\": true,\n  \"no_chart_domain_enumeration_used_by_checker\": true,\n  \"seconds\": 72.298,\n  \"certificate_sha256\": \"2f6790b88bd8003c81c305057f1a7d86b2073a698d167038822b15a714fc7633\",\n  \"checker_sha256\": \"e2f660d1ea8960e1e63b5ba2e24f4fc39be86d2c89781f472fbac4fdfc391b88\",\n  \"model_checker_sha256\": \"1aa340dc68087377965ba0bc144874c441e11fd5239ba59c3941d896e1a71241\",\n  \"initial_linear_and_periodic_certificates_rechecked\": true,\n  \"scope\": \"Complete finite certificate conditional on the separately checked necessary chart reductions. This Python checker is not itself a Lean proof.\"\n}\n"
+      "seconds": 154.54,
+      "output_tail": " \"solution_leaves\": 6653\n  },\n  \"all_quad_zeros_covered\": 164288,\n  \"every_leaf_function_has_original_ANF_walsh_rejection\": true,\n  \"no_chart_domain_enumeration_used_by_checker\": true,\n  \"seconds\": 150.413,\n  \"certificate_sha256\": \"2f6790b88bd8003c81c305057f1a7d86b2073a698d167038822b15a714fc7633\",\n  \"checker_sha256\": \"e2f660d1ea8960e1e63b5ba2e24f4fc39be86d2c89781f472fbac4fdfc391b88\",\n  \"model_checker_sha256\": \"1aa340dc68087377965ba0bc144874c441e11fd5239ba59c3941d896e1a71241\",\n  \"initial_linear_and_periodic_certificates_rechecked\": true,\n  \"scope\": \"Complete finite certificate conditional on the separately checked necessary chart reductions. This Python checker is not itself a Lean proof.\"\n}\n"
     },
     {
       "test": "fresh_lean_build",
       "exit_code": 0,
-      "seconds": 88.735,
-      "output_tail": "\n\nHint: Use `simp` instead of `simpa`:\n  [apply] simp [H12NumericFilters.explicitPolynomials]\n\nNote: This linter can be disabled with `set_option linter.unnecessarySimpa false`\ninfo: H12FilterLink.lean:153:0: 'H12FilterLink.bent_passes' depends on axioms: [propext, Classical.choice, Quot.sound]\n\u2139 [19/20] Built H12Audit (2.1s)\ninfo: H12Audit.lean:65:0: 'H12Audit.bent_rotational_four_cases' depends on axioms: [propext, Quot.sound]\ninfo: H12Audit.lean:66:0: 'H12Audit.quartic_bent_four_cases' depends on axioms: [propext, Quot.sound]\ninfo: H12Audit.lean:104:0: 'H12Audit.necessary_chart_constraints' depends on axioms: [propext, Classical.choice, Quot.sound]\nBuild completed successfully (20 jobs).\n"
+      "seconds": 1024.077,
+      "output_tail": "als]\n\nNote: This linter can be disabled with `set_option linter.unnecessarySimpa false`\ninfo: H12ChartFilters.lean:68:0: 'H12ChartFilters.bent_root' depends on axioms: [propext, Classical.choice, Quot.sound]\n\u2139 [29/30] Built H12CertificateBridge (5.2s)\ninfo: H12CertificateBridge.lean:46:0: 'H12CertificateBridge.terminalCheck_sound' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: H12CertificateBridge.lean:47:0: 'H12CertificateBridge.root_observation' depends on axioms: [propext, Quot.sound]\ninfo: H12CertificateBridge.lean:48:0: 'H12CertificateBridge.no_bent_of_three_refutations' depends on axioms: [propext, Classical.choice, Quot.sound]\nBuild completed successfully (30 jobs).\n"
     }
   ],
   "lean_version": "4.35.0",
   "mathlib_required": false,
-  "scope": "Fresh isolated build of all eighteen Lean modules and complete symbolic certificate check. No global Lean nonexistence theorem is claimed."
+  "scope": "Fresh isolated build of the28 primary Lean modules and complete symbolic certificate check. The optional42-module concrete witness library is included as generated source but is NOT covered by this fresh default build. No global Lean nonexistence theorem is claimed."
 }

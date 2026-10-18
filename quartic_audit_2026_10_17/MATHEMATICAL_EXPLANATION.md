@@ -113,7 +113,9 @@ O certificado contém 67.658 nós, 282.418 eliminações lineares certificadas, 
 
 Sua execução passou em aproximadamente 70 segundos. O hash SHA-256 de `DECOMPOSITION.json` é `2f6790b88bd8003c81c305057f1a7d86b2073a698d167038822b15a714fc7633`.
 
-Isso fornece uma demonstração computacional finita por certificado, independente do log da GPU. Para uma prova Lean global, ainda falta formalizar a correção desse verificador, os testemunhos e todas as pontes aos filtros necessários. A formalização Lean atual cobre a redução periódica e a descida por autocorrelações.
+Isso fornece uma demonstração computacional finita por certificado, independente do log da GPU. No Lean já estão provadas a necessidade dos 43 filtros, a cobertura pelas cartas afins explícitas, a igualdade com a fórmula XOR da CPU e as 172 substituições que levam aos sistemas das raízes. `H12ChartFilters.bent_root` reúne essas passagens. A correção genérica das regras da árvore também está provada, sob um teste terminal correto.
+
+Para uma prova Lean global, ainda falta instanciar a árvore numérica e conferir os testemunhos terminais no Lean. A equivalência entre Walsh plano e autocorrelação bent agora está provada em `H12Fourier.bent_iff_flat`. O estado preciso está em `FORMALIZATION_STATUS.md`; os resultados acima não devem ser confundidos com um teorema Lean global já concluído.
 
 ## 8. Exclusão analítica de um dos quatro casos
 
@@ -127,3 +129,7 @@ Como R₂=c₂₆+c₄₀+c₄₂, vale a identidade booleana
 $$c_{40}c_{42}=Q+R_1+R_3+(1+c_{42})R_2.$$
 
 Toda bent satisfaz Q=R₁=R₂=R₃=0. Logo c₄₀c₄₂=0. O caso de código 15 tem c₄₀=c₄₂=1 e está excluído diretamente. Sua raiz contraditória no certificado corresponde a essa identidade, sem necessidade de enumeração.
+
+## Subespaço diagonal autodual e normalidade
+
+A referência de Kholosha e Pal, arXiv:2610.03420v1 (2 de outubro de 2026), é relevante para o contexto construtivo de partições bent normais. Não fornece uma obstrução à família quártica rotacional a partir apenas do baixo grau da restrição. A identidade de Poisson no subespaço diagonal autodual é uma relação de compatibilidade, não uma contradição automática. A função rotacional bent quadrática F(x,y)=x·y restringe-se ali à função linear Σz_i. Nos casos m=6 e m=8, as somas de sinais constantes nas órbitas cíclicas percorrem todos os valores pares admissíveis; isso foi verificado exatamente. A exclusão quártica depende das condições adicionais e do certificado apresentados acima. Veja `KHOLOSHA_PAL_REVIEW.md` e o controle reproduzível em `tools/verify_kholosha_pal_compatibility.py`.

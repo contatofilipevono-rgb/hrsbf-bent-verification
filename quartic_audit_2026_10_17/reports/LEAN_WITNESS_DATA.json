@@ -1,0 +1,83 @@
+{
+  "witnesses": 164288,
+  "data_modules": [
+    "H12WitnessData000",
+    "H12WitnessData001",
+    "H12WitnessData002",
+    "H12WitnessData003",
+    "H12WitnessData004",
+    "H12WitnessData005",
+    "H12WitnessData006",
+    "H12WitnessData007",
+    "H12WitnessData008",
+    "H12WitnessData009",
+    "H12WitnessData010",
+    "H12WitnessData011",
+    "H12WitnessData012",
+    "H12WitnessData013",
+    "H12WitnessData014",
+    "H12WitnessData015",
+    "H12WitnessData016",
+    "H12WitnessData017",
+    "H12WitnessData018",
+    "H12WitnessData019",
+    "H12WitnessData020",
+    "H12WitnessData021",
+    "H12WitnessData022",
+    "H12WitnessData023",
+    "H12WitnessData024",
+    "H12WitnessData025",
+    "H12WitnessData026",
+    "H12WitnessData027",
+    "H12WitnessData028",
+    "H12WitnessData029",
+    "H12WitnessData030",
+    "H12WitnessData031",
+    "H12WitnessData032",
+    "H12WitnessData033",
+    "H12WitnessData034",
+    "H12WitnessData035",
+    "H12WitnessData036",
+    "H12WitnessData037",
+    "H12WitnessData038",
+    "H12WitnessData039",
+    "H12WitnessData040"
+  ],
+  "sources": [
+    {
+      "path": "full_thread0.csv",
+      "sha256": "8874a2c112af730decd5a52638fff077ce6c4ee62747b708b011206803cfecce"
+    },
+    {
+      "path": "full_thread1.csv",
+      "sha256": "067952c1772a05d6b6665cfb42ca2249b2481e88f775ce4e8912a3f3bc84c0d1"
+    },
+    {
+      "path": "full_thread2.csv",
+      "sha256": "8427e437ca9013de1eab270d3e5d3020f73ba7233f2b4f6e29d2f9379727a47f"
+    },
+    {
+      "path": "full_thread3.csv",
+      "sha256": "4773abcda834425802a534b9c396c4c9d953a43325b98596abc22bce56026af7"
+    },
+    {
+      "path": "full_thread4.csv",
+      "sha256": "9e47d46dc66356ceb5ea49dd593adc95e0117bf84cfac3a553c88ccc3bad7b32"
+    },
+    {
+      "path": "full_thread5.csv",
+      "sha256": "26eaf86a4a231bfe4e56773911cdc5fa9ba148ca02b3df72efd863ae09c5e2b7"
+    },
+    {
+      "path": "full_thread6.csv",
+      "sha256": "5750cf0eb8a0e270448497985706921f88f04949565cf16948b23412386a9707"
+    },
+    {
+      "path": "full_thread7.csv",
+      "sha256": "020ab34fa908fa5cf646d4360bebb9ae836c6d1b133ca877d8c5d7409e6711af"
+    }
+  ],
+  "rows_sha256": "1bbf09e9161f19669a76e26e1f306ff48294a0bc7b97e69769a50f609b46fdd8",
+  "status": "GENERATED_NOT_YET_KERNEL_VERIFIED",
+  "scope": "Concrete Walsh rejections only; tree coverage remains a separate obligation."
+}

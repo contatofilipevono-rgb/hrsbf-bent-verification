@@ -4,7 +4,7 @@ import hashlib,json,zipfile
 
 root=Path(__file__).resolve().parent.parent
 names=['README.md','CLAIMS.md','CONTINUAR_COLABORADOR.md','FORMALIZATION_STATUS.md',
-       'MATHEMATICAL_EXPLANATION.md','ADVERSARIAL_AUDIT.md','PROVENANCE.json','SOURCE_ARTICLE.json',
+       'MATHEMATICAL_EXPLANATION.md','KHOLOSHA_PAL_REVIEW.md','ZHANG_APPENDIX_REVIEW.md','ADVERSARIAL_AUDIT.md','PROVENANCE.json','SOURCE_ARTICLE.json',
        'COMPLEMENT_PAIR_IDENTITY.md','verify_complement_pair_filters.py',
        'verify_manifest.py','verify_linear_laws.py','verify_periodic_reduction.py',
        'linear_law_certificates.json']

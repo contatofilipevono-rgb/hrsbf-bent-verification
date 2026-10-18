@@ -110,14 +110,24 @@
       "H12NumericFilters",
       "H12PlaneTables",
       "H12Truth",
-      "H12FilterLink"
+      "H12FilterLink",
+      "H12Affine",
+      "H12Compose",
+      "H12ChartFilters",
+      "H12Fourier",
+      "H12Popcount",
+      "H12WalshTable",
+      "H12WitnessTheory",
+      "H12TerminalTheory",
+      "H12WitnessSearch",
+      "H12CertificateBridge"
     ],
     "printed_axioms_allowlist": [
       "propext",
       "Quot.sound",
       "Classical.choice"
     ],
-    "scope": "Periodic reduction/descent, structural rotation invariance, Boolean algebra, generic tree-checker soundness, Walsh bridge, Poisson restrictions, weight carry, fast bit counters, original truth-table semantics and all 43 explicit necessary filters. Global tree certificate and Walsh terminal computation not yet instantiated; no global H12 Lean theorem.",
+    "scope": "Necessary filters, affine chart coverage, 172 substitutions, Fourier inversion and spectral equivalence, exact and modular parallel weight counters, original Walsh phase semantics, modular rejection soundness, support-based terminal coverage and explicit three-root conditional bridge. Concrete witness validation is recorded separately and is still partial at this checkpoint. No unconditional global H12 Lean theorem.",
     "sequential_replay": "PASS"
   },
   "lean_necessary_filters": {
@@ -295,6 +305,30 @@
       }
     ],
     "scope": "Optimization guidance. These modular witness checks are not yet implemented in Lean."
+  },
+  "lean_affine_coverage": {
+    "theorem": "H12ChartFilters.bent_root",
+    "cpu_map_theorem": "H12Affine.covers_bent_cpu",
+    "parameter_variables": 36,
+    "bent_cases_covered": [
+      2,
+      3,
+      8
+    ],
+    "exact_substitutions": 172
+  },
+  "affine_data_provenance": {
+    "status": "PASS_LEAN_AFFINE_AND_ROOT_DATA_MATCH_MODEL",
+    "charts": 4,
+    "chart_variables": 36,
+    "coordinate_reconstruction_identities": 172,
+    "transformed_filters": 172,
+    "sha256": {
+      "cpu_replay/model.json": "5b2b7746648c7ee83815e7fcb863f6507f21f1c00dd00c64e6cf0577b804b529",
+      "lean/H12Affine.lean": "e0e4528e3bd133340f4052a3b691b41c2641ea3648328b9d5c229924fa26442a",
+      "lean/H12ChartFilters.lean": "902793491eb6a92df6816c00b4f4db77db525741866b5b93b40c779375c4df28"
+    },
+    "scope": "Data/provenance comparison. Lean proofs and kernel replay are recorded separately."
   },
   "global_H12": {
     "status": "AUDITED_GLOBAL_COMPUTATIONAL_RESULT",
@@ -530,9 +564,91 @@
     }
   ],
   "minimal_package_repack": {
-    "sha256": "63402235250b13059ed5906ccbf254f95fefe7a44e719eb37dc7ee570219f5a5",
+    "sha256": "8617f7fea556f977533cd8f588be3c2ab1b52180f41905651e2bdcfd925b161d",
     "all_payload_hashes_verified": true,
-    "same_payload_manifest_as_isolated_pass": true
+    "same_payload_manifest_as_isolated_pass": false,
+    "same_executable_and_certificate_payload_as_isolated_pass": true,
+    "documentation_changes_since_isolated_pass": [
+      "MATHEMATICAL_EXPLANATION.md"
+    ]
   },
-  "timestamp_utc": "2026-10-18T13:54:35.367643+00:00"
+  "lean_walsh_equivalence": {
+    "theorem": "H12Fourier.bent_iff_flat",
+    "status": "PROVED"
+  },
+  "lean_fast_weight": {
+    "exact": "H12Popcount.fastWeight_sound",
+    "modular": "H12Popcount.fastWeightMod_sound",
+    "walsh_semantics": "H12WalshTable.walsh_as_weight",
+    "rejection": "H12WalshTable.rejectsMod_sound"
+  },
+  "lean_terminal_bridge": {
+    "theorem": "H12CertificateBridge.terminalCheck_sound",
+    "final_conditional": "H12CertificateBridge.no_bent_of_three_refutations",
+    "concrete_global_tree_instantiated": false
+  },
+  "concrete_witness_kernel_progress": {
+    "status": "RUNNING",
+    "results": [
+      {
+        "module": "H12WitnessData000",
+        "source_sha256": "06c1c1db15a2d5b8bb0d8e626eb2d77567d8921ee092165df79e0f0cf9f85878",
+        "build_exit_code": 0,
+        "kernel_exit_code": 0,
+        "seconds": 384.299
+      },
+      {
+        "module": "H12WitnessData001",
+        "source_sha256": "da8db77769a60e726db62694d3089076b9a1be1243b70ff748d453fa05409156",
+        "build_exit_code": 0,
+        "kernel_exit_code": 0,
+        "seconds": 468.425
+      },
+      {
+        "module": "H12WitnessData002",
+        "source_sha256": "d0dcdf0395efc815da4678df20285495b40e855e2257447fb32783b634573858",
+        "build_exit_code": 0,
+        "kernel_exit_code": 0,
+        "seconds": 597.653
+      },
+      {
+        "module": "H12WitnessData003",
+        "source_sha256": "5d585e71b3afdc15e027ee6b8c8e356fc29182ff189857609852093c1889bc41",
+        "build_exit_code": 0,
+        "kernel_exit_code": 0,
+        "seconds": 529.689
+      },
+      {
+        "module": "H12WitnessData004",
+        "source_sha256": "069848096cdb44340bef4d24a5020a9fa0702b52ed5eb2a9b303517302e741b9",
+        "build_exit_code": 0,
+        "kernel_exit_code": 0,
+        "seconds": 777.656
+      },
+      {
+        "module": "H12WitnessData005",
+        "source_sha256": "dc4b7817d9b0863ee5ed3f03de0ffa9c62d8e7af55ebd938d1dad360078be82e",
+        "build_exit_code": 0,
+        "kernel_exit_code": 0,
+        "seconds": 511.024
+      }
+    ]
+  },
+  "modular_witness_pilot": {
+    "exit_code": 0,
+    "seconds": 7.2302800999896135,
+    "witnesses": 128,
+    "widths": {
+      "4": 22,
+      "8": 15,
+      "5": 64,
+      "6": 23,
+      "9": 4
+    }
+  },
+  "bibliographic_reviews": [
+    "KHOLOSHA_PAL_REVIEW.md",
+    "ZHANG_APPENDIX_REVIEW.md"
+  ],
+  "timestamp_utc": "2026-10-18T15:51:52.305711+00:00"
 }

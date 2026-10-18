@@ -6,7 +6,7 @@ Concluir a prova Lean global de inexistência de funções bent no espaço de fu
 
 Repositório autorizado: https://github.com/contatofilipevono-rgb/hrsbf-bent-verification
 
-Trabalhar na branch `main`, diretório `quartic_audit_2026_10_17`. A revisão `a8959a3` publicou o certificado simbólico completo e as duas execuções CPU; `51546b0` acrescentou a ponte espectral e um primeiro pacote de retomada. O estado atual tem 18 módulos formais e conclui a prova de que bentness implica os 43 filtros explícitos. Use `git rev-parse HEAD` para registrar a revisão efetivamente auditada.
+Trabalhar na branch `main`, diretório `quartic_audit_2026_10_17`. A revisão `a8959a3` publicou o certificado simbólico completo e as duas execuções CPU; `51546b0` acrescentou a ponte espectral e um primeiro pacote de retomada; `6a3a1ac` provou a necessidade dos filtros. O estado atual tem 28 módulos formais e também prova a cobertura pelas cartas numéricas e a ligação aos sistemas transformados. Use `git rev-parse HEAD` para registrar a revisão efetivamente auditada.
 
 Leia primeiro `CLAIMS.md`, `FORMALIZATION_STATUS.md`, `MATHEMATICAL_EXPLANATION.md` e `ADVERSARIAL_AUDIT.md`. Não é necessário retomar as buscas SAT interrompidas nem repetir a GPU para desenvolver o certificado Lean.
 
@@ -41,7 +41,7 @@ python cpu_replay/verify_certificate.py
 
 A última verificação levou cerca de 70–91 segundos nesta máquina. Não enumera os 2^38 pontos das cartas. Recalcula cada testemunho pela ANF original e verifica cada eliminação, combinação e divisão da árvore. Os relatórios são `cpu_replay/SYMBOLIC_CERTIFICATE_AUDIT.json` e `reports/VALIDATION_REPORT.json`.
 
-Para os 18 módulos Lean, usar exatamente Lean 4.35.0. Na raiz deste diretório:
+Para os 28 módulos Lean, usar exatamente Lean 4.35.0. Na raiz deste diretório:
 
 ```text
 python tools/verify_lean.py
@@ -53,13 +53,15 @@ Esse comando requer `lake` no PATH; aceita `--lake caminho/do/lake`. Compila e r
 
 ## Próximas obrigações formais, em ordem prática
 
-1. **Cobertura das cartas.** Ligar `necessary_chart_constraints` às bases e offsets numéricos de `cpu_replay/model.json`. A necessidade dos 43 filtros foi concluída em `H12FilterLink.bent_passes`; o teorema das restrições já recebe somente bentness. O quarto caso foi eliminado pela identidade curta. Falta provar formalmente que todo coeficiente satisfazendo essas restrições está na carta numérica correspondente. Os postos 7 e 36 já estão verificados em Python; não tomar esses resultados como axiomas formais.
+1. **Instanciar o certificado global.** A cobertura das cartas está concluída em `H12Affine.covers_bent_cpu`. `H12ChartFilters.bent_root` já coloca qualquer possível bent em uma raiz de 36 variáveis com os filtros transformados necessários; as 172 substituições têm provas exatas. Use essa declaração para aplicar `H12Refutation.check_sound` ao arquivo `DECOMPOSITION.json`. O quarto caso foi eliminado; as três primeiras raízes bastam para cobrir bentness, embora os dados preservem quatro raízes. Não refazer a prova de posto por enumeração: a reconstrução já é demonstrada por identidades lineares explícitas.
 2. **Completar a ponte espectral.** `H12Walsh` já prova autocorrelação bent → Walsh ±64 e a correção de uma rejeição espectral. Falta a direção Walsh plano → autocorrelação bent, para apresentar o teorema final também na definição espectral usual. A identidade de energia genérica e a permutação por translação XOR já estão disponíveis.
-3. **Instanciar o verificador.** `H12Refutation.check` é executável e `check_sound` prova sua correção sob um teste terminal correto. Converter os testemunhos de `DECOMPOSITION.json` para essa estrutura, demonstrando as igualdades exigidas. A escolha de pivô ou a heurística do gerador não precisa ser formalizada; é preciso conferir a prova que ele produziu. `transform` agora normaliza cada polinômio após a substituição, evitando crescimento de duplicatas.
-4. **Testes terminais eficientes.** A semântica dos bitsets dos geradores já está provada em `H12Truth.basis_semantics`. Ligar a fase linear à definição `H12Walsh.walsh` e aplicar uma rejeição por peso modular. `H12Bits` já calcula dois bits do peso por operações em blocos, com prova de correção; generalizar esse contador. A auditoria `reports/WALSH_WITNESS_MODULI.json` mostra que cada testemunho precisa de apenas 4–10 bits do peso, com distribuição 25920/90538/25384/18304/3563/579 para 4/5/6/8/9/10 bits. Não é necessário calcular o peso inteiro para rejeitar esses dados. Ainda falta provar e executar esses testes em Lean; a auditoria atual é Python. Não anunciar uma etapa executada por avaliação nativa como se fosse uma prova pura do núcleo.
-5. **Fechar o enunciado global e publicar.** A meta intermediária explícita é `∀ c : BitVec 43, ¬ H12Descent.BentAC (H12.quarticFunction c)`. Exportar também a versão em Walsh após concluir a equivalência. Compilar, imprimir axiomas, repetir os módulos pelo `leanchecker`, regenerar os hashes, testar o pacote e publicar o novo estado. Não marcar o objetivo concluído enquanto essas obrigações estiverem abertas.
+3. **Testes internos da árvore.** `H12Refutation.check` é executável e `check_sound` prova sua correção sob um teste terminal correto. Converter os testemunhos de `DECOMPOSITION.json` para essa estrutura, demonstrando as igualdades exigidas. A escolha de pivô ou a heurística do gerador não precisa ser formalizada; é preciso conferir a prova que ele produziu. `transform` agora normaliza cada polinômio após a substituição, evitando crescimento de duplicatas. A representação formal de cada carta é `H12Affine.rowU`; o sistema inicial correspondente está em `H12ChartFilters.targets`.
+4. **Conferência concreta dos testemunhos.** O peso exato/modular e a fase linear já estão formalizados em `H12Popcount` e `H12WalshTable`. `H12WitnessTheory.check_sound` prova o teste concreto. Os 164288 testemunhos estão em 41 arquivos de dados e um agregador, na biblioteca opcional `H12WitnessCertificate`. A execução completa está em andamento; usar `python tools/verify_lean_witnesses.py --lake lake --resume` para compilar e revisar sequencialmente. `H12TerminalTheory`, `H12WitnessSearch` e `H12CertificateBridge` fornecem as pontes genéricas para as folhas e as raízes. Não confundir geração dos dados, validação parcial e PASS final.
+5. **Fechar o enunciado global e publicar.** A meta intermediária explícita é `∀ c : BitVec 43, ¬ H12Descent.BentAC (H12.quarticFunction c)`. A equivalência espectral já está provada em `H12Fourier.bent_iff_flat`; usá-la para exportar a versão Walsh. Compilar, imprimir axiomas, repetir os módulos pelo `leanchecker`, regenerar os hashes, testar o pacote e publicar o novo estado. Não marcar o objetivo concluído enquanto essas obrigações estiverem abertas.
 
 A prova da necessidade dos filtros percorre `H12Restriction` (Poisson), `H12Weight` (carry quadrático), `H12Bits`/`H12TablePolynomial` (avaliação rápida correta), `H12PlaneTables`/`H12Truth` (tabelas corretas), `H12NumericFilters` (43 identidades individuais) e `H12FilterLink` (ligação final). As 43 identidades são conferidas separadamente como Booleanos, com uma prova conjunta por lista; isso foi muito mais eficiente que uma única decisão quantificada sobre `Fin 43`. `COMPLEMENT_PAIR_IDENTITY.md` explica ainda os filtros como 35 pares complementares; o verificador Python correspondente reproduz essa descrição, mas a fórmula curta não tem um lema Lean próprio.
+
+Para conferir que as constantes formais das cartas e dos filtros são precisamente as do modelo auditado, execute `python tools/check_affine_data.py`; o relatório é `reports/AFFINE_CHART_DATA_AUDIT.json`. A prova de cobertura não confia nesse relatório: ele estabelece a proveniência em relação ao JSON, enquanto as identidades e a semântica são conferidas pelo Lean.
 
 ## Detalhes para adaptar a árvore
 
@@ -70,6 +72,10 @@ Em cada passo linear do JSON, o campo `combination` seleciona filtros atuais. O 
 `Tree.split` cobre ambos os valores de uma paridade: seu `form` é a expressão da variável pivô no ramo zero; o ramo um usa `0 :: form`, pois o monômio de máscara zero representa 1. As folhas de soluções do JSON têm dimensão residual de até oito. Pode-se expandi-las em divisões de variáveis até ambientes constantes ou provar diretamente a enumeração exaustiva desse espaço residual. O verificador Python mantém a lista de variáveis ativas; a versão Lean genérica preserva semanticamente o ambiente original por substituição.
 
 O teste terminal ainda é uma hipótese explícita de `check_sound`. O fato de esse teorema compilar não confere o arquivo JSON nem seus valores Walsh. Testes pequenos de identidade correta, identidade incorreta, índice inválido e contradição espúria estão no final de `H12Refutation.lean`.
+
+Para uma raiz k, usar o sistema `H12ChartFilters.targets[k]!`, dimensão 36, e o ambiente de 43 coordenadas formado por `H12Affine.rowU k`. `H12ChartFilters.bent_root` já fornece uma atribuição `u : BitVec 36` que satisfaz esse sistema e cujo coeficiente original é `embed k u`. Falta ligar a observação do ambiente a esse vetor e instanciar a prova da árvore.
+
+Uma implementação possível, ainda não feita, é gerar definições dos nós em ordem inversa dos identificadores, compartilhando os filhos por nomes de constantes. Isso evita copiar a árvore inteira a cada referência. Nas folhas, pode-se enumerar a união dos suportes das coordenadas do ambiente, desde que a prova mostre que essa projeção preserva todas as observações. O teste deve validar o tamanho de 43 coordenadas e a cobertura de todas as atribuições residuais; aceitar apenas a lista externa de candidatos não basta.
 
 ## Ambiente local e continuidade
 
@@ -86,3 +92,7 @@ Os scripts em `experiments/` preservam contexto e podem mencionar caminhos do wo
 As duas execuções CPU já terminaram. Nenhum processo de busca é necessário para reproduzir o checkpoint. O caminho POSIX do C é proposto, mas ainda não foi executado em Linux; o Windows foi testado. O modelo de CI em `ci/` não está ativado no GitHub, pois a autorização existente não permitiu criar workflows. Não afirmar CI remoto verde.
 
 O usuário já autorizou publicação neste repositório. Usou-se a autenticação Git existente, sem solicitar nem guardar senha. Não inclua credenciais em arquivos ou logs. A atualização final deve manter `CLAIMS.md`, `FORMALIZATION_STATUS.md`, os relatórios e os hashes coerentes com a prova realmente compilada.
+
+## Referência nova avaliada
+
+Kholosha–Pal, arXiv:2610.03420v1: análise em `KHOLOSHA_PAL_REVIEW.md`. Não usar a suposta contradição por Poisson e baixo grau restrito: falta a incompatibilidade adicional e há contraexemplos à suficiência desses ingredientes. A conjectura homogênea quártica não é refutada pelos controles quadráticos.
