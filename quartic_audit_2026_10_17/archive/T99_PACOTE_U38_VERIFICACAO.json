@@ -1,0 +1,12 @@
+{
+  "verification": "PASS",
+  "payload_files": 43,
+  "archive_bytes": 997431,
+  "archive_sha256": "0f27f1426ebe4b4e006074a9a298bde51421fe885091a8e95315f863ceb535cc",
+  "manifest_entries_verified": 43,
+  "archive_crc_all_pass": true,
+  "isolated_extraction": "C:\\Users\\Valer\\Documents\\Codex\\2026-10-16\\https-chatgpt-com-s-cx-6ad2e1da63888191af8d539bda9b3bed\\work\\U38_reproducao_isolada",
+  "isolated_fast_chain": "PASS",
+  "isolated_complete_cubic_replay": "PASS",
+  "isolated_cubic_coefficient_rows_match": true
+}

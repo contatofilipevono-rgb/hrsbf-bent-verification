@@ -1,0 +1,90 @@
+{
+  "poisson_rows": 276,
+  "new_homogeneity_rows": 42,
+  "sign_variables": 4116,
+  "sampled_extensions": 8,
+  "distinct_sampled_parents": 1,
+  "records": [
+    {
+      "label": "positive_control_fixed",
+      "status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "seconds": 0.05551199999899836,
+      "integer_solution_verified": true,
+      "classification": "FEASIBLE_NECESSARY_CONDITIONS_ONLY"
+    },
+    {
+      "label": "sample_0",
+      "status": 1,
+      "message": "Time limit reached. (HiGHS Status 13: model_status is Time limit reached; primal_status is None)",
+      "seconds": 30.173156400000153,
+      "integer_solution_verified": false,
+      "classification": "INCONCLUSIVE",
+      "extension_id": 8204844421
+    },
+    {
+      "label": "sample_1",
+      "status": 1,
+      "message": "Time limit reached. (HiGHS Status 13: model_status is Time limit reached; primal_status is None)",
+      "seconds": 30.114268100000118,
+      "integer_solution_verified": false,
+      "classification": "INCONCLUSIVE",
+      "extension_id": 16794779013
+    },
+    {
+      "label": "sample_2",
+      "status": 1,
+      "message": "Time limit reached. (HiGHS Status 13: model_status is Time limit reached; primal_status is None)",
+      "seconds": 30.194081699999515,
+      "integer_solution_verified": false,
+      "classification": "INCONCLUSIVE",
+      "extension_id": 25384713605
+    },
+    {
+      "label": "sample_3",
+      "status": 1,
+      "message": "Time limit reached. (HiGHS Status 13: model_status is Time limit reached; primal_status is None)",
+      "seconds": 30.14879900000051,
+      "integer_solution_verified": false,
+      "classification": "INCONCLUSIVE",
+      "extension_id": 33974648197
+    },
+    {
+      "label": "sample_16",
+      "status": 1,
+      "message": "Time limit reached. (HiGHS Status 13: model_status is Time limit reached; primal_status is None)",
+      "seconds": 30.0931657000001,
+      "integer_solution_verified": false,
+      "classification": "INCONCLUSIVE",
+      "extension_id": 326032424325
+    },
+    {
+      "label": "sample_64",
+      "status": 1,
+      "message": "Time limit reached. (HiGHS Status 13: model_status is Time limit reached; primal_status is None)",
+      "seconds": 30.305270899998504,
+      "integer_solution_verified": false,
+      "classification": "INCONCLUSIVE",
+      "extension_id": 1348234640773
+    },
+    {
+      "label": "sample_128",
+      "status": 1,
+      "message": "Time limit reached. (HiGHS Status 13: model_status is Time limit reached; primal_status is None)",
+      "seconds": 30.095003599999472,
+      "integer_solution_verified": false,
+      "classification": "INCONCLUSIVE",
+      "extension_id": 2619544960389
+    },
+    {
+      "label": "sample_255",
+      "status": 1,
+      "message": "Time limit reached. (HiGHS Status 13: model_status is Time limit reached; primal_status is None)",
+      "seconds": 30.073215899999923,
+      "integer_solution_verified": false,
+      "classification": "INCONCLUSIVE",
+      "extension_id": 5205115272581
+    }
+  ],
+  "scope": "Simultaneous necessary conditions on the saved sample from one parent. Feasibility does not certify bentness; timeouts do not exclude candidates; numerical infeasibility is not a proof."
+}

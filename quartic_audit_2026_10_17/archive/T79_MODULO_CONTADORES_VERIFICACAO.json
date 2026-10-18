@@ -1,0 +1,23 @@
+{
+  "verification": "PASS",
+  "cases": [
+    {
+      "d": 4,
+      "residue_domain_bits": 31,
+      "solution_bits": 12,
+      "density_bits": 19,
+      "all_four_parameter_cases_feasible": true,
+      "operations_replayed": 28
+    },
+    {
+      "d": 8,
+      "residue_domain_bits": 237,
+      "solution_bits": 136,
+      "density_bits": 101,
+      "all_four_parameter_cases_feasible": true,
+      "operations_replayed": 872
+    }
+  ],
+  "seconds": 0.006454900001699571,
+  "scope": "Exact counts only for relaxed counter residues. This is not a density bound on coefficient vectors and does not establish attainable bent candidates."
+}

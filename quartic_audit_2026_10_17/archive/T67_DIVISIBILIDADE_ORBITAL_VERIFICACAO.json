@@ -1,0 +1,13 @@
+{
+  "verification": "PASS",
+  "odd_generators_checked": 116,
+  "odd_pairs_checked": 6670,
+  "odd_triples_checked": 253460,
+  "conclusion": "The number of full odd-weight input orbits with f=1 is divisible by 8 for every function in H(16,4).",
+  "proof": "Inclusion-exclusion for XOR weights: singleton terms are divisible by8, pair terms have coefficient-2 and intersections divisible by4, triple terms have coefficient4 and even intersections; all higher coefficients are divisible by8.",
+  "even_generator_exception_sets_verified": true,
+  "even_triples_with_odd_intersection": 128,
+  "outside_core_counterexample_actual_Wones": 16,
+  "seconds": 1.026865200001339,
+  "scope": "Complete finite overlap verification plus algebraic implication. Does not establish nonexistence or novelty."
+}

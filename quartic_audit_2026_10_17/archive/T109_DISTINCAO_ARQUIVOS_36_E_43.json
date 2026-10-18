@@ -1,0 +1,32 @@
+{
+  "verification": "FILE_CLASSIFICATION_NOT_FULL_RUN_AUDIT",
+  "received_model": {
+    "dimension": 36,
+    "scope": "Conditional on the five initial laws; no global nonexistence claim.",
+    "count": 68719476736,
+    "log": "run_0_68719476736_1792278761889388455.log",
+    "source_sha256": "1ac46f122d9138b0766c3e9a5c369fe05ac73e6058352f855dee6088fed42c75",
+    "basis_matches_T100": true,
+    "exit_code_reported": 0
+  },
+  "received_audit": {
+    "auditor_label": "Colab Composer AI Independent Auditor",
+    "status_label": "VERIFIED_AND_SIGNED",
+    "matches_executable_auditor_schema": false
+  },
+  "previous_pasted_global_audit": {
+    "dimension": 43,
+    "count": 8796093022208,
+    "source_sha256": "0e346b6a0ecac8fdb553ee277333a4eb48244e163902ce238c706a06c59b2cba",
+    "local_generated_source_sha256": "653339331df23b2786476a7093a733e54b19567e166057900cc7be6fbf587f59",
+    "source_hash_match": false,
+    "evidence": "Pasted text only; corresponding global model/raw log/source not received"
+  },
+  "pending_global_files": [
+    "h12_a100_global/model.json",
+    "h12_a100_global/solver.cu",
+    "h12_a100_global/run_0_8796093022208_1792277076133704069.log",
+    "h12_a100_global/auditoria_independente.json"
+  ],
+  "conclusion": "Received files concern conditional36 run; no global43 conclusion certified from these files. Need global source and raw logs to audit pasted global43 report."
+}

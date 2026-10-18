@@ -1,0 +1,46 @@
+{
+  "verification": "PASS",
+  "source": "Selected self-contained certificates and verifiers extracted from the research archive",
+  "isolated_python_mode": true,
+  "third_party_dependencies": false,
+  "checks": [
+    {
+      "verifier": "VERIFICAR_SEXTA_CONDICAO.py",
+      "exit_code": 0,
+      "PASS": true,
+      "seconds": 2.4692501000026823
+    },
+    {
+      "verifier": "VERIFICAR_REFINAMENTO_T29.py",
+      "exit_code": 0,
+      "PASS": true,
+      "seconds": 0.9628024000012374
+    },
+    {
+      "verifier": "VERIFICAR_LIMITE_QUOCIENTE_T30.py",
+      "exit_code": 0,
+      "PASS": true,
+      "seconds": 0.18912679999993998
+    },
+    {
+      "verifier": "VERIFICAR_SETIMA_CONDICAO_T31.py",
+      "exit_code": 0,
+      "PASS": true,
+      "seconds": 1.3407464000010805
+    },
+    {
+      "verifier": "VERIFICAR_COMBINACAO_T32.py",
+      "exit_code": 0,
+      "PASS": true,
+      "seconds": 0.6892119000003731
+    },
+    {
+      "verifier": "VERIFICAR_DESCIDA_T33.py",
+      "exit_code": 0,
+      "PASS": true,
+      "seconds": 0.3237425999977859
+    }
+  ],
+  "scope": "Fresh isolated executions of T28 through T33 certificates. This does not execute CUDA or prove the open global conjectures.",
+  "seconds": 6.008078099999693
+}

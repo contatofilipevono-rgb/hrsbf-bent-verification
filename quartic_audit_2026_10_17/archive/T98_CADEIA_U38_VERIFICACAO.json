@@ -1,0 +1,10 @@
+{
+  "verification": "PASS",
+  "scope": "Fast certificate consistency audit: complete cubic nullspace, affine compression, translation kernel, parity blocks, exhaustive-character records and rational aggregation. This does not replace rerunning the original coefficient producers and full rank enumerations.",
+  "pass_upper_bound": [
+    2011309,
+    34359738368
+  ],
+  "excluded_percent_safe_lower": "99.9941463203",
+  "seconds": 0.06742760000634007
+}

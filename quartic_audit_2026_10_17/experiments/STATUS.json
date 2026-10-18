@@ -1,0 +1,9 @@
+{
+  "certified_unsat": false,
+  "note": "SAT attempts are exploratory. Interrupted runs and timeouts do not establish UNSAT. Source paths refer to original workspace.",
+  "cegar_verified_models": [
+    "0x1f92501e012",
+    "0x6f7fffd3bfe",
+    "0x1e2d42aac00"
+  ]
+}

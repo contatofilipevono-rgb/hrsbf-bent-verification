@@ -1,0 +1,23 @@
+{
+  "verification": "PASS",
+  "short_input_signatures_checked": 256,
+  "short_input_identity_parameter_cases": 4,
+  "odd_divisibility_generator_checks": 116,
+  "odd_divisibility_pair_checks": 6670,
+  "odd_divisibility_triple_checks": 253460,
+  "original_thirteen_survivors_checked": 229,
+  "survivors_C0_then_C2": [
+    113,
+    60
+  ],
+  "C0_counter_identity": "W0=65536-128*a-192*b-32*w",
+  "C2_counter_identity": "W5555=32768-128*a-192*b-32*z",
+  "necessary_counter_congruences": [
+    "w+4*a+6*b=8 mod16",
+    "z+4*a+6*b=8 mod16"
+  ],
+  "Wones_congruence_redundancy_verified": true,
+  "nonimplication_witnesses_verified": true,
+  "seconds": 5.558610699998098,
+  "scope": "Exact identities, complete short-orbit and odd-overlap checks, and explicit witnesses. Finite-sample counts are not global bounds; Q4 polynomial equivalence is a separate check."
+}

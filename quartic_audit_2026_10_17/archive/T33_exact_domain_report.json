@@ -1,0 +1,13 @@
+{
+  "original_T27_domain": 325074944,
+  "extension_seventh_gradient12_hex": "0x7e",
+  "parents_rank_two": 65024,
+  "parents_rank_one": 46852,
+  "coincident_equations": 43008,
+  "coincident_consistent": 21504,
+  "inconsistent_parents": 21504,
+  "rank_two_extensions_per_parent": 1024,
+  "rank_one_extensions_per_parent": 2048,
+  "complete_T33_domain": 162537472,
+  "scope": "Exact domain before final energy and Poisson filters, satisfying first five conditions and seventh condition. Sixth does not descend and is not imposed. GPU not executed."
+}

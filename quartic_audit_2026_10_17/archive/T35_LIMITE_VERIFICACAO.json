@@ -1,0 +1,19 @@
+{
+  "verification": "PASS",
+  "independent_quadratic_bias_checks": 4800,
+  "branches": [
+    {
+      "branch": 0,
+      "conditional_pass_upper_bound": "1375476686851/8796093022208"
+    },
+    {
+      "branch": 1,
+      "conditional_pass_upper_bound": "172033/1048576"
+    }
+  ],
+  "global_pass_upper_bound": "2097035386883/562949953421312",
+  "global_excluded_lower_bound": "560852918034429/562949953421312",
+  "excluded_percent_lower_bound": 99.6274916848046,
+  "seconds": 69.28143699999782,
+  "scope": "Rigorous upper bound from all seven nonzero characters of three necessary second bits, after the six-condition normal form. Not exact density and not a nonexistence theorem."
+}

@@ -1,0 +1,25 @@
+{
+  "verification": "PASS",
+  "independent_quadratic_sums": 4880,
+  "exact_equation_span_checks": 51,
+  "branches": [
+    {
+      "branch": 0,
+      "conditional_pass_upper_bound": "22789206520826515/288230376151711744",
+      "conditional_pass_lower_bound": "13239590498137453/288230376151711744"
+    },
+    {
+      "branch": 1,
+      "conditional_pass_upper_bound": "1422770248417343/18014398509481984",
+      "conditional_pass_lower_bound": "829029565267905/18014398509481984"
+    }
+  ],
+  "global_pass_upper_bound": "34171368508165259/18446744073709551616",
+  "global_pass_lower_bound": "19871827020280693/18446744073709551616",
+  "excluded_percent_interval": [
+    99.81475664013322,
+    99.89227460986677
+  ],
+  "seconds": 181.21225089999643,
+  "scope": "Ten necessary conditions with character-specific restrictions. Positive survivor lower bound refers to passing filters, not to bent functions."
+}

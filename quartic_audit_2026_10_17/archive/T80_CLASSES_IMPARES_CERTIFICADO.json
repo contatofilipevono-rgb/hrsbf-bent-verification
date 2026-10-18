@@ -1,0 +1,20 @@
+{
+  "cases": [
+    {
+      "representative": 1,
+      "full_input_orbits": 1024,
+      "singleton_violations": [],
+      "pair_violations": [],
+      "triple_violations": []
+    },
+    {
+      "representative": 7,
+      "full_input_orbits": 1024,
+      "singleton_violations": [],
+      "pair_violations": [],
+      "triple_violations": []
+    }
+  ],
+  "seconds": 1.3785514000046533,
+  "scope": "Generator-overlap divisibility audit for the two odd quotient classes; conclusions require zero violations."
+}

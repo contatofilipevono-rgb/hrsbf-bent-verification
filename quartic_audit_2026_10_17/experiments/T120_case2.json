@@ -1,0 +1,12 @@
+{
+  "status": "TIMEOUT",
+  "case": 2,
+  "frequencies": [
+    0,
+    4095,
+    1
+  ],
+  "models": [
+    "0x1e2d42aac00"
+  ]
+}

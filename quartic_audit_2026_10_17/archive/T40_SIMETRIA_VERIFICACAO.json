@@ -1,0 +1,11 @@
+{
+  "verification": "PASS",
+  "unit_actions_checked": 8,
+  "core_conditions_preserved": 6,
+  "both_charts_preserved": true,
+  "additional_polynomial_relations_checked": 32,
+  "characters_covered": 127,
+  "character_orbits": 43,
+  "seconds": 1.3655961999975261,
+  "scope": "Exact normalizer symmetry permits equal character expectations within each orbit. It does not by itself supply an exclusion bound."
+}

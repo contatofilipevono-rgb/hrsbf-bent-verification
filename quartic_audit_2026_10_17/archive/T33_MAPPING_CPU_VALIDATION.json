@@ -1,0 +1,11 @@
+{
+  "verification": "PASS",
+  "CPU_mapped_states_checked": 49152,
+  "all_parent_equation_equivalences_checked": 111876,
+  "direct_original_ANF_Walsh_and_seventh_checks": 128,
+  "groups_disjoint_and_mappings_injective": true,
+  "complete_T33_domain": 162537472,
+  "GPU_executed": false,
+  "scope": "Complete affine-system equivalence on all parents, plus full selected extension cubes and original-ANF checks. CUDA mapper and GPU filters require the packaged pilot crosschecks.",
+  "seconds": 0.5287651999969967
+}

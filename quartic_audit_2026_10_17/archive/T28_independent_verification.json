@@ -1,0 +1,76 @@
+{
+  "branches": [
+    {
+      "branch_c99": 0,
+      "free_dimension": 111,
+      "degree": 4,
+      "monomials": 22063,
+      "direct_original_ANF_checks": 256,
+      "random_histogram_not_global_density": [
+        140,
+        116
+      ],
+      "examples": [
+        {
+          "coefficient_hex": "0x23182b1cd82470a1072f03b26bacf",
+          "h_u": 128,
+          "next_bit": 0
+        },
+        {
+          "coefficient_hex": "0x217b35d8d866b0fd875de69c3fa6c",
+          "h_u": -256,
+          "next_bit": 0
+        },
+        {
+          "coefficient_hex": "0x47920e80badfadcf88efe35246ec3",
+          "h_u": -112,
+          "next_bit": 1
+        },
+        {
+          "coefficient_hex": "0x126820ab23d945178b0de386719d8",
+          "h_u": 48,
+          "next_bit": 1
+        }
+      ]
+    },
+    {
+      "branch_c99": 1,
+      "free_dimension": 110,
+      "degree": 4,
+      "monomials": 29960,
+      "direct_original_ANF_checks": 256,
+      "random_histogram_not_global_density": [
+        128,
+        128
+      ],
+      "examples": [
+        {
+          "coefficient_hex": "0xa2ace0c0b261ade0cd7603cd7fd1",
+          "h_u": -224,
+          "next_bit": 0
+        },
+        {
+          "coefficient_hex": "0xa4799399fd31e1a2fa0fc5fe106a",
+          "h_u": -272,
+          "next_bit": 1
+        },
+        {
+          "coefficient_hex": "0x422fde4c463b800772d8f278599c",
+          "h_u": -176,
+          "next_bit": 1
+        },
+        {
+          "coefficient_hex": "0xafea34d7725634208cc750a6b9d5",
+          "h_u": -320,
+          "next_bit": 0
+        }
+      ]
+    }
+  ],
+  "total_original_ANF_checks": 512,
+  "method": "independently reconstructed cyclic quartic orbits and direct signed sum over all 4096 points in support 0x3f3f; no branch coefficient basis or orbit-pair identity used",
+  "rigorous_global_candidate_fraction_upper_bound": "45/1024",
+  "rigorous_global_excluded_fraction_lower_bound": "979/1024",
+  "scope": "degree-four minimum-weight bound; no exact sixth-condition density or nonexistence claim",
+  "seconds": 1.6298352999983763
+}

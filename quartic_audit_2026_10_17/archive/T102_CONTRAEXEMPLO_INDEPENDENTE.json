@@ -1,0 +1,17 @@
+{
+  "verification": "COUNTEREXAMPLE_CONFIRMED",
+  "scope": "Direct original truth tables, no symbolic ANF generator and no external dependencies. The Gemini constant-matrix construction uses only global quadratic coefficients; the actual second difference includes Boolean-substitution contributions from cubic terms.",
+  "direction_coefficients_hex": [
+    "0x11",
+    "0x8002"
+  ],
+  "actual_condition_values": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "actual_second_difference": 0,
+  "predicted_by_global_quadratic_part_only": 1,
+  "coefficient_vectors_evaluated": 12
+}

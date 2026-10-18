@@ -1,0 +1,7 @@
+{
+  "verification": "PASS",
+  "archive_bytes": 120102,
+  "sha256": "f62d537360c3b786c31a1faf4b3178ed56094c5e22e3bc99fb50163e61e57f9f",
+  "payload_files": 8,
+  "scope": "Audit report, standalone original-function counterexample, audit data and unmodified intact Gemini original. Not a corrected global-bound verifier."
+}

@@ -1,0 +1,7 @@
+{
+  "verification": "PASS",
+  "original_ANF_checks": 192,
+  "reconstructed_coefficient_terms": 226930,
+  "seconds": 3.9644840999972075,
+  "scope": "Complete periodic second-bit models after first five and seventh conditions, with original-ANF spot checks. No global nonexistence claim."
+}

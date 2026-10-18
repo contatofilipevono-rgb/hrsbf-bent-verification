@@ -1,0 +1,15 @@
+{
+  "verification": "PASS",
+  "partitions_checked": 23100,
+  "unit_invariance_checks": 8,
+  "raw_sum_monomials": 13760,
+  "normalized_models": [
+    {"branch":0,"monomials":71568,"degree":4},
+    {"branch":1,"monomials":62152,"degree":4}
+  ],
+  "witness_coefficient_hex": "0x75490772421b913c59ac8446a6b1d",
+  "new_h_values": {"0x27ff":-208,"0x6edf":-128,"0x39ff":-352,"0x5eef":-168},
+  "original_ANF_points_evaluated": 20944,
+  "seconds": 6.299389400002838,
+  "scope": "A new invariant necessary bit, not implied by the thirteen previous filters. No improved global density is asserted."
+}

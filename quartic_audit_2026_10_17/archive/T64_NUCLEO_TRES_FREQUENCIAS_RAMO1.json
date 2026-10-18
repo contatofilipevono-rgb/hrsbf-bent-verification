@@ -1,0 +1,8 @@
+{
+  "branch": 1,
+  "answer": null,
+  "time_limit_seconds": 20,
+  "solve_seconds": 34.38213749999704,
+  "variables": 35472,
+  "scope": "Six-condition core and three exact Walsh amplitudes only. SAT is not bentness; UNSAT would require independent proof verification."
+}

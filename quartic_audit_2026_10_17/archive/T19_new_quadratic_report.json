@@ -1,0 +1,24 @@
+{
+  "parents_in_T19_sample": 16384,
+  "parents_with_T19_survivors": 9602,
+  "tested_extensions_per_parent": 8192,
+  "tested_extensions": 134217728,
+  "T19_surviving_extensions_before_new_filter": 26868006,
+  "parents_failing_new_quadratic": 8012,
+  "positive_parents_failing_new_quadratic": 4606,
+  "T19_surviving_extensions_excluded_by_new_quadratic": 12805538,
+  "T19_surviving_extensions_after_new_quadratic": 14062468,
+  "coordinate_forms_masks_33_hex": [
+    "0x100e00001",
+    "0x100ffce38",
+    "0x100fed040",
+    "0xfc06db0",
+    "0xfc06e40",
+    "0x6db0",
+    "0x10238",
+    "0xfc0cc00",
+    "0xfc04ab0"
+  ],
+  "scope": "Exact accounting within the saved T19 sample, not a global exclusion rate. New necessary condition follows from a separate modular Walsh proof, not training labels.",
+  "seconds": 0.9987829999990936
+}

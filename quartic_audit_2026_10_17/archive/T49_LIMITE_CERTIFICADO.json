@@ -1,0 +1,1096 @@
+{
+  "branches": [
+    {
+      "branch": 0,
+      "old_conditional_pass_upper_bound": [
+        2019044361890115,
+        144115188075855872
+      ],
+      "character_expansion_upper_bound": [
+        3157261563341635,
+        288230376151711744
+      ],
+      "conditional_pass_upper_bound": [
+        3157261563341635,
+        288230376151711744
+      ],
+      "new_characters": [
+        {
+          "combination": 128,
+          "symmetry_orbit": [
+            128
+          ],
+          "average_bias_upper_bound": [
+            26048506655,
+            2199023255552
+          ]
+        },
+        {
+          "combination": 129,
+          "symmetry_orbit": [
+            129,
+            132
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 130,
+          "symmetry_orbit": [
+            130
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 131,
+          "symmetry_orbit": [
+            131,
+            134
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 133,
+          "symmetry_orbit": [
+            133
+          ],
+          "average_bias_upper_bound": [
+            2147488173,
+            274877906944
+          ]
+        },
+        {
+          "combination": 135,
+          "symmetry_orbit": [
+            135
+          ],
+          "average_bias_upper_bound": [
+            17179869365,
+            2199023255552
+          ]
+        },
+        {
+          "combination": 136,
+          "symmetry_orbit": [
+            136,
+            144,
+            160,
+            192
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 137,
+          "symmetry_orbit": [
+            137,
+            148,
+            164,
+            193
+          ],
+          "average_bias_upper_bound": [
+            17179869345,
+            2199023255552
+          ]
+        },
+        {
+          "combination": 138,
+          "symmetry_orbit": [
+            138,
+            146,
+            162,
+            194
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 139,
+          "symmetry_orbit": [
+            139,
+            150,
+            166,
+            195
+          ],
+          "average_bias_upper_bound": [
+            17179869223,
+            2199023255552
+          ]
+        },
+        {
+          "combination": 140,
+          "symmetry_orbit": [
+            140,
+            145,
+            161,
+            196
+          ],
+          "average_bias_upper_bound": [
+            8589934597,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 141,
+          "symmetry_orbit": [
+            141,
+            149,
+            165,
+            197
+          ],
+          "average_bias_upper_bound": [
+            8589934597,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 142,
+          "symmetry_orbit": [
+            142,
+            147,
+            163,
+            198
+          ],
+          "average_bias_upper_bound": [
+            17179869187,
+            2199023255552
+          ]
+        },
+        {
+          "combination": 143,
+          "symmetry_orbit": [
+            143,
+            151,
+            167,
+            199
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 152,
+          "symmetry_orbit": [
+            152,
+            168,
+            208,
+            224
+          ],
+          "average_bias_upper_bound": [
+            4294967549,
+            549755813888
+          ]
+        },
+        {
+          "combination": 153,
+          "symmetry_orbit": [
+            153,
+            172,
+            212,
+            225
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 154,
+          "symmetry_orbit": [
+            154,
+            170,
+            210,
+            226
+          ],
+          "average_bias_upper_bound": [
+            8589934595,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 155,
+          "symmetry_orbit": [
+            155,
+            174,
+            214,
+            227
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 156,
+          "symmetry_orbit": [
+            156,
+            169,
+            209,
+            228
+          ],
+          "average_bias_upper_bound": [
+            8589934631,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 157,
+          "symmetry_orbit": [
+            157,
+            173,
+            213,
+            229
+          ],
+          "average_bias_upper_bound": [
+            2147679965,
+            274877906944
+          ]
+        },
+        {
+          "combination": 158,
+          "symmetry_orbit": [
+            158,
+            171,
+            211,
+            230
+          ],
+          "average_bias_upper_bound": [
+            17179869219,
+            2199023255552
+          ]
+        },
+        {
+          "combination": 159,
+          "symmetry_orbit": [
+            159,
+            175,
+            215,
+            231
+          ],
+          "average_bias_upper_bound": [
+            4294967435,
+            549755813888
+          ]
+        },
+        {
+          "combination": 176,
+          "symmetry_orbit": [
+            176,
+            200
+          ],
+          "average_bias_upper_bound": [
+            10550828193,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 177,
+          "symmetry_orbit": [
+            177,
+            204
+          ],
+          "average_bias_upper_bound": [
+            8589934601,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 178,
+          "symmetry_orbit": [
+            178,
+            202
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 179,
+          "symmetry_orbit": [
+            179,
+            206
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 180,
+          "symmetry_orbit": [
+            180,
+            201
+          ],
+          "average_bias_upper_bound": [
+            8589934597,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 181,
+          "symmetry_orbit": [
+            181,
+            205
+          ],
+          "average_bias_upper_bound": [
+            17179917851,
+            2199023255552
+          ]
+        },
+        {
+          "combination": 182,
+          "symmetry_orbit": [
+            182,
+            203
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 183,
+          "symmetry_orbit": [
+            183,
+            207
+          ],
+          "average_bias_upper_bound": [
+            2147483665,
+            274877906944
+          ]
+        },
+        {
+          "combination": 184,
+          "symmetry_orbit": [
+            184,
+            216,
+            232,
+            240
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 185,
+          "symmetry_orbit": [
+            185,
+            220,
+            236,
+            241
+          ],
+          "average_bias_upper_bound": [
+            17179869223,
+            2199023255552
+          ]
+        },
+        {
+          "combination": 186,
+          "symmetry_orbit": [
+            186,
+            218,
+            234,
+            242
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 187,
+          "symmetry_orbit": [
+            187,
+            222,
+            238,
+            243
+          ],
+          "average_bias_upper_bound": [
+            17179869199,
+            2199023255552
+          ]
+        },
+        {
+          "combination": 188,
+          "symmetry_orbit": [
+            188,
+            217,
+            233,
+            244
+          ],
+          "average_bias_upper_bound": [
+            8589934621,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 189,
+          "symmetry_orbit": [
+            189,
+            221,
+            237,
+            245
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 190,
+          "symmetry_orbit": [
+            190,
+            219,
+            235,
+            246
+          ],
+          "average_bias_upper_bound": [
+            17179869199,
+            2199023255552
+          ]
+        },
+        {
+          "combination": 191,
+          "symmetry_orbit": [
+            191,
+            223,
+            239,
+            247
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 248,
+          "symmetry_orbit": [
+            248
+          ],
+          "average_bias_upper_bound": [
+            24518407365,
+            2199023255552
+          ]
+        },
+        {
+          "combination": 249,
+          "symmetry_orbit": [
+            249,
+            252
+          ],
+          "average_bias_upper_bound": [
+            8589934605,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 250,
+          "symmetry_orbit": [
+            250
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 251,
+          "symmetry_orbit": [
+            251,
+            254
+          ],
+          "average_bias_upper_bound": [
+            4294967299,
+            549755813888
+          ]
+        },
+        {
+          "combination": 253,
+          "symmetry_orbit": [
+            253
+          ],
+          "average_bias_upper_bound": [
+            4294977565,
+            549755813888
+          ]
+        },
+        {
+          "combination": 255,
+          "symmetry_orbit": [
+            255
+          ],
+          "average_bias_upper_bound": [
+            8589934789,
+            1099511627776
+          ]
+        }
+      ]
+    },
+    {
+      "branch": 1,
+      "old_conditional_pass_upper_bound": [
+        462076972931659,
+        36028797018963968
+      ],
+      "character_expansion_upper_bound": [
+        746630757545035,
+        72057594037927936
+      ],
+      "conditional_pass_upper_bound": [
+        746630757545035,
+        72057594037927936
+      ],
+      "new_characters": [
+        {
+          "combination": 128,
+          "symmetry_orbit": [
+            128
+          ],
+          "average_bias_upper_bound": [
+            13023734695,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 129,
+          "symmetry_orbit": [
+            129,
+            132
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 130,
+          "symmetry_orbit": [
+            130
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 131,
+          "symmetry_orbit": [
+            131,
+            134
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 133,
+          "symmetry_orbit": [
+            133
+          ],
+          "average_bias_upper_bound": [
+            4294976687,
+            549755813888
+          ]
+        },
+        {
+          "combination": 135,
+          "symmetry_orbit": [
+            135
+          ],
+          "average_bias_upper_bound": [
+            8589934749,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 136,
+          "symmetry_orbit": [
+            136,
+            144,
+            160,
+            192
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 137,
+          "symmetry_orbit": [
+            137,
+            148,
+            164,
+            193
+          ],
+          "average_bias_upper_bound": [
+            2147483655,
+            274877906944
+          ]
+        },
+        {
+          "combination": 138,
+          "symmetry_orbit": [
+            138,
+            146,
+            162,
+            194
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 139,
+          "symmetry_orbit": [
+            139,
+            150,
+            166,
+            195
+          ],
+          "average_bias_upper_bound": [
+            8589934601,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 140,
+          "symmetry_orbit": [
+            140,
+            145,
+            161,
+            196
+          ],
+          "average_bias_upper_bound": [
+            8589934597,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 141,
+          "symmetry_orbit": [
+            141,
+            149,
+            165,
+            197
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 142,
+          "symmetry_orbit": [
+            142,
+            147,
+            163,
+            198
+          ],
+          "average_bias_upper_bound": [
+            4294967297,
+            549755813888
+          ]
+        },
+        {
+          "combination": 143,
+          "symmetry_orbit": [
+            143,
+            151,
+            167,
+            199
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 152,
+          "symmetry_orbit": [
+            152,
+            168,
+            208,
+            224
+          ],
+          "average_bias_upper_bound": [
+            4294967571,
+            549755813888
+          ]
+        },
+        {
+          "combination": 153,
+          "symmetry_orbit": [
+            153,
+            172,
+            212,
+            225
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 154,
+          "symmetry_orbit": [
+            154,
+            170,
+            210,
+            226
+          ],
+          "average_bias_upper_bound": [
+            8589934595,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 155,
+          "symmetry_orbit": [
+            155,
+            174,
+            214,
+            227
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 156,
+          "symmetry_orbit": [
+            156,
+            169,
+            209,
+            228
+          ],
+          "average_bias_upper_bound": [
+            8589934707,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 157,
+          "symmetry_orbit": [
+            157,
+            173,
+            213,
+            229
+          ],
+          "average_bias_upper_bound": [
+            4295315517,
+            549755813888
+          ]
+        },
+        {
+          "combination": 158,
+          "symmetry_orbit": [
+            158,
+            171,
+            211,
+            230
+          ],
+          "average_bias_upper_bound": [
+            4294967299,
+            549755813888
+          ]
+        },
+        {
+          "combination": 159,
+          "symmetry_orbit": [
+            159,
+            175,
+            215,
+            231
+          ],
+          "average_bias_upper_bound": [
+            8589934799,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 176,
+          "symmetry_orbit": [
+            176,
+            200
+          ],
+          "average_bias_upper_bound": [
+            82423343,
+            8589934592
+          ]
+        },
+        {
+          "combination": 177,
+          "symmetry_orbit": [
+            177,
+            204
+          ],
+          "average_bias_upper_bound": [
+            8589934601,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 178,
+          "symmetry_orbit": [
+            178,
+            202
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 179,
+          "symmetry_orbit": [
+            179,
+            206
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 180,
+          "symmetry_orbit": [
+            180,
+            201
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 181,
+          "symmetry_orbit": [
+            181,
+            205
+          ],
+          "average_bias_upper_bound": [
+            4295010363,
+            549755813888
+          ]
+        },
+        {
+          "combination": 182,
+          "symmetry_orbit": [
+            182,
+            203
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 183,
+          "symmetry_orbit": [
+            183,
+            207
+          ],
+          "average_bias_upper_bound": [
+            8589934651,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 184,
+          "symmetry_orbit": [
+            184,
+            216,
+            232,
+            240
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 185,
+          "symmetry_orbit": [
+            185,
+            220,
+            236,
+            241
+          ],
+          "average_bias_upper_bound": [
+            4294967305,
+            549755813888
+          ]
+        },
+        {
+          "combination": 186,
+          "symmetry_orbit": [
+            186,
+            218,
+            234,
+            242
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 187,
+          "symmetry_orbit": [
+            187,
+            222,
+            238,
+            243
+          ],
+          "average_bias_upper_bound": [
+            8589934595,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 188,
+          "symmetry_orbit": [
+            188,
+            217,
+            233,
+            244
+          ],
+          "average_bias_upper_bound": [
+            4294967313,
+            549755813888
+          ]
+        },
+        {
+          "combination": 189,
+          "symmetry_orbit": [
+            189,
+            221,
+            237,
+            245
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 190,
+          "symmetry_orbit": [
+            190,
+            219,
+            235,
+            246
+          ],
+          "average_bias_upper_bound": [
+            8589934595,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 191,
+          "symmetry_orbit": [
+            191,
+            223,
+            239,
+            247
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 248,
+          "symmetry_orbit": [
+            248
+          ],
+          "average_bias_upper_bound": [
+            3064802357,
+            274877906944
+          ]
+        },
+        {
+          "combination": 249,
+          "symmetry_orbit": [
+            249,
+            252
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 250,
+          "symmetry_orbit": [
+            250
+          ],
+          "average_bias_upper_bound": [
+            8589934593,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 251,
+          "symmetry_orbit": [
+            251,
+            254
+          ],
+          "average_bias_upper_bound": [
+            8589934601,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 253,
+          "symmetry_orbit": [
+            253
+          ],
+          "average_bias_upper_bound": [
+            1073745651,
+            137438953472
+          ]
+        },
+        {
+          "combination": 255,
+          "symmetry_orbit": [
+            255
+          ],
+          "average_bias_upper_bound": [
+            4294967333,
+            549755813888
+          ]
+        }
+      ]
+    }
+  ],
+  "global_pass_upper_bound": [
+    4650523078431705,
+    18446744073709551616
+  ],
+  "global_excluded_lower_bound": [
+    18442093550631119911,
+    18446744073709551616
+  ],
+  "excluded_percent_lower_bound": 99.97478946387585,
+  "scope": "Fourteen necessary conditions including the invariant T48 bit. Independent T49 verification pending."
+}

@@ -1,0 +1,144 @@
+{
+  "verification": "PASS",
+  "combined_linear_form_rank": 14,
+  "irrelevant_linear_kernel_dimension": 102,
+  "aggregate_coordinates_after_three_laws": 11,
+  "free_binary_choices_before_last_gate": 9,
+  "aggregate_patterns_passing": 384,
+  "branch_pattern_counts": [
+    256,
+    128
+  ],
+  "exact_original_fraction": "3/128",
+  "form_order": [
+    "u1",
+    "v1",
+    "u2",
+    "v2",
+    "u3",
+    "v3",
+    "u4",
+    "v4",
+    "a",
+    "t",
+    "R"
+  ],
+  "forms": [
+    [
+      0,
+      4,
+      8,
+      18,
+      42,
+      52,
+      56,
+      94
+    ],
+    [
+      14,
+      22,
+      46,
+      71,
+      81,
+      85,
+      98,
+      106
+    ],
+    [
+      1,
+      9,
+      15,
+      28,
+      53,
+      67,
+      76,
+      103
+    ],
+    [
+      3,
+      11,
+      34,
+      45,
+      55,
+      69,
+      78,
+      89
+    ],
+    [
+      2,
+      10,
+      25,
+      37,
+      54,
+      68,
+      83,
+      104
+    ],
+    [
+      12,
+      20,
+      29,
+      33,
+      41,
+      48,
+      96,
+      110
+    ],
+    [
+      13,
+      21,
+      38,
+      70,
+      74,
+      93,
+      97,
+      109
+    ],
+    [
+      24,
+      32,
+      47,
+      72,
+      80,
+      86,
+      91,
+      107
+    ],
+    [
+      57
+    ],
+    [
+      23,
+      31,
+      39,
+      112
+    ],
+    [
+      5,
+      6,
+      7,
+      16,
+      17,
+      19,
+      43,
+      44,
+      49,
+      50,
+      51,
+      58,
+      59,
+      62,
+      63,
+      66,
+      82,
+      84,
+      87,
+      95,
+      100,
+      102,
+      105,
+      108
+    ]
+  ],
+  "scope": "Exact equivalence and count for the first five conditions together with the seventh. The sixth is handled separately; this is not a bentness characterization."
+}

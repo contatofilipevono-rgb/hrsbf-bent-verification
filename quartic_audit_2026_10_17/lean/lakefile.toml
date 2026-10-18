@@ -1,0 +1,7 @@
+name = "H12Audit"
+version = "0.1.0"
+defaultTargets = ["H12Audit"]
+
+[[lean_lib]]
+name = "H12Audit"
+roots = ["H12Audit", "H12PeriodFour", "H12Descent"]

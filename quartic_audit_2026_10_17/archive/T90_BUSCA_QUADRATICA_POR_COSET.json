@@ -1,0 +1,37 @@
+{
+  "scope": "Selected cosets only; satisfying 26 combinations does not impose all 385 original conditions. Ten-second pilot per coset, nonzero U displacement required. No global nonexistence claim.",
+  "records": [
+    {
+      "coset_representative": "0x0",
+      "answer": true,
+      "solver_seconds": 0.003056400004425086,
+      "coefficient_variables": 38,
+      "total_variables": 741,
+      "quadratic_conditions": 26,
+      "coefficient_hex": "0x492709594aa07fc0e19184c0b0080",
+      "U_coordinates_hex": "0x3fffffffff",
+      "all26_verified_against_original": true,
+      "number_of_385_cubic_conditions_failed": 158
+    },
+    {
+      "coset_representative": "0x530947633e72251c0345fef412326",
+      "answer": null,
+      "solver_seconds": 10.000942400001804,
+      "coefficient_variables": 38,
+      "total_variables": 741,
+      "quadratic_conditions": 26
+    },
+    {
+      "coset_representative": "0x72b5313f449f4632ca1fbd553deba",
+      "answer": true,
+      "solver_seconds": 1.9598786999995355,
+      "coefficient_variables": 38,
+      "total_variables": 741,
+      "quadratic_conditions": 26,
+      "coefficient_hex": "0x72b7313f049f4d324a1ebd15bdeba",
+      "U_coordinates_hex": "0x10102c824",
+      "all26_verified_against_original": true,
+      "number_of_385_cubic_conditions_failed": 191
+    }
+  ]
+}

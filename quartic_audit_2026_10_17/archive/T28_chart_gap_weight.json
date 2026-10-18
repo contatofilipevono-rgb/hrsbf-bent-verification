@@ -1,0 +1,11 @@
+{
+  "gap": "A xor B",
+  "quadratic_eliminated_pairs": 31,
+  "residual_linear": true,
+  "residual_constant": false,
+  "ones_fraction_numerator": 1,
+  "ones_fraction_denominator": 2,
+  "bound_reason": "Whenever A xor B=1, at least one of charts A,B violates the sixth condition. Each chart has original-space measure 1/64.",
+  "global_candidate_fraction_upper_bound_numerator": 5,
+  "global_candidate_fraction_upper_bound_denominator": 128
+}

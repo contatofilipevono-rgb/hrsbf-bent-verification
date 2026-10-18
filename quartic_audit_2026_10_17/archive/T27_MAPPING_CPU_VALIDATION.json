@@ -1,0 +1,10 @@
+{
+  "CPU_mapped_states_checked": 98304,
+  "all_states_unique_within_parent": true,
+  "all_retained_parent_gradients_checked": 133380,
+  "direct_original_ANF_and_Walsh_checks": 128,
+  "all_three_laws_and_two_quadratics_verified": true,
+  "complete_domain_size": 325074944,
+  "GPU_executed": false,
+  "scope": "Host logic, complete retained-parent gradients and exact ANF witnesses validated. CUDA mapper and T27 GPU execution still require the included CPU/GPU crosschecks on an A100."
+}

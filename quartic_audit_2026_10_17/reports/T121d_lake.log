@@ -1,0 +1,14 @@
+ℹ [2/5] Replayed H12Descent
+info: H12Descent.lean:96:0: 'H12Descent.sorted_partition' depends on axioms: [propext, Quot.sound]
+info: H12Descent.lean:97:0: 'H12Descent.descent_mod_three' depends on axioms: [propext, Quot.sound]
+info: H12Descent.lean:159:0: 'H12Descent.bent_rotational_descent' depends on axioms: [propext, Quot.sound]
+ℹ [3/5] Built H12PeriodFour (6.1s)
+info: H12PeriodFour.lean:223:0: 'H12.basis_periodic_columns' depends on axioms: [propext]
+info: H12PeriodFour.lean:224:0: 'H12.restriction_normal_form' depends on axioms: [propext, Quot.sound]
+info: H12PeriodFour.lean:225:0: 'H12.four_case_classification' depends on axioms: [propext, Quot.sound]
+info: H12PeriodFour.lean:226:0: 'H12.periodic_reduction' depends on axioms: [propext, Quot.sound]
+info: H12PeriodFour.lean:227:0: 'H12.quartic_periodic' depends on axioms: [propext, Quot.sound]
+ℹ [4/5] Built H12Audit (2.1s)
+info: H12Audit.lean:58:0: 'H12Audit.bent_rotational_four_cases' depends on axioms: [propext, Quot.sound]
+info: H12Audit.lean:59:0: 'H12Audit.quartic_bent_four_cases' depends on axioms: [propext, Quot.sound]
+Build completed successfully (5 jobs).

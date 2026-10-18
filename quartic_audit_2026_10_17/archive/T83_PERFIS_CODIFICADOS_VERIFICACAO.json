@@ -1,0 +1,7 @@
+{
+  "verification": "PASS",
+  "lookup_table_assignment_checks": 256,
+  "positive_target_profiles": 128,
+  "seconds": 0.01490380000177538,
+  "scope": "Exact target-table component, including positive profiles and bit-mutated controls. Does not establish realization by coefficients."
+}

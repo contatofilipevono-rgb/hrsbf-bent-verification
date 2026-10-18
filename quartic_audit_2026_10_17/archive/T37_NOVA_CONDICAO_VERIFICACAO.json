@@ -1,0 +1,20 @@
+{
+  "verification": "PASS",
+  "partitions_checked": 5775,
+  "new_condition_support": "0x33ff",
+  "degree": 3,
+  "monomials": 4748,
+  "witness_coefficient_hex": "0x18649e30a3513dbc1231f902c2da",
+  "four_existing_periodic_values": {
+    "0x3f3f": -96,
+    "0x5f5f": -288,
+    "0x6f6f": -160,
+    "0x7777": -288
+  },
+  "new_support_h": -120,
+  "required_divisibility": 32,
+  "second_new_support_h": 168,
+  "original_ANF_points_evaluated": 14432,
+  "seconds": 0.7645716000042739,
+  "scope": "Exact witness passes all nine old conditions and violates the additional necessary condition. This proves non-implication, not a global rejection rate or nonexistence."
+}

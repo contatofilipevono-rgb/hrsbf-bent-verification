@@ -1,0 +1,9 @@
+{
+  "n": 8,
+  "functions_checked": 1024,
+  "all_saved_nonlinearities_agree": true,
+  "all_saved_Q2_agree": true,
+  "all_saved_M2_agree": true,
+  "method": "Gray coefficient enumeration; packed truth-table XOR updates; Walsh by direct Hamming weights against linear characters; autocorrelations by direct differences.",
+  "seconds": 0.036288400000557886
+}

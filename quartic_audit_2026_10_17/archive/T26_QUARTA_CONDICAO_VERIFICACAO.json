@@ -1,0 +1,30 @@
+{
+  "all_triple_intersections_even": true,
+  "raw_terms": 293,
+  "exact_reduced_terms": 261,
+  "quadratic_terms": 256,
+  "linear_terms": 5,
+  "factorization_verified": true,
+  "independent_modular_checks": 1024,
+  "pairing_toggle_c57_c113_verified": true,
+  "exact_fraction_passing_four_conditions": "1/16",
+  "free_parameters": 112,
+  "sample_histogram": [
+    502,
+    522
+  ],
+  "examples": {
+    "0": {
+      "coefficients_hex": "0x3bd2b6ceac714c679c9a5fc696d6a",
+      "W0": 2048,
+      "quadratic_value": 0
+    },
+    "1": {
+      "coefficients_hex": "0x52fb9c6b814c76cad1cea9e41d822",
+      "W0": -384,
+      "quadratic_value": 1
+    }
+  },
+  "scope": "Necessary conditions for bentness; no assertion that remaining candidates are bent. Exact fraction follows from the algebraic pairing, not the sample histogram.",
+  "triple_intersection_basis": "After substituting c113=c57 and c115=0"
+}

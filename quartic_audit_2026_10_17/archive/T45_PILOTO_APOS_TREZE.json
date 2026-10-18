@@ -1,0 +1,51 @@
+{
+  "passing_thirteen_indices": [
+    0,
+    8,
+    10,
+    47,
+    90,
+    149,
+    171,
+    174,
+    179,
+    187,
+    260,
+    261,
+    267,
+    276,
+    287,
+    304,
+    315,
+    347,
+    356,
+    365,
+    407,
+    413,
+    454,
+    462,
+    483,
+    501
+  ],
+  "discovery_survivors": 10,
+  "validation_survivors": 16,
+  "choices": [
+    {
+      "selection": "maximum_discovery",
+      "support_hex": "0x65ff",
+      "discovery_rejected": 9,
+      "validation_rejected": 5,
+      "terms": 6210,
+      "witness": "0x661d58a1f584edab5f8294ac55e6"
+    },
+    {
+      "selection": "smallest_additional",
+      "support_hex": "0x27ff",
+      "discovery_rejected": 7,
+      "validation_rejected": 9,
+      "terms": 5498,
+      "witness": "0x661d58a1f584edab5f8294ac55e6"
+    }
+  ],
+  "scope": "Selections use only discovery survivors; validation survivors held out. Finite pilot, not a global rate."
+}

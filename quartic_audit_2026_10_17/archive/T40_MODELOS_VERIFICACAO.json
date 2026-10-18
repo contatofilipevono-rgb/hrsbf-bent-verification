@@ -1,0 +1,56 @@
+{
+  "verification": "PASS",
+  "complete_substitutions": [
+    {
+      "support": "0x33ff",
+      "branch": 0,
+      "monomials": 16009,
+      "degree": 4
+    },
+    {
+      "support": "0x33ff",
+      "branch": 1,
+      "monomials": 14547,
+      "degree": 3
+    },
+    {
+      "support": "0x66ff",
+      "branch": 0,
+      "monomials": 40902,
+      "degree": 4
+    },
+    {
+      "support": "0x66ff",
+      "branch": 1,
+      "monomials": 39781,
+      "degree": 4
+    },
+    {
+      "support": "0x73bf",
+      "branch": 0,
+      "monomials": 37187,
+      "degree": 4
+    },
+    {
+      "support": "0x73bf",
+      "branch": 1,
+      "monomials": 36300,
+      "degree": 4
+    },
+    {
+      "support": "0x76ef",
+      "branch": 0,
+      "monomials": 28391,
+      "degree": 4
+    },
+    {
+      "support": "0x76ef",
+      "branch": 1,
+      "monomials": 29142,
+      "degree": 4
+    }
+  ],
+  "original_ANF_checks": 256,
+  "seconds": 10.776599999997416,
+  "scope": "Exact additional first-bit condition after the six-condition core; no global exclusion bound is asserted by this checker alone."
+}

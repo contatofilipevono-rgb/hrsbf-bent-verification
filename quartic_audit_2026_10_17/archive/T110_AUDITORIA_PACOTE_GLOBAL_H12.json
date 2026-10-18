@@ -1,0 +1,41 @@
+{
+  "verification": "PASS_ARCHIVE_SOURCE_AND_COMPLETE_LOG",
+  "archive_sha256": "9fbe70331b23097993252a1a664ef3248d618c7720f61395c5baa43665a796ad",
+  "source_sha256": "0e346b6a0ecac8fdb553ee277333a4eb48244e163902ce238c706a06c59b2cba",
+  "source_changes_from_prepared_version": [
+    "Two blank lines in parity helper",
+    "Default time limit 2400 to 5400 seconds"
+  ],
+  "source_algorithm_and_all_embedded_constants_unchanged": true,
+  "identity_basis_dimension": 43,
+  "five_initial_laws_assumed": false,
+  "complete_range": {
+    "status": "COMPLETE_RANGE",
+    "start": 0,
+    "count": 8796093022208,
+    "requested": 8796093022208,
+    "bent": 0
+  },
+  "batches_checked": 8388608,
+  "all_batch_boundaries_contiguous": true,
+  "all_counter_increments_consistent": true,
+  "full_log_sha256": "ccfe80ac2dbbe8a6324f82d61752240e7c9821d0c4505c00035ecaaab10de95a",
+  "gpu_header": "GPU NVIDIA A100-SXM4-40GB; FULL H(12,4), 43 original variables, no five-law assumption",
+  "cpu_gpu_validation_count": 2093,
+  "last_batch": {
+    "end_exclusive": 8796093022208,
+    "tested": 8796093022208,
+    "quadratic_survivors": 949760,
+    "w0_survivors": 15779,
+    "bent": 0,
+    "gpu_batch_ms": 0.447
+  },
+  "sum_reported_gpu_batch_seconds": 2758.0309270067587,
+  "included_sparse_audit_consistent": true,
+  "audit_seconds": 52.387770200002706,
+  "limitations": [
+    "GPU enumeration was not repeated on this local machine.",
+    "Archive logs attest to the reported run; they are not a formal proof certificate of every hardware operation.",
+    "No conclusion for H(16,4), all even n, or novelty against literature."
+  ]
+}

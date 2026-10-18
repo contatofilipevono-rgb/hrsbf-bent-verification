@@ -1,0 +1,110 @@
+{
+  "verify_linear_laws": {
+    "status": "PASS",
+    "original_dimension": 43,
+    "necessary_quadratic_filters": 43,
+    "verified_boolean_polynomial_identities": 3,
+    "products_per_identity": [
+      22,
+      1,
+      24
+    ],
+    "scope": "Three exact linear consequences; not a global UNSAT certificate."
+  },
+  "verify_periodic_reduction": {
+    "status": "PASS",
+    "original_dimension": 43,
+    "periodic_image_dimension": 4,
+    "periodic_coefficient_masks": [
+      "0x18c8000",
+      "0x10000000000",
+      "0x2d57a733bee",
+      "0x40000000000"
+    ],
+    "allowed_cases": [
+      {
+        "parameter_code": 2,
+        "truth_table": "0x6ca0",
+        "short_input_weight": 36,
+        "long_orbits_weight": 165,
+        "required_total_weight": 2016,
+        "short_weights_even_odd": [
+          32,
+          4
+        ],
+        "required_long_weights_even_odd": [
+          80,
+          85
+        ]
+      },
+      {
+        "parameter_code": 3,
+        "truth_table": "0x7ee8",
+        "short_input_weight": 40,
+        "long_orbits_weight": 170,
+        "required_total_weight": 2080,
+        "short_weights_even_odd": [
+          36,
+          4
+        ],
+        "required_long_weights_even_odd": [
+          85,
+          85
+        ]
+      },
+      {
+        "parameter_code": 8,
+        "truth_table": "0x8000",
+        "short_input_weight": 16,
+        "long_orbits_weight": 172,
+        "required_total_weight": 2080,
+        "short_weights_even_odd": [
+          16,
+          0
+        ],
+        "required_long_weights_even_odd": [
+          84,
+          88
+        ]
+      },
+      {
+        "parameter_code": 15,
+        "truth_table": "0x9668",
+        "short_input_weight": 28,
+        "long_orbits_weight": 171,
+        "required_total_weight": 2080,
+        "short_weights_even_odd": [
+          28,
+          0
+        ],
+        "required_long_weights_even_odd": [
+          83,
+          88
+        ]
+      }
+    ],
+    "short_input_orbits": 17,
+    "short_input_points": 76,
+    "long_input_orbits": 335,
+    "scope": "Necessary reduction, not an UNSAT result or a replacement for the global GPU search."
+  },
+  "lean": {
+    "version": "4.35.0",
+    "build": "PASS",
+    "printed_axioms_allowlist": [
+      "propext",
+      "Quot.sound"
+    ],
+    "scope": "Necessary four-case reduction and its autocorrelation descent; no global H12 nonexistence theorem."
+  },
+  "global_H12": {
+    "status": "AUDITED_GLOBAL_COMPUTATIONAL_RESULT",
+    "dimension": 43,
+    "searched": 8796093022208,
+    "quadratic_survivors": 949760,
+    "w0_survivors": 15779,
+    "bent": 0,
+    "gpu_locally_repeated": false
+  },
+  "timestamp_utc": "2026-10-18T03:09:24.084919+00:00"
+}

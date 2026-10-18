@@ -1,0 +1,15 @@
+{
+  "fifth_coordinate_masks_hex": [
+    "0x8541",
+    "0x11e78"
+  ],
+  "depends_only_on_rank21_prefix": true,
+  "T19_parents_failing_fifth": 5340,
+  "T19_surviving_extensions_failing_fifth_alone": 9065324,
+  "T19_surviving_extensions_after_four_and_fifth": 9486004,
+  "T19_additional_surviving_extensions_excluded_after_fourth": 4576464,
+  "T26_parents11_retained": 108032,
+  "T26_parents12_retained": 25348,
+  "T27_exact_domain": 325074944,
+  "scope": "The new condition is necessary by the separate integer-ANF certificate. T19 rates are sample-specific; the T27 domain is exact before final energy/Poisson tests."
+}

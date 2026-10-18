@@ -1,0 +1,9 @@
+{
+  "verification": "PASS",
+  "original_function_counter_values_checked": 540,
+  "individually_activated_frequency_checks": 540,
+  "positive_frequency_checks": 196,
+  "negative_frequency_checks": 344,
+  "seconds": 295.90567989999545,
+  "scope": "All-36 shared encoder: counter values and individually activated congruences verified against original-function Walsh data. No global satisfiability claim."
+}

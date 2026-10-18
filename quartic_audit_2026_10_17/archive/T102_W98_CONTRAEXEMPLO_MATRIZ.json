@@ -1,0 +1,25 @@
+{
+  "verification": "COUNTEREXAMPLE",
+  "scope": "Exact finite second difference of the original necessary condition versus the constant polar matrix constructed by the Gemini verifier. No global-bound falsification is asserted solely from this local error.",
+  "syzygy_index": 0,
+  "p8": 0,
+  "W98_basis_pair": [
+    0,
+    15
+  ],
+  "direction_coefficients_hex": [
+    "0x11",
+    "0x8002"
+  ],
+  "original_condition_values": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "actual_second_difference": 0,
+  "verifier_predicted_matrix_entry": 1,
+  "reported_constant_rank": 30,
+  "correct_constant_rank": 0,
+  "explanation": "The verifier includes quadratic original monomials in B_const but omits quadratic terms produced when cubic monomials are substituted by Boolean linear forms on W98. These omitted terms cancel the reported constant matrix in this example."
+}

@@ -1,0 +1,1945 @@
+{
+  "cases": [
+    {
+      "n": 8,
+      "total_functions": 1024,
+      "quadratic_conditions": 5,
+      "formal_polynomial_rank": 5,
+      "sieve_survivors": 36,
+      "W0_histogram": {
+        "256": 1,
+        "128": 2,
+        "96": 8,
+        "224": 1,
+        "64": 6,
+        "136": 4,
+        "196": 1,
+        "68": 2,
+        "36": 4,
+        "164": 1,
+        "4": 2,
+        "76": 4
+      },
+      "passing_both_W0_and_Wones": 0,
+      "nonbent_witnesses": [
+        {
+          "coefficient_hex": "0x0",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 256
+        },
+        {
+          "coefficient_hex": "0x28",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 128
+        },
+        {
+          "coefficient_hex": "0x36",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 96
+        },
+        {
+          "coefficient_hex": "0x3a",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 96
+        },
+        {
+          "coefficient_hex": "0x41",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x69",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 96
+        },
+        {
+          "coefficient_hex": "0x77",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 64
+        },
+        {
+          "coefficient_hex": "0x7b",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 64
+        },
+        {
+          "coefficient_hex": "0xa1",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 136
+        },
+        {
+          "coefficient_hex": "0xc2",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 136
+        },
+        {
+          "coefficient_hex": "0xc8",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 136
+        },
+        {
+          "coefficient_hex": "0x102",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 128
+        },
+        {
+          "coefficient_hex": "0x11a",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 96
+        },
+        {
+          "coefficient_hex": "0x11c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 96
+        },
+        {
+          "coefficient_hex": "0x132",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 96
+        },
+        {
+          "coefficient_hex": "0x138",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 96
+        },
+        {
+          "coefficient_hex": "0x143",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 96
+        },
+        {
+          "coefficient_hex": "0x15b",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 64
+        },
+        {
+          "coefficient_hex": "0x15d",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 64
+        },
+        {
+          "coefficient_hex": "0x173",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 64
+        },
+        {
+          "coefficient_hex": "0x179",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 64
+        },
+        {
+          "coefficient_hex": "0x181",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 136
+        },
+        {
+          "coefficient_hex": "0x200",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 196
+        },
+        {
+          "coefficient_hex": "0x228",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 68
+        },
+        {
+          "coefficient_hex": "0x236",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 36
+        },
+        {
+          "coefficient_hex": "0x241",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 164
+        },
+        {
+          "coefficient_hex": "0x269",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 36
+        },
+        {
+          "coefficient_hex": "0x277",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 4
+        },
+        {
+          "coefficient_hex": "0x2ce",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 76
+        },
+        {
+          "coefficient_hex": "0x2da",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 76
+        },
+        {
+          "coefficient_hex": "0x302",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 68
+        },
+        {
+          "coefficient_hex": "0x31c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 36
+        },
+        {
+          "coefficient_hex": "0x343",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 36
+        },
+        {
+          "coefficient_hex": "0x35d",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 4
+        },
+        {
+          "coefficient_hex": "0x3a5",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 76
+        },
+        {
+          "coefficient_hex": "0x3b1",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 76
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "total_functions": 4194304,
+      "quadratic_conditions": 17,
+      "formal_polynomial_rank": 17,
+      "sieve_survivors": 340,
+      "W0_histogram": {
+        "1024": 1,
+        "384": 54,
+        "784": 6,
+        "544": 27,
+        "512": 2,
+        "224": 57,
+        "464": 5,
+        "272": 4,
+        "624": 2,
+        "480": 25,
+        "560": 8,
+        "640": 1,
+        "320": 53,
+        "0": 9,
+        "208": 2,
+        "128": 4,
+        "160": 56,
+        "240": 6,
+        "-32": 4,
+        "400": 2,
+        "304": 10,
+        "704": 1,
+        "-16": 1
+      },
+      "passing_both_W0_and_Wones": 4,
+      "nonbent_witnesses": [
+        {
+          "coefficient_hex": "0x0",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 1024
+        },
+        {
+          "coefficient_hex": "0x1010",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x1818",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x1a79",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x2815",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 784
+        },
+        {
+          "coefficient_hex": "0x3252",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x4222",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0xa800",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 512
+        },
+        {
+          "coefficient_hex": "0x10004",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x1080c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x11a7d",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x13256",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x1383f",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x1484f",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x15208",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 784
+        },
+        {
+          "coefficient_hex": "0x1585f",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x16064",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x17074",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x17a1d",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x17e09",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x20080",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x202e1",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x20d14",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 784
+        },
+        {
+          "coefficient_hex": "0x21af9",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x22115",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x22501",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 784
+        },
+        {
+          "coefficient_hex": "0x248cb",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x24f36",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 464
+        },
+        {
+          "coefficient_hex": "0x258db",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x26337",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x26a89",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x28915",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 272
+        },
+        {
+          "coefficient_hex": "0x30aed",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x3189c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x3313f",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x332d6",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x3352b",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x348cf",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x35f1c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x37295",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x37709",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x378fc",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x40100",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x4049c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 624
+        },
+        {
+          "coefficient_hex": "0x40b69",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x41b79",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x44143",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x446be",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 464
+        },
+        {
+          "coefficient_hex": "0x4595b",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x46b09",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x50b6d",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x510a2",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x5191c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x538b7",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x53b5e",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x53ca3",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x5494f",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x55280",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x57174",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x57315",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x57e81",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x603e1",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x60988",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x62bca",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x631b3",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x639bb",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x641c3",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x64baa",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x651d3",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x669e8",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x679f8",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x703e5",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x721a7",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x729af",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x72bce",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x731b7",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x77395",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x77781",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x82041",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0x84a76",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 560
+        },
+        {
+          "coefficient_hex": "0x85031",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0x86263",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 640
+        },
+        {
+          "coefficient_hex": "0x87273",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x8781a",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x87a7b",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 0
+        },
+        {
+          "coefficient_hex": "0x88841",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 208
+        },
+        {
+          "coefficient_hex": "0x8ed21",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 128
+        },
+        {
+          "coefficient_hex": "0x90207",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0x91217",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x9187e",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0x91c6a",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0x92a2c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x9306b",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 560
+        },
+        {
+          "coefficient_hex": "0x93a3c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x95035",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x95a5c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x96267",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x96a6f",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 0
+        },
+        {
+          "coefficient_hex": "0x9781e",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xa0154",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0xa08ea",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xa2aa8",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xa2d55",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 240
+        },
+        {
+          "coefficient_hex": "0xa3ab8",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xa4376",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xa4762",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 560
+        },
+        {
+          "coefficient_hex": "0xa6082",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0xa62e3",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xa6f77",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 560
+        },
+        {
+          "coefficient_hex": "0xa789a",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xaa954",
+          "bad_frequency_hex": "0x1",
+          "walsh_value": 128
+        },
+        {
+          "coefficient_hex": "0xaae03",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 128
+        },
+        {
+          "coefficient_hex": "0xb10f6",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xb156a",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0xb1a9f",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xb2aac",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xb3d7f",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0xb50b5",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xb535c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0xb5748",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xb688e",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xb7aff",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 0
+        },
+        {
+          "coefficient_hex": "0xc096a",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xc2320",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0xc24dd",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 560
+        },
+        {
+          "coefficient_hex": "0xc3b38",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xc6363",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xc66ff",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 400
+        },
+        {
+          "coefficient_hex": "0xc690a",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xc791a",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xd1176",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xd1317",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xd1ce2",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xd2b2c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xd30e3",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xd593d",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xd5ad4",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xd5ec0",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xd690e",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xd72c1",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xd7b7f",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 0
+        },
+        {
+          "coefficient_hex": "0xe0b8b",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xe1b9b",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xe23a0",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xe29c9",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0xe33b0",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xe49a9",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xe53d0",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xe5bd8",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xe6182",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xe6beb",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0xf11f6",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xf15e2",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xf43c4",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xf49ad",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xf4bcc",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0xf53d4",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0xf6186",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x10002a",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x102c2b",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x103433",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x103c3b",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x104208",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x104bae",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 304
+        },
+        {
+          "coefficient_hex": "0x105c5b",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x106a1d",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x106e09",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x107470",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x110e6d",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x111414",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x111675",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x112427",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x112646",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x112c2f",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x113e5e",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x11473a",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 304
+        },
+        {
+          "coefficient_hex": "0x115457",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x115636",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x117c7c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x120480",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x12213f",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x12252b",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x122eca",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x1236d2",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x12562e",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 304
+        },
+        {
+          "coefficient_hex": "0x12631d",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x1264e0",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x126e89",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x1274f0",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x131900",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 624
+        },
+        {
+          "coefficient_hex": "0x131c9c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x131efd",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x1326c6",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x1354d7",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x135b22",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 464
+        },
+        {
+          "coefficient_hex": "0x1364e4",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x137695",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x1400a2",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 784
+        },
+        {
+          "coefficient_hex": "0x140500",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x142742",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x1428b7",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x142ca3",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x143752",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x146a95",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x146d68",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x146f09",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x147570",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x14a8a2",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 272
+        },
+        {
+          "coefficient_hex": "0x151088",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 464
+        },
+        {
+          "coefficient_hex": "0x151775",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x151d1c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x152746",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x1552aa",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 784
+        },
+        {
+          "coefficient_hex": "0x155d5f",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x156564",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x157715",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x157abf",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x160db6",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x160fe9",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x161590",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x1617f1",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x161d98",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x1625a3",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x1627c2",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x163fda",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x164a3a",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 304
+        },
+        {
+          "coefficient_hex": "0x164dcb",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x166395",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x1665e0",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x166781",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x170584",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x170d8c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x171d9c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x17319d",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 304
+        },
+        {
+          "coefficient_hex": "0x1745c7",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x175fbe",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x176dec",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 384
+        },
+        {
+          "coefficient_hex": "0x1773bf",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 304
+        },
+        {
+          "coefficient_hex": "0x1777ab",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 544
+        },
+        {
+          "coefficient_hex": "0x18087e",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x180c6a",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x181613",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x18206b",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x183e38",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x184e48",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x185650",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x185e58",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x186249",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x191e1f",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x193455",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0x193634",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x194425",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x194644",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x194e4c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x195c3d",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x196c0e",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x197416",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x197677",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0x1a017e",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x1a0683",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x1a0cea",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1a1693",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1a435c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x1a4748",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x1a4ca9",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1a54b1",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1a66e3",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 0
+        },
+        {
+          "coefficient_hex": "0x1b0687",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1b14f6",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1b36b4",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1b3941",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 560
+        },
+        {
+          "coefficient_hex": "0x1b44a5",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1b7b63",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 400
+        },
+        {
+          "coefficient_hex": "0x1b7c9e",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x1b7eff",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1c08f6",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1c0d6a",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1c0f0b",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1c1713",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1c4521",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x1c4ad4",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0x1c4ec0",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0x1c5531",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1c62c1",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 560
+        },
+        {
+          "coefficient_hex": "0x1c6763",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 0
+        },
+        {
+          "coefficient_hex": "0x1d0707",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1d1576",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1d18dc",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0x1d30c9",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 560
+        },
+        {
+          "coefficient_hex": "0x1d3f3c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x1d4525",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1d72eb",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 240
+        },
+        {
+          "coefficient_hex": "0x1d7516",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1d7f7f",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1e01f6",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0x1e05e2",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1e0783",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1e2fa8",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1e45a1",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1e47c0",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0x1e5db9",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x1e6d8a",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1e6fd5",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0x1e7592",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x1e77f3",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 0
+        },
+        {
+          "coefficient_hex": "0x1e7ffb",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1ea9f6",
+          "bad_frequency_hex": "0x1",
+          "walsh_value": 96
+        },
+        {
+          "coefficient_hex": "0x1f0f8f",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x1f11dc",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 240
+        },
+        {
+          "coefficient_hex": "0x1f15c8",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0x1f27a4",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x1f3ddd",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0x1f53fe",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 240
+        },
+        {
+          "coefficient_hex": "0x1f67e7",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 0
+        },
+        {
+          "coefficient_hex": "0x1f6fef",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 160
+        },
+        {
+          "coefficient_hex": "0x1f7fff",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 0
+        },
+        {
+          "coefficient_hex": "0x200401",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 512
+        },
+        {
+          "coefficient_hex": "0x208c40",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 704
+        },
+        {
+          "coefficient_hex": "0x215609",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 272
+        },
+        {
+          "coefficient_hex": "0x222514",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 272
+        },
+        {
+          "coefficient_hex": "0x22ad55",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 224
+        },
+        {
+          "coefficient_hex": "0x23b69e",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 304
+        },
+        {
+          "coefficient_hex": "0x25f53c",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 304
+        },
+        {
+          "coefficient_hex": "0x282440",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 208
+        },
+        {
+          "coefficient_hex": "0x282e25",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 128
+        },
+        {
+          "coefficient_hex": "0x286c13",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 128
+        },
+        {
+          "coefficient_hex": "0x2887fd",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x28ac01",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0x2a0555",
+          "bad_frequency_hex": "0x1",
+          "walsh_value": 128
+        },
+        {
+          "coefficient_hex": "0x2a8d14",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 480
+        },
+        {
+          "coefficient_hex": "0x2b575d",
+          "bad_frequency_hex": "0x1",
+          "walsh_value": 96
+        },
+        {
+          "coefficient_hex": "0x2ec45f",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x35deea",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 464
+        },
+        {
+          "coefficient_hex": "0x36d993",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 304
+        },
+        {
+          "coefficient_hex": "0x378ba5",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 304
+        },
+        {
+          "coefficient_hex": "0x37ffff",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": -16
+        },
+        {
+          "coefficient_hex": "0x3abb46",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x3be970",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 320
+        },
+        {
+          "coefficient_hex": "0x3dfeab",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 240
+        },
+        {
+          "coefficient_hex": "0x3fdfbe",
+          "bad_frequency_hex": "0x0",
+          "walsh_value": 240
+        }
+      ]
+    }
+  ],
+  "scope": "Exact quadratic sieve plus one explicit nonflat Walsh witness for every survivor. Known small-size nonexistence, used as a compact benchmark; novelty is not claimed.",
+  "generation_seconds": 0.8649016999988817
+}

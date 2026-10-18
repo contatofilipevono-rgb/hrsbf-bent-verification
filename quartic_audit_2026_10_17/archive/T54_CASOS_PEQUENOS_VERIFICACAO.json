@@ -1,0 +1,11 @@
+{
+  "verification": "PASS",
+  "all_three_variable_boolean_functions": 256,
+  "all_three_variable_linear_subspaces": 16,
+  "difference_bound_cases": 4096,
+  "all_two_variable_two_output_functions": 256,
+  "negative_sign_cycle_orbits": 60,
+  "functions_with_strict_signed_orbit_savings": 99,
+  "seconds": 0.16334780000033788,
+  "scope": "Complete small-space truth-table checks; supports implementation and edge cases, does not replace the general analytic proof or real H16 certificates."
+}

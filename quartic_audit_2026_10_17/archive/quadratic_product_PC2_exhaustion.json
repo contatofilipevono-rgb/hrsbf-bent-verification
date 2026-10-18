@@ -1,0 +1,4003 @@
+{
+  "dimension": 28,
+  "full_family_functions": 268435456,
+  "slices_completed": 256,
+  "functions_examined": 268435456,
+  "exhaustive_completed": true,
+  "disjoint_slices": true,
+  "counterexamples_found": 0,
+  "counterexamples": [],
+  "first_nonzero_direction_histogram": [
+    236879748,
+    27507534,
+    3759815,
+    249606,
+    35587,
+    2694,
+    428,
+    28,
+    16,
+    0
+  ],
+  "minimum_C_e0_over_examined_functions": -8192,
+  "minimum_example": {
+    "coefficient_hex": "0x4d271d594aa07fd1f1f1a6c1f11f1",
+    "C_e0": -8192,
+    "family_block": 6,
+    "free_word": 386422
+  },
+  "records": [
+    {
+      "block": 0,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        93494,
+        11095,
+        824,
+        110,
+        7,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 1,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        104193,
+        13108,
+        904,
+        133,
+        8,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 2,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        111027,
+        13182,
+        977,
+        131,
+        7,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 3,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        122929,
+        15694,
+        1143,
+        152,
+        8,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 4,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        97830,
+        12395,
+        915,
+        143,
+        9,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 5,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        105782,
+        13664,
+        948,
+        134,
+        10,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 6,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        115321,
+        14250,
+        1150,
+        141,
+        10,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 7,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        124364,
+        15704,
+        1108,
+        146,
+        9,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 8,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        110971,
+        13541,
+        1063,
+        156,
+        16,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 9,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        119106,
+        15247,
+        1120,
+        177,
+        14,
+        2,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 10,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        116846,
+        14440,
+        1070,
+        150,
+        7,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 11,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        125360,
+        16217,
+        1155,
+        149,
+        14,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 12,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        112279,
+        14171,
+        1117,
+        144,
+        17,
+        4,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 13,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        124891,
+        15841,
+        1069,
+        160,
+        10,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 14,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        117408,
+        14635,
+        1138,
+        165,
+        7,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 15,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        130974,
+        16525,
+        1184,
+        166,
+        12,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 16,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        97094,
+        12331,
+        907,
+        122,
+        4,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 17,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        104798,
+        13397,
+        896,
+        132,
+        13,
+        4,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 18,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        115539,
+        14489,
+        1071,
+        134,
+        10,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 19,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        123956,
+        15889,
+        1055,
+        151,
+        7,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 20,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        98899,
+        12672,
+        956,
+        129,
+        10,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 21,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        110008,
+        14478,
+        961,
+        131,
+        9,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 22,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        116403,
+        14756,
+        1134,
+        152,
+        10,
+        1,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 23,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        129594,
+        16879,
+        1180,
+        155,
+        13,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 24,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        112751,
+        14450,
+        1065,
+        133,
+        9,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 25,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        124706,
+        16054,
+        1175,
+        166,
+        19,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 26,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        118147,
+        15040,
+        1169,
+        159,
+        15,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 27,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        130829,
+        17057,
+        1220,
+        145,
+        14,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 28,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        116698,
+        14468,
+        1160,
+        167,
+        11,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 29,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        126584,
+        16237,
+        1181,
+        157,
+        15,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 30,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        122403,
+        15119,
+        1161,
+        155,
+        14,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 31,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        132738,
+        16950,
+        1186,
+        156,
+        8,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 32,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        110786,
+        13573,
+        1077,
+        145,
+        12,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 33,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        119255,
+        15287,
+        1054,
+        119,
+        8,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 34,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        116409,
+        14359,
+        1204,
+        170,
+        15,
+        4,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 35,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        125305,
+        16484,
+        1214,
+        138,
+        10,
+        5,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 36,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        111691,
+        14211,
+        1038,
+        136,
+        17,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 37,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        124053,
+        16301,
+        1159,
+        168,
+        12,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 38,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        117822,
+        14915,
+        1222,
+        149,
+        8,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 39,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        131233,
+        16999,
+        1210,
+        173,
+        10,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 40,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        114497,
+        14521,
+        1073,
+        130,
+        13,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 41,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        126065,
+        16926,
+        1162,
+        144,
+        9,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 42,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        120352,
+        15472,
+        1120,
+        122,
+        7,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 43,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        132303,
+        18143,
+        1277,
+        168,
+        12,
+        4,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 44,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        118320,
+        15442,
+        1157,
+        149,
+        13,
+        5,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 45,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        128488,
+        17058,
+        1188,
+        128,
+        10,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 46,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        124359,
+        16103,
+        1188,
+        159,
+        12,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 47,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        134545,
+        17853,
+        1272,
+        185,
+        18,
+        5,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 48,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        112057,
+        14079,
+        1084,
+        139,
+        15,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 49,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        124139,
+        15971,
+        1132,
+        174,
+        11,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 50,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        117989,
+        15056,
+        1189,
+        181,
+        19,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 51,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        130747,
+        17088,
+        1309,
+        165,
+        13,
+        4,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 52,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        116666,
+        14963,
+        1089,
+        138,
+        8,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 53,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        126613,
+        16664,
+        1235,
+        175,
+        13,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 54,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        122984,
+        15633,
+        1313,
+        160,
+        16,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 55,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        133035,
+        17555,
+        1283,
+        159,
+        6,
+        3,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 56,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        118542,
+        15243,
+        1099,
+        138,
+        16,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 57,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        128017,
+        16401,
+        1153,
+        143,
+        13,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 58,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        124225,
+        15831,
+        1170,
+        151,
+        10,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 59,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        133898,
+        17648,
+        1145,
+        160,
+        18,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 60,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        120014,
+        15259,
+        1114,
+        140,
+        17,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 61,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        133055,
+        17319,
+        1185,
+        148,
+        10,
+        2,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 62,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        125974,
+        15785,
+        1242,
+        148,
+        13,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 63,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        138682,
+        17888,
+        1228,
+        152,
+        10,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 64,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        95083,
+        11580,
+        844,
+        115,
+        14,
+        5,
+        2,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 65,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        106762,
+        13349,
+        907,
+        133,
+        5,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 66,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        112710,
+        13891,
+        1031,
+        139,
+        16,
+        4,
+        2,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 67,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        126197,
+        15968,
+        1090,
+        135,
+        9,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 68,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        99959,
+        12406,
+        934,
+        134,
+        8,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 69,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        108899,
+        14032,
+        947,
+        140,
+        13,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 70,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        117884,
+        14653,
+        1181,
+        144,
+        12,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 71,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        128214,
+        16201,
+        1159,
+        142,
+        7,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 72,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        113504,
+        14480,
+        1119,
+        154,
+        13,
+        6,
+        2,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 73,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        122872,
+        16045,
+        1168,
+        174,
+        13,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 74,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        119368,
+        15558,
+        1246,
+        162,
+        12,
+        2,
+        2,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 75,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        129511,
+        17280,
+        1176,
+        154,
+        13,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 76,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        115492,
+        14709,
+        1092,
+        142,
+        15,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 77,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        128667,
+        16427,
+        1197,
+        166,
+        14,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 78,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        120497,
+        15125,
+        1185,
+        153,
+        17,
+        1,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 79,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        135128,
+        17395,
+        1232,
+        144,
+        7,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 80,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        99948,
+        12531,
+        922,
+        105,
+        11,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 81,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        108706,
+        13950,
+        953,
+        134,
+        10,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 82,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        117716,
+        14829,
+        1145,
+        177,
+        7,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 83,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        128217,
+        16777,
+        1115,
+        156,
+        11,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 84,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        101298,
+        12937,
+        937,
+        144,
+        10,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 85,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        113780,
+        15030,
+        1013,
+        147,
+        18,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 86,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        119403,
+        15065,
+        1203,
+        170,
+        6,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 87,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        133281,
+        17239,
+        1262,
+        150,
+        6,
+        2,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 88,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        115195,
+        14522,
+        1134,
+        162,
+        13,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 89,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        129137,
+        16820,
+        1217,
+        166,
+        14,
+        4,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 90,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        120871,
+        15438,
+        1210,
+        168,
+        7,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 91,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        134347,
+        17777,
+        1270,
+        158,
+        11,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 92,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        119481,
+        15020,
+        1151,
+        157,
+        16,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 93,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        130524,
+        16980,
+        1216,
+        155,
+        16,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 94,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        125071,
+        15632,
+        1205,
+        180,
+        13,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 95,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        136681,
+        17560,
+        1317,
+        182,
+        7,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 96,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        113156,
+        14119,
+        1044,
+        159,
+        14,
+        4,
+        2,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 97,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        122856,
+        15618,
+        1075,
+        146,
+        9,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 98,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        118880,
+        15012,
+        1213,
+        176,
+        13,
+        3,
+        2,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 99,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        128743,
+        16632,
+        1191,
+        156,
+        10,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 100,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        114793,
+        14579,
+        1141,
+        165,
+        15,
+        5,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 101,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        127768,
+        16575,
+        1099,
+        148,
+        10,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 102,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        120082,
+        15327,
+        1184,
+        174,
+        12,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 103,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        134246,
+        17197,
+        1243,
+        159,
+        9,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 104,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        116856,
+        15113,
+        1101,
+        150,
+        14,
+        4,
+        2,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 105,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        130048,
+        17279,
+        1216,
+        148,
+        9,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 106,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        122493,
+        15952,
+        1113,
+        142,
+        9,
+        3,
+        2,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 107,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        135619,
+        18050,
+        1269,
+        166,
+        16,
+        4,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 108,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        121234,
+        15685,
+        1170,
+        145,
+        11,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 109,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        132479,
+        17347,
+        1146,
+        149,
+        12,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 110,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        126474,
+        16041,
+        1240,
+        152,
+        9,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 111,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        138146,
+        18378,
+        1249,
+        150,
+        7,
+        3,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 112,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        115023,
+        14415,
+        1061,
+        120,
+        12,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 113,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        127397,
+        16087,
+        1110,
+        138,
+        15,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 114,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        120665,
+        15207,
+        1179,
+        145,
+        11,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 115,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        134200,
+        17144,
+        1261,
+        194,
+        22,
+        1,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 116,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        118824,
+        15191,
+        1127,
+        143,
+        6,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 117,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        129972,
+        16855,
+        1193,
+        157,
+        16,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 118,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        125150,
+        15784,
+        1239,
+        152,
+        7,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 119,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        137106,
+        17549,
+        1268,
+        188,
+        12,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 120,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        121517,
+        15172,
+        1073,
+        138,
+        12,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 121,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        131784,
+        16788,
+        1212,
+        165,
+        18,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 122,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        126743,
+        16049,
+        1189,
+        167,
+        13,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 123,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        138235,
+        18011,
+        1233,
+        149,
+        15,
+        4,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 124,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        123155,
+        15331,
+        1162,
+        176,
+        9,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 125,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        137371,
+        17612,
+        1224,
+        135,
+        11,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 126,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        128292,
+        16021,
+        1142,
+        169,
+        9,
+        2,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 127,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        142936,
+        18175,
+        1306,
+        166,
+        13,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 128,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        110585,
+        13263,
+        943,
+        127,
+        8,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 129,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        113684,
+        14159,
+        942,
+        134,
+        8,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 130,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        117281,
+        13978,
+        955,
+        117,
+        10,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 131,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        121113,
+        15517,
+        1062,
+        148,
+        16,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 132,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        111248,
+        14022,
+        1022,
+        137,
+        9,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 133,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        118573,
+        15154,
+        992,
+        122,
+        11,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 134,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        117920,
+        14818,
+        1065,
+        150,
+        11,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 135,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        126180,
+        16227,
+        1105,
+        151,
+        19,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 136,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        113113,
+        13673,
+        990,
+        130,
+        10,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 137,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        119339,
+        15167,
+        1085,
+        157,
+        12,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 138,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        120005,
+        14858,
+        1090,
+        152,
+        15,
+        2,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 139,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        126411,
+        16647,
+        1112,
+        136,
+        11,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 140,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        117854,
+        14953,
+        1100,
+        144,
+        13,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 141,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        121776,
+        15624,
+        1094,
+        138,
+        22,
+        2,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 142,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        124833,
+        15569,
+        1155,
+        150,
+        11,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 143,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        129585,
+        16821,
+        1111,
+        159,
+        18,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 144,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        111351,
+        13824,
+        957,
+        115,
+        8,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 145,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        117682,
+        14884,
+        978,
+        147,
+        17,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 146,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        118166,
+        14870,
+        1065,
+        130,
+        11,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 147,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        125393,
+        16343,
+        1054,
+        123,
+        15,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 148,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        116323,
+        14852,
+        1024,
+        145,
+        14,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 149,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        120519,
+        15865,
+        1007,
+        137,
+        15,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 150,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        123143,
+        15890,
+        1126,
+        142,
+        11,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 151,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        127725,
+        16692,
+        1086,
+        156,
+        21,
+        5,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 152,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        117958,
+        14996,
+        1103,
+        155,
+        16,
+        3,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 153,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        121198,
+        15557,
+        1050,
+        128,
+        15,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 154,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        124953,
+        16147,
+        1142,
+        142,
+        12,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 155,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        129677,
+        17093,
+        1166,
+        166,
+        12,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 156,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        118864,
+        14809,
+        1129,
+        136,
+        9,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 157,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        126723,
+        16104,
+        1142,
+        173,
+        25,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 158,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        126558,
+        15971,
+        1156,
+        144,
+        5,
+        2,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 159,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        134137,
+        17069,
+        1191,
+        165,
+        19,
+        3,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 160,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        113052,
+        13753,
+        1027,
+        142,
+        10,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 161,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        120283,
+        15206,
+        1035,
+        144,
+        11,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 162,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        120717,
+        14998,
+        1068,
+        165,
+        14,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 163,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        127075,
+        16582,
+        1125,
+        158,
+        14,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 164,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        117427,
+        15007,
+        1085,
+        160,
+        13,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 165,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        121436,
+        15826,
+        1033,
+        169,
+        13,
+        5,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 166,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        124399,
+        16260,
+        1237,
+        165,
+        13,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 167,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        128743,
+        16828,
+        1178,
+        186,
+        12,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 168,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        120302,
+        15390,
+        1063,
+        162,
+        14,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 169,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        123179,
+        16476,
+        1084,
+        156,
+        14,
+        3,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 170,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        126976,
+        16368,
+        1113,
+        139,
+        11,
+        3,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 171,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        130842,
+        17888,
+        1163,
+        140,
+        13,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 172,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        120919,
+        15768,
+        1095,
+        161,
+        15,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 173,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        129225,
+        17309,
+        1214,
+        183,
+        22,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 174,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        128042,
+        16750,
+        1206,
+        157,
+        14,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 175,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        135927,
+        18058,
+        1219,
+        176,
+        15,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 176,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        117650,
+        14900,
+        1102,
+        135,
+        13,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 177,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        121563,
+        15510,
+        1063,
+        148,
+        13,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 178,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        125106,
+        16158,
+        1242,
+        180,
+        12,
+        3,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 179,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        128458,
+        16855,
+        1231,
+        157,
+        20,
+        4,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 180,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        119160,
+        15449,
+        1142,
+        169,
+        15,
+        6,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 181,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        127406,
+        16773,
+        1108,
+        165,
+        14,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 182,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        126458,
+        16360,
+        1231,
+        179,
+        12,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 183,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        134218,
+        17576,
+        1231,
+        179,
+        13,
+        4,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 184,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        120976,
+        15646,
+        1084,
+        133,
+        9,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 185,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        128746,
+        16573,
+        1116,
+        136,
+        9,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 186,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        128434,
+        16835,
+        1234,
+        168,
+        12,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 187,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        136053,
+        18245,
+        1211,
+        176,
+        16,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 188,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        125889,
+        15895,
+        1146,
+        174,
+        14,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 189,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        130254,
+        17160,
+        1057,
+        164,
+        18,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 190,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        132758,
+        16986,
+        1222,
+        163,
+        13,
+        2,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 191,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        137360,
+        17857,
+        1164,
+        148,
+        12,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 192,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        112739,
+        13967,
+        1007,
+        115,
+        11,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 193,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        116437,
+        14553,
+        951,
+        121,
+        18,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 194,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        119327,
+        15092,
+        1117,
+        156,
+        17,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 195,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        123887,
+        15950,
+        1083,
+        154,
+        18,
+        4,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 196,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        114052,
+        14320,
+        1024,
+        140,
+        9,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 197,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        122297,
+        15725,
+        990,
+        126,
+        8,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 198,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        121270,
+        15221,
+        1089,
+        161,
+        13,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 199,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        129681,
+        16932,
+        1124,
+        134,
+        10,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 200,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        115836,
+        14869,
+        1084,
+        152,
+        18,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 201,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        123497,
+        16067,
+        1111,
+        161,
+        21,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 202,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        122863,
+        16032,
+        1134,
+        150,
+        10,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 203,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        129702,
+        17353,
+        1143,
+        131,
+        16,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 204,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        120997,
+        15322,
+        1102,
+        157,
+        13,
+        1,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 205,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        125325,
+        16209,
+        1126,
+        146,
+        13,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 206,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        127609,
+        16285,
+        1180,
+        148,
+        14,
+        4,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 207,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        132888,
+        17129,
+        1160,
+        144,
+        15,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 208,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        114648,
+        14688,
+        1026,
+        118,
+        12,
+        6,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 209,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        121948,
+        15767,
+        1042,
+        141,
+        17,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 210,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        121287,
+        15753,
+        1121,
+        143,
+        16,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 211,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        129771,
+        17007,
+        1118,
+        144,
+        15,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 212,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        119148,
+        15396,
+        1032,
+        156,
+        15,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 213,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        123972,
+        16241,
+        1069,
+        162,
+        16,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 214,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        125539,
+        16157,
+        1108,
+        135,
+        9,
+        1,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 215,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        131307,
+        17432,
+        1221,
+        160,
+        13,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 216,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        120413,
+        15526,
+        1118,
+        152,
+        9,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 217,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        125346,
+        16125,
+        1132,
+        159,
+        13,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 218,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        127919,
+        16690,
+        1185,
+        167,
+        5,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 219,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        132157,
+        17596,
+        1176,
+        157,
+        18,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 220,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        122145,
+        15705,
+        1112,
+        144,
+        13,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 221,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        130828,
+        16999,
+        1153,
+        150,
+        8,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 222,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        129490,
+        16595,
+        1196,
+        162,
+        17,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 223,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        137993,
+        17844,
+        1209,
+        155,
+        12,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 224,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        115178,
+        14444,
+        1018,
+        144,
+        12,
+        4,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 225,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        123139,
+        15757,
+        1088,
+        142,
+        11,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 226,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        123112,
+        15740,
+        1170,
+        158,
+        12,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 227,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        130432,
+        16866,
+        1181,
+        178,
+        10,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 228,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        121129,
+        15349,
+        1119,
+        144,
+        6,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 229,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        125323,
+        16129,
+        1130,
+        148,
+        15,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 230,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        127461,
+        16093,
+        1239,
+        154,
+        10,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 231,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        132505,
+        17173,
+        1180,
+        155,
+        16,
+        2,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 232,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        122582,
+        15611,
+        1126,
+        165,
+        13,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 233,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        126715,
+        16809,
+        1079,
+        162,
+        10,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 234,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        129909,
+        17218,
+        1181,
+        163,
+        7,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 235,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        134349,
+        18231,
+        1229,
+        186,
+        16,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 236,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        123801,
+        15941,
+        1058,
+        131,
+        14,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 237,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        133004,
+        17455,
+        1192,
+        174,
+        13,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 238,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        130499,
+        16779,
+        1194,
+        152,
+        8,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 239,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        139613,
+        18142,
+        1173,
+        153,
+        14,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 240,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        121170,
+        15103,
+        1101,
+        136,
+        12,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 241,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        124959,
+        15743,
+        1058,
+        124,
+        7,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 242,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        127177,
+        16010,
+        1144,
+        134,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 243,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        132062,
+        17190,
+        1209,
+        176,
+        14,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 244,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        122050,
+        15604,
+        1072,
+        142,
+        14,
+        4,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 245,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        131204,
+        17101,
+        1151,
+        148,
+        13,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 246,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        128729,
+        16410,
+        1243,
+        164,
+        15,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 247,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        138377,
+        17872,
+        1234,
+        190,
+        12,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 248,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        124301,
+        15794,
+        1148,
+        150,
+        10,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 249,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        132219,
+        16951,
+        1084,
+        154,
+        11,
+        3,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 250,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        130682,
+        16834,
+        1144,
+        153,
+        17,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 251,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        139279,
+        18377,
+        1195,
+        159,
+        13,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 252,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        129084,
+        16192,
+        1129,
+        150,
+        14,
+        6,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 253,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        133949,
+        17091,
+        1129,
+        145,
+        18,
+        2,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 254,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        136328,
+        17352,
+        1216,
+        176,
+        9,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    },
+    {
+      "block": 255,
+      "functions": 1048576,
+      "survivors_after_each_direction": [
+        141478,
+        18099,
+        1176,
+        165,
+        19,
+        6,
+        1,
+        0
+      ],
+      "PC2_survivors": 0
+    }
+  ],
+  "seconds": 169.38230290000138,
+  "scope": "Complete or explicitly partial enumeration of the two-edge-matching quartic RS family. No filters necessary only for bentness were imposed.",
+  "minimum_example_independent_validation": {
+    "coefficient_hex": "0x4d271d594aa07fd1f1f1a6c1f11f1",
+    "degree": 4,
+    "rotation_symmetry_verified": true,
+    "selected_orbit_supports": [
+      [
+        0,
+        1,
+        2,
+        3
+      ],
+      [
+        0,
+        1,
+        2,
+        7
+      ],
+      [
+        0,
+        1,
+        2,
+        8
+      ],
+      [
+        0,
+        1,
+        2,
+        9
+      ],
+      [
+        0,
+        6,
+        7,
+        8
+      ],
+      [
+        0,
+        5,
+        6,
+        7
+      ],
+      [
+        0,
+        1,
+        3,
+        4
+      ],
+      [
+        0,
+        1,
+        3,
+        8
+      ],
+      [
+        0,
+        1,
+        3,
+        9
+      ],
+      [
+        0,
+        6,
+        7,
+        9
+      ],
+      [
+        0,
+        5,
+        6,
+        8
+      ],
+      [
+        0,
+        4,
+        5,
+        7
+      ],
+      [
+        0,
+        1,
+        4,
+        8
+      ],
+      [
+        0,
+        1,
+        4,
+        9
+      ],
+      [
+        0,
+        5,
+        6,
+        9
+      ],
+      [
+        0,
+        4,
+        5,
+        8
+      ],
+      [
+        0,
+        1,
+        5,
+        6
+      ],
+      [
+        0,
+        1,
+        5,
+        8
+      ],
+      [
+        0,
+        1,
+        5,
+        9
+      ],
+      [
+        0,
+        3,
+        4,
+        8
+      ],
+      [
+        0,
+        2,
+        3,
+        7
+      ],
+      [
+        0,
+        1,
+        6,
+        7
+      ],
+      [
+        0,
+        1,
+        6,
+        8
+      ],
+      [
+        0,
+        1,
+        6,
+        9
+      ],
+      [
+        0,
+        3,
+        4,
+        9
+      ],
+      [
+        0,
+        2,
+        3,
+        8
+      ],
+      [
+        0,
+        1,
+        7,
+        8
+      ],
+      [
+        0,
+        1,
+        7,
+        9
+      ],
+      [
+        0,
+        1,
+        7,
+        10
+      ],
+      [
+        0,
+        2,
+        3,
+        9
+      ],
+      [
+        0,
+        2,
+        8,
+        9
+      ],
+      [
+        0,
+        3,
+        8,
+        9
+      ],
+      [
+        0,
+        4,
+        8,
+        9
+      ],
+      [
+        0,
+        5,
+        8,
+        9
+      ],
+      [
+        0,
+        6,
+        8,
+        9
+      ],
+      [
+        0,
+        2,
+        7,
+        8
+      ],
+      [
+        0,
+        3,
+        7,
+        8
+      ],
+      [
+        0,
+        4,
+        7,
+        8
+      ],
+      [
+        0,
+        5,
+        7,
+        8
+      ],
+      [
+        0,
+        2,
+        4,
+        6
+      ],
+      [
+        0,
+        2,
+        4,
+        8
+      ],
+      [
+        0,
+        2,
+        4,
+        10
+      ],
+      [
+        0,
+        4,
+        6,
+        8
+      ],
+      [
+        0,
+        2,
+        5,
+        8
+      ],
+      [
+        0,
+        2,
+        5,
+        10
+      ],
+      [
+        0,
+        3,
+        5,
+        8
+      ],
+      [
+        0,
+        2,
+        6,
+        8
+      ],
+      [
+        0,
+        2,
+        6,
+        10
+      ],
+      [
+        0,
+        4,
+        6,
+        10
+      ],
+      [
+        0,
+        2,
+        7,
+        9
+      ],
+      [
+        0,
+        2,
+        7,
+        10
+      ],
+      [
+        0,
+        2,
+        7,
+        11
+      ],
+      [
+        0,
+        3,
+        8,
+        10
+      ],
+      [
+        0,
+        4,
+        8,
+        10
+      ],
+      [
+        0,
+        5,
+        8,
+        10
+      ],
+      [
+        0,
+        3,
+        6,
+        8
+      ],
+      [
+        0,
+        3,
+        6,
+        11
+      ],
+      [
+        0,
+        3,
+        7,
+        10
+      ],
+      [
+        0,
+        3,
+        7,
+        11
+      ],
+      [
+        0,
+        4,
+        8,
+        11
+      ]
+    ],
+    "directions": [
+      1,
+      3,
+      5,
+      9,
+      17,
+      33,
+      65,
+      129,
+      257
+    ],
+    "autocorrelations": [
+      -8192,
+      10240,
+      12288,
+      6144,
+      10240,
+      6144,
+      12288,
+      10240,
+      32768
+    ],
+    "refutes_C16": false,
+    "is_bent": false,
+    "min_abs_walsh": 0,
+    "max_abs_walsh": 21504
+  }
+}

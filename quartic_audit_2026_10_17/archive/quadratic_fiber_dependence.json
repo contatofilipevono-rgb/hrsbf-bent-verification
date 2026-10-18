@@ -1,0 +1,53 @@
+[
+  {
+    "restriction": "two_fibers",
+    "rank": 12,
+    "each_form_determined_by_restriction": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "rank_after_all_forms": 16,
+    "new_dimensions": 4
+  },
+  {
+    "restriction": "T16",
+    "rank": 33,
+    "each_form_determined_by_restriction": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "rank_after_all_forms": 33,
+    "new_dimensions": 0
+  },
+  {
+    "restriction": "T17",
+    "rank": 46,
+    "each_form_determined_by_restriction": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "rank_after_all_forms": 46,
+    "new_dimensions": 0
+  }
+]

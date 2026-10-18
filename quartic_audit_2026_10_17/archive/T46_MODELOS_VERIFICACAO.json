@@ -1,0 +1,10 @@
+{
+  "verification": "PASS",
+  "complete_substitutions": [
+    {"branch":0,"monomials":80144,"degree":5},
+    {"branch":1,"monomials":63146,"degree":4}
+  ],
+  "original_ANF_checks": 64,
+  "seconds": 1.60928309999872,
+  "scope": "Exact additional first-bit condition after the six-condition core; no global exclusion bound is asserted by this checker alone."
+}

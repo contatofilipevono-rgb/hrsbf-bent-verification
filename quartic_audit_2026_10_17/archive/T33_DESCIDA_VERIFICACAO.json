@@ -1,0 +1,15 @@
+{
+  "verification": "PASS",
+  "restriction_rank": 33,
+  "section_rank": 33,
+  "all_five_forms_determined_by_fibers": true,
+  "forms_masks33_hex": {
+    "R": "0xfccfe72",
+    "M": "0x16f88",
+    "K": "0x8540",
+    "a": "0x1",
+    "b": "0x2"
+  },
+  "extension_seventh_gradient12_hex": "0x7e",
+  "scope": "Exact descent and quotient-coordinate formula. The domain counts and state mapper are checked separately in the CPU validation."
+}

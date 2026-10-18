@@ -1,0 +1,32 @@
+{
+  "manifest_entries_checked": 68,
+  "manifest_all_match": true,
+  "defect1_two_law_functions_checked": 131,
+  "defect1_frequency_checks": 16768,
+  "mod32_counterexamples": [],
+  "difference_mod64_counterexamples": [],
+  "incorrect_diagonal_claim_counterexample": [
+    {
+      "c": "0x8000000000000000000000000",
+      "y": "0x2",
+      "x00": "0x202",
+      "x11": "0x8282",
+      "delta_f": 1,
+      "c115": 0
+    }
+  ],
+  "direct_S00_minus_S11_checks": 384,
+  "Top26_certificate_keys": [
+    "k",
+    "orbits_refined",
+    "branch0_amplitudes",
+    "branch1_amplitudes"
+  ],
+  "Top26_orbits": 26,
+  "poisson_error": {
+    "claimed_constant": "2^|u|",
+    "correct_constant": "2^m",
+    "example_zero_frequency_flat_bent": "For |u|=2m, h_f(full;0)=2^m-2^(m+1)*f*(0), not 2^(2m)-2^(m+1)*f*(0)."
+  },
+  "scope": "Independent numerical checks are finite; symbolic proof claims reviewed separately."
+}

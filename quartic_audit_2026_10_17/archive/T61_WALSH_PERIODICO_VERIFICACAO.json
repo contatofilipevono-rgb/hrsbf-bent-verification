@@ -1,0 +1,13 @@
+{
+  "verification": "PASS",
+  "original_functions_reconstructed": 512,
+  "complete_direct_Walsh_transforms": 512,
+  "periodic_amplitudes_checked": 18432,
+  "prefix_survivors_first_three": [
+    63,
+    29,
+    0
+  ],
+  "seconds": 1.8129407000014908,
+  "scope": "Exact Walsh values and finite sample counts verified. Membership labels in earlier algebraic filters are inherited metadata, not independently reverified here. No global exclusion claim."
+}

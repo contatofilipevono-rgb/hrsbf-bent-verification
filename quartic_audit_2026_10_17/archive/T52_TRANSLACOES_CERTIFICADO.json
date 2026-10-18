@@ -1,0 +1,45 @@
+{
+  "branches": [
+    {
+      "branch": 0,
+      "degrees_of_span_basis": [
+        5,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        0
+      ],
+      "variables": 123,
+      "constraint_rows": 145128,
+      "constraint_rank": 114,
+      "necessary_translation_space_dimension": 2,
+      "necessary_translation_basis_hex": [
+        "0x8080000000",
+        "0x10000000000000000000000000000"
+      ]
+    },
+    {
+      "branch": 1,
+      "degrees_of_span_basis": [
+        4,
+        3,
+        4,
+        3,
+        4,
+        4,
+        4,
+        0
+      ],
+      "variables": 126,
+      "constraint_rows": 161055,
+      "constraint_rank": 119,
+      "necessary_translation_space_dimension": 0,
+      "necessary_translation_basis_hex": []
+    }
+  ],
+  "seconds": 1.5070418999966932,
+  "scope": "Necessary top-degree equations for translations sending each filter into the span of filters and constants. Nonzero candidate directions require full polynomial verification; dimension zero excludes all nonzero translation actions of this kind."
+}

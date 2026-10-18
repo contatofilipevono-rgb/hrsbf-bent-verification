@@ -1,0 +1,189 @@
+{
+  "verification": "PASS",
+  "independent_second_difference_matrix_entries": 624,
+  "original_subcube_weights_computed": 37730,
+  "checks": [
+    {
+      "c": "0xdc413e529643e9976073b3fb08c5b",
+      "pair": [
+        1,
+        26
+      ]
+    },
+    {
+      "c": "0xd0a334b823a780d3946b44de72527",
+      "pair": [
+        9,
+        17
+      ]
+    },
+    {
+      "c": "0x7d5ab9c6a44e23cb89b2f67d28112",
+      "pair": [
+        5,
+        26
+      ]
+    },
+    {
+      "c": "0x3928c0c3aa06dee3b36ea8d742603",
+      "pair": [
+        29,
+        36
+      ]
+    },
+    {
+      "c": "0xd0ee932f4ff8361a2c2d28c42ab6a",
+      "pair": [
+        0,
+        21
+      ]
+    },
+    {
+      "c": "0xf6c1a4b088f372c964a219e7f5296",
+      "pair": [
+        1,
+        31
+      ]
+    },
+    {
+      "c": "0x2557eff34d61efce58fe07b0d7b3e",
+      "pair": [
+        25,
+        26
+      ]
+    },
+    {
+      "c": "0x894a4b4deaced9e6ef492b3e7d640",
+      "pair": [
+        5,
+        32
+      ]
+    },
+    {
+      "c": "0x4ca496d61eb47853c066764bf6603",
+      "pair": [
+        26,
+        37
+      ]
+    },
+    {
+      "c": "0xa9903d1e4ae19a5aa16b43c96be04",
+      "pair": [
+        11,
+        24
+      ]
+    },
+    {
+      "c": "0xce44d5e70a108234b34768085320e",
+      "pair": [
+        3,
+        23
+      ]
+    },
+    {
+      "c": "0xf395fe6e97ec4b8d383d5e11e7e87",
+      "pair": [
+        22,
+        23
+      ]
+    },
+    {
+      "c": "0xdefb1a8a143944c418fd5576e9777",
+      "pair": [
+        3,
+        13
+      ]
+    },
+    {
+      "c": "0x37aaf0f29e7b06014e3a3d62d5cfa",
+      "pair": [
+        21,
+        33
+      ]
+    },
+    {
+      "c": "0xed4dc2585e69d18d085a34e24a0f1",
+      "pair": [
+        19,
+        25
+      ]
+    },
+    {
+      "c": "0xf567fdc719494bdc2e2bf9c1c6a71",
+      "pair": [
+        30,
+        35
+      ]
+    },
+    {
+      "c": "0x6138b7ed467d40dda394e0268c01e",
+      "pair": [
+        6,
+        11
+      ]
+    },
+    {
+      "c": "0x83679a67ab594a799942f8ff8c7e9",
+      "pair": [
+        28,
+        37
+      ]
+    },
+    {
+      "c": "0x210b31bd41c8ecb47761c9bd64d7f",
+      "pair": [
+        8,
+        27
+      ]
+    },
+    {
+      "c": "0xc8fe280d2199db321f9bdb0ec2de0",
+      "pair": [
+        11,
+        18
+      ]
+    },
+    {
+      "c": "0xabfc0383374a5686953681461e159",
+      "pair": [
+        18,
+        24
+      ]
+    },
+    {
+      "c": "0xeaf9a629b823efb207e46e2986b36",
+      "pair": [
+        12,
+        31
+      ]
+    },
+    {
+      "c": "0x8ee4889c2273c5906ad334521c51a",
+      "pair": [
+        0,
+        23
+      ]
+    },
+    {
+      "c": "0x58592c0bdcf1b3854b4d67ddab98c",
+      "pair": [
+        14,
+        22
+      ]
+    }
+  ],
+  "quadratic_SAT_models_verified": [
+    {
+      "c": "0x492709594aa07fc0e19184c0b0080",
+      "all26_hold": true,
+      "original_385_failed": 158
+    },
+    {
+      "c": "0x72b7313f049f4d324a1ebd15bdeba",
+      "all26_hold": true,
+      "original_385_failed": 191
+    }
+  ],
+  "scope": "Original truth tables and subcube weights, independent of the bit-sliced producer. Finite matrix-entry controls; full affine reconstruction coefficient enumeration is recorded separately.",
+  "seconds": 0.6878977000014856
+}

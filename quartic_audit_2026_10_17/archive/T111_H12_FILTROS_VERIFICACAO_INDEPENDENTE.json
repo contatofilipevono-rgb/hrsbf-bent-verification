@@ -1,0 +1,10 @@
+{
+  "verification": "PASS_INDEPENDENT_CARRY_IDENTITY_AND_MOBIUS",
+  "original_quartic_orbit_truth_columns_verified": 43,
+  "quadratic_filters_verified": 43,
+  "linear_coefficients_checked": 1849,
+  "quadratic_coefficients_checked": 38829,
+  "method": "Second weight bit equals sum of pairwise products of original truth bits; Boolean c_i^2=c_i. No polynomial interpolation used. Truth reconstructed from ANF by Mobius.",
+  "basis_identity": true,
+  "seconds": 0.27785189999849536
+}

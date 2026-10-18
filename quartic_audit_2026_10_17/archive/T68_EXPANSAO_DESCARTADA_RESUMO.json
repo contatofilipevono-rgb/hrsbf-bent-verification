@@ -1,0 +1,10 @@
+{
+  "frequency_hex": "0x101",
+  "modulus": 128,
+  "conditions": "Three T20 linear laws",
+  "common_divisibility": 64,
+  "first_bit_degree": 4,
+  "first_bit_terms_branch0": 2947138,
+  "first_bit_terms_branch1": 2949491,
+  "scope": "Exact coefficient expansion produced internally; rejected as a compact representation. No global exclusion bound or standalone independent verification claimed for this expansion."
+}

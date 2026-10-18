@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "original_dimension": 43,
+  "necessary_quadratic_filters": 43,
+  "verified_boolean_polynomial_identities": 3,
+  "products_per_identity": [
+    22,
+    1,
+    24
+  ],
+  "scope": "Three exact linear consequences; not a global UNSAT certificate."
+}

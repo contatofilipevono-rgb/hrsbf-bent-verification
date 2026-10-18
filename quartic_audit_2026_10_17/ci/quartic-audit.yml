@@ -1,0 +1,41 @@
+name: Quartic H12 audit
+on:
+  push:
+    paths:
+      - 'quartic_audit_2026_10_17/**'
+      - '.github/workflows/quartic-audit.yml'
+  pull_request:
+    paths:
+      - 'quartic_audit_2026_10_17/**'
+      - '.github/workflows/quartic-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify hashes and exact algebra
+        working-directory: quartic_audit_2026_10_17
+        run: |
+          python verify_manifest.py
+          python verify_linear_laws.py
+          python verify_periodic_reduction.py
+  lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: quartic_audit_2026_10_17/lean
+          auto-config: false
+          build: true
+          test: false
+          use-mathlib-cache: false
+          axiom-audit: true
+          axiom-audit-root: H12Audit

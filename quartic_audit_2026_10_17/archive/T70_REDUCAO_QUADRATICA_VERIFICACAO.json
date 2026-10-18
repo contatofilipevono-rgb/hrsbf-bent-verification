@@ -1,0 +1,21 @@
+{
+  "verification": "PASS",
+  "branches": [
+    {
+      "branch": 0,
+      "terms": 205,
+      "degree": 2,
+      "identity": "W5555=128*Q4 mod256 under the three linear laws"
+    },
+    {
+      "branch": 1,
+      "terms": 197,
+      "degree": 2,
+      "identity": "W5555=128*Q4 mod256 under the three linear laws"
+    }
+  ],
+  "coefficients_checked_per_branch": 234248,
+  "higher_degree_tail": "All signed weights are divisible by16, so coefficients of degree>=4 vanish mod256.",
+  "seconds": 3.8531309999962104,
+  "scope": "Complete modular polynomial identity; no new necessary filter beyond Q4."
+}

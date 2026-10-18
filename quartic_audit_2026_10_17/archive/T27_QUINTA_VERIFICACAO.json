@@ -1,0 +1,12 @@
+{
+  "support_mask_hex": "0x3f3f",
+  "partitions_checked": 5775,
+  "raw_terms": 67,
+  "terms_after_three_linear_laws": 528,
+  "factorization": "parity(I33)*parity(J16)",
+  "J_equals_c99_under_third_law": true,
+  "fifth_condition_is_necessary_only": true,
+  "joint_uniformity_coordinate_after_four_conditions": 23,
+  "exact_fraction_passing_all_five_conditions": "3/64",
+  "scope": "Complete partition polynomial identity; global fraction follows from the explicit four-condition parametrization and independent parity coordinates, not a sample."
+}

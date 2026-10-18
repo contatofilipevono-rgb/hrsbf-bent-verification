@@ -1,0 +1,335 @@
+{
+  "verification": "PASS",
+  "branch": 1,
+  "checks": [
+    {
+      "coefficient_hex": "0x1494ca0e88dac581c2582eaa5d822",
+      "counter_values_checked": 42,
+      "new_individual_constraints_checked": 9,
+      "h": [
+        -128,
+        -128,
+        -144,
+        -176,
+        -136,
+        -200,
+        -168,
+        -288
+      ],
+      "six_exact": true,
+      "all36mod": false
+    },
+    {
+      "coefficient_hex": "0x54cc88990c184e9be7ebe740e009f",
+      "counter_values_checked": 42,
+      "new_individual_constraints_checked": 9,
+      "h": [
+        -64,
+        64,
+        128,
+        -16,
+        112,
+        32,
+        80,
+        464
+      ],
+      "six_exact": false,
+      "all36mod": false
+    }
+  ],
+  "encoding": {
+    "new_variables": 26899,
+    "clauses": 51901,
+    "xor_equations": 15844,
+    "truth_signature_variables": 4034,
+    "counter_stage": {
+      "variables": 19582,
+      "clauses": 34608,
+      "xor_equations": 11808
+    },
+    "counters": [
+      {
+        "quotient_representative": "0x0",
+        "input_orbits": 0,
+        "counter_bits": 1
+      },
+      {
+        "quotient_representative": "0x1",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x3",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x5",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x7",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x9",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0xb",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0xd",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0xf",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x11",
+        "input_orbits": 64,
+        "counter_bits": 7
+      },
+      {
+        "quotient_representative": "0x13",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x15",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x17",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x19",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x1b",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x1d",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x1f",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x25",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x27",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x2b",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x2d",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x2f",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x33",
+        "input_orbits": 64,
+        "counter_bits": 7
+      },
+      {
+        "quotient_representative": "0x35",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x37",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x3b",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x3d",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x3f",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x55",
+        "input_orbits": 32,
+        "counter_bits": 6
+      },
+      {
+        "quotient_representative": "0x57",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x5b",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x5f",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x6f",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x77",
+        "input_orbits": 64,
+        "counter_bits": 7
+      },
+      {
+        "quotient_representative": "0x7f",
+        "input_orbits": 128,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0xff",
+        "input_orbits": 16,
+        "counter_bits": 5
+      }
+    ],
+    "frequency_constraints": 36,
+    "activation_variables": [
+      19955,
+      20197,
+      20472,
+      20609,
+      20735,
+      21013,
+      21150,
+      21428,
+      21702,
+      21808,
+      22000,
+      22278,
+      22556,
+      22693,
+      22971,
+      23097,
+      23234,
+      23512,
+      23790,
+      23916,
+      24053,
+      24159,
+      24433,
+      24507,
+      24644,
+      24922,
+      25200,
+      25478,
+      25615,
+      25745,
+      26023,
+      26301,
+      26427,
+      26564,
+      26756,
+      27030
+    ],
+    "scope": "Shared counters for necessary Walsh congruences mod512 under the three T20 laws, fixed c99 branch.",
+    "joint_variables": 78549,
+    "joint_clauses": 151883,
+    "joint_xors": 44034,
+    "truth_signatures": 4035,
+    "h_filters": [
+      {
+        "support": "0x3f3f",
+        "modulus": 32,
+        "terms": 1372,
+        "common_divisor": 2,
+        "counter_width": 3
+      },
+      {
+        "support": "0x5f5f",
+        "modulus": 32,
+        "terms": 1362,
+        "common_divisor": 2,
+        "counter_width": 3
+      },
+      {
+        "support": "0x6f6f",
+        "modulus": 32,
+        "terms": 1372,
+        "common_divisor": 2,
+        "counter_width": 3
+      },
+      {
+        "support": "0x33ff",
+        "modulus": 16,
+        "terms": 1982,
+        "common_divisor": 1,
+        "counter_width": 3
+      },
+      {
+        "support": "0x66ff",
+        "modulus": 16,
+        "terms": 1982,
+        "common_divisor": 1,
+        "counter_width": 3
+      },
+      {
+        "support": "0x73bf",
+        "modulus": 16,
+        "terms": 1982,
+        "common_divisor": 1,
+        "counter_width": 3
+      },
+      {
+        "support": "0x76ef",
+        "modulus": 16,
+        "terms": 1982,
+        "common_divisor": 1,
+        "counter_width": 3
+      },
+      {
+        "support": "0x7f7f",
+        "modulus": 128,
+        "terms": 3626,
+        "common_divisor": 2,
+        "counter_width": 5
+      }
+    ]
+  }
+}

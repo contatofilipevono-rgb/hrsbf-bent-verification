@@ -1,0 +1,11 @@
+{
+  "verification": "PASS",
+  "quadratic_derivative_matrices_rebuilt": 272,
+  "nonzero_difference_matrices_rank_checked": 1114095,
+  "conditioned_cases": 17,
+  "global_pass_upper_bound": "2943198307753433/9223372036854775808",
+  "global_excluded_lower_bound": "9220428838547022375/9223372036854775808",
+  "excluded_percent_lower_bound": 99.96808978000678,
+  "seconds": 1201.9112004999988,
+  "scope": "Finite-difference refinement of the thirteen-condition bound. Every matrix rank enumerated independently with low pivots; rational square-root bounds checked exactly. No nonexistence claim."
+}

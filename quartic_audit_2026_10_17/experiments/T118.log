@@ -1,0 +1,8 @@
+SOLVE 0 frequencies [0] vars 8844 clauses 33087
+ANSWER True seconds 60.816173791885376
+MODEL 0x1f92501e012 next 1
+SOLVE 1 frequencies [0, 1] vars 10533 clauses 39146
+ANSWER True seconds 34.1235146522522
+MODEL 0x6f7fffd3bfe next 4095
+SOLVE 2 frequencies [0, 1, 4095] vars 13881 clauses 51190
+ANSWER None seconds 110.08561491966248

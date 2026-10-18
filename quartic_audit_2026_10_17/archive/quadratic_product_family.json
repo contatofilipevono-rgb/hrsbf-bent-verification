@@ -1,0 +1,328 @@
+{
+  "n": 16,
+  "construction": "For distances a<=b, sum disjoint edge-pair quartic monomials in cyclic distance graphs; identical edge colors use unordered pairs. This is the homogeneous degree4 part of a quadratic-product/divided-square construction.",
+  "generators": [
+    {
+      "distances": [
+        1,
+        1
+      ],
+      "coefficient_hex": "0x204040200801001",
+      "quartic_terms": 104
+    },
+    {
+      "distances": [
+        1,
+        2
+      ],
+      "coefficient_hex": "0x1488408080401002802",
+      "quartic_terms": 192
+    },
+    {
+      "distances": [
+        1,
+        3
+      ],
+      "coefficient_hex": "0x910810100802004405",
+      "quartic_terms": 192
+    },
+    {
+      "distances": [
+        1,
+        4
+      ],
+      "coefficient_hex": "0x221020201004008a0a",
+      "quartic_terms": 192
+    },
+    {
+      "distances": [
+        1,
+        5
+      ],
+      "coefficient_hex": "0x42040402008410514",
+      "quartic_terms": 192
+    },
+    {
+      "distances": [
+        1,
+        6
+      ],
+      "coefficient_hex": "0x40808041102202a8",
+      "quartic_terms": 192
+    },
+    {
+      "distances": [
+        1,
+        7
+      ],
+      "coefficient_hex": "0x1010280a0140110",
+      "quartic_terms": 160
+    },
+    {
+      "distances": [
+        1,
+        8
+      ],
+      "coefficient_hex": "0x20100400800a0",
+      "quartic_terms": 96
+    },
+    {
+      "distances": [
+        2,
+        2
+      ],
+      "coefficient_hex": "0x8410202000000000000400001",
+      "quartic_terms": 104
+    },
+    {
+      "distances": [
+        2,
+        3
+      ],
+      "coefficient_hex": "0x290820504000000000100200802",
+      "quartic_terms": 192
+    },
+    {
+      "distances": [
+        2,
+        4
+      ],
+      "coefficient_hex": "0x121040888000000020000101404",
+      "quartic_terms": 192
+    },
+    {
+      "distances": [
+        2,
+        5
+      ],
+      "coefficient_hex": "0x42081051000002000000082208",
+      "quartic_terms": 192
+    },
+    {
+      "distances": [
+        2,
+        6
+      ],
+      "coefficient_hex": "0x4102002800100000000044110",
+      "quartic_terms": 160
+    },
+    {
+      "distances": [
+        2,
+        7
+      ],
+      "coefficient_hex": "0x2041542040000000000280a0",
+      "quartic_terms": 192
+    },
+    {
+      "distances": [
+        2,
+        8
+      ],
+      "coefficient_hex": "0x8088040000000000010040",
+      "quartic_terms": 96
+    },
+    {
+      "distances": [
+        3,
+        3
+      ],
+      "coefficient_hex": "0x24400008000000000000080401000",
+      "quartic_terms": 104
+    },
+    {
+      "distances": [
+        3,
+        4
+      ],
+      "coefficient_hex": "0x4a800204001000000010140202000",
+      "quartic_terms": 192
+    },
+    {
+      "distances": [
+        3,
+        5
+      ],
+      "coefficient_hex": "0x10004002000800001020020904000",
+      "quartic_terms": 160
+    },
+    {
+      "distances": [
+        3,
+        6
+      ],
+      "coefficient_hex": "0x2840001000600082000011088000",
+      "quartic_terms": 192
+    },
+    {
+      "distances": [
+        3,
+        7
+      ],
+      "coefficient_hex": "0x500000a0014210000000a050000",
+      "quartic_terms": 192
+    },
+    {
+      "distances": [
+        3,
+        8
+      ],
+      "coefficient_hex": "0x200000400024000000004020000",
+      "quartic_terms": 96
+    },
+    {
+      "distances": [
+        4,
+        4
+      ],
+      "coefficient_hex": "0x10000100002000000008080800000",
+      "quartic_terms": 96
+    },
+    {
+      "distances": [
+        4,
+        5
+      ],
+      "coefficient_hex": "0x48002080104400000814041000000",
+      "quartic_terms": 192
+    },
+    {
+      "distances": [
+        4,
+        6
+      ],
+      "coefficient_hex": "0x4020040088100041002222000000",
+      "quartic_terms": 192
+    },
+    {
+      "distances": [
+        4,
+        7
+      ],
+      "coefficient_hex": "0x800200500a1080001414000000",
+      "quartic_terms": 192
+    },
+    {
+      "distances": [
+        4,
+        8
+      ],
+      "coefficient_hex": "0x10020012000000808000000",
+      "quartic_terms": 96
+    },
+    {
+      "distances": [
+        5,
+        5
+      ],
+      "coefficient_hex": "0x20001008200000000408200000000",
+      "quartic_terms": 104
+    },
+    {
+      "distances": [
+        5,
+        6
+      ],
+      "coefficient_hex": "0x210a04400080020a04400000000",
+      "quartic_terms": 192
+    },
+    {
+      "distances": [
+        5,
+        7
+      ],
+      "coefficient_hex": "0x104402800010840142800000000",
+      "quartic_terms": 192
+    },
+    {
+      "distances": [
+        5,
+        8
+      ],
+      "coefficient_hex": "0x40001000009000081000000000",
+      "quartic_terms": 96
+    },
+    {
+      "distances": [
+        6,
+        6
+      ],
+      "coefficient_hex": "0x408110000000010440000000000",
+      "quartic_terms": 104
+    },
+    {
+      "distances": [
+        6,
+        7
+      ],
+      "coefficient_hex": "0x28820a0000008428280000000000",
+      "quartic_terms": 192
+    },
+    {
+      "distances": [
+        6,
+        8
+      ],
+      "coefficient_hex": "0x1020040000000804100000000000",
+      "quartic_terms": 96
+    },
+    {
+      "distances": [
+        7,
+        7
+      ],
+      "coefficient_hex": "0x14001400000000214000000000000",
+      "quartic_terms": 104
+    },
+    {
+      "distances": [
+        7,
+        8
+      ],
+      "coefficient_hex": "0x48010800000000408000000000000",
+      "quartic_terms": 96
+    },
+    {
+      "distances": [
+        8,
+        8
+      ],
+      "coefficient_hex": "0xa0008000000000200000000000000",
+      "quartic_terms": 28
+    }
+  ],
+  "dimension": 28,
+  "independent_generator_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    23,
+    24,
+    25,
+    28,
+    29,
+    32,
+    35
+  ],
+  "full_family_functions": "268435456",
+  "contains_symmetric_e4": true,
+  "scope": "A structured subspace of H(16,4), constructed without imposing conditions necessary only for bentness. PC2 has not yet been tested exhaustively in this family."
+}

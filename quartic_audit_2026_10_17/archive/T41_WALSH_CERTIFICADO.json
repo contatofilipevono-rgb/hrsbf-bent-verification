@@ -1,0 +1,213 @@
+{
+  "fixed_function_controls": [
+    {
+      "coefficient_hex": "0x661d58a1f584edab5f8294ac55e6",
+      "branch": 1,
+      "W0": 1280,
+      "expected": false,
+      "solver_answer": false
+    },
+    {
+      "coefficient_hex": "0x18649e30a3513dbc1231f902c2da",
+      "branch": 0,
+      "W0": 2560,
+      "expected": false,
+      "solver_answer": false
+    },
+    {
+      "coefficient_hex": "0x2607c699ca679faec41ec1b7c33f2",
+      "branch": 1,
+      "W0": 256,
+      "expected": true,
+      "solver_answer": true
+    },
+    {
+      "coefficient_hex": "0x54ec4c4401f53045a91728b0bcee9",
+      "branch": 0,
+      "W0": -256,
+      "expected": true,
+      "solver_answer": true
+    },
+    {
+      "coefficient_hex": "0x0",
+      "branch": 0,
+      "W0": 65536,
+      "expected": false
+    }
+  ],
+  "encoding_by_branch": {
+    "1": {
+      "first_variable": 117,
+      "last_variable": 20267,
+      "new_variables": 20151,
+      "clauses": 36289,
+      "xor_equations": 12092,
+      "distinct_folded_signatures": 4035,
+      "fixed_one_orbits": 0,
+      "sum_output_bits": 13,
+      "targets": [
+        {
+          "a": 0,
+          "sign": 0,
+          "weight_after_constant": 2034
+        },
+        {
+          "a": 0,
+          "sign": 1,
+          "weight_after_constant": 2050
+        },
+        {
+          "a": 1,
+          "sign": 0,
+          "weight_after_constant": 2030
+        },
+        {
+          "a": 1,
+          "sign": 1,
+          "weight_after_constant": 2046
+        }
+      ],
+      "identity": "W0=65536-128*a-192*b-32*weight_full_orbits",
+      "scope": "Exact necessary W0=+/-256 constraint under the three T20 laws and fixed b=c99. Balanced binary addition with native XOR and CNF carry gates."
+    },
+    "0": {
+      "first_variable": 117,
+      "last_variable": 20267,
+      "new_variables": 20151,
+      "clauses": 36289,
+      "xor_equations": 12092,
+      "distinct_folded_signatures": 4035,
+      "fixed_one_orbits": 0,
+      "sum_output_bits": 13,
+      "targets": [
+        {
+          "a": 0,
+          "sign": 0,
+          "weight_after_constant": 2040
+        },
+        {
+          "a": 0,
+          "sign": 1,
+          "weight_after_constant": 2056
+        },
+        {
+          "a": 1,
+          "sign": 0,
+          "weight_after_constant": 2036
+        },
+        {
+          "a": 1,
+          "sign": 1,
+          "weight_after_constant": 2052
+        }
+      ],
+      "identity": "W0=65536-128*a-192*b-32*weight_full_orbits",
+      "scope": "Exact necessary W0=+/-256 constraint under the three T20 laws and fixed b=c99. Balanced binary addition with native XOR and CNF carry gates."
+    }
+  },
+  "native_encoding_validation": {
+    "verification": "PASS",
+    "controls": [
+      {
+        "coefficient_hex": "0x661d58a1f584edab5f8294ac55e6",
+        "branch": 1,
+        "W0": 1280,
+        "expected": false,
+        "solver_answer": false
+      },
+      {
+        "coefficient_hex": "0x18649e30a3513dbc1231f902c2da",
+        "branch": 0,
+        "W0": 2560,
+        "expected": false,
+        "solver_answer": false
+      },
+      {
+        "coefficient_hex": "0x2607c699ca679faec41ec1b7c33f2",
+        "branch": 1,
+        "W0": 256,
+        "expected": true,
+        "solver_answer": true
+      },
+      {
+        "coefficient_hex": "0x54ec4c4401f53045a91728b0bcee9",
+        "branch": 0,
+        "W0": -256,
+        "expected": true,
+        "solver_answer": true
+      }
+    ],
+    "encoding_by_branch": {
+      "1": {
+        "first_variable": 117,
+        "last_variable": 20267,
+        "new_variables": 20151,
+        "clauses": 36289,
+        "xor_equations": 12092,
+        "distinct_folded_signatures": 4035,
+        "fixed_one_orbits": 0,
+        "sum_output_bits": 13,
+        "targets": [
+          {
+            "a": 0,
+            "sign": 0,
+            "weight_after_constant": 2034
+          },
+          {
+            "a": 0,
+            "sign": 1,
+            "weight_after_constant": 2050
+          },
+          {
+            "a": 1,
+            "sign": 0,
+            "weight_after_constant": 2030
+          },
+          {
+            "a": 1,
+            "sign": 1,
+            "weight_after_constant": 2046
+          }
+        ],
+        "identity": "W0=65536-128*a-192*b-32*weight_full_orbits",
+        "scope": "Exact necessary W0=+/-256 constraint under the three T20 laws and fixed b=c99. Balanced binary addition with native XOR and CNF carry gates."
+      },
+      "0": {
+        "first_variable": 117,
+        "last_variable": 20267,
+        "new_variables": 20151,
+        "clauses": 36289,
+        "xor_equations": 12092,
+        "distinct_folded_signatures": 4035,
+        "fixed_one_orbits": 0,
+        "sum_output_bits": 13,
+        "targets": [
+          {
+            "a": 0,
+            "sign": 0,
+            "weight_after_constant": 2040
+          },
+          {
+            "a": 0,
+            "sign": 1,
+            "weight_after_constant": 2056
+          },
+          {
+            "a": 1,
+            "sign": 0,
+            "weight_after_constant": 2036
+          },
+          {
+            "a": 1,
+            "sign": 1,
+            "weight_after_constant": 2052
+          }
+        ],
+        "identity": "W0=65536-128*a-192*b-32*weight_full_orbits",
+        "scope": "Exact necessary W0=+/-256 constraint under the three T20 laws and fixed b=c99. Balanced binary addition with native XOR and CNF carry gates."
+      }
+    },
+    "seconds": 2.1873740000010002,
+    "scope": "Positive and negative fixed original-function controls for the exact Walsh-zero-frequency constraint. This validates an encoding component, not a nonexistence claim."
+  }
+}

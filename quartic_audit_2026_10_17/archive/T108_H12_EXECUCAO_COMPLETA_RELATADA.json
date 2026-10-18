@@ -1,0 +1,61 @@
+{
+  "verification": "REPORTED_COMPLETE_CONDITIONAL_SEARCH_TWICE",
+  "source": "User-pasted truncated Colab output, not raw full logs/model/binary",
+  "attachment_sha256": "bd1dcf969ecf8d25bae9b76133cef84ec10a3b6cb841da118cc91c1cbaacf340",
+  "runs": [
+    {
+      "reported_summary": {
+        "status": "COMPLETE_CONDITIONAL_RANGE",
+        "start": 0,
+        "count": 68719476736,
+        "bent": 0
+      },
+      "visible_batch_count": 4997,
+      "visible_suffix_first_end": 63480791040,
+      "final_counts": {
+        "end_exclusive": 68719476736,
+        "tested": 68719476736,
+        "quadratic_survivors": 322176,
+        "w0_survivors": 4343,
+        "bent": 0,
+        "gpu_batch_ms": 0.689
+      },
+      "visible_suffix_contiguous": true
+    },
+    {
+      "reported_summary": {
+        "status": "COMPLETE_CONDITIONAL_RANGE",
+        "start": 0,
+        "count": 68719476736,
+        "bent": 0
+      },
+      "visible_batch_count": 4997,
+      "visible_suffix_first_end": 63480791040,
+      "final_counts": {
+        "end_exclusive": 68719476736,
+        "tested": 68719476736,
+        "quadratic_survivors": 322176,
+        "w0_survivors": 4343,
+        "bent": 0,
+        "gpu_batch_ms": 0.692
+      },
+      "visible_suffix_contiguous": true
+    }
+  ],
+  "all_visible_suffix_counts_agree_between_runs": true,
+  "program_reported_seconds": [
+    36.39,
+    36.11
+  ],
+  "interface_labels": [
+    "57min",
+    "1h"
+  ],
+  "timing_discrepancy_unresolved": true,
+  "pending": [
+    "Raw full logs and model.json",
+    "Independent interval CPU/GPU replay",
+    "Necessity of five initial laws or completion of global43 search"
+  ],
+  "scope": "No bent reported in 36-dimensional domain under seven laws; first-five necessity remains unestablished by audit."
+}

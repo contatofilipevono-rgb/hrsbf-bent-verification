@@ -1,0 +1,12 @@
+{
+  "solver": "pycryptosat 5.17.0",
+  "branch_c99": 1,
+  "variables": 240494,
+  "and_clauses": 721134,
+  "xor_equations": 397,
+  "xor_literals": 7110492,
+  "time_limit_seconds": 45,
+  "solve_seconds": 45.45530520000102,
+  "answer": null,
+  "scope": "389 cubic necessary conditions, Q4, fifth branch constraints, and second bits at all four period-eight weight-twelve supports; no full bentness encoding and no independent UNSAT proof."
+}

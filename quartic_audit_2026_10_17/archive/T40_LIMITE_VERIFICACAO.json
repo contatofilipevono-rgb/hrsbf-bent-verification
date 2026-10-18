@@ -1,0 +1,14 @@
+{
+  "verification": "PASS",
+  "independent_quadratic_sums": 18080,
+  "exact_equation_span_checks": 173,
+  "branches": [
+    {"branch": 0, "conditional_pass_upper_bound": "1754322589141535/72057594037927936", "conditional_pass_lower_bound": "0"},
+    {"branch": 1, "conditional_pass_upper_bound": "866697251930187/36028797018963968", "conditional_pass_lower_bound": "0"}
+  ],
+  "global_pass_upper_bound": "1310509920535861/2305843009213693952",
+  "global_pass_lower_bound": "0",
+  "excluded_percent_interval": [99.94316569188364,100.0],
+  "seconds": 768.1299915999989,
+  "scope": "Thirteen necessary conditions with symmetry-orbit character bounds. Selected radical equations give certified density upper bounds; no exact survivor density or global nonexistence claim."
+}

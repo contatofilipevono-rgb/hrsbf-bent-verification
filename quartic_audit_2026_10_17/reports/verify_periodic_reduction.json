@@ -1,0 +1,77 @@
+{
+  "status": "PASS",
+  "original_dimension": 43,
+  "periodic_image_dimension": 4,
+  "periodic_coefficient_masks": [
+    "0x18c8000",
+    "0x10000000000",
+    "0x2d57a733bee",
+    "0x40000000000"
+  ],
+  "allowed_cases": [
+    {
+      "parameter_code": 2,
+      "truth_table": "0x6ca0",
+      "short_input_weight": 36,
+      "long_orbits_weight": 165,
+      "required_total_weight": 2016,
+      "short_weights_even_odd": [
+        32,
+        4
+      ],
+      "required_long_weights_even_odd": [
+        80,
+        85
+      ]
+    },
+    {
+      "parameter_code": 3,
+      "truth_table": "0x7ee8",
+      "short_input_weight": 40,
+      "long_orbits_weight": 170,
+      "required_total_weight": 2080,
+      "short_weights_even_odd": [
+        36,
+        4
+      ],
+      "required_long_weights_even_odd": [
+        85,
+        85
+      ]
+    },
+    {
+      "parameter_code": 8,
+      "truth_table": "0x8000",
+      "short_input_weight": 16,
+      "long_orbits_weight": 172,
+      "required_total_weight": 2080,
+      "short_weights_even_odd": [
+        16,
+        0
+      ],
+      "required_long_weights_even_odd": [
+        84,
+        88
+      ]
+    },
+    {
+      "parameter_code": 15,
+      "truth_table": "0x9668",
+      "short_input_weight": 28,
+      "long_orbits_weight": 171,
+      "required_total_weight": 2080,
+      "short_weights_even_odd": [
+        28,
+        0
+      ],
+      "required_long_weights_even_odd": [
+        83,
+        88
+      ]
+    }
+  ],
+  "short_input_orbits": 17,
+  "short_input_points": 76,
+  "long_input_orbits": 335,
+  "scope": "Necessary reduction, not an UNSAT result or a replacement for the global GPU search."
+}

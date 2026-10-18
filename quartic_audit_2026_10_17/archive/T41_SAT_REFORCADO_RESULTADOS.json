@@ -1,0 +1,101 @@
+{
+  "branches": [
+    {
+      "solver": "pycryptosat 5.17.0",
+      "branch_c99": 0,
+      "variables": 260645,
+      "and_clauses": 721134,
+      "xor_equations": 396,
+      "xor_literals": 7101653,
+      "time_limit_seconds": 60,
+      "solve_seconds": 60.130356000001484,
+      "answer": null,
+      "walsh_encoding": {
+        "first_variable": 240495,
+        "last_variable": 260645,
+        "new_variables": 20151,
+        "clauses": 36289,
+        "xor_equations": 12092,
+        "distinct_folded_signatures": 4035,
+        "fixed_one_orbits": 0,
+        "sum_output_bits": 13,
+        "targets": [
+          {
+            "a": 0,
+            "sign": 0,
+            "weight_after_constant": 2040
+          },
+          {
+            "a": 0,
+            "sign": 1,
+            "weight_after_constant": 2056
+          },
+          {
+            "a": 1,
+            "sign": 0,
+            "weight_after_constant": 2036
+          },
+          {
+            "a": 1,
+            "sign": 1,
+            "weight_after_constant": 2052
+          }
+        ],
+        "identity": "W0=65536-128*a-192*b-32*weight_full_orbits",
+        "scope": "Exact necessary W0=+/-256 constraint under the three T20 laws and fixed b=c99. Balanced binary addition with native XOR and CNF carry gates."
+      },
+      "scope": "Exact W0=+/-256, plus 389 cubic necessary conditions, Q4, fifth branch constraints, and second bits at all four period-eight weight-twelve supports; no full bentness encoding and no independent UNSAT proof.",
+      "total_native_xor_equations": 12488,
+      "total_cnf_clauses": 757425
+    },
+    {
+      "solver": "pycryptosat 5.17.0",
+      "branch_c99": 1,
+      "variables": 260645,
+      "and_clauses": 721134,
+      "xor_equations": 397,
+      "xor_literals": 7110492,
+      "time_limit_seconds": 60,
+      "solve_seconds": 60.07764970000426,
+      "answer": null,
+      "walsh_encoding": {
+        "first_variable": 240495,
+        "last_variable": 260645,
+        "new_variables": 20151,
+        "clauses": 36289,
+        "xor_equations": 12092,
+        "distinct_folded_signatures": 4035,
+        "fixed_one_orbits": 0,
+        "sum_output_bits": 13,
+        "targets": [
+          {
+            "a": 0,
+            "sign": 0,
+            "weight_after_constant": 2034
+          },
+          {
+            "a": 0,
+            "sign": 1,
+            "weight_after_constant": 2050
+          },
+          {
+            "a": 1,
+            "sign": 0,
+            "weight_after_constant": 2030
+          },
+          {
+            "a": 1,
+            "sign": 1,
+            "weight_after_constant": 2046
+          }
+        ],
+        "identity": "W0=65536-128*a-192*b-32*weight_full_orbits",
+        "scope": "Exact necessary W0=+/-256 constraint under the three T20 laws and fixed b=c99. Balanced binary addition with native XOR and CNF carry gates."
+      },
+      "scope": "Exact W0=+/-256, plus 389 cubic necessary conditions, Q4, fifth branch constraints, and second bits at all four period-eight weight-twelve supports; no full bentness encoding and no independent UNSAT proof.",
+      "total_native_xor_equations": 12489,
+      "total_cnf_clauses": 757425
+    }
+  ],
+  "scope": "Both bounded attempts were inconclusive; no candidates were excluded."
+}

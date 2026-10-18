@@ -1,0 +1,26 @@
+[
+  {
+    "branch": 1,
+    "character": 2,
+    "claimed_old_rank": 2,
+    "old": {
+      "rank": 2,
+      "higher_terms": [],
+      "nonradical_stored_directions": []
+    },
+    "shifted": {
+      "rank": 0,
+      "higher_terms": [],
+      "nonradical_stored_directions": []
+    },
+    "shifted_amplitude_used": [
+      67176069,
+      34359738368
+    ],
+    "corrected_full_radical_slice_amplitude": [
+      134351965,
+      137438953472
+    ],
+    "original_bound_still_safe_for_this_case": true
+  }
+]

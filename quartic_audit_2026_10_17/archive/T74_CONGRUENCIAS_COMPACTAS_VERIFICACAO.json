@@ -1,0 +1,117 @@
+{
+  "verification": "PASS",
+  "encoding_by_branch": {
+    "0": {
+      "0x0": {
+        "new_variables": 19161,
+        "clauses": 33271,
+        "xor_equations": 11598,
+        "constant": 912,
+        "weight_gcd": 16,
+        "nonconstant_signatures": 4035,
+        "congruence_modulus": 512,
+        "counter_bits": 4,
+        "residue_target": 8,
+        "scope": "Necessary congruence only, not exact amplitude."
+      },
+      "0x5555": {
+        "new_variables": 9620,
+        "clauses": 16699,
+        "xor_equations": 5823,
+        "constant": 176,
+        "weight_gcd": 16,
+        "nonconstant_signatures": 2026,
+        "congruence_modulus": 512,
+        "counter_bits": 4,
+        "residue_target": 4,
+        "scope": "Necessary congruence only, not exact amplitude."
+      }
+    },
+    "1": {
+      "0x0": {
+        "new_variables": 19161,
+        "clauses": 33271,
+        "xor_equations": 11598,
+        "constant": 720,
+        "weight_gcd": 16,
+        "nonconstant_signatures": 4035,
+        "congruence_modulus": 512,
+        "counter_bits": 4,
+        "residue_target": 2,
+        "scope": "Necessary congruence only, not exact amplitude."
+      },
+      "0x5555": {
+        "new_variables": 9620,
+        "clauses": 16699,
+        "xor_equations": 5823,
+        "constant": -16,
+        "weight_gcd": 16,
+        "nonconstant_signatures": 2026,
+        "congruence_modulus": 512,
+        "counter_bits": 4,
+        "residue_target": 14,
+        "scope": "Necessary congruence only, not exact amplitude."
+      }
+    }
+  },
+  "controls": [
+    {
+      "branch": 0,
+      "coefficient_hex": "0x3da4038d1644c423bbd855a28b8a0",
+      "passes_C0": false,
+      "passes_C2": true,
+      "joint_solver_answer": false
+    },
+    {
+      "branch": 0,
+      "coefficient_hex": "0x7e946225e85b37b4d14f16b45f727",
+      "passes_C0": true,
+      "passes_C2": true,
+      "joint_solver_answer": true
+    },
+    {
+      "branch": 0,
+      "coefficient_hex": "0x28bb166fc2a778f246c0a585a3543",
+      "passes_C0": true,
+      "passes_C2": false,
+      "joint_solver_answer": false
+    },
+    {
+      "branch": 0,
+      "coefficient_hex": "0x4ccc076012698a9cd63e07590c40e",
+      "passes_C0": false,
+      "passes_C2": false,
+      "joint_solver_answer": false
+    },
+    {
+      "branch": 1,
+      "coefficient_hex": "0x71c1bd746b2bb8a7bae991615d7ac",
+      "passes_C0": true,
+      "passes_C2": true,
+      "joint_solver_answer": true
+    },
+    {
+      "branch": 1,
+      "coefficient_hex": "0x1144a7987e327818616aae48d6e99",
+      "passes_C0": true,
+      "passes_C2": false,
+      "joint_solver_answer": false
+    },
+    {
+      "branch": 1,
+      "coefficient_hex": "0x6f9f9ad30f14e4270b1889df9e9ce",
+      "passes_C0": false,
+      "passes_C2": false,
+      "joint_solver_answer": false
+    },
+    {
+      "branch": 1,
+      "coefficient_hex": "0x2538162b8b3c14facaf799277b6f",
+      "passes_C0": false,
+      "passes_C2": true,
+      "joint_solver_answer": false
+    }
+  ],
+  "seconds": 6.961910500001977,
+  "scope": "Joint component for two necessary congruences; positive fixed controls show the system with thirteen old conditions is not contradictory."
+}

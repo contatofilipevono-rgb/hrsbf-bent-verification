@@ -1,0 +1,51 @@
+{
+  "all_4080_input_orbits_reconstructed": true,
+  "all_116_generators_reconstructed": true,
+  "both_codes_self_orthogonal_verified": true,
+  "all_basis_weights_match_mod4": true,
+  "universal_congruence_verified": "W_f(0)-A0-A255 divisible128",
+  "linear_indices_A255_over64": [
+    0,
+    4,
+    8,
+    14,
+    18,
+    22,
+    42,
+    46,
+    52,
+    56,
+    71,
+    81,
+    85,
+    94,
+    98,
+    106
+  ],
+  "four_diagonal_cases": [
+    {
+      "a": 0,
+      "b": 0,
+      "A0": 256
+    },
+    {
+      "a": 0,
+      "b": 1,
+      "A0": 64
+    },
+    {
+      "a": 1,
+      "b": 0,
+      "A0": 128
+    },
+    {
+      "a": 1,
+      "b": 1,
+      "A0": -64
+    }
+  ],
+  "third_law_independent_of_previous_two": true,
+  "all_three_law_rank": 3,
+  "additional_weight_congruence_checks": 256,
+  "scope": "Finite complete basis/inner-product certificate plus the accompanying theoretical argument; no full n16 nonexistence claim."
+}

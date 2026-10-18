@@ -1,0 +1,3679 @@
+{
+  "n": 8,
+  "orbit_dimension": 10,
+  "complete_functions": 1024,
+  "walsh_frequency_orbits": 36,
+  "directions": [
+    1,
+    3,
+    5,
+    9,
+    17
+  ],
+  "direction_multiplicities": [
+    8,
+    8,
+    8,
+    8,
+    4
+  ],
+  "max_nonlinearity": 110,
+  "max_nonlinearity_count": 2,
+  "min_Q2": 40960,
+  "rows": [
+    {
+      "nonlinearity": 0,
+      "functions": 1,
+      "min_Q2": 2359296,
+      "Q2_attainers": 1,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x0",
+          "correlations": [
+            256,
+            256,
+            256,
+            256,
+            256
+          ],
+          "nonlinearity": 0,
+          "max_abs_walsh": 256
+        }
+      ],
+      "min_M2": 256,
+      "M2_attainers": 1,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x0",
+          "correlations": [
+            256,
+            256,
+            256,
+            256,
+            256
+          ],
+          "nonlinearity": 0,
+          "max_abs_walsh": 256
+        }
+      ]
+    },
+    {
+      "nonlinearity": 16,
+      "functions": 1,
+      "min_Q2": 1441792,
+      "Q2_attainers": 1,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x41",
+          "correlations": [
+            192,
+            192,
+            192,
+            192,
+            256
+          ],
+          "nonlinearity": 16,
+          "max_abs_walsh": 224
+        }
+      ],
+      "min_M2": 256,
+      "M2_attainers": 1,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x41",
+          "correlations": [
+            192,
+            192,
+            192,
+            192,
+            256
+          ],
+          "nonlinearity": 16,
+          "max_abs_walsh": 224
+        }
+      ]
+    },
+    {
+      "nonlinearity": 28,
+      "functions": 6,
+      "min_Q2": 882688,
+      "Q2_attainers": 2,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0xca",
+          "correlations": [
+            144,
+            160,
+            160,
+            160,
+            160
+          ],
+          "nonlinearity": 28,
+          "max_abs_walsh": 200
+        },
+        {
+          "coefficients_hex": "0x1a1",
+          "correlations": [
+            144,
+            160,
+            160,
+            160,
+            160
+          ],
+          "nonlinearity": 28,
+          "max_abs_walsh": 200
+        }
+      ],
+      "min_M2": 160,
+      "M2_attainers": 2,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0xca",
+          "correlations": [
+            144,
+            160,
+            160,
+            160,
+            160
+          ],
+          "nonlinearity": 28,
+          "max_abs_walsh": 200
+        },
+        {
+          "coefficients_hex": "0x1a1",
+          "correlations": [
+            144,
+            160,
+            160,
+            160,
+            160
+          ],
+          "nonlinearity": 28,
+          "max_abs_walsh": 200
+        }
+      ]
+    },
+    {
+      "nonlinearity": 30,
+      "functions": 1,
+      "min_Q2": 1069056,
+      "Q2_attainers": 1,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x200",
+          "correlations": [
+            192,
+            144,
+            192,
+            144,
+            192
+          ],
+          "nonlinearity": 30,
+          "max_abs_walsh": 196
+        }
+      ],
+      "min_M2": 192,
+      "M2_attainers": 1,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x200",
+          "correlations": [
+            192,
+            144,
+            192,
+            144,
+            192
+          ],
+          "nonlinearity": 30,
+          "max_abs_walsh": 196
+        }
+      ]
+    },
+    {
+      "nonlinearity": 32,
+      "functions": 3,
+      "min_Q2": 808960,
+      "Q2_attainers": 2,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0xe",
+          "correlations": [
+            128,
+            160,
+            144,
+            160,
+            160
+          ],
+          "nonlinearity": 32,
+          "max_abs_walsh": 192
+        },
+        {
+          "coefficients_hex": "0x124",
+          "correlations": [
+            128,
+            160,
+            144,
+            160,
+            160
+          ],
+          "nonlinearity": 32,
+          "max_abs_walsh": 192
+        }
+      ],
+      "min_M2": 160,
+      "M2_attainers": 2,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0xe",
+          "correlations": [
+            128,
+            160,
+            144,
+            160,
+            160
+          ],
+          "nonlinearity": 32,
+          "max_abs_walsh": 192
+        },
+        {
+          "coefficients_hex": "0x124",
+          "correlations": [
+            128,
+            160,
+            144,
+            160,
+            160
+          ],
+          "nonlinearity": 32,
+          "max_abs_walsh": 192
+        }
+      ]
+    },
+    {
+      "nonlinearity": 36,
+      "functions": 3,
+      "min_Q2": 589824,
+      "Q2_attainers": 2,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0xa2",
+          "correlations": [
+            128,
+            128,
+            128,
+            128,
+            128
+          ],
+          "nonlinearity": 36,
+          "max_abs_walsh": 184
+        },
+        {
+          "coefficients_hex": "0x188",
+          "correlations": [
+            128,
+            128,
+            128,
+            128,
+            128
+          ],
+          "nonlinearity": 36,
+          "max_abs_walsh": 184
+        }
+      ],
+      "min_M2": 128,
+      "M2_attainers": 2,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0xa2",
+          "correlations": [
+            128,
+            128,
+            128,
+            128,
+            128
+          ],
+          "nonlinearity": 36,
+          "max_abs_walsh": 184
+        },
+        {
+          "coefficients_hex": "0x188",
+          "correlations": [
+            128,
+            128,
+            128,
+            128,
+            128
+          ],
+          "nonlinearity": 36,
+          "max_abs_walsh": 184
+        }
+      ]
+    },
+    {
+      "nonlinearity": 40,
+      "functions": 6,
+      "min_Q2": 538624,
+      "Q2_attainers": 4,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x29",
+          "correlations": [
+            128,
+            112,
+            96,
+            128,
+            160
+          ],
+          "nonlinearity": 40,
+          "max_abs_walsh": 176
+        },
+        {
+          "coefficients_hex": "0x68",
+          "correlations": [
+            128,
+            128,
+            96,
+            112,
+            160
+          ],
+          "nonlinearity": 40,
+          "max_abs_walsh": 176
+        },
+        {
+          "coefficients_hex": "0x103",
+          "correlations": [
+            128,
+            112,
+            96,
+            128,
+            160
+          ],
+          "nonlinearity": 40,
+          "max_abs_walsh": 176
+        },
+        {
+          "coefficients_hex": "0x142",
+          "correlations": [
+            128,
+            128,
+            96,
+            112,
+            160
+          ],
+          "nonlinearity": 40,
+          "max_abs_walsh": 176
+        }
+      ],
+      "min_M2": 160,
+      "M2_attainers": 6,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x1",
+          "correlations": [
+            144,
+            128,
+            128,
+            112,
+            160
+          ],
+          "nonlinearity": 40,
+          "max_abs_walsh": 176
+        },
+        {
+          "coefficients_hex": "0x29",
+          "correlations": [
+            128,
+            112,
+            96,
+            128,
+            160
+          ],
+          "nonlinearity": 40,
+          "max_abs_walsh": 176
+        },
+        {
+          "coefficients_hex": "0x40",
+          "correlations": [
+            144,
+            112,
+            128,
+            128,
+            160
+          ],
+          "nonlinearity": 40,
+          "max_abs_walsh": 176
+        },
+        {
+          "coefficients_hex": "0x68",
+          "correlations": [
+            128,
+            128,
+            96,
+            112,
+            160
+          ],
+          "nonlinearity": 40,
+          "max_abs_walsh": 176
+        }
+      ]
+    },
+    {
+      "nonlinearity": 42,
+      "functions": 2,
+      "min_Q2": 555008,
+      "Q2_attainers": 2,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x285",
+          "correlations": [
+            112,
+            96,
+            160,
+            96,
+            160
+          ],
+          "nonlinearity": 42,
+          "max_abs_walsh": 172
+        },
+        {
+          "coefficients_hex": "0x2c4",
+          "correlations": [
+            112,
+            96,
+            160,
+            96,
+            160
+          ],
+          "nonlinearity": 42,
+          "max_abs_walsh": 172
+        }
+      ],
+      "min_M2": 160,
+      "M2_attainers": 2,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x285",
+          "correlations": [
+            112,
+            96,
+            160,
+            96,
+            160
+          ],
+          "nonlinearity": 42,
+          "max_abs_walsh": 172
+        },
+        {
+          "coefficients_hex": "0x2c4",
+          "correlations": [
+            112,
+            96,
+            160,
+            96,
+            160
+          ],
+          "nonlinearity": 42,
+          "max_abs_walsh": 172
+        }
+      ]
+    },
+    {
+      "nonlinearity": 44,
+      "functions": 2,
+      "min_Q2": 497664,
+      "Q2_attainers": 2,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x81",
+          "correlations": [
+            112,
+            112,
+            128,
+            112,
+            128
+          ],
+          "nonlinearity": 44,
+          "max_abs_walsh": 168
+        },
+        {
+          "coefficients_hex": "0xc0",
+          "correlations": [
+            112,
+            112,
+            128,
+            112,
+            128
+          ],
+          "nonlinearity": 44,
+          "max_abs_walsh": 168
+        }
+      ],
+      "min_M2": 128,
+      "M2_attainers": 2,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x81",
+          "correlations": [
+            112,
+            112,
+            128,
+            112,
+            128
+          ],
+          "nonlinearity": 44,
+          "max_abs_walsh": 168
+        },
+        {
+          "coefficients_hex": "0xc0",
+          "correlations": [
+            112,
+            112,
+            128,
+            112,
+            128
+          ],
+          "nonlinearity": 44,
+          "max_abs_walsh": 168
+        }
+      ]
+    },
+    {
+      "nonlinearity": 46,
+      "functions": 3,
+      "min_Q2": 482304,
+      "Q2_attainers": 2,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x20e",
+          "correlations": [
+            112,
+            112,
+            128,
+            112,
+            112
+          ],
+          "nonlinearity": 46,
+          "max_abs_walsh": 164
+        },
+        {
+          "coefficients_hex": "0x324",
+          "correlations": [
+            112,
+            112,
+            128,
+            112,
+            112
+          ],
+          "nonlinearity": 46,
+          "max_abs_walsh": 164
+        }
+      ],
+      "min_M2": 128,
+      "M2_attainers": 2,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x20e",
+          "correlations": [
+            112,
+            112,
+            128,
+            112,
+            112
+          ],
+          "nonlinearity": 46,
+          "max_abs_walsh": 164
+        },
+        {
+          "coefficients_hex": "0x324",
+          "correlations": [
+            112,
+            112,
+            128,
+            112,
+            112
+          ],
+          "nonlinearity": 46,
+          "max_abs_walsh": 164
+        }
+      ]
+    },
+    {
+      "nonlinearity": 48,
+      "functions": 16,
+      "min_Q2": 389120,
+      "Q2_attainers": 2,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0xa",
+          "correlations": [
+            96,
+            96,
+            128,
+            96,
+            96
+          ],
+          "nonlinearity": 48,
+          "max_abs_walsh": 160
+        },
+        {
+          "coefficients_hex": "0x120",
+          "correlations": [
+            96,
+            96,
+            128,
+            96,
+            96
+          ],
+          "nonlinearity": 48,
+          "max_abs_walsh": 160
+        }
+      ],
+      "min_M2": 112,
+      "M2_attainers": 4,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x2",
+          "correlations": [
+            112,
+            96,
+            112,
+            112,
+            96
+          ],
+          "nonlinearity": 48,
+          "max_abs_walsh": 160
+        },
+        {
+          "coefficients_hex": "0x8",
+          "correlations": [
+            112,
+            96,
+            112,
+            112,
+            96
+          ],
+          "nonlinearity": 48,
+          "max_abs_walsh": 160
+        },
+        {
+          "coefficients_hex": "0x20",
+          "correlations": [
+            112,
+            112,
+            112,
+            96,
+            96
+          ],
+          "nonlinearity": 48,
+          "max_abs_walsh": 160
+        },
+        {
+          "coefficients_hex": "0x100",
+          "correlations": [
+            112,
+            112,
+            112,
+            96,
+            96
+          ],
+          "nonlinearity": 48,
+          "max_abs_walsh": 160
+        }
+      ]
+    },
+    {
+      "nonlinearity": 52,
+      "functions": 21,
+      "min_Q2": 296960,
+      "Q2_attainers": 4,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0xac",
+          "correlations": [
+            80,
+            96,
+            64,
+            96,
+            128
+          ],
+          "nonlinearity": 52,
+          "max_abs_walsh": 152
+        },
+        {
+          "coefficients_hex": "0xb8",
+          "correlations": [
+            80,
+            96,
+            64,
+            96,
+            128
+          ],
+          "nonlinearity": 52,
+          "max_abs_walsh": 152
+        },
+        {
+          "coefficients_hex": "0x186",
+          "correlations": [
+            80,
+            96,
+            64,
+            96,
+            128
+          ],
+          "nonlinearity": 52,
+          "max_abs_walsh": 152
+        },
+        {
+          "coefficients_hex": "0x192",
+          "correlations": [
+            80,
+            96,
+            64,
+            96,
+            128
+          ],
+          "nonlinearity": 52,
+          "max_abs_walsh": 152
+        }
+      ],
+      "min_M2": 96,
+      "M2_attainers": 4,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0xb2",
+          "correlations": [
+            96,
+            96,
+            96,
+            96,
+            96
+          ],
+          "nonlinearity": 52,
+          "max_abs_walsh": 152
+        },
+        {
+          "coefficients_hex": "0xb6",
+          "correlations": [
+            80,
+            96,
+            96,
+            96,
+            96
+          ],
+          "nonlinearity": 52,
+          "max_abs_walsh": 152
+        },
+        {
+          "coefficients_hex": "0x198",
+          "correlations": [
+            96,
+            96,
+            96,
+            96,
+            96
+          ],
+          "nonlinearity": 52,
+          "max_abs_walsh": 152
+        },
+        {
+          "coefficients_hex": "0x19c",
+          "correlations": [
+            80,
+            96,
+            96,
+            96,
+            96
+          ],
+          "nonlinearity": 52,
+          "max_abs_walsh": 152
+        }
+      ]
+    },
+    {
+      "nonlinearity": 56,
+      "functions": 36,
+      "min_Q2": 264192,
+      "Q2_attainers": 8,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x27",
+          "correlations": [
+            80,
+            80,
+            80,
+            96,
+            96
+          ],
+          "nonlinearity": 56,
+          "max_abs_walsh": 144
+        },
+        {
+          "coefficients_hex": "0x33",
+          "correlations": [
+            80,
+            80,
+            80,
+            96,
+            96
+          ],
+          "nonlinearity": 56,
+          "max_abs_walsh": 144
+        },
+        {
+          "coefficients_hex": "0x66",
+          "correlations": [
+            80,
+            96,
+            80,
+            80,
+            96
+          ],
+          "nonlinearity": 56,
+          "max_abs_walsh": 144
+        },
+        {
+          "coefficients_hex": "0x72",
+          "correlations": [
+            80,
+            96,
+            80,
+            80,
+            96
+          ],
+          "nonlinearity": 56,
+          "max_abs_walsh": 144
+        }
+      ],
+      "min_M2": 96,
+      "M2_attainers": 16,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x21",
+          "correlations": [
+            96,
+            96,
+            80,
+            64,
+            96
+          ],
+          "nonlinearity": 56,
+          "max_abs_walsh": 144
+        },
+        {
+          "coefficients_hex": "0x27",
+          "correlations": [
+            80,
+            80,
+            80,
+            96,
+            96
+          ],
+          "nonlinearity": 56,
+          "max_abs_walsh": 144
+        },
+        {
+          "coefficients_hex": "0x33",
+          "correlations": [
+            80,
+            80,
+            80,
+            96,
+            96
+          ],
+          "nonlinearity": 56,
+          "max_abs_walsh": 144
+        },
+        {
+          "coefficients_hex": "0x37",
+          "correlations": [
+            80,
+            80,
+            96,
+            96,
+            96
+          ],
+          "nonlinearity": 56,
+          "max_abs_walsh": 144
+        }
+      ]
+    },
+    {
+      "nonlinearity": 58,
+      "functions": 4,
+      "min_Q2": 326656,
+      "Q2_attainers": 2,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x2ca",
+          "correlations": [
+            96,
+            80,
+            112,
+            80,
+            112
+          ],
+          "nonlinearity": 58,
+          "max_abs_walsh": 140
+        },
+        {
+          "coefficients_hex": "0x3a1",
+          "correlations": [
+            96,
+            80,
+            112,
+            80,
+            112
+          ],
+          "nonlinearity": 58,
+          "max_abs_walsh": 140
+        }
+      ],
+      "min_M2": 112,
+      "M2_attainers": 4,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x28b",
+          "correlations": [
+            96,
+            80,
+            112,
+            112,
+            112
+          ],
+          "nonlinearity": 58,
+          "max_abs_walsh": 140
+        },
+        {
+          "coefficients_hex": "0x2ca",
+          "correlations": [
+            96,
+            80,
+            112,
+            80,
+            112
+          ],
+          "nonlinearity": 58,
+          "max_abs_walsh": 140
+        },
+        {
+          "coefficients_hex": "0x3a1",
+          "correlations": [
+            96,
+            80,
+            112,
+            80,
+            112
+          ],
+          "nonlinearity": 58,
+          "max_abs_walsh": 140
+        },
+        {
+          "coefficients_hex": "0x3e0",
+          "correlations": [
+            96,
+            112,
+            112,
+            80,
+            112
+          ],
+          "nonlinearity": 58,
+          "max_abs_walsh": 140
+        }
+      ]
+    },
+    {
+      "nonlinearity": 60,
+      "functions": 24,
+      "min_Q2": 188416,
+      "Q2_attainers": 4,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0xa1",
+          "correlations": [
+            64,
+            96,
+            64,
+            64,
+            64
+          ],
+          "nonlinearity": 60,
+          "max_abs_walsh": 136
+        },
+        {
+          "coefficients_hex": "0xc2",
+          "correlations": [
+            64,
+            64,
+            64,
+            96,
+            64
+          ],
+          "nonlinearity": 60,
+          "max_abs_walsh": 136
+        },
+        {
+          "coefficients_hex": "0xc8",
+          "correlations": [
+            64,
+            64,
+            64,
+            96,
+            64
+          ],
+          "nonlinearity": 60,
+          "max_abs_walsh": 136
+        },
+        {
+          "coefficients_hex": "0x181",
+          "correlations": [
+            64,
+            96,
+            64,
+            64,
+            64
+          ],
+          "nonlinearity": 60,
+          "max_abs_walsh": 136
+        }
+      ],
+      "min_M2": 96,
+      "M2_attainers": 8,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x83",
+          "correlations": [
+            80,
+            64,
+            64,
+            96,
+            64
+          ],
+          "nonlinearity": 60,
+          "max_abs_walsh": 136
+        },
+        {
+          "coefficients_hex": "0x89",
+          "correlations": [
+            80,
+            64,
+            64,
+            96,
+            64
+          ],
+          "nonlinearity": 60,
+          "max_abs_walsh": 136
+        },
+        {
+          "coefficients_hex": "0xa1",
+          "correlations": [
+            64,
+            96,
+            64,
+            64,
+            64
+          ],
+          "nonlinearity": 60,
+          "max_abs_walsh": 136
+        },
+        {
+          "coefficients_hex": "0xc2",
+          "correlations": [
+            64,
+            64,
+            64,
+            96,
+            64
+          ],
+          "nonlinearity": 60,
+          "max_abs_walsh": 136
+        }
+      ]
+    },
+    {
+      "nonlinearity": 62,
+      "functions": 19,
+      "min_Q2": 243712,
+      "Q2_attainers": 4,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x206",
+          "correlations": [
+            80,
+            96,
+            80,
+            80,
+            64
+          ],
+          "nonlinearity": 62,
+          "max_abs_walsh": 132
+        },
+        {
+          "coefficients_hex": "0x20c",
+          "correlations": [
+            80,
+            96,
+            80,
+            80,
+            64
+          ],
+          "nonlinearity": 62,
+          "max_abs_walsh": 132
+        },
+        {
+          "coefficients_hex": "0x224",
+          "correlations": [
+            80,
+            80,
+            80,
+            96,
+            64
+          ],
+          "nonlinearity": 62,
+          "max_abs_walsh": 132
+        },
+        {
+          "coefficients_hex": "0x304",
+          "correlations": [
+            80,
+            80,
+            80,
+            96,
+            64
+          ],
+          "nonlinearity": 62,
+          "max_abs_walsh": 132
+        }
+      ],
+      "min_M2": 96,
+      "M2_attainers": 8,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x206",
+          "correlations": [
+            80,
+            96,
+            80,
+            80,
+            64
+          ],
+          "nonlinearity": 62,
+          "max_abs_walsh": 132
+        },
+        {
+          "coefficients_hex": "0x20c",
+          "correlations": [
+            80,
+            96,
+            80,
+            80,
+            64
+          ],
+          "nonlinearity": 62,
+          "max_abs_walsh": 132
+        },
+        {
+          "coefficients_hex": "0x212",
+          "correlations": [
+            96,
+            96,
+            80,
+            80,
+            64
+          ],
+          "nonlinearity": 62,
+          "max_abs_walsh": 132
+        },
+        {
+          "coefficients_hex": "0x218",
+          "correlations": [
+            96,
+            96,
+            80,
+            80,
+            64
+          ],
+          "nonlinearity": 62,
+          "max_abs_walsh": 132
+        }
+      ]
+    },
+    {
+      "nonlinearity": 64,
+      "functions": 37,
+      "min_Q2": 165888,
+      "Q2_attainers": 2,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x1e",
+          "correlations": [
+            80,
+            64,
+            64,
+            64,
+            64
+          ],
+          "nonlinearity": 64,
+          "max_abs_walsh": 128
+        },
+        {
+          "coefficients_hex": "0x134",
+          "correlations": [
+            80,
+            64,
+            64,
+            64,
+            64
+          ],
+          "nonlinearity": 64,
+          "max_abs_walsh": 128
+        }
+      ],
+      "min_M2": 80,
+      "M2_attainers": 6,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x16",
+          "correlations": [
+            80,
+            80,
+            48,
+            64,
+            64
+          ],
+          "nonlinearity": 64,
+          "max_abs_walsh": 128
+        },
+        {
+          "coefficients_hex": "0x1c",
+          "correlations": [
+            80,
+            80,
+            48,
+            64,
+            64
+          ],
+          "nonlinearity": 64,
+          "max_abs_walsh": 128
+        },
+        {
+          "coefficients_hex": "0x1e",
+          "correlations": [
+            80,
+            64,
+            64,
+            64,
+            64
+          ],
+          "nonlinearity": 64,
+          "max_abs_walsh": 128
+        },
+        {
+          "coefficients_hex": "0x34",
+          "correlations": [
+            80,
+            64,
+            48,
+            80,
+            64
+          ],
+          "nonlinearity": 64,
+          "max_abs_walsh": 128
+        }
+      ]
+    },
+    {
+      "nonlinearity": 66,
+      "functions": 25,
+      "min_Q2": 190464,
+      "Q2_attainers": 4,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x2ac",
+          "correlations": [
+            48,
+            80,
+            64,
+            80,
+            96
+          ],
+          "nonlinearity": 66,
+          "max_abs_walsh": 124
+        },
+        {
+          "coefficients_hex": "0x2b8",
+          "correlations": [
+            48,
+            80,
+            64,
+            80,
+            96
+          ],
+          "nonlinearity": 66,
+          "max_abs_walsh": 124
+        },
+        {
+          "coefficients_hex": "0x386",
+          "correlations": [
+            48,
+            80,
+            64,
+            80,
+            96
+          ],
+          "nonlinearity": 66,
+          "max_abs_walsh": 124
+        },
+        {
+          "coefficients_hex": "0x392",
+          "correlations": [
+            48,
+            80,
+            64,
+            80,
+            96
+          ],
+          "nonlinearity": 66,
+          "max_abs_walsh": 124
+        }
+      ],
+      "min_M2": 96,
+      "M2_attainers": 18,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x284",
+          "correlations": [
+            96,
+            80,
+            96,
+            80,
+            96
+          ],
+          "nonlinearity": 66,
+          "max_abs_walsh": 124
+        },
+        {
+          "coefficients_hex": "0x286",
+          "correlations": [
+            96,
+            80,
+            80,
+            80,
+            80
+          ],
+          "nonlinearity": 66,
+          "max_abs_walsh": 124
+        },
+        {
+          "coefficients_hex": "0x28c",
+          "correlations": [
+            96,
+            80,
+            80,
+            80,
+            80
+          ],
+          "nonlinearity": 66,
+          "max_abs_walsh": 124
+        },
+        {
+          "coefficients_hex": "0x290",
+          "correlations": [
+            96,
+            80,
+            96,
+            80,
+            96
+          ],
+          "nonlinearity": 66,
+          "max_abs_walsh": 124
+        }
+      ]
+    },
+    {
+      "nonlinearity": 68,
+      "functions": 41,
+      "min_Q2": 137216,
+      "Q2_attainers": 4,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x96",
+          "correlations": [
+            48,
+            80,
+            64,
+            48,
+            64
+          ],
+          "nonlinearity": 68,
+          "max_abs_walsh": 120
+        },
+        {
+          "coefficients_hex": "0x9c",
+          "correlations": [
+            48,
+            80,
+            64,
+            48,
+            64
+          ],
+          "nonlinearity": 68,
+          "max_abs_walsh": 120
+        },
+        {
+          "coefficients_hex": "0xb4",
+          "correlations": [
+            48,
+            48,
+            64,
+            80,
+            64
+          ],
+          "nonlinearity": 68,
+          "max_abs_walsh": 120
+        },
+        {
+          "coefficients_hex": "0x194",
+          "correlations": [
+            48,
+            48,
+            64,
+            80,
+            64
+          ],
+          "nonlinearity": 68,
+          "max_abs_walsh": 120
+        }
+      ],
+      "min_M2": 80,
+      "M2_attainers": 12,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x92",
+          "correlations": [
+            80,
+            80,
+            48,
+            64,
+            64
+          ],
+          "nonlinearity": 68,
+          "max_abs_walsh": 120
+        },
+        {
+          "coefficients_hex": "0x96",
+          "correlations": [
+            48,
+            80,
+            64,
+            48,
+            64
+          ],
+          "nonlinearity": 68,
+          "max_abs_walsh": 120
+        },
+        {
+          "coefficients_hex": "0x98",
+          "correlations": [
+            80,
+            80,
+            48,
+            64,
+            64
+          ],
+          "nonlinearity": 68,
+          "max_abs_walsh": 120
+        },
+        {
+          "coefficients_hex": "0x9c",
+          "correlations": [
+            48,
+            80,
+            64,
+            48,
+            64
+          ],
+          "nonlinearity": 68,
+          "max_abs_walsh": 120
+        }
+      ]
+    },
+    {
+      "nonlinearity": 70,
+      "functions": 48,
+      "min_Q2": 144384,
+      "Q2_attainers": 8,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x227",
+          "correlations": [
+            48,
+            64,
+            64,
+            80,
+            48
+          ],
+          "nonlinearity": 70,
+          "max_abs_walsh": 116
+        },
+        {
+          "coefficients_hex": "0x233",
+          "correlations": [
+            48,
+            64,
+            64,
+            80,
+            48
+          ],
+          "nonlinearity": 70,
+          "max_abs_walsh": 116
+        },
+        {
+          "coefficients_hex": "0x266",
+          "correlations": [
+            48,
+            80,
+            64,
+            64,
+            48
+          ],
+          "nonlinearity": 70,
+          "max_abs_walsh": 116
+        },
+        {
+          "coefficients_hex": "0x272",
+          "correlations": [
+            48,
+            80,
+            64,
+            64,
+            48
+          ],
+          "nonlinearity": 70,
+          "max_abs_walsh": 116
+        }
+      ],
+      "min_M2": 80,
+      "M2_attainers": 16,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x225",
+          "correlations": [
+            80,
+            64,
+            64,
+            64,
+            64
+          ],
+          "nonlinearity": 70,
+          "max_abs_walsh": 116
+        },
+        {
+          "coefficients_hex": "0x227",
+          "correlations": [
+            48,
+            64,
+            64,
+            80,
+            48
+          ],
+          "nonlinearity": 70,
+          "max_abs_walsh": 116
+        },
+        {
+          "coefficients_hex": "0x231",
+          "correlations": [
+            64,
+            80,
+            64,
+            48,
+            64
+          ],
+          "nonlinearity": 70,
+          "max_abs_walsh": 116
+        },
+        {
+          "coefficients_hex": "0x233",
+          "correlations": [
+            48,
+            64,
+            64,
+            80,
+            48
+          ],
+          "nonlinearity": 70,
+          "max_abs_walsh": 116
+        }
+      ]
+    },
+    {
+      "nonlinearity": 72,
+      "functions": 50,
+      "min_Q2": 108544,
+      "Q2_attainers": 8,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x2b",
+          "correlations": [
+            64,
+            48,
+            64,
+            32,
+            64
+          ],
+          "nonlinearity": 72,
+          "max_abs_walsh": 112
+        },
+        {
+          "coefficients_hex": "0x35",
+          "correlations": [
+            64,
+            32,
+            48,
+            64,
+            64
+          ],
+          "nonlinearity": 72,
+          "max_abs_walsh": 112
+        },
+        {
+          "coefficients_hex": "0x56",
+          "correlations": [
+            64,
+            64,
+            48,
+            32,
+            64
+          ],
+          "nonlinearity": 72,
+          "max_abs_walsh": 112
+        },
+        {
+          "coefficients_hex": "0x5c",
+          "correlations": [
+            64,
+            64,
+            48,
+            32,
+            64
+          ],
+          "nonlinearity": 72,
+          "max_abs_walsh": 112
+        }
+      ],
+      "min_M2": 64,
+      "M2_attainers": 12,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x2b",
+          "correlations": [
+            64,
+            48,
+            64,
+            32,
+            64
+          ],
+          "nonlinearity": 72,
+          "max_abs_walsh": 112
+        },
+        {
+          "coefficients_hex": "0x31",
+          "correlations": [
+            64,
+            48,
+            48,
+            64,
+            64
+          ],
+          "nonlinearity": 72,
+          "max_abs_walsh": 112
+        },
+        {
+          "coefficients_hex": "0x35",
+          "correlations": [
+            64,
+            32,
+            48,
+            64,
+            64
+          ],
+          "nonlinearity": 72,
+          "max_abs_walsh": 112
+        },
+        {
+          "coefficients_hex": "0x52",
+          "correlations": [
+            64,
+            64,
+            48,
+            48,
+            64
+          ],
+          "nonlinearity": 72,
+          "max_abs_walsh": 112
+        }
+      ]
+    },
+    {
+      "nonlinearity": 74,
+      "functions": 36,
+      "min_Q2": 140288,
+      "Q2_attainers": 8,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x293",
+          "correlations": [
+            64,
+            64,
+            64,
+            64,
+            48
+          ],
+          "nonlinearity": 74,
+          "max_abs_walsh": 108
+        },
+        {
+          "coefficients_hex": "0x299",
+          "correlations": [
+            64,
+            64,
+            64,
+            64,
+            48
+          ],
+          "nonlinearity": 74,
+          "max_abs_walsh": 108
+        },
+        {
+          "coefficients_hex": "0x2a5",
+          "correlations": [
+            64,
+            64,
+            64,
+            64,
+            48
+          ],
+          "nonlinearity": 74,
+          "max_abs_walsh": 108
+        },
+        {
+          "coefficients_hex": "0x2c6",
+          "correlations": [
+            64,
+            64,
+            64,
+            64,
+            48
+          ],
+          "nonlinearity": 74,
+          "max_abs_walsh": 108
+        }
+      ],
+      "min_M2": 64,
+      "M2_attainers": 8,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x293",
+          "correlations": [
+            64,
+            64,
+            64,
+            64,
+            48
+          ],
+          "nonlinearity": 74,
+          "max_abs_walsh": 108
+        },
+        {
+          "coefficients_hex": "0x299",
+          "correlations": [
+            64,
+            64,
+            64,
+            64,
+            48
+          ],
+          "nonlinearity": 74,
+          "max_abs_walsh": 108
+        },
+        {
+          "coefficients_hex": "0x2a5",
+          "correlations": [
+            64,
+            64,
+            64,
+            64,
+            48
+          ],
+          "nonlinearity": 74,
+          "max_abs_walsh": 108
+        },
+        {
+          "coefficients_hex": "0x2c6",
+          "correlations": [
+            64,
+            64,
+            64,
+            64,
+            48
+          ],
+          "nonlinearity": 74,
+          "max_abs_walsh": 108
+        }
+      ]
+    },
+    {
+      "nonlinearity": 76,
+      "functions": 61,
+      "min_Q2": 86016,
+      "Q2_attainers": 4,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0xce",
+          "correlations": [
+            64,
+            32,
+            64,
+            32,
+            32
+          ],
+          "nonlinearity": 76,
+          "max_abs_walsh": 104
+        },
+        {
+          "coefficients_hex": "0xda",
+          "correlations": [
+            64,
+            32,
+            64,
+            32,
+            32
+          ],
+          "nonlinearity": 76,
+          "max_abs_walsh": 104
+        },
+        {
+          "coefficients_hex": "0x1a5",
+          "correlations": [
+            64,
+            32,
+            64,
+            32,
+            32
+          ],
+          "nonlinearity": 76,
+          "max_abs_walsh": 104
+        },
+        {
+          "coefficients_hex": "0x1b1",
+          "correlations": [
+            64,
+            32,
+            64,
+            32,
+            32
+          ],
+          "nonlinearity": 76,
+          "max_abs_walsh": 104
+        }
+      ],
+      "min_M2": 64,
+      "M2_attainers": 30,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x8f",
+          "correlations": [
+            64,
+            32,
+            64,
+            64,
+            32
+          ],
+          "nonlinearity": 76,
+          "max_abs_walsh": 104
+        },
+        {
+          "coefficients_hex": "0x93",
+          "correlations": [
+            64,
+            64,
+            48,
+            48,
+            32
+          ],
+          "nonlinearity": 76,
+          "max_abs_walsh": 104
+        },
+        {
+          "coefficients_hex": "0x97",
+          "correlations": [
+            48,
+            48,
+            64,
+            48,
+            32
+          ],
+          "nonlinearity": 76,
+          "max_abs_walsh": 104
+        },
+        {
+          "coefficients_hex": "0x99",
+          "correlations": [
+            64,
+            64,
+            48,
+            48,
+            32
+          ],
+          "nonlinearity": 76,
+          "max_abs_walsh": 104
+        }
+      ]
+    },
+    {
+      "nonlinearity": 78,
+      "functions": 49,
+      "min_Q2": 104448,
+      "Q2_attainers": 4,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x247",
+          "correlations": [
+            48,
+            64,
+            48,
+            48,
+            64
+          ],
+          "nonlinearity": 78,
+          "max_abs_walsh": 100
+        },
+        {
+          "coefficients_hex": "0x24d",
+          "correlations": [
+            48,
+            64,
+            48,
+            48,
+            64
+          ],
+          "nonlinearity": 78,
+          "max_abs_walsh": 100
+        },
+        {
+          "coefficients_hex": "0x265",
+          "correlations": [
+            48,
+            48,
+            48,
+            64,
+            64
+          ],
+          "nonlinearity": 78,
+          "max_abs_walsh": 100
+        },
+        {
+          "coefficients_hex": "0x345",
+          "correlations": [
+            48,
+            48,
+            48,
+            64,
+            64
+          ],
+          "nonlinearity": 78,
+          "max_abs_walsh": 100
+        }
+      ],
+      "min_M2": 64,
+      "M2_attainers": 16,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x22e",
+          "correlations": [
+            48,
+            48,
+            64,
+            64,
+            64
+          ],
+          "nonlinearity": 78,
+          "max_abs_walsh": 100
+        },
+        {
+          "coefficients_hex": "0x23a",
+          "correlations": [
+            64,
+            48,
+            64,
+            64,
+            64
+          ],
+          "nonlinearity": 78,
+          "max_abs_walsh": 100
+        },
+        {
+          "coefficients_hex": "0x247",
+          "correlations": [
+            48,
+            64,
+            48,
+            48,
+            64
+          ],
+          "nonlinearity": 78,
+          "max_abs_walsh": 100
+        },
+        {
+          "coefficients_hex": "0x24d",
+          "correlations": [
+            48,
+            64,
+            48,
+            48,
+            64
+          ],
+          "nonlinearity": 78,
+          "max_abs_walsh": 100
+        }
+      ]
+    },
+    {
+      "nonlinearity": 80,
+      "functions": 47,
+      "min_Q2": 69632,
+      "Q2_attainers": 2,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x12e",
+          "correlations": [
+            48,
+            32,
+            48,
+            32,
+            64
+          ],
+          "nonlinearity": 80,
+          "max_abs_walsh": 96
+        },
+        {
+          "coefficients_hex": "0x13a",
+          "correlations": [
+            48,
+            32,
+            48,
+            32,
+            64
+          ],
+          "nonlinearity": 80,
+          "max_abs_walsh": 96
+        }
+      ],
+      "min_M2": 64,
+      "M2_attainers": 24,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x2e",
+          "correlations": [
+            64,
+            64,
+            32,
+            32,
+            64
+          ],
+          "nonlinearity": 80,
+          "max_abs_walsh": 96
+        },
+        {
+          "coefficients_hex": "0x3e",
+          "correlations": [
+            64,
+            32,
+            32,
+            48,
+            64
+          ],
+          "nonlinearity": 80,
+          "max_abs_walsh": 96
+        },
+        {
+          "coefficients_hex": "0x47",
+          "correlations": [
+            48,
+            32,
+            48,
+            64,
+            64
+          ],
+          "nonlinearity": 80,
+          "max_abs_walsh": 96
+        },
+        {
+          "coefficients_hex": "0x4d",
+          "correlations": [
+            48,
+            32,
+            48,
+            64,
+            64
+          ],
+          "nonlinearity": 80,
+          "max_abs_walsh": 96
+        }
+      ]
+    },
+    {
+      "nonlinearity": 82,
+      "functions": 52,
+      "min_Q2": 83968,
+      "Q2_attainers": 4,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x2ed",
+          "correlations": [
+            16,
+            48,
+            32,
+            48,
+            96
+          ],
+          "nonlinearity": 82,
+          "max_abs_walsh": 92
+        },
+        {
+          "coefficients_hex": "0x2f9",
+          "correlations": [
+            16,
+            48,
+            32,
+            48,
+            96
+          ],
+          "nonlinearity": 82,
+          "max_abs_walsh": 92
+        },
+        {
+          "coefficients_hex": "0x3c7",
+          "correlations": [
+            16,
+            48,
+            32,
+            48,
+            96
+          ],
+          "nonlinearity": 82,
+          "max_abs_walsh": 92
+        },
+        {
+          "coefficients_hex": "0x3d3",
+          "correlations": [
+            16,
+            48,
+            32,
+            48,
+            96
+          ],
+          "nonlinearity": 82,
+          "max_abs_walsh": 92
+        }
+      ],
+      "min_M2": 64,
+      "M2_attainers": 12,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x2aa",
+          "correlations": [
+            64,
+            64,
+            64,
+            64,
+            64
+          ],
+          "nonlinearity": 82,
+          "max_abs_walsh": 92
+        },
+        {
+          "coefficients_hex": "0x2ae",
+          "correlations": [
+            48,
+            48,
+            64,
+            64,
+            48
+          ],
+          "nonlinearity": 82,
+          "max_abs_walsh": 92
+        },
+        {
+          "coefficients_hex": "0x2ba",
+          "correlations": [
+            32,
+            64,
+            64,
+            48,
+            48
+          ],
+          "nonlinearity": 82,
+          "max_abs_walsh": 92
+        },
+        {
+          "coefficients_hex": "0x38a",
+          "correlations": [
+            64,
+            64,
+            64,
+            64,
+            64
+          ],
+          "nonlinearity": 82,
+          "max_abs_walsh": 92
+        }
+      ]
+    },
+    {
+      "nonlinearity": 84,
+      "functions": 33,
+      "min_Q2": 63488,
+      "Q2_attainers": 4,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0xeb",
+          "correlations": [
+            48,
+            48,
+            16,
+            32,
+            64
+          ],
+          "nonlinearity": 84,
+          "max_abs_walsh": 88
+        },
+        {
+          "coefficients_hex": "0x1cb",
+          "correlations": [
+            48,
+            48,
+            16,
+            32,
+            64
+          ],
+          "nonlinearity": 84,
+          "max_abs_walsh": 88
+        },
+        {
+          "coefficients_hex": "0x1e3",
+          "correlations": [
+            48,
+            32,
+            16,
+            48,
+            64
+          ],
+          "nonlinearity": 84,
+          "max_abs_walsh": 88
+        },
+        {
+          "coefficients_hex": "0x1e9",
+          "correlations": [
+            48,
+            32,
+            16,
+            48,
+            64
+          ],
+          "nonlinearity": 84,
+          "max_abs_walsh": 88
+        }
+      ],
+      "min_M2": 64,
+      "M2_attainers": 30,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0xa6",
+          "correlations": [
+            48,
+            32,
+            64,
+            32,
+            64
+          ],
+          "nonlinearity": 84,
+          "max_abs_walsh": 88
+        },
+        {
+          "coefficients_hex": "0xae",
+          "correlations": [
+            64,
+            48,
+            32,
+            48,
+            32
+          ],
+          "nonlinearity": 84,
+          "max_abs_walsh": 88
+        },
+        {
+          "coefficients_hex": "0xba",
+          "correlations": [
+            48,
+            32,
+            32,
+            64,
+            32
+          ],
+          "nonlinearity": 84,
+          "max_abs_walsh": 88
+        },
+        {
+          "coefficients_hex": "0xbe",
+          "correlations": [
+            48,
+            16,
+            48,
+            64,
+            32
+          ],
+          "nonlinearity": 84,
+          "max_abs_walsh": 88
+        }
+      ]
+    },
+    {
+      "nonlinearity": 86,
+      "functions": 64,
+      "min_Q2": 81920,
+      "Q2_attainers": 4,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x22f",
+          "correlations": [
+            32,
+            48,
+            48,
+            64,
+            32
+          ],
+          "nonlinearity": 86,
+          "max_abs_walsh": 84
+        },
+        {
+          "coefficients_hex": "0x30f",
+          "correlations": [
+            32,
+            48,
+            48,
+            64,
+            32
+          ],
+          "nonlinearity": 86,
+          "max_abs_walsh": 84
+        },
+        {
+          "coefficients_hex": "0x366",
+          "correlations": [
+            32,
+            64,
+            48,
+            48,
+            32
+          ],
+          "nonlinearity": 86,
+          "max_abs_walsh": 84
+        },
+        {
+          "coefficients_hex": "0x36c",
+          "correlations": [
+            32,
+            64,
+            48,
+            48,
+            32
+          ],
+          "nonlinearity": 86,
+          "max_abs_walsh": 84
+        }
+      ],
+      "min_M2": 64,
+      "M2_attainers": 28,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x20f",
+          "correlations": [
+            64,
+            64,
+            64,
+            64,
+            48
+          ],
+          "nonlinearity": 86,
+          "max_abs_walsh": 84
+        },
+        {
+          "coefficients_hex": "0x21b",
+          "correlations": [
+            64,
+            64,
+            64,
+            64,
+            48
+          ],
+          "nonlinearity": 86,
+          "max_abs_walsh": 84
+        },
+        {
+          "coefficients_hex": "0x22b",
+          "correlations": [
+            48,
+            64,
+            64,
+            64,
+            48
+          ],
+          "nonlinearity": 86,
+          "max_abs_walsh": 84
+        },
+        {
+          "coefficients_hex": "0x22f",
+          "correlations": [
+            32,
+            48,
+            48,
+            64,
+            32
+          ],
+          "nonlinearity": 86,
+          "max_abs_walsh": 84
+        }
+      ]
+    },
+    {
+      "nonlinearity": 88,
+      "functions": 30,
+      "min_Q2": 40960,
+      "Q2_attainers": 4,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x7e",
+          "correlations": [
+            16,
+            32,
+            32,
+            48,
+            32
+          ],
+          "nonlinearity": 88,
+          "max_abs_walsh": 80
+        },
+        {
+          "coefficients_hex": "0x137",
+          "correlations": [
+            16,
+            48,
+            32,
+            32,
+            32
+          ],
+          "nonlinearity": 88,
+          "max_abs_walsh": 80
+        },
+        {
+          "coefficients_hex": "0x13d",
+          "correlations": [
+            16,
+            48,
+            32,
+            32,
+            32
+          ],
+          "nonlinearity": 88,
+          "max_abs_walsh": 80
+        },
+        {
+          "coefficients_hex": "0x15e",
+          "correlations": [
+            16,
+            32,
+            32,
+            48,
+            32
+          ],
+          "nonlinearity": 88,
+          "max_abs_walsh": 80
+        }
+      ],
+      "min_M2": 48,
+      "M2_attainers": 12,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x2f",
+          "correlations": [
+            48,
+            48,
+            32,
+            48,
+            32
+          ],
+          "nonlinearity": 88,
+          "max_abs_walsh": 80
+        },
+        {
+          "coefficients_hex": "0x7a",
+          "correlations": [
+            48,
+            48,
+            32,
+            48,
+            32
+          ],
+          "nonlinearity": 88,
+          "max_abs_walsh": 80
+        },
+        {
+          "coefficients_hex": "0x7e",
+          "correlations": [
+            16,
+            32,
+            32,
+            48,
+            32
+          ],
+          "nonlinearity": 88,
+          "max_abs_walsh": 80
+        },
+        {
+          "coefficients_hex": "0x10f",
+          "correlations": [
+            48,
+            48,
+            32,
+            48,
+            32
+          ],
+          "nonlinearity": 88,
+          "max_abs_walsh": 80
+        }
+      ]
+    },
+    {
+      "nonlinearity": 90,
+      "functions": 52,
+      "min_Q2": 66560,
+      "Q2_attainers": 4,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x2ee",
+          "correlations": [
+            16,
+            48,
+            48,
+            48,
+            48
+          ],
+          "nonlinearity": 90,
+          "max_abs_walsh": 76
+        },
+        {
+          "coefficients_hex": "0x3a7",
+          "correlations": [
+            16,
+            48,
+            48,
+            48,
+            48
+          ],
+          "nonlinearity": 90,
+          "max_abs_walsh": 76
+        },
+        {
+          "coefficients_hex": "0x3ad",
+          "correlations": [
+            16,
+            48,
+            48,
+            48,
+            48
+          ],
+          "nonlinearity": 90,
+          "max_abs_walsh": 76
+        },
+        {
+          "coefficients_hex": "0x3ce",
+          "correlations": [
+            16,
+            48,
+            48,
+            48,
+            48
+          ],
+          "nonlinearity": 90,
+          "max_abs_walsh": 76
+        }
+      ],
+      "min_M2": 48,
+      "M2_attainers": 12,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x2ce",
+          "correlations": [
+            48,
+            48,
+            48,
+            48,
+            32
+          ],
+          "nonlinearity": 90,
+          "max_abs_walsh": 76
+        },
+        {
+          "coefficients_hex": "0x2da",
+          "correlations": [
+            48,
+            48,
+            48,
+            48,
+            32
+          ],
+          "nonlinearity": 90,
+          "max_abs_walsh": 76
+        },
+        {
+          "coefficients_hex": "0x2ee",
+          "correlations": [
+            16,
+            48,
+            48,
+            48,
+            48
+          ],
+          "nonlinearity": 90,
+          "max_abs_walsh": 76
+        },
+        {
+          "coefficients_hex": "0x2fa",
+          "correlations": [
+            32,
+            48,
+            48,
+            48,
+            48
+          ],
+          "nonlinearity": 90,
+          "max_abs_walsh": 76
+        }
+      ]
+    },
+    {
+      "nonlinearity": 92,
+      "functions": 57,
+      "min_Q2": 47104,
+      "Q2_attainers": 4,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0xfe",
+          "correlations": [
+            32,
+            32,
+            48,
+            32,
+            32
+          ],
+          "nonlinearity": 92,
+          "max_abs_walsh": 72
+        },
+        {
+          "coefficients_hex": "0x1b7",
+          "correlations": [
+            32,
+            32,
+            48,
+            32,
+            32
+          ],
+          "nonlinearity": 92,
+          "max_abs_walsh": 72
+        },
+        {
+          "coefficients_hex": "0x1bd",
+          "correlations": [
+            32,
+            32,
+            48,
+            32,
+            32
+          ],
+          "nonlinearity": 92,
+          "max_abs_walsh": 72
+        },
+        {
+          "coefficients_hex": "0x1de",
+          "correlations": [
+            32,
+            32,
+            48,
+            32,
+            32
+          ],
+          "nonlinearity": 92,
+          "max_abs_walsh": 72
+        }
+      ],
+      "min_M2": 48,
+      "M2_attainers": 12,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0xef",
+          "correlations": [
+            32,
+            48,
+            32,
+            48,
+            32
+          ],
+          "nonlinearity": 92,
+          "max_abs_walsh": 72
+        },
+        {
+          "coefficients_hex": "0xfa",
+          "correlations": [
+            48,
+            32,
+            32,
+            48,
+            32
+          ],
+          "nonlinearity": 92,
+          "max_abs_walsh": 72
+        },
+        {
+          "coefficients_hex": "0xfe",
+          "correlations": [
+            32,
+            32,
+            48,
+            32,
+            32
+          ],
+          "nonlinearity": 92,
+          "max_abs_walsh": 72
+        },
+        {
+          "coefficients_hex": "0x1b3",
+          "correlations": [
+            48,
+            48,
+            32,
+            32,
+            32
+          ],
+          "nonlinearity": 92,
+          "max_abs_walsh": 72
+        }
+      ]
+    },
+    {
+      "nonlinearity": 94,
+      "functions": 79,
+      "min_Q2": 68608,
+      "Q2_attainers": 4,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x2fb",
+          "correlations": [
+            0,
+            64,
+            32,
+            48,
+            48
+          ],
+          "nonlinearity": 94,
+          "max_abs_walsh": 68
+        },
+        {
+          "coefficients_hex": "0x3db",
+          "correlations": [
+            0,
+            64,
+            32,
+            48,
+            48
+          ],
+          "nonlinearity": 94,
+          "max_abs_walsh": 68
+        },
+        {
+          "coefficients_hex": "0x3f3",
+          "correlations": [
+            0,
+            48,
+            32,
+            64,
+            48
+          ],
+          "nonlinearity": 94,
+          "max_abs_walsh": 68
+        },
+        {
+          "coefficients_hex": "0x3f9",
+          "correlations": [
+            0,
+            48,
+            32,
+            64,
+            48
+          ],
+          "nonlinearity": 94,
+          "max_abs_walsh": 68
+        }
+      ],
+      "min_M2": 48,
+      "M2_attainers": 2,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x32e",
+          "correlations": [
+            48,
+            48,
+            48,
+            48,
+            48
+          ],
+          "nonlinearity": 94,
+          "max_abs_walsh": 68
+        },
+        {
+          "coefficients_hex": "0x33a",
+          "correlations": [
+            48,
+            48,
+            48,
+            48,
+            48
+          ],
+          "nonlinearity": 94,
+          "max_abs_walsh": 68
+        }
+      ]
+    },
+    {
+      "nonlinearity": 96,
+      "functions": 23,
+      "min_Q2": 53248,
+      "Q2_attainers": 2,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x16f",
+          "correlations": [
+            16,
+            32,
+            48,
+            32,
+            64
+          ],
+          "nonlinearity": 96,
+          "max_abs_walsh": 64
+        },
+        {
+          "coefficients_hex": "0x17b",
+          "correlations": [
+            16,
+            32,
+            48,
+            32,
+            64
+          ],
+          "nonlinearity": 96,
+          "max_abs_walsh": 64
+        }
+      ],
+      "min_M2": 64,
+      "M2_attainers": 16,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x6f",
+          "correlations": [
+            32,
+            64,
+            32,
+            32,
+            64
+          ],
+          "nonlinearity": 96,
+          "max_abs_walsh": 64
+        },
+        {
+          "coefficients_hex": "0x77",
+          "correlations": [
+            48,
+            32,
+            64,
+            32,
+            64
+          ],
+          "nonlinearity": 96,
+          "max_abs_walsh": 64
+        },
+        {
+          "coefficients_hex": "0x7b",
+          "correlations": [
+            48,
+            32,
+            32,
+            64,
+            64
+          ],
+          "nonlinearity": 96,
+          "max_abs_walsh": 64
+        },
+        {
+          "coefficients_hex": "0x7f",
+          "correlations": [
+            32,
+            32,
+            32,
+            48,
+            64
+          ],
+          "nonlinearity": 96,
+          "max_abs_walsh": 64
+        }
+      ]
+    },
+    {
+      "nonlinearity": 98,
+      "functions": 35,
+      "min_Q2": 61440,
+      "Q2_attainers": 2,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x25f",
+          "correlations": [
+            32,
+            16,
+            64,
+            16,
+            64
+          ],
+          "nonlinearity": 98,
+          "max_abs_walsh": 60
+        },
+        {
+          "coefficients_hex": "0x375",
+          "correlations": [
+            32,
+            16,
+            64,
+            16,
+            64
+          ],
+          "nonlinearity": 98,
+          "max_abs_walsh": 60
+        }
+      ],
+      "min_M2": 64,
+      "M2_attainers": 4,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x25f",
+          "correlations": [
+            32,
+            16,
+            64,
+            16,
+            64
+          ],
+          "nonlinearity": 98,
+          "max_abs_walsh": 60
+        },
+        {
+          "coefficients_hex": "0x277",
+          "correlations": [
+            64,
+            64,
+            64,
+            64,
+            64
+          ],
+          "nonlinearity": 98,
+          "max_abs_walsh": 60
+        },
+        {
+          "coefficients_hex": "0x35d",
+          "correlations": [
+            64,
+            64,
+            64,
+            64,
+            64
+          ],
+          "nonlinearity": 98,
+          "max_abs_walsh": 60
+        },
+        {
+          "coefficients_hex": "0x375",
+          "correlations": [
+            32,
+            16,
+            64,
+            16,
+            64
+          ],
+          "nonlinearity": 98,
+          "max_abs_walsh": 60
+        }
+      ]
+    },
+    {
+      "nonlinearity": 100,
+      "functions": 6,
+      "min_Q2": 67584,
+      "Q2_attainers": 2,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0xe7",
+          "correlations": [
+            48,
+            0,
+            64,
+            0,
+            64
+          ],
+          "nonlinearity": 100,
+          "max_abs_walsh": 56
+        },
+        {
+          "coefficients_hex": "0x1cd",
+          "correlations": [
+            48,
+            0,
+            64,
+            0,
+            64
+          ],
+          "nonlinearity": 100,
+          "max_abs_walsh": 56
+        }
+      ],
+      "min_M2": 64,
+      "M2_attainers": 2,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0xe7",
+          "correlations": [
+            48,
+            0,
+            64,
+            0,
+            64
+          ],
+          "nonlinearity": 100,
+          "max_abs_walsh": 56
+        },
+        {
+          "coefficients_hex": "0x1cd",
+          "correlations": [
+            48,
+            0,
+            64,
+            0,
+            64
+          ],
+          "nonlinearity": 100,
+          "max_abs_walsh": 56
+        }
+      ]
+    },
+    {
+      "nonlinearity": 102,
+      "functions": 34,
+      "min_Q2": 70656,
+      "Q2_attainers": 2,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x2de",
+          "correlations": [
+            32,
+            16,
+            64,
+            16,
+            80
+          ],
+          "nonlinearity": 102,
+          "max_abs_walsh": 52
+        },
+        {
+          "coefficients_hex": "0x3b5",
+          "correlations": [
+            32,
+            16,
+            64,
+            16,
+            80
+          ],
+          "nonlinearity": 102,
+          "max_abs_walsh": 52
+        }
+      ],
+      "min_M2": 64,
+      "M2_attainers": 10,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x2a7",
+          "correlations": [
+            64,
+            48,
+            48,
+            48,
+            32
+          ],
+          "nonlinearity": 102,
+          "max_abs_walsh": 52
+        },
+        {
+          "coefficients_hex": "0x2b3",
+          "correlations": [
+            64,
+            48,
+            48,
+            48,
+            32
+          ],
+          "nonlinearity": 102,
+          "max_abs_walsh": 52
+        },
+        {
+          "coefficients_hex": "0x2e6",
+          "correlations": [
+            64,
+            48,
+            48,
+            48,
+            32
+          ],
+          "nonlinearity": 102,
+          "max_abs_walsh": 52
+        },
+        {
+          "coefficients_hex": "0x2f2",
+          "correlations": [
+            64,
+            48,
+            48,
+            48,
+            32
+          ],
+          "nonlinearity": 102,
+          "max_abs_walsh": 52
+        }
+      ]
+    },
+    {
+      "nonlinearity": 104,
+      "functions": 8,
+      "min_Q2": 100352,
+      "Q2_attainers": 2,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x5e",
+          "correlations": [
+            80,
+            0,
+            64,
+            0,
+            64
+          ],
+          "nonlinearity": 104,
+          "max_abs_walsh": 48
+        },
+        {
+          "coefficients_hex": "0x135",
+          "correlations": [
+            80,
+            0,
+            64,
+            0,
+            64
+          ],
+          "nonlinearity": 104,
+          "max_abs_walsh": 48
+        }
+      ],
+      "min_M2": 80,
+      "M2_attainers": 6,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x1f",
+          "correlations": [
+            80,
+            16,
+            64,
+            16,
+            64
+          ],
+          "nonlinearity": 104,
+          "max_abs_walsh": 48
+        },
+        {
+          "coefficients_hex": "0x5e",
+          "correlations": [
+            80,
+            0,
+            64,
+            0,
+            64
+          ],
+          "nonlinearity": 104,
+          "max_abs_walsh": 48
+        },
+        {
+          "coefficients_hex": "0xdb",
+          "correlations": [
+            80,
+            16,
+            64,
+            32,
+            64
+          ],
+          "nonlinearity": 104,
+          "max_abs_walsh": 48
+        },
+        {
+          "coefficients_hex": "0x135",
+          "correlations": [
+            80,
+            0,
+            64,
+            0,
+            64
+          ],
+          "nonlinearity": 104,
+          "max_abs_walsh": 48
+        }
+      ]
+    },
+    {
+      "nonlinearity": 106,
+      "functions": 7,
+      "min_Q2": 65536,
+      "Q2_attainers": 2,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x3bb",
+          "correlations": [
+            0,
+            32,
+            32,
+            64,
+            64
+          ],
+          "nonlinearity": 106,
+          "max_abs_walsh": 44
+        },
+        {
+          "coefficients_hex": "0x3fa",
+          "correlations": [
+            0,
+            64,
+            32,
+            32,
+            64
+          ],
+          "nonlinearity": 106,
+          "max_abs_walsh": 44
+        }
+      ],
+      "min_M2": 64,
+      "M2_attainers": 6,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x2e7",
+          "correlations": [
+            16,
+            48,
+            48,
+            48,
+            64
+          ],
+          "nonlinearity": 106,
+          "max_abs_walsh": 44
+        },
+        {
+          "coefficients_hex": "0x3ab",
+          "correlations": [
+            48,
+            32,
+            32,
+            64,
+            48
+          ],
+          "nonlinearity": 106,
+          "max_abs_walsh": 44
+        },
+        {
+          "coefficients_hex": "0x3bb",
+          "correlations": [
+            0,
+            32,
+            32,
+            64,
+            64
+          ],
+          "nonlinearity": 106,
+          "max_abs_walsh": 44
+        },
+        {
+          "coefficients_hex": "0x3cd",
+          "correlations": [
+            16,
+            48,
+            48,
+            48,
+            64
+          ],
+          "nonlinearity": 106,
+          "max_abs_walsh": 44
+        }
+      ]
+    },
+    {
+      "nonlinearity": 110,
+      "functions": 2,
+      "min_Q2": 50176,
+      "Q2_attainers": 2,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x36f",
+          "correlations": [
+            16,
+            48,
+            16,
+            48,
+            48
+          ],
+          "nonlinearity": 110,
+          "max_abs_walsh": 36
+        },
+        {
+          "coefficients_hex": "0x37b",
+          "correlations": [
+            16,
+            48,
+            16,
+            48,
+            48
+          ],
+          "nonlinearity": 110,
+          "max_abs_walsh": 36
+        }
+      ],
+      "min_M2": 48,
+      "M2_attainers": 2,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x36f",
+          "correlations": [
+            16,
+            48,
+            16,
+            48,
+            48
+          ],
+          "nonlinearity": 110,
+          "max_abs_walsh": 36
+        },
+        {
+          "coefficients_hex": "0x37b",
+          "correlations": [
+            16,
+            48,
+            16,
+            48,
+            48
+          ],
+          "nonlinearity": 110,
+          "max_abs_walsh": 36
+        }
+      ]
+    }
+  ],
+  "pareto_frontier_Q2_vs_NL": [
+    {
+      "nonlinearity": 110,
+      "functions": 2,
+      "min_Q2": 50176,
+      "Q2_attainers": 2,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x36f",
+          "correlations": [
+            16,
+            48,
+            16,
+            48,
+            48
+          ],
+          "nonlinearity": 110,
+          "max_abs_walsh": 36
+        },
+        {
+          "coefficients_hex": "0x37b",
+          "correlations": [
+            16,
+            48,
+            16,
+            48,
+            48
+          ],
+          "nonlinearity": 110,
+          "max_abs_walsh": 36
+        }
+      ],
+      "min_M2": 48,
+      "M2_attainers": 2,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x36f",
+          "correlations": [
+            16,
+            48,
+            16,
+            48,
+            48
+          ],
+          "nonlinearity": 110,
+          "max_abs_walsh": 36
+        },
+        {
+          "coefficients_hex": "0x37b",
+          "correlations": [
+            16,
+            48,
+            16,
+            48,
+            48
+          ],
+          "nonlinearity": 110,
+          "max_abs_walsh": 36
+        }
+      ]
+    },
+    {
+      "nonlinearity": 92,
+      "functions": 57,
+      "min_Q2": 47104,
+      "Q2_attainers": 4,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0xfe",
+          "correlations": [
+            32,
+            32,
+            48,
+            32,
+            32
+          ],
+          "nonlinearity": 92,
+          "max_abs_walsh": 72
+        },
+        {
+          "coefficients_hex": "0x1b7",
+          "correlations": [
+            32,
+            32,
+            48,
+            32,
+            32
+          ],
+          "nonlinearity": 92,
+          "max_abs_walsh": 72
+        },
+        {
+          "coefficients_hex": "0x1bd",
+          "correlations": [
+            32,
+            32,
+            48,
+            32,
+            32
+          ],
+          "nonlinearity": 92,
+          "max_abs_walsh": 72
+        },
+        {
+          "coefficients_hex": "0x1de",
+          "correlations": [
+            32,
+            32,
+            48,
+            32,
+            32
+          ],
+          "nonlinearity": 92,
+          "max_abs_walsh": 72
+        }
+      ],
+      "min_M2": 48,
+      "M2_attainers": 12,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0xef",
+          "correlations": [
+            32,
+            48,
+            32,
+            48,
+            32
+          ],
+          "nonlinearity": 92,
+          "max_abs_walsh": 72
+        },
+        {
+          "coefficients_hex": "0xfa",
+          "correlations": [
+            48,
+            32,
+            32,
+            48,
+            32
+          ],
+          "nonlinearity": 92,
+          "max_abs_walsh": 72
+        },
+        {
+          "coefficients_hex": "0xfe",
+          "correlations": [
+            32,
+            32,
+            48,
+            32,
+            32
+          ],
+          "nonlinearity": 92,
+          "max_abs_walsh": 72
+        },
+        {
+          "coefficients_hex": "0x1b3",
+          "correlations": [
+            48,
+            48,
+            32,
+            32,
+            32
+          ],
+          "nonlinearity": 92,
+          "max_abs_walsh": 72
+        }
+      ]
+    },
+    {
+      "nonlinearity": 88,
+      "functions": 30,
+      "min_Q2": 40960,
+      "Q2_attainers": 4,
+      "Q2_examples": [
+        {
+          "coefficients_hex": "0x7e",
+          "correlations": [
+            16,
+            32,
+            32,
+            48,
+            32
+          ],
+          "nonlinearity": 88,
+          "max_abs_walsh": 80
+        },
+        {
+          "coefficients_hex": "0x137",
+          "correlations": [
+            16,
+            48,
+            32,
+            32,
+            32
+          ],
+          "nonlinearity": 88,
+          "max_abs_walsh": 80
+        },
+        {
+          "coefficients_hex": "0x13d",
+          "correlations": [
+            16,
+            48,
+            32,
+            32,
+            32
+          ],
+          "nonlinearity": 88,
+          "max_abs_walsh": 80
+        },
+        {
+          "coefficients_hex": "0x15e",
+          "correlations": [
+            16,
+            32,
+            32,
+            48,
+            32
+          ],
+          "nonlinearity": 88,
+          "max_abs_walsh": 80
+        }
+      ],
+      "min_M2": 48,
+      "M2_attainers": 12,
+      "M2_examples": [
+        {
+          "coefficients_hex": "0x2f",
+          "correlations": [
+            48,
+            48,
+            32,
+            48,
+            32
+          ],
+          "nonlinearity": 88,
+          "max_abs_walsh": 80
+        },
+        {
+          "coefficients_hex": "0x7a",
+          "correlations": [
+            48,
+            48,
+            32,
+            48,
+            32
+          ],
+          "nonlinearity": 88,
+          "max_abs_walsh": 80
+        },
+        {
+          "coefficients_hex": "0x7e",
+          "correlations": [
+            16,
+            32,
+            32,
+            48,
+            32
+          ],
+          "nonlinearity": 88,
+          "max_abs_walsh": 80
+        },
+        {
+          "coefficients_hex": "0x10f",
+          "correlations": [
+            48,
+            48,
+            32,
+            48,
+            32
+          ],
+          "nonlinearity": 88,
+          "max_abs_walsh": 80
+        }
+      ]
+    }
+  ],
+  "all_coefficient_parseval_pass": true,
+  "independent_direct_ANF_checks": 306,
+  "seconds": 0.4254947000008542,
+  "scope": "Exhaustive over the full coefficient space; functions are not identified under equivalence."
+}

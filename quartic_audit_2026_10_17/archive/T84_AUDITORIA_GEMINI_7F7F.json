@@ -1,0 +1,47 @@
+{
+  "scope": "Independent truth-table evaluations versus supplied polynomial; supplied symbolic identity and exhaustive count replayed. Global bounds and Top16 ranks NOT independently verified.",
+  "polynomial_checks": 527,
+  "residues_mod128": {
+    "0": 82,
+    "16": 64,
+    "32": 58,
+    "48": 71,
+    "64": 80,
+    "80": 64,
+    "96": 62,
+    "112": 46
+  },
+  "witnesses_thirteen_but_not_new_bit": [
+    {
+      "coefficient_hex": "0x54cc88990c184e9be7ebe740e009f",
+      "h": 464
+    }
+  ],
+  "T83_candidates": [
+    {
+      "branch": 0,
+      "coefficient_hex": "0x530947633e72251c0345fef412326",
+      "h_7f7f": 0,
+      "passes_mod128": true
+    },
+    {
+      "branch": 1,
+      "coefficient_hex": "0x1494ca0e88dac581c2582eaa5d822",
+      "h_7f7f": -288,
+      "passes_mod128": false
+    }
+  ],
+  "unit_support_images": {
+    "1": "0x7f7f",
+    "3": "0xdfdf",
+    "5": "0xf7f7",
+    "7": "0xfdfd",
+    "9": "0x7f7f",
+    "11": "0xdfdf",
+    "13": "0xf7f7",
+    "15": "0xfdfd"
+  },
+  "normal_form_symmetric_difference": 0,
+  "seven_core_density": "13/1024",
+  "caution_formula_two_laws": "The compact displayed formula requires c99=b; before this substitution add (b+c99)*K."
+}

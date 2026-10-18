@@ -1,0 +1,8 @@
+{
+  "verification": "PASS",
+  "full_rank_rational_matrix_checked": true,
+  "exact_target_profiles": 128,
+  "profiles_per_parameter_case": 32,
+  "seconds": 0.011452099999587517,
+  "scope": "Complete exact six-frequency target table after the proved necessary equality W0=Wones. Does not prove that any profile is realizable by coefficients."
+}

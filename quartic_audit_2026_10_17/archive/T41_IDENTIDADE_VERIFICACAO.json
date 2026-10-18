@@ -1,0 +1,40 @@
+{
+  "verification": "PASS",
+  "full_rotation_orbits": 4080,
+  "all_diagonal_basis_values_verified": true,
+  "adder_gate_truth_tables_verified": true,
+  "controls": [
+    {
+      "coefficient_hex": "0x661d58a1f584edab5f8294ac55e6",
+      "W0": 1280,
+      "full_orbit_weight": 2002,
+      "passes": false
+    },
+    {
+      "coefficient_hex": "0x18649e30a3513dbc1231f902c2da",
+      "W0": 2560,
+      "full_orbit_weight": 1968,
+      "passes": false
+    },
+    {
+      "coefficient_hex": "0x2607c699ca679faec41ec1b7c33f2",
+      "W0": 256,
+      "full_orbit_weight": 2030,
+      "passes": true
+    },
+    {
+      "coefficient_hex": "0x54ec4c4401f53045a91728b0bcee9",
+      "W0": -256,
+      "full_orbit_weight": 2056,
+      "passes": true
+    },
+    {
+      "coefficient_hex": "0x0",
+      "W0": 65536,
+      "full_orbit_weight": 0,
+      "passes": false
+    }
+  ],
+  "seconds": 1.471233600001142,
+  "scope": "Exact identity, target weights, and gate semantics. SAT pilot timeouts supply no exclusion or nonexistence proof."
+}

@@ -1,0 +1,18 @@
+{
+  "verification": "PASS",
+  "full_input_orbit_geometries_checked": 8160,
+  "discovery_functions_checked": 60,
+  "fresh_thirteen_survivors_checked": 527,
+  "complete_direct_Walsh_transforms": 587,
+  "fresh_record_counts": {
+    "thirteen_passed": 527,
+    "C0_passed": 261,
+    "C0_C2_passed": 129,
+    "all_six_mod512_passed": 31,
+    "all_six_exact_passed": 0,
+    "all_36_mod512_passed": 0
+  },
+  "balanced_count_relaxations_verified": 2,
+  "seconds": 6.715549900000042,
+  "scope": "Complete quotient geometry and exact listed-function checks. Sampling attempt counts and the 8192 stopping count are generator metadata; no global density or nonexistence conclusion."
+}

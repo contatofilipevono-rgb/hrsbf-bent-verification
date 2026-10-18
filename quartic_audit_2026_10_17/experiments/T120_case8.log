@@ -1,0 +1,5 @@
+SOLVE 8 0 freqs [0, 4095] variables 7432 clauses 27966
+ANSWER True seconds 12.707462072372437
+MODEL 0x42a25ce6105 next 65
+SOLVE 8 1 freqs [0, 4095, 65] variables 8877 clauses 33147
+ANSWER None seconds 110.05439472198486

@@ -1,0 +1,1496 @@
+{
+  "branches": [
+    {
+      "branch": 0,
+      "conditional_pass_upper_bound": [
+        1103368764240415,
+        72057594037927936
+      ],
+      "characters": [
+        {
+          "combination": 1,
+          "symmetry_orbit": [
+            1,
+            4
+          ],
+          "old_amplitude": [
+            1116830892273,
+            140737488355328
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1116830892273,
+            140737488355328
+          ]
+        },
+        {
+          "combination": 2,
+          "symmetry_orbit": [
+            2
+          ],
+          "old_amplitude": [
+            270804835,
+            137438953472
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            270804835,
+            137438953472
+          ]
+        },
+        {
+          "combination": 3,
+          "symmetry_orbit": [
+            3,
+            6
+          ],
+          "old_amplitude": [
+            290339789209591,
+            18014398509481984
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            290339789209591,
+            18014398509481984
+          ]
+        },
+        {
+          "combination": 5,
+          "symmetry_orbit": [
+            5
+          ],
+          "old_amplitude": [
+            67113281,
+            8589934592
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            67113281,
+            8589934592
+          ]
+        },
+        {
+          "combination": 7,
+          "symmetry_orbit": [
+            7
+          ],
+          "old_amplitude": [
+            66561,
+            8388608
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            66561,
+            8388608
+          ]
+        },
+        {
+          "combination": 8,
+          "symmetry_orbit": [
+            8,
+            16,
+            32,
+            64
+          ],
+          "old_amplitude": [
+            17593280495917,
+            4503599627370496
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            17593280495917,
+            4503599627370496
+          ]
+        },
+        {
+          "combination": 9,
+          "symmetry_orbit": [
+            9,
+            20,
+            36,
+            65
+          ],
+          "old_amplitude": [
+            4194439,
+            536870912
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            4194439,
+            536870912
+          ]
+        },
+        {
+          "combination": 10,
+          "symmetry_orbit": [
+            10,
+            18,
+            34,
+            66
+          ],
+          "old_amplitude": [
+            70373034951421,
+            4503599627370496
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            70373034951421,
+            4503599627370496
+          ]
+        },
+        {
+          "combination": 11,
+          "symmetry_orbit": [
+            11,
+            22,
+            38,
+            67
+          ],
+          "old_amplitude": [
+            4294967297,
+            1099511627776
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            4294967297,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 12,
+          "symmetry_orbit": [
+            12,
+            17,
+            33,
+            68
+          ],
+          "old_amplitude": [
+            536973319,
+            68719476736
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            536973319,
+            68719476736
+          ]
+        },
+        {
+          "combination": 13,
+          "symmetry_orbit": [
+            13,
+            21,
+            37,
+            69
+          ],
+          "old_amplitude": [
+            35186559156287,
+            4503599627370496
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            35186559156287,
+            4503599627370496
+          ]
+        },
+        {
+          "combination": 14,
+          "symmetry_orbit": [
+            14,
+            19,
+            35,
+            70
+          ],
+          "old_amplitude": [
+            8193,
+            131072
+          ],
+          "new_amplitude": [
+            4294967297,
+            1099511627776
+          ],
+          "selected_amplitude": [
+            4294967297,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 15,
+          "symmetry_orbit": [
+            15,
+            23,
+            39,
+            71
+          ],
+          "old_amplitude": [
+            4294967297,
+            1099511627776
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            4294967297,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 24,
+          "symmetry_orbit": [
+            24,
+            40,
+            80,
+            96
+          ],
+          "old_amplitude": [
+            2131025,
+            536870912
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            2131025,
+            536870912
+          ]
+        },
+        {
+          "combination": 25,
+          "symmetry_orbit": [
+            25,
+            44,
+            84,
+            97
+          ],
+          "old_amplitude": [
+            139586977795,
+            17592186044416
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            139586977795,
+            17592186044416
+          ]
+        },
+        {
+          "combination": 26,
+          "symmetry_orbit": [
+            26,
+            42,
+            82,
+            98
+          ],
+          "old_amplitude": [
+            8671331,
+            4294967296
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            8671331,
+            4294967296
+          ]
+        },
+        {
+          "combination": 27,
+          "symmetry_orbit": [
+            27,
+            46,
+            86,
+            99
+          ],
+          "old_amplitude": [
+            129,
+            8192
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            129,
+            8192
+          ]
+        },
+        {
+          "combination": 28,
+          "symmetry_orbit": [
+            28,
+            41,
+            81,
+            100
+          ],
+          "old_amplitude": [
+            139586977795,
+            17592186044416
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            139586977795,
+            17592186044416
+          ]
+        },
+        {
+          "combination": 29,
+          "symmetry_orbit": [
+            29,
+            45,
+            85,
+            101
+          ],
+          "old_amplitude": [
+            2164259,
+            536870912
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            2164259,
+            536870912
+          ]
+        },
+        {
+          "combination": 30,
+          "symmetry_orbit": [
+            30,
+            43,
+            83,
+            102
+          ],
+          "old_amplitude": [
+            129,
+            8192
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            129,
+            8192
+          ]
+        },
+        {
+          "combination": 31,
+          "symmetry_orbit": [
+            31,
+            47,
+            87,
+            103
+          ],
+          "old_amplitude": [
+            4395055,
+            1073741824
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            4395055,
+            1073741824
+          ]
+        },
+        {
+          "combination": 48,
+          "symmetry_orbit": [
+            48,
+            72
+          ],
+          "old_amplitude": [
+            17033,
+            4194304
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            17033,
+            4194304
+          ]
+        },
+        {
+          "combination": 49,
+          "symmetry_orbit": [
+            49,
+            76
+          ],
+          "old_amplitude": [
+            1116830761017,
+            140737488355328
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1116830761017,
+            140737488355328
+          ]
+        },
+        {
+          "combination": 50,
+          "symmetry_orbit": [
+            50,
+            74
+          ],
+          "old_amplitude": [
+            540679,
+            134217728
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            540679,
+            134217728
+          ]
+        },
+        {
+          "combination": 51,
+          "symmetry_orbit": [
+            51,
+            78
+          ],
+          "old_amplitude": [
+            8257,
+            524288
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            8257,
+            524288
+          ]
+        },
+        {
+          "combination": 52,
+          "symmetry_orbit": [
+            52,
+            73
+          ],
+          "old_amplitude": [
+            1116830761017,
+            140737488355328
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1116830761017,
+            140737488355328
+          ]
+        },
+        {
+          "combination": 53,
+          "symmetry_orbit": [
+            53,
+            77
+          ],
+          "old_amplitude": [
+            262161,
+            33554432
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            262161,
+            33554432
+          ]
+        },
+        {
+          "combination": 54,
+          "symmetry_orbit": [
+            54,
+            75
+          ],
+          "old_amplitude": [
+            8257,
+            524288
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            8257,
+            524288
+          ]
+        },
+        {
+          "combination": 55,
+          "symmetry_orbit": [
+            55,
+            79
+          ],
+          "old_amplitude": [
+            4456447,
+            1073741824
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            4456447,
+            1073741824
+          ]
+        },
+        {
+          "combination": 56,
+          "symmetry_orbit": [
+            56,
+            88,
+            104,
+            112
+          ],
+          "old_amplitude": [
+            17593280495723,
+            4503599627370496
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            17593280495723,
+            4503599627370496
+          ]
+        },
+        {
+          "combination": 57,
+          "symmetry_orbit": [
+            57,
+            92,
+            108,
+            113
+          ],
+          "old_amplitude": [
+            4194439,
+            536870912
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            4194439,
+            536870912
+          ]
+        },
+        {
+          "combination": 58,
+          "symmetry_orbit": [
+            58,
+            90,
+            106,
+            114
+          ],
+          "old_amplitude": [
+            70373034951421,
+            4503599627370496
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            70373034951421,
+            4503599627370496
+          ]
+        },
+        {
+          "combination": 59,
+          "symmetry_orbit": [
+            59,
+            94,
+            110,
+            115
+          ],
+          "old_amplitude": [
+            4294967301,
+            1099511627776
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            4294967301,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 60,
+          "symmetry_orbit": [
+            60,
+            89,
+            105,
+            116
+          ],
+          "old_amplitude": [
+            536973319,
+            68719476736
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            536973319,
+            68719476736
+          ]
+        },
+        {
+          "combination": 61,
+          "symmetry_orbit": [
+            61,
+            93,
+            109,
+            117
+          ],
+          "old_amplitude": [
+            35186559156287,
+            4503599627370496
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            35186559156287,
+            4503599627370496
+          ]
+        },
+        {
+          "combination": 62,
+          "symmetry_orbit": [
+            62,
+            91,
+            107,
+            118
+          ],
+          "old_amplitude": [
+            8193,
+            131072
+          ],
+          "new_amplitude": [
+            17179869197,
+            4398046511104
+          ],
+          "selected_amplitude": [
+            17179869197,
+            4398046511104
+          ]
+        },
+        {
+          "combination": 63,
+          "symmetry_orbit": [
+            63,
+            95,
+            111,
+            119
+          ],
+          "old_amplitude": [
+            2147483649,
+            549755813888
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            2147483649,
+            549755813888
+          ]
+        },
+        {
+          "combination": 120,
+          "symmetry_orbit": [
+            120
+          ],
+          "old_amplitude": [
+            49,
+            4096
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            49,
+            4096
+          ]
+        },
+        {
+          "combination": 121,
+          "symmetry_orbit": [
+            121,
+            124
+          ],
+          "old_amplitude": [
+            17450482691,
+            2199023255552
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            17450482691,
+            2199023255552
+          ]
+        },
+        {
+          "combination": 122,
+          "symmetry_orbit": [
+            122
+          ],
+          "old_amplitude": [
+            66575,
+            16777216
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            66575,
+            16777216
+          ]
+        },
+        {
+          "combination": 123,
+          "symmetry_orbit": [
+            123,
+            126
+          ],
+          "old_amplitude": [
+            290339789209593,
+            18014398509481984
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            290339789209593,
+            18014398509481984
+          ]
+        },
+        {
+          "combination": 125,
+          "symmetry_orbit": [
+            125
+          ],
+          "old_amplitude": [
+            67113281,
+            8589934592
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            67113281,
+            8589934592
+          ]
+        },
+        {
+          "combination": 127,
+          "symmetry_orbit": [
+            127
+          ],
+          "old_amplitude": [
+            33793,
+            8388608
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            33793,
+            8388608
+          ]
+        }
+      ]
+    },
+    {
+      "branch": 1,
+      "conditional_pass_upper_bound": [
+        541241810118731,
+        36028797018963968
+      ],
+      "characters": [
+        {
+          "combination": 1,
+          "symmetry_orbit": [
+            1,
+            4
+          ],
+          "old_amplitude": [
+            1,
+            128
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            128
+          ]
+        },
+        {
+          "combination": 2,
+          "symmetry_orbit": [
+            2
+          ],
+          "old_amplitude": [
+            33588033,
+            17179869184
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            33588033,
+            17179869184
+          ]
+        },
+        {
+          "combination": 3,
+          "symmetry_orbit": [
+            3,
+            6
+          ],
+          "old_amplitude": [
+            1,
+            64
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            64
+          ]
+        },
+        {
+          "combination": 5,
+          "symmetry_orbit": [
+            5
+          ],
+          "old_amplitude": [
+            1,
+            128
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            128
+          ]
+        },
+        {
+          "combination": 7,
+          "symmetry_orbit": [
+            7
+          ],
+          "old_amplitude": [
+            1,
+            128
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            128
+          ]
+        },
+        {
+          "combination": 8,
+          "symmetry_orbit": [
+            8,
+            16,
+            32,
+            64
+          ],
+          "old_amplitude": [
+            4398046511167,
+            1125899906842624
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            4398046511167,
+            1125899906842624
+          ]
+        },
+        {
+          "combination": 9,
+          "symmetry_orbit": [
+            9,
+            20,
+            36,
+            65
+          ],
+          "old_amplitude": [
+            1,
+            128
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            128
+          ]
+        },
+        {
+          "combination": 10,
+          "symmetry_orbit": [
+            10,
+            18,
+            34,
+            66
+          ],
+          "old_amplitude": [
+            1,
+            64
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            64
+          ]
+        },
+        {
+          "combination": 11,
+          "symmetry_orbit": [
+            11,
+            22,
+            38,
+            67
+          ],
+          "old_amplitude": [
+            4294967297,
+            1099511627776
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            4294967297,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 12,
+          "symmetry_orbit": [
+            12,
+            17,
+            33,
+            68
+          ],
+          "old_amplitude": [
+            1,
+            128
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            128
+          ]
+        },
+        {
+          "combination": 13,
+          "symmetry_orbit": [
+            13,
+            21,
+            37,
+            69
+          ],
+          "old_amplitude": [
+            1,
+            128
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            128
+          ]
+        },
+        {
+          "combination": 14,
+          "symmetry_orbit": [
+            14,
+            19,
+            35,
+            70
+          ],
+          "old_amplitude": [
+            4294967297,
+            1099511627776
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            4294967297,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 15,
+          "symmetry_orbit": [
+            15,
+            23,
+            39,
+            71
+          ],
+          "old_amplitude": [
+            4294967297,
+            1099511627776
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            4294967297,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 24,
+          "symmetry_orbit": [
+            24,
+            40,
+            80,
+            96
+          ],
+          "old_amplitude": [
+            295181,
+            67108864
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            295181,
+            67108864
+          ]
+        },
+        {
+          "combination": 25,
+          "symmetry_orbit": [
+            25,
+            44,
+            84,
+            97
+          ],
+          "old_amplitude": [
+            1,
+            128
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            128
+          ]
+        },
+        {
+          "combination": 26,
+          "symmetry_orbit": [
+            26,
+            42,
+            82,
+            98
+          ],
+          "old_amplitude": [
+            9445377,
+            4294967296
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            9445377,
+            4294967296
+          ]
+        },
+        {
+          "combination": 27,
+          "symmetry_orbit": [
+            27,
+            46,
+            86,
+            99
+          ],
+          "old_amplitude": [
+            1,
+            64
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            64
+          ]
+        },
+        {
+          "combination": 28,
+          "symmetry_orbit": [
+            28,
+            41,
+            81,
+            100
+          ],
+          "old_amplitude": [
+            1,
+            128
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            128
+          ]
+        },
+        {
+          "combination": 29,
+          "symmetry_orbit": [
+            29,
+            45,
+            85,
+            101
+          ],
+          "old_amplitude": [
+            1,
+            256
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            256
+          ]
+        },
+        {
+          "combination": 30,
+          "symmetry_orbit": [
+            30,
+            43,
+            83,
+            102
+          ],
+          "old_amplitude": [
+            1,
+            64
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            64
+          ]
+        },
+        {
+          "combination": 31,
+          "symmetry_orbit": [
+            31,
+            47,
+            87,
+            103
+          ],
+          "old_amplitude": [
+            1,
+            256
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            256
+          ]
+        },
+        {
+          "combination": 48,
+          "symmetry_orbit": [
+            48,
+            72
+          ],
+          "old_amplitude": [
+            0,
+            1
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            0,
+            1
+          ]
+        },
+        {
+          "combination": 49,
+          "symmetry_orbit": [
+            49,
+            76
+          ],
+          "old_amplitude": [
+            1,
+            128
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            128
+          ]
+        },
+        {
+          "combination": 50,
+          "symmetry_orbit": [
+            50,
+            74
+          ],
+          "old_amplitude": [
+            0,
+            1
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            0,
+            1
+          ]
+        },
+        {
+          "combination": 51,
+          "symmetry_orbit": [
+            51,
+            78
+          ],
+          "old_amplitude": [
+            1,
+            64
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            64
+          ]
+        },
+        {
+          "combination": 52,
+          "symmetry_orbit": [
+            52,
+            73
+          ],
+          "old_amplitude": [
+            1,
+            128
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            128
+          ]
+        },
+        {
+          "combination": 53,
+          "symmetry_orbit": [
+            53,
+            77
+          ],
+          "old_amplitude": [
+            1,
+            128
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            128
+          ]
+        },
+        {
+          "combination": 54,
+          "symmetry_orbit": [
+            54,
+            75
+          ],
+          "old_amplitude": [
+            1,
+            64
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            64
+          ]
+        },
+        {
+          "combination": 55,
+          "symmetry_orbit": [
+            55,
+            79
+          ],
+          "old_amplitude": [
+            1,
+            256
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            256
+          ]
+        },
+        {
+          "combination": 56,
+          "symmetry_orbit": [
+            56,
+            88,
+            104,
+            112
+          ],
+          "old_amplitude": [
+            1099511627779,
+            281474976710656
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1099511627779,
+            281474976710656
+          ]
+        },
+        {
+          "combination": 57,
+          "symmetry_orbit": [
+            57,
+            92,
+            108,
+            113
+          ],
+          "old_amplitude": [
+            1,
+            128
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            128
+          ]
+        },
+        {
+          "combination": 58,
+          "symmetry_orbit": [
+            58,
+            90,
+            106,
+            114
+          ],
+          "old_amplitude": [
+            1,
+            64
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            64
+          ]
+        },
+        {
+          "combination": 59,
+          "symmetry_orbit": [
+            59,
+            94,
+            110,
+            115
+          ],
+          "old_amplitude": [
+            4294967301,
+            1099511627776
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            4294967301,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 60,
+          "symmetry_orbit": [
+            60,
+            89,
+            105,
+            116
+          ],
+          "old_amplitude": [
+            1,
+            128
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            128
+          ]
+        },
+        {
+          "combination": 61,
+          "symmetry_orbit": [
+            61,
+            93,
+            109,
+            117
+          ],
+          "old_amplitude": [
+            1,
+            128
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            128
+          ]
+        },
+        {
+          "combination": 62,
+          "symmetry_orbit": [
+            62,
+            91,
+            107,
+            118
+          ],
+          "old_amplitude": [
+            4294967297,
+            1099511627776
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            4294967297,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 63,
+          "symmetry_orbit": [
+            63,
+            95,
+            111,
+            119
+          ],
+          "old_amplitude": [
+            4294967297,
+            1099511627776
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            4294967297,
+            1099511627776
+          ]
+        },
+        {
+          "combination": 120,
+          "symmetry_orbit": [
+            120
+          ],
+          "old_amplitude": [
+            0,
+            1
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            0,
+            1
+          ]
+        },
+        {
+          "combination": 121,
+          "symmetry_orbit": [
+            121,
+            124
+          ],
+          "old_amplitude": [
+            1,
+            128
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            128
+          ]
+        },
+        {
+          "combination": 122,
+          "symmetry_orbit": [
+            122
+          ],
+          "old_amplitude": [
+            0,
+            1
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            0,
+            1
+          ]
+        },
+        {
+          "combination": 123,
+          "symmetry_orbit": [
+            123,
+            126
+          ],
+          "old_amplitude": [
+            1,
+            64
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            64
+          ]
+        },
+        {
+          "combination": 125,
+          "symmetry_orbit": [
+            125
+          ],
+          "old_amplitude": [
+            1,
+            128
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            128
+          ]
+        },
+        {
+          "combination": 127,
+          "symmetry_orbit": [
+            127
+          ],
+          "old_amplitude": [
+            1,
+            256
+          ],
+          "new_amplitude": null,
+          "selected_amplitude": [
+            1,
+            256
+          ]
+        }
+      ]
+    }
+  ],
+  "global_pass_upper_bound": [
+    822305287179573,
+    2305843009213693952
+  ],
+  "global_excluded_lower_bound": [
+    2305020703926514379,
+    2305843009213693952
+  ],
+  "excluded_percent_lower_bound": 99.96433819284774,
+  "scope": "Finite-difference refinement independently verified. Thirteen necessary conditions; no global nonexistence claim."
+}

@@ -1,0 +1,16 @@
+{
+  "verification": "PASS",
+  "independent_quadratic_sums": 17408,
+  "equation_span_checks": 143,
+  "difference_matrix_ranks": 122858,
+  "basis_matrices_rebuilt": 272,
+  "leaf_methods": {
+    "quadratic_slice": 74,
+    "difference_minimum_rank": 12
+  },
+  "global_pass_upper_bound": "920442124197941/2305843009213693952",
+  "global_excluded_lower_bound": "2304922567089496011/2305843009213693952",
+  "excluded_percent_lower_bound": 99.96008218597188,
+  "seconds": 1628.2055795999986,
+  "scope": "One mixed certificate with a uniform leaf interface; discarded historical bounds are not verified. No global nonexistence claim."
+}

@@ -1,0 +1,1061 @@
+{
+  "coefficient_words_checked": 32,
+  "quintic_vs_truth_table_checks": 288,
+  "all_pass": true,
+  "linear_independence_certificate": [
+    {
+      "coefficients_hex": "0x21f4a8eeb114a426d873b0b7cc7a",
+      "correlations": [
+        -192,
+        512,
+        256,
+        640,
+        0,
+        0,
+        128,
+        512,
+        1408
+      ],
+      "quintic_bits": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0xa05a1af038d109a4524fecfec84f3",
+      "correlations": [
+        512,
+        64,
+        128,
+        768,
+        128,
+        128,
+        0,
+        896,
+        896
+      ],
+      "quintic_bits": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0xcaab621632c5c8f8889bd75041e47",
+      "correlations": [
+        128,
+        0,
+        704,
+        512,
+        768,
+        384,
+        512,
+        256,
+        640
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0x5c2763947e1928df5ad596e3f5682",
+      "correlations": [
+        128,
+        -512,
+        128,
+        64,
+        384,
+        384,
+        128,
+        256,
+        640
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0x6c39159c7396ff42db5694acfe639",
+      "correlations": [
+        384,
+        384,
+        512,
+        256,
+        -448,
+        -256,
+        384,
+        -128,
+        256
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0x79f354a3c1dda39f8c24b0b31ab07",
+      "correlations": [
+        896,
+        128,
+        128,
+        128,
+        384,
+        448,
+        640,
+        640,
+        512
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0xecb3823ee370208273eb3e269dda7",
+      "correlations": [
+        512,
+        128,
+        512,
+        0,
+        640,
+        512,
+        192,
+        128,
+        1536
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0x838d654bc3dc49bfc88f5f4d9ada8",
+      "correlations": [
+        384,
+        256,
+        -128,
+        896,
+        1024,
+        128,
+        256,
+        576,
+        384
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0x814dffbed087d99df59ca95c80178",
+      "correlations": [
+        0,
+        0,
+        -128,
+        256,
+        -512,
+        0,
+        -128,
+        384,
+        1216
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "zero_quintic_system_not_sufficient_example": {
+    "coefficients_hex": "0x934bf27775a081fe52367b07ca138",
+    "correlations": [
+      512,
+      256,
+      384,
+      512,
+      384,
+      512,
+      0,
+      640,
+      1920
+    ],
+    "quintic_bits": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "random_seed": 20261016104,
+  "seconds": 2.1600535000015952,
+  "records": [
+    {
+      "coefficients_hex": "0x21f4a8eeb114a426d873b0b7cc7a",
+      "correlations": [
+        -192,
+        512,
+        256,
+        640,
+        0,
+        0,
+        128,
+        512,
+        1408
+      ],
+      "quintic_bits": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0xa05a1af038d109a4524fecfec84f3",
+      "correlations": [
+        512,
+        64,
+        128,
+        768,
+        128,
+        128,
+        0,
+        896,
+        896
+      ],
+      "quintic_bits": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0xcaab621632c5c8f8889bd75041e47",
+      "correlations": [
+        128,
+        0,
+        704,
+        512,
+        768,
+        384,
+        512,
+        256,
+        640
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0x5c2763947e1928df5ad596e3f5682",
+      "correlations": [
+        128,
+        -512,
+        128,
+        64,
+        384,
+        384,
+        128,
+        256,
+        640
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0x6c39159c7396ff42db5694acfe639",
+      "correlations": [
+        384,
+        384,
+        512,
+        256,
+        -448,
+        -256,
+        384,
+        -128,
+        256
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0x79f354a3c1dda39f8c24b0b31ab07",
+      "correlations": [
+        896,
+        128,
+        128,
+        128,
+        384,
+        448,
+        640,
+        640,
+        512
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0xecb3823ee370208273eb3e269dda7",
+      "correlations": [
+        512,
+        128,
+        512,
+        0,
+        640,
+        512,
+        192,
+        128,
+        1536
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0x838d654bc3dc49bfc88f5f4d9ada8",
+      "correlations": [
+        384,
+        256,
+        -128,
+        896,
+        1024,
+        128,
+        256,
+        576,
+        384
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0x814dffbed087d99df59ca95c80178",
+      "correlations": [
+        0,
+        0,
+        -128,
+        256,
+        -512,
+        0,
+        -128,
+        384,
+        1216
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "coefficients_hex": "0x934bf27775a081fe52367b07ca138",
+      "correlations": [
+        512,
+        256,
+        384,
+        512,
+        384,
+        512,
+        0,
+        640,
+        1920
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0x69d0fffd13f895d0718672e224580",
+      "correlations": [
+        128,
+        128,
+        128,
+        64,
+        256,
+        512,
+        832,
+        192,
+        384
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0x3e12565464f4a5c7538beb76ce65a",
+      "correlations": [
+        64,
+        128,
+        -128,
+        64,
+        -192,
+        -64,
+        64,
+        384,
+        384
+      ],
+      "quintic_bits": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0xdb2c69fc4f8c56db4ed0c0c41af98",
+      "correlations": [
+        64,
+        -256,
+        128,
+        384,
+        128,
+        576,
+        256,
+        576,
+        640
+      ],
+      "quintic_bits": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0xcfdda536a954583113d89cda1df8f",
+      "correlations": [
+        512,
+        -256,
+        320,
+        -64,
+        -128,
+        256,
+        192,
+        0,
+        1728
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "coefficients_hex": "0xafab0188f373830634a383cf04ca2",
+      "correlations": [
+        128,
+        128,
+        128,
+        -448,
+        448,
+        -256,
+        448,
+        128,
+        896
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0xf7cc9d80240be0660aa680b21695f",
+      "correlations": [
+        704,
+        640,
+        960,
+        384,
+        576,
+        448,
+        -320,
+        -64,
+        1728
+      ],
+      "quintic_bits": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "coefficients_hex": "0xc2ff01373c8a4b5d46a39b73205fa",
+      "correlations": [
+        448,
+        448,
+        384,
+        -320,
+        512,
+        -256,
+        896,
+        -448,
+        832
+      ],
+      "quintic_bits": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "coefficients_hex": "0xc37fb1a903704fce31c0b485af2d4",
+      "correlations": [
+        640,
+        -448,
+        320,
+        256,
+        192,
+        960,
+        512,
+        384,
+        448
+      ],
+      "quintic_bits": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "coefficients_hex": "0xa0f06ac34c93d1cfe390dada760b3",
+      "correlations": [
+        512,
+        320,
+        -512,
+        320,
+        320,
+        320,
+        -640,
+        -256,
+        1280
+      ],
+      "quintic_bits": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0x74c194797961a8f9b2de32b2209bf",
+      "correlations": [
+        768,
+        384,
+        512,
+        -256,
+        576,
+        384,
+        1088,
+        -256,
+        768
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0x6007910712658fcddf5a35660749d",
+      "correlations": [
+        512,
+        -128,
+        704,
+        768,
+        64,
+        192,
+        -192,
+        64,
+        1088
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "coefficients_hex": "0x85ced2b8b09084233502cae12ae3a",
+      "correlations": [
+        384,
+        -192,
+        512,
+        -448,
+        -128,
+        -256,
+        704,
+        0,
+        -64
+      ],
+      "quintic_bits": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "coefficients_hex": "0xf788100bc24be985359b1d9adc179",
+      "correlations": [
+        256,
+        256,
+        -384,
+        128,
+        704,
+        -64,
+        128,
+        192,
+        -128
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0x92e41bd5e927a0af4419794126a6b",
+      "correlations": [
+        384,
+        -64,
+        0,
+        576,
+        64,
+        -192,
+        704,
+        -64,
+        896
+      ],
+      "quintic_bits": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0x57db64be1202a8fbeda48f89e68dc",
+      "correlations": [
+        384,
+        384,
+        -576,
+        576,
+        704,
+        320,
+        704,
+        128,
+        640
+      ],
+      "quintic_bits": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0x7c08a26d43bfce52f5624ed1c35eb",
+      "correlations": [
+        448,
+        -64,
+        -384,
+        192,
+        192,
+        -192,
+        384,
+        896,
+        -192
+      ],
+      "quintic_bits": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "coefficients_hex": "0xaa2ec8c63749d15f14c42e5148832",
+      "correlations": [
+        -128,
+        960,
+        -128,
+        -384,
+        832,
+        512,
+        448,
+        384,
+        768
+      ],
+      "quintic_bits": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0x395c0c4940fdabdc7b8c1971967f3",
+      "correlations": [
+        -640,
+        320,
+        128,
+        448,
+        256,
+        0,
+        -320,
+        576,
+        704
+      ],
+      "quintic_bits": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "coefficients_hex": "0x13b2999f3b840bb3289e8db99d385",
+      "correlations": [
+        576,
+        384,
+        256,
+        448,
+        448,
+        640,
+        256,
+        384,
+        1600
+      ],
+      "quintic_bits": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "coefficients_hex": "0xaa4fd3f199403b80e50c60349ee2",
+      "correlations": [
+        -192,
+        384,
+        0,
+        320,
+        576,
+        -576,
+        640,
+        128,
+        448
+      ],
+      "quintic_bits": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "coefficients_hex": "0xb0de07782dc82729467de39fbf8c0",
+      "correlations": [
+        960,
+        -192,
+        128,
+        640,
+        -64,
+        1216,
+        128,
+        64,
+        0
+      ],
+      "quintic_bits": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "coefficients_hex": "0x411b20e0a07e795aa4149f687aa60",
+      "correlations": [
+        -256,
+        192,
+        256,
+        384,
+        768,
+        384,
+        960,
+        384,
+        896
+      ],
+      "quintic_bits": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

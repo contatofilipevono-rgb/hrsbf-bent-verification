@@ -1,0 +1,70 @@
+{
+  "verification": "PASS",
+  "toy_assignment_checks": 256,
+  "encoding_by_branch": {
+    "0": {
+      "new_variables": 14595,
+      "clauses": 26442,
+      "xor_equations": 8755,
+      "constant": 480,
+      "weight_gcd": 4,
+      "nonconstant_signatures": 2915,
+      "congruence_modulus": 512,
+      "counter_bits": 6,
+      "residue_target": 32,
+      "scope": "Necessary congruence only, not exact amplitude."
+    },
+    "1": {
+      "new_variables": 14595,
+      "clauses": 26442,
+      "xor_equations": 8755,
+      "constant": 288,
+      "weight_gcd": 4,
+      "nonconstant_signatures": 2915,
+      "congruence_modulus": 512,
+      "counter_bits": 6,
+      "residue_target": 8,
+      "scope": "Necessary congruence only, not exact amplitude."
+    }
+  },
+  "fixed_function_controls": [
+    {
+      "branch": 0,
+      "coefficient_hex": "0x18649e30a3513dbc1231f902c2da",
+      "W0101": 192,
+      "solver_answer": false
+    },
+    {
+      "branch": 0,
+      "coefficient_hex": "0x364a7a5fc16d09a509e9d92b4220b",
+      "W0101": 256,
+      "solver_answer": true
+    },
+    {
+      "branch": 0,
+      "coefficient_hex": "0x54ec4c4401f53045a91728b0bcee9",
+      "W0101": 768,
+      "solver_answer": true
+    },
+    {
+      "branch": 1,
+      "coefficient_hex": "0x661d58a1f584edab5f8294ac55e6",
+      "W0101": 0,
+      "solver_answer": false
+    },
+    {
+      "branch": 1,
+      "coefficient_hex": "0x2308ee98922506ef5ea46c7ca04c8",
+      "W0101": 768,
+      "solver_answer": true
+    },
+    {
+      "branch": 1,
+      "coefficient_hex": "0x62bdd9003f12403c10a4459323d92",
+      "W0101": 256,
+      "solver_answer": true
+    }
+  ],
+  "seconds": 4.056875300004322,
+  "scope": "Walsh congruence W0101=256 mod512, necessary and weaker than exact amplitude."
+}

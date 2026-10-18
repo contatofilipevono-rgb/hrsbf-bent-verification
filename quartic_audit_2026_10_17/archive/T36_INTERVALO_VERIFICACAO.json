@@ -1,0 +1,24 @@
+{
+  "verification": "PASS",
+  "branches": [
+    {
+      "branch": 0,
+      "conditional_pass_lower_bound": "823546568701/8796093022208",
+      "conditional_pass_upper_bound": "1375476686851/8796093022208"
+    },
+    {
+      "branch": 1,
+      "conditional_pass_lower_bound": "90111/1048576",
+      "conditional_pass_upper_bound": "172033/1048576"
+    }
+  ],
+  "nine_condition_pass_fraction_lower_bound": "1201499496445/562949953421312",
+  "nine_condition_pass_fraction_upper_bound": "2097035386883/562949953421312",
+  "nine_condition_excluded_fraction_lower_bound": "560852918034429/562949953421312",
+  "nine_condition_excluded_fraction_upper_bound": "561748453924867/562949953421312",
+  "excluded_percent_interval": [
+    99.6274916848046,
+    99.7865708151954
+  ],
+  "scope": "Exact rational corollary of the verified T35 amplitudes. At least the lower fraction of functions satisfies all nine necessary conditions; none is asserted to be bent. These same nine filters alone cannot reach 99.9% exclusion."
+}

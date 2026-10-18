@@ -1,0 +1,156 @@
+{
+  "all_116_generator_parity_identities_verified": true,
+  "A255_divisible_by_64": true,
+  "A85_divisible_by_64": true,
+  "dual_odd_odd_orbits": {
+    "8": 8
+  },
+  "all_16_diagonal_cases_verified": true,
+  "diagonal_cases": [
+    {
+      "abcd": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "A0": 256
+    },
+    {
+      "abcd": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "A0": 16
+    },
+    {
+      "abcd": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "A0": 32
+    },
+    {
+      "abcd": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "A0": -16
+    },
+    {
+      "abcd": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "A0": 64
+    },
+    {
+      "abcd": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "A0": 16
+    },
+    {
+      "abcd": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "A0": -32
+    },
+    {
+      "abcd": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "A0": -16
+    },
+    {
+      "abcd": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "A0": 32
+    },
+    {
+      "abcd": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "A0": -16
+    },
+    {
+      "abcd": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "A0": 128
+    },
+    {
+      "abcd": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "A0": 16
+    },
+    {
+      "abcd": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "A0": -32
+    },
+    {
+      "abcd": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "A0": -16
+    },
+    {
+      "abcd": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "A0": -64
+    },
+    {
+      "abcd": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "A0": 16
+    }
+  ],
+  "scope": "Verifies the finite identities in the accompanying theoretical proof; does not enumerate all functions or assert global nonexistence."
+}

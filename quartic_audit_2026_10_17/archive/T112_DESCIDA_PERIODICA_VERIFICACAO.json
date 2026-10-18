@@ -1,0 +1,105 @@
+{
+  "status": "PASS",
+  "periodic_descent_tests": [
+    {
+      "d": 2,
+      "p": 3,
+      "k": 1,
+      "n": 6,
+      "cases": 6,
+      "nonzero_periodic_shifts_per_case": 3
+    },
+    {
+      "d": 4,
+      "p": 3,
+      "k": 1,
+      "n": 12,
+      "cases": 6,
+      "nonzero_periodic_shifts_per_case": 15
+    },
+    {
+      "d": 2,
+      "p": 3,
+      "k": 2,
+      "n": 18,
+      "cases": 6,
+      "nonzero_periodic_shifts_per_case": 3
+    },
+    {
+      "d": 2,
+      "p": 5,
+      "k": 1,
+      "n": 10,
+      "cases": 6,
+      "nonzero_periodic_shifts_per_case": 3
+    },
+    {
+      "d": 4,
+      "p": 5,
+      "k": 1,
+      "n": 20,
+      "cases": 6,
+      "nonzero_periodic_shifts_per_case": 15
+    }
+  ],
+  "H8_exhaustive": {
+    "dimension": 10,
+    "tested": 1024,
+    "bent": 0
+  },
+  "short_orbit_support_checks": [
+    {
+      "n": 8,
+      "short_orbits": 2
+    },
+    {
+      "n": 10,
+      "short_orbits": 2
+    },
+    {
+      "n": 12,
+      "short_orbits": 3
+    },
+    {
+      "n": 14,
+      "short_orbits": 3
+    },
+    {
+      "n": 16,
+      "short_orbits": 4
+    },
+    {
+      "n": 18,
+      "short_orbits": 4
+    },
+    {
+      "n": 20,
+      "short_orbits": 5
+    },
+    {
+      "n": 22,
+      "short_orbits": 5
+    },
+    {
+      "n": 24,
+      "short_orbits": 6
+    },
+    {
+      "n": 26,
+      "short_orbits": 6
+    },
+    {
+      "n": 28,
+      "short_orbits": 7
+    },
+    {
+      "n": 30,
+      "short_orbits": 7
+    },
+    {
+      "n": 32,
+      "short_orbits": 8
+    }
+  ],
+  "scope": "Finite checks; infinite statements have separate written proofs."
+}

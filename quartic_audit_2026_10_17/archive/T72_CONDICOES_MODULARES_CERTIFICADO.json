@@ -1,0 +1,1876 @@
+{
+  "Q4_redundancy": [
+    {
+      "branch": 0,
+      "terms": 205,
+      "equals_old_Q4_after_three_laws": true
+    },
+    {
+      "branch": 1,
+      "terms": 197,
+      "equals_old_Q4_after_three_laws": true
+    }
+  ],
+  "conditions": {
+    "C0": "W0=256 mod512, equivalently w_full+4*a+6*b=8 mod16",
+    "C2": "W5555=256 mod512"
+  },
+  "Wones_redundancy": "W0-Wones=65536-64*w_odd; w_odd is divisible by8, so Wones= W0 mod512 under the three laws.",
+  "sample_size_thirteen": 229,
+  "survivors_C0_then_C2": [
+    113,
+    60
+  ],
+  "C0_nonimplication_witness": {
+    "coefficient_hex": "0x3da4038d1644c423bbd855a28b8a0",
+    "W0": 2048,
+    "Wones": -512,
+    "W5555": -768,
+    "passes_C0": false,
+    "passes_C2": true
+  },
+  "C2_nonimplication_given_C0_witness": {
+    "coefficient_hex": "0x28bb166fc2a778f246c0a585a3543",
+    "W0": 256,
+    "Wones": -1280,
+    "W5555": 512,
+    "passes_C0": true,
+    "passes_C2": false
+  },
+  "records": [
+    {
+      "coefficient_hex": "0x3da4038d1644c423bbd855a28b8a0",
+      "W0": 2048,
+      "Wones": -512,
+      "W5555": -768,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x7e946225e85b37b4d14f16b45f727",
+      "W0": 1792,
+      "Wones": -256,
+      "W5555": -256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x28bb166fc2a778f246c0a585a3543",
+      "W0": 256,
+      "Wones": -1280,
+      "W5555": 512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x71c1bd746b2bb8a7bae991615d7ac",
+      "W0": 1792,
+      "Wones": -1280,
+      "W5555": -256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x23987a2eed934ae5b1d3c43094ea4",
+      "W0": 512,
+      "Wones": 1024,
+      "W5555": -256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x1144a7987e327818616aae48d6e99",
+      "W0": 768,
+      "Wones": -768,
+      "W5555": 0,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x5c335b66614164d1f2044cbae2262",
+      "W0": -256,
+      "Wones": 768,
+      "W5555": -768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x4c315386afe8e81d3e845e7c4b984",
+      "W0": 512,
+      "Wones": -1024,
+      "W5555": 256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x76a502ef04e4df784356e814ed754",
+      "W0": 1280,
+      "Wones": -1280,
+      "W5555": 0,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x51bd6ceb3a76aa83f1b5f382b954e",
+      "W0": 768,
+      "Wones": -1280,
+      "W5555": 1280,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x8185a2623bfeccb6aaa07046fd18",
+      "W0": -512,
+      "Wones": -1024,
+      "W5555": 256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x4ccc076012698a9cd63e07590c40e",
+      "W0": 1536,
+      "Wones": -512,
+      "W5555": 1024,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x144f55e07d64a256b75b1cb528e99",
+      "W0": -1536,
+      "Wones": 0,
+      "W5555": 256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x7ddcf42b8047d1e74b810ec4d8370",
+      "W0": 256,
+      "Wones": -256,
+      "W5555": -1024,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x58c5587f4d13bbd0b21253249789f",
+      "W0": 768,
+      "Wones": -1280,
+      "W5555": 256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x29f2257fd514496368fb766be904e",
+      "W0": -768,
+      "Wones": 768,
+      "W5555": 0,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x6f9f9ad30f14e4270b1889df9e9ce",
+      "W0": 1024,
+      "Wones": -2048,
+      "W5555": 0,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x33c115bd425a602b392d600cc23fa",
+      "W0": 768,
+      "Wones": -256,
+      "W5555": 768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x15b702fea379fdb0c4f3882479b0",
+      "W0": 1536,
+      "Wones": -512,
+      "W5555": 0,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x332719e27a36dcf72b88da5f91c0b",
+      "W0": 512,
+      "Wones": -1536,
+      "W5555": -512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x1962435029e064dfde0ed12ece21a",
+      "W0": 0,
+      "Wones": 1024,
+      "W5555": 1024,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x21dc3858eab511bcd09598ef14045",
+      "W0": 256,
+      "Wones": -768,
+      "W5555": 256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x6d491b85a429a8ed4301e1243eb69",
+      "W0": -1280,
+      "Wones": -1280,
+      "W5555": -256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x1f0e237788262a1100d06262f2b2e",
+      "W0": 2560,
+      "Wones": -512,
+      "W5555": -512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x68796f9bb59720bb0c9921f42f6f3",
+      "W0": -512,
+      "Wones": -1536,
+      "W5555": 512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x250947e94c53c6ed55c7826236831",
+      "W0": 1024,
+      "Wones": -512,
+      "W5555": -768,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x5208e7226e57ddcbdf32b0f3cf1b",
+      "W0": -768,
+      "Wones": 1280,
+      "W5555": 768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x14d95f2ff0df0496e3f36de51dfb4",
+      "W0": -1536,
+      "Wones": -1536,
+      "W5555": -512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x2538162b8b3c14facaf799277b6f",
+      "W0": 0,
+      "Wones": -512,
+      "W5555": 256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x4bf3f0817d3640807028bfc52ff0b",
+      "W0": 1536,
+      "Wones": -512,
+      "W5555": -1024,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x389aab7faf3e0f6280041a144dffd",
+      "W0": 512,
+      "Wones": -2048,
+      "W5555": 256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x65f94d3993d296e8313685e3c03a9",
+      "W0": 1536,
+      "Wones": 0,
+      "W5555": -256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x27477cbea8fe387cd822bd33acb50",
+      "W0": 768,
+      "Wones": -1280,
+      "W5555": -768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x2faa3d35e59d3cf57d2ec37bf82c1",
+      "W0": 256,
+      "Wones": -1792,
+      "W5555": -256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x65f3fc013900c7b8a579de588e1df",
+      "W0": 512,
+      "Wones": -512,
+      "W5555": 1024,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x66fb80677a736caa72dc8d0eb7ddf",
+      "W0": 1792,
+      "Wones": -1792,
+      "W5555": 512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x50893a33bdc66ccd616fd5afa82c3",
+      "W0": 2304,
+      "Wones": 1280,
+      "W5555": 768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0xbf01be998999316cc5ef3999e8ff",
+      "W0": -256,
+      "Wones": -256,
+      "W5555": 256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x3b922c40f3cf496787dbb2a88007b",
+      "W0": 1280,
+      "Wones": 256,
+      "W5555": 256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x1eeb08745191de897fcc69897ea55",
+      "W0": 1536,
+      "Wones": 0,
+      "W5555": -768,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x49c16cdf2ab1a18ad04ee78dfffbd",
+      "W0": -256,
+      "Wones": 768,
+      "W5555": 256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x1f71173b589411bb0b490616df0b",
+      "W0": 256,
+      "Wones": -256,
+      "W5555": 512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x4ab95d11895a375d64f4b741c6e81",
+      "W0": 512,
+      "Wones": -1024,
+      "W5555": 768,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x7e2f88bcbd5cf669874fb71b778ca",
+      "W0": 2304,
+      "Wones": 768,
+      "W5555": 512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x7d726ce4df44f2b94e5c903c9b631",
+      "W0": 2048,
+      "Wones": 0,
+      "W5555": 0,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x511d546cc05e1d0fc1304322b5047",
+      "W0": -256,
+      "Wones": -256,
+      "W5555": 256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x5e03082672466e08606d19a50edae",
+      "W0": 1792,
+      "Wones": -768,
+      "W5555": 1536,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x22c8b27d9e10afb7aa018993e069c",
+      "W0": 1536,
+      "Wones": -512,
+      "W5555": 1024,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x37cd4c28fc059726c73a55381bf1b",
+      "W0": 768,
+      "Wones": -1792,
+      "W5555": -512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x74a1246ab46ef3e05d8d8c5b3fa57",
+      "W0": -512,
+      "Wones": 512,
+      "W5555": -1024,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x5adff18b047c5e51cd8f9e9d75e03",
+      "W0": 1024,
+      "Wones": -512,
+      "W5555": -1280,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x35695a2b3c0491e0feb5bd7c7214c",
+      "W0": 0,
+      "Wones": -1024,
+      "W5555": 512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x7f544ef4507994a25c8e95f00c101",
+      "W0": 1024,
+      "Wones": -1024,
+      "W5555": 1024,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x6af967f8e4ef1fed3e9e757abaf84",
+      "W0": -1536,
+      "Wones": -1536,
+      "W5555": 1024,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x27455c7a490c33365b809c16dd429",
+      "W0": 2048,
+      "Wones": 2048,
+      "W5555": 1024,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x70a669edf2c434f37dd4e35eddf1f",
+      "W0": 768,
+      "Wones": -1792,
+      "W5555": 1536,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0xc170d616ec8055cba0d0e6cd4856",
+      "W0": 2048,
+      "Wones": 1536,
+      "W5555": -768,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x6b47578107965ff6aeeef9b4867fc",
+      "W0": 256,
+      "Wones": -256,
+      "W5555": 0,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x44b4734f96b559d9de2d25f495579",
+      "W0": 1024,
+      "Wones": -1024,
+      "W5555": 0,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x705a665761c77b37b5bc814289c1b",
+      "W0": -256,
+      "Wones": -768,
+      "W5555": 512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x2cb14146f0cd3f30d7db89480bada",
+      "W0": -1792,
+      "Wones": 256,
+      "W5555": -256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x6bb674c90f698c7a756996a3bb93a",
+      "W0": -512,
+      "Wones": 1024,
+      "W5555": -256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x3953aaacbf9dade1db574db19b03f",
+      "W0": 256,
+      "Wones": 768,
+      "W5555": 0,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x36970217b88d485f69f76fab1fb4",
+      "W0": 256,
+      "Wones": -1280,
+      "W5555": 1024,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x7c355ec447e951786f29ffa4a4ac9",
+      "W0": 2048,
+      "Wones": -1024,
+      "W5555": 1024,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x6ef153b6cbe086b8d844b8d800ddb",
+      "W0": 1024,
+      "Wones": 512,
+      "W5555": -256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x3283a0b7dc1ecf32f98f6f20b3bd8",
+      "W0": 2304,
+      "Wones": -2304,
+      "W5555": -512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x168bc099049b0d935c01ca2128b67",
+      "W0": -256,
+      "Wones": 768,
+      "W5555": 256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x215b06ccb551d9f6953be03967e61",
+      "W0": 1024,
+      "Wones": 1536,
+      "W5555": -256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x296520bf8300c0a15595207b764bd",
+      "W0": -256,
+      "Wones": 256,
+      "W5555": 512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x289f559fd9bffe2f9695b1209f05a",
+      "W0": 1792,
+      "Wones": 1792,
+      "W5555": 768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x730767844e6d843db85d59ae9994e",
+      "W0": 768,
+      "Wones": -768,
+      "W5555": 1024,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x1ae2bcf14d7fee17f84020931b094",
+      "W0": 512,
+      "Wones": 512,
+      "W5555": -512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x2337703544fd5f3ad88ed5bbfd153",
+      "W0": -512,
+      "Wones": 0,
+      "W5555": 768,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x51189ef1b0059219c842427175022",
+      "W0": 2560,
+      "Wones": -1024,
+      "W5555": 1280,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x236c18029dbfabe7229dfe0fd8a95",
+      "W0": 1280,
+      "Wones": 1792,
+      "W5555": 0,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x2f8a49a100283d664b9c79ed9358",
+      "W0": 1280,
+      "Wones": -256,
+      "W5555": 0,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x22c5113320755a7747215ec236c85",
+      "W0": 1536,
+      "Wones": 2048,
+      "W5555": -768,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x3d292be239090a2c2e831f08ffe64",
+      "W0": -256,
+      "Wones": 1280,
+      "W5555": 1024,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0xf1cabe4b3c8611b45e99da50897",
+      "W0": 2048,
+      "Wones": -512,
+      "W5555": -256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x64525c2f4b247ef02a27068f35f33",
+      "W0": 2560,
+      "Wones": 0,
+      "W5555": -1792,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x6783c31fcb5bc4669b9dc68aa9394",
+      "W0": 1536,
+      "Wones": -512,
+      "W5555": -512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x5d34456b26b6a28be21679c640d86",
+      "W0": 1280,
+      "Wones": 256,
+      "W5555": -256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x32f47dbbd6175a61e4b5e6aa48478",
+      "W0": 2304,
+      "Wones": -1792,
+      "W5555": 768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x2c18262691025530f041dd56ee6e5",
+      "W0": 0,
+      "Wones": 0,
+      "W5555": 1024,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x1db6575eab1382546f990f0c43d94",
+      "W0": 2304,
+      "Wones": -768,
+      "W5555": -768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x44726c717b65419541c192b765baf",
+      "W0": 2304,
+      "Wones": -768,
+      "W5555": -256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x5f89035fc8f6d88198728a61cd2f4",
+      "W0": 0,
+      "Wones": -512,
+      "W5555": -256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x5c38684c0341edd6c99e9202062c",
+      "W0": 768,
+      "Wones": -256,
+      "W5555": 256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x2b4d284551c088726f7aeb29b52e1",
+      "W0": 2560,
+      "Wones": 1024,
+      "W5555": 1280,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x6e5174044c945e251fc990b7847d8",
+      "W0": 1792,
+      "Wones": -768,
+      "W5555": 512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x24d139223ffa243c2d4c51f1e53f7",
+      "W0": 256,
+      "Wones": -1280,
+      "W5555": -1024,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x3f20513137d775a09c71e4a15bfb3",
+      "W0": 768,
+      "Wones": 256,
+      "W5555": 0,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x651d907487e94c2c3a3694e027577",
+      "W0": 2048,
+      "Wones": 0,
+      "W5555": 0,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x79e9413ad82451e301a93d38780ba",
+      "W0": 1024,
+      "Wones": 1024,
+      "W5555": 0,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x33eb094f89ce35f519934daf2e504",
+      "W0": 1280,
+      "Wones": -768,
+      "W5555": 256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x16f5539ad9e6c20aaf883dceda3c3",
+      "W0": -512,
+      "Wones": -1024,
+      "W5555": -256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x7f7f7e441d3d6e2efc037bc6a5892",
+      "W0": 512,
+      "Wones": 512,
+      "W5555": 1536,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x4c540b9fcbe1fc12293753263d6d8",
+      "W0": 1280,
+      "Wones": -768,
+      "W5555": 256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x38e623d3a02af53ae42587506ffb8",
+      "W0": 2304,
+      "Wones": -768,
+      "W5555": 256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x25d9321f2b1ea7b64112da340a23b",
+      "W0": 1024,
+      "Wones": -2048,
+      "W5555": 512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x1be82dee32ef4992e8ab4b80e44c2",
+      "W0": -1536,
+      "Wones": 0,
+      "W5555": 768,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x2bcf1ab4258d87eeb4223d2de4e21",
+      "W0": 0,
+      "Wones": -1024,
+      "W5555": 0,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x41fc5e2975e16bd06e0b959d072a6",
+      "W0": 2048,
+      "Wones": -512,
+      "W5555": -256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x7bda7f9be4fcc4ed7bde467768718",
+      "W0": -256,
+      "Wones": -256,
+      "W5555": 1792,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x7187a4d1363d0d615ac404f307283",
+      "W0": -256,
+      "Wones": 256,
+      "W5555": 1024,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x59ca95740ed55f18a62d3ed2774a3",
+      "W0": 256,
+      "Wones": -2304,
+      "W5555": -512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x72474a3b65384d2be2e143b4f18f4",
+      "W0": 1536,
+      "Wones": -512,
+      "W5555": 0,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x39dec991575b507ec4ad9baecc78e",
+      "W0": 256,
+      "Wones": -1280,
+      "W5555": 1536,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x4f4e21fe066e9c892659845ad4354",
+      "W0": 0,
+      "Wones": -1024,
+      "W5555": 0,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x531678389edc551b0d8c1b63e804e",
+      "W0": 1536,
+      "Wones": 512,
+      "W5555": 512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x6d71fca01444f2f77b8c961c5edd5",
+      "W0": 256,
+      "Wones": -256,
+      "W5555": -1024,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x682041ce0fa779a6a7eec15ca08b",
+      "W0": 3328,
+      "Wones": 256,
+      "W5555": -768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x609b67014f445b38c281f7219902d",
+      "W0": 2816,
+      "Wones": 1280,
+      "W5555": 0,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x67101d6e1d9c23f4e47f9f2f80ae5",
+      "W0": -512,
+      "Wones": 512,
+      "W5555": 512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x67912e6db4919fa56dc67cf078ab1",
+      "W0": 2304,
+      "Wones": -768,
+      "W5555": 1280,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x37a36152ef3acb728c17922c94770",
+      "W0": 512,
+      "Wones": 512,
+      "W5555": -2048,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x56bc7568fb97215f12836cdb1e817",
+      "W0": 1536,
+      "Wones": 512,
+      "W5555": 1024,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x3623f61e8f6d7da7e7054c9918711",
+      "W0": 512,
+      "Wones": -512,
+      "W5555": 512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x2afb7c4eead850287e27a75b03791",
+      "W0": 1280,
+      "Wones": -256,
+      "W5555": 512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x2134f0cb1c0e0d364d3a90677790",
+      "W0": -512,
+      "Wones": 0,
+      "W5555": 256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x505a6fe304a9f38b59969045ca266",
+      "W0": 768,
+      "Wones": -256,
+      "W5555": 768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x433540983bd60f895bca716bc1a67",
+      "W0": 768,
+      "Wones": 768,
+      "W5555": 256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x6a945a61cfa0b1b3f0cabaa56f971",
+      "W0": 512,
+      "Wones": -1024,
+      "W5555": -768,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x43c16302162a9346b37e633f1f4e3",
+      "W0": 1024,
+      "Wones": 512,
+      "W5555": 1280,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x4d2156a5bed0a21a9338ba137b0a1",
+      "W0": -512,
+      "Wones": -1024,
+      "W5555": 1280,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x33a645630c0e747f86aafc5db1628",
+      "W0": 0,
+      "Wones": 0,
+      "W5555": 1536,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x16f81efa30e1895f8b312569b458e",
+      "W0": 3328,
+      "Wones": 256,
+      "W5555": -256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x6324a7fb91d3313acc4743f37984d",
+      "W0": 768,
+      "Wones": -768,
+      "W5555": 0,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x508753675507965d6e37dddc303fe",
+      "W0": -1024,
+      "Wones": 1024,
+      "W5555": 0,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x4085292d0007902b33afd1b0e90a",
+      "W0": 2304,
+      "Wones": -768,
+      "W5555": -768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x1d6a2a018509900a1b75aeff3fcb6",
+      "W0": 1536,
+      "Wones": 1024,
+      "W5555": -768,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x540e6bc633c84ad05c1dc36481dc2",
+      "W0": 2816,
+      "Wones": 256,
+      "W5555": 512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x78265444a748cdfe72ac219be3c8a",
+      "W0": 512,
+      "Wones": 512,
+      "W5555": 512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x51a9198049eb3e880c232e6c54b48",
+      "W0": 2048,
+      "Wones": -512,
+      "W5555": -768,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x2bae74ff8118793afa4b1437d4ce3",
+      "W0": 768,
+      "Wones": -768,
+      "W5555": -512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x3a0d9abc9a18b4776c4ed0d25ed3a",
+      "W0": 1280,
+      "Wones": -2304,
+      "W5555": -1024,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x32d85dd65e8456b36d651bff553b9",
+      "W0": 2560,
+      "Wones": 512,
+      "W5555": 0,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x58282f76a03e45dccd49a5ae2930f",
+      "W0": 1536,
+      "Wones": -1024,
+      "W5555": 256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x63a62df2d10a29ae09cc375de674a",
+      "W0": 1792,
+      "Wones": 768,
+      "W5555": -256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x7c30c23806cd5157f04d54fad31b",
+      "W0": 1536,
+      "Wones": 512,
+      "W5555": 1536,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x55276ba383bd8d1f27971c53997dc",
+      "W0": 1280,
+      "Wones": -1792,
+      "W5555": -256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x55df40ef9910705a0d32373a3a948",
+      "W0": 0,
+      "Wones": 0,
+      "W5555": 512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x530e16d432b67cd543de0d4dcfd7a",
+      "W0": 1280,
+      "Wones": -768,
+      "W5555": -256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x3044096887f1b9e8c16854ce13f33",
+      "W0": 2304,
+      "Wones": 1280,
+      "W5555": 256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x57f31e3a02bbcec341070bdf6a830",
+      "W0": 256,
+      "Wones": -256,
+      "W5555": 1024,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x2482a5941e30cfa61f67e138b87ab",
+      "W0": 2048,
+      "Wones": 1024,
+      "W5555": 0,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x1d29f8ed5fc8ad243524d06b4f15",
+      "W0": 1280,
+      "Wones": 1792,
+      "W5555": 0,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x7655216bae61093f642612b477e85",
+      "W0": 1536,
+      "Wones": 0,
+      "W5555": -256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x689dcb59d58f64b4255e997dbe3d0",
+      "W0": 0,
+      "Wones": 512,
+      "W5555": -768,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0xd50d0f3fe02a15dccc4876660119",
+      "W0": 3328,
+      "Wones": -2816,
+      "W5555": -256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x5ef1d824a0980a4c79cd1908e002f",
+      "W0": 256,
+      "Wones": -768,
+      "W5555": 256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x70b8498c74059bf65a6ccacbce32f",
+      "W0": 0,
+      "Wones": 512,
+      "W5555": 256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x37219ec90a5f96e345787ccd83d64",
+      "W0": 256,
+      "Wones": -768,
+      "W5555": 256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x5fbeda6b5d8470dd4f8db58323ac6",
+      "W0": 1024,
+      "Wones": -512,
+      "W5555": -768,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x2d02a66d8d2dc8bfaa691e402f4eb",
+      "W0": 2560,
+      "Wones": -512,
+      "W5555": -512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x29d3407b7c2019fcf9b33947755f4",
+      "W0": 3840,
+      "Wones": -1792,
+      "W5555": 0,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x16cbce72a50e60d0be13bbe2d6e47",
+      "W0": -512,
+      "Wones": 0,
+      "W5555": -256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x52c0670acc0af99156670ba59b198",
+      "W0": 1792,
+      "Wones": -256,
+      "W5555": -256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x3bb13a1230ca1d6fd8a2e65d03f7d",
+      "W0": 1280,
+      "Wones": 256,
+      "W5555": 768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x31b2258ae213f82120df0fd79d982",
+      "W0": 1024,
+      "Wones": -512,
+      "W5555": 256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0xec61769a0c0bccd1ecf517b0c218",
+      "W0": 1536,
+      "Wones": -1536,
+      "W5555": 1024,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0xc5a68580275d20ce0c821eecffe1",
+      "W0": 768,
+      "Wones": 256,
+      "W5555": -1024,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x5bf054b89557f706fa55898f6e850",
+      "W0": 768,
+      "Wones": -1280,
+      "W5555": 768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x1da934c282584a9927962c3e176d3",
+      "W0": 1024,
+      "Wones": 0,
+      "W5555": 0,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x298dfbf48ce2b63c455221dc826a8",
+      "W0": -512,
+      "Wones": -1024,
+      "W5555": -768,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x9c2362140f1f6563439bf2ddd9ec",
+      "W0": 512,
+      "Wones": -1024,
+      "W5555": -1280,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x48f11cc80f0d7ed8f7a6483a3c15c",
+      "W0": 2304,
+      "Wones": 256,
+      "W5555": 1280,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x2a79089e4c7a23a8b58d1fb7d63ea",
+      "W0": 512,
+      "Wones": 0,
+      "W5555": -256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x633548ec9a97a3fbe9d8e585194cf",
+      "W0": 256,
+      "Wones": -1280,
+      "W5555": 0,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x7dc5c843834daa2c0d57864a33436",
+      "W0": 512,
+      "Wones": -2048,
+      "W5555": -256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0xd489000661d009e99955fb122b33",
+      "W0": 512,
+      "Wones": 512,
+      "W5555": 0,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x76a7f11838b3b8ae5b570b41d7b5",
+      "W0": 768,
+      "Wones": -1280,
+      "W5555": -768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0xb5717a27b4aee1c6c0d08ff5b63e",
+      "W0": 512,
+      "Wones": -1024,
+      "W5555": 256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x21612efe53051070ac818ccc2c236",
+      "W0": 1024,
+      "Wones": 0,
+      "W5555": 0,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x56239aa6e7bc5157eafe772bfbc9b",
+      "W0": 2816,
+      "Wones": -768,
+      "W5555": 512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x15f109e5646772dea81cd4202094e",
+      "W0": 2816,
+      "Wones": -1280,
+      "W5555": 1280,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x6a321aa3eae206be122eb8f91df50",
+      "W0": -768,
+      "Wones": 1280,
+      "W5555": 768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x4b092ff3651fd1060c6a92639466f",
+      "W0": -768,
+      "Wones": -256,
+      "W5555": -512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x7090f40cad5c1ba3452bfb8b0364b",
+      "W0": -1792,
+      "Wones": -1280,
+      "W5555": 0,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x1d96e7a488acd38a0f8fd7875ecea",
+      "W0": 1280,
+      "Wones": -256,
+      "W5555": -512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x1166227abf9d05040e6ef9d62071b",
+      "W0": 1024,
+      "Wones": 512,
+      "W5555": -1280,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x45643684b56c6192cdef69356442e",
+      "W0": 1280,
+      "Wones": 768,
+      "W5555": 0,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x487327c1375f934bc3539a8f838dc",
+      "W0": 1536,
+      "Wones": -2560,
+      "W5555": 512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x3cd55dd508d054239207e9b77fac3",
+      "W0": 768,
+      "Wones": -256,
+      "W5555": -768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x6cba8f8e7617fa6ec69973860f5b9",
+      "W0": 1792,
+      "Wones": -768,
+      "W5555": 512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x672d809882a531289cc25a0b592bf",
+      "W0": 768,
+      "Wones": -768,
+      "W5555": 0,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x205cf592d99fe275fefd61804e0b3",
+      "W0": 256,
+      "Wones": -256,
+      "W5555": -512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0xb7d031c84fc9d8ffcdccd6487fac",
+      "W0": 1536,
+      "Wones": 0,
+      "W5555": -256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x2a537d31940266efcbfe1ed138b7d",
+      "W0": 512,
+      "Wones": -1024,
+      "W5555": -768,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x1662ba40dea33e13cd70661b28a8e",
+      "W0": 512,
+      "Wones": 512,
+      "W5555": 1536,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x22cc1b77c2cfa63e32fd868317866",
+      "W0": 768,
+      "Wones": 1792,
+      "W5555": -256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x4e6af080ea217c056ddd4ac541542",
+      "W0": 0,
+      "Wones": -512,
+      "W5555": -256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x42746921e39cac86cb27f277e1095",
+      "W0": 1536,
+      "Wones": -512,
+      "W5555": 0,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x2802b616852a0f3ba70482003162b",
+      "W0": 1536,
+      "Wones": -1536,
+      "W5555": 1536,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x1eba5d728259c25c136377c54e30a",
+      "W0": 768,
+      "Wones": -256,
+      "W5555": 256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x175b0e8debbf121aad69f2aa81cc1",
+      "W0": 2048,
+      "Wones": -1536,
+      "W5555": -256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x3900e894b4176efe31e01c9f65ce2",
+      "W0": 1280,
+      "Wones": -256,
+      "W5555": -512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x385b4fd97b8eb835b6ba02f3927a1",
+      "W0": -1024,
+      "Wones": -1024,
+      "W5555": 0,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x24976fc325cf1f789d33a0405d492",
+      "W0": 1536,
+      "Wones": -512,
+      "W5555": 512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x405a109e550e9e5d0f6d3245cde91",
+      "W0": 2048,
+      "Wones": 1024,
+      "W5555": -512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x21cf6d838e5ea42c1ab7d39c3fa61",
+      "W0": 2304,
+      "Wones": 768,
+      "W5555": 512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x5486ac96d2ec454074801a1a85db6",
+      "W0": 1792,
+      "Wones": -768,
+      "W5555": 512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x34380e537e2599336641c40e8142a",
+      "W0": -256,
+      "Wones": 768,
+      "W5555": 768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x77f0db62491b0c5022a5e8613620",
+      "W0": 1536,
+      "Wones": 512,
+      "W5555": 0,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0xb73af32a4f2fc563bbeb21eb2b06",
+      "W0": 2560,
+      "Wones": -1024,
+      "W5555": 1280,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x7d1959f1f2fdb6e67f6136576db4d",
+      "W0": -256,
+      "Wones": -2304,
+      "W5555": -768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x37b30be98bb146b5f02f41b499",
+      "W0": 2304,
+      "Wones": 256,
+      "W5555": -256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0xc2b1040f57fc3c825166e6a0497c",
+      "W0": 2560,
+      "Wones": 0,
+      "W5555": -768,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x758bfcec5481433a63d73bcbab3c2",
+      "W0": 1536,
+      "Wones": -1024,
+      "W5555": -256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x4db7358f030a2b5c7dd92bdd63b6f",
+      "W0": -256,
+      "Wones": -768,
+      "W5555": 512,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x7ee47ea8ed614d735504baebd6a3c",
+      "W0": 768,
+      "Wones": 768,
+      "W5555": 256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x70d2f079089e816a14afff96eb515",
+      "W0": 256,
+      "Wones": -2816,
+      "W5555": -768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0xbe5206e00defed7b8eae20936fc8",
+      "W0": 0,
+      "Wones": -1024,
+      "W5555": 1024,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x74e201c6f56c2a2225e76baf99b53",
+      "W0": 768,
+      "Wones": 256,
+      "W5555": -1024,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x7b0a25f28cfeadac99bd6c857b373",
+      "W0": 1280,
+      "Wones": -768,
+      "W5555": 256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x78132bf87a1a0b27fcb51e074e816",
+      "W0": 1024,
+      "Wones": -1024,
+      "W5555": -512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x5e802f47244304c3da3d7893f4996",
+      "W0": -512,
+      "Wones": 0,
+      "W5555": 256,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x6a0981d6c6f990e4e3ba5f15377ea",
+      "W0": 1280,
+      "Wones": -256,
+      "W5555": 0,
+      "passes_C0": true,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x3f4b807a3a131462c9866cbc502cc",
+      "W0": 1280,
+      "Wones": 256,
+      "W5555": -768,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x13dee3d52dac828c657a7ef7dd89f",
+      "W0": 512,
+      "Wones": -1536,
+      "W5555": -1024,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x7cf2b1138fa9677dac5702fe294bc",
+      "W0": 512,
+      "Wones": -1536,
+      "W5555": 512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x2e6229c3e81d1be845c6a711d3d48",
+      "W0": 256,
+      "Wones": -768,
+      "W5555": -256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x50a9df6286ca689bff053afedf964",
+      "W0": -1536,
+      "Wones": 0,
+      "W5555": -768,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x5abf72e3e31e730688896257d61f9",
+      "W0": 0,
+      "Wones": -2048,
+      "W5555": 512,
+      "passes_C0": false,
+      "passes_C2": false
+    },
+    {
+      "coefficient_hex": "0x4a201b9c7514e3d02bd44cff831fe",
+      "W0": -1536,
+      "Wones": 0,
+      "W5555": 768,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x101991f079a2454a80679c05bc724",
+      "W0": 768,
+      "Wones": -256,
+      "W5555": -256,
+      "passes_C0": true,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x6a40311ba7ec523a5e2b48ca43bb1",
+      "W0": 2560,
+      "Wones": -1024,
+      "W5555": -1792,
+      "passes_C0": false,
+      "passes_C2": true
+    },
+    {
+      "coefficient_hex": "0x295c1cb4c6bb2127f25f159ae7151",
+      "W0": 512,
+      "Wones": 512,
+      "W5555": 512,
+      "passes_C0": false,
+      "passes_C2": false
+    }
+  ],
+  "seconds": 0.2450089999983902,
+  "scope": "Exact polynomial equivalence for Q4, and explicit witnesses for new necessary congruences. Sample counts are not global bounds."
+}

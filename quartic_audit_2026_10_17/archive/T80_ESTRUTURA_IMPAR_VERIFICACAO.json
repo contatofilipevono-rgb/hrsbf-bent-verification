@@ -1,0 +1,29 @@
+{
+  "verification": "PASS",
+  "complete_divisibility_checks": [
+    {
+      "quotient_Hamming_weight": 1,
+      "full_input_orbits": 1024,
+      "single_checks": 116,
+      "pair_checks": 6670,
+      "triple_checks": 253460
+    },
+    {
+      "quotient_Hamming_weight": 3,
+      "full_input_orbits": 1024,
+      "single_checks": 116,
+      "pair_checks": 6670,
+      "triple_checks": 253460
+    }
+  ],
+  "Walsh_difference_identity": "W1111-W7777=-32*(w_class1-w_class3)",
+  "odd_class_divisibility": "w_class1 and w_class3 are divisible by8 for every coefficient vector.",
+  "necessary_bent_consequences": [
+    "w_class1+w_class3=1024",
+    "W0=Wones",
+    "(w_class1,w_class3) belongs to {(504,520),(512,512),(520,504)}"
+  ],
+  "proof": "Bent amplitudes at1111 and7777 force their count difference to be divisible by16. Each class count is divisible by8, so their sum is divisible by16. W0-Wones=65536-64*(their sum) is then divisible by1024; two values in {+256,-256} can have such a difference only if equal. This forces the sum to1024. The first difference restricts the pair to the three displayed possibilities.",
+  "seconds": 1.7179160000014235,
+  "scope": "Necessary structural statement for H(16,4), not a nonexistence proof or a claim of bibliographic novelty."
+}

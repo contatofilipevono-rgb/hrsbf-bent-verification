@@ -1,0 +1,61 @@
+{
+  "branch": 1,
+  "answer": true,
+  "time_limit_seconds": 20,
+  "solve_seconds": 15.777175999995961,
+  "encoding": {
+    "new_variables": 20115,
+    "clauses": 39845,
+    "xor_equations": 12043,
+    "truth_signature_variables": 4034,
+    "counter_stage": {
+      "variables": 20051,
+      "clauses": 35940,
+      "xor_equations": 12043
+    },
+    "counters": [
+      {
+        "quotient_representative": "0x0",
+        "input_orbits": 240,
+        "counter_bits": 8
+      },
+      {
+        "quotient_representative": "0x1",
+        "input_orbits": 1024,
+        "counter_bits": 11
+      },
+      {
+        "quotient_representative": "0x3",
+        "input_orbits": 1024,
+        "counter_bits": 11
+      },
+      {
+        "quotient_representative": "0x5",
+        "input_orbits": 512,
+        "counter_bits": 10
+      },
+      {
+        "quotient_representative": "0x7",
+        "input_orbits": 1024,
+        "counter_bits": 11
+      },
+      {
+        "quotient_representative": "0xf",
+        "input_orbits": 256,
+        "counter_bits": 9
+      }
+    ],
+    "target_profiles": 64,
+    "scope": "Exact six-amplitude target table with full counters under three T20 laws and fixed b."
+  },
+  "scope": "Core six conditions plus all six exact low-period Walsh amplitudes. A negative solver answer requires proof verification before a nonexistence claim.",
+  "coefficient_hex": "0x1494ca0e88dac581c2582eaa5d822",
+  "original_Walsh": {
+    "0x0": -256,
+    "0x1111": 256,
+    "0x3333": 256,
+    "0x5555": -256,
+    "0x7777": -256,
+    "0xffff": -256
+  }
+}

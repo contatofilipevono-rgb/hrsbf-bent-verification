@@ -1,0 +1,19 @@
+{
+  "odd_single_weights_divisible_by_eight": true,
+  "odd_pair_intersection_checks": 6670,
+  "odd_pair_intersections_not_divisible_by_four": [],
+  "odd_triple_intersection_checks": 253460,
+  "odd_triple_intersections_not_even": [],
+  "even_pair_intersections_not_even": [],
+  "identity_outside_three_laws_counterexample": {
+    "coefficient_hex": "0x80000000000000000000000000000",
+    "a": 0,
+    "b": 0,
+    "even_ones": 416,
+    "odd_ones": 424,
+    "actual_Wones": 16,
+    "proposed_rhs": 256
+  },
+  "seconds": 2.2177279999959865,
+  "scope": "Exact generator overlap audit; modulo-weight conclusions require all displayed overlap hypotheses, not singleton weights alone."
+}

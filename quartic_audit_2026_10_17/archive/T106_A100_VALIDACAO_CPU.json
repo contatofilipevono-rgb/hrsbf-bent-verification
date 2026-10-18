@@ -1,0 +1,16 @@
+{
+  "original_generator_bug": "sum used as Boolean instead of sum mod 2",
+  "free_coordinate_indices": [
+    2,
+    3
+  ],
+  "buggy_coefficient_vector": "0x2000000039",
+  "correct_coefficient_vector": "0x30",
+  "corrected_basis_matches_T100": true,
+  "active_equations": 42,
+  "cpu_checks": 294,
+  "gpu_tested_locally": false,
+  "scope": "Conditional on necessity of five initial laws",
+  "all_original_embedded_masks_match_buggy_generator_json": true,
+  "original_cuda_sha256": "ad25f776e2311a9cacbaf812bd65006c593fe5734367b2b008de74e787ce323c"
+}

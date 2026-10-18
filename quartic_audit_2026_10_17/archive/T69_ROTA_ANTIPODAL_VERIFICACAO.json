@@ -1,0 +1,35 @@
+{
+  "verification": "PASS",
+  "Q8_visible_coefficient_dimension": 46,
+  "Q8_invisible_coefficient_dimension": 70,
+  "Q8_pair_multiplicity_histogram": {
+    "2": 45,
+    "1": 1
+  },
+  "Q8_restriction_before_laws": "c57*(y1+y7)+c99*(y2+y6)+c113*(y3+y5)+c115*y4",
+  "Q8_restriction_under_three_laws": "a*(y1+y3+y5+y7)+b*(y2+y6)",
+  "minimal_nonvanishing_counterexample": {
+    "coefficient_hex": "0x200000000000000",
+    "x_hex": "0x202",
+    "Q8": 1
+  },
+  "core_nonvanishing_counterexample": {
+    "coefficient_hex": "0x687c33fc2d21fde00ca287b7fc7f0",
+    "x_hex": "0x202",
+    "Q8": 1
+  },
+  "rank14_counterexample": {
+    "coefficient_hex": "0x538cd1007cc3e3521e80fcd78aa46",
+    "rank": 14
+  },
+  "quartic_bent_derivative_counterexample": {
+    "formula": "f(x,y)=sum_{i=0}^3 x_i*y_i+y0*y1*y2*y3",
+    "n": 8,
+    "all_Walsh_absolute": 16,
+    "first_derivative": "D_x0 f=y0",
+    "nontrivial_constant_second_derivative": "D_x1 D_x0 f=0",
+    "scope": "Quartic bent example disproves the claimed general bentness criterion; it is not claimed homogeneous or rotation invariant."
+  },
+  "seconds": 0.01935179999418324,
+  "scope": "Audits claims and provides explicit counterexamples; no nonexistence proof."
+}

@@ -1,0 +1,22 @@
+{
+  "verification": "PASS",
+  "method": "symplectic Gram-Schmidt independent of pairwise summation elimination used to generate the certificate",
+  "branches": [
+    {
+      "branch": 0,
+      "quadratic_biases_verified": 8,
+      "radical_zero_density": "4260673/33554432",
+      "conditional_pass_upper_bound": "71369537/134217728"
+    },
+    {
+      "branch": 1,
+      "quadratic_biases_verified": 4,
+      "radical_zero_density": "1/4",
+      "conditional_pass_upper_bound": "17/32"
+    }
+  ],
+  "global_pass_upper_bound": "107021121/8589934592",
+  "global_excluded_lower_bound": "8482913471/8589934592",
+  "excluded_percent_lower_bound": 98.75411017565057,
+  "seconds": 0.4740079000002879
+}

@@ -1,0 +1,48 @@
+{
+  "verification": "PASS",
+  "scope": "Full independent low-pivot rank replay of all 127 characters, both branches and every 15-bit state. Closed-form core weights independent of producer enumeration. Eight exhaustive character partitions; upstream affine matrices and degree identities have separate certificates.",
+  "characters": 127,
+  "branches": 2,
+  "states_per_branch": 32768,
+  "partitions": [
+    [
+      1,
+      17
+    ],
+    [
+      17,
+      33
+    ],
+    [
+      33,
+      49
+    ],
+    [
+      49,
+      65
+    ],
+    [
+      65,
+      81
+    ],
+    [
+      81,
+      97
+    ],
+    [
+      97,
+      113
+    ],
+    [
+      113,
+      128
+    ]
+  ],
+  "pass_upper_bound": [
+    58424985,
+    549755813888
+  ],
+  "aggregation_seconds": 0.1299639000062598,
+  "maximum_partition_seconds": 113.49124160000065,
+  "sum_partition_seconds": 892.9087213000312
+}

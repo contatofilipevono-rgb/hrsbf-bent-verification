@@ -1,0 +1,84 @@
+{
+  "solver": "pycryptosat 5.17.0",
+  "branch_c99": 1,
+  "variables": 260628,
+  "and_clauses": 721134,
+  "xor_equations": 397,
+  "xor_literals": 7110492,
+  "time_limit_seconds": 30,
+  "solve_seconds": 30.45167300000321,
+  "answer": null,
+  "walsh_encoding": {
+    "new_variables": 20134,
+    "clauses": 36369,
+    "xor_equations": 12083,
+    "targets": [
+      {
+        "a": 0,
+        "negative_W0": 0,
+        "negative_Wones": 0,
+        "even_ones": 1010,
+        "odd_ones": 1024
+      },
+      {
+        "a": 0,
+        "negative_W0": 0,
+        "negative_Wones": 1,
+        "even_ones": 1018,
+        "odd_ones": 1016
+      },
+      {
+        "a": 0,
+        "negative_W0": 1,
+        "negative_Wones": 0,
+        "even_ones": 1018,
+        "odd_ones": 1032
+      },
+      {
+        "a": 0,
+        "negative_W0": 1,
+        "negative_Wones": 1,
+        "even_ones": 1026,
+        "odd_ones": 1024
+      },
+      {
+        "a": 1,
+        "negative_W0": 0,
+        "negative_Wones": 0,
+        "even_ones": 1006,
+        "odd_ones": 1024
+      },
+      {
+        "a": 1,
+        "negative_W0": 0,
+        "negative_Wones": 1,
+        "even_ones": 1014,
+        "odd_ones": 1016
+      },
+      {
+        "a": 1,
+        "negative_W0": 1,
+        "negative_Wones": 0,
+        "even_ones": 1014,
+        "odd_ones": 1032
+      },
+      {
+        "a": 1,
+        "negative_W0": 1,
+        "negative_Wones": 1,
+        "even_ones": 1022,
+        "odd_ones": 1024
+      }
+    ],
+    "constants": [
+      0,
+      0
+    ],
+    "sum_output_bits": [
+      12,
+      12
+    ],
+    "scope": "Exact joint Walsh amplitudes under the three T20 laws; no bentness claim."
+  },
+  "scope": "Exact W0 and Wones=+/-256, plus 389 cubic necessary conditions, Q4, fifth branch constraints, and second bits at all four period-eight weight-twelve supports; no full bentness encoding and no independent UNSAT proof."
+}

@@ -1,0 +1,18 @@
+{
+  "verification": "PASS",
+  "original_coefficient_directions": [
+    [
+      75
+    ],
+    [
+      42,
+      81,
+      94,
+      106
+    ]
+  ],
+  "fiber_point_evaluations_checked": 2560,
+  "all_first_five_conditions_preserved": true,
+  "constant_one_mixed_derivative_both_branches": true,
+  "conclusion": "Every T27 quotient state that has a lift satisfying the first five conditions has lifts with both values of the sixth bit. The sixth condition alone removes no quotient states."
+}

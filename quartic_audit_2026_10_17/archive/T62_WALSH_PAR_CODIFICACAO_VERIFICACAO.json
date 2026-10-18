@@ -1,0 +1,289 @@
+{
+  "verification": "PASS",
+  "fixed_function_controls": [
+    {
+      "coefficient_hex": "0x18649e30a3513dbc1231f902c2da",
+      "branch": 0,
+      "W0": 2560,
+      "Wones": 0,
+      "expected": false,
+      "solver_answer": false
+    },
+    {
+      "coefficient_hex": "0x54ec4c4401f53045a91728b0bcee9",
+      "branch": 0,
+      "W0": -256,
+      "Wones": -256,
+      "expected": true,
+      "solver_answer": true
+    },
+    {
+      "coefficient_hex": "0x4f3a6af87d4e60017a7a74d47b2b2",
+      "branch": 0,
+      "W0": 768,
+      "Wones": -256,
+      "expected": false,
+      "solver_answer": false
+    },
+    {
+      "coefficient_hex": "0x1722227b8438d505224b5258e1085",
+      "branch": 0,
+      "W0": 256,
+      "Wones": -1280,
+      "expected": false,
+      "solver_answer": false
+    },
+    {
+      "coefficient_hex": "0x661d58a1f584edab5f8294ac55e6",
+      "branch": 1,
+      "W0": 1280,
+      "Wones": 256,
+      "expected": false,
+      "solver_answer": false
+    },
+    {
+      "coefficient_hex": "0x7de8f956bd0eff7faca69a1531ba9",
+      "branch": 1,
+      "W0": -512,
+      "Wones": -1024,
+      "expected": false,
+      "solver_answer": false
+    },
+    {
+      "coefficient_hex": "0x2607c699ca679faec41ec1b7c33f2",
+      "branch": 1,
+      "W0": 256,
+      "Wones": -2304,
+      "expected": false,
+      "solver_answer": false
+    },
+    {
+      "coefficient_hex": "0x2c06df87f1cdda6cf5f82bf52e35c",
+      "branch": 1,
+      "W0": -256,
+      "Wones": -256,
+      "expected": true,
+      "solver_answer": true
+    }
+  ],
+  "encoding_by_branch": {
+    "0": {
+      "pair": {
+        "new_variables": 20134,
+        "clauses": 36369,
+        "xor_equations": 12083,
+        "targets": [
+          {
+            "a": 0,
+            "negative_W0": 0,
+            "negative_Wones": 0,
+            "even_ones": 1016,
+            "odd_ones": 1024
+          },
+          {
+            "a": 0,
+            "negative_W0": 0,
+            "negative_Wones": 1,
+            "even_ones": 1024,
+            "odd_ones": 1016
+          },
+          {
+            "a": 0,
+            "negative_W0": 1,
+            "negative_Wones": 0,
+            "even_ones": 1024,
+            "odd_ones": 1032
+          },
+          {
+            "a": 0,
+            "negative_W0": 1,
+            "negative_Wones": 1,
+            "even_ones": 1032,
+            "odd_ones": 1024
+          },
+          {
+            "a": 1,
+            "negative_W0": 0,
+            "negative_Wones": 0,
+            "even_ones": 1012,
+            "odd_ones": 1024
+          },
+          {
+            "a": 1,
+            "negative_W0": 0,
+            "negative_Wones": 1,
+            "even_ones": 1020,
+            "odd_ones": 1016
+          },
+          {
+            "a": 1,
+            "negative_W0": 1,
+            "negative_Wones": 0,
+            "even_ones": 1020,
+            "odd_ones": 1032
+          },
+          {
+            "a": 1,
+            "negative_W0": 1,
+            "negative_Wones": 1,
+            "even_ones": 1028,
+            "odd_ones": 1024
+          }
+        ],
+        "constants": [
+          0,
+          0
+        ],
+        "sum_output_bits": [
+          12,
+          12
+        ],
+        "scope": "Exact joint Walsh amplitudes under the three T20 laws; no bentness claim."
+      },
+      "single": {
+        "first_variable": 117,
+        "last_variable": 20267,
+        "new_variables": 20151,
+        "clauses": 36289,
+        "xor_equations": 12092,
+        "distinct_folded_signatures": 4035,
+        "fixed_one_orbits": 0,
+        "sum_output_bits": 13,
+        "targets": [
+          {
+            "a": 0,
+            "sign": 0,
+            "weight_after_constant": 2040
+          },
+          {
+            "a": 0,
+            "sign": 1,
+            "weight_after_constant": 2056
+          },
+          {
+            "a": 1,
+            "sign": 0,
+            "weight_after_constant": 2036
+          },
+          {
+            "a": 1,
+            "sign": 1,
+            "weight_after_constant": 2052
+          }
+        ],
+        "identity": "W0=65536-128*a-192*b-32*weight_full_orbits",
+        "scope": "Exact necessary W0=+/-256 constraint under the three T20 laws and fixed b=c99. Balanced binary addition with native XOR and CNF carry gates."
+      }
+    },
+    "1": {
+      "pair": {
+        "new_variables": 20134,
+        "clauses": 36369,
+        "xor_equations": 12083,
+        "targets": [
+          {
+            "a": 0,
+            "negative_W0": 0,
+            "negative_Wones": 0,
+            "even_ones": 1010,
+            "odd_ones": 1024
+          },
+          {
+            "a": 0,
+            "negative_W0": 0,
+            "negative_Wones": 1,
+            "even_ones": 1018,
+            "odd_ones": 1016
+          },
+          {
+            "a": 0,
+            "negative_W0": 1,
+            "negative_Wones": 0,
+            "even_ones": 1018,
+            "odd_ones": 1032
+          },
+          {
+            "a": 0,
+            "negative_W0": 1,
+            "negative_Wones": 1,
+            "even_ones": 1026,
+            "odd_ones": 1024
+          },
+          {
+            "a": 1,
+            "negative_W0": 0,
+            "negative_Wones": 0,
+            "even_ones": 1006,
+            "odd_ones": 1024
+          },
+          {
+            "a": 1,
+            "negative_W0": 0,
+            "negative_Wones": 1,
+            "even_ones": 1014,
+            "odd_ones": 1016
+          },
+          {
+            "a": 1,
+            "negative_W0": 1,
+            "negative_Wones": 0,
+            "even_ones": 1014,
+            "odd_ones": 1032
+          },
+          {
+            "a": 1,
+            "negative_W0": 1,
+            "negative_Wones": 1,
+            "even_ones": 1022,
+            "odd_ones": 1024
+          }
+        ],
+        "constants": [
+          0,
+          0
+        ],
+        "sum_output_bits": [
+          12,
+          12
+        ],
+        "scope": "Exact joint Walsh amplitudes under the three T20 laws; no bentness claim."
+      },
+      "single": {
+        "first_variable": 117,
+        "last_variable": 20267,
+        "new_variables": 20151,
+        "clauses": 36289,
+        "xor_equations": 12092,
+        "distinct_folded_signatures": 4035,
+        "fixed_one_orbits": 0,
+        "sum_output_bits": 13,
+        "targets": [
+          {
+            "a": 0,
+            "sign": 0,
+            "weight_after_constant": 2034
+          },
+          {
+            "a": 0,
+            "sign": 1,
+            "weight_after_constant": 2050
+          },
+          {
+            "a": 1,
+            "sign": 0,
+            "weight_after_constant": 2030
+          },
+          {
+            "a": 1,
+            "sign": 1,
+            "weight_after_constant": 2046
+          }
+        ],
+        "identity": "W0=65536-128*a-192*b-32*weight_full_orbits",
+        "scope": "Exact necessary W0=+/-256 constraint under the three T20 laws and fixed b=c99. Balanced binary addition with native XOR and CNF carry gates."
+      }
+    }
+  },
+  "seconds": 13.749931300000753,
+  "scope": "Component validation on positive and negative original-function controls. No UNSAT proof for H(16,4)."
+}

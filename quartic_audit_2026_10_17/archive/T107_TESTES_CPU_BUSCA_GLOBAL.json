@@ -1,0 +1,11 @@
+{
+  "scope": "All 43 original H(12,4) coefficients, without initial-five assumptions",
+  "global_dimension": 43,
+  "global_quadratic_filters": 43,
+  "global_control_vectors": 2093,
+  "independent_mobius_truth_columns_global": 43,
+  "independent_mobius_truth_columns_conditional": 36,
+  "known_bent_positive_controls": 2,
+  "gpu_tested_locally": false,
+  "global_full_count": 8796093022208
+}

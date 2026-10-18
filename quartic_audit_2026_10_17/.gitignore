@@ -1,0 +1,7 @@
+lean/.lake/
+__pycache__/
+*.pyc
+*.olean
+*.ilean
+*.olean.private
+*.olean.server
