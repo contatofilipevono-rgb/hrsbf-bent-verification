@@ -1,6 +1,6 @@
 {
   "algorithm": "SHA-256",
-  "scope": "Committed checkpoint:218 Lean modules,164288 kernel-checked Walsh rejections,and the complete certified shared lookup index. Global H12 chart coverage remains incomplete. Active uncommitted chart pipelines are outside this manifest. The147-module ZIP remains a historical tested snapshot.",
+  "scope": "218-module base plus1 verified data module(s). No chart root coverage or global theorem is established by the saved prefix. Active future chart modules are excluded.",
   "files": [
     {
       "path": ".gitattributes",
@@ -89,8 +89,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 9992,
-      "sha256": "5044a3faff2b0ac137dfd50445e69ab0437e3d945facd3c0bd84db396513a619"
+      "bytes": 10159,
+      "sha256": "5670d308c22ddb0ff5db4ef7da993d6a39cf1fdb1f4000cece3f4378a090a33c"
     },
     {
       "path": "SHARED_WITNESS_INDEX.md",
@@ -101,6 +101,11 @@
       "path": "SOURCE_ARTICLE.json",
       "bytes": 443,
       "sha256": "38acd398f4db2f86146f9b1345a841f5b20bacd9f29d6b2550b6315dda5913f2"
+    },
+    {
+      "path": "VERIFIED_PREFIX_STATUS.md",
+      "bytes": 1647,
+      "sha256": "3652f2e0a4e5d6b11fea30bdf0c3aa164c47ae0191c2a8c0b8a99c36358ba955"
     },
     {
       "path": "ZHANG_APPENDIX_REVIEW.md",
@@ -2338,6 +2343,11 @@
       "sha256": "7d0f41041784fffc2a34edcba7698a78a3195e151164dcbf2ac66201af32b46e"
     },
     {
+      "path": "lean/H12GlobalChart2Data000.lean",
+      "bytes": 209716,
+      "sha256": "c6b4d1675a4a72c84b41b10fbe590581d0b0f155c13b127ac20d3855deba6291"
+    },
+    {
       "path": "lean/H12GlobalWitnessIndex.lean",
       "bytes": 6571,
       "sha256": "b90b14ac30923447f7c792f6985a097b320d03c99191440565d93a6b4e6c33a3"
@@ -3149,8 +3159,8 @@
     },
     {
       "path": "lean/lakefile.toml",
-      "bytes": 6894,
-      "sha256": "f1f9a35472eb4a829f6874200acfd681baa5afb29c13144511f031332f1ac368"
+      "bytes": 6986,
+      "sha256": "94dc83416a6d81e59fc9eb6dfe7491659808cf46fc29a453989f04b023e32c96"
     },
     {
       "path": "lean/lean-toolchain",
@@ -3314,8 +3324,8 @@
     },
     {
       "path": "reports/LEAN_CHECKPOINT_COVERAGE.json",
-      "bytes": 17472,
-      "sha256": "b89697394e0c03211d539137f3e20c8348577b73702da6163dbdad967c33708c"
+      "bytes": 17639,
+      "sha256": "02d7b479b3f11eaec306444cddb297a64bd820af3e0620f5475e9667242e699e"
     },
     {
       "path": "reports/LEAN_CONCRETE_LEAF12_BUILD.log",
@@ -3406,6 +3416,11 @@
       "path": "reports/LEAN_ROW_THEORY_AUDIT.json",
       "bytes": 4039,
       "sha256": "32c0ff32ed2b6a42c78381800d2d361ee9296fda3cd196fc0ff58a72eab487ce"
+    },
+    {
+      "path": "reports/LEAN_VERIFIED_PREFIX_AUDIT.json",
+      "bytes": 12877,
+      "sha256": "25723ca82d8ef8db7778c4228d9208d8d878a886a577a23fa72f2cd503b8e545"
     },
     {
       "path": "reports/LEAN_WITNESS_DATA.json",
@@ -4143,6 +4158,11 @@
       "sha256": "ce8cacd13ddd95226fc88a6909eee9186d67e0f27491c131d4db149e8b6ac791"
     },
     {
+      "path": "reports/partial_progress/LEAN_GLOBAL_CHART2_AUDIT.json",
+      "bytes": 48452,
+      "sha256": "f570741b48591b89325a11b7528d34f9a4662b4c4ea2f80a238d8d482e516eee"
+    },
+    {
       "path": "reports/row_benchmark/BASELINE_SOURCE.txt",
       "bytes": 116393,
       "sha256": "7055aa7587e18bbc8bfe0a02f8baa9b01eb60974cbf52c7e4ac5b8752bb4f658"
@@ -4191,6 +4211,16 @@
       "path": "reports/sequential_H12FastPilotCertificate/H12FastPilot_kernel.log",
       "bytes": 23,
       "sha256": "5048d39269cd1fa4c956e7b5b626e00e84c96bb7d62c3f1c42b349a384f6b015"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data000_build.log",
+      "bytes": 117254,
+      "sha256": "0613187831495f6f7b61fd18112b0120efa87681a501e2a7beb8233a20a593b6"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data000_kernel.log",
+      "bytes": 33,
+      "sha256": "e2050e306a2a5df4ae8ba75a000ee018d2109399f5ff80db7503d8b4846d8323"
     },
     {
       "path": "reports/sequential_H12IndexedPilotCertificate/H12IndexedPilotData000_build.log",
@@ -5254,8 +5284,8 @@
     },
     {
       "path": "tools/audit_lean_checkpoint.py",
-      "bytes": 6801,
-      "sha256": "20d8ba6cee3ce5d12b744dc15872f522c47087cc89b484fa409b957c838b77c4"
+      "bytes": 7650,
+      "sha256": "ea9949d58d78ec187191975316d25f03503e0fcbe54b071349ad56f4ae7a2e99"
     },
     {
       "path": "tools/check_affine_data.py",
@@ -5299,8 +5329,13 @@
     },
     {
       "path": "tools/package_handoff.py",
-      "bytes": 2600,
-      "sha256": "12f7fbe617b2ca02b1f491b009cc8f2e3f9a258a13369c316b0232ecb8251e6b"
+      "bytes": 2628,
+      "sha256": "cafda4bc8782771a084e08c4ddce8a3c3d4b12385ad9badbabe5b8a7fb965550"
+    },
+    {
+      "path": "tools/snapshot_verified_lean_prefix.py",
+      "bytes": 3695,
+      "sha256": "51a43c98f13423d13663b8c2b64bc709235a30f6dd17bffaa21720d13559e876"
     },
     {
       "path": "tools/verify_kholosha_pal_compatibility.py",

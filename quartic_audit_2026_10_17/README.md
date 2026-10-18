@@ -2,9 +2,11 @@
 
 Este diretório preserva os dados desta linha de pesquisa e identifica separadamente os resultados computacionais, os certificados algébricos e a formalização Lean.
 
-Checkpoint atual: [218 módulos com reprodução pelo kernel](ESTADO_KERNEL_218.md), incluindo a composição por linhas quadráticas e novos pilotos. A prova Lean global continua pendente; as variantes de pilotos cobrem trechos sobrepostos.
+Checkpoint de base: [218 módulos com reprodução pelo kernel](ESTADO_KERNEL_218.md), incluindo a composição por linhas quadráticas e novos pilotos. A prova Lean global continua pendente; as variantes de pilotos cobrem trechos sobrepostos.
 
 **H(12,4) foi fechado por enumeração computacional global auditada: zero bent entre 2^43 funções. Uma segunda demonstração computacional agora está disponível por certificado simbólico de cobertura e testemunhos de Walsh, verificável em CPU sem repetir a busca. A formalização Lean cobre reduções necessárias e ainda não contém a prova global completa.**
+
+O progresso posterior dos dados aprovados está em [VERIFIED_PREFIX_STATUS.md](VERIFIED_PREFIX_STATUS.md). Um prefixo de dados não estabelece cobertura de raiz.
 
 ## Resultado principal e evidência
 

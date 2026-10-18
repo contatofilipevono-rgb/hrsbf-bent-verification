@@ -72,6 +72,17 @@ def main():
    name=e['module'];source(name,e['source_sha256']);assert e['build_exit_code']==e['kernel_exit_code']==0
    for phase in ['build','kernel']:clean(reports/('sequential_'+r['library'])/(name+'_'+phase+'.log'))
    record(name,filename)
+ prefixfile=reports/'LEAN_VERIFIED_PREFIX_AUDIT.json';prefixes={}
+ if prefixfile.exists():
+  r=json.loads(prefixfile.read_text());assert r['status']=='PASS_VERIFIED_DATA_PREFIX_EVIDENCE' and r['root_coverage'] is False and r['unconditional_global_theorem'] is False
+  for g in r['groups']:
+   assert g['root_coverage'] is False
+   for name,sha in g['dependencies'].items():source(name,sha)
+   for i,e in enumerate(g['results']):
+    name=e['module'];assert name==f"{g['prefix']}Data{i:03d}" and e['build_exit_code']==e['kernel_exit_code']==0;source(name,e['source_sha256'])
+    for phase in ['build','kernel']:clean(reports/('sequential_'+g['library'])/(name+'_'+phase+'.log'))
+    record(name,'LEAN_VERIFIED_PREFIX_AUDIT.json')
+   prefixes[g['prefix']]=len(g['results'])
  config=tomllib.loads((project/'lakefile.toml').read_text(encoding='utf-8'))
  assert set(args.exclude_library)<={lib['name'] for lib in config['lean_lib']},'Unknown library exclusion'
  expected={m for lib in config['lean_lib'] if lib['name'] not in args.exclude_library for m in lib['roots']};assert set(covered)==expected,(sorted(expected-set(covered)),sorted(set(covered)-expected))
@@ -79,6 +90,7 @@ def main():
   code=(project/(name+'.lean')).read_text(encoding='utf-8');assert not re.search(r'\bsorry\b|^\s*axiom\s|\bnative_decide\b|\bbv_decide\b',code_without_comments(code),re.M),name
  result={'status':'PASS_SOURCE_HASHES_AND_REPLAY_LOG_COVERAGE','modules':len(expected),'primary_modules':28,'witness_modules':42,'witnesses':164288,'module_evidence':covered,'unconditional_global_H12_theorem':False,'largest_tested_connected_subtree_nodes':21,'note':'The subtree pilots overlap; do not add their node or candidate counts. Log/source audit does not replace independent kernel replay.'}
  result['excluded_unfinished_libraries']=args.exclude_library
+ result['verified_data_prefixes_without_root_coverage']=prefixes
  (reports/'LEAN_CHECKPOINT_COVERAGE.json').write_text(json.dumps(result,indent=2));print(result['status'],len(expected),'modules; global theorem still pending; excluded libraries:',args.exclude_library)
 
 if __name__=='__main__':main()

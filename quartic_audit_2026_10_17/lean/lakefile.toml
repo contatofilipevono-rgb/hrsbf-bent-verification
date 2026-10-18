@@ -129,3 +129,7 @@ roots = ["H12WitnessLabelData000", "H12WitnessLabelData001", "H12WitnessLabelDat
 [[lean_lib]]
 name = "H12IndexedPilotCertificate"
 roots = ["H12IndexedPilotData000", "H12IndexedPilotProof000", "H12IndexedPilot"]
+
+[[lean_lib]]
+name = "H12GlobalChart2VerifiedDataPrefix"
+roots = ["H12GlobalChart2Data000"]

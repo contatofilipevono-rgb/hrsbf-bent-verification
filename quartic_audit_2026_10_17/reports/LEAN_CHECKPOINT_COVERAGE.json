@@ -1,6 +1,6 @@
 {
   "status": "PASS_SOURCE_HASHES_AND_REPLAY_LOG_COVERAGE",
-  "modules": 218,
+  "modules": 219,
   "primary_modules": 28,
   "witness_modules": 42,
   "witnesses": 164288,
@@ -662,10 +662,16 @@
     ],
     "H12IndexedPilot": [
       "LEAN_INDEXED_PILOT_AUDIT.json"
+    ],
+    "H12GlobalChart2Data000": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
     ]
   },
   "unconditional_global_H12_theorem": false,
   "largest_tested_connected_subtree_nodes": 21,
   "note": "The subtree pilots overlap; do not add their node or candidate counts. Log/source audit does not replace independent kernel replay.",
-  "excluded_unfinished_libraries": []
+  "excluded_unfinished_libraries": [],
+  "verified_data_prefixes_without_root_coverage": {
+    "H12GlobalChart2": 1
+  }
 }
