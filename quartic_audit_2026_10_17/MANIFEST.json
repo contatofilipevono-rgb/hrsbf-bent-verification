@@ -1,6 +1,6 @@
 {
   "algorithm": "SHA-256",
-  "scope": "218-module base plus1 verified data module(s). No chart root coverage or global theorem is established by the saved prefix. Active future chart modules are excluded.",
+  "scope": "218-module verified base plus33 verified chart2 data modules. No root coverage follows from the data prefix. Includes tested cloud execution tooling; no completed global H12 theorem. Active local future chart files are excluded.",
   "files": [
     {
       "path": ".gitattributes",
@@ -14,8 +14,8 @@
     },
     {
       "path": "ADVERSARIAL_AUDIT.md",
-      "bytes": 2688,
-      "sha256": "e0761f1e9a59f6788ee2ee7d1bd4203b507099791945fdcf84c76fe430a371e5"
+      "bytes": 4740,
+      "sha256": "a91393db6d43ea37d2224f795e16119b15f4adc70f7dc0324484c376c7a6ff79"
     },
     {
       "path": "CLAIMS.md",
@@ -58,6 +58,11 @@
       "sha256": "27fa545df860d4025234c00584ffd12bb719e9da690f2d2edf50fa70f0de8c70"
     },
     {
+      "path": "LEAN_GITHUB_ACTIONS.md",
+      "bytes": 2248,
+      "sha256": "f9d07081f3f06a37dcafc02b4e0cd2a62661e689669e715a8642c3329e4c634a"
+    },
+    {
       "path": "MATHEMATICAL_EXPLANATION.md",
       "bytes": 12511,
       "sha256": "fd3af0f67b74c5ec5f55551d61a7a6850cb94219224b002e2940de4e02181edb"
@@ -89,8 +94,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 10159,
-      "sha256": "5670d308c22ddb0ff5db4ef7da993d6a39cf1fdb1f4000cece3f4378a090a33c"
+      "bytes": 10248,
+      "sha256": "a37e816caed730c7795dffdf6eade651b1c28e151c2abfe9000181fb228dc179"
     },
     {
       "path": "SHARED_WITNESS_INDEX.md",
@@ -104,8 +109,8 @@
     },
     {
       "path": "VERIFIED_PREFIX_STATUS.md",
-      "bytes": 1647,
-      "sha256": "3652f2e0a4e5d6b11fea30bdf0c3aa164c47ae0191c2a8c0b8a99c36358ba955"
+      "bytes": 1651,
+      "sha256": "7741eaa2f93262b2de0dc581979ed176b52949c035d5bf013210b352275e20f3"
     },
     {
       "path": "ZHANG_APPENDIX_REVIEW.md",
@@ -2348,6 +2353,166 @@
       "sha256": "c6b4d1675a4a72c84b41b10fbe590581d0b0f155c13b127ac20d3855deba6291"
     },
     {
+      "path": "lean/H12GlobalChart2Data001.lean",
+      "bytes": 205135,
+      "sha256": "7af1d3955f6de8dead0ddce300f525d0c30c5462aafaa6aa4b6eaff1cd7168d7"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data002.lean",
+      "bytes": 200560,
+      "sha256": "fdb9a41fe6e90690ad6ef79b504064865b79feeabb7a0038fc308d9a967ec77a"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data003.lean",
+      "bytes": 201218,
+      "sha256": "e776611d072d6566547449ffddb0ee3fb9012e05273776f0cd8d6bebc5b45d8b"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data004.lean",
+      "bytes": 207318,
+      "sha256": "eb570a085fcaaefb8932585aaa4f96561ceebb71453ef8da3a52d9949d318893"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data005.lean",
+      "bytes": 206077,
+      "sha256": "01498b1df3f50991ad8aaf18ac65073f0fb55ffc712db65a4948b2a28e73821a"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data006.lean",
+      "bytes": 210474,
+      "sha256": "8aa9bd786a6fba87b2aaac39710faabbdf6d0b2531bb3a39c97b3c3da4438d74"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data007.lean",
+      "bytes": 209523,
+      "sha256": "1e469e75055e0d97c34026cdd3c068d6dd6e663a41f2978e282e85dfee68bcdc"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data008.lean",
+      "bytes": 201729,
+      "sha256": "e66247ac8f199f64b836918c7ee90fc7eb99f16f0cbce92c4d113bd46406574f"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data009.lean",
+      "bytes": 204734,
+      "sha256": "20801b42d0354db18a57fe8bd9c2f1cb0ebb623fadbe2e89993cd26049466ffb"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data010.lean",
+      "bytes": 210681,
+      "sha256": "85e6e7a3233712808ba371757004a94086843578b8afcbe6867246d5fbe249cd"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data011.lean",
+      "bytes": 214590,
+      "sha256": "94c8fbf434d3f6a5fe31753876b3ac1791746196f10a7ca833a4b34081b86d6a"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data012.lean",
+      "bytes": 210193,
+      "sha256": "692935442aaa7e60c2f4e13e93d3641c26dde3db2f42c233a4750fe3964b73db"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data013.lean",
+      "bytes": 211802,
+      "sha256": "6dbef5e52f0abfdbfe4c23957005f4fbae6085820ed1b51c136bdd18d22e7891"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data014.lean",
+      "bytes": 207574,
+      "sha256": "c533d3638f39f77849b9405a64ecfe6b879b69867432495558e5a854d38ac182"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data015.lean",
+      "bytes": 214381,
+      "sha256": "d285a255fc4704f62b174ea4db8dbb9586e52dc25785d91b3304417808bb41b2"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data016.lean",
+      "bytes": 212291,
+      "sha256": "0e2df092c07b06a50d798d02ec1eeed57ab751ef8d7fc3f41f9fdc0877ddd11b"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data017.lean",
+      "bytes": 202724,
+      "sha256": "d64f9e6f6ee2e0d222c7f96cce5bb8968717d01c1127262a458a655a5d8966ce"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data018.lean",
+      "bytes": 211918,
+      "sha256": "7375519124597f7b54eb5212c5fcf6c69f932ffdcac82d3ac76f771560925edf"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data019.lean",
+      "bytes": 203729,
+      "sha256": "b6eaad7550fdc382447490c6aea9230a234f54af50f1d103253830c3bf02911c"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data020.lean",
+      "bytes": 210736,
+      "sha256": "c7af692df0a7a93f156ac61a6c7a0b01f5a8b75cd49809269c5eb3923f0aa860"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data021.lean",
+      "bytes": 212143,
+      "sha256": "85929dd7b7e0f29f8c86f6a6a63aec78cd3284332f3584372853f00505e8b379"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data022.lean",
+      "bytes": 212762,
+      "sha256": "ac7fbae8655e31af251b39a6ffddf165a91ff4efec6f731d422926439e57fdff"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data023.lean",
+      "bytes": 206264,
+      "sha256": "a8997525d015bae9ef600afbaee6ab27b36983b04468d958a93153882933a9db"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data024.lean",
+      "bytes": 201815,
+      "sha256": "4a1bad8ca2f19469f6f08d8f5693d36b417ac969567a8a1d935a9c7ab1e246f3"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data025.lean",
+      "bytes": 200592,
+      "sha256": "4ba27098a957ee64fe610d3f7553aa45adcf5c9361e254f5666f404b611077f1"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data026.lean",
+      "bytes": 211231,
+      "sha256": "d07734f39ee78fe9982bf48ff5dc6f3553ee16d23ba6e424b9dfb412dcafcf57"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data027.lean",
+      "bytes": 210401,
+      "sha256": "43b6b9aeb232651dac30e1bcdd9e8dd55a6ffb40413c2957c2d0c3e18e39cf61"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data028.lean",
+      "bytes": 211678,
+      "sha256": "2be90680f89606d5eb95cf15fa63b7687c94da8bf90113752f0f23ef14a118b4"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data029.lean",
+      "bytes": 210330,
+      "sha256": "124593b854d86978c654555dff310939f3c33ddbce4fed899fa8c3af6b81b6f5"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data030.lean",
+      "bytes": 202320,
+      "sha256": "c65ef95bb3ac3d90543f0ee851bbf5eeaa89697f04b1b8f12244bf49544b672b"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data031.lean",
+      "bytes": 201729,
+      "sha256": "d15a8ca4c383bd9b725aafb0c51cf96eded6b5a59bfc72fbe67c4546846f18dc"
+    },
+    {
+      "path": "lean/H12GlobalChart2Data032.lean",
+      "bytes": 198992,
+      "sha256": "c14a2893fcefa83a4534f9061a8bf8a8f643e458c36ce8d981b4b2ca0bbe5254"
+    },
+    {
       "path": "lean/H12GlobalWitnessIndex.lean",
       "bytes": 6571,
       "sha256": "b90b14ac30923447f7c792f6985a097b320d03c99191440565d93a6b4e6c33a3"
@@ -3159,8 +3324,8 @@
     },
     {
       "path": "lean/lakefile.toml",
-      "bytes": 6986,
-      "sha256": "94dc83416a6d81e59fc9eb6dfe7491659808cf46fc29a453989f04b023e32c96"
+      "bytes": 7818,
+      "sha256": "79628c2231a54dfa7978c5ca6c2fb80636bf5f6b54acb9ba8b765789f0705366"
     },
     {
       "path": "lean/lean-toolchain",
@@ -3176,6 +3341,11 @@
       "path": "reports/AFFINE_CHART_DATA_AUDIT.json",
       "bytes": 597,
       "sha256": "5828d78c566d303106a90ecde0b97e79ae8da2832ebc7ded733c4ee78d84a53c"
+    },
+    {
+      "path": "reports/CLOUD_RUNNER_VALIDATION.json",
+      "bytes": 683,
+      "sha256": "8e799549607f8750528d22a7aa90d19c6d03f23c7249088e81d827d688eed7b6"
     },
     {
       "path": "reports/COMPLEMENT_PAIR_FILTERS.json",
@@ -3324,8 +3494,8 @@
     },
     {
       "path": "reports/LEAN_CHECKPOINT_COVERAGE.json",
-      "bytes": 17639,
-      "sha256": "02d7b479b3f11eaec306444cddb297a64bd820af3e0620f5475e9667242e699e"
+      "bytes": 20264,
+      "sha256": "23fab79d05e941b7a0aa63f5ac9e5ea0052cad2b34225c716676d8e2a56273e2"
     },
     {
       "path": "reports/LEAN_CONCRETE_LEAF12_BUILD.log",
@@ -3419,8 +3589,8 @@
     },
     {
       "path": "reports/LEAN_VERIFIED_PREFIX_AUDIT.json",
-      "bytes": 12877,
-      "sha256": "25723ca82d8ef8db7778c4228d9208d8d878a886a577a23fa72f2cd503b8e545"
+      "bytes": 24585,
+      "sha256": "a403713e3ab4076555da2b7983f60ceab2550cc959d6e9ff11f7ea78cc6180a8"
     },
     {
       "path": "reports/LEAN_WITNESS_DATA.json",
@@ -4159,8 +4329,8 @@
     },
     {
       "path": "reports/partial_progress/LEAN_GLOBAL_CHART2_AUDIT.json",
-      "bytes": 48452,
-      "sha256": "f570741b48591b89325a11b7528d34f9a4662b4c4ea2f80a238d8d482e516eee"
+      "bytes": 55969,
+      "sha256": "a8d5e001157b9e6b76cabc2ea680655122bc2060f0a83eaadb84261c89f73479"
     },
     {
       "path": "reports/row_benchmark/BASELINE_SOURCE.txt",
@@ -4221,6 +4391,326 @@
       "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data000_kernel.log",
       "bytes": 33,
       "sha256": "e2050e306a2a5df4ae8ba75a000ee018d2109399f5ff80db7503d8b4846d8323"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data001_build.log",
+      "bytes": 117222,
+      "sha256": "ee507d4e45f1d0b670a87f29d55941bd15d8de6c9972e54c8256fec41a7c7cd8"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data001_kernel.log",
+      "bytes": 33,
+      "sha256": "dcd060a0ee47a1887a398c7dd2aeff85a50c309d6c65161425d6ca4dd2fe635b"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data002_build.log",
+      "bytes": 117221,
+      "sha256": "17cfd4c3ac7fafa98bfaf0d75bd37b5650a8b42201ade2512e1564050e699e61"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data002_kernel.log",
+      "bytes": 33,
+      "sha256": "3f8fa7a1117f6dfb11d15ec0811225a4a1b428719acbeb60a61caf45a348c462"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data003_build.log",
+      "bytes": 117260,
+      "sha256": "7b47f6d5cee0ff437ff48dd14b88f3ff918131cb5e205362bcc1ee02615be8ba"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data003_kernel.log",
+      "bytes": 33,
+      "sha256": "bcfca9e1e23ec3cf275dbedf9f80c3fa3acf73945cf8b3ade7f040f8c95523db"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data004_build.log",
+      "bytes": 117220,
+      "sha256": "616fb7e0872ee17dec8f7b16ab44d4b3d0e357cf389075c41ec797b16d8976ba"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data004_kernel.log",
+      "bytes": 33,
+      "sha256": "5baf42b6c5667f0e3187b385a48dbba8f2e0b0a1b98b59efce66c33518121c9d"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data005_build.log",
+      "bytes": 117250,
+      "sha256": "970559d68fcaec4fd8b08838fd5f09ee9007f63ae1aa0212bb2cfe1448f6daa4"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data005_kernel.log",
+      "bytes": 33,
+      "sha256": "fbe910cfe7699003c0b452b27f57119dd4f866215260314aa5c179f8822362ca"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data006_build.log",
+      "bytes": 117211,
+      "sha256": "746dc4f3fe0b8ed7f2da36984b66c815fc5ba51916308c2019f9083d0a095b4a"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data006_kernel.log",
+      "bytes": 33,
+      "sha256": "7c496ee55c6017d21e1aa8e56747416e5c0af5742c7c3694d11732fa114e9964"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data007_build.log",
+      "bytes": 117249,
+      "sha256": "8088dd50620918773b769f88d5b289cbf38b407960c86f8a45fd108649bae877"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data007_kernel.log",
+      "bytes": 33,
+      "sha256": "12f2b28835e01f08bebd105cbda2224eb8bf07a8e7f3087d09e002f74471e9b6"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data008_build.log",
+      "bytes": 117255,
+      "sha256": "172754ec5981cd20ceb91e47b79b8d16df37782caf41ae406a4687e20e100855"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data008_kernel.log",
+      "bytes": 33,
+      "sha256": "5ac8e2f7995090305a1836ff3beeb6e609b745651f8dfd6662c4e6152ae30469"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data009_build.log",
+      "bytes": 117248,
+      "sha256": "ef2fae339d96b3f8733a31a61e1f800c7231dc64fb19172748c0410ee4e04605"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data009_kernel.log",
+      "bytes": 33,
+      "sha256": "05e9a39c8510ae105e875304b95f9f353386dad50a7e46a5194c1edee6a50579"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data010_build.log",
+      "bytes": 117256,
+      "sha256": "955bb1b811b05c73f442684f89d1fc12203730f2bd81f52cf2fcd5aaa5eb7b20"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data010_kernel.log",
+      "bytes": 33,
+      "sha256": "c9b32a8ab21bcd8cc168bec56bed7e8d16f668b35a21ad728911b6e3600938f7"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data011_build.log",
+      "bytes": 117258,
+      "sha256": "fce687ea6dfb219e9bb132b1f820115ba39d8e18a064a6ca584a494581f61d42"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data011_kernel.log",
+      "bytes": 33,
+      "sha256": "8c6b7780938e71ec1683dfdcdb812a85b0a442d60dd87083d353a7f4db96cbd5"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data012_build.log",
+      "bytes": 117209,
+      "sha256": "49cea255144b9ab84786d2957d8c11120f3566d2b43faea960201c14436a6b5d"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data012_kernel.log",
+      "bytes": 33,
+      "sha256": "12402b24aaf6ee24e87276cf9eac4b4560d8bff711a2350909fc2b72bb40b75d"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data013_build.log",
+      "bytes": 117265,
+      "sha256": "7fada24eaba8cd2bb4a016951a84ad54b981f8b1a4bb046dae4ded3b9e13b9d7"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data013_kernel.log",
+      "bytes": 33,
+      "sha256": "770c74418462604da2719cd62531c477a6d4c44f8533ea584d46d43a964a2107"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data014_build.log",
+      "bytes": 117254,
+      "sha256": "c90e3e4532fc9cbad466f29b91441bc80c99646bbfd648b8ae1eb6c816833d24"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data014_kernel.log",
+      "bytes": 33,
+      "sha256": "f70ea83e696fcfa214ed13e8a5a172855ca2b367b97557783a85355e677afff6"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data015_build.log",
+      "bytes": 117227,
+      "sha256": "5473ce0b4eae0f92ce749c54cddf450ebf84cd23052a2bcedc4b7e52873c96ba"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data015_kernel.log",
+      "bytes": 33,
+      "sha256": "df450a8454cb4f90ed6873f11d09def82915919bc2edfa3abc5d83edff233411"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data016_build.log",
+      "bytes": 117248,
+      "sha256": "a6047e34f27e1f504bcd980061c9e31ee8f19028e6b3dab24cf01de0e99d13c4"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data016_kernel.log",
+      "bytes": 33,
+      "sha256": "7d4d53ef337d0bcf4aea62261e4795ed078551031847b89e527f753972125ac7"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data017_build.log",
+      "bytes": 117211,
+      "sha256": "446ade836e750608e0217b7d3b7366ebb85bb78d5e37da7e49cd184311ba1d7e"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data017_kernel.log",
+      "bytes": 33,
+      "sha256": "b85aafa64cbd59a5b1c165d6df93399f56c1fb0005219fde0b91e5c9b4513e1f"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data018_build.log",
+      "bytes": 117212,
+      "sha256": "76852f8700df69b482c6bdb1cd7eb2c32ebf570ac1ff3ff0d4a4f0a909b2a554"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data018_kernel.log",
+      "bytes": 33,
+      "sha256": "9d9dad71f493bfccf3eb33cd0deb53901afa51a622e37cb06a6c33d5c57e1494"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data019_build.log",
+      "bytes": 117219,
+      "sha256": "413a7a748a3c32a4e2baa3cb6f37a568e0e59dbc12003e91bc162610f78e67f4"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data019_kernel.log",
+      "bytes": 33,
+      "sha256": "a52191d6a14fda8c7bb592e7f43ca9018141645877f3b110be60792774553ca5"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data020_build.log",
+      "bytes": 117213,
+      "sha256": "f45d886be8f319907f6cf55b3172044dbe4bd374f9c0135ab423aeab2d34e6af"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data020_kernel.log",
+      "bytes": 33,
+      "sha256": "8a226f919dc73db92eb7ac5b77327acc9342474862d89e3ec12decc93e31e20f"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data021_build.log",
+      "bytes": 117219,
+      "sha256": "d445d0bc3df94863d0583e73c9e18601d0b564e53b864a4cba646bcbe7bbb78b"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data021_kernel.log",
+      "bytes": 33,
+      "sha256": "81b145cf965fe7d23035ffcfe0438d50f31c3a01c08dea5761fedaea56605d2b"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data022_build.log",
+      "bytes": 117269,
+      "sha256": "f2a6949312af5c0de52d466d6037aadc38b55263ccfc5db0457422928c56fd8e"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data022_kernel.log",
+      "bytes": 33,
+      "sha256": "da4b5bcf2ab15a967f178d17965eff9fd9aa12e7a4233c3d7214975f474d98d4"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data023_build.log",
+      "bytes": 117219,
+      "sha256": "a39bae64f3114c395d0ace443db90a1d8a5a5bb8f728ec1e318e2aba651bd344"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data023_kernel.log",
+      "bytes": 33,
+      "sha256": "5cc9d15d1ea5f3dae55d763c5a915fc3a3f3b7a919a286e7914a9488a1cb88f7"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data024_build.log",
+      "bytes": 117283,
+      "sha256": "14d3413b8d75ce541d4d83ab8e6739044fca14582c19534c09a6e3d25b84df5b"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data024_kernel.log",
+      "bytes": 33,
+      "sha256": "57f00c09d3ee8a2fc8ed20a165827bb1b84b404e378d337897193939c958b55f"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data025_build.log",
+      "bytes": 117235,
+      "sha256": "4f546e4566127aae9c128c0f9b26e4c165f992533f29b2bd55ce93428452739d"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data025_kernel.log",
+      "bytes": 33,
+      "sha256": "f9fedb16d14c301d4cc30a1683bc5b7540600903b281dec5289dafbd46b57e26"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data026_build.log",
+      "bytes": 117230,
+      "sha256": "44decb1e252cd3288f58c5860fac5bbb775e3055b7126de80e05bf4bf018c70c"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data026_kernel.log",
+      "bytes": 33,
+      "sha256": "cb5efd78a178966d5a84ffcf38b16a9534b1832ee89a430ea53d19ea5500c9ff"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data027_build.log",
+      "bytes": 117226,
+      "sha256": "b348c2d3d63f0dfc33c6de1cb4f7aaf158824d66dfd5e62889ac3f26be5c2c56"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data027_kernel.log",
+      "bytes": 33,
+      "sha256": "91953951b882feccfb6e7ced3eace78c1e93cf26c5b00cb1f6c51ea0f648eca7"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data028_build.log",
+      "bytes": 117272,
+      "sha256": "0454c1cbd731cb49e662c926a9b89c8846569be4dac73822b815497fa0623de0"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data028_kernel.log",
+      "bytes": 33,
+      "sha256": "343f3bba27b6b11b91c25e24832e09b592f4480acc197b23f1d2772bcb7fb2d7"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data029_build.log",
+      "bytes": 117277,
+      "sha256": "21c46ec3466cefd01fa498cdd0d3aa4245ad458db977473f7b56d68d7762e79f"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data029_kernel.log",
+      "bytes": 33,
+      "sha256": "aeddf6f683b4f0eec5a91682bb295c15df8618a3a7d6a93964fee0a473575255"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data030_build.log",
+      "bytes": 117209,
+      "sha256": "cd5685b4816dcfe330c269a4101e0c15322979516a42c1570e86da7c56e692b9"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data030_kernel.log",
+      "bytes": 33,
+      "sha256": "9e8bdefc5b58cab55efbadfd6914aa1365343e3690e53f5143be6eb8c80f62fc"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data031_build.log",
+      "bytes": 117243,
+      "sha256": "04c689837a0d43d1aab65b1d49892c528c97230b731faa980b9a7c5e676ec8ce"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data031_kernel.log",
+      "bytes": 33,
+      "sha256": "867892d8266449e60ae3929056d470f8357753e952ca2ae8395867e4f7d2cb56"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data032_build.log",
+      "bytes": 117245,
+      "sha256": "9d3311de691c278a795f665112bb6b146d946234a97777c9f2496de6ec0df808"
+    },
+    {
+      "path": "reports/sequential_H12GlobalChart2Certificate/H12GlobalChart2Data032_kernel.log",
+      "bytes": 33,
+      "sha256": "79680c2b98726a6ed2a203b07f6d8d48bf3d4be187d1fcaa02464342ee4e9078"
     },
     {
       "path": "reports/sequential_H12IndexedPilotCertificate/H12IndexedPilotData000_build.log",
@@ -5338,6 +5828,11 @@
       "sha256": "51a43c98f13423d13663b8c2b64bc709235a30f6dd17bffaa21720d13559e876"
     },
     {
+      "path": "tools/test_lean_cloud_slice.py",
+      "bytes": 4242,
+      "sha256": "8f4266b0f326aa9400d4adaac39286333463d7f43ff120ab420ac941ab18dbd8"
+    },
+    {
       "path": "tools/verify_kholosha_pal_compatibility.py",
       "bytes": 1844,
       "sha256": "150a865ebe1aa613527c8735e9d462fba62baf07a8bf0f12a55f248c05529e33"
@@ -5346,6 +5841,11 @@
       "path": "tools/verify_lean.py",
       "bytes": 1602,
       "sha256": "a7fd7f107f12517f105b386edcc41630de91391d474a05adee01a307678e7fec"
+    },
+    {
+      "path": "tools/verify_lean_cloud_slice.py",
+      "bytes": 7285,
+      "sha256": "e0376afd05219e73a5eefe2154c9cef0ee0299019d76159ef890df80cf30d459"
     },
     {
       "path": "tools/verify_lean_libraries.py",

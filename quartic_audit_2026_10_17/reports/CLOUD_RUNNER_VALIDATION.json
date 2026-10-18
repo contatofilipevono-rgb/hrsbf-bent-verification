@@ -1,0 +1,12 @@
+{
+  "status": "PASS_CLOUD_SLICE_CONTROL_AND_REAL_LEAN_SMOKE",
+  "unit_tests": 6,
+  "unit_test_exit_code": 0,
+  "actual_lean_version": "Lean (version 4.35.0, x86_64-w64-windows-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "actual_smoke_modules": 2,
+  "bounded_first_run": "PARTIAL_TIME_SLICE",
+  "resume_run": "PASS_CHART_DEPENDENCIES_AND_ROOT_KERNEL_REPLAY",
+  "cached_run_with_zero_budget": "PASS_CHART_DEPENDENCIES_AND_ROOT_KERNEL_REPLAY",
+  "source_sha256": "e0376afd05219e73a5eefe2154c9cef0ee0299019d76159ef890df80cf30d459",
+  "scope": "Execution-control tests and an isolated two-module Lean test. Not a completed H12 chart or global theorem."
+}

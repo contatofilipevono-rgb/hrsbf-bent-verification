@@ -8,6 +8,8 @@ Checkpoint de base: [218 módulos com reprodução pelo kernel](ESTADO_KERNEL_21
 
 O progresso posterior dos dados aprovados está em [VERIFIED_PREFIX_STATUS.md](VERIFIED_PREFIX_STATUS.md). Um prefixo de dados não estabelece cobertura de raiz.
 
+Execução em servidores do GitHub: [LEAN_GITHUB_ACTIONS.md](LEAN_GITHUB_ACTIONS.md).
+
 ## Resultado principal e evidência
 
 H(n,4) é o espaço binário gerado por somas de monômios distintos nas órbitas cíclicas de suportes de tamanho quatro. Não é o espaço de todas as funções de grau no máximo quatro.

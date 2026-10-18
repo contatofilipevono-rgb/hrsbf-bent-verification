@@ -1,6 +1,6 @@
 {
   "status": "PASS_SOURCE_HASHES_AND_REPLAY_LOG_COVERAGE",
-  "modules": 219,
+  "modules": 251,
   "primary_modules": 28,
   "witness_modules": 42,
   "witnesses": 164288,
@@ -665,6 +665,102 @@
     ],
     "H12GlobalChart2Data000": [
       "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data001": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data002": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data003": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data004": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data005": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data006": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data007": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data008": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data009": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data010": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data011": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data012": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data013": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data014": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data015": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data016": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data017": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data018": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data019": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data020": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data021": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data022": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data023": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data024": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data025": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data026": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data027": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data028": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data029": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data030": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data031": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
+    ],
+    "H12GlobalChart2Data032": [
+      "LEAN_VERIFIED_PREFIX_AUDIT.json"
     ]
   },
   "unconditional_global_H12_theorem": false,
@@ -672,6 +768,6 @@
   "note": "The subtree pilots overlap; do not add their node or candidate counts. Log/source audit does not replace independent kernel replay.",
   "excluded_unfinished_libraries": [],
   "verified_data_prefixes_without_root_coverage": {
-    "H12GlobalChart2": 1
+    "H12GlobalChart2": 33
   }
 }

@@ -14,3 +14,15 @@ Objetivo: tentar refutar os resultados e identificar qualquer passagem de evidê
 10. Audite os artefatos históricos como histórico: parte deles registra conjecturas, tentativas abandonadas e correções. `CLAIMS.md` identifica as afirmações atuais.
 
 Uma objeção útil deve trazer o arquivo e seu hash, o enunciado contestado, a hipótese ausente ou o menor exemplo reproduzível. Um contraexemplo bent exige o vetor original de 43 coeficientes e a verificação de todas as 4.096 amplitudes de Walsh, de módulo 64.
+
+## Revisão das hipóteses do motor afim e do índice compartilhado
+
+`H12WitnessIndexLabels.good_of_coefficients` exige a igualdade exata entre os coeficientes das folhas e os de um lote de testemunhos já verificado. Um acerto da busca recupera um testemunho real e sua rejeição. Os zeros dos campos não utilizados das folhas de busca não são certificados Walsh. A propriedade `Good` assegura a correção dos acertos; ela não substitui a conferência da cobertura das cartas.
+
+`H12AffineEnvironment.substitute_sound` preserva a avaliação das formas afins quando a substituição é feita por XOR. A hipótese de índice menor que 36 permanece explícita. A avaliação afim ignora bits fora das 36 variáveis; os limites concretos dos ambientes também permanecem nas instâncias de `Refutes`. Não se inferiu uma propriedade de formas quadráticas arbitrárias a partir de uma fórmula válida apenas no caso afim.
+
+`H12QuadraticCompose.composeRows_sound` inclui o termo constante, a parte linear e todas as 36 linhas da representação quadrática. A representação contém pares ordenados e termos diagonais. A normalização possui prova de preservação semântica, incluindo a identidade booleana x_i²=x_i. A otimização não elimina termos sem uma igualdade provada.
+
+`H12AffineFastState.no_bent_of_affine_state_refutations` continua recebendo as três refutações de raízes como hipótese. O teste do encaixe final também conserva essas hipóteses. O controlador somente pode marcar uma conclusão global depois das três instâncias concretas e da reprodução do teorema final pelo kernel, com os axiomas finais limitados aos usuais do Lean.
+
+Os prefixos de dados publicados contêm identidades e testes concretos já aprovados. Nenhuma contagem de módulos desses prefixos foi convertida em cobertura de um ramo ou em porcentagem de candidatos excluídos. Esta revisão verifica as interfaces e o escopo das afirmações; a instanciação completa das três cartas ainda é a obrigação aberta.

@@ -3,3 +3,5 @@ __pycache__/
 *$py.class
 .ipynb_checkpoints/
 *.tmp
+quartic_audit_2026_10_17/cloud_progress/
+.lean-cloud-test-*/

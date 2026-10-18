@@ -132,4 +132,4 @@ roots = ["H12IndexedPilotData000", "H12IndexedPilotProof000", "H12IndexedPilot"]
 
 [[lean_lib]]
 name = "H12GlobalChart2VerifiedDataPrefix"
-roots = ["H12GlobalChart2Data000"]
+roots = ["H12GlobalChart2Data000", "H12GlobalChart2Data001", "H12GlobalChart2Data002", "H12GlobalChart2Data003", "H12GlobalChart2Data004", "H12GlobalChart2Data005", "H12GlobalChart2Data006", "H12GlobalChart2Data007", "H12GlobalChart2Data008", "H12GlobalChart2Data009", "H12GlobalChart2Data010", "H12GlobalChart2Data011", "H12GlobalChart2Data012", "H12GlobalChart2Data013", "H12GlobalChart2Data014", "H12GlobalChart2Data015", "H12GlobalChart2Data016", "H12GlobalChart2Data017", "H12GlobalChart2Data018", "H12GlobalChart2Data019", "H12GlobalChart2Data020", "H12GlobalChart2Data021", "H12GlobalChart2Data022", "H12GlobalChart2Data023", "H12GlobalChart2Data024", "H12GlobalChart2Data025", "H12GlobalChart2Data026", "H12GlobalChart2Data027", "H12GlobalChart2Data028", "H12GlobalChart2Data029", "H12GlobalChart2Data030", "H12GlobalChart2Data031", "H12GlobalChart2Data032"]

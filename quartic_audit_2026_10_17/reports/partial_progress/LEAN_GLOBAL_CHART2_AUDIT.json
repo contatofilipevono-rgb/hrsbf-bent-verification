@@ -496,12 +496,236 @@
       "build_exit_code": 0,
       "kernel_exit_code": 0,
       "seconds": 384.202
+    },
+    {
+      "module": "H12GlobalChart2Data001",
+      "source_sha256": "7af1d3955f6de8dead0ddce300f525d0c30c5462aafaa6aa4b6eaff1cd7168d7",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 303.892
+    },
+    {
+      "module": "H12GlobalChart2Data002",
+      "source_sha256": "fdb9a41fe6e90690ad6ef79b504064865b79feeabb7a0038fc308d9a967ec77a",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 277.139
+    },
+    {
+      "module": "H12GlobalChart2Data003",
+      "source_sha256": "e776611d072d6566547449ffddb0ee3fb9012e05273776f0cd8d6bebc5b45d8b",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 249.714
+    },
+    {
+      "module": "H12GlobalChart2Data004",
+      "source_sha256": "eb570a085fcaaefb8932585aaa4f96561ceebb71453ef8da3a52d9949d318893",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 192.291
+    },
+    {
+      "module": "H12GlobalChart2Data005",
+      "source_sha256": "01498b1df3f50991ad8aaf18ac65073f0fb55ffc712db65a4948b2a28e73821a",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 236.077
+    },
+    {
+      "module": "H12GlobalChart2Data006",
+      "source_sha256": "8aa9bd786a6fba87b2aaac39710faabbdf6d0b2531bb3a39c97b3c3da4438d74",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 163.723
+    },
+    {
+      "module": "H12GlobalChart2Data007",
+      "source_sha256": "1e469e75055e0d97c34026cdd3c068d6dd6e663a41f2978e282e85dfee68bcdc",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 228.997
+    },
+    {
+      "module": "H12GlobalChart2Data008",
+      "source_sha256": "e66247ac8f199f64b836918c7ee90fc7eb99f16f0cbce92c4d113bd46406574f",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 144.645
+    },
+    {
+      "module": "H12GlobalChart2Data009",
+      "source_sha256": "20801b42d0354db18a57fe8bd9c2f1cb0ebb623fadbe2e89993cd26049466ffb",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 168.62
+    },
+    {
+      "module": "H12GlobalChart2Data010",
+      "source_sha256": "85e6e7a3233712808ba371757004a94086843578b8afcbe6867246d5fbe249cd",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 131.438
+    },
+    {
+      "module": "H12GlobalChart2Data011",
+      "source_sha256": "94c8fbf434d3f6a5fe31753876b3ac1791746196f10a7ca833a4b34081b86d6a",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 171.858
+    },
+    {
+      "module": "H12GlobalChart2Data012",
+      "source_sha256": "692935442aaa7e60c2f4e13e93d3641c26dde3db2f42c233a4750fe3964b73db",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 154.42
+    },
+    {
+      "module": "H12GlobalChart2Data013",
+      "source_sha256": "6dbef5e52f0abfdbfe4c23957005f4fbae6085820ed1b51c136bdd18d22e7891",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 154.907
+    },
+    {
+      "module": "H12GlobalChart2Data014",
+      "source_sha256": "c533d3638f39f77849b9405a64ecfe6b879b69867432495558e5a854d38ac182",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 158.694
+    },
+    {
+      "module": "H12GlobalChart2Data015",
+      "source_sha256": "d285a255fc4704f62b174ea4db8dbb9586e52dc25785d91b3304417808bb41b2",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 141.691
+    },
+    {
+      "module": "H12GlobalChart2Data016",
+      "source_sha256": "0e2df092c07b06a50d798d02ec1eeed57ab751ef8d7fc3f41f9fdc0877ddd11b",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 174.453
+    },
+    {
+      "module": "H12GlobalChart2Data017",
+      "source_sha256": "d64f9e6f6ee2e0d222c7f96cce5bb8968717d01c1127262a458a655a5d8966ce",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 194.901
+    },
+    {
+      "module": "H12GlobalChart2Data018",
+      "source_sha256": "7375519124597f7b54eb5212c5fcf6c69f932ffdcac82d3ac76f771560925edf",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 151.366
+    },
+    {
+      "module": "H12GlobalChart2Data019",
+      "source_sha256": "b6eaad7550fdc382447490c6aea9230a234f54af50f1d103253830c3bf02911c",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 204.789
+    },
+    {
+      "module": "H12GlobalChart2Data020",
+      "source_sha256": "c7af692df0a7a93f156ac61a6c7a0b01f5a8b75cd49809269c5eb3923f0aa860",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 145.908
+    },
+    {
+      "module": "H12GlobalChart2Data021",
+      "source_sha256": "85929dd7b7e0f29f8c86f6a6a63aec78cd3284332f3584372853f00505e8b379",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 130.983
+    },
+    {
+      "module": "H12GlobalChart2Data022",
+      "source_sha256": "ac7fbae8655e31af251b39a6ffddf165a91ff4efec6f731d422926439e57fdff",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 140.789
+    },
+    {
+      "module": "H12GlobalChart2Data023",
+      "source_sha256": "a8997525d015bae9ef600afbaee6ab27b36983b04468d958a93153882933a9db",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 215.596
+    },
+    {
+      "module": "H12GlobalChart2Data024",
+      "source_sha256": "4a1bad8ca2f19469f6f08d8f5693d36b417ac969567a8a1d935a9c7ab1e246f3",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 235.402
+    },
+    {
+      "module": "H12GlobalChart2Data025",
+      "source_sha256": "4ba27098a957ee64fe610d3f7553aa45adcf5c9361e254f5666f404b611077f1",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 221.083
+    },
+    {
+      "module": "H12GlobalChart2Data026",
+      "source_sha256": "d07734f39ee78fe9982bf48ff5dc6f3553ee16d23ba6e424b9dfb412dcafcf57",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 213.656
+    },
+    {
+      "module": "H12GlobalChart2Data027",
+      "source_sha256": "43b6b9aeb232651dac30e1bcdd9e8dd55a6ffb40413c2957c2d0c3e18e39cf61",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 137.891
+    },
+    {
+      "module": "H12GlobalChart2Data028",
+      "source_sha256": "2be90680f89606d5eb95cf15fa63b7687c94da8bf90113752f0f23ef14a118b4",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 171.362
+    },
+    {
+      "module": "H12GlobalChart2Data029",
+      "source_sha256": "124593b854d86978c654555dff310939f3c33ddbce4fed899fa8c3af6b81b6f5",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 134.088
+    },
+    {
+      "module": "H12GlobalChart2Data030",
+      "source_sha256": "c65ef95bb3ac3d90543f0ee851bbf5eeaa89697f04b1b8f12244bf49544b672b",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 192.267
+    },
+    {
+      "module": "H12GlobalChart2Data031",
+      "source_sha256": "d15a8ca4c383bd9b725aafb0c51cf96eded6b5a59bfc72fbe67c4546846f18dc",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 208.729
+    },
+    {
+      "module": "H12GlobalChart2Data032",
+      "source_sha256": "c14a2893fcefa83a4534f9061a8bf8a8f643e458c36ce8d981b4b2ca0bbe5254",
+      "build_exit_code": 0,
+      "kernel_exit_code": 0,
+      "seconds": 229.5
     }
   ],
   "modules_total": 364,
   "scope": "Module-by-module certificate replay. Partial progress does not establish coverage by a root theorem.",
   "lean_version": "Lean (version 4.35.0, x86_64-w64-windows-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
-  "modules_verified": 1,
+  "modules_verified": 33,
   "root_coverage": false,
   "snapshot_not_live_status": true
 }
