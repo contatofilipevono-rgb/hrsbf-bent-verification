@@ -31,6 +31,7 @@ python verify_periodic_reduction.py
 python verify_manifest.py
 python cpu_replay/verify_model.py
 python cpu_replay/verify_certificate.py
+python verify_complement_pair_filters.py
 ```
 
 Para auditar o arquivo original e o log completo, o pacote preservado está em `archive/PACOTE_H12_GLOBAL_AUDITADO.zip`. Ele contém `RESULTADO_H12_GLOBAL.zip`, o arquivo original recebido, além do material de auditoria. Extraia o arquivo original para uma pasta de trabalho e execute:
@@ -54,11 +55,21 @@ lake build
 
 `H12PeriodFour.lean` contém a verificação dos 43 geradores na restrição periódica, a forma normal de quatro parâmetros e a classificação exata dos quatro casos permitidos módulo três. `H12Descent.lean` contém a partição das 4.096 entradas em órbitas e a descida de somas módulo três. O escopo detalhado de cada declaração está em `CLAIMS.md` e no registro de compilação.
 
-`H12Quadratic.lean` prova as três consequências lineares e a identidade curta que elimina o caso periódico 15. `H12Orbit.lean` prova a invariância por rotação mediante permutações de monômios. `H12Audit.lean` liga essas partes à função quártica original; a invariância já é demonstrada dentro do projeto. A condição de autocorrelação bent e, no teorema das três cartas, os filtros quadráticos ainda aparecem explicitamente como hipóteses.
+`H12Quadratic.lean` prova as três consequências lineares e a identidade curta que elimina o caso periódico 15. `H12Orbit.lean` prova a invariância por rotação mediante permutações de monômios. `H12FilterLink.bent_passes` prova que bentness implica os 43 filtros explícitos. Assim, `H12Audit.necessary_chart_constraints` recebe apenas a hipótese de autocorrelação bent e deduz os casos 2, 3 e 8 e as três leis lineares.
 
 `H12CertificateTheory.lean` prova a correção da normalização e substituição de polinômios booleanos. `H12Refutation.lean` define um verificador executável de árvores e prova sua correção, condicionada à correção do teste terminal. A árvore numérica global e o teste de Walsh terminal ainda não foram instanciados nesse verificador. Os testes pequenos incluem certificados válidos e dados deliberadamente inválidos.
 
-`H12Walsh.lean` prova que a autocorrelação bent implica Walsh ±64 e que uma frequência com quadrado diferente de 4096 rejeita bentness. Essa prova usa também `Classical.choice`, axioma lógico padrão herdado de um lema de permutações da biblioteca. As outras declarações finais usam `propext` e `Quot.sound`. Não há `sorry`, avaliação nativa como axioma ou axiomas particulares do projeto. A direção inversa da equivalência espectral ainda não foi formalizada.
+`H12Walsh.lean` prova que a autocorrelação bent implica Walsh ±64 e que uma frequência com quadrado diferente de 4096 rejeita bentness. `H12Restriction` e `H12Weight` provam a passagem de Walsh aos polinômios de peso. `H12Bits` e `H12TablePolynomial` dão uma avaliação rápida com prova de correção; `H12PlaneTables` e `H12Truth` ligam as tabelas de verdade aos geradores; `H12NumericFilters` confere as 43 identidades numéricas.
+
+São 18 módulos formais. As dependências lógicas são apenas `propext`, `Quot.sound` e, em alguns lemas, `Classical.choice`. Não há `sorry`, avaliação nativa como axioma ou axiomas particulares do projeto. A direção inversa da equivalência espectral ainda não foi formalizada.
+
+Para compilar e repetir as declarações de todos os módulos com uso de memória limitado, execute na raiz deste diretório:
+
+```sh
+python tools/verify_lean.py
+```
+
+Esse procedimento requer `lake` do Lean 4.35.0 no PATH; aceita `--lake caminho/do/lake` para uma instalação específica. A repetição ocorre em sequência. O verificador é o núcleo Lean distribuído, não um segundo núcleo independente.
 
 A compilação bem-sucedida desses lemas não transforma automaticamente o certificado Python em um teorema Lean. Ainda falta formalizar no Lean o verificador simbólico global, os testemunhos e as pontes necessárias.
 

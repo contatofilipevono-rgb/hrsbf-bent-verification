@@ -1,0 +1,56 @@
+Lean (version 4.35.0, x86_64-w64-windows-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+MODULE_START 1/18 H12Audit
+replaying H12Audit
+MODULE_PASS H12Audit 9.857s
+MODULE_START 2/18 H12PeriodFour
+replaying H12PeriodFour
+MODULE_PASS H12PeriodFour 6.996s
+MODULE_START 3/18 H12Descent
+replaying H12Descent
+MODULE_PASS H12Descent 16.204s
+MODULE_START 4/18 H12Quadratic
+replaying H12Quadratic
+MODULE_PASS H12Quadratic 8.471s
+MODULE_START 5/18 H12BooleanPolynomial
+replaying H12BooleanPolynomial
+MODULE_PASS H12BooleanPolynomial 5.814s
+MODULE_START 6/18 H12CertificateTheory
+replaying H12CertificateTheory
+MODULE_PASS H12CertificateTheory 5.541s
+MODULE_START 7/18 H12Refutation
+replaying H12Refutation
+MODULE_PASS H12Refutation 5.530s
+MODULE_START 8/18 H12Orbit
+replaying H12Orbit
+MODULE_PASS H12Orbit 15.295s
+MODULE_START 9/18 H12Walsh
+replaying H12Walsh
+MODULE_PASS H12Walsh 6.039s
+MODULE_START 10/18 H12Restriction
+replaying H12Restriction
+MODULE_PASS H12Restriction 5.749s
+MODULE_START 11/18 H12Weight
+replaying H12Weight
+MODULE_PASS H12Weight 5.918s
+MODULE_START 12/18 H12FilterBridge
+replaying H12FilterBridge
+MODULE_PASS H12FilterBridge 25.294s
+MODULE_START 13/18 H12Bits
+replaying H12Bits
+MODULE_PASS H12Bits 6.980s
+MODULE_START 14/18 H12TablePolynomial
+replaying H12TablePolynomial
+MODULE_PASS H12TablePolynomial 5.548s
+MODULE_START 15/18 H12NumericFilters
+replaying H12NumericFilters
+MODULE_PASS H12NumericFilters 36.285s
+MODULE_START 16/18 H12PlaneTables
+replaying H12PlaneTables
+MODULE_PASS H12PlaneTables 13.118s
+MODULE_START 17/18 H12Truth
+replaying H12Truth
+MODULE_PASS H12Truth 6.634s
+MODULE_START 18/18 H12FilterLink
+replaying H12FilterLink
+MODULE_PASS H12FilterLink 5.736s
+KERNEL_REPLAY_EXIT_CODE=0

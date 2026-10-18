@@ -6,7 +6,7 @@ Concluir a prova Lean global de inexistência de funções bent no espaço de fu
 
 Repositório autorizado: https://github.com/contatofilipevono-rgb/hrsbf-bent-verification
 
-Trabalhar na branch `main`, diretório `quartic_audit_2026_10_17`. A revisão `a8959a3` publicou o certificado simbólico completo, as duas execuções CPU e os primeiros oito módulos formais. A revisão que contém este roteiro acrescenta a ponte espectral em `H12Walsh.lean` e os registros atualizados. Use `git rev-parse HEAD` para registrar a revisão efetivamente auditada.
+Trabalhar na branch `main`, diretório `quartic_audit_2026_10_17`. A revisão `a8959a3` publicou o certificado simbólico completo e as duas execuções CPU; `51546b0` acrescentou a ponte espectral e um primeiro pacote de retomada. O estado atual tem 18 módulos formais e conclui a prova de que bentness implica os 43 filtros explícitos. Use `git rev-parse HEAD` para registrar a revisão efetivamente auditada.
 
 Leia primeiro `CLAIMS.md`, `FORMALIZATION_STATUS.md`, `MATHEMATICAL_EXPLANATION.md` e `ADVERSARIAL_AUDIT.md`. Não é necessário retomar as buscas SAT interrompidas nem repetir a GPU para desenvolver o certificado Lean.
 
@@ -41,26 +41,25 @@ python cpu_replay/verify_certificate.py
 
 A última verificação levou cerca de 70–91 segundos nesta máquina. Não enumera os 2^38 pontos das cartas. Recalcula cada testemunho pela ANF original e verifica cada eliminação, combinação e divisão da árvore. Os relatórios são `cpu_replay/SYMBOLIC_CERTIFICATE_AUDIT.json` e `reports/VALIDATION_REPORT.json`.
 
-Para os nove módulos Lean, usar exatamente Lean 4.35.0:
+Para os 18 módulos Lean, usar exatamente Lean 4.35.0. Na raiz deste diretório:
 
 ```text
-cd lean
-lake build
-lake env leanchecker --verbose H12PeriodFour H12Descent H12BooleanPolynomial H12Quadratic H12CertificateTheory H12Refutation H12Orbit H12Walsh H12Audit
+python tools/verify_lean.py
 ```
 
-As provas estão compiladas e seus axiomas são impressos. A formalização usa apenas a biblioteca distribuída com Lean; não depende de Mathlib. Os avisos restantes de simplificação/variável não usada não são admissões de prova. Consulte `FORMALIZATION_STATUS.md` para a dependência lógica padrão `Classical.choice` do módulo espectral.
+Esse comando requer `lake` no PATH; aceita `--lake caminho/do/lake`. Compila e repete cada módulo em sequência para limitar o uso de memória. As provas estão compiladas e seus axiomas são impressos. A formalização usa apenas a biblioteca distribuída com Lean; não depende de Mathlib. Os avisos restantes de simplificação/variável não usada não são admissões de prova. Consulte `FORMALIZATION_STATUS.md` para as dependências lógicas padrão.
 
 `PACOTE_MINIMO_H12_CERTIFICADO.zip` contém somente os dados e verificadores necessários para a auditoria matemática em Python. `PACOTE_RETOMADA_H12.zip`, quando presente, acrescenta as fontes Lean, relatórios e este roteiro; seu manifesto próprio cobre o conteúdo reduzido. O acervo histórico completo continua no Git, em `archive/`.
 
 ## Próximas obrigações formais, em ordem prática
 
-1. **Necessidade dos filtros.** Formalizar a identidade de Poisson para restrição aos suportes de peso oito. Walsh plano ±64 força o peso da restrição a ser divisível por quatro. Provar que seu segundo bit é precisamente o polinômio quadrático explícito de `H12Quadratic`. O Python reconstrói esses coeficientes sem interpolação; ele serve de especificação, não de prova Lean.
+1. **Cobertura das cartas.** Ligar `necessary_chart_constraints` às bases e offsets numéricos de `cpu_replay/model.json`. A necessidade dos 43 filtros foi concluída em `H12FilterLink.bent_passes`; o teorema das restrições já recebe somente bentness. O quarto caso foi eliminado pela identidade curta. Falta provar formalmente que todo coeficiente satisfazendo essas restrições está na carta numérica correspondente. Os postos 7 e 36 já estão verificados em Python; não tomar esses resultados como axiomas formais.
 2. **Completar a ponte espectral.** `H12Walsh` já prova autocorrelação bent → Walsh ±64 e a correção de uma rejeição espectral. Falta a direção Walsh plano → autocorrelação bent, para apresentar o teorema final também na definição espectral usual. A identidade de energia genérica e a permutação por translação XOR já estão disponíveis.
-3. **Cobertura das cartas.** Ligar `necessary_chart_constraints` às quatro bases e offsets numéricos de `cpu_replay/model.json`. O quarto caso pode ser eliminado antes da árvore pela identidade curta. Os postos 7 e 36 já estão verificados em Python; não tomar esses resultados como axiomas formais.
-4. **Instanciar o verificador.** `H12Refutation.check` é executável e `check_sound` prova sua correção sob um teste terminal correto. Converter os testemunhos de `DECOMPOSITION.json` para essa estrutura, demonstrando as igualdades exigidas. A escolha de pivô ou a heurística do gerador não precisa ser formalizada; é preciso conferir a prova que ele produziu.
-5. **Testes terminais eficientes.** Ligar a avaliação por tabelas de verdade/bitsets dos 164288 candidatos à definição `H12Walsh.walsh`, e aplicar `walsh_witness_rejects`. Evitar recalcular 4096 pontos × 43 geradores para cada candidato no núcleo. Uma opção é provar a semântica dos bitsets dos geradores e um popcount por blocos, depois conferir as constantes exatas. Não anunciar uma etapa executada por avaliação nativa como se fosse uma prova pura do núcleo.
-6. **Fechar o enunciado global e publicar.** A meta intermediária explícita é `∀ c : BitVec 43, ¬ H12Descent.BentAC (H12.quarticFunction c)`. Exportar também a versão em Walsh após concluir a equivalência. Compilar, imprimir axiomas, repetir os módulos pelo `leanchecker`, regenerar os hashes, testar o pacote e publicar o novo estado. Não marcar o objetivo concluído enquanto essas obrigações estiverem abertas.
+3. **Instanciar o verificador.** `H12Refutation.check` é executável e `check_sound` prova sua correção sob um teste terminal correto. Converter os testemunhos de `DECOMPOSITION.json` para essa estrutura, demonstrando as igualdades exigidas. A escolha de pivô ou a heurística do gerador não precisa ser formalizada; é preciso conferir a prova que ele produziu. `transform` agora normaliza cada polinômio após a substituição, evitando crescimento de duplicatas.
+4. **Testes terminais eficientes.** A semântica dos bitsets dos geradores já está provada em `H12Truth.basis_semantics`. Ligar a fase linear à definição `H12Walsh.walsh` e aplicar uma rejeição por peso modular. `H12Bits` já calcula dois bits do peso por operações em blocos, com prova de correção; generalizar esse contador. A auditoria `reports/WALSH_WITNESS_MODULI.json` mostra que cada testemunho precisa de apenas 4–10 bits do peso, com distribuição 25920/90538/25384/18304/3563/579 para 4/5/6/8/9/10 bits. Não é necessário calcular o peso inteiro para rejeitar esses dados. Ainda falta provar e executar esses testes em Lean; a auditoria atual é Python. Não anunciar uma etapa executada por avaliação nativa como se fosse uma prova pura do núcleo.
+5. **Fechar o enunciado global e publicar.** A meta intermediária explícita é `∀ c : BitVec 43, ¬ H12Descent.BentAC (H12.quarticFunction c)`. Exportar também a versão em Walsh após concluir a equivalência. Compilar, imprimir axiomas, repetir os módulos pelo `leanchecker`, regenerar os hashes, testar o pacote e publicar o novo estado. Não marcar o objetivo concluído enquanto essas obrigações estiverem abertas.
+
+A prova da necessidade dos filtros percorre `H12Restriction` (Poisson), `H12Weight` (carry quadrático), `H12Bits`/`H12TablePolynomial` (avaliação rápida correta), `H12PlaneTables`/`H12Truth` (tabelas corretas), `H12NumericFilters` (43 identidades individuais) e `H12FilterLink` (ligação final). As 43 identidades são conferidas separadamente como Booleanos, com uma prova conjunta por lista; isso foi muito mais eficiente que uma única decisão quantificada sobre `Fin 43`. `COMPLEMENT_PAIR_IDENTITY.md` explica ainda os filtros como 35 pares complementares; o verificador Python correspondente reproduz essa descrição, mas a fórmula curta não tem um lema Lean próprio.
 
 ## Detalhes para adaptar a árvore
 

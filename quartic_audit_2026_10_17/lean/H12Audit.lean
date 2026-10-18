@@ -4,6 +4,9 @@ import H12Quadratic
 import H12Orbit
 import H12Refutation
 import H12Walsh
+import H12FilterBridge
+import H12Bits
+import H12FilterLink
 
 /-! A formal connection between the autocorrelation descent and the four-case
 classification. This module proves a necessary reduction, not global nonexistence.
@@ -84,11 +87,11 @@ theorem three_case_parameters (c : BitVec 43)
     cases ht
 
 theorem necessary_chart_constraints (c : BitVec 43)
-    (hp : H12Quadratic.Passes c)
     (hb : H12Descent.BentAC (H12.quarticFunction c)) :
     ((H12.parameters c).toNat = 2 ∨ (H12.parameters c).toNat = 3 ∨
       (H12.parameters c).toNat = 8) ∧
     H12Quadratic.r1 c = false ∧ H12Quadratic.r2 c = false ∧ H12Quadratic.r3 c = false := by
+  have hp := H12FilterLink.bent_passes c hb
   have hm : H12.admissibleMod3 (H12.parameters c).toNat := by
     intro u
     have hd := H12Descent.bent_rotational_descent _ (H12Orbit.quartic_rotational_four c) hb u

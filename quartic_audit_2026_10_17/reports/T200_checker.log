@@ -1,0 +1,19 @@
+replaying H12Audit
+replaying H12FilterLink
+replaying H12Truth
+replaying H12PlaneTables
+replaying H12NumericFilters
+replaying H12TablePolynomial
+replaying H12Bits
+replaying H12FilterBridge
+replaying H12Weight
+replaying H12Restriction
+replaying H12Walsh
+replaying H12Orbit
+replaying H12Refutation
+replaying H12CertificateTheory
+replaying H12Quadratic
+replaying H12BooleanPolynomial
+replaying H12Descent
+replaying H12PeriodFour
+KERNEL_REPLAY_EXIT_CODE=0

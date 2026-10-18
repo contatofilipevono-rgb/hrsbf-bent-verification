@@ -5,12 +5,14 @@ import hashlib,json,zipfile
 root=Path(__file__).resolve().parent.parent
 names=['README.md','CLAIMS.md','CONTINUAR_COLABORADOR.md','FORMALIZATION_STATUS.md',
        'MATHEMATICAL_EXPLANATION.md','ADVERSARIAL_AUDIT.md','PROVENANCE.json','SOURCE_ARTICLE.json',
+       'COMPLEMENT_PAIR_IDENTITY.md','verify_complement_pair_filters.py',
        'verify_manifest.py','verify_linear_laws.py','verify_periodic_reduction.py',
        'linear_law_certificates.json']
 paths=[root/n for n in names]
 for folder in ['lean','cpu_replay','reports','tools','ci']:
     paths.extend(p for p in (root/folder).rglob('*') if p.is_file()
-                 and '.lake' not in p.parts and '__pycache__' not in p.parts)
+                 and '.lake' not in p.parts and '__pycache__' not in p.parts
+                 and p.name!='HANDOFF_PACKAGE_AUDIT.json')
 payload={p.relative_to(root).as_posix():p.read_bytes() for p in sorted(set(paths))}
 payload['LEIA_PACOTE_RETOMADA.txt']=(
     'Snapshot reduzido para retomar H(12,4). Leia CONTINUAR_COLABORADOR.md.\n'

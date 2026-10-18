@@ -17,7 +17,7 @@ def observation (n : Nat) (f : Nat → Bool) (env : System) : List Bool :=
   env.map (evaluate n f)
 
 def transform (i : Nat) (form : Polynomial) (ps : System) : System :=
-  ps.map (substitute i form)
+  ps.map (fun p => normalizeFuel 20 (substitute i form p))
 
 def selected (indices : List Nat) (ps : System) : Polynomial :=
   (indices.map (fun j => ps[j]?.getD [])).flatten
@@ -42,7 +42,7 @@ theorem models_transform (n : Nat) (f : Nat → Bool) (ps : System)
     Models n f (transform i form ps) := by
   intro q hq
   obtain ⟨p, hp, rfl⟩ := List.mem_map.mp hq
-  rw [evaluate_substitute n f i hi, hu]
+  rw [evaluate_normalize, evaluate_substitute n f i hi, hu]
   exact hm p hp
 
 theorem observation_transform (n : Nat) (f : Nat → Bool) (env : System)
@@ -52,7 +52,8 @@ theorem observation_transform (n : Nat) (f : Nat → Bool) (env : System)
   simp only [observation, transform, List.map_map]
   apply List.map_congr_left
   intro p _
-  exact (evaluate_substitute n f i hi form p).trans (congrArg (fun g => evaluate n g p) hu)
+  exact (evaluate_normalize n f 20 (substitute i form p)).trans
+    ((evaluate_substitute n f i hi form p).trans (congrArg (fun g => evaluate n g p) hu))
 
 theorem flip_evaluate (n : Nat) (f : Nat → Bool) (form : Polynomial) :
     evaluate n f (0 :: form) = !evaluate n f form := by
