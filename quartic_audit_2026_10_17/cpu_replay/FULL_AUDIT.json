@@ -1,0 +1,69 @@
+{
+  "status": "PASS_FULL_NECESSARY_CHARTS",
+  "coverage": "Four disjoint necessary affine charts, not a direct 2^43 enumeration.",
+  "tested": 274877906944,
+  "quadratic_survivors": 164288,
+  "all_rejection_witnesses_independently_verified": 164288,
+  "w0_survivors": 3308,
+  "bent": 0,
+  "per_chart": [
+    {
+      "quadratic": 46912,
+      "w0": 1980
+    },
+    {
+      "quadratic": 46400,
+      "w0": 492
+    },
+    {
+      "quadratic": 70976,
+      "w0": 836
+    },
+    {
+      "quadratic": 0,
+      "w0": 0
+    }
+  ],
+  "run_elapsed_ms_reported": 23188,
+  "audit_seconds": 10.002,
+  "logical_scope": "Global exclusion additionally uses the proved four-case reduction and the three certified necessary linear laws.",
+  "lean_global_nonexistence_formalized": false,
+  "files": [
+    {
+      "name": "full.log",
+      "sha256": "6937d58a2d822d317f779d7862d4504730d93203620829706ec22b51559bdd66"
+    },
+    {
+      "name": "full_thread0.csv",
+      "sha256": "8874a2c112af730decd5a52638fff077ce6c4ee62747b708b011206803cfecce"
+    },
+    {
+      "name": "full_thread1.csv",
+      "sha256": "067952c1772a05d6b6665cfb42ca2249b2481e88f775ce4e8912a3f3bc84c0d1"
+    },
+    {
+      "name": "full_thread2.csv",
+      "sha256": "8427e437ca9013de1eab270d3e5d3020f73ba7233f2b4f6e29d2f9379727a47f"
+    },
+    {
+      "name": "full_thread3.csv",
+      "sha256": "4773abcda834425802a534b9c396c4c9d953a43325b98596abc22bce56026af7"
+    },
+    {
+      "name": "full_thread4.csv",
+      "sha256": "9e47d46dc66356ceb5ea49dd593adc95e0117bf84cfac3a553c88ccc3bad7b32"
+    },
+    {
+      "name": "full_thread5.csv",
+      "sha256": "26eaf86a4a231bfe4e56773911cdc5fa9ba148ca02b3df72efd863ae09c5e2b7"
+    },
+    {
+      "name": "full_thread6.csv",
+      "sha256": "5750cf0eb8a0e270448497985706921f88f04949565cf16948b23412386a9707"
+    },
+    {
+      "name": "full_thread7.csv",
+      "sha256": "020ab34fa908fa5cf646d4360bebb9ae836c6d1b133ca877d8c5d7409e6711af"
+    }
+  ]
+}

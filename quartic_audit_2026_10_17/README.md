@@ -2,7 +2,7 @@
 
 Este diretório preserva os dados desta linha de pesquisa e identifica separadamente os resultados computacionais, os certificados algébricos e a formalização Lean.
 
-**H(12,4) foi fechado por enumeração computacional global auditada: zero bent entre 2^43 funções. A formalização Lean publicada nesta etapa cobre reduções necessárias e não constitui ainda uma prova Lean completa dessa inexistência.**
+**H(12,4) foi fechado por enumeração computacional global auditada: zero bent entre 2^43 funções. Uma segunda demonstração computacional agora está disponível por certificado simbólico de cobertura e testemunhos de Walsh, verificável em CPU sem repetir a busca. A formalização Lean cobre reduções necessárias e ainda não contém a prova global completa.**
 
 ## Resultado principal e evidência
 
@@ -27,6 +27,8 @@ Requer apenas Python 3.10 ou posterior:
 python verify_linear_laws.py
 python verify_periodic_reduction.py
 python verify_manifest.py
+python cpu_replay/verify_model.py
+python cpu_replay/verify_certificate.py
 ```
 
 Para auditar o arquivo original e o log completo, o pacote preservado está em `archive/PACOTE_H12_GLOBAL_AUDITADO.zip`. Ele contém `RESULTADO_H12_GLOBAL.zip`, o arquivo original recebido, além do material de auditoria. Extraia o arquivo original para uma pasta de trabalho e execute:
@@ -36,6 +38,8 @@ python archive/VERIFICAR_PACOTE_GLOBAL_H12.py caminho/RESULTADO_H12_GLOBAL.zip -
 ```
 
 Consulte `archive/H12_RESULTADO_GLOBAL_AUDITADO.md` para hashes e justificativa dos filtros. O script lê o log completo, sem executar o binário CUDA recebido. Para uma segunda enumeração na GPU, consulte `archive/RODAR_H12_A100_GLOBAL.py`.
+
+O novo certificado em `cpu_replay/DECOMPOSITION.json` cobre simbolicamente quatro espaços afins necessários, sem enumerar seus 2^38 pontos no verificador. A verificação completa da árvore e dos testemunhos levou aproximadamente 70 segundos nesta máquina. Consulte [cpu_replay/README.md](cpu_replay/README.md).
 
 ## Lean
 
@@ -48,9 +52,11 @@ lake build
 
 `H12PeriodFour.lean` contém a verificação dos 43 geradores na restrição periódica, a forma normal de quatro parâmetros e a classificação exata dos quatro casos permitidos módulo três. `H12Descent.lean` contém a partição das 4.096 entradas em órbitas e a descida de somas módulo três. O escopo detalhado de cada declaração está em `CLAIMS.md` e no registro de compilação.
 
-`H12Audit.lean` liga essas partes à função quártica original. A compilação e a repetição das declarações pelo `leanchecker` passaram localmente; as declarações finais dependem somente de `propext` e `Quot.sound`. O teorema da redução quártica ainda recebe explicitamente a invariância rotacional e a condição de autocorrelação bent como hipóteses.
+`H12Quadratic.lean` prova as três consequências lineares e a identidade curta que elimina o caso periódico 15. `H12Orbit.lean` prova a invariância por rotação mediante permutações de monômios. `H12Audit.lean` liga essas partes à função quártica original; a invariância já é demonstrada dentro do projeto. A condição de autocorrelação bent e, no teorema das três cartas, os filtros quadráticos ainda aparecem explicitamente como hipóteses.
 
-A compilação bem-sucedida desses lemas não transforma automaticamente o relatório da GPU em um teorema Lean. Ainda falta um certificado global de contradição e sua ligação formal às condições de bentness.
+`H12CertificateTheory.lean` prova a correção da normalização e substituição de polinômios booleanos. `H12Refutation.lean` define um verificador executável de árvores e prova sua correção, condicionada à correção do teste terminal. A árvore numérica global e o teste de Walsh terminal ainda não foram instanciados nesse verificador. Os testes pequenos incluem certificados válidos e dados deliberadamente inválidos. As declarações finais compiladas dependem somente de `propext` e `Quot.sound`.
+
+A compilação bem-sucedida desses lemas não transforma automaticamente o certificado Python em um teorema Lean. Ainda falta formalizar no Lean o verificador simbólico global, os testemunhos e as pontes necessárias.
 
 O modelo de automação está em `ci/quartic-audit.yml`. Ele não foi ativado: o GitHub recusou a criação de workflows com a autorização OAuth disponível. Os testes e o Lean foram executados localmente; não se afirma aprovação por CI remoto.
 

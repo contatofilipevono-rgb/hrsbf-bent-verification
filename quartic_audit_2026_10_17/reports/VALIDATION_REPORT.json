@@ -91,11 +91,22 @@
   "lean": {
     "version": "4.35.0",
     "build": "PASS",
+    "kernel_replay": "PASS",
+    "modules": [
+      "H12Audit",
+      "H12PeriodFour",
+      "H12Descent",
+      "H12Quadratic",
+      "H12BooleanPolynomial",
+      "H12CertificateTheory",
+      "H12Refutation",
+      "H12Orbit"
+    ],
     "printed_axioms_allowlist": [
       "propext",
       "Quot.sound"
     ],
-    "scope": "Necessary four-case reduction and its autocorrelation descent; no global H12 nonexistence theorem."
+    "scope": "Periodic reduction and descent, exact linear consequences, structural rotation invariance, Boolean substitution/normalization and generic tree-checker soundness. Global certificate and Walsh terminal test not yet instantiated; no global H12 Lean theorem."
   },
   "global_H12": {
     "status": "AUDITED_GLOBAL_COMPUTATIONAL_RESULT",
@@ -106,5 +117,234 @@
     "bent": 0,
     "gpu_locally_repeated": false
   },
-  "timestamp_utc": "2026-10-18T03:09:24.084919+00:00"
+  "FULL_AUDIT": {
+    "status": "PASS_FULL_NECESSARY_CHARTS",
+    "coverage": "Four disjoint necessary affine charts, not a direct 2^43 enumeration.",
+    "tested": 274877906944,
+    "quadratic_survivors": 164288,
+    "all_rejection_witnesses_independently_verified": 164288,
+    "w0_survivors": 3308,
+    "bent": 0,
+    "per_chart": [
+      {
+        "quadratic": 46912,
+        "w0": 1980
+      },
+      {
+        "quadratic": 46400,
+        "w0": 492
+      },
+      {
+        "quadratic": 70976,
+        "w0": 836
+      },
+      {
+        "quadratic": 0,
+        "w0": 0
+      }
+    ],
+    "run_elapsed_ms_reported": 23188,
+    "audit_seconds": 10.002,
+    "logical_scope": "Global exclusion additionally uses the proved four-case reduction and the three certified necessary linear laws.",
+    "lean_global_nonexistence_formalized": false,
+    "files": [
+      {
+        "name": "full.log",
+        "sha256": "6937d58a2d822d317f779d7862d4504730d93203620829706ec22b51559bdd66"
+      },
+      {
+        "name": "full_thread0.csv",
+        "sha256": "8874a2c112af730decd5a52638fff077ce6c4ee62747b708b011206803cfecce"
+      },
+      {
+        "name": "full_thread1.csv",
+        "sha256": "067952c1772a05d6b6665cfb42ca2249b2481e88f775ce4e8912a3f3bc84c0d1"
+      },
+      {
+        "name": "full_thread2.csv",
+        "sha256": "8427e437ca9013de1eab270d3e5d3020f73ba7233f2b4f6e29d2f9379727a47f"
+      },
+      {
+        "name": "full_thread3.csv",
+        "sha256": "4773abcda834425802a534b9c396c4c9d953a43325b98596abc22bce56026af7"
+      },
+      {
+        "name": "full_thread4.csv",
+        "sha256": "9e47d46dc66356ceb5ea49dd593adc95e0117bf84cfac3a553c88ccc3bad7b32"
+      },
+      {
+        "name": "full_thread5.csv",
+        "sha256": "26eaf86a4a231bfe4e56773911cdc5fa9ba148ca02b3df72efd863ae09c5e2b7"
+      },
+      {
+        "name": "full_thread6.csv",
+        "sha256": "5750cf0eb8a0e270448497985706921f88f04949565cf16948b23412386a9707"
+      },
+      {
+        "name": "full_thread7.csv",
+        "sha256": "020ab34fa908fa5cf646d4360bebb9ae836c6d1b133ca877d8c5d7409e6711af"
+      }
+    ]
+  },
+  "FULL_PORTABLE_AUDIT": {
+    "status": "PASS_FULL_NECESSARY_CHARTS",
+    "coverage": "Four disjoint necessary affine charts, not a direct 2^43 enumeration.",
+    "tested": 274877906944,
+    "quadratic_survivors": 164288,
+    "all_rejection_witnesses_independently_verified": 164288,
+    "w0_survivors": 3308,
+    "bent": 0,
+    "per_chart": [
+      {
+        "quadratic": 46912,
+        "w0": 1980
+      },
+      {
+        "quadratic": 46400,
+        "w0": 492
+      },
+      {
+        "quadratic": 70976,
+        "w0": 836
+      },
+      {
+        "quadratic": 0,
+        "w0": 0
+      }
+    ],
+    "run_elapsed_ms_reported": 51938,
+    "audit_seconds": 8.905,
+    "logical_scope": "Global exclusion additionally uses the proved four-case reduction and the three certified necessary linear laws.",
+    "lean_global_nonexistence_formalized": false,
+    "files": [
+      {
+        "name": "full_portable.log",
+        "sha256": "c208c892d3c5e0a6c051789798e155e99cc4508eb4f33fe51c15877289b92534"
+      },
+      {
+        "name": "full_portable_thread0.csv",
+        "sha256": "f856dee6f75c50e8e54c723a9314a7f9bc9b9a542227e886eda5fd737d969206"
+      },
+      {
+        "name": "full_portable_thread1.csv",
+        "sha256": "108469e48e148699f729a18e55da9c0de26ef464402e16d1369dcf7311854bfa"
+      },
+      {
+        "name": "full_portable_thread2.csv",
+        "sha256": "dbd7a42c13f3b347e75f2d77870412be72e007be7cc375566ed9ac8f5da9bb06"
+      },
+      {
+        "name": "full_portable_thread3.csv",
+        "sha256": "a85ba864fdf77377438dc80b00c34844c8956cc67ed217879215686c677e1283"
+      }
+    ]
+  },
+  "SYMBOLIC_CERTIFICATE_AUDIT": {
+    "status": "PASS_COMPLETE_SYMBOLIC_COVER_AND_WALSH_REJECTIONS",
+    "original_dimension": 43,
+    "necessary_chart_dimensions": [
+      36,
+      36,
+      36,
+      36
+    ],
+    "symbolic_cover_stats": {
+      "nodes": 67658,
+      "linear_steps": 282418,
+      "empty_leaves": 27178,
+      "solution_leaves": 6653
+    },
+    "all_quad_zeros_covered": 164288,
+    "every_leaf_function_has_original_ANF_walsh_rejection": true,
+    "no_chart_domain_enumeration_used_by_checker": true,
+    "seconds": 90.555,
+    "certificate_sha256": "2f6790b88bd8003c81c305057f1a7d86b2073a698d167038822b15a714fc7633",
+    "checker_sha256": "e2f660d1ea8960e1e63b5ba2e24f4fc39be86d2c89781f472fbac4fdfc391b88",
+    "model_checker_sha256": "1aa340dc68087377965ba0bc144874c441e11fd5239ba59c3941d896e1a71241",
+    "initial_linear_and_periodic_certificates_rechecked": true,
+    "scope": "Complete finite certificate conditional on the separately checked necessary chart reductions. This Python checker is not itself a Lean proof."
+  },
+  "ADVERSARIAL_MUTATION_TESTS": {
+    "status": "PASS_ALL_DELIBERATE_CORRUPTIONS_REJECTED",
+    "tests": [
+      {
+        "test": "wrong_chart_mask",
+        "status": "CORRUPTION_REJECTED",
+        "seconds": 0.387
+      },
+      {
+        "test": "missing_periodic_case",
+        "status": "CORRUPTION_REJECTED",
+        "seconds": 0.351
+      },
+      {
+        "test": "false_transformed_constant",
+        "status": "CORRUPTION_REJECTED",
+        "seconds": 0.498
+      },
+      {
+        "test": "embedded_header_changed",
+        "status": "CORRUPTION_REJECTED",
+        "seconds": 0.563
+      },
+      {
+        "test": "linear_witness_removed",
+        "status": "CORRUPTION_REJECTED",
+        "seconds": 0.33
+      },
+      {
+        "test": "basis_not_rotation_orbit",
+        "status": "CORRUPTION_REJECTED",
+        "seconds": 0.152
+      },
+      {
+        "test": "false_solution_leaf",
+        "status": "CORRUPTION_REJECTED",
+        "seconds": 0.821
+      },
+      {
+        "test": "cyclic_certificate",
+        "status": "CORRUPTION_REJECTED",
+        "seconds": 0.783
+      },
+      {
+        "test": "wrong_walsh_witnesses",
+        "status": "CORRUPTION_REJECTED",
+        "seconds": 1.878
+      }
+    ],
+    "scope": "Mutation tests strengthen implementation validation; they do not replace a Lean soundness proof."
+  },
+  "minimal_package_isolated_test": [
+    {
+      "script": "verify_manifest.py",
+      "exit_code": 0,
+      "stdout": "PASS: 18 preserved files; hashes verify integrity only.\n",
+      "stderr": ""
+    },
+    {
+      "script": "verify_linear_laws.py",
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"original_dimension\": 43,\n  \"necessary_quadratic_filters\": 43,\n  \"verified_boolean_polynomial_identities\": 3,\n  \"products_per_identity\": [\n    22,\n    1,\n    24\n  ],\n  \"scope\": \"Three exact linear consequences; not a global UNSAT certificate.\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "script": "verify_periodic_reduction.py",
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"original_dimension\": 43,\n  \"periodic_image_dimension\": 4,\n  \"periodic_coefficient_masks\": [\n    \"0x18c8000\",\n    \"0x10000000000\",\n    \"0x2d57a733bee\",\n    \"0x40000000000\"\n  ],\n  \"allowed_cases\": [\n    {\n      \"parameter_code\": 2,\n      \"truth_table\": \"0x6ca0\",\n      \"short_input_weight\": 36,\n      \"long_orbits_weight\": 165,\n      \"required_total_weight\": 2016,\n      \"short_weights_even_odd\": [\n        32,\n        4\n      ],\n      \"required_long_weights_even_odd\": [\n        80,\n        85\n      ]\n    },\n    {\n      \"parameter_code\": 3,\n      \"truth_table\": \"0x7ee8\",\n      \"short_input_weight\": 40,\n      \"long_orbits_weight\": 170,\n      \"required_total_weight\": 2080,\n      \"short_weights_even_odd\": [\n        36,\n        4\n      ],\n      \"required_long_weights_even_odd\": [\n        85,\n        85\n      ]\n    },\n    {\n      \"parameter_code\": 8,\n      \"truth_table\": \"0x8000\",\n      \"short_input_weight\": 16,\n      \"long_orbits_weight\": 172,\n      \"required_total_weight\": 2080,\n      \"short_weights_even_odd\": [\n        16,\n        0\n      ],\n      \"required_long_weights_even_odd\": [\n        84,\n        88\n      ]\n    },\n    {\n      \"parameter_code\": 15,\n      \"truth_table\": \"0x9668\",\n      \"short_input_weight\": 28,\n      \"long_orbits_weight\": 171,\n      \"required_total_weight\": 2080,\n      \"short_weights_even_odd\": [\n        28,\n        0\n      ],\n      \"required_long_weights_even_odd\": [\n        83,\n        88\n      ]\n    }\n  ],\n  \"short_input_orbits\": 17,\n  \"short_input_points\": 76,\n  \"long_input_orbits\": 335,\n  \"scope\": \"Necessary reduction, not an UNSAT result or a replacement for the global GPU search.\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "script": "cpu_replay/verify_certificate.py",
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"PASS_COMPLETE_SYMBOLIC_COVER_AND_WALSH_REJECTIONS\",\n  \"original_dimension\": 43,\n  \"necessary_chart_dimensions\": [\n    36,\n    36,\n    36,\n    36\n  ],\n  \"symbolic_cover_stats\": {\n    \"nodes\": 67658,\n    \"linear_steps\": 282418,\n    \"empty_leaves\": 27178,\n    \"solution_leaves\": 6653\n  },\n  \"all_quad_zeros_covered\": 164288,\n  \"every_leaf_function_has_original_ANF_walsh_rejection\": true,\n  \"no_chart_domain_enumeration_used_by_checker\": true,\n  \"seconds\": 90.555,\n  \"certificate_sha256\": \"2f6790b88bd8003c81c305057f1a7d86b2073a698d167038822b15a714fc7633\",\n  \"checker_sha256\": \"e2f660d1ea8960e1e63b5ba2e24f4fc39be86d2c89781f472fbac4fdfc391b88\",\n  \"model_checker_sha256\": \"1aa340dc68087377965ba0bc144874c441e11fd5239ba59c3941d896e1a71241\",\n  \"initial_linear_and_periodic_certificates_rechecked\": true,\n  \"scope\": \"Complete finite certificate conditional on the separately checked necessary chart reductions. This Python checker is not itself a Lean proof.\"\n}\n",
+      "stderr": ""
+    }
+  ],
+  "minimal_package_repack": {
+    "sha256": "63402235250b13059ed5906ccbf254f95fefe7a44e719eb37dc7ee570219f5a5",
+    "all_payload_hashes_verified": true,
+    "same_payload_manifest_as_isolated_pass": true
+  },
+  "timestamp_utc": "2026-10-18T12:11:29.882190+00:00"
 }

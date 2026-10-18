@@ -1,0 +1,51 @@
+{
+  "status": "PASS_ALL_DELIBERATE_CORRUPTIONS_REJECTED",
+  "tests": [
+    {
+      "test": "wrong_chart_mask",
+      "status": "CORRUPTION_REJECTED",
+      "seconds": 0.387
+    },
+    {
+      "test": "missing_periodic_case",
+      "status": "CORRUPTION_REJECTED",
+      "seconds": 0.351
+    },
+    {
+      "test": "false_transformed_constant",
+      "status": "CORRUPTION_REJECTED",
+      "seconds": 0.498
+    },
+    {
+      "test": "embedded_header_changed",
+      "status": "CORRUPTION_REJECTED",
+      "seconds": 0.563
+    },
+    {
+      "test": "linear_witness_removed",
+      "status": "CORRUPTION_REJECTED",
+      "seconds": 0.33
+    },
+    {
+      "test": "basis_not_rotation_orbit",
+      "status": "CORRUPTION_REJECTED",
+      "seconds": 0.152
+    },
+    {
+      "test": "false_solution_leaf",
+      "status": "CORRUPTION_REJECTED",
+      "seconds": 0.821
+    },
+    {
+      "test": "cyclic_certificate",
+      "status": "CORRUPTION_REJECTED",
+      "seconds": 0.783
+    },
+    {
+      "test": "wrong_walsh_witnesses",
+      "status": "CORRUPTION_REJECTED",
+      "seconds": 1.878
+    }
+  ],
+  "scope": "Mutation tests strengthen implementation validation; they do not replace a Lean soundness proof."
+}

@@ -4,7 +4,7 @@
 
 **Resultado computacional global.** Não foi encontrada função bent no espaço H(12,4), após enumeração dos seus 2^43 vetores de coeficientes, sem leis condicionantes iniciais. A execução terminou com zero bent e seu registro completo foi auditado.
 
-A demonstração disponível para a inexistência global é computacional: justificação de filtros necessários, cobertura completa do domínio e verificação final de Walsh. As reduções abaixo explicam parte da estrutura do cálculo e fornecem novos pontos de verificação independentes. Ainda não substituem a enumeração inteira por uma contradição analítica ou por um certificado global verificado no núcleo Lean.
+A demonstração disponível para a inexistência global é computacional: justificação de filtros necessários, cobertura completa do domínio e verificação final de Walsh. As reduções abaixo explicam a estrutura do cálculo. A seção 7 fornece um certificado simbólico global verificável sem repetir a enumeração. O certificado ainda não foi formalizado integralmente no núcleo Lean.
 
 Escreva f_c como a soma, em F₂, das 43 somas de órbitas quárticas, com c=(c₀,…,c₄₂). Cada suporte de tamanho quatro aparece exatamente uma vez na base, que contém 495 monômios. Os índices são os da ordem de combinações lexicográficas usada no gerador; a lista explícita consta de `linear_law_certificates.json`.
 
@@ -94,4 +94,36 @@ O registro global reporta 949.760 zeros dos filtros quadráticos; 15.779 também
 
 Sun, Shi, Liu e Fu, *On the conjecture about the nonexistence of homogeneous rotation symmetric bent functions*, DCC 94:93 (2026), DOI 10.1007/s10623-026-01848-4, fornecem resultados parciais por órbitas, distâncias de índices e derivadas. Em n=12, os requisitos dos Teoremas 1–2 para o fator primo não se aplicam; o Teorema 4(1) exclui uma subfamília de monômios, enquanto o limiar de grau do item 4(2) é cinco, superior a quatro; os Teoremas 5–6 e o Corolário 2 tratam de funções cúbicas. O Teorema 3 também depende das restrições explícitas nos suportes escolhidos. Não há nesse artigo um enunciado de inexistência para todo H(12,4). Isso delimita a comparação com esse artigo, sem estabelecer novidade frente a toda a literatura.
 
-O progresso verificável desta etapa é uma explicação estrutural parcial da busca e um conjunto de certificados menores. Para concluir uma prova Lean global, ainda é necessário excluir todos os candidatos nos quatro casos por condições necessárias formalizadas e um certificado completo de contradição. As buscas SAT experimentais preservadas não devem ser usadas como se esse certificado já existisse.
+As buscas SAT experimentais preservadas não produziram o certificado global. O certificado independente descrito a seguir foi obtido por decomposição algébrica em espaços afins.
+
+## 7. Certificado simbólico completo e verificação independente
+
+As quatro possibilidades da seção 4 e as três relações lineares da seção 3 dão quatro sistemas afins de posto sete em 43 coordenadas. Cada um tem dimensão 36. As bases e os deslocamentos são explícitos; seus postos, as 172 substituições quadráticas e todas as constantes embutidas no programa C são conferidos independentemente por `cpu_replay/verify_model.py`.
+
+Uma execução independente em CPU percorreu os quatro sistemas em paralelo por Gray-code e avaliação de 64 atribuições de uma vez. Encontrou 164.288 zeros dos filtros necessários, dos quais 3.308 passam W(0). Todos receberam uma frequência explícita com amplitude de Walsh diferente de ±64. A execução completa com oito threads levou cerca de 23 segundos; uma recompilação com otimização e alvo de instruções diferentes, usando quatro threads, reproduziu as mesmas contagens em cerca de 52 segundos. Os tempos são observações desta máquina, não garantias gerais.
+
+Para eliminar a dependência dessa varredura, foi construído um certificado de decomposição afim. Em cada nó:
+
+1. Uma combinação XOR explícita dos 43 polinômios pode dar uma equação linear. Ela é resolvida por uma coordenada e substituída exatamente, usando x_i²=x_i.
+2. Um teste de paridade linear divide o domínio em duas partes disjuntas e exaustivas.
+3. Uma folha vazia apresenta uma combinação XOR dos polinômios que vale 1: sob a hipótese de todos valerem zero, isso é uma contradição.
+4. Uma folha de soluções apresenta todos os polinômios identicamente nulos. O espaço afim restante é enumerado apenas nessa folha, e cada função possui um testemunho de Walsh verificado a partir da ANF original.
+
+O certificado contém 67.658 nós, 282.418 eliminações lineares certificadas, 27.178 folhas contraditórias e 6.653 folhas de soluções, de dimensão no máximo oito. As folhas de soluções contêm exatamente as 164.288 funções. O verificador implementa a substituição diretamente na imagem dos monômios, de maneira diferente da fórmula matricial usada no gerador. Ele reconstrói as tabelas de verdade por Möbius, verifica todos os testemunhos e cobre as raízes sem enumerar os 2^38 pontos dos espaços.
+
+Sua execução passou em aproximadamente 70 segundos. O hash SHA-256 de `DECOMPOSITION.json` é `2f6790b88bd8003c81c305057f1a7d86b2073a698d167038822b15a714fc7633`.
+
+Isso fornece uma demonstração computacional finita por certificado, independente do log da GPU. Para uma prova Lean global, ainda falta formalizar a correção desse verificador, os testemunhos e todas as pontes aos filtros necessários. A formalização Lean atual cobre a redução periódica e a descida por autocorrelações.
+
+## 8. Exclusão analítica de um dos quatro casos
+
+Denote pelas três relações da seção 3 os polinômios lineares R₁,R₂,R₃. O filtro Q correspondente ao suporte `0x3cf` tem a expressão
+
+$$Q=L+c_{26}+c_{40}+c_{26}c_{42},$$
+$$L=c_0+c_2+c_6+c_{12}+c_{15}+c_{23}+c_{25}+c_{37}=R_1+R_3.$$
+
+Como R₂=c₂₆+c₄₀+c₄₂, vale a identidade booleana
+
+$$c_{40}c_{42}=Q+R_1+R_3+(1+c_{42})R_2.$$
+
+Toda bent satisfaz Q=R₁=R₂=R₃=0. Logo c₄₀c₄₂=0. O caso de código 15 tem c₄₀=c₄₂=1 e está excluído diretamente. Sua raiz contraditória no certificado corresponde a essa identidade, sem necessidade de enumeração.

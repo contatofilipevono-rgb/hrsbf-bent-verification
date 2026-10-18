@@ -21,8 +21,15 @@ def main():
     data = json.loads((root / 'linear_law_certificates.json').read_text())
     basis = data['basis']
     assert len(basis) == 43
+    for orbit in basis:
+        assert orbit and orbit==sorted({((orbit[0]<<j)|(orbit[0]>>(12-j)))&4095 for j in range(12)})
     assert sorted(m for o in basis for m in o) == sorted(
         sum(1 << i for i in inds) for inds in combinations(range(12), 4))
+    supports=data['filter_supports']
+    assert len(supports)==43 and all(s.bit_count()==8 for s in supports)
+    support_orbits=[{((s<<j)|(s>>(12-j)))&4095 for j in range(12)} for s in supports]
+    assert sum(map(len,support_orbits))==495
+    assert set().union(*support_orbits)=={sum(1<<i for i in inds) for inds in combinations(range(12),8)}
     columns = [original_truth(o) for o in basis]
     polynomials = []
     for support in data['filter_supports']:
@@ -36,6 +43,9 @@ def main():
                 poly.add((1 << i) | (1 << j))
         polynomials.append(poly)
     for law in data['laws']:
+        assert law['rhs'] in [0,1] and len(set(law['indices']))==len(law['indices'])
+        assert all(0<=i<43 for i in law['indices'])
+        assert int(law['coefficient_mask'],16)==sum(1<<i for i in law['indices'])
         result = set()
         for term in law['products']:
             multiplier = term['multiplier_variable']

@@ -1,0 +1,26 @@
+[
+  {
+    "chart": 0,
+    "count": 46912,
+    "affine_hull_rank": 34,
+    "stabilizer": [
+      "0x0"
+    ]
+  },
+  {
+    "chart": 1,
+    "count": 46400,
+    "affine_hull_rank": 34,
+    "stabilizer": [
+      "0x0"
+    ]
+  },
+  {
+    "chart": 2,
+    "count": 70976,
+    "affine_hull_rank": 31,
+    "stabilizer": [
+      "0x0"
+    ]
+  }
+]

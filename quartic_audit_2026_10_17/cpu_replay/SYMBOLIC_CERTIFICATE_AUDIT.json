@@ -1,0 +1,25 @@
+{
+  "status": "PASS_COMPLETE_SYMBOLIC_COVER_AND_WALSH_REJECTIONS",
+  "original_dimension": 43,
+  "necessary_chart_dimensions": [
+    36,
+    36,
+    36,
+    36
+  ],
+  "symbolic_cover_stats": {
+    "nodes": 67658,
+    "linear_steps": 282418,
+    "empty_leaves": 27178,
+    "solution_leaves": 6653
+  },
+  "all_quad_zeros_covered": 164288,
+  "every_leaf_function_has_original_ANF_walsh_rejection": true,
+  "no_chart_domain_enumeration_used_by_checker": true,
+  "seconds": 90.555,
+  "certificate_sha256": "2f6790b88bd8003c81c305057f1a7d86b2073a698d167038822b15a714fc7633",
+  "checker_sha256": "e2f660d1ea8960e1e63b5ba2e24f4fc39be86d2c89781f472fbac4fdfc391b88",
+  "model_checker_sha256": "1aa340dc68087377965ba0bc144874c441e11fd5239ba59c3941d896e1a71241",
+  "initial_linear_and_periodic_certificates_rechecked": true,
+  "scope": "Complete finite certificate conditional on the separately checked necessary chart reductions. This Python checker is not itself a Lean proof."
+}

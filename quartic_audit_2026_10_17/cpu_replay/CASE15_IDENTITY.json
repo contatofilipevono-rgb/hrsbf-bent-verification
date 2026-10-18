@@ -1,0 +1,10 @@
+{
+  "case": 15,
+  "status": "BOOLEAN_IDENTITY_ONE",
+  "products": [
+    {
+      "filter": 30,
+      "multiplier_variable": -1
+    }
+  ]
+}
