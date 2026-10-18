@@ -1,0 +1,10667 @@
+{
+  "status": "PASS_TWO_EXACT_COUNTS_AND_PROJECTED_EXHAUSTIVE_CONTROL",
+  "scope": "Seven-coordinate zero-subspace obstruction only; does not establish global nonexistence or novelty.",
+  "n": 12,
+  "degree": 4,
+  "orbit_representatives": [
+    [
+      0,
+      1,
+      2,
+      3
+    ],
+    [
+      0,
+      1,
+      2,
+      4
+    ],
+    [
+      0,
+      1,
+      2,
+      5
+    ],
+    [
+      0,
+      1,
+      2,
+      6
+    ],
+    [
+      0,
+      1,
+      2,
+      7
+    ],
+    [
+      0,
+      1,
+      2,
+      8
+    ],
+    [
+      0,
+      1,
+      2,
+      9
+    ],
+    [
+      0,
+      1,
+      2,
+      10
+    ],
+    [
+      0,
+      1,
+      3,
+      4
+    ],
+    [
+      0,
+      1,
+      3,
+      5
+    ],
+    [
+      0,
+      1,
+      3,
+      6
+    ],
+    [
+      0,
+      1,
+      3,
+      7
+    ],
+    [
+      0,
+      1,
+      3,
+      8
+    ],
+    [
+      0,
+      1,
+      3,
+      9
+    ],
+    [
+      0,
+      1,
+      3,
+      10
+    ],
+    [
+      0,
+      1,
+      4,
+      5
+    ],
+    [
+      0,
+      1,
+      4,
+      6
+    ],
+    [
+      0,
+      1,
+      4,
+      7
+    ],
+    [
+      0,
+      1,
+      4,
+      8
+    ],
+    [
+      0,
+      1,
+      4,
+      9
+    ],
+    [
+      0,
+      1,
+      4,
+      10
+    ],
+    [
+      0,
+      1,
+      5,
+      6
+    ],
+    [
+      0,
+      1,
+      5,
+      7
+    ],
+    [
+      0,
+      1,
+      5,
+      8
+    ],
+    [
+      0,
+      1,
+      5,
+      9
+    ],
+    [
+      0,
+      1,
+      5,
+      10
+    ],
+    [
+      0,
+      1,
+      6,
+      7
+    ],
+    [
+      0,
+      1,
+      6,
+      8
+    ],
+    [
+      0,
+      1,
+      6,
+      9
+    ],
+    [
+      0,
+      1,
+      6,
+      10
+    ],
+    [
+      0,
+      1,
+      7,
+      9
+    ],
+    [
+      0,
+      1,
+      7,
+      10
+    ],
+    [
+      0,
+      1,
+      8,
+      10
+    ],
+    [
+      0,
+      2,
+      4,
+      6
+    ],
+    [
+      0,
+      2,
+      4,
+      7
+    ],
+    [
+      0,
+      2,
+      4,
+      8
+    ],
+    [
+      0,
+      2,
+      4,
+      9
+    ],
+    [
+      0,
+      2,
+      5,
+      7
+    ],
+    [
+      0,
+      2,
+      5,
+      8
+    ],
+    [
+      0,
+      2,
+      5,
+      9
+    ],
+    [
+      0,
+      2,
+      6,
+      8
+    ],
+    [
+      0,
+      2,
+      6,
+      9
+    ],
+    [
+      0,
+      3,
+      6,
+      9
+    ]
+  ],
+  "orbit_lengths": {
+    "12": 40,
+    "6": 2,
+    "3": 1
+  },
+  "faces_tested": 792,
+  "distinct_maximal_coefficient_spaces": 65,
+  "dimensions": {
+    "12": 7,
+    "13": 2,
+    "14": 8,
+    "15": 26,
+    "16": 9,
+    "17": 5,
+    "19": 4,
+    "20": 1,
+    "23": 2,
+    "24": 1
+  },
+  "coefficient_vectors_excluded_including_zero": 38520999,
+  "total_coefficient_vectors": 8796093022208,
+  "coefficient_vectors_not_decided_by_this_criterion": 8796054501209,
+  "fraction_excluded": 4.379330562187533e-06,
+  "shannon_states": 170591,
+  "inclusion_exclusion_terms": 3577,
+  "sun_theorem4_item1": {
+    "dimension": 20,
+    "count_including_zero": 1048576,
+    "contained_in_union": true,
+    "allowed_orbit_mask": 5087769056597
+  },
+  "zero_subspace_dimension": 7,
+  "nonlinearity_upper_bound": 1984,
+  "bent_nonlinearity": 2016,
+  "faces": [
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "allowed_orbit_mask": 8779983624208,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "allowed_orbit_mask": 8559830237216,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        8
+      ],
+      "allowed_orbit_mask": 7915027111936,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        9
+      ],
+      "allowed_orbit_mask": 5936927409152,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        10
+      ],
+      "allowed_orbit_mask": 8555673881608,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        11
+      ],
+      "allowed_orbit_mask": 8779983624208,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        7
+      ],
+      "allowed_orbit_mask": 8761762910304,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        8
+      ],
+      "allowed_orbit_mask": 5247723012160,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        9
+      ],
+      "allowed_orbit_mask": 1276937275392,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        10
+      ],
+      "allowed_orbit_mask": 4621903499280,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        11
+      ],
+      "allowed_orbit_mask": 8559830237216,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 8742406021696,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 4445385835008,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 1272071950848,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 7915027111936,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 8689793648132,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 7215891842564,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 5936927409152,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8710386876428,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 8555673881608,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8779983624208,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        7
+      ],
+      "allowed_orbit_mask": 8573317689344,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        8
+      ],
+      "allowed_orbit_mask": 4510102323392,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        9
+      ],
+      "allowed_orbit_mask": 1332215877776,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        10
+      ],
+      "allowed_orbit_mask": 7705641297968,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        11
+      ],
+      "allowed_orbit_mask": 8761762910304,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 7732301963712,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 4403226121600,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 5533750175008,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 5247723012160,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 5716770292104,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5534425393416,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 1276937275392,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5782977511448,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4621903499280,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8559830237216,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 5357989421954,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 683454317442,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 5660771103522,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 8742406021696,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 683991124866,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 4400574278402,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 4445385835008,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 1332752685074,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 1272071950848,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7915027111936,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 7280256632706,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5806814634246,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 8689793648132,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4458260860934,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 7215891842564,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5936927409152,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8624623323136,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 8710386876428,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8555673881608,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        3,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8779983624208,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "allowed_orbit_mask": 8624623323136,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6,
+        8
+      ],
+      "allowed_orbit_mask": 7304514651153,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6,
+        9
+      ],
+      "allowed_orbit_mask": 5672247782417,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6,
+        10
+      ],
+      "allowed_orbit_mask": 5431053671441,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6,
+        11
+      ],
+      "allowed_orbit_mask": 8573317689344,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 8323780838089,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 5784049027241,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 1135039744617,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 4510102323392,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 7863619577497,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 4537723147865,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 1332215877776,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8146546410553,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 7705641297968,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8761762910304,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 7559186018629,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 5531973755301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 688315226469,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 7732301963712,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 4538790733205,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5087769056597,
+      "dimension": 20
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 4403226121600,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4542165173301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5533750175008,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5247723012160,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 5788039930753,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 687908442445,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 5716770292104,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 1138797903917,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5534425393416,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1276937275392,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 7304514651153,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5782977511448,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4621903499280,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        4,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8559830237216,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 7280256632706,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        6,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 5788039930753,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        6,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 7709467377411,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        6,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 5357989421954,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        6,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 4670844061331,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        6,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 4537969886547,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        6,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 683454317442,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        6,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5993829321779,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        6,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5660771103522,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        6,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8742406021696,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 7709467377411,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5532070228299,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 683991124866,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 7705777548331,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4400574278402,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4445385835008,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5672247782417,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 1332752685074,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1272071950848,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        5,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7915027111936,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 5357989421954,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 7559186018629,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 7280256632706,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 6352260825127,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5806814634246,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8689793648132,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5431053671441,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4458260860934,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7215891842564,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5936927409152,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8573317689344,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 8624623323136,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8710386876428,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8555673881608,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        2,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8779983624208,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "allowed_orbit_mask": 8710386876428,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6,
+        8
+      ],
+      "allowed_orbit_mask": 5782977511448,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6,
+        9
+      ],
+      "allowed_orbit_mask": 1332752685074,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6,
+        10
+      ],
+      "allowed_orbit_mask": 4458260860934,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6,
+        11
+      ],
+      "allowed_orbit_mask": 8624623323136,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 8146546410553,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 4542165173301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 1138797903917,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 7304514651153,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 5993829321779,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 7705777548331,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 5672247782417,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 6352260825127,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5431053671441,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8573317689344,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 6352260825127,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 8323780838089,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 1126422284543,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 4398393229567,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 5784049027241,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 1135039744617,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4510102323392,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 4670844061331,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 1177425084671,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 7863619577497,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4537723147865,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1332215877776,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8323780838089,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 8146546410553,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7705641297968,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        4,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8761762910304,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 5806814634246,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 687908442445,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 5532070228299,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 7559186018629,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 1177425084671,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5533346013695,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 5531973755301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 1126422284543,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 688315226469,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7732301963712,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 4537969886547,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5533346013695,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 4538790733205,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4398393229567,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5087769056597,
+      "dimension": 20
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4403226121600,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5784049027241,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4542165173301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5533750175008,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        5,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5247723012160,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 683454317442,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5531973755301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 5788039930753,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 687908442445,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5716770292104,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 1135039744617,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 1138797903917,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5534425393416,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1276937275392,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4510102323392,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 7304514651153,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5782977511448,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4621903499280,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        3,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8559830237216,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 8689793648132,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 5716770292104,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        6,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 683991124866,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        6,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 7280256632706,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 7863619577497,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        6,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 4538790733205,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        6,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 5788039930753,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        6,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4670844061331,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        6,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 7709467377411,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        6,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5357989421954,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 5993829321779,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 1126422284543,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 4670844061331,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 1177425084671,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4537969886547,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 683454317442,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 7863619577497,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5993829321779,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5660771103522,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        5,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8742406021696,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 5660771103522,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 688315226469,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 7709467377411,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5532070228299,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 683991124866,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4537723147865,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 7705777548331,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4400574278402,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4445385835008,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 1332215877776,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5672247782417,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1332752685074,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1272071950848,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        4,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7915027111936,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 8742406021696,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 7732301963712,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        5,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 5357989421954,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8323780838089,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        5,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 7559186018629,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        5,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7280256632706,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        5,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8146546410553,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        5,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 6352260825127,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        5,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5806814634246,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        5,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8689793648132,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 7705641297968,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        5,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5431053671441,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        5,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4458260860934,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        5,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7215891842564,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        5,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5936927409152,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8761762910304,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 8573317689344,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8624623323136,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8710386876428,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        6,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8555673881608,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        1,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8779983624208,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "allowed_orbit_mask": 8555673881608,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8
+      ],
+      "allowed_orbit_mask": 4621903499280,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        9
+      ],
+      "allowed_orbit_mask": 1272071950848,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        10
+      ],
+      "allowed_orbit_mask": 7215891842564,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        11
+      ],
+      "allowed_orbit_mask": 8710386876428,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 7705641297968,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 5533750175008,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 5534425393416,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 5782977511448,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 5660771103522,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 4400574278402,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 1332752685074,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5806814634246,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4458260860934,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8624623323136,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 5431053671441,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        6,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 1135039744617,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        6,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 4537723147865,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        6,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 8146546410553,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        6,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 688315226469,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        6,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5087769056597,
+      "dimension": 20
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        6,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 4542165173301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        6,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 687908442445,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        6,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 1138797903917,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        6,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7304514651153,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 7709467377411,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 4537969886547,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 5993829321779,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5532070228299,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 7705777548331,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5672247782417,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 7559186018629,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 6352260825127,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5431053671441,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        4,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8573317689344,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 4458260860934,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        6,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 1138797903917,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        6,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 7705777548331,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        6,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 6352260825127,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        6,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        6,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 4398393229567,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        6,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        6,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 1177425084671,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        6,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        6,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8323780838089,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 5532070228299,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5533346013695,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 1126422284543,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5533346013695,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4398393229567,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5784049027241,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5531973755301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1135039744617,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        5,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4510102323392,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 683991124866,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 4538790733205,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 4670844061331,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 1126422284543,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 1177425084671,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7863619577497,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 688315226469,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4537723147865,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1332215877776,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 7732301963712,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 8323780838089,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8146546410553,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7705641297968,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        3,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8761762910304,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 7215891842564,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 5534425393416,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 4400574278402,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 5806814634246,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 4537723147865,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5087769056597,
+      "dimension": 20
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 687908442445,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4537969886547,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5532070228299,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7559186018629,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 7705777548331,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 4398393229567,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 1177425084671,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5533346013695,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5533346013695,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5531973755301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4538790733205,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 1126422284543,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 688315226469,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        5,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7732301963712,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 4400574278402,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5087769056597,
+      "dimension": 20
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 4537969886547,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4398393229567,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5533346013695,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4538790733205,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5087769056597,
+      "dimension": 20
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4398393229567,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5087769056597,
+      "dimension": 20
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4403226121600,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4403226121600,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5784049027241,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4542165173301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5533750175008,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        4,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5247723012160,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 4445385835008,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 4403226121600,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        5,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 683454317442,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5784049027241,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        5,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5531973755301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        5,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5788039930753,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        5,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4542165173301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        5,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        5,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 687908442445,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        5,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5716770292104,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5533750175008,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        5,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 1135039744617,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        5,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1138797903917,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        5,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5534425393416,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        5,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1276937275392,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5247723012160,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4510102323392,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7304514651153,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5782977511448,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        6,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4621903499280,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        2,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8559830237216,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 5936927409152,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 1276937275392,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        6,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 4445385835008,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        6,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 8689793648132,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 1332215877776,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        6,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 4403226121600,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        6,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 5716770292104,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        6,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 683454317442,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        6,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 683991124866,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        6,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7280256632706,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 5672247782417,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5784049027241,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 7863619577497,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5531973755301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4538790733205,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5788039930753,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5788039930753,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4670844061331,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7709467377411,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        5,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5357989421954,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 1332752685074,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 4542165173301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 5993829321779,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 1126422284543,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4670844061331,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 687908442445,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 1177425084671,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4537969886547,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 683454317442,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5716770292104,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 7863619577497,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5993829321779,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5660771103522,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        4,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8742406021696,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 1272071950848,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5533750175008,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        5,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 5660771103522,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 1135039744617,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        5,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 688315226469,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        5,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7709467377411,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        5,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 1138797903917,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        5,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        5,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5532070228299,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        5,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 683991124866,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5534425393416,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        5,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4537723147865,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        5,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7705777548331,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        5,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4400574278402,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        5,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4445385835008,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 1276937275392,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 1332215877776,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5672247782417,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1332752685074,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        6,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1272071950848,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        0,
+        3,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7915027111936,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 7915027111936,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5247723012160,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        5,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 8742406021696,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4510102323392,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        5,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 7732301963712,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5357989421954,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 7304514651153,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        5,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 8323780838089,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        5,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7559186018629,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        5,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7280256632706,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5782977511448,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        5,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 8146546410553,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        5,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 6352260825127,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        5,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5806814634246,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        5,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8689793648132,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4621903499280,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 7705641297968,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5431053671441,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4458260860934,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        6,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7215891842564,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        4,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5936927409152,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8559830237216,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 8761762910304,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8573317689344,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8624623323136,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8710386876428,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        0,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8555673881608,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        0,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8779983624208,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "allowed_orbit_mask": 8779983624208,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8
+      ],
+      "allowed_orbit_mask": 8559830237216,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        9
+      ],
+      "allowed_orbit_mask": 7915027111936,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        10
+      ],
+      "allowed_orbit_mask": 5936927409152,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        11
+      ],
+      "allowed_orbit_mask": 8555673881608,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 8761762910304,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 5247723012160,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 1276937275392,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 4621903499280,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 8742406021696,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 4445385835008,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 1272071950848,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8689793648132,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 7215891842564,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8710386876428,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 8573317689344,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 4510102323392,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 1332215877776,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 7705641297968,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 7732301963712,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 4403226121600,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 5533750175008,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5716770292104,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5534425393416,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5782977511448,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 5357989421954,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 683454317442,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 5660771103522,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 683991124866,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4400574278402,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1332752685074,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 7280256632706,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5806814634246,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4458260860934,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        4,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8624623323136,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 8624623323136,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 7304514651153,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 5672247782417,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 5431053671441,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 8323780838089,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5784049027241,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 1135039744617,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 7863619577497,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4537723147865,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8146546410553,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 7559186018629,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5531973755301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 688315226469,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4538790733205,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5087769056597,
+      "dimension": 20
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4542165173301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5788039930753,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 687908442445,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1138797903917,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        5,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7304514651153,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 7280256632706,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5788039930753,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 7709467377411,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4670844061331,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4537969886547,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5993829321779,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 7709467377411,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5532070228299,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7705777548331,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5672247782417,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5357989421954,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 7559186018629,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 6352260825127,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5431053671441,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        3,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8573317689344,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 8710386876428,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 5782977511448,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 1332752685074,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 4458260860934,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 8146546410553,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 4542165173301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 1138797903917,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5993829321779,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 7705777548331,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 6352260825127,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 6352260825127,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 1126422284543,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4398393229567,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4670844061331,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 1177425084671,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        5,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8323780838089,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 5806814634246,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 687908442445,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 5532070228299,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 1177425084671,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5533346013695,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1126422284543,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4537969886547,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5533346013695,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4398393229567,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5784049027241,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 683454317442,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5531973755301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1135039744617,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        4,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4510102323392,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 8689793648132,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5716770292104,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        5,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 683991124866,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 7863619577497,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        5,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4538790733205,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        5,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4670844061331,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        5,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5993829321779,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        5,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 1126422284543,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        5,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1177425084671,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        5,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7863619577497,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5660771103522,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        5,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 688315226469,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        5,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        5,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4537723147865,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        5,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1332215877776,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8742406021696,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 7732301963712,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8323780838089,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8146546410553,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        6,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7705641297968,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        1,
+        2,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8761762910304,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 8555673881608,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 4621903499280,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 1272071950848,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 7215891842564,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 7705641297968,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5533750175008,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 5534425393416,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5660771103522,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4400574278402,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5806814634246,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 5431053671441,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 1135039744617,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 4537723147865,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 688315226469,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5087769056597,
+      "dimension": 20
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 687908442445,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 7709467377411,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4537969886547,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5532070228299,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        5,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7559186018629,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 4458260860934,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 1138797903917,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 7705777548331,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4398393229567,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1177425084671,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5532070228299,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5533346013695,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5533346013695,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5531973755301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 683991124866,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4538790733205,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1126422284543,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 688315226469,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        4,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7732301963712,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 7215891842564,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5534425393416,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 4400574278402,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4537723147865,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5087769056597,
+      "dimension": 20
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4537969886547,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        5,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 7705777548331,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        5,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4398393229567,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        5,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5533346013695,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        5,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4538790733205,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4400574278402,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        5,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5087769056597,
+      "dimension": 20
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        5,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4398393229567,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5087769056597,
+      "dimension": 20
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        5,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4403226121600,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4445385835008,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4403226121600,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5784049027241,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4542165173301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        6,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5533750175008,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        1,
+        3,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5247723012160,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 5936927409152,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 1276937275392,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 4445385835008,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 1332215877776,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4403226121600,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 683454317442,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5672247782417,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        5,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5784049027241,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        5,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5531973755301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        5,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5788039930753,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 1332752685074,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        5,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4542165173301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        5,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        5,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 687908442445,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        5,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5716770292104,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 1272071950848,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5533750175008,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1135039744617,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1138797903917,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        6,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5534425393416,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        1,
+        4,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1276937275392,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        1,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 7915027111936,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5247723012160,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4510102323392,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        1,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7304514651153,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        1,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5782977511448,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        1,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4621903499280,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        1,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8559830237216,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowed_orbit_mask": 8779983624208,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "allowed_orbit_mask": 8559830237216,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        10
+      ],
+      "allowed_orbit_mask": 7915027111936,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        11
+      ],
+      "allowed_orbit_mask": 5936927409152,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 8761762910304,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5247723012160,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 1276937275392,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8742406021696,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4445385835008,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8689793648132,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 8573317689344,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 4510102323392,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 1332215877776,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 7732301963712,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4403226121600,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5716770292104,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5357989421954,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 683454317442,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 683991124866,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        5,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7280256632706,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 8624623323136,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 7304514651153,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 5672247782417,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8323780838089,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5784049027241,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7863619577497,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 7559186018629,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5531973755301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4538790733205,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5788039930753,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 7280256632706,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5788039930753,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4670844061331,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7709467377411,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        4,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5357989421954,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 8710386876428,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 5782977511448,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 1332752685074,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8146546410553,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4542165173301,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5993829321779,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        5,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 6352260825127,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        5,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        5,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1126422284543,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        5,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4670844061331,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5806814634246,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        5,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 687908442445,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        5,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1177425084671,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        5,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4537969886547,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        5,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 683454317442,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8689793648132,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5716770292104,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7863619577497,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5993829321779,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        6,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5660771103522,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        2,
+        3,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8742406021696,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 8555673881608,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 4621903499280,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 1272071950848,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 7705641297968,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5533750175008,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5660771103522,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5431053671441,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        5,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 1135039744617,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        5,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 688315226469,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        5,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7709467377411,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 4458260860934,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        5,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 1138797903917,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        5,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 270782468863,
+      "dimension": 24
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5532070228299,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        5,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 683991124866,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 7215891842564,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5534425393416,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4537723147865,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7705777548331,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        6,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4400574278402,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        4,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4445385835008,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        2,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 5936927409152,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        2,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 1276937275392,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        2,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1332215877776,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        2,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5672247782417,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        2,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1332752685074,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        2,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 1272071950848,
+      "dimension": 14
+    },
+    {
+      "coordinates": [
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7915027111936,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "allowed_orbit_mask": 8779983624208,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "allowed_orbit_mask": 8559830237216,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        11
+      ],
+      "allowed_orbit_mask": 7915027111936,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8761762910304,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5247723012160,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8742406021696,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8573317689344,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4510102323392,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        5,
+        6,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7732301963712,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        5,
+        6,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5357989421954,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8624623323136,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        5,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 7304514651153,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        5,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8323780838089,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        5,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7559186018629,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        5,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7280256632706,
+      "dimension": 19
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8710386876428,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 5782977511448,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8146546410553,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 6352260825127,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        6,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5806814634246,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        3,
+        4,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8689793648132,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8555673881608,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 4621903499280,
+      "dimension": 16
+    },
+    {
+      "coordinates": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7705641297968,
+      "dimension": 13
+    },
+    {
+      "coordinates": [
+        3,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5431053671441,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        3,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 4458260860934,
+      "dimension": 12
+    },
+    {
+      "coordinates": [
+        3,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 7215891842564,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        3,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 5936927409152,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "allowed_orbit_mask": 8779983624208,
+      "dimension": 23
+    },
+    {
+      "coordinates": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "allowed_orbit_mask": 8559830237216,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8761762910304,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8573317689344,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8624623323136,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        4,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8710386876428,
+      "dimension": 15
+    },
+    {
+      "coordinates": [
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8555673881608,
+      "dimension": 17
+    },
+    {
+      "coordinates": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "allowed_orbit_mask": 8779983624208,
+      "dimension": 23
+    }
+  ],
+  "maximal_masks": [
+    270782468863,
+    683454317442,
+    683991124866,
+    687908442445,
+    688315226469,
+    1126422284543,
+    1135039744617,
+    1138797903917,
+    1177425084671,
+    1272071950848,
+    1276937275392,
+    1332215877776,
+    1332752685074,
+    4398393229567,
+    4400574278402,
+    4403226121600,
+    4445385835008,
+    4458260860934,
+    4510102323392,
+    4537723147865,
+    4537969886547,
+    4538790733205,
+    4542165173301,
+    4621903499280,
+    4670844061331,
+    5087769056597,
+    5247723012160,
+    5357989421954,
+    5431053671441,
+    5531973755301,
+    5532070228299,
+    5533346013695,
+    5533750175008,
+    5534425393416,
+    5660771103522,
+    5672247782417,
+    5716770292104,
+    5782977511448,
+    5784049027241,
+    5788039930753,
+    5806814634246,
+    5936927409152,
+    5993829321779,
+    6352260825127,
+    7215891842564,
+    7280256632706,
+    7304514651153,
+    7559186018629,
+    7705641297968,
+    7705777548331,
+    7709467377411,
+    7732301963712,
+    7863619577497,
+    7915027111936,
+    8146546410553,
+    8323780838089,
+    8555673881608,
+    8559830237216,
+    8573317689344,
+    8624623323136,
+    8689793648132,
+    8710386876428,
+    8742406021696,
+    8761762910304,
+    8779983624208
+  ],
+  "seconds": 2.812999999998283,
+  "script_sha256": "e54f97592e9a0ad1592ef06edb339a116e68fc67e73ac1d23563145e567c824a"
+}

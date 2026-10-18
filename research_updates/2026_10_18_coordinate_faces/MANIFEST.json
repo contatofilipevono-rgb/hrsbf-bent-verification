@@ -1,0 +1,12 @@
+{
+  "scope": "Research checkpoint integrity, not proof validity",
+  "sha256": {
+    "ANALISE_E_TRECHOS_PARA_ARTIGO.md": "247adb319a304e6e601544d45998ce4d6acc171eb3dfbade376314b26e380b72",
+    "audit_coordinate_faces.py": "e54f97592e9a0ad1592ef06edb339a116e68fc67e73ac1d23563145e567c824a",
+    "EVOLUCOES_2026_10_18.md": "4fba92fb0a0c650e91c3dbf6d6ed1c49862bcde948a560989b9d6d0fc0a869c0",
+    "README.md": "f912d7604f8179b09d89fb2f221b5953f73011bf6205faada51ee1cabdb82fa5",
+    "reports/COORDINATE_FACE_COVERAGE.json": "d156d7f9dbe8ad19570cab3992383eac86ca14211bda4022f7457bfdd0e33490",
+    "reports/FINITE_LITERATURE_CHECKS.json": "87ea307c2ea2932dbc4977d4de1f3a597369e6b542d63edbe5d55e9cb0e448fa",
+    "review_literature_checks.py": "e0811d6a15d72a63f26777c5003b868a65445fd1a90167c496537eae907019e8"
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "scope": "Independent finite arithmetic checks only; no proof of odd-order reduction or global quartic theorem.",
+  "ward_t16": {
+    "representatives": 4080,
+    "generators": 43,
+    "counts_by_order": [
+      43,
+      903,
+      12341,
+      123410
+    ],
+    "failures_by_order": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "vanishing_on_V8_checked": true
+  },
+  "transfer_t32": {
+    "walsh_at_zero": 85032960,
+    "weight": 2104967168,
+    "weight_div32_mod2048": 512
+  },
+  "quartic_n12_direct_ward64_failure": {
+    "order": 1,
+    "required_divisor_for_64_divisibility": 64,
+    "intersection_weight": 936,
+    "generators": [
+      [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          0,
+          1,
+          2,
+          11
+        ],
+        [
+          0,
+          1,
+          10,
+          11
+        ],
+        [
+          0,
+          9,
+          10,
+          11
+        ],
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          3,
+          4,
+          5,
+          6
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          5,
+          6,
+          7,
+          8
+        ],
+        [
+          6,
+          7,
+          8,
+          9
+        ],
+        [
+          7,
+          8,
+          9,
+          10
+        ],
+        [
+          8,
+          9,
+          10,
+          11
+        ]
+      ]
+    ],
+    "explicit_quartic_span_member": {
+      "selected_generators": [
+        [
+          [
+            0,
+            1,
+            2,
+            3
+          ],
+          [
+            0,
+            1,
+            2,
+            11
+          ],
+          [
+            0,
+            1,
+            10,
+            11
+          ],
+          [
+            0,
+            9,
+            10,
+            11
+          ],
+          [
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            2,
+            3,
+            4,
+            5
+          ],
+          [
+            3,
+            4,
+            5,
+            6
+          ],
+          [
+            4,
+            5,
+            6,
+            7
+          ],
+          [
+            5,
+            6,
+            7,
+            8
+          ],
+          [
+            6,
+            7,
+            8,
+            9
+          ],
+          [
+            7,
+            8,
+            9,
+            10
+          ],
+          [
+            8,
+            9,
+            10,
+            11
+          ]
+        ]
+      ],
+      "weight": 936,
+      "walsh_at_zero": 2224
+    }
+  },
+  "seconds": 0.9530000000013388,
+  "script_sha256": "e0811d6a15d72a63f26777c5003b868a65445fd1a90167c496537eae907019e8",
+  "quadratic_rotation_symmetric_bent_counterexample": {
+    "formula": "q(x)=XOR_{i=0}^5 x_i*x_{i+6}",
+    "walsh_absolute_values": [
+      64
+    ],
+    "restriction_to_V6": "sum(z_i), degree 1",
+    "full_FWHT_checked": true
+  },
+  "quartic_weight_independent_direct_evaluation": {
+    "formula": "h(x)=XOR_{i=0}^{11} x_i*x_{i+1}*x_{i+2}*x_{i+3}, indices mod12",
+    "weight": 936,
+    "walsh_at_zero": 2224
+  }
+}

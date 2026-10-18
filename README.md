@@ -110,3 +110,8 @@ python master_suite_fronteiras.py
 ## Acervo científico consolidado (14/10/2026)
 
 Os manuscritos, auditorias, referências bibliográficas e instantâneos de fontes Lean 4 de **V1, V2 e V3-C** estão catalogados em [ACERVO_CIENTIFICO/README.md](ACERVO_CIENTIFICO/README.md). Consulte o [manifesto de proveniência](ACERVO_CIENTIFICO/MANIFESTO_ORIGENS.json) para commits e hashes de origem, e o [catálogo de artigos](artigos/CATALOGO_E_DIREITOS_2026-10-14.md). Esta pasta é um acervo de pesquisa, não aprovação automática para publicação.
+
+
+## Atualização de pesquisa (18/10/2026)
+
+A [auditoria de subespaços coordenados e literatura](research_updates/2026_10_18_coordinate_faces/README.md) quantifica uma exclusão parcial de 38.520.999 vetores de coeficientes em H(12,4), conferida por duas contagens exatas, e corrige a comparação com Sun et al. Não constitui a conclusão global em Lean.
