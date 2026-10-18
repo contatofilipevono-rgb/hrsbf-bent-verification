@@ -13,3 +13,11 @@ roots = ["H12Audit", "H12PeriodFour", "H12Descent", "H12Quadratic", "H12BooleanP
 [[lean_lib]]
 name = "H12WitnessCertificate"
 roots = ["H12WitnessData000", "H12WitnessData001", "H12WitnessData002", "H12WitnessData003", "H12WitnessData004", "H12WitnessData005", "H12WitnessData006", "H12WitnessData007", "H12WitnessData008", "H12WitnessData009", "H12WitnessData010", "H12WitnessData011", "H12WitnessData012", "H12WitnessData013", "H12WitnessData014", "H12WitnessData015", "H12WitnessData016", "H12WitnessData017", "H12WitnessData018", "H12WitnessData019", "H12WitnessData020", "H12WitnessData021", "H12WitnessData022", "H12WitnessData023", "H12WitnessData024", "H12WitnessData025", "H12WitnessData026", "H12WitnessData027", "H12WitnessData028", "H12WitnessData029", "H12WitnessData030", "H12WitnessData031", "H12WitnessData032", "H12WitnessData033", "H12WitnessData034", "H12WitnessData035", "H12WitnessData036", "H12WitnessData037", "H12WitnessData038", "H12WitnessData039", "H12WitnessData040", "H12Witnesses"]
+
+[[lean_lib]]
+name = "H12PackedCertificate"
+roots = ["H12PackedPolynomial"]
+
+[[lean_lib]]
+name = "H12PackedPilotCertificate"
+roots = ["H12PackedPilot"]

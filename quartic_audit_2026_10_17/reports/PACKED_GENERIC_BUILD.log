@@ -1,0 +1,127 @@
+ℹ [2/6] Replayed H12Descent
+info: H12Descent.lean:96:0: 'H12Descent.sorted_partition' depends on axioms: [propext, Quot.sound]
+info: H12Descent.lean:97:0: 'H12Descent.descent_mod_three' depends on axioms: [propext, Quot.sound]
+info: H12Descent.lean:159:0: 'H12Descent.bent_rotational_descent' depends on axioms: [propext, Quot.sound]
+ℹ [3/6] Replayed H12BooleanPolynomial
+info: H12BooleanPolynomial.lean:99:0: 'H12BooleanPolynomial.evaluate_map_union' depends on axioms: [propext, Quot.sound]
+info: H12BooleanPolynomial.lean:100:0: 'H12BooleanPolynomial.evaluate_permutation' depends on axioms: [propext]
+⚠ [4/6] Replayed H12CertificateTheory
+warning: H12CertificateTheory.lean:65:27: This simp argument is unused:
+  Nat.testBit_two_pow
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Nat.testBit_xor, h]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12CertificateTheory.lean:93:15: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Bool.false_eq_true, ↓reduceIte]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12CertificateTheory.lean:95:15: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [↓reduceIte]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12CertificateTheory.lean:141:0: 'H12CertificateTheory.evaluate_normalize' depends on axioms: [propext]
+info: H12CertificateTheory.lean:142:0: 'H12CertificateTheory.evaluate_substitute' depends on axioms: [propext, Quot.sound]
+info: H12CertificateTheory.lean:143:0: 'H12CertificateTheory.update_of_equation' depends on axioms: [propext, Quot.sound]
+⚠ [5/6] Built H12PackedPolynomial (6.3s)
+warning: H12PackedPolynomial.lean:31:62: This simp argument is unused:
+  xor_interleave
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [unpack, Nat.testBit_xor, Nat.shiftRight_xor_distrib, ha, hb, Bool.false_xor, Bool.true_xor,
+    Bool.not_false, Bool.not_true, ↓reduceIte, evaluate_cons, ih, Bool.false_eq_true, cancel_double, Bool.xor_assoc,
+    Bool.xor_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12PackedPolynomial.lean:51:0: 'H12PackedPolynomial.value_xor' depends on axioms: [propext, Quot.sound]
+info: H12PackedPolynomial.lean:52:0: 'H12PackedPolynomial.matrix_semantics' depends on axioms: [propext, Quot.sound]
+warning: H12PackedPolynomial.lean:64:56: This simp argument is unused:
+  Nat.testBit_two_pow
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12PackedPolynomial.lean:102:0: 'H12PackedPolynomial.encode_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12PackedPolynomial.lean:103:0: 'H12PackedPolynomial.substitution_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: H12PackedPolynomial.lean:120:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: H12PackedPolynomial.lean:142:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: H12PackedPolynomial.lean:147:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+info: H12PackedPolynomial.lean:177:0: 'H12PackedPolynomial.quadratic_substitution_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: H12PackedPolynomial.lean:199:76: This simp argument is unused:
+  Nat.pow_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Nat.shiftLeft_eq, Nat.shiftRight_eq_div_pow, Nat.pow_succ]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12PackedPolynomial.lean:224:0: 'H12PackedPolynomial.value_block' depends on axioms: [propext, Quot.sound]
+info: H12PackedPolynomial.lean:278:0: 'H12PackedPolynomial.dense_substitution_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: H12PackedPolynomial.lean:293:47: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Bool.false_eq_true, ↓reduceIte, Nat.zero_testBit, Nat.testBit_two_pow, Bool.false_and,
+    Bool.true_and]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12PackedPolynomial.lean:325:0: 'H12PackedPolynomial.scatter_native' depends on axioms: [propext, Quot.sound]
+info: H12PackedPolynomial.lean:404:0: 'H12PackedPolynomial.rowNative_sound' depends on axioms: [propext, Quot.sound]
+info: H12PackedPolynomial.lean:405:0: 'H12PackedPolynomial.linearNative_sound' depends on axioms: [propext, Quot.sound]
+info: H12PackedPolynomial.lean:466:0: 'H12PackedPolynomial.productWord_sound' depends on axioms: [propext, Quot.sound]
+info: H12PackedPolynomial.lean:512:0: 'H12PackedPolynomial.applySparse_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: H12PackedPolynomial.lean:527:52: This simp argument is unused:
+  Nat.testBit_two_pow
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12PackedPolynomial.lean:596:0: 'H12PackedPolynomial.fastSubstitute_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: H12PackedPolynomial.lean:622:19: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Bool.false_eq_true, ↓reduceIte, value_zero, Bool.false_xor]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: H12PackedPolynomial.lean:624:19: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [↓reduceIte, hh]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: H12PackedPolynomial.lean:670:0: 'H12PackedPolynomial.canonicalize_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: H12PackedPolynomial.lean:736:5: Variable name `hb` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hb
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: H12PackedPolynomial.lean:744:5: Variable name `hb` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hb
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+info: H12PackedPolynomial.lean:814:0: 'H12PackedPolynomial.packedRefutes_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12PackedPolynomial.lean:816:0: 'H12PackedPolynomial.scanSubstitute_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: H12PackedPolynomial.lean:817:0: 'H12PackedPolynomial.scanCanonicalize_sound' depends on axioms: [propext, Quot.sound]
+Build completed successfully (6 jobs).

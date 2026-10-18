@@ -23,8 +23,9 @@ def main():
  data=json.loads((root/'reports/LEAN_WITNESS_DATA.json').read_text())
  reportfile=root/'reports/LEAN_WITNESS_KERNEL_AUDIT.json'
  prior={}
- if args.resume and reportfile.exists():
-  old=json.loads(reportfile.read_text())
+ resumefile=reportfile if reportfile.exists() else root/'reports/LEAN_WITNESS_KERNEL_PROGRESS.json'
+ if args.resume and resumefile.exists():
+  old=json.loads(resumefile.read_text())
   if old.get('dependency_sha256')==digest:prior={r['module']:r for r in old.get('results',[])}
  results=[]
  def save(status):

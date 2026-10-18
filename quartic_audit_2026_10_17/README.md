@@ -101,3 +101,8 @@ python tools/verify_lean_witnesses.py --lake lake --resume
 O comando produz registros por módulo e relatório em `reports/LEAN_WITNESS_KERNEL_AUDIT.json`. Um arquivo fonte gerado não representa um teste aprovado; exigir o relatório final `PASS_ALL_WALSH_REJECTIONS_KERNEL_CHECKED`. Mesmo esse PASS não substitui a cobertura formal da árvore.
 
 Veja `KHOLOSHA_PAL_REVIEW.md` para a avaliação da referência de outubro de 2026 e a correção da inferência sobre o subespaço autodual.
+
+
+## Later packed-theory checkpoint
+
+The optional packed polynomial theory has passed a separate build and kernel replay; see [PACKED_FORMALIZATION_STATUS.md](PACKED_FORMALIZATION_STATUS.md). The generated limited subtree pilot remains separate from the 28 primary modules and the previously tested handoff ZIP. The complete concrete Lean tree and unconditional nonexistence theorem remain pending. The latest fixed witness checkpoint is in `reports/LEAN_WITNESS_KERNEL_PROGRESS.json`; the ongoing run may have advanced locally.

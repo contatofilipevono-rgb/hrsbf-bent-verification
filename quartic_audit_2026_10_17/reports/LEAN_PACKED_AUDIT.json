@@ -1,0 +1,27 @@
+{
+  "status": "PASS_GENERIC_PACKED_THEORY_KERNEL_REPLAY",
+  "source_sha256": "37f994f462825bf72a3d5c7bcbedd2a1e3ad33fb1416e72855f78d6c8c019332",
+  "theorems": [
+    "applySparse_sound",
+    "productWord_sound",
+    "fastSubstitute_sound",
+    "canonicalize_sound",
+    "scanSubstitute_sound",
+    "scanCanonicalize_sound",
+    "packedRefutes_sound"
+  ],
+  "standard_axioms_only": true,
+  "concrete_global_tree_instantiated": false,
+  "pilot_subtree_18": "RUNNING_NOT_YET_VALIDATED",
+  "first_scan_transition": {
+    "exit_code": 0,
+    "seconds": 9.560127100000045,
+    "source": "C:\\Users\\Valer\\Documents\\Codex\\2026-10-16\\https-chatgpt-com-s-cx-6ad2e1da63888191af8d539bda9b3bed\\work\\T258_FirstScanTransition.lean",
+    "note": "Historical first-transition check before the variable-product specialization; no full-tree timing inference."
+  },
+  "scope": "One optional theory module. The primary 28-module audit and its previous isolated package remain separately scoped.",
+  "superseded_pilots": {
+    "T253": "Interrupted without proof result after >800 CPU seconds",
+    "T260": "Interrupted without proof result after >1200 CPU seconds"
+  }
+}
