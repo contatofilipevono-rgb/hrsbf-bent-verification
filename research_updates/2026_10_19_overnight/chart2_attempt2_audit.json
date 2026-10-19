@@ -1,0 +1,23 @@
+{
+  "run_id": 39173417125,
+  "attempt": 2,
+  "status": "PARTIAL_MODULE_TIMEOUT",
+  "modules_verified": 211,
+  "modules_total": 485,
+  "incomplete_module": "H12CloudChart2Data090",
+  "incomplete_phase": "build",
+  "validation": {
+    "status": "CONSISTENT_PARTIAL_REPORT",
+    "chart": 2,
+    "verified_records": 211,
+    "declared_modules": 485,
+    "logs_checked": true,
+    "scope": "Report consistency only; no independent kernel replay or global theorem."
+  },
+  "global_proof_complete": false,
+  "root_coverage": false,
+  "files_sha256": {
+    "chart2_attempt2_progress.json": "5605129fbf1d35358ccf6e1f0ef1088a1381a1766262b956aad3149f30fbbe85",
+    "chart2_attempt2_logs.zip": "e742d92274afa70dcb409ba1937e557f85687e1ee936ef18330dc3f7dd57f256"
+  }
+}
