@@ -1,0 +1,20 @@
+{
+  "attempt": 2,
+  "observed_at_utc": "2026-10-19T16:48:00Z",
+  "global_proof_complete": false,
+  "chart1": {
+    "run": 39258813467,
+    "job": 118181840571,
+    "cache_last_accessed_at": "2026-10-19T16:47:12.907555Z",
+    "previous_verified": 142,
+    "status": "in_progress"
+  },
+  "chart0": {
+    "run": 39258818208,
+    "job": 118181860238,
+    "cache_last_accessed_at": "2026-10-19T16:47:12.729363Z",
+    "previous_verified": 153,
+    "status": "in_progress"
+  },
+  "evidence": "Previous jobs confirmed completed before rerun. Both new cache steps completed and build steps active. Previous cache keys accessed at new start. Full resumed module records and fingerprints to be compared when logs/artifacts become available."
+}
