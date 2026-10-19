@@ -1,0 +1,779 @@
+{
+  "scope": "Hourly monitoring completed at the requested deadline; global proof remains pending.",
+  "deadline_local": "2026-10-19T08:00:00-03:00",
+  "automation_status": "PAUSED",
+  "last_audited_verified_modules": 304,
+  "last_audited_total_modules": 485,
+  "active_attempt_at_cutoff": 4,
+  "global_proof_complete": false,
+  "observations": [
+    {
+      "checked_at_utc": "2026-10-19T02:00:42.6157047Z",
+      "run_id": 39173417125,
+      "attempt": 2,
+      "job_id": 117850740684,
+      "status": "in_progress",
+      "conclusion": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install exact Lean release and verify its digest",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Generate exact chart sources",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/cache/restore@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build and replay a bounded slice",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "name": "Save resumable build and verified records",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "name": "Preserve source, progress and checker logs",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null
+        }
+      ]
+    },
+    {
+      "checked_at_utc": "2026-10-19T03:00:19.5144161Z",
+      "run_id": 39173417125,
+      "attempt": 2,
+      "status": "in_progress",
+      "conclusion": null,
+      "jobs": [
+        {
+          "id": 117850740684,
+          "status": "in_progress",
+          "conclusion": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install exact Lean release and verify its digest",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Generate exact chart sources",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/cache/restore@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Build and replay a bounded slice",
+              "status": "in_progress",
+              "conclusion": null
+            },
+            {
+              "name": "Save resumable build and verified records",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Preserve source, progress and checker logs",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "pending",
+              "conclusion": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "checked_at_utc": "2026-10-19T04:00:04.7490658Z",
+      "run_id": 39173417125,
+      "attempt": 2,
+      "status": "in_progress",
+      "conclusion": null,
+      "jobs": [
+        {
+          "id": 117850740684,
+          "status": "in_progress",
+          "conclusion": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install exact Lean release and verify its digest",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Generate exact chart sources",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/cache/restore@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Build and replay a bounded slice",
+              "status": "in_progress",
+              "conclusion": null
+            },
+            {
+              "name": "Save resumable build and verified records",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Preserve source, progress and checker logs",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "pending",
+              "conclusion": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "checked_at_utc": "2026-10-19T05:00:12.1210346Z",
+      "run_id": 39173417125,
+      "attempt": 2,
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 117850740684,
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install exact Lean release and verify its digest",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Generate exact chart sources",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/cache/restore@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Build and replay a bounded slice",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Save resumable build and verified records",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Preserve source, progress and checker logs",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ],
+      "artifacts": [
+        {
+          "id": 12163940980,
+          "name": "lean-chart-2-39173417125-2",
+          "size_in_bytes": 9580863,
+          "expired": false
+        },
+        {
+          "id": 12158900238,
+          "name": "lean-chart-2-39173417125-1",
+          "size_in_bytes": 8714687,
+          "expired": false
+        }
+      ]
+    },
+    {
+      "checked_at_utc": "2026-10-19T06:00:17.0838916Z",
+      "run_id": 39173417125,
+      "attempt": 3,
+      "status": "in_progress",
+      "conclusion": null,
+      "jobs": [
+        {
+          "id": 117897796261,
+          "status": "in_progress",
+          "conclusion": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install exact Lean release and verify its digest",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Generate exact chart sources",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/cache/restore@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Build and replay a bounded slice",
+              "status": "in_progress",
+              "conclusion": null
+            },
+            {
+              "name": "Save resumable build and verified records",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Preserve source, progress and checker logs",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "pending",
+              "conclusion": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "checked_at_utc": "2026-10-19T07:00:03.4235326Z",
+      "run_id": 39173417125,
+      "attempt": 3,
+      "status": "in_progress",
+      "conclusion": null,
+      "jobs": [
+        {
+          "id": 117897796261,
+          "status": "in_progress",
+          "conclusion": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install exact Lean release and verify its digest",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Generate exact chart sources",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/cache/restore@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Build and replay a bounded slice",
+              "status": "in_progress",
+              "conclusion": null
+            },
+            {
+              "name": "Save resumable build and verified records",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Preserve source, progress and checker logs",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "pending",
+              "conclusion": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "checked_at_utc": "2026-10-19T08:00:17.5179802Z",
+      "run_id": 39173417125,
+      "attempt": 3,
+      "status": "in_progress",
+      "conclusion": null,
+      "jobs": [
+        {
+          "id": 117897796261,
+          "status": "in_progress",
+          "conclusion": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install exact Lean release and verify its digest",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Generate exact chart sources",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/cache/restore@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Build and replay a bounded slice",
+              "status": "in_progress",
+              "conclusion": null
+            },
+            {
+              "name": "Save resumable build and verified records",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Preserve source, progress and checker logs",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "pending",
+              "conclusion": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "checked_at_utc": "2026-10-19T09:00:19.3233307Z",
+      "run_id": 39173417125,
+      "attempt": 3,
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 117897796261,
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install exact Lean release and verify its digest",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Generate exact chart sources",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/cache/restore@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Build and replay a bounded slice",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Save resumable build and verified records",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Preserve source, progress and checker logs",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ],
+      "artifacts": [
+        {
+          "id": 12170793136,
+          "name": "lean-chart-2-39173417125-3",
+          "size_in_bytes": 10600542,
+          "expired": false
+        },
+        {
+          "id": 12163940980,
+          "name": "lean-chart-2-39173417125-2",
+          "size_in_bytes": 9580863,
+          "expired": false
+        },
+        {
+          "id": 12158900238,
+          "name": "lean-chart-2-39173417125-1",
+          "size_in_bytes": 8714687,
+          "expired": false
+        }
+      ]
+    },
+    {
+      "checked_at_utc": "2026-10-19T10:00:27.9334759Z",
+      "run_id": 39173417125,
+      "attempt": 4,
+      "status": "in_progress",
+      "conclusion": null,
+      "jobs": [
+        {
+          "id": 117975333906,
+          "status": "in_progress",
+          "conclusion": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install exact Lean release and verify its digest",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Generate exact chart sources",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/cache/restore@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Build and replay a bounded slice",
+              "status": "in_progress",
+              "conclusion": null
+            },
+            {
+              "name": "Save resumable build and verified records",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Preserve source, progress and checker logs",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "pending",
+              "conclusion": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "checked_at_utc": "2026-10-19T11:00:28.1913317Z",
+      "run_id": 39173417125,
+      "attempt": 4,
+      "status": "in_progress",
+      "conclusion": null,
+      "jobs": [
+        {
+          "id": 117975333906,
+          "status": "in_progress",
+          "conclusion": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install exact Lean release and verify its digest",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Generate exact chart sources",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/cache/restore@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Build and replay a bounded slice",
+              "status": "in_progress",
+              "conclusion": null
+            },
+            {
+              "name": "Save resumable build and verified records",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Preserve source, progress and checker logs",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "pending",
+              "conclusion": null
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "pending",
+              "conclusion": null
+            }
+          ]
+        }
+      ],
+      "artifacts": [
+        {
+          "id": 12170793136,
+          "name": "lean-chart-2-39173417125-3",
+          "size_in_bytes": 10600542,
+          "expired": false
+        },
+        {
+          "id": 12163940980,
+          "name": "lean-chart-2-39173417125-2",
+          "size_in_bytes": 9580863,
+          "expired": false
+        },
+        {
+          "id": 12158900238,
+          "name": "lean-chart-2-39173417125-1",
+          "size_in_bytes": 8714687,
+          "expired": false
+        }
+      ]
+    }
+  ]
+}
