@@ -1,0 +1,18 @@
+[
+  {
+    "chart": 0,
+    "old_records": 153,
+    "new_records": 256,
+    "identical_prefix": true,
+    "identical_sources": true,
+    "identical_fingerprint": true
+  },
+  {
+    "chart": 1,
+    "old_records": 142,
+    "new_records": 234,
+    "identical_prefix": true,
+    "identical_sources": true,
+    "identical_fingerprint": true
+  }
+]
