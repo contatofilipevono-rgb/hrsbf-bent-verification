@@ -1,0 +1,25 @@
+{
+  "scope": "Parallel chart 1 and chart 0 workflow dispatches; no proof completion claimed.",
+  "runs": [
+    {
+      "chart": 1,
+      "minutes": 180,
+      "dispatch_accepted": true,
+      "observed_at_utc": "2026-10-19T13:16:58.703017+00:00",
+      "run_id": 39258813467,
+      "url": "https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/39258813467",
+      "status": "queued",
+      "head_sha": "6594557f70150bbc90a3542cdb3ab70cc62dab6a"
+    },
+    {
+      "chart": 0,
+      "minutes": 180,
+      "dispatch_accepted": true,
+      "observed_at_utc": "2026-10-19T13:17:00.754935+00:00",
+      "run_id": 39258818208,
+      "url": "https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/39258818208",
+      "status": "queued",
+      "head_sha": "6594557f70150bbc90a3542cdb3ab70cc62dab6a"
+    }
+  ]
+}
