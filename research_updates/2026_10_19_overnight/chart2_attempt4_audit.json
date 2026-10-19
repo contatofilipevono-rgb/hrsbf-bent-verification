@@ -1,0 +1,33 @@
+{
+  "run_id": 39173417125,
+  "attempt": 4,
+  "status": "PASS_CHART_DEPENDENCIES_AND_ROOT_KERNEL_REPLAY",
+  "modules_verified": 485,
+  "modules_total": 485,
+  "incomplete_module": null,
+  "incomplete_phase": null,
+  "validation": {
+    "status": "CONSISTENT_COMPLETE_CHART_REPORT",
+    "chart": 2,
+    "verified_records": 485,
+    "declared_modules": 485,
+    "logs_checked": true,
+    "scope": "Report consistency only; no independent kernel replay or global theorem."
+  },
+  "global_proof_complete": false,
+  "root_coverage": true,
+  "files_sha256": {
+    "chart2_attempt4_progress.json": "87b4866fdac89f7e6bf9b4ff444659160aa368153b85cbe43c7c9298562ab3ef",
+    "chart2_attempt4_logs.zip": "d4bb2df89e3d093e57bc38f0dbcf4feb50a93d5b17beba5efa332a40958bbcbf"
+  },
+  "all_485_source_hashes_checked": true,
+  "generated_sources_in_artifact": 364,
+  "shared_sources_checked_against_commit": "db683adfcb9bb14314fa1a4db4b9091980885e7d",
+  "previous_304_records_preserved": true,
+  "final_refutation_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "artifact_sha256": "dc434dc6a4365ea97d2431a2862b092993c8aec5766c043306ff08c19c489fb2"
+}

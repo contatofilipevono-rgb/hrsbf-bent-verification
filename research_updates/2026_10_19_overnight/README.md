@@ -1,15 +1,13 @@
-# Acompanhamento Lean: madrugada de 19/10/2026
+# Carta 2 concluida no Lean - 19/10/2026
 
-Execução: https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/39173417125
+A tentativa 4 concluiu os 485 modulos, inclusive H12CloudChart2.refutation, com compilacao e repeticao pelo nucleo Lean. A raiz concreta da carta 2 esta coberta. A prova global permanece pendente: faltam as cartas 1 e 0 e a integracao final.
 
-Cada tentativa preservada tem um relatório, os logs dos módulos aprovados e uma auditoria de consistência. Os números de módulos não representam percentuais de cobertura matemática. O sucesso operacional do workflow pode corresponder a uma etapa parcial.
+Evolucao dos checkpoints: 132 -> 211 -> 304 -> 485 modulos. Os registros anteriores foram preservados nas retomadas. Foram conferidos os hashes de todas as 485 fontes: 364 no artefato e 121 compartilhadas no commit db683adfcb9bb14314fa1a4db4b9091980885e7d. Os logs do teorema final indicam somente propext, Classical.choice e Quot.sound.
 
-Tentativa 1: 132/485 módulos; cache e artefato salvos. Tentativa 2: 211/485 módulos, incluindo 121 dependências compartilhadas e 90 módulos de dados da carta 2. O log da tentativa 2 confirma restauração do cache anterior e início no módulo 133; os 132 registros anteriores são idênticos e o fingerprint permaneceu igual. A tentativa 2 terminou pelo orçamento total de tempo em Data090, ainda na compilação. A tentativa 3 foi iniciada após essa auditoria.
+O arquivo chart2_complete_artifact.zip preserva integralmente o artefato GitHub de 12.575.593 bytes, SHA-256 dc434dc6a4365ea97d2431a2862b092993c8aec5766c043306ff08c19c489fb2. Inclui fontes gerados, relatorio e logs. As bibliotecas binarias Linux estao no cache GitHub, nao nesse ZIP.
 
-Os relatórios e os hashes dos logs foram conferidos por `research_updates/2026_10_18_cloud_report_audit/audit_cloud_report.py`. Para reproduzir, extrair o ZIP de logs em pasta própria e fornecer o relatório, --chart 2 e --logs àquele auditor. Isso verifica consistência de evidência; não substitui a repetição pelo núcleo Lean.
+Para conferir o relatorio, extrair o ZIP em pasta propria e executar o auditor research_updates/2026_10_18_cloud_report_audit/audit_cloud_report.py com o caminho cloud_progress/chart2/progress.json, --chart 2 e --logs cloud_progress/chart2/logs. A auditoria de consistencia nao substitui uma nova reproducao pelo nucleo Lean.
 
-A raiz da carta 2 e a prova global permanecem pendentes nesta observação. Os horários e acontecimentos posteriores devem ser lidos nos checkpoints seguintes, sem tratar este texto como estado vivo.
+Execucao: https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/39173417125/attempts/4
 
-## Atualização das 06h de Brasília
-
-Tentativa 3: 304/485 módulos, incluindo 121 dependências e 183 módulos de dados (Data000–Data182). Os 211 registros anteriores e o fingerprint foram preservados; os logs confirmam início no módulo 212 após restauração do cache. A auditoria dos 304 registros e logs passou. Data183 ficou incompleto na compilação ao esgotar o orçamento da rodada. A tentativa 4 foi iniciada após a auditoria, ainda na carta 2. A raiz e a prova global continuam pendentes.
+O acompanhamento automatico foi encerrado as 08h, conforme BALANCO_08H.md. Esta conclusao posterior foi conferida apos nova mensagem do usuario. As cartas 1 e 0 nao foram iniciadas automaticamente apos o encerramento.
