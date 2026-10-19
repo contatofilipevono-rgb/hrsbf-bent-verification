@@ -1,0 +1,72 @@
+[
+  {
+    "reason": "Make positivity explicit in the abstract, matching the theorem.",
+    "before": "More precisely, if $n$ is even and $f$",
+    "after": "More precisely, if $n>0$ is even and $f$"
+  },
+  {
+    "reason": "State the precise nonlinearity property without an unsupported direct implementation claim.",
+    "before": "Bent functions are those at maximal distance from the affine functions; they were introduced by Rothaus [6] and are central to the design of stream and block ciphers.",
+    "after": "Bent functions, introduced by Rothaus [6], attain the largest possible nonlinearity in even dimension, where nonlinearity is the minimum Hamming distance to an affine Boolean function."
+  },
+  {
+    "reason": "Avoid an unnecessary unproved asymptotic count in the introduction.",
+    "before": "Such functions have short descriptions (about $2^n/n$ free values), which makes them attractive both for search and for implementation, and rotation symmetric bent functions (RSBFs) have been studied extensively.",
+    "after": "Their truth tables are constant on cyclic orbits, which reduces the number of independent values and is useful in computational searches. Rotation symmetric bent functions (RSBFs) have been studied extensively."
+  },
+  {
+    "reason": "Identify a previously known cubic family and disclose the correction to a cited historical criterion.",
+    "before": "Partial results are due to Meng, Chen and Fu [2], Zhang and Gao [3], Cusick and Sanger [4] and Sun, Shi, Liu and Fu [5]; they treat, among other things, particular families of dimensions such as $n=2p$.",
+    "after": "Earlier work includes Meng, Chen and Fu [2], Zhang and Gao [3], Cusick and Sanger [4], and Sun, Shi, Liu and Fu [5]. In particular, the homogeneous cubic case in dimensions $n=2p$, with $p>2$ prime, follows from [4, Theorem 3.8]. The present statement covers every positive even dimension and allows lower-degree terms. Cusick and Sanger also point out that Theorem 3.1 of [3] is false; that criterion is not used here."
+  },
+  {
+    "reason": "Existence witnesses prove nonvacuity, not an unspecified optimality claim.",
+    "before": "it is sharp in the sense of Section 5:",
+    "after": "its hypotheses are nonvacuous, as Section 5 shows:"
+  },
+  {
+    "reason": "Restore the essential normalization in the strategy paragraph.",
+    "before": "a quadratic is balanced exactly when it is non-zero on its radical",
+    "after": "a quadratic is balanced exactly when its normalisation $q+q(0)$ is non-zero on the radical of its polar"
+  },
+  {
+    "reason": "Avoid confusing a period with the least rotational period.",
+    "before": "the subspace of $x$ with period $2^s$",
+    "after": "the subspace of vectors fixed by rotation through $2^s$ coordinates"
+  },
+  {
+    "reason": "Identify precisely which iterated derivatives are constant; the second derivative of a cubic need not be constant.",
+    "before": "A derivative lowers the degree by at least one, so the iterated derivatives in (a) and (b) are constant, which gives independence of $x$;",
+    "after": "A derivative lowers the degree by at least one. Thus $D_aD_bq$ and $D_aD_bD_cg$ are constant, giving the asserted independence of the base point;"
+  },
+  {
+    "reason": "Separate the power-of-two restriction from the other indispensable uses of cyclic symmetry.",
+    "before": "The only place where the cyclic structure of the dimension is used is a power-of-two identity $(S+I)^{2^s}=S^{2^s}+I$ in characteristic two.",
+    "after": "The power-of-two assumption enters the quadratic rigidity argument through nilpotence of $\\rho+I$. Cyclic invariance is also used in the fixed-space coordinates, half-turn cancellation and fibre covariance."
+  },
+  {
+    "reason": "Use the exact property established by the witnesses.",
+    "before": "**Sharpness (non-vacuity).**",
+    "after": "**Nonvacuity.**"
+  },
+  {
+    "reason": "Keep the organization paragraph consistent with the exact role of the example.",
+    "before": "discusses sharpness and scope",
+    "after": "discusses nonvacuity and scope"
+  },
+  {
+    "reason": "Constants reverse Walsh signs; state the correct role of the example.",
+    "before": "and affine terms only permute Walsh values. So the antipodal coefficient cannot be dropped from the conclusion, and Theorem 1 is a *necessity* result, not a classification of bent cubics.",
+    "after": "and affine additions permute Walsh frequencies and may reverse signs. Thus the hypotheses of Theorem 1 are attained, including invariant affine terms. The theorem gives a *necessary* coefficient condition, not a classification of bent cubics."
+  },
+  {
+    "reason": "Repeated vectors may have smaller least period, including zero and all ones.",
+    "before": "has period $h$ and $h\\mid n/2=hm$",
+    "after": "has period dividing $h$ and $h\\mid n/2=hm$"
+  },
+  {
+    "reason": "Describe the evidence without treating an author check as certification.",
+    "before": "The latter has *not* been separately formalized; it is elementary and is checked by hand in this paper.",
+    "after": "The latter has *not* been separately formalized; its complete mathematical argument is given in Lemma 3.2."
+  }
+]

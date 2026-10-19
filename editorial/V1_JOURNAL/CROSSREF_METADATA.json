@@ -1,0 +1,214 @@
+[
+  {
+    "DOI": "10.1016/j.dam.2007.04.029",
+    "title": [
+      "Rotation symmetric Boolean functions—Count and cryptographic properties"
+    ],
+    "author": [
+      {
+        "given": "Pantelimon",
+        "family": "Stănică",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Subhamoy",
+        "family": "Maitra",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "volume": "156",
+    "issue": "10",
+    "page": "1567-1580",
+    "article-number": null,
+    "published": {
+      "date-parts": [
+        [
+          2008,
+          5
+        ]
+      ]
+    },
+    "container-title": [
+      "Discrete Applied Mathematics"
+    ]
+  },
+  {
+    "DOI": "10.1016/j.dam.2010.02.009",
+    "title": [
+      "On homogeneous rotation symmetric bent functions"
+    ],
+    "author": [
+      {
+        "given": "Qiang",
+        "family": "Meng",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ]
+      },
+      {
+        "given": "Lusheng",
+        "family": "Chen",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ]
+      },
+      {
+        "given": "Fang-Wei",
+        "family": "Fu",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ]
+      }
+    ],
+    "volume": "158",
+    "issue": "10",
+    "page": "1111-1117",
+    "article-number": null,
+    "published": {
+      "date-parts": [
+        [
+          2010,
+          5
+        ]
+      ]
+    },
+    "container-title": [
+      "Discrete Applied Mathematics"
+    ]
+  },
+  {
+    "DOI": "10.1007/s10623-026-01848-4",
+    "title": [
+      "On the conjecture about the nonexistence of homogeneous rotation symmetric bent functions"
+    ],
+    "author": [
+      {
+        "given": "Lei",
+        "family": "Sun",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ]
+      },
+      {
+        "given": "Zexia",
+        "family": "Shi",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ]
+      },
+      {
+        "given": "Jian",
+        "family": "Liu",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ]
+      },
+      {
+        "given": "Fang-Wei",
+        "family": "Fu",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ]
+      }
+    ],
+    "volume": "94",
+    "issue": "4",
+    "page": null,
+    "article-number": "93",
+    "published": {
+      "date-parts": [
+        [
+          2026,
+          4
+        ]
+      ]
+    },
+    "container-title": [
+      "Designs, Codes and Cryptography"
+    ]
+  },
+  {
+    "DOI": "10.1016/0097-3165(76)90024-8",
+    "title": [
+      "On “bent” functions"
+    ],
+    "author": [
+      {
+        "given": "O.S",
+        "family": "Rothaus",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "volume": "20",
+    "issue": "3",
+    "page": "300-305",
+    "article-number": null,
+    "published": {
+      "date-parts": [
+        [
+          1976,
+          5
+        ]
+      ]
+    },
+    "container-title": [
+      "Journal of Combinatorial Theory, Series A"
+    ]
+  }
+]

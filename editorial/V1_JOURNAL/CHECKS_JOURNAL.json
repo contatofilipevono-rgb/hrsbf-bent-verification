@@ -1,0 +1,99 @@
+{
+  "third_difference_constant_checks": 131072,
+  "second_difference_affine_checks": 131072,
+  "two_variable_examples": [
+    {
+      "beta": 0,
+      "gamma": 0,
+      "delta": 0,
+      "walsh": [
+        4,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "beta": 0,
+      "gamma": 0,
+      "delta": 1,
+      "walsh": [
+        -4,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "beta": 0,
+      "gamma": 1,
+      "delta": 0,
+      "walsh": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "beta": 0,
+      "gamma": 1,
+      "delta": 1,
+      "walsh": [
+        0,
+        0,
+        0,
+        -4
+      ]
+    },
+    {
+      "beta": 1,
+      "gamma": 0,
+      "delta": 0,
+      "walsh": [
+        2,
+        2,
+        2,
+        -2
+      ]
+    },
+    {
+      "beta": 1,
+      "gamma": 0,
+      "delta": 1,
+      "walsh": [
+        -2,
+        -2,
+        -2,
+        2
+      ]
+    },
+    {
+      "beta": 1,
+      "gamma": 1,
+      "delta": 0,
+      "walsh": [
+        -2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "beta": 1,
+      "gamma": 1,
+      "delta": 1,
+      "walsh": [
+        2,
+        -2,
+        -2,
+        -2
+      ]
+    }
+  ],
+  "pdf_pages": 7,
+  "forbidden_typographic_diagnostics": 0,
+  "formal_sources_unchanged": true,
+  "new_lean_compilation": false,
+  "scope": "Finite controls and document diagnostics; universal proof remains the article argument"
+}

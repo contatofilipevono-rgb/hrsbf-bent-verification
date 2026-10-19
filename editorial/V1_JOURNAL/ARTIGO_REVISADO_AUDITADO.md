@@ -1,0 +1,207 @@
+# Rotation symmetric bent functions of degree at most three: the antipodal term is necessary
+
+**Filipe Martins Vono**
+
+*MSC 2020:* 94D10 (Boolean functions), 06E30, 11T71.
+*Keywords:* bent functions, rotation symmetric Boolean functions, Stănică–Maitra conjecture, algebraic normal form, quadratic forms in characteristic two.
+
+---
+
+## Abstract
+
+A Boolean function on $\mathbb F_2^n$ is rotation symmetric if it is invariant under cyclic shifts of its coordinates. Stănică and Maitra conjectured that no homogeneous rotation symmetric function of degree at least three is bent. We prove the cubic case in every even dimension. More precisely, if $n>0$ is even and $f$ is a rotation symmetric bent function of degree at most three, then the coefficient of $x_0x_{n/2}$ in the algebraic normal form of $f$ equals $1$. A homogeneous cubic has this coefficient equal to zero, so it cannot be bent. The proof has three ingredients: a reduction to the fixed space of an odd-order rotation, obtained by averaging on the radical of a quadratic form; a rigidity statement for rotation symmetric quadratics in dimension a power of two; and a contradiction between the balance and the constancy of one fibre of the function. No case analysis in $n$ is needed.
+
+---
+
+## 1. Introduction
+
+A Boolean function $f:\mathbb F_2^n\to\mathbb F_2$, $n$ even, is *bent* if all its Walsh coefficients have the same absolute value $2^{n/2}$. Bent functions, introduced by Rothaus [6], attain the largest possible nonlinearity in even dimension, where nonlinearity is the minimum Hamming distance to an affine Boolean function.
+
+A function is *rotation symmetric* if $f(x_0,\dots,x_{n-1})=f(x_1,\dots,x_{n-1},x_0)$. Their truth tables are constant on cyclic orbits, which reduces the number of independent values and is useful in computational searches. Rotation symmetric bent functions (RSBFs) have been studied extensively. A rotation symmetric function is *homogeneous* of degree $d$ if its algebraic normal form (ANF) contains only monomials of degree $d$. Quadratic homogeneous RSBFs exist in every even dimension. Stănică and Maitra [1] conjectured that no homogeneous RSBF of degree $\ge 3$ exists. Earlier work includes Meng, Chen and Fu [2], Zhang and Gao [3], Cusick and Sanger [4], and Sun, Shi, Liu and Fu [5]. In particular, the homogeneous cubic case in dimensions $n=2p$, with $p>2$ prime, follows from [4, Theorem 3.8]. The present statement covers every positive even dimension and allows lower-degree terms. Cusick and Sanger also point out that Theorem 3.1 of [3] is false; that criterion is not used here.
+
+**Main result.** For even $n=2H$ let $[x_0x_H]f\in\mathbb F_2$ denote the coefficient of the monomial $x_0x_H$ in the ANF of $f$. For rotation symmetric $f$ this equals the coefficient of every *antipodal* monomial $x_ix_{i+H}$.
+
+> **Theorem 1.** Let $n>0$ be even and let $f:\mathbb F_2^n\to\mathbb F_2$ be rotation symmetric, bent, and of degree at most $3$. Then $[x_0x_{n/2}]f=1$.
+
+> **Corollary 2.** For every even $n>0$ there is no homogeneous rotation symmetric bent function of degree $3$.
+
+The corollary is immediate: a homogeneous cubic has no quadratic monomials. Theorem 1 is stronger than the corollary because it allows arbitrary lower-degree terms, and its hypotheses are nonvacuous, as Section 5 shows: the antipodal form $\sum_{i<H}x_ix_{i+H}$ plus any affine rotation symmetric term is bent.
+
+**Idea of the proof.** Write $n=2^s m$ with $m$ odd. (i) Bentness of a cubic rotation symmetric $f$ passes to its restriction $g$ to the subspace of vectors fixed by rotation through $2^s$ coordinates, a rotation symmetric function on $\mathbb F_2^{2^s}$ (Section 3). This uses that a quadratic is balanced exactly when its normalisation $q+q(0)$ is non-zero on the radical of its polar, and that averaging over a group action of odd order does not change this behaviour. (ii) If $[x_0x_H]f=0$, terms of the ANF cancel in pairs under the half-turn $x_i\mapsto x_{i+H}$, so $g$ is constant on the diagonal $\{(u,u)\}$ (Section 5). (iii) On $\mathbb F_2^{2^s}$, a bent function of degree $\le 3$ that is constant on the diagonal cannot exist: Parseval forces a certain fibre to be balanced, while a rigidity property of rotation symmetric quadratics forces the same fibre to be constant (Section 4). The power-of-two assumption enters the quadratic rigidity argument through nilpotence of $\rho+I$. Cyclic invariance is also used in the fixed-space coordinates, half-turn cancellation and fibre covariance.
+
+**Machine verification.** The statement of Theorem 1 has been checked in Lean 4; see Section 6 for exactly what was and was not formalized. The paper is self-contained and the human proof below does not depend on the formalization.
+
+**Organization.** Section 2 fixes notation and collects standard facts. Section 3 treats quadratic forms and the odd-order reduction. Section 4 proves the obstruction in power-of-two dimension. Section 5 proves Theorem 1 and discusses nonvacuity and scope. Section 6 describes the formal verification.
+
+---
+
+## 2. Preliminaries
+
+### 2.1 Notation
+
+All spaces are finite-dimensional over $\mathbb F_2$. A function has *degree at most $d$* if its ANF has degree $\le d$; we call such functions *quadratic* ($d=2$) or *cubic* ($d=3$) without implying that the top degree is attained. Composing with a linear map does not raise degree.
+
+| Symbol | Meaning |
+|---|---|
+| $V_n=\mathbb F_2^n$ | indices of coordinates are read modulo $n$ |
+| $\rho$ | rotation, $(\rho x)_i=x_{i+1}$; $f$ rotation symmetric means $f\circ\rho=f$ |
+| $c_A(f)$ | ANF coefficient of $\prod_{i\in A}x_i$ |
+| $D_af(x)=f(x+a)+f(x)$ | derivative |
+| $W_f(b)=\sum_x(-1)^{f(x)+b\cdot x}$ | Walsh transform |
+| $\Delta_f(a)=\sum_x(-1)^{D_af(x)}$ | autocorrelation |
+| $G(q)=\sum_x(-1)^{q(x)}$ | character sum |
+| $B_q(a,b)=q(a+b)+q(a)+q(b)+q(0)$ | polar form |
+| $\operatorname{Rad}B=\{r: B(r,\cdot)=0\}$ | radical |
+| $q_0=q+q(0)$ | normalised quadratic |
+
+A function $f$ on $V_n$ is **bent** if $n$ is even and $|W_f(b)|=2^{n/2}$ for all $b$. The same definition is used on any space $U\cong V_k$ after choosing a basis; it does not depend on the basis.
+
+### 2.2 Standard facts
+
+**Lemma 2.1 (derivatives).**
+(a) If $\deg q\le 2$, then $B_q$ is alternating bilinear and $B_q(a,b)=D_aD_bq(x)$ for every $x$.
+(b) If $\deg g\le3$, then $\Theta(a,b,c)=D_aD_bD_cg(x)$ does not depend on $x$ and is symmetric and trilinear. Moreover $D_aD_bg(x)=D_aD_bg(0)+\Theta(a,b,x)$, and $B_{D_cg}(a,b)=\Theta(a,b,c)$.
+
+*Proof.* A derivative lowers the degree by at least one. Thus $D_aD_bq$ and $D_aD_bD_cg$ are constant, giving the asserted independence of the base point; the formula $D_aD_bq(0)=B_q(a,b)$ is a rewriting of the definition. The identity $D_{a+a'}=D_a+D_{a'}+D_{a'}D_a$ shows additivity in each argument, since the correction term is one more derivative of the constant function and vanishes. Alternation follows from $B_q(a,a)=q(0)+2q(a)+q(0)=0$. Symmetry holds because derivatives commute. The remaining formula is $D_xD_aD_bg(0)=D_aD_bg(x)+D_aD_bg(0)$. $\square$
+
+**Lemma 2.2 (flat Walsh spectrum $\Leftrightarrow$ balanced derivatives).** For any $f$ on $V_n$ and any $b$,
+$$W_f(b)^2=\sum_{a}\Delta_f(a)(-1)^{b\cdot a}. \tag{2.1}$$
+Consequently $W_f(b)^2=2^n$ for all $b$ if and only if $\Delta_f(a)=0$ for every $a\ne0$, that is, if and only if every nonzero derivative $D_af$ is balanced.
+
+*Proof.* Expand $W_f(b)^2=\sum_{x,y}(-1)^{f(x)+f(y)+b\cdot(x+y)}$ and put $y=x+a$. This is the classical derivative criterion for bentness [6]. For the equivalence, Fourier inversion gives $\Delta_f(a)=2^{-n}\sum_bW_f(b)^2(-1)^{a\cdot b}$. If $W_f^2\equiv2^n$, the sum vanishes for $a\neq0$. Conversely, if $\Delta_f(a)=0$ for $a\ne0$ then (2.1) gives $W_f(b)^2=\Delta_f(0)=2^n$. $\square$
+
+**Lemma 2.3 (rotation symmetry and the ANF).** If $f\circ\rho=f$ then $c_{A+1}(f)=c_A(f)$ for every $A\subseteq\mathbb Z_n$. In particular, for $n=2H$, all coefficients $c_{\{i,i+H\}}(f)$ are equal to $\alpha(f):=[x_0x_H]f$.
+
+*Proof.* $(f\circ\rho)(x)=\sum_Ac_A(f)\prod_{i\in A}x_{i+1}$ is an ANF, and ANFs are unique. $\square$
+
+*Remark.* $\alpha(f)$ is a single coefficient. It should not be confused with the sum of all antipodal coefficients, which in characteristic two equals $H\,\alpha(f)$ and vanishes for even $H$.
+
+---
+
+## 3. Quadratic forms and the odd-order reduction
+
+**Lemma 3.1 (Gauss sums).** Let $q$ be a function of degree $\le2$ on a space $V$, and $R=\operatorname{Rad}B_q$. Then $q_0|_R$ is linear and
+$$G(q)^2=|V|\sum_{r\in R}(-1)^{q_0(r)}. \tag{3.1}$$
+Consequently
+$$q\ \text{is balanced}\iff q_0|_R\not\equiv0. \tag{3.2}$$
+
+*Proof.* For $r,r'\in R$, $q_0(r+r')=q_0(r)+q_0(r')+B_q(r,r')=q_0(r)+q_0(r')$, so $q_0|_R$ is linear. Write $G(q)^2=\sum_{x,y}(-1)^{q(x)+q(y)}$ and substitute $y=x+r$. Since $q(x+r)+q(x)=B_q(x,r)+q_0(r)$,
+$$G(q)^2=\sum_{r\in V}(-1)^{q_0(r)}\sum_{x}(-1)^{B_q(x,r)}.$$
+The inner sum is $|V|$ if $r\in R$ and $0$ otherwise, which is (3.1). The sum of a nontrivial character over $R$ vanishes and the sum of the trivial one equals $|R|>0$; so $G(q)=0$ iff $q_0|_R\ne0$. $\square$
+
+(The cases of constant $q$, degenerate $B_q$ and $\dim V=0$ are included.)
+
+**Lemma 3.2 (odd-order averaging).** Let $T\in\mathrm{GL}(V)$ with $T^m=I$ for an odd integer $m\ge1$, let $U=\operatorname{Fix}(T)$, and let $q$ have degree $\le2$ with $q\circ T=q$. Then $q$ is balanced on $V$ if and only if $q|_U$ is balanced.
+
+*Proof.* Put $\Pi=I+T+\dots+T^{m-1}$. Since $T\Pi=\Pi$, $\Pi(V)\subseteq U$, and $\Pi|_U=mI=I$ because $m$ is odd; hence $\Pi(V)=U$. The invariance $q\circ T=q$ gives $B_q(Ta,Tb)=B_q(a,b)$, so $R=\operatorname{Rad}B_q$ is $T$-stable.
+
+*Radical of the restriction.* For $u\in U$ and $x\in V$,
+$$B_q(u,\Pi x)=\sum_{j<m}B_q(T^{-j}u,x)=mB_q(u,x)=B_q(u,x).$$
+If $u\in U$ is orthogonal to $U$, it is orthogonal to every $\Pi x$, hence to every $x$. So $\operatorname{Rad}(B_q|_{U\times U})=R\cap U$.
+
+*Transfer of the nonvanishing.* The normalised function $(q|_U)_0$ is the restriction of $q_0$. If $q_0$ is nonzero on $R\cap U$ it is nonzero on $R$. Conversely let $r\in R$ with $q_0(r)=1$. Then $\Pi r\in R\cap U$, and by linearity of $q_0|_R$ and the invariance $q_0\circ T=q_0$,
+$$q_0(\Pi r)=\sum_{j<m}q_0(T^jr)=m\,q_0(r)=1.$$
+Thus $q_0|_R\ne0$ iff $q_0|_{R\cap U}\ne0$, and (3.2) on $V$ and on $U$ concludes. $\square$
+
+**Corollary 3.3 (bent restriction).** Let $n$ be even, $T$ as in Lemma 3.2 on $V=V_n$, and $f:V_n\to\mathbb F_2$ bent with $\deg f\le3$ and $f\circ T=f$. Then $\dim U$ is even and $f|_U$ is bent.
+
+*Proof.* Let $0\ne a\in U$. Since $Ta=a$, $D_af\circ T=D_a(f\circ T)=D_af$, and $D_af$ has degree $\le2$ and is balanced (Lemma 2.2). By Lemma 3.2 its restriction $D_a(f|_U)=(D_af)|_U$ is balanced. So $\Delta_{f|_U}(a)=0$ for every nonzero $a\in U$, and Lemma 2.2 (applied on $U\cong V_k$, $k=\dim U$) gives $W_{f|_U}(b)^2=2^k$ for all $b$. Because Walsh coefficients are integers, $k$ is even, and $f|_U$ is bent. $\square$
+
+**Lemma 3.4 (rigidity of rotation symmetric quadratics).** Let $N=2^s$, $s\ge0$. If $q:V_N\to\mathbb F_2$ has degree $\le2$, satisfies $q\circ\rho=q$ and is balanced, then $B_q=0$.
+
+*Proof.* Suppose $B:=B_q\ne0$; then $R=\operatorname{Rad}B$ is a proper subspace, stable under $\rho$ (as $B$ is $\rho$-invariant). Let $\nu=\rho+I$. In characteristic two with $N$ a power of two, $\nu^N=\rho^N+I=0$. Moreover
+$$\operatorname{im}\nu=\Big\{x:\ \textstyle\sum_ix_i=0\Big\}:$$
+the inclusion $\subseteq$ is clear, and given $x$ of even weight the equations $y_{i+1}+y_i=x_i$ can be solved successively around the cycle, the wrap-around condition being exactly $\sum x_i=0$.
+
+*Step 1: $R\subseteq\operatorname{im}\nu$.* If $R$ contained a vector of odd weight, then since $\operatorname{im}\nu$ is a hyperplane not containing it, $V_N=R+\nu V_N$. Using $\nu R\subseteq R$ we get $\nu V_N=\nu R+\nu^2V_N\subseteq R+\nu^2V_N$, so $V_N=R+\nu^2V_N$, and by induction $V_N=R+\nu^jV_N$ for all $j$. With $j=N$ this gives $V_N=R$, a contradiction.
+
+*Step 2: $q_0|_R=0$.* Let $r\in R$, so $r=\rho y+y$ for some $y$ by Step 1. Using $q_0(\rho y)=q_0(y)$ and the alternation of $B$,
+$$q_0(r)=q_0(\rho y)+q_0(y)+B(\rho y,y)=B(r+y,y)=B(r,y)+B(y,y)=0.$$
+By (3.2) $q$ is not balanced, a contradiction. $\square$
+
+---
+
+## 4. The constant-diagonal obstruction
+
+Throughout this section $N=2h$ and a vector of $V_N$ is written $(u,w)$ with $u,w\in V_h$. Let $\mathbf 1_h$ denote the all-ones vector of $V_h$, $J=\mathbf 1_N$, and put
+$$d(u)=(u,u),\qquad \varepsilon(w)=(0,w).$$
+Let $\theta(u,w)=(w,u)$ be the block swap; it equals $\rho^h$.
+
+**Lemma 4.1 (fibres of a bent function with constant diagonal).** Let $g:V_N\to\mathbb F_2$ be bent and constant on $\{d(u)\}$. For $z\in V_h$ let $\varphi_z(u)=g(u,u+z)$. Then $\varphi_z$ is balanced for every $z\ne0$.
+
+*Proof.* Put $\gamma(z)=\sum_u(-1)^{\varphi_z(u)}$. Its Walsh transform in $z$ is
+$$\sum_{z}\gamma(z)(-1)^{b\cdot z}=\sum_{u,v}(-1)^{g(u,v)+b\cdot(u+v)}=W_g(b,b),$$
+where $v=u+z$. Parseval on $V_h$ and bentness ($W_g^2=2^{N}=2^{2h}$) give
+$$\sum_z\gamma(z)^2=2^{-h}\sum_{b\in V_h}W_g(b,b)^2=2^{-h}\cdot2^h\cdot2^{2h}=2^{2h}.$$
+Since $g$ is constant on the diagonal, $\gamma(0)^2=(2^h)^2=2^{2h}$. Hence $\gamma(z)=0$ for all $z\ne0$. $\square$
+
+The hypothesis of constancy on the diagonal is indispensable: without it $\gamma(0)^2$ may be smaller and the argument gives nothing.
+
+**Proposition 4.2.** Let $N=2^s$ with $s\ge1$. A rotation symmetric function $g:V_N\to\mathbb F_2$ of degree at most three that is constant on the diagonal is not bent.
+
+*Proof.* Assume $g$ is bent. We show that the fibre $\varphi:=\varphi_{\mathbf 1_h}$ is constant, which contradicts Lemma 4.1 because $\mathbf 1_h\neq0$.
+
+*(i) The derivative in the direction $J$.* $D_Jg$ has degree $\le2$, is $\rho$-invariant ($\rho J=J$) and is balanced since $g$ is bent. By Lemma 3.4, $B_{D_Jg}=0$, that is, by Lemma 2.1(b),
+$$\Theta(a,b,J)=0\quad\text{for all }a,b. \tag{4.1}$$
+
+*(ii) The polar of $\varphi$.* Since $(u,u+\mathbf 1_h)=d(u)+\varepsilon(\mathbf 1_h)$,
+$$B_\varphi(u,v)=D_{d(u)}D_{d(v)}g\big(\varepsilon(\mathbf 1_h)\big)=D_{d(u)}D_{d(v)}g(0)+\Theta\big(d(u),d(v),\varepsilon(\mathbf 1_h)\big).$$
+The first term is $g(d(u+v))+g(d(u))+g(d(v))+g(0)=0$ because $g$ is constant on the diagonal. Hence
+$$B_\varphi(u,v)=\Theta\big(d(u),d(v),\varepsilon(\mathbf 1_h)\big). \tag{4.2}$$
+
+*(iii) Use of the block swap.* $\theta=\rho^h$ preserves $g$, hence $\Theta$: $\Theta(\theta a,\theta b,\theta c)=\Theta(a,b,c)$. It fixes $d(u)$ and satisfies
+$$J=\varepsilon(\mathbf 1_h)+\theta\varepsilon(\mathbf 1_h),\qquad d(v)=\varepsilon(v)+\theta\varepsilon(v).$$
+Trilinearity and $\theta$-invariance give
+$$\Theta\big(d(u),\varepsilon(v),J\big)=\Theta\big(d(u),\varepsilon(v),\varepsilon(\mathbf 1_h)\big)+\Theta\big(d(u),\theta\varepsilon(v),\varepsilon(\mathbf 1_h)\big)=\Theta\big(d(u),d(v),\varepsilon(\mathbf 1_h)\big),$$
+where the second summand was obtained by applying $\theta$ to all three arguments. With (4.2) and (4.1),
+$$B_\varphi(u,v)=\Theta\big(d(u),\varepsilon(v),J\big)=0.$$
+
+*(iv) Constancy of $\varphi$.* Since $B_\varphi=0$, $\varphi+\varphi(0)$ is additive, hence linear: $\varphi(u)=\ell(u)+c$. Let $\sigma$ be the rotation of $V_h$ and $e$ its last standard basis vector $e_{h-1}$. A direct computation gives $\rho(u,u+\mathbf 1_h)=(\sigma u+e,\ \sigma u+e+\mathbf 1_h)$, so $\varphi(\sigma u+e)=\varphi(u)$, i.e. $\ell(\sigma u)+\ell(e)=\ell(u)$ for all $u$. Writing $\ell(u)=\sum\lambda_iu_i$, comparing coefficients gives $\lambda_{i-1}=\lambda_i$ for all $i$ (so all $\lambda_i$ are equal to a common $\lambda$), and $u=0$ gives $\ell(e)=\lambda=0$. Thus $\ell=0$ and $\varphi$ is constant. (For $h=1$, $\sigma=I$ and the same computation gives $\ell(e)=0$.) $\square$
+
+---
+
+## 5. Proof of the main theorem
+
+**Lemma 5.1 (half-turn cancellation).** Let $n=2H$ and let $f$ be rotation symmetric of degree at most $3$. Then for every $u\in V_H$,
+$$f(u,u)=f(0)+\alpha(f)\sum_{i<H}u_i. \tag{5.1}$$
+
+*Proof.* Let $\tau=\rho^H$ be the half-turn, and $x=(u,u)$, so $\tau x=x$ and $x^A:=\prod_{i\in A}x_i$ equals $x^{\tau A}$. By Lemma 2.3, $c_A(f)=c_{\tau A}(f)$. For $A\ne\tau A$ the monomials of $A$ and $\tau A$ contribute $c_Ax^A+c_{\tau A}x^{\tau A}=0$. The sets with $\tau A=A$ are unions of antipodal pairs $\{i,i+H\}$; having size $\le3$, they are $\emptyset$ or a single pair. The empty set contributes $f(0)$ and the pair $\{i,i+H\}$ contributes $c_{\{i,i+H\}}(f)\,x_ix_{i+H}=\alpha(f)u_i$ (as $u_i^2=u_i$). $\square$
+
+No assumption that the cyclic orbits of $A$ have full length is made: the argument only uses the pairing $A\leftrightarrow\tau A$ and the classification of $\tau$-fixed sets of size $\le3$.
+
+**Proof of Theorem 1.** Write $n=Nm$ with $N=2^s$, $s\ge1$, and $m$ odd, and put $N=2h$. Let $T=\rho^N$; then $T^m=\rho^n=I$, and $U=\operatorname{Fix}(T)=\{x:x_{i+N}=x_i\ \forall i\}$. The map
+$$\iota:V_N\to U,\qquad(\iota y)_i=y_{i\bmod N}$$
+is a linear isomorphism that intertwines the rotations of $V_N$ and $V_n$. Hence $g:=f\circ\iota$ is rotation symmetric of degree $\le3$, and bent by Corollary 3.3 (bentness is invariant under linear isomorphisms).
+
+Assume $\alpha(f)=0$. By (5.1), $f$ is constant, equal to $f(0)$, on the vectors $(v,v)$, $v\in V_{n/2}$, i.e. on the vectors fixed by the half-turn $\rho^{n/2}$. For $u\in V_h$ the vector $\iota(d(u))$ has period dividing $h$ and $h\mid n/2=hm$, so it is fixed by the half-turn. Therefore
+$$g(d(u))=f(0)\qquad\text{for all }u\in V_h,$$
+and $g$ is constant on the diagonal. This contradicts Proposition 4.2. Hence $\alpha(f)=1$. $\blacksquare$
+
+Corollary 2 follows because a homogeneous cubic has $c_A=0$ for $|A|=2$.
+
+**Nonvacuity.** For every $H\ge1$ and $a,c\in\mathbb F_2$ the function
+$$\kappa_H(x)+a\sum_ix_i+c,\qquad\kappa_H(x)=\sum_{i<H}x_ix_{i+H},$$
+is rotation symmetric and bent: its Walsh transform factors into $H$ independent two-variable transforms $\sum_{s,t}(-1)^{st+b_1s+b_2t}=\pm2$, and affine additions permute Walsh frequencies and may reverse signs. Thus the hypotheses of Theorem 1 are attained, including invariant affine terms. The theorem gives a *necessary* coefficient condition, not a classification of bent cubics.
+
+**Example $n=6$.** Here $N=2$, $m=3$, $U=\{(a,b,a,b,a,b)\}$ and $g(a,b)=f(a,b,a,b,a,b)$ is a symmetric function of two variables, hence $g=\beta ab+\gamma(a+b)+\delta$. It is bent iff $\beta=1$, and $g(0,0)+g(1,1)=\beta$. If $\alpha(f)=0$, both $(0,0,0,0,0,0)$ and $(1,1,1,1,1,1)$ are half-turn fixed, so $g(0,0)=g(1,1)=f(0)$; then $\beta=0$ and $g$ is affine, hence not bent. In general $N>2$ the same mechanism is carried by Proposition 4.2.
+
+**Scope.** The proof is sensitive to the degree bound in two places. For a quartic, derivatives are cubic and Lemma 3.2 does not apply directly; and a $\tau$-fixed support may contain two antipodal pairs, so (5.1) changes. No statement about degree $\ge4$ follows.
+
+---
+
+## 6. Formal verification
+
+The statement of Theorem 1 has been formalized in Lean 4 (toolchain `leanprover/lean4:v4.15.0`, Mathlib commit `9837ca9d65d9de6fad1ef4381750ca688774e608`) in the repository `hrsbf-bent-verification`, commit `6dd183685ef8a5b033c1bcf8733496d57b853cc7`, theorem `HRSBF.Antipodal.universal_antipodal_walsh_absolute`. Its hypotheses are: $H>0$, $f:V_{2H}\to\mathbb F_2$ with canonical ANF of degree $\le3$, rotation symmetry, and $|W_f(b)|=2^H$ for all $b$; its conclusion is that the ANF coefficient of $\{0,H\}$ equals $1$. The development depends only on the axioms `propext`, `Classical.choice`, `Quot.sound`.
+
+The formal proof of the odd-order reduction decomposes $V$ into $\operatorname{Fix}(T)$ and $\ker\Pi$, which differs from the radical-averaging proof of Lemma 3.2 given here. The latter has *not* been separately formalized; its complete mathematical argument is given in Lemma 3.2. The formalization does not use a general formula for the behaviour of ANF coefficients under repetition of blocks, and neither does the argument above. Finite computations (Gauss identity for 2196 quadratics, invariants of an order-three action, equivalence of vanishing polar and affinity) were run as sanity checks; they play no role in the proof.
+
+---
+
+## References
+
+1. P. Stănică, S. Maitra, *Rotation symmetric Boolean functions — count and cryptographic properties*, Discrete Appl. Math. 156 (2008), 1567–1580. doi:10.1016/j.dam.2007.04.029
+2. Q. Meng, L. Chen, F.-W. Fu, *On homogeneous rotation symmetric bent functions*, Discrete Appl. Math. 158 (2010), 1111–1117. doi:10.1016/j.dam.2010.02.009
+3. X. Zhang, G. Gao, *On the conjecture about the nonexistence of rotation symmetric bent functions*, arXiv:1303.2282 (2013).
+4. T. W. Cusick, E. M. Sanger, *Rotation symmetric bent Boolean functions for $n=2p$*, arXiv:1708.09313 (2017).
+5. L. Sun, Z. Shi, J. Liu, F.-W. Fu, *On the conjecture about the nonexistence of homogeneous rotation symmetric bent functions*, Des. Codes Cryptogr. 94, art. 93 (2026). doi:10.1007/s10623-026-01848-4
+6. O. S. Rothaus, *On "bent" functions*, J. Combin. Theory Ser. A 20 (1976), 300–305. doi:10.1016/0097-3165(76)90024-8
