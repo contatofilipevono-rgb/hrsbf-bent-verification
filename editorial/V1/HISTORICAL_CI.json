@@ -1,0 +1,19 @@
+{
+  "checked_date": "2026-10-19",
+  "source": "GitHub REST API",
+  "runs": [
+    {
+      "run": 38682075049,
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "9f186bc871361b263a9356a8d80cbcc837db21de"
+    },
+    {
+      "run": 38682481132,
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "6dd183685ef8a5b033c1bcf8733496d57b853cc7"
+    }
+  ],
+  "new_kernel_build": false
+}

@@ -1,0 +1,21 @@
+{
+  "gauss_quadratics": 2196,
+  "odd_order_invariant_quadratics": 40,
+  "balanced_odd_order_controls": 16,
+  "zero_polar_affine_equivalences": 256,
+  "formal_sources_unchanged_from_certified_commit": "6dd183685ef8a5b033c1bcf8733496d57b853cc7",
+  "new_lean_compilation": false,
+  "documents": {
+    "ARTIGO_SIMPLIFICADO": {
+      "pages": 5,
+      "overfull_boxes": 0,
+      "nonempty_pages": true
+    },
+    "APENDICE_PROVAS": {
+      "pages": 3,
+      "overfull_boxes": 0,
+      "nonempty_pages": true
+    }
+  },
+  "scope": "Finite falsification and evidence checks; alternate universal proof is in the article"
+}

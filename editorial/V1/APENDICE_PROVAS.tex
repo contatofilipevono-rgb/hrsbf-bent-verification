@@ -1,0 +1,99 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,longtable,array,hyperref,xurl}
+\usepackage[margin=27mm]{geometry}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue}
+\emergencystretch=1em
+\newcommand{\F}{\mathbb F_2}
+\newcommand{\rad}{\operatorname{rad}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\one}{\mathbf1}
+\title{Technical Appendix to Antipodal Necessity through Degree Three}
+\author{Filipe Martins Vono}
+\date{Editorial research version, 19 October 2026}
+\begin{document}
+\maketitle
+\noindent This appendix records checks and expanded identities. The main article contains a complete proof; no missing mathematical implication is delegated to an unproved computational assertion here. Its labels refer to the accompanying editorial article, not to historical manuscript numbering.
+
+\section{Quadratic character sums and radical averaging}
+Let $q:V\to\F$ have degree at most two, let $Q=q+q(0)$, and let $B$ be its normalized polar. Then $Q(x+r)=Q(x)+Q(r)+B(x,r)$. Consequently
+\begin{align*}
+ \left(\sum_x(-1)^{q(x)}\right)^2
+ &=\sum_{x,y}(-1)^{Q(x)+Q(y)}\\
+ &=\sum_{x,r}(-1)^{Q(r)+B(x,r)}\\
+ &=|V|\sum_{r\in\rad B}(-1)^{Q(r)}.
+\end{align*}
+For $r,s\in\rad B$, $Q(r+s)=Q(r)+Q(s)$. A nonzero linear functional on a finite binary vector space takes both values equally often: translating by a vector on which it is one reverses every sign. Thus the last radical sum is zero precisely when $Q$ is nonzero on that radical. If the functional is zero, the radical sum is $|\rad B|>0$.
+
+Let $T^m=I$ with $m$ odd, $q\circ T=q$, and $P=\sum_{j=0}^{m-1}T^j$. Then $TP=P$, $P|_{\Fix(T)}=I$, and $P^2=P$. These facts use parity of $m$, not division by an integer in characteristic two. For $u$ fixed by $T$,
+\[
+ B(u,Px)=\sum_jB(T^{-j}u,x)=mB(u,x)=B(u,x).
+\]
+Therefore the radical of the restricted polar is exactly $\rad B\cap\Fix(T)$. On the full radical, $Q(Pr)=mQ(r)=Q(r)$ because all summands are in the radical and $Q$ is linear there. This proves both directions of the balance equivalence in the article, including the case of a zero-dimensional fixed space.
+
+\paragraph{Relation to the existing formal derivation.}
+The formal theorem \nolinkurl{odd_order_quadratic_balance_iff} proves this same balance equivalence by splitting the space into the fixed space and the kernel of the average. It proves that the character sum on the kernel is nonzero and then factors the whole sum. The radical-averaging argument above bypasses this factorization. The alternative proof is mathematically complete but has not been added as a new compiled Lean derivation.
+
+\section{The finite-difference identities}
+For a function of degree at most three, $C(a,b,c)=D_aD_bD_cf(0)$ is trilinear and symmetric. This follows term by term: monomials of degree below three contribute zero, and a cubic product contributes the sum of the six assignments of $a,b,c$ to its three factors. Fourth differences vanish, so the third difference does not depend on its base point.
+
+Put $d(u)=(u,u)$, $e(v)=(0,v)$, and let $\tau$ swap the two blocks. If $g(d(u))$ is constant, the normalized polar of $F(u)=g(d(u)+e(\one))$ is
+\[
+ B_F(u,v)=C(d(u),d(v),e(\one)).
+\]
+Indeed, expansion of the third difference gives the four values defining $B_F$, together with four equal diagonal values, which sum to zero in $\F$. If $g\circ\tau=g$, then
+\begin{align*}
+ C(d(u),e(v),\one^N)
+ &=C(d(u),e(v),e(\one))+C(d(u),e(v),\tau e(\one))\\
+ &=C(d(u),e(v),e(\one))+C(d(u),\tau e(v),e(\one))\\
+ &=C(d(u),d(v),e(\one)).
+\end{align*}
+Finally, expansion of a derivative gives $B_{D_cg}(a,b)=C(a,b,c)$. These equalities justify the entire polar comparison in the obstruction proof.
+
+Once $B_F=0$, the function $L(u)=F(u)+F(0)$ satisfies $L(u+v)=L(u)+L(v)$. Over $\F$ this is already linearity; no separate theorem asserting that the fiber has degree at most two is needed. If $F(Ru+e_{h-1})=F(u)$, evaluating at zero gives $L(e_{h-1})=0$, and subtracting this equality from the general one gives $L(Ru)=L(u)$. A linear functional invariant under a single cyclic coordinate permutation has all coordinate coefficients equal. Their common value is $L(e_{h-1})=0$.
+
+\section{Boundary cases and limits of transfer}
+The global theorem covers $n=2$ by taking $s=1$, $h=1$. Cyclic rotation on the one-coordinate fiber is the identity; its affine covariance becomes $F(u+1)=F(u)$ and forces constancy just as in higher dimensions. A homogeneous cubic of exact degree three does not exist in two variables; this causes no problem for its nonexistence corollary. The necessity theorem itself is not vacuous in dimension two.
+
+For every $H>0$, $P_{2H}$ is bent: the Walsh sum factors into $H$ independent sums
+\[
+ \sum_{a,b\in\F}(-1)^{ab+\alpha a+\beta b},
+\]
+each equal to $2$ or $-2$. Adding an affine function permutes or changes signs of Walsh coefficients and preserves their magnitudes. Thus $P_{2H}+a\sum_i x_i+c$ supplies rotation-symmetric witnesses with unrestricted invariant affine terms.
+
+The constant-diagonal condition in the fiber-balance argument cannot be removed. For example, $g(x,y)=x\cdot y$ is bent, whereas $g(u,u)=\sum_i u_i$ is generally not constant. For complementary coordinates, $g(u,u+z)=\sum_i(1+z_i)u_i$, which is constant for $z=\one$ rather than balanced. This does not contradict the conditional lemma.
+
+The odd-order restriction lemma is quadratic. Its use on $D_af$ relies on $\deg f\le3$. A quartic function may have cubic derivatives, and a half-turn-fixed quartic support can consist of two antipodal pairs; such supports need not cancel. These are precise barriers to transferring the proof wholesale to degree four.
+
+\section{Statements matched to the formal source}
+All names below are in \nolinkurl{HRSBF.Antipodal}. The source is fixed at commit
+\begin{center}\small\nolinkurl{6dd183685ef8a5b033c1bcf8733496d57b853cc7}.\end{center}
+The editorial baseline is a later manuscript revision whose \nolinkurl{formalization/} tree is identical to that source. The current editorial work changes no formal proof module.
+\begingroup\small
+\def\UrlBreaks{\do\_}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.31\textwidth}>{\raggedright\arraybackslash}p{0.62\textwidth}@{}}
+\toprule Article statement & Existing declaration or formal step \\\midrule
+\endhead
+Canonical ANF and degree & \nolinkurl{anfCoefficient}, \nolinkurl{anf_reconstruction}, \nolinkurl{HasAlgebraicDegreeAtMostThree} \\
+Quadratic character sum & \nolinkurl{quadratic_walsh_square} \\
+Odd-order balance transfer & \nolinkurl{odd_order_quadratic_balance_iff}; same conclusion, different proof above \\
+Bent restriction & \nolinkurl{odd_order_bent_restriction} \\
+Quadratic rigidity & \nolinkurl{balanced_rotation_invariant_quadratic_polar_zero} \\
+Fiber polar identity & \nolinkurl{fiber_polar_eq_derivative_polar} \\
+Power-of-two obstruction & \nolinkurl{not_bent_constant_diagonal_power_two_of_cubic} \\
+Half-turn cancellation & \nolinkurl{constant_on_halfTurn_fixed_of_antipodal_zero} \\
+Concrete restriction & \nolinkurl{cyclicFixedEquiv}, \nolinkurl{bent_repeatInto} \\
+Theorem 1 & \nolinkurl{universal_antipodal_walsh_absolute} \\
+Corollary 2 & \nolinkurl{no_homogeneous_cubic_rotation_symmetric_bent_absolute} \\
+\bottomrule
+\end{longtable}
+\endgroup
+The source signatures were inspected, including canonical rather than freely specified coefficients, actual one-step rotation, positive half-dimension, and absolute Walsh magnitude $2^H$. Some auxiliary Lean statements use an explicit cubic representation, finite coordinate equivalences, or zero third differences. The development supplies the bridges from canonical ANF degree; these are not new hypotheses on the public theorem.
+
+Two earlier clean GitHub runs, 38682075049 and 38682481132, are recorded with source revisions and axiom reports. This editorial revision performs source and evidence checks but does not claim a new full Lean rebuild. A successful historical build alone is not used to infer semantic agreement: that agreement rests additionally on the definitions and public signatures just described. The recorded public theorem axioms are the standard \nolinkurl{propext}, \nolinkurl{Classical.choice}, and \nolinkurl{Quot.sound}.
+
+\paragraph{Not certified by this mapping.}
+The stronger general coefficient-folding equality is not a prerequisite of the proof, and this appendix makes no claim that it was separately formalized. Nor do the cubic statements establish a quartic result, a result about vectorial functions, or an EA/CCZ classification. Novelty and external peer review are not consequences of kernel certification.
+\end{document}
