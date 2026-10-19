@@ -7,6 +7,15 @@ from pypdf import PdfReader
 HERE=Path(__file__).resolve().parent
 REPO=HERE.parents[1]
 
+# Git stores text with LF; Windows checkouts may materialize CRLF.
+manifest_path=HERE/'SHA256SUMS.json'
+if manifest_path.exists():
+    for name,digest in json.loads(manifest_path.read_text(encoding='utf-8')).items():
+        raw=(HERE/name).read_bytes()
+        if not name.endswith('.pdf'):
+            raw=raw.replace(b'\r\n',b'\n')
+        assert hashlib.sha256(raw).hexdigest()==digest, name
+
 def parity(x): return x.bit_count() & 1
 def shear(x): return x ^ (2 if x & 1 else 0)
 def perm3(x): return (x & ~7) | ((x & 3)<<1) | ((x>>2)&1)

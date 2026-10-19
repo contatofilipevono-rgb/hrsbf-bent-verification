@@ -16,4 +16,6 @@ The mathematical simplification uses averaging directly on the quadratic radical
 
 `EDITORIAL_CHECKS.json` records the exact finite controls and document diagnostics. `SOURCE_AUDIT.txt`, `HISTORICAL_CI.json`, `VISUAL_REVIEW.json` and `SHA256SUMS.json` record additional evidence. Integrity hashes authenticate files, not mathematical truth.
 
+The manifest hashes text with LF line endings, as stored by Git; PDFs are hashed byte for byte. `check_editorial.py` accepts Windows CRLF checkouts by normalizing text only before checking these hashes.
+
 No journal submission, preprint upload, or merge to main is part of this revision. Branch: `editorial/v1-human-proof-2026-10-19`.
