@@ -1,0 +1,51 @@
+{
+  "source_commit": "6594557f70150bbc90a3542cdb3ab70cc62dab6a",
+  "checker_sha256": "e0376afd05219e73a5eefe2154c9cef0ee0299019d76159ef890df80cf30d459",
+  "global_proof_complete": false,
+  "charts": [
+    {
+      "chart": 1,
+      "run": 39258813467,
+      "prior_modules": 234,
+      "modules_verified": 283,
+      "modules_total": 924,
+      "new_modules": 49,
+      "sources_and_roots_unchanged": true,
+      "lean_version_unchanged": true,
+      "prior_objects_and_kernel_logs_unchanged": true,
+      "prior_records_identical": false,
+      "changed_record_fields": {
+        "build_log_sha256": 228
+      },
+      "prior_fingerprint": "04ba144cdacfda7c8487bc33a9877af88c8c506bd6941995bcb7085a3b281b53",
+      "fingerprint": "bae8e410b920cecebcec0b8d7d826c4f9ae9fb04bf646276ddfecbbc9e9f3ec5",
+      "platform_component_change_inferred": true,
+      "exact_platform_string_recorded": false,
+      "restored_cache_key": "lean-linux-v1-1-a7a0b06e3d37a6870b91ed3cf33c03feba40ef2788f33e5609a548f9ca4c9288-39258813467-2",
+      "saved_cache_key": "lean-linux-v1-1-a7a0b06e3d37a6870b91ed3cf33c03feba40ef2788f33e5609a548f9ca4c9288-39258813467-3",
+      "artifact_sha256": "0920b457212830305196e9ee30c2ae767c388361333866fe3c7b7cf452b82efd",
+      "root_coverage": false
+    },
+    {
+      "chart": 0,
+      "run": 39258818208,
+      "prior_modules": 256,
+      "modules_verified": 342,
+      "modules_total": 924,
+      "new_modules": 86,
+      "sources_and_roots_unchanged": true,
+      "lean_version_unchanged": true,
+      "prior_objects_and_kernel_logs_unchanged": true,
+      "prior_records_identical": true,
+      "changed_record_fields": {},
+      "prior_fingerprint": "5b6367fc3afbcf5c505cc833ac006af336ed266d2ced272c09e188d9d4c90939",
+      "fingerprint": "5b6367fc3afbcf5c505cc833ac006af336ed266d2ced272c09e188d9d4c90939",
+      "platform_component_change_inferred": false,
+      "exact_platform_string_recorded": false,
+      "restored_cache_key": "lean-linux-v1-0-9aa0e0f137428f5f747d4897d353aa981113f5deec6af0454b48552d4c531e86-39258818208-2",
+      "saved_cache_key": "lean-linux-v1-0-9aa0e0f137428f5f747d4897d353aa981113f5deec6af0454b48552d4c531e86-39258818208-3",
+      "artifact_sha256": "eda57dbfa13aae8b8b4fa1e7620b25354f3dd3958a4e2b9b3c34f3c2b17a4961",
+      "root_coverage": false
+    }
+  ]
+}

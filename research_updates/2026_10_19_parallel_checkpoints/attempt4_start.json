@@ -1,0 +1,191 @@
+{
+  "checked_at": "2026-10-19T23:12:56Z",
+  "attempt": 4,
+  "global_proof_complete": false,
+  "verifier_or_cache_key_changed": false,
+  "charts": [
+    {
+      "chart": 1,
+      "run": 39258813467,
+      "job": 118358546014,
+      "job_state": {
+        "jobs": [
+          {
+            "id": 118358546014,
+            "name": "verify",
+            "status": "in_progress",
+            "conclusion": null,
+            "run_id": 39258813467,
+            "logs_url": null,
+            "steps": [
+              {
+                "name": "Set up job",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 1
+              },
+              {
+                "name": "Run actions/checkout@v4",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 2
+              },
+              {
+                "name": "Run actions/setup-python@v5",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 3
+              },
+              {
+                "name": "Install exact Lean release and verify its digest",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 4
+              },
+              {
+                "name": "Generate exact chart sources",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 5
+              },
+              {
+                "name": "Run actions/cache/restore@v4",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 6
+              },
+              {
+                "name": "Build and replay a bounded slice",
+                "status": "in_progress",
+                "conclusion": null,
+                "number": 7
+              },
+              {
+                "name": "Save resumable build and verified records",
+                "status": "pending",
+                "conclusion": null,
+                "number": 8
+              },
+              {
+                "name": "Preserve source, progress and checker logs",
+                "status": "pending",
+                "conclusion": null,
+                "number": 9
+              },
+              {
+                "name": "Post Run actions/setup-python@v5",
+                "status": "pending",
+                "conclusion": null,
+                "number": 17
+              },
+              {
+                "name": "Post Run actions/checkout@v4",
+                "status": "pending",
+                "conclusion": null,
+                "number": 18
+              }
+            ]
+          }
+        ]
+      },
+      "restored_cache_key": "lean-linux-v1-1-a7a0b06e3d37a6870b91ed3cf33c03feba40ef2788f33e5609a548f9ca4c9288-39258813467-3",
+      "cache_restore_confirmed_in_live_ui": true,
+      "first_started_module": "H12Descent",
+      "first_started_index": 1,
+      "prior_records_skipped": false,
+      "diagnosis": "The third-attempt cache was restored, but prior records were replayed again. Exact fourth-attempt fingerprint will be checked in the exported report; no source change made.",
+      "evidence_url": "https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/39258813467/job/118358546014"
+    },
+    {
+      "chart": 0,
+      "run": 39258818208,
+      "job": 118358566941,
+      "job_state": {
+        "jobs": [
+          {
+            "id": 118358566941,
+            "name": "verify",
+            "status": "in_progress",
+            "conclusion": null,
+            "run_id": 39258818208,
+            "logs_url": null,
+            "steps": [
+              {
+                "name": "Set up job",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 1
+              },
+              {
+                "name": "Run actions/checkout@v4",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 2
+              },
+              {
+                "name": "Run actions/setup-python@v5",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 3
+              },
+              {
+                "name": "Install exact Lean release and verify its digest",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 4
+              },
+              {
+                "name": "Generate exact chart sources",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 5
+              },
+              {
+                "name": "Run actions/cache/restore@v4",
+                "status": "completed",
+                "conclusion": "success",
+                "number": 6
+              },
+              {
+                "name": "Build and replay a bounded slice",
+                "status": "in_progress",
+                "conclusion": null,
+                "number": 7
+              },
+              {
+                "name": "Save resumable build and verified records",
+                "status": "pending",
+                "conclusion": null,
+                "number": 8
+              },
+              {
+                "name": "Preserve source, progress and checker logs",
+                "status": "pending",
+                "conclusion": null,
+                "number": 9
+              },
+              {
+                "name": "Post Run actions/setup-python@v5",
+                "status": "pending",
+                "conclusion": null,
+                "number": 17
+              },
+              {
+                "name": "Post Run actions/checkout@v4",
+                "status": "pending",
+                "conclusion": null,
+                "number": 18
+              }
+            ]
+          }
+        ]
+      },
+      "restored_cache_key": "lean-linux-v1-0-9aa0e0f137428f5f747d4897d353aa981113f5deec6af0454b48552d4c531e86-39258818208-3",
+      "cache_restore_confirmed_in_live_ui": true,
+      "first_started_module": "H12CloudChart0Data221",
+      "first_started_index": 343,
+      "prior_records_skipped": true,
+      "evidence_url": "https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/39258818208/job/118358566941"
+    }
+  ]
+}

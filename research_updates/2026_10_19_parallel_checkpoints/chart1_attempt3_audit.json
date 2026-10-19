@@ -1,0 +1,22 @@
+{
+  "chart": 1,
+  "run": 39258813467,
+  "attempt": 3,
+  "run_status": "completed",
+  "run_conclusion": "success",
+  "report_status": "PARTIAL_MODULE_TIMEOUT",
+  "modules_verified": 283,
+  "modules_total": 924,
+  "root_coverage": false,
+  "fingerprint": "bae8e410b920cecebcec0b8d7d826c4f9ae9fb04bf646276ddfecbbc9e9f3ec5",
+  "audit": {
+    "status": "CONSISTENT_PARTIAL_REPORT",
+    "chart": 1,
+    "verified_records": 283,
+    "declared_modules": 924,
+    "logs_checked": true,
+    "scope": "Report consistency only; no independent kernel replay or global theorem."
+  },
+  "artifact_sha256": "0920b457212830305196e9ee30c2ae767c388361333866fe3c7b7cf452b82efd",
+  "global_proof_complete": false
+}
