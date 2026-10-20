@@ -14,7 +14,7 @@
       "legacy_run_id": 39258818208,
       "legacy_active_attempt": 4,
       "legacy_active_job_id": 118358566941,
-      "last_preserved_modules": 638,
+      "last_preserved_modules": 924,
       "stable_run_id": 39358421659,
       "latest_legacy_round_modules": 438,
       "selected_legacy_attempt": 4,
@@ -23,7 +23,7 @@
       "dispatch_requested_at": "2026-10-20T02:20:57Z",
       "stable_run_url": "https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/39358421659",
       "stable_commit": "032aaadc61ab31b2b6c80753388218c9e2d41af7",
-      "migration_status": "STABLE_IDENTITY_REUSED_CONFIRMED",
+      "migration_status": "COMPLETE_ROOT_PRESERVED",
       "selected_legacy_modules": 438,
       "stable_active_attempt": 3,
       "stable_active_job_id": 118578731016,
@@ -31,14 +31,16 @@
       "resume_line": "RESUME stable_identity REUSED 638 / 924 NEXT H12CloudChart0Data517",
       "next_module_index": 639,
       "next_module": "H12CloudChart0Data517",
-      "last_preserved_attempt": 2,
-      "last_preserved_cache_key": "lean-linux-v2-0-663750cf44f035a9a2948dfd8d3cc6dee760e4145f9d3d46f2a52d3854aa4523-39358421659-2"
+      "last_preserved_attempt": 3,
+      "last_preserved_cache_key": "lean-linux-v2-0-663750cf44f035a9a2948dfd8d3cc6dee760e4145f9d3d46f2a52d3854aa4523-39358421659-3",
+      "chart_complete": true,
+      "do_not_rerun": true
     },
     "1": {
       "legacy_run_id": 39258813467,
       "legacy_active_attempt": 4,
       "legacy_active_job_id": 118358546014,
-      "last_preserved_modules": 470,
+      "last_preserved_modules": 557,
       "stable_run_id": 39358413248,
       "latest_legacy_round_modules": 262,
       "selected_legacy_attempt": 3,
@@ -55,8 +57,8 @@
       "resume_line": "RESUME stable_identity REUSED 470 / 924 NEXT H12CloudChart1Data349",
       "next_module_index": 471,
       "next_module": "H12CloudChart1Data349",
-      "last_preserved_attempt": 2,
-      "last_preserved_cache_key": "lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-2"
+      "last_preserved_attempt": 3,
+      "last_preserved_cache_key": "lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-3"
     }
   },
   "resume_confirmed_at_utc": "2026-10-20T02:24:41Z"

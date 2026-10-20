@@ -1,0 +1,22 @@
+[
+  {
+    "chart": 0,
+    "modules": 924,
+    "reused": 638,
+    "new": 286,
+    "exact_prefix": true,
+    "stable_identity": true,
+    "cache_key": "lean-linux-v2-0-663750cf44f035a9a2948dfd8d3cc6dee760e4145f9d3d46f2a52d3854aa4523-39358421659-3",
+    "global_proof_complete": false
+  },
+  {
+    "chart": 1,
+    "modules": 557,
+    "reused": 470,
+    "new": 87,
+    "exact_prefix": true,
+    "stable_identity": true,
+    "cache_key": "lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-3",
+    "global_proof_complete": false
+  }
+]

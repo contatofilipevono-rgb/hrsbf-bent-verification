@@ -1,0 +1,22 @@
+{
+  "chart": 0,
+  "run": 39358421659,
+  "attempt": 3,
+  "run_status": "completed",
+  "run_conclusion": "success",
+  "report_status": "PASS_CHART_DEPENDENCIES_AND_ROOT_KERNEL_REPLAY",
+  "modules_verified": 924,
+  "modules_total": 924,
+  "root_coverage": true,
+  "fingerprint": "6a0dcc64fff883851af0f52f57c62f897d5ce5a7544cbea06011cc359e51859e",
+  "audit": {
+    "status": "CONSISTENT_COMPLETE_CHART_REPORT",
+    "chart": 0,
+    "verified_records": 924,
+    "declared_modules": 924,
+    "logs_checked": true,
+    "scope": "Report consistency only; no independent kernel replay or global theorem."
+  },
+  "artifact_sha256": "50b49a4fceee272271ddcd0aab7cd2d9c829efcd198516d6173d9152614440fc",
+  "global_proof_complete": false
+}
