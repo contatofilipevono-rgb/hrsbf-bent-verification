@@ -58,8 +58,16 @@ def toolchain_identity(project, lake):
         binary = Path(paths[name]).resolve(strict=True)
         require(binary.parent == lake_path.parent, 'Unexpected Lean toolchain path: '+name)
         binaries[name] = sha(binary)
+    archive = os.environ.get('LEAN_RELEASE_ARCHIVE', '')
+    require(archive and Path(archive).is_file(), 'Missing verified Lean release archive')
+    require(sha(archive) == RELEASE_SHA256, 'Lean release archive digest differs')
+    release = lake_path.parent.parent
+    libraries = {str(p.relative_to(release)): sha(p)
+                 for p in sorted((release/'lib').rglob('*.so')) if p.is_file()}
+    require(libraries, 'Missing Lean release shared libraries')
     return {'version': version, 'target': 'linux-x86_64',
-            'release_archive_sha256': RELEASE_SHA256, 'binaries': binaries}
+            'release_archive_sha256': RELEASE_SHA256, 'binaries': binaries,
+            'shared_libraries': libraries}
 
 
 def verification_identity(sources, roots, toolchain):
@@ -235,6 +243,8 @@ def main():
     library = next(lib for lib in config['lean_lib'] if lib['name'] == name)
     evidence = root/'cloud_progress'/('chart'+args.chart)
     try:
+        require((evidence/'progress.json').is_file(),
+                'Restored cache has no progress report; refusing a silent fresh restart')
         result = verify(project, library['roots'], evidence, args.lake, args.minutes*60,
                         max_modules=args.max_modules, legacy_report_sha256=args.legacy_report_sha256)
     except Exception as error:
