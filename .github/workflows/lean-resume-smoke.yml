@@ -9,6 +9,7 @@ on:
       - 'quartic_audit_2026_10_17/tools/smoke_lean_cloud_resume.py'
       - '.github/workflows/lean-resume.yml'
   workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read
