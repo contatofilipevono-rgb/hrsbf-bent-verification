@@ -40,7 +40,7 @@
       "legacy_run_id": 39258813467,
       "legacy_active_attempt": 4,
       "legacy_active_job_id": 118358546014,
-      "last_preserved_modules": 557,
+      "last_preserved_modules": 643,
       "stable_run_id": 39358413248,
       "latest_legacy_round_modules": 262,
       "selected_legacy_attempt": 3,
@@ -57,8 +57,8 @@
       "resume_line": "RESUME stable_identity REUSED 557 / 924 NEXT H12CloudChart1Data436",
       "next_module_index": 558,
       "next_module": "H12CloudChart1Data436",
-      "last_preserved_attempt": 3,
-      "last_preserved_cache_key": "lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-3"
+      "last_preserved_attempt": 4,
+      "last_preserved_cache_key": "lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-4"
     }
   },
   "resume_confirmed_at_utc": "2026-10-20T02:24:41Z"
