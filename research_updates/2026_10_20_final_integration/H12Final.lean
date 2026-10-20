@@ -35,10 +35,12 @@ theorem walsh_witness (c : BitVec 43) :
       H12Walsh.walsh (H12.quarticFunction c) a *
       H12Walsh.walsh (H12.quarticFunction c) a ≠ 4096 := by
   classical
-  by_contra h
+  apply Classical.byContradiction
+  intro h
   apply no_flat_quartic c
   intro a ha
-  by_contra he
+  apply Classical.byContradiction
+  intro he
   exact h ⟨a, ha, he⟩
 
 #print no_bent_quartic

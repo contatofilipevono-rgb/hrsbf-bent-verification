@@ -3,9 +3,10 @@
   "mocked_guard_tests": 9,
   "mocked_guard_tests_status": "PASS",
   "mocked_tests_prove_mathematics": false,
-  "cancellation_auto_review": "REJECTED_PENDING_HUMAN_AUTHORIZATION",
-  "revised_workflow_dispatched": false,
+  "cancellation_auto_review": "AUTHORIZED_BY_HUMAN_AND_COMPLETED",
+  "revised_workflow_dispatched": true,
   "global_proof_complete": false,
   "chart2_reconstruction_command": "lake build MODULE; byte-identical hash required",
-  "direct_compiler_command_smoke": "Different object hash: not used to reconstruct certified modules"
+  "direct_compiler_command_smoke": "Different object hash: not used to reconstruct certified modules",
+  "revised_run": 39499423162
 }

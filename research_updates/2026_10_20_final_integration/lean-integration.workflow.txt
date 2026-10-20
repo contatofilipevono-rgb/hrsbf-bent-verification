@@ -1,4 +1,4 @@
-name: Lean final H12 integration
+name: Lean final H12 integration resumable
 on:
   push:
     branches: [fix/lean-resume-stability]
@@ -35,6 +35,17 @@ jobs:
             python tools/generate_lean_affine_pilot.py --chart "$CHART" --node "$NODE" --prefix "H12CloudChart$CHART" --root-frame --engine H12AffineFastState --global-label-index --chunk-size 1200 --proof-chunk-size 600 --register
           done
       - uses: actions/cache/restore@v4
+        id: integration_cache
+        with:
+          path: |
+            quartic_audit_2026_10_17/lean/.lake
+            quartic_audit_2026_10_17/cloud_progress
+            quartic_audit_2026_10_17/final_integration
+          key: lean-h12-integration-v2-${{ hashFiles('quartic_audit_2026_10_17/tools/verify_final.py', 'quartic_audit_2026_10_17/tools/integration_plan.json', 'quartic_audit_2026_10_17/lean/H12Final.lean') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            lean-h12-integration-v2-${{ hashFiles('quartic_audit_2026_10_17/tools/verify_final.py', 'quartic_audit_2026_10_17/tools/integration_plan.json', 'quartic_audit_2026_10_17/lean/H12Final.lean') }}-
+      - uses: actions/cache/restore@v4
+        if: steps.integration_cache.outputs.cache-matched-key == ''
         with:
           path: |
             quartic_audit_2026_10_17/lean/.lake
@@ -42,6 +53,7 @@ jobs:
           key: lean-linux-v2-0-663750cf44f035a9a2948dfd8d3cc6dee760e4145f9d3d46f2a52d3854aa4523-39358421659-3
           fail-on-cache-miss: true
       - uses: actions/cache/restore@v4
+        if: steps.integration_cache.outputs.cache-matched-key == ''
         with:
           path: |
             quartic_audit_2026_10_17/lean/.lake
@@ -54,7 +66,17 @@ jobs:
           echo "dc434dc6a4365ea97d2431a2862b092993c8aec5766c043306ff08c19c489fb2  $RUNNER_TEMP/chart2.zip" | sha256sum --check
           python -c 'import os,zipfile; from pathlib import Path; z=zipfile.ZipFile(Path(os.environ["RUNNER_TEMP"])/"chart2.zip"); assert z.testzip() is None; assert all(Path(n).resolve().is_relative_to(Path.cwd().resolve()) for n in z.namelist()); [z.extract(n) for n in z.namelist() if n.startswith("cloud_progress/chart2/")]'
       - name: Audit certified objects and check final theorems in Lean kernel
+        id: verification
         run: python tools/verify_final.py
+      - name: Save reconstructed objects and evidence for bounded resume
+        if: always() && steps.verification.outcome != 'skipped'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            quartic_audit_2026_10_17/lean/.lake
+            quartic_audit_2026_10_17/cloud_progress
+            quartic_audit_2026_10_17/final_integration
+          key: ${{ steps.integration_cache.outputs.cache-primary-key }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -66,3 +88,5 @@ jobs:
             quartic_audit_2026_10_17/lean/H12Final.lean
             quartic_audit_2026_10_17/tools/verify_final.py
             quartic_audit_2026_10_17/tools/integration_plan.json
+            quartic_audit_2026_10_17/lean/.lake/build/lib/lean/H12Final.olean
+            quartic_audit_2026_10_17/lean/.lake/build/lib/lean/H12Fourier.olean

@@ -1,0 +1,8 @@
+{
+  "run": 39494198666,
+  "attempt": 1,
+  "conclusion": "cancelled",
+  "artifact_sha256": "741989bf5085111be361551fdc4c581d946dae5ad99e8230b158ee6b7b39b3dc",
+  "report_status": "PREFLIGHT",
+  "global_proof_complete": false
+}

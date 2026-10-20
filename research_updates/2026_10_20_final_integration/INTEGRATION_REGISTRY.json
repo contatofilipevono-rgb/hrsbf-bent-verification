@@ -1,10 +1,15 @@
 {
-  "run": 39494198666,
-  "job": 118874852971,
-  "commit": "6053fbcab2e1c43611c1b10e655ca66f9acfffa4",
+  "run": 39499423162,
+  "job": 118892824669,
+  "attempt": 1,
+  "commit": "5d707702df560c841bf0809e539f13357336ffe0",
   "branch": "fix/lean-resume-stability",
-  "status": "RUNNING",
+  "status": "RUNNING_RESUMABLE_V2",
   "global_proof_complete": false,
-  "chart2_cache_evicted": true,
-  "chart2_reconstruction_requires_identical_olean_hash": true
+  "previous_run": 39494198666,
+  "previous_conclusion": "cancelled",
+  "cancellation_authorized_by_human": true,
+  "reconstruction_slice_minutes": 165,
+  "job_limit_minutes": 240,
+  "reconstruction_requires_identical_olean_hash": true
 }
