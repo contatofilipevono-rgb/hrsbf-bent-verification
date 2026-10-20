@@ -1,5 +1,5 @@
 {
-  "stage": "WAITING_FOR_LEGACY_ROUND_4_ARTIFACTS",
+  "stage": "AUDITED_READY_FOR_MIGRATION",
   "repository": "contatofilipevono-rgb/hrsbf-bent-verification",
   "branch": "fix/lean-resume-stability",
   "tested_commit": "032aaadc61ab31b2b6c80753388218c9e2d41af7",
@@ -14,15 +14,23 @@
       "legacy_run_id": 39258818208,
       "legacy_active_attempt": 4,
       "legacy_active_job_id": 118358566941,
-      "last_preserved_modules": 342,
-      "stable_run_id": null
+      "last_preserved_modules": 438,
+      "stable_run_id": null,
+      "latest_legacy_round_modules": 438,
+      "selected_legacy_attempt": 4,
+      "selected_legacy_report_sha256": "43e7c11f02f253d93175c8ce094e1b7d0d18b9a78e4d8e503e354a17724db78d",
+      "selected_legacy_cache_key": "lean-linux-v1-0-9aa0e0f137428f5f747d4897d353aa981113f5deec6af0454b48552d4c531e86-39258818208-4"
     },
     "1": {
       "legacy_run_id": 39258813467,
       "legacy_active_attempt": 4,
       "legacy_active_job_id": 118358546014,
       "last_preserved_modules": 283,
-      "stable_run_id": null
+      "stable_run_id": null,
+      "latest_legacy_round_modules": 262,
+      "selected_legacy_attempt": 3,
+      "selected_legacy_report_sha256": "502596f85c93f871fd36ab3d89a82462badc1090b3cdcc040d93dffe165a0692",
+      "selected_legacy_cache_key": "lean-linux-v1-1-a7a0b06e3d37a6870b91ed3cf33c03feba40ef2788f33e5609a548f9ca4c9288-39258813467-3"
     }
   }
 }

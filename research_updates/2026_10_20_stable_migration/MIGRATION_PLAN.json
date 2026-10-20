@@ -1,0 +1,58 @@
+{
+  "branch": "fix/lean-resume-stability",
+  "tested_commit": "032aaadc61ab31b2b6c80753388218c9e2d41af7",
+  "workflow": "lean-cloud.yml",
+  "global_proof_complete": false,
+  "charts": [
+    {
+      "chart": 1,
+      "legacy_run": 39258813467,
+      "latest_attempt": 4,
+      "latest_modules": 262,
+      "selected_attempt": 3,
+      "selected_modules": 283,
+      "modules_total": 924,
+      "legacy_report_sha256": "502596f85c93f871fd36ab3d89a82462badc1090b3cdcc040d93dffe165a0692",
+      "legacy_cache_key": "lean-linux-v1-1-a7a0b06e3d37a6870b91ed3cf33c03feba40ef2788f33e5609a548f9ca4c9288-39258813467-3",
+      "artifact_sha256": "0920b457212830305196e9ee30c2ae767c388361333866fe3c7b7cf452b82efd",
+      "cache": {
+        "id": 9188505532,
+        "ref": "refs/heads/main",
+        "key": "lean-linux-v1-1-a7a0b06e3d37a6870b91ed3cf33c03feba40ef2788f33e5609a548f9ca4c9288-39258813467-3",
+        "version": "3791ac225c2be994cb738ee055cc8a996aff9ad5fd0bcf345233d2234c4e3190",
+        "last_accessed_at": "2026-10-19T23:11:31.718057Z",
+        "created_at": "2026-10-19T22:50:46.179027Z",
+        "size_in_bytes": 563684286
+      },
+      "sources_unchanged": true,
+      "overlapping_objects_and_kernel_logs_unchanged": true,
+      "reason": "Largest audited prefix; legacy round 4 revalidated fewer modules",
+      "dispatch_status": "NOT_DISPATCHED"
+    },
+    {
+      "chart": 0,
+      "legacy_run": 39258818208,
+      "latest_attempt": 4,
+      "latest_modules": 438,
+      "selected_attempt": 4,
+      "selected_modules": 438,
+      "modules_total": 924,
+      "legacy_report_sha256": "43e7c11f02f253d93175c8ce094e1b7d0d18b9a78e4d8e503e354a17724db78d",
+      "legacy_cache_key": "lean-linux-v1-0-9aa0e0f137428f5f747d4897d353aa981113f5deec6af0454b48552d4c531e86-39258818208-4",
+      "artifact_sha256": "5587fba8209184975bcf3147fd64e305956686cd1dbec5193b816278ae72d507",
+      "cache": {
+        "id": 9194259323,
+        "ref": "refs/heads/main",
+        "key": "lean-linux-v1-0-9aa0e0f137428f5f747d4897d353aa981113f5deec6af0454b48552d4c531e86-39258818208-4",
+        "version": "3791ac225c2be994cb738ee055cc8a996aff9ad5fd0bcf345233d2234c4e3190",
+        "last_accessed_at": "2026-10-20T02:12:13.550587Z",
+        "created_at": "2026-10-20T02:12:13.550587Z",
+        "size_in_bytes": 913686106
+      },
+      "sources_unchanged": true,
+      "overlapping_objects_and_kernel_logs_unchanged": true,
+      "reason": "Latest audited prefix with exact continuity",
+      "dispatch_status": "NOT_DISPATCHED"
+    }
+  ]
+}
