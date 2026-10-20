@@ -1,0 +1,1282 @@
+﻿2026-10-20T17:35:22.9952862Z Current runner version: '2.337.0'
+2026-10-20T17:35:22.9987452Z ##[group]Runner Image Provisioner
+2026-10-20T17:35:22.9989065Z Hosted Compute Agent
+2026-10-20T17:35:22.9990140Z Version: 20261012.601
+2026-10-20T17:35:22.9991176Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+2026-10-20T17:35:22.9992416Z Build Date: 2026-10-12T17:48:21Z
+2026-10-20T17:35:22.9993678Z Worker ID: {35e3b434-b868-4e08-a86d-e4a0d5abb2e8}
+2026-10-20T17:35:22.9994919Z Region: eastus
+2026-10-20T17:35:22.9995985Z Cloud: Azure
+2026-10-20T17:35:22.9997157Z ##[endgroup]
+2026-10-20T17:35:22.9999849Z ##[group]Operating System
+2026-10-20T17:35:23.0001073Z Ubuntu
+2026-10-20T17:35:23.0001930Z 24.04.5
+2026-10-20T17:35:23.0002792Z LTS
+2026-10-20T17:35:23.0003695Z ##[endgroup]
+2026-10-20T17:35:23.0004692Z ##[group]Runner Image
+2026-10-20T17:35:23.0005665Z Image: ubuntu-24.04
+2026-10-20T17:35:23.0006955Z Version: 20261012.334.1
+2026-10-20T17:35:23.0009136Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-20T17:35:23.0011931Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-20T17:35:23.0013600Z ##[endgroup]
+2026-10-20T17:35:23.0015678Z ##[group]GITHUB_TOKEN Permissions
+2026-10-20T17:35:23.0018969Z Actions: read
+2026-10-20T17:35:23.0019874Z Contents: read
+2026-10-20T17:35:23.0020879Z Metadata: read
+2026-10-20T17:35:23.0021874Z ##[endgroup]
+2026-10-20T17:35:23.0024904Z Secret source: Actions
+2026-10-20T17:35:23.0026406Z Cache mode: write
+2026-10-20T17:35:23.0028113Z Prepare workflow directory
+2026-10-20T17:35:23.0793201Z Prepare all required actions
+2026-10-20T17:35:23.0866880Z Getting action download info
+2026-10-20T17:35:23.2901190Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-20T17:35:23.3883710Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-20T17:35:23.4649476Z Download action repository 'actions/cache@v4' (SHA:0057852bfaa89a56745cba8c7296529d2fc39830)
+2026-10-20T17:35:23.5592737Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-20T17:35:23.7733937Z Complete job name: verify
+2026-10-20T17:35:23.8498408Z ##[group]Run actions/checkout@v4
+2026-10-20T17:35:23.8499390Z with:
+2026-10-20T17:35:23.8500045Z   repository: contatofilipevono-rgb/hrsbf-bent-verification
+2026-10-20T17:35:23.8504842Z   token: ***
+2026-10-20T17:35:23.8505348Z   ssh-strict: true
+2026-10-20T17:35:23.8505853Z   ssh-user: git
+2026-10-20T17:35:23.8506363Z   persist-credentials: true
+2026-10-20T17:35:23.8507137Z   clean: true
+2026-10-20T17:35:23.8507718Z   sparse-checkout-cone-mode: true
+2026-10-20T17:35:23.8508420Z   fetch-depth: 1
+2026-10-20T17:35:23.8508912Z   fetch-tags: false
+2026-10-20T17:35:23.8509419Z   show-progress: true
+2026-10-20T17:35:23.8509931Z   lfs: false
+2026-10-20T17:35:23.8510419Z   submodules: false
+2026-10-20T17:35:23.8510948Z   set-safe-directory: true
+2026-10-20T17:35:23.8511573Z   allow-unsafe-pr-checkout: false
+2026-10-20T17:35:23.8512460Z env:
+2026-10-20T17:35:23.8512921Z   CHART: 1
+2026-10-20T17:35:23.8513397Z   MINUTES: 180
+2026-10-20T17:35:23.8514247Z   LEGACY_REPORT_SHA256: 502596f85c93f871fd36ab3d89a82462badc1090b3cdcc040d93dffe165a0692
+2026-10-20T17:35:23.8515701Z   LEGACY_CACHE_KEY: lean-linux-v1-1-a7a0b06e3d37a6870b91ed3cf33c03feba40ef2788f33e5609a548f9ca4c9288-39258813467-3
+2026-10-20T17:35:23.8517099Z   PYTHONUNBUFFERED: 1
+2026-10-20T17:35:23.8517621Z ##[endgroup]
+2026-10-20T17:35:23.9617162Z Syncing repository: contatofilipevono-rgb/hrsbf-bent-verification
+2026-10-20T17:35:23.9620284Z ##[group]Getting Git version info
+2026-10-20T17:35:23.9621901Z Working directory is '/home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification'
+2026-10-20T17:35:23.9624477Z [command]/usr/bin/git version
+2026-10-20T17:35:23.9711357Z git version 2.55.0
+2026-10-20T17:35:23.9736159Z ##[endgroup]
+2026-10-20T17:35:23.9754132Z Temporarily overriding HOME='/home/runner/work/_temp/8ce1b723-414d-42d3-84af-a8eac531fc6f' before making global git config changes
+2026-10-20T17:35:23.9759306Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-20T17:35:23.9764486Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification
+2026-10-20T17:35:23.9828600Z Deleting the contents of '/home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification'
+2026-10-20T17:35:23.9831702Z ##[group]Initializing the repository
+2026-10-20T17:35:23.9836015Z [command]/usr/bin/git init /home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification
+2026-10-20T17:35:23.9948006Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-20T17:35:23.9949724Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-20T17:35:23.9950811Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-20T17:35:23.9951662Z hint: call:
+2026-10-20T17:35:23.9952152Z hint:
+2026-10-20T17:35:23.9952754Z hint: 	git config --global init.defaultBranch <name>
+2026-10-20T17:35:23.9953455Z hint:
+2026-10-20T17:35:23.9954124Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-20T17:35:23.9955180Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-20T17:35:23.9956033Z hint:
+2026-10-20T17:35:23.9956831Z hint: 	git branch -m <name>
+2026-10-20T17:35:23.9957476Z hint:
+2026-10-20T17:35:23.9958302Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-20T17:35:23.9961158Z Initialized empty Git repository in /home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification/.git/
+2026-10-20T17:35:23.9983731Z [command]/usr/bin/git remote add origin https://github.com/contatofilipevono-rgb/hrsbf-bent-verification
+2026-10-20T17:35:24.0049455Z ##[endgroup]
+2026-10-20T17:35:24.0051181Z ##[group]Disabling automatic garbage collection
+2026-10-20T17:35:24.0052632Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-20T17:35:24.0098492Z ##[endgroup]
+2026-10-20T17:35:24.0100267Z ##[group]Setting up auth
+2026-10-20T17:35:24.0102253Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-20T17:35:24.0144081Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-20T17:35:24.0594855Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-20T17:35:24.0650570Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-20T17:35:24.0930549Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-20T17:35:24.0972836Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-20T17:35:24.1221073Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-20T17:35:24.1269139Z ##[endgroup]
+2026-10-20T17:35:24.1270163Z ##[group]Fetching the repository
+2026-10-20T17:35:24.1285512Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +032aaadc61ab31b2b6c80753388218c9e2d41af7:refs/remotes/origin/fix/lean-resume-stability
+2026-10-20T17:35:33.4677606Z From https://github.com/contatofilipevono-rgb/hrsbf-bent-verification
+2026-10-20T17:35:33.4681084Z  * [new ref]         032aaadc61ab31b2b6c80753388218c9e2d41af7 -> origin/fix/lean-resume-stability
+2026-10-20T17:35:33.4764176Z ##[endgroup]
+2026-10-20T17:35:33.4765731Z ##[group]Determining the checkout info
+2026-10-20T17:35:33.4783533Z ##[endgroup]
+2026-10-20T17:35:33.4784581Z [command]/usr/bin/git sparse-checkout disable
+2026-10-20T17:35:33.4787531Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-20T17:35:33.4800068Z ##[group]Checking out the ref
+2026-10-20T17:35:33.4804060Z [command]/usr/bin/git checkout --progress --force -B fix/lean-resume-stability refs/remotes/origin/fix/lean-resume-stability
+2026-10-20T17:35:34.5074565Z Updating files:  37% (529/1418)
+2026-10-20T17:35:34.5350524Z Updating files:  38% (539/1418)
+2026-10-20T17:35:34.5478947Z Updating files:  39% (554/1418)
+2026-10-20T17:35:34.5486613Z Updating files:  40% (568/1418)
+2026-10-20T17:35:34.5503041Z Updating files:  41% (582/1418)
+2026-10-20T17:35:34.5512963Z Updating files:  42% (596/1418)
+2026-10-20T17:35:34.5524319Z Updating files:  43% (610/1418)
+2026-10-20T17:35:34.5542528Z Updating files:  44% (624/1418)
+2026-10-20T17:35:34.5638186Z Updating files:  45% (639/1418)
+2026-10-20T17:35:34.5684521Z Updating files:  46% (653/1418)
+2026-10-20T17:35:34.5706875Z Updating files:  47% (667/1418)
+2026-10-20T17:35:34.5734821Z Updating files:  48% (681/1418)
+2026-10-20T17:35:34.5768801Z Updating files:  49% (695/1418)
+2026-10-20T17:35:34.5794126Z Updating files:  50% (709/1418)
+2026-10-20T17:35:34.5803442Z Updating files:  51% (724/1418)
+2026-10-20T17:35:34.5858989Z Updating files:  52% (738/1418)
+2026-10-20T17:35:34.5908457Z Updating files:  53% (752/1418)
+2026-10-20T17:35:34.5974376Z Updating files:  54% (766/1418)
+2026-10-20T17:35:34.6042874Z Updating files:  55% (780/1418)
+2026-10-20T17:35:34.6131884Z Updating files:  56% (795/1418)
+2026-10-20T17:35:34.6222106Z Updating files:  57% (809/1418)
+2026-10-20T17:35:34.6256111Z Updating files:  58% (823/1418)
+2026-10-20T17:35:34.6267486Z Updating files:  59% (837/1418)
+2026-10-20T17:35:34.6281497Z Updating files:  60% (851/1418)
+2026-10-20T17:35:34.6292957Z Updating files:  61% (865/1418)
+2026-10-20T17:35:34.6310615Z Updating files:  62% (880/1418)
+2026-10-20T17:35:34.6319998Z Updating files:  63% (894/1418)
+2026-10-20T17:35:34.6328663Z Updating files:  64% (908/1418)
+2026-10-20T17:35:34.6338410Z Updating files:  65% (922/1418)
+2026-10-20T17:35:34.6347144Z Updating files:  66% (936/1418)
+2026-10-20T17:35:34.6353928Z Updating files:  67% (951/1418)
+2026-10-20T17:35:34.6360685Z Updating files:  68% (965/1418)
+2026-10-20T17:35:34.6367716Z Updating files:  69% (979/1418)
+2026-10-20T17:35:34.6374199Z Updating files:  70% (993/1418)
+2026-10-20T17:35:34.6381107Z Updating files:  71% (1007/1418)
+2026-10-20T17:35:34.6393355Z Updating files:  72% (1021/1418)
+2026-10-20T17:35:34.6405807Z Updating files:  73% (1036/1418)
+2026-10-20T17:35:34.6417674Z Updating files:  74% (1050/1418)
+2026-10-20T17:35:34.6429768Z Updating files:  75% (1064/1418)
+2026-10-20T17:35:34.6441724Z Updating files:  76% (1078/1418)
+2026-10-20T17:35:34.6453157Z Updating files:  77% (1092/1418)
+2026-10-20T17:35:34.6464772Z Updating files:  78% (1107/1418)
+2026-10-20T17:35:34.6474895Z Updating files:  79% (1121/1418)
+2026-10-20T17:35:34.6484836Z Updating files:  80% (1135/1418)
+2026-10-20T17:35:34.6492309Z Updating files:  81% (1149/1418)
+2026-10-20T17:35:34.6499709Z Updating files:  82% (1163/1418)
+2026-10-20T17:35:34.6507506Z Updating files:  83% (1177/1418)
+2026-10-20T17:35:34.6514892Z Updating files:  84% (1192/1418)
+2026-10-20T17:35:34.6522616Z Updating files:  85% (1206/1418)
+2026-10-20T17:35:34.6530957Z Updating files:  86% (1220/1418)
+2026-10-20T17:35:34.6539224Z Updating files:  87% (1234/1418)
+2026-10-20T17:35:34.6546543Z Updating files:  88% (1248/1418)
+2026-10-20T17:35:34.6554782Z Updating files:  89% (1263/1418)
+2026-10-20T17:35:34.6562386Z Updating files:  90% (1277/1418)
+2026-10-20T17:35:34.6570053Z Updating files:  91% (1291/1418)
+2026-10-20T17:35:34.6577939Z Updating files:  92% (1305/1418)
+2026-10-20T17:35:34.6588659Z Updating files:  93% (1319/1418)
+2026-10-20T17:35:34.6598413Z Updating files:  94% (1333/1418)
+2026-10-20T17:35:34.6610576Z Updating files:  95% (1348/1418)
+2026-10-20T17:35:34.7169079Z Updating files:  96% (1362/1418)
+2026-10-20T17:35:34.8829014Z Updating files:  97% (1376/1418)
+2026-10-20T17:35:35.0777004Z Updating files:  98% (1390/1418)
+2026-10-20T17:35:35.1020965Z Updating files:  99% (1404/1418)
+2026-10-20T17:35:35.1021775Z Updating files: 100% (1418/1418)
+2026-10-20T17:35:35.1022540Z Updating files: 100% (1418/1418), done.
+2026-10-20T17:35:35.1053021Z Switched to a new branch 'fix/lean-resume-stability'
+2026-10-20T17:35:35.1060648Z branch 'fix/lean-resume-stability' set up to track 'origin/fix/lean-resume-stability'.
+2026-10-20T17:35:35.1144722Z ##[endgroup]
+2026-10-20T17:35:35.1201016Z [command]/usr/bin/git log -1 --format=%H
+2026-10-20T17:35:35.1231287Z 032aaadc61ab31b2b6c80753388218c9e2d41af7
+2026-10-20T17:35:35.1563677Z ##[group]Run actions/setup-python@v5
+2026-10-20T17:35:35.1563977Z with:
+2026-10-20T17:35:35.1564175Z   python-version: 3.12
+2026-10-20T17:35:35.1564401Z   check-latest: false
+2026-10-20T17:35:35.1567439Z   token: ***
+2026-10-20T17:35:35.1567663Z   update-environment: true
+2026-10-20T17:35:35.1567917Z   allow-prereleases: false
+2026-10-20T17:35:35.1568151Z   freethreaded: false
+2026-10-20T17:35:35.1568359Z env:
+2026-10-20T17:35:35.1568549Z   CHART: 1
+2026-10-20T17:35:35.1568740Z   MINUTES: 180
+2026-10-20T17:35:35.1569105Z   LEGACY_REPORT_SHA256: 502596f85c93f871fd36ab3d89a82462badc1090b3cdcc040d93dffe165a0692
+2026-10-20T17:35:35.1569865Z   LEGACY_CACHE_KEY: lean-linux-v1-1-a7a0b06e3d37a6870b91ed3cf33c03feba40ef2788f33e5609a548f9ca4c9288-39258813467-3
+2026-10-20T17:35:35.1570429Z   PYTHONUNBUFFERED: 1
+2026-10-20T17:35:35.1570656Z ##[endgroup]
+2026-10-20T17:35:35.2913108Z ##[group]Installed versions
+2026-10-20T17:35:35.3000451Z (node:2315) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-20T17:35:35.3001740Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-20T17:35:35.3002518Z Successfully set up CPython (3.12.15)
+2026-10-20T17:35:35.3003288Z ##[endgroup]
+2026-10-20T17:35:35.3163520Z ##[group]Run python - <<'PY'
+2026-10-20T17:35:35.3163896Z [36;1mpython - <<'PY'[0m
+2026-10-20T17:35:35.3164184Z [36;1mimport json,os,re,urllib.request[0m
+2026-10-20T17:35:35.3164522Z [36;1mchart=os.environ['CHART'][0m
+2026-10-20T17:35:35.3164846Z [36;1mrun={'0':39258818208,'1':39258813467}[chart][0m
+2026-10-20T17:35:35.3165799Z [36;1mrequest=urllib.request.Request(f"https://api.github.com/repos/{os.environ['GH_REPOSITORY']}/actions/runs/{run}",headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})[0m
+2026-10-20T17:35:35.3167375Z [36;1mwith urllib.request.urlopen(request,timeout=30) as response:[0m
+2026-10-20T17:35:35.3168040Z [36;1m    state=json.load(response)[0m
+2026-10-20T17:35:35.3168522Z [36;1mif state['status']!='completed':[0m
+2026-10-20T17:35:35.3168963Z [36;1m    raise SystemExit('Old run is still active; no overlapping execution allowed')[0m
+2026-10-20T17:35:35.3169453Z [36;1mkey=os.environ['LEGACY_CACHE_KEY'][0m
+2026-10-20T17:35:35.3169780Z [36;1mdigest=os.environ['LEGACY_REPORT_SHA256'][0m
+2026-10-20T17:35:35.3170092Z [36;1mif bool(key)!=bool(digest):[0m
+2026-10-20T17:35:35.3170588Z [36;1m    raise SystemExit('Legacy migration requires both an exact cache key and an audited report digest')[0m
+2026-10-20T17:35:35.3171544Z [36;1mif key and (not re.fullmatch(r'lean-linux-v1-'+chart+r'-[0-9a-f]{64}-'+str(run)+r'-[0-9]+',key) or not re.fullmatch(r'[0-9a-f]{64}',digest)):[0m
+2026-10-20T17:35:35.3172452Z [36;1m    raise SystemExit('Invalid legacy migration inputs')[0m
+2026-10-20T17:35:35.3172901Z [36;1mprint('Old run terminal; migration inputs valid')[0m
+2026-10-20T17:35:35.3173220Z [36;1mPY[0m
+2026-10-20T17:35:35.3474998Z shell: /usr/bin/bash -e {0}
+2026-10-20T17:35:35.3475305Z env:
+2026-10-20T17:35:35.3475517Z   CHART: 1
+2026-10-20T17:35:35.3475714Z   MINUTES: 180
+2026-10-20T17:35:35.3476115Z   LEGACY_REPORT_SHA256: 502596f85c93f871fd36ab3d89a82462badc1090b3cdcc040d93dffe165a0692
+2026-10-20T17:35:35.3477130Z   LEGACY_CACHE_KEY: lean-linux-v1-1-a7a0b06e3d37a6870b91ed3cf33c03feba40ef2788f33e5609a548f9ca4c9288-39258813467-3
+2026-10-20T17:35:35.3477747Z   PYTHONUNBUFFERED: 1
+2026-10-20T17:35:35.3478286Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:35:35.3478753Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T17:35:35.3479209Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:35:35.3479615Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:35:35.3480022Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:35:35.3480433Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T17:35:35.3483618Z   GH_TOKEN: ***
+2026-10-20T17:35:35.3483931Z   GH_REPOSITORY: contatofilipevono-rgb/hrsbf-bent-verification
+2026-10-20T17:35:35.3484288Z ##[endgroup]
+2026-10-20T17:35:35.6661811Z Old run terminal; migration inputs valid
+2026-10-20T17:35:35.6801769Z ##[group]Run curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+2026-10-20T17:35:35.6803007Z [36;1mcurl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"[0m
+2026-10-20T17:35:35.6803991Z [36;1mecho "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check[0m
+2026-10-20T17:35:35.6804662Z [36;1mtar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"[0m
+2026-10-20T17:35:35.6805114Z [36;1mecho "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"[0m
+2026-10-20T17:35:35.6805623Z [36;1mecho "LEAN_RELEASE_ARCHIVE=$RUNNER_TEMP/lean.tar.zst" >> "$GITHUB_ENV"[0m
+2026-10-20T17:35:35.6873749Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-20T17:35:35.6874091Z env:
+2026-10-20T17:35:35.6874277Z   CHART: 1
+2026-10-20T17:35:35.6874510Z   MINUTES: 180
+2026-10-20T17:35:35.6874887Z   LEGACY_REPORT_SHA256: 502596f85c93f871fd36ab3d89a82462badc1090b3cdcc040d93dffe165a0692
+2026-10-20T17:35:35.6875642Z   LEGACY_CACHE_KEY: lean-linux-v1-1-a7a0b06e3d37a6870b91ed3cf33c03feba40ef2788f33e5609a548f9ca4c9288-39258813467-3
+2026-10-20T17:35:35.6876219Z   PYTHONUNBUFFERED: 1
+2026-10-20T17:35:35.6876724Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:35:35.6877185Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T17:35:35.6877622Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:35:35.6878015Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:35:35.6878404Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:35:35.6878792Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T17:35:35.6879125Z ##[endgroup]
+2026-10-20T17:35:35.7180521Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-10-20T17:35:35.7181390Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-10-20T17:35:35.7181802Z 
+2026-10-20T17:35:35.7421261Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-20T17:35:35.7481086Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-20T17:35:35.7481896Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-20T17:35:36.7401661Z 
+2026-10-20T17:35:37.7520095Z  25  566M   25  142M    0     0   139M      0  0:00:04  0:00:01  0:00:03  139M
+2026-10-20T17:35:38.8154534Z  56  566M   56  320M    0     0   157M      0  0:00:03  0:00:02  0:00:01  175M
+2026-10-20T17:35:38.9681499Z  93  566M   93  529M    0     0   171M      0  0:00:03  0:00:03 --:--:--  186M
+2026-10-20T17:35:38.9682110Z 100  566M  100  566M    0     0   174M      0  0:00:03  0:00:03 --:--:--  190M
+2026-10-20T17:35:39.5861989Z /home/runner/work/_temp/lean.tar.zst: OK
+2026-10-20T17:35:45.6729392Z ##[group]Run case "$CHART" in 0) NODE=0;; 1) NODE=26715;; *) exit 2;; esac
+2026-10-20T17:35:45.6729925Z [36;1mcase "$CHART" in 0) NODE=0;; 1) NODE=26715;; *) exit 2;; esac[0m
+2026-10-20T17:35:45.6731247Z [36;1mpython tools/generate_lean_affine_pilot.py --chart "$CHART" --node "$NODE" --prefix "H12CloudChart$CHART" --root-frame --engine H12AffineFastState --global-label-index --chunk-size 1200 --proof-chunk-size 600 --register > "$RUNNER_TEMP/chart-generation.log"[0m
+2026-10-20T17:35:45.6795834Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-20T17:35:45.6796202Z env:
+2026-10-20T17:35:45.6796402Z   CHART: 1
+2026-10-20T17:35:45.6796823Z   MINUTES: 180
+2026-10-20T17:35:45.6797199Z   LEGACY_REPORT_SHA256: 502596f85c93f871fd36ab3d89a82462badc1090b3cdcc040d93dffe165a0692
+2026-10-20T17:35:45.6797950Z   LEGACY_CACHE_KEY: lean-linux-v1-1-a7a0b06e3d37a6870b91ed3cf33c03feba40ef2788f33e5609a548f9ca4c9288-39258813467-3
+2026-10-20T17:35:45.6798530Z   PYTHONUNBUFFERED: 1
+2026-10-20T17:35:45.6798882Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:35:45.6799326Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T17:35:45.6799758Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:35:45.6800156Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:35:45.6800548Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:35:45.6800936Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T17:35:45.6801333Z   LEAN_RELEASE_ARCHIVE: /home/runner/work/_temp/lean.tar.zst
+2026-10-20T17:35:45.6801658Z ##[endgroup]
+2026-10-20T17:36:19.9448290Z ##[group]Run actions/cache/restore@v4
+2026-10-20T17:36:19.9448597Z with:
+2026-10-20T17:36:19.9448932Z   path: quartic_audit_2026_10_17/lean/.lake
+quartic_audit_2026_10_17/cloud_progress
+
+2026-10-20T17:36:19.9449596Z   key: lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-5
+2026-10-20T17:36:19.9450348Z   restore-keys: lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-
+
+
+2026-10-20T17:36:19.9450860Z   fail-on-cache-miss: true
+2026-10-20T17:36:19.9451118Z   enableCrossOsArchive: false
+2026-10-20T17:36:19.9451387Z   lookup-only: false
+2026-10-20T17:36:19.9451593Z env:
+2026-10-20T17:36:19.9451773Z   CHART: 1
+2026-10-20T17:36:19.9451959Z   MINUTES: 180
+2026-10-20T17:36:19.9452322Z   LEGACY_REPORT_SHA256: 502596f85c93f871fd36ab3d89a82462badc1090b3cdcc040d93dffe165a0692
+2026-10-20T17:36:19.9453056Z   LEGACY_CACHE_KEY: lean-linux-v1-1-a7a0b06e3d37a6870b91ed3cf33c03feba40ef2788f33e5609a548f9ca4c9288-39258813467-3
+2026-10-20T17:36:19.9453661Z   PYTHONUNBUFFERED: 1
+2026-10-20T17:36:19.9453977Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:36:19.9454415Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T17:36:19.9454849Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:36:19.9455240Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:36:19.9455627Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:36:19.9456013Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T17:36:19.9456418Z   LEAN_RELEASE_ARCHIVE: /home/runner/work/_temp/lean.tar.zst
+2026-10-20T17:36:19.9457348Z ##[endgroup]
+2026-10-20T17:36:20.0536083Z (node:2372) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-20T17:36:20.0537616Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-20T17:36:20.1184149Z Cache hit for restore-key: lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-4
+2026-10-20T17:36:20.1289282Z (node:2372) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-20T17:36:21.1720666Z Received 251658240 of 1377435728 (18.3%), 239.8 MBs/sec
+2026-10-20T17:36:22.1921646Z Received 536870912 of 1377435728 (39.0%), 253.5 MBs/sec
+2026-10-20T17:36:23.1923990Z Received 830472192 of 1377435728 (60.3%), 262.1 MBs/sec
+2026-10-20T17:36:24.1967966Z Received 1086324736 of 1377435728 (78.9%), 257.5 MBs/sec
+2026-10-20T17:36:25.1792660Z Received 1377435728 of 1377435728 (100.0%), 262.3 MBs/sec
+2026-10-20T17:36:25.1794856Z Cache Size: ~1314 MB (1377435728 B)
+2026-10-20T17:36:25.1839773Z [command]/usr/bin/tar -xf /home/runner/work/_temp/0a798771-e70f-4563-8bdc-be50055a1dbc/cache.tzst -P -C /home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification --use-compress-program unzstd
+2026-10-20T17:36:44.7645739Z Cache restored successfully
+2026-10-20T17:36:44.9753917Z Cache restored from key: lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-4
+2026-10-20T17:36:45.1252593Z ##[group]Run python tools/verify_lean_cloud_resume.py --chart "$CHART" --minutes "$MINUTES" --legacy-report-sha256 "$LEGACY_REPORT_SHA256"
+2026-10-20T17:36:45.1254196Z [36;1mpython tools/verify_lean_cloud_resume.py --chart "$CHART" --minutes "$MINUTES" --legacy-report-sha256 "$LEGACY_REPORT_SHA256"[0m
+2026-10-20T17:36:45.8770467Z shell: /usr/bin/bash -e {0}
+2026-10-20T17:36:45.8770803Z env:
+2026-10-20T17:36:45.8771060Z   CHART: 1
+2026-10-20T17:36:45.8771302Z   MINUTES: 180
+2026-10-20T17:36:45.8771767Z   LEGACY_REPORT_SHA256: 502596f85c93f871fd36ab3d89a82462badc1090b3cdcc040d93dffe165a0692
+2026-10-20T17:36:45.8772680Z   LEGACY_CACHE_KEY: lean-linux-v1-1-a7a0b06e3d37a6870b91ed3cf33c03feba40ef2788f33e5609a548f9ca4c9288-39258813467-3
+2026-10-20T17:36:45.8773381Z   PYTHONUNBUFFERED: 1
+2026-10-20T17:36:45.8773728Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:36:45.8774281Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T17:36:45.8774879Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:36:45.8775355Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:36:45.8775829Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T17:36:45.8776317Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T17:36:45.8776996Z   LEAN_RELEASE_ARCHIVE: /home/runner/work/_temp/lean.tar.zst
+2026-10-20T17:36:45.8777768Z   RESTORED_CACHE_KEY: lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-4
+2026-10-20T17:36:45.8778458Z ##[endgroup]
+2026-10-20T17:36:56.9725751Z RESUME stable_identity REUSED 643 / 924 NEXT H12CloudChart1Data522
+2026-10-20T17:36:56.9726394Z START 644 / 924 H12CloudChart1Data522 build
+2026-10-20T17:37:57.7286734Z START 644 / 924 H12CloudChart1Data522 kernel
+2026-10-20T17:38:38.9185169Z PASS 644 H12CloudChart1Data522
+2026-10-20T17:38:38.9185746Z START 645 / 924 H12CloudChart1Data523 build
+2026-10-20T17:39:39.6754970Z START 645 / 924 H12CloudChart1Data523 kernel
+2026-10-20T17:40:21.0234464Z PASS 645 H12CloudChart1Data523
+2026-10-20T17:40:21.0235007Z START 646 / 924 H12CloudChart1Data524 build
+2026-10-20T17:41:32.4027044Z START 646 / 924 H12CloudChart1Data524 kernel
+2026-10-20T17:42:20.7200252Z PASS 646 H12CloudChart1Data524
+2026-10-20T17:42:20.7200877Z START 647 / 924 H12CloudChart1Data525 build
+2026-10-20T17:43:32.0885109Z START 647 / 924 H12CloudChart1Data525 kernel
+2026-10-20T17:44:24.3085108Z PASS 647 H12CloudChart1Data525
+2026-10-20T17:44:24.3085667Z START 648 / 924 H12CloudChart1Data526 build
+2026-10-20T17:45:21.1353841Z START 648 / 924 H12CloudChart1Data526 kernel
+2026-10-20T17:46:00.7779530Z PASS 648 H12CloudChart1Data526
+2026-10-20T17:46:00.7780096Z START 649 / 924 H12CloudChart1Data527 build
+2026-10-20T17:46:58.6248833Z START 649 / 924 H12CloudChart1Data527 kernel
+2026-10-20T17:47:37.9620035Z PASS 649 H12CloudChart1Data527
+2026-10-20T17:47:37.9620454Z START 650 / 924 H12CloudChart1Data528 build
+2026-10-20T17:48:31.3873244Z START 650 / 924 H12CloudChart1Data528 kernel
+2026-10-20T17:49:07.1161495Z PASS 650 H12CloudChart1Data528
+2026-10-20T17:49:07.1161972Z START 651 / 924 H12CloudChart1Data529 build
+2026-10-20T17:50:02.7480604Z START 651 / 924 H12CloudChart1Data529 kernel
+2026-10-20T17:50:39.2270469Z PASS 651 H12CloudChart1Data529
+2026-10-20T17:50:39.2271360Z START 652 / 924 H12CloudChart1Data530 build
+2026-10-20T17:51:32.3494394Z START 652 / 924 H12CloudChart1Data530 kernel
+2026-10-20T17:52:06.7129894Z PASS 652 H12CloudChart1Data530
+2026-10-20T17:52:06.7130299Z START 653 / 924 H12CloudChart1Data531 build
+2026-10-20T17:53:05.2564601Z START 653 / 924 H12CloudChart1Data531 kernel
+2026-10-20T17:53:46.0014981Z PASS 653 H12CloudChart1Data531
+2026-10-20T17:53:46.0016761Z START 654 / 924 H12CloudChart1Data532 build
+2026-10-20T17:54:45.5447014Z START 654 / 924 H12CloudChart1Data532 kernel
+2026-10-20T17:55:26.0925430Z PASS 654 H12CloudChart1Data532
+2026-10-20T17:55:26.0925985Z START 655 / 924 H12CloudChart1Data533 build
+2026-10-20T17:56:23.6729892Z START 655 / 924 H12CloudChart1Data533 kernel
+2026-10-20T17:57:02.8568691Z PASS 655 H12CloudChart1Data533
+2026-10-20T17:57:02.8569249Z START 656 / 924 H12CloudChart1Data534 build
+2026-10-20T17:58:06.3055333Z START 656 / 924 H12CloudChart1Data534 kernel
+2026-10-20T17:58:53.2061981Z PASS 656 H12CloudChart1Data534
+2026-10-20T17:58:53.2062544Z START 657 / 924 H12CloudChart1Data535 build
+2026-10-20T17:59:55.3523669Z START 657 / 924 H12CloudChart1Data535 kernel
+2026-10-20T18:00:38.6433950Z PASS 657 H12CloudChart1Data535
+2026-10-20T18:00:38.6434503Z START 658 / 924 H12CloudChart1Data536 build
+2026-10-20T18:01:47.1161892Z START 658 / 924 H12CloudChart1Data536 kernel
+2026-10-20T18:02:35.6284119Z PASS 658 H12CloudChart1Data536
+2026-10-20T18:02:35.6284541Z START 659 / 924 H12CloudChart1Data537 build
+2026-10-20T18:03:40.2753384Z START 659 / 924 H12CloudChart1Data537 kernel
+2026-10-20T18:04:25.5334756Z PASS 659 H12CloudChart1Data537
+2026-10-20T18:04:25.5335321Z START 660 / 924 H12CloudChart1Data538 build
+2026-10-20T18:05:26.5731477Z START 660 / 924 H12CloudChart1Data538 kernel
+2026-10-20T18:06:08.3679941Z PASS 660 H12CloudChart1Data538
+2026-10-20T18:06:08.3680469Z START 661 / 924 H12CloudChart1Data539 build
+2026-10-20T18:07:08.5145616Z START 661 / 924 H12CloudChart1Data539 kernel
+2026-10-20T18:07:50.3099802Z PASS 661 H12CloudChart1Data539
+2026-10-20T18:07:50.3100333Z START 662 / 924 H12CloudChart1Data540 build
+2026-10-20T18:09:08.7755831Z START 662 / 924 H12CloudChart1Data540 kernel
+2026-10-20T18:10:04.8695532Z PASS 662 H12CloudChart1Data540
+2026-10-20T18:10:04.8696111Z START 663 / 924 H12CloudChart1Data541 build
+2026-10-20T18:11:27.9353149Z START 663 / 924 H12CloudChart1Data541 kernel
+2026-10-20T18:12:22.9243383Z PASS 663 H12CloudChart1Data541
+2026-10-20T18:12:22.9244105Z START 664 / 924 H12CloudChart1Data542 build
+2026-10-20T18:13:38.5741031Z START 664 / 924 H12CloudChart1Data542 kernel
+2026-10-20T18:14:30.6131181Z PASS 664 H12CloudChart1Data542
+2026-10-20T18:14:30.6131684Z START 665 / 924 H12CloudChart1Data543 build
+2026-10-20T18:15:41.2985913Z START 665 / 924 H12CloudChart1Data543 kernel
+2026-10-20T18:16:30.7218090Z PASS 665 H12CloudChart1Data543
+2026-10-20T18:16:30.7221043Z START 666 / 924 H12CloudChart1Data544 build
+2026-10-20T18:17:41.0061214Z START 666 / 924 H12CloudChart1Data544 kernel
+2026-10-20T18:18:30.4390325Z PASS 666 H12CloudChart1Data544
+2026-10-20T18:18:30.4391216Z START 667 / 924 H12CloudChart1Data545 build
+2026-10-20T18:19:46.6415953Z START 667 / 924 H12CloudChart1Data545 kernel
+2026-10-20T18:20:39.2750156Z PASS 667 H12CloudChart1Data545
+2026-10-20T18:20:39.2750860Z START 668 / 924 H12CloudChart1Data546 build
+2026-10-20T18:21:58.1356377Z START 668 / 924 H12CloudChart1Data546 kernel
+2026-10-20T18:22:54.8778305Z PASS 668 H12CloudChart1Data546
+2026-10-20T18:22:54.8778861Z START 669 / 924 H12CloudChart1Data547 build
+2026-10-20T18:24:05.6584255Z START 669 / 924 H12CloudChart1Data547 kernel
+2026-10-20T18:24:57.4834771Z PASS 669 H12CloudChart1Data547
+2026-10-20T18:24:57.4835341Z START 670 / 924 H12CloudChart1Data548 build
+2026-10-20T18:26:16.0945668Z START 670 / 924 H12CloudChart1Data548 kernel
+2026-10-20T18:27:11.0980435Z PASS 670 H12CloudChart1Data548
+2026-10-20T18:27:11.0981003Z START 671 / 924 H12CloudChart1Data549 build
+2026-10-20T18:28:25.8973004Z START 671 / 924 H12CloudChart1Data549 kernel
+2026-10-20T18:29:16.2784561Z PASS 671 H12CloudChart1Data549
+2026-10-20T18:29:16.2785058Z START 672 / 924 H12CloudChart1Data550 build
+2026-10-20T18:30:32.9304688Z START 672 / 924 H12CloudChart1Data550 kernel
+2026-10-20T18:31:24.2175261Z PASS 672 H12CloudChart1Data550
+2026-10-20T18:31:24.2175721Z START 673 / 924 H12CloudChart1Data551 build
+2026-10-20T18:32:34.6896338Z START 673 / 924 H12CloudChart1Data551 kernel
+2026-10-20T18:33:23.9614822Z PASS 673 H12CloudChart1Data551
+2026-10-20T18:33:23.9615502Z START 674 / 924 H12CloudChart1Data552 build
+2026-10-20T18:34:35.6532118Z START 674 / 924 H12CloudChart1Data552 kernel
+2026-10-20T18:35:24.5219234Z PASS 674 H12CloudChart1Data552
+2026-10-20T18:35:24.5220089Z START 675 / 924 H12CloudChart1Data553 build
+2026-10-20T18:36:38.2161904Z START 675 / 924 H12CloudChart1Data553 kernel
+2026-10-20T18:37:27.9350250Z PASS 675 H12CloudChart1Data553
+2026-10-20T18:37:27.9350840Z START 676 / 924 H12CloudChart1Data554 build
+2026-10-20T18:38:39.6113943Z START 676 / 924 H12CloudChart1Data554 kernel
+2026-10-20T18:39:32.2492424Z PASS 676 H12CloudChart1Data554
+2026-10-20T18:39:32.2493102Z START 677 / 924 H12CloudChart1Data555 build
+2026-10-20T18:40:47.0489551Z START 677 / 924 H12CloudChart1Data555 kernel
+2026-10-20T18:41:37.2751419Z PASS 677 H12CloudChart1Data555
+2026-10-20T18:41:37.2751985Z START 678 / 924 H12CloudChart1Data556 build
+2026-10-20T18:42:42.1329189Z START 678 / 924 H12CloudChart1Data556 kernel
+2026-10-20T18:43:27.8338551Z PASS 678 H12CloudChart1Data556
+2026-10-20T18:43:27.8340459Z START 679 / 924 H12CloudChart1Data557 build
+2026-10-20T18:44:30.4713816Z START 679 / 924 H12CloudChart1Data557 kernel
+2026-10-20T18:45:14.7173928Z PASS 679 H12CloudChart1Data557
+2026-10-20T18:45:14.7174439Z START 680 / 924 H12CloudChart1Data558 build
+2026-10-20T18:46:17.9534418Z START 680 / 924 H12CloudChart1Data558 kernel
+2026-10-20T18:47:02.8452251Z PASS 680 H12CloudChart1Data558
+2026-10-20T18:47:02.8452750Z START 681 / 924 H12CloudChart1Data559 build
+2026-10-20T18:48:06.9952868Z START 681 / 924 H12CloudChart1Data559 kernel
+2026-10-20T18:48:52.4422865Z PASS 681 H12CloudChart1Data559
+2026-10-20T18:48:52.4423558Z START 682 / 924 H12CloudChart1Data560 build
+2026-10-20T18:49:57.8801610Z START 682 / 924 H12CloudChart1Data560 kernel
+2026-10-20T18:50:43.5765512Z PASS 682 H12CloudChart1Data560
+2026-10-20T18:50:43.5765914Z START 683 / 924 H12CloudChart1Data561 build
+2026-10-20T18:51:48.3243731Z START 683 / 924 H12CloudChart1Data561 kernel
+2026-10-20T18:52:34.4616764Z PASS 683 H12CloudChart1Data561
+2026-10-20T18:52:34.4617480Z START 684 / 924 H12CloudChart1Data562 build
+2026-10-20T18:53:13.6797729Z START 684 / 924 H12CloudChart1Data562 kernel
+2026-10-20T18:53:42.5281395Z PASS 684 H12CloudChart1Data562
+2026-10-20T18:53:42.5282163Z START 685 / 924 H12CloudChart1Proof000 build
+2026-10-20T18:53:53.7247208Z START 685 / 924 H12CloudChart1Proof000 kernel
+2026-10-20T18:54:00.9644397Z PASS 685 H12CloudChart1Proof000
+2026-10-20T18:54:00.9644888Z START 686 / 924 H12CloudChart1Proof001 build
+2026-10-20T18:54:13.9652258Z START 686 / 924 H12CloudChart1Proof001 kernel
+2026-10-20T18:54:22.8083190Z PASS 686 H12CloudChart1Proof001
+2026-10-20T18:54:22.8083810Z START 687 / 924 H12CloudChart1Proof002 build
+2026-10-20T18:54:37.1097936Z START 687 / 924 H12CloudChart1Proof002 kernel
+2026-10-20T18:54:46.9036738Z PASS 687 H12CloudChart1Proof002
+2026-10-20T18:54:46.9037575Z START 688 / 924 H12CloudChart1Proof003 build
+2026-10-20T18:55:00.7051026Z START 688 / 924 H12CloudChart1Proof003 kernel
+2026-10-20T18:55:10.3516022Z PASS 688 H12CloudChart1Proof003
+2026-10-20T18:55:10.3516871Z START 689 / 924 H12CloudChart1Proof004 build
+2026-10-20T18:55:23.0474117Z START 689 / 924 H12CloudChart1Proof004 kernel
+2026-10-20T18:55:32.0402071Z PASS 689 H12CloudChart1Proof004
+2026-10-20T18:55:32.0403117Z START 690 / 924 H12CloudChart1Proof005 build
+2026-10-20T18:55:42.7311174Z START 690 / 924 H12CloudChart1Proof005 kernel
+2026-10-20T18:55:50.0190347Z PASS 690 H12CloudChart1Proof005
+2026-10-20T18:55:50.0190948Z START 691 / 924 H12CloudChart1Proof006 build
+2026-10-20T18:56:00.9124380Z START 691 / 924 H12CloudChart1Proof006 kernel
+2026-10-20T18:56:08.1535622Z PASS 691 H12CloudChart1Proof006
+2026-10-20T18:56:08.1536312Z START 692 / 924 H12CloudChart1Proof007 build
+2026-10-20T18:56:20.1481180Z START 692 / 924 H12CloudChart1Proof007 kernel
+2026-10-20T18:56:28.4911967Z PASS 692 H12CloudChart1Proof007
+2026-10-20T18:56:28.4912682Z START 693 / 924 H12CloudChart1Proof008 build
+2026-10-20T18:56:40.2867495Z START 693 / 924 H12CloudChart1Proof008 kernel
+2026-10-20T18:56:48.2794367Z PASS 693 H12CloudChart1Proof008
+2026-10-20T18:56:48.2795073Z START 694 / 924 H12CloudChart1Proof009 build
+2026-10-20T18:56:59.8753666Z START 694 / 924 H12CloudChart1Proof009 kernel
+2026-10-20T18:57:07.8685960Z PASS 694 H12CloudChart1Proof009
+2026-10-20T18:57:07.8686780Z START 695 / 924 H12CloudChart1Proof010 build
+2026-10-20T18:57:18.9604330Z START 695 / 924 H12CloudChart1Proof010 kernel
+2026-10-20T18:57:26.5027586Z PASS 695 H12CloudChart1Proof010
+2026-10-20T18:57:26.5028152Z START 696 / 924 H12CloudChart1Proof011 build
+2026-10-20T18:57:39.5069667Z START 696 / 924 H12CloudChart1Proof011 kernel
+2026-10-20T18:57:48.3004992Z PASS 696 H12CloudChart1Proof011
+2026-10-20T18:57:48.3005489Z START 697 / 924 H12CloudChart1Proof012 build
+2026-10-20T18:58:06.4182652Z START 697 / 924 H12CloudChart1Proof012 kernel
+2026-10-20T18:58:19.8791232Z PASS 697 H12CloudChart1Proof012
+2026-10-20T18:58:19.8791723Z START 698 / 924 H12CloudChart1Proof013 build
+2026-10-20T18:58:35.2915581Z START 698 / 924 H12CloudChart1Proof013 kernel
+2026-10-20T18:58:46.6484300Z PASS 698 H12CloudChart1Proof013
+2026-10-20T18:58:46.6484875Z START 699 / 924 H12CloudChart1Proof014 build
+2026-10-20T18:59:00.0562379Z START 699 / 924 H12CloudChart1Proof014 kernel
+2026-10-20T18:59:09.2033335Z PASS 699 H12CloudChart1Proof014
+2026-10-20T18:59:09.2033928Z START 700 / 924 H12CloudChart1Proof015 build
+2026-10-20T18:59:23.9145324Z START 700 / 924 H12CloudChart1Proof015 kernel
+2026-10-20T18:59:34.3669158Z PASS 700 H12CloudChart1Proof015
+2026-10-20T18:59:34.3669585Z START 701 / 924 H12CloudChart1Proof016 build
+2026-10-20T18:59:53.0854598Z START 701 / 924 H12CloudChart1Proof016 kernel
+2026-10-20T19:00:08.6071551Z PASS 701 H12CloudChart1Proof016
+2026-10-20T19:00:08.6072118Z START 702 / 924 H12CloudChart1Proof017 build
+2026-10-20T19:00:25.2225063Z START 702 / 924 H12CloudChart1Proof017 kernel
+2026-10-20T19:00:36.8822921Z PASS 702 H12CloudChart1Proof017
+2026-10-20T19:00:36.8823493Z START 703 / 924 H12CloudChart1Proof018 build
+2026-10-20T19:00:52.3939497Z START 703 / 924 H12CloudChart1Proof018 kernel
+2026-10-20T19:01:04.2018059Z PASS 703 H12CloudChart1Proof018
+2026-10-20T19:01:04.2018579Z START 704 / 924 H12CloudChart1Proof019 build
+2026-10-20T19:01:22.5274602Z START 704 / 924 H12CloudChart1Proof019 kernel
+2026-10-20T19:01:36.7917605Z PASS 704 H12CloudChart1Proof019
+2026-10-20T19:01:36.7918120Z START 705 / 924 H12CloudChart1Proof020 build
+2026-10-20T19:01:54.8092206Z START 705 / 924 H12CloudChart1Proof020 kernel
+2026-10-20T19:02:08.2699055Z PASS 705 H12CloudChart1Proof020
+2026-10-20T19:02:08.2701805Z START 706 / 924 H12CloudChart1Proof021 build
+2026-10-20T19:02:24.5856022Z START 706 / 924 H12CloudChart1Proof021 kernel
+2026-10-20T19:02:36.1939057Z PASS 706 H12CloudChart1Proof021
+2026-10-20T19:02:36.1939511Z START 707 / 924 H12CloudChart1Proof022 build
+2026-10-20T19:02:54.9188546Z START 707 / 924 H12CloudChart1Proof022 kernel
+2026-10-20T19:03:08.8857929Z PASS 707 H12CloudChart1Proof022
+2026-10-20T19:03:08.8858507Z START 708 / 924 H12CloudChart1Proof023 build
+2026-10-20T19:03:25.7998348Z START 708 / 924 H12CloudChart1Proof023 kernel
+2026-10-20T19:03:38.2576450Z PASS 708 H12CloudChart1Proof023
+2026-10-20T19:03:38.2577255Z START 709 / 924 H12CloudChart1Proof024 build
+2026-10-20T19:03:52.3614873Z START 709 / 924 H12CloudChart1Proof024 kernel
+2026-10-20T19:04:05.5195027Z PASS 709 H12CloudChart1Proof024
+2026-10-20T19:04:05.5195605Z START 710 / 924 H12CloudChart1Proof025 build
+2026-10-20T19:04:23.8394800Z START 710 / 924 H12CloudChart1Proof025 kernel
+2026-10-20T19:04:38.0595219Z PASS 710 H12CloudChart1Proof025
+2026-10-20T19:04:38.0596306Z START 711 / 924 H12CloudChart1Proof026 build
+2026-10-20T19:04:55.8823099Z START 711 / 924 H12CloudChart1Proof026 kernel
+2026-10-20T19:05:07.0360490Z PASS 711 H12CloudChart1Proof026
+2026-10-20T19:05:07.0360969Z START 712 / 924 H12CloudChart1Proof027 build
+2026-10-20T19:05:22.4462866Z START 712 / 924 H12CloudChart1Proof027 kernel
+2026-10-20T19:05:33.3985307Z PASS 712 H12CloudChart1Proof027
+2026-10-20T19:05:33.3985926Z START 713 / 924 H12CloudChart1Proof028 build
+2026-10-20T19:05:46.6025773Z START 713 / 924 H12CloudChart1Proof028 kernel
+2026-10-20T19:05:55.6020051Z PASS 713 H12CloudChart1Proof028
+2026-10-20T19:05:55.6021275Z START 714 / 924 H12CloudChart1Proof029 build
+2026-10-20T19:06:10.5112144Z START 714 / 924 H12CloudChart1Proof029 kernel
+2026-10-20T19:06:21.4659399Z PASS 714 H12CloudChart1Proof029
+2026-10-20T19:06:21.4659978Z START 715 / 924 H12CloudChart1Proof030 build
+2026-10-20T19:06:37.7790548Z START 715 / 924 H12CloudChart1Proof030 kernel
+2026-10-20T19:06:49.4868378Z PASS 715 H12CloudChart1Proof030
+2026-10-20T19:07:06.4040227Z START 716 / 924 H12CloudChart1Proof031 build
+2026-10-20T19:07:06.4040766Z START 716 / 924 H12CloudChart1Proof031 kernel
+2026-10-20T19:07:18.7663644Z PASS 716 H12CloudChart1Proof031
+2026-10-20T19:07:18.7664212Z START 717 / 924 H12CloudChart1Proof032 build
+2026-10-20T19:07:37.1876841Z START 717 / 924 H12CloudChart1Proof032 kernel
+2026-10-20T19:07:49.4936307Z PASS 717 H12CloudChart1Proof032
+2026-10-20T19:07:49.4937008Z START 718 / 924 H12CloudChart1Proof033 build
+2026-10-20T19:08:05.4032940Z START 718 / 924 H12CloudChart1Proof033 kernel
+2026-10-20T19:08:19.2204921Z PASS 718 H12CloudChart1Proof033
+2026-10-20T19:08:19.2205509Z START 719 / 924 H12CloudChart1Proof034 build
+2026-10-20T19:08:36.5388028Z START 719 / 924 H12CloudChart1Proof034 kernel
+2026-10-20T19:08:49.3532400Z PASS 719 H12CloudChart1Proof034
+2026-10-20T19:08:49.3532909Z START 720 / 924 H12CloudChart1Proof035 build
+2026-10-20T19:09:06.4661710Z START 720 / 924 H12CloudChart1Proof035 kernel
+2026-10-20T19:09:18.0244656Z PASS 720 H12CloudChart1Proof035
+2026-10-20T19:09:18.0245229Z START 721 / 924 H12CloudChart1Proof036 build
+2026-10-20T19:09:34.7426019Z START 721 / 924 H12CloudChart1Proof036 kernel
+2026-10-20T19:09:45.2962120Z PASS 721 H12CloudChart1Proof036
+2026-10-20T19:09:45.2962601Z START 722 / 924 H12CloudChart1Proof037 build
+2026-10-20T19:09:58.4975843Z START 722 / 924 H12CloudChart1Proof037 kernel
+2026-10-20T19:10:07.8968411Z PASS 722 H12CloudChart1Proof037
+2026-10-20T19:10:07.8969151Z START 723 / 924 H12CloudChart1Proof038 build
+2026-10-20T19:10:20.9009531Z START 723 / 924 H12CloudChart1Proof038 kernel
+2026-10-20T19:10:30.1983333Z PASS 723 H12CloudChart1Proof038
+2026-10-20T19:10:30.1983928Z START 724 / 924 H12CloudChart1Proof039 build
+2026-10-20T19:10:43.3049823Z START 724 / 924 H12CloudChart1Proof039 kernel
+2026-10-20T19:10:52.3534711Z PASS 724 H12CloudChart1Proof039
+2026-10-20T19:10:52.3535344Z START 725 / 924 H12CloudChart1Proof040 build
+2026-10-20T19:11:06.3613050Z START 725 / 924 H12CloudChart1Proof040 kernel
+2026-10-20T19:11:16.6131926Z PASS 725 H12CloudChart1Proof040
+2026-10-20T19:11:16.6132489Z START 726 / 924 H12CloudChart1Proof041 build
+2026-10-20T19:11:30.4157575Z START 726 / 924 H12CloudChart1Proof041 kernel
+2026-10-20T19:11:40.0657308Z PASS 726 H12CloudChart1Proof041
+2026-10-20T19:11:40.0657990Z START 727 / 924 H12CloudChart1Proof042 build
+2026-10-20T19:11:54.3707618Z START 727 / 924 H12CloudChart1Proof042 kernel
+2026-10-20T19:12:04.7242112Z PASS 727 H12CloudChart1Proof042
+2026-10-20T19:12:04.7242544Z START 728 / 924 H12CloudChart1Proof043 build
+2026-10-20T19:12:17.1265699Z START 728 / 924 H12CloudChart1Proof043 kernel
+2026-10-20T19:12:25.7752197Z PASS 728 H12CloudChart1Proof043
+2026-10-20T19:12:25.7754849Z START 729 / 924 H12CloudChart1Proof044 build
+2026-10-20T19:12:38.1767108Z START 729 / 924 H12CloudChart1Proof044 kernel
+2026-10-20T19:12:46.9227126Z PASS 729 H12CloudChart1Proof044
+2026-10-20T19:12:46.9227721Z START 730 / 924 H12CloudChart1Proof045 build
+2026-10-20T19:13:00.2249986Z START 730 / 924 H12CloudChart1Proof045 kernel
+2026-10-20T19:13:09.7748575Z PASS 730 H12CloudChart1Proof045
+2026-10-20T19:13:09.7749069Z START 731 / 924 H12CloudChart1Proof046 build
+2026-10-20T19:13:21.8744871Z START 731 / 924 H12CloudChart1Proof046 kernel
+2026-10-20T19:13:30.0710497Z PASS 731 H12CloudChart1Proof046
+2026-10-20T19:13:30.0711029Z START 732 / 924 H12CloudChart1Proof047 build
+2026-10-20T19:13:44.0716320Z START 732 / 924 H12CloudChart1Proof047 kernel
+2026-10-20T19:13:53.8720623Z PASS 732 H12CloudChart1Proof047
+2026-10-20T19:13:53.8722465Z START 733 / 924 H12CloudChart1Proof048 build
+2026-10-20T19:14:07.1717971Z START 733 / 924 H12CloudChart1Proof048 kernel
+2026-10-20T19:14:16.7716734Z PASS 733 H12CloudChart1Proof048
+2026-10-20T19:14:16.7717351Z START 734 / 924 H12CloudChart1Proof049 build
+2026-10-20T19:14:30.6731587Z START 734 / 924 H12CloudChart1Proof049 kernel
+2026-10-20T19:14:41.2264282Z PASS 734 H12CloudChart1Proof049
+2026-10-20T19:14:41.2264999Z START 735 / 924 H12CloudChart1Proof050 build
+2026-10-20T19:14:54.7273480Z START 735 / 924 H12CloudChart1Proof050 kernel
+2026-10-20T19:15:03.7235099Z PASS 735 H12CloudChart1Proof050
+2026-10-20T19:15:03.7235509Z START 736 / 924 H12CloudChart1Proof051 build
+2026-10-20T19:15:19.7345954Z START 736 / 924 H12CloudChart1Proof051 kernel
+2026-10-20T19:15:32.1962959Z PASS 736 H12CloudChart1Proof051
+2026-10-20T19:15:32.1963538Z START 737 / 924 H12CloudChart1Proof052 build
+2026-10-20T19:15:49.0084724Z START 737 / 924 H12CloudChart1Proof052 kernel
+2026-10-20T19:16:01.4145026Z PASS 737 H12CloudChart1Proof052
+2026-10-20T19:16:01.4145608Z START 738 / 924 H12CloudChart1Proof053 build
+2026-10-20T19:16:16.5201401Z START 738 / 924 H12CloudChart1Proof053 kernel
+2026-10-20T19:16:27.0202995Z PASS 738 H12CloudChart1Proof053
+2026-10-20T19:16:27.0203787Z START 739 / 924 H12CloudChart1Proof054 build
+2026-10-20T19:16:43.8355416Z START 739 / 924 H12CloudChart1Proof054 kernel
+2026-10-20T19:16:54.8894649Z PASS 739 H12CloudChart1Proof054
+2026-10-20T19:16:54.8895153Z START 740 / 924 H12CloudChart1Proof055 build
+2026-10-20T19:17:08.4951283Z START 740 / 924 H12CloudChart1Proof055 kernel
+2026-10-20T19:17:17.8453015Z PASS 740 H12CloudChart1Proof055
+2026-10-20T19:17:17.8453580Z START 741 / 924 H12CloudChart1Proof056 build
+2026-10-20T19:17:32.5509529Z START 741 / 924 H12CloudChart1Proof056 kernel
+2026-10-20T19:17:42.9540539Z PASS 741 H12CloudChart1Proof056
+2026-10-20T19:17:42.9541154Z START 742 / 924 H12CloudChart1Proof057 build
+2026-10-20T19:17:56.1538423Z START 742 / 924 H12CloudChart1Proof057 kernel
+2026-10-20T19:18:05.2520611Z PASS 742 H12CloudChart1Proof057
+2026-10-20T19:18:05.2521298Z START 743 / 924 H12CloudChart1Proof058 build
+2026-10-20T19:18:19.1556045Z START 743 / 924 H12CloudChart1Proof058 kernel
+2026-10-20T19:18:29.0537567Z PASS 743 H12CloudChart1Proof058
+2026-10-20T19:18:29.0538141Z START 744 / 924 H12CloudChart1Proof059 build
+2026-10-20T19:18:41.2546508Z START 744 / 924 H12CloudChart1Proof059 kernel
+2026-10-20T19:18:49.8516869Z PASS 744 H12CloudChart1Proof059
+2026-10-20T19:18:49.8517992Z START 745 / 924 H12CloudChart1Proof060 build
+2026-10-20T19:19:04.5575936Z START 745 / 924 H12CloudChart1Proof060 kernel
+2026-10-20T19:19:14.6087968Z PASS 745 H12CloudChart1Proof060
+2026-10-20T19:19:14.6088679Z START 746 / 924 H12CloudChart1Proof061 build
+2026-10-20T19:19:29.6176933Z START 746 / 924 H12CloudChart1Proof061 kernel
+2026-10-20T19:19:39.8199117Z PASS 746 H12CloudChart1Proof061
+2026-10-20T19:19:39.8199708Z START 747 / 924 H12CloudChart1Proof062 build
+2026-10-20T19:19:53.7236147Z START 747 / 924 H12CloudChart1Proof062 kernel
+2026-10-20T19:20:03.3753200Z PASS 747 H12CloudChart1Proof062
+2026-10-20T19:20:03.3753994Z START 748 / 924 H12CloudChart1Proof063 build
+2026-10-20T19:20:16.9752033Z START 748 / 924 H12CloudChart1Proof063 kernel
+2026-10-20T19:20:26.1235540Z PASS 748 H12CloudChart1Proof063
+2026-10-20T19:20:26.1236324Z START 749 / 924 H12CloudChart1Proof064 build
+2026-10-20T19:20:39.1261795Z START 749 / 924 H12CloudChart1Proof064 kernel
+2026-10-20T19:20:47.8234644Z PASS 749 H12CloudChart1Proof064
+2026-10-20T19:20:47.8235406Z START 750 / 924 H12CloudChart1Proof065 build
+2026-10-20T19:21:01.2242101Z START 750 / 924 H12CloudChart1Proof065 kernel
+2026-10-20T19:21:10.3229829Z PASS 750 H12CloudChart1Proof065
+2026-10-20T19:21:10.3230560Z START 751 / 924 H12CloudChart1Proof066 build
+2026-10-20T19:21:24.3276912Z START 751 / 924 H12CloudChart1Proof066 kernel
+2026-10-20T19:21:34.3295602Z PASS 751 H12CloudChart1Proof066
+2026-10-20T19:21:34.3296166Z START 752 / 924 H12CloudChart1Proof067 build
+2026-10-20T19:21:48.2303738Z START 752 / 924 H12CloudChart1Proof067 kernel
+2026-10-20T19:21:57.8803153Z PASS 752 H12CloudChart1Proof067
+2026-10-20T19:21:57.8805274Z START 753 / 924 H12CloudChart1Proof068 build
+2026-10-20T19:22:12.4860312Z START 753 / 924 H12CloudChart1Proof068 kernel
+2026-10-20T19:22:22.8366276Z PASS 753 H12CloudChart1Proof068
+2026-10-20T19:22:22.8367131Z START 754 / 924 H12CloudChart1Proof069 build
+2026-10-20T19:22:37.7425965Z START 754 / 924 H12CloudChart1Proof069 kernel
+2026-10-20T19:22:48.4385217Z PASS 754 H12CloudChart1Proof069
+2026-10-20T19:22:48.4385792Z START 755 / 924 H12CloudChart1Proof070 build
+2026-10-20T19:23:02.9434885Z START 755 / 924 H12CloudChart1Proof070 kernel
+2026-10-20T19:23:13.4991847Z PASS 755 H12CloudChart1Proof070
+2026-10-20T19:23:13.4992399Z START 756 / 924 H12CloudChart1Proof071 build
+2026-10-20T19:23:28.3090899Z START 756 / 924 H12CloudChart1Proof071 kernel
+2026-10-20T19:23:38.5576111Z PASS 756 H12CloudChart1Proof071
+2026-10-20T19:23:38.5576985Z START 757 / 924 H12CloudChart1Proof072 build
+2026-10-20T19:23:54.6688707Z START 757 / 924 H12CloudChart1Proof072 kernel
+2026-10-20T19:24:06.3675697Z PASS 757 H12CloudChart1Proof072
+2026-10-20T19:24:06.3676305Z START 758 / 924 H12CloudChart1Proof073 build
+2026-10-20T19:24:20.9762471Z START 758 / 924 H12CloudChart1Proof073 kernel
+2026-10-20T19:24:31.3222414Z PASS 758 H12CloudChart1Proof073
+2026-10-20T19:24:31.3224308Z START 759 / 924 H12CloudChart1Proof074 build
+2026-10-20T19:24:46.1320793Z START 759 / 924 H12CloudChart1Proof074 kernel
+2026-10-20T19:24:56.3835878Z PASS 759 H12CloudChart1Proof074
+2026-10-20T19:24:56.3836720Z START 760 / 924 H12CloudChart1Proof075 build
+2026-10-20T19:25:10.7913133Z START 760 / 924 H12CloudChart1Proof075 kernel
+2026-10-20T19:25:21.3470726Z PASS 760 H12CloudChart1Proof075
+2026-10-20T19:25:21.3471322Z START 761 / 924 H12CloudChart1Proof076 build
+2026-10-20T19:25:34.3511813Z START 761 / 924 H12CloudChart1Proof076 kernel
+2026-10-20T19:25:43.2411119Z PASS 761 H12CloudChart1Proof076
+2026-10-20T19:25:43.2411831Z START 762 / 924 H12CloudChart1Proof077 build
+2026-10-20T19:25:59.4553599Z START 762 / 924 H12CloudChart1Proof077 kernel
+2026-10-20T19:26:11.4596723Z PASS 762 H12CloudChart1Proof077
+2026-10-20T19:26:11.4597235Z START 763 / 924 H12CloudChart1Proof078 build
+2026-10-20T19:26:25.9678584Z START 763 / 924 H12CloudChart1Proof078 kernel
+2026-10-20T19:26:35.7211669Z PASS 763 H12CloudChart1Proof078
+2026-10-20T19:26:35.7212231Z START 764 / 924 H12CloudChart1Proof079 build
+2026-10-20T19:26:51.3319949Z START 764 / 924 H12CloudChart1Proof079 kernel
+2026-10-20T19:27:02.4318692Z PASS 764 H12CloudChart1Proof079
+2026-10-20T19:27:02.4319433Z START 765 / 924 H12CloudChart1Proof080 build
+2026-10-20T19:27:18.1421111Z START 765 / 924 H12CloudChart1Proof080 kernel
+2026-10-20T19:27:28.9944124Z PASS 765 H12CloudChart1Proof080
+2026-10-20T19:27:28.9944708Z START 766 / 924 H12CloudChart1Proof081 build
+2026-10-20T19:27:41.7943141Z START 766 / 924 H12CloudChart1Proof081 kernel
+2026-10-20T19:27:50.4382385Z PASS 766 H12CloudChart1Proof081
+2026-10-20T19:27:50.4382946Z START 767 / 924 H12CloudChart1Proof082 build
+2026-10-20T19:28:04.4424328Z START 767 / 924 H12CloudChart1Proof082 kernel
+2026-10-20T19:28:14.1423939Z PASS 767 H12CloudChart1Proof082
+2026-10-20T19:28:14.1424665Z START 768 / 924 H12CloudChart1Proof083 build
+2026-10-20T19:28:28.1486170Z START 768 / 924 H12CloudChart1Proof083 kernel
+2026-10-20T19:28:37.6962539Z PASS 768 H12CloudChart1Proof083
+2026-10-20T19:28:37.6962929Z START 769 / 924 H12CloudChart1Proof084 build
+2026-10-20T19:28:52.7025810Z START 769 / 924 H12CloudChart1Proof084 kernel
+2026-10-20T19:29:03.2053921Z PASS 769 H12CloudChart1Proof084
+2026-10-20T19:29:03.2054487Z START 770 / 924 H12CloudChart1Proof085 build
+2026-10-20T19:29:15.3052433Z START 770 / 924 H12CloudChart1Proof085 kernel
+2026-10-20T19:29:23.3488850Z PASS 770 H12CloudChart1Proof085
+2026-10-20T19:29:23.3489304Z START 771 / 924 H12CloudChart1Proof086 build
+2026-10-20T19:29:36.4553914Z START 771 / 924 H12CloudChart1Proof086 kernel
+2026-10-20T19:29:45.8054302Z PASS 771 H12CloudChart1Proof086
+2026-10-20T19:29:45.8055408Z START 772 / 924 H12CloudChart1Proof087 build
+2026-10-20T19:29:58.5036641Z START 772 / 924 H12CloudChart1Proof087 kernel
+2026-10-20T19:30:06.9471049Z PASS 772 H12CloudChart1Proof087
+2026-10-20T19:30:06.9471651Z START 773 / 924 H12CloudChart1Proof088 build
+2026-10-20T19:30:19.4460958Z START 773 / 924 H12CloudChart1Proof088 kernel
+2026-10-20T19:30:28.1440164Z PASS 773 H12CloudChart1Proof088
+2026-10-20T19:30:28.1440788Z START 774 / 924 H12CloudChart1Proof089 build
+2026-10-20T19:30:42.1460329Z START 774 / 924 H12CloudChart1Proof089 kernel
+2026-10-20T19:30:51.5957216Z PASS 774 H12CloudChart1Proof089
+2026-10-20T19:30:51.5957816Z START 775 / 924 H12CloudChart1Proof090 build
+2026-10-20T19:31:05.2017871Z START 775 / 924 H12CloudChart1Proof090 kernel
+2026-10-20T19:31:14.4989751Z PASS 775 H12CloudChart1Proof090
+2026-10-20T19:31:14.4991946Z START 776 / 924 H12CloudChart1Proof091 build
+2026-10-20T19:31:27.3035939Z START 776 / 924 H12CloudChart1Proof091 kernel
+2026-10-20T19:31:36.1494194Z PASS 776 H12CloudChart1Proof091
+2026-10-20T19:31:36.1494576Z START 777 / 924 H12CloudChart1Proof092 build
+2026-10-20T19:31:50.5553238Z START 777 / 924 H12CloudChart1Proof092 kernel
+2026-10-20T19:32:00.5545690Z PASS 777 H12CloudChart1Proof092
+2026-10-20T19:32:00.5546410Z START 778 / 924 H12CloudChart1Proof093 build
+2026-10-20T19:32:13.6542865Z START 778 / 924 H12CloudChart1Proof093 kernel
+2026-10-20T19:32:22.5529152Z PASS 778 H12CloudChart1Proof093
+2026-10-20T19:32:22.5529780Z START 779 / 924 H12CloudChart1Proof094 build
+2026-10-20T19:32:37.3628070Z START 779 / 924 H12CloudChart1Proof094 kernel
+2026-10-20T19:32:47.5625506Z PASS 779 H12CloudChart1Proof094
+2026-10-20T19:32:47.5626060Z START 780 / 924 H12CloudChart1Proof095 build
+2026-10-20T19:33:05.0768619Z START 780 / 924 H12CloudChart1Proof095 kernel
+2026-10-20T19:33:17.5350120Z PASS 780 H12CloudChart1Proof095
+2026-10-20T19:33:17.5352062Z START 781 / 924 H12CloudChart1Proof096 build
+2026-10-20T19:33:34.9455393Z START 781 / 924 H12CloudChart1Proof096 kernel
+2026-10-20T19:33:47.3535242Z PASS 781 H12CloudChart1Proof096
+2026-10-20T19:33:47.3535612Z START 782 / 924 H12CloudChart1Proof097 build
+2026-10-20T19:34:03.6594600Z START 782 / 924 H12CloudChart1Proof097 kernel
+2026-10-20T19:34:15.5123807Z PASS 782 H12CloudChart1Proof097
+2026-10-20T19:34:15.5124385Z START 783 / 924 H12CloudChart1Proof098 build
+2026-10-20T19:34:29.3176777Z START 783 / 924 H12CloudChart1Proof098 kernel
+2026-10-20T19:34:39.1182342Z PASS 783 H12CloudChart1Proof098
+2026-10-20T19:34:39.1182810Z START 784 / 924 H12CloudChart1Proof099 build
+2026-10-20T19:34:52.1185907Z START 784 / 924 H12CloudChart1Proof099 kernel
+2026-10-20T19:35:00.9656672Z PASS 784 H12CloudChart1Proof099
+2026-10-20T19:35:00.9657265Z START 785 / 924 H12CloudChart1Proof100 build
+2026-10-20T19:35:13.4670599Z START 785 / 924 H12CloudChart1Proof100 kernel
+2026-10-20T19:35:21.9604036Z PASS 785 H12CloudChart1Proof100
+2026-10-20T19:35:21.9604725Z START 786 / 924 H12CloudChart1Proof101 build
+2026-10-20T19:35:39.9783419Z START 786 / 924 H12CloudChart1Proof101 kernel
+2026-10-20T19:35:53.3846363Z PASS 786 H12CloudChart1Proof101
+2026-10-20T19:35:53.3847249Z START 787 / 924 H12CloudChart1Proof102 build
+2026-10-20T19:36:09.6931683Z START 787 / 924 H12CloudChart1Proof102 kernel
+2026-10-20T19:36:21.3993097Z PASS 787 H12CloudChart1Proof102
+2026-10-20T19:36:21.3993660Z START 788 / 924 H12CloudChart1Proof103 build
+2026-10-20T19:36:39.1146274Z START 788 / 924 H12CloudChart1Proof103 kernel
+2026-10-20T19:36:52.2245282Z PASS 788 H12CloudChart1Proof103
+2026-10-20T19:36:52.2246176Z START 789 / 924 H12CloudChart1Proof104 build
+2026-10-20T19:37:09.4352268Z START 789 / 924 H12CloudChart1Proof104 kernel
+2026-10-20T19:37:22.1961426Z PASS 789 H12CloudChart1Proof104
+2026-10-20T19:37:22.1962003Z START 790 / 924 H12CloudChart1Proof105 build
+2026-10-20T19:37:36.1031162Z START 790 / 924 H12CloudChart1Proof105 kernel
+2026-10-20T19:37:45.5491583Z PASS 790 H12CloudChart1Proof105
+2026-10-20T19:37:45.5492161Z START 791 / 924 H12CloudChart1Proof106 build
+2026-10-20T19:37:58.1461043Z START 791 / 924 H12CloudChart1Proof106 kernel
+2026-10-20T19:38:06.8423115Z PASS 791 H12CloudChart1Proof106
+2026-10-20T19:38:06.8423726Z START 792 / 924 H12CloudChart1Proof107 build
+2026-10-20T19:38:19.7430225Z START 792 / 924 H12CloudChart1Proof107 kernel
+2026-10-20T19:38:28.5902041Z PASS 792 H12CloudChart1Proof107
+2026-10-20T19:38:28.5902611Z START 793 / 924 H12CloudChart1Proof108 build
+2026-10-20T19:38:45.0995124Z START 793 / 924 H12CloudChart1Proof108 kernel
+2026-10-20T19:38:57.1058816Z PASS 793 H12CloudChart1Proof108
+2026-10-20T19:38:57.1059399Z START 794 / 924 H12CloudChart1Proof109 build
+2026-10-20T19:39:09.7065101Z START 794 / 924 H12CloudChart1Proof109 kernel
+2026-10-20T19:39:18.6047868Z PASS 794 H12CloudChart1Proof109
+2026-10-20T19:39:18.6048441Z START 795 / 924 H12CloudChart1Proof110 build
+2026-10-20T19:39:30.8029664Z START 795 / 924 H12CloudChart1Proof110 kernel
+2026-10-20T19:39:39.0959655Z PASS 795 H12CloudChart1Proof110
+2026-10-20T19:39:39.0960057Z START 796 / 924 H12CloudChart1Proof111 build
+2026-10-20T19:39:53.2002074Z START 796 / 924 H12CloudChart1Proof111 kernel
+2026-10-20T19:40:03.1015682Z PASS 796 H12CloudChart1Proof111
+2026-10-20T19:40:03.1016409Z START 797 / 924 H12CloudChart1Proof112 build
+2026-10-20T19:40:15.9040588Z START 797 / 924 H12CloudChart1Proof112 kernel
+2026-10-20T19:40:24.7515122Z PASS 797 H12CloudChart1Proof112
+2026-10-20T19:40:24.7515731Z START 798 / 924 H12CloudChart1Proof113 build
+2026-10-20T19:40:37.7532241Z START 798 / 924 H12CloudChart1Proof113 kernel
+2026-10-20T19:40:47.0024748Z PASS 798 H12CloudChart1Proof113
+2026-10-20T19:40:47.0025334Z START 799 / 924 H12CloudChart1Proof114 build
+2026-10-20T19:41:00.1014757Z START 799 / 924 H12CloudChart1Proof114 kernel
+2026-10-20T19:41:09.3500681Z PASS 799 H12CloudChart1Proof114
+2026-10-20T19:41:09.3501405Z START 800 / 924 H12CloudChart1Proof115 build
+2026-10-20T19:41:22.5535211Z START 800 / 924 H12CloudChart1Proof115 kernel
+2026-10-20T19:41:31.9027310Z PASS 800 H12CloudChart1Proof115
+2026-10-20T19:41:31.9028268Z START 801 / 924 H12CloudChart1Proof116 build
+2026-10-20T19:41:44.7034659Z START 801 / 924 H12CloudChart1Proof116 kernel
+2026-10-20T19:41:53.5495027Z PASS 801 H12CloudChart1Proof116
+2026-10-20T19:41:53.5495559Z START 802 / 924 H12CloudChart1Proof117 build
+2026-10-20T19:42:06.2551123Z START 802 / 924 H12CloudChart1Proof117 kernel
+2026-10-20T19:42:14.9516299Z PASS 802 H12CloudChart1Proof117
+2026-10-20T19:42:14.9517097Z START 803 / 924 H12CloudChart1Proof118 build
+2026-10-20T19:42:26.9519563Z START 803 / 924 H12CloudChart1Proof118 kernel
+2026-10-20T19:42:34.8975879Z PASS 803 H12CloudChart1Proof118
+2026-10-20T19:42:34.8976615Z START 804 / 924 H12CloudChart1Proof119 build
+2026-10-20T19:42:45.6959404Z START 804 / 924 H12CloudChart1Proof119 kernel
+2026-10-20T19:42:52.1873340Z PASS 804 H12CloudChart1Proof119
+2026-10-20T19:42:52.1874392Z START 805 / 924 H12CloudChart1Proof120 build
+2026-10-20T19:43:07.2933023Z START 805 / 924 H12CloudChart1Proof120 kernel
+2026-10-20T19:43:17.7466373Z PASS 805 H12CloudChart1Proof120
+2026-10-20T19:43:17.7467194Z START 806 / 924 H12CloudChart1Proof121 build
+2026-10-20T19:43:29.9453646Z START 806 / 924 H12CloudChart1Proof121 kernel
+2026-10-20T19:43:39.0464133Z PASS 806 H12CloudChart1Proof121
+2026-10-20T19:43:39.0464692Z START 807 / 924 H12CloudChart1Proof122 build
+2026-10-20T19:43:51.8509871Z START 807 / 924 H12CloudChart1Proof122 kernel
+2026-10-20T19:44:01.2994204Z PASS 807 H12CloudChart1Proof122
+2026-10-20T19:44:01.2994710Z START 808 / 924 H12CloudChart1Proof123 build
+2026-10-20T19:44:14.3037113Z START 808 / 924 H12CloudChart1Proof123 kernel
+2026-10-20T19:44:22.9030610Z PASS 808 H12CloudChart1Proof123
+2026-10-20T19:44:22.9031174Z START 809 / 924 H12CloudChart1Proof124 build
+2026-10-20T19:44:35.8073121Z START 809 / 924 H12CloudChart1Proof124 kernel
+2026-10-20T19:44:44.5570510Z PASS 809 H12CloudChart1Proof124
+2026-10-20T19:44:44.5571198Z START 810 / 924 H12CloudChart1Proof125 build
+2026-10-20T19:44:54.9540045Z START 810 / 924 H12CloudChart1Proof125 kernel
+2026-10-20T19:45:01.1445284Z PASS 810 H12CloudChart1Proof125
+2026-10-20T19:45:01.1445982Z START 811 / 924 H12CloudChart1Proof126 build
+2026-10-20T19:45:12.8468785Z START 811 / 924 H12CloudChart1Proof126 kernel
+2026-10-20T19:45:19.6893337Z PASS 811 H12CloudChart1Proof126
+2026-10-20T19:45:19.6894100Z START 812 / 924 H12CloudChart1Proof127 build
+2026-10-20T19:45:33.3935194Z START 812 / 924 H12CloudChart1Proof127 kernel
+2026-10-20T19:45:42.3946871Z PASS 812 H12CloudChart1Proof127
+2026-10-20T19:45:42.3947615Z START 813 / 924 H12CloudChart1Proof128 build
+2026-10-20T19:45:56.0997476Z START 813 / 924 H12CloudChart1Proof128 kernel
+2026-10-20T19:46:05.0484470Z PASS 813 H12CloudChart1Proof128
+2026-10-20T19:46:05.0484858Z START 814 / 924 H12CloudChart1Proof129 build
+2026-10-20T19:46:18.6506314Z START 814 / 924 H12CloudChart1Proof129 kernel
+2026-10-20T19:46:27.9980128Z PASS 814 H12CloudChart1Proof129
+2026-10-20T19:46:27.9980819Z START 815 / 924 H12CloudChart1Proof130 build
+2026-10-20T19:46:41.3019526Z START 815 / 924 H12CloudChart1Proof130 kernel
+2026-10-20T19:46:50.3026133Z PASS 815 H12CloudChart1Proof130
+2026-10-20T19:46:50.3027154Z START 816 / 924 H12CloudChart1Proof131 build
+2026-10-20T19:47:03.8057143Z START 816 / 924 H12CloudChart1Proof131 kernel
+2026-10-20T19:47:12.3030978Z PASS 816 H12CloudChart1Proof131
+2026-10-20T19:47:12.3031542Z START 817 / 924 H12CloudChart1Proof132 build
+2026-10-20T19:47:25.8053407Z START 817 / 924 H12CloudChart1Proof132 kernel
+2026-10-20T19:47:34.9010873Z PASS 817 H12CloudChart1Proof132
+2026-10-20T19:47:34.9011357Z START 818 / 924 H12CloudChart1Proof133 build
+2026-10-20T19:47:49.8072888Z START 818 / 924 H12CloudChart1Proof133 kernel
+2026-10-20T19:48:00.5086368Z PASS 818 H12CloudChart1Proof133
+2026-10-20T19:48:00.5087067Z START 819 / 924 H12CloudChart1Proof134 build
+2026-10-20T19:48:13.8107157Z START 819 / 924 H12CloudChart1Proof134 kernel
+2026-10-20T19:48:23.1616896Z PASS 819 H12CloudChart1Proof134
+2026-10-20T19:48:23.1617518Z START 820 / 924 H12CloudChart1Proof135 build
+2026-10-20T19:48:35.9625343Z START 820 / 924 H12CloudChart1Proof135 kernel
+2026-10-20T19:48:44.7108890Z PASS 820 H12CloudChart1Proof135
+2026-10-20T19:48:44.7109541Z START 821 / 924 H12CloudChart1Proof136 build
+2026-10-20T19:48:58.2180141Z START 821 / 924 H12CloudChart1Proof136 kernel
+2026-10-20T19:49:07.5639447Z PASS 821 H12CloudChart1Proof136
+2026-10-20T19:49:07.5640014Z START 822 / 924 H12CloudChart1Proof137 build
+2026-10-20T19:49:20.9673731Z START 822 / 924 H12CloudChart1Proof137 kernel
+2026-10-20T19:49:29.6617256Z PASS 822 H12CloudChart1Proof137
+2026-10-20T19:49:29.6618220Z START 823 / 924 H12CloudChart1Proof138 build
+2026-10-20T19:49:43.1653427Z START 823 / 924 H12CloudChart1Proof138 kernel
+2026-10-20T19:49:54.4730602Z PASS 823 H12CloudChart1Proof138
+2026-10-20T19:49:54.4731313Z START 824 / 924 H12CloudChart1Proof139 build
+2026-10-20T19:50:09.9877824Z START 824 / 924 H12CloudChart1Proof139 kernel
+2026-10-20T19:50:21.1947119Z PASS 824 H12CloudChart1Proof139
+2026-10-20T19:50:21.1947690Z START 825 / 924 H12CloudChart1Proof140 build
+2026-10-20T19:50:37.9075833Z START 825 / 924 H12CloudChart1Proof140 kernel
+2026-10-20T19:50:50.1616022Z PASS 825 H12CloudChart1Proof140
+2026-10-20T19:50:50.1616901Z START 826 / 924 H12CloudChart1Proof141 build
+2026-10-20T19:51:05.2727720Z START 826 / 924 H12CloudChart1Proof141 kernel
+2026-10-20T19:51:16.1745240Z PASS 826 H12CloudChart1Proof141
+2026-10-20T19:51:16.1745751Z START 827 / 924 H12CloudChart1Proof142 build
+2026-10-20T19:51:31.5805712Z START 827 / 924 H12CloudChart1Proof142 kernel
+2026-10-20T19:51:42.2349074Z PASS 827 H12CloudChart1Proof142
+2026-10-20T19:51:42.2350156Z START 828 / 924 H12CloudChart1Proof143 build
+2026-10-20T19:51:56.6439940Z START 828 / 924 H12CloudChart1Proof143 kernel
+2026-10-20T19:52:06.6443329Z PASS 828 H12CloudChart1Proof143
+2026-10-20T19:52:06.6444311Z START 829 / 924 H12CloudChart1Proof144 build
+2026-10-20T19:52:21.0482037Z START 829 / 924 H12CloudChart1Proof144 kernel
+2026-10-20T19:52:31.5510477Z PASS 829 H12CloudChart1Proof144
+2026-10-20T19:52:31.5511236Z START 830 / 924 H12CloudChart1Proof145 build
+2026-10-20T19:52:45.6527716Z START 830 / 924 H12CloudChart1Proof145 kernel
+2026-10-20T19:52:55.3507491Z PASS 830 H12CloudChart1Proof145
+2026-10-20T19:52:55.3508394Z START 831 / 924 H12CloudChart1Proof146 build
+2026-10-20T19:53:08.9500776Z START 831 / 924 H12CloudChart1Proof146 kernel
+2026-10-20T19:53:18.6990528Z PASS 831 H12CloudChart1Proof146
+2026-10-20T19:53:18.6991181Z START 832 / 924 H12CloudChart1Proof147 build
+2026-10-20T19:53:31.9981731Z START 832 / 924 H12CloudChart1Proof147 kernel
+2026-10-20T19:53:40.9942739Z PASS 832 H12CloudChart1Proof147
+2026-10-20T19:53:40.9943311Z START 833 / 924 H12CloudChart1Proof148 build
+2026-10-20T19:53:54.0943669Z START 833 / 924 H12CloudChart1Proof148 kernel
+2026-10-20T19:54:03.1408158Z PASS 833 H12CloudChart1Proof148
+2026-10-20T19:54:03.1408712Z START 834 / 924 H12CloudChart1Proof149 build
+2026-10-20T19:54:15.6416007Z START 834 / 924 H12CloudChart1Proof149 kernel
+2026-10-20T19:54:24.1361632Z PASS 834 H12CloudChart1Proof149
+2026-10-20T19:54:24.1362352Z START 835 / 924 H12CloudChart1Proof150 build
+2026-10-20T19:54:38.1364794Z START 835 / 924 H12CloudChart1Proof150 kernel
+2026-10-20T19:54:47.6335759Z PASS 835 H12CloudChart1Proof150
+2026-10-20T19:54:47.6336367Z START 836 / 924 H12CloudChart1Proof151 build
+2026-10-20T19:55:01.2306165Z START 836 / 924 H12CloudChart1Proof151 kernel
+2026-10-20T19:55:10.4761636Z PASS 836 H12CloudChart1Proof151
+2026-10-20T19:55:10.4762102Z START 837 / 924 H12CloudChart1Proof152 build
+2026-10-20T19:55:23.6733421Z START 837 / 924 H12CloudChart1Proof152 kernel
+2026-10-20T19:55:32.6693776Z PASS 837 H12CloudChart1Proof152
+2026-10-20T19:55:32.6694444Z START 838 / 924 H12CloudChart1Proof153 build
+2026-10-20T19:55:45.2698810Z START 838 / 924 H12CloudChart1Proof153 kernel
+2026-10-20T19:55:53.6136232Z PASS 838 H12CloudChart1Proof153
+2026-10-20T19:55:53.6137045Z START 839 / 924 H12CloudChart1Proof154 build
+2026-10-20T19:56:06.1091228Z START 839 / 924 H12CloudChart1Proof154 kernel
+2026-10-20T19:56:14.6040236Z PASS 839 H12CloudChart1Proof154
+2026-10-20T19:56:14.6040670Z START 840 / 924 H12CloudChart1Proof155 build
+2026-10-20T19:56:27.8042951Z START 840 / 924 H12CloudChart1Proof155 kernel
+2026-10-20T19:56:36.8011019Z PASS 840 H12CloudChart1Proof155
+2026-10-20T19:56:36.8011735Z START 841 / 924 H12CloudChart1Proof156 build
+2026-10-20T19:56:49.2984663Z START 841 / 924 H12CloudChart1Proof156 kernel
+2026-10-20T19:56:57.6930195Z PASS 841 H12CloudChart1Proof156
+2026-10-20T19:56:57.6930751Z START 842 / 924 H12CloudChart1Proof157 build
+2026-10-20T19:57:10.3898197Z START 842 / 924 H12CloudChart1Proof157 kernel
+2026-10-20T19:57:19.0320806Z PASS 842 H12CloudChart1Proof157
+2026-10-20T19:57:19.0321374Z START 843 / 924 H12CloudChart1Proof158 build
+2026-10-20T19:57:32.5308370Z START 843 / 924 H12CloudChart1Proof158 kernel
+2026-10-20T19:57:41.8789458Z PASS 843 H12CloudChart1Proof158
+2026-10-20T19:57:54.5750504Z START 844 / 924 H12CloudChart1Proof159 build
+2026-10-20T19:57:54.5751241Z START 844 / 924 H12CloudChart1Proof159 kernel
+2026-10-20T19:58:03.1695724Z PASS 844 H12CloudChart1Proof159
+2026-10-20T19:58:03.1696207Z START 845 / 924 H12CloudChart1Proof160 build
+2026-10-20T19:58:16.2656018Z START 845 / 924 H12CloudChart1Proof160 kernel
+2026-10-20T19:58:25.0112163Z PASS 845 H12CloudChart1Proof160
+2026-10-20T19:58:39.7142802Z START 846 / 924 H12CloudChart1Proof161 build
+2026-10-20T19:58:39.7143441Z START 846 / 924 H12CloudChart1Proof161 kernel
+2026-10-20T19:58:49.9631957Z PASS 846 H12CloudChart1Proof161
+2026-10-20T19:58:49.9632647Z START 847 / 924 H12CloudChart1Proof162 build
+2026-10-20T19:59:03.1615435Z START 847 / 924 H12CloudChart1Proof162 kernel
+2026-10-20T19:59:12.0034037Z PASS 847 H12CloudChart1Proof162
+2026-10-20T19:59:12.0034615Z START 848 / 924 H12CloudChart1Proof163 build
+2026-10-20T19:59:26.4047912Z START 848 / 924 H12CloudChart1Proof163 kernel
+2026-10-20T19:59:36.2529698Z PASS 848 H12CloudChart1Proof163
+2026-10-20T19:59:36.2530152Z START 849 / 924 H12CloudChart1Proof164 build
+2026-10-20T19:59:49.9523463Z START 849 / 924 H12CloudChart1Proof164 kernel
+2026-10-20T19:59:59.4988636Z PASS 849 H12CloudChart1Proof164
+2026-10-20T19:59:59.4989209Z START 850 / 924 H12CloudChart1Proof165 build
+2026-10-20T20:00:13.1972656Z START 850 / 924 H12CloudChart1Proof165 kernel
+2026-10-20T20:00:22.6439329Z PASS 850 H12CloudChart1Proof165
+2026-10-20T20:00:22.6439824Z START 851 / 924 H12CloudChart1Proof166 build
+2026-10-20T20:00:35.6395721Z START 851 / 924 H12CloudChart1Proof166 kernel
+2026-10-20T20:00:44.3847570Z PASS 851 H12CloudChart1Proof166
+2026-10-20T20:00:44.3848139Z START 852 / 924 H12CloudChart1Proof167 build
+2026-10-20T20:00:58.2868993Z START 852 / 924 H12CloudChart1Proof167 kernel
+2026-10-20T20:01:08.2344401Z PASS 852 H12CloudChart1Proof167
+2026-10-20T20:01:08.2344957Z START 853 / 924 H12CloudChart1Proof168 build
+2026-10-20T20:01:21.1304066Z START 853 / 924 H12CloudChart1Proof168 kernel
+2026-10-20T20:01:29.6756279Z PASS 853 H12CloudChart1Proof168
+2026-10-20T20:01:29.6757155Z START 854 / 924 H12CloudChart1Proof169 build
+2026-10-20T20:01:41.9694434Z START 854 / 924 H12CloudChart1Proof169 kernel
+2026-10-20T20:01:50.1625442Z PASS 854 H12CloudChart1Proof169
+2026-10-20T20:01:50.1626145Z START 855 / 924 H12CloudChart1Proof170 build
+2026-10-20T20:02:02.1578301Z START 855 / 924 H12CloudChart1Proof170 kernel
+2026-10-20T20:02:10.2484796Z PASS 855 H12CloudChart1Proof170
+2026-10-20T20:02:10.2485216Z START 856 / 924 H12CloudChart1Proof171 build
+2026-10-20T20:02:24.5516924Z START 856 / 924 H12CloudChart1Proof171 kernel
+2026-10-20T20:02:34.5505321Z PASS 856 H12CloudChart1Proof171
+2026-10-20T20:02:34.5506058Z START 857 / 924 H12CloudChart1Proof172 build
+2026-10-20T20:02:47.2448796Z START 857 / 924 H12CloudChart1Proof172 kernel
+2026-10-20T20:02:55.7861664Z PASS 857 H12CloudChart1Proof172
+2026-10-20T20:02:55.7862199Z START 858 / 924 H12CloudChart1Proof173 build
+2026-10-20T20:03:09.0849783Z START 858 / 924 H12CloudChart1Proof173 kernel
+2026-10-20T20:03:17.9785511Z PASS 858 H12CloudChart1Proof173
+2026-10-20T20:03:17.9786218Z START 859 / 924 H12CloudChart1Proof174 build
+2026-10-20T20:03:30.1745289Z START 859 / 924 H12CloudChart1Proof174 kernel
+2026-10-20T20:03:38.2678079Z PASS 859 H12CloudChart1Proof174
+2026-10-20T20:03:38.2678595Z START 860 / 924 H12CloudChart1Proof175 build
+2026-10-20T20:03:51.1644093Z START 860 / 924 H12CloudChart1Proof175 kernel
+2026-10-20T20:03:59.8059841Z PASS 860 H12CloudChart1Proof175
+2026-10-20T20:03:59.8060417Z START 861 / 924 H12CloudChart1Proof176 build
+2026-10-20T20:04:12.8033887Z START 861 / 924 H12CloudChart1Proof176 kernel
+2026-10-20T20:04:21.6475074Z PASS 861 H12CloudChart1Proof176
+2026-10-20T20:04:21.6475683Z START 862 / 924 H12CloudChart1Proof177 build
+2026-10-20T20:04:34.6413016Z START 862 / 924 H12CloudChart1Proof177 kernel
+2026-10-20T20:04:43.6381364Z PASS 862 H12CloudChart1Proof177
+2026-10-20T20:04:43.6381836Z START 863 / 924 H12CloudChart1Proof178 build
+2026-10-20T20:04:57.4348716Z START 863 / 924 H12CloudChart1Proof178 kernel
+2026-10-20T20:05:06.8306590Z PASS 863 H12CloudChart1Proof178
+2026-10-20T20:05:06.8307479Z START 864 / 924 H12CloudChart1Proof179 build
+2026-10-20T20:05:20.3321650Z START 864 / 924 H12CloudChart1Proof179 kernel
+2026-10-20T20:05:29.3787429Z PASS 864 H12CloudChart1Proof179
+2026-10-20T20:05:29.3788001Z START 865 / 924 H12CloudChart1Proof180 build
+2026-10-20T20:05:42.1771483Z START 865 / 924 H12CloudChart1Proof180 kernel
+2026-10-20T20:05:50.9746012Z PASS 865 H12CloudChart1Proof180
+2026-10-20T20:05:50.9746763Z START 866 / 924 H12CloudChart1Proof181 build
+2026-10-20T20:06:05.3798793Z START 866 / 924 H12CloudChart1Proof181 kernel
+2026-10-20T20:06:15.5277052Z PASS 866 H12CloudChart1Proof181
+2026-10-20T20:06:15.5278114Z START 867 / 924 H12CloudChart1Proof182 build
+2026-10-20T20:06:29.1310960Z START 867 / 924 H12CloudChart1Proof182 kernel
+2026-10-20T20:06:38.6262163Z PASS 867 H12CloudChart1Proof182
+2026-10-20T20:06:38.6262739Z START 868 / 924 H12CloudChart1Proof183 build
+2026-10-20T20:06:51.7244655Z START 868 / 924 H12CloudChart1Proof183 kernel
+2026-10-20T20:07:00.6218921Z PASS 868 H12CloudChart1Proof183
+2026-10-20T20:07:00.6219403Z START 869 / 924 H12CloudChart1Proof184 build
+2026-10-20T20:07:14.1201035Z START 869 / 924 H12CloudChart1Proof184 kernel
+2026-10-20T20:07:23.3152512Z PASS 869 H12CloudChart1Proof184
+2026-10-20T20:07:23.3153600Z START 870 / 924 H12CloudChart1Proof185 build
+2026-10-20T20:07:38.2188466Z START 870 / 924 H12CloudChart1Proof185 kernel
+2026-10-20T20:07:48.7219876Z PASS 870 H12CloudChart1Proof185
+2026-10-20T20:07:48.7220337Z START 871 / 924 H12CloudChart1Proof186 build
+2026-10-20T20:08:02.1265802Z START 871 / 924 H12CloudChart1Proof186 kernel
+2026-10-20T20:08:11.2198923Z PASS 871 H12CloudChart1Proof186
+2026-10-20T20:08:11.2199337Z START 872 / 924 H12CloudChart1Proof187 build
+2026-10-20T20:08:24.9193420Z START 872 / 924 H12CloudChart1Proof187 kernel
+2026-10-20T20:08:34.3151614Z PASS 872 H12CloudChart1Proof187
+2026-10-20T20:08:34.3152356Z START 873 / 924 H12CloudChart1Proof188 build
+2026-10-20T20:08:47.8149204Z START 873 / 924 H12CloudChart1Proof188 kernel
+2026-10-20T20:08:57.0632396Z PASS 873 H12CloudChart1Proof188
+2026-10-20T20:08:57.0632964Z START 874 / 924 H12CloudChart1Proof189 build
+2026-10-20T20:09:10.5611232Z START 874 / 924 H12CloudChart1Proof189 kernel
+2026-10-20T20:09:19.8592701Z PASS 874 H12CloudChart1Proof189
+2026-10-20T20:09:19.8593309Z START 875 / 924 H12CloudChart1Proof190 build
+2026-10-20T20:09:32.2555526Z START 875 / 924 H12CloudChart1Proof190 kernel
+2026-10-20T20:09:40.2971022Z PASS 875 H12CloudChart1Proof190
+2026-10-20T20:09:40.2971696Z START 876 / 924 H12CloudChart1Proof191 build
+2026-10-20T20:09:53.7983451Z START 876 / 924 H12CloudChart1Proof191 kernel
+2026-10-20T20:10:03.0433320Z PASS 876 H12CloudChart1Proof191
+2026-10-20T20:10:03.0433889Z START 877 / 924 H12CloudChart1Proof192 build
+2026-10-20T20:10:14.7361298Z START 877 / 924 H12CloudChart1Proof192 kernel
+2026-10-20T20:10:22.5291726Z PASS 877 H12CloudChart1Proof192
+2026-10-20T20:10:22.5292286Z START 878 / 924 H12CloudChart1Proof193 build
+2026-10-20T20:10:35.6252231Z START 878 / 924 H12CloudChart1Proof193 kernel
+2026-10-20T20:10:44.7727563Z PASS 878 H12CloudChart1Proof193
+2026-10-20T20:10:44.7728280Z START 879 / 924 H12CloudChart1Proof194 build
+2026-10-20T20:10:57.5771406Z START 879 / 924 H12CloudChart1Proof194 kernel
+2026-10-20T20:11:06.1198661Z PASS 879 H12CloudChart1Proof194
+2026-10-20T20:11:06.1199288Z START 880 / 924 H12CloudChart1Proof195 build
+2026-10-20T20:11:19.7199351Z START 880 / 924 H12CloudChart1Proof195 kernel
+2026-10-20T20:11:28.8663397Z PASS 880 H12CloudChart1Proof195
+2026-10-20T20:11:28.8663898Z START 881 / 924 H12CloudChart1Proof196 build
+2026-10-20T20:11:41.0646190Z START 881 / 924 H12CloudChart1Proof196 kernel
+2026-10-20T20:11:48.9588372Z PASS 881 H12CloudChart1Proof196
+2026-10-20T20:11:48.9588930Z START 882 / 924 H12CloudChart1Proof197 build
+2026-10-20T20:12:02.4623004Z START 882 / 924 H12CloudChart1Proof197 kernel
+2026-10-20T20:12:11.9086845Z PASS 882 H12CloudChart1Proof197
+2026-10-20T20:12:11.9087412Z START 883 / 924 H12CloudChart1Proof198 build
+2026-10-20T20:12:24.7064721Z START 883 / 924 H12CloudChart1Proof198 kernel
+2026-10-20T20:12:33.4037402Z PASS 883 H12CloudChart1Proof198
+2026-10-20T20:12:33.4037999Z START 884 / 924 H12CloudChart1Proof199 build
+2026-10-20T20:12:47.3033162Z START 884 / 924 H12CloudChart1Proof199 kernel
+2026-10-20T20:12:56.8522714Z PASS 884 H12CloudChart1Proof199
+2026-10-20T20:12:56.8523436Z START 885 / 924 H12CloudChart1Proof200 build
+2026-10-20T20:13:09.0516379Z START 885 / 924 H12CloudChart1Proof200 kernel
+2026-10-20T20:13:17.0453612Z PASS 885 H12CloudChart1Proof200
+2026-10-20T20:13:17.0454319Z START 886 / 924 H12CloudChart1Proof201 build
+2026-10-20T20:13:30.2462942Z START 886 / 924 H12CloudChart1Proof201 kernel
+2026-10-20T20:13:39.0444131Z PASS 886 H12CloudChart1Proof201
+2026-10-20T20:13:39.0444723Z START 887 / 924 H12CloudChart1Proof202 build
+2026-10-20T20:13:52.2420828Z START 887 / 924 H12CloudChart1Proof202 kernel
+2026-10-20T20:14:01.4390742Z PASS 887 H12CloudChart1Proof202
+2026-10-20T20:14:01.4391457Z START 888 / 924 H12CloudChart1Proof203 build
+2026-10-20T20:14:13.9358482Z START 888 / 924 H12CloudChart1Proof203 kernel
+2026-10-20T20:14:22.1812413Z PASS 888 H12CloudChart1Proof203
+2026-10-20T20:14:22.1812844Z START 889 / 924 H12CloudChart1Proof204 build
+2026-10-20T20:14:34.8825099Z START 889 / 924 H12CloudChart1Proof204 kernel
+2026-10-20T20:14:43.7802699Z PASS 889 H12CloudChart1Proof204
+2026-10-20T20:14:43.7803208Z START 890 / 924 H12CloudChart1Proof205 build
+2026-10-20T20:14:57.5867576Z START 890 / 924 H12CloudChart1Proof205 kernel
+2026-10-20T20:15:06.9350294Z PASS 890 H12CloudChart1Proof205
+2026-10-20T20:15:19.7363391Z START 891 / 924 H12CloudChart1Proof206 build
+2026-10-20T20:15:19.7364187Z START 891 / 924 H12CloudChart1Proof206 kernel
+2026-10-20T20:15:28.3801990Z PASS 891 H12CloudChart1Proof206
+2026-10-20T20:15:28.3802454Z START 892 / 924 H12CloudChart1Proof207 build
+2026-10-20T20:15:40.2796392Z START 892 / 924 H12CloudChart1Proof207 kernel
+2026-10-20T20:15:48.0740603Z PASS 892 H12CloudChart1Proof207
+2026-10-20T20:15:48.0741175Z START 893 / 924 H12CloudChart1Proof208 build
+2026-10-20T20:16:00.7746514Z START 893 / 924 H12CloudChart1Proof208 kernel
+2026-10-20T20:16:09.2209778Z PASS 893 H12CloudChart1Proof208
+2026-10-20T20:16:09.2210521Z START 894 / 924 H12CloudChart1Proof209 build
+2026-10-20T20:16:23.7269214Z START 894 / 924 H12CloudChart1Proof209 kernel
+2026-10-20T20:16:33.8281367Z PASS 894 H12CloudChart1Proof209
+2026-10-20T20:16:33.8281910Z START 895 / 924 H12CloudChart1Proof210 build
+2026-10-20T20:16:47.6307265Z START 895 / 924 H12CloudChart1Proof210 kernel
+2026-10-20T20:16:57.0277205Z PASS 895 H12CloudChart1Proof210
+2026-10-20T20:16:57.0278009Z START 896 / 924 H12CloudChart1Proof211 build
+2026-10-20T20:17:10.2310472Z START 896 / 924 H12CloudChart1Proof211 kernel
+2026-10-20T20:17:19.2800685Z PASS 896 H12CloudChart1Proof211
+2026-10-20T20:17:19.2801396Z START 897 / 924 H12CloudChart1Proof212 build
+2026-10-20T20:17:32.3810971Z START 897 / 924 H12CloudChart1Proof212 kernel
+2026-10-20T20:17:41.2292380Z PASS 897 H12CloudChart1Proof212
+2026-10-20T20:17:41.2292941Z START 898 / 924 H12CloudChart1Proof213 build
+2026-10-20T20:17:53.9257079Z START 898 / 924 H12CloudChart1Proof213 kernel
+2026-10-20T20:18:02.2703479Z PASS 898 H12CloudChart1Proof213
+2026-10-20T20:18:02.2704839Z START 899 / 924 H12CloudChart1Proof214 build
+2026-10-20T20:18:18.7806716Z START 899 / 924 H12CloudChart1Proof214 kernel
+2026-10-20T20:18:30.3373326Z PASS 899 H12CloudChart1Proof214
+2026-10-20T20:18:30.3374010Z START 900 / 924 H12CloudChart1Proof215 build
+2026-10-20T20:18:48.2503840Z START 900 / 924 H12CloudChart1Proof215 kernel
+2026-10-20T20:19:01.2106744Z PASS 900 H12CloudChart1Proof215
+2026-10-20T20:19:01.2107590Z START 901 / 924 H12CloudChart1Proof216 build
+2026-10-20T20:19:18.3223900Z START 901 / 924 H12CloudChart1Proof216 kernel
+2026-10-20T20:19:31.0318619Z PASS 901 H12CloudChart1Proof216
+2026-10-20T20:19:31.0319102Z START 902 / 924 H12CloudChart1Proof217 build
+2026-10-20T20:19:44.3298598Z START 902 / 924 H12CloudChart1Proof217 kernel
+2026-10-20T20:19:53.1260035Z PASS 902 H12CloudChart1Proof217
+2026-10-20T20:19:53.1260571Z START 903 / 924 H12CloudChart1Proof218 build
+2026-10-20T20:20:04.3179848Z START 903 / 924 H12CloudChart1Proof218 kernel
+2026-10-20T20:20:11.5082311Z PASS 903 H12CloudChart1Proof218
+2026-10-20T20:20:11.5082769Z START 904 / 924 H12CloudChart1Proof219 build
+2026-10-20T20:20:23.0037082Z START 904 / 924 H12CloudChart1Proof219 kernel
+2026-10-20T20:20:30.3950598Z PASS 904 H12CloudChart1Proof219
+2026-10-20T20:20:30.3951186Z START 905 / 924 H12CloudChart1Proof220 build
+2026-10-20T20:20:43.8952378Z START 905 / 924 H12CloudChart1Proof220 kernel
+2026-10-20T20:20:53.0926684Z PASS 905 H12CloudChart1Proof220
+2026-10-20T20:20:53.0927700Z START 906 / 924 H12CloudChart1Proof221 build
+2026-10-20T20:21:09.4027340Z START 906 / 924 H12CloudChart1Proof221 kernel
+2026-10-20T20:21:20.8538498Z PASS 906 H12CloudChart1Proof221
+2026-10-20T20:21:20.8539076Z START 907 / 924 H12CloudChart1Proof222 build
+2026-10-20T20:21:35.4581959Z START 907 / 924 H12CloudChart1Proof222 kernel
+2026-10-20T20:21:45.4600805Z PASS 907 H12CloudChart1Proof222
+2026-10-20T20:21:45.4602522Z START 908 / 924 H12CloudChart1Proof223 build
+2026-10-20T20:22:04.2726276Z START 908 / 924 H12CloudChart1Proof223 kernel
+2026-10-20T20:22:17.5303052Z PASS 908 H12CloudChart1Proof223
+2026-10-20T20:22:17.5303526Z START 909 / 924 H12CloudChart1Proof224 build
+2026-10-20T20:22:33.2362438Z START 909 / 924 H12CloudChart1Proof224 kernel
+2026-10-20T20:22:44.4386924Z PASS 909 H12CloudChart1Proof224
+2026-10-20T20:22:44.4387701Z START 910 / 924 H12CloudChart1Proof225 build
+2026-10-20T20:22:56.6350662Z START 910 / 924 H12CloudChart1Proof225 kernel
+2026-10-20T20:23:04.7282640Z PASS 910 H12CloudChart1Proof225
+2026-10-20T20:23:04.7283214Z START 911 / 924 H12CloudChart1Proof226 build
+2026-10-20T20:23:16.5266721Z START 911 / 924 H12CloudChart1Proof226 kernel
+2026-10-20T20:23:24.4218973Z PASS 911 H12CloudChart1Proof226
+2026-10-20T20:23:24.4219399Z START 912 / 924 H12CloudChart1Proof227 build
+2026-10-20T20:23:37.7238651Z START 912 / 924 H12CloudChart1Proof227 kernel
+2026-10-20T20:23:46.7218889Z PASS 912 H12CloudChart1Proof227
+2026-10-20T20:23:46.7219433Z START 913 / 924 H12CloudChart1Proof228 build
+2026-10-20T20:24:01.5255130Z START 913 / 924 H12CloudChart1Proof228 kernel
+2026-10-20T20:24:11.9790826Z PASS 913 H12CloudChart1Proof228
+2026-10-20T20:24:11.9791464Z START 914 / 924 H12CloudChart1Proof229 build
+2026-10-20T20:24:23.9725464Z START 914 / 924 H12CloudChart1Proof229 kernel
+2026-10-20T20:24:31.5661232Z PASS 914 H12CloudChart1Proof229
+2026-10-20T20:24:31.5661818Z START 915 / 924 H12CloudChart1Proof230 build
+2026-10-20T20:24:44.7645153Z START 915 / 924 H12CloudChart1Proof230 kernel
+2026-10-20T20:24:53.6612153Z PASS 915 H12CloudChart1Proof230
+2026-10-20T20:24:53.6612718Z START 916 / 924 H12CloudChart1Proof231 build
+2026-10-20T20:25:07.6616040Z START 916 / 924 H12CloudChart1Proof231 kernel
+2026-10-20T20:25:17.5098296Z PASS 916 H12CloudChart1Proof231
+2026-10-20T20:25:17.5098997Z START 917 / 924 H12CloudChart1Proof232 build
+2026-10-20T20:25:30.5113127Z START 917 / 924 H12CloudChart1Proof232 kernel
+2026-10-20T20:25:39.7117768Z PASS 917 H12CloudChart1Proof232
+2026-10-20T20:25:39.7118585Z START 918 / 924 H12CloudChart1Proof233 build
+2026-10-20T20:25:52.8124733Z START 918 / 924 H12CloudChart1Proof233 kernel
+2026-10-20T20:26:01.7112483Z PASS 918 H12CloudChart1Proof233
+2026-10-20T20:26:01.7113220Z START 919 / 924 H12CloudChart1Proof234 build
+2026-10-20T20:26:15.1121339Z START 919 / 924 H12CloudChart1Proof234 kernel
+2026-10-20T20:26:24.2613237Z PASS 919 H12CloudChart1Proof234
+2026-10-20T20:26:24.2613810Z START 920 / 924 H12CloudChart1Proof235 build
+2026-10-20T20:26:36.6582841Z START 920 / 924 H12CloudChart1Proof235 kernel
+2026-10-20T20:26:45.2039435Z PASS 920 H12CloudChart1Proof235
+2026-10-20T20:26:45.2039910Z START 921 / 924 H12CloudChart1Proof236 build
+2026-10-20T20:26:58.5017302Z START 921 / 924 H12CloudChart1Proof236 kernel
+2026-10-20T20:27:07.6499740Z PASS 921 H12CloudChart1Proof236
+2026-10-20T20:27:07.6500310Z START 922 / 924 H12CloudChart1Proof237 build
+2026-10-20T20:27:19.1449391Z START 922 / 924 H12CloudChart1Proof237 kernel
+2026-10-20T20:27:26.7382923Z PASS 922 H12CloudChart1Proof237
+2026-10-20T20:27:26.7383319Z START 923 / 924 H12CloudChart1Proof238 build
+2026-10-20T20:27:32.3180466Z START 923 / 924 H12CloudChart1Proof238 kernel
+2026-10-20T20:27:36.5512312Z PASS 923 H12CloudChart1Proof238
+2026-10-20T20:27:36.5512937Z START 924 / 924 H12CloudChart1 build
+2026-10-20T20:28:04.0864683Z START 924 / 924 H12CloudChart1 kernel
+2026-10-20T20:28:29.0309386Z PASS 924 H12CloudChart1
+2026-10-20T20:28:29.0376080Z PASS_CHART_DEPENDENCIES_AND_ROOT_KERNEL_REPLAY 924 / 924
+2026-10-20T20:28:29.0545888Z ##[group]Run actions/cache/save@v4
+2026-10-20T20:28:29.0546176Z with:
+2026-10-20T20:28:29.0546805Z   path: quartic_audit_2026_10_17/lean/.lake
+quartic_audit_2026_10_17/cloud_progress
+
+2026-10-20T20:28:29.0547486Z   key: lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-5
+2026-10-20T20:28:29.0548035Z   enableCrossOsArchive: false
+2026-10-20T20:28:29.0548283Z env:
+2026-10-20T20:28:29.0548465Z   CHART: 1
+2026-10-20T20:28:29.0548650Z   MINUTES: 180
+2026-10-20T20:28:29.0549032Z   LEGACY_REPORT_SHA256: 502596f85c93f871fd36ab3d89a82462badc1090b3cdcc040d93dffe165a0692
+2026-10-20T20:28:29.0549772Z   LEGACY_CACHE_KEY: lean-linux-v1-1-a7a0b06e3d37a6870b91ed3cf33c03feba40ef2788f33e5609a548f9ca4c9288-39258813467-3
+2026-10-20T20:28:29.0550344Z   PYTHONUNBUFFERED: 1
+2026-10-20T20:28:29.0550642Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T20:28:29.0551091Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T20:28:29.0551579Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T20:28:29.0551974Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T20:28:29.0552363Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T20:28:29.0552762Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T20:28:29.0553163Z   LEAN_RELEASE_ARCHIVE: /home/runner/work/_temp/lean.tar.zst
+2026-10-20T20:28:29.0553493Z ##[endgroup]
+2026-10-20T20:28:29.2907875Z (node:65207) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-20T20:28:29.2909208Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-20T20:28:29.3097072Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification --files-from manifest.txt --use-compress-program zstdmt
+2026-10-20T20:28:47.5096208Z (node:65207) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-20T20:28:48.4924892Z Sent 0 of 1593722760 (0.0%), 0.0 MBs/sec
+2026-10-20T20:28:49.4947970Z Sent 536870912 of 1593722760 (33.7%), 255.9 MBs/sec
+2026-10-20T20:28:50.4924551Z Sent 1073741824 of 1593722760 (67.4%), 341.2 MBs/sec
+2026-10-20T20:28:51.2903512Z Sent 1593722760 of 1593722760 (100.0%), 400.1 MBs/sec
+2026-10-20T20:28:51.5366294Z Cache saved with key: lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-5
+2026-10-20T20:28:51.5562369Z ##[group]Run actions/upload-artifact@v4
+2026-10-20T20:28:51.5562898Z with:
+2026-10-20T20:28:51.5563301Z   name: lean-resume-chart-1-39358413248-5
+2026-10-20T20:28:51.5563797Z   retention-days: 90
+2026-10-20T20:28:51.5564194Z   if-no-files-found: warn
+2026-10-20T20:28:51.5565704Z   path: quartic_audit_2026_10_17/cloud_progress/
+quartic_audit_2026_10_17/lean/H12CloudChart*.lean
+quartic_audit_2026_10_17/reports/H12CloudChart*_SOURCE.json
+quartic_audit_2026_10_17/tools/verify_lean_cloud_resume.py
+
+2026-10-20T20:28:51.5567621Z   compression-level: 6
+2026-10-20T20:28:51.5568049Z   overwrite: false
+2026-10-20T20:28:51.5568453Z   include-hidden-files: false
+2026-10-20T20:28:51.5568888Z env:
+2026-10-20T20:28:51.5569236Z   CHART: 1
+2026-10-20T20:28:51.5569624Z   MINUTES: 180
+2026-10-20T20:28:51.5570318Z   LEGACY_REPORT_SHA256: 502596f85c93f871fd36ab3d89a82462badc1090b3cdcc040d93dffe165a0692
+2026-10-20T20:28:51.5571718Z   LEGACY_CACHE_KEY: lean-linux-v1-1-a7a0b06e3d37a6870b91ed3cf33c03feba40ef2788f33e5609a548f9ca4c9288-39258813467-3
+2026-10-20T20:28:51.5572779Z   PYTHONUNBUFFERED: 1
+2026-10-20T20:28:51.5573321Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T20:28:51.5574120Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T20:28:51.5574917Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T20:28:51.5575878Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T20:28:51.5576873Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T20:28:51.5577643Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T20:28:51.5578397Z   LEAN_RELEASE_ARCHIVE: /home/runner/work/_temp/lean.tar.zst
+2026-10-20T20:28:51.5579000Z ##[endgroup]
+2026-10-20T20:28:51.7298687Z (node:65233) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-20T20:28:51.7299647Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-20T20:28:52.1352670Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-10-20T20:28:52.1355526Z The least common ancestor is /home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification/quartic_audit_2026_10_17. This will be the root directory of the artifact
+2026-10-20T20:28:52.1356627Z With the provided path, there will be 2659 files uploaded
+2026-10-20T20:28:52.1362569Z Artifact name is valid!
+2026-10-20T20:28:52.1363058Z Root directory input is valid!
+2026-10-20T20:28:52.3733174Z Beginning upload of artifact content to blob storage
+2026-10-20T20:28:53.8663399Z (node:65233) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-20T20:28:54.0414688Z Uploaded bytes 8388608
+2026-10-20T20:28:55.3507977Z Uploaded bytes 16777216
+2026-10-20T20:28:56.5525429Z Uploaded bytes 25165824
+2026-10-20T20:28:57.0537945Z Uploaded bytes 28702355
+2026-10-20T20:28:57.0732587Z Finished uploading artifact content to blob storage!
+2026-10-20T20:28:57.0736902Z SHA256 digest of uploaded artifact zip is 214e5619b2595ef2247b1427d965b452669662c8191b010d3895b37642d855bd
+2026-10-20T20:28:57.0740004Z Finalizing artifact upload
+2026-10-20T20:28:57.3271893Z Artifact lean-resume-chart-1-39358413248-5.zip successfully finalized. Artifact ID 12295923535
+2026-10-20T20:28:57.3273468Z Artifact lean-resume-chart-1-39358413248-5 has been successfully uploaded! Final size is 28702355 bytes. Artifact ID is 12295923535
+2026-10-20T20:28:57.3282390Z Artifact download URL: https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/39358413248/artifacts/12295923535
+2026-10-20T20:28:57.3581333Z Post job cleanup.
+2026-10-20T20:28:57.4830035Z (node:65246) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-20T20:28:57.4830875Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-20T20:28:57.5061333Z Post job cleanup.
+2026-10-20T20:28:57.6038300Z [command]/usr/bin/git version
+2026-10-20T20:28:57.6083584Z git version 2.55.0
+2026-10-20T20:28:57.6125569Z Temporarily overriding HOME='/home/runner/work/_temp/b39c0ac4-dcfb-4ee0-af16-a27e224ee6a1' before making global git config changes
+2026-10-20T20:28:57.6127255Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-20T20:28:57.6131089Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification
+2026-10-20T20:28:57.6172300Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-20T20:28:57.6208587Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-20T20:28:57.6487527Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-20T20:28:57.6517948Z http.https://github.com/.extraheader
+2026-10-20T20:28:57.6531962Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-20T20:28:57.6568367Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-20T20:28:57.6835562Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-20T20:28:57.6877848Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-20T20:28:57.7267989Z Cleaning up orphan processes
+2026-10-20T20:28:57.7692058Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/cache/restore@v4, actions/cache/save@v4, actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

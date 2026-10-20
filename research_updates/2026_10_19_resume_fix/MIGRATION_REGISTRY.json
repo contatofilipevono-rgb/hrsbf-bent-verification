@@ -1,5 +1,5 @@
 {
-  "stage": "STABLE_RUNS_ACTIVE",
+  "stage": "ALL_CHART_ROOTS_PRESERVED_INTEGRATION_PENDING",
   "repository": "contatofilipevono-rgb/hrsbf-bent-verification",
   "branch": "fix/lean-resume-stability",
   "tested_commit": "032aaadc61ab31b2b6c80753388218c9e2d41af7",
@@ -40,7 +40,7 @@
       "legacy_run_id": 39258813467,
       "legacy_active_attempt": 4,
       "legacy_active_job_id": 118358546014,
-      "last_preserved_modules": 643,
+      "last_preserved_modules": 924,
       "stable_run_id": 39358413248,
       "latest_legacy_round_modules": 262,
       "selected_legacy_attempt": 3,
@@ -49,7 +49,7 @@
       "dispatch_requested_at": "2026-10-20T02:20:51Z",
       "stable_run_url": "https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/39358413248",
       "stable_commit": "032aaadc61ab31b2b6c80753388218c9e2d41af7",
-      "migration_status": "STABLE_IDENTITY_REUSED_CONFIRMED",
+      "migration_status": "COMPLETE_ROOT_PRESERVED",
       "selected_legacy_modules": 283,
       "stable_active_attempt": 5,
       "stable_active_job_id": 118782215588,
@@ -57,9 +57,12 @@
       "resume_line": "RESUME stable_identity REUSED 643 / 924 NEXT H12CloudChart1Data522",
       "next_module_index": 644,
       "next_module": "H12CloudChart1Data522",
-      "last_preserved_attempt": 4,
-      "last_preserved_cache_key": "lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-4"
+      "last_preserved_attempt": 5,
+      "last_preserved_cache_key": "lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-5",
+      "chart_complete": true,
+      "do_not_rerun": true
     }
   },
-  "resume_confirmed_at_utc": "2026-10-20T02:24:41Z"
+  "resume_confirmed_at_utc": "2026-10-20T02:24:41Z",
+  "automation_status": "PAUSED"
 }

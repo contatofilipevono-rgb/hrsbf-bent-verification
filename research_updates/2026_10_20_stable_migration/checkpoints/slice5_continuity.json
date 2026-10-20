@@ -1,0 +1,12 @@
+[
+  {
+    "chart": 1,
+    "modules": 924,
+    "reused": 643,
+    "new": 281,
+    "exact_prefix": true,
+    "stable_identity": true,
+    "cache_key": "lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-5",
+    "global_proof_complete": false
+  }
+]
