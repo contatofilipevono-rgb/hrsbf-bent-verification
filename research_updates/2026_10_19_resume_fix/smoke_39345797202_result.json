@@ -1,0 +1,44 @@
+{
+  "status": "PASS_REAL_LEAN_RESUME_SMOKE",
+  "legacy_modules": 1,
+  "migration_reused": 1,
+  "migration_new": 1,
+  "next_slice_reused": 2,
+  "next_slice_new": 0,
+  "lean_version": "Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "toolchain": {
+    "version": "Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+    "target": "linux-x86_64",
+    "release_archive_sha256": "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d",
+    "binaries": {
+      "lake": "8ba83c98f76562d03b8dbc33f1057151ba6cbb121679dde76b2260ccc90495e1",
+      "lean": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+      "leanchecker": "12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6"
+    },
+    "shared_libraries": {
+      "lib/glibc/ld-linux-x86.so": "cf102aa2866d69b6b1b6f5195da0031deb7fbae374a0c2f677a1fffc9e01f3f2",
+      "lib/glibc/ld.so": "cf102aa2866d69b6b1b6f5195da0031deb7fbae374a0c2f677a1fffc9e01f3f2",
+      "lib/glibc/libc.so": "e256592ceadd9c7c4256e92e845b0899d297d5bd4a6ad932048db5cd5e799e0d",
+      "lib/glibc/libdl.so": "fc529305501bfce8aa9f614c041c936827cefed5c2c533abbb1867d5ebf84a55",
+      "lib/glibc/libm.so": "dd9e596df3c48d1805c235fc5b89161c4942dc6641200a813fa75914152d04e9",
+      "lib/glibc/libpthread.so": "27ba14f60ea7a4d46579879c87e206de33eaac0ccd130d87e6ef4cb3fa28cf86",
+      "lib/glibc/librt.so": "542ef722b42111dbeaa9f1f6579b933e7bbf1c95466f4dc3604d7905d657e924",
+      "lib/glibc/libutil.so": "e659053ca496683d5da0e9d571c7c12cb990239a04f60ff94a8e32e6bc1f46c3",
+      "lib/lean/libInit_shared.so": "7831b707e868cee76c353d26649fbd8981b2f4d7e0329af55bbf4fa9e0c69350",
+      "lib/lean/libLake_shared.so": "d68867df340056b40726fde3939a9d2021901cc6944f971dd6a6a778bd9ea25b",
+      "lib/lean/libleanshared.so": "efef27df56f2197139afe12f1a2b63913a05f1aba81ce88824c44100431ed8c4",
+      "lib/lean/libleanshared_1.so": "691bf49d9e542a15808fad9d1f8c5df45860166f77efa57961b5335e65a3a0ed",
+      "lib/lean/libleanshared_2.so": "141cbfdb3bc2016cd68e0bebc2e5494818213b462ed985afa6d975d4872fb8ec",
+      "lib/libLLVM-23.so": "d156f2240517cf3e363dbe74492491494f74300a2a0513f8606f802dca2f2fbe",
+      "lib/libLLVM.so": "d156f2240517cf3e363dbe74492491494f74300a2a0513f8606f802dca2f2fbe",
+      "lib/libatomic.so": "b2d3f7d9ebf9a0d5dc9caedcb33a43f6ac1b33221ada1f029147d8a66db43c09",
+      "lib/libc++.so": "9a82146864488c9d491a6e60be5af3ca986a9af57f6057763c5c0a8dda85a66e",
+      "lib/libc++abi.so": "43ae4baf280de152662d88ed938cef229022900e13457683b6a19ae82fafac66",
+      "lib/libclang-cpp.so": "d7adb9dfd7170742a0dce7773e4ffe5903830b11c2af316908058516017fcc92",
+      "lib/libgcc_s.so": "3f499bb3b14f33c5c321f52015d385c145c7bd4551a66c5fcff4262c833f2d2a",
+      "lib/libunwind.so": "da12c79a1651232a6c36a2844e01c612d5e002d759401356c5a8ac597f7e2890",
+      "lib/libz.so": "d0aeafffcfe309a107a857dfa1f9afd0db90796d32c2b735a3959eccb317f5b4"
+    }
+  },
+  "scope": "Two trivial theorem modules; tests orchestration, not the H(12,4) result."
+}

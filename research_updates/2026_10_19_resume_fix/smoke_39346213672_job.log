@@ -1,0 +1,379 @@
+﻿2026-10-20T00:12:05.7076786Z Current runner version: '2.337.0'
+2026-10-20T00:12:05.7098010Z ##[group]Runner Image Provisioner
+2026-10-20T00:12:05.7098764Z Hosted Compute Agent
+2026-10-20T00:12:05.7099539Z Version: 20261012.601
+2026-10-20T00:12:05.7100097Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+2026-10-20T00:12:05.7100702Z Build Date: 2026-10-12T17:48:21Z
+2026-10-20T00:12:05.7101339Z Worker ID: {880580a9-e588-44d0-807c-8668ea84a13d}
+2026-10-20T00:12:05.7101935Z Region: centralus
+2026-10-20T00:12:05.7102406Z Cloud: Azure
+2026-10-20T00:12:05.7102878Z ##[endgroup]
+2026-10-20T00:12:05.7104048Z ##[group]Operating System
+2026-10-20T00:12:05.7104611Z Ubuntu
+2026-10-20T00:12:05.7105050Z 24.04.5
+2026-10-20T00:12:05.7105536Z LTS
+2026-10-20T00:12:05.7105988Z ##[endgroup]
+2026-10-20T00:12:05.7106455Z ##[group]Runner Image
+2026-10-20T00:12:05.7106987Z Image: ubuntu-24.04
+2026-10-20T00:12:05.7107468Z Version: 20261012.334.1
+2026-10-20T00:12:05.7108613Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-20T00:12:05.7110359Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-20T00:12:05.7111291Z ##[endgroup]
+2026-10-20T00:12:05.7112362Z ##[group]GITHUB_TOKEN Permissions
+2026-10-20T00:12:05.7114590Z Contents: read
+2026-10-20T00:12:05.7115119Z Metadata: read
+2026-10-20T00:12:05.7115614Z ##[endgroup]
+2026-10-20T00:12:05.7117559Z Secret source: Actions
+2026-10-20T00:12:05.7118733Z Cache mode: write
+2026-10-20T00:12:05.7119649Z Prepare workflow directory
+2026-10-20T00:12:05.7408619Z Prepare all required actions
+2026-10-20T00:12:05.7454935Z Getting action download info
+2026-10-20T00:12:06.0041202Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-20T00:12:06.1244744Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-20T00:12:06.2714229Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-20T00:12:06.5959335Z Uses: contatofilipevono-rgb/hrsbf-bent-verification/.github/workflows/lean-resume-smoke.yml@refs/heads/fix/lean-resume-stability (032aaadc61ab31b2b6c80753388218c9e2d41af7)
+2026-10-20T00:12:06.5966380Z ##[group] Inputs
+2026-10-20T00:12:06.5967571Z   mode: smoke
+2026-10-20T00:12:06.5968571Z   chart: 0
+2026-10-20T00:12:06.5969742Z   minutes: 1
+2026-10-20T00:12:06.5970721Z ##[endgroup]
+2026-10-20T00:12:06.5971736Z Complete job name: smoke / regression
+2026-10-20T00:12:06.6736116Z ##[group]Run actions/checkout@v4
+2026-10-20T00:12:06.6737283Z with:
+2026-10-20T00:12:06.6738374Z   repository: contatofilipevono-rgb/hrsbf-bent-verification
+2026-10-20T00:12:06.6746000Z   token: ***
+2026-10-20T00:12:06.6746811Z   ssh-strict: true
+2026-10-20T00:12:06.6747849Z   ssh-user: git
+2026-10-20T00:12:06.6748634Z   persist-credentials: true
+2026-10-20T00:12:06.6749688Z   clean: true
+2026-10-20T00:12:06.6750529Z   sparse-checkout-cone-mode: true
+2026-10-20T00:12:06.6751462Z   fetch-depth: 1
+2026-10-20T00:12:06.6752280Z   fetch-tags: false
+2026-10-20T00:12:06.6753094Z   show-progress: true
+2026-10-20T00:12:06.6753946Z   lfs: false
+2026-10-20T00:12:06.6754682Z   submodules: false
+2026-10-20T00:12:06.6755502Z   set-safe-directory: true
+2026-10-20T00:12:06.6756429Z   allow-unsafe-pr-checkout: false
+2026-10-20T00:12:06.6757532Z ##[endgroup]
+2026-10-20T00:12:06.7746963Z Syncing repository: contatofilipevono-rgb/hrsbf-bent-verification
+2026-10-20T00:12:06.7751348Z ##[group]Getting Git version info
+2026-10-20T00:12:06.7753124Z Working directory is '/home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification'
+2026-10-20T00:12:06.7755438Z [command]/usr/bin/git version
+2026-10-20T00:12:06.7814746Z git version 2.55.0
+2026-10-20T00:12:06.7842347Z ##[endgroup]
+2026-10-20T00:12:06.7852788Z Temporarily overriding HOME='/home/runner/work/_temp/18ce6952-425e-4bae-b337-83221429e33e' before making global git config changes
+2026-10-20T00:12:06.7858739Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-20T00:12:06.7868864Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification
+2026-10-20T00:12:06.7921611Z Deleting the contents of '/home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification'
+2026-10-20T00:12:06.7926677Z ##[group]Initializing the repository
+2026-10-20T00:12:06.7928671Z [command]/usr/bin/git init /home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification
+2026-10-20T00:12:06.8017539Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-20T00:12:06.8020394Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-20T00:12:06.8022863Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-20T00:12:06.8024717Z hint: call:
+2026-10-20T00:12:06.8025730Z hint:
+2026-10-20T00:12:06.8027011Z hint: 	git config --global init.defaultBranch <name>
+2026-10-20T00:12:06.8028490Z hint:
+2026-10-20T00:12:06.8033469Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-20T00:12:06.8035961Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-20T00:12:06.8037873Z hint:
+2026-10-20T00:12:06.8038955Z hint: 	git branch -m <name>
+2026-10-20T00:12:06.8040313Z hint:
+2026-10-20T00:12:06.8041967Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-20T00:12:06.8044988Z Initialized empty Git repository in /home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification/.git/
+2026-10-20T00:12:06.8049976Z [command]/usr/bin/git remote add origin https://github.com/contatofilipevono-rgb/hrsbf-bent-verification
+2026-10-20T00:12:06.8070805Z ##[endgroup]
+2026-10-20T00:12:06.8072790Z ##[group]Disabling automatic garbage collection
+2026-10-20T00:12:06.8074487Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-20T00:12:06.8101242Z ##[endgroup]
+2026-10-20T00:12:06.8103163Z ##[group]Setting up auth
+2026-10-20T00:12:06.8106987Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-20T00:12:06.8134275Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-20T00:12:06.8433008Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-20T00:12:06.8452412Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-20T00:12:06.8624988Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-20T00:12:06.8654499Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-20T00:12:06.8843857Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-20T00:12:06.8876824Z ##[endgroup]
+2026-10-20T00:12:06.8879063Z ##[group]Fetching the repository
+2026-10-20T00:12:06.8886999Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +032aaadc61ab31b2b6c80753388218c9e2d41af7:refs/remotes/origin/fix/lean-resume-stability
+2026-10-20T00:12:18.0292853Z From https://github.com/contatofilipevono-rgb/hrsbf-bent-verification
+2026-10-20T00:12:18.0293951Z  * [new ref]         032aaadc61ab31b2b6c80753388218c9e2d41af7 -> origin/fix/lean-resume-stability
+2026-10-20T00:12:18.0296194Z ##[endgroup]
+2026-10-20T00:12:18.0297040Z ##[group]Determining the checkout info
+2026-10-20T00:12:18.0299588Z ##[endgroup]
+2026-10-20T00:12:18.0304545Z [command]/usr/bin/git sparse-checkout disable
+2026-10-20T00:12:18.0346741Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-20T00:12:18.0372563Z ##[group]Checking out the ref
+2026-10-20T00:12:18.0376531Z [command]/usr/bin/git checkout --progress --force -B fix/lean-resume-stability refs/remotes/origin/fix/lean-resume-stability
+2026-10-20T00:12:19.0424387Z Updating files:  27% (394/1418)
+2026-10-20T00:12:19.0431852Z Updating files:  28% (398/1418)
+2026-10-20T00:12:19.0484076Z Updating files:  29% (412/1418)
+2026-10-20T00:12:19.0489502Z Updating files:  30% (426/1418)
+2026-10-20T00:12:19.0496418Z Updating files:  31% (440/1418)
+2026-10-20T00:12:19.0510723Z Updating files:  32% (454/1418)
+2026-10-20T00:12:19.0511477Z Updating files:  33% (468/1418)
+2026-10-20T00:12:19.0568202Z Updating files:  34% (483/1418)
+2026-10-20T00:12:19.0604623Z Updating files:  35% (497/1418)
+2026-10-20T00:12:19.1364466Z Updating files:  36% (511/1418)
+2026-10-20T00:12:19.1703765Z Updating files:  37% (525/1418)
+2026-10-20T00:12:19.1991157Z Updating files:  38% (539/1418)
+2026-10-20T00:12:19.2129394Z Updating files:  39% (554/1418)
+2026-10-20T00:12:19.2133968Z Updating files:  40% (568/1418)
+2026-10-20T00:12:19.2147686Z Updating files:  41% (582/1418)
+2026-10-20T00:12:19.2153164Z Updating files:  42% (596/1418)
+2026-10-20T00:12:19.2161009Z Updating files:  43% (610/1418)
+2026-10-20T00:12:19.2174122Z Updating files:  44% (624/1418)
+2026-10-20T00:12:19.2278382Z Updating files:  45% (639/1418)
+2026-10-20T00:12:19.2317707Z Updating files:  46% (653/1418)
+2026-10-20T00:12:19.2337765Z Updating files:  47% (667/1418)
+2026-10-20T00:12:19.2364388Z Updating files:  48% (681/1418)
+2026-10-20T00:12:19.2395541Z Updating files:  49% (695/1418)
+2026-10-20T00:12:19.2418036Z Updating files:  50% (709/1418)
+2026-10-20T00:12:19.2422612Z Updating files:  51% (724/1418)
+2026-10-20T00:12:19.2482621Z Updating files:  52% (738/1418)
+2026-10-20T00:12:19.2538395Z Updating files:  53% (752/1418)
+2026-10-20T00:12:19.2616228Z Updating files:  54% (766/1418)
+2026-10-20T00:12:19.2682602Z Updating files:  55% (780/1418)
+2026-10-20T00:12:19.2767183Z Updating files:  56% (795/1418)
+2026-10-20T00:12:19.2852429Z Updating files:  57% (809/1418)
+2026-10-20T00:12:19.2880393Z Updating files:  58% (823/1418)
+2026-10-20T00:12:19.2887140Z Updating files:  59% (837/1418)
+2026-10-20T00:12:19.2898428Z Updating files:  60% (851/1418)
+2026-10-20T00:12:19.2904808Z Updating files:  61% (865/1418)
+2026-10-20T00:12:19.2918929Z Updating files:  62% (880/1418)
+2026-10-20T00:12:19.2923198Z Updating files:  63% (894/1418)
+2026-10-20T00:12:19.2926698Z Updating files:  64% (908/1418)
+2026-10-20T00:12:19.2932086Z Updating files:  65% (922/1418)
+2026-10-20T00:12:19.2937092Z Updating files:  66% (936/1418)
+2026-10-20T00:12:19.2939105Z Updating files:  67% (951/1418)
+2026-10-20T00:12:19.2942380Z Updating files:  68% (965/1418)
+2026-10-20T00:12:19.2944454Z Updating files:  69% (979/1418)
+2026-10-20T00:12:19.2946711Z Updating files:  70% (993/1418)
+2026-10-20T00:12:19.2949091Z Updating files:  71% (1007/1418)
+2026-10-20T00:12:19.2956632Z Updating files:  72% (1021/1418)
+2026-10-20T00:12:19.2965413Z Updating files:  73% (1036/1418)
+2026-10-20T00:12:19.2971067Z Updating files:  74% (1050/1418)
+2026-10-20T00:12:19.2978906Z Updating files:  75% (1064/1418)
+2026-10-20T00:12:19.2986667Z Updating files:  76% (1078/1418)
+2026-10-20T00:12:19.2994134Z Updating files:  77% (1092/1418)
+2026-10-20T00:12:19.3001794Z Updating files:  78% (1107/1418)
+2026-10-20T00:12:19.3008063Z Updating files:  79% (1121/1418)
+2026-10-20T00:12:19.3014621Z Updating files:  80% (1135/1418)
+2026-10-20T00:12:19.3017205Z Updating files:  81% (1149/1418)
+2026-10-20T00:12:19.3019635Z Updating files:  82% (1163/1418)
+2026-10-20T00:12:19.3022791Z Updating files:  83% (1177/1418)
+2026-10-20T00:12:19.3025368Z Updating files:  84% (1192/1418)
+2026-10-20T00:12:19.3028089Z Updating files:  85% (1206/1418)
+2026-10-20T00:12:19.3031787Z Updating files:  86% (1220/1418)
+2026-10-20T00:12:19.3034402Z Updating files:  87% (1234/1418)
+2026-10-20T00:12:19.3036838Z Updating files:  88% (1248/1418)
+2026-10-20T00:12:19.3040479Z Updating files:  89% (1263/1418)
+2026-10-20T00:12:19.3043126Z Updating files:  90% (1277/1418)
+2026-10-20T00:12:19.3045264Z Updating files:  91% (1291/1418)
+2026-10-20T00:12:19.3047784Z Updating files:  92% (1305/1418)
+2026-10-20T00:12:19.3054974Z Updating files:  93% (1319/1418)
+2026-10-20T00:12:19.3060194Z Updating files:  94% (1333/1418)
+2026-10-20T00:12:19.3067504Z Updating files:  95% (1348/1418)
+2026-10-20T00:12:19.3713204Z Updating files:  96% (1362/1418)
+2026-10-20T00:12:19.4918697Z Updating files:  97% (1376/1418)
+2026-10-20T00:12:19.6152035Z Updating files:  98% (1390/1418)
+2026-10-20T00:12:19.6346645Z Updating files:  99% (1404/1418)
+2026-10-20T00:12:19.6347206Z Updating files: 100% (1418/1418)
+2026-10-20T00:12:19.6347638Z Updating files: 100% (1418/1418), done.
+2026-10-20T00:12:19.6390488Z Switched to a new branch 'fix/lean-resume-stability'
+2026-10-20T00:12:19.6394061Z branch 'fix/lean-resume-stability' set up to track 'origin/fix/lean-resume-stability'.
+2026-10-20T00:12:19.6430170Z ##[endgroup]
+2026-10-20T00:12:19.6468188Z [command]/usr/bin/git log -1 --format=%H
+2026-10-20T00:12:19.6495994Z 032aaadc61ab31b2b6c80753388218c9e2d41af7
+2026-10-20T00:12:19.6738893Z ##[group]Run actions/setup-python@v5
+2026-10-20T00:12:19.6739441Z with:
+2026-10-20T00:12:19.6739906Z   python-version: 3.12
+2026-10-20T00:12:19.6740223Z   check-latest: false
+2026-10-20T00:12:19.6742547Z   token: ***
+2026-10-20T00:12:19.6742871Z   update-environment: true
+2026-10-20T00:12:19.6743166Z   allow-prereleases: false
+2026-10-20T00:12:19.6743449Z   freethreaded: false
+2026-10-20T00:12:19.6743729Z ##[endgroup]
+2026-10-20T00:12:19.7894876Z ##[group]Installed versions
+2026-10-20T00:12:19.8486692Z (node:2086) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-20T00:12:19.8487581Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-20T00:12:19.8488165Z Successfully set up CPython (3.12.15)
+2026-10-20T00:12:19.8534161Z ##[endgroup]
+2026-10-20T00:12:19.8677344Z ##[group]Run python -m unittest discover -s quartic_audit_2026_10_17/tools -p test_lean_cloud_resume.py -v
+2026-10-20T00:12:19.8678519Z [36;1mpython -m unittest discover -s quartic_audit_2026_10_17/tools -p test_lean_cloud_resume.py -v[0m
+2026-10-20T00:12:19.8961145Z shell: /usr/bin/bash -e {0}
+2026-10-20T00:12:19.8961635Z env:
+2026-10-20T00:12:19.8962005Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T00:12:19.8962485Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T00:12:19.8962992Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T00:12:19.8963432Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T00:12:19.8963841Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T00:12:19.8964268Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T00:12:19.8964638Z ##[endgroup]
+2026-10-20T00:12:21.2297370Z test_actual_toolchain_identity_change_rejected (test_lean_cloud_resume.ResumeTests.test_actual_toolchain_identity_change_rejected) ... ok
+2026-10-20T00:12:21.2307431Z test_audited_legacy_import (test_lean_cloud_resume.ResumeTests.test_audited_legacy_import) ... ok
+2026-10-20T00:12:21.2314962Z test_changed_source_manifest (test_lean_cloud_resume.ResumeTests.test_changed_source_manifest) ... ok
+2026-10-20T00:12:21.2325384Z test_changed_version (test_lean_cloud_resume.ResumeTests.test_changed_version) ... ok
+2026-10-20T00:12:21.2336132Z test_duplicate_record_rejected (test_lean_cloud_resume.ResumeTests.test_duplicate_record_rejected) ... ok
+2026-10-20T00:12:21.2346644Z test_failed_phase_rejected (test_lean_cloud_resume.ResumeTests.test_failed_phase_rejected) ... ok
+2026-10-20T00:12:21.2355148Z test_false_complete_rejected (test_lean_cloud_resume.ResumeTests.test_false_complete_rejected) ... ok
+2026-10-20T00:12:21.2363833Z test_legacy_digest_required (test_lean_cloud_resume.ResumeTests.test_legacy_digest_required) ... ok
+2026-10-20T00:12:21.2375917Z test_log_corruption (test_lean_cloud_resume.ResumeTests.test_log_corruption) ... ok
+2026-10-20T00:12:21.2412143Z test_native_resume_survives_kernel_description_change (test_lean_cloud_resume.ResumeTests.test_native_resume_survives_kernel_description_change) ... ok
+2026-10-20T00:12:21.2422634Z test_object_corruption (test_lean_cloud_resume.ResumeTests.test_object_corruption) ... ok
+2026-10-20T00:12:21.2448976Z test_only_remaining_module_is_executed (test_lean_cloud_resume.ResumeTests.test_only_remaining_module_is_executed) ... ok
+2026-10-20T00:12:21.2629758Z test_rejected_kernel_marker_even_with_matching_hash (test_lean_cloud_resume.ResumeTests.test_rejected_kernel_marker_even_with_matching_hash) ... ok
+2026-10-20T00:12:21.2641781Z test_rejection_does_not_overwrite_progress (test_lean_cloud_resume.ResumeTests.test_rejection_does_not_overwrite_progress) ... ok
+2026-10-20T00:12:21.2651421Z test_unknown_schema_rejected (test_lean_cloud_resume.ResumeTests.test_unknown_schema_rejected) ... ok
+2026-10-20T00:12:21.2659796Z test_wrong_legacy_digest (test_lean_cloud_resume.ResumeTests.test_wrong_legacy_digest) ... ok
+2026-10-20T00:12:21.2660237Z 
+2026-10-20T00:12:21.2660501Z ----------------------------------------------------------------------
+2026-10-20T00:12:21.2661108Z Ran 16 tests in 0.041s
+2026-10-20T00:12:21.2661327Z 
+2026-10-20T00:12:21.2661431Z OK
+2026-10-20T00:12:21.2838259Z ##[group]Run curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+2026-10-20T00:12:21.2839477Z [36;1mcurl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"[0m
+2026-10-20T00:12:21.2840298Z [36;1mecho "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check[0m
+2026-10-20T00:12:21.2840951Z [36;1mtar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"[0m
+2026-10-20T00:12:21.2841379Z [36;1mecho "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"[0m
+2026-10-20T00:12:21.2841837Z [36;1mecho "LEAN_RELEASE_ARCHIVE=$RUNNER_TEMP/lean.tar.zst" >> "$GITHUB_ENV"[0m
+2026-10-20T00:12:21.2880944Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-20T00:12:21.2881425Z env:
+2026-10-20T00:12:21.2881815Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T00:12:21.2882312Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T00:12:21.2882760Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T00:12:21.2883153Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T00:12:21.2883545Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T00:12:21.2883914Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T00:12:21.2884273Z ##[endgroup]
+2026-10-20T00:12:21.3278823Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-10-20T00:12:21.3279806Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-10-20T00:12:21.3280143Z 
+2026-10-20T00:12:21.4986563Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-20T00:12:21.4987151Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-20T00:12:21.6631546Z 
+2026-10-20T00:12:22.6785074Z   0  566M    0 1459k    0     0  4351k      0  0:02:13 --:--:--  0:02:13 4351k
+2026-10-20T00:12:23.6604172Z  28  566M   28  160M    0     0   118M      0  0:00:04  0:00:01  0:00:03  156M
+2026-10-20T00:12:24.6615267Z  44  566M   44  252M    0     0   108M      0  0:00:05  0:00:02  0:00:03  125M
+2026-10-20T00:12:25.2037562Z  86  566M   86  488M    0     0   146M      0  0:00:03  0:00:03 --:--:--  162M
+2026-10-20T00:12:25.2038427Z 100  566M  100  566M    0     0   146M      0  0:00:03  0:00:03 --:--:--  159M
+2026-10-20T00:12:25.6345976Z /home/runner/work/_temp/lean.tar.zst: OK
+2026-10-20T00:12:36.3227127Z ##[group]Run python quartic_audit_2026_10_17/tools/smoke_lean_cloud_resume.py
+2026-10-20T00:12:36.3227668Z [36;1mpython quartic_audit_2026_10_17/tools/smoke_lean_cloud_resume.py[0m
+2026-10-20T00:12:36.3264169Z shell: /usr/bin/bash -e {0}
+2026-10-20T00:12:36.3264548Z env:
+2026-10-20T00:12:36.3264921Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T00:12:36.3265359Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T00:12:36.3265865Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T00:12:36.3266270Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T00:12:36.3266677Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T00:12:36.3267083Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T00:12:36.3267496Z   LEAN_RELEASE_ARCHIVE: /home/runner/work/_temp/lean.tar.zst
+2026-10-20T00:12:36.3267939Z ##[endgroup]
+2026-10-20T00:12:36.4967590Z info: resume_smoke: no previous manifest, creating one from scratch
+2026-10-20T00:12:36.4968661Z info: toolchain not updated; already up-to-date
+2026-10-20T00:12:36.5423877Z START 1 / 2 ResumeA build
+2026-10-20T00:12:36.8080442Z START 1 / 2 ResumeA kernel
+2026-10-20T00:12:37.2300289Z PASS 1 ResumeA
+2026-10-20T00:12:37.2310371Z PARTIAL_TIME_SLICE 1 / 2
+2026-10-20T00:12:38.2926223Z RESUME audited_legacy_digest REUSED 1 / 2 NEXT ResumeB
+2026-10-20T00:12:38.2927008Z START 2 / 2 ResumeB build
+2026-10-20T00:12:38.5574800Z START 2 / 2 ResumeB kernel
+2026-10-20T00:12:38.9826959Z PASS 2 ResumeB
+2026-10-20T00:12:40.0810396Z RESUME stable_identity REUSED 2 / 2 NEXT complete
+2026-10-20T00:12:40.1919299Z {
+2026-10-20T00:12:40.1920024Z   "status": "PASS_REAL_LEAN_RESUME_SMOKE",
+2026-10-20T00:12:40.1920510Z   "legacy_modules": 1,
+2026-10-20T00:12:40.1920809Z   "migration_reused": 1,
+2026-10-20T00:12:40.1921111Z   "migration_new": 1,
+2026-10-20T00:12:40.1921394Z   "next_slice_reused": 2,
+2026-10-20T00:12:40.1921744Z   "next_slice_new": 0,
+2026-10-20T00:12:40.1922312Z   "lean_version": "Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+2026-10-20T00:12:40.1922847Z   "toolchain": {
+2026-10-20T00:12:40.1923347Z     "version": "Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+2026-10-20T00:12:40.1923869Z     "target": "linux-x86_64",
+2026-10-20T00:12:40.1924332Z     "release_archive_sha256": "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d",
+2026-10-20T00:12:40.1924806Z     "binaries": {
+2026-10-20T00:12:40.1925221Z       "lake": "8ba83c98f76562d03b8dbc33f1057151ba6cbb121679dde76b2260ccc90495e1",
+2026-10-20T00:12:40.1925753Z       "lean": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+2026-10-20T00:12:40.1926282Z       "leanchecker": "12c38901cdbfab178f1bf6145dd30012e9a3b2c11ca695292a5884fa3cbaddb6"
+2026-10-20T00:12:40.1926716Z     },
+2026-10-20T00:12:40.1926995Z     "shared_libraries": {
+2026-10-20T00:12:40.1927428Z       "lib/glibc/ld-linux-x86.so": "cf102aa2866d69b6b1b6f5195da0031deb7fbae374a0c2f677a1fffc9e01f3f2",
+2026-10-20T00:12:40.1928052Z       "lib/glibc/ld.so": "cf102aa2866d69b6b1b6f5195da0031deb7fbae374a0c2f677a1fffc9e01f3f2",
+2026-10-20T00:12:40.1928621Z       "lib/glibc/libc.so": "e256592ceadd9c7c4256e92e845b0899d297d5bd4a6ad932048db5cd5e799e0d",
+2026-10-20T00:12:40.1929350Z       "lib/glibc/libdl.so": "fc529305501bfce8aa9f614c041c936827cefed5c2c533abbb1867d5ebf84a55",
+2026-10-20T00:12:40.1929955Z       "lib/glibc/libm.so": "dd9e596df3c48d1805c235fc5b89161c4942dc6641200a813fa75914152d04e9",
+2026-10-20T00:12:40.1930533Z       "lib/glibc/libpthread.so": "27ba14f60ea7a4d46579879c87e206de33eaac0ccd130d87e6ef4cb3fa28cf86",
+2026-10-20T00:12:40.1931174Z       "lib/glibc/librt.so": "542ef722b42111dbeaa9f1f6579b933e7bbf1c95466f4dc3604d7905d657e924",
+2026-10-20T00:12:40.1931762Z       "lib/glibc/libutil.so": "e659053ca496683d5da0e9d571c7c12cb990239a04f60ff94a8e32e6bc1f46c3",
+2026-10-20T00:12:40.1932633Z       "lib/lean/libInit_shared.so": "7831b707e868cee76c353d26649fbd8981b2f4d7e0329af55bbf4fa9e0c69350",
+2026-10-20T00:12:40.1933309Z       "lib/lean/libLake_shared.so": "d68867df340056b40726fde3939a9d2021901cc6944f971dd6a6a778bd9ea25b",
+2026-10-20T00:12:40.1934016Z       "lib/lean/libleanshared.so": "efef27df56f2197139afe12f1a2b63913a05f1aba81ce88824c44100431ed8c4",
+2026-10-20T00:12:40.1934656Z       "lib/lean/libleanshared_1.so": "691bf49d9e542a15808fad9d1f8c5df45860166f77efa57961b5335e65a3a0ed",
+2026-10-20T00:12:40.1935275Z       "lib/lean/libleanshared_2.so": "141cbfdb3bc2016cd68e0bebc2e5494818213b462ed985afa6d975d4872fb8ec",
+2026-10-20T00:12:40.1935893Z       "lib/libLLVM-23.so": "d156f2240517cf3e363dbe74492491494f74300a2a0513f8606f802dca2f2fbe",
+2026-10-20T00:12:40.1936443Z       "lib/libLLVM.so": "d156f2240517cf3e363dbe74492491494f74300a2a0513f8606f802dca2f2fbe",
+2026-10-20T00:12:40.1937000Z       "lib/libatomic.so": "b2d3f7d9ebf9a0d5dc9caedcb33a43f6ac1b33221ada1f029147d8a66db43c09",
+2026-10-20T00:12:40.1937610Z       "lib/libc++.so": "9a82146864488c9d491a6e60be5af3ca986a9af57f6057763c5c0a8dda85a66e",
+2026-10-20T00:12:40.1938139Z       "lib/libc++abi.so": "43ae4baf280de152662d88ed938cef229022900e13457683b6a19ae82fafac66",
+2026-10-20T00:12:40.1938722Z       "lib/libclang-cpp.so": "d7adb9dfd7170742a0dce7773e4ffe5903830b11c2af316908058516017fcc92",
+2026-10-20T00:12:40.1939355Z       "lib/libgcc_s.so": "3f499bb3b14f33c5c321f52015d385c145c7bd4551a66c5fcff4262c833f2d2a",
+2026-10-20T00:12:40.1939902Z       "lib/libunwind.so": "da12c79a1651232a6c36a2844e01c612d5e002d759401356c5a8ac597f7e2890",
+2026-10-20T00:12:40.1940454Z       "lib/libz.so": "d0aeafffcfe309a107a857dfa1f9afd0db90796d32c2b735a3959eccb317f5b4"
+2026-10-20T00:12:40.1940902Z     }
+2026-10-20T00:12:40.1941160Z   },
+2026-10-20T00:12:40.1941524Z   "scope": "Two trivial theorem modules; tests orchestration, not the H(12,4) result."
+2026-10-20T00:12:40.1941927Z }
+2026-10-20T00:12:40.3236296Z ##[group]Run actions/upload-artifact@v4
+2026-10-20T00:12:40.3236640Z with:
+2026-10-20T00:12:40.3236915Z   name: lean-resume-smoke-39346213672-1
+2026-10-20T00:12:40.3237241Z   retention-days: 90
+2026-10-20T00:12:40.3237525Z   if-no-files-found: warn
+2026-10-20T00:12:40.3237947Z   path: research_updates/2026_10_19_resume_fix/SMOKE_REAL_LEAN.json
+2026-10-20T00:12:40.3238323Z   compression-level: 6
+2026-10-20T00:12:40.3238594Z   overwrite: false
+2026-10-20T00:12:40.3238881Z   include-hidden-files: false
+2026-10-20T00:12:40.3239180Z env:
+2026-10-20T00:12:40.3239575Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T00:12:40.3240039Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T00:12:40.3240471Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T00:12:40.3240915Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T00:12:40.3241323Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T00:12:40.3241838Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T00:12:40.3242237Z   LEAN_RELEASE_ARCHIVE: /home/runner/work/_temp/lean.tar.zst
+2026-10-20T00:12:40.3242581Z ##[endgroup]
+2026-10-20T00:12:40.4684538Z (node:2193) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-20T00:12:40.4685209Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-20T00:12:40.4723412Z With the provided path, there will be 1 file uploaded
+2026-10-20T00:12:40.4731108Z Artifact name is valid!
+2026-10-20T00:12:40.4742454Z Root directory input is valid!
+2026-10-20T00:12:41.1350609Z Beginning upload of artifact content to blob storage
+2026-10-20T00:12:41.1495966Z (node:2193) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-20T00:12:41.2738712Z Uploaded bytes 1588
+2026-10-20T00:12:41.3115348Z Finished uploading artifact content to blob storage!
+2026-10-20T00:12:41.3116314Z SHA256 digest of uploaded artifact zip is fa57924c438609a2312e7b7fa5c807daa7ee6f20979c8af5b73a51c44de9d109
+2026-10-20T00:12:41.3118087Z Finalizing artifact upload
+2026-10-20T00:12:41.5432561Z Artifact lean-resume-smoke-39346213672-1.zip successfully finalized. Artifact ID 12231022492
+2026-10-20T00:12:41.5433800Z Artifact lean-resume-smoke-39346213672-1 has been successfully uploaded! Final size is 1588 bytes. Artifact ID is 12231022492
+2026-10-20T00:12:41.5439734Z Artifact download URL: https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/39346213672/artifacts/12231022492
+2026-10-20T00:12:41.6122509Z Post job cleanup.
+2026-10-20T00:12:41.7195487Z (node:2205) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-20T00:12:41.7196160Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-20T00:12:41.7373005Z Post job cleanup.
+2026-10-20T00:12:41.8290593Z [command]/usr/bin/git version
+2026-10-20T00:12:41.8335268Z git version 2.55.0
+2026-10-20T00:12:41.8392315Z Temporarily overriding HOME='/home/runner/work/_temp/59b8b876-163e-4570-9e3a-5e6e751017b5' before making global git config changes
+2026-10-20T00:12:41.8393211Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-20T00:12:41.8394519Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification
+2026-10-20T00:12:41.8440255Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-20T00:12:41.8471476Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-20T00:12:41.8740776Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-20T00:12:41.8784641Z http.https://github.com/.extraheader
+2026-10-20T00:12:41.8798766Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-20T00:12:41.8827461Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-20T00:12:41.9010249Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-20T00:12:41.9040757Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-20T00:12:41.9377204Z Cleaning up orphan processes
+2026-10-20T00:12:41.9594893Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

@@ -1,0 +1,28 @@
+{
+  "stage": "WAITING_FOR_LEGACY_ROUND_4_ARTIFACTS",
+  "repository": "contatofilipevono-rgb/hrsbf-bent-verification",
+  "branch": "fix/lean-resume-stability",
+  "tested_commit": "032aaadc61ab31b2b6c80753388218c9e2d41af7",
+  "smoke_run": 39346213672,
+  "workflow_path": ".github/workflows/lean-cloud.yml",
+  "dispatch_mode": "verify",
+  "artifact_prefix": "lean-resume-chart",
+  "main_merge_performed": false,
+  "global_proof_complete": false,
+  "charts": {
+    "0": {
+      "legacy_run_id": 39258818208,
+      "legacy_active_attempt": 4,
+      "legacy_active_job_id": 118358566941,
+      "last_preserved_modules": 342,
+      "stable_run_id": null
+    },
+    "1": {
+      "legacy_run_id": 39258813467,
+      "legacy_active_attempt": 4,
+      "legacy_active_job_id": 118358546014,
+      "last_preserved_modules": 283,
+      "stable_run_id": null
+    }
+  }
+}
