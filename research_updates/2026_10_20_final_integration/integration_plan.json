@@ -1,0 +1,23 @@
+{
+  "lean_version": "Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "charts": [
+    {
+      "chart": 0,
+      "modules": 924,
+      "report_sha256": "5353cc49530c4af2d137daff4eee96a6df79eadaca785ce2514b66367afd4cdd",
+      "cache_key": "lean-linux-v2-0-663750cf44f035a9a2948dfd8d3cc6dee760e4145f9d3d46f2a52d3854aa4523-39358421659-3"
+    },
+    {
+      "chart": 1,
+      "modules": 924,
+      "report_sha256": "85e1ce1d060c777aae2f279d24c0421eb091e6acdda2159983930ab3929e06a5",
+      "cache_key": "lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-5"
+    },
+    {
+      "chart": 2,
+      "modules": 485,
+      "report_sha256": "87b4866fdac89f7e6bf9b4ff444659160aa368153b85cbe43c7c9298562ab3ef",
+      "cache_key": "lean-linux-v1-2-a070aa4d4b983179d24398b2a0287853d5dce496f1e62f2a75a1ebc2c36bc75a-39173417125-4"
+    }
+  ]
+}

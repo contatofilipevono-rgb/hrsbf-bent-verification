@@ -1,0 +1,10 @@
+{
+  "run": 39494198666,
+  "job": 118874852971,
+  "commit": "6053fbcab2e1c43611c1b10e655ca66f9acfffa4",
+  "branch": "fix/lean-resume-stability",
+  "status": "RUNNING",
+  "global_proof_complete": false,
+  "chart2_cache_evicted": true,
+  "chart2_reconstruction_requires_identical_olean_hash": true
+}
