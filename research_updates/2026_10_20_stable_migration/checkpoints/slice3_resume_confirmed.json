@@ -1,0 +1,9 @@
+{
+  "method": "Live GitHub job log UI",
+  "attempt": 3,
+  "resume_lines": [
+    "RESUME stable_identity REUSED 638 / 924 NEXT H12CloudChart0Data517",
+    "RESUME stable_identity REUSED 470 / 924 NEXT H12CloudChart1Data349"
+  ],
+  "global_proof_complete": false
+}
