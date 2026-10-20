@@ -51,12 +51,12 @@
       "stable_commit": "032aaadc61ab31b2b6c80753388218c9e2d41af7",
       "migration_status": "STABLE_IDENTITY_REUSED_CONFIRMED",
       "selected_legacy_modules": 283,
-      "stable_active_attempt": 4,
-      "stable_active_job_id": 118686431295,
-      "resume_confirmed_at_utc": "2026-10-20T14:31:30Z",
-      "resume_line": "RESUME stable_identity REUSED 557 / 924 NEXT H12CloudChart1Data436",
-      "next_module_index": 558,
-      "next_module": "H12CloudChart1Data436",
+      "stable_active_attempt": 5,
+      "stable_active_job_id": 118782215588,
+      "resume_confirmed_at_utc": "2026-10-20T17:36:50Z",
+      "resume_line": "RESUME stable_identity REUSED 643 / 924 NEXT H12CloudChart1Data522",
+      "next_module_index": 644,
+      "next_module": "H12CloudChart1Data522",
       "last_preserved_attempt": 4,
       "last_preserved_cache_key": "lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-4"
     }
