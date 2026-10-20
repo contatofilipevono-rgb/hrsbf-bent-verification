@@ -1,0 +1,122 @@
+name: Lean chart certificate (stable resume)
+
+on:
+  workflow_dispatch:
+    inputs:
+      chart:
+        description: 'Carta a continuar, depois de preservar a rodada antiga'
+        type: choice
+        options: ['0', '1']
+        required: true
+      minutes:
+        description: 'Minutos desta etapa (1 a 240)'
+        type: number
+        default: 180
+      legacy_cache_key:
+        description: 'Primeira migração: chave exata do cache antigo auditado'
+        type: string
+        default: ''
+      legacy_report_sha256:
+        description: 'Primeira migração: SHA256 dos bytes de progress.json auditados'
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+  actions: read
+
+# The same group as the old workflow prevents overlapping chart builders.
+concurrency:
+  group: lean-cloud-${{ inputs.chart }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    env:
+      CHART: ${{ inputs.chart }}
+      MINUTES: ${{ inputs.minutes }}
+      LEGACY_REPORT_SHA256: ${{ inputs.legacy_report_sha256 }}
+      LEGACY_CACHE_KEY: ${{ inputs.legacy_cache_key }}
+      PYTHONUNBUFFERED: '1'
+    defaults:
+      run:
+        working-directory: quartic_audit_2026_10_17
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Require the old chart run to be terminal
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPOSITORY: ${{ github.repository }}
+        run: |
+          python - <<'PY'
+          import json,os,re,urllib.request
+          chart=os.environ['CHART']
+          run={'0':39258818208,'1':39258813467}[chart]
+          request=urllib.request.Request(f"https://api.github.com/repos/{os.environ['GH_REPOSITORY']}/actions/runs/{run}",headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
+          with urllib.request.urlopen(request,timeout=30) as response:
+              state=json.load(response)
+          if state['status']!='completed':
+              raise SystemExit('Old run is still active; no overlapping execution allowed')
+          key=os.environ['LEGACY_CACHE_KEY']
+          digest=os.environ['LEGACY_REPORT_SHA256']
+          if bool(key)!=bool(digest):
+              raise SystemExit('Legacy migration requires both an exact cache key and an audited report digest')
+          if key and (not re.fullmatch(r'lean-linux-v1-'+chart+r'-[0-9a-f]{64}-'+str(run)+r'-[0-9]+',key) or not re.fullmatch(r'[0-9a-f]{64}',digest)):
+              raise SystemExit('Invalid legacy migration inputs')
+          print('Old run terminal; migration inputs valid')
+          PY
+      - name: Install exact Lean release and verify its digest
+        shell: bash
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+          echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Generate the unchanged chart sources
+        shell: bash
+        run: |
+          case "$CHART" in 0) NODE=0;; 1) NODE=26715;; *) exit 2;; esac
+          python tools/generate_lean_affine_pilot.py --chart "$CHART" --node "$NODE" --prefix "H12CloudChart$CHART" --root-frame --engine H12AffineFastState --global-label-index --chunk-size 1200 --proof-chunk-size 600 --register > "$RUNNER_TEMP/chart-generation.log"
+      - uses: actions/cache/restore@v4
+        id: cache
+        with:
+          path: |
+            quartic_audit_2026_10_17/lean/.lake
+            quartic_audit_2026_10_17/cloud_progress
+          key: lean-linux-v2-${{ env.CHART }}-${{ hashFiles('quartic_audit_2026_10_17/lean/*.lean', 'quartic_audit_2026_10_17/lean/lakefile.toml', 'quartic_audit_2026_10_17/tools/verify_lean_cloud_slice.py', 'quartic_audit_2026_10_17/tools/verify_lean_cloud_resume.py') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            lean-linux-v2-${{ env.CHART }}-${{ hashFiles('quartic_audit_2026_10_17/lean/*.lean', 'quartic_audit_2026_10_17/lean/lakefile.toml', 'quartic_audit_2026_10_17/tools/verify_lean_cloud_slice.py', 'quartic_audit_2026_10_17/tools/verify_lean_cloud_resume.py') }}-
+            ${{ inputs.legacy_cache_key }}
+          fail-on-cache-miss: true
+      - name: Validate and reuse checked records, then replay only new modules
+        id: verify
+        env:
+          RESTORED_CACHE_KEY: ${{ steps.cache.outputs.cache-matched-key }}
+        run: python tools/verify_lean_cloud_resume.py --chart "$CHART" --minutes "$MINUTES" --legacy-report-sha256 "$LEGACY_REPORT_SHA256"
+      - name: Save the validated resumable build and records
+        if: always() && steps.cache.outcome == 'success' && steps.verify.outputs.resume_preflight_passed == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            quartic_audit_2026_10_17/lean/.lake
+            quartic_audit_2026_10_17/cloud_progress
+          key: ${{ steps.cache.outputs.cache-primary-key }}
+      - name: Preserve source, progress and kernel logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lean-resume-chart-${{ env.CHART }}-${{ github.run_id }}-${{ github.run_attempt }}
+          retention-days: 90
+          if-no-files-found: warn
+          path: |
+            quartic_audit_2026_10_17/cloud_progress/
+            quartic_audit_2026_10_17/lean/H12CloudChart*.lean
+            quartic_audit_2026_10_17/reports/H12CloudChart*_SOURCE.json
+            quartic_audit_2026_10_17/tools/verify_lean_cloud_resume.py
+
