@@ -27,7 +27,12 @@
       "sources_unchanged": true,
       "overlapping_objects_and_kernel_logs_unchanged": true,
       "reason": "Largest audited prefix; legacy round 4 revalidated fewer modules",
-      "dispatch_status": "NOT_DISPATCHED"
+      "dispatch_status": "RESUME_CONFIRMED",
+      "dispatch_requested_at": "2026-10-20T02:20:51Z",
+      "stable_run_id": 39358413248,
+      "stable_run_url": "https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/39358413248",
+      "stable_job_id": 118418566936,
+      "reused_modules_confirmed": 283
     },
     {
       "chart": 0,
@@ -52,7 +57,12 @@
       "sources_unchanged": true,
       "overlapping_objects_and_kernel_logs_unchanged": true,
       "reason": "Latest audited prefix with exact continuity",
-      "dispatch_status": "NOT_DISPATCHED"
+      "dispatch_status": "RESUME_CONFIRMED",
+      "dispatch_requested_at": "2026-10-20T02:20:57Z",
+      "stable_run_id": 39358421659,
+      "stable_run_url": "https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/39358421659",
+      "stable_job_id": 118418589064,
+      "reused_modules_confirmed": 438
     }
   ]
 }

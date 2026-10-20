@@ -19,7 +19,7 @@ Código de retomada e caminho de dispatch testados em 032aaadc61ab31b2b6c8075338
 
 ## Rodadas seguintes
 
-Consultar o run novo registrado e suas tentativas atuais. Selecionar o job verify real; o job smoke ignorado não é uma falha. Quando uma fatia terminar, preservar o artefato lean-resume-chart-CARTA-RUN-TENTATIVA e aplicar o mesmo auditor com a carta correta. O auxiliar legado precisa ser parametrizado para o novo run e prefixo de artefato; não sobrescrever evidências antigas com nomes iguais.
+Consultar o run novo registrado e suas tentativas atuais. Selecionar o job verify real; o job smoke ignorado não é uma falha. Quando uma fatia terminar, preservar o artefato lean-resume-chart-CARTA-RUN-TENTATIVA e aplicar o mesmo auditor com a carta correta. O auxiliar preserve_parallel_checkpoints.py desta conversa já foi adaptado: usar --stable para consultar os runs novos do registro e preservar apenas aqueles já encerrados, com nomes que incluem run e tentativa. Ele não altera execuções ativas, confere identidade/política exportadas e usa selected_legacy_modules para a contagem fixa da migração inicial. Não sobrescrever evidências antigas com nomes iguais.
 
 Nas retomadas v2, fingerprint, verification_identity e prefixo de results devem permanecer iguais quando código/toolchain/fontes não mudam. Os campos descritivos execution_environment podem variar. O modo stable_identity valida novamente os hashes de todos os objetos e logs retidos, sem repetir o kernel do prefixo. O primeiro salto legado -> v2 tem fingerprint novo esperado e fica vinculado pelo source_report_sha256. Não somar contagens acumuladas de rodadas como módulos distintos.
 

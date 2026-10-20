@@ -1,0 +1,38 @@
+{
+  "confirmed_at_utc": "2026-10-20T02:24:41Z",
+  "method": "Live GitHub job log UI",
+  "branch": "fix/lean-resume-stability",
+  "commit": "032aaadc61ab31b2b6c80753388218c9e2d41af7",
+  "global_proof_complete": false,
+  "charts": [
+    {
+      "chart": 1,
+      "run": 39358413248,
+      "job": 118418566936,
+      "attempt": 1,
+      "reused_modules": 283,
+      "next_index": 284,
+      "next_module": "H12CloudChart1Data162",
+      "resume_line": "RESUME audited_legacy_digest REUSED 283 / 924 NEXT H12CloudChart1Data162",
+      "first_new_line": "START 284 / 924 H12CloudChart1Data162 build",
+      "legacy_cache_key": "lean-linux-v1-1-a7a0b06e3d37a6870b91ed3cf33c03feba40ef2788f33e5609a548f9ca4c9288-39258813467-3",
+      "cache_restored_confirmed": true,
+      "url": "https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/39358413248/job/118418566936"
+    },
+    {
+      "chart": 0,
+      "run": 39358421659,
+      "job": 118418589064,
+      "attempt": 1,
+      "reused_modules": 438,
+      "next_index": 439,
+      "next_module": "H12CloudChart0Data317",
+      "resume_line": "RESUME audited_legacy_digest REUSED 438 / 924 NEXT H12CloudChart0Data317",
+      "first_new_line": "START 439 / 924 H12CloudChart0Data317 build",
+      "kernel_start_seen": "START 439 / 924 H12CloudChart0Data317 kernel",
+      "legacy_cache_key": "lean-linux-v1-0-9aa0e0f137428f5f747d4897d353aa981113f5deec6af0454b48552d4c531e86-39258818208-4",
+      "cache_restored_confirmed": true,
+      "url": "https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/39358421659/job/118418589064"
+    }
+  ]
+}
