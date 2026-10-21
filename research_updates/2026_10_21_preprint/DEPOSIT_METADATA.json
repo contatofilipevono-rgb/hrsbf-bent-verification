@@ -1,0 +1,36 @@
+{
+  "title": "Nonexistence of homogeneous rotation symmetric bent functions of degree four in twelve variables",
+  "author": "Filipe Martins Vono",
+  "figshare_author_id": 25420263,
+  "orcid": "0009-0009-4994-8533",
+  "email": "contatofilipevono@gmail.com",
+  "affiliation": "Centro Universitário de Belo Horizonte (UniBH), Belo Horizonte, Brazil",
+  "license": "CC BY 4.0",
+  "related_preprint": "https://doi.org/10.6084/m9.figshare.34165260.v2",
+  "figshare_draft_id": 34737294,
+  "publication_status": "DRAFT_NOT_PUBLISHED",
+  "files": [
+    {
+      "name": "H12_quartic_preprint_v1.pdf",
+      "bytes": 98456,
+      "sha256": "8e507e07231c4349a298eca51e1e856f09ca0138fba4bd660210f14e5594c556"
+    },
+    {
+      "name": "H12_independent_verification.zip",
+      "bytes": 3013239,
+      "sha256": "538d4af3e43c43f703853ba913b63da3024c4545433917151894bcfa1c7955ff"
+    },
+    {
+      "name": "H12_formal_sources.zip",
+      "bytes": 49233663,
+      "sha256": "89aa7f8df2aaa20c9466955be9851f275ff20b2a1cb7aaf06c27cdea23caf6ac"
+    },
+    {
+      "name": "H12_preprint_source.zip",
+      "bytes": 23634,
+      "sha256": "a23754a2c949a8b29f365b3cfaebe6cde4af5517593c761ccf039221e41de380"
+    }
+  ],
+  "review_package_status": "READY_FOR_EXTERNAL_ADVERSARIAL_REVIEW",
+  "external_peer_review_completed": false
+}

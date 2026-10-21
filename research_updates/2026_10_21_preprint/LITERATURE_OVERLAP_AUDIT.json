@@ -1,0 +1,54 @@
+{
+  "scope": "Targeted overlap review; not a full proof audit of the two papers or exhaustive priority search",
+  "papers": [
+    {
+      "file": "RAZ_Polujan_Alexandr_2026.pdf",
+      "pages": 15,
+      "doi": "10.1109/TIT.2026.3685133",
+      "publication": "IEEE Transactions on Information Theory 72(6), 4341-4351 (2026)",
+      "overlap_checks": {
+        "cubic_classification": "ten variables, not the target quartic space",
+        "maximum_degree_family": "n/2: degree six at n=12",
+        "quartic_family": "Theorem V.6: n=2m, m odd, 3 does not divide m; excludes n=12"
+      },
+      "visually_checked_pages": [
+        6,
+        8,
+        13
+      ],
+      "result": "No stated H(12,4) theorem or counterexample identified",
+      "sha256": "973d0081c7270c866231f717b28bb432de4da5748da52f805a0a1c3a28f6716a"
+    },
+    {
+      "file": "2026-1799.pdf",
+      "pages": 22,
+      "url": "https://eprint.iacr.org/2026/1799",
+      "status": "Preprint, IACR ePrint 2026/1799",
+      "overlap_checks": {
+        "Theorem4.5": "n=30*7^j, j>=0",
+        "Theorem5.4": "n=70*t, t>=1",
+        "target_dimension_in_either_parameter_set": false
+      },
+      "visually_checked_pages": [
+        14,
+        18
+      ],
+      "result": "Neither construction includes n=12",
+      "sha256": "1739da9bdef6a9efb885deb030ba0dde5e36ee82f333c5941fe81772b81c63c8"
+    }
+  ],
+  "editorial_action": "Cite published Polujan-Kudin-Pasalic paper; discuss Tang as a preprint in the introduction; emphasize degree versus homogeneity",
+  "notation_warning": "Algebraic degree is invariant under invertible affine input changes, but homogeneity is not. Do not infer coordinate homogeneity from univariate exponents.",
+  "positive_control": {
+    "source": "Polujan-Kudin-Pasalic Eq. (IV.1), n=12, m=6",
+    "anf_terms_by_degree": {
+      "2": 6,
+      "5": 12,
+      "6": 12
+    },
+    "all_4096_walsh_absolute_values": 64,
+    "rotation_symmetric": true,
+    "homogeneous": false,
+    "purpose": "Confirms the interpretation of the construction; not a CUDA pipeline benchmark"
+  }
+}

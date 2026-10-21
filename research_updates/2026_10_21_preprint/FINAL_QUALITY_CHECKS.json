@@ -1,0 +1,31 @@
+{
+  "status": "PASS_EDITORIAL_AND_ARTIFACT_CHECKS",
+  "pdf_pages": 11,
+  "abstract_words": 160,
+  "numbered_equations_unchanged": [
+    "2.1",
+    "2.2",
+    "2.3",
+    "3.1",
+    "3.10",
+    "3.2",
+    "3.3",
+    "3.4",
+    "3.5",
+    "3.6",
+    "3.7",
+    "3.8",
+    "3.9",
+    "4.1",
+    "5.1"
+  ],
+  "references": 6,
+  "missing_glyph_warnings": 0,
+  "overfull_box_warnings": 0,
+  "optimized_python_refused": true,
+  "formal_source_archive_unchanged": true,
+  "mathematical_sources_changed": false,
+  "fresh_lean_rebuild": false,
+  "visual_review": "Latest contact sheet and full page 11 inspected; no clipping identified. Representative proof pages inspected before final prose changes; numbered equations unchanged.",
+  "pdf_sha256": "8e507e07231c4349a298eca51e1e856f09ca0138fba4bd660210f14e5594c556"
+}

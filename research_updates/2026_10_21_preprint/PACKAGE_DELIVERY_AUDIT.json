@@ -1,0 +1,9 @@
+{
+  "status": "PASS_REVIEW_PACKAGE_INTEGRITY",
+  "bytes": 3136049,
+  "sha256": "a889424a25a8a2e5e3e76288efa0dffa2f10696fccbe5fc2e3fdc623874ec68a",
+  "member_count": 14,
+  "full_lean_sources_separate": true,
+  "external_review_completed": false,
+  "figshare_published": false
+}

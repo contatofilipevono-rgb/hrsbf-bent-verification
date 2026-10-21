@@ -1,0 +1,54 @@
+{
+  "LEIA_PRIMEIRO.md": {
+    "bytes": 1667,
+    "sha256": "bf4c6173699182b162ab53900d2d865aa13d69a0733bdaa86c378f8b02387192"
+  },
+  "H12_quartic_preprint_v1.pdf": {
+    "bytes": 98456,
+    "sha256": "8e507e07231c4349a298eca51e1e856f09ca0138fba4bd660210f14e5594c556"
+  },
+  "H12_preprint_source.zip": {
+    "bytes": 23634,
+    "sha256": "a23754a2c949a8b29f365b3cfaebe6cde4af5517593c761ccf039221e41de380"
+  },
+  "H12_independent_verification.zip": {
+    "bytes": 3013239,
+    "sha256": "538d4af3e43c43f703853ba913b63da3024c4545433917151894bcfa1c7955ff"
+  },
+  "PEDIDO_ANALISE_ADVERSARIAL.md": {
+    "bytes": 5627,
+    "sha256": "4dd92438edb0fecb56eec35a2c49b850d89bd30e21831c5ebe4190d6eedc3af0"
+  },
+  "PARECER_EDITORIAL_ADVERSARIAL.md": {
+    "bytes": 5520,
+    "sha256": "afccdbd0ff95e0ee4f25e63ea27a55b9ab1c75e011722bb94e2ab4013c70e814"
+  },
+  "REVISAO_ADVERSARIAL.md": {
+    "bytes": 2515,
+    "sha256": "a45948692c405f0e28e072a019b4c2fddc722a4f3371ccb9f87c31e11ada2bf9"
+  },
+  "ANALISE_NOVIDADE_POLUJAN_TANG.md": {
+    "bytes": 4345,
+    "sha256": "4ca239b04b2c12df90a3c5d3e01ec092e8fd77c67a94193a9a7a228fff9fd345"
+  },
+  "LITERATURE_OVERLAP_AUDIT.json": {
+    "bytes": 2126,
+    "sha256": "7fb84822a85e8b54ed9ad6bf3e93531ce494f1000307b3adcf7d12e5ef516adc"
+  },
+  "REPLAY_VALIDATION.json": {
+    "bytes": 812,
+    "sha256": "a36d51267dd34570f40db3c2c7d024ca753f28bc77490fedb23e77f32add4953"
+  },
+  "FINAL_QUALITY_CHECKS.json": {
+    "bytes": 839,
+    "sha256": "6f86fe616ceccc9c0c1b4227d70b47ed5709b9b832950c90bc4496b7c19f5678"
+  },
+  "FORMAL_SOURCE_ARCHIVE_AUDIT.json": {
+    "bytes": 108086,
+    "sha256": "c0d584f9ec409d3c86afb2d43fc887ac7c536a2a604806204f88e1dd4f19771e"
+  },
+  "DEPOSIT_METADATA.json": {
+    "bytes": 1347,
+    "sha256": "9e8ee75c0e3db60b4c27824ff8bd53152e17e0584b65916f3d836fff6d72d8e3"
+  }
+}
