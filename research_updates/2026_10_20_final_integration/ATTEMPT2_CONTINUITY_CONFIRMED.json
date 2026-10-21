@@ -1,0 +1,12 @@
+{
+  "run": 39520500414,
+  "attempt": 2,
+  "job": 119018064985,
+  "observed_via": "GitHub live job UI",
+  "cache_restored": "lean-h12-integration-v3-4265d1685051507075653a065b172f3d8445060ff2dae6c54b7e649067c6e5da-39520500414-1",
+  "cache_bytes": 3392375282,
+  "first_reconstruction_line": "RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data173",
+  "prior_certified_objects_reused": 173,
+  "source_unchanged": true,
+  "global_proof_complete": false
+}

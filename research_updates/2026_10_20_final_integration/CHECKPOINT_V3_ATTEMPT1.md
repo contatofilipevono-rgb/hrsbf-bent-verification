@@ -9,3 +9,5 @@ Artefato ID 12317913064, 426.773.250 bytes, SHA256 cf62a3bd5b8c8359ba30ccaf7d49d
 A cópia binária independente tem SHA256 9a5ecbfedfc3fc8cfc0d53a1229c5f698fee4fb12720754711732cbe1d32ab1a. A auditoria local validou o ZIP, o tar, todos os caminhos, os 1.384 hashes de arquivos e a igualdade dos 173 .olean com os registros originais certificados da carta 2. Os três digests de entrada coincidem com o plano fixado. Logs de reconstrução conferidos, sem erro nem axioma proibido.
 
 Após confirmar que o run havia terminado e que não existia integração ativa duplicada, foi solicitada a tentativa 2 apenas do job integrate do mesmo run. Não foram reiniciadas cartas nem alteradas fontes do verificador. A restauração e o avanço da nova tentativa devem ser confirmados antes de afirmar continuidade efetiva.
+
+Continuidade CONFIRMADA no painel ao vivo: a tentativa 2 restaurou o cache v3 de 3.392.375.282 bytes, pulou os caches individuais e iniciou com RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data173. Os 173 objetos preservados passaram pela comparação de hashes, sem reconstrução explícita anterior. Job ativo 119018064985.
