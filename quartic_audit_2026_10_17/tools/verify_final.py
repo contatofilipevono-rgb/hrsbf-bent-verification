@@ -1,6 +1,33 @@
 """Bounded integration with exact reuse of certified chart objects."""
 from pathlib import Path
-import hashlib,json,os,re,subprocess,time
+import hashlib,json,os,re,signal,subprocess,time,sys,tempfile
+
+def isolated_command(cmd,cwd,out,timeout):
+ if sys.platform!='linux':raise RuntimeError('Integration process isolation requires a Linux runner')
+ p=subprocess.Popen(cmd,cwd=cwd,stdout=out,stderr=subprocess.STDOUT,start_new_session=True)
+ try:
+  code=p.wait(timeout=timeout)
+ finally:
+  # Terminate the entire private session, including lake's Lean descendants,
+  # before a timeout can return control to the checkpoint writer.
+  try:os.killpg(p.pid,signal.SIGKILL)
+  except ProcessLookupError:pass
+  p.wait()
+ return subprocess.CompletedProcess(cmd,code)
+
+if '--self-test-process-tree' in sys.argv:
+ with tempfile.TemporaryDirectory() as td:
+  marker=Path(td)/'orphan-wrote'
+  child='import time;from pathlib import Path;time.sleep(2);Path('+repr(str(marker))+').write_text("orphan")'
+  parent='import subprocess,sys,time;subprocess.Popen([sys.executable,"-c",'+repr(child)+']);time.sleep(30)'
+  with (Path(td)/'test.log').open('w') as out:
+   try:isolated_command([sys.executable,'-c',parent],td,out,0.5)
+   except subprocess.TimeoutExpired:pass
+   else:raise AssertionError('Timeout was not enforced')
+  time.sleep(2.2)
+  assert not marker.exists(),'Descendant survived timeout'
+ print('PASS_PROCESS_TREE_TIMEOUT_TEST',flush=True)
+ raise SystemExit(0)
 
 R=Path(__file__).resolve().parent.parent; P=R/'lean'; E=R/'final_integration'; E.mkdir(exist_ok=True)
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -9,7 +36,7 @@ report=dict(status='PREFLIGHT',global_proof_complete=False,checked_inputs=[],rec
 def save():
  p=E/'integration_report.json'; t=p.with_suffix('.tmp'); t.write_text(json.dumps(report,indent=2)+'\n'); t.replace(p)
 def run_logged(cmd,log,timeout):
- with log.open('w') as out:r=subprocess.run(cmd,cwd=P,stdout=out,stderr=subprocess.STDOUT,timeout=timeout)
+ with log.open('w') as out:r=isolated_command(cmd,P,out,timeout)
  text=log.read_text(); assert r.returncode==0 and not any(t in text for t in ('sorryAx','ofReduceBool','error:')),str(log)
  return r
 save(); start=time.monotonic(); budget=165*60
@@ -73,3 +100,4 @@ try:
 except SystemExit:raise
 except BaseException as ex:
  report.update(status='FAILED',error=str(ex)); save(); raise
+
