@@ -1,0 +1,45 @@
+name: Lean resume regression and real-kernel smoke
+
+on:
+  push:
+    paths:
+      - '.github/workflows/lean-resume-smoke.yml'
+      - 'quartic_audit_2026_10_17/tools/verify_lean_cloud_resume.py'
+      - 'quartic_audit_2026_10_17/tools/test_lean_cloud_resume.py'
+      - 'quartic_audit_2026_10_17/tools/smoke_lean_cloud_resume.py'
+      - '.github/workflows/lean-resume.yml'
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test cache validation and hostile records
+        run: python -m unittest discover -s quartic_audit_2026_10_17/tools -p test_lean_cloud_resume.py -v
+      - name: Install the pinned Lean release
+        shell: bash
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+          echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
+          echo "LEAN_RELEASE_ARCHIVE=$RUNNER_TEMP/lean.tar.zst" >> "$GITHUB_ENV"
+      - name: Compile and replay two real theorem modules, migrate, then resume
+        run: python quartic_audit_2026_10_17/tools/smoke_lean_cloud_resume.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lean-resume-smoke-${{ github.run_id }}-${{ github.run_attempt }}
+          retention-days: 90
+          if-no-files-found: warn
+          path: research_updates/2026_10_19_resume_fix/SMOKE_REAL_LEAN.json
+
