@@ -1,0 +1,12 @@
+A: n orbits 43 sizes ok True disjoint True
+B: 8-masks popcount8 True distinct orbits 43 cover 495 True
+C: (3.2) matches bit1 of restricted weight: True
+D: sizes 22 1 24 R1 True R2 True R3 True
+E: Q30 = L+c26+c40+c26c42: True L=R1+R3 True
+   (3.8): True
+F: (3.4)-(3.5) coefficients correct: True
+G: codes passing mod-3 test: [(2, '0x6ca0'), (3, '0x7ee8'), (8, '0x8000'), (15, '0x9668')]
+H: |I| 36 determined [24, 26, 36, 37, 40, 41, 42]
+I: Lemma 2.2 formula matches True
+
+This is a finite consistency check, not a Lean rebuild.

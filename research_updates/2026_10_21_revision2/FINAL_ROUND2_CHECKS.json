@@ -1,0 +1,31 @@
+{
+  "status": "PASS_ROUND2_STRUCTURAL_AND_PDF_CHECKS",
+  "abstract_words": 169,
+  "pdfs": [
+    {
+      "file": "main.pdf",
+      "pages": 14,
+      "missing_glyph_warnings": 0,
+      "overfull_box_warnings": 0,
+      "sha256": "01d5b9a72d783a5b4061a0132eb3156633c0765ed2898e25f2d176adf84b1c0f",
+      "visual_inspection": "Contact sheets and representative full pages inspected; revised complete periodic table, formal definitions, certificate sizes and final references checked. No clipping identified.",
+      "rothaus_doi_link_complete": true
+    },
+    {
+      "file": "dcc_template\\main.pdf",
+      "pages": 15,
+      "missing_glyph_warnings": 0,
+      "overfull_box_warnings": 0,
+      "sha256": "aa1473c35cfe20432c3dfc834be54ed01d06820591a5676c2777c5586b285f02",
+      "visual_inspection": "Contact sheets and representative full pages inspected; revised complete periodic table, formal definitions, certificate sizes and final references checked. No clipping identified.",
+      "rothaus_doi_link_complete": true
+    }
+  ],
+  "formal_source_zip_unchanged": true,
+  "independent_certificate_zip_unchanged": true,
+  "original_numbered_equation_tags_retained": true,
+  "received_finite_script_passed": true,
+  "lean_rebuilt": false,
+  "journal_submitted": false,
+  "figshare_updated_to_this_revision": false
+}

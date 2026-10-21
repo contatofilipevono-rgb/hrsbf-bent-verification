@@ -1,0 +1,32 @@
+{
+  "status": "PASS_ROUND2_DELIVERY_INTEGRITY",
+  "packages": [
+    {
+      "name": "H12_SEGUNDA_RODADA_ANALISE_ADVERSARIAL.zip",
+      "bytes": 53024100,
+      "sha256": "2a6e96b67feb4c32b46b81e276437cabeefa633bf432a153426519fcbd94d445",
+      "complete_formal_archive_included": true
+    },
+    {
+      "name": "H12_SEGUNDA_RODADA_COMPACTO.zip",
+      "bytes": 3790843,
+      "sha256": "d861d2c18e3f830328bd597605d85abf6852046616bdc5269afbf027cb44f022",
+      "complete_formal_archive_included": false
+    }
+  ],
+  "responded_review_items": 25,
+  "article_pdf_pages": 14,
+  "springer_layout_pdf_pages": 15,
+  "abstract_words": 169,
+  "mathematical_sources_changed": false,
+  "lean_rebuilt": false,
+  "journal_submitted": false,
+  "figshare_published_or_updated": false,
+  "not_all_submission_requirements_complete": true,
+  "pending": [
+    "funding and interests",
+    "final author contributions/approval",
+    "public persistent H12 DOI",
+    "DCC portal size limit/conversion"
+  ]
+}

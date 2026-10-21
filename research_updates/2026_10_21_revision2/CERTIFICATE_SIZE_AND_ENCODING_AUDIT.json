@@ -1,0 +1,57 @@
+{
+  "status": "PASS_CERTIFIED_SOURCE_GRAPH_AND_ARTICLE_ORBIT_LINK",
+  "article_sha256": "d29375d3b5feefe7675a2bd4d0576a032e49798f583fd61e1b54687a7407db79",
+  "quartic_orbits_matched": 43,
+  "quartic_supports_matched": 495,
+  "coefficient_terms_matched": 43,
+  "formal_sources_changed": false,
+  "new_lean_execution": false,
+  "general_soundness_requires_pivot_independence": false,
+  "charts": [
+    {
+      "chart": 0,
+      "nodes": 142802,
+      "eliminate": 116087,
+      "split": 13357,
+      "contradiction": 11018,
+      "terminal": 2340,
+      "max_edge_depth": 36,
+      "max_branching_depth": 22,
+      "terminal_assignments_with_multiplicity": 46912,
+      "max_terminal_active_coordinates": 7,
+      "pivot_dependent_rhs_nodes": 0,
+      "proof_source_files": 239,
+      "proof_source_manifest_sha256": "97ec2f9d80f4fc15218a5922a2e45e10845aa0c5b053a34f639642e974633c97"
+    },
+    {
+      "chart": 1,
+      "nodes": 142930,
+      "eliminate": 116215,
+      "split": 13357,
+      "contradiction": 11038,
+      "terminal": 2320,
+      "max_edge_depth": 36,
+      "max_branching_depth": 22,
+      "terminal_assignments_with_multiplicity": 46400,
+      "max_terminal_active_coordinates": 7,
+      "pivot_dependent_rhs_nodes": 0,
+      "proof_source_files": 239,
+      "proof_source_manifest_sha256": "c30370edac7aa47a8f76ddf364a0dac813bacafa683e35fd9bff0b5802e8e0b6"
+    },
+    {
+      "chart": 2,
+      "nodes": 64343,
+      "eliminate": 50116,
+      "split": 7113,
+      "contradiction": 5121,
+      "terminal": 1993,
+      "max_edge_depth": 36,
+      "max_branching_depth": 22,
+      "terminal_assignments_with_multiplicity": 70976,
+      "max_terminal_active_coordinates": 8,
+      "pivot_dependent_rhs_nodes": 0,
+      "proof_source_files": 108,
+      "proof_source_manifest_sha256": "b39f638e9e2f829d26915ed1018e17c7a671910e62f4eb89c7bd4be8fa5da54b"
+    }
+  ]
+}

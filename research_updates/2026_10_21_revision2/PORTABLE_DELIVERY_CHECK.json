@@ -1,0 +1,12 @@
+{
+  "status": "PASS_PORTABLE_SOURCE_AUDIT_AND_AXIOM_RECORD_INSPECTION",
+  "source_graph_audit_run_from_isolated_package_layout": true,
+  "same_graph_results": true,
+  "four_final_axiom_records_inspected": [
+    "all_chart_refutations",
+    "no_bent_quartic",
+    "no_flat_quartic",
+    "walsh_witness"
+  ],
+  "new_lean_execution": false
+}

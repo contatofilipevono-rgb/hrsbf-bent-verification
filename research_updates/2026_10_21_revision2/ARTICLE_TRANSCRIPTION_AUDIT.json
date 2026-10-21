@@ -1,0 +1,37 @@
+{
+  "status": "PASS_ARTICLE_DATA_RECONSTRUCTION",
+  "source": "Current article tables and explicit formulas; no imported filter JSON or certificate result used",
+  "article_sha256": "5ae0d6f2962f690cfee0ae1c1b0eb815880ce43a429148bb9daeb9cf7661c63d",
+  "quartic_orbits": 43,
+  "covered_quartic_supports": 495,
+  "coordinate_filter_orbits": 43,
+  "filters_reconstructed_from_truth_values": 43,
+  "linear_identity_product_counts": [
+    22,
+    1,
+    24
+  ],
+  "excluded_periodic_identity": true,
+  "periodic_restriction_all_basis_functions": true,
+  "periodic_classification": [
+    [
+      2,
+      27808
+    ],
+    [
+      3,
+      32488
+    ],
+    [
+      8,
+      32768
+    ],
+    [
+      15,
+      38504
+    ]
+  ],
+  "affine_parametrizations_symbolically_checked": 3,
+  "lean_rebuilt": false,
+  "scope": "Checks transcribed structural data, not a new global proof or external peer review"
+}
