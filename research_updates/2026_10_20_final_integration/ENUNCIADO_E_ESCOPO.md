@@ -1,6 +1,6 @@
 # Enunciado da integração final
 
-Estado: fontes preparadas e execução de integração iniciada; resultado do kernel ainda pendente.
+Estado em 21/10/2026: integração final e auditoria do kernel concluídas. Consulte [CONCLUSAO_FORMAL_H12.md](CONCLUSAO_FORMAL_H12.md) para os enunciados e evidências.
 
 O alvo principal é `∀ c : BitVec 43, ¬ H12Descent.BentAC (H12.quarticFunction c)`. Não recebe como hipóteses filtros quadráticos, condições lineares, exclusões de órbitas ou refutações ainda não instanciadas. As três refutações concretas são fornecidas por H12CloudChart0.refutation, H12CloudChart1.refutation e H12CloudChart2.refutation ao lema geral H12AffineFastState.no_bent_of_affine_state_refutations.
 

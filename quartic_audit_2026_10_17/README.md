@@ -2,9 +2,11 @@
 
 Este diretório preserva os dados desta linha de pesquisa e identifica separadamente os resultados computacionais, os certificados algébricos e a formalização Lean.
 
-Checkpoint de base: [218 módulos com reprodução pelo kernel](ESTADO_KERNEL_218.md), incluindo a composição por linhas quadráticas e novos pilotos. A prova Lean global continua pendente; as variantes de pilotos cobrem trechos sobrepostos.
+**Atualização de 21/10/2026:** a prova Lean global da inexistência na base concreta de H(12,4) foi concluída e auditada. Veja [conclusão, enunciado e evidências](../research_updates/2026_10_20_final_integration/CONCLUSAO_FORMAL_H12.md). As três raízes foram instanciadas e reunidas em `H12Final.no_bent_quartic`; o escopo não inclui H(16,4).
 
-**H(12,4) foi fechado por enumeração computacional global auditada: zero bent entre 2^43 funções. Uma segunda demonstração computacional agora está disponível por certificado simbólico de cobertura e testemunhos de Walsh, verificável em CPU sem repetir a busca. A formalização Lean cobre reduções necessárias e ainda não contém a prova global completa.**
+Checkpoint histórico de base: [218 módulos com reprodução pelo kernel](ESTADO_KERNEL_218.md), incluindo a composição por linhas quadráticas e novos pilotos. Esse checkpoint histórico foi superado pela integração final acima; os pilotos eram trechos sobrepostos.
+
+**H(12,4) foi fechado por enumeração computacional global auditada: zero bent entre 2^43 funções. Uma segunda demonstração computacional agora está disponível por certificado simbólico de cobertura e testemunhos de Walsh, verificável em CPU sem repetir a busca. A formalização Lean agora reúne as três raízes concretas e conclui a inexistência em toda a família de 43 coeficientes.**
 
 O progresso posterior dos dados aprovados está em [VERIFIED_PREFIX_STATUS.md](VERIFIED_PREFIX_STATUS.md). Um prefixo de dados não estabelece cobertura de raiz.
 
@@ -114,4 +116,4 @@ Veja `KHOLOSHA_PAL_REVIEW.md` para a avaliação da referência de outubro de 20
 The optional packed polynomial theory has passed a separate build and kernel replay; see [PACKED_FORMALIZATION_STATUS.md](PACKED_FORMALIZATION_STATUS.md). The generated limited subtree pilot remains separate from the 28 primary modules and the previously tested handoff ZIP. The complete concrete Lean tree and unconditional nonexistence theorem remain pending. The latest fixed witness checkpoint is in `reports/LEAN_WITNESS_KERNEL_PROGRESS.json`; all 164,288 concrete Walsh rejections have now passed the Lean kernel; global tree coverage remains pending.
 
 
-O checkpoint posterior com 147 módulos conferidos está descrito em [ESTADO_KERNEL_147.md](ESTADO_KERNEL_147.md). Todos os testemunhos de Walsh passaram; a cobertura global no Lean permanece pendente.
+O checkpoint posterior com 147 módulos conferidos está descrito em [ESTADO_KERNEL_147.md](ESTADO_KERNEL_147.md). Naquele checkpoint os testemunhos passaram e a cobertura ainda estava pendente; essa obrigação foi concluída na integração de 21/10/2026 indicada no início deste documento.

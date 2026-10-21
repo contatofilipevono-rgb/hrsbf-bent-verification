@@ -1,6 +1,6 @@
 # 🔬 Inexistência de Funções Bent Homogêneas Simétricas por Rotação Cúbicas para $v_2(n) \le 4$
 
-> **Linha quártica, auditoria de 17/10/2026:** os dados da busca global de H(12,4), certificados algébricos, reduções Lean e materiais para auditoria adversarial estão em [quartic_audit_2026_10_17](quartic_audit_2026_10_17/README.md). H(12,4) está fechado por enumeração computacional global auditada; a prova Lean completa da inexistência ainda não está concluída. Essa linha tem escopo distinto dos resultados cúbicos abaixo.
+> **Linha quártica, auditoria de 17/10/2026:** os dados da busca global de H(12,4), certificados algébricos, reduções Lean e materiais para auditoria adversarial estão em [quartic_audit_2026_10_17](quartic_audit_2026_10_17/README.md). Em 21/10/2026, a integração Lean da inexistência em toda a base concreta de H(12,4) foi concluída e auditada: [enunciado, escopo e evidências](research_updates/2026_10_20_final_integration/CONCLUSAO_FORMAL_H12.md). Essa linha tem escopo distinto dos resultados cúbicos abaixo.
 ## Resolução da Conjectura de Stănică–Maitra em Dimensões Pares $n \not\equiv 0 \pmod{32}$ e Certificados de Obstrução em $t=32$
 
 Este repositório contém os artefatos de **auditoria matemática e computacional reproduzível** que demonstram a não-existência de Funções Bent Homogêneas Simétricas por Rotação (HRSBF) de grau 3 para todas as dimensões pares com $v_2(n) \le 4$, ou seja, $n \not\equiv 0 \pmod{32}$ ($n \in \{2m, 4m, 8m, 16m\}$, para todo $m \ge 1$ ímpar), bem como certificados exatos de obstrução algébrica em $t=32$ variáveis.

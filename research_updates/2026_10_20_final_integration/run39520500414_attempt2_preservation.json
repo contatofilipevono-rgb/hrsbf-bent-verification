@@ -1,0 +1,11 @@
+{
+  "run": 39520500414,
+  "attempt": 2,
+  "conclusion": "success",
+  "artifact_sha256": "2cc9b4aadfe6bfd5f89721b5a72f9768854f4d46c475763dd29953f8153b331c",
+  "artifact_id": 12321886289,
+  "artifact_bytes": 681655422,
+  "local_zip": "C:\\Users\\Valer\\Documents\\Codex\\2026-10-18\\https-chatgpt-com-s-cx-6ad4d9a05b30819188cd130f8ba09d25-2\\outputs\\final_integration\\run39520500414_attempt2\\run39520500414_attempt2_artifact.zip",
+  "report_status": "PASS_FINAL_KERNEL_INTEGRATION",
+  "global_proof_complete": true
+}

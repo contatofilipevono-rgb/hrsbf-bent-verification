@@ -1,0 +1,4 @@
+# Preserve byte identities of certified sources and compiler/kernel logs.
+certified_final_sources/*.lean -text
+certified_final_objects/*.olean -text
+*_FINAL.log -text

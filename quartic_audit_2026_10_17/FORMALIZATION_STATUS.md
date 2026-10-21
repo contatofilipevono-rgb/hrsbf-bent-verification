@@ -1,8 +1,8 @@
 # Estado da formalização de H(12,4)
 
-O resultado computacional global é zero bent. O objetivo formal integral ainda não foi atingido. Esta tabela identifica as obrigações, sem substituir a prova global por uma coleção de lemas condicionais.
+**Atualização de 21/10/2026: objetivo formal de H(12,4) atingido.** `H12Final.no_bent_quartic`, `no_flat_quartic` e `walsh_witness` foram aceitos pelo kernel e auditados após a integração das três raízes. Consulte [o relatório final](../research_updates/2026_10_20_final_integration/CONCLUSAO_FORMAL_H12.md). A tabela preserva a descrição das reduções e registra abaixo a conclusão global.
 
-O checkpoint atual cobre 218 módulos com reprodução pelo kernel; veja [ESTADO_KERNEL_218.md](ESTADO_KERNEL_162.md). As teorias de composição por linhas e os pilotos adicionais passaram. A instanciação completa das três cartas necessárias permanece pendente.
+O checkpoint histórico de base cobria 218 módulos com reprodução pelo kernel; veja [ESTADO_KERNEL_218.md](ESTADO_KERNEL_162.md). As teorias de composição por linhas e os pilotos adicionais passaram. A instanciação das três cartas e a integração final foram concluídas no run 39520500414, tentativa 2.
 
 | Obrigação | Estado e evidência atual |
 |---|---|
@@ -22,9 +22,9 @@ O checkpoint atual cobre 218 módulos com reprodução pelo kernel; veja [ESTADO
 | Correção algébrica de normalização e substituição | `H12CertificateTheory.evaluate_normalize/evaluate_substitute/update_of_equation`: provados. |
 | Correção genérica do verificador da árvore | `H12Refutation.check_sound`: provado, com hipótese explícita sobre o teste terminal. |
 | Avaliação eficiente de pesos e tabelas dos geradores | `H12Bits.fastCarry_sound` e `foldParity_sound` provam os dois primeiros bits do peso por operações em blocos. `H12PlaneTables` e `H12Truth.basis_semantics` provam a semântica exata das tabelas; `H12TablePolynomial` liga o cálculo rápido aos polinômios de peso. `H12Popcount.fastWeight_sound` agora prova o peso inteiro, e `fastWeightMod_sound` prova todos os resíduos por potências de dois. `H12WalshTable.phaseWeight_sound` liga os cálculos à função e à fase originais; `rejectsMod_sound` prova a rejeição modular. |
-| Instanciar a árvore numérica global no Lean | Pendente. A árvore completa foi conferida pelo verificador independente Python, não por `H12Refutation.check`. |
-| Conferir os testemunhos Walsh numéricos no Lean | **Concluído.** Os 164288 testes concretos nos 41 módulos de dados e no agregador passaram na compilação e na reprodução independente pelo kernel. Evidência: `reports/LEAN_WITNESS_KERNEL_AUDIT.json` e os registros completos em `reports/witness_kernel/`. Isso ainda não demonstra que a árvore Lean cobre todos os candidatos. |
-| Teorema Lean global de inexistência | **Ausente.** Não existe ainda uma declaração formal que conclua a inexistência em todo H(12,4). |
+| Instanciar a árvore numérica global no Lean | **Concluído por outra implementação formal:** as três raízes `H12CloudChart0/1/2.refutation` foram conferidas e integradas com `H12AffineFastState.no_bent_of_affine_state_refutations`. Não se afirma execução da árvore completa pelo antigo `H12Refutation.check`. |
+| Conferir os testemunhos Walsh numéricos no Lean | **Concluído.** Os 164288 testes concretos nos 41 módulos de dados e no agregador passaram na compilação e na reprodução independente pelo kernel. Evidência: `reports/LEAN_WITNESS_KERNEL_AUDIT.json` e os registros completos em `reports/witness_kernel/`. Esses testes isolados não demonstram cobertura; a cobertura completa agora decorre das três raízes concretas e da integração final. |
+| Teorema Lean global de inexistência | **Concluído e auditado:** `H12Final.no_bent_quartic` conclui ∀ c : BitVec 43, ¬ BentAC (quarticFunction c), sem filtros adicionais como premissas; `no_flat_quartic` e `walsh_witness` dão as consequências espectrais. |
 
 ## Lógica e confiança
 

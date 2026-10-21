@@ -1,0 +1,8 @@
+theorem H12Final.no_bent_quartic : ∀ (c : BitVec 43), ¬H12Descent.BentAC (H12.quarticFunction c) :=
+fun c => H12AffineFastState.no_bent_of_affine_state_refutations all_chart_refutations c
+theorem H12Final.no_flat_quartic : ∀ (c : BitVec 43), ¬H12Fourier.WalshFlat (H12.quarticFunction c) :=
+fun c hf => no_bent_quartic c (H12Fourier.flat_implies_bent (H12.quarticFunction c) hf)
+'H12Final.all_chart_refutations' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H12Final.no_bent_quartic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H12Final.no_flat_quartic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H12Final.walsh_witness' depends on axioms: [propext, Classical.choice, Quot.sound]

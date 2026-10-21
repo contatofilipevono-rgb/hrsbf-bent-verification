@@ -1,0 +1,3 @@
+'H12Fourier.character_orthogonality' depends on axioms: [propext, Quot.sound]
+'H12Fourier.fourier_inversion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H12Fourier.bent_iff_flat' depends on axioms: [propext, Classical.choice, Quot.sound]
