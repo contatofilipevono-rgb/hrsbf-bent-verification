@@ -31,3 +31,7 @@ O artigo atual foi compilado e inspecionado visualmente; 15 equações numeradas
 ## Rodada adicional com a cota restante
 
 A pedido do usuário, acrescentada reconstrução dos dados do artigo: 43 órbitas/495 suportes, 43 filtros, identidades 22/1/24, quatro códigos periódicos e três parametrizações. PASS_ARTICLE_DATA_RECONSTRUCTION. Acrescentados mapa para avaliador e H12_final_kernel_records.zip, com seis hashes exatos de fontes/logs finais e quatro relatórios de axiomas conferidos. O artigo e a prova matemática não foram alterados nessa rodada. Pacote essencial atualizado; usar o hash em PACKAGE_DELIVERY_AUDIT.json.
+
+## Retomada atendida — substitui as pendências antigas de upload
+Cinco arquivos enviados ao rascunho Figshare, transferências concluídas e descrição salva. Não publicado. O usuário quer a análise adversarial antes de avançar; consultar FIGSHARE_DRAFT_STATUS.md e DEPOSIT_METADATA.json. A automação única foi pausada.
+

@@ -48,8 +48,8 @@
     "sha256": "c0d584f9ec409d3c86afb2d43fc887ac7c536a2a604806204f88e1dd4f19771e"
   },
   "DEPOSIT_METADATA.json": {
-    "bytes": 1347,
-    "sha256": "9e8ee75c0e3db60b4c27824ff8bd53152e17e0584b65916f3d836fff6d72d8e3"
+    "bytes": 1857,
+    "sha256": "ae05564179d9f24a454e5579e2eb0bb34a700fd0f73ab2bf2ae3417696f00e51"
   },
   "MAPA_PARA_AVALIADOR.md": {
     "bytes": 3055,
@@ -65,7 +65,7 @@
   },
   "H12_final_kernel_records.zip": {
     "bytes": 16584,
-    "sha256": "103ee12034943c1485bca1aac6fd32fa0c288b9591d2623471e6befbd0339e00"
+    "sha256": "cee6da92687718399a9c2c923f8b5adf0f7fea1843e2cc203556e57ad794f5ad"
   },
   "FINAL_RECORDS_PACKAGE_AUDIT.json": {
     "bytes": 398,
