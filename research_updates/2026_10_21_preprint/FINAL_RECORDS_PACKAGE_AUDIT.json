@@ -1,0 +1,18 @@
+{
+  "status": "PASS_EXACT_FINAL_SOURCE_AND_LOG_HASHES",
+  "original_run": 39520500414,
+  "attempt": 2,
+  "sources_and_logs_checked": 6,
+  "axiom_reports_checked": [
+    "all_chart_refutations",
+    "no_bent_quartic",
+    "no_flat_quartic",
+    "walsh_witness"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "new_lean_execution": false
+}

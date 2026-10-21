@@ -1,9 +1,11 @@
 {
   "status": "PASS_REVIEW_PACKAGE_INTEGRITY",
-  "bytes": 3136049,
-  "sha256": "a889424a25a8a2e5e3e76288efa0dffa2f10696fccbe5fc2e3fdc623874ec68a",
-  "member_count": 14,
+  "bytes": 3169842,
+  "sha256": "0b796dea4ce13fbfeada97e68335719dc9527f8d2862c4ba53c16852ee10d2d9",
+  "member_count": 21,
   "full_lean_sources_separate": true,
   "external_review_completed": false,
-  "figshare_published": false
+  "figshare_published": false,
+  "additional_article_data_check": "PASS_ARTICLE_DATA_RECONSTRUCTION",
+  "final_sources_and_logs": "PASS_EXACT_FINAL_SOURCE_AND_LOG_HASHES"
 }

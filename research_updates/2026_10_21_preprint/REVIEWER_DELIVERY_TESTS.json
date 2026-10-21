@@ -1,0 +1,28 @@
+{
+  "status": "PASS_REVIEWER_EXTRACTION_AND_NEGATIVE_CHECKS",
+  "clean_extracted_copy_passed": true,
+  "corrupted_copies_rejected": [
+    {
+      "case": "duplicate_orbit_representative",
+      "expected_rejection": true,
+      "exit_code": 1
+    },
+    {
+      "case": "wrong_linear_identity_factor",
+      "expected_rejection": true,
+      "exit_code": 1
+    },
+    {
+      "case": "wrong_periodic_truth_table",
+      "expected_rejection": true,
+      "exit_code": 1
+    },
+    {
+      "case": "optimization_disables_assertions",
+      "expected_rejection": true,
+      "exit_code": 1
+    }
+  ],
+  "mathematical_article_changed": false,
+  "lean_rebuilt": false
+}

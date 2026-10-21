@@ -1,7 +1,7 @@
 {
   "LEIA_PRIMEIRO.md": {
-    "bytes": 1667,
-    "sha256": "bf4c6173699182b162ab53900d2d865aa13d69a0733bdaa86c378f8b02387192"
+    "bytes": 2090,
+    "sha256": "989427e4ed6f63093b7dd1e3e72e11bbe123e031799e6d1f26a2565010cbe3c2"
   },
   "H12_quartic_preprint_v1.pdf": {
     "bytes": 98456,
@@ -50,5 +50,33 @@
   "DEPOSIT_METADATA.json": {
     "bytes": 1347,
     "sha256": "9e8ee75c0e3db60b4c27824ff8bd53152e17e0584b65916f3d836fff6d72d8e3"
+  },
+  "MAPA_PARA_AVALIADOR.md": {
+    "bytes": 3055,
+    "sha256": "cf165fe12aa0a13243243ffe1a18f0dcbacbdbae40b82c811bd60573ba6bb42a"
+  },
+  "ARTICLE_TRANSCRIPTION_AUDIT.json": {
+    "bytes": 932,
+    "sha256": "661051499e691edc79f9f7fe124d51be167e87638a9d1895b6659e614494c806"
+  },
+  "audit_article_transcription.py": {
+    "bytes": 6062,
+    "sha256": "b1ff1697150c5ba180c6f287469bba34addae7f7597213b8c106eb10948e9fb2"
+  },
+  "H12_final_kernel_records.zip": {
+    "bytes": 16584,
+    "sha256": "103ee12034943c1485bca1aac6fd32fa0c288b9591d2623471e6befbd0339e00"
+  },
+  "FINAL_RECORDS_PACKAGE_AUDIT.json": {
+    "bytes": 398,
+    "sha256": "0cd1c73c37264e164a092e853d98bfba5b9eb11edc51e138e49800953fab6b46"
+  },
+  "H12_preprint.md": {
+    "bytes": 30816,
+    "sha256": "5e7f1733470a7b39dad6d50a67923dda4981b74e88f14b5720251a45860a41ea"
+  },
+  "REVIEWER_DELIVERY_TESTS.json": {
+    "bytes": 693,
+    "sha256": "834d7cf952eef14685cfd96fc45a24f43f2629c3efc16945fffbe4830fed12d7"
   }
 }

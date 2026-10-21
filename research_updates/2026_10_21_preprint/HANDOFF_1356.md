@@ -27,3 +27,7 @@ A prova final original está concluída: PASS_FINAL_KERNEL_INTEGRATION, H12Final
 Os dois PDFs novos foram examinados por texto e páginas visuais. Não foi identificado resultado que cubra H(12,4): a construção quártica de Polujan exige metade da dimensão ímpar; Tang usa 30·7^j ou 70t. Isso não prova prioridade exaustiva. Um exemplo rotacional bent de Polujan em dimensão 12 foi confirmado com termos de graus 2, 5 e 6; não é homogêneo quártico.
 
 O artigo atual foi compilado e inspecionado visualmente; 15 equações numeradas permaneceram iguais na revisão editorial. Não executar prepare_h12_preprint.py inteiro: ele usa uma redação antiga e sobrescreveria a versão final.
+
+## Rodada adicional com a cota restante
+
+A pedido do usuário, acrescentada reconstrução dos dados do artigo: 43 órbitas/495 suportes, 43 filtros, identidades 22/1/24, quatro códigos periódicos e três parametrizações. PASS_ARTICLE_DATA_RECONSTRUCTION. Acrescentados mapa para avaliador e H12_final_kernel_records.zip, com seis hashes exatos de fontes/logs finais e quatro relatórios de axiomas conferidos. O artigo e a prova matemática não foram alterados nessa rodada. Pacote essencial atualizado; usar o hash em PACKAGE_DELIVERY_AUDIT.json.

@@ -11,3 +11,7 @@ Escopo: inexistência de funções bent homogêneas quárticas simétricas por r
 Os pareceres incluídos são autocríticas simuladas, não avaliação independente. A comparação bibliográfica dirigida não estabelece prioridade absoluta. A declaração de IA foi mantida na redação aprovada pelo autor.
 
 O Figshare tem um rascunho separado, item 34737294, ainda não publicado. Este pacote não é uma submissão à revista. As declarações de financiamento e conflitos ainda devem ser confirmadas antes da submissão.
+
+## Conferências adicionais
+
+MAPA_PARA_AVALIADOR.md relaciona as proposições às fontes conceituais. ARTICLE_TRANSCRIPTION_AUDIT.json registra a reconstrução das tabelas e identidades a partir do artigo. H12_final_kernel_records.zip inclui as duas fontes finais e os quatro logs com hashes iguais ao relatório original, além dos relatórios de escopo e auditoria. Nenhuma dessas verificações reiniciou o Lean.
