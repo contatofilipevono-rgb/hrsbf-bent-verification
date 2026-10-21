@@ -96,3 +96,5 @@ O resultado é H(12,4). Não conclui H(16,4), dimensões gerais ou inexistência
 O baixo grau da restrição a um subespaço, isoladamente, não prova que uma função não é bent. Uma apresentação mais simples não deve substituir a cadeia demonstrada por essa inferência.
 
 Fontes de conferência: [conclusão auditada](CONCLUSAO_FORMAL_H12.md), [módulo final certificado](certified_final_sources/H12Final.lean), [auditoria final](run39520500414_attempt2_AUDIT.json) e [explicação matemática das reduções](../../quartic_audit_2026_10_17/MATHEMATICAL_EXPLANATION.md). Este roteiro é uma apresentação editorial: os artefatos certificados permanecem inalterados.
+
+Para a adaptação ao periódico, consulte [GUIA_ESTILO_DCC.md](GUIA_ESTILO_DCC.md), baseado na leitura de Sun et al. (2026), em outros três artigos da revista e nas instruções oficiais.

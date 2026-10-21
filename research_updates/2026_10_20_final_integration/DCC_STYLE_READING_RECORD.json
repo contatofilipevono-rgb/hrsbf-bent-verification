@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-21",
+  "purpose": "Editorial style study for the H12 quartic article",
+  "sun_pdf_sha256": "f9c85a57ae37999105fe32855cc5225409db9dd0b3dc8ffd64abf4354aa89e50",
+  "sun_pdf_pages": 22,
+  "sun_visual_pages_reviewed": [
+    2,
+    5,
+    19
+  ],
+  "sun_doi": "10.1007/s10623-026-01848-4",
+  "other_published_samples": [
+    "10.1007/s10623-026-01815-z",
+    "10.1007/s10623-019-00712-y",
+    "10.1007/s10623-024-01487-7"
+  ],
+  "other_samples_review": "Introductions and selected proof/computational sections; not a full mathematical audit",
+  "guidelines": "https://link.springer.com/journal/10623/submission-guidelines",
+  "draft_abstract_words": 156,
+  "new_lean_execution": false,
+  "certified_artifacts_changed": false
+}
