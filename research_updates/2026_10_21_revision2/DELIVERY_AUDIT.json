@@ -3,14 +3,14 @@
   "packages": [
     {
       "name": "H12_SEGUNDA_RODADA_ANALISE_ADVERSARIAL.zip",
-      "bytes": 53024100,
-      "sha256": "2a6e96b67feb4c32b46b81e276437cabeefa633bf432a153426519fcbd94d445",
+      "bytes": 53024863,
+      "sha256": "d7a12d95d729327758632949667297fc0d8e3cf0d6717b35e7adf3be723460dc",
       "complete_formal_archive_included": true
     },
     {
       "name": "H12_SEGUNDA_RODADA_COMPACTO.zip",
-      "bytes": 3790843,
-      "sha256": "d861d2c18e3f830328bd597605d85abf6852046616bdc5269afbf027cb44f022",
+      "bytes": 3791606,
+      "sha256": "51ba9907aac8b454075f6ae5db97e6f47e0328af91bfd526718b97e708e1d8a2",
       "complete_formal_archive_included": false
     }
   ],
@@ -24,7 +24,6 @@
   "figshare_published_or_updated": false,
   "not_all_submission_requirements_complete": true,
   "pending": [
-    "funding and interests",
     "final author contributions/approval",
     "public persistent H12 DOI",
     "DCC portal size limit/conversion"

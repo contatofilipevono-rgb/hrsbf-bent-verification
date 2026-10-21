@@ -16,3 +16,7 @@
 ## Impacto matemático/formal
 
 Nenhuma alteração dos 2.093 fontes matemáticos Lean, dos certificados, do teorema ou de seus axiomas. As novas verificações examinam a correspondência de representação e as estatísticas dos fontes preservados. Não foi repetida a busca ou uma reconstrução pesada do Lean. A nova derivação expositiva e a tabela são confrontadas com dados finitos exatos, não apresentadas como nova certificação kernel.
+
+## Atualização factual de 21/10/2026
+
+O autor confirmou ausência de financiamento e de conflitos de interesse. As duas declarações foram incluídas no artigo e sincronizadas nos documentos e no pacote adversarial. Nenhuma alteração matemática ou nova execução Lean.

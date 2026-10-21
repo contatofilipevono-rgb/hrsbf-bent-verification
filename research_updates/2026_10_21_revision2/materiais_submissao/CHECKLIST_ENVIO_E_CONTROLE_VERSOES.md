@@ -8,7 +8,9 @@
 - [x] Declaração de IA mantida na forma aprovada.
 - [x] Relação com V1 identificada; estado editorial não inventado.
 - [ ] Receber e tratar análise adversarial externa do conjunto.
-- [ ] Confirmar financiamento, conflitos, contribuições, aprovação e exclusividade.
+- [x] Ausência de financiamento e de conflitos de interesse confirmada pelo autor.
+- [x] Nenhum dos trabalhos foi submetido a revista, conforme confirmação datada do autor.
+- [ ] Confirmar contribuições e aprovação da versão final.
 - [ ] Confirmar situação editorial atual do V1.
 - [ ] Preparar e conferir o layout de submissão recomendado pela revista; a versão incluída é a do preprint.
 - [ ] Validar os arquivos e links após qualquer alteração.

@@ -35,4 +35,4 @@ Dados do autor seguem o modo autorizado para V1. Conferir a exatidão atual ante
 
 ## Confirmações recebidas em 21/10/2026
 
-O autor informou que H12 e V1 não foram submetidos a revista e confirmou UniBH/Belo Horizonte e contatofilipevono@gmail.com. O V1 tem preprint público; H12 permanece rascunho privado no Figshare. Financiamento, interesses e a declaração final de contribuições/aprovação continuam sem resposta específica. As pendências anteriores sobre o estado editorial e o contato ficam substituídas por esta confirmação datada.
+O autor informou que H12 e V1 não foram submetidos a revista e confirmou UniBH/Belo Horizonte e contatofilipevono@gmail.com. O V1 tem preprint público; H12 permanece rascunho privado no Figshare. O autor confirmou ausência de financiamento e de conflitos de interesse. A declaração final de contribuições/aprovação continua pendente. As pendências anteriores sobre o estado editorial e o contato ficam substituídas por esta confirmação datada.

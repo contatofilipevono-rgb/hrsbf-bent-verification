@@ -22,7 +22,7 @@ Parecer recebido: H12_RELATORIO_FINAL_ANALISE_ADVERSARIAL.zip, SHA256 3b9747d012
 | B7 | Corrigido | Relação com V1 foi movida a nota de rodapé da introdução, como preprint e sem dependência lógica. |
 | B8 | Corrigido | Conclusão identifica a mudança de ordem da rotação a n=16, a necessidade de novos filtros/refutações e a existência de quadráticas bent no caso não homogêneo. |
 | B9 | Conferido | Hipóteses dos dois PDFs já verificadas e preservadas com páginas/hash; não foi inferida homogeneidade só pelo grau. |
-| C1 | Parcial: fatos humanos pendentes | Confirmados pelo autor: nenhum trabalho submetido, UniBH/Belo Horizonte e e-mail. Financiamento, interesses e declaração final de contribuição/aprovação ainda não foram respondidos especificamente. |
+| C1 | Parcial: fatos humanos pendentes | Confirmados pelo autor: nenhum trabalho submetido, UniBH/Belo Horizonte e e-mail. O autor também confirmou ausência de financiamento e de conflitos de interesse. A declaração final de contribuição/aprovação continua pendente. |
 | C2 | Preparado, publicação pendente | Cinco arquivos estão no rascunho Figshare. Um DOI público arquivístico exige concluir o depósito, mantido em espera pela análise adversarial. Não se inventou DOI nem se publicou para esconder a pendência. |
 | C3 | Corrigido | Declaração agora inclui Claude para a revisão adversarial incorporada, mantendo o núcleo da redação aprovada e a responsabilidade do autor. |
 | C4 | Concluído com limite do método | Comparação integral do texto extraído do V1 público v2 com H12 executada; correspondências longas da versão revisada são títulos/referências e expressão do título da conjectura. Comparação matemática dos escopos documentada. Não é prova universal de ausência de paráfrase. |
@@ -32,4 +32,4 @@ Parecer recebido: H12_RELATORIO_FINAL_ANALISE_ADVERSARIAL.zip, SHA256 3b9747d012
 
 ## Pendências reais antes da submissão
 
-Financiamento/interesses e a declaração final de contribuições/aprovação; conclusão do depósito com DOI público; confirmação do limite de arquivos e conversão no portal. Essas pendências não impedem a segunda análise adversarial, mas impedem afirmar que a submissão está inteiramente pronta. A comparação de literatura é dirigida e não prova prioridade absoluta.
+A declaração final de contribuições/aprovação; conclusão do depósito com DOI público; confirmação do limite de arquivos e conversão no portal. Essas pendências não impedem a segunda análise adversarial, mas impedem afirmar que a submissão está inteiramente pronta. A comparação de literatura é dirigida e não prova prioridade absoluta.

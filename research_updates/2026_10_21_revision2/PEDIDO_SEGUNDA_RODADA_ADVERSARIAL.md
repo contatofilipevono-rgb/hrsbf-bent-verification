@@ -11,7 +11,7 @@ Você recebe uma revisão após um parecer anterior, não uma versão já aprova
 5. Literatura: verifique a tabela de resultados selecionados contra as fontes primárias e examine o limite declarado na recuperação do PDF original de Meng. Não conclua prioridade absoluta por uma busca negativa. Se encontrar um teorema anterior que exclua H(12,4) inteiro, cite-o e compare hipóteses antes de recomendar mudança de título ou mérito.
 6. A versão usa 169 palavras no resumo, atendendo ao intervalo 150–250 informado por DCC. Não recomendar um limite conflitante sem verificar as diretrizes atuais.
 7. Confira a comparação com V1 público v2 e se a separação editorial é defensável, considerando os textos completos e não só os títulos. O V1 de referência é incluído; não o trate como submetido a revista.
-8. Reavalie a carta, dados de submissão, IA e checklist. Claude foi acrescentado à declaração pela revisão incorporada. Financiamento/interesses e aprovação final continuam pendentes; o DOI público do depósito ainda não existe. Não preencher nenhum fato por palpite.
+8. Reavalie a carta, dados de submissão, IA e checklist. Claude foi acrescentado à declaração pela revisão incorporada. O autor confirmou ausência de financiamento e conflitos de interesse; contribuições/aprovação final continuam pendentes; o DOI público do depósito ainda não existe. Não preencher nenhum fato por palpite.
 9. Avalie a leitura humana dos PDFs e do template Springer. O template é um rascunho compilado, não uma conversão aprovada pelo portal ou uma submissão completa.
 
 ## Material e método

@@ -4,7 +4,7 @@ A versão atual está pronta para a segunda revisão, com correções de exposi�
 
 A carta agora identifica a condição de intervalo e as limitações dos teoremas de Sun; separa redução estrutural e certificação e informa a relação com V1. Não promete prioridade absoluta ou um tempo de revisão universal. Seu mérito editorial continua dependente da avaliação de um caso finito e das reduções apresentadas, não da simples presença de Lean.
 
-O resumo tem 169 palavras. As declarações foram sincronizadas, incluindo Claude pela revisão incorporada. O estado editorial, a afiliação e o e-mail foram confirmados pelo autor; financiamento, interesses e aprovação/contribuições finais permanecem factualmente pendentes. Não se converteu essa falta de resposta em declaração de ausência.
+O resumo tem 169 palavras. As declarações foram sincronizadas, incluindo Claude pela revisão incorporada. O estado editorial, a afiliação e o e-mail foram confirmados pelo autor; ausência de financiamento e de conflitos de interesse também confirmada pelo autor. Apenas aprovação/contribuições finais permanecem factualmente pendentes.
 
 O DOI público do H12 não foi inventado e o Figshare não foi publicado durante esta revisão. O template oficial foi composto e inspecionado; a conversão e os limites específicos do portal não foram confirmados. Esses são bloqueios antes do envio, não erros matemáticos.
 

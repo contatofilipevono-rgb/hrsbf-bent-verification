@@ -6,4 +6,4 @@ Incluem-se os documentos de submissão, o parecer anterior, as auditorias novas,
 
 O Figshare continua rascunho com arquivos da primeira preparação. NÃO é o depósito público desta revisão. Ele deve ser atualizado antes de qualquer publicação. Nenhuma submissão à revista foi feita.
 
-Pendências que não foram ocultadas: financiamento/interesses e declaração final de contribuições/aprovação; DOI público do depósito após a revisão; limite específico de arquivos e conversão do portal. São pendências antes do envio, não novos teoremas a provar. A análise dirigida de antecedentes não estabelece prioridade absoluta.
+Pendências que não foram ocultadas: declaração final de contribuições/aprovação; DOI público do depósito após a revisão; limite específico de arquivos e conversão do portal. São pendências antes do envio, não novos teoremas a provar. A análise dirigida de antecedentes não estabelece prioridade absoluta.

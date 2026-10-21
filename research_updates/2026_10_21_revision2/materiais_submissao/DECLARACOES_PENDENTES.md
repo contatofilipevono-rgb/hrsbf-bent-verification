@@ -4,6 +4,8 @@
 
 - Afiliação: UniBH, Belo Horizonte, Brasil.
 - E-mail correspondente: contatofilipevono@gmail.com.
+- Sem financiamento.
+- Sem conflitos de interesse.
 - Nem H12 nem V1 foram submetidos a revista até esta confirmação. V1 tem preprint público; H12 continua rascunho Figshare.
 
 Esses são fatos datados; a exclusividade deve continuar verdadeira no momento do envio.
@@ -14,11 +16,17 @@ During this research and the preparation of the manuscript, generative AI tools 
 
 A inclusão de Claude reflete o parecer usado nesta rodada. O restante mantém a forma aprovada: auxílio descrito de forma fiel e responsabilidade científica do autor, sem atribuir autoria às ferramentas.
 
-## Ainda depende de resposta factual
+## Declarações para o artigo — confirmadas pelo autor
 
-1. Financiamento: não há resposta específica sobre presença ou ausência e identificação de apoio financeiro. Não foi inserida uma frase padrão de ausência.
-2. Interesses: não há resposta específica sobre interesses financeiros e não financeiros relacionados ao estudo. Não foi declarada ausência por inferência.
-3. Contribuições e aprovação final: o autor identificado é único; a descrição factual de contribuições e a aprovação da versão final devem ser confirmadas antes da submissão. Não foi inventada uma lista detalhada de atividades humanas.
+**Funding:** This work received no funding.
+
+**Competing interests:** The author declares no competing interests.
+
+**Em português:** Este trabalho não recebeu financiamento. O autor declara não haver conflitos de interesse.
+
+## Ainda depende de confirmação
+
+A descrição factual de contribuições e a aprovação da versão final devem ser confirmadas antes da submissão. Não foi inventada uma lista detalhada de atividades humanas.
 
 ## Situação de envio
 

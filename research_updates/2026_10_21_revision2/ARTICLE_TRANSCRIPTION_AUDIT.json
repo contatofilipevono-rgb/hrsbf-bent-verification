@@ -1,7 +1,7 @@
 {
   "status": "PASS_ARTICLE_DATA_RECONSTRUCTION",
   "source": "Current article tables and explicit formulas; no imported filter JSON or certificate result used",
-  "article_sha256": "5ae0d6f2962f690cfee0ae1c1b0eb815880ce43a429148bb9daeb9cf7661c63d",
+  "article_sha256": "1f7412d5c5562d0d097c5004a693b7855f7f1fbc1675d49b8fe9a3878f5eb81c",
   "quartic_orbits": 43,
   "covered_quartic_supports": 495,
   "coordinate_filter_orbits": 43,

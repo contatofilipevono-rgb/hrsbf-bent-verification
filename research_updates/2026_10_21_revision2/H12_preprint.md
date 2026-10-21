@@ -326,6 +326,12 @@ Allowing lower-degree terms is a different problem: it changes both the restrict
 
 The exact mathematical source archive, independent certificate checker and verification records accompany this manuscript. The [verification repository](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification) preserves a [fixed preparation record](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/tree/1e0e052/research_updates/2026_10_21_preprint) and the [completed formal integration](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/tree/9be0d98/research_updates/2026_10_20_final_integration). Appendix C describes the formal interpretation and the supplementary files; detailed hashes and execution records are supplied with those files.
 
+## Declarations
+
+**Funding:** This work received no funding.
+
+**Competing interests:** The author declares no competing interests.
+
 ## Appendix A: Ordered quartic support orbits
 
 Each row gives the representative support and the orbit size for the coefficient index used in (2.1). Indices are zero based and all translates are modulo twelve. The orbit sizes total $40\cdot12+2\cdot6+3=495$.

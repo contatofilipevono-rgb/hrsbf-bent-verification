@@ -1,6 +1,6 @@
 {
   "status": "PASS_CERTIFIED_SOURCE_GRAPH_AND_ARTICLE_ORBIT_LINK",
-  "article_sha256": "d29375d3b5feefe7675a2bd4d0576a032e49798f583fd61e1b54687a7407db79",
+  "article_sha256": "826b35c3514e0e297c347874fa0892359b53f06296f427b69a6c79639e90c2b3",
   "quartic_orbits_matched": 43,
   "quartic_supports_matched": 495,
   "coefficient_terms_matched": 43,
