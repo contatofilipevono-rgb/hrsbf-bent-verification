@@ -271,7 +271,7 @@ The source defines the forty-three support orbits concretely. Their disjointness
 
 ### 5.3 Use of AI-assisted tools
 
-AI-based assistants, including OpenAI Codex, were used to assist with mathematical exploration, the development and debugging of verification software and Lean formalizations, and the drafting and language editing of this manuscript. AI-generated mathematical suggestions, including material from Gemini, were considered during the development of the argument. Such suggestions are not used as evidence for the theorem. The formal nonexistence statement was checked by the Lean kernel as described above. This verification concerns the formal statement and its dependencies; it does not establish bibliographic priority or validate every statement in the manuscript.
+During this research and the preparation of the manuscript, generative AI tools (OpenAI Codex and Gemini) were used to support mathematical discussion and manuscript preparation. Codex also assisted with programming and Lean formalization. The formal nonexistence statement was verified by the Lean kernel using the certificates described in this paper. Responsibility for the scientific content and the final manuscript rests with the author.
 
 ## 6 Conclusion and availability of verification material
 
