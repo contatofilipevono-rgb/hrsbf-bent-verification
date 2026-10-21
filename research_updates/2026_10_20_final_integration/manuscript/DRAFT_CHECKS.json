@@ -1,0 +1,31 @@
+{
+  "status": "PASS_EDITORIAL_FINITE_CHECKS",
+  "purpose": "Checks of the exposition; not a new Lean run",
+  "orbit_count": 43,
+  "support_count": 495,
+  "orbit_sizes": {
+    "3": 1,
+    "6": 2,
+    "12": 40
+  },
+  "charts_checked": "Three offsets and all 108 basis columns match H12Affine exactly",
+  "period_four_cases": [
+    [
+      2,
+      "0x6ca0"
+    ],
+    [
+      3,
+      "0x7ee8"
+    ],
+    [
+      8,
+      "0x8000"
+    ],
+    [
+      15,
+      "0x9668"
+    ]
+  ],
+  "article_sha256": "c9f4dfd7268da44d7695c4f2fb6aa06e3cf55b2f87b97371dc7f9f92bd686cab"
+}
