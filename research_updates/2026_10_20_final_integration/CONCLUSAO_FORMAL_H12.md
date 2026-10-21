@@ -46,3 +46,5 @@ Cache final confirmado: `lean-h12-integration-v3-4265d1685051507075653a065b172f3
 O código exato da execução está no commit acima. As três cartas já têm seus pacotes e logs certificados, vinculados pelos digests de `integration_plan.json`. Os módulos finais podem ser rechecados com as dependências compiladas; reconstruir todas as dependências do zero pode exigir horas. Não se promete uma reconstrução integral em minutos.
 
 A etapa de integração e conferência do enunciado está encerrada. A revisão humana da apresentação, da identificação concreta e das referências para o artigo segue como trabalho editorial distinto. O acompanhamento automático deve ficar pausado; não iniciar novas rodadas das cartas ou da integração.
+
+Uma exposição organizada em três proposições e a contradição final está em [PROVA_PARA_LEITURA_HUMANA.md](PROVA_PARA_LEITURA_HUMANA.md). Essa reorganização editorial preserva os artefatos certificados e não exigiu nova execução do Lean.

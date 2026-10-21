@@ -2,9 +2,9 @@
 
 ## 1. Enunciado e natureza da demonstração disponível
 
-**Resultado computacional global.** Não foi encontrada função bent no espaço H(12,4), após enumeração dos seus 2^43 vetores de coeficientes, sem leis condicionantes iniciais. A execução terminou com zero bent e seu registro completo foi auditado.
+**Resultado global computacional e formal.** Não foi encontrada função bent no espaço H(12,4), após enumeração dos seus 2^43 vetores de coeficientes, sem leis condicionantes iniciais. A execução terminou com zero bent e seu registro completo foi auditado.
 
-A demonstração disponível para a inexistência global é computacional: justificação de filtros necessários, cobertura completa do domínio e verificação final de Walsh. As reduções abaixo explicam a estrutura do cálculo. A seção 7 fornece um certificado simbólico global verificável sem repetir a enumeração. O certificado ainda não foi formalizado integralmente no núcleo Lean.
+A demonstração disponível para a inexistência global é computacional: justificação de filtros necessários, cobertura completa do domínio e verificação final de Walsh. As reduções abaixo explicam a estrutura do cálculo. A seção 7 fornece um certificado simbólico global verificável sem repetir a enumeração. A integração formal da inexistência foi concluída e auditada em 21/10/2026, reunindo as três cartas concretas por `H12AffineFastState`. Veja [a conclusão formal](../research_updates/2026_10_20_final_integration/CONCLUSAO_FORMAL_H12.md) e [o roteiro para leitura humana](../research_updates/2026_10_20_final_integration/PROVA_PARA_LEITURA_HUMANA.md).
 
 Escreva f_c como a soma, em F₂, das 43 somas de órbitas quárticas, com c=(c₀,…,c₄₂). Cada suporte de tamanho quatro aparece exatamente uma vez na base, que contém 495 monômios. Os índices são os da ordem de combinações lexicográficas usada no gerador; a lista explícita consta de `linear_law_certificates.json`.
 
@@ -115,7 +115,7 @@ Sua execução passou em aproximadamente 70 segundos. O hash SHA-256 de `DECOMPO
 
 Isso fornece uma demonstração computacional finita por certificado, independente do log da GPU. No Lean já estão provadas a necessidade dos 43 filtros, a cobertura pelas cartas afins explícitas, a igualdade com a fórmula XOR da CPU e as 172 substituições que levam aos sistemas das raízes. `H12ChartFilters.bent_root` reúne essas passagens. A correção genérica das regras da árvore também está provada, sob um teste terminal correto.
 
-Para uma prova Lean global, ainda falta instanciar a árvore numérica e conferir os testemunhos terminais no Lean. A equivalência entre Walsh plano e autocorrelação bent agora está provada em `H12Fourier.bent_iff_flat`. O estado preciso está em `FORMALIZATION_STATUS.md`; os resultados acima não devem ser confundidos com um teorema Lean global já concluído.
+A instanciação das três raízes concretas e a verificação dos testes terminais foram concluídas, seguidas da integração em `H12Final.no_bent_quartic`. A implementação formal usada é `H12AffineFastState`; não se afirma execução completa pelo antigo `H12Refutation.check`. A equivalência entre Walsh plano e autocorrelação bent é provada em `H12Fourier.bent_iff_flat`. O relatório final distingue os dados do certificado Python, os módulos gerados e os teoremas efetivamente aceitos pelo kernel.
 
 ## 8. Exclusão analítica de um dos quatro casos
 
