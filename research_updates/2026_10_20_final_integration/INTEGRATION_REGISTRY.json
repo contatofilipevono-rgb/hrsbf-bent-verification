@@ -1,15 +1,20 @@
 {
-  "run": 39499423162,
-  "job": 118892824669,
+  "run": 39520500414,
+  "job": 118962904391,
   "attempt": 1,
-  "commit": "5d707702df560c841bf0809e539f13357336ffe0",
+  "commit": "344ab2e1b330d4a6be3f00603e9423db39cf3354",
   "branch": "fix/lean-resume-stability",
-  "status": "RUNNING_RESUMABLE_V2",
+  "status": "RUNNING_PROCESS_SAFE_V3",
   "global_proof_complete": false,
-  "previous_run": 39494198666,
-  "previous_conclusion": "cancelled",
+  "previous_run": 39499423162,
+  "previous_conclusion": "PARTIAL_OBJECT_TIMEOUT_CACHE_SAVE_FAILED",
   "cancellation_authorized_by_human": true,
   "reconstruction_slice_minutes": 165,
   "job_limit_minutes": 240,
-  "reconstruction_requires_identical_olean_hash": true
+  "reconstruction_requires_identical_olean_hash": true,
+  "previous_cache_saved": false,
+  "started_at": "2026-10-21T00:18:17Z",
+  "independent_binary_artifact": true,
+  "cache_miss_on_later_attempts_fails": true,
+  "process_tree_timeout_live_test": "PASS"
 }

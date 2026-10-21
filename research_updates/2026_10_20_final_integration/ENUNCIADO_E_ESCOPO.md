@@ -14,6 +14,6 @@ As cartas concluídas contêm 924, 924 e 485 módulos. Há 2091 módulos distint
 
 O cache temporário da carta 2 foi removido pelo serviço. O ZIP certificado e seus logs continuam preservados no Git. A integração reconstruirá somente objetos ausentes e exigirá igualdade SHA256 com os objetos já verificados pelo kernel; divergência interrompe o procedimento. Os caches finais das cartas 0 e 1 continuam disponíveis.
 
-Execução: https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/39494198666
+Execução: https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/39520500414
 
-Commit executado: 6053fbcab2e1c43611c1b10e655ca66f9acfffa4, branch fix/lean-resume-stability. Nenhum merge do PR 6 foi realizado.
+Commit executado: 344ab2e1b330d4a6be3f00603e9423db39cf3354, branch fix/lean-resume-stability. Nenhum merge do PR 6 foi realizado.
