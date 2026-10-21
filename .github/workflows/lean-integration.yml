@@ -1,10 +1,11 @@
-name: Lean final H12 integration resumable
+name: Lean final H12 integration process-safe
 on:
   push:
     branches: [fix/lean-resume-stability]
     paths: [.github/workflows/lean-integration.yml]
 permissions:
   contents: read
+  actions: read
 concurrency:
   group: lean-h12-final-integration
   cancel-in-progress: false
@@ -22,6 +23,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Test timeout kills compiler descendants before checkpoint
+        run: python tools/verify_final.py --self-test-process-tree
       - name: Install pinned Lean 4.35.0
         run: |
           curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
@@ -41,9 +44,10 @@ jobs:
             quartic_audit_2026_10_17/lean/.lake
             quartic_audit_2026_10_17/cloud_progress
             quartic_audit_2026_10_17/final_integration
-          key: lean-h12-integration-v2-${{ hashFiles('quartic_audit_2026_10_17/tools/verify_final.py', 'quartic_audit_2026_10_17/tools/integration_plan.json', 'quartic_audit_2026_10_17/lean/H12Final.lean') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          fail-on-cache-miss: ${{ github.run_attempt > 1 }}
+          key: lean-h12-integration-v3-${{ hashFiles('quartic_audit_2026_10_17/tools/verify_final.py', 'quartic_audit_2026_10_17/tools/integration_plan.json', 'quartic_audit_2026_10_17/lean/H12Final.lean') }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
-            lean-h12-integration-v2-${{ hashFiles('quartic_audit_2026_10_17/tools/verify_final.py', 'quartic_audit_2026_10_17/tools/integration_plan.json', 'quartic_audit_2026_10_17/lean/H12Final.lean') }}-
+            lean-h12-integration-v3-${{ hashFiles('quartic_audit_2026_10_17/tools/verify_final.py', 'quartic_audit_2026_10_17/tools/integration_plan.json', 'quartic_audit_2026_10_17/lean/H12Final.lean') }}-
       - uses: actions/cache/restore@v4
         if: steps.integration_cache.outputs.cache-matched-key == ''
         with:
@@ -77,6 +81,34 @@ jobs:
             quartic_audit_2026_10_17/cloud_progress
             quartic_audit_2026_10_17/final_integration
           key: ${{ steps.integration_cache.outputs.cache-primary-key }}
+      - name: Preserve independent certified chart 2 binary snapshot
+        if: always() && steps.verification.outcome != 'skipped'
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,tarfile
+          root=Path.cwd(); lake=root/'lean/.lake'
+          records=json.loads((root/'cloud_progress/chart2/progress.json').read_bytes())['results']
+          valid=set()
+          for rec in records:
+              n=rec['module']; p=lake/'build/lib/lean'/(n+'.olean')
+              if n.startswith('H12CloudChart2') and p.exists() and hashlib.sha256(p.read_bytes()).hexdigest()==rec['olean_sha256']:
+                  valid.add(n)
+          dest=root/'final_integration/chart2_certified_objects.tar.gz'
+          manifest={}
+          with tarfile.open(dest,'w:gz') as tar:
+              for p in sorted(lake.rglob('*')):
+                  if p.is_file() and not p.is_symlink() and p.name.split('.')[0] in valid:
+                      rel=p.relative_to(root).as_posix(); before=hashlib.sha256(p.read_bytes()).hexdigest()
+                      tar.add(p,arcname=rel,recursive=False)
+                      assert hashlib.sha256(p.read_bytes()).hexdigest()==before,'File changed during snapshot'
+                      manifest[rel]=before
+          with tarfile.open(dest,'r:gz') as tar:
+              assert all(m.isfile() and m.name.startswith('lean/.lake/') and '..' not in Path(m.name).parts for m in tar)
+              for m in tar.getmembers():assert hashlib.sha256(tar.extractfile(m).read()).hexdigest()==manifest[m.name]
+          (root/'final_integration/chart2_snapshot_manifest.json').write_text(json.dumps(dict(modules=sorted(valid),files=manifest,archive_sha256=hashlib.sha256(dest.read_bytes()).hexdigest()),indent=2)+'\n')
+          print('PASS_INDEPENDENT_BINARY_SNAPSHOT',len(valid),len(manifest))
+          PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -90,3 +122,22 @@ jobs:
             quartic_audit_2026_10_17/tools/integration_plan.json
             quartic_audit_2026_10_17/lean/.lake/build/lib/lean/H12Final.olean
             quartic_audit_2026_10_17/lean/.lake/build/lib/lean/H12Fourier.olean
+      - name: Require cache persistence before accepting slice
+        if: always() && steps.verification.outcome != 'skipped'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_CACHE_KEY: ${{ steps.integration_cache.outputs.cache-primary-key }}
+        run: |
+          python - <<'PY'
+          import os,json,time,urllib.request,urllib.parse
+          key=os.environ['EXPECTED_CACHE_KEY']; assert key
+          url='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']+'/actions/caches?'+urllib.parse.urlencode({'key':key,'per_page':100})
+          for attempt in range(5):
+              req=urllib.request.Request(url,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'Lean-checkpoint-audit'})
+              with urllib.request.urlopen(req,timeout=30) as response:q=json.load(response)
+              found=[c for c in q['actions_caches'] if c['key']==key and c['ref']==os.environ['GITHUB_REF'] and c['size_in_bytes']>0]
+              if found:print('PASS_CACHE_PERSISTENCE',key,found[0]['size_in_bytes']);break
+              time.sleep(2)
+          else:raise RuntimeError('Cache save not confirmed; artifact preserved; diagnose before resuming')
+          PY
+
