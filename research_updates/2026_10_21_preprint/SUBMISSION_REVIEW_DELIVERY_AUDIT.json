@@ -1,0 +1,25 @@
+{
+  "status": "PASS_SUBMISSION_REVIEW_PACKAGE_INTEGRITY",
+  "manuscript_changed": false,
+  "submitted_to_journal": false,
+  "figshare_published": false,
+  "ai_declaration_identical": true,
+  "abstract_identical": true,
+  "pending_author_facts": [
+    "funding",
+    "competing interests",
+    "contribution statement and approval",
+    "exclusivity at actual submission",
+    "V1 editorial status"
+  ],
+  "full_zip": {
+    "name": "H12_ARTIGO_E_SUBMISSAO_ANALISE_COMPLETA.zip",
+    "bytes": 52443453,
+    "sha256": "e5109f21a8db4d3ba644c4591d7223d2d059366888e03f51db70feb4bf3359f2"
+  },
+  "submission_documents_zip": {
+    "name": "H12_MATERIAIS_SUBMISSAO_PARA_REVISAO.zip",
+    "bytes": 17177,
+    "sha256": "1e8a3df3641f7acb877d3d7f382d96e92fce7c9b4ca2230a0671d021b40e1ac6"
+  }
+}

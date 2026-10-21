@@ -1,0 +1,42 @@
+{
+  "AUTOCRITICA_MATERIAIS_SUBMISSAO.md": {
+    "bytes": 3142,
+    "sha256": "c99c84f332c9dbe7f07a4d5c6e2ecf608066801f70eaffb883d3deaaefa24d8c"
+  },
+  "CARTA_AO_EDITOR_EN.md": {
+    "bytes": 2242,
+    "sha256": "2c34f698883a48a40dccaca1cea3ad9a888f68a148430e0c02b40c0149331cce"
+  },
+  "CARTA_AO_EDITOR_PT.md": {
+    "bytes": 2342,
+    "sha256": "a65ee9d6dc7aef954afd8b35b618a619b121e399f9886f07f2cfda528f752cd0"
+  },
+  "CHECKLIST_ENVIO_E_CONTROLE_VERSOES.md": {
+    "bytes": 2332,
+    "sha256": "d11e6eb647e6fb2555012d164a8511353075c3dfaa3cec5c383ec8850396541d"
+  },
+  "DECLARACOES_PENDENTES.md": {
+    "bytes": 3202,
+    "sha256": "e29a9c8af3cfa7985f971a8fc720fee247bc3f9248321d9fd74b7eb6c0a8948a"
+  },
+  "DISPONIBILIDADE_DADOS_EN.md": {
+    "bytes": 1298,
+    "sha256": "234d97c94855d6f07a717322f654e0981253df9d0760f721e17472744416e3f2"
+  },
+  "LEIA_PRIMEIRO_SUBMISSAO.md": {
+    "bytes": 1121,
+    "sha256": "c1e3d6a2ac1c359d7b7f2243d596c5e768fd88967bc927252371c061c05ca16a"
+  },
+  "PROMPT_ANALISE_ADVERSARIAL_INTEGRAL.md": {
+    "bytes": 9744,
+    "sha256": "228fe7ad403e59e9dfff0181a2122a1256c5c2954fa13686c1819e24e887ffc3"
+  },
+  "RELACAO_V1_H12_E_POSICIONAMENTO.md": {
+    "bytes": 2638,
+    "sha256": "e4dbcf2a031b3acdf4bd837c05ec123f0df6107ee206c03bb01739f050643388"
+  },
+  "RESUMO_E_DADOS_SUBMISSAO.md": {
+    "bytes": 3201,
+    "sha256": "4edfbe0f01f28f300d129de2e82564330bebf54cbd3a72ba2cc6c0f543bae63a"
+  }
+}
