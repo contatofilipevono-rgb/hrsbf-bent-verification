@@ -1,0 +1,1 @@
+Vono, Filipe Martins (2026). Nonexistence of homogeneous rotation symmetric bent functions of degree four in twelve variables. Figshare. Preprint. Version1. https://doi.org/10.6084/m9.figshare.34737294.v1

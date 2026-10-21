@@ -1,0 +1,150 @@
+{
+  "files": [
+    {
+      "id": 70469184,
+      "name": "H12_quartic_preprint_v1.pdf",
+      "size": 139070,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/70469184",
+      "supplied_md5": "ab627c1c0c2c11aeb88373ca5e27924c",
+      "computed_md5": "ab627c1c0c2c11aeb88373ca5e27924c",
+      "mimetype": "application/pdf"
+    },
+    {
+      "id": 70467078,
+      "name": "H12_independent_verification.zip",
+      "size": 3013239,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/70467078",
+      "supplied_md5": "7d67601553eb239b8af452f7ed0180a4",
+      "computed_md5": "7d67601553eb239b8af452f7ed0180a4",
+      "mimetype": "application/zip"
+    },
+    {
+      "id": 70467084,
+      "name": "H12_formal_sources.zip",
+      "size": 49233663,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/70467084",
+      "supplied_md5": "a6640e120118c5f25cc5b08f7fe07342",
+      "computed_md5": "a6640e120118c5f25cc5b08f7fe07342",
+      "mimetype": "application/zip"
+    },
+    {
+      "id": 70469181,
+      "name": "H12_preprint_source.zip",
+      "size": 48675,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/70469181",
+      "supplied_md5": "18cfa57d523689a3a52a738df2df7fdf",
+      "computed_md5": "18cfa57d523689a3a52a738df2df7fdf",
+      "mimetype": "application/zip"
+    },
+    {
+      "id": 70469187,
+      "name": "H12_final_kernel_records.zip",
+      "size": 16584,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/70469187",
+      "supplied_md5": "a0ea4f9ef1554c079c50cee6a7a96505",
+      "computed_md5": "a0ea4f9ef1554c079c50cee6a7a96505",
+      "mimetype": "application/zip"
+    }
+  ],
+  "folder_structure": {},
+  "authors": [
+    {
+      "id": 25420263,
+      "full_name": "Filipe Vono",
+      "first_name": "Filipe",
+      "last_name": "Vono",
+      "is_active": true,
+      "url_name": "Filipe_Vono",
+      "orcid_id": ""
+    }
+  ],
+  "custom_fields": [],
+  "figshare_url": "https://figshare.com/articles/preprint/Nonexistence_of_homogeneous_rotation_symmetric_bent_functions_of_degree_four_in_twelve_variables/34737294",
+  "download_disabled": false,
+  "description": "<p dir=\"ltr\">We prove that no homogeneous rotation symmetric Boolean function of degree four in twelve variables is bent. The full quartic cyclic space has forty-three independent coefficients. We reduce bentness in this space to three explicit affine families of dimension thirty-six, together with quadratic necessary conditions. The reduction combines divisibility of weights on coordinate subspaces, three linear consequences of the resulting equations, and autocorrelation congruences on inputs of period four. An algebraic identity excludes a fourth periodic case. We then refute the three remaining families by finite certificates using polynomial identities, affine substitutions and exhaustive branching, with exact Walsh witnesses at the terminal states. The necessary conditions, the coverage by the three families, the soundness of the refutation rules and the concrete refutations are verified in Lean. The formal conclusion excludes bentness for every choice of the forty-three coefficients, and its equivalence with the Walsh formulation is checked. The structural argument is given explicitly, and an independent checker provides a separate replay of the finite certificate. The result establishes the twelve-variable quartic case of the homogeneous rotation symmetric bent function conjecture.</p><p dir=\"ltr\"><br></p><p dir=\"ltr\">The deposit contains the revised preprint PDF, editable manuscript sources and scientific audit material, an independent Python verification package, the complete mathematical Lean sources and final kernel records. The exact minimal Lake distribution has not undergone a full clean rebuild during preprint preparation; this limitation is retained in the manuscript. The result is limited to H(12,4).</p><p dir=\"ltr\"><br></p><p dir=\"ltr\">Author: Filipe Martins Vono, UniBH, Belo Horizonte, Brazil; ORCID 0009-0009-4994-8533. No funding. No competing interests. The author approved the final preprint. AI-assisted tools are disclosed in the manuscript. This is a preprint and has not undergone journal peer review.</p><p dir=\"ltr\"><br></p><p dir=\"ltr\">Related cubic preprint: https://doi.org/10.6084/m9.figshare.34165260.v2. Verification repository: https://github.com/contatofilipevono-rgb/hrsbf-bent-verification.</p>",
+  "funding": null,
+  "funding_list": [],
+  "version": 1,
+  "status": "public",
+  "size": 52451231,
+  "created_date": "2026-10-21T19:53:46Z",
+  "modified_date": "2026-10-21T19:53:46Z",
+  "is_public": true,
+  "is_confidential": false,
+  "is_metadata_record": false,
+  "confidential_reason": "",
+  "metadata_reason": "",
+  "license": {
+    "value": 1,
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "tags": [
+    "Boolean functions",
+    "bent function",
+    "rotation symmetry",
+    "homogeneous Boolean functions",
+    "computer-assisted proof",
+    "Lean"
+  ],
+  "keywords": [
+    "Boolean functions",
+    "bent function",
+    "rotation symmetry",
+    "homogeneous Boolean functions",
+    "computer-assisted proof",
+    "Lean"
+  ],
+  "categories": [
+    {
+      "id": 28903,
+      "title": "Cryptography",
+      "parent_id": 28900,
+      "path": "/28798/28900/28903",
+      "source_id": "460401",
+      "taxonomy_id": 100
+    },
+    {
+      "id": 29836,
+      "title": "Combinatorics and discrete mathematics (excl. physical combinatorics)",
+      "parent_id": 29824,
+      "path": "/29746/29824/29836",
+      "source_id": "490404",
+      "taxonomy_id": 100
+    }
+  ],
+  "references": [],
+  "has_linked_file": false,
+  "citation": "Vono, Filipe (2026). Nonexistence of homogeneous rotation symmetric bent functions of degree four in twelve variables. figshare. Preprint. https://doi.org/10.6084/m9.figshare.34737294.v1",
+  "related_materials": [],
+  "is_embargoed": false,
+  "embargo_date": null,
+  "embargo_type": null,
+  "embargo_title": "",
+  "embargo_reason": "",
+  "embargo_options": [],
+  "id": 34737294,
+  "title": "Nonexistence of homogeneous rotation symmetric bent functions of degree four in twelve variables",
+  "doi": "10.6084/m9.figshare.34737294.v1",
+  "handle": "",
+  "url": "https://api.figshare.com/v2/articles/34737294",
+  "published_date": "2026-10-21T19:53:46Z",
+  "thumb": "https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/70469184/thumb.png",
+  "defined_type": 12,
+  "defined_type_name": "preprint",
+  "group_id": null,
+  "url_private_api": "https://api.figshare.com/v2/account/articles/34737294",
+  "url_public_api": "https://api.figshare.com/v2/articles/34737294",
+  "url_private_html": "https://figshare.com/account/articles/34737294",
+  "url_public_html": "https://figshare.com/articles/preprint/Nonexistence_of_homogeneous_rotation_symmetric_bent_functions_of_degree_four_in_twelve_variables/34737294",
+  "timeline": {
+    "posted": "2026-10-21T19:53:46"
+  },
+  "resource_title": null,
+  "resource_doi": null
+}
