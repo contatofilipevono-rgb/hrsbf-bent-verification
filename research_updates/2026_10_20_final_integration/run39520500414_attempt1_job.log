@@ -1,0 +1,811 @@
+﻿2026-10-21T00:18:20.2077084Z Current runner version: '2.338.0'
+2026-10-21T00:18:20.2097614Z ##[group]Runner Image Provisioner
+2026-10-21T00:18:20.2098170Z Hosted Compute Agent
+2026-10-21T00:18:20.2098671Z Version: 20261015.610
+2026-10-21T00:18:20.2099065Z Commit: 267fdb4e8bbec4ab5ea31367f3a00d5c480c7656
+2026-10-21T00:18:20.2099553Z Build Date: 2026-10-14T17:06:54Z
+2026-10-21T00:18:20.2099969Z Worker ID: {afa7b154-b350-46f2-98c5-6dd5dc6a24f1}
+2026-10-21T00:18:20.2100386Z Region: centralus
+2026-10-21T00:18:20.2100813Z Cloud: Azure
+2026-10-21T00:18:20.2101153Z ##[endgroup]
+2026-10-21T00:18:20.2101960Z ##[group]Operating System
+2026-10-21T00:18:20.2102351Z Ubuntu
+2026-10-21T00:18:20.2102983Z 24.04.5
+2026-10-21T00:18:20.2103411Z LTS
+2026-10-21T00:18:20.2103735Z ##[endgroup]
+2026-10-21T00:18:20.2104103Z ##[group]Runner Image
+2026-10-21T00:18:20.2104496Z Image: ubuntu-24.04
+2026-10-21T00:18:20.2104852Z Version: 20261018.339.1
+2026-10-21T00:18:20.2105728Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261018.339/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-21T00:18:20.2106635Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261018.339
+2026-10-21T00:18:20.2107228Z ##[endgroup]
+2026-10-21T00:18:20.2107987Z ##[group]GITHUB_TOKEN Permissions
+2026-10-21T00:18:20.2109480Z Actions: read
+2026-10-21T00:18:20.2109840Z Contents: read
+2026-10-21T00:18:20.2110237Z Metadata: read
+2026-10-21T00:18:20.2110590Z ##[endgroup]
+2026-10-21T00:18:20.2111996Z Secret source: Actions
+2026-10-21T00:18:20.2112918Z Cache mode: write
+2026-10-21T00:18:20.2113567Z Prepare workflow directory
+2026-10-21T00:18:20.2396324Z Prepare all required actions
+2026-10-21T00:18:20.2438280Z Getting action download info
+2026-10-21T00:18:20.4574583Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-21T00:18:20.5425205Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-21T00:18:20.6300170Z Download action repository 'actions/cache@v4' (SHA:0057852bfaa89a56745cba8c7296529d2fc39830)
+2026-10-21T00:18:20.7402662Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-21T00:18:20.9499891Z Complete job name: integrate
+2026-10-21T00:18:21.0014956Z ##[group]Run actions/checkout@v4
+2026-10-21T00:18:21.0015388Z with:
+2026-10-21T00:18:21.0015700Z   repository: contatofilipevono-rgb/hrsbf-bent-verification
+2026-10-21T00:18:21.0018090Z   token: ***
+2026-10-21T00:18:21.0018331Z   ssh-strict: true
+2026-10-21T00:18:21.0018576Z   ssh-user: git
+2026-10-21T00:18:21.0018828Z   persist-credentials: true
+2026-10-21T00:18:21.0019101Z   clean: true
+2026-10-21T00:18:21.0019348Z   sparse-checkout-cone-mode: true
+2026-10-21T00:18:21.0019637Z   fetch-depth: 1
+2026-10-21T00:18:21.0019875Z   fetch-tags: false
+2026-10-21T00:18:21.0020117Z   show-progress: true
+2026-10-21T00:18:21.0020366Z   lfs: false
+2026-10-21T00:18:21.0020594Z   submodules: false
+2026-10-21T00:18:21.0020841Z   set-safe-directory: true
+2026-10-21T00:18:21.0021148Z   allow-unsafe-pr-checkout: false
+2026-10-21T00:18:21.0021489Z env:
+2026-10-21T00:18:21.0021710Z   PYTHONUNBUFFERED: 1
+2026-10-21T00:18:21.0021968Z ##[endgroup]
+2026-10-21T00:18:21.0792179Z Syncing repository: contatofilipevono-rgb/hrsbf-bent-verification
+2026-10-21T00:18:21.0793912Z ##[group]Getting Git version info
+2026-10-21T00:18:21.0794442Z Working directory is '/home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification'
+2026-10-21T00:18:21.0795175Z [command]/usr/bin/git version
+2026-10-21T00:18:21.0837352Z git version 2.55.0
+2026-10-21T00:18:21.0853544Z ##[endgroup]
+2026-10-21T00:18:21.0865116Z Temporarily overriding HOME='/home/runner/work/_temp/ff42ee3d-6ff0-4393-a020-2455ba9283a6' before making global git config changes
+2026-10-21T00:18:21.0866384Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-21T00:18:21.0869220Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification
+2026-10-21T00:18:21.0926024Z Deleting the contents of '/home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification'
+2026-10-21T00:18:21.0929723Z ##[group]Initializing the repository
+2026-10-21T00:18:21.0937062Z [command]/usr/bin/git init /home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification
+2026-10-21T00:18:21.1025368Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-21T00:18:21.1026788Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-21T00:18:21.1027619Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-21T00:18:21.1028237Z hint: call:
+2026-10-21T00:18:21.1028472Z hint:
+2026-10-21T00:18:21.1028800Z hint: 	git config --global init.defaultBranch <name>
+2026-10-21T00:18:21.1029162Z hint:
+2026-10-21T00:18:21.1029505Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-21T00:18:21.1030044Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-21T00:18:21.1030505Z hint:
+2026-10-21T00:18:21.1030745Z hint: 	git branch -m <name>
+2026-10-21T00:18:21.1031034Z hint:
+2026-10-21T00:18:21.1031422Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-21T00:18:21.1036397Z Initialized empty Git repository in /home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification/.git/
+2026-10-21T00:18:21.1045183Z [command]/usr/bin/git remote add origin https://github.com/contatofilipevono-rgb/hrsbf-bent-verification
+2026-10-21T00:18:21.1088741Z ##[endgroup]
+2026-10-21T00:18:21.1089247Z ##[group]Disabling automatic garbage collection
+2026-10-21T00:18:21.1092827Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-21T00:18:21.1124079Z ##[endgroup]
+2026-10-21T00:18:21.1124609Z ##[group]Setting up auth
+2026-10-21T00:18:21.1132074Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-21T00:18:21.1180882Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-21T00:18:21.1478796Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-21T00:18:21.1515999Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-21T00:18:21.1720822Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-21T00:18:21.1760240Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-21T00:18:21.1971814Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-21T00:18:21.2018504Z ##[endgroup]
+2026-10-21T00:18:21.2019090Z ##[group]Fetching the repository
+2026-10-21T00:18:21.2027161Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +344ab2e1b330d4a6be3f00603e9423db39cf3354:refs/remotes/origin/fix/lean-resume-stability
+2026-10-21T00:18:30.5161059Z From https://github.com/contatofilipevono-rgb/hrsbf-bent-verification
+2026-10-21T00:18:30.5164560Z  * [new ref]         344ab2e1b330d4a6be3f00603e9423db39cf3354 -> origin/fix/lean-resume-stability
+2026-10-21T00:18:30.5170780Z ##[endgroup]
+2026-10-21T00:18:30.5172684Z ##[group]Determining the checkout info
+2026-10-21T00:18:30.5174289Z ##[endgroup]
+2026-10-21T00:18:30.5175230Z [command]/usr/bin/git sparse-checkout disable
+2026-10-21T00:18:30.5230076Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-21T00:18:30.5266873Z ##[group]Checking out the ref
+2026-10-21T00:18:30.5270276Z [command]/usr/bin/git checkout --progress --force -B fix/lean-resume-stability refs/remotes/origin/fix/lean-resume-stability
+2026-10-21T00:18:31.5364124Z Updating files:  54% (770/1422)
+2026-10-21T00:18:31.5411805Z Updating files:  55% (783/1422)
+2026-10-21T00:18:31.5478466Z Updating files:  56% (797/1422)
+2026-10-21T00:18:31.5544481Z Updating files:  57% (811/1422)
+2026-10-21T00:18:31.5568190Z Updating files:  58% (825/1422)
+2026-10-21T00:18:31.5576209Z Updating files:  59% (839/1422)
+2026-10-21T00:18:31.5585235Z Updating files:  60% (854/1422)
+2026-10-21T00:18:31.5591438Z Updating files:  61% (868/1422)
+2026-10-21T00:18:31.5603387Z Updating files:  62% (882/1422)
+2026-10-21T00:18:31.5609388Z Updating files:  63% (896/1422)
+2026-10-21T00:18:31.5613689Z Updating files:  64% (911/1422)
+2026-10-21T00:18:31.5619175Z Updating files:  65% (925/1422)
+2026-10-21T00:18:31.5623752Z Updating files:  66% (939/1422)
+2026-10-21T00:18:31.5626620Z Updating files:  67% (953/1422)
+2026-10-21T00:18:31.5630145Z Updating files:  68% (967/1422)
+2026-10-21T00:18:31.5633299Z Updating files:  69% (982/1422)
+2026-10-21T00:18:31.5636566Z Updating files:  70% (996/1422)
+2026-10-21T00:18:31.5640282Z Updating files:  71% (1010/1422)
+2026-10-21T00:18:31.5647822Z Updating files:  72% (1024/1422)
+2026-10-21T00:18:31.5655471Z Updating files:  73% (1039/1422)
+2026-10-21T00:18:31.5661748Z Updating files:  74% (1053/1422)
+2026-10-21T00:18:31.5668689Z Updating files:  75% (1067/1422)
+2026-10-21T00:18:31.5675370Z Updating files:  76% (1081/1422)
+2026-10-21T00:18:31.5682282Z Updating files:  77% (1095/1422)
+2026-10-21T00:18:31.5688903Z Updating files:  78% (1110/1422)
+2026-10-21T00:18:31.5694660Z Updating files:  79% (1124/1422)
+2026-10-21T00:18:31.5699484Z Updating files:  80% (1138/1422)
+2026-10-21T00:18:31.5703289Z Updating files:  81% (1152/1422)
+2026-10-21T00:18:31.5706703Z Updating files:  82% (1167/1422)
+2026-10-21T00:18:31.5710269Z Updating files:  83% (1181/1422)
+2026-10-21T00:18:31.5714032Z Updating files:  84% (1195/1422)
+2026-10-21T00:18:31.5717725Z Updating files:  85% (1209/1422)
+2026-10-21T00:18:31.5722386Z Updating files:  86% (1223/1422)
+2026-10-21T00:18:31.5726270Z Updating files:  87% (1238/1422)
+2026-10-21T00:18:31.5729635Z Updating files:  88% (1252/1422)
+2026-10-21T00:18:31.5733739Z Updating files:  89% (1266/1422)
+2026-10-21T00:18:31.5737509Z Updating files:  90% (1280/1422)
+2026-10-21T00:18:31.5741478Z Updating files:  91% (1295/1422)
+2026-10-21T00:18:31.5745565Z Updating files:  92% (1309/1422)
+2026-10-21T00:18:31.5751454Z Updating files:  93% (1323/1422)
+2026-10-21T00:18:31.5757085Z Updating files:  94% (1337/1422)
+2026-10-21T00:18:31.5764804Z Updating files:  95% (1351/1422)
+2026-10-21T00:18:31.6204675Z Updating files:  96% (1366/1422)
+2026-10-21T00:18:31.7589892Z Updating files:  97% (1380/1422)
+2026-10-21T00:18:31.9124674Z Updating files:  98% (1394/1422)
+2026-10-21T00:18:31.9312853Z Updating files:  99% (1408/1422)
+2026-10-21T00:18:31.9313376Z Updating files: 100% (1422/1422)
+2026-10-21T00:18:31.9313564Z Updating files: 100% (1422/1422), done.
+2026-10-21T00:18:31.9336769Z Switched to a new branch 'fix/lean-resume-stability'
+2026-10-21T00:18:31.9341208Z branch 'fix/lean-resume-stability' set up to track 'origin/fix/lean-resume-stability'.
+2026-10-21T00:18:31.9465616Z ##[endgroup]
+2026-10-21T00:18:31.9516947Z [command]/usr/bin/git log -1 --format=%H
+2026-10-21T00:18:31.9552859Z 344ab2e1b330d4a6be3f00603e9423db39cf3354
+2026-10-21T00:18:31.9766786Z ##[group]Run actions/setup-python@v5
+2026-10-21T00:18:31.9766973Z with:
+2026-10-21T00:18:31.9767104Z   python-version: 3.12
+2026-10-21T00:18:31.9767237Z   check-latest: false
+2026-10-21T00:18:31.9768761Z   token: ***
+2026-10-21T00:18:31.9768904Z   update-environment: true
+2026-10-21T00:18:31.9769050Z   allow-prereleases: false
+2026-10-21T00:18:31.9769191Z   freethreaded: false
+2026-10-21T00:18:31.9769315Z env:
+2026-10-21T00:18:31.9769427Z   PYTHONUNBUFFERED: 1
+2026-10-21T00:18:31.9769561Z ##[endgroup]
+2026-10-21T00:18:32.0724521Z ##[group]Installed versions
+2026-10-21T00:18:32.0788432Z (node:2111) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-21T00:18:32.0788991Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-21T00:18:32.0789897Z Successfully set up CPython (3.12.15)
+2026-10-21T00:18:32.0790320Z ##[endgroup]
+2026-10-21T00:18:32.0949035Z ##[group]Run python tools/verify_final.py --self-test-process-tree
+2026-10-21T00:18:32.0949409Z [36;1mpython tools/verify_final.py --self-test-process-tree[0m
+2026-10-21T00:18:32.1114011Z shell: /usr/bin/bash -e {0}
+2026-10-21T00:18:32.1114274Z env:
+2026-10-21T00:18:32.1114469Z   PYTHONUNBUFFERED: 1
+2026-10-21T00:18:32.1114706Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:18:32.1114978Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-21T00:18:32.1115235Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:18:32.1115463Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:18:32.1115763Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:18:32.1116043Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-21T00:18:32.1116258Z ##[endgroup]
+2026-10-21T00:18:34.9124641Z PASS_PROCESS_TREE_TIMEOUT_TEST
+2026-10-21T00:18:34.9235997Z ##[group]Run curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+2026-10-21T00:18:34.9236665Z [36;1mcurl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"[0m
+2026-10-21T00:18:34.9237224Z [36;1mecho "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check[0m
+2026-10-21T00:18:34.9237593Z [36;1mtar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"[0m
+2026-10-21T00:18:34.9237848Z [36;1mecho "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"[0m
+2026-10-21T00:18:34.9285817Z shell: /usr/bin/bash -e {0}
+2026-10-21T00:18:34.9285967Z env:
+2026-10-21T00:18:34.9286089Z   PYTHONUNBUFFERED: 1
+2026-10-21T00:18:34.9286283Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:18:34.9286556Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-21T00:18:34.9286802Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:18:34.9287023Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:18:34.9287272Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:18:34.9287494Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-21T00:18:34.9287687Z ##[endgroup]
+2026-10-21T00:18:34.9411217Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-10-21T00:18:34.9411526Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-10-21T00:18:34.9411746Z 
+2026-10-21T00:18:35.0663588Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-21T00:18:35.0664002Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-21T00:18:35.9213566Z 
+2026-10-21T00:18:36.9573261Z  18  566M   18  105M    0     0   108M      0  0:00:05 --:--:--  0:00:05  108M
+2026-10-21T00:18:37.9226258Z  44  566M   44  250M    0     0   124M      0  0:00:04  0:00:02  0:00:02  139M
+2026-10-21T00:18:38.9132367Z  69  566M   69  396M    0     0   133M      0  0:00:04  0:00:02  0:00:02  145M
+2026-10-21T00:18:38.9132924Z 100  566M  100  566M    0     0   142M      0  0:00:03  0:00:03 --:--:--  154M
+2026-10-21T00:18:39.2433354Z /home/runner/work/_temp/lean.tar.zst: OK
+2026-10-21T00:18:49.3029000Z ##[group]Run for CHART in 0 1 2; do
+2026-10-21T00:18:49.3029294Z [36;1mfor CHART in 0 1 2; do[0m
+2026-10-21T00:18:49.3029589Z [36;1m  case "$CHART" in 0) NODE=0;; 1) NODE=26715;; 2) NODE=53430;; esac[0m
+2026-10-21T00:18:49.3030431Z [36;1m  python tools/generate_lean_affine_pilot.py --chart "$CHART" --node "$NODE" --prefix "H12CloudChart$CHART" --root-frame --engine H12AffineFastState --global-label-index --chunk-size 1200 --proof-chunk-size 600 --register[0m
+2026-10-21T00:18:49.3031505Z [36;1mdone[0m
+2026-10-21T00:18:49.3083011Z shell: /usr/bin/bash -e {0}
+2026-10-21T00:18:49.3083160Z env:
+2026-10-21T00:18:49.3083283Z   PYTHONUNBUFFERED: 1
+2026-10-21T00:18:49.3083454Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:18:49.3083704Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-21T00:18:49.3083945Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:18:49.3084193Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:18:49.3084411Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:18:49.3084626Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-21T00:18:49.3084809Z ##[endgroup]
+2026-10-21T00:18:50.3686770Z GENERATING_NODES 1000 states 4021
+2026-10-21T00:18:50.9811487Z GENERATING_NODES 2000 states 8968
+2026-10-21T00:18:51.6870131Z GENERATING_NODES 3000 states 14758
+2026-10-21T00:18:52.4291696Z GENERATING_NODES 4000 states 20781
+2026-10-21T00:18:53.1240721Z GENERATING_NODES 5000 states 26403
+2026-10-21T00:18:53.8463899Z GENERATING_NODES 6000 states 32117
+2026-10-21T00:18:54.4731412Z GENERATING_NODES 7000 states 37215
+2026-10-21T00:18:55.0886056Z GENERATING_NODES 8000 states 42311
+2026-10-21T00:18:55.7018567Z GENERATING_NODES 9000 states 47315
+2026-10-21T00:18:56.3385208Z GENERATING_NODES 10000 states 52502
+2026-10-21T00:18:56.9269392Z GENERATING_NODES 11000 states 57411
+2026-10-21T00:18:57.4743103Z GENERATING_NODES 12000 states 62080
+2026-10-21T00:18:58.1350579Z GENERATING_NODES 13000 states 67505
+2026-10-21T00:18:58.7313225Z GENERATING_NODES 14000 states 72371
+2026-10-21T00:18:59.2197911Z GENERATING_NODES 15000 states 76485
+2026-10-21T00:18:59.6583159Z GENERATING_NODES 16000 states 80106
+2026-10-21T00:19:00.4093801Z GENERATING_NODES 17000 states 86158
+2026-10-21T00:19:01.1757537Z GENERATING_NODES 18000 states 92360
+2026-10-21T00:19:01.9184626Z GENERATING_NODES 19000 states 98421
+2026-10-21T00:19:02.6780194Z GENERATING_NODES 20000 states 104621
+2026-10-21T00:19:03.4311003Z GENERATING_NODES 21000 states 110822
+2026-10-21T00:19:04.2058639Z GENERATING_NODES 22000 states 117003
+2026-10-21T00:19:04.9409145Z GENERATING_NODES 23000 states 122859
+2026-10-21T00:19:05.6770754Z GENERATING_NODES 24000 states 128787
+2026-10-21T00:19:06.2125902Z GENERATING_NODES 25000 states 133200
+2026-10-21T00:19:06.7989686Z GENERATING_NODES 26000 states 137937
+2026-10-21T00:19:07.7168360Z {'status': 'GENERATED_NOT_YET_KERNEL_VERIFIED', 'chart': 0, 'subtree': 0, 'root_frame': True, 'scope': 'Fixed-equation affine-environment subtree only; not global tree coverage.', 'full_recorded_chart_root': True, 'generator_sha256': '237be4cb5e4fc0a48ef51dbb122026d537334d4ae8c90cf4d0add9ec49d19840', 'statistics': {'nodes': 26715, 'states': 142802, 'transitions': 142801, 'terminal_candidates': 46912}, 'modules': ['H12CloudChart0Data000', 'H12CloudChart0Data001', 'H12CloudChart0Data002', 'H12CloudChart0Data003', 'H12CloudChart0Data004', 'H12CloudChart0Data005', 'H12CloudChart0Data006', 'H12CloudChart0Data007', 'H12CloudChart0Data008', 'H12CloudChart0Data009', 'H12CloudChart0Data010', 'H12CloudChart0Data011', 'H12CloudChart0Data012', 'H12CloudChart0Data013', 'H12CloudChart0Data014', 'H12CloudChart0Data015', 'H12CloudChart0Data016', 'H12CloudChart0Data017', 'H12CloudChart0Data018', 'H12CloudChart0Data019', 'H12CloudChart0Data020', 'H12CloudChart0Data021', 'H12CloudChart0Data022', 'H12CloudChart0Data023', 'H12CloudChart0Data024', 'H12CloudChart0Data025', 'H12CloudChart0Data026', 'H12CloudChart0Data027', 'H12CloudChart0Data028', 'H12CloudChart0Data029', 'H12CloudChart0Data030', 'H12CloudChart0Data031', 'H12CloudChart0Data032', 'H12CloudChart0Data033', 'H12CloudChart0Data034', 'H12CloudChart0Data035', 'H12CloudChart0Data036', 'H12CloudChart0Data037', 'H12CloudChart0Data038', 'H12CloudChart0Data039', 'H12CloudChart0Data040', 'H12CloudChart0Data041', 'H12CloudChart0Data042', 'H12CloudChart0Data043', 'H12CloudChart0Data044', 'H12CloudChart0Data045', 'H12CloudChart0Data046', 'H12CloudChart0Data047', 'H12CloudChart0Data048', 'H12CloudChart0Data049', 'H12CloudChart0Data050', 'H12CloudChart0Data051', 'H12CloudChart0Data052', 'H12CloudChart0Data053', 'H12CloudChart0Data054', 'H12CloudChart0Data055', 'H12CloudChart0Data056', 'H12CloudChart0Data057', 'H12CloudChart0Data058', 'H12CloudChart0Data059', 'H12CloudChart0Data060', 'H12CloudChart0Data061', 'H12CloudChart0Data062', 'H12CloudChart0Data063', 'H12CloudChart0Data064', 'H12CloudChart0Data065', 'H12CloudChart0Data066', 'H12CloudChart0Data067', 'H12CloudChart0Data068', 'H12CloudChart0Data069', 'H12CloudChart0Data070', 'H12CloudChart0Data071', 'H12CloudChart0Data072', 'H12CloudChart0Data073', 'H12CloudChart0Data074', 'H12CloudChart0Data075', 'H12CloudChart0Data076', 'H12CloudChart0Data077', 'H12CloudChart0Data078', 'H12CloudChart0Data079', 'H12CloudChart0Data080', 'H12CloudChart0Data081', 'H12CloudChart0Data082', 'H12CloudChart0Data083', 'H12CloudChart0Data084', 'H12CloudChart0Data085', 'H12CloudChart0Data086', 'H12CloudChart0Data087', 'H12CloudChart0Data088', 'H12CloudChart0Data089', 'H12CloudChart0Data090', 'H12CloudChart0Data091', 'H12CloudChart0Data092', 'H12CloudChart0Data093', 'H12CloudChart0Data094', 'H12CloudChart0Data095', 'H12CloudChart0Data096', 'H12CloudChart0Data097', 'H12CloudChart0Data098', 'H12CloudChart0Data099', 'H12CloudChart0Data100', 'H12CloudChart0Data101', 'H12CloudChart0Data102', 'H12CloudChart0Data103', 'H12CloudChart0Data104', 'H12CloudChart0Data105', 'H12CloudChart0Data106', 'H12CloudChart0Data107', 'H12CloudChart0Data108', 'H12CloudChart0Data109', 'H12CloudChart0Data110', 'H12CloudChart0Data111', 'H12CloudChart0Data112', 'H12CloudChart0Data113', 'H12CloudChart0Data114', 'H12CloudChart0Data115', 'H12CloudChart0Data116', 'H12CloudChart0Data117', 'H12CloudChart0Data118', 'H12CloudChart0Data119', 'H12CloudChart0Data120', 'H12CloudChart0Data121', 'H12CloudChart0Data122', 'H12CloudChart0Data123', 'H12CloudChart0Data124', 'H12CloudChart0Data125', 'H12CloudChart0Data126', 'H12CloudChart0Data127', 'H12CloudChart0Data128', 'H12CloudChart0Data129', 'H12CloudChart0Data130', 'H12CloudChart0Data131', 'H12CloudChart0Data132', 'H12CloudChart0Data133', 'H12CloudChart0Data134', 'H12CloudChart0Data135', 'H12CloudChart0Data136', 'H12CloudChart0Data137', 'H12CloudChart0Data138', 'H12CloudChart0Data139', 'H12CloudChart0Data140', 'H12CloudChart0Data141', 'H12CloudChart0Data142', 'H12CloudChart0Data143', 'H12CloudChart0Data144', 'H12CloudChart0Data145', 'H12CloudChart0Data146', 'H12CloudChart0Data147', 'H12CloudChart0Data148', 'H12CloudChart0Data149', 'H12CloudChart0Data150', 'H12CloudChart0Data151', 'H12CloudChart0Data152', 'H12CloudChart0Data153', 'H12CloudChart0Data154', 'H12CloudChart0Data155', 'H12CloudChart0Data156', 'H12CloudChart0Data157', 'H12CloudChart0Data158', 'H12CloudChart0Data159', 'H12CloudChart0Data160', 'H12CloudChart0Data161', 'H12CloudChart0Data162', 'H12CloudChart0Data163', 'H12CloudChart0Data164', 'H12CloudChart0Data165', 'H12CloudChart0Data166', 'H12CloudChart0Data167', 'H12CloudChart0Data168', 'H12CloudChart0Data169', 'H12CloudChart0Data170', 'H12CloudChart0Data171', 'H12CloudChart0Data172', 'H12CloudChart0Data173', 'H12CloudChart0Data174', 'H12CloudChart0Data175', 'H12CloudChart0Data176', 'H12CloudChart0Data177', 'H12CloudChart0Data178', 'H12CloudChart0Data179', 'H12CloudChart0Data180', 'H12CloudChart0Data181', 'H12CloudChart0Data182', 'H12CloudChart0Data183', 'H12CloudChart0Data184', 'H12CloudChart0Data185', 'H12CloudChart0Data186', 'H12CloudChart0Data187', 'H12CloudChart0Data188', 'H12CloudChart0Data189', 'H12CloudChart0Data190', 'H12CloudChart0Data191', 'H12CloudChart0Data192', 'H12CloudChart0Data193', 'H12CloudChart0Data194', 'H12CloudChart0Data195', 'H12CloudChart0Data196', 'H12CloudChart0Data197', 'H12CloudChart0Data198', 'H12CloudChart0Data199', 'H12CloudChart0Data200', 'H12CloudChart0Data201', 'H12CloudChart0Data202', 'H12CloudChart0Data203', 'H12CloudChart0Data204', 'H12CloudChart0Data205', 'H12CloudChart0Data206', 'H12CloudChart0Data207', 'H12CloudChart0Data208', 'H12CloudChart0Data209', 'H12CloudChart0Data210', 'H12CloudChart0Data211', 'H12CloudChart0Data212', 'H12CloudChart0Data213', 'H12CloudChart0Data214', 'H12CloudChart0Data215', 'H12CloudChart0Data216', 'H12CloudChart0Data217', 'H12CloudChart0Data218', 'H12CloudChart0Data219', 'H12CloudChart0Data220', 'H12CloudChart0Data221', 'H12CloudChart0Data222', 'H12CloudChart0Data223', 'H12CloudChart0Data224', 'H12CloudChart0Data225', 'H12CloudChart0Data226', 'H12CloudChart0Data227', 'H12CloudChart0Data228', 'H12CloudChart0Data229', 'H12CloudChart0Data230', 'H12CloudChart0Data231', 'H12CloudChart0Data232', 'H12CloudChart0Data233', 'H12CloudChart0Data234', 'H12CloudChart0Data235', 'H12CloudChart0Data236', 'H12CloudChart0Data237', 'H12CloudChart0Data238', 'H12CloudChart0Data239', 'H12CloudChart0Data240', 'H12CloudChart0Data241', 'H12CloudChart0Data242', 'H12CloudChart0Data243', 'H12CloudChart0Data244', 'H12CloudChart0Data245', 'H12CloudChart0Data246', 'H12CloudChart0Data247', 'H12CloudChart0Data248', 'H12CloudChart0Data249', 'H12CloudChart0Data250', 'H12CloudChart0Data251', 'H12CloudChart0Data252', 'H12CloudChart0Data253', 'H12CloudChart0Data254', 'H12CloudChart0Data255', 'H12CloudChart0Data256', 'H12CloudChart0Data257', 'H12CloudChart0Data258', 'H12CloudChart0Data259', 'H12CloudChart0Data260', 'H12CloudChart0Data261', 'H12CloudChart0Data262', 'H12CloudChart0Data263', 'H12CloudChart0Data264', 'H12CloudChart0Data265', 'H12CloudChart0Data266', 'H12CloudChart0Data267', 'H12CloudChart0Data268', 'H12CloudChart0Data269', 'H12CloudChart0Data270', 'H12CloudChart0Data271', 'H12CloudChart0Data272', 'H12CloudChart0Data273', 'H12CloudChart0Data274', 'H12CloudChart0Data275', 'H12CloudChart0Data276', 'H12CloudChart0Data277', 'H12CloudChart0Data278', 'H12CloudChart0Data279', 'H12CloudChart0Data280', 'H12CloudChart0Data281', 'H12CloudChart0Data282', 'H12CloudChart0Data283', 'H12CloudChart0Data284', 'H12CloudChart0Data285', 'H12CloudChart0Data286', 'H12CloudChart0Data287', 'H12CloudChart0Data288', 'H12CloudChart0Data289', 'H12CloudChart0Data290', 'H12CloudChart0Data291', 'H12CloudChart0Data292', 'H12CloudChart0Data293', 'H12CloudChart0Data294', 'H12CloudChart0Data295', 'H12CloudChart0Data296', 'H12CloudChart0Data297', 'H12CloudChart0Data298', 'H12CloudChart0Data299', 'H12CloudChart0Data300', 'H12CloudChart0Data301', 'H12CloudChart0Data302', 'H12CloudChart0Data303', 'H12CloudChart0Data304', 'H12CloudChart0Data305', 'H12CloudChart0Data306', 'H12CloudChart0Data307', 'H12CloudChart0Data308', 'H12CloudChart0Data309', 'H12CloudChart0Data310', 'H12CloudChart0Data311', 'H12CloudChart0Data312', 'H12CloudChart0Data313', 'H12CloudChart0Data314', 'H12CloudChart0Data315', 'H12CloudChart0Data316', 'H12CloudChart0Data317', 'H12CloudChart0Data318', 'H12CloudChart0Data319', 'H12CloudChart0Data320', 'H12CloudChart0Data321', 'H12CloudChart0Data322', 'H12CloudChart0Data323', 'H12CloudChart0Data324', 'H12CloudChart0Data325', 'H12CloudChart0Data326', 'H12CloudChart0Data327', 'H12CloudChart0Data328', 'H12CloudChart0Data329', 'H12CloudChart0Data330', 'H12CloudChart0Data331', 'H12CloudChart0Data332', 'H12CloudChart0Data333', 'H12CloudChart0Data334', 'H12CloudChart0Data335', 'H12CloudChart0Data336', 'H12CloudChart0Data337', 'H12CloudChart0Data338', 'H12CloudChart0Data339', 'H12CloudChart0Data340', 'H12CloudChart0Data341', 'H12CloudChart0Data342', 'H12CloudChart0Data343', 'H12CloudChart0Data344', 'H12CloudChart0Data345', 'H12CloudChart0Data346', 'H12CloudChart0Data347', 'H12CloudChart0Data348', 'H12CloudChart0Data349', 'H12CloudChart0Data350', 'H12CloudChart0Data351', 'H12CloudChart0Data352', 'H12CloudChart0Data353', 'H12CloudChart0Data354', 'H12CloudChart0Data355', 'H12CloudChart0Data356', 'H12CloudChart0Data357', 'H12CloudChart0Data358', 'H12CloudChart0Data359', 'H12CloudChart0Data360', 'H12CloudChart0Data361', 'H12CloudChart0Data362', 'H12CloudChart0Data363', 'H12CloudChart0Data364', 'H12CloudChart0Data365', 'H12CloudChart0Data366', 'H12CloudChart0Data367', 'H12CloudChart0Data368', 'H12CloudChart0Data369', 'H12CloudChart0Data370', 'H12CloudChart0Data371', 'H12CloudChart0Data372', 'H12CloudChart0Data373', 'H12CloudChart0Data374', 'H12CloudChart0Data375', 'H12CloudChart0Data376', 'H12CloudChart0Data377', 'H12CloudChart0Data378', 'H12CloudChart0Data379', 'H12CloudChart0Data380', 'H12CloudChart0Data381', 'H12CloudChart0Data382', 'H12CloudChart0Data383', 'H12CloudChart0Data384', 'H12CloudChart0Data385', 'H12CloudChart0Data386', 'H12CloudChart0Data387', 'H12CloudChart0Data388', 'H12CloudChart0Data389', 'H12CloudChart0Data390', 'H12CloudChart0Data391', 'H12CloudChart0Data392', 'H12CloudChart0Data393', 'H12CloudChart0Data394', 'H12CloudChart0Data395', 'H12CloudChart0Data396', 'H12CloudChart0Data397', 'H12CloudChart0Data398', 'H12CloudChart0Data399', 'H12CloudChart0Data400', 'H12CloudChart0Data401', 'H12CloudChart0Data402', 'H12CloudChart0Data403', 'H12CloudChart0Data404', 'H12CloudChart0Data405', 'H12CloudChart0Data406', 'H12CloudChart0Data407', 'H12CloudChart0Data408', 'H12CloudChart0Data409', 'H12CloudChart0Data410', 'H12CloudChart0Data411', 'H12CloudChart0Data412', 'H12CloudChart0Data413', 'H12CloudChart0Data414', 'H12CloudChart0Data415', 'H12CloudChart0Data416', 'H12CloudChart0Data417', 'H12CloudChart0Data418', 'H12CloudChart0Data419', 'H12CloudChart0Data420', 'H12CloudChart0Data421', 'H12CloudChart0Data422', 'H12CloudChart0Data423', 'H12CloudChart0Data424', 'H12CloudChart0Data425', 'H12CloudChart0Data426', 'H12CloudChart0Data427', 'H12CloudChart0Data428', 'H12CloudChart0Data429', 'H12CloudChart0Data430', 'H12CloudChart0Data431', 'H12CloudChart0Data432', 'H12CloudChart0Data433', 'H12CloudChart0Data434', 'H12CloudChart0Data435', 'H12CloudChart0Data436', 'H12CloudChart0Data437', 'H12CloudChart0Data438', 'H12CloudChart0Data439', 'H12CloudChart0Data440', 'H12CloudChart0Data441', 'H12CloudChart0Data442', 'H12CloudChart0Data443', 'H12CloudChart0Data444', 'H12CloudChart0Data445', 'H12CloudChart0Data446', 'H12CloudChart0Data447', 'H12CloudChart0Data448', 'H12CloudChart0Data449', 'H12CloudChart0Data450', 'H12CloudChart0Data451', 'H12CloudChart0Data452', 'H12CloudChart0Data453', 'H12CloudChart0Data454', 'H12CloudChart0Data455', 'H12CloudChart0Data456', 'H12CloudChart0Data457', 'H12CloudChart0Data458', 'H12CloudChart0Data459', 'H12CloudChart0Data460', 'H12CloudChart0Data461', 'H12CloudChart0Data462', 'H12CloudChart0Data463', 'H12CloudChart0Data464', 'H12CloudChart0Data465', 'H12CloudChart0Data466', 'H12CloudChart0Data467', 'H12CloudChart0Data468', 'H12CloudChart0Data469', 'H12CloudChart0Data470', 'H12CloudChart0Data471', 'H12CloudChart0Data472', 'H12CloudChart0Data473', 'H12CloudChart0Data474', 'H12CloudChart0Data475', 'H12CloudChart0Data476', 'H12CloudChart0Data477', 'H12CloudChart0Data478', 'H12CloudChart0Data479', 'H12CloudChart0Data480', 'H12CloudChart0Data481', 'H12CloudChart0Data482', 'H12CloudChart0Data483', 'H12CloudChart0Data484', 'H12CloudChart0Data485', 'H12CloudChart0Data486', 'H12CloudChart0Data487', 'H12CloudChart0Data488', 'H12CloudChart0Data489', 'H12CloudChart0Data490', 'H12CloudChart0Data491', 'H12CloudChart0Data492', 'H12CloudChart0Data493', 'H12CloudChart0Data494', 'H12CloudChart0Data495', 'H12CloudChart0Data496', 'H12CloudChart0Data497', 'H12CloudChart0Data498', 'H12CloudChart0Data499', 'H12CloudChart0Data500', 'H12CloudChart0Data501', 'H12CloudChart0Data502', 'H12CloudChart0Data503', 'H12CloudChart0Data504', 'H12CloudChart0Data505', 'H12CloudChart0Data506', 'H12CloudChart0Data507', 'H12CloudChart0Data508', 'H12CloudChart0Data509', 'H12CloudChart0Data510', 'H12CloudChart0Data511', 'H12CloudChart0Data512', 'H12CloudChart0Data513', 'H12CloudChart0Data514', 'H12CloudChart0Data515', 'H12CloudChart0Data516', 'H12CloudChart0Data517', 'H12CloudChart0Data518', 'H12CloudChart0Data519', 'H12CloudChart0Data520', 'H12CloudChart0Data521', 'H12CloudChart0Data522', 'H12CloudChart0Data523', 'H12CloudChart0Data524', 'H12CloudChart0Data525', 'H12CloudChart0Data526', 'H12CloudChart0Data527', 'H12CloudChart0Data528', 'H12CloudChart0Data529', 'H12CloudChart0Data530', 'H12CloudChart0Data531', 'H12CloudChart0Data532', 'H12CloudChart0Data533', 'H12CloudChart0Data534', 'H12CloudChart0Data535', 'H12CloudChart0Data536', 'H12CloudChart0Data537', 'H12CloudChart0Data538', 'H12CloudChart0Data539', 'H12CloudChart0Data540', 'H12CloudChart0Data541', 'H12CloudChart0Data542', 'H12CloudChart0Data543', 'H12CloudChart0Data544', 'H12CloudChart0Data545', 'H12CloudChart0Data546', 'H12CloudChart0Data547', 'H12CloudChart0Data548', 'H12CloudChart0Data549', 'H12CloudChart0Data550', 'H12CloudChart0Data551', 'H12CloudChart0Data552', 'H12CloudChart0Data553', 'H12CloudChart0Data554', 'H12CloudChart0Data555', 'H12CloudChart0Data556', 'H12CloudChart0Data557', 'H12CloudChart0Data558', 'H12CloudChart0Data559', 'H12CloudChart0Data560', 'H12CloudChart0Data561', 'H12CloudChart0Data562', 'H12CloudChart0Proof000', 'H12CloudChart0Proof001', 'H12CloudChart0Proof002', 'H12CloudChart0Proof003', 'H12CloudChart0Proof004', 'H12CloudChart0Proof005', 'H12CloudChart0Proof006', 'H12CloudChart0Proof007', 'H12CloudChart0Proof008', 'H12CloudChart0Proof009', 'H12CloudChart0Proof010', 'H12CloudChart0Proof011', 'H12CloudChart0Proof012', 'H12CloudChart0Proof013', 'H12CloudChart0Proof014', 'H12CloudChart0Proof015', 'H12CloudChart0Proof016', 'H12CloudChart0Proof017', 'H12CloudChart0Proof018', 'H12CloudChart0Proof019', 'H12CloudChart0Proof020', 'H12CloudChart0Proof021', 'H12CloudChart0Proof022', 'H12CloudChart0Proof023', 'H12CloudChart0Proof024', 'H12CloudChart0Proof025', 'H12CloudChart0Proof026', 'H12CloudChart0Proof027', 'H12CloudChart0Proof028', 'H12CloudChart0Proof029', 'H12CloudChart0Proof030', 'H12CloudChart0Proof031', 'H12CloudChart0Proof032', 'H12CloudChart0Proof033', 'H12CloudChart0Proof034', 'H12CloudChart0Proof035', 'H12CloudChart0Proof036', 'H12CloudChart0Proof037', 'H12CloudChart0Proof038', 'H12CloudChart0Proof039', 'H12CloudChart0Proof040', 'H12CloudChart0Proof041', 'H12CloudChart0Proof042', 'H12CloudChart0Proof043', 'H12CloudChart0Proof044', 'H12CloudChart0Proof045', 'H12CloudChart0Proof046', 'H12CloudChart0Proof047', 'H12CloudChart0Proof048', 'H12CloudChart0Proof049', 'H12CloudChart0Proof050', 'H12CloudChart0Proof051', 'H12CloudChart0Proof052', 'H12CloudChart0Proof053', 'H12CloudChart0Proof054', 'H12CloudChart0Proof055', 'H12CloudChart0Proof056', 'H12CloudChart0Proof057', 'H12CloudChart0Proof058', 'H12CloudChart0Proof059', 'H12CloudChart0Proof060', 'H12CloudChart0Proof061', 'H12CloudChart0Proof062', 'H12CloudChart0Proof063', 'H12CloudChart0Proof064', 'H12CloudChart0Proof065', 'H12CloudChart0Proof066', 'H12CloudChart0Proof067', 'H12CloudChart0Proof068', 'H12CloudChart0Proof069', 'H12CloudChart0Proof070', 'H12CloudChart0Proof071', 'H12CloudChart0Proof072', 'H12CloudChart0Proof073', 'H12CloudChart0Proof074', 'H12CloudChart0Proof075', 'H12CloudChart0Proof076', 'H12CloudChart0Proof077', 'H12CloudChart0Proof078', 'H12CloudChart0Proof079', 'H12CloudChart0Proof080', 'H12CloudChart0Proof081', 'H12CloudChart0Proof082', 'H12CloudChart0Proof083', 'H12CloudChart0Proof084', 'H12CloudChart0Proof085', 'H12CloudChart0Proof086', 'H12CloudChart0Proof087', 'H12CloudChart0Proof088', 'H12CloudChart0Proof089', 'H12CloudChart0Proof090', 'H12CloudChart0Proof091', 'H12CloudChart0Proof092', 'H12CloudChart0Proof093', 'H12CloudChart0Proof094', 'H12CloudChart0Proof095', 'H12CloudChart0Proof096', 'H12CloudChart0Proof097', 'H12CloudChart0Proof098', 'H12CloudChart0Proof099', 'H12CloudChart0Proof100', 'H12CloudChart0Proof101', 'H12CloudChart0Proof102', 'H12CloudChart0Proof103', 'H12CloudChart0Proof104', 'H12CloudChart0Proof105', 'H12CloudChart0Proof106', 'H12CloudChart0Proof107', 'H12CloudChart0Proof108', 'H12CloudChart0Proof109', 'H12CloudChart0Proof110', 'H12CloudChart0Proof111', 'H12CloudChart0Proof112', 'H12CloudChart0Proof113', 'H12CloudChart0Proof114', 'H12CloudChart0Proof115', 'H12CloudChart0Proof116', 'H12CloudChart0Proof117', 'H12CloudChart0Proof118', 'H12CloudChart0Proof119', 'H12CloudChart0Proof120', 'H12CloudChart0Proof121', 'H12CloudChart0Proof122', 'H12CloudChart0Proof123', 'H12CloudChart0Proof124', 'H12CloudChart0Proof125', 'H12CloudChart0Proof126', 'H12CloudChart0Proof127', 'H12CloudChart0Proof128', 'H12CloudChart0Proof129', 'H12CloudChart0Proof130', 'H12CloudChart0Proof131', 'H12CloudChart0Proof132', 'H12CloudChart0Proof133', 'H12CloudChart0Proof134', 'H12CloudChart0Proof135', 'H12CloudChart0Proof136', 'H12CloudChart0Proof137', 'H12CloudChart0Proof138', 'H12CloudChart0Proof139', 'H12CloudChart0Proof140', 'H12CloudChart0Proof141', 'H12CloudChart0Proof142', 'H12CloudChart0Proof143', 'H12CloudChart0Proof144', 'H12CloudChart0Proof145', 'H12CloudChart0Proof146', 'H12CloudChart0Proof147', 'H12CloudChart0Proof148', 'H12CloudChart0Proof149', 'H12CloudChart0Proof150', 'H12CloudChart0Proof151', 'H12CloudChart0Proof152', 'H12CloudChart0Proof153', 'H12CloudChart0Proof154', 'H12CloudChart0Proof155', 'H12CloudChart0Proof156', 'H12CloudChart0Proof157', 'H12CloudChart0Proof158', 'H12CloudChart0Proof159', 'H12CloudChart0Proof160', 'H12CloudChart0Proof161', 'H12CloudChart0Proof162', 'H12CloudChart0Proof163', 'H12CloudChart0Proof164', 'H12CloudChart0Proof165', 'H12CloudChart0Proof166', 'H12CloudChart0Proof167', 'H12CloudChart0Proof168', 'H12CloudChart0Proof169', 'H12CloudChart0Proof170', 'H12CloudChart0Proof171', 'H12CloudChart0Proof172', 'H12CloudChart0Proof173', 'H12CloudChart0Proof174', 'H12CloudChart0Proof175', 'H12CloudChart0Proof176', 'H12CloudChart0Proof177', 'H12CloudChart0Proof178', 'H12CloudChart0Proof179', 'H12CloudChart0Proof180', 'H12CloudChart0Proof181', 'H12CloudChart0Proof182', 'H12CloudChart0Proof183', 'H12CloudChart0Proof184', 'H12CloudChart0Proof185', 'H12CloudChart0Proof186', 'H12CloudChart0Proof187', 'H12CloudChart0Proof188', 'H12CloudChart0Proof189', 'H12CloudChart0Proof190', 'H12CloudChart0Proof191', 'H12CloudChart0Proof192', 'H12CloudChart0Proof193', 'H12CloudChart0Proof194', 'H12CloudChart0Proof195', 'H12CloudChart0Proof196', 'H12CloudChart0Proof197', 'H12CloudChart0Proof198', 'H12CloudChart0Proof199', 'H12CloudChart0Proof200', 'H12CloudChart0Proof201', 'H12CloudChart0Proof202', 'H12CloudChart0Proof203', 'H12CloudChart0Proof204', 'H12CloudChart0Proof205', 'H12CloudChart0Proof206', 'H12CloudChart0Proof207', 'H12CloudChart0Proof208', 'H12CloudChart0Proof209', 'H12CloudChart0Proof210', 'H12CloudChart0Proof211', 'H12CloudChart0Proof212', 'H12CloudChart0Proof213', 'H12CloudChart0Proof214', 'H12CloudChart0Proof215', 'H12CloudChart0Proof216', 'H12CloudChart0Proof217', 'H12CloudChart0Proof218', 'H12CloudChart0Proof219', 'H12CloudChart0Proof220', 'H12CloudChart0Proof221', 'H12CloudChart0Proof222', 'H12CloudChart0Proof223', 'H12CloudChart0Proof224', 'H12CloudChart0Proof225', 'H12CloudChart0Proof226', 'H12CloudChart0Proof227', 'H12CloudChart0Proof228', 'H12CloudChart0Proof229', 'H12CloudChart0Proof230', 'H12CloudChart0Proof231', 'H12CloudChart0Proof232', 'H12CloudChart0Proof233', 'H12CloudChart0Proof234', 'H12CloudChart0Proof235', 'H12CloudChart0Proof236', 'H12CloudChart0Proof237', 'H12CloudChart0Proof238', 'H12CloudChart0'], 'engine': 'H12AffineFastState', 'coefficient_label_leaves': False, 'global_coefficient_label_index': True, 'data_chunk_size': 1200, 'proof_chunk_size': 600}
+2026-10-21T00:19:09.0633491Z GENERATING_NODES 1000 states 4051
+2026-10-21T00:19:09.6721202Z GENERATING_NODES 2000 states 9088
+2026-10-21T00:19:10.3468063Z GENERATING_NODES 3000 states 14683
+2026-10-21T00:19:11.0332109Z GENERATING_NODES 4000 states 20391
+2026-10-21T00:19:11.7319434Z GENERATING_NODES 5000 states 26171
+2026-10-21T00:19:12.4588691Z GENERATING_NODES 6000 states 32239
+2026-10-21T00:19:13.0769818Z GENERATING_NODES 7000 states 37180
+2026-10-21T00:19:13.7306503Z GENERATING_NODES 8000 states 42444
+2026-10-21T00:19:14.3609485Z GENERATING_NODES 9000 states 47513
+2026-10-21T00:19:14.9637508Z GENERATING_NODES 10000 states 52540
+2026-10-21T00:19:15.5719137Z GENERATING_NODES 11000 states 57530
+2026-10-21T00:19:16.1405570Z GENERATING_NODES 12000 states 62220
+2026-10-21T00:19:16.8075060Z GENERATING_NODES 13000 states 67636
+2026-10-21T00:19:17.4276488Z GENERATING_NODES 14000 states 72514
+2026-10-21T00:19:17.9262735Z GENERATING_NODES 15000 states 76783
+2026-10-21T00:19:18.3364330Z GENERATING_NODES 16000 states 80215
+2026-10-21T00:19:19.0444877Z GENERATING_NODES 17000 states 86318
+2026-10-21T00:19:19.7500244Z GENERATING_NODES 18000 states 92368
+2026-10-21T00:19:20.4863407Z GENERATING_NODES 19000 states 98518
+2026-10-21T00:19:21.2310769Z GENERATING_NODES 20000 states 104691
+2026-10-21T00:19:21.9545274Z GENERATING_NODES 21000 states 110636
+2026-10-21T00:19:22.6882256Z GENERATING_NODES 22000 states 116680
+2026-10-21T00:19:23.4330216Z GENERATING_NODES 23000 states 122891
+2026-10-21T00:19:24.1589285Z GENERATING_NODES 24000 states 128877
+2026-10-21T00:19:24.6844756Z GENERATING_NODES 25000 states 133300
+2026-10-21T00:19:25.2652545Z GENERATING_NODES 26000 states 138076
+2026-10-21T00:19:26.1817607Z {'status': 'GENERATED_NOT_YET_KERNEL_VERIFIED', 'chart': 1, 'subtree': 26715, 'root_frame': True, 'scope': 'Fixed-equation affine-environment subtree only; not global tree coverage.', 'full_recorded_chart_root': True, 'generator_sha256': '237be4cb5e4fc0a48ef51dbb122026d537334d4ae8c90cf4d0add9ec49d19840', 'statistics': {'nodes': 26715, 'states': 142930, 'transitions': 142929, 'terminal_candidates': 46400}, 'modules': ['H12CloudChart1Data000', 'H12CloudChart1Data001', 'H12CloudChart1Data002', 'H12CloudChart1Data003', 'H12CloudChart1Data004', 'H12CloudChart1Data005', 'H12CloudChart1Data006', 'H12CloudChart1Data007', 'H12CloudChart1Data008', 'H12CloudChart1Data009', 'H12CloudChart1Data010', 'H12CloudChart1Data011', 'H12CloudChart1Data012', 'H12CloudChart1Data013', 'H12CloudChart1Data014', 'H12CloudChart1Data015', 'H12CloudChart1Data016', 'H12CloudChart1Data017', 'H12CloudChart1Data018', 'H12CloudChart1Data019', 'H12CloudChart1Data020', 'H12CloudChart1Data021', 'H12CloudChart1Data022', 'H12CloudChart1Data023', 'H12CloudChart1Data024', 'H12CloudChart1Data025', 'H12CloudChart1Data026', 'H12CloudChart1Data027', 'H12CloudChart1Data028', 'H12CloudChart1Data029', 'H12CloudChart1Data030', 'H12CloudChart1Data031', 'H12CloudChart1Data032', 'H12CloudChart1Data033', 'H12CloudChart1Data034', 'H12CloudChart1Data035', 'H12CloudChart1Data036', 'H12CloudChart1Data037', 'H12CloudChart1Data038', 'H12CloudChart1Data039', 'H12CloudChart1Data040', 'H12CloudChart1Data041', 'H12CloudChart1Data042', 'H12CloudChart1Data043', 'H12CloudChart1Data044', 'H12CloudChart1Data045', 'H12CloudChart1Data046', 'H12CloudChart1Data047', 'H12CloudChart1Data048', 'H12CloudChart1Data049', 'H12CloudChart1Data050', 'H12CloudChart1Data051', 'H12CloudChart1Data052', 'H12CloudChart1Data053', 'H12CloudChart1Data054', 'H12CloudChart1Data055', 'H12CloudChart1Data056', 'H12CloudChart1Data057', 'H12CloudChart1Data058', 'H12CloudChart1Data059', 'H12CloudChart1Data060', 'H12CloudChart1Data061', 'H12CloudChart1Data062', 'H12CloudChart1Data063', 'H12CloudChart1Data064', 'H12CloudChart1Data065', 'H12CloudChart1Data066', 'H12CloudChart1Data067', 'H12CloudChart1Data068', 'H12CloudChart1Data069', 'H12CloudChart1Data070', 'H12CloudChart1Data071', 'H12CloudChart1Data072', 'H12CloudChart1Data073', 'H12CloudChart1Data074', 'H12CloudChart1Data075', 'H12CloudChart1Data076', 'H12CloudChart1Data077', 'H12CloudChart1Data078', 'H12CloudChart1Data079', 'H12CloudChart1Data080', 'H12CloudChart1Data081', 'H12CloudChart1Data082', 'H12CloudChart1Data083', 'H12CloudChart1Data084', 'H12CloudChart1Data085', 'H12CloudChart1Data086', 'H12CloudChart1Data087', 'H12CloudChart1Data088', 'H12CloudChart1Data089', 'H12CloudChart1Data090', 'H12CloudChart1Data091', 'H12CloudChart1Data092', 'H12CloudChart1Data093', 'H12CloudChart1Data094', 'H12CloudChart1Data095', 'H12CloudChart1Data096', 'H12CloudChart1Data097', 'H12CloudChart1Data098', 'H12CloudChart1Data099', 'H12CloudChart1Data100', 'H12CloudChart1Data101', 'H12CloudChart1Data102', 'H12CloudChart1Data103', 'H12CloudChart1Data104', 'H12CloudChart1Data105', 'H12CloudChart1Data106', 'H12CloudChart1Data107', 'H12CloudChart1Data108', 'H12CloudChart1Data109', 'H12CloudChart1Data110', 'H12CloudChart1Data111', 'H12CloudChart1Data112', 'H12CloudChart1Data113', 'H12CloudChart1Data114', 'H12CloudChart1Data115', 'H12CloudChart1Data116', 'H12CloudChart1Data117', 'H12CloudChart1Data118', 'H12CloudChart1Data119', 'H12CloudChart1Data120', 'H12CloudChart1Data121', 'H12CloudChart1Data122', 'H12CloudChart1Data123', 'H12CloudChart1Data124', 'H12CloudChart1Data125', 'H12CloudChart1Data126', 'H12CloudChart1Data127', 'H12CloudChart1Data128', 'H12CloudChart1Data129', 'H12CloudChart1Data130', 'H12CloudChart1Data131', 'H12CloudChart1Data132', 'H12CloudChart1Data133', 'H12CloudChart1Data134', 'H12CloudChart1Data135', 'H12CloudChart1Data136', 'H12CloudChart1Data137', 'H12CloudChart1Data138', 'H12CloudChart1Data139', 'H12CloudChart1Data140', 'H12CloudChart1Data141', 'H12CloudChart1Data142', 'H12CloudChart1Data143', 'H12CloudChart1Data144', 'H12CloudChart1Data145', 'H12CloudChart1Data146', 'H12CloudChart1Data147', 'H12CloudChart1Data148', 'H12CloudChart1Data149', 'H12CloudChart1Data150', 'H12CloudChart1Data151', 'H12CloudChart1Data152', 'H12CloudChart1Data153', 'H12CloudChart1Data154', 'H12CloudChart1Data155', 'H12CloudChart1Data156', 'H12CloudChart1Data157', 'H12CloudChart1Data158', 'H12CloudChart1Data159', 'H12CloudChart1Data160', 'H12CloudChart1Data161', 'H12CloudChart1Data162', 'H12CloudChart1Data163', 'H12CloudChart1Data164', 'H12CloudChart1Data165', 'H12CloudChart1Data166', 'H12CloudChart1Data167', 'H12CloudChart1Data168', 'H12CloudChart1Data169', 'H12CloudChart1Data170', 'H12CloudChart1Data171', 'H12CloudChart1Data172', 'H12CloudChart1Data173', 'H12CloudChart1Data174', 'H12CloudChart1Data175', 'H12CloudChart1Data176', 'H12CloudChart1Data177', 'H12CloudChart1Data178', 'H12CloudChart1Data179', 'H12CloudChart1Data180', 'H12CloudChart1Data181', 'H12CloudChart1Data182', 'H12CloudChart1Data183', 'H12CloudChart1Data184', 'H12CloudChart1Data185', 'H12CloudChart1Data186', 'H12CloudChart1Data187', 'H12CloudChart1Data188', 'H12CloudChart1Data189', 'H12CloudChart1Data190', 'H12CloudChart1Data191', 'H12CloudChart1Data192', 'H12CloudChart1Data193', 'H12CloudChart1Data194', 'H12CloudChart1Data195', 'H12CloudChart1Data196', 'H12CloudChart1Data197', 'H12CloudChart1Data198', 'H12CloudChart1Data199', 'H12CloudChart1Data200', 'H12CloudChart1Data201', 'H12CloudChart1Data202', 'H12CloudChart1Data203', 'H12CloudChart1Data204', 'H12CloudChart1Data205', 'H12CloudChart1Data206', 'H12CloudChart1Data207', 'H12CloudChart1Data208', 'H12CloudChart1Data209', 'H12CloudChart1Data210', 'H12CloudChart1Data211', 'H12CloudChart1Data212', 'H12CloudChart1Data213', 'H12CloudChart1Data214', 'H12CloudChart1Data215', 'H12CloudChart1Data216', 'H12CloudChart1Data217', 'H12CloudChart1Data218', 'H12CloudChart1Data219', 'H12CloudChart1Data220', 'H12CloudChart1Data221', 'H12CloudChart1Data222', 'H12CloudChart1Data223', 'H12CloudChart1Data224', 'H12CloudChart1Data225', 'H12CloudChart1Data226', 'H12CloudChart1Data227', 'H12CloudChart1Data228', 'H12CloudChart1Data229', 'H12CloudChart1Data230', 'H12CloudChart1Data231', 'H12CloudChart1Data232', 'H12CloudChart1Data233', 'H12CloudChart1Data234', 'H12CloudChart1Data235', 'H12CloudChart1Data236', 'H12CloudChart1Data237', 'H12CloudChart1Data238', 'H12CloudChart1Data239', 'H12CloudChart1Data240', 'H12CloudChart1Data241', 'H12CloudChart1Data242', 'H12CloudChart1Data243', 'H12CloudChart1Data244', 'H12CloudChart1Data245', 'H12CloudChart1Data246', 'H12CloudChart1Data247', 'H12CloudChart1Data248', 'H12CloudChart1Data249', 'H12CloudChart1Data250', 'H12CloudChart1Data251', 'H12CloudChart1Data252', 'H12CloudChart1Data253', 'H12CloudChart1Data254', 'H12CloudChart1Data255', 'H12CloudChart1Data256', 'H12CloudChart1Data257', 'H12CloudChart1Data258', 'H12CloudChart1Data259', 'H12CloudChart1Data260', 'H12CloudChart1Data261', 'H12CloudChart1Data262', 'H12CloudChart1Data263', 'H12CloudChart1Data264', 'H12CloudChart1Data265', 'H12CloudChart1Data266', 'H12CloudChart1Data267', 'H12CloudChart1Data268', 'H12CloudChart1Data269', 'H12CloudChart1Data270', 'H12CloudChart1Data271', 'H12CloudChart1Data272', 'H12CloudChart1Data273', 'H12CloudChart1Data274', 'H12CloudChart1Data275', 'H12CloudChart1Data276', 'H12CloudChart1Data277', 'H12CloudChart1Data278', 'H12CloudChart1Data279', 'H12CloudChart1Data280', 'H12CloudChart1Data281', 'H12CloudChart1Data282', 'H12CloudChart1Data283', 'H12CloudChart1Data284', 'H12CloudChart1Data285', 'H12CloudChart1Data286', 'H12CloudChart1Data287', 'H12CloudChart1Data288', 'H12CloudChart1Data289', 'H12CloudChart1Data290', 'H12CloudChart1Data291', 'H12CloudChart1Data292', 'H12CloudChart1Data293', 'H12CloudChart1Data294', 'H12CloudChart1Data295', 'H12CloudChart1Data296', 'H12CloudChart1Data297', 'H12CloudChart1Data298', 'H12CloudChart1Data299', 'H12CloudChart1Data300', 'H12CloudChart1Data301', 'H12CloudChart1Data302', 'H12CloudChart1Data303', 'H12CloudChart1Data304', 'H12CloudChart1Data305', 'H12CloudChart1Data306', 'H12CloudChart1Data307', 'H12CloudChart1Data308', 'H12CloudChart1Data309', 'H12CloudChart1Data310', 'H12CloudChart1Data311', 'H12CloudChart1Data312', 'H12CloudChart1Data313', 'H12CloudChart1Data314', 'H12CloudChart1Data315', 'H12CloudChart1Data316', 'H12CloudChart1Data317', 'H12CloudChart1Data318', 'H12CloudChart1Data319', 'H12CloudChart1Data320', 'H12CloudChart1Data321', 'H12CloudChart1Data322', 'H12CloudChart1Data323', 'H12CloudChart1Data324', 'H12CloudChart1Data325', 'H12CloudChart1Data326', 'H12CloudChart1Data327', 'H12CloudChart1Data328', 'H12CloudChart1Data329', 'H12CloudChart1Data330', 'H12CloudChart1Data331', 'H12CloudChart1Data332', 'H12CloudChart1Data333', 'H12CloudChart1Data334', 'H12CloudChart1Data335', 'H12CloudChart1Data336', 'H12CloudChart1Data337', 'H12CloudChart1Data338', 'H12CloudChart1Data339', 'H12CloudChart1Data340', 'H12CloudChart1Data341', 'H12CloudChart1Data342', 'H12CloudChart1Data343', 'H12CloudChart1Data344', 'H12CloudChart1Data345', 'H12CloudChart1Data346', 'H12CloudChart1Data347', 'H12CloudChart1Data348', 'H12CloudChart1Data349', 'H12CloudChart1Data350', 'H12CloudChart1Data351', 'H12CloudChart1Data352', 'H12CloudChart1Data353', 'H12CloudChart1Data354', 'H12CloudChart1Data355', 'H12CloudChart1Data356', 'H12CloudChart1Data357', 'H12CloudChart1Data358', 'H12CloudChart1Data359', 'H12CloudChart1Data360', 'H12CloudChart1Data361', 'H12CloudChart1Data362', 'H12CloudChart1Data363', 'H12CloudChart1Data364', 'H12CloudChart1Data365', 'H12CloudChart1Data366', 'H12CloudChart1Data367', 'H12CloudChart1Data368', 'H12CloudChart1Data369', 'H12CloudChart1Data370', 'H12CloudChart1Data371', 'H12CloudChart1Data372', 'H12CloudChart1Data373', 'H12CloudChart1Data374', 'H12CloudChart1Data375', 'H12CloudChart1Data376', 'H12CloudChart1Data377', 'H12CloudChart1Data378', 'H12CloudChart1Data379', 'H12CloudChart1Data380', 'H12CloudChart1Data381', 'H12CloudChart1Data382', 'H12CloudChart1Data383', 'H12CloudChart1Data384', 'H12CloudChart1Data385', 'H12CloudChart1Data386', 'H12CloudChart1Data387', 'H12CloudChart1Data388', 'H12CloudChart1Data389', 'H12CloudChart1Data390', 'H12CloudChart1Data391', 'H12CloudChart1Data392', 'H12CloudChart1Data393', 'H12CloudChart1Data394', 'H12CloudChart1Data395', 'H12CloudChart1Data396', 'H12CloudChart1Data397', 'H12CloudChart1Data398', 'H12CloudChart1Data399', 'H12CloudChart1Data400', 'H12CloudChart1Data401', 'H12CloudChart1Data402', 'H12CloudChart1Data403', 'H12CloudChart1Data404', 'H12CloudChart1Data405', 'H12CloudChart1Data406', 'H12CloudChart1Data407', 'H12CloudChart1Data408', 'H12CloudChart1Data409', 'H12CloudChart1Data410', 'H12CloudChart1Data411', 'H12CloudChart1Data412', 'H12CloudChart1Data413', 'H12CloudChart1Data414', 'H12CloudChart1Data415', 'H12CloudChart1Data416', 'H12CloudChart1Data417', 'H12CloudChart1Data418', 'H12CloudChart1Data419', 'H12CloudChart1Data420', 'H12CloudChart1Data421', 'H12CloudChart1Data422', 'H12CloudChart1Data423', 'H12CloudChart1Data424', 'H12CloudChart1Data425', 'H12CloudChart1Data426', 'H12CloudChart1Data427', 'H12CloudChart1Data428', 'H12CloudChart1Data429', 'H12CloudChart1Data430', 'H12CloudChart1Data431', 'H12CloudChart1Data432', 'H12CloudChart1Data433', 'H12CloudChart1Data434', 'H12CloudChart1Data435', 'H12CloudChart1Data436', 'H12CloudChart1Data437', 'H12CloudChart1Data438', 'H12CloudChart1Data439', 'H12CloudChart1Data440', 'H12CloudChart1Data441', 'H12CloudChart1Data442', 'H12CloudChart1Data443', 'H12CloudChart1Data444', 'H12CloudChart1Data445', 'H12CloudChart1Data446', 'H12CloudChart1Data447', 'H12CloudChart1Data448', 'H12CloudChart1Data449', 'H12CloudChart1Data450', 'H12CloudChart1Data451', 'H12CloudChart1Data452', 'H12CloudChart1Data453', 'H12CloudChart1Data454', 'H12CloudChart1Data455', 'H12CloudChart1Data456', 'H12CloudChart1Data457', 'H12CloudChart1Data458', 'H12CloudChart1Data459', 'H12CloudChart1Data460', 'H12CloudChart1Data461', 'H12CloudChart1Data462', 'H12CloudChart1Data463', 'H12CloudChart1Data464', 'H12CloudChart1Data465', 'H12CloudChart1Data466', 'H12CloudChart1Data467', 'H12CloudChart1Data468', 'H12CloudChart1Data469', 'H12CloudChart1Data470', 'H12CloudChart1Data471', 'H12CloudChart1Data472', 'H12CloudChart1Data473', 'H12CloudChart1Data474', 'H12CloudChart1Data475', 'H12CloudChart1Data476', 'H12CloudChart1Data477', 'H12CloudChart1Data478', 'H12CloudChart1Data479', 'H12CloudChart1Data480', 'H12CloudChart1Data481', 'H12CloudChart1Data482', 'H12CloudChart1Data483', 'H12CloudChart1Data484', 'H12CloudChart1Data485', 'H12CloudChart1Data486', 'H12CloudChart1Data487', 'H12CloudChart1Data488', 'H12CloudChart1Data489', 'H12CloudChart1Data490', 'H12CloudChart1Data491', 'H12CloudChart1Data492', 'H12CloudChart1Data493', 'H12CloudChart1Data494', 'H12CloudChart1Data495', 'H12CloudChart1Data496', 'H12CloudChart1Data497', 'H12CloudChart1Data498', 'H12CloudChart1Data499', 'H12CloudChart1Data500', 'H12CloudChart1Data501', 'H12CloudChart1Data502', 'H12CloudChart1Data503', 'H12CloudChart1Data504', 'H12CloudChart1Data505', 'H12CloudChart1Data506', 'H12CloudChart1Data507', 'H12CloudChart1Data508', 'H12CloudChart1Data509', 'H12CloudChart1Data510', 'H12CloudChart1Data511', 'H12CloudChart1Data512', 'H12CloudChart1Data513', 'H12CloudChart1Data514', 'H12CloudChart1Data515', 'H12CloudChart1Data516', 'H12CloudChart1Data517', 'H12CloudChart1Data518', 'H12CloudChart1Data519', 'H12CloudChart1Data520', 'H12CloudChart1Data521', 'H12CloudChart1Data522', 'H12CloudChart1Data523', 'H12CloudChart1Data524', 'H12CloudChart1Data525', 'H12CloudChart1Data526', 'H12CloudChart1Data527', 'H12CloudChart1Data528', 'H12CloudChart1Data529', 'H12CloudChart1Data530', 'H12CloudChart1Data531', 'H12CloudChart1Data532', 'H12CloudChart1Data533', 'H12CloudChart1Data534', 'H12CloudChart1Data535', 'H12CloudChart1Data536', 'H12CloudChart1Data537', 'H12CloudChart1Data538', 'H12CloudChart1Data539', 'H12CloudChart1Data540', 'H12CloudChart1Data541', 'H12CloudChart1Data542', 'H12CloudChart1Data543', 'H12CloudChart1Data544', 'H12CloudChart1Data545', 'H12CloudChart1Data546', 'H12CloudChart1Data547', 'H12CloudChart1Data548', 'H12CloudChart1Data549', 'H12CloudChart1Data550', 'H12CloudChart1Data551', 'H12CloudChart1Data552', 'H12CloudChart1Data553', 'H12CloudChart1Data554', 'H12CloudChart1Data555', 'H12CloudChart1Data556', 'H12CloudChart1Data557', 'H12CloudChart1Data558', 'H12CloudChart1Data559', 'H12CloudChart1Data560', 'H12CloudChart1Data561', 'H12CloudChart1Data562', 'H12CloudChart1Proof000', 'H12CloudChart1Proof001', 'H12CloudChart1Proof002', 'H12CloudChart1Proof003', 'H12CloudChart1Proof004', 'H12CloudChart1Proof005', 'H12CloudChart1Proof006', 'H12CloudChart1Proof007', 'H12CloudChart1Proof008', 'H12CloudChart1Proof009', 'H12CloudChart1Proof010', 'H12CloudChart1Proof011', 'H12CloudChart1Proof012', 'H12CloudChart1Proof013', 'H12CloudChart1Proof014', 'H12CloudChart1Proof015', 'H12CloudChart1Proof016', 'H12CloudChart1Proof017', 'H12CloudChart1Proof018', 'H12CloudChart1Proof019', 'H12CloudChart1Proof020', 'H12CloudChart1Proof021', 'H12CloudChart1Proof022', 'H12CloudChart1Proof023', 'H12CloudChart1Proof024', 'H12CloudChart1Proof025', 'H12CloudChart1Proof026', 'H12CloudChart1Proof027', 'H12CloudChart1Proof028', 'H12CloudChart1Proof029', 'H12CloudChart1Proof030', 'H12CloudChart1Proof031', 'H12CloudChart1Proof032', 'H12CloudChart1Proof033', 'H12CloudChart1Proof034', 'H12CloudChart1Proof035', 'H12CloudChart1Proof036', 'H12CloudChart1Proof037', 'H12CloudChart1Proof038', 'H12CloudChart1Proof039', 'H12CloudChart1Proof040', 'H12CloudChart1Proof041', 'H12CloudChart1Proof042', 'H12CloudChart1Proof043', 'H12CloudChart1Proof044', 'H12CloudChart1Proof045', 'H12CloudChart1Proof046', 'H12CloudChart1Proof047', 'H12CloudChart1Proof048', 'H12CloudChart1Proof049', 'H12CloudChart1Proof050', 'H12CloudChart1Proof051', 'H12CloudChart1Proof052', 'H12CloudChart1Proof053', 'H12CloudChart1Proof054', 'H12CloudChart1Proof055', 'H12CloudChart1Proof056', 'H12CloudChart1Proof057', 'H12CloudChart1Proof058', 'H12CloudChart1Proof059', 'H12CloudChart1Proof060', 'H12CloudChart1Proof061', 'H12CloudChart1Proof062', 'H12CloudChart1Proof063', 'H12CloudChart1Proof064', 'H12CloudChart1Proof065', 'H12CloudChart1Proof066', 'H12CloudChart1Proof067', 'H12CloudChart1Proof068', 'H12CloudChart1Proof069', 'H12CloudChart1Proof070', 'H12CloudChart1Proof071', 'H12CloudChart1Proof072', 'H12CloudChart1Proof073', 'H12CloudChart1Proof074', 'H12CloudChart1Proof075', 'H12CloudChart1Proof076', 'H12CloudChart1Proof077', 'H12CloudChart1Proof078', 'H12CloudChart1Proof079', 'H12CloudChart1Proof080', 'H12CloudChart1Proof081', 'H12CloudChart1Proof082', 'H12CloudChart1Proof083', 'H12CloudChart1Proof084', 'H12CloudChart1Proof085', 'H12CloudChart1Proof086', 'H12CloudChart1Proof087', 'H12CloudChart1Proof088', 'H12CloudChart1Proof089', 'H12CloudChart1Proof090', 'H12CloudChart1Proof091', 'H12CloudChart1Proof092', 'H12CloudChart1Proof093', 'H12CloudChart1Proof094', 'H12CloudChart1Proof095', 'H12CloudChart1Proof096', 'H12CloudChart1Proof097', 'H12CloudChart1Proof098', 'H12CloudChart1Proof099', 'H12CloudChart1Proof100', 'H12CloudChart1Proof101', 'H12CloudChart1Proof102', 'H12CloudChart1Proof103', 'H12CloudChart1Proof104', 'H12CloudChart1Proof105', 'H12CloudChart1Proof106', 'H12CloudChart1Proof107', 'H12CloudChart1Proof108', 'H12CloudChart1Proof109', 'H12CloudChart1Proof110', 'H12CloudChart1Proof111', 'H12CloudChart1Proof112', 'H12CloudChart1Proof113', 'H12CloudChart1Proof114', 'H12CloudChart1Proof115', 'H12CloudChart1Proof116', 'H12CloudChart1Proof117', 'H12CloudChart1Proof118', 'H12CloudChart1Proof119', 'H12CloudChart1Proof120', 'H12CloudChart1Proof121', 'H12CloudChart1Proof122', 'H12CloudChart1Proof123', 'H12CloudChart1Proof124', 'H12CloudChart1Proof125', 'H12CloudChart1Proof126', 'H12CloudChart1Proof127', 'H12CloudChart1Proof128', 'H12CloudChart1Proof129', 'H12CloudChart1Proof130', 'H12CloudChart1Proof131', 'H12CloudChart1Proof132', 'H12CloudChart1Proof133', 'H12CloudChart1Proof134', 'H12CloudChart1Proof135', 'H12CloudChart1Proof136', 'H12CloudChart1Proof137', 'H12CloudChart1Proof138', 'H12CloudChart1Proof139', 'H12CloudChart1Proof140', 'H12CloudChart1Proof141', 'H12CloudChart1Proof142', 'H12CloudChart1Proof143', 'H12CloudChart1Proof144', 'H12CloudChart1Proof145', 'H12CloudChart1Proof146', 'H12CloudChart1Proof147', 'H12CloudChart1Proof148', 'H12CloudChart1Proof149', 'H12CloudChart1Proof150', 'H12CloudChart1Proof151', 'H12CloudChart1Proof152', 'H12CloudChart1Proof153', 'H12CloudChart1Proof154', 'H12CloudChart1Proof155', 'H12CloudChart1Proof156', 'H12CloudChart1Proof157', 'H12CloudChart1Proof158', 'H12CloudChart1Proof159', 'H12CloudChart1Proof160', 'H12CloudChart1Proof161', 'H12CloudChart1Proof162', 'H12CloudChart1Proof163', 'H12CloudChart1Proof164', 'H12CloudChart1Proof165', 'H12CloudChart1Proof166', 'H12CloudChart1Proof167', 'H12CloudChart1Proof168', 'H12CloudChart1Proof169', 'H12CloudChart1Proof170', 'H12CloudChart1Proof171', 'H12CloudChart1Proof172', 'H12CloudChart1Proof173', 'H12CloudChart1Proof174', 'H12CloudChart1Proof175', 'H12CloudChart1Proof176', 'H12CloudChart1Proof177', 'H12CloudChart1Proof178', 'H12CloudChart1Proof179', 'H12CloudChart1Proof180', 'H12CloudChart1Proof181', 'H12CloudChart1Proof182', 'H12CloudChart1Proof183', 'H12CloudChart1Proof184', 'H12CloudChart1Proof185', 'H12CloudChart1Proof186', 'H12CloudChart1Proof187', 'H12CloudChart1Proof188', 'H12CloudChart1Proof189', 'H12CloudChart1Proof190', 'H12CloudChart1Proof191', 'H12CloudChart1Proof192', 'H12CloudChart1Proof193', 'H12CloudChart1Proof194', 'H12CloudChart1Proof195', 'H12CloudChart1Proof196', 'H12CloudChart1Proof197', 'H12CloudChart1Proof198', 'H12CloudChart1Proof199', 'H12CloudChart1Proof200', 'H12CloudChart1Proof201', 'H12CloudChart1Proof202', 'H12CloudChart1Proof203', 'H12CloudChart1Proof204', 'H12CloudChart1Proof205', 'H12CloudChart1Proof206', 'H12CloudChart1Proof207', 'H12CloudChart1Proof208', 'H12CloudChart1Proof209', 'H12CloudChart1Proof210', 'H12CloudChart1Proof211', 'H12CloudChart1Proof212', 'H12CloudChart1Proof213', 'H12CloudChart1Proof214', 'H12CloudChart1Proof215', 'H12CloudChart1Proof216', 'H12CloudChart1Proof217', 'H12CloudChart1Proof218', 'H12CloudChart1Proof219', 'H12CloudChart1Proof220', 'H12CloudChart1Proof221', 'H12CloudChart1Proof222', 'H12CloudChart1Proof223', 'H12CloudChart1Proof224', 'H12CloudChart1Proof225', 'H12CloudChart1Proof226', 'H12CloudChart1Proof227', 'H12CloudChart1Proof228', 'H12CloudChart1Proof229', 'H12CloudChart1Proof230', 'H12CloudChart1Proof231', 'H12CloudChart1Proof232', 'H12CloudChart1Proof233', 'H12CloudChart1Proof234', 'H12CloudChart1Proof235', 'H12CloudChart1Proof236', 'H12CloudChart1Proof237', 'H12CloudChart1Proof238', 'H12CloudChart1'], 'engine': 'H12AffineFastState', 'coefficient_label_leaves': False, 'global_coefficient_label_index': True, 'data_chunk_size': 1200, 'proof_chunk_size': 600}
+2026-10-21T00:19:27.5266984Z GENERATING_NODES 1000 states 3991
+2026-10-21T00:19:28.0396151Z GENERATING_NODES 2000 states 8010
+2026-10-21T00:19:28.8006449Z GENERATING_NODES 3000 states 12586
+2026-10-21T00:19:29.1918747Z GENERATING_NODES 4000 states 15554
+2026-10-21T00:19:29.5699166Z GENERATING_NODES 5000 states 18514
+2026-10-21T00:19:29.9912300Z GENERATING_NODES 6000 states 21799
+2026-10-21T00:19:30.3973109Z GENERATING_NODES 7000 states 24808
+2026-10-21T00:19:30.9498425Z GENERATING_NODES 8000 states 29452
+2026-10-21T00:19:31.6012682Z GENERATING_NODES 9000 states 35032
+2026-10-21T00:19:32.2781056Z GENERATING_NODES 10000 states 40633
+2026-10-21T00:19:32.9153771Z GENERATING_NODES 11000 states 46082
+2026-10-21T00:19:33.5879326Z GENERATING_NODES 12000 states 51780
+2026-10-21T00:19:34.2520217Z GENERATING_NODES 13000 states 57388
+2026-10-21T00:19:34.9179405Z GENERATING_NODES 14000 states 63052
+2026-10-21T00:19:35.2091626Z {'status': 'GENERATED_NOT_YET_KERNEL_VERIFIED', 'chart': 2, 'subtree': 53430, 'root_frame': True, 'scope': 'Fixed-equation affine-environment subtree only; not global tree coverage.', 'full_recorded_chart_root': True, 'generator_sha256': '237be4cb5e4fc0a48ef51dbb122026d537334d4ae8c90cf4d0add9ec49d19840', 'statistics': {'nodes': 14227, 'states': 64343, 'transitions': 64342, 'terminal_candidates': 70976}, 'modules': ['H12CloudChart2Data000', 'H12CloudChart2Data001', 'H12CloudChart2Data002', 'H12CloudChart2Data003', 'H12CloudChart2Data004', 'H12CloudChart2Data005', 'H12CloudChart2Data006', 'H12CloudChart2Data007', 'H12CloudChart2Data008', 'H12CloudChart2Data009', 'H12CloudChart2Data010', 'H12CloudChart2Data011', 'H12CloudChart2Data012', 'H12CloudChart2Data013', 'H12CloudChart2Data014', 'H12CloudChart2Data015', 'H12CloudChart2Data016', 'H12CloudChart2Data017', 'H12CloudChart2Data018', 'H12CloudChart2Data019', 'H12CloudChart2Data020', 'H12CloudChart2Data021', 'H12CloudChart2Data022', 'H12CloudChart2Data023', 'H12CloudChart2Data024', 'H12CloudChart2Data025', 'H12CloudChart2Data026', 'H12CloudChart2Data027', 'H12CloudChart2Data028', 'H12CloudChart2Data029', 'H12CloudChart2Data030', 'H12CloudChart2Data031', 'H12CloudChart2Data032', 'H12CloudChart2Data033', 'H12CloudChart2Data034', 'H12CloudChart2Data035', 'H12CloudChart2Data036', 'H12CloudChart2Data037', 'H12CloudChart2Data038', 'H12CloudChart2Data039', 'H12CloudChart2Data040', 'H12CloudChart2Data041', 'H12CloudChart2Data042', 'H12CloudChart2Data043', 'H12CloudChart2Data044', 'H12CloudChart2Data045', 'H12CloudChart2Data046', 'H12CloudChart2Data047', 'H12CloudChart2Data048', 'H12CloudChart2Data049', 'H12CloudChart2Data050', 'H12CloudChart2Data051', 'H12CloudChart2Data052', 'H12CloudChart2Data053', 'H12CloudChart2Data054', 'H12CloudChart2Data055', 'H12CloudChart2Data056', 'H12CloudChart2Data057', 'H12CloudChart2Data058', 'H12CloudChart2Data059', 'H12CloudChart2Data060', 'H12CloudChart2Data061', 'H12CloudChart2Data062', 'H12CloudChart2Data063', 'H12CloudChart2Data064', 'H12CloudChart2Data065', 'H12CloudChart2Data066', 'H12CloudChart2Data067', 'H12CloudChart2Data068', 'H12CloudChart2Data069', 'H12CloudChart2Data070', 'H12CloudChart2Data071', 'H12CloudChart2Data072', 'H12CloudChart2Data073', 'H12CloudChart2Data074', 'H12CloudChart2Data075', 'H12CloudChart2Data076', 'H12CloudChart2Data077', 'H12CloudChart2Data078', 'H12CloudChart2Data079', 'H12CloudChart2Data080', 'H12CloudChart2Data081', 'H12CloudChart2Data082', 'H12CloudChart2Data083', 'H12CloudChart2Data084', 'H12CloudChart2Data085', 'H12CloudChart2Data086', 'H12CloudChart2Data087', 'H12CloudChart2Data088', 'H12CloudChart2Data089', 'H12CloudChart2Data090', 'H12CloudChart2Data091', 'H12CloudChart2Data092', 'H12CloudChart2Data093', 'H12CloudChart2Data094', 'H12CloudChart2Data095', 'H12CloudChart2Data096', 'H12CloudChart2Data097', 'H12CloudChart2Data098', 'H12CloudChart2Data099', 'H12CloudChart2Data100', 'H12CloudChart2Data101', 'H12CloudChart2Data102', 'H12CloudChart2Data103', 'H12CloudChart2Data104', 'H12CloudChart2Data105', 'H12CloudChart2Data106', 'H12CloudChart2Data107', 'H12CloudChart2Data108', 'H12CloudChart2Data109', 'H12CloudChart2Data110', 'H12CloudChart2Data111', 'H12CloudChart2Data112', 'H12CloudChart2Data113', 'H12CloudChart2Data114', 'H12CloudChart2Data115', 'H12CloudChart2Data116', 'H12CloudChart2Data117', 'H12CloudChart2Data118', 'H12CloudChart2Data119', 'H12CloudChart2Data120', 'H12CloudChart2Data121', 'H12CloudChart2Data122', 'H12CloudChart2Data123', 'H12CloudChart2Data124', 'H12CloudChart2Data125', 'H12CloudChart2Data126', 'H12CloudChart2Data127', 'H12CloudChart2Data128', 'H12CloudChart2Data129', 'H12CloudChart2Data130', 'H12CloudChart2Data131', 'H12CloudChart2Data132', 'H12CloudChart2Data133', 'H12CloudChart2Data134', 'H12CloudChart2Data135', 'H12CloudChart2Data136', 'H12CloudChart2Data137', 'H12CloudChart2Data138', 'H12CloudChart2Data139', 'H12CloudChart2Data140', 'H12CloudChart2Data141', 'H12CloudChart2Data142', 'H12CloudChart2Data143', 'H12CloudChart2Data144', 'H12CloudChart2Data145', 'H12CloudChart2Data146', 'H12CloudChart2Data147', 'H12CloudChart2Data148', 'H12CloudChart2Data149', 'H12CloudChart2Data150', 'H12CloudChart2Data151', 'H12CloudChart2Data152', 'H12CloudChart2Data153', 'H12CloudChart2Data154', 'H12CloudChart2Data155', 'H12CloudChart2Data156', 'H12CloudChart2Data157', 'H12CloudChart2Data158', 'H12CloudChart2Data159', 'H12CloudChart2Data160', 'H12CloudChart2Data161', 'H12CloudChart2Data162', 'H12CloudChart2Data163', 'H12CloudChart2Data164', 'H12CloudChart2Data165', 'H12CloudChart2Data166', 'H12CloudChart2Data167', 'H12CloudChart2Data168', 'H12CloudChart2Data169', 'H12CloudChart2Data170', 'H12CloudChart2Data171', 'H12CloudChart2Data172', 'H12CloudChart2Data173', 'H12CloudChart2Data174', 'H12CloudChart2Data175', 'H12CloudChart2Data176', 'H12CloudChart2Data177', 'H12CloudChart2Data178', 'H12CloudChart2Data179', 'H12CloudChart2Data180', 'H12CloudChart2Data181', 'H12CloudChart2Data182', 'H12CloudChart2Data183', 'H12CloudChart2Data184', 'H12CloudChart2Data185', 'H12CloudChart2Data186', 'H12CloudChart2Data187', 'H12CloudChart2Data188', 'H12CloudChart2Data189', 'H12CloudChart2Data190', 'H12CloudChart2Data191', 'H12CloudChart2Data192', 'H12CloudChart2Data193', 'H12CloudChart2Data194', 'H12CloudChart2Data195', 'H12CloudChart2Data196', 'H12CloudChart2Data197', 'H12CloudChart2Data198', 'H12CloudChart2Data199', 'H12CloudChart2Data200', 'H12CloudChart2Data201', 'H12CloudChart2Data202', 'H12CloudChart2Data203', 'H12CloudChart2Data204', 'H12CloudChart2Data205', 'H12CloudChart2Data206', 'H12CloudChart2Data207', 'H12CloudChart2Data208', 'H12CloudChart2Data209', 'H12CloudChart2Data210', 'H12CloudChart2Data211', 'H12CloudChart2Data212', 'H12CloudChart2Data213', 'H12CloudChart2Data214', 'H12CloudChart2Data215', 'H12CloudChart2Data216', 'H12CloudChart2Data217', 'H12CloudChart2Data218', 'H12CloudChart2Data219', 'H12CloudChart2Data220', 'H12CloudChart2Data221', 'H12CloudChart2Data222', 'H12CloudChart2Data223', 'H12CloudChart2Data224', 'H12CloudChart2Data225', 'H12CloudChart2Data226', 'H12CloudChart2Data227', 'H12CloudChart2Data228', 'H12CloudChart2Data229', 'H12CloudChart2Data230', 'H12CloudChart2Data231', 'H12CloudChart2Data232', 'H12CloudChart2Data233', 'H12CloudChart2Data234', 'H12CloudChart2Data235', 'H12CloudChart2Data236', 'H12CloudChart2Data237', 'H12CloudChart2Data238', 'H12CloudChart2Data239', 'H12CloudChart2Data240', 'H12CloudChart2Data241', 'H12CloudChart2Data242', 'H12CloudChart2Data243', 'H12CloudChart2Data244', 'H12CloudChart2Data245', 'H12CloudChart2Data246', 'H12CloudChart2Data247', 'H12CloudChart2Data248', 'H12CloudChart2Data249', 'H12CloudChart2Data250', 'H12CloudChart2Data251', 'H12CloudChart2Data252', 'H12CloudChart2Data253', 'H12CloudChart2Data254', 'H12CloudChart2Proof000', 'H12CloudChart2Proof001', 'H12CloudChart2Proof002', 'H12CloudChart2Proof003', 'H12CloudChart2Proof004', 'H12CloudChart2Proof005', 'H12CloudChart2Proof006', 'H12CloudChart2Proof007', 'H12CloudChart2Proof008', 'H12CloudChart2Proof009', 'H12CloudChart2Proof010', 'H12CloudChart2Proof011', 'H12CloudChart2Proof012', 'H12CloudChart2Proof013', 'H12CloudChart2Proof014', 'H12CloudChart2Proof015', 'H12CloudChart2Proof016', 'H12CloudChart2Proof017', 'H12CloudChart2Proof018', 'H12CloudChart2Proof019', 'H12CloudChart2Proof020', 'H12CloudChart2Proof021', 'H12CloudChart2Proof022', 'H12CloudChart2Proof023', 'H12CloudChart2Proof024', 'H12CloudChart2Proof025', 'H12CloudChart2Proof026', 'H12CloudChart2Proof027', 'H12CloudChart2Proof028', 'H12CloudChart2Proof029', 'H12CloudChart2Proof030', 'H12CloudChart2Proof031', 'H12CloudChart2Proof032', 'H12CloudChart2Proof033', 'H12CloudChart2Proof034', 'H12CloudChart2Proof035', 'H12CloudChart2Proof036', 'H12CloudChart2Proof037', 'H12CloudChart2Proof038', 'H12CloudChart2Proof039', 'H12CloudChart2Proof040', 'H12CloudChart2Proof041', 'H12CloudChart2Proof042', 'H12CloudChart2Proof043', 'H12CloudChart2Proof044', 'H12CloudChart2Proof045', 'H12CloudChart2Proof046', 'H12CloudChart2Proof047', 'H12CloudChart2Proof048', 'H12CloudChart2Proof049', 'H12CloudChart2Proof050', 'H12CloudChart2Proof051', 'H12CloudChart2Proof052', 'H12CloudChart2Proof053', 'H12CloudChart2Proof054', 'H12CloudChart2Proof055', 'H12CloudChart2Proof056', 'H12CloudChart2Proof057', 'H12CloudChart2Proof058', 'H12CloudChart2Proof059', 'H12CloudChart2Proof060', 'H12CloudChart2Proof061', 'H12CloudChart2Proof062', 'H12CloudChart2Proof063', 'H12CloudChart2Proof064', 'H12CloudChart2Proof065', 'H12CloudChart2Proof066', 'H12CloudChart2Proof067', 'H12CloudChart2Proof068', 'H12CloudChart2Proof069', 'H12CloudChart2Proof070', 'H12CloudChart2Proof071', 'H12CloudChart2Proof072', 'H12CloudChart2Proof073', 'H12CloudChart2Proof074', 'H12CloudChart2Proof075', 'H12CloudChart2Proof076', 'H12CloudChart2Proof077', 'H12CloudChart2Proof078', 'H12CloudChart2Proof079', 'H12CloudChart2Proof080', 'H12CloudChart2Proof081', 'H12CloudChart2Proof082', 'H12CloudChart2Proof083', 'H12CloudChart2Proof084', 'H12CloudChart2Proof085', 'H12CloudChart2Proof086', 'H12CloudChart2Proof087', 'H12CloudChart2Proof088', 'H12CloudChart2Proof089', 'H12CloudChart2Proof090', 'H12CloudChart2Proof091', 'H12CloudChart2Proof092', 'H12CloudChart2Proof093', 'H12CloudChart2Proof094', 'H12CloudChart2Proof095', 'H12CloudChart2Proof096', 'H12CloudChart2Proof097', 'H12CloudChart2Proof098', 'H12CloudChart2Proof099', 'H12CloudChart2Proof100', 'H12CloudChart2Proof101', 'H12CloudChart2Proof102', 'H12CloudChart2Proof103', 'H12CloudChart2Proof104', 'H12CloudChart2Proof105', 'H12CloudChart2Proof106', 'H12CloudChart2Proof107', 'H12CloudChart2'], 'engine': 'H12AffineFastState', 'coefficient_label_leaves': False, 'global_coefficient_label_index': True, 'data_chunk_size': 1200, 'proof_chunk_size': 600}
+2026-10-21T00:19:35.6381810Z ##[group]Run actions/cache/restore@v4
+2026-10-21T00:19:35.6381995Z with:
+2026-10-21T00:19:35.6382270Z   path: quartic_audit_2026_10_17/lean/.lake
+quartic_audit_2026_10_17/cloud_progress
+quartic_audit_2026_10_17/final_integration
+
+2026-10-21T00:19:35.6382759Z   fail-on-cache-miss: false
+2026-10-21T00:19:35.6383051Z   key: lean-h12-integration-v3-4265d1685051507075653a065b172f3d8445060ff2dae6c54b7e649067c6e5da-39520500414-1
+2026-10-21T00:19:35.6383491Z   restore-keys: lean-h12-integration-v3-4265d1685051507075653a065b172f3d8445060ff2dae6c54b7e649067c6e5da-
+
+2026-10-21T00:19:35.6383788Z   enableCrossOsArchive: false
+2026-10-21T00:19:35.6384092Z   lookup-only: false
+2026-10-21T00:19:35.6384216Z env:
+2026-10-21T00:19:35.6384326Z   PYTHONUNBUFFERED: 1
+2026-10-21T00:19:35.6384501Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:19:35.6384744Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-21T00:19:35.6385019Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:19:35.6385237Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:19:35.6385455Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:19:35.6385673Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-21T00:19:35.6385856Z ##[endgroup]
+2026-10-21T00:19:35.7106477Z (node:2171) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-21T00:19:35.7107139Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-21T00:19:35.8545219Z Cache not found for input keys: lean-h12-integration-v3-4265d1685051507075653a065b172f3d8445060ff2dae6c54b7e649067c6e5da-39520500414-1, lean-h12-integration-v3-4265d1685051507075653a065b172f3d8445060ff2dae6c54b7e649067c6e5da-
+2026-10-21T00:19:35.8660526Z ##[group]Run actions/cache/restore@v4
+2026-10-21T00:19:35.8660697Z with:
+2026-10-21T00:19:35.8660883Z   path: quartic_audit_2026_10_17/lean/.lake
+quartic_audit_2026_10_17/cloud_progress
+
+2026-10-21T00:19:35.8661241Z   key: lean-linux-v2-0-663750cf44f035a9a2948dfd8d3cc6dee760e4145f9d3d46f2a52d3854aa4523-39358421659-3
+2026-10-21T00:19:35.8661524Z   fail-on-cache-miss: true
+2026-10-21T00:19:35.8661665Z   enableCrossOsArchive: false
+2026-10-21T00:19:35.8661804Z   lookup-only: false
+2026-10-21T00:19:35.8661927Z env:
+2026-10-21T00:19:35.8662038Z   PYTHONUNBUFFERED: 1
+2026-10-21T00:19:35.8662206Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:19:35.8662628Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-21T00:19:35.8662880Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:19:35.8663096Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:19:35.8663331Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:19:35.8663549Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-21T00:19:35.8663730Z ##[endgroup]
+2026-10-21T00:19:35.9409229Z (node:2184) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-21T00:19:35.9409800Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-21T00:19:36.1006585Z Cache hit for: lean-linux-v2-0-663750cf44f035a9a2948dfd8d3cc6dee760e4145f9d3d46f2a52d3854aa4523-39358421659-3
+2026-10-21T00:19:36.1077698Z (node:2184) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-21T00:19:37.2937415Z Received 104857600 of 1592822916 (6.6%), 99.9 MBs/sec
+2026-10-21T00:19:38.2938884Z Received 260046848 of 1592822916 (16.3%), 123.9 MBs/sec
+2026-10-21T00:19:39.2949422Z Received 402653184 of 1592822916 (25.3%), 127.9 MBs/sec
+2026-10-21T00:19:40.2984187Z Received 591396864 of 1592822916 (37.1%), 140.9 MBs/sec
+2026-10-21T00:19:41.2965007Z Received 775946240 of 1592822916 (48.7%), 147.9 MBs/sec
+2026-10-21T00:19:42.2970783Z Received 939524096 of 1592822916 (59.0%), 149.2 MBs/sec
+2026-10-21T00:19:43.2970170Z Received 1124073472 of 1592822916 (70.6%), 153.1 MBs/sec
+2026-10-21T00:19:44.2983097Z Received 1283457024 of 1592822916 (80.6%), 152.9 MBs/sec
+2026-10-21T00:19:45.2979073Z Received 1463812096 of 1592822916 (91.9%), 155.0 MBs/sec
+2026-10-21T00:19:46.0705097Z Received 1592822916 of 1592822916 (100.0%), 155.4 MBs/sec
+2026-10-21T00:19:46.0706016Z Cache Size: ~1519 MB (1592822916 B)
+2026-10-21T00:19:46.0733774Z [command]/usr/bin/tar -xf /home/runner/work/_temp/21f741bb-a97d-47c6-8429-328e170fa64a/cache.tzst -P -C /home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification --use-compress-program unzstd
+2026-10-21T00:20:31.9606949Z Cache restored successfully
+2026-10-21T00:20:32.3333534Z Cache restored from key: lean-linux-v2-0-663750cf44f035a9a2948dfd8d3cc6dee760e4145f9d3d46f2a52d3854aa4523-39358421659-3
+2026-10-21T00:20:32.3932373Z ##[group]Run actions/cache/restore@v4
+2026-10-21T00:20:32.3932718Z with:
+2026-10-21T00:20:32.3932908Z   path: quartic_audit_2026_10_17/lean/.lake
+quartic_audit_2026_10_17/cloud_progress
+
+2026-10-21T00:20:32.3933258Z   key: lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-5
+2026-10-21T00:20:32.3933539Z   fail-on-cache-miss: true
+2026-10-21T00:20:32.3933681Z   enableCrossOsArchive: false
+2026-10-21T00:20:32.3933818Z   lookup-only: false
+2026-10-21T00:20:32.3933938Z env:
+2026-10-21T00:20:32.3934047Z   PYTHONUNBUFFERED: 1
+2026-10-21T00:20:32.3934206Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:20:32.3934461Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-21T00:20:32.3934693Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:20:32.3934908Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:20:32.3935136Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:20:32.3935356Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-21T00:20:32.3935537Z ##[endgroup]
+2026-10-21T00:20:32.6887010Z (node:2212) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-21T00:20:32.6887624Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-21T00:20:32.8234778Z Cache hit for: lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-5
+2026-10-21T00:20:32.8306559Z (node:2212) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-21T00:20:33.9951026Z Received 117440512 of 1593722760 (7.4%), 112.0 MBs/sec
+2026-10-21T00:20:34.9950101Z Received 130023424 of 1593722760 (8.2%), 62.0 MBs/sec
+2026-10-21T00:20:35.9990101Z Received 264241152 of 1593722760 (16.6%), 84.0 MBs/sec
+2026-10-21T00:20:36.9991931Z Received 335544320 of 1593722760 (21.1%), 79.9 MBs/sec
+2026-10-21T00:20:37.9997543Z Received 415236096 of 1593722760 (26.1%), 79.1 MBs/sec
+2026-10-21T00:20:39.0033759Z Received 545259520 of 1593722760 (34.2%), 86.6 MBs/sec
+2026-10-21T00:20:39.9997780Z Received 696254464 of 1593722760 (43.7%), 94.8 MBs/sec
+2026-10-21T00:20:41.0001144Z Received 851443712 of 1593722760 (53.4%), 101.4 MBs/sec
+2026-10-21T00:20:42.0002786Z Received 1006632960 of 1593722760 (63.2%), 106.6 MBs/sec
+2026-10-21T00:20:42.9998458Z Received 1157627904 of 1593722760 (72.6%), 110.3 MBs/sec
+2026-10-21T00:20:44.0001724Z Received 1287651328 of 1593722760 (80.8%), 111.6 MBs/sec
+2026-10-21T00:20:45.0044007Z Received 1451229184 of 1593722760 (91.1%), 115.3 MBs/sec
+2026-10-21T00:20:46.0034100Z Received 1556086784 of 1593722760 (97.6%), 114.1 MBs/sec
+2026-10-21T00:20:46.5429457Z Received 1593722760 of 1593722760 (100.0%), 112.2 MBs/sec
+2026-10-21T00:20:46.5430484Z Cache Size: ~1520 MB (1593722760 B)
+2026-10-21T00:20:46.5456596Z [command]/usr/bin/tar -xf /home/runner/work/_temp/41151949-f5f4-4a3a-8409-fd7db61cdc20/cache.tzst -P -C /home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification --use-compress-program unzstd
+2026-10-21T00:21:30.3215188Z Cache restored successfully
+2026-10-21T00:21:30.3941101Z Cache restored from key: lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-5
+2026-10-21T00:21:30.4438353Z ##[group]Run curl --fail --location --retry 3 https://raw.githubusercontent.com/contatofilipevono-rgb/hrsbf-bent-verification/44978678b335c5c33f3e139d2d27b144344ac469/research_updates/2026_10_19_overnight/chart2_complete_artifact.zip -o "$RUNNER_TEMP/chart2.zip"
+2026-10-21T00:21:30.4440207Z [36;1mcurl --fail --location --retry 3 https://raw.githubusercontent.com/contatofilipevono-rgb/hrsbf-bent-verification/44978678b335c5c33f3e139d2d27b144344ac469/research_updates/2026_10_19_overnight/chart2_complete_artifact.zip -o "$RUNNER_TEMP/chart2.zip"[0m
+2026-10-21T00:21:30.4441337Z [36;1mecho "dc434dc6a4365ea97d2431a2862b092993c8aec5766c043306ff08c19c489fb2  $RUNNER_TEMP/chart2.zip" | sha256sum --check[0m
+2026-10-21T00:21:30.4442751Z [36;1mpython -c 'import os,zipfile; from pathlib import Path; z=zipfile.ZipFile(Path(os.environ["RUNNER_TEMP"])/"chart2.zip"); assert z.testzip() is None; assert all(Path(n).resolve().is_relative_to(Path.cwd().resolve()) for n in z.namelist()); [z.extract(n) for n in z.namelist() if n.startswith("cloud_progress/chart2/")]'[0m
+2026-10-21T00:21:30.5667502Z shell: /usr/bin/bash -e {0}
+2026-10-21T00:21:30.5667710Z env:
+2026-10-21T00:21:30.5667846Z   PYTHONUNBUFFERED: 1
+2026-10-21T00:21:30.5668063Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:21:30.5668323Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-21T00:21:30.5668578Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:21:30.5668811Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:21:30.5669039Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:21:30.5669272Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-21T00:21:30.5669467Z ##[endgroup]
+2026-10-21T00:21:30.6547577Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-10-21T00:21:30.6548023Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-10-21T00:21:30.6548235Z 
+2026-10-21T00:21:31.0570043Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-21T00:21:31.1526689Z   0 11.9M    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-10-21T00:21:31.1527324Z 100 11.9M  100 11.9M    0     0  24.0M      0 --:--:-- --:--:-- --:--:-- 24.0M
+2026-10-21T00:21:31.1640275Z /home/runner/work/_temp/chart2.zip: OK
+2026-10-21T00:21:31.5334106Z ##[group]Run python tools/verify_final.py
+2026-10-21T00:21:31.5334325Z [36;1mpython tools/verify_final.py[0m
+2026-10-21T00:21:31.5376423Z shell: /usr/bin/bash -e {0}
+2026-10-21T00:21:31.5376574Z env:
+2026-10-21T00:21:31.5376696Z   PYTHONUNBUFFERED: 1
+2026-10-21T00:21:31.5376871Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:21:31.5377120Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-21T00:21:31.5377362Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:21:31.5377581Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:21:31.5377794Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T00:21:31.5378011Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-21T00:21:31.5378219Z ##[endgroup]
+2026-10-21T00:21:59.9262691Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data000
+2026-10-21T00:23:47.4217646Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data001
+2026-10-21T00:25:11.5061323Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data002
+2026-10-21T00:26:24.9339969Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data003
+2026-10-21T00:27:37.4628068Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data004
+2026-10-21T00:28:39.3781416Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data005
+2026-10-21T00:29:55.0673577Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data006
+2026-10-21T00:31:12.9349210Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data007
+2026-10-21T00:32:42.5063865Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data008
+2026-10-21T00:33:27.4406800Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data009
+2026-10-21T00:34:22.9974329Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data010
+2026-10-21T00:35:06.3353959Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data011
+2026-10-21T00:36:02.4549134Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data012
+2026-10-21T00:36:50.7962840Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data013
+2026-10-21T00:37:35.1225999Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data014
+2026-10-21T00:38:24.5717111Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data015
+2026-10-21T00:39:10.1131309Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data016
+2026-10-21T00:40:08.5365002Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data017
+2026-10-21T00:41:16.8888986Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data018
+2026-10-21T00:42:05.4375032Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data019
+2026-10-21T00:43:17.0953809Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data020
+2026-10-21T00:44:10.2083137Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data021
+2026-10-21T00:44:56.1575431Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data022
+2026-10-21T00:45:40.8000678Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data023
+2026-10-21T00:46:50.8293037Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data024
+2026-10-21T00:48:07.1870005Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data025
+2026-10-21T00:49:17.6320219Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data026
+2026-10-21T00:50:26.5778946Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data027
+2026-10-21T00:51:21.0028358Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data028
+2026-10-21T00:52:21.1435187Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data029
+2026-10-21T00:53:20.1919185Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data030
+2026-10-21T00:54:36.2737740Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data031
+2026-10-21T00:55:49.4505928Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data032
+2026-10-21T00:56:58.9092634Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data033
+2026-10-21T00:58:02.2442711Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data034
+2026-10-21T00:59:05.2859654Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data035
+2026-10-21T01:00:34.8864380Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data036
+2026-10-21T01:02:20.6850150Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data037
+2026-10-21T01:03:53.1491739Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data038
+2026-10-21T01:05:52.8346425Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data039
+2026-10-21T01:07:34.7170135Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data040
+2026-10-21T01:09:16.8111530Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data041
+2026-10-21T01:10:57.8963034Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data042
+2026-10-21T01:11:45.5462657Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data043
+2026-10-21T01:12:38.6965565Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data044
+2026-10-21T01:13:56.6495607Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data045
+2026-10-21T01:14:33.8650659Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data046
+2026-10-21T01:15:15.2863876Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data047
+2026-10-21T01:15:58.9129604Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data048
+2026-10-21T01:16:40.1399340Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data049
+2026-10-21T01:17:22.4685040Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data050
+2026-10-21T01:18:17.9129380Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data051
+2026-10-21T01:19:23.7716296Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data052
+2026-10-21T01:20:56.7491707Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data053
+2026-10-21T01:21:47.9928323Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data054
+2026-10-21T01:22:45.6510418Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data055
+2026-10-21T01:24:10.7207719Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data056
+2026-10-21T01:25:46.3156461Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data057
+2026-10-21T01:27:24.3757279Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data058
+2026-10-21T01:28:17.8910180Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data059
+2026-10-21T01:29:36.5668004Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data060
+2026-10-21T01:30:57.5544101Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data061
+2026-10-21T01:32:26.2096633Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data062
+2026-10-21T01:34:02.6864881Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data063
+2026-10-21T01:35:21.9570499Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data064
+2026-10-21T01:36:24.4965197Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data065
+2026-10-21T01:37:23.5096386Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data066
+2026-10-21T01:38:35.0634341Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data067
+2026-10-21T01:39:56.5479260Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data068
+2026-10-21T01:41:13.1175988Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data069
+2026-10-21T01:42:12.1371763Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data070
+2026-10-21T01:43:41.4812275Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data071
+2026-10-21T01:44:24.2178779Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data072
+2026-10-21T01:45:45.7909850Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data073
+2026-10-21T01:47:07.9689262Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data074
+2026-10-21T01:48:21.2390015Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data075
+2026-10-21T01:49:45.3880422Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data076
+2026-10-21T01:50:53.9359599Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data077
+2026-10-21T01:52:10.8929915Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data078
+2026-10-21T01:52:59.0354791Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data079
+2026-10-21T01:53:37.6529999Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data080
+2026-10-21T01:54:30.5128877Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data081
+2026-10-21T01:55:49.9912307Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data082
+2026-10-21T01:57:22.1442047Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data083
+2026-10-21T01:59:05.3394033Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data084
+2026-10-21T02:00:16.1087688Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data085
+2026-10-21T02:01:41.4640453Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data086
+2026-10-21T02:03:11.1336792Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data087
+2026-10-21T02:04:16.6956002Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data088
+2026-10-21T02:05:03.0434868Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data089
+2026-10-21T02:06:31.1211794Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data090
+2026-10-21T02:07:50.7920396Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data091
+2026-10-21T02:09:18.1692808Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data092
+2026-10-21T02:10:30.9980886Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data093
+2026-10-21T02:11:05.7147433Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data094
+2026-10-21T02:12:12.8567774Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data095
+2026-10-21T02:13:28.6244010Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data096
+2026-10-21T02:14:36.4778956Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data097
+2026-10-21T02:15:50.5338936Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data098
+2026-10-21T02:17:32.3254272Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data099
+2026-10-21T02:19:58.5349077Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data100
+2026-10-21T02:21:35.4157079Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data101
+2026-10-21T02:22:48.0799709Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data102
+2026-10-21T02:23:28.8045072Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data103
+2026-10-21T02:24:15.9570589Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data104
+2026-10-21T02:24:55.5880161Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data105
+2026-10-21T02:25:32.7043608Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data106
+2026-10-21T02:26:09.2268356Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data107
+2026-10-21T02:26:47.3529958Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data108
+2026-10-21T02:27:25.6714852Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data109
+2026-10-21T02:28:01.8899952Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data110
+2026-10-21T02:28:35.6002948Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data111
+2026-10-21T02:29:11.4232859Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data112
+2026-10-21T02:29:53.7687959Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data113
+2026-10-21T02:30:33.1973402Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data114
+2026-10-21T02:31:07.3132749Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data115
+2026-10-21T02:31:38.3147320Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data116
+2026-10-21T02:32:11.5250336Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data117
+2026-10-21T02:32:47.2326517Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data118
+2026-10-21T02:33:20.0334676Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data119
+2026-10-21T02:33:51.7347647Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data120
+2026-10-21T02:34:24.4400707Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data121
+2026-10-21T02:35:00.9651074Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data122
+2026-10-21T02:35:34.4807186Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data123
+2026-10-21T02:36:06.1851264Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data124
+2026-10-21T02:36:39.3925144Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data125
+2026-10-21T02:37:13.3978057Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data126
+2026-10-21T02:37:50.4121545Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data127
+2026-10-21T02:38:23.2197063Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data128
+2026-10-21T02:38:55.8295790Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data129
+2026-10-21T02:39:28.1316293Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data130
+2026-10-21T02:40:01.2435898Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data131
+2026-10-21T02:40:37.8610985Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data132
+2026-10-21T02:41:08.7586523Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data133
+2026-10-21T02:41:40.4760397Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data134
+2026-10-21T02:42:13.4279782Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data135
+2026-10-21T02:42:50.0377764Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data136
+2026-10-21T02:43:24.2464845Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data137
+2026-10-21T02:43:57.3590114Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data138
+2026-10-21T02:44:28.4591285Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data139
+2026-10-21T02:44:58.9629869Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data140
+2026-10-21T02:45:36.9807804Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data141
+2026-10-21T02:46:14.7017759Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data142
+2026-10-21T02:46:51.2249354Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data143
+2026-10-21T02:47:26.9495549Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data144
+2026-10-21T02:48:05.9777217Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data145
+2026-10-21T02:48:46.1057040Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data146
+2026-10-21T02:49:21.1227089Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data147
+2026-10-21T02:49:55.5331164Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data148
+2026-10-21T02:50:32.6503853Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data149
+2026-10-21T02:51:14.1859176Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data150
+2026-10-21T02:51:53.7212361Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data151
+2026-10-21T02:52:35.3695257Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data152
+2026-10-21T02:53:24.6372650Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data153
+2026-10-21T02:54:04.3709394Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data154
+2026-10-21T02:54:44.8024916Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data155
+2026-10-21T02:55:21.1231646Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data156
+2026-10-21T02:55:58.0482061Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data157
+2026-10-21T02:56:31.1060822Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data158
+2026-10-21T02:57:10.6382314Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data159
+2026-10-21T02:57:54.2481276Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data160
+2026-10-21T02:58:36.0888151Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data161
+2026-10-21T02:59:11.2033204Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data162
+2026-10-21T02:59:49.5281221Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data163
+2026-10-21T03:00:27.9506516Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data164
+2026-10-21T03:01:06.4817762Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data165
+2026-10-21T03:01:43.5146615Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data166
+2026-10-21T03:02:21.3487615Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data167
+2026-10-21T03:02:56.7694365Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data168
+2026-10-21T03:03:38.8035930Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data169
+2026-10-21T03:04:19.9369344Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data170
+2026-10-21T03:04:55.5559296Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data171
+2026-10-21T03:05:31.0720491Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data172
+2026-10-21T03:06:07.9890497Z RECONSTRUCT_CERTIFIED_OBJECT H12CloudChart2Data173
+2026-10-21T03:06:31.5929851Z PARTIAL_OBJECT_TIMEOUT H12CloudChart2Data173
+2026-10-21T03:06:31.6059174Z ##[group]Run actions/cache/save@v4
+2026-10-21T03:06:31.6059339Z with:
+2026-10-21T03:06:31.6059602Z   path: quartic_audit_2026_10_17/lean/.lake
+quartic_audit_2026_10_17/cloud_progress
+quartic_audit_2026_10_17/final_integration
+
+2026-10-21T03:06:31.6060045Z   key: lean-h12-integration-v3-4265d1685051507075653a065b172f3d8445060ff2dae6c54b7e649067c6e5da-39520500414-1
+2026-10-21T03:06:31.6060358Z   enableCrossOsArchive: false
+2026-10-21T03:06:31.6060498Z env:
+2026-10-21T03:06:31.6060609Z   PYTHONUNBUFFERED: 1
+2026-10-21T03:06:31.6060773Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T03:06:31.6061060Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-21T03:06:31.6061293Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T03:06:31.6061511Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T03:06:31.6061731Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T03:06:31.6061968Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-21T03:06:31.6062150Z ##[endgroup]
+2026-10-21T03:06:31.6773798Z (node:136985) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-21T03:06:31.6774497Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-21T03:06:31.6952891Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification --files-from manifest.txt --use-compress-program zstdmt
+2026-10-21T03:07:19.1370608Z (node:136985) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-21T03:07:20.1277212Z Sent 0 of 3392375282 (0.0%), 0.0 MBs/sec
+2026-10-21T03:07:21.1276616Z Sent 469762048 of 3392375282 (13.8%), 224.0 MBs/sec
+2026-10-21T03:07:22.1323574Z Sent 738197504 of 3392375282 (21.8%), 234.6 MBs/sec
+2026-10-21T03:07:23.1320753Z Sent 1140850688 of 3392375282 (33.6%), 271.9 MBs/sec
+2026-10-21T03:07:24.1292577Z Sent 1543503872 of 3392375282 (45.5%), 294.3 MBs/sec
+2026-10-21T03:07:25.1290827Z Sent 2080374784 of 3392375282 (61.3%), 330.6 MBs/sec
+2026-10-21T03:07:26.1297069Z Sent 2483027968 of 3392375282 (73.2%), 338.2 MBs/sec
+2026-10-21T03:07:27.1327932Z Sent 2818572288 of 3392375282 (83.1%), 335.9 MBs/sec
+2026-10-21T03:07:28.1306986Z Sent 3191048690 of 3392375282 (94.1%), 338.0 MBs/sec
+2026-10-21T03:07:28.5926428Z Sent 3392375282 of 3392375282 (100.0%), 341.8 MBs/sec
+2026-10-21T03:07:28.9692996Z Cache saved with key: lean-h12-integration-v3-4265d1685051507075653a065b172f3d8445060ff2dae6c54b7e649067c6e5da-39520500414-1
+2026-10-21T03:07:28.9820530Z ##[group]Run python - <<'PY'
+2026-10-21T03:07:28.9820738Z [36;1mpython - <<'PY'[0m
+2026-10-21T03:07:28.9820884Z [36;1mfrom pathlib import Path[0m
+2026-10-21T03:07:28.9821076Z [36;1mimport hashlib,json,tarfile[0m
+2026-10-21T03:07:28.9821257Z [36;1mroot=Path.cwd(); lake=root/'lean/.lake'[0m
+2026-10-21T03:07:28.9821529Z [36;1mrecords=json.loads((root/'cloud_progress/chart2/progress.json').read_bytes())['results'][0m
+2026-10-21T03:07:28.9821788Z [36;1mvalid=set()[0m
+2026-10-21T03:07:28.9821922Z [36;1mfor rec in records:[0m
+2026-10-21T03:07:28.9822279Z [36;1m    n=rec['module']; p=lake/'build/lib/lean'/(n+'.olean')[0m
+2026-10-21T03:07:28.9822919Z [36;1m    if n.startswith('H12CloudChart2') and p.exists() and hashlib.sha256(p.read_bytes()).hexdigest()==rec['olean_sha256']:[0m
+2026-10-21T03:07:28.9823390Z [36;1m        valid.add(n)[0m
+2026-10-21T03:07:28.9823695Z [36;1mdest=root/'final_integration/chart2_certified_objects.tar.gz'[0m
+2026-10-21T03:07:28.9824023Z [36;1mmanifest={}[0m
+2026-10-21T03:07:28.9824177Z [36;1mwith tarfile.open(dest,'w:gz') as tar:[0m
+2026-10-21T03:07:28.9824367Z [36;1m    for p in sorted(lake.rglob('*')):[0m
+2026-10-21T03:07:28.9824605Z [36;1m        if p.is_file() and not p.is_symlink() and p.name.split('.')[0] in valid:[0m
+2026-10-21T03:07:28.9824930Z [36;1m            rel=p.relative_to(root).as_posix(); before=hashlib.sha256(p.read_bytes()).hexdigest()[0m
+2026-10-21T03:07:28.9825210Z [36;1m            tar.add(p,arcname=rel,recursive=False)[0m
+2026-10-21T03:07:28.9825492Z [36;1m            assert hashlib.sha256(p.read_bytes()).hexdigest()==before,'File changed during snapshot'[0m
+2026-10-21T03:07:28.9825765Z [36;1m            manifest[rel]=before[0m
+2026-10-21T03:07:28.9825943Z [36;1mwith tarfile.open(dest,'r:gz') as tar:[0m
+2026-10-21T03:07:28.9826241Z [36;1m    assert all(m.isfile() and m.name.startswith('lean/.lake/') and '..' not in Path(m.name).parts for m in tar)[0m
+2026-10-21T03:07:28.9826652Z [36;1m    for m in tar.getmembers():assert hashlib.sha256(tar.extractfile(m).read()).hexdigest()==manifest[m.name][0m
+2026-10-21T03:07:28.9827223Z [36;1m(root/'final_integration/chart2_snapshot_manifest.json').write_text(json.dumps(dict(modules=sorted(valid),files=manifest,archive_sha256=hashlib.sha256(dest.read_bytes()).hexdigest()),indent=2)+'\n')[0m
+2026-10-21T03:07:28.9827732Z [36;1mprint('PASS_INDEPENDENT_BINARY_SNAPSHOT',len(valid),len(manifest))[0m
+2026-10-21T03:07:28.9827945Z [36;1mPY[0m
+2026-10-21T03:07:29.0471634Z shell: /usr/bin/bash -e {0}
+2026-10-21T03:07:29.0471803Z env:
+2026-10-21T03:07:29.0471936Z   PYTHONUNBUFFERED: 1
+2026-10-21T03:07:29.0472114Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T03:07:29.0472362Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-21T03:07:29.0472701Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T03:07:29.0472920Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T03:07:29.0473145Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T03:07:29.0473364Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-21T03:07:29.0473547Z ##[endgroup]
+2026-10-21T03:13:58.3988291Z PASS_INDEPENDENT_BINARY_SNAPSHOT 173 1384
+2026-10-21T03:13:58.4133201Z ##[group]Run actions/upload-artifact@v4
+2026-10-21T03:13:58.4133384Z with:
+2026-10-21T03:13:58.4133533Z   name: lean-final-integration-39520500414-1
+2026-10-21T03:13:58.4133704Z   retention-days: 90
+2026-10-21T03:13:58.4133846Z   if-no-files-found: error
+2026-10-21T03:13:58.4134498Z   path: quartic_audit_2026_10_17/final_integration/
+quartic_audit_2026_10_17/lean/H12Final.lean
+quartic_audit_2026_10_17/tools/verify_final.py
+quartic_audit_2026_10_17/tools/integration_plan.json
+quartic_audit_2026_10_17/lean/.lake/build/lib/lean/H12Final.olean
+quartic_audit_2026_10_17/lean/.lake/build/lib/lean/H12Fourier.olean
+
+2026-10-21T03:13:58.4135144Z   compression-level: 6
+2026-10-21T03:13:58.4135281Z   overwrite: false
+2026-10-21T03:13:58.4135415Z   include-hidden-files: false
+2026-10-21T03:13:58.4135565Z env:
+2026-10-21T03:13:58.4135682Z   PYTHONUNBUFFERED: 1
+2026-10-21T03:13:58.4135855Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T03:13:58.4136122Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-21T03:13:58.4136364Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T03:13:58.4136590Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T03:13:58.4136812Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T03:13:58.4137200Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-21T03:13:58.4137389Z ##[endgroup]
+2026-10-21T03:13:58.5344910Z (node:137097) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-21T03:13:58.5345944Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-21T03:13:58.5628417Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-10-21T03:13:58.5629666Z The least common ancestor is /home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification/quartic_audit_2026_10_17. This will be the root directory of the artifact
+2026-10-21T03:13:58.5630321Z With the provided path, there will be 181 files uploaded
+2026-10-21T03:13:58.5630636Z Artifact name is valid!
+2026-10-21T03:13:58.5630795Z Root directory input is valid!
+2026-10-21T03:13:58.8727854Z Beginning upload of artifact content to blob storage
+2026-10-21T03:13:59.2216853Z (node:137097) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-21T03:13:59.6343726Z Uploaded bytes 8388608
+2026-10-21T03:13:59.9132273Z Uploaded bytes 16777216
+2026-10-21T03:14:00.0547338Z Uploaded bytes 25165824
+2026-10-21T03:14:00.0927580Z Uploaded bytes 33554432
+2026-10-21T03:14:00.2164511Z Uploaded bytes 41943040
+2026-10-21T03:14:00.4301482Z Uploaded bytes 50331648
+2026-10-21T03:14:00.6098633Z Uploaded bytes 58720256
+2026-10-21T03:14:00.8323783Z Uploaded bytes 67108864
+2026-10-21T03:14:01.0417808Z Uploaded bytes 75497472
+2026-10-21T03:14:01.1894836Z Uploaded bytes 83886080
+2026-10-21T03:14:01.3555522Z Uploaded bytes 92274688
+2026-10-21T03:14:01.5555619Z Uploaded bytes 100663296
+2026-10-21T03:14:01.7999395Z Uploaded bytes 109051904
+2026-10-21T03:14:01.9139187Z Uploaded bytes 117440512
+2026-10-21T03:14:02.0965105Z Uploaded bytes 125829120
+2026-10-21T03:14:02.2911789Z Uploaded bytes 134217728
+2026-10-21T03:14:02.5109956Z Uploaded bytes 142606336
+2026-10-21T03:14:02.7019171Z Uploaded bytes 150994944
+2026-10-21T03:14:02.8135346Z Uploaded bytes 159383552
+2026-10-21T03:14:03.1218588Z Uploaded bytes 167772160
+2026-10-21T03:14:03.2389596Z Uploaded bytes 176160768
+2026-10-21T03:14:03.4193011Z Uploaded bytes 184549376
+2026-10-21T03:14:03.6011519Z Uploaded bytes 192937984
+2026-10-21T03:14:03.8465080Z Uploaded bytes 201326592
+2026-10-21T03:14:03.9857873Z Uploaded bytes 209715200
+2026-10-21T03:14:04.1405941Z Uploaded bytes 218103808
+2026-10-21T03:14:04.4097193Z Uploaded bytes 226492416
+2026-10-21T03:14:04.5004378Z Uploaded bytes 234881024
+2026-10-21T03:14:04.7591544Z Uploaded bytes 243269632
+2026-10-21T03:14:04.9181354Z Uploaded bytes 251658240
+2026-10-21T03:14:05.2671778Z Uploaded bytes 260046848
+2026-10-21T03:14:05.3076171Z Uploaded bytes 268435456
+2026-10-21T03:14:05.4634024Z Uploaded bytes 276824064
+2026-10-21T03:14:05.7173765Z Uploaded bytes 285212672
+2026-10-21T03:14:05.8641962Z Uploaded bytes 293601280
+2026-10-21T03:14:06.0535953Z Uploaded bytes 301989888
+2026-10-21T03:14:06.2019832Z Uploaded bytes 310378496
+2026-10-21T03:14:06.4089754Z Uploaded bytes 318767104
+2026-10-21T03:14:06.6711981Z Uploaded bytes 327155712
+2026-10-21T03:14:06.8346090Z Uploaded bytes 335544320
+2026-10-21T03:14:07.0364930Z Uploaded bytes 343932928
+2026-10-21T03:14:07.2695098Z Uploaded bytes 352321536
+2026-10-21T03:14:07.3820876Z Uploaded bytes 360710144
+2026-10-21T03:14:07.5833513Z Uploaded bytes 369098752
+2026-10-21T03:14:07.7527430Z Uploaded bytes 377487360
+2026-10-21T03:14:07.9469073Z Uploaded bytes 385875968
+2026-10-21T03:14:08.2604821Z Uploaded bytes 394264576
+2026-10-21T03:14:08.4070671Z Uploaded bytes 402653184
+2026-10-21T03:14:08.5002184Z Uploaded bytes 411041792
+2026-10-21T03:14:08.6695574Z Uploaded bytes 419430400
+2026-10-21T03:14:08.8947868Z Uploaded bytes 426773250
+2026-10-21T03:14:08.9384842Z Finished uploading artifact content to blob storage!
+2026-10-21T03:14:08.9386674Z SHA256 digest of uploaded artifact zip is cf62a3bd5b8c8359ba30ccaf7d49de09ef874b894a227102c3ff202084c2297b
+2026-10-21T03:14:08.9388620Z Finalizing artifact upload
+2026-10-21T03:14:09.2143973Z Artifact lean-final-integration-39520500414-1.zip successfully finalized. Artifact ID 12317913064
+2026-10-21T03:14:09.2144796Z Artifact lean-final-integration-39520500414-1 has been successfully uploaded! Final size is 426773250 bytes. Artifact ID is 12317913064
+2026-10-21T03:14:09.2150091Z Artifact download URL: https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/39520500414/artifacts/12317913064
+2026-10-21T03:14:09.2357827Z ##[group]Run python - <<'PY'
+2026-10-21T03:14:09.2358043Z [36;1mpython - <<'PY'[0m
+2026-10-21T03:14:09.2358235Z [36;1mimport os,json,time,urllib.request,urllib.parse[0m
+2026-10-21T03:14:09.2358475Z [36;1mkey=os.environ['EXPECTED_CACHE_KEY']; assert key[0m
+2026-10-21T03:14:09.2358868Z [36;1murl='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']+'/actions/caches?'+urllib.parse.urlencode({'key':key,'per_page':100})[0m
+2026-10-21T03:14:09.2359231Z [36;1mfor attempt in range(5):[0m
+2026-10-21T03:14:09.2359629Z [36;1m    req=urllib.request.Request(url,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'Lean-checkpoint-audit'})[0m
+2026-10-21T03:14:09.2360109Z [36;1m    with urllib.request.urlopen(req,timeout=30) as response:q=json.load(response)[0m
+2026-10-21T03:14:09.2360501Z [36;1m    found=[c for c in q['actions_caches'] if c['key']==key and c['ref']==os.environ['GITHUB_REF'] and c['size_in_bytes']>0][0m
+2026-10-21T03:14:09.2360868Z [36;1m    if found:print('PASS_CACHE_PERSISTENCE',key,found[0]['size_in_bytes']);break[0m
+2026-10-21T03:14:09.2361111Z [36;1m    time.sleep(2)[0m
+2026-10-21T03:14:09.2361377Z [36;1melse:raise RuntimeError('Cache save not confirmed; artifact preserved; diagnose before resuming')[0m
+2026-10-21T03:14:09.2361648Z [36;1mPY[0m
+2026-10-21T03:14:09.2405219Z shell: /usr/bin/bash -e {0}
+2026-10-21T03:14:09.2405374Z env:
+2026-10-21T03:14:09.2405499Z   PYTHONUNBUFFERED: 1
+2026-10-21T03:14:09.2405685Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T03:14:09.2405940Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-21T03:14:09.2406192Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T03:14:09.2406425Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T03:14:09.2406651Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T03:14:09.2406890Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-21T03:14:09.2411919Z   GH_TOKEN: ***
+2026-10-21T03:14:09.2412243Z   EXPECTED_CACHE_KEY: lean-h12-integration-v3-4265d1685051507075653a065b172f3d8445060ff2dae6c54b7e649067c6e5da-39520500414-1
+2026-10-21T03:14:09.2412739Z ##[endgroup]
+2026-10-21T03:14:09.5089980Z PASS_CACHE_PERSISTENCE lean-h12-integration-v3-4265d1685051507075653a065b172f3d8445060ff2dae6c54b7e649067c6e5da-39520500414-1 3392375282
+2026-10-21T03:14:09.5238056Z Post job cleanup.
+2026-10-21T03:14:09.6089570Z (node:137114) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-21T03:14:09.6090093Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-21T03:14:09.6248745Z Post job cleanup.
+2026-10-21T03:14:09.6873669Z [command]/usr/bin/git version
+2026-10-21T03:14:09.6910687Z git version 2.55.0
+2026-10-21T03:14:09.6936778Z Temporarily overriding HOME='/home/runner/work/_temp/948f92ce-1443-4a90-b9cc-b8efdd61907c' before making global git config changes
+2026-10-21T03:14:09.6937559Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-21T03:14:09.6939317Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/hrsbf-bent-verification/hrsbf-bent-verification
+2026-10-21T03:14:09.6975437Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-21T03:14:09.7008350Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-21T03:14:09.7260540Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-21T03:14:09.7290626Z http.https://github.com/.extraheader
+2026-10-21T03:14:09.7299934Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-21T03:14:09.7341451Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-21T03:14:09.7555060Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-21T03:14:09.7594283Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-21T03:14:09.7930284Z Cleaning up orphan processes
+2026-10-21T03:14:09.8120914Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/cache/restore@v4, actions/cache/save@v4, actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

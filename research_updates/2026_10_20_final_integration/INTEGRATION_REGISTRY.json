@@ -1,10 +1,10 @@
 {
   "run": 39520500414,
-  "job": 118962904391,
-  "attempt": 1,
+  "job": 119018064985,
+  "attempt": 2,
   "commit": "344ab2e1b330d4a6be3f00603e9423db39cf3354",
   "branch": "fix/lean-resume-stability",
-  "status": "RUNNING_PROCESS_SAFE_V3",
+  "status": "RUNNING_ATTEMPT2_RESTORE_CONFIRMATION_PENDING",
   "global_proof_complete": false,
   "previous_run": 39499423162,
   "previous_conclusion": "PARTIAL_OBJECT_TIMEOUT_CACHE_SAVE_FAILED",
@@ -16,5 +16,12 @@
   "started_at": "2026-10-21T00:18:17Z",
   "independent_binary_artifact": true,
   "cache_miss_on_later_attempts_fails": true,
-  "process_tree_timeout_live_test": "PASS"
+  "process_tree_timeout_live_test": "PASS",
+  "last_preserved_attempt": 1,
+  "last_preserved_objects": 173,
+  "last_validated_object": "H12CloudChart2Data172",
+  "next_module": "H12CloudChart2Data173",
+  "last_preserved_cache_key": "lean-h12-integration-v3-4265d1685051507075653a065b172f3d8445060ff2dae6c54b7e649067c6e5da-39520500414-1",
+  "last_preserved_artifact_sha256": "cf62a3bd5b8c8359ba30ccaf7d49de09ef874b894a227102c3ff202084c2297b",
+  "binary_snapshot_sha256": "9a5ecbfedfc3fc8cfc0d53a1229c5f698fee4fb12720754711732cbe1d32ab1a"
 }
