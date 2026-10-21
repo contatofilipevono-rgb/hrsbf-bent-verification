@@ -1,0 +1,46 @@
+{
+  "title": "Nonexistence of homogeneous rotation symmetric bent functions of degree four in twelve variables",
+  "author": "Filipe Martins Vono",
+  "figshare_author_id": 25420263,
+  "orcid": "0009-0009-4994-8533",
+  "email": "contatofilipevono@gmail.com",
+  "affiliation": "Centro Universitário de Belo Horizonte (UniBH), Belo Horizonte, Brazil",
+  "license": "CC BY 4.0",
+  "related_preprint": "https://doi.org/10.6084/m9.figshare.34165260.v2",
+  "figshare_draft_id": 34737294,
+  "publication_status": "FINAL_DRAFT_UPDATED_AWAITING_ACTION_TIME_TERMS_CONFIRMATION",
+  "files": [
+    {
+      "name": "H12_quartic_preprint_v1.pdf",
+      "bytes": 139070,
+      "sha256": "f2a479ae02365b9726de5d4c0ba05c30fac4cec2aeb54ce82e3917feaba81a91"
+    },
+    {
+      "name": "H12_preprint_source.zip",
+      "bytes": 48675,
+      "sha256": "53da401f293cdf5e0800ceadadc59221410ec54adf0121cecc86790652cae8ea"
+    },
+    {
+      "name": "H12_independent_verification.zip",
+      "bytes": 3013239,
+      "sha256": "538d4af3e43c43f703853ba913b63da3024c4545433917151894bcfa1c7955ff"
+    },
+    {
+      "name": "H12_formal_sources.zip",
+      "bytes": 49233663,
+      "sha256": "89aa7f8df2aaa20c9466955be9851f275ff20b2a1cb7aaf06c27cdea23caf6ac"
+    },
+    {
+      "name": "H12_final_kernel_records.zip",
+      "bytes": 16584,
+      "sha256": "cee6da92687718399a9c2c923f8b5adf0f7fea1843e2cc203556e57ad794f5ad"
+    }
+  ],
+  "review_package_status": "TWO_ADVERSARIAL_ROUNDS_TREATED",
+  "external_peer_review_completed": false,
+  "upload_confirmation": "Figshare editor verified five complete files, final PDF135.81KB first, revised source47.53KB, independent checker2.87MB, formal sources46.95MB, final records16.20KB; superseded three copies recoverable for30days. Current item remains Draft.",
+  "publication_hold": "Only final acceptance of Figshare terms and permanent public availability remains. Author approved publication of final preprint and confirmed no funding/no conflicts.",
+  "author_approved_preprint": true,
+  "funding": "None, confirmed by author",
+  "competing_interests": "None, confirmed by author"
+}
