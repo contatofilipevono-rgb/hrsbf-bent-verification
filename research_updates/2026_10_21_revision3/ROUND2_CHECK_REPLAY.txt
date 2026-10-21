@@ -1,0 +1,34 @@
+PASS  Appendix A has 43 rows indexed 0..42
+PASS  orbits disjoint and cover 495 supports
+PASS  Lean quarticOrbits == Appendix A orbits (index by index, as sets)
+PASS  Lean orbit lists have no duplicates
+PASS  Burnside: 43 orbits at n=12
+PASS  Burnside: 116 orbits at n=16
+PASS  43 filter masks, popcount 8
+PASS  filter masks hit 43 distinct 8-set orbits
+PASS  parity of every basis restriction is even (A9 tautology)
+PASS  (3.2) equals second weight bit; parity always 0 (25 random c x 43 filters)
+PASS  R_1: 22 products reproduce (3.3)
+PASS  R_2: 1 products reproduce (3.3)
+PASS  R_3: 24 products reproduce (3.3)
+PASS  Q30 has mask 975 = 0x3cf
+PASS  Q30 = L + c26 + c40 + c26c42
+PASS  L = R1 + R3
+PASS  (3.8) identity holds on all 2^19 assignments of involved vars
+PASS  Q42 mask 1755 = {0,1,3,4,6,7,9,10}
+PASS  Q42: w26=w40=w42=30, others = 0 mod 4
+PASS  Q42: all pairwise intersections even
+PASS  Q42 == R2 as polynomial
+PASS  (3.4)-(3.5): restriction of each p_j to period-4 inputs
+PASS  truth tables A=0x1248 B=0x6ca0 E3=0x6880 D=0x8000
+PASS  periodic table has 16 rows
+PASS  Lemma 3.3 table: codes, truth tables, witnesses, residues
+PASS  survivors are exactly codes 2,3,8,15
+PASS  (3.7) C_f(r(u)) = C_g(u) mod 3 (5 random c, all u)
+PASS  |I| = 36, complement = {24,26,36,37,40,41,42}
+PASS  (3.9) parametrization satisfies tuple + R1=R2=R3=0 (600 samples)
+PASS  C.2 node sums: elim+split+contra+term = nodes; leaves = splits+1
+PASS  sum of Lean terminal assignments = 164288 (= Python checker count)
+PASS  antipodal quadratic sum x_i x_{i+6} is bent
+PASS  sanity: 30 random quartic c are non-bent
+INFO  abstract words = 180

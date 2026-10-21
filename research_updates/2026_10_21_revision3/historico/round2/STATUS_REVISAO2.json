@@ -1,0 +1,21 @@
+{
+  "status": "READY_FOR_SECOND_ADVERSARIAL_REVIEW_NOT_FOR_SUBMISSION",
+  "article_revision": 2,
+  "abstract_words": 169,
+  "formal_sources_changed": false,
+  "new_lean_execution": false,
+  "author_confirmed": [
+    "UniBH/Belo Horizonte",
+    "contatofilipevono@gmail.com",
+    "V1 and H12 not submitted to a journal",
+    "no funding",
+    "no competing interests"
+  ],
+  "still_pending": [
+    "final author contributions/approval",
+    "public persistent H12 DOI",
+    "DCC portal size limit/conversion"
+  ],
+  "figshare_contains_previous_article_revision": true,
+  "received_report_sha256": "3b9747d0123f838f5367c38ab639696cc49825c18712709cc5b12132e9d0302a"
+}

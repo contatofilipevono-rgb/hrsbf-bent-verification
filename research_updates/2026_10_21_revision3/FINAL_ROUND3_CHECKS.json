@@ -1,0 +1,37 @@
+{
+  "status": "PASS_POST_ROUND2_DELIVERY_CHECKS",
+  "abstract_words": 180,
+  "pdfs": [
+    {
+      "file": "main.pdf",
+      "pages": 15,
+      "sha256": "954c174247ef392b37fc8f4726b5d7c8cc98068060cba4e1cb24221f23b6529e",
+      "overfull_boxes": 0,
+      "missing_glyphs": 0,
+      "doi_links_checked": [
+        "https://doi.org/10.1016/0097-3165(76)90024-8",
+        "https://doi.org/10.1016/S0166-218X(99)00234-6",
+        "https://doi.org/10.1007/978-3-540-25937-4_11"
+      ],
+      "visual_inspection": "All-page contact sheets inspected; declarations, exact formal mapping, first page and complete bibliography inspected at full page scale. No clipping found."
+    },
+    {
+      "file": "dcc_template/main.pdf",
+      "pages": 17,
+      "sha256": "2ea0b585b50070dc5e412960ad86816a7ffb36a67291a6552864c88b85266e83",
+      "overfull_boxes": 0,
+      "missing_glyphs": 0,
+      "doi_links_checked": [
+        "https://doi.org/10.1016/0097-3165(76)90024-8",
+        "https://doi.org/10.1016/S0166-218X(99)00234-6",
+        "https://doi.org/10.1007/978-3-540-25937-4_11"
+      ],
+      "visual_inspection": "All-page contact sheets inspected; declarations, exact formal mapping, first page and complete bibliography inspected at full page scale. No clipping found."
+    }
+  ],
+  "formal_sources_changed": false,
+  "lean_rebuilt": false,
+  "round2_script_passes": 33,
+  "terminal_image_comparison": "PASS_164288_DISTINCT_VECTORS_SAME_SET",
+  "formal_map_declarations_checked": 18
+}

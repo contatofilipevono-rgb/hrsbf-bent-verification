@@ -1,0 +1,28 @@
+{
+  "status": "TEXTUAL_COMPARISON_EXECUTED",
+  "v1_pdf_sha256": "99b661dc24469b0f69cda0e07bd0466de880e60a9010781adc943547710424e3",
+  "h12_revised_md_sha256": "9b6fb86f1e064b2d0510090351da051723bdb1d3069711f0d446de5ca3946fd0",
+  "v1_public_version": 2,
+  "v1_words_normalized": 5420,
+  "h12_words_normalized": 7036,
+  "matching_blocks_at_least_9_words": [
+    {
+      "words": 9,
+      "text": "case of the homogeneous rotation symmetric bent function conjecture"
+    },
+    {
+      "words": 9,
+      "text": "rotation symmetric boolean functions count and cryptographic properties discrete"
+    },
+    {
+      "words": 12,
+      "text": "on the conjecture about the nonexistence of homogeneous rotation symmetric bent functions"
+    },
+    {
+      "words": 11,
+      "text": "rotation symmetric bent functions outside the completed maiorana mcfarland class ieee"
+    }
+  ],
+  "method": "Casefolded word tokens; line-break hyphen normalization; SequenceMatcher. Matches are not a plagiarism score or proof of independence.",
+  "mathematical_comparison": "V1: antipodal necessity at degree <=3 and cubic consequence, all even dimensions. H12: quartic filters and concrete twelve-variable refutations; no formal import of V1 theorem."
+}

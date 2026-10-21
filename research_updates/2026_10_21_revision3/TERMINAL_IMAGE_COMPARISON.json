@@ -1,0 +1,38 @@
+{
+  "status": "PASS_EXACT_TERMINAL_IMAGE_COMPARISON",
+  "article_sha256": "9b6fb86f1e064b2d0510090351da051723bdb1d3069711f0d446de5ca3946fd0",
+  "source_zip_sha256": "89aa7f8df2aaa20c9466955be9851f275ff20b2a1cb7aaf06c27cdea23caf6ac",
+  "python_zip_sha256": "538d4af3e43c43f703853ba913b63da3024c4545433917151894bcfa1c7955ff",
+  "charts": [
+    {
+      "chart": 0,
+      "terminal_states": 2340,
+      "assignments": 46912,
+      "distinct_coefficient_vectors": 46912,
+      "sorted_uint64_le_sha256": "f8494f6cede632ab3e8908376446885490cf71a44a9556a93b470ca8b496f6c2",
+      "certified_data_source_count": 563
+    },
+    {
+      "chart": 1,
+      "terminal_states": 2320,
+      "assignments": 46400,
+      "distinct_coefficient_vectors": 46400,
+      "sorted_uint64_le_sha256": "064d9e8e374632f286789fedfb6e12e5ef248a342927e08ad93a79fda1ca9048",
+      "certified_data_source_count": 563
+    },
+    {
+      "chart": 2,
+      "terminal_states": 1993,
+      "assignments": 70976,
+      "distinct_coefficient_vectors": 70976,
+      "sorted_uint64_le_sha256": "bfae2bc97fdbc8ac1521411222f2e2e37c1beae3b04184e735e7fae4cd0fd3d8",
+      "certified_data_source_count": 255
+    }
+  ],
+  "all_terminal_images_distinct": true,
+  "all_43_quadratics_zero_on_every_terminal_image": true,
+  "python_csv_image_sets_equal_lean_terminal_image_sets": true,
+  "total": 164288,
+  "new_lean_execution": false,
+  "limit": "Finite source/data audit of the certified terminal images; not a fresh Lean rebuild. Coverage of all common zeros also uses the sound split/elimination rules and the independent checker."
+}

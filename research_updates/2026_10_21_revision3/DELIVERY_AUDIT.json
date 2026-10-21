@@ -1,0 +1,34 @@
+{
+  "status": "PASS_POST_ROUND2_PACKAGE_INTEGRITY",
+  "article_revision": 3,
+  "abstract_words": 180,
+  "article_pdf_pages": 15,
+  "springer_pdf_pages": 17,
+  "round2_script_passes": 33,
+  "terminal_vectors_compared_exactly": 164288,
+  "formal_declarations_checked": 18,
+  "mathematical_source_archives_unchanged": true,
+  "lean_rebuilt": false,
+  "journal_submitted": false,
+  "figshare_updated_or_published": false,
+  "pending": [
+    "final author contributions/approval",
+    "public persistent H12 DOI",
+    "DCC portal size limit/conversion",
+    "clean full rebuild of exact source archive (N5)"
+  ],
+  "packages": [
+    {
+      "file": "H12_POS_RODADA2_ANALISE_ADVERSARIAL.zip",
+      "bytes": 53297927,
+      "sha256": "fff914d2360715b72963a415f276445a895770ba1d84354c36d6d6ff0a59c72d",
+      "complete_formal_source_archive": true
+    },
+    {
+      "file": "H12_POS_RODADA2_COMPACTO.zip",
+      "bytes": 4064689,
+      "sha256": "7ef690657a0680ea4ae063d265926d728ce23e71f41f48ed51a8111305584398",
+      "complete_formal_source_archive": false
+    }
+  ]
+}

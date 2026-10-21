@@ -1,0 +1,114 @@
+[
+  {
+    "code": 0,
+    "truth_table": "0x0000",
+    "witness_u": 1,
+    "autocorrelation": 16,
+    "all_15_residues_zero": false
+  },
+  {
+    "code": 1,
+    "truth_table": "0x1248",
+    "witness_u": 5,
+    "autocorrelation": 16,
+    "all_15_residues_zero": false
+  },
+  {
+    "code": 2,
+    "truth_table": "0x6ca0",
+    "witness_u": null,
+    "autocorrelation": null,
+    "all_15_residues_zero": true
+  },
+  {
+    "code": 3,
+    "truth_table": "0x7ee8",
+    "witness_u": null,
+    "autocorrelation": null,
+    "all_15_residues_zero": true
+  },
+  {
+    "code": 4,
+    "truth_table": "0x6880",
+    "witness_u": 3,
+    "autocorrelation": 8,
+    "all_15_residues_zero": false
+  },
+  {
+    "code": 5,
+    "truth_table": "0x7ac8",
+    "witness_u": 3,
+    "autocorrelation": -8,
+    "all_15_residues_zero": false
+  },
+  {
+    "code": 6,
+    "truth_table": "0x0420",
+    "witness_u": 1,
+    "autocorrelation": 8,
+    "all_15_residues_zero": false
+  },
+  {
+    "code": 7,
+    "truth_table": "0x1668",
+    "witness_u": 1,
+    "autocorrelation": -8,
+    "all_15_residues_zero": false
+  },
+  {
+    "code": 8,
+    "truth_table": "0x8000",
+    "witness_u": null,
+    "autocorrelation": null,
+    "all_15_residues_zero": true
+  },
+  {
+    "code": 9,
+    "truth_table": "0x9248",
+    "witness_u": 1,
+    "autocorrelation": -4,
+    "all_15_residues_zero": false
+  },
+  {
+    "code": 10,
+    "truth_table": "0xeca0",
+    "witness_u": 1,
+    "autocorrelation": 4,
+    "all_15_residues_zero": false
+  },
+  {
+    "code": 11,
+    "truth_table": "0xfee8",
+    "witness_u": 1,
+    "autocorrelation": 4,
+    "all_15_residues_zero": false
+  },
+  {
+    "code": 12,
+    "truth_table": "0xe880",
+    "witness_u": 1,
+    "autocorrelation": 4,
+    "all_15_residues_zero": false
+  },
+  {
+    "code": 13,
+    "truth_table": "0xfac8",
+    "witness_u": 1,
+    "autocorrelation": 4,
+    "all_15_residues_zero": false
+  },
+  {
+    "code": 14,
+    "truth_table": "0x8420",
+    "witness_u": 1,
+    "autocorrelation": 4,
+    "all_15_residues_zero": false
+  },
+  {
+    "code": 15,
+    "truth_table": "0x9668",
+    "witness_u": null,
+    "autocorrelation": null,
+    "all_15_residues_zero": true
+  }
+]

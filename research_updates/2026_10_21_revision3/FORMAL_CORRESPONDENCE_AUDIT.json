@@ -1,0 +1,114 @@
+{
+  "status": "PASS_DECLARATION_AND_SOURCE_HASH_CHECK",
+  "formal_recompiled": false,
+  "records": [
+    {
+      "file": "H12Fourier.lean",
+      "sha256": "7d0f41041784fffc2a34edcba7698a78a3195e151164dcbf2ac66201af32b46e",
+      "theorem": "bent_iff_flat",
+      "statement": "theorem bent_iff_flat (f : Nat → Bool) : H12Descent.BentAC f ↔ WalshFlat f"
+    },
+    {
+      "file": "H12FilterBridge.lean",
+      "sha256": "8cea7994c937b4465a23ab5165fb2eb3cbecef61c6b7dd52fbd5792d13044fc8",
+      "theorem": "computed_filter_necessary",
+      "statement": "theorem computed_filter_necessary (c : BitVec 43)\n    (hb : H12Descent.BentAC (H12.quarticFunction c)) (j : Fin 43) :\n    evaluate 43 c.getLsbD (rowPolynomial (points supports[j.val]!) originalRows) = false"
+    },
+    {
+      "file": "H12FilterLink.lean",
+      "sha256": "7edcf88d8f7e3ce3d64ec1db87a8b12cc56288c466c345cfeffed09f43f638fa",
+      "theorem": "bent_passes",
+      "statement": "theorem bent_passes (c : BitVec 43)\n    (hb : H12Descent.BentAC (H12.quarticFunction c)) : H12Quadratic.Passes c"
+    },
+    {
+      "file": "H12Quadratic.lean",
+      "sha256": "e9ee6accde671bfdcfac983ae4b4091cdb4b0092054ddf35cef22c9f95194e2d",
+      "theorem": "necessary_r1",
+      "statement": "theorem necessary_r1 (c : BitVec 43) (h : Passes c) : r1 c = false"
+    },
+    {
+      "file": "H12Quadratic.lean",
+      "sha256": "e9ee6accde671bfdcfac983ae4b4091cdb4b0092054ddf35cef22c9f95194e2d",
+      "theorem": "necessary_r2",
+      "statement": "theorem necessary_r2 (c : BitVec 43) (h : Passes c) : r2 c = false"
+    },
+    {
+      "file": "H12Quadratic.lean",
+      "sha256": "e9ee6accde671bfdcfac983ae4b4091cdb4b0092054ddf35cef22c9f95194e2d",
+      "theorem": "necessary_r3",
+      "statement": "theorem necessary_r3 (c : BitVec 43) (h : Passes c) : r3 c = false"
+    },
+    {
+      "file": "H12Quadratic.lean",
+      "sha256": "e9ee6accde671bfdcfac983ae4b4091cdb4b0092054ddf35cef22c9f95194e2d",
+      "theorem": "short_product_zero",
+      "statement": "theorem short_product_zero (c : BitVec 43) (h : Passes c) :\n    (c.getLsbD 40 && c.getLsbD 42) = false"
+    },
+    {
+      "file": "H12PeriodFour.lean",
+      "sha256": "d2fcfd4392478b5ce5a4b781a0d9c27dbbfcb54b7fbdee1a6c490a04d823a84e",
+      "theorem": "periodic_reduction",
+      "statement": "theorem periodic_reduction (c : BitVec 43)\n    (h : admissibleMod3 (parameters c).toNat) :\n    restrictionTable c = 0x6ca0 ∨ restrictionTable c = 0x7ee8 ∨\n    restrictionTable c = 0x8000 ∨ restrictionTable c = 0x9668"
+    },
+    {
+      "file": "H12Audit.lean",
+      "sha256": "7d13cdd94e4c7dbf9261449cefb291586eb3e308a0b9d66c22a8df319a988354",
+      "theorem": "quartic_bent_four_cases",
+      "statement": "theorem quartic_bent_four_cases (c : BitVec 43)\n    (hb : H12Descent.BentAC (H12.quarticFunction c)) :\n    H12.restrictionTable c = 0x6ca0 ∨ H12.restrictionTable c = 0x7ee8 ∨\n    H12.restrictionTable c = 0x8000 ∨ H12.restrictionTable c = 0x9668"
+    },
+    {
+      "file": "H12Audit.lean",
+      "sha256": "7d13cdd94e4c7dbf9261449cefb291586eb3e308a0b9d66c22a8df319a988354",
+      "theorem": "three_case_parameters",
+      "statement": "theorem three_case_parameters (c : BitVec 43)\n    (hp : H12Quadratic.Passes c)\n    (hm : H12.admissibleMod3 (H12.parameters c).toNat) :\n    (H12.parameters c).toNat = 2 ∨ (H12.parameters c).toNat = 3 ∨\n      (H12.parameters c).toNat = 8"
+    },
+    {
+      "file": "H12Audit.lean",
+      "sha256": "7d13cdd94e4c7dbf9261449cefb291586eb3e308a0b9d66c22a8df319a988354",
+      "theorem": "necessary_chart_constraints",
+      "statement": "theorem necessary_chart_constraints (c : BitVec 43)\n    (hb : H12Descent.BentAC (H12.quarticFunction c)) :\n    ((H12.parameters c).toNat = 2 ∨ (H12.parameters c).toNat = 3 ∨\n      (H12.parameters c).toNat = 8) ∧\n    H12Quadratic.r1 c = false ∧ H12Quadratic.r2 c = false ∧ H12Quadratic.r3 c = false"
+    },
+    {
+      "file": "H12Affine.lean",
+      "sha256": "e0e4528e3bd133340f4052a3b691b41c2641ea3648328b9d5c229924fa26442a",
+      "theorem": "covers_bent",
+      "statement": "theorem covers_bent (c : BitVec 43) (hb : H12Descent.BentAC (H12.quarticFunction c)) :\n    ∃ k : Fin 3, embed k.val (project c) = c"
+    },
+    {
+      "file": "H12ChartFilters.lean",
+      "sha256": "902793491eb6a92df6816c00b4f4db77db525741866b5b93b40c779375c4df28",
+      "theorem": "bent_root",
+      "statement": "theorem bent_root (c : BitVec 43) (hb : H12Descent.BentAC (H12.quarticFunction c)) :\n    ∃ k : Fin 3, ∃ u : BitVec 36,\n      H12Affine.embed k.val u = c ∧ Models 36 u.getLsbD targets[k.val]!"
+    },
+    {
+      "file": "H12AffineFastState.lean",
+      "sha256": "0703cc2f16faae552f038bf94783db1d139dde1f04ada0b1f62de2e7047d3126",
+      "theorem": "refutes_sound",
+      "statement": "theorem refutes_sound (target : List Bool → Prop) (rootPS rootObs env : List Nat)\n    (proof : Refutes target rootPS rootObs env) :\n    ∀ f, packedModels (assignment env f) rootPS → ¬target (packedObservation (assignment env f) rootObs)"
+    },
+    {
+      "file": "H12CloudChart0.lean",
+      "sha256": "dbbb17be39a5a83220a3d8a9b2c58f000e95be7a2fda25d4091cac4eb30ed5fc",
+      "theorem": "refutation",
+      "statement": "theorem refutation : H12AffineFastState.Refutes H12CertificateBridge.Target (H12PackedRoots.rootPS 0) (H12PackedRoots.rootEnv 0) H12AffineFastState.identityEnv"
+    },
+    {
+      "file": "H12CloudChart1.lean",
+      "sha256": "e2d48413e77fc84f01068837bea22fb1dc18b172815027cd72a94052e3f24776",
+      "theorem": "refutation",
+      "statement": "theorem refutation : H12AffineFastState.Refutes H12CertificateBridge.Target (H12PackedRoots.rootPS 1) (H12PackedRoots.rootEnv 1) H12AffineFastState.identityEnv"
+    },
+    {
+      "file": "H12CloudChart2.lean",
+      "sha256": "e02e5e2f9c17a2c0dd7cdd63fd10756e52a9c49c82fdf99073314eafc54651d2",
+      "theorem": "refutation",
+      "statement": "theorem refutation : H12AffineFastState.Refutes H12CertificateBridge.Target (H12PackedRoots.rootPS 2) (H12PackedRoots.rootEnv 2) H12AffineFastState.identityEnv"
+    },
+    {
+      "file": "H12Final.lean",
+      "sha256": "394dc75e6314ad130d4ecf91b96e06dd7658eb61dca88cb26e3589988c822a67",
+      "theorem": "no_bent_quartic",
+      "statement": "theorem no_bent_quartic (c : BitVec 43) :\n    ¬ H12Descent.BentAC (H12.quarticFunction c)"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "files": {
+    "PARECER_RODADA2_H12.md": {
+      "sha256": "9d87ec3df678a7de2db0802411985e2c4c7ef2f57e1657513a1a86264d602258",
+      "bytes": 16758
+    },
+    "round2_check.py": {
+      "sha256": "5c7371f910822a94102c94822e81cde8749252a71ac82411b378b2ccffa447b7",
+      "bytes": 10708
+    },
+    "verify_replay_output.txt": {
+      "sha256": "d9eccf2eab437fb39c659967609ff373a5bdf9a50c31c2494b4c56ca877c469d",
+      "bytes": 1064
+    }
+  },
+  "reviewed_package_sha256": "2a6e96b67feb4c32b46b81e276437cabeefa633bf432a153426519fcbd94d445",
+  "reviewer_claimed_checker_seconds": 95.824,
+  "checker_execution_rerun_by_this_revision": false,
+  "round2_script_replayed_by_this_revision": true,
+  "round2_script_passes": 33,
+  "funding_and_competing_interest_confirmation_postdates_reviewed_package": true
+}
