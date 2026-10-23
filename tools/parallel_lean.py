@@ -8,11 +8,14 @@ import re
 import subprocess
 import sys
 import tarfile
+import time
+import signal
 import zipfile
 
 ARCHIVE = Path('research_updates/2026_10_21_revision3/H12_formal_sources.zip')
 DIGEST = '89aa7f8df2aaa20c9466955be9851f275ff20b2a1cb7aaf06c27cdea23caf6ac'
 PROJECT = Path('parallel_build')
+DEADLINE = time.monotonic() + 300 * 60
 
 def sha(p):
     return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -72,7 +75,17 @@ def plan():
 
 def command(args, log):
     with log.open('w', encoding='utf-8') as out:
-        run = subprocess.run(['lake'] + args, cwd=PROJECT, stdout=out, stderr=subprocess.STDOUT)
+        run = subprocess.Popen(['lake'] + args, cwd=PROJECT, stdout=out,
+                               stderr=subprocess.STDOUT, start_new_session=os.name != 'nt')
+        try:
+            run.wait(timeout=max(1, min(2700, DEADLINE - time.monotonic())))
+        except subprocess.TimeoutExpired:
+            if os.name != 'nt':
+                os.killpg(run.pid, signal.SIGKILL)
+            else:
+                run.kill()
+            run.wait()
+            raise RuntimeError('PARTIAL_TIMEOUT: checkpoint retained; no stage pass')
     content = log.read_text(encoding='utf-8', errors='replace')
     if run.returncode or any(t in content for t in ['sorryAx', 'ofReduceBool', 'error:']):
         print(content[-10000:], flush=True)
@@ -99,14 +112,51 @@ def build(stage, index):
     roots = p['common'][index] if stage == 'common' else p['charts'][index] if stage == 'chart' else ['H12Final']
     modules = closure(graph(), roots) if stage == 'common' else roots
     records = []
+    progress = Path('evidence') / 'progress.json'
+    prior = {}
+    identity = {'archive': DIGEST, 'version': version, 'stage': stage, 'index': index,
+                'checker': sha(Path(__file__))}
+    if progress.exists():
+        previous = json.loads(progress.read_text())
+        if previous.get('identity') == identity:
+            prior = {r['module']: r for r in previous.get('records', [])}
+    def checkpoint(status, current=None):
+        tmp = progress.with_suffix('.tmp')
+        tmp.write_text(json.dumps({'identity': identity, 'status': status, 'current': current,
+            'global_theorem_verified': status == 'PASS' and stage == 'final',
+            'records': records}, indent=2))
+        tmp.replace(progress)
     for n in modules:
+        artifact = PROJECT / '.lake/build/lib/lean' / (n + '.olean')
+        old = prior.get(n)
+        if stage != 'final' and old and artifact.exists() and old['olean_sha256'] == sha(artifact):
+            valid = old['source_sha256'] == sha(PROJECT / (n + '.lean'))
+            for phase in ['build', 'kernel']:
+                log = Path('evidence') / (n + '-' + phase + '.log')
+                valid = valid and log.exists() and old.get(phase + '_log_sha256') == sha(log)
+            if valid:
+                records.append(old)
+                checkpoint('RUNNING')
+                continue
+        checkpoint('RUNNING', n)
+        if time.monotonic() >= DEADLINE:
+            checkpoint('PARTIAL_TIME_LIMIT', n)
+            raise RuntimeError('Stage budget reached; no stage pass')
         print('BUILD', stage, index, n, flush=True)
-        command(['--no-cache', '--fail-fast', 'build', n], Path('evidence') / (n + '-build.log'))
-        # Recheck every compiled target independently of the elaborator.
-        command(['env', 'leanchecker', '--verbose', n], Path('evidence') / (n + '-kernel.log'))
+        try:
+            command(['--no-cache', '--fail-fast', 'build', n], Path('evidence') / (n + '-build.log'))
+            # Recheck every compiled target independently of the elaborator.
+            command(['env', 'leanchecker', '--verbose', n], Path('evidence') / (n + '-kernel.log'))
+        except Exception:
+            checkpoint('INCOMPLETE_OR_FAILED', n)
+            raise
         records.append({'module': n, 'source_sha256': sha(PROJECT / (n + '.lean')),
-                        'olean_sha256': sha(PROJECT / '.lake/build/lib/lean' / (n + '.olean'))})
+                        'olean_sha256': sha(artifact),
+                        'build_log_sha256': sha(Path('evidence') / (n + '-build.log')),
+                        'kernel_log_sha256': sha(Path('evidence') / (n + '-kernel.log'))})
+        checkpoint('RUNNING')
     check_sources()
+    checkpoint('PASS')
     (Path('evidence') / 'result.json').write_text(json.dumps({'stage': stage, 'index': index,
         'status': 'PASS', 'global_theorem_verified': stage == 'final', 'records': records}, indent=2))
     Path('artifacts').mkdir(exist_ok=True)
