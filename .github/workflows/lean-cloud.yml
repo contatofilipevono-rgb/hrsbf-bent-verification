@@ -1,85 +1,165 @@
-name: Lean chart certificate (resumable)
+name: Lean H12 six preparation shards and three certificate chains
 
 on:
   push:
-    branches: [main]
-    paths: ['.github/workflows/lean-cloud.yml']
+    branches: [main, build/h12-six-shards-three-chains]
+    paths: ['.github/workflows/lean-cloud.yml', 'tools/parallel_lean.py']
   workflow_dispatch:
-    inputs:
-      chart:
-        description: 'Carta a verificar (a prova global exige as três)'
-        type: choice
-        options: ['2', '1', '0']
-        default: '2'
-      minutes:
-        description: 'Minutos desta etapa (1 a 240)'
-        type: number
-        default: 180
 
 permissions:
   contents: read
 
 concurrency:
-  group: lean-cloud-${{ github.event.inputs.chart || '2' }}
+  group: lean-h12-parallel
   cancel-in-progress: false
 
 jobs:
-  verify:
-    if: github.event.repository.private == false
+  common:
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        index: [0, 1, 2, 3, 4, 5]
     runs-on: ubuntu-24.04
-    timeout-minutes: 300
+    timeout-minutes: 360
     env:
-      CHART: ${{ github.event.inputs.chart || '2' }}
-      MINUTES: ${{ github.event.inputs.minutes || '180' }}
+      LEAN_NUM_THREADS: '2'
       PYTHONUNBUFFERED: '1'
-    defaults:
-      run:
-        working-directory: quartic_audit_2026_10_17
     steps:
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/parallel_lean.py
+            research_updates/2026_10_21_revision3/H12_formal_sources.zip
+          sparse-checkout-cone-mode: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install exact Lean release and verify its digest
-        shell: bash
+      - name: Install Lean 4.35.0 with verified digest
         run: |
           curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
           echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
           tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
           echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
-      - name: Generate exact chart sources
-        shell: bash
-        run: |
-          case "$CHART" in 0) NODE=0;; 1) NODE=26715;; 2) NODE=53430;; *) exit 2;; esac
-          python tools/generate_lean_affine_pilot.py --chart "$CHART" --node "$NODE" --prefix "H12CloudChart$CHART" --root-frame --engine H12AffineFastState --global-label-index --chunk-size 1200 --proof-chunk-size 600 --register > "$RUNNER_TEMP/chart-generation.log"
-      - uses: actions/cache/restore@v4
-        id: cache
+      - uses: actions/cache@v4
         with:
-          path: |
-            quartic_audit_2026_10_17/lean/.lake
-            quartic_audit_2026_10_17/cloud_progress
-          key: lean-linux-v1-${{ env.CHART }}-${{ hashFiles('quartic_audit_2026_10_17/lean/*.lean', 'quartic_audit_2026_10_17/tools/verify_lean_cloud_slice.py') }}-${{ github.run_id }}-${{ github.run_attempt }}
-          restore-keys: |
-            lean-linux-v1-${{ env.CHART }}-${{ hashFiles('quartic_audit_2026_10_17/lean/*.lean', 'quartic_audit_2026_10_17/tools/verify_lean_cloud_slice.py') }}-
-      - name: Build and replay a bounded slice
-        run: python tools/verify_lean_cloud_slice.py --chart "$CHART" --minutes "$MINUTES"
-      - name: Save resumable build and verified records
-        if: always() && steps.cache.outcome == 'success'
-        uses: actions/cache/save@v4
+          path: parallel_build/.lake
+          key: h12-parallel-common-${{ matrix.index }}-${{ hashFiles('tools/parallel_lean.py') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: h12-parallel-common-${{ matrix.index }}-${{ hashFiles('tools/parallel_lean.py') }}-
+      - name: Build and independently replay common
+        run: python tools/parallel_lean.py common --index ${{ matrix.index }}
+      - uses: actions/upload-artifact@v4
         with:
-          path: |
-            quartic_audit_2026_10_17/lean/.lake
-            quartic_audit_2026_10_17/cloud_progress
-          key: ${{ steps.cache.outputs.cache-primary-key }}
-      - name: Preserve source, progress and checker logs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: lean-chart-${{ env.CHART }}-${{ github.run_id }}-${{ github.run_attempt }}
+          name: objects-common-${{ matrix.index }}
+          path: artifacts/*.tar.gz
           retention-days: 7
-          if-no-files-found: warn
-          path: |
-            quartic_audit_2026_10_17/cloud_progress/
-            quartic_audit_2026_10_17/lean/H12CloudChart*.lean
-            quartic_audit_2026_10_17/reports/H12CloudChart*_SOURCE.json
-
+          compression-level: 0
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: evidence-common-${{ matrix.index }}
+          path: evidence/
+          retention-days: 30
+          if-no-files-found: error
+  chart:
+    needs: common
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        index: [0, 1, 2]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      LEAN_NUM_THREADS: '2'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/parallel_lean.py
+            research_updates/2026_10_21_revision3/H12_formal_sources.zip
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Lean 4.35.0 with verified digest
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+          echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
+      - uses: actions/cache@v4
+        with:
+          path: parallel_build/.lake
+          key: h12-parallel-chart-${{ matrix.index }}-${{ hashFiles('tools/parallel_lean.py') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: h12-parallel-chart-${{ matrix.index }}-${{ hashFiles('tools/parallel_lean.py') }}-
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: objects-common-*
+          path: incoming
+          merge-multiple: true
+      - name: Build and independently replay chart
+        run: python tools/parallel_lean.py chart --index ${{ matrix.index }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: objects-chart-${{ matrix.index }}
+          path: artifacts/*.tar.gz
+          retention-days: 7
+          compression-level: 0
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: evidence-chart-${{ matrix.index }}
+          path: evidence/
+          retention-days: 30
+          if-no-files-found: error
+  final:
+    needs: chart
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      LEAN_NUM_THREADS: '2'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/parallel_lean.py
+            research_updates/2026_10_21_revision3/H12_formal_sources.zip
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Lean 4.35.0 with verified digest
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+          echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
+      - uses: actions/cache@v4
+        with:
+          path: parallel_build/.lake
+          key: h12-parallel-final-0-${{ hashFiles('tools/parallel_lean.py') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: h12-parallel-final-0-${{ hashFiles('tools/parallel_lean.py') }}-
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: objects-chart-*
+          path: incoming
+          merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: objects-common-*
+          path: incoming
+          merge-multiple: true
+      - name: Build and independently replay final
+        run: python tools/parallel_lean.py final --index 0
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: evidence-final-0
+          path: evidence/
+          retention-days: 30
+          if-no-files-found: error
