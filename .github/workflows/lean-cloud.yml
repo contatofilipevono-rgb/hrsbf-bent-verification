@@ -1,80 +1,17 @@
-name: Lean H12 six preparation shards and three certificate chains
-
+name: Lean H12 bounded resumable chains
 on:
   push:
-    branches: [main, build/h12-six-shards-three-chains]
+    branches: [build/h12-six-shards-three-chains]
     paths: ['.github/workflows/lean-cloud.yml', 'tools/parallel_lean.py']
   workflow_dispatch:
-
 permissions:
   contents: read
-
+  actions: read
 concurrency:
   group: lean-h12-parallel
   cancel-in-progress: false
-
 jobs:
-  common:
-    strategy:
-      fail-fast: false
-      max-parallel: 6
-      matrix:
-        index: [0, 1, 2, 3, 4, 5]
-    runs-on: ubuntu-24.04
-    timeout-minutes: 360
-    env:
-      LEAN_NUM_THREADS: '2'
-      PYTHONUNBUFFERED: '1'
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          sparse-checkout: |
-            tools/parallel_lean.py
-            research_updates/2026_10_21_revision3/H12_formal_sources.zip
-          sparse-checkout-cone-mode: false
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Install Lean 4.35.0 with verified digest
-        run: |
-          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
-          echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
-          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
-          echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
-      - uses: actions/cache/restore@v4
-        id: checkpoint
-        with:
-          path: |
-            parallel_build/.lake
-            evidence/
-          key: h12-parallel-common-${{ matrix.index }}-${{ hashFiles('tools/parallel_lean.py') }}-${{ github.run_id }}-${{ github.run_attempt }}
-          restore-keys: h12-parallel-common-${{ matrix.index }}-${{ hashFiles('tools/parallel_lean.py') }}-
-      - name: Build and independently replay common
-        run: python tools/parallel_lean.py common --index ${{ matrix.index }}
-      - uses: actions/upload-artifact@v4
-        with:
-          name: objects-common-${{ matrix.index }}
-          path: artifacts/*.tar.gz
-          retention-days: 7
-          compression-level: 0
-          if-no-files-found: error
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: evidence-common-${{ matrix.index }}
-          path: evidence/
-          retention-days: 30
-          if-no-files-found: error
-      - name: Save partial build and verified checkpoints even after failure
-        if: always() && steps.checkpoint.outcome == 'success'
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            parallel_build/.lake
-            evidence/
-          key: ${{ steps.checkpoint.outputs.cache-primary-key }}
-  chart:
-    needs: common
+  chart_slice_01:
     strategy:
       fail-fast: false
       max-parallel: 3
@@ -101,45 +38,42 @@ jobs:
           echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
           tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
           echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
-      - uses: actions/cache/restore@v4
-        id: checkpoint
+      - name: Recover six completed preparation artifacts
+        uses: actions/download-artifact@v4
         with:
-          path: |
-            parallel_build/.lake
-            evidence/
-          key: h12-parallel-chart-${{ matrix.index }}-${{ hashFiles('tools/parallel_lean.py') }}-${{ github.run_id }}-${{ github.run_attempt }}
-          restore-keys: h12-parallel-chart-${{ matrix.index }}-${{ hashFiles('tools/parallel_lean.py') }}-
-      - uses: actions/download-artifact@v4
-        with:
+          github-token: ${{ github.token }}
+          run-id: 40009139009
           pattern: objects-common-*
           path: incoming
           merge-multiple: true
-      - name: Build and independently replay chart
-        run: python tools/parallel_lean.py chart --index ${{ matrix.index }}
-      - uses: actions/upload-artifact@v4
+      - name: Require all six preparation blocks
+        run: |
+          for i in 0 1 2 3 4 5; do test -s "incoming/common-$i.tar.gz"; done
+      - name: Verify at most 80 new modules and save a bounded slice
+        run: python tools/parallel_lean.py chart --index ${{ matrix.index }} --max-modules 80
+      - name: Preserve cumulative objects and verified progress
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: objects-chart-${{ matrix.index }}
-          path: artifacts/*.tar.gz
-          retention-days: 7
+          name: checkpoint-1-${{ matrix.index }}
+          path: artifacts/chart-*.tar.gz
+          retention-days: 30
           compression-level: 0
           if-no-files-found: error
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: evidence-chart-${{ matrix.index }}
+          name: logs-1-${{ matrix.index }}
           path: evidence/
           retention-days: 30
           if-no-files-found: error
-      - name: Save partial build and verified checkpoints even after failure
-        if: always() && steps.checkpoint.outcome == 'success'
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            parallel_build/.lake
-            evidence/
-          key: ${{ steps.checkpoint.outputs.cache-primary-key }}
-  final:
-    needs: chart
+  chart_slice_02:
+    needs: chart_slice_01
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        index: [0, 1, 2]
     runs-on: ubuntu-24.04
     timeout-minutes: 360
     env:
@@ -161,38 +95,694 @@ jobs:
           echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
           tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
           echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
-      - uses: actions/cache/restore@v4
-        id: checkpoint
+      - name: Recover six completed preparation artifacts
+        uses: actions/download-artifact@v4
         with:
-          path: |
-            parallel_build/.lake
-            evidence/
-          key: h12-parallel-final-0-${{ hashFiles('tools/parallel_lean.py') }}-${{ github.run_id }}-${{ github.run_attempt }}
-          restore-keys: h12-parallel-final-0-${{ hashFiles('tools/parallel_lean.py') }}-
-      - uses: actions/download-artifact@v4
-        with:
-          pattern: objects-chart-*
-          path: incoming
-          merge-multiple: true
-      - uses: actions/download-artifact@v4
-        with:
+          github-token: ${{ github.token }}
+          run-id: 40009139009
           pattern: objects-common-*
           path: incoming
           merge-multiple: true
-      - name: Build and independently replay final
-        run: python tools/parallel_lean.py final --index 0
+      - name: Require all six preparation blocks
+        run: |
+          for i in 0 1 2 3 4 5; do test -s "incoming/common-$i.tar.gz"; done
+      - uses: actions/download-artifact@v4
+        with:
+          name: checkpoint-1-${{ matrix.index }}
+          path: incoming
+      - name: Verify at most 80 new modules and save a bounded slice
+        run: python tools/parallel_lean.py chart --index ${{ matrix.index }} --max-modules 80
+      - name: Preserve cumulative objects and verified progress
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-2-${{ matrix.index }}
+          path: artifacts/chart-*.tar.gz
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: error
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: evidence-final-0
+          name: logs-2-${{ matrix.index }}
           path: evidence/
           retention-days: 30
           if-no-files-found: error
-      - name: Save partial build and verified checkpoints even after failure
-        if: always() && steps.checkpoint.outcome == 'success'
-        uses: actions/cache/save@v4
+  chart_slice_03:
+    needs: chart_slice_02
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        index: [0, 1, 2]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      LEAN_NUM_THREADS: '2'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
         with:
-          path: |
-            parallel_build/.lake
-            evidence/
-          key: ${{ steps.checkpoint.outputs.cache-primary-key }}
+          sparse-checkout: |
+            tools/parallel_lean.py
+            research_updates/2026_10_21_revision3/H12_formal_sources.zip
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Lean 4.35.0 with verified digest
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+          echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Recover six completed preparation artifacts
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 40009139009
+          pattern: objects-common-*
+          path: incoming
+          merge-multiple: true
+      - name: Require all six preparation blocks
+        run: |
+          for i in 0 1 2 3 4 5; do test -s "incoming/common-$i.tar.gz"; done
+      - uses: actions/download-artifact@v4
+        with:
+          name: checkpoint-2-${{ matrix.index }}
+          path: incoming
+      - name: Verify at most 80 new modules and save a bounded slice
+        run: python tools/parallel_lean.py chart --index ${{ matrix.index }} --max-modules 80
+      - name: Preserve cumulative objects and verified progress
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-3-${{ matrix.index }}
+          path: artifacts/chart-*.tar.gz
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: logs-3-${{ matrix.index }}
+          path: evidence/
+          retention-days: 30
+          if-no-files-found: error
+  chart_slice_04:
+    needs: chart_slice_03
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        index: [0, 1, 2]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      LEAN_NUM_THREADS: '2'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/parallel_lean.py
+            research_updates/2026_10_21_revision3/H12_formal_sources.zip
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Lean 4.35.0 with verified digest
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+          echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Recover six completed preparation artifacts
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 40009139009
+          pattern: objects-common-*
+          path: incoming
+          merge-multiple: true
+      - name: Require all six preparation blocks
+        run: |
+          for i in 0 1 2 3 4 5; do test -s "incoming/common-$i.tar.gz"; done
+      - uses: actions/download-artifact@v4
+        with:
+          name: checkpoint-3-${{ matrix.index }}
+          path: incoming
+      - name: Verify at most 80 new modules and save a bounded slice
+        run: python tools/parallel_lean.py chart --index ${{ matrix.index }} --max-modules 80
+      - name: Preserve cumulative objects and verified progress
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-4-${{ matrix.index }}
+          path: artifacts/chart-*.tar.gz
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: logs-4-${{ matrix.index }}
+          path: evidence/
+          retention-days: 30
+          if-no-files-found: error
+  chart_slice_05:
+    needs: chart_slice_04
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        index: [0, 1, 2]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      LEAN_NUM_THREADS: '2'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/parallel_lean.py
+            research_updates/2026_10_21_revision3/H12_formal_sources.zip
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Lean 4.35.0 with verified digest
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+          echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Recover six completed preparation artifacts
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 40009139009
+          pattern: objects-common-*
+          path: incoming
+          merge-multiple: true
+      - name: Require all six preparation blocks
+        run: |
+          for i in 0 1 2 3 4 5; do test -s "incoming/common-$i.tar.gz"; done
+      - uses: actions/download-artifact@v4
+        with:
+          name: checkpoint-4-${{ matrix.index }}
+          path: incoming
+      - name: Verify at most 80 new modules and save a bounded slice
+        run: python tools/parallel_lean.py chart --index ${{ matrix.index }} --max-modules 80
+      - name: Preserve cumulative objects and verified progress
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-5-${{ matrix.index }}
+          path: artifacts/chart-*.tar.gz
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: logs-5-${{ matrix.index }}
+          path: evidence/
+          retention-days: 30
+          if-no-files-found: error
+  chart_slice_06:
+    needs: chart_slice_05
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        index: [0, 1, 2]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      LEAN_NUM_THREADS: '2'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/parallel_lean.py
+            research_updates/2026_10_21_revision3/H12_formal_sources.zip
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Lean 4.35.0 with verified digest
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+          echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Recover six completed preparation artifacts
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 40009139009
+          pattern: objects-common-*
+          path: incoming
+          merge-multiple: true
+      - name: Require all six preparation blocks
+        run: |
+          for i in 0 1 2 3 4 5; do test -s "incoming/common-$i.tar.gz"; done
+      - uses: actions/download-artifact@v4
+        with:
+          name: checkpoint-5-${{ matrix.index }}
+          path: incoming
+      - name: Verify at most 80 new modules and save a bounded slice
+        run: python tools/parallel_lean.py chart --index ${{ matrix.index }} --max-modules 80
+      - name: Preserve cumulative objects and verified progress
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-6-${{ matrix.index }}
+          path: artifacts/chart-*.tar.gz
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: logs-6-${{ matrix.index }}
+          path: evidence/
+          retention-days: 30
+          if-no-files-found: error
+  chart_slice_07:
+    needs: chart_slice_06
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        index: [0, 1, 2]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      LEAN_NUM_THREADS: '2'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/parallel_lean.py
+            research_updates/2026_10_21_revision3/H12_formal_sources.zip
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Lean 4.35.0 with verified digest
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+          echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Recover six completed preparation artifacts
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 40009139009
+          pattern: objects-common-*
+          path: incoming
+          merge-multiple: true
+      - name: Require all six preparation blocks
+        run: |
+          for i in 0 1 2 3 4 5; do test -s "incoming/common-$i.tar.gz"; done
+      - uses: actions/download-artifact@v4
+        with:
+          name: checkpoint-6-${{ matrix.index }}
+          path: incoming
+      - name: Verify at most 80 new modules and save a bounded slice
+        run: python tools/parallel_lean.py chart --index ${{ matrix.index }} --max-modules 80
+      - name: Preserve cumulative objects and verified progress
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-7-${{ matrix.index }}
+          path: artifacts/chart-*.tar.gz
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: logs-7-${{ matrix.index }}
+          path: evidence/
+          retention-days: 30
+          if-no-files-found: error
+  chart_slice_08:
+    needs: chart_slice_07
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        index: [0, 1, 2]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      LEAN_NUM_THREADS: '2'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/parallel_lean.py
+            research_updates/2026_10_21_revision3/H12_formal_sources.zip
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Lean 4.35.0 with verified digest
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+          echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Recover six completed preparation artifacts
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 40009139009
+          pattern: objects-common-*
+          path: incoming
+          merge-multiple: true
+      - name: Require all six preparation blocks
+        run: |
+          for i in 0 1 2 3 4 5; do test -s "incoming/common-$i.tar.gz"; done
+      - uses: actions/download-artifact@v4
+        with:
+          name: checkpoint-7-${{ matrix.index }}
+          path: incoming
+      - name: Verify at most 80 new modules and save a bounded slice
+        run: python tools/parallel_lean.py chart --index ${{ matrix.index }} --max-modules 80
+      - name: Preserve cumulative objects and verified progress
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-8-${{ matrix.index }}
+          path: artifacts/chart-*.tar.gz
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: logs-8-${{ matrix.index }}
+          path: evidence/
+          retention-days: 30
+          if-no-files-found: error
+  chart_slice_09:
+    needs: chart_slice_08
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        index: [0, 1, 2]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      LEAN_NUM_THREADS: '2'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/parallel_lean.py
+            research_updates/2026_10_21_revision3/H12_formal_sources.zip
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Lean 4.35.0 with verified digest
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+          echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Recover six completed preparation artifacts
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 40009139009
+          pattern: objects-common-*
+          path: incoming
+          merge-multiple: true
+      - name: Require all six preparation blocks
+        run: |
+          for i in 0 1 2 3 4 5; do test -s "incoming/common-$i.tar.gz"; done
+      - uses: actions/download-artifact@v4
+        with:
+          name: checkpoint-8-${{ matrix.index }}
+          path: incoming
+      - name: Verify at most 80 new modules and save a bounded slice
+        run: python tools/parallel_lean.py chart --index ${{ matrix.index }} --max-modules 80
+      - name: Preserve cumulative objects and verified progress
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-9-${{ matrix.index }}
+          path: artifacts/chart-*.tar.gz
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: logs-9-${{ matrix.index }}
+          path: evidence/
+          retention-days: 30
+          if-no-files-found: error
+  chart_slice_10:
+    needs: chart_slice_09
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        index: [0, 1, 2]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      LEAN_NUM_THREADS: '2'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/parallel_lean.py
+            research_updates/2026_10_21_revision3/H12_formal_sources.zip
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Lean 4.35.0 with verified digest
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+          echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Recover six completed preparation artifacts
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 40009139009
+          pattern: objects-common-*
+          path: incoming
+          merge-multiple: true
+      - name: Require all six preparation blocks
+        run: |
+          for i in 0 1 2 3 4 5; do test -s "incoming/common-$i.tar.gz"; done
+      - uses: actions/download-artifact@v4
+        with:
+          name: checkpoint-9-${{ matrix.index }}
+          path: incoming
+      - name: Verify at most 80 new modules and save a bounded slice
+        run: python tools/parallel_lean.py chart --index ${{ matrix.index }} --max-modules 80
+      - name: Preserve cumulative objects and verified progress
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-10-${{ matrix.index }}
+          path: artifacts/chart-*.tar.gz
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: logs-10-${{ matrix.index }}
+          path: evidence/
+          retention-days: 30
+          if-no-files-found: error
+  chart_slice_11:
+    needs: chart_slice_10
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        index: [0, 1, 2]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      LEAN_NUM_THREADS: '2'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/parallel_lean.py
+            research_updates/2026_10_21_revision3/H12_formal_sources.zip
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Lean 4.35.0 with verified digest
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+          echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Recover six completed preparation artifacts
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 40009139009
+          pattern: objects-common-*
+          path: incoming
+          merge-multiple: true
+      - name: Require all six preparation blocks
+        run: |
+          for i in 0 1 2 3 4 5; do test -s "incoming/common-$i.tar.gz"; done
+      - uses: actions/download-artifact@v4
+        with:
+          name: checkpoint-10-${{ matrix.index }}
+          path: incoming
+      - name: Verify at most 80 new modules and save a bounded slice
+        run: python tools/parallel_lean.py chart --index ${{ matrix.index }} --max-modules 80
+      - name: Preserve cumulative objects and verified progress
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-11-${{ matrix.index }}
+          path: artifacts/chart-*.tar.gz
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: logs-11-${{ matrix.index }}
+          path: evidence/
+          retention-days: 30
+          if-no-files-found: error
+  chart_slice_12:
+    needs: chart_slice_11
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        index: [0, 1, 2]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      LEAN_NUM_THREADS: '2'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/parallel_lean.py
+            research_updates/2026_10_21_revision3/H12_formal_sources.zip
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Lean 4.35.0 with verified digest
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+          echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Recover six completed preparation artifacts
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 40009139009
+          pattern: objects-common-*
+          path: incoming
+          merge-multiple: true
+      - name: Require all six preparation blocks
+        run: |
+          for i in 0 1 2 3 4 5; do test -s "incoming/common-$i.tar.gz"; done
+      - uses: actions/download-artifact@v4
+        with:
+          name: checkpoint-11-${{ matrix.index }}
+          path: incoming
+      - name: Verify at most 80 new modules and save a bounded slice
+        run: python tools/parallel_lean.py chart --index ${{ matrix.index }} --max-modules 80
+      - name: Preserve cumulative objects and verified progress
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-12-${{ matrix.index }}
+          path: artifacts/chart-*.tar.gz
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: logs-12-${{ matrix.index }}
+          path: evidence/
+          retention-days: 30
+          if-no-files-found: error
+  final:
+    needs: chart_slice_12
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      LEAN_NUM_THREADS: '2'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/parallel_lean.py
+            research_updates/2026_10_21_revision3/H12_formal_sources.zip
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Lean 4.35.0 with verified digest
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+          echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Recover six completed preparation artifacts
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 40009139009
+          pattern: objects-common-*
+          path: incoming
+          merge-multiple: true
+      - name: Require all six preparation blocks
+        run: |
+          for i in 0 1 2 3 4 5; do test -s "incoming/common-$i.tar.gz"; done
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: checkpoint-12-*
+          path: incoming
+          merge-multiple: true
+      - name: Require complete charts and independently verify H12Final
+        run: python tools/parallel_lean.py final
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: final-verification
+          path: evidence/
+          retention-days: 90
+          if-no-files-found: error
