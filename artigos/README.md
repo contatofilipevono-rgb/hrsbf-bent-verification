@@ -1,5 +1,9 @@
 # Artigos e literatura — HRSBF Bent Verification
 
+## PDFs fornecidos para pesquisa
+
+Os artigos completos enviados para esta pesquisa estão na pasta [pdfs](pdfs/README.md), com títulos, identificadores e hashes para localização e conferência.
+
 Este diretório centraliza a trilha bibliográfica usada na auditoria e no posicionamento do projeto. O objetivo é separar claramente: (i) resultados publicados; (ii) comparação com o teorema cúbico global em desenvolvimento; e (iii) questões de prioridade ainda abertas.
 
 ## Artigos principais
