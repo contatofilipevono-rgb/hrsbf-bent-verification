@@ -1,0 +1,143 @@
+name: Lean final H12 integration process-safe
+on:
+  push:
+    branches: [fix/lean-resume-stability]
+    paths: [.github/workflows/lean-integration.yml]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: lean-h12-final-integration
+  cancel-in-progress: false
+jobs:
+  integrate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 240
+    defaults:
+      run:
+        working-directory: quartic_audit_2026_10_17
+    env:
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test timeout kills compiler descendants before checkpoint
+        run: python tools/verify_final.py --self-test-process-tree
+      - name: Install pinned Lean 4.35.0
+        run: |
+          curl --fail --location --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o "$RUNNER_TEMP/lean.tar.zst"
+          echo "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d  $RUNNER_TEMP/lean.tar.zst" | sha256sum --check
+          tar --zstd -xf "$RUNNER_TEMP/lean.tar.zst" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.35.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Regenerate unchanged sources of all three charts
+        run: |
+          for CHART in 0 1 2; do
+            case "$CHART" in 0) NODE=0;; 1) NODE=26715;; 2) NODE=53430;; esac
+            python tools/generate_lean_affine_pilot.py --chart "$CHART" --node "$NODE" --prefix "H12CloudChart$CHART" --root-frame --engine H12AffineFastState --global-label-index --chunk-size 1200 --proof-chunk-size 600 --register
+          done
+      - uses: actions/cache/restore@v4
+        id: integration_cache
+        with:
+          path: |
+            quartic_audit_2026_10_17/lean/.lake
+            quartic_audit_2026_10_17/cloud_progress
+            quartic_audit_2026_10_17/final_integration
+          fail-on-cache-miss: ${{ github.run_attempt > 1 }}
+          key: lean-h12-integration-v3-${{ hashFiles('quartic_audit_2026_10_17/tools/verify_final.py', 'quartic_audit_2026_10_17/tools/integration_plan.json', 'quartic_audit_2026_10_17/lean/H12Final.lean') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            lean-h12-integration-v3-${{ hashFiles('quartic_audit_2026_10_17/tools/verify_final.py', 'quartic_audit_2026_10_17/tools/integration_plan.json', 'quartic_audit_2026_10_17/lean/H12Final.lean') }}-
+      - uses: actions/cache/restore@v4
+        if: steps.integration_cache.outputs.cache-matched-key == ''
+        with:
+          path: |
+            quartic_audit_2026_10_17/lean/.lake
+            quartic_audit_2026_10_17/cloud_progress
+          key: lean-linux-v2-0-663750cf44f035a9a2948dfd8d3cc6dee760e4145f9d3d46f2a52d3854aa4523-39358421659-3
+          fail-on-cache-miss: true
+      - uses: actions/cache/restore@v4
+        if: steps.integration_cache.outputs.cache-matched-key == ''
+        with:
+          path: |
+            quartic_audit_2026_10_17/lean/.lake
+            quartic_audit_2026_10_17/cloud_progress
+          key: lean-linux-v2-1-565442ff938c9d44965e3a7dfaa01a113ecc49c582f4651d3a1206571f08edaf-39358413248-5
+          fail-on-cache-miss: true
+      - name: Restore preserved chart 2 evidence after temporary cache eviction
+        run: |
+          curl --fail --location --retry 3 https://raw.githubusercontent.com/contatofilipevono-rgb/hrsbf-bent-verification/44978678b335c5c33f3e139d2d27b144344ac469/research_updates/2026_10_19_overnight/chart2_complete_artifact.zip -o "$RUNNER_TEMP/chart2.zip"
+          echo "dc434dc6a4365ea97d2431a2862b092993c8aec5766c043306ff08c19c489fb2  $RUNNER_TEMP/chart2.zip" | sha256sum --check
+          python -c 'import os,zipfile; from pathlib import Path; z=zipfile.ZipFile(Path(os.environ["RUNNER_TEMP"])/"chart2.zip"); assert z.testzip() is None; assert all(Path(n).resolve().is_relative_to(Path.cwd().resolve()) for n in z.namelist()); [z.extract(n) for n in z.namelist() if n.startswith("cloud_progress/chart2/")]'
+      - name: Audit certified objects and check final theorems in Lean kernel
+        id: verification
+        run: python tools/verify_final.py
+      - name: Save reconstructed objects and evidence for bounded resume
+        if: always() && steps.verification.outcome != 'skipped'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            quartic_audit_2026_10_17/lean/.lake
+            quartic_audit_2026_10_17/cloud_progress
+            quartic_audit_2026_10_17/final_integration
+          key: ${{ steps.integration_cache.outputs.cache-primary-key }}
+      - name: Preserve independent certified chart 2 binary snapshot
+        if: always() && steps.verification.outcome != 'skipped'
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,tarfile
+          root=Path.cwd(); lake=root/'lean/.lake'
+          records=json.loads((root/'cloud_progress/chart2/progress.json').read_bytes())['results']
+          valid=set()
+          for rec in records:
+              n=rec['module']; p=lake/'build/lib/lean'/(n+'.olean')
+              if n.startswith('H12CloudChart2') and p.exists() and hashlib.sha256(p.read_bytes()).hexdigest()==rec['olean_sha256']:
+                  valid.add(n)
+          dest=root/'final_integration/chart2_certified_objects.tar.gz'
+          manifest={}
+          with tarfile.open(dest,'w:gz') as tar:
+              for p in sorted(lake.rglob('*')):
+                  if p.is_file() and not p.is_symlink() and p.name.split('.')[0] in valid:
+                      rel=p.relative_to(root).as_posix(); before=hashlib.sha256(p.read_bytes()).hexdigest()
+                      tar.add(p,arcname=rel,recursive=False)
+                      assert hashlib.sha256(p.read_bytes()).hexdigest()==before,'File changed during snapshot'
+                      manifest[rel]=before
+          with tarfile.open(dest,'r:gz') as tar:
+              assert all(m.isfile() and m.name.startswith('lean/.lake/') and '..' not in Path(m.name).parts for m in tar)
+              for m in tar.getmembers():assert hashlib.sha256(tar.extractfile(m).read()).hexdigest()==manifest[m.name]
+          (root/'final_integration/chart2_snapshot_manifest.json').write_text(json.dumps(dict(modules=sorted(valid),files=manifest,archive_sha256=hashlib.sha256(dest.read_bytes()).hexdigest()),indent=2)+'\n')
+          print('PASS_INDEPENDENT_BINARY_SNAPSHOT',len(valid),len(manifest))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lean-final-integration-${{ github.run_id }}-${{ github.run_attempt }}
+          retention-days: 90
+          if-no-files-found: error
+          path: |
+            quartic_audit_2026_10_17/final_integration/
+            quartic_audit_2026_10_17/lean/H12Final.lean
+            quartic_audit_2026_10_17/tools/verify_final.py
+            quartic_audit_2026_10_17/tools/integration_plan.json
+            quartic_audit_2026_10_17/lean/.lake/build/lib/lean/H12Final.olean
+            quartic_audit_2026_10_17/lean/.lake/build/lib/lean/H12Fourier.olean
+      - name: Require cache persistence before accepting slice
+        if: always() && steps.verification.outcome != 'skipped'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_CACHE_KEY: ${{ steps.integration_cache.outputs.cache-primary-key }}
+        run: |
+          python - <<'PY'
+          import os,json,time,urllib.request,urllib.parse
+          key=os.environ['EXPECTED_CACHE_KEY']; assert key
+          url='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']+'/actions/caches?'+urllib.parse.urlencode({'key':key,'per_page':100})
+          for attempt in range(5):
+              req=urllib.request.Request(url,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'Lean-checkpoint-audit'})
+              with urllib.request.urlopen(req,timeout=30) as response:q=json.load(response)
+              found=[c for c in q['actions_caches'] if c['key']==key and c['ref']==os.environ['GITHUB_REF'] and c['size_in_bytes']>0]
+              if found:print('PASS_CACHE_PERSISTENCE',key,found[0]['size_in_bytes']);break
+              time.sleep(2)
+          else:raise RuntimeError('Cache save not confirmed; artifact preserved; diagnose before resuming')
+          PY
+
