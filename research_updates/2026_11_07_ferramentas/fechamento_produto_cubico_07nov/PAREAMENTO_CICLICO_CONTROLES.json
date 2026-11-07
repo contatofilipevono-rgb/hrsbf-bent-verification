@@ -1,0 +1,81 @@
+[
+  {
+    "label": "regular_degree5_37",
+    "cyclic_polynomials": [
+      37
+    ]
+  },
+  {
+    "label": "regular_degree5_41",
+    "cyclic_polynomials": [
+      41
+    ]
+  },
+  {
+    "label": "regular_degree5_47",
+    "cyclic_polynomials": [
+      47
+    ]
+  },
+  {
+    "label": "regular_degree5_55",
+    "cyclic_polynomials": [
+      55
+    ]
+  },
+  {
+    "label": "regular_degree5_59",
+    "cyclic_polynomials": [
+      59
+    ]
+  },
+  {
+    "label": "regular_degree5_61",
+    "cyclic_polynomials": [
+      61
+    ]
+  },
+  {
+    "label": "regular_degree2_plus3_11",
+    "cyclic_polynomials": [
+      49
+    ]
+  },
+  {
+    "label": "regular_degree2_plus3_13",
+    "cyclic_polynomials": [
+      35
+    ]
+  },
+  {
+    "label": "regular_degree4_plusL1_19",
+    "cyclic_polynomials": [
+      19
+    ]
+  },
+  {
+    "label": "regular_degree4_plusL1_25",
+    "cyclic_polynomials": [
+      25
+    ]
+  },
+  {
+    "label": "regular_degree4_plusL1_31",
+    "cyclic_polynomials": [
+      31
+    ]
+  },
+  {
+    "label": "regular_degree2_power2_plusL1",
+    "cyclic_polynomials": [
+      21
+    ]
+  },
+  {
+    "label": "regular_two_degree2_plusL1",
+    "cyclic_polynomials": [
+      7,
+      7
+    ]
+  }
+]

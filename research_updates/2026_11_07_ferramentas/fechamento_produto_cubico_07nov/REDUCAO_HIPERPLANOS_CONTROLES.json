@@ -1,0 +1,264 @@
+{
+  "seed": 20261107,
+  "tests": [
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "label": "regular_degree5_37"
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "label": "regular_degree5_41"
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "label": "regular_degree5_47"
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "label": "regular_degree5_55"
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "label": "regular_degree5_59"
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "label": "regular_degree5_61"
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "label": "regular_degree2_plus3_11"
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "label": "regular_degree2_plus3_13"
+    },
+    {
+      "end": 11,
+      "triangular": true,
+      "steps": 9,
+      "label": "regular_degree4_plusL1_19"
+    },
+    {
+      "end": 11,
+      "triangular": true,
+      "steps": 9,
+      "label": "regular_degree4_plusL1_25"
+    },
+    {
+      "end": 11,
+      "triangular": true,
+      "steps": 9,
+      "label": "regular_degree4_plusL1_31"
+    },
+    {
+      "end": 11,
+      "triangular": true,
+      "steps": 9,
+      "label": "regular_degree2_power2_plusL1"
+    },
+    {
+      "end": 11,
+      "triangular": true,
+      "steps": 9,
+      "label": "regular_two_degree2_plusL1"
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 0
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 1
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 2
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 3
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 4
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 5
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 6
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 7
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 8
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 9
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 10
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 11
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 12
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 13
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 14
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 15
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 16
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 17
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 18
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 19
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 20
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 21
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 22
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 23
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 24
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 25
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 26
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 27
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 28
+    },
+    {
+      "end": 10,
+      "triangular": false,
+      "steps": 10,
+      "random_control": 29
+    }
+  ],
+  "scope": "Controls on 13 canonical embeddings and30 random pairs; general coverage comes from the written proof."
+}

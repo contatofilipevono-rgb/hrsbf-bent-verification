@@ -1,0 +1,80 @@
+[
+  {
+    "label": "regular_degree5_37",
+    "kernel": 20,
+    "span": 20,
+    "match": true
+  },
+  {
+    "label": "regular_degree5_41",
+    "kernel": 20,
+    "span": 20,
+    "match": true
+  },
+  {
+    "label": "regular_degree5_47",
+    "kernel": 20,
+    "span": 20,
+    "match": true
+  },
+  {
+    "label": "regular_degree5_55",
+    "kernel": 20,
+    "span": 20,
+    "match": true
+  },
+  {
+    "label": "regular_degree5_59",
+    "kernel": 20,
+    "span": 20,
+    "match": true
+  },
+  {
+    "label": "regular_degree5_61",
+    "kernel": 20,
+    "span": 20,
+    "match": true
+  },
+  {
+    "label": "regular_degree2_plus3_11",
+    "kernel": 20,
+    "span": 20,
+    "match": true
+  },
+  {
+    "label": "regular_degree2_plus3_13",
+    "kernel": 20,
+    "span": 20,
+    "match": true
+  },
+  {
+    "label": "regular_degree4_plusL1_19",
+    "kernel": 22,
+    "span": 22,
+    "match": true
+  },
+  {
+    "label": "regular_degree4_plusL1_25",
+    "kernel": 22,
+    "span": 22,
+    "match": true
+  },
+  {
+    "label": "regular_degree4_plusL1_31",
+    "kernel": 22,
+    "span": 22,
+    "match": true
+  },
+  {
+    "label": "regular_degree2_power2_plusL1",
+    "kernel": 29,
+    "span": 22,
+    "match": true
+  },
+  {
+    "label": "regular_two_degree2_plusL1",
+    "kernel": 38,
+    "span": 22,
+    "match": true
+  }
+]

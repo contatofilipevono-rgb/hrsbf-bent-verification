@@ -1,0 +1,237 @@
+{
+  "irreducibles": {
+    "2": [
+      7
+    ],
+    "3": [
+      11,
+      13
+    ],
+    "4": [
+      19,
+      25,
+      31
+    ],
+    "5": [
+      37,
+      41,
+      47,
+      55,
+      59,
+      61
+    ]
+  },
+  "cases": [
+    {
+      "label": "regular_degree5_37",
+      "polynomial_bits": [
+        37
+      ],
+      "L1": false,
+      "n": 10,
+      "ranks": [
+        10,
+        10,
+        10
+      ],
+      "kernel": 20,
+      "span": 20,
+      "K": true
+    },
+    {
+      "label": "regular_degree5_41",
+      "polynomial_bits": [
+        41
+      ],
+      "L1": false,
+      "n": 10,
+      "ranks": [
+        10,
+        10,
+        10
+      ],
+      "kernel": 20,
+      "span": 20,
+      "K": true
+    },
+    {
+      "label": "regular_degree5_47",
+      "polynomial_bits": [
+        47
+      ],
+      "L1": false,
+      "n": 10,
+      "ranks": [
+        10,
+        10,
+        10
+      ],
+      "kernel": 20,
+      "span": 20,
+      "K": true
+    },
+    {
+      "label": "regular_degree5_55",
+      "polynomial_bits": [
+        55
+      ],
+      "L1": false,
+      "n": 10,
+      "ranks": [
+        10,
+        10,
+        10
+      ],
+      "kernel": 20,
+      "span": 20,
+      "K": true
+    },
+    {
+      "label": "regular_degree5_59",
+      "polynomial_bits": [
+        59
+      ],
+      "L1": false,
+      "n": 10,
+      "ranks": [
+        10,
+        10,
+        10
+      ],
+      "kernel": 20,
+      "span": 20,
+      "K": true
+    },
+    {
+      "label": "regular_degree5_61",
+      "polynomial_bits": [
+        61
+      ],
+      "L1": false,
+      "n": 10,
+      "ranks": [
+        10,
+        10,
+        10
+      ],
+      "kernel": 20,
+      "span": 20,
+      "K": true
+    },
+    {
+      "label": "regular_degree2_plus3_11",
+      "polynomial_bits": [
+        7,
+        11
+      ],
+      "L1": false,
+      "n": 10,
+      "ranks": [
+        10,
+        10,
+        10
+      ],
+      "kernel": 20,
+      "span": 20,
+      "K": true
+    },
+    {
+      "label": "regular_degree2_plus3_13",
+      "polynomial_bits": [
+        7,
+        13
+      ],
+      "L1": false,
+      "n": 10,
+      "ranks": [
+        10,
+        10,
+        10
+      ],
+      "kernel": 20,
+      "span": 20,
+      "K": true
+    },
+    {
+      "label": "regular_degree4_plusL1_19",
+      "polynomial_bits": [
+        19
+      ],
+      "L1": true,
+      "n": 11,
+      "ranks": [
+        10,
+        10,
+        10
+      ],
+      "kernel": 22,
+      "span": 22,
+      "K": true
+    },
+    {
+      "label": "regular_degree4_plusL1_25",
+      "polynomial_bits": [
+        25
+      ],
+      "L1": true,
+      "n": 11,
+      "ranks": [
+        10,
+        10,
+        10
+      ],
+      "kernel": 22,
+      "span": 22,
+      "K": true
+    },
+    {
+      "label": "regular_degree4_plusL1_31",
+      "polynomial_bits": [
+        31
+      ],
+      "L1": true,
+      "n": 11,
+      "ranks": [
+        10,
+        10,
+        10
+      ],
+      "kernel": 22,
+      "span": 22,
+      "K": true
+    },
+    {
+      "label": "regular_degree2_power2_plusL1",
+      "polynomial_bits": [
+        21
+      ],
+      "L1": true,
+      "n": 11,
+      "ranks": [
+        10,
+        10,
+        10
+      ],
+      "kernel": 29,
+      "span": 22,
+      "K": false
+    },
+    {
+      "label": "regular_two_degree2_plusL1",
+      "polynomial_bits": [
+        7,
+        7
+      ],
+      "L1": true,
+      "n": 11,
+      "ranks": [
+        10,
+        10,
+        10
+      ],
+      "kernel": 38,
+      "span": 22,
+      "K": false
+    }
+  ]
+}

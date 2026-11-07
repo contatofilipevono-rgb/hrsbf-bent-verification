@@ -1,0 +1,18 @@
+{
+  "pencil": "F4_2_L1",
+  "kernel": 38,
+  "span": 22,
+  "extras": 16,
+  "independent_interpolation_controls": 100,
+  "feature_rank": 183,
+  "augmented_rank": 183,
+  "exact_parameter_polynomial_identity": true,
+  "number_parameter_monomials": 500,
+  "parameters": 93,
+  "solutions": [],
+  "cases": 65536,
+  "seconds": 7.923686504364014,
+  "distinct_infeasibility_certificates": 178,
+  "certificate_bytes": 20155,
+  "certificate_sha256": "4e2f4f89133efaa4745d7c4230ae96d7f14b57c5c40c93997f8ce79166b261d2"
+}

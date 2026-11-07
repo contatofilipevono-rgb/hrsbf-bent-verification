@@ -1,0 +1,66 @@
+{
+  "CATALOGO_VERIFICACAO_DENSA.json": {
+    "bytes": 1381,
+    "sha256": "ce8a265f5b7dbadc1996472f686b5bdf6e22629d3af54e2176cd0b95a032673d"
+  },
+  "CERTIFICADOS_F4_2_L1.json.zlib": {
+    "bytes": 20155,
+    "sha256": "4e2f4f89133efaa4745d7c4230ae96d7f14b57c5c40c93997f8ce79166b261d2"
+  },
+  "classifica_nucleos_minimos.json": {
+    "bytes": 3745,
+    "sha256": "8518f4e464be48e20c16ecb4d59219f65f8bd1ddeca4979316506e6598276c9e"
+  },
+  "classifica_nucleos_minimos.py": {
+    "bytes": 2563,
+    "sha256": "2c5b76162b17bdabb6510f389f5e7dc80290e223a2fa15d750e553f01119b931"
+  },
+  "LEIA_PRIMEIRO.md": {
+    "bytes": 1582,
+    "sha256": "00658a579235ad91477a7d8273aad9249a1d5160336d8f212c10733434683a36"
+  },
+  "PAREAMENTO_CICLICO_CONTROLES.json": {
+    "bytes": 1273,
+    "sha256": "557111d98359e3f850280e93f447293c802e8d7de6de58ce7d0895ade2bc4680"
+  },
+  "REDUCAO_HIPERPLANOS_CONTROLES.json": {
+    "bytes": 4997,
+    "sha256": "cca1370a8aed923d152554ac12c82dbc02f24c9b0bd0144858a7e341ee475e2c"
+  },
+  "reproduz_certificados_sem_solver.py": {
+    "bytes": 966,
+    "sha256": "f6682366b1f1aa946dfd7c5f99e4a704076cef2118e39f56627f61a3feeb7506"
+  },
+  "TEOREMA.md": {
+    "bytes": 10524,
+    "sha256": "95588b65a4a644d393fbbe3638bbb5e130eaaae5dfa82c123d2ea929f9300890"
+  },
+  "VERIFICACAO_F4_2_L1_INDEPENDENTE.json": {
+    "bytes": 522,
+    "sha256": "ce84a47ce64d96284bc9a321554f6ae999ee38b226b019c0bf720131533fcbcf"
+  },
+  "VERIFICACAO_F4_J2_L1_INDEPENDENTE.json": {
+    "bytes": 377,
+    "sha256": "551a323c6c3df4cec53c97924aa2edc3968485baaba85010b142854b2f9afb7e"
+  },
+  "verificar_tudo.py": {
+    "bytes": 671,
+    "sha256": "ec18ab010ac7ef540005c2a5f7f9d2c761ccd23a5ae62253e3c5e72720a17cd2"
+  },
+  "verifica_catalogo_denso.py": {
+    "bytes": 1938,
+    "sha256": "eaedec366e15b66f603c30e8199e76f3f0c5f99c45d82ac5cda416f267f7aa7c"
+  },
+  "verifica_f4_simbolico.py": {
+    "bytes": 7379,
+    "sha256": "de887ff8e9beb2ad41257afc36afb68abc54074b31214e26601226c774cf9f1e"
+  },
+  "verifica_pareamento_ciclico.py": {
+    "bytes": 2770,
+    "sha256": "44c93074ef1d1772d2b9a0b868b52d2d4dfbdf29174d10efebdec359ebed57f2"
+  },
+  "verifica_reducao_hiperplanos.py": {
+    "bytes": 3783,
+    "sha256": "9cd22b1464e86ed0f74facba47d5a7452fe7252a969e886f1c8dcabd51181307"
+  }
+}

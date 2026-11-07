@@ -1,0 +1,19 @@
+{
+  "pencil": "F4_J2_L1",
+  "kernel": 29,
+  "span": 22,
+  "extras": 7,
+  "independent_interpolation_controls": 100,
+  "feature_rank": 109,
+  "augmented_rank": 110,
+  "exact_parameter_polynomial_identity": true,
+  "number_parameter_monomials": 211,
+  "parameters": 84,
+  "universal_dual_certificate_masks": [
+    1642,
+    828,
+    924,
+    876,
+    1708
+  ]
+}
