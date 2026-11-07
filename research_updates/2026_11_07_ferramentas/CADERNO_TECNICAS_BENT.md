@@ -495,6 +495,18 @@ No caso F4²+L1, foram arquivados 178 certificados distintos, com um certificado
 
 **O que não segue:** o Lema L para qualquer parte quártica, a resolução de Q1, Q=1 global ou p=17. No cenário espectral de Astra, uma família excluída só se transfere depois de verificar as hipóteses globais e a obstrução a flats cúbicos. Peso e pico, isoladamente, não autorizam essa transferência.
 
+## Técnica 30 — Produto módulo uma forma linear
+
+**Origem:** corolário proposto por Opus, dedução conferida por Codex; condicional ao teorema candidato da técnica 29. Seja Delta a parte quártica de D e suponha Delta=A wedge B+x wedge phi, com A,B de grau exterior dois, x linear e phi de grau exterior três. Em H=ker(x), a parte quártica vira produto; D restrita é produto de duas quadráticas mais resto cúbico. I6 se preserva por restrição. O flat cúbico de codimensão até quatro em H tem codimensão até cinco no espaço original.
+
+Mais geralmente, k formas lineares independentes dão codimensão até k+4. Com duas formas, a conclusão direta é seis, não cinco: o caso Delta=A wedge B+x1 wedge phi1+x2 wedge phi2 não está fechado por esse argumento. É necessário usar mais informação dos níveis de divisibilidade ou outro mecanismo.
+
+**Separação importante:** a existência do flat cúbico depende só de Delta, pois a translação não altera a parte de grau quatro. I6 depende também dos termos inferiores. O Teorema A da nova entrega coincide com o pacote produto já arquivado; não contar esse fechamento duas vezes. A conjectura K3 testada em amostras e o Lema M proposto continuam sem prova geral nesta leitura.
+
+**Auditoria adicional:** o programa mestre da entrega Argon em argon_auditoria_hiperplanos_07nov foi reexecutado por Codex em cópia de trabalho em 07/11. As cinco frentes passaram, a bibliográfica com dependências documentadas. Isso acrescenta conferência mecânica; não elimina as pendências de auditoria matemática externa da prova escrita. A nova nota completa NAO_PRODUTO_07NOV.md não estava disponível nos diretórios locais pesquisados; suas contagens adicionais não foram reproduzidas aqui.
+
+Fonte: LEITURA_NAO_PRODUTO_E_AUDITORIA_07NOV.md. Q1 geral e p=17 continuam abertos. Não foi feita pesquisa de prioridade para o corolário.
+
 ## Estado de revisão e próximos usos — 07/11
 
 | Ferramenta | Evidência disponível | Trabalho necessário |
