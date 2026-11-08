@@ -1,0 +1,157 @@
+{
+  "missao": "MISSAO_ARGON_DUAS_FORMAS_LINEARES_I6",
+  "descricao": "Certificados duais exatos sobre GF(2) (w^T M = 0 e w^T b = 1) e contraexemplos explicitos.",
+  "CERT_1_OBSTRUCAO_GRAU7_UNIVERSAL_N10": {
+    "n": 10,
+    "variaveis": [
+      "x1",
+      "x2",
+      "y1",
+      "y2",
+      "y3",
+      "y4",
+      "y5",
+      "y6",
+      "y7",
+      "y8"
+    ],
+    "A0": [
+      "y1y3"
+    ],
+    "B0": [
+      "y6y7"
+    ],
+    "Phi1": [
+      "y2y3y4"
+    ],
+    "Phi2": [
+      "y3y5y8"
+    ],
+    "Omega": [],
+    "Delta_masks": [
+      57,
+      404,
+      594
+    ],
+    "Delta_monomios": [
+      "x1y2y3y4",
+      "y1y3y6y7",
+      "x2y3y5y8"
+    ],
+    "gamma2_Delta_masks": [],
+    "tau1_Delta_rhs_masks": [
+      445,
+      635,
+      982
+    ],
+    "tau1_Delta_rhs_monomios": [
+      "x1y1y2y3y4y6y7",
+      "x1x2y2y3y4y5y8",
+      "x2y1y3y5y6y7y8"
+    ],
+    "vetor_dual_w_masks_grau7": [
+      445,
+      635,
+      982
+    ],
+    "vetor_dual_w_monomios_grau7": [
+      "x1y1y2y3y4y6y7",
+      "x1x2y2y3y4y5y8",
+      "x2y1y3y5y6y7y8"
+    ],
+    "verificacao_wT_M_igual_0": true,
+    "verificacao_wT_b_igual_1": true,
+    "conclusao": "Para TODO R3 in Lambda^3(F2^10) e quaisquer R2, R1, R0 (2^176 polinomios inferiores), a soma das 3 equacoes de grau 7 nas mascaras do vetor dual produz (c_T0+c_T1)+(c_T0+c_T2)+(c_T1+c_T2) = 0 != 1 = 1+1+1. Logo nao existe completacao inferior compativel com I6, embora gamma_2(Delta) = 0 no grau 8 e Delta|_{x1=x2=0} seja liftavel de posto 4."
+  },
+  "CERT_2_OBSTRUCAO_S_SPAN_GRAU6_APOS_GRAU7_N8": {
+    "n": 8,
+    "variaveis": [
+      "x1",
+      "x2",
+      "y1",
+      "y2",
+      "y3",
+      "y4",
+      "y5",
+      "y6"
+    ],
+    "subclasse": "S_span (Phi1 = A0 ^ y1, Phi2 = B0 ^ y6)",
+    "A0": [
+      "y1y2",
+      "y3y4"
+    ],
+    "B0": [
+      "y3y4",
+      "y5y6"
+    ],
+    "Phi1": [
+      "y1y3y4"
+    ],
+    "Phi2": [
+      "y3y4y6"
+    ],
+    "Omega": [
+      "y1y2",
+      "y3y4"
+    ],
+    "Delta_masks": [
+      15,
+      51,
+      53,
+      60,
+      178,
+      204,
+      240
+    ],
+    "Delta_monomios": [
+      "x1x2y1y2",
+      "x1x2y3y4",
+      "x1y1y3y4",
+      "y1y2y3y4",
+      "x2y3y4y6",
+      "y1y2y5y6",
+      "y3y4y5y6"
+    ],
+    "R3_solucao_grau7_masks": [
+      13,
+      14
+    ],
+    "R3_solucao_grau7_monomios": [
+      "x1y1y2",
+      "x2y1y2"
+    ],
+    "rhs_grau6_masks": [
+      63,
+      183,
+      207,
+      243,
+      245,
+      252
+    ],
+    "rhs_grau6_monomios": [
+      "x1x2y1y2y3y4",
+      "x1x2y1y3y4y6",
+      "x1x2y1y2y5y6",
+      "x1x2y3y4y5y6",
+      "x1y1y3y4y5y6",
+      "y1y2y3y4y5y6"
+    ],
+    "vetor_dual_w_masks_grau6": [
+      63,
+      125,
+      243,
+      250,
+      252
+    ],
+    "vetor_dual_w_monomios_grau6": [
+      "x1x2y1y2y3y4",
+      "x1y1y2y3y4y5",
+      "x1x2y3y4y5y6",
+      "x2y2y3y4y5y6",
+      "y1y2y3y4y5y6"
+    ],
+    "verificacao_wT_M_igual_0": true,
+    "verificacao_wT_b_igual_1": true,
+    "conclusao": "Instancia em S_span (n=8) onde o grau 8 passa (gamma_2(Delta) = 0) e o grau 7 admite solucao R3 (garantida pelo Teorema 4.2), mas a equacao de grau 6 em R2 e no span K de R3 e insoluvel, certificada pelo vetor dual w de 5 equacoes em Lambda^6."
+  }
+}

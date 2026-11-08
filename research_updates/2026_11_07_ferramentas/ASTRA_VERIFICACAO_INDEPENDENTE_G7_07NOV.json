@@ -1,0 +1,109 @@
+{
+  "counterexample_verified": true,
+  "gamma2_zero": true,
+  "disjoint_union_multiplicities": {
+    "987": 2,
+    "1006": 2,
+    "989": 2,
+    "894": 2,
+    "703": 2,
+    "507": 2,
+    "999": 2,
+    "887": 2,
+    "893": 2,
+    "1020": 2,
+    "1005": 2,
+    "509": 2,
+    "735": 2
+  },
+  "A0_B0_ranks": [
+    8,
+    6
+  ],
+  "Delta_wedge_linear_rank": 10,
+  "zero_Phi_same_core_G7_solution_verified": true,
+  "all_cubic_columns_checked": 120,
+  "dual_rhs_parity": 1,
+  "dual_rows": {
+    "351": {
+      "cubics": [
+        11,
+        268,
+        276
+      ],
+      "rhs": 1
+    },
+    "415": {
+      "cubics": [
+        266,
+        268
+      ],
+      "rhs": 0
+    },
+    "575": {
+      "cubics": [
+        7,
+        21,
+        22,
+        28,
+        515,
+        521
+      ],
+      "rhs": 0
+    },
+    "830": {
+      "cubics": [
+        262,
+        276,
+        770,
+        776
+      ],
+      "rhs": 0
+    },
+    "855": {
+      "cubics": [
+        22,
+        515,
+        772
+      ],
+      "rhs": 0
+    },
+    "861": {
+      "cubics": [
+        21,
+        28,
+        521
+      ],
+      "rhs": 0
+    },
+    "911": {
+      "cubics": [
+        259,
+        262,
+        266
+      ],
+      "rhs": 0
+    },
+    "919": {
+      "cubics": [
+        7,
+        259,
+        274,
+        770,
+        772
+      ],
+      "rhs": 0
+    },
+    "923": {
+      "cubics": [
+        11,
+        274,
+        776
+      ],
+      "rhs": 0
+    }
+  },
+  "integer_lift_independently_checked": true,
+  "positive_I6_control_all_flats": 43180,
+  "false_Leibniz_control_detected": true
+}

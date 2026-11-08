@@ -1,0 +1,17 @@
+{
+  "cases": 6561,
+  "distinct_Delta": 6561,
+  "parameter_case_counts": {
+    "soluble": 6201,
+    "insoluble": 360
+  },
+  "distinct_Delta_counts": {
+    "soluble": 6201,
+    "insoluble": 360
+  },
+  "all_G8_and_G7_certificates_replayed_without_solver": true,
+  "compressed_bytes": 181388,
+  "sha256": "9fa41eacc4aef81f2f7295ef8c174e8805991ff76e4c44e475bb8baaa18f8d0c",
+  "seconds": 8.125844717025757,
+  "scope": "Exactly 9^4 coordinate-or-zero shifts of one fixed core and residual; G7 only, not I6."
+}

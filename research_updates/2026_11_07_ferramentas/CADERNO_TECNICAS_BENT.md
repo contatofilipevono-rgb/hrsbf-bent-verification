@@ -507,6 +507,46 @@ Mais geralmente, k formas lineares independentes dão codimensão até k+4. Com 
 
 Fonte: LEITURA_NAO_PRODUTO_E_AUDITORIA_07NOV.md. Q1 geral e p=17 continuam abertos. Não foi feita pesquisa de prioridade para o corolário.
 
+## Técnica 31 — Equações de I6 por união e sobreposição de monômios
+
+**Origem:** sistematização do Argon, com leitura algébrica e controles independentes de Codex. Material incorporado seletivamente após a auditoria PARECER_CODEX_ARGON_DUAS_FORMAS_07NOV.md; a entrega original contém demonstrações inválidas e não é endossada integralmente.
+
+Para a ANF de D, tau(D) é a soma módulo dois dos produtos dos pares distintos de monômios. O levantamento inteiro satisfaz ell(D)=e1(D)−2 tau(D) módulo quatro. Para grau de D até quatro, I6 equivale ao desaparecimento de tau(D) nos graus seis, sete e oito, usando a equivalência invariante da técnica 25. Escreva D=Delta+R3+R2+R1+R0 em partes homogêneas. Então:
+
+    grau 8: gamma2(Delta)=0;
+    grau 7: Delta wedge R3 + tau1(Delta)=0;
+    grau 6: Delta wedge R2 + gamma2(R3) + Delta *_1 R3 + tau2(Delta)=0.
+
+Aqui gamma2(P) conta pares de monômios disjuntos; tau1(Delta) conta pares quárticos com interseção de tamanho um; tau2(Delta), interseção de tamanho dois; P *_1 Q conta produtos de monômios de P e Q com exatamente uma variável comum. Estas definições por uniões dão diretamente as fórmulas, sem a identidade de contrações falsa da entrega original. Tau1, tau2 e a operação de sobreposição dependem da base; o sistema completo expressa I6. R1 e R0 não contribuem nesses graus.
+
+Para a decomposição Delta=T+x1 wedge Phi1+x2 wedge Phi2+x1 wedge x2 wedge Omega, com T=A0 wedge B0 e os demais fatores no complemento fixado, a condição de grau oito se separa em T wedge Phi1=0, T wedge Phi2=0 e T wedge Omega+Phi1 wedge Phi2=0. O termo misto não pode ser omitido. Isso usa gamma2(T)=0 e gamma2 de qualquer forma com fator linear igual a zero; o argumento inteiro incorreto do relatório não serve como prova dessas propriedades exteriores.
+
+**Certificado negativo aproveitável:** em dez variáveis, Delta de máscaras [57,404,594] não admite completação inferior compatível com I6: somar as equações de grau sete nas máscaras [445,635,982] dá 0=1 para todas as correções cúbicas. Codex conferiu todas as colunas. É um controle de obstrução, não um exemplo do núcleo difícil: Delta tem um fator linear comum e já se anula num hiperplano.
+
+**Redução aproveitável:** se Phi1, Phi2 ou sua soma pertence a A0 wedge Lambda1+B0 wedge Lambda1, existe um hiperplano onde Delta vira produto. A consequência de codimensão até cinco é condicional ao teorema candidato dos produtos. A identidade algébrica dessa redução não depende da prova inválida do Teorema 4.2 do Argon.
+
+## Técnica 32 — Verificar o domínio do certificado e todos os termos cruzados
+
+**Origem:** auditoria de Codex sobre o certificado do Argon. Para uma família quadrática de equações nos parâmetros, testar cada direção separadamente não testa as combinações de duas direções. É necessário conferir os coeficientes constantes, lineares e todos os termos cruzados do modelo completo.
+
+No segundo certificado da entrega Argon, o núcleo cúbico completo tem dimensão 48. O vetor dual anula as 48 variações individuais, mas falha em termos cruzados entre elas. O programa original ainda confundia o span dos geradores individualmente no núcleo (dimensão oito) com a interseção do span com o núcleo (dimensão dez). A interseção correta foi recalculada e o certificado passou também nela: essa parte restrita pode ser conservada. Não pode ser estendida ao núcleo completo.
+
+**Controle positivo obrigatório:** para Delta=[15,51,53,60,178,204,240], há uma completação com R3=[13,14,21,42] e R2=[3,10,12,17,34,130,132]. O levantamento inteiro e os 43.180 flats afins de dimensão seis em oito variáveis passaram em I6. As máscaras usam a ordem x1,x2,y1,...,y6. Uma exclusão de TODAS as correções desse Delta seria falsa.
+
+**Correções que não foram incorporadas como ferramentas:** a identidade P *_1 Omega = sigma1(P) wedge Omega + P wedge sigma1(Omega) + sigma1(P wedge Omega), com sigma1 soma das contrações, é falsa. P=abcd e Omega=ae dão lado esquerdo abcde e direito zero, mesmo com P wedge Omega=0. Também é falsa a alegação de que produtos de quatro formas lineares booleanas sempre têm levantamento inteiro de grau até quatro: (a XOR b)cde tem o termo −2abcde.
+
+**Atualização decisiva — Teorema 4.2 REFUTADO:** Astra construiu uma parte quártica Delta em S_span, em dez variáveis, com gamma2(Delta)=0 mas equação completa de grau sete insolúvel. O exemplo minimizado tem 24 monômios. O vetor dual de nove máscaras [351,415,575,830,855,861,911,919,923] anula todas as 120 colunas cúbicas e dá paridade um no lado direito. Codex reconstruiu o exemplo, conferiu o certificado e verificou os coeficientes por Möbius inteiro. Não resta apenas uma lacuna de prova: o enunciado universal é falso. Arquivos ASTRA_CONTRAEXEMPLO_G7_SSPAN_07NOV.json e CONTROLE_CODEX_CONTRAEXEMPLO_ASTRA_G7_07NOV.json. A redução por hiperplano da técnica 31 não é afetada: ela não afirma a existência de uma completação I6 para toda parte principal.
+
+**Arquivos incorporados:** PARECER_CODEX_ARGON_DUAS_FORMAS_07NOV.md, audita_argon_duas_formas.py e AUDITORIA_ARGON_DUAS_FORMAS_CONTROLES.json. O verificador recebido passou em cópia de trabalho, mas não verificava a identidade universal falsa da prova escrita. Não confundir sucesso de execução com auditoria de todos os teoremas.
+
+**Catálogo finito adicional de Codex:** fixando A0, B0 e Omega_res do contraexemplo Astra e variando cada um dos quatro deslocamentos em {0,y1,...,y8}, os 6.561 objetos distintos passam no grau oito. No grau sete, 6.201 admitem solução e 360 são insolúveis. Todos têm testemunha ou certificado dual, reexecutados sem solver. O catálogo comprimido está em CATALOGO_DESLOCAMENTOS_G7_07NOV.json.zlib, com gerador/verificador catalogo_deslocamentos_g7_07nov.py. É uma família finita específica e só decide G7: os 6.201 positivos NÃO foram declarados I6 nem I7. Não extrapolar a todas as formas lineares ou outros núcleos.
+
+## Controle adicional — Posto oito, I6 e I7
+
+Em CONTROLE_INDEPENDENTE_POSTO8_07NOV.json e confere_posto8_local.py, Codex conferiu cinco classes regulares em oito variáveis: em cada uma dos 10.795 subespaços de dimensão seis nenhum anula a parte quártica, e há uma testemunha de dimensão cinco. A codimensão mínima é, portanto, três nessas classes.
+
+Foram construídas testemunhas I6 nas classes semissimples F4+F4 e repetida (t²+t+1)². A repetida também passa em I7, conferido por Walsh direto em todos os 510 flats afins de dimensão sete e pelo perfil inteiro. Assim, I7 sozinho não melhora universalmente a codimensão três para dois. Estes são controles exatos, não uma reexecução da classificação das 101 classes ou validação do Teorema A+ proposto por Opus. Ver LEITURA_DOIS_LINEARES_POSTO8_07NOV.md. A prova candidata de fechamento com duas formas lineares permanece com cobertura e solver pendentes de auditoria.
+
 ## Estado de revisão e próximos usos — 07/11
 
 | Ferramenta | Evidência disponível | Trabalho necessário |

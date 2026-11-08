@@ -1,0 +1,171 @@
+{
+  "scope": "Cinco pencils regulares em oito variaveis; nao classifica as 101 classes nem reexecuta decide2.py. I6 do testemunho usa equivalencia com perfil mod4 completo.",
+  "cases": [
+    {
+      "label": "F4_F4",
+      "blocks": [
+        7,
+        7
+      ],
+      "R2_sufficient": true,
+      "D_ANF_masks": [
+        7,
+        10,
+        11,
+        13,
+        14,
+        15,
+        86,
+        89,
+        90,
+        101,
+        106,
+        112,
+        149,
+        154,
+        160,
+        165,
+        166,
+        169,
+        176,
+        208,
+        224,
+        240
+      ],
+      "direct_I6_affine_flats_checked": 43180,
+      "I7": false,
+      "direct_I7_affine_flats_checked": 510,
+      "liftability_integer_coefficients": false,
+      "I7_counterexample": {
+        "ell": 1,
+        "u": 2,
+        "sign": 1,
+        "Walsh": 8
+      },
+      "dimension6_subspaces_tested": 10795,
+      "dimension6_zeros": 0,
+      "dimension5_witness": [
+        129,
+        194,
+        36,
+        8,
+        16
+      ]
+    },
+    {
+      "label": "F4_squared",
+      "blocks": [
+        21
+      ],
+      "R2_sufficient": true,
+      "D_ANF_masks": [
+        17,
+        19,
+        36,
+        38,
+        50,
+        53,
+        68,
+        76,
+        86,
+        89,
+        100,
+        106,
+        129,
+        132,
+        137,
+        140,
+        145,
+        149,
+        154,
+        163,
+        166,
+        172,
+        196,
+        197,
+        200
+      ],
+      "direct_I6_affine_flats_checked": 43180,
+      "I7": true,
+      "direct_I7_affine_flats_checked": 510,
+      "liftability_integer_coefficients": true,
+      "I7_counterexample": null,
+      "dimension6_subspaces_tested": 10795,
+      "dimension6_zeros": 0,
+      "dimension5_witness": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ]
+    },
+    {
+      "label": "irr4_19",
+      "blocks": [
+        19
+      ],
+      "R2_sufficient": false,
+      "D_ANF_masks": null,
+      "direct_I6_affine_flats_checked": 0,
+      "I7": null,
+      "direct_I7_affine_flats_checked": 0,
+      "liftability_integer_coefficients": null,
+      "I7_counterexample": null,
+      "dimension6_subspaces_tested": 10795,
+      "dimension6_zeros": 0,
+      "dimension5_witness": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ]
+    },
+    {
+      "label": "irr4_25",
+      "blocks": [
+        25
+      ],
+      "R2_sufficient": false,
+      "D_ANF_masks": null,
+      "direct_I6_affine_flats_checked": 0,
+      "I7": null,
+      "direct_I7_affine_flats_checked": 0,
+      "liftability_integer_coefficients": null,
+      "I7_counterexample": null,
+      "dimension6_subspaces_tested": 10795,
+      "dimension6_zeros": 0,
+      "dimension5_witness": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ]
+    },
+    {
+      "label": "irr4_31",
+      "blocks": [
+        31
+      ],
+      "R2_sufficient": false,
+      "D_ANF_masks": null,
+      "direct_I6_affine_flats_checked": 0,
+      "I7": null,
+      "direct_I7_affine_flats_checked": 0,
+      "liftability_integer_coefficients": null,
+      "I7_counterexample": null,
+      "dimension6_subspaces_tested": 10795,
+      "dimension6_zeros": 0,
+      "dimension5_witness": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ]
+    }
+  ],
+  "seconds": 2.301352024078369
+}

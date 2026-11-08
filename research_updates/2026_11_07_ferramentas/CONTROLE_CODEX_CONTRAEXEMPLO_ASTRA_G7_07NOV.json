@@ -1,0 +1,42 @@
+{
+  "scope": "Independent check of minimized Astra instance, reconstruction plus integer Mobius.",
+  "gamma2_zero": true,
+  "ranks_core": [
+    8,
+    6,
+    6
+  ],
+  "ranks_modified": [
+    8,
+    8,
+    10
+  ],
+  "dual_rows": [
+    351,
+    415,
+    575,
+    830,
+    855,
+    861,
+    911,
+    919,
+    923
+  ],
+  "dual_size": 9,
+  "Astra_dual_rows": [
+    351,
+    415,
+    575,
+    830,
+    855,
+    861,
+    911,
+    919,
+    923
+  ],
+  "Astra_dual_verified": true,
+  "cubic_columns_verified": 120,
+  "wT_M": 0,
+  "wT_rhs": 1,
+  "integer_Mobius_agrees": true
+}
