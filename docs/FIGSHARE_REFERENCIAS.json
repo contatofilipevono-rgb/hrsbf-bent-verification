@@ -1,0 +1,110 @@
+{
+  "checked_on": "2026-11-08",
+  "purpose": "Public version and file inventory; supplied checksums are remote metadata, not a new local byte audit.",
+  "articles": [
+    {
+      "id": 34165260,
+      "title": "Antipodal necessity for rotation symmetric bent functions of degree at most three",
+      "version": 3,
+      "doi": "10.6084/m9.figshare.34165260.v3",
+      "published_date": "2026-10-30T14:04:27Z",
+      "api_url": "https://api.figshare.com/v2/articles/34165260",
+      "files": [
+        {
+          "id": 70190301,
+          "name": "HRSBF_supplement_2026-10-15.zip",
+          "size": 547112,
+          "download_url": "https://ndownloader.figshare.com/files/70190301",
+          "computed_md5": "34b670571eee813d21b000ee1e51cd9a"
+        },
+        {
+          "id": 70190304,
+          "name": "HRSBF_v2.pdf",
+          "size": 122522,
+          "download_url": "https://ndownloader.figshare.com/files/70190304",
+          "computed_md5": "fa9c30693703fb63b882a972f442cbcb"
+        },
+        {
+          "id": 70190307,
+          "name": "HRSBF_v2.tex",
+          "size": 36952,
+          "download_url": "https://ndownloader.figshare.com/files/70190307",
+          "computed_md5": "2ad12eeffb40e78fe17d020187852e20"
+        },
+        {
+          "id": 70916925,
+          "name": "Antipodal_manuscript_revised_2026-10-28.pdf",
+          "size": 445062,
+          "download_url": "https://ndownloader.figshare.com/files/70916925",
+          "computed_md5": "62f9923464624bf63425f3324eba858e"
+        },
+        {
+          "id": 70916928,
+          "name": "Antipodal_manuscript_source_revised_2026-10-28.zip",
+          "size": 45261,
+          "download_url": "https://ndownloader.figshare.com/files/70916928",
+          "computed_md5": "02ef354b671844d9441c5599eef99a9c"
+        },
+        {
+          "id": 70916931,
+          "name": "ESM_1.zip",
+          "size": 103344,
+          "download_url": "https://ndownloader.figshare.com/files/70916931",
+          "computed_md5": "003cc9e58a9f3c6861256242fe37415c"
+        }
+      ]
+    },
+    {
+      "id": 34737294,
+      "title": "Nonexistence of homogeneous rotation symmetric bent functions of degree four in twelve variables",
+      "version": 2,
+      "doi": "10.6084/m9.figshare.34737294.v2",
+      "published_date": "2026-10-31T21:44:40Z",
+      "api_url": "https://api.figshare.com/v2/articles/34737294",
+      "files": [
+        {
+          "id": 70946328,
+          "name": "H12_quartic_preprint_v2.pdf",
+          "size": 153332,
+          "download_url": "https://ndownloader.figshare.com/files/70946328",
+          "computed_md5": "2e6773690e047e216d2f94ff5c06a8c6"
+        },
+        {
+          "id": 70946331,
+          "name": "H12_quartic_supplement_v2.pdf",
+          "size": 87142,
+          "download_url": "https://ndownloader.figshare.com/files/70946331",
+          "computed_md5": "ad184da656bae8a89655991e06e737aa"
+        },
+        {
+          "id": 70467078,
+          "name": "H12_independent_verification.zip",
+          "size": 3013239,
+          "download_url": "https://ndownloader.figshare.com/files/70467078",
+          "computed_md5": "7d67601553eb239b8af452f7ed0180a4"
+        },
+        {
+          "id": 70467084,
+          "name": "H12_formal_sources.zip",
+          "size": 49233663,
+          "download_url": "https://ndownloader.figshare.com/files/70467084",
+          "computed_md5": "a6640e120118c5f25cc5b08f7fe07342"
+        },
+        {
+          "id": 70469187,
+          "name": "H12_final_kernel_records.zip",
+          "size": 16584,
+          "download_url": "https://ndownloader.figshare.com/files/70469187",
+          "computed_md5": "a0ea4f9ef1554c079c50cee6a7a96505"
+        },
+        {
+          "id": 70946334,
+          "name": "H12_revised_reproducibility_v2.zip",
+          "size": 51183781,
+          "download_url": "https://ndownloader.figshare.com/files/70946334",
+          "computed_md5": "da8fcdf18b9a036ef6ac3a9be2c8b75f"
+        }
+      ]
+    }
+  ]
+}

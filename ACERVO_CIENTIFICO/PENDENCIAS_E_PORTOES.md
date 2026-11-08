@@ -1,5 +1,7 @@
 # Pendências e portões editoriais (checkpoint 14/10/2026)
 
+> **Checkpoint histórico:** esta tabela registra pendências de 14/10/2026, não uma lista atual de bloqueios para todos os trabalhos. O resultado antipodal e sua formalização receberam versões posteriores. Consulte as [pendências atuais](../docs/ORGANIZACAO.md) e o [catálogo de evidências](../docs/RESULTADOS_ATUAIS.md); isso não encerra automaticamente pendências de V2/V3-C, dos adendos ou de prioridade bibliográfica.
+
 | Projeto | Pendente | Bloqueia |
 |---|---|---|
 | V1 | Reconciliar demonstração da regra antipodal, hipótese de diagonal constante, comparação com Stănică/Meng/Sun | alegação de novidade/submissão sem ressalvas |

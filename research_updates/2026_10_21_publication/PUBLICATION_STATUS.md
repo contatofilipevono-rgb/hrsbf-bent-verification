@@ -1,5 +1,7 @@
 # H(12,4) preprint published —21/10/2026
 
+> **Later version — checked 08/11/2026:** this file records the original v1 publication event. The current reference is [H12, Figshare v2](https://doi.org/10.6084/m9.figshare.34737294.v2), published 31/10/2026. Use the revised v2 article and packages for current exposition and limitations; see the [current results catalogue](../../docs/RESULTADOS_ATUAIS.md). The historical publication record below is retained.
+
 Published Figshare item34737294, version1. DOI https://doi.org/10.6084/m9.figshare.34737294.v1
 
 Public page: https://figshare.com/articles/preprint/Nonexistence_of_homogeneous_rotation_symmetric_bent_functions_of_degree_four_in_twelve_variables/34737294

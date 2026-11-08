@@ -1,5 +1,7 @@
 # ACERVO CIENTÍFICO — entrada central (14/10/2026)
 
+> **Orientação atualizada em 08/11/2026:** este acervo conserva o estado de 14/10. Para os resultados posteriores, consulte o [catálogo atual](../docs/RESULTADOS_ATUAIS.md): antipodal/cúbicas no Figshare v3 e H12 no Figshare v2. Os manuscritos e artefatos congelados abaixo mantêm seu conteúdo histórico.
+
 Este diretório reúne cópias **imutáveis quanto ao conteúdo** de arquivos científicos relevantes das branches originais. Nenhum manuscrito original foi sobrescrito. Um arquivo aqui não é, por si, aprovação científica ou versão de publicação.
 
 ## Acesso rápido
