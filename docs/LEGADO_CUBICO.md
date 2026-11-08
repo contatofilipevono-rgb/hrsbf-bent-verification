@@ -1,6 +1,6 @@
 # Etapa cúbica anterior: divisibilidade e certificados t=32
 
-Este guia trata do **método anterior** que exclui dimensões pares não divisíveis por 32. O [teorema antipodal atual, Figshare v3](https://doi.org/10.6084/m9.figshare.34165260.v3), cobre todas as dimensões pares positivas; o limite deste método anterior não é uma questão aberta do caso homogêneo cúbico atual.
+Este guia trata do **método anterior** que exclui dimensões pares não divisíveis por 32. O [teorema antipodal atual, Figshare v4](https://doi.org/10.6084/m9.figshare.34165260.v4), cobre todas as dimensões pares positivas; o limite deste método anterior não é uma questão aberta do caso homogêneo cúbico atual.
 
 A [versão integral do README anterior](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/blob/9766e7eeda018ff505b648106b75da34818aac23/README.md) conserva as descrições e contagens originais no commit anterior à reorganização.
 

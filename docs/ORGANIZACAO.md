@@ -7,7 +7,7 @@ Atualizado em **08/11/2026**. [Entrada principal](../README.md) · [Resultados a
 | Objetivo | Caminho |
 |---|---|
 | Ler e citar os trabalhos atuais | [Catálogo de resultados](RESULTADOS_ATUAIS.md), com DOI de cada versão |
-| Reproduzir antipodal/cúbicas | `ESM_1.zip` no [Figshare v3](https://doi.org/10.6084/m9.figshare.34165260.v3); seguir o README do pacote |
+| Reproduzir antipodal/cúbicas | `ESM_1.zip` no [Figshare v4](https://doi.org/10.6084/m9.figshare.34165260.v4); seguir o README do pacote |
 | Reproduzir H12 e compreender as limitações | Pacotes do [Figshare v2](https://doi.org/10.6084/m9.figshare.34737294.v2) e [conclusão formal](../research_updates/2026_10_20_final_integration/CONCLUSAO_FORMAL_H12.md) |
 | Consultar a antiga etapa cúbica por divisibilidade | [Guia histórico](LEGADO_CUBICO.md) |
 | Consultar V1/V2/V3-C congelados em outubro | [Acervo](../ACERVO_CIENTIFICO/README.md) e manifesto de origem |
@@ -24,14 +24,14 @@ Atualizado em **08/11/2026**. [Entrada principal](../README.md) · [Resultados a
 - `artigos/`: trilha bibliográfica, direitos e referências.
 - `jobs/` e notebooks de worker: infraestrutura de execução; organização documental não inicia buscas nem altera a fila.
 
-Os arquivos da raiz `paper_hrsbf.tex`, `supplementary_material.tex` e o dossiê correspondem à etapa anterior por divisibilidade. Para o manuscrito antipodal atual, usar o Figshare v3.
+Os arquivos da raiz `paper_hrsbf.tex`, `supplementary_material.tex` e o dossiê correspondem à etapa anterior por divisibilidade. Para o manuscrito antipodal atual, usar o Figshare v4.
 
 ## Pendências atuais
 
 | Prioridade | Tarefa | Condição de conclusão |
 |---|---|---|
 | 1 | Manter GitHub e Figshare alinhados | Títulos, alcance e links de versão consistentes nos pontos de entrada |
-| 2 | Conferir a referência cruzada no registro H12 do Figshare | A descrição de H12 aponta para antipodal v3; em 08/11 ainda aponta para v2. Requer edição no Figshare, não é resolvida por este commit |
+| 2 | Conferir a referência cruzada no registro H12 do Figshare | Atualizar o link da descrição pública de H12 para o DOI do antipodal v4. Na conferência de 08/11, ainda apontava para v2 |
 | 3 | Melhorar a reprodução limpa de H12 | Reconstrução integral documentada da distribuição mínima; não presumir sucesso dos registros parciais |
 | 4 | Localizar a nota de grau ímpar / dicotomia | Manuscrito, definição de C(n), provas, cobertura computacional e literatura reunidos |
 | 5 | Revisar V2/V3-C para apresentação editorial | Hipóteses explícitas, afirmações falsas excluídas da versão escolhida e comparação bibliográfica |

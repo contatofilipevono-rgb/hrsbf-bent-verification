@@ -1,6 +1,6 @@
 # V1 — funções bent homogêneas simétricas por rotação
 
-> **Atualização de navegação — 08/11/2026:** as pendências abaixo descrevem este snapshot de 14/10. A referência atual é [antipodal, Figshare v3](https://doi.org/10.6084/m9.figshare.34165260.v3), com manuscrito revisado e suplemento Lean do teorema em toda dimensão par positiva. Consulte [resultados e evidências atuais](../../docs/RESULTADOS_ATUAIS.md). O suplemento registra compilação e checagem de 27/10; esta atualização documental não recompilou Lean. O snapshot e seus certificados não foram substituídos.
+> **Atualização de navegação — 08/11/2026:** as pendências abaixo descrevem este snapshot de 14/10. A referência atual é [antipodal, Figshare v4](https://doi.org/10.6084/m9.figshare.34165260.v4), com manuscrito revisado e suplemento Lean do teorema em toda dimensão par positiva. Consulte [resultados e evidências atuais](../../docs/RESULTADOS_ATUAIS.md). O suplemento registra compilação e checagem de 27/10; esta atualização documental não recompilou Lean. O snapshot e seus certificados não foram substituídos.
 
 **Origem congelada:** [audit/v1-release-gates-2026-10-11](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/blob/db3d5b9f385dc96adf7df3f0a0483d4c611d90e8/README.md) (`db3d5b9f385dc96adf7df3f0a0483d4c611d90e8`).
 

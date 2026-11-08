@@ -4,17 +4,17 @@ Conferência documental: **08/11/2026**. [Entrada principal](../README.md) · [O
 
 ## 1. Antipodal e inexistência homogênea cúbica
 
-**Referência atual:** [Figshare 34165260, versão 3](https://doi.org/10.6084/m9.figshare.34165260.v3).
+**Referência atual:** [Figshare 34165260, versão 4](https://doi.org/10.6084/m9.figshare.34165260.v4).
 
 **Enunciado:** para todo n par positivo, uma função bent RS de grau algébrico no máximo três contém a órbita quadrática antipodal P_n. Portanto nenhuma função RS homogênea de grau três é bent.
 
-**Evidência publicada:** manuscrito revisado de 28/10; suplemento `ESM_1.zip` com fontes Lean 4.15.0 e registros de compilação/checagem de 27/10. O commit-fonte indicado é `6dd183685ef8a5b033c1bcf8733496d57b853cc7`.
+**Evidência publicada:** manuscrito V4 de 08/11, com uma segunda demonstração por descida de Jordan no Apêndice B, e suplemento `ESM_1.zip` com fontes Lean 4.15.0 e registros de compilação/checagem de 27/10. O commit-fonte indicado é `6dd183685ef8a5b033c1bcf8733496d57b853cc7`.
 
-O suplemento registra os teoremas `HRSBF.Antipodal.universal_antipodal` e `HRSBF.Antipodal.no_homogeneous_cubic_rotation_symmetric_bent`, incluindo interfaces com módulo absoluto de Walsh. As listas de axiomas registradas contêm somente `propext`, `Classical.choice` e `Quot.sound`, sem `sorryAx`.
+A formalização cobre a prova original, incluindo a redução de ordem ímpar usada nas duas demonstrações. A descida de Jordan ainda aguarda formalização. O suplemento registra os teoremas `HRSBF.Antipodal.universal_antipodal` e `HRSBF.Antipodal.no_homogeneous_cubic_rotation_symmetric_bent`, incluindo interfaces com módulo absoluto de Walsh. As listas de axiomas registradas contêm somente `propext`, `Classical.choice` e `Quot.sound`, sem `sorryAx`.
 
 **Limites:** não conclui a conjectura homogênea para todos os graus maiores que dois. Funções cúbicas RS não homogêneas bent podem existir. Não confundir o teorema geral com os controles computacionais finitos do suplemento. A conferência documental de 08/11 leu os registros distribuídos; não recompilou Lean nem certificou prioridade bibliográfica.
 
-**Histórico:** [V1 de 14/10](../ACERVO_CIENTIFICO/V1/README.md) e [etapa por divisibilidade](LEGADO_CUBICO.md). Suas pendências datadas não substituem o estado publicado em v3.
+**Histórico:** [V1 de 14/10](../ACERVO_CIENTIFICO/V1/README.md) e [etapa por divisibilidade](LEGADO_CUBICO.md). Suas pendências datadas não substituem o estado publicado em v4.
 
 ## 2. H12 — inexistência homogênea quártica em doze variáveis
 
