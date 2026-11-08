@@ -6,7 +6,7 @@ Entrada principal para os resultados, materiais de reprodução e acervo histór
 
 | Trabalho | Resultado e alcance | Versão de referência |
 |---|---|---|
-| **Antipodal / cúbicas RS** | Toda função bent simétrica por rotação de grau ≤ 3, em dimensão par positiva, contém a órbita quadrática antipodal. Consequência: não existe bent RS homogênea cúbica em **nenhuma dimensão par positiva**. | [Figshare v3](https://doi.org/10.6084/m9.figshare.34165260.v3), publicada em 30/10/2026 |
+| **Antipodal / cúbicas RS** | Toda função bent simétrica por rotação de grau ≤ 3, em dimensão par positiva, contém a órbita quadrática antipodal. Consequência: não existe bent RS homogênea cúbica em **nenhuma dimensão par positiva**. | [Figshare v4](https://doi.org/10.6084/m9.figshare.34165260.v4), publicada em 08/11/2026 |
 | **H12 / quárticas RS** | Não existe bent RS homogênea de grau quatro em **12 variáveis**. O resultado cobre a família concreta dos 43 coeficientes de órbitas quárticas. | [Figshare v2](https://doi.org/10.6084/m9.figshare.34737294.v2), publicada em 31/10/2026 |
 
 Os dois registros são **preprints**, não artigos anunciados como aceitos por periódico. Formalização e certificados não estabelecem, por si, prioridade bibliográfica.
@@ -15,13 +15,13 @@ Os dois registros são **preprints**, não artigos anunciados como aceitos por p
 
 ## Antipodal / cúbicas: versão atual
 
-No [Figshare v3](https://doi.org/10.6084/m9.figshare.34165260.v3), use:
+No [Figshare v4](https://doi.org/10.6084/m9.figshare.34165260.v4), use:
 
-- `Antipodal_manuscript_revised_2026-10-28.pdf`: manuscrito atual;
-- `Antipodal_manuscript_source_revised_2026-10-28.zip`: fonte editorial;
+- `Antipodal_V4.pdf`: manuscrito atual, com a segunda prova por descida de Jordan no Apêndice B;
+- `Antipodal_V4_pacote.zip`: fontes editáveis e controles finitos da prova alternativa;
 - `ESM_1.zip`: fontes Lean 4.15.0, dependências fixadas, controles finitos e registros de verificação.
 
-O suplemento identifica o commit-fonte `6dd183685ef8a5b033c1bcf8733496d57b853cc7` e registra compilação do projeto e checagem dos enunciados/axiomas em **27/10/2026**. Esses são registros históricos distribuídos com a versão atual; a organização documental de 08/11 não executou Lean novamente.
+O suplemento identifica o commit-fonte `6dd183685ef8a5b033c1bcf8733496d57b853cc7` e registra compilação do projeto e checagem dos enunciados/axiomas em **27/10/2026**. Esses registros cobrem a prova original. A prova de Jordan ainda aguarda formalização em Lean.
 
 **A restrição “32 não divide n” pertence à etapa anterior por divisibilidade. Ela não limita o teorema antipodal atual.** Os certificados antigos de t=32 continuam úteis como resultados sobre famílias específicas, mas já não definem a fronteira do problema homogêneo cúbico.
 

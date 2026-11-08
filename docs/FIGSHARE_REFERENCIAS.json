@@ -5,9 +5,9 @@
     {
       "id": 34165260,
       "title": "Antipodal necessity for rotation symmetric bent functions of degree at most three",
-      "version": 3,
-      "doi": "10.6084/m9.figshare.34165260.v3",
-      "published_date": "2026-10-30T14:04:27Z",
+      "version": 4,
+      "doi": "10.6084/m9.figshare.34165260.v4",
+      "published_date": "2026-11-08T19:36:45Z",
       "api_url": "https://api.figshare.com/v2/articles/34165260",
       "files": [
         {
@@ -51,6 +51,20 @@
           "size": 103344,
           "download_url": "https://ndownloader.figshare.com/files/70916931",
           "computed_md5": "003cc9e58a9f3c6861256242fe37415c"
+        },
+        {
+          "id": 71237875,
+          "name": "Antipodal_V4.pdf",
+          "size": 465301,
+          "download_url": "https://ndownloader.figshare.com/files/71237875",
+          "computed_md5": "21bf516caa1b87f9e713b9c971eb2976"
+        },
+        {
+          "id": 71237878,
+          "name": "Antipodal_V4_pacote.zip",
+          "size": 659932,
+          "download_url": "https://ndownloader.figshare.com/files/71237878",
+          "computed_md5": "e7e2bac07e5ffe46193b26ef55388e65"
         }
       ]
     },
