@@ -1,0 +1,319 @@
+{
+  "joint_supports": 288,
+  "orbit_histogram": [
+    {
+      "size": 2,
+      "paired_survivors": 0,
+      "quartic_survivors": 0,
+      "orbits": 30
+    },
+    {
+      "size": 2,
+      "paired_survivors": 2,
+      "quartic_survivors": 0,
+      "orbits": 2
+    },
+    {
+      "size": 2,
+      "paired_survivors": 2,
+      "quartic_survivors": 2,
+      "orbits": 4
+    },
+    {
+      "size": 4,
+      "paired_survivors": 0,
+      "quartic_survivors": 0,
+      "orbits": 18
+    },
+    {
+      "size": 8,
+      "paired_survivors": 0,
+      "quartic_survivors": 0,
+      "orbits": 17
+    },
+    {
+      "size": 8,
+      "paired_survivors": 8,
+      "quartic_survivors": 8,
+      "orbits": 1
+    }
+  ],
+  "residual_orbits": [
+    {
+      "orbit_size": 2,
+      "survives_quartic": false,
+      "p_on_D": "72431560",
+      "psi_by_v": [
+        "00000000",
+        "33333333",
+        "66666666",
+        "42242442",
+        "55555555",
+        "12212112",
+        "14414114",
+        "77777777"
+      ],
+      "coefficients_whose_xor_is_one": [
+        23,
+        30
+      ],
+      "sign_equations_to_xor": [
+        [
+          "column",
+          11
+        ],
+        [
+          "column",
+          31
+        ],
+        [
+          "row",
+          3
+        ],
+        [
+          "row",
+          15
+        ]
+      ]
+    },
+    {
+      "orbit_size": 2,
+      "survives_quartic": false,
+      "p_on_D": "74132560",
+      "psi_by_v": [
+        "00000000",
+        "33333333",
+        "66666666",
+        "41141441",
+        "55555555",
+        "42242442",
+        "12212112",
+        "77777777"
+      ],
+      "coefficients_whose_xor_is_one": [
+        23,
+        30
+      ],
+      "sign_equations_to_xor": [
+        [
+          "column",
+          13
+        ],
+        [
+          "column",
+          31
+        ],
+        [
+          "row",
+          3
+        ],
+        [
+          "row",
+          23
+        ]
+      ]
+    },
+    {
+      "orbit_size": 2,
+      "survives_quartic": true,
+      "p_on_D": "72431560",
+      "psi_by_v": [
+        "00000000",
+        "11111111",
+        "22222222",
+        "53353553",
+        "44444444",
+        "56656556",
+        "36636336",
+        "77777777"
+      ],
+      "coefficients_whose_xor_is_one": [
+        31,
+        30,
+        58
+      ],
+      "sign_equations_to_xor": [
+        [
+          "column",
+          1
+        ],
+        [
+          "column",
+          3
+        ],
+        [
+          "column",
+          11
+        ],
+        [
+          "column",
+          23
+        ],
+        [
+          "row",
+          5
+        ]
+      ]
+    },
+    {
+      "orbit_size": 2,
+      "survives_quartic": true,
+      "p_on_D": "72431560",
+      "psi_by_v": [
+        "00000000",
+        "33333333",
+        "66666666",
+        "24424224",
+        "55555555",
+        "21121221",
+        "41141441",
+        "77777777"
+      ],
+      "coefficients_whose_xor_is_one": [
+        47,
+        29,
+        57
+      ],
+      "sign_equations_to_xor": [
+        [
+          "column",
+          3
+        ],
+        [
+          "column",
+          5
+        ],
+        [
+          "column",
+          11
+        ],
+        [
+          "column",
+          31
+        ]
+      ]
+    },
+    {
+      "orbit_size": 2,
+      "survives_quartic": true,
+      "p_on_D": "74132560",
+      "psi_by_v": [
+        "00000000",
+        "11111111",
+        "22222222",
+        "36636336",
+        "44444444",
+        "35535335",
+        "65565665",
+        "77777777"
+      ],
+      "coefficients_whose_xor_is_one": [
+        47,
+        53,
+        60
+      ],
+      "sign_equations_to_xor": [
+        [
+          "column",
+          1
+        ],
+        [
+          "column",
+          3
+        ],
+        [
+          "column",
+          13
+        ],
+        [
+          "column",
+          23
+        ],
+        [
+          "row",
+          3
+        ]
+      ]
+    },
+    {
+      "orbit_size": 2,
+      "survives_quartic": true,
+      "p_on_D": "74132560",
+      "psi_by_v": [
+        "00000000",
+        "33333333",
+        "66666666",
+        "14414114",
+        "55555555",
+        "24424224",
+        "21121221",
+        "77777777"
+      ],
+      "coefficients_whose_xor_is_one": [
+        47,
+        29,
+        57
+      ],
+      "sign_equations_to_xor": [
+        [
+          "column",
+          1
+        ],
+        [
+          "column",
+          3
+        ],
+        [
+          "column",
+          5
+        ],
+        [
+          "column",
+          11
+        ],
+        [
+          "row",
+          5
+        ]
+      ]
+    },
+    {
+      "orbit_size": 8,
+      "survives_quartic": true,
+      "p_on_D": "76543210",
+      "psi_by_v": [
+        "00000000",
+        "11551155",
+        "22223333",
+        "33332222",
+        "46464646",
+        "55115511",
+        "64646464",
+        "77777777"
+      ],
+      "coefficients_whose_xor_is_one": [
+        31,
+        23,
+        30
+      ],
+      "sign_equations_to_xor": [
+        [
+          "column",
+          1
+        ],
+        [
+          "column",
+          3
+        ],
+        [
+          "column",
+          5
+        ],
+        [
+          "column",
+          11
+        ]
+      ]
+    }
+  ]
+}

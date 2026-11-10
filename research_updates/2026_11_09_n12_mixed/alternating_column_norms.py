@@ -230,7 +230,7 @@ def quadratic_walsh(tau, z):
                 for w in range(64)) for b in range(64)]
 
 
-def rank_two_joint_test(tau, enforce_degree=True, verify_witness=False):
+def rank_two_joint_test(tau, enforce_degree=True, verify_witness=False, on_joint_support=None):
     """Solve the shared sign equations and the degree bounds on the linear part."""
     base = [quadratic_walsh(tau, z) for z in range(64)]
     polar = [beta_columns(tau, z) for z in range(64)]
@@ -305,6 +305,8 @@ def rank_two_joint_test(tau, enforce_degree=True, verify_witness=False):
         if root is None:
             return False
         calls['joint_signs_feasible'] += 1
+        if on_joint_support is not None:
+            on_joint_support(tuple(tuple(sorted(row)) for row in rows))
         if enforce_degree:
             first = []
             quartic = []

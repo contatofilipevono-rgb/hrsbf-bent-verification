@@ -71,6 +71,8 @@ Logo $\tau=0$. Segue que $B=0$ e toda fibra é afim, o que prova a recíproca.
 
 Na última etapa bastam sete coeficientes de $\pi_0$, identificados pelas máscaras 23, 27, 30, 31, 45, 47 e 54. As três máscaras 27, 45 e 54, cada uma união de dois pares entre as posições $i$ e $i+3$, já excluem 268 dos 288 suportes com sinais conjuntos. As máscaras 31 e 47 têm grau cinco. Impor apenas os 15 coeficientes de grau quatro de $\pi_0$ ainda deixa 16 suportes no sistema relaxado de sinais.
 
+Os 20 suportes restantes após as três primeiras máscaras formam sete órbitas de simetrias. Cada uma é excluída por uma identidade obtida somando quatro ou cinco equações de sinais. [Identidades e tabela dos representantes](ANTIPODAL_RESIDUAL_CERTIFICATES.md)
+
 ## Reprodução
 
 Rode no diretório desta nota com Python 3.10 ou posterior. O segundo comando usa NumPy.
