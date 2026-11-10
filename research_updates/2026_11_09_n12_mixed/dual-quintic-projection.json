@@ -1,0 +1,3764 @@
+{
+  "classes": [
+    {
+      "mask": 35208036369424,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 35208036369424,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 325948435482021892,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 325948435482021892,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 148655093062355104,
+      "lower_rank": 9,
+      "quartic_free": 22,
+      "residual_equations": 33,
+      "stages": [
+        14,
+        3,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 148655093062355104,
+      "lower_rank": 9,
+      "quartic_free": 29,
+      "residual_equations": 33,
+      "stages": [
+        12,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 1301541391897297939,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 1301541391897297939,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 4764809798405869696,
+      "lower_rank": 8,
+      "quartic_free": 32,
+      "residual_equations": 34,
+      "stages": [
+        10,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 4764809798405869696,
+      "lower_rank": 8,
+      "quartic_free": 34,
+      "residual_equations": 34,
+      "stages": [
+        9
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 37037638549932459041,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 37037638549932459041,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 18203641252955152,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 18203641252955152,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 144295563828445234,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 144295563828445234,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 162173657255821362,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 162173657255821362,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 1155261278840703377,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 1155261278840703377,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 3458909696936198194,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 3458909696936198194,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 4620703749092966973,
+      "lower_rank": 14,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          616,
+          647,
+          657,
+          659,
+          1232,
+          1263,
+          1273,
+          1275,
+          1321,
+          1322,
+          1324,
+          1325,
+          1326,
+          1328,
+          1329,
+          1330,
+          1343,
+          1345,
+          1348,
+          1349,
+          1350,
+          1355,
+          1357,
+          1358,
+          1364,
+          1452,
+          1496,
+          1584,
+          1672,
+          1804,
+          1980,
+          2200
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 4620703749092966973,
+      "lower_rank": 13,
+      "quartic_free": 28,
+      "residual_equations": 29,
+      "stages": [
+        15
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 37253787731227836447,
+      "lower_rank": 4,
+      "quartic_free": 37,
+      "residual_equations": 38,
+      "stages": [
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 37253787731227836447,
+      "lower_rank": 4,
+      "quartic_free": 38,
+      "residual_equations": 38,
+      "stages": [
+        5
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 38195208796420196387,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 38195208796420196387,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 2017648095938498744,
+      "lower_rank": 14,
+      "quartic_free": 20,
+      "residual_equations": 26,
+      "stages": [
+        17,
+        4,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 2017648095938498744,
+      "lower_rank": 13,
+      "quartic_free": 26,
+      "residual_equations": 29,
+      "stages": [
+        15,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 226910613225632352,
+      "lower_rank": 9,
+      "quartic_free": 26,
+      "residual_equations": 33,
+      "stages": [
+        11,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 226910613225632352,
+      "lower_rank": 9,
+      "quartic_free": 27,
+      "residual_equations": 33,
+      "stages": [
+        11,
+        3,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 1207537769335800994,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 1207537769335800994,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 1301721769811492867,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 1301721769811492867,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 1590932038760881204,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 1590932038760881204,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 9822919539888328064,
+      "lower_rank": 10,
+      "quartic_free": 22,
+      "residual_equations": 32,
+      "stages": [
+        15,
+        3,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 9822919539888328064,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 32,
+      "stages": [
+        13,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 60538521231934231059,
+      "lower_rank": 10,
+      "quartic_free": 22,
+      "residual_equations": 32,
+      "stages": [
+        14,
+        3,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 60538521231934231059,
+      "lower_rank": 10,
+      "quartic_free": 29,
+      "residual_equations": 32,
+      "stages": [
+        12,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 1396116532234617993,
+      "lower_rank": 13,
+      "quartic_free": 20,
+      "residual_equations": 27,
+      "stages": [
+        18,
+        3,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 1396116532234617993,
+      "lower_rank": 12,
+      "quartic_free": 26,
+      "residual_equations": 30,
+      "stages": [
+        16,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 3892382541700749351,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 3892382541700749351,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 1591042043652675620,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 1591042043652675620,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 0,
+      "stages": [
+        15,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 14663864617240674688,
+      "lower_rank": 10,
+      "quartic_free": 26,
+      "residual_equations": 28,
+      "stages": [
+        11,
+        5,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 14663864617240674688,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 31,
+      "stages": [
+        11,
+        4,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 46226251609746703143,
+      "lower_rank": 10,
+      "quartic_free": 26,
+      "residual_equations": 32,
+      "stages": [
+        11,
+        5,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 46226251609746703143,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 32,
+      "stages": [
+        11,
+        4,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 169470752700272353,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 29,
+      "stages": [
+        16,
+        3,
+        1,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 169470752700272353,
+      "lower_rank": 12,
+      "quartic_free": 28,
+      "residual_equations": 30,
+      "stages": [
+        14,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 195960070201469153,
+      "lower_rank": 12,
+      "quartic_free": 20,
+      "residual_equations": 29,
+      "stages": [
+        16,
+        4,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 195960070201469153,
+      "lower_rank": 12,
+      "quartic_free": 27,
+      "residual_equations": 30,
+      "stages": [
+        14,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 584501242179099265,
+      "lower_rank": 14,
+      "quartic_free": 23,
+      "residual_equations": 28,
+      "stages": [
+        18,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 584501242179099265,
+      "lower_rank": 14,
+      "quartic_free": 26,
+      "residual_equations": 28,
+      "stages": [
+        14,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 614949482249094484,
+      "lower_rank": 10,
+      "quartic_free": 22,
+      "residual_equations": 31,
+      "stages": [
+        12,
+        5,
+        4
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 614949482249094484,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 32,
+      "stages": [
+        10,
+        4,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 3480975299565846872,
+      "lower_rank": 14,
+      "quartic_free": 16,
+      "residual_equations": 25,
+      "stages": [
+        18,
+        6,
+        2,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 3480975299565846872,
+      "lower_rank": 14,
+      "quartic_free": 27,
+      "residual_equations": 28,
+      "stages": [
+        16
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 3612371369170387562,
+      "lower_rank": 10,
+      "quartic_free": 31,
+      "residual_equations": 32,
+      "stages": [
+        12
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 3612371369170387562,
+      "lower_rank": 10,
+      "quartic_free": 29,
+      "residual_equations": 32,
+      "stages": [
+        11,
+        1,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 3630378612270843491,
+      "lower_rank": 10,
+      "quartic_free": 31,
+      "residual_equations": 32,
+      "stages": [
+        12
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 3630378612270843491,
+      "lower_rank": 10,
+      "quartic_free": 29,
+      "residual_equations": 32,
+      "stages": [
+        11,
+        1,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 3639139208696959084,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 28,
+      "stages": [
+        16,
+        3,
+        1,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 3639139208696959084,
+      "lower_rank": 12,
+      "quartic_free": 28,
+      "residual_equations": 30,
+      "stages": [
+        14,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 3761633264300050592,
+      "lower_rank": 8,
+      "quartic_free": 30,
+      "residual_equations": 34,
+      "stages": [
+        10,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 3761633264300050592,
+      "lower_rank": 8,
+      "quartic_free": 32,
+      "residual_equations": 34,
+      "stages": [
+        10,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 4135879834890175557,
+      "lower_rank": 10,
+      "quartic_free": 31,
+      "residual_equations": 32,
+      "stages": [
+        12
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 4135879834890175557,
+      "lower_rank": 10,
+      "quartic_free": 29,
+      "residual_equations": 32,
+      "stages": [
+        11,
+        1,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 4171767998035829765,
+      "lower_rank": 10,
+      "quartic_free": 31,
+      "residual_equations": 32,
+      "stages": [
+        12
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 4171767998035829765,
+      "lower_rank": 10,
+      "quartic_free": 29,
+      "residual_equations": 32,
+      "stages": [
+        11,
+        1,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 4942772483390652470,
+      "lower_rank": 14,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [
+        17,
+        2,
+        4,
+        10
+      ],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          11,
+          44,
+          55
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 4942772483390652470,
+      "lower_rank": 13,
+      "quartic_free": 28,
+      "residual_equations": 29,
+      "stages": [
+        15
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 5143120971815277701,
+      "lower_rank": 8,
+      "quartic_free": 26,
+      "residual_equations": 33,
+      "stages": [
+        11,
+        4,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 5143120971815277701,
+      "lower_rank": 8,
+      "quartic_free": 33,
+      "residual_equations": 34,
+      "stages": [
+        8,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 5219676490247252321,
+      "lower_rank": 14,
+      "quartic_free": 13,
+      "residual_equations": 11,
+      "stages": [
+        18,
+        6,
+        2,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 5219676490247252321,
+      "lower_rank": 14,
+      "quartic_free": 25,
+      "residual_equations": 27,
+      "stages": [
+        16,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 8165767204875153792,
+      "lower_rank": 14,
+      "quartic_free": 16,
+      "residual_equations": 26,
+      "stages": [
+        18,
+        6,
+        2,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 8165767204875153792,
+      "lower_rank": 14,
+      "quartic_free": 27,
+      "residual_equations": 28,
+      "stages": [
+        16
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 9255646742722979989,
+      "lower_rank": 14,
+      "quartic_free": 13,
+      "residual_equations": 11,
+      "stages": [
+        18,
+        6,
+        2,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 9255646742722979989,
+      "lower_rank": 14,
+      "quartic_free": 25,
+      "residual_equations": 25,
+      "stages": [
+        16,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 9449262719886560087,
+      "lower_rank": 14,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          1364,
+          1408,
+          1496,
+          1584,
+          1716,
+          1804,
+          1980,
+          2200
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 9449262719886560087,
+      "lower_rank": 13,
+      "quartic_free": 28,
+      "residual_equations": 29,
+      "stages": [
+        15
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 9655806964742175137,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 29,
+      "stages": [
+        16,
+        3,
+        1,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 9655806964742175137,
+      "lower_rank": 12,
+      "quartic_free": 28,
+      "residual_equations": 30,
+      "stages": [
+        14,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 12830791646792182240,
+      "lower_rank": 7,
+      "quartic_free": 30,
+      "residual_equations": 35,
+      "stages": [
+        10,
+        1,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 12830791646792182240,
+      "lower_rank": 7,
+      "quartic_free": 32,
+      "residual_equations": 35,
+      "stages": [
+        10,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 12838742457130803565,
+      "lower_rank": 10,
+      "quartic_free": 22,
+      "residual_equations": 31,
+      "stages": [
+        15,
+        3,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 12838742457130803565,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 32,
+      "stages": [
+        13,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 13844784009411855229,
+      "lower_rank": 14,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          616,
+          647,
+          657,
+          659,
+          1232,
+          1263,
+          1273,
+          1275,
+          1321,
+          1322,
+          1324,
+          1325,
+          1326,
+          1328,
+          1329,
+          1330,
+          1343,
+          1345,
+          1348,
+          1349,
+          1350,
+          1355,
+          1357,
+          1358,
+          1364,
+          1452,
+          1496,
+          1584,
+          1672,
+          1804,
+          1980,
+          2200
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 13844784009411855229,
+      "lower_rank": 13,
+      "quartic_free": 28,
+      "residual_equations": 29,
+      "stages": [
+        15
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 14037724693249919553,
+      "lower_rank": 14,
+      "quartic_free": 15,
+      "residual_equations": 26,
+      "stages": [
+        18,
+        6,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 14037724693249919553,
+      "lower_rank": 14,
+      "quartic_free": 25,
+      "residual_equations": 28,
+      "stages": [
+        16,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 14215065849196283800,
+      "lower_rank": 6,
+      "quartic_free": 32,
+      "residual_equations": 36,
+      "stages": [
+        7,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 14215065849196283800,
+      "lower_rank": 6,
+      "quartic_free": 33,
+      "residual_equations": 36,
+      "stages": [
+        7,
+        1,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 14298020148190775873,
+      "lower_rank": 14,
+      "quartic_free": 15,
+      "residual_equations": 22,
+      "stages": [
+        18,
+        6,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 14298020148190775873,
+      "lower_rank": 14,
+      "quartic_free": 25,
+      "residual_equations": 27,
+      "stages": [
+        16,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 14322806027547191808,
+      "lower_rank": 14,
+      "quartic_free": 16,
+      "residual_equations": 24,
+      "stages": [
+        23,
+        4
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 14322806027547191808,
+      "lower_rank": 14,
+      "quartic_free": 25,
+      "residual_equations": 24,
+      "stages": [
+        14,
+        4
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 14412272730728825332,
+      "lower_rank": 8,
+      "quartic_free": 26,
+      "residual_equations": 34,
+      "stages": [
+        11,
+        4,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 14412272730728825332,
+      "lower_rank": 8,
+      "quartic_free": 33,
+      "residual_equations": 34,
+      "stages": [
+        8,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 23117118989005268045,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 27,
+      "stages": [
+        15,
+        4,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 23117118989005268045,
+      "lower_rank": 12,
+      "quartic_free": 26,
+      "residual_equations": 29,
+      "stages": [
+        15,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 23361298838904806046,
+      "lower_rank": 6,
+      "quartic_free": 36,
+      "residual_equations": 36,
+      "stages": [
+        7
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 23361298838904806046,
+      "lower_rank": 6,
+      "quartic_free": 35,
+      "residual_equations": 36,
+      "stages": [
+        7,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 23365247041304421195,
+      "lower_rank": 14,
+      "quartic_free": 15,
+      "residual_equations": 26,
+      "stages": [
+        18,
+        6,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 23365247041304421195,
+      "lower_rank": 14,
+      "quartic_free": 25,
+      "residual_equations": 28,
+      "stages": [
+        16,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 23811693759615227437,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 24,
+      "stages": [
+        16,
+        5
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 23811693759615227437,
+      "lower_rank": 12,
+      "quartic_free": 26,
+      "residual_equations": 29,
+      "stages": [
+        15,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 44969568739103725625,
+      "lower_rank": 8,
+      "quartic_free": 30,
+      "residual_equations": 34,
+      "stages": [
+        10,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 44969568739103725625,
+      "lower_rank": 8,
+      "quartic_free": 32,
+      "residual_equations": 34,
+      "stages": [
+        10,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 45590651632538027425,
+      "lower_rank": 14,
+      "quartic_free": 15,
+      "residual_equations": 24,
+      "stages": [
+        18,
+        6,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 45590651632538027425,
+      "lower_rank": 14,
+      "quartic_free": 25,
+      "residual_equations": 26,
+      "stages": [
+        16,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 51666041632781763051,
+      "lower_rank": 8,
+      "quartic_free": 26,
+      "residual_equations": 34,
+      "stages": [
+        11,
+        4,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 51666041632781763051,
+      "lower_rank": 8,
+      "quartic_free": 33,
+      "residual_equations": 34,
+      "stages": [
+        8,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 91812339610363508,
+      "lower_rank": 10,
+      "quartic_free": 26,
+      "residual_equations": 32,
+      "stages": [
+        11,
+        5,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 91812339610363508,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 32,
+      "stages": [
+        11,
+        4,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 164909808061968114,
+      "lower_rank": 11,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          1496,
+          1540,
+          1584,
+          1628,
+          1672,
+          1716,
+          1848,
+          1936,
+          2332
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 164909808061968114,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 32,
+      "stages": [
+        12,
+        3,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 165780191766564007,
+      "lower_rank": 11,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          1496,
+          1628,
+          1804,
+          1936,
+          2332
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 165780191766564007,
+      "lower_rank": 10,
+      "quartic_free": 24,
+      "residual_equations": 32,
+      "stages": [
+        12,
+        3,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 211854375840555636,
+      "lower_rank": 14,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [
+        17,
+        2,
+        4,
+        10
+      ],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          22,
+          44
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 211854375840555636,
+      "lower_rank": 13,
+      "quartic_free": 28,
+      "residual_equations": 29,
+      "stages": [
+        15
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 246838851853802657,
+      "lower_rank": 11,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          748,
+          779,
+          789,
+          791,
+          1364,
+          1395,
+          1405,
+          1407,
+          1453,
+          1454,
+          1456,
+          1457,
+          1458,
+          1460,
+          1461,
+          1462,
+          1475,
+          1477,
+          1480,
+          1481,
+          1482,
+          1487,
+          1489,
+          1490,
+          1496,
+          1628,
+          1804,
+          1936,
+          2332
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 246838851853802657,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 32,
+      "stages": [
+        12,
+        3,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 596826206931390170,
+      "lower_rank": 11,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          1496,
+          1628,
+          1804,
+          1936,
+          2332
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 596826206931390170,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 32,
+      "stages": [
+        12,
+        3,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 605825225920261264,
+      "lower_rank": 11,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          748,
+          779,
+          789,
+          791,
+          1364,
+          1395,
+          1405,
+          1407,
+          1453,
+          1454,
+          1456,
+          1457,
+          1458,
+          1460,
+          1461,
+          1462,
+          1475,
+          1477,
+          1480,
+          1481,
+          1482,
+          1487,
+          1489,
+          1490,
+          1496,
+          1540,
+          1584,
+          1628,
+          1672,
+          1716,
+          1848,
+          1936,
+          2332
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 605825225920261264,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 32,
+      "stages": [
+        12,
+        3,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 607089713641594003,
+      "lower_rank": 11,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          1496,
+          1628,
+          1804,
+          1936,
+          2332
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 607089713641594003,
+      "lower_rank": 10,
+      "quartic_free": 24,
+      "residual_equations": 32,
+      "stages": [
+        12,
+        3,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 886585470635879640,
+      "lower_rank": 11,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          1496,
+          1540,
+          1584,
+          1628,
+          1672,
+          1716,
+          1848,
+          1936,
+          2332
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 886585470635879640,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 32,
+      "stages": [
+        12,
+        3,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 4614335199904770598,
+      "lower_rank": 11,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          748,
+          779,
+          789,
+          791,
+          1364,
+          1395,
+          1405,
+          1407,
+          1453,
+          1454,
+          1456,
+          1457,
+          1458,
+          1460,
+          1461,
+          1462,
+          1475,
+          1477,
+          1480,
+          1481,
+          1482,
+          1487,
+          1489,
+          1490,
+          1496,
+          1540,
+          1584,
+          1628,
+          1672,
+          1716,
+          1848,
+          1936,
+          2332
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 4614335199904770598,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 32,
+      "stages": [
+        12,
+        3,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 4760899059919923769,
+      "lower_rank": 12,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          1452,
+          1496,
+          1628,
+          1716,
+          1892,
+          2288
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 4760899059919923769,
+      "lower_rank": 11,
+      "quartic_free": 23,
+      "residual_equations": 30,
+      "stages": [
+        12,
+        3,
+        2,
+        1,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 4769897945698666611,
+      "lower_rank": 12,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          1452,
+          1496,
+          1584,
+          1628,
+          1892,
+          2288
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 4769897945698666611,
+      "lower_rank": 11,
+      "quartic_free": 22,
+      "residual_equations": 21,
+      "stages": [
+        12,
+        3,
+        2,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 4770313047877098021,
+      "lower_rank": 12,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          704,
+          735,
+          745,
+          747,
+          1320,
+          1351,
+          1361,
+          1363,
+          1409,
+          1410,
+          1412,
+          1413,
+          1414,
+          1416,
+          1417,
+          1418,
+          1431,
+          1433,
+          1436,
+          1437,
+          1438,
+          1443,
+          1445,
+          1446,
+          1452,
+          1496,
+          1584,
+          1628,
+          1892,
+          2288
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 4770313047877098021,
+      "lower_rank": 11,
+      "quartic_free": 23,
+      "residual_equations": 30,
+      "stages": [
+        12,
+        3,
+        2,
+        1,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 4798186011256424557,
+      "lower_rank": 12,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          1452,
+          1496,
+          1628,
+          1716,
+          1892,
+          2288
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 4798186011256424557,
+      "lower_rank": 11,
+      "quartic_free": 22,
+      "residual_equations": 23,
+      "stages": [
+        12,
+        3,
+        2,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 4903571061715208228,
+      "lower_rank": 11,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          748,
+          779,
+          789,
+          791,
+          1364,
+          1395,
+          1405,
+          1407,
+          1453,
+          1454,
+          1456,
+          1457,
+          1458,
+          1460,
+          1461,
+          1462,
+          1475,
+          1477,
+          1480,
+          1481,
+          1482,
+          1487,
+          1489,
+          1490,
+          1496,
+          1628,
+          1804,
+          1936,
+          2332
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 4903571061715208228,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 32,
+      "stages": [
+        12,
+        3,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 4911299928921676397,
+      "lower_rank": 11,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          748,
+          779,
+          789,
+          791,
+          1364,
+          1395,
+          1405,
+          1407,
+          1453,
+          1454,
+          1456,
+          1457,
+          1458,
+          1460,
+          1461,
+          1462,
+          1475,
+          1477,
+          1480,
+          1481,
+          1482,
+          1487,
+          1489,
+          1490,
+          1496,
+          1628,
+          1804,
+          1936,
+          2332
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 4911299928921676397,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 32,
+      "stages": [
+        12,
+        3,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 5194218593341511760,
+      "lower_rank": 10,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          1540,
+          1584,
+          1672,
+          1716,
+          1980,
+          2376
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 5194218593341511760,
+      "lower_rank": 9,
+      "quartic_free": 33,
+      "residual_equations": 33,
+      "stages": [
+        10
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 5335729277503240717,
+      "lower_rank": 11,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          748,
+          779,
+          789,
+          791,
+          1364,
+          1395,
+          1405,
+          1407,
+          1453,
+          1454,
+          1456,
+          1457,
+          1458,
+          1460,
+          1461,
+          1462,
+          1475,
+          1477,
+          1480,
+          1481,
+          1482,
+          1487,
+          1489,
+          1490,
+          1496,
+          1540,
+          1584,
+          1628,
+          1672,
+          1716,
+          1848,
+          1936,
+          2332
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 5335729277503240717,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 32,
+      "stages": [
+        12,
+        3,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 5380226439880022097,
+      "lower_rank": 11,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          1496,
+          1628,
+          1672,
+          1716,
+          1804,
+          1936,
+          2332
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 5380226439880022097,
+      "lower_rank": 10,
+      "quartic_free": 28,
+      "residual_equations": 32,
+      "stages": [
+        12,
+        2,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 9228035670125337011,
+      "lower_rank": 12,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          704,
+          735,
+          745,
+          747,
+          1320,
+          1351,
+          1361,
+          1363,
+          1409,
+          1410,
+          1412,
+          1413,
+          1414,
+          1416,
+          1417,
+          1418,
+          1431,
+          1433,
+          1436,
+          1437,
+          1438,
+          1443,
+          1445,
+          1446,
+          1452,
+          1496,
+          1584,
+          1628,
+          1892,
+          2288
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 9228035670125337011,
+      "lower_rank": 11,
+      "quartic_free": 22,
+      "residual_equations": 23,
+      "stages": [
+        13,
+        4,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 14051801775083164606,
+      "lower_rank": 10,
+      "quartic_free": 26,
+      "residual_equations": 28,
+      "stages": [
+        11,
+        5,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 14051801775083164606,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 31,
+      "stages": [
+        11,
+        4,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 23661142688103670799,
+      "lower_rank": 11,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          1496,
+          1540,
+          1584,
+          1628,
+          1672,
+          1716,
+          1848,
+          1936,
+          2332
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 23661142688103670799,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 32,
+      "stages": [
+        12,
+        3,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 32282094691399910245,
+      "lower_rank": 12,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          704,
+          735,
+          745,
+          747,
+          1320,
+          1351,
+          1361,
+          1363,
+          1409,
+          1410,
+          1412,
+          1413,
+          1414,
+          1416,
+          1417,
+          1418,
+          1431,
+          1433,
+          1436,
+          1437,
+          1438,
+          1443,
+          1445,
+          1446,
+          1452,
+          1496,
+          1584,
+          1628,
+          1892,
+          2288
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 32282094691399910245,
+      "lower_rank": 11,
+      "quartic_free": 22,
+      "residual_equations": 25,
+      "stages": [
+        13,
+        4,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 46630840396094440231,
+      "lower_rank": 9,
+      "quartic_free": 26,
+      "residual_equations": 33,
+      "stages": [
+        11,
+        6
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 46630840396094440231,
+      "lower_rank": 9,
+      "quartic_free": 27,
+      "residual_equations": 33,
+      "stages": [
+        11,
+        3,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 15331629653546858,
+      "lower_rank": 10,
+      "quartic_free": 22,
+      "residual_equations": 31,
+      "stages": [
+        12,
+        4,
+        5
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 15331629653546858,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 32,
+      "stages": [
+        10,
+        4,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 15730234797049148,
+      "lower_rank": 10,
+      "quartic_free": 19,
+      "residual_equations": 29,
+      "stages": [
+        12,
+        7,
+        4,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 15730234797049148,
+      "lower_rank": 10,
+      "quartic_free": 26,
+      "residual_equations": 32,
+      "stages": [
+        10,
+        5,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 16954623584944020,
+      "lower_rank": 14,
+      "quartic_free": 16,
+      "residual_equations": 26,
+      "stages": [
+        20,
+        4,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 16954623584944020,
+      "lower_rank": 14,
+      "quartic_free": 24,
+      "residual_equations": 28,
+      "stages": [
+        15,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 41708340079271893,
+      "lower_rank": 14,
+      "quartic_free": 16,
+      "residual_equations": 24,
+      "stages": [
+        18,
+        6,
+        2,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 41708340079271893,
+      "lower_rank": 14,
+      "quartic_free": 27,
+      "residual_equations": 28,
+      "stages": [
+        16
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 227721563936712493,
+      "lower_rank": 10,
+      "quartic_free": 19,
+      "residual_equations": 24,
+      "stages": [
+        12,
+        7,
+        4,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 227721563936712493,
+      "lower_rank": 10,
+      "quartic_free": 29,
+      "residual_equations": 32,
+      "stages": [
+        10,
+        4
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 417743950711948088,
+      "lower_rank": 10,
+      "quartic_free": 22,
+      "residual_equations": 32,
+      "stages": [
+        14,
+        4,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 417743950711948088,
+      "lower_rank": 10,
+      "quartic_free": 30,
+      "residual_equations": 32,
+      "stages": [
+        11,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 464707395809055028,
+      "lower_rank": 10,
+      "quartic_free": 22,
+      "residual_equations": 32,
+      "stages": [
+        12,
+        4,
+        5
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 464707395809055028,
+      "lower_rank": 10,
+      "quartic_free": 30,
+      "residual_equations": 32,
+      "stages": [
+        10,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 613326694736194986,
+      "lower_rank": 14,
+      "quartic_free": 16,
+      "residual_equations": 26,
+      "stages": [
+        20,
+        4,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 613326694736194986,
+      "lower_rank": 14,
+      "quartic_free": 24,
+      "residual_equations": 27,
+      "stages": [
+        15,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 795560893237897420,
+      "lower_rank": 10,
+      "quartic_free": 22,
+      "residual_equations": 31,
+      "stages": [
+        14,
+        3,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 795560893237897420,
+      "lower_rank": 10,
+      "quartic_free": 29,
+      "residual_equations": 32,
+      "stages": [
+        12,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 838364192530434189,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 30,
+      "stages": [
+        16,
+        3,
+        1,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 838364192530434189,
+      "lower_rank": 12,
+      "quartic_free": 28,
+      "residual_equations": 30,
+      "stages": [
+        14,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 3523777776505331993,
+      "lower_rank": 14,
+      "quartic_free": 16,
+      "residual_equations": 26,
+      "stages": [
+        20,
+        4,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 3523777776505331993,
+      "lower_rank": 14,
+      "quartic_free": 24,
+      "residual_equations": 28,
+      "stages": [
+        15,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 3563476589036127265,
+      "lower_rank": 9,
+      "quartic_free": 22,
+      "residual_equations": 31,
+      "stages": [
+        14,
+        3,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 3563476589036127265,
+      "lower_rank": 9,
+      "quartic_free": 29,
+      "residual_equations": 33,
+      "stages": [
+        12,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 3712438004578381880,
+      "lower_rank": 10,
+      "quartic_free": 31,
+      "residual_equations": 32,
+      "stages": [
+        12
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 3712438004578381880,
+      "lower_rank": 10,
+      "quartic_free": 29,
+      "residual_equations": 32,
+      "stages": [
+        11,
+        1,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 3757819935317143602,
+      "lower_rank": 12,
+      "quartic_free": 20,
+      "residual_equations": 28,
+      "stages": [
+        16,
+        4,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 3757819935317143602,
+      "lower_rank": 12,
+      "quartic_free": 28,
+      "residual_equations": 30,
+      "stages": [
+        14,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 3946616380495557693,
+      "lower_rank": 10,
+      "quartic_free": 31,
+      "residual_equations": 32,
+      "stages": [
+        12
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 3946616380495557693,
+      "lower_rank": 10,
+      "quartic_free": 29,
+      "residual_equations": 32,
+      "stages": [
+        11,
+        1,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 4024216428638544978,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 29,
+      "stages": [
+        16,
+        5
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 4024216428638544978,
+      "lower_rank": 12,
+      "quartic_free": 26,
+      "residual_equations": 30,
+      "stages": [
+        15,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 4091051716215866380,
+      "lower_rank": 14,
+      "quartic_free": 23,
+      "residual_equations": 26,
+      "stages": [
+        18,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 4091051716215866380,
+      "lower_rank": 14,
+      "quartic_free": 26,
+      "residual_equations": 28,
+      "stages": [
+        14,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 4430490798749013554,
+      "lower_rank": 12,
+      "quartic_free": 22,
+      "residual_equations": 28,
+      "stages": [
+        15,
+        4,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 4430490798749013554,
+      "lower_rank": 12,
+      "quartic_free": 26,
+      "residual_equations": 30,
+      "stages": [
+        15,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 4669401930936422827,
+      "lower_rank": 10,
+      "quartic_free": 19,
+      "residual_equations": 24,
+      "stages": [
+        12,
+        7,
+        4,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 4669401930936422827,
+      "lower_rank": 10,
+      "quartic_free": 26,
+      "residual_equations": 32,
+      "stages": [
+        10,
+        5,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 4722137553972408077,
+      "lower_rank": 14,
+      "quartic_free": 16,
+      "residual_equations": 27,
+      "stages": [
+        18,
+        6,
+        2,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 4722137553972408077,
+      "lower_rank": 14,
+      "quartic_free": 27,
+      "residual_equations": 28,
+      "stages": [
+        16
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 4920480320300364712,
+      "lower_rank": 10,
+      "quartic_free": 19,
+      "residual_equations": 24,
+      "stages": [
+        12,
+        7,
+        4,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 4920480320300364712,
+      "lower_rank": 10,
+      "quartic_free": 29,
+      "residual_equations": 32,
+      "stages": [
+        10,
+        4
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 5097012323650923115,
+      "lower_rank": 12,
+      "quartic_free": 20,
+      "residual_equations": 29,
+      "stages": [
+        16,
+        4,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 5097012323650923115,
+      "lower_rank": 12,
+      "quartic_free": 27,
+      "residual_equations": 30,
+      "stages": [
+        14,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 8255107791890592423,
+      "lower_rank": 10,
+      "quartic_free": 22,
+      "residual_equations": 30,
+      "stages": [
+        15,
+        2,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 8255107791890592423,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 32,
+      "stages": [
+        13,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 8436379075964950566,
+      "lower_rank": 8,
+      "quartic_free": 30,
+      "residual_equations": 34,
+      "stages": [
+        10,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 8436379075964950566,
+      "lower_rank": 8,
+      "quartic_free": 32,
+      "residual_equations": 34,
+      "stages": [
+        10,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 17699417172396582529,
+      "lower_rank": 14,
+      "quartic_free": 16,
+      "residual_equations": 24,
+      "stages": [
+        23,
+        4
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 17699417172396582529,
+      "lower_rank": 14,
+      "quartic_free": 25,
+      "residual_equations": 24,
+      "stages": [
+        14,
+        4
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 23379435170205643809,
+      "lower_rank": 12,
+      "quartic_free": 20,
+      "residual_equations": 29,
+      "stages": [
+        16,
+        4,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 23379435170205643809,
+      "lower_rank": 12,
+      "quartic_free": 28,
+      "residual_equations": 30,
+      "stages": [
+        14,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 37224701314152009177,
+      "lower_rank": 14,
+      "quartic_free": 16,
+      "residual_equations": 26,
+      "stages": [
+        20,
+        4,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 37224701314152009177,
+      "lower_rank": 14,
+      "quartic_free": 24,
+      "residual_equations": 28,
+      "stages": [
+        15,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 40438959143657785535,
+      "lower_rank": 8,
+      "quartic_free": 30,
+      "residual_equations": 34,
+      "stages": [
+        10,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 40438959143657785535,
+      "lower_rank": 8,
+      "quartic_free": 32,
+      "residual_equations": 34,
+      "stages": [
+        10,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 63770982351601619489,
+      "lower_rank": 8,
+      "quartic_free": 30,
+      "residual_equations": 34,
+      "stages": [
+        9,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 63770982351601619489,
+      "lower_rank": 8,
+      "quartic_free": 32,
+      "residual_equations": 34,
+      "stages": [
+        10,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 23003746413584121,
+      "lower_rank": 10,
+      "quartic_free": 0,
+      "residual_equations": 0,
+      "stages": [],
+      "contradiction": true,
+      "certificate_of_final_contradiction": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          792,
+          823,
+          833,
+          835,
+          1408,
+          1439,
+          1449,
+          1451,
+          1497,
+          1498,
+          1500,
+          1501,
+          1502,
+          1504,
+          1505,
+          1506,
+          1519,
+          1521,
+          1524,
+          1525,
+          1526,
+          1531,
+          1533,
+          1534,
+          1540,
+          1584,
+          1672,
+          1716,
+          1980,
+          2376
+        ]
+      },
+      "period4_branch": 0
+    },
+    {
+      "mask": 23003746413584121,
+      "lower_rank": 9,
+      "quartic_free": 33,
+      "residual_equations": 33,
+      "stages": [
+        10
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 5113399030143431648,
+      "lower_rank": 10,
+      "quartic_free": 22,
+      "residual_equations": 32,
+      "stages": [
+        12,
+        5,
+        4
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 5113399030143431648,
+      "lower_rank": 10,
+      "quartic_free": 28,
+      "residual_equations": 32,
+      "stages": [
+        10,
+        4,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 5139437848670896562,
+      "lower_rank": 10,
+      "quartic_free": 22,
+      "residual_equations": 32,
+      "stages": [
+        12,
+        5,
+        4
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 5139437848670896562,
+      "lower_rank": 10,
+      "quartic_free": 28,
+      "residual_equations": 32,
+      "stages": [
+        10,
+        4,
+        1
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 5281296952242629656,
+      "lower_rank": 10,
+      "quartic_free": 22,
+      "residual_equations": 30,
+      "stages": [
+        15,
+        2,
+        2,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 5281296952242629656,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 32,
+      "stages": [
+        13,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 14019835195313562878,
+      "lower_rank": 10,
+      "quartic_free": 22,
+      "residual_equations": 31,
+      "stages": [
+        12,
+        5,
+        4
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 14019835195313562878,
+      "lower_rank": 10,
+      "quartic_free": 27,
+      "residual_equations": 32,
+      "stages": [
+        10,
+        4,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 14183230744457831072,
+      "lower_rank": 10,
+      "quartic_free": 22,
+      "residual_equations": 31,
+      "stages": [
+        14,
+        4,
+        3
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 14183230744457831072,
+      "lower_rank": 10,
+      "quartic_free": 30,
+      "residual_equations": 32,
+      "stages": [
+        11,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    },
+    {
+      "mask": 24153970031740246700,
+      "lower_rank": 6,
+      "quartic_free": 32,
+      "residual_equations": 36,
+      "stages": [
+        9,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 0
+    },
+    {
+      "mask": 24153970031740246700,
+      "lower_rank": 6,
+      "quartic_free": 33,
+      "residual_equations": 36,
+      "stages": [
+        8,
+        2
+      ],
+      "contradiction": false,
+      "certificate_of_final_contradiction": null,
+      "period4_branch": 1
+    }
+  ]
+}
