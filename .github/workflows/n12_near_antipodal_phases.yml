@@ -8,6 +8,9 @@ on:
       - 'research_updates/2026_11_09_n12_mixed/CountNearAntipodal.cs'
       - 'research_updates/2026_11_09_n12_mixed/count_near_antipodal.py'
       - 'research_updates/2026_11_09_n12_mixed/analyse_near_antipodal_phases.py'
+      - 'research_updates/2026_11_09_n12_mixed/near_antipodal_field.py'
+      - 'research_updates/2026_11_09_n12_mixed/construct_near_antipodal_field.py'
+      - 'research_updates/2026_11_09_n12_mixed/certify_near_antipodal_field.py'
 
 permissions:
   contents: read
@@ -32,11 +35,25 @@ jobs:
         run: |
           New-Item -ItemType Directory -Path phase-audit | Out-Null
           python count_near_antipodal.py phase-audit/plan.json --export branches.bin
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
           & "$env:WINDIR/Microsoft.NET/Framework64/v4.0.30319/csc.exe" /nologo /unsafe /optimize+ /out:CountNearAntipodal.exe CountNearAntipodal.cs
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
           .\CountNearAntipodal.exe branches.bin phase-audit/witnesses.txt phase-audit/plane-maps.bin | Tee-Object phase-audit/counts.txt
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
           python count_near_antipodal.py --verify-witnesses phase-audit/witnesses.txt
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
           python analyse_near_antipodal_phases.py branches.bin phase-audit/plane-maps.bin phase-audit/phase-analysis.json
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
           python -c "import json; from pathlib import Path; assert json.loads(Path('phase-audit/phase-analysis.json').read_text()) == json.loads(Path('near-antipodal-phase-analysis.json').read_text())"
+      - name: Certify and construct the families over F4
+        shell: pwsh
+        run: |
+          python certify_near_antipodal_field.py phase-audit/field-identities.json
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python construct_near_antipodal_field.py phase-audit/field-counts.json --compare-planes phase-audit/plane-maps.bin --witnesses phase-audit/field-witnesses.txt
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python count_near_antipodal.py --verify-witnesses phase-audit/field-witnesses.txt
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
       - uses: actions/upload-artifact@v4
         with:
           name: n12-near-antipodal-phases

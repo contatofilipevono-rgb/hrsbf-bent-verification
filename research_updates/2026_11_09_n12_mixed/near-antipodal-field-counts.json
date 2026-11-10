@@ -1,0 +1,36 @@
+{
+  "maps_by_epsilon": {
+    "0": 768,
+    "1": 512
+  },
+  "maps": 1280,
+  "phases_per_map": 8192,
+  "functions": 10485760,
+  "explicit_phase_kernel_dimension": 15,
+  "injected_fibre_rows": [
+    {
+      "row": 5440,
+      "maps": 96
+    },
+    {
+      "row": 8256,
+      "maps": 448
+    },
+    {
+      "row": 13632,
+      "maps": 96
+    },
+    {
+      "row": 21824,
+      "maps": 96
+    },
+    {
+      "row": 24640,
+      "maps": 448
+    },
+    {
+      "row": 30016,
+      "maps": 96
+    }
+  ]
+}

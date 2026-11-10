@@ -1,0 +1,13 @@
+{
+  "affine_q24_map_dimension": 27,
+  "basis_maps_for_generic_identities": 28,
+  "phase_identity_basis_cases": 352,
+  "injected_phase_rows": 6,
+  "even_parameter_cases": 2048,
+  "retained_even_parts": {
+    "0": 16,
+    "1": 16
+  },
+  "generic_coefficient_identities": "verified",
+  "even_fibre_phase_identities": "verified"
+}
