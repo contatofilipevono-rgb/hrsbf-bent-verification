@@ -1,4 +1,4 @@
-"""Build and run a balanced list of exact two-orbit quintic tasks."""
+"""Build and run a balanced list of fixed upper-part enumeration tasks."""
 import argparse
 import json
 import subprocess
@@ -18,7 +18,7 @@ def assign(projection):
         bits = max(0, min(4, row["quartic_free"] - 24))
         trial_cost = 1 << (row["quartic_free"] - bits)
         for part in range(1 << bits):
-            items.append((trial_cost, index, row["mask"], part, bits))
+            items.append((trial_cost, index, row["mask"], part, bits, row.get('period4_branch')))
     groups = [[] for _ in range(16)]
     loads = [0] * len(groups)
     for task in sorted(items, reverse=True):
@@ -35,17 +35,22 @@ def main():
     p.add_argument("worker", type=int)
     p.add_argument("executable", type=Path)
     p.add_argument("output", type=Path)
+    p.add_argument("--mod8", action='store_true')
     a = p.parse_args()
     tasks = assign(a.projection)[a.worker]
     a.output.mkdir(parents=True, exist_ok=True)
     (a.output / "tasks.json").write_text(json.dumps(tasks) + "\n")
 
     def run(task):
-        chart, high, part, bits = task
+        chart, high, part, bits, branch = task
         dst = a.output / f"chart-{chart:03d}-part-{part:02d}"
         command = [sys.executable, str(HERE / "complete_sparse_fast.py"),
                    str(chart), str(part), str(bits), str(a.executable), str(dst),
                    "--high-mask", str(high)]
+        if a.mod8:
+            command.append('--mod8')
+        if branch is not None:
+            command += ['--period4-branch', str(branch)]
         subprocess.run(command, check=True)
 
     with ThreadPoolExecutor(max_workers=2) as pool:

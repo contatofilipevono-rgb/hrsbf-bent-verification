@@ -4,6 +4,7 @@ import argparse
 import json
 import random
 from collections import Counter
+from functools import lru_cache
 from itertools import combinations
 from pathlib import Path
 from time import perf_counter
@@ -43,12 +44,25 @@ def pack(function):
         for i in range(0, SIZE, 8)), "little")
 
 
+TRUTH_ONES = (1 << SIZE) - 1
+VARIABLES = tuple((TRUTH_ONES // ((1 << (1 << j)) + 1)) << (1 << j) for j in range(N))
+PAIR_SUMS = tuple(VARIABLES[j] ^ VARIABLES[j + N // 2] for j in range(N // 2))
+
+
+@lru_cache(maxsize=None)
+def monomial_truth(support, on_pair_sums):
+    if not support:
+        return TRUTH_ONES
+    bit = support & -support
+    columns = PAIR_SUMS if on_pair_sums else VARIABLES
+    return columns[bit.bit_length() - 1] & monomial_truth(support ^ bit, on_pair_sums)
+
+
 def evaluate_orbit(orb, on_pair_sums=False):
-    def value(x):
-        if on_pair_sums:
-            x = (x & 63) ^ (x >> 6)
-        return sum((x & m) == m for m in orb) % 2
-    return pack(value)
+    truth = 0
+    for support in orb:
+        truth ^= monomial_truth(support, on_pair_sums)
+    return truth
 
 
 def xor_terms(tables, c):
@@ -129,6 +143,15 @@ def projection(table):
 def allowed_period4(table):
     return all(sum(1 - 2 * (((table >> x) ^ (u & x).bit_count()) & 1)
                    for x in range(16)) % 3 for u in range(16))
+
+
+@lru_cache(maxsize=1)
+def allowed_rs_period4():
+    values = [0]
+    for _, cycle in orbits(4):
+        mask = sum(1 << x for x in cycle)
+        values += [v ^ mask for v in values]
+    return frozenset(v for v in values if allowed_period4(v))
 
 
 def period4_charts(high, low, root, basis):

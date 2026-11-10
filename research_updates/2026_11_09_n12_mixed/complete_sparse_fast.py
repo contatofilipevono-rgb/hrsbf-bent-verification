@@ -8,9 +8,11 @@ from time import perf_counter
 import numpy as np
 
 from higher_complete import evaluate, make_tables
-from higher_filter import (allowed_period4, evaluate_orbit, projection, solve, xor_terms)
+from higher_filter import (allowed_rs_period4, evaluate_orbit, projection, solve, xor_terms)
 from higher_project import LOW, TOP, UPPER, eliminate_lower, union_system
+from period4_conditions import branch_equations
 from sparse_projection import reduce_iteratively
+from upper_mod8 import terms_for_fixed_upper
 
 
 def projected_kernel(low, basis):
@@ -33,18 +35,25 @@ def main():
     p.add_argument("executable", type=Path)
     p.add_argument("output", type=Path)
     p.add_argument("--high-mask", type=lambda v: int(v, 0), required=True)
+    p.add_argument("--mod8", action='store_true')
+    p.add_argument("--period4-branch", type=int, choices=(0, 1))
     a = p.parse_args()
     assert 0 <= a.shard < 1 << a.shard_bits
     started = perf_counter()
     low = [evaluate_orbit(o) for _, o in LOW]
     upper = [evaluate_orbit(o) for _, o in TOP]
     active = [i for i in range(len(UPPER)) if (a.high_mask >> i) & 1]
-    assert 2 <= len(active) <= 3
+    assert 2 <= len(active) <= 4
     high = xor_terms([evaluate_orbit(UPPER[i][1]) for i in active], (1 << len(active)) - 1)
     hp = projection(high)
     lp = [projection(v) for v in low]
     up = [projection(v) for v in upper]
-    pivots, residual = eliminate_lower(union_system(a.high_mask))
+    rows = union_system(a.high_mask)
+    if a.period4_branch is not None:
+        rows.extend(branch_equations(a.high_mask, a.period4_branch))
+    pivots, residual = eliminate_lower(rows)
+    if a.mod8:
+        residual.append(terms_for_fixed_upper(a.high_mask))
     root, basis, reduced, stages, contradiction = reduce_iteratively(residual)
     assert contradiction is None
     width = len(basis) - a.shard_bits
@@ -57,7 +66,7 @@ def main():
     assert rank == len(pivots)
     image, kernel = projected_kernel(low, lb)
     by_pivot = sorted(pivots.items())
-    allowed = {g for g in range(65536) if allowed_period4(g)}
+    allowed = allowed_rs_period4()
     a.output.mkdir(parents=True, exist_ok=True)
     quartic_survivors = 0
     tasks = 0
@@ -87,6 +96,7 @@ def main():
     c_tasks, lower_trials, bent = map(int, (a.output / "totals.tsv").read_text().split())
     assert c_tasks == tasks and lower_trials == tasks << len(kernel)
     report = {"index": a.index, "high_mask": a.high_mask, "shard": a.shard, "shard_bits": a.shard_bits,
+              "period4_branch": a.period4_branch,
               "linear_stages": stages, "quartic_trials": 1 << width,
               "quartic_filter_survivors": quartic_survivors, "lower_trials": lower_trials,
               "normalized_bent": bent, "seconds": round(perf_counter() - started, 3)}
