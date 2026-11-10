@@ -58,7 +58,7 @@ A experiência com 666 fatias coordenadas, uma por órbita, rejeitou todas as 4.
 
 Use $x=(a,b)$ com blocos de seis, $z=a+b$ e $w=b$. A diagonal $E=\{(a,a)\}$ é o espaço das direções de $w$. Se $f$ é afim em cada classe lateral de $E$, então $f(z,w)=w\cdot\pi(z)+h(z)$. Somando a transformada em $w$, a bentness equivale a $\pi$ ser uma permutação.
 
-Para a rotação à esquerda de seis posições, denotada aqui por $R$, a rotação de **um bit** em doze posições se escreve $(z,w)\mapsto (Rz,Rw+z_5 e_0)$. A simetria equivale a
+Denote por $R$ a rotação de um bit nas seis coordenadas. A rotação de um bit nas doze coordenadas se escreve $(z,w)\mapsto (Rz,Rw+z_5 e_0)$. A simetria equivale a
 $$
 \pi(Rz)=R\pi(z),\qquad h(Rz)+h(z)=z_5\pi(z)_5.
 $$
@@ -78,3 +78,37 @@ Os graus até quatro são extraídos do catálogo testando a condição afim em 
 ### Unicidade entre subespaços invariantes pela rotação
 
 Um subespaço invariante de dimensão seis é um ideal do anel cíclico, gerado por $(z+1)^a(z^2+z+1)^b$ com $(a,b)\in\{(4,1),(2,2),(0,3)\}$. Se uma bent RS é afim nas classes de um subespaço invariante $U$ de dimensão seis, a permutação da forma Maiorana–McFarland deve entrelaçar a rotação em $V/U$ com a ação dual em $U^*$. As duas ações precisam ter o mesmo número de pontos fixos. Para $(4,1)$ e $(0,3)$, exatamente um dos módulos contém o fator $z+1$, logo uma ação tem dois pontos fixos e a outra só um. Para $(2,2)$ obtemos o ideal de $z^6+1$, que é $E$. Portanto $E$ é o único subespaço **invariante pela rotação** de dimensão seis que pode satisfazer a condição. Isso permite distinguir o recorte acima de funções que usam subespaços sem essa invariância.
+
+## Graus da dual
+
+A dual é definida por $W_f(u)=64(-1)^{f^*(u)}$ e é uma involução no conjunto das bent. A rechecagem vetorizada dos 4.029.176 registros do catálogo obteve os seguintes números de funções distintas, incluindo os quatro termos afins de cada forma normalizada. [Execução da conferência de duais](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42745979247)
+
+| Grau de $f$ | Grau de $f^*$ | Funções | Fora do recorte da diagonal |
+| --- | ---: | ---: | ---: |
+| 2 | 2 | 64 | 0 |
+| 3 | 3 | 4.032 | 0 |
+| 3 | 4 | 53.248 | 0 |
+| 4 | 3 | 53.248 | 0 |
+| 4 | 4 | 6.395.904 | 182.272 |
+| 4 | 5 | 302.772.224 | 19.034.112 |
+
+A propriedade de ser afim nas classes da diagonal é preservada pela dualidade. Para $f(z,w)=w\cdot\pi(z)+h(z)$, somar em $w$ mostra que a dual em frequências $(u,v)$ depende de $z=\pi^{-1}(u+v)$ e vale $h(z)+u\cdot z$. Fixado $u+v$, ela é afim nas direções da diagonal. A involução dá a recíproca. Assim a última linha também conta todas as quínticas de dual quártica, inclusive as 19.034.112 que ficam fora do recorte da diagonal.
+
+Há uma separação teórica entre as séxticas e os graus menores. Para $S\ne\emptyset$, o coeficiente inteiro $c_S(W_f)$ é $(-2)^{|S|}$ vezes a soma dos sinais de $f$ na fatia $x_S=1$. Se $\deg f=d$, a expansão do sinal mostra que essa soma é divisível por $2^{\lceil(12-|S|)/d\rceil}$. Como $c_S(W_f)=-128c_S(f^*)$, temos $[f^*]_S=0$ quando $|S|+\lceil(12-|S|)/d\rceil\ge8$. Para $d\le5$, a dual tem grau no máximo cinco. Toda séxtica tem, portanto, dual séxtica. Para $|S|=6$, a mesma identidade dá
+$$
+[f^*]_S=\operatorname{wt}(f|_{x_S=1})\pmod2=[f]_{S^c}.
+$$
+Na última igualdade, só o monômio de suporte $S^c$ pode contribuir para a paridade do peso, pois $f$ tem grau no máximo seis. Essa relação é um caso das relações entre graus e coeficientes de uma bent e sua dual. [Carlet, *Boolean Functions for Cryptography and Coding Theory*](https://www.math.univ-paris13.fr/~carlet/book-fcts-Bool-vect-crypt-codes.pdf)
+
+## Partes altas fixas fora da diagonal
+
+Fixe $A$ nos graus cinco e seis. As 70 equações de pares de monômios com união de tamanho pelo menos oito se escrevem $B L+P(T)=0$, onde $L$ são os 25 bits inferiores, $T$ os 43 bits quárticos e $P$ tem grau no máximo dois. A matriz $B$ depende só de $A$, porque um quártico e um cúbico têm união de tamanho no máximo sete. Eliminar $L$ produz um sistema quadrático apenas em $T$. Uma vez fixado um $T$ que passa, as soluções de $L$ formam um espaço afim. A busca usa a condição de período quatro e Walsh completo.
+
+Foram completadas exatamente duas partes altas fora do recorte da diagonal. A primeira é extraída da dual de uma quártica do catálogo. A segunda vem da construção de grau máximo de Su. [Execução das duas partes altas](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42746470605) · [Su (2019)](https://doi.org/10.3934/amc.2019017)
+
+| Parte alta | Bits quárticos após relações lineares | Completamentos normalizados | Funções na órbita afim da parte alta |
+| --- | ---: | ---: | ---: |
+| Quíntica `0x40640b82416fcc8c` | 29 | 384 | 393.216 |
+| Séxtica com parte quíntica `0x80000000000000001` | 33 | 5 | 20.480 |
+
+A órbita da parte alta usa os normalizadores lineares e a translação pelo vetor de uns. Entre os 384 completamentos quínticos, 368 têm dual quíntica e 16 têm dual quártica. Na órbita completa, isso certifica 376.832 quínticas de dual quíntica fora da diagonal. Os cinco completamentos séxticos e seus transportados ficam fora da diagonal. Os arquivos `dual5-bent.tsv`, `su6-bent.tsv` e `fixed-high-orbits.json` permitem reconstruir os exemplos e as testemunhas por segunda derivada.

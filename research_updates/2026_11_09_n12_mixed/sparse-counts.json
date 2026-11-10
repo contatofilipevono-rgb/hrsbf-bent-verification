@@ -1,0 +1,934 @@
+{
+  "scope": "exactly one active orbit of degree 5 or 6; arbitrary RS degree-2/3/4 terms",
+  "first_run_completed_charts": 136,
+  "resumed_quartic_trials_chart_122": 8589934592,
+  "resumed_lower_trials_chart_122": 17381195776,
+  "normalized_by_degree": {
+    "5": 32768,
+    "6": 0
+  },
+  "counts_with_affine_terms": {
+    "5": 131072,
+    "6": 0
+  },
+  "cases": {
+    "0": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 31,
+      "degree": 5
+    },
+    "1": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 47,
+      "degree": 5
+    },
+    "2": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 55,
+      "degree": 5
+    },
+    "3": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 59,
+      "degree": 5
+    },
+    "4": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 61,
+      "degree": 5
+    },
+    "5": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 79,
+      "degree": 5
+    },
+    "6": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 87,
+      "degree": 5
+    },
+    "7": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 91,
+      "degree": 5
+    },
+    "8": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 93,
+      "degree": 5
+    },
+    "9": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 103,
+      "degree": 5
+    },
+    "10": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 107,
+      "degree": 5
+    },
+    "11": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 109,
+      "degree": 5
+    },
+    "12": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 115,
+      "degree": 5
+    },
+    "13": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 117,
+      "degree": 5
+    },
+    "14": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 121,
+      "degree": 5
+    },
+    "15": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 143,
+      "degree": 5
+    },
+    "16": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 151,
+      "degree": 5
+    },
+    "17": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 155,
+      "degree": 5
+    },
+    "18": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 157,
+      "degree": 5
+    },
+    "19": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 167,
+      "degree": 5
+    },
+    "20": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 171,
+      "degree": 5
+    },
+    "21": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 173,
+      "degree": 5
+    },
+    "22": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 179,
+      "degree": 5
+    },
+    "23": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 181,
+      "degree": 5
+    },
+    "24": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 185,
+      "degree": 5
+    },
+    "25": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 199,
+      "degree": 5
+    },
+    "26": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 203,
+      "degree": 5
+    },
+    "27": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 205,
+      "degree": 5
+    },
+    "28": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 211,
+      "degree": 5
+    },
+    "29": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 213,
+      "degree": 5
+    },
+    "30": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 217,
+      "degree": 5
+    },
+    "31": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 227,
+      "degree": 5
+    },
+    "32": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 229,
+      "degree": 5
+    },
+    "33": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 233,
+      "degree": 5
+    },
+    "34": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 241,
+      "degree": 5
+    },
+    "35": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 279,
+      "degree": 5
+    },
+    "36": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 283,
+      "degree": 5
+    },
+    "37": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 285,
+      "degree": 5
+    },
+    "38": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 295,
+      "degree": 5
+    },
+    "39": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 299,
+      "degree": 5
+    },
+    "40": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 301,
+      "degree": 5
+    },
+    "41": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 307,
+      "degree": 5
+    },
+    "42": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 309,
+      "degree": 5
+    },
+    "43": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 313,
+      "degree": 5
+    },
+    "44": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 327,
+      "degree": 5
+    },
+    "45": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 331,
+      "degree": 5
+    },
+    "46": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 333,
+      "degree": 5
+    },
+    "47": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 339,
+      "degree": 5
+    },
+    "48": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 341,
+      "degree": 5
+    },
+    "49": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 345,
+      "degree": 5
+    },
+    "50": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 355,
+      "degree": 5
+    },
+    "51": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 357,
+      "degree": 5
+    },
+    "52": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 361,
+      "degree": 5
+    },
+    "53": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 397,
+      "degree": 5
+    },
+    "54": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 403,
+      "degree": 5
+    },
+    "55": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 405,
+      "degree": 5
+    },
+    "56": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 409,
+      "degree": 5
+    },
+    "57": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 421,
+      "degree": 5
+    },
+    "58": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 425,
+      "degree": 5
+    },
+    "59": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 457,
+      "degree": 5
+    },
+    "60": {
+      "normalized_bent": 16384,
+      "method": "affine-normalizer",
+      "equivalent_index": 61,
+      "generator_path_to_equivalent": [
+        5
+      ],
+      "higher_orbit_representative": 587,
+      "degree": 5
+    },
+    "61": {
+      "normalized_bent": 16384,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 589,
+      "degree": 5
+    },
+    "62": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 595,
+      "degree": 5
+    },
+    "63": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 597,
+      "degree": 5
+    },
+    "64": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 613,
+      "degree": 5
+    },
+    "65": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 661,
+      "degree": 5
+    },
+    "66": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 63,
+      "degree": 6
+    },
+    "67": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 95,
+      "degree": 6
+    },
+    "68": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 111,
+      "degree": 6
+    },
+    "69": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 119,
+      "degree": 6
+    },
+    "70": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 123,
+      "degree": 6
+    },
+    "71": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 125,
+      "degree": 6
+    },
+    "72": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 159,
+      "degree": 6
+    },
+    "73": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 175,
+      "degree": 6
+    },
+    "74": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 183,
+      "degree": 6
+    },
+    "75": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 187,
+      "degree": 6
+    },
+    "76": {
+      "normalized_bent": 0,
+      "method": "polynomial-identity",
+      "certificate": {
+        "terms": [
+          0
+        ],
+        "certificate": [
+          1540,
+          1760,
+          1848
+        ]
+      },
+      "higher_orbit_representative": 189,
+      "degree": 6
+    },
+    "77": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 207,
+      "degree": 6
+    },
+    "78": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 215,
+      "degree": 6
+    },
+    "79": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 219,
+      "degree": 6
+    },
+    "80": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 221,
+      "degree": 6
+    },
+    "81": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 231,
+      "degree": 6
+    },
+    "82": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 235,
+      "degree": 6
+    },
+    "83": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 237,
+      "degree": 6
+    },
+    "84": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 243,
+      "degree": 6
+    },
+    "85": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 245,
+      "degree": 6
+    },
+    "86": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 249,
+      "degree": 6
+    },
+    "87": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 287,
+      "degree": 6
+    },
+    "88": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 303,
+      "degree": 6
+    },
+    "89": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 311,
+      "degree": 6
+    },
+    "90": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 315,
+      "degree": 6
+    },
+    "91": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 317,
+      "degree": 6
+    },
+    "92": {
+      "normalized_bent": 0,
+      "method": "affine-normalizer",
+      "equivalent_index": 118,
+      "generator_path_to_equivalent": [
+        5
+      ],
+      "higher_orbit_representative": 335,
+      "degree": 6
+    },
+    "93": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 343,
+      "degree": 6
+    },
+    "94": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 347,
+      "degree": 6
+    },
+    "95": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 349,
+      "degree": 6
+    },
+    "96": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 359,
+      "degree": 6
+    },
+    "97": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 363,
+      "degree": 6
+    },
+    "98": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 365,
+      "degree": 6
+    },
+    "99": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 371,
+      "degree": 6
+    },
+    "100": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 373,
+      "degree": 6
+    },
+    "101": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 377,
+      "degree": 6
+    },
+    "102": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 399,
+      "degree": 6
+    },
+    "103": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 407,
+      "degree": 6
+    },
+    "104": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 411,
+      "degree": 6
+    },
+    "105": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 413,
+      "degree": 6
+    },
+    "106": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 423,
+      "degree": 6
+    },
+    "107": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 427,
+      "degree": 6
+    },
+    "108": {
+      "normalized_bent": 0,
+      "method": "affine-normalizer",
+      "equivalent_index": 68,
+      "generator_path_to_equivalent": [
+        5
+      ],
+      "higher_orbit_representative": 429,
+      "degree": 6
+    },
+    "109": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 435,
+      "degree": 6
+    },
+    "110": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 437,
+      "degree": 6
+    },
+    "111": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 441,
+      "degree": 6
+    },
+    "112": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 455,
+      "degree": 6
+    },
+    "113": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 459,
+      "degree": 6
+    },
+    "114": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 461,
+      "degree": 6
+    },
+    "115": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 467,
+      "degree": 6
+    },
+    "116": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 469,
+      "degree": 6
+    },
+    "117": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 473,
+      "degree": 6
+    },
+    "118": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 485,
+      "degree": 6
+    },
+    "119": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 489,
+      "degree": 6
+    },
+    "120": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 591,
+      "degree": 6
+    },
+    "121": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 599,
+      "degree": 6
+    },
+    "122": {
+      "normalized_bent": 0,
+      "method": "complete-resumed-run",
+      "higher_orbit_representative": 603,
+      "degree": 6
+    },
+    "123": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 605,
+      "degree": 6
+    },
+    "124": {
+      "normalized_bent": 0,
+      "method": "affine-normalizer",
+      "equivalent_index": 109,
+      "generator_path_to_equivalent": [
+        5
+      ],
+      "higher_orbit_representative": 615,
+      "degree": 6
+    },
+    "125": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 619,
+      "degree": 6
+    },
+    "126": {
+      "normalized_bent": 0,
+      "method": "affine-normalizer",
+      "equivalent_index": 122,
+      "generator_path_to_equivalent": [
+        5
+      ],
+      "higher_orbit_representative": 621,
+      "degree": 6
+    },
+    "127": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 627,
+      "degree": 6
+    },
+    "128": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 629,
+      "degree": 6
+    },
+    "129": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 663,
+      "degree": 6
+    },
+    "130": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 667,
+      "degree": 6
+    },
+    "131": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 669,
+      "degree": 6
+    },
+    "132": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 679,
+      "degree": 6
+    },
+    "133": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 683,
+      "degree": 6
+    },
+    "134": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 685,
+      "degree": 6
+    },
+    "135": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 691,
+      "degree": 6
+    },
+    "136": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 693,
+      "degree": 6
+    },
+    "137": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 715,
+      "degree": 6
+    },
+    "138": {
+      "normalized_bent": 0,
+      "method": "affine-normalizer",
+      "equivalent_index": 120,
+      "generator_path_to_equivalent": [
+        5
+      ],
+      "higher_orbit_representative": 717,
+      "degree": 6
+    },
+    "139": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 723,
+      "degree": 6
+    },
+    "140": {
+      "normalized_bent": 0,
+      "method": "affine-normalizer",
+      "equivalent_index": 71,
+      "generator_path_to_equivalent": [
+        5
+      ],
+      "higher_orbit_representative": 725,
+      "degree": 6
+    },
+    "141": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 819,
+      "degree": 6
+    },
+    "142": {
+      "normalized_bent": 0,
+      "method": "affine-normalizer",
+      "equivalent_index": 89,
+      "generator_path_to_equivalent": [
+        5
+      ],
+      "higher_orbit_representative": 821,
+      "degree": 6
+    },
+    "143": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 845,
+      "degree": 6
+    },
+    "144": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 853,
+      "degree": 6
+    },
+    "145": {
+      "normalized_bent": 0,
+      "method": "complete-first-run",
+      "higher_orbit_representative": 1365,
+      "degree": 6
+    }
+  }
+}
