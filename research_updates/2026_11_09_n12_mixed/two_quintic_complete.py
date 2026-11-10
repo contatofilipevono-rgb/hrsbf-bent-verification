@@ -3,13 +3,14 @@ import argparse
 import json
 import subprocess
 import sys
+from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 HERE = Path(__file__).parent
 
 
-def assign(projection, workers=16):
+def assign(projection, workers=16, checkpoint=None):
     data = json.loads(projection.read_text())
     items = []
     for index, row in enumerate(data["classes"]):
@@ -19,13 +20,32 @@ def assign(projection, workers=16):
         trial_cost = 1 << (row["quartic_free"] - bits)
         for part in range(1 << bits):
             items.append((trial_cost, index, row["mask"], part, bits, row.get('period4_branch')))
+    if checkpoint is not None:
+        saved = json.loads(checkpoint.read_text())
+        pending = {tuple(task) for task in saved['pending_blocks']}
+        done = {(r['index'], r['high_mask'], r['shard'], r['shard_bits'], r.get('period4_branch'))
+                for r in saved['completed_blocks']}
+        assert not pending & done and pending | done == {task[1:] for task in items}
+        measured = defaultdict(list)
+        for row in saved['completed_blocks']:
+            measured[row['index']].append(row['seconds'])
+        selected = []
+        for task in items:
+            if task[1:] in pending:
+                index = task[1]
+                lower_rank = data['classes'][index]['lower_rank']
+                estimate = (max(measured[index]) if measured[index] else
+                            120 * 2 ** ((12 - lower_rank) / 2))
+                selected.append((round(max(5, estimate)), *task[1:]))
+        items = selected
     groups = [[] for _ in range(workers)]
     loads = [0] * len(groups)
     for task in sorted(items, reverse=True):
         i = min(range(len(groups)), key=loads.__getitem__)
         groups[i].append(task[1:])
         loads[i] += task[0]
-    print("Tasks:",len(items),"quartic loads:",loads,flush=True)
+    units = 'estimated seconds' if checkpoint else 'quartic trials'
+    print('Tasks:', len(items), 'worker loads in', units, loads, flush=True)
     return groups
 
 
@@ -37,8 +57,10 @@ def main():
     p.add_argument("output", type=Path)
     p.add_argument("--mod8", action='store_true')
     p.add_argument("--workers", type=int, default=16)
+    p.add_argument('--parallel', type=int, default=2)
+    p.add_argument('--checkpoint', type=Path)
     a = p.parse_args()
-    tasks = assign(a.projection, a.workers)[a.worker]
+    tasks = assign(a.projection, a.workers, a.checkpoint)[a.worker]
     a.output.mkdir(parents=True, exist_ok=True)
     (a.output / "tasks.json").write_text(json.dumps(tasks) + "\n")
 
@@ -54,7 +76,7 @@ def main():
             command += ['--period4-branch', str(branch)]
         subprocess.run(command, check=True)
 
-    with ThreadPoolExecutor(max_workers=2) as pool:
+    with ThreadPoolExecutor(max_workers=a.parallel) as pool:
         list(pool.map(run, tasks))
 
 
