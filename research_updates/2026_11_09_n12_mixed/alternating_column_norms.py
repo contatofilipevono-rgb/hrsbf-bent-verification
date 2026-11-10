@@ -307,12 +307,18 @@ def rank_two_joint_test(tau, enforce_degree=True, verify_witness=False):
         calls['joint_signs_feasible'] += 1
         if enforce_degree:
             first = []
+            quartic = []
+            selected = []
             forced_here = set()
             paired = []
             for s in range(64):
                 if s.bit_count() >= 4:
                     row = combine(coefficient[z][0] for z in subsets(s))
                     first.append(row)
+                    if s.bit_count() == 4:
+                        quartic.append(row)
+                    if s in (23, 27, 30, 31, 45, 47, 54):
+                        selected.append(row)
                     if s in (27, 45, 54):
                         paired.append(row)
                     mask, value = row
@@ -323,9 +329,13 @@ def rank_two_joint_test(tau, enforce_degree=True, verify_witness=False):
             calls['has_individually_forced_high_coefficient'] += bool(forced_here)
             calls['has_forced_union_of_two_antipodal_pairs'] += bool(forced_here & {27, 45, 54})
             first_root, _, _ = solve(equations + first, width)
+            quartic_root, _, _ = solve(equations + quartic, width)
+            selected_root, _, _ = solve(equations + selected, width)
             paired_root, _, _ = solve(equations + paired, width)
             calls['excluded_by_first_coordinate_degree'] += first_root is None
             calls['excluded_by_three_paired_coefficients'] += paired_root is None
+            calls['excluded_by_all_quartic_coefficients'] += quartic_root is None
+            calls['excluded_by_seven_coefficients'] += selected_root is None
             for s in range(64):
                 if s.bit_count() >= 4:
                     for j in range(6):

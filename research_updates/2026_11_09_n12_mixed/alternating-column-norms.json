@@ -3718,7 +3718,9 @@
       "has_individually_forced_high_coefficient": 268,
       "has_forced_union_of_two_antipodal_pairs": 268,
       "excluded_by_first_coordinate_degree": 288,
-      "excluded_by_three_paired_coefficients": 268
+      "excluded_by_three_paired_coefficients": 268,
+      "excluded_by_all_quartic_coefficients": 272,
+      "excluded_by_seven_coefficients": 288
     },
     "individually_forced_high_coefficients_of_pi0": {
       "27": 160,
