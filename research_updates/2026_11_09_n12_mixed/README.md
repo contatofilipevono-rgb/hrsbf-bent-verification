@@ -218,7 +218,7 @@ Nas coordenadas $(z,w)$, projetamos a parte de grau quatro sobre os monômios qu
 
 A suficiência tem uma prova com verificação finita independente do catálogo. A meia-volta força a matriz polar em $w$ a ter a forma $B(z)=\iota_z\tau$, para uma 3-forma alternada invariante pela rotação cíclica das seis posições. As normas do Walsh parcial excluem quatro das quinze formas não nulas. A viabilidade dos sinais por coluna exclui dez. A última cai ao impor conjuntamente os sinais e o limite de grau da parte linear em $w$. Dois testes de coluna, por congruências e pelo Walsh direto, dão as mesmas exclusões. [Demonstração e reprodução](CRITERIO_TOPO_QUARTICO.md)
 
-Uma segunda prova usa uma mudança de coordenadas para obter cinco representantes. Três caem nas colunas fixas. Para a máscara 6, a paridade da coluna 27 contradiz a geometria da coluna 3. Para a máscara 9, a classificação de $\psi$ e sete identidades de sinais fecham o argumento. Essa prova usa tabelas locais de contrações e identidades que podem ser conferidas à mão. [Redução e contradições](ANTIPODAL_ORBITAS_PROVA.md)
+Uma segunda prova usa uma mudança de coordenadas para obter cinco representantes. Três caem nas colunas fixas. Para a máscara 6, a fatoração $\tau=\omega\wedge\sigma$ e a paridade dos sinais na linha 27 dão a contradição. Para a máscara 9, a classificação de $\psi$ e sete identidades de sinais fecham o argumento. Essa prova usa contrações e identidades que podem ser conferidas à mão. [Redução e contradições](ANTIPODAL_ORBITAS_PROVA.md)
 
 ### Relação com o artigo sobre quárticas homogêneas
 

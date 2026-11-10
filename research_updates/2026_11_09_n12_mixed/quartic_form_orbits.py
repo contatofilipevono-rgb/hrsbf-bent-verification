@@ -4,7 +4,8 @@ from functools import reduce
 from itertools import combinations, permutations
 from operator import xor
 
-from alternating_column_norms import beta_columns, choices_for, direct_column_test, orbits, shift
+from alternating_column_norms import (beta_columns, choices_for, compatible_sign_cycle,
+                                      direct_column_test, orbits, shift)
 
 
 def forms():
@@ -65,6 +66,37 @@ def four_column_profiles(tau, chosen):
     return [freq[i] for i in indices], profiles
 
 
+def check_form_six_line(tau):
+    assert tau == {((1 << i) | (1 << (i + 3)) | (1 << k))
+                   for i in range(3) for k in range(6) if k not in (i, i + 3)}
+    for z in range(64):
+        moved = shift(z, 3, 6)
+        columns = [
+            moved ^ (63 if moved >> j & 1 else 0)
+            ^ (shift(1 << j, 3, 6) if z.bit_count() & 1 else 0)
+            for j in range(6)
+        ]
+        assert beta_columns(tau, z) == columns
+    z = 27
+    polar = beta_columns(tau, z)
+    terms = [((1 << i) | (1 << j)) for i, j in combinations(range(6), 2) if polar[i] >> j & 1]
+    quadratic = [sum(w & m == m for m in terms) & 1 for w in range(64)]
+    good = []
+    for p in range(64):
+        row = [q ^ ((p & w).bit_count() & 1) for w, q in enumerate(quadratic)]
+        if any(row[w] != row[shift(w, 3, 6) ^ (z >> 3)] for w in range(64)):
+            continue
+        support = tuple(b for b in range(64) if sum(
+            1 - 2 * (v ^ ((w & b).bit_count() & 1)) for w, v in enumerate(row)))
+        assert support == (0, 27, 36, 63)
+        good.append(p)
+    assert good == [0, 27, 36, 63]
+    relaxed = (3, 24, 39, 60)
+    assert all(compatible_sign_cycle(z, b) for b in relaxed)
+    assert all(not ((z >> 3 & b >> 3).bit_count() & 1) for b in relaxed)
+    print("Mask 6: all four invariant linear masks give support (0, 27, 36, 63)")
+
+
 def main():
     all_forms = forms()
     action = pullback_table(all_forms)
@@ -85,6 +117,7 @@ def main():
     assert rank_two == [9, 27, 63]
 
     tau = all_forms[6]
+    check_form_six_line(tau)
     wanted = [b for b, _ in orbits(6)]
     i0, i3, i27, i63 = [wanted.index(b) for b in (0, 3, 27, 63)]
     empty = ()
@@ -102,7 +135,7 @@ def main():
         pairs = {tuple(tuple(v for v in range(64) if p[j] >> v & 1) for j in (i3, i27))
                  for energy, _, p in options if not (energy[i0] or energy[i63])}
         assert pairs - {(empty, empty)} == expected.get(z, set())
-    print("Mask 6: the local two-column contribution table agrees")
+    print("Mask 6: the relaxed two-column contribution table agrees")
 
     freqs, profiles = four_column_profiles(tau, (0, 3, 27, 63))
     assert len(profiles) == 31

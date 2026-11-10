@@ -26,33 +26,22 @@ Na recorrência de sinais, para \(z=(a,a)\) e \(\beta=(b,b)\), a terceira potên
 
 Os representantes dos pontos de posto dois são \(9,27,63\). Para \(z=9\) e \(z=27\), as imagens são \(\{0,9,18,27\}\) e \(\{0,18,45,63\}\), respectivamente. Contêm frequências proibidas pela terceira potência da rotação, 9 e 18 respectivamente, logo essas linhas não podem tocar a coluna 0. Entre as linhas de posto quatro, há uma órbita de tamanho dois, representada por 21, e as demais têm tamanho seis. Para completar a norma da coluna 0, é preciso \(4+2\epsilon+6k=16\), portanto \(\epsilon=0\) e \(k=2\). Os sinais são constantes em cada órbita nessa coluna. Sua soma, \(\pm2\pm6\pm6\), não pode valer \(\pm4\).
 
-## A forma 6 é excluída por duas colunas adicionais
+## A forma 6 é excluída pela linha 27
 
-As linhas 0 e 63 têm posto zero. A recorrência de sinais em \((63,63)\) é impossível. Assim as colunas 0 e 63 são unitárias, nas linhas 63 e 0 respectivamente.
+O Fable propôs esta prova. As doze triplas da forma 6 são as que contêm um par \(\{j,j+3\}\). Logo \(\tau=\omega\wedge\sigma\), com \(\omega(x,y)=x\cdot R^3y\) e \(\sigma(x)=x\cdot\mathbf1\). Identificando covetores e vetores pelo produto escalar, obtemos
 
-Para cada representante de órbita de linhas \(z\), a tabela dá a imagem de \(B_z\) por uma base e as escolhas não vazias de contribuição às colunas 3 e 27. Um par \((S,T)\) significa que a escolha acrescenta as linhas \(S\) à coluna 3 e as linhas \(T\) à coluna 27. As escolhas vazias podem ser ignoradas.
+$$
+B_z=\sigma(z)\omega+(R^3z)\wedge\mathbf1 .
+$$
 
-| \(z\) | Base de \(\operatorname{im}B_z\) | Contribuições não vazias \((S,T)\) |
-| ---: | --- | --- |
-| 1 | 6, 10, 24, 40 | nenhuma |
-| 3 | 24, 39 | \((\{3\},\{3,24\}),(\{12\},\varnothing),(\{48\},\varnothing)\) |
-| 5 | 23, 40 | \((\varnothing,\{10,17\}),(\{20,40\},\varnothing)\) |
-| 7 | 3, 6, 24, 48 | nenhuma |
-| 9 | 9, 54 | \((\{36\},\varnothing)\) |
-| 11 | 3, 9, 23, 46 | nenhuma |
-| 13 | 5, 9, 30, 57 | nenhuma |
-| 15 | 6, 57 | \((\{60\},\{39,60\}),(\{15\},\varnothing),(\{51\},\varnothing)\) |
-| 21 | 5, 10, 20, 34 | nenhuma |
-| 23 | 5, 58 | \((\varnothing,\{46,53\}),(\{23,43\},\varnothing)\) |
-| 27 | 27, 36 | \((\{27\},\varnothing)\) |
-| 31 | 3, 5, 12, 20 | nenhuma |
+Em \(z=27=(c,c)\), com \(c=(1,1,0)\) na ordem das coordenadas, a imagem é \(I=\langle z,\mathbf1\rangle=\{0,27,36,63\}\). A linha tem quatro entradas de módulo 32 num suporte \(S\) que é uma classe de \(I\). A soma das entradas é \(64(-1)^{f(z,0)}\), logo o produto dos quatro sinais é \(-1\).
 
-Para conferir a tabela, tome a classe \(\operatorname{im}B_z+R^{-k}\beta\) para \(\beta\in\{3,27\}\) e \(0\le k<|\operatorname{orb}(z)|\). A classe precisa estar em \(z^\perp\), evitar 0 e 63 e ser estável por \(R^{|\operatorname{orb}(z)|}\). Cada \(k\) com \(R^{-k}\beta\) na classe dá a linha \(R^kz\) na coluna \(\beta\). Antes de usar a recorrência de sinais, sobram duas contribuições extras à coluna 27. Em \(z=9\), a classe de 18 contém a frequência proibida 27. Em \(z=27\), a classe de 9 contém a frequência proibida 9. Em ambos os casos a proibição é pela terceira potência da rotação. As demais entradas da tabela seguem só das classes e da estabilidade.
+A terceira potência da rotação fixa \(z\) e troca as metades de \(\beta\). A recorrência multiplica o sinal por \((-1)^{c\cdot\beta_{\rm alta}}\). Como \(R^3\) fixa \(I\) ponto a ponto, em \(S\) ela atua como uma translação fixa \(\delta\in I\). Se \(\delta\ne0\), há dois pares. Escolha seus representantes \(\beta\) e \(\beta+\gamma\), com \(\gamma\in I\setminus\langle\delta\rangle\). O produto dos quatro sinais seria \((-1)^{c\cdot\gamma_{\rm alta}}=1\), pois \(\gamma_{\rm alta}\in\langle c,(1,1,1)\rangle\) e \(c\) é ortogonal aos dois geradores. Isso contradiz o produto \(-1\).
 
-Só linhas de posto dois aparecem nas colunas 3 e 27, portanto cada coluna deve ter exatamente quatro entradas. Na coluna 27, a terceira potência da rotação troca os elementos de cada par. A fase vale zero nos pares \(\{3,24\}\) e \(\{39,60\}\) e vale um nos pares \(\{10,17\}\) e \(\{46,53\}\). A paridade dos quatro sinais precisa ser um. A coluna deve, portanto, escolher um par de cada grupo.
+Assim \(R^3\) fixa \(S\) ponto a ponto. Cada frequência é \((b,b)\) com \(c\cdot b=0\), pela mesma recorrência. São exatamente os quatro pontos de \(I\). Em particular, a linha 27 toca as duas colunas 0 e 63. A linha unitária \(z=0\) já ocupa por inteiro uma dessas colunas, pela identidade de norma. A forma 6 está excluída.
 
-A escolha do par de fase um impede uma das órbitas 5 e 23 de contribuir à coluna 3. A coluna 3 pode então ter no máximo um par, com XOR \(60\), e os demais pontos são unitários. Se um par for usado, os outros dois pontos precisariam ter XOR \(60\). Entre os pontos unitários possíveis, os únicos pares com esse XOR são \(\{12,48\}\) e \(\{15,51\}\). Cada um exige duas escolhas incompatíveis da mesma órbita de linhas. Logo a coluna 3 tem quatro pontos unitários.
+### Relação com a prova pelas colunas 3 e 27
 
-Dois desses pontos são 36 e 27, com XOR 63. Os outros dois devem ter XOR 63 para que a coluna seja um plano afim. Como a coluna 27 escolheu um par de fase zero, pelo menos um dos outros pontos é 3 ou 60. A soma necessária força exatamente o par \(\{3,60\}\). Pela tabela, isso exige **os dois** pares de fase zero na coluna 27, uma contradição.
+A [prova anterior](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/blob/6d7478947fd53c039d1e65f2a03f67b70a7bb411/research_updates/2026_11_09_n12_mixed/ANTIPODAL_ORBITAS_PROVA.md) começa com uma lista de possibilidades necessárias mais ampla. Em particular, a classe \(\{3,24,39,60\}\) da linha 27 passa pelas fases de cada ciclo isolado. A terceira potência troca \(3\) com \(24\) e \(39\) com \(60\), com fase zero nos dois pares. Cada ciclo é consistente separadamente, mas as duas igualdades juntas dão produto \(+1\) na linha. A prova anterior exclui essa possibilidade posteriormente por condições nas colunas. A diferença é a imposição da paridade conjunta da linha, com as mesmas convenções de índices.
 
-Isso exclui a última forma não nula por uma tabela local de contrações e duas condições de Walsh. A busca das 31 combinações pode ser omitida. O script quartic_form_orbits.py verifica o pullback e a tabela local, e reconstitui por Walsh direto os 31 perfis como conferência separada.
+O script quartic_form_orbits.py confere a fatoração e testa os 64 coeficientes lineares possíveis da linha 27. Os únicos compatíveis com a terceira potência são \(0,27,36,63\), todos com suporte \(I\). A conferência anterior das colunas também fica disponível no mesmo script.

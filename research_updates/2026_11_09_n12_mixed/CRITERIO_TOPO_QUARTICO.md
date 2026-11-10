@@ -75,7 +75,7 @@ Os 20 suportes restantes após as três primeiras máscaras formam sete órbitas
 
 Para a máscara 9, a classificação algébrica de $\psi$ dá os 20 suportes diretamente, e uma reflexão e quatro circulantes os ligam aos sete representantes. A enumeração desse caso pode ser usada apenas como conferência. [Prova da classificação e dos transportes](ANTIPODAL_TAU9_PROVA.md)
 
-Uma única mudança de coordenadas agrupa as quinze formas em cinco órbitas. As órbitas das máscaras 1, 2 e 7 são excluídas pelas duas colunas fixas. Para a máscara 6, a paridade da coluna 27 contradiz a condição de plano afim da coluna 3. Essa prova usa uma tabela local de contrações. A busca de suportes das cinco órbitas fica como conferência separada. [Redução por simetria e contradições entre colunas](ANTIPODAL_ORBITAS_PROVA.md)
+Uma única mudança de coordenadas agrupa as quinze formas em cinco órbitas. As órbitas das máscaras 1, 2 e 7 são excluídas pelas duas colunas fixas. Para a máscara 6, o argumento proposto pelo Fable força o suporte da linha 27 a tocar as duas colunas fixas, o que contradiz a norma em uma delas. A busca de suportes das cinco órbitas fica como conferência separada. [Redução por simetria e prova da linha 27](ANTIPODAL_ORBITAS_PROVA.md)
 
 ## Reprodução
 
