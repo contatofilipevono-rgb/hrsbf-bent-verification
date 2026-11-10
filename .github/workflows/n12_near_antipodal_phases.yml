@@ -1,0 +1,43 @@
+name: Audit near-antipodal quartic phases
+
+on:
+  push:
+    branches: [codex/n12-mixed-quartic]
+    paths:
+      - '.github/workflows/n12_near_antipodal_phases.yml'
+      - 'research_updates/2026_11_09_n12_mixed/CountNearAntipodal.cs'
+      - 'research_updates/2026_11_09_n12_mixed/count_near_antipodal.py'
+      - 'research_updates/2026_11_09_n12_mixed/analyse_near_antipodal_phases.py'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Enumerate plane partitions and audit phases
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path phase-audit | Out-Null
+          python count_near_antipodal.py phase-audit/plan.json --export branches.bin
+          & "$env:WINDIR/Microsoft.NET/Framework64/v4.0.30319/csc.exe" /nologo /unsafe /optimize+ /out:CountNearAntipodal.exe CountNearAntipodal.cs
+          .\CountNearAntipodal.exe branches.bin phase-audit/witnesses.txt phase-audit/plane-maps.bin | Tee-Object phase-audit/counts.txt
+          python count_near_antipodal.py --verify-witnesses phase-audit/witnesses.txt
+          python analyse_near_antipodal_phases.py branches.bin phase-audit/plane-maps.bin phase-audit/phase-analysis.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: n12-near-antipodal-phases
+          path: research_updates/2026_11_09_n12_mixed/phase-audit/
+          if-no-files-found: error

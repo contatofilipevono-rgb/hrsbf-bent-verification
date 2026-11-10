@@ -100,6 +100,7 @@ class CountNearAntipodal
         int* sums = stackalloc int[32];
         byte* fibres = stackalloc byte[128];
         int witnessCount = 0;
+        using (var planes = args.Length > 2 ? new BinaryWriter(File.Create(args[2])) : null)
         using (var witnesses = new StreamWriter(args[1]))
         using (var reader = new BinaryReader(File.OpenRead(args[0])))
         {
@@ -131,6 +132,8 @@ class CountNearAntipodal
                         }
                         if (!PlaneFibres((byte*)p, counts, sums, fibres)) continue;
                         stats[id, 1]++;
+                        if (planes != null)
+                            for (int j = 0; j < 18; j++) planes.Write(p[j]);
                         int dim = PhaseDimension(p + 16, fibres, kernel, pivots);
                         if (dim < 0) continue;
                         stats[id, 2]++;
