@@ -1,0 +1,119 @@
+{
+  "scope": "exactly two active orbits above degree four, at least one sextic",
+  "completed_shards": 9017,
+  "trials": {
+    "quartic_trials": 3117699211330,
+    "quartic_filter_survivors": 3221834,
+    "lower_trials": 6099206658,
+    "normalized_bent": 26681
+  },
+  "positive_classes": [
+    {
+      "mask": 147573952589676412929,
+      "active_indices": [
+        0,
+        67
+      ],
+      "two_orbit_members": 4,
+      "full_orbit_size": 1024,
+      "normalized_by_dual_degree": {
+        "6": 5
+      },
+      "outside_by_dual_degree": {
+        "6": 5
+      },
+      "previous_high_orbits": [
+        "su"
+      ]
+    },
+    {
+      "mask": 634444270133757390885801164800,
+      "active_indices": [
+        89,
+        99
+      ],
+      "two_orbit_members": 4,
+      "full_orbit_size": 1024,
+      "normalized_by_dual_degree": {
+        "6": 22
+      },
+      "outside_by_dual_degree": {
+        "6": 22
+      },
+      "previous_high_orbits": []
+    },
+    {
+      "mask": 20282409603651670432743344308224,
+      "active_indices": [
+        43,
+        104
+      ],
+      "two_orbit_members": 4,
+      "full_orbit_size": 1024,
+      "normalized_by_dual_degree": {
+        "6": 6
+      },
+      "outside_by_dual_degree": {
+        "6": 6
+      },
+      "previous_high_orbits": []
+    },
+    {
+      "mask": 81129657757419795529855800442880,
+      "active_indices": [
+        84,
+        106
+      ],
+      "two_orbit_members": 2,
+      "full_orbit_size": 256,
+      "normalized_by_dual_degree": {
+        "6": 15360
+      },
+      "outside_by_dual_degree": {
+        "6": 15360
+      },
+      "previous_high_orbits": []
+    },
+    {
+      "mask": 10889035742737681431056216839313285971968,
+      "active_indices": [
+        100,
+        133
+      ],
+      "two_orbit_members": 2,
+      "full_orbit_size": 256,
+      "normalized_by_dual_degree": {
+        "6": 11264
+      },
+      "outside_by_dual_degree": {
+        "6": 11264
+      },
+      "previous_high_orbits": []
+    },
+    {
+      "mask": 43556309119379596437796062727148866109440,
+      "active_indices": [
+        117,
+        135
+      ],
+      "two_orbit_members": 2,
+      "full_orbit_size": 512,
+      "normalized_by_dual_degree": {
+        "6": 24
+      },
+      "outside_by_dual_degree": {
+        "6": 24
+      },
+      "previous_high_orbits": []
+    }
+  ],
+  "counts_by_dual_degree_with_affine_terms": {
+    "6": 213712
+  },
+  "outside_diagonal_by_dual_degree_with_affine_terms": {
+    "6": 213712
+  },
+  "new_outside_diagonal_in_full_high_orbits_by_dual_degree": {
+    "6": 27426816
+  }
+}

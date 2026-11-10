@@ -4,11 +4,14 @@ import json
 from collections import Counter, defaultdict
 from pathlib import Path
 
+import numpy as np
+
 from antipodal_mm import affine_deviation
-from higher_filter import evaluate_orbit, xor_terms
+from dual_catalog import degree_and_check
+from higher_filter import SIZE, evaluate_orbit, xor_terms
 from higher_orbits import high_actions, orbit
-from higher_project import LOW, TOP, UPPER, signs_to_walsh
-from mobius_rule import integer_anf
+from higher_project import LOW, TOP, UPPER
+from top_filters import masks_of_size
 
 
 def main():
@@ -45,6 +48,9 @@ def main():
     assert seen == {(i, j) for i, r in enumerate(projection) if not r['contradiction']
                     for j in range(1 << max(0, min(4, r['quartic_free'] - 24)))}
     bases = [[evaluate_orbit(o) for _, o in basis] for basis in (UPPER, TOP, LOW)]
+    deviations = [[affine_deviation(table) for table in basis] for basis in bases]
+    positions = {d: list(masks_of_size(d)) for d in range(2, 7)}
+    positions[7] = [m for d in range(7, 13) for m in masks_of_size(d)]
     operators = high_actions()
     known = ({'su': orbit((1 << 67) | 1, operators)} if a.with_sextic else
              {'single_orbit': orbit(1 << 61, operators),
@@ -59,17 +65,23 @@ def main():
         cls = classes[high]
         count = Counter()
         outside = Counter()
-        for t, l in sorted(vals):
-            table = xor_terms(bases[0], high) ^ xor_terms(bases[1], t) ^ xor_terms(bases[2], l)
-            spectrum = signs_to_walsh(table)
-            assert all(abs(w) == 64 for w in spectrum)
-            dual = sum((w < 0) << j for j, w in enumerate(spectrum))
-            d = max(j.bit_count() for j, c in enumerate(integer_anf(dual)) if c & 1)
-            assert d == 6 if a.with_sextic else d in (4, 5)
-            count[d] += 1
-            outside_diagonal = int(bool(affine_deviation(table)))
-            outside[d] += outside_diagonal
-            lines.append(f'{high}\t{t}\t{l}\t{d}\t{outside_diagonal}\n')
+        high_truth = xor_terms(bases[0], high)
+        high_deviation = xor_terms(deviations[0], high)
+        ordered = sorted(vals)
+        for start in range(0, len(ordered), 256):
+            batch = ordered[start:start + 256]
+            tables = b''.join((high_truth ^ xor_terms(bases[1], t) ^ xor_terms(bases[2], l))
+                              .to_bytes(SIZE // 8, 'little') for t, l in batch)
+            degrees = degree_and_check(np.frombuffer(tables, dtype=np.uint64).reshape(len(batch), -1),
+                                       positions)
+            for (t, l), degree in zip(batch, degrees, strict=True):
+                d = int(degree)
+                assert d == 6 if a.with_sextic else d in (4, 5)
+                count[d] += 1
+                outside_diagonal = int(bool(high_deviation ^ xor_terms(deviations[1], t) ^
+                                            xor_terms(deviations[2], l)))
+                outside[d] += outside_diagonal
+                lines.append(f'{high}\t{t}\t{l}\t{d}\t{outside_diagonal}\n')
         members = len(cls['members' if a.with_sextic else 'two_orbit_members'])
         for d, n in count.items():
             by_dual[d] += 4 * members * n

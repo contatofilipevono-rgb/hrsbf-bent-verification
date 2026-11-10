@@ -141,6 +141,17 @@ Numa séxtica, uma união de tamanho doze exige dois monômios complementares de
 
 A união de tamanho onze também fornece uma equação só nos graus cinco e seis. Com as duas condições de tamanho onze e doze, sobram 22.300.745.198.530.623.141.535.644.485.672.066.667.773.952 partes altas com algum termo séxtico. No recorte com exatamente duas órbitas altas, pelo menos uma séxtica, esses testes excluem 3.122 dos 8.440 padrões. Os sobreviventes formam 1.529 classes, das quais 881 foram excluídas pelas consequências polinomiais da projeção. Restam 2.207 padrões em 648 classes para a busca pelos completamentos. [Projeção das partes séxticas](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42788369424)
 
+### Equação módulo oito na união cheia
+
+Escreva $q_s$ e $b_s$ para os coeficientes quárticos e séxticos, respectivamente, indexados pela menor máscara da órbita. Além de $b_{455}=b_{1365}$, vale
+$$
+q_{585}(1+q_{195}+q_{325}+b_{715}+b_{845})
+=b_{63}+b_{189}+b_{315}+b_{441}+b_{693}+b_{819}+b_{715}b_{845}.
+$$
+As duas expressões são tomadas em $\mathbb F_2$. Logo a equação também vale para grau até cinco com todos os $b_s=0$.
+
+Sejam $P$ e $J$ o número de pares e de trios de monômios ativos cuja união tem as doze posições. O coeficiente inteiro cheio é $-2P+4J$ módulo oito. O cálculo de $P$ módulo quatro agrupa pares complementares de acordo com suas órbitas. Os únicos trios que contam para $J$ módulo dois são fixos pela rotação de três posições, pois os demais têm órbitas de tamanho par. Nesses trios, ou os três suportes são individualmente fixos, ou um é fixo e os outros dois são trocados. Os suportes individualmente fixos são exatamente 585, 1170 e 2340. Enumerar essas possibilidades dá a identidade acima. `upper_mod8.py` refaz a enumeração e a compara com 256 transformadas inteiras de Möbius.
+
 ## Exemplos fora da classe completa de Maiorana–McFarland
 
 Uma bent em 12 variáveis pertence a $\mathcal M^\#$ se e somente se existe um subespaço $U$ de dimensão seis com $D_aD_b f=0$ para todos $a,b\in U$. Para cada $a\ne0$, seja $K_f(a)=\{b:D_aD_b f=0\}$. É o subespaço dos períodos de $D_a f$. Se $U$ existe, então $U\subseteq K_f(a)$ para cada $a\in U\setminus\{0\}$. [Critério de Dillon e resultados de Polujan, Kudin e Pašalić](https://doi.org/10.1109/TIT.2026.3685133)
@@ -158,3 +169,26 @@ A busca de um possível $U$ começa por $0$ e escolhe sucessivamente a menor dir
 Nos 272 topos representativos fora do recorte da diagonal, o teste do termo de grau dois de $D_aD_b f$ já exclui 18.012.160 funções. Nos 15 topos restantes, o cálculo exato de $K_f(a)$ por translações da tabela elimina as outras 1.204.224. `quartic-m-counts.json` registra a cobertura e os totais.
 
 A classe $\mathcal M^\#$ é fechada por dualidade. Na forma $f(u,v)=u\cdot\pi(v)+h(v)$, a dual usa a permutação inversa e troca os blocos. Uma equivalência afim estendida de $f$ induz uma equivalência afim estendida de $f^*$ por mudança de variáveis no somatório de Walsh. Assim, as **19.034.112 quínticas de dual quártica** fora da diagonal também estão fora de $\mathcal M^\#$. A contração dupla da parte de grau máximo ainda exclui de $\mathcal M^\#$ as três órbitas afins quínticas da seção de duas órbitas, as duas órbitas quínticas de dual quíntica já contadas fora da diagonal e a órbita séxtica de Su.
+
+## Duas órbitas altas com pelo menos uma séxtica
+
+A enumeração dos 9.017 blocos fechou todo o recorte de 8.440 padrões. Contando todas as adições afins, há **213.712 séxticas** no recorte. Seis classes têm completamentos e todos estão fora de $\mathcal M^\#$. Para cada um desses seis topos, a contração dupla da parte séxtica já exclui qualquer subespaço de dimensão seis. O teste vetorizado independente refez o Walsh e calculou a dual de cada um dos 26.681 completamentos normalizados dos seis representantes. [Enumeração séxtica](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42788649738)
+
+| Índices das duas órbitas | Completamentos no representante | Funções no recorte |
+| --- | ---: | ---: |
+| 0 e 67 | 5 | 80 |
+| 89 e 99 | 22 | 352 |
+| 43 e 104 | 6 | 96 |
+| 84 e 106 | 15.360 | 122.880 |
+| 100 e 133 | 11.264 | 90.112 |
+| 117 e 135 | 24 | 192 |
+
+Os índices começam em zero e ordenam primeiro as 66 órbitas quínticas, depois as 80 séxticas. Os 3.117.699.211.330 pontos quárticos e 6.099.206.658 completamentos inferiores estão cobertos pelos relatórios dos blocos. `two-sextic-bent.tsv` guarda os completamentos e `two-sextic-counts.json` guarda as multiplicidades. O transporte dos cinco topos distintos da órbita de Su dá outras 27.426.816 séxticas fora de $\mathcal M^\#$.
+
+### Extensão das duas famílias maiores por adições nas somas antipodais
+
+Nas coordenadas $(z,w)$, seja $B_\beta(z)$ a transformada de Walsh de $f(z,w)$ em $w$, na frequência $\beta$. Adicionar $h(z)$ multiplica $B_\beta(z)$ por $(-1)^{h(z)}$. Quando $h$ é afim no suporte de $B_\beta$, o Walsh completo nessa frequência só sofre um sinal e uma translação na frequência de $z$. Se isso vale para todo $\beta$, a adição preserva a bentness.
+
+Para cada completamento das duas classes maiores, 40 colunas têm suporte unitário e 24 têm suporte num plano afim, com valores absolutos 32. Para um plano, o produto dos quatro sinais deve ser $-1$ para que todas as transformadas tenham módulo 64. Logo é necessário e suficiente que a paridade de $h$ no plano seja zero. Nas 12 coordenadas SANF de graus dois a seis em $z$, os 24 planos de cada família impõem a mesma equação linear. Cada semente tem $2^{11}$ adições normalizadas possíveis, das quais $2^9$ preservam a parte alta. A busca encontra 30 classes laterais de adições inferiores para a primeira parte alta e 22 para a segunda. `spectral_switching.py` refaz o cálculo dos suportes, dos espaços e da união dos completamentos, com conferência de Walsh em cada parte alta por classe lateral.
+
+As adições geram seis novas órbitas de partes altas, disjuntas das seis anteriores. Cada uma tem 256 partes altas. A contração dupla do topo séxtico exclui $\mathcal M^\#$ em todas. Contando essas adições e os normalizadores, obtemos mais **81.788.928 séxticas**. Ao todo, isso certifica pelo menos **109.236.224 séxticas fora de $\mathcal M^\#$** e pelo menos **366.876.010.139.648 séxticas** contando também a família da diagonal.
