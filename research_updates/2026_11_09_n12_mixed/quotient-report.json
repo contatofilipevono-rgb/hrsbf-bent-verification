@@ -1,0 +1,28 @@
+{
+  "top_count_including_zero": 949760,
+  "representative_count_including_zero": 17283,
+  "orbit_size_distribution": {
+    "1": 40,
+    "2": 188,
+    "4": 560,
+    "8": 1348,
+    "16": 2260,
+    "32": 6034,
+    "64": 4166,
+    "128": 2073,
+    "256": 544,
+    "512": 70
+  },
+  "circulant_generators": [
+    11,
+    13,
+    19,
+    25,
+    73
+  ],
+  "index_multipliers": [
+    5,
+    7
+  ],
+  "seconds": 5.516
+}

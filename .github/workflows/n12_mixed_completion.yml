@@ -1,0 +1,90 @@
+name: Enumerate n12 mixed quartic completions
+
+on:
+  push:
+    branches: [codex/n12-mixed-quartic]
+    paths:
+      - '.github/workflows/n12_mixed_completion.yml'
+      - 'research_updates/2026_11_09_n12_mixed/completions.cpp'
+      - 'research_updates/2026_11_09_n12_mixed/representatives.tsv'
+
+permissions:
+  contents: read
+
+env:
+  SRC: research_updates/2026_11_09_n12_mixed
+
+jobs:
+  pilot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - name: Compile and replay controls
+        run: |
+          g++ -std=c++20 -O3 -march=native -Wall -Wextra -Werror "$SRC/completions.cpp" -o completions
+          ./completions "$SRC/representatives.tsv" 0 1 pilot 8
+      - uses: actions/upload-artifact@v4
+        with:
+          name: n12-completion-pilot
+          path: pilot/
+          if-no-files-found: error
+  completion:
+    needs: pilot
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 16
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - name: Enumerate and independently check all Walsh spectra
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          g++ -std=c++20 -O3 -march=native -Wall -Wextra -Werror "$SRC/completions.cpp" -o completions
+          mkdir -p result
+          pids=()
+          for offset in 0 1 2 3; do
+            rank=$((4 * SHARD + offset))
+            ./completions "$SRC/representatives.tsv" "$rank" 64 "result/worker-$rank" > "result/worker-$rank.log" 2>&1 &
+            pids+=("$!")
+          done
+          status=0
+          for pid in "${pids[@]}"; do wait "$pid" || status=1; done
+          for log in result/*.log; do tail -n 7 "$log"; done
+          exit "$status"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: n12-completion-${{ matrix.shard }}
+          path: result/
+          if-no-files-found: error
+  aggregate:
+    needs: completion
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: n12-completion-[0-9]*
+          path: completed
+      - name: Audit coverage and aggregate counts
+        run: python3 "$SRC/summarize.py" "$SRC/representatives.tsv" completed counts.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: n12-quartic-counts
+          path: counts.json
+          if-no-files-found: error
