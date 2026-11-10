@@ -85,6 +85,25 @@ def main():
     assert rank_two == [9, 27, 63]
 
     tau = all_forms[6]
+    wanted = [b for b, _ in orbits(6)]
+    i0, i3, i27, i63 = [wanted.index(b) for b in (0, 3, 27, 63)]
+    empty = ()
+    expected = {
+        3: {((3,), (3, 24)), ((12,), empty), ((48,), empty)},
+        5: {(empty, (10, 17)), ((20, 40), empty)},
+        9: {((36,), empty)},
+        15: {((60,), (39, 60)), ((15,), empty), ((51,), empty)},
+        23: {(empty, (46, 53)), ((23, 43), empty)},
+        27: {((27,), empty)},
+    }
+    for z, options in choices_for(tau, True):
+        if z in (0, 63):
+            continue
+        pairs = {tuple(tuple(v for v in range(64) if p[j] >> v & 1) for j in (i3, i27))
+                 for energy, _, p in options if not (energy[i0] or energy[i63])}
+        assert pairs - {(empty, empty)} == expected.get(z, set())
+    print("Mask 6: the local two-column contribution table agrees")
+
     freqs, profiles = four_column_profiles(tau, (0, 3, 27, 63))
     assert len(profiles) == 31
     check = direct_column_test(tau)

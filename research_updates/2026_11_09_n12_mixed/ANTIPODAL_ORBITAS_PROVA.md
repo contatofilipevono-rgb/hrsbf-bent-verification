@@ -26,18 +26,33 @@ Na recorrência de sinais, para \(z=(a,a)\) e \(\beta=(b,b)\), a terceira potên
 
 Os representantes dos pontos de posto dois são \(9,27,63\). Para \(z=9\) e \(z=27\), as imagens são \(\{0,9,18,27\}\) e \(\{0,18,45,63\}\), respectivamente. Contêm frequências proibidas pela terceira potência da rotação, 9 e 18 respectivamente, logo essas linhas não podem tocar a coluna 0. Entre as linhas de posto quatro, há uma órbita de tamanho dois, representada por 21, e as demais têm tamanho seis. Para completar a norma da coluna 0, é preciso \(4+2\epsilon+6k=16\), portanto \(\epsilon=0\) e \(k=2\). Os sinais são constantes em cada órbita nessa coluna. Sua soma, \(\pm2\pm6\pm6\), não pode valer \(\pm4\).
 
-## A forma 6 fica reduzida a duas colunas adicionais
+## A forma 6 é excluída por duas colunas adicionais
 
 As linhas 0 e 63 têm posto zero. A recorrência de sinais em \((63,63)\) é impossível. Assim as colunas 0 e 63 são unitárias, nas linhas 63 e 0 respectivamente.
 
-O verificador projeta as escolhas de suportes nas quatro colunas representativas \(0,3,27,63\). Depois da estabilidade, das fases de ciclo e das normas, há 31 perfis projetados. As colunas 3 e 27 têm quatro entradas cada. Para que ambas sejam planos afins, restam apenas os pares de suportes abaixo.
+Para cada representante de órbita de linhas \(z\), a tabela dá a imagem de \(B_z\) por uma base e as escolhas não vazias de contribuição às colunas 3 e 27. Um par \((S,T)\) significa que a escolha acrescenta as linhas \(S\) à coluna 3 e as linhas \(T\) à coluna 27. As escolhas vazias podem ser ignoradas.
 
-| Suporte da coluna 3 | Suporte da coluna 27 |
-| --- | --- |
-| 3, 27, 36, 60 | 3, 24, 39, 60 |
-| 12, 27, 36, 51 | 10, 17, 46, 53 |
-| 15, 27, 36, 48 | 10, 17, 46, 53 |
+| \(z\) | Base de \(\operatorname{im}B_z\) | Contribuições não vazias \((S,T)\) |
+| ---: | --- | --- |
+| 1 | 6, 10, 24, 40 | nenhuma |
+| 3 | 24, 39 | \((\{3\},\{3,24\}),(\{12\},\varnothing),(\{48\},\varnothing)\) |
+| 5 | 23, 40 | \((\varnothing,\{10,17\}),(\{20,40\},\varnothing)\) |
+| 7 | 3, 6, 24, 48 | nenhuma |
+| 9 | 9, 54 | \((\{36\},\varnothing)\) |
+| 11 | 3, 9, 23, 46 | nenhuma |
+| 13 | 5, 9, 30, 57 | nenhuma |
+| 15 | 6, 57 | \((\{60\},\{39,60\}),(\{15\},\varnothing),(\{51\},\varnothing)\) |
+| 21 | 5, 10, 20, 34 | nenhuma |
+| 23 | 5, 58 | \((\varnothing,\{46,53\}),(\{23,43\},\varnothing)\) |
+| 27 | 27, 36 | \((\{27\},\varnothing)\) |
+| 31 | 3, 5, 12, 20 | nenhuma |
 
-A coluna 27 é fixa por \(R^3\), que troca as duas metades. No primeiro suporte, os pares são \(3\leftrightarrow24\) e \(39\leftrightarrow60\), ambos com fase zero. No segundo, são \(10\leftrightarrow17\) e \(46\leftrightarrow53\), ambos com fase um. Portanto a paridade dos quatro sinais é zero nos dois suportes, mas a soma de quatro entradas de módulo 32 deve ser \(\pm64\), o que exige paridade um.
+Para conferir a tabela, tome a classe \(\operatorname{im}B_z+R^{-k}\beta\) para \(\beta\in\{3,27\}\) e \(0\le k<|\operatorname{orb}(z)|\). A classe precisa estar em \(z^\perp\), evitar 0 e 63 e ser estável por \(R^{|\operatorname{orb}(z)|}\). Cada \(k\) com \(R^{-k}\beta\) na classe dá a linha \(R^kz\) na coluna \(\beta\). Antes de usar a recorrência de sinais, sobram duas contribuições extras à coluna 27. Em \(z=9\), a classe de 18 contém a frequência proibida 27. Em \(z=27\), a classe de 9 contém a frequência proibida 9. Em ambos os casos a proibição é pela terceira potência da rotação. As demais entradas da tabela seguem só das classes e da estabilidade.
 
-Falta deduzir à mão a restrição que deixa os três pares de suportes. As fases e a contradição final seguem sem busca depois que se obtém a tabela. O script quartic_form_orbits.py reproduz o pullback, os postos usados para a forma 2 e a checagem da forma 6 por Walsh direto.
+Só linhas de posto dois aparecem nas colunas 3 e 27, portanto cada coluna deve ter exatamente quatro entradas. Na coluna 27, a terceira potência da rotação troca os elementos de cada par. A fase vale zero nos pares \(\{3,24\}\) e \(\{39,60\}\) e vale um nos pares \(\{10,17\}\) e \(\{46,53\}\). A paridade dos quatro sinais precisa ser um. A coluna deve, portanto, escolher um par de cada grupo.
+
+A escolha do par de fase um impede uma das órbitas 5 e 23 de contribuir à coluna 3. A coluna 3 pode então ter no máximo um par, com XOR \(60\), e os demais pontos são unitários. Se um par for usado, os outros dois pontos precisariam ter XOR \(60\). Entre os pontos unitários possíveis, os únicos pares com esse XOR são \(\{12,48\}\) e \(\{15,51\}\). Cada um exige duas escolhas incompatíveis da mesma órbita de linhas. Logo a coluna 3 tem quatro pontos unitários.
+
+Dois desses pontos são 36 e 27, com XOR 63. Os outros dois devem ter XOR 63 para que a coluna seja um plano afim. Como a coluna 27 escolheu um par de fase zero, pelo menos um dos outros pontos é 3 ou 60. A soma necessária força exatamente o par \(\{3,60\}\). Pela tabela, isso exige **os dois** pares de fase zero na coluna 27, uma contradição.
+
+Isso exclui a última forma não nula por uma tabela local de contrações e duas condições de Walsh. A busca das 31 combinações pode ser omitida. O script quartic_form_orbits.py verifica o pullback e a tabela local, e reconstitui por Walsh direto os 31 perfis como conferência separada.

@@ -218,11 +218,15 @@ Nas coordenadas $(z,w)$, projetamos a parte de grau quatro sobre os monômios qu
 
 A suficiência tem uma prova com verificação finita independente do catálogo. A meia-volta força a matriz polar em $w$ a ter a forma $B(z)=\iota_z\tau$, para uma 3-forma alternada invariante pela rotação cíclica das seis posições. As normas do Walsh parcial excluem quatro das quinze formas não nulas. A viabilidade dos sinais por coluna exclui dez. A última cai ao impor conjuntamente os sinais e o limite de grau da parte linear em $w$. Dois testes de coluna, por congruências e pelo Walsh direto, dão as mesmas exclusões. [Demonstração e reprodução](CRITERIO_TOPO_QUARTICO.md)
 
+Uma segunda prova usa uma mudança de coordenadas para obter cinco representantes. Três caem nas colunas fixas. Para a máscara 6, a paridade da coluna 27 contradiz a geometria da coluna 3. Para a máscara 9, a classificação de $\psi$ e sete identidades de sinais fecham o argumento. Essa prova usa tabelas locais de contrações e identidades que podem ser conferidas à mão. [Redução e contradições](ANTIPODAL_ORBITAS_PROVA.md)
+
 ### Relação com o artigo sobre quárticas homogêneas
 
 O critério da diagonal não reduz a busca do H12. Para $i\ne j$, o coeficiente de $z_i z_j w_i w_j$ na parte quártica em $(z,w)$ é precisamente o coeficiente original de $a_i b_i a_j b_j$. Assim, a anulação da projeção implica $c_{40}=c_{42}=0$, pois as máscaras 325 e 585 são uniões de dois pares antipodais. A notação é a do H12, em que esses coeficientes são $\beta$ e $\delta$ na restrição de período quatro. Cada um dos três ramos do H12 exige $\beta=1$ ou $\delta=1$. Os 164.288 candidatos já estão, portanto, fora do núcleo do teste linear. [H12, versão 2, Seção 3](https://doi.org/10.6084/m9.figshare.34737294.v2)
 
 O catálogo fornece uma verificação complementar. Para cada um dos 67.647 topos com completamento bent, transportamos a quártica pura ao representante e procuramos seus termos de graus dois e três no catálogo. Essa etapa é necessária porque uma mudança linear pode introduzir termos inferiores. Nenhum código aparece. A checagem usa o catálogo completo, que compartilha as condições quadráticas do H12, e dispensa os certificados de refutação do H12. Reproduza com **python check_h12_from_catalog.py catalog**. O resultado está em h12-from-catalog.json.
+
+Na verificação direta dos 164.288 candidatos do H12, bastam as quatro frequências fixas de máscaras 0, 9, 1 e 5. Após a frequência zero, os ramos de códigos 2, 3 e 8 têm respectivamente 1.980, 492 e 836 candidatos. A máscara 9 elimina por inteiro os dois primeiros ramos e deixa 228 no terceiro. A máscara 1 reduz esse grupo a quatro e a máscara 5 elimina os quatro. Esse teste simplifica a etapa espectral sobre a lista de candidatos já enumerada. Reproduza com **python h12_fixed_walsh.py top-shards h12-fixed-walsh.json**. O resultado está em h12-fixed-walsh.json.
 
 ## Duas órbitas altas com pelo menos uma séxtica
 
