@@ -1,0 +1,46 @@
+name: Complete selected n12 quintic and sextic high parts
+
+on:
+  push:
+    branches: [codex/n12-mixed-quartic]
+    paths:
+      - '.github/workflows/n12_mixed_fixed_high.yml'
+      - 'research_updates/2026_11_09_n12_mixed/higher_complete.py'
+      - 'research_updates/2026_11_09_n12_mixed/higher_project.py'
+
+permissions:
+  contents: read
+
+env:
+  SRC: research_updates/2026_11_09_n12_mixed
+
+jobs:
+  fixed_high:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      max-parallel: 16
+      matrix:
+        label: [dual5, su6]
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install NumPy
+        run: python -m pip install numpy==2.2.6
+      - name: Complete the fixed high part
+        env:
+          HIGH_PART: ${{ matrix.label }}
+          SHARD: ${{ matrix.shard }}
+        run: python "$SRC/higher_complete.py" "$HIGH_PART" "$SHARD" 3 result
+      - uses: actions/upload-artifact@v4
+        with:
+          name: n12-fixed-high-${{ matrix.label }}-${{ matrix.shard }}
+          path: result/
+          if-no-files-found: error
