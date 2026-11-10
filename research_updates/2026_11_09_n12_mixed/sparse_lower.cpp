@@ -8,7 +8,7 @@
 
 int main(int argc, char** argv) {
     try {
-        require(argc == 2, "Usage: sparse_lower output-directory");
+        require(argc == 3, "Usage: sparse_lower output-directory multi");
         const std::filesystem::path output(argv[1]);
         std::filesystem::create_directories(output);
         std::ofstream hits(output / "bent.tsv");
@@ -20,8 +20,15 @@ int main(int argc, char** argv) {
         high_orbits.insert(high_orbits.end(), sextic.begin(), sextic.end());
         unsigned index = 0, dimension = 0;
         require(bool(std::cin >> index >> dimension), "Missing kernel header");
-        require(index < high_orbits.size() && dimension <= lower_count, "Invalid header");
-        const Packed high = b.polynomial(high_orbits[index]);
+        require(dimension <= lower_count, "Invalid header");
+        unsigned support_count = 0;
+        require(bool(std::cin >> support_count) && support_count > 0, "Missing high part");
+        Packed high{};
+        for (unsigned i = 0; i < support_count; ++i) {
+            unsigned orbit = 0;
+            require(bool(std::cin >> orbit) && orbit < high_orbits.size(), "Invalid high orbit");
+            xor_into(high, b.polynomial(high_orbits[orbit]));
+        }
         std::vector<unsigned> kernel_codes(dimension);
         std::vector<Packed> kernel(dimension);
         for (unsigned i = 0; i < dimension; ++i) {

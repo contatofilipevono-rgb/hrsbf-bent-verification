@@ -32,16 +32,19 @@ def main():
     p.add_argument("shard_bits", type=int)
     p.add_argument("executable", type=Path)
     p.add_argument("output", type=Path)
+    p.add_argument("--high-mask", type=lambda v: int(v, 0), required=True)
     a = p.parse_args()
     assert 0 <= a.shard < 1 << a.shard_bits
     started = perf_counter()
     low = [evaluate_orbit(o) for _, o in LOW]
     upper = [evaluate_orbit(o) for _, o in TOP]
-    high = evaluate_orbit(UPPER[a.index][1])
+    active = [i for i in range(len(UPPER)) if (a.high_mask >> i) & 1]
+    assert len(active) == 2 and max(active) < 66
+    high = xor_terms([evaluate_orbit(UPPER[i][1]) for i in active], 3)
     hp = projection(high)
     lp = [projection(v) for v in low]
     up = [projection(v) for v in upper]
-    pivots, residual = eliminate_lower(union_system(1 << a.index))
+    pivots, residual = eliminate_lower(union_system(a.high_mask))
     root, basis, reduced, stages, contradiction = reduce_iteratively(residual)
     assert contradiction is None
     width = len(basis) - a.shard_bits
@@ -58,9 +61,9 @@ def main():
     a.output.mkdir(parents=True, exist_ok=True)
     quartic_survivors = 0
     tasks = 0
-    with subprocess.Popen([str(a.executable.resolve()), str(a.output)],
+    with subprocess.Popen([str(a.executable.resolve()), str(a.output), "multi"],
                           stdin=subprocess.PIPE, text=True) as worker:
-        worker.stdin.write(" ".join(map(str, [a.index, len(kernel), *kernel])) + "\n")
+        worker.stdin.write(" ".join(map(str, [a.index, len(kernel), len(active), *active, *kernel])) + "\n")
         for step in range(len(left)):
             if step:
                 bit = (step & -step).bit_length() - 1
@@ -83,7 +86,7 @@ def main():
         assert worker.wait() == 0
     c_tasks, lower_trials, bent = map(int, (a.output / "totals.tsv").read_text().split())
     assert c_tasks == tasks and lower_trials == tasks << len(kernel)
-    report = {"index": a.index, "shard": a.shard, "shard_bits": a.shard_bits,
+    report = {"index": a.index, "high_mask": a.high_mask, "shard": a.shard, "shard_bits": a.shard_bits,
               "linear_stages": stages, "quartic_trials": 1 << width,
               "quartic_filter_survivors": quartic_survivors, "lower_trials": lower_trials,
               "normalized_bent": bent, "seconds": round(perf_counter() - started, 3)}
