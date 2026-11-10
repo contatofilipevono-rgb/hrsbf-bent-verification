@@ -34,7 +34,7 @@ $$
 B_z=\sigma(z)\omega+(R^3z)\wedge\mathbf1 .
 $$
 
-Em \(z=27=(c,c)\), com \(c=(1,1,0)\) na ordem das coordenadas, a imagem é \(I=\langle z,\mathbf1\rangle=\{0,27,36,63\}\). A linha tem quatro entradas de módulo 32 num suporte \(S\) que é uma classe de \(I\). A soma das entradas é \(64(-1)^{f(z,0)}\), logo o produto dos quatro sinais é \(-1\).
+Na forma 6, \(B_{63}=0\), pois \(\sigma(\mathbf1)=0\) e \(\mathbf1\wedge\mathbf1=0\). Em \(z=27=(c,c)\), com \(c=(1,1,0)\) na ordem das coordenadas, a imagem é \(I=\langle z,\mathbf1\rangle=\{0,27,36,63\}\). A linha tem quatro entradas de módulo 32 num suporte \(S\) que é uma classe de \(I\). A soma das entradas é \(64(-1)^{f(z,0)}\), logo o produto dos quatro sinais é \(-1\).
 
 A terceira potência da rotação fixa \(z\) e troca as metades de \(\beta\). A recorrência multiplica o sinal por \((-1)^{c\cdot\beta_{\rm alta}}\). Como \(R^3\) fixa \(I\) ponto a ponto, em \(S\) ela atua como uma translação fixa \(\delta\in I\). Se \(\delta\ne0\), há dois pares. Escolha seus representantes \(\beta\) e \(\beta+\gamma\), com \(\gamma\in I\setminus\langle\delta\rangle\). O produto dos quatro sinais seria \((-1)^{c\cdot\gamma_{\rm alta}}=1\), pois \(\gamma_{\rm alta}\in\langle c,(1,1,1)\rangle\) e \(c\) é ortogonal aos dois geradores. Isso contradiz o produto \(-1\).
 

@@ -85,7 +85,7 @@ São precisamente os três rótulos inteiros possíveis, cada um com as duas ori
 
 O representante 7 é de tipo 6, com 1 casado com 3. Nos seis índices, o circulante \(A=I+(I+R^3)(t_1R+t_2R^2)\) fixa \(v\) e acrescenta \(t_1Cv+t_2C^2v\) a \(a\). Preserva o rótulo de frequência \(f\) e fixa \(p_D\). Na classe 1, o deslocamento troca a metade em \(t_2\). Na classe 3, troca a metade em \(t_1+t_2\). Portanto os quatro valores de \((t_1,t_2)\) cobrem todas as orientações. A reflexão troca o casamento com 3 pelo casamento com 5 e cobre os outros quatro. Cada circulante é invertível porque \((I+R^3)^2=0\), e levanta a um circulante invertível em doze índices.
 
-Isso liga todos os 20 suportes aos sete certificados sem enumerar as 48 simetrias. As identidades de sinais da tabela excluem os sete representantes. Logo a forma 9 é impossível para \(\deg\pi\le3\), com \(g_0\) livre. As outras 14 formas da demonstração geral ainda usam o verificador finito.
+Isso liga todos os 20 suportes aos sete certificados sem enumerar as 48 simetrias. As identidades de sinais da tabela excluem os sete representantes. Logo a forma 9 é impossível para \(\deg\pi\le3\), com \(g_0\) livre. As outras 14 formas se agrupam em quatro órbitas, excluídas pelos [argumentos das linhas e colunas fixas](ANTIPODAL_ORBITAS_PROVA.md).
 
 ## Conferência
 
