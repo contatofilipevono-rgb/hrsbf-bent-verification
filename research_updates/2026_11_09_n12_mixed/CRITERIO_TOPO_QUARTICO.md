@@ -73,6 +73,8 @@ Na última etapa bastam sete coeficientes de $\pi_0$, identificados pelas másca
 
 Os 20 suportes restantes após as três primeiras máscaras formam sete órbitas de simetrias. Cada uma é excluída por uma identidade obtida somando quatro ou cinco equações de sinais. [Identidades e tabela dos representantes](ANTIPODAL_RESIDUAL_CERTIFICATES.md)
 
+Para a máscara 9, a classificação algébrica de $\psi$ dá os 20 suportes diretamente, e uma reflexão e quatro circulantes os ligam aos sete representantes. A enumeração desse caso pode ser usada apenas como conferência. [Prova da classificação e dos transportes](ANTIPODAL_TAU9_PROVA.md)
+
 ## Reprodução
 
 Rode no diretório desta nota com Python 3.10 ou posterior. O segundo comando usa NumPy.

@@ -1,6 +1,6 @@
 # Sete certificados para os suportes restantes da forma alternada 9
 
-O Fable obteve uma identidade para os três coeficientes nas máscaras 27, 45 e 54 e está estudando a classificação das funções \(\psi\) divididas. Esta nota trata da etapa seguinte. Os 20 suportes que sobrevivem às três máscaras formam sete órbitas de mudanças de coordenadas. Cada órbita tem um representante excluído pela soma de quatro ou cinco equações de sinais. A redução a esses representantes ainda usa a enumeração finita dos suportes.
+O Fable obteve uma identidade para os três coeficientes nas máscaras 27, 45 e 54 e a classificação das funções \(\psi\) divididas. Esta nota trata da etapa seguinte. Os 20 suportes que sobrevivem às três máscaras formam sete órbitas de mudanças de coordenadas. Cada órbita tem um representante excluído pela soma de quatro ou cinco equações de sinais. A [prova da classificação e dos transportes](ANTIPODAL_TAU9_PROVA.md) liga os 20 suportes aos sete representantes por transformações explícitas.
 
 ## Uma fórmula direta para os coeficientes
 
