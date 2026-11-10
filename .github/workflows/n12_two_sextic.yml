@@ -1,0 +1,43 @@
+name: Project all two-orbit sextic representatives
+
+on:
+  push:
+    branches: [codex/n12-two-sextic]
+    paths:
+      - '.github/workflows/n12_two_sextic.yml'
+      - 'research_updates/2026_11_09_n12_mixed/two_sextic_project.py'
+
+permissions:
+  contents: read
+
+env:
+  SRC: research_updates/2026_11_09_n12_mixed
+
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install NumPy
+        run: python -m pip install numpy==2.2.6
+      - name: Derive exact affine reductions
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: python "$SRC/two_sextic_project.py" "$SRC/two-sextic-preflight.json" --shard "$SHARD" --shards 12 --output reduced.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: n12-two-sextic-plan-${{ matrix.shard }}
+          path: reduced.json
+          if-no-files-found: error
