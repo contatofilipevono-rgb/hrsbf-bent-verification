@@ -218,6 +218,12 @@ Nas coordenadas $(z,w)$, projetamos a parte de grau quatro sobre os monômios qu
 
 A suficiência tem uma prova com verificação finita independente do catálogo. A meia-volta força a matriz polar em $w$ a ter a forma $B(z)=\iota_z\tau$, para uma 3-forma alternada invariante pela rotação cíclica das seis posições. As normas do Walsh parcial excluem quatro das quinze formas não nulas. A viabilidade dos sinais por coluna exclui dez. A última cai ao impor conjuntamente os sinais e o limite de grau da parte linear em $w$. Dois testes de coluna, por congruências e pelo Walsh direto, dão as mesmas exclusões. [Demonstração e reprodução](CRITERIO_TOPO_QUARTICO.md)
 
+### Relação com o artigo sobre quárticas homogêneas
+
+O critério da diagonal não reduz a busca do H12. Para $i\ne j$, o coeficiente de $z_i z_j w_i w_j$ na parte quártica em $(z,w)$ é precisamente o coeficiente original de $a_i b_i a_j b_j$. Assim, a anulação da projeção implica $c_{40}=c_{42}=0$, pois as máscaras 325 e 585 são uniões de dois pares antipodais. A notação é a do H12, em que esses coeficientes são $\beta$ e $\delta$ na restrição de período quatro. Cada um dos três ramos do H12 exige $\beta=1$ ou $\delta=1$. Os 164.288 candidatos já estão, portanto, fora do núcleo do teste linear. [H12, versão 2, Seção 3](https://doi.org/10.6084/m9.figshare.34737294.v2)
+
+O catálogo fornece uma verificação complementar. Para cada um dos 67.647 topos com completamento bent, transportamos a quártica pura ao representante e procuramos seus termos de graus dois e três no catálogo. Essa etapa é necessária porque uma mudança linear pode introduzir termos inferiores. Nenhum código aparece. A checagem usa o catálogo completo, que compartilha as condições quadráticas do H12, e dispensa os certificados de refutação do H12. Reproduza com **python check_h12_from_catalog.py catalog**. O resultado está em h12-from-catalog.json.
+
 ## Duas órbitas altas com pelo menos uma séxtica
 
 A enumeração dos 9.017 blocos fechou todo o recorte de 8.440 padrões. Contando todas as adições afins, há **213.712 séxticas** no recorte. Seis classes têm completamentos e todos estão fora de $\mathcal M^\#$. Para cada um desses seis topos, a contração dupla da parte séxtica já exclui qualquer subespaço de dimensão seis. O teste vetorizado independente refez o Walsh e calculou a dual de cada um dos 26.681 completamentos normalizados dos seis representantes. [Enumeração séxtica](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42788649738)
