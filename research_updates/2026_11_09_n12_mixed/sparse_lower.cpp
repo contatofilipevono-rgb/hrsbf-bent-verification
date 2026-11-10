@@ -1,7 +1,10 @@
 // Reuse the independently verified packed Walsh engine without its CLI.
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wreturn-type"
 #define main n12_quartic_catalog_entry
 #include "completions.cpp"
 #undef main
+#pragma GCC diagnostic pop
 
 int main(int argc, char** argv) {
     try {
