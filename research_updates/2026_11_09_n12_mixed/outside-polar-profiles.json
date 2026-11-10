@@ -1,0 +1,122 @@
+{
+  "top_representatives": 272,
+  "top_polar_pairs": 305,
+  "functions_by_maximum_rotation_invariant_isotropic_dimension": {
+    "2": 309248,
+    "3": 4194304,
+    "4": 4227072,
+    "5": 10485760
+  },
+  "profiles": [
+    {
+      "rank_counts_0_2_4_6": [
+        40,
+        24,
+        0,
+        0
+      ],
+      "dimension": 5,
+      "functions": 10485760
+    },
+    {
+      "rank_counts_0_2_4_6": [
+        16,
+        48,
+        0,
+        0
+      ],
+      "dimension": 4,
+      "functions": 2555904
+    },
+    {
+      "rank_counts_0_2_4_6": [
+        8,
+        24,
+        32,
+        0
+      ],
+      "dimension": 3,
+      "functions": 1572864
+    },
+    {
+      "rank_counts_0_2_4_6": [
+        32,
+        0,
+        32,
+        0
+      ],
+      "dimension": 3,
+      "functions": 1310720
+    },
+    {
+      "rank_counts_0_2_4_6": [
+        8,
+        56,
+        0,
+        0
+      ],
+      "dimension": 4,
+      "functions": 1310720
+    },
+    {
+      "rank_counts_0_2_4_6": [
+        8,
+        56,
+        0,
+        0
+      ],
+      "dimension": 3,
+      "functions": 1310720
+    },
+    {
+      "rank_counts_0_2_4_6": [
+        13,
+        51,
+        0,
+        0
+      ],
+      "dimension": 4,
+      "functions": 360448
+    },
+    {
+      "rank_counts_0_2_4_6": [
+        1,
+        7,
+        56,
+        0
+      ],
+      "dimension": 2,
+      "functions": 196608
+    },
+    {
+      "rank_counts_0_2_4_6": [
+        4,
+        60,
+        0,
+        0
+      ],
+      "dimension": 2,
+      "functions": 65536
+    },
+    {
+      "rank_counts_0_2_4_6": [
+        24,
+        40,
+        0,
+        0
+      ],
+      "dimension": 2,
+      "functions": 32768
+    },
+    {
+      "rank_counts_0_2_4_6": [
+        0,
+        64,
+        0,
+        0
+      ],
+      "dimension": 2,
+      "functions": 14336
+    }
+  ]
+}

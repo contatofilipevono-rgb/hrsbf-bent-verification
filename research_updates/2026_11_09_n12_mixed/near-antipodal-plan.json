@@ -1,0 +1,201 @@
+{
+  "orbit_plane_candidates": {
+    "1": 4,
+    "3": 84,
+    "6": 3816
+  },
+  "plan": [
+    {
+      "q_index": 1,
+      "q_weight": 30,
+      "branches": 300,
+      "levels": [
+        {
+          "label": 0,
+          "candidates": 2,
+          "branches": 2,
+          "trials": 402653184
+        },
+        {
+          "label": 21,
+          "candidates": 2,
+          "branches": 1,
+          "trials": 134217728
+        },
+        {
+          "label": 7,
+          "candidates": 47,
+          "branches": 27,
+          "trials": 69206016
+        },
+        {
+          "label": 9,
+          "candidates": 47,
+          "branches": 300,
+          "trials": 4915200
+        }
+      ],
+      "remaining_dimensions": {
+        "14": 300
+      },
+      "trials": 4915200
+    },
+    {
+      "q_index": 2,
+      "q_weight": 31,
+      "branches": 0,
+      "trials": 0
+    },
+    {
+      "q_index": 3,
+      "q_weight": 28,
+      "branches": 228,
+      "levels": [
+        {
+          "label": 0,
+          "candidates": 3,
+          "branches": 1,
+          "trials": 134217728
+        },
+        {
+          "label": 21,
+          "candidates": 3,
+          "branches": 1,
+          "trials": 134217728
+        },
+        {
+          "label": 7,
+          "candidates": 39,
+          "branches": 27,
+          "trials": 69206016
+        },
+        {
+          "label": 9,
+          "candidates": 39,
+          "branches": 228,
+          "trials": 23986176
+        }
+      ],
+      "remaining_dimensions": {
+        "13": 48,
+        "17": 180
+      },
+      "trials": 23986176
+    },
+    {
+      "q_index": 4,
+      "q_weight": 16,
+      "branches": 278,
+      "levels": [
+        {
+          "label": 0,
+          "candidates": 3,
+          "branches": 1,
+          "trials": 134217728
+        },
+        {
+          "label": 21,
+          "candidates": 3,
+          "branches": 1,
+          "trials": 134217728
+        },
+        {
+          "label": 7,
+          "candidates": 33,
+          "branches": 23,
+          "trials": 98566144
+        },
+        {
+          "label": 9,
+          "candidates": 33,
+          "branches": 278,
+          "trials": 51380224
+        }
+      ],
+      "remaining_dimensions": {
+        "17": 180,
+        "18": 90,
+        "19": 8
+      },
+      "trials": 51380224
+    },
+    {
+      "q_index": 5,
+      "q_weight": 31,
+      "branches": 0,
+      "trials": 0
+    },
+    {
+      "q_index": 6,
+      "q_weight": 30,
+      "branches": 300,
+      "levels": [
+        {
+          "label": 0,
+          "candidates": 2,
+          "branches": 2,
+          "trials": 402653184
+        },
+        {
+          "label": 21,
+          "candidates": 2,
+          "branches": 1,
+          "trials": 134217728
+        },
+        {
+          "label": 7,
+          "candidates": 47,
+          "branches": 27,
+          "trials": 69206016
+        },
+        {
+          "label": 9,
+          "candidates": 47,
+          "branches": 300,
+          "trials": 4915200
+        }
+      ],
+      "remaining_dimensions": {
+        "14": 300
+      },
+      "trials": 4915200
+    },
+    {
+      "q_index": 7,
+      "q_weight": 24,
+      "branches": 273,
+      "levels": [
+        {
+          "label": 0,
+          "candidates": 2,
+          "branches": 2,
+          "trials": 402653184
+        },
+        {
+          "label": 21,
+          "candidates": 2,
+          "branches": 1,
+          "trials": 134217728
+        },
+        {
+          "label": 7,
+          "candidates": 48,
+          "branches": 27,
+          "trials": 69206016
+        },
+        {
+          "label": 9,
+          "candidates": 48,
+          "branches": 273,
+          "trials": 47579136
+        }
+      ],
+      "remaining_dimensions": {
+        "13": 48,
+        "17": 180,
+        "19": 45
+      },
+      "trials": 47579136
+    }
+  ]
+}
