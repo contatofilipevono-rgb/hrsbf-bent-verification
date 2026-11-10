@@ -35,7 +35,7 @@ def packed_subsets(columns):
     return table
 
 
-def degree_and_check(batch, degree_positions):
+def dual_anf(batch):
     signs = 1 - 2 * np.unpackbits(batch.view(np.uint8), axis=1,
                                   bitorder="little").astype(np.int16)
     for j in range(N):
@@ -49,6 +49,11 @@ def degree_and_check(batch, degree_positions):
     for j in range(N):
         view = dual.reshape(len(dual), -1, 2, 1 << j)
         view[:, :, 1, :] ^= view[:, :, 0, :]
+    return dual
+
+
+def degree_and_check(batch, degree_positions):
+    dual = dual_anf(batch)
     assert not np.any(dual[:, degree_positions[7]])
     degree = np.zeros(len(dual), dtype=np.uint8)
     for d in range(2, 7):

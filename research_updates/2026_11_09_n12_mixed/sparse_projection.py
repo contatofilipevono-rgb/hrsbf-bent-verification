@@ -120,19 +120,28 @@ def test_one(i):
             "xl_contradiction_certificate": certificate}
 
 
-def project_charts(classes, shard, shards, mod8):
+def project_charts(classes, shard, shards, mod8, period4_branches):
+    from period4_conditions import branch_equations
     from upper_mod8 import terms_for_fixed_upper
     reports = []
     for row in classes[shard::shards]:
-        low, residual = eliminate_lower(union_system(row['mask']))
-        if mod8:
-            residual.append(terms_for_fixed_upper(row['mask']))
-        _, basis, poly, stages, certificate = reduce_iteratively(residual)
-        reports.append({'mask': row['mask'], 'patterns': len(row['members']),
-                        'lower_rank': len(low), 'quartic_free': len(basis),
-                        'residual_equations': len(poly), 'stages': stages,
-                        'contradiction': certificate is not None,
-                        'certificate_of_final_contradiction': certificate})
+        high = row['mask']
+        common = union_system(high)
+        for branch in (0, 1) if period4_branches else (None,):
+            equations = common if branch is None else common + branch_equations(high, branch)
+            low, residual = eliminate_lower(equations)
+            if mod8:
+                residual.append(terms_for_fixed_upper(high))
+            _, basis, poly, stages, certificate = reduce_iteratively(residual)
+            report = {'mask': high, 'lower_rank': len(low), 'quartic_free': len(basis),
+                      'residual_equations': len(poly), 'stages': stages,
+                      'contradiction': certificate is not None,
+                      'certificate_of_final_contradiction': certificate}
+            if 'members' in row:
+                report['patterns'] = len(row['members'])
+            if branch is not None:
+                report['period4_branch'] = branch
+            reports.append(report)
     return reports
 
 
@@ -143,11 +152,12 @@ def main():
     p.add_argument("--limit", type=int)
     p.add_argument("--plan", type=Path)
     p.add_argument("--mod8", action='store_true')
+    p.add_argument("--period4-branches", action='store_true')
     p.add_argument("--output", type=Path, required=True)
     a = p.parse_args()
     if a.plan is not None:
         classes = json.loads(a.plan.read_text())['classes']
-        reports = project_charts(classes, a.shard, a.shards, a.mod8)
+        reports = project_charts(classes, a.shard, a.shards, a.mod8, a.period4_branches)
         a.output.write_text(json.dumps(reports, indent=2) + '\n')
         print('tested', len(reports), 'contradictions', sum(r['contradiction'] for r in reports))
         return

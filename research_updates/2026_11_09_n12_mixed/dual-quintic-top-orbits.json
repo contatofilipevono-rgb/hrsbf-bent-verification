@@ -1,0 +1,861 @@
+{
+  "classes": [
+    {
+      "mask": 35208036369424,
+      "min_quintic_orbits": 9,
+      "orbit_size": 256,
+      "normalized_quartic_duals": 16,
+      "observed_high_masks": 32
+    },
+    {
+      "mask": 325948435482021892,
+      "min_quintic_orbits": 9,
+      "orbit_size": 256,
+      "normalized_quartic_duals": 24,
+      "observed_high_masks": 64
+    },
+    {
+      "mask": 148655093062355104,
+      "min_quintic_orbits": 12,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 1024,
+      "observed_high_masks": 6
+    },
+    {
+      "mask": 1301541391897297939,
+      "min_quintic_orbits": 12,
+      "orbit_size": 512,
+      "normalized_quartic_duals": 8,
+      "observed_high_masks": 48
+    },
+    {
+      "mask": 4764809798405869696,
+      "min_quintic_orbits": 12,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 512,
+      "observed_high_masks": 4
+    },
+    {
+      "mask": 37037638549932459041,
+      "min_quintic_orbits": 13,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 32,
+      "observed_high_masks": 32
+    },
+    {
+      "mask": 18203641252955152,
+      "min_quintic_orbits": 15,
+      "orbit_size": 256,
+      "normalized_quartic_duals": 8,
+      "observed_high_masks": 32
+    },
+    {
+      "mask": 144295563828445234,
+      "min_quintic_orbits": 15,
+      "orbit_size": 256,
+      "normalized_quartic_duals": 8,
+      "observed_high_masks": 32
+    },
+    {
+      "mask": 162173657255821362,
+      "min_quintic_orbits": 15,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 16,
+      "observed_high_masks": 32
+    },
+    {
+      "mask": 1155261278840703377,
+      "min_quintic_orbits": 15,
+      "orbit_size": 512,
+      "normalized_quartic_duals": 8,
+      "observed_high_masks": 48
+    },
+    {
+      "mask": 3458909696936198194,
+      "min_quintic_orbits": 15,
+      "orbit_size": 512,
+      "normalized_quartic_duals": 4,
+      "observed_high_masks": 48
+    },
+    {
+      "mask": 225182459567671831,
+      "min_quintic_orbits": 16,
+      "orbit_size": 256,
+      "normalized_quartic_duals": 16,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 4620703749092966973,
+      "min_quintic_orbits": 16,
+      "orbit_size": 256,
+      "normalized_quartic_duals": 16,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 37253787731227836447,
+      "min_quintic_orbits": 16,
+      "orbit_size": 1,
+      "normalized_quartic_duals": 4096,
+      "observed_high_masks": 1
+    },
+    {
+      "mask": 38195208796420196387,
+      "min_quintic_orbits": 16,
+      "orbit_size": 512,
+      "normalized_quartic_duals": 4,
+      "observed_high_masks": 48
+    },
+    {
+      "mask": 2017648095938498744,
+      "min_quintic_orbits": 17,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 128,
+      "observed_high_masks": 32
+    },
+    {
+      "mask": 226910613225632352,
+      "min_quintic_orbits": 18,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 512,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 1207537769335800994,
+      "min_quintic_orbits": 18,
+      "orbit_size": 512,
+      "normalized_quartic_duals": 4,
+      "observed_high_masks": 48
+    },
+    {
+      "mask": 1301721769811492867,
+      "min_quintic_orbits": 18,
+      "orbit_size": 256,
+      "normalized_quartic_duals": 16,
+      "observed_high_masks": 32
+    },
+    {
+      "mask": 1590932038760881204,
+      "min_quintic_orbits": 20,
+      "orbit_size": 512,
+      "normalized_quartic_duals": 8,
+      "observed_high_masks": 48
+    },
+    {
+      "mask": 9822919539888328064,
+      "min_quintic_orbits": 20,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 512,
+      "observed_high_masks": 4
+    },
+    {
+      "mask": 60538521231934231059,
+      "min_quintic_orbits": 20,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 1024,
+      "observed_high_masks": 4
+    },
+    {
+      "mask": 1396116532234617993,
+      "min_quintic_orbits": 21,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 128,
+      "observed_high_masks": 32
+    },
+    {
+      "mask": 3892382541700749351,
+      "min_quintic_orbits": 21,
+      "orbit_size": 512,
+      "normalized_quartic_duals": 4,
+      "observed_high_masks": 48
+    },
+    {
+      "mask": 1591042043652675620,
+      "min_quintic_orbits": 22,
+      "orbit_size": 512,
+      "normalized_quartic_duals": 8,
+      "observed_high_masks": 48
+    },
+    {
+      "mask": 14663864617240674688,
+      "min_quintic_orbits": 22,
+      "orbit_size": 32,
+      "normalized_quartic_duals": 512,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 46226251609746703143,
+      "min_quintic_orbits": 22,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 512,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 169470752700272353,
+      "min_quintic_orbits": 24,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 195960070201469153,
+      "min_quintic_orbits": 24,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 12
+    },
+    {
+      "mask": 584501242179099265,
+      "min_quintic_orbits": 24,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 32
+    },
+    {
+      "mask": 614949482249094484,
+      "min_quintic_orbits": 24,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 16384,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 3480975299565846872,
+      "min_quintic_orbits": 24,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 3612371369170387562,
+      "min_quintic_orbits": 24,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 32,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 3630378612270843491,
+      "min_quintic_orbits": 24,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 32,
+      "observed_high_masks": 7
+    },
+    {
+      "mask": 3639139208696959084,
+      "min_quintic_orbits": 24,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 3761633264300050592,
+      "min_quintic_orbits": 24,
+      "orbit_size": 8,
+      "normalized_quartic_duals": 4096,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 4135879834890175557,
+      "min_quintic_orbits": 24,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 16,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 4171767998035829765,
+      "min_quintic_orbits": 24,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 16,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 4942772483390652470,
+      "min_quintic_orbits": 24,
+      "orbit_size": 256,
+      "normalized_quartic_duals": 16,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 5143120971815277701,
+      "min_quintic_orbits": 24,
+      "orbit_size": 4,
+      "normalized_quartic_duals": 1024,
+      "observed_high_masks": 4
+    },
+    {
+      "mask": 5219676490247252321,
+      "min_quintic_orbits": 24,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 12
+    },
+    {
+      "mask": 8165767204875153792,
+      "min_quintic_orbits": 24,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 9255646742722979989,
+      "min_quintic_orbits": 24,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 12
+    },
+    {
+      "mask": 9449262719886560087,
+      "min_quintic_orbits": 24,
+      "orbit_size": 256,
+      "normalized_quartic_duals": 16,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 9655806964742175137,
+      "min_quintic_orbits": 24,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 32
+    },
+    {
+      "mask": 12830791646792182240,
+      "min_quintic_orbits": 24,
+      "orbit_size": 8,
+      "normalized_quartic_duals": 4096,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 12838742457130803565,
+      "min_quintic_orbits": 24,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 512,
+      "observed_high_masks": 4
+    },
+    {
+      "mask": 13844784009411855229,
+      "min_quintic_orbits": 24,
+      "orbit_size": 256,
+      "normalized_quartic_duals": 16,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 14037724693249919553,
+      "min_quintic_orbits": 24,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 14215065849196283800,
+      "min_quintic_orbits": 24,
+      "orbit_size": 4,
+      "normalized_quartic_duals": 1024,
+      "observed_high_masks": 2
+    },
+    {
+      "mask": 14298020148190775873,
+      "min_quintic_orbits": 24,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 12
+    },
+    {
+      "mask": 14322806027547191808,
+      "min_quintic_orbits": 24,
+      "orbit_size": 32,
+      "normalized_quartic_duals": 1024,
+      "observed_high_masks": 14
+    },
+    {
+      "mask": 14412272730728825332,
+      "min_quintic_orbits": 24,
+      "orbit_size": 2,
+      "normalized_quartic_duals": 1024,
+      "observed_high_masks": 2
+    },
+    {
+      "mask": 23117118989005268045,
+      "min_quintic_orbits": 24,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 1024,
+      "observed_high_masks": 2
+    },
+    {
+      "mask": 23361298838904806046,
+      "min_quintic_orbits": 24,
+      "orbit_size": 1,
+      "normalized_quartic_duals": 25600,
+      "observed_high_masks": 1
+    },
+    {
+      "mask": 23365247041304421195,
+      "min_quintic_orbits": 24,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 23811693759615227437,
+      "min_quintic_orbits": 24,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 2048,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 44969568739103725625,
+      "min_quintic_orbits": 24,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 4096,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 45590651632538027425,
+      "min_quintic_orbits": 24,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 12
+    },
+    {
+      "mask": 51666041632781763051,
+      "min_quintic_orbits": 24,
+      "orbit_size": 2,
+      "normalized_quartic_duals": 1024,
+      "observed_high_masks": 2
+    },
+    {
+      "mask": 91812339610363508,
+      "min_quintic_orbits": 26,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 512,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 164909808061968114,
+      "min_quintic_orbits": 26,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 128,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 165780191766564007,
+      "min_quintic_orbits": 26,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 6
+    },
+    {
+      "mask": 211854375840555636,
+      "min_quintic_orbits": 26,
+      "orbit_size": 256,
+      "normalized_quartic_duals": 16,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 246838851853802657,
+      "min_quintic_orbits": 26,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 128,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 596826206931390170,
+      "min_quintic_orbits": 26,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 605825225920261264,
+      "min_quintic_orbits": 26,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 512,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 607089713641594003,
+      "min_quintic_orbits": 26,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 6
+    },
+    {
+      "mask": 886585470635879640,
+      "min_quintic_orbits": 26,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 4614335199904770598,
+      "min_quintic_orbits": 26,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 128,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 4760899059919923769,
+      "min_quintic_orbits": 26,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 512,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 4769897945698666611,
+      "min_quintic_orbits": 26,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 4770313047877098021,
+      "min_quintic_orbits": 26,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 768,
+      "observed_high_masks": 20
+    },
+    {
+      "mask": 4798186011256424557,
+      "min_quintic_orbits": 26,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 512,
+      "observed_high_masks": 30
+    },
+    {
+      "mask": 4903571061715208228,
+      "min_quintic_orbits": 26,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 128,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 4911299928921676397,
+      "min_quintic_orbits": 26,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 5194218593341511760,
+      "min_quintic_orbits": 26,
+      "orbit_size": 32,
+      "normalized_quartic_duals": 1536,
+      "observed_high_masks": 10
+    },
+    {
+      "mask": 5335729277503240717,
+      "min_quintic_orbits": 26,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 128,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 5380226439880022097,
+      "min_quintic_orbits": 26,
+      "orbit_size": 32,
+      "normalized_quartic_duals": 2048,
+      "observed_high_masks": 14
+    },
+    {
+      "mask": 9228035670125337011,
+      "min_quintic_orbits": 26,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 14051801775083164606,
+      "min_quintic_orbits": 26,
+      "orbit_size": 32,
+      "normalized_quartic_duals": 512,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 23661142688103670799,
+      "min_quintic_orbits": 26,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 128,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 32282094691399910245,
+      "min_quintic_orbits": 26,
+      "orbit_size": 128,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 46630840396094440231,
+      "min_quintic_orbits": 26,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 512,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 15331629653546858,
+      "min_quintic_orbits": 28,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 16384,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 15730234797049148,
+      "min_quintic_orbits": 28,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 8192,
+      "observed_high_masks": 4
+    },
+    {
+      "mask": 16954623584944020,
+      "min_quintic_orbits": 28,
+      "orbit_size": 32,
+      "normalized_quartic_duals": 512,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 41708340079271893,
+      "min_quintic_orbits": 28,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 227721563936712493,
+      "min_quintic_orbits": 28,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 24576,
+      "observed_high_masks": 12
+    },
+    {
+      "mask": 417743950711948088,
+      "min_quintic_orbits": 28,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 16384,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 464707395809055028,
+      "min_quintic_orbits": 28,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 16384,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 613326694736194986,
+      "min_quintic_orbits": 28,
+      "orbit_size": 32,
+      "normalized_quartic_duals": 512,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 795560893237897420,
+      "min_quintic_orbits": 28,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 1024,
+      "observed_high_masks": 6
+    },
+    {
+      "mask": 838364192530434189,
+      "min_quintic_orbits": 28,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 32
+    },
+    {
+      "mask": 3523777776505331993,
+      "min_quintic_orbits": 28,
+      "orbit_size": 32,
+      "normalized_quartic_duals": 512,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 3563476589036127265,
+      "min_quintic_orbits": 28,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 1024,
+      "observed_high_masks": 4
+    },
+    {
+      "mask": 3712438004578381880,
+      "min_quintic_orbits": 28,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 32,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 3757819935317143602,
+      "min_quintic_orbits": 28,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 768,
+      "observed_high_masks": 26
+    },
+    {
+      "mask": 3946616380495557693,
+      "min_quintic_orbits": 28,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 32,
+      "observed_high_masks": 7
+    },
+    {
+      "mask": 4024216428638544978,
+      "min_quintic_orbits": 28,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 2048,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 4091051716215866380,
+      "min_quintic_orbits": 28,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 32
+    },
+    {
+      "mask": 4430490798749013554,
+      "min_quintic_orbits": 28,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 1024,
+      "observed_high_masks": 2
+    },
+    {
+      "mask": 4669401930936422827,
+      "min_quintic_orbits": 28,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 8192,
+      "observed_high_masks": 4
+    },
+    {
+      "mask": 4722137553972408077,
+      "min_quintic_orbits": 28,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 4920480320300364712,
+      "min_quintic_orbits": 28,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 24576,
+      "observed_high_masks": 12
+    },
+    {
+      "mask": 5097012323650923115,
+      "min_quintic_orbits": 28,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 256,
+      "observed_high_masks": 12
+    },
+    {
+      "mask": 8255107791890592423,
+      "min_quintic_orbits": 28,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 512,
+      "observed_high_masks": 4
+    },
+    {
+      "mask": 8436379075964950566,
+      "min_quintic_orbits": 28,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 4096,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 17699417172396582529,
+      "min_quintic_orbits": 28,
+      "orbit_size": 32,
+      "normalized_quartic_duals": 1024,
+      "observed_high_masks": 14
+    },
+    {
+      "mask": 23379435170205643809,
+      "min_quintic_orbits": 28,
+      "orbit_size": 64,
+      "normalized_quartic_duals": 768,
+      "observed_high_masks": 28
+    },
+    {
+      "mask": 37224701314152009177,
+      "min_quintic_orbits": 28,
+      "orbit_size": 32,
+      "normalized_quartic_duals": 512,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 40438959143657785535,
+      "min_quintic_orbits": 28,
+      "orbit_size": 8,
+      "normalized_quartic_duals": 4096,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 63770982351601619489,
+      "min_quintic_orbits": 28,
+      "orbit_size": 8,
+      "normalized_quartic_duals": 4096,
+      "observed_high_masks": 8
+    },
+    {
+      "mask": 23003746413584121,
+      "min_quintic_orbits": 30,
+      "orbit_size": 32,
+      "normalized_quartic_duals": 1536,
+      "observed_high_masks": 10
+    },
+    {
+      "mask": 5113399030143431648,
+      "min_quintic_orbits": 32,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 3072,
+      "observed_high_masks": 12
+    },
+    {
+      "mask": 5139437848670896562,
+      "min_quintic_orbits": 32,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 3072,
+      "observed_high_masks": 12
+    },
+    {
+      "mask": 5281296952242629656,
+      "min_quintic_orbits": 32,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 512,
+      "observed_high_masks": 4
+    },
+    {
+      "mask": 14019835195313562878,
+      "min_quintic_orbits": 32,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 16384,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 14183230744457831072,
+      "min_quintic_orbits": 32,
+      "orbit_size": 16,
+      "normalized_quartic_duals": 16384,
+      "observed_high_masks": 16
+    },
+    {
+      "mask": 24153970031740246700,
+      "min_quintic_orbits": 32,
+      "orbit_size": 2,
+      "normalized_quartic_duals": 1024,
+      "observed_high_masks": 2
+    }
+  ],
+  "sparsity_distribution": {
+    "9": 2,
+    "12": 3,
+    "13": 1,
+    "15": 5,
+    "16": 4,
+    "17": 1,
+    "18": 3,
+    "20": 3,
+    "21": 2,
+    "22": 3,
+    "24": 33,
+    "26": 24,
+    "28": 29,
+    "30": 1,
+    "32": 6
+  }
+}

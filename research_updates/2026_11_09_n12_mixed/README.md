@@ -155,6 +155,8 @@ Numa séxtica, uma união de tamanho doze exige dois monômios complementares de
 
 A união de tamanho onze também fornece uma equação só nos graus cinco e seis. Com as duas condições de tamanho onze e doze, sobram 22.300.745.198.530.623.141.535.644.485.672.066.667.773.952 partes altas com algum termo séxtico. No recorte com exatamente duas órbitas altas, pelo menos uma séxtica, esses testes excluem 3.122 dos 8.440 padrões. Os sobreviventes formam 1.529 classes, das quais 881 foram excluídas pelas consequências polinomiais da projeção. Restam 2.207 padrões em 648 classes para a busca pelos completamentos. [Projeção das partes séxticas](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42788369424)
 
+A regra dos pares complementares vale também em $n=2m$, $m\ge3$. O coeficiente inteiro cheio é $-W_f(\mathbf 1)/2$, divisível por quatro. Pelo limite de grau de bent, os únicos pares que o afetam módulo quatro são monômios complementares de grau $m$. Todo comprimento de órbita de suporte de peso $m$ é par, pois um bloco fundamental precisa conter metade de uns. Assim, a soma dos coeficientes das órbitas autocomplementares de comprimento $2\bmod4$ precisa ser zero. Em particular, quando $m$ é potência de dois, a órbita alternada de comprimento dois tem coeficiente zero.
+
 ### Equação módulo oito na união cheia
 
 Escreva $q_s$ e $b_s$ para os coeficientes quárticos e séxticos, respectivamente, indexados pela menor máscara da órbita. Além de $b_{455}=b_{1365}$, vale
@@ -165,6 +167,22 @@ $$
 As duas expressões são tomadas em $\mathbb F_2$. Logo a equação também vale para grau até cinco com todos os $b_s=0$.
 
 Sejam $P$ e $J$ o número de pares e de trios de monômios ativos cuja união tem as doze posições. O coeficiente inteiro cheio é $-2P+4J$ módulo oito. O cálculo de $P$ módulo quatro agrupa pares complementares de acordo com suas órbitas. Os únicos trios que contam para $J$ módulo dois são fixos pela rotação de três posições, pois os demais têm órbitas de tamanho par. Nesses trios, ou os três suportes são individualmente fixos, ou um é fixo e os outros dois são trocados. Os suportes individualmente fixos são exatamente 585, 1170 e 2340. Enumerar essas possibilidades dá a identidade acima. `upper_mod8.py` refaz a enumeração e a compara com 256 transformadas inteiras de Möbius.
+
+### O próximo bit é afim nos termos inferiores
+
+Fixadas as partes de graus quatro a seis e satisfeita a congruência cheia módulo oito, a congruência cheia módulo dezesseis dá uma equação afim nos 25 coeficientes inferiores normalizados. Se $K$ é a contagem de quartetos que cobrem todas as posições, o coeficiente inteiro é $-2P+4J-8K$ módulo dezesseis. Decomponha $J\equiv J_o+2J_e\pmod4$, com $J_o$ contando os trios fixos pela rotação de três posições e $J_e$ contando um trio por órbita de comprimento dois dessa rotação. As órbitas de comprimento quatro desaparecem. A equação resultante é
+$$
+J_e+K\equiv (P-2J_o)/4\pmod2.
+$$
+O lado direito é inteiro pela congruência módulo oito e depende só dos graus quatro a seis. Os trios de $J_e$ são fixos pela meia-volta. Se há um par trocado, os seus suportes pertencem à mesma órbita cíclica e contribuem com um único coeficiente. Dois suportes quadráticos individualmente fixos pela meia-volta também pertencem à mesma órbita, a antipodal. Em $K$ só contribuem, módulo dois, os quartetos fixos pela rotação de três posições. Eles se dividem em um ciclo de quatro, dois pares trocados, ou um par trocado e dois suportes fixos. Em cada caso, o produto de coeficientes tem no máximo um coeficiente de grau dois ou três. `full_mod16.py` deriva o polinômio pela ação nas coleções de suportes e confere 768 transformadas inteiras, 448 delas admissíveis módulo oito. Uma auditoria independente por modelo refez as contagens pequenas de órbitas.
+
+### Duas formas afins para a restrição de período quatro
+
+Sejam $t_0,t_1,t_3,t_5,t_7,t_{15}$ os valores da restrição $f(y,y,y)$, um por órbita. O teste de Walsh não nulo módulo três equivale a
+$$
+t_0+t_1+t_7+t_{15}=1,\qquad b=a+c+ac,
+$$
+onde $a=t_3+t_0$, $b=t_5+t_0$ e $c=t_7+t_1$. Todas as operações são em $\mathbb F_2$. `period4_conditions.py` confere a equivalência nas 64 tabelas invariantes. Fixar $c=0$ ou $c=1$ converte a segunda equação, respectivamente, em $b=a$ ou $b=1$. Como os valores $t_i$ são lineares nos coeficientes SANF, cada caso fornece três linhas afins que podem entrar na eliminação antes de enumerar os termos quárticos.
 
 ## Exemplos fora da classe completa de Maiorana–McFarland
 
@@ -206,3 +224,9 @@ Nas coordenadas $(z,w)$, seja $B_\beta(z)$ a transformada de Walsh de $f(z,w)$ e
 Para cada completamento das duas classes maiores, 40 colunas têm suporte unitário e 24 têm suporte num plano afim, com valores absolutos 32. Para um plano, o produto dos quatro sinais deve ser $-1$ para que todas as transformadas tenham módulo 64. Logo é necessário e suficiente que a paridade de $h$ no plano seja zero. Nas 12 coordenadas SANF de graus dois a seis em $z$, os 24 planos de cada família impõem a mesma equação linear. Cada semente tem $2^{11}$ adições normalizadas possíveis, das quais $2^9$ preservam a parte alta. A busca encontra 30 classes laterais de adições inferiores para a primeira parte alta e 22 para a segunda. `spectral_switching.py` refaz o cálculo dos suportes, dos espaços e da união dos completamentos, com conferência de Walsh em cada parte alta por classe lateral.
 
 As adições geram seis novas órbitas de partes altas, disjuntas das seis anteriores. Cada uma tem 256 partes altas. A contração dupla do topo séxtico exclui $\mathcal M^\#$ em todas. Contando essas adições e os normalizadores, obtemos mais **81.788.928 séxticas**. Ao todo, isso certifica pelo menos **109.236.224 séxticas fora de $\mathcal M^\#$** e pelo menos **366.876.010.139.648 séxticas** contando também a família da diagonal.
+
+As equações nas funções $h$ das duas famílias, usando as menores máscaras das órbitas em seis variáveis, são respectivamente $h_3+h_7+h_{11}+h_{15}=0$ e $h_5+h_{13}+h_{21}+h_{23}=0$. A primeira já aparece no plano $\{3,19,35,51\}$ e a segunda no plano $\{3,11,35,43\}$, ambos na coluna de frequência 3 para os exemplos de máscaras $(A,T,L)=(81129657757419795529855800442880,28204737792,1278049)$ e $(10889035742737681431056216839313285971968,296757660338,1163873)$. Uma auditoria independente por modelo conferiu a condição em cada coluna e a contagem sem sobreposição.
+
+## Localização das quínticas de dual quártica
+
+`dual_quintic_tops.py` extrai dos 118.520 registros representativos quárticos fora da diagonal todos os topos quínticos das duais. As 19.034.112 quínticas de dual quártica fora de $\mathcal M^\#$ ocupam exatamente 120 órbitas afins de partes altas. Em cada órbita, o número de completamentos com dual quártica é constante e pode ser recuperado pela multiplicidade ponderada do catálogo. `dual-quintic-top-orbits.json` guarda os representantes, seus tamanhos e o número de completamentos conhecidos por representante. O menor número de órbitas quínticas ativas dentro de cada classe varia de nove a 32. Assim, a enumeração de partes altas esparsas e a de duais quárticas cobrem conjuntos distintos de topos.
