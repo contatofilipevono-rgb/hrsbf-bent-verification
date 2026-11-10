@@ -54,7 +54,9 @@
       "normalized_witnesses": 15360,
       "all_generated_high_masks_in_orbit": [
         81129657757457049317587028279327
-      ]
+      ],
+      "normalized_total_by_enumeration": 15360,
+      "additional_normalized_beyond_switching": 0
     },
     {
       "high_mask": 10889035742737681431093470627044513808415,
@@ -62,7 +64,9 @@
       "normalized_witnesses": 11264,
       "all_generated_high_masks_in_orbit": [
         10889035742737681431093470627044513808415
-      ]
+      ],
+      "normalized_total_by_enumeration": 11264,
+      "additional_normalized_beyond_switching": 0
     },
     {
       "high_mask": 2874705438425367464379093229461165876183040,
@@ -70,7 +74,9 @@
       "normalized_witnesses": 15360,
       "all_generated_high_masks_in_orbit": [
         2874705438425367464379093229461165876183040
-      ]
+      ],
+      "normalized_total_by_enumeration": 15360,
+      "additional_normalized_beyond_switching": 0
     },
     {
       "high_mask": 2874705438425367464379130483248897104019487,
@@ -78,7 +84,9 @@
       "normalized_witnesses": 15360,
       "all_generated_high_masks_in_orbit": [
         2874705438425367464379130483248897104019487
-      ]
+      ],
+      "normalized_total_by_enumeration": 15360,
+      "additional_normalized_beyond_switching": 0
     },
     {
       "high_mask": 2885594474086975488052729650770623361712128,
@@ -86,7 +94,9 @@
       "normalized_witnesses": 11264,
       "all_generated_high_masks_in_orbit": [
         2885594474086975488052729650770623361712128
-      ]
+      ],
+      "normalized_total_by_enumeration": 11264,
+      "additional_normalized_beyond_switching": 0
     },
     {
       "high_mask": 2885594474086975488052766904558354589548575,
@@ -94,8 +104,20 @@
       "normalized_witnesses": 11264,
       "all_generated_high_masks_in_orbit": [
         2885594474086975488052766904558354589548575
-      ]
+      ],
+      "normalized_total_by_enumeration": 11264,
+      "additional_normalized_beyond_switching": 0
     }
   ],
-  "new_sextics_outside_m_class_lower_bound": 81788928
+  "new_sextics_outside_m_class_lower_bound": 81788928,
+  "enumeration": {
+    "completed_shards": 99,
+    "trials": {
+      "quartic_trials": 6467616768,
+      "quartic_filter_survivors": 1978112,
+      "lower_trials": 738066432,
+      "normalized_bent": 79872
+    }
+  },
+  "new_sextics_outside_m_class_exact_in_these_orbits": 81788928
 }
