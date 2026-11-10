@@ -19,7 +19,7 @@ def shape(spectrum):
     return tuple(sum(1 << int(b) for b in np.flatnonzero(row)) for row in spectrum)
 
 
-def sign_system(pattern):
+def sign_system(pattern, expected_fibers=64):
     pairs = {(z, b): i for i, (z, b) in enumerate(
         (z, b) for z, row in enumerate(pattern) for b in range(64) if row >> b & 1)}
     equations = []
@@ -27,7 +27,7 @@ def sign_system(pattern):
         fibers = defaultdict(list)
         for z, b in pairs:
             fibers[(z, b)[key]].append((z, b))
-        assert len(fibers) == 64
+        assert len(fibers) == expected_fibers
         for points in fibers.values():
             if len(points) == 4:
                 assert xor_terms([p[1 - key] for p in points], 15) == 0
@@ -38,7 +38,6 @@ def sign_system(pattern):
         j = pairs[shift(z, 1, 6), shift(b, 1, 6)]
         equations.append(((1 << i) ^ (1 << j), ((z & b) >> 5) & 1))
     root, basis, rank = solve(equations, len(pairs))
-    assert root is not None
     return pairs, equations, root, basis, rank
 
 
@@ -213,6 +212,7 @@ def main():
             assert Counter(np.count_nonzero(spectrum, axis=0)) == {1: 40, 4: 24}
             assert Counter(np.count_nonzero(spectrum, axis=1)) == {1: 40, 4: 24}
             pairs, rows, origin, basis, rank = sign_system(pattern)
+            assert origin is not None
             witness = sum(int(spectrum[z, b] < 0) << i for (z, b), i in pairs.items())
             assert all((mask & witness).bit_count() % 2 == rhs for mask, rhs in rows)
             quadratic, degree = w_quadratic_part(f)

@@ -241,6 +241,17 @@ O mesmo coeficiente quadrático permite excluir $\mathcal M^\#$ para toda a fam�
 
 A família de blocos contém as duas grandes órbitas de partes altas e suas seis extensões por adição. Os outros quatro casos séxticos da enumeração têm pelo menos uma coluna de suporte maior que quatro, inclusive após transporte. Eles contribuem com 184.320 funções disjuntas. Isso dá pelo menos **218.288.128 séxticas fora de $\mathcal M^\#$** e pelo menos **366.876.119.191.552 séxticas** incluindo o recorte da diagonal.
 
+### Todos os emparelhamentos entre os blocos
+
+Fixamos agora só a partição dos índices $z$ e a partição dos índices $\beta$, sem fixar o emparelhamento entre elas. Sob os normalizadores, os suportes acima dão 16 pares distintos de partições, oito de cada tipo. Em cada partição, os seis planos formam uma única órbita de comprimento seis. Seu emparelhamento equivariante tem seis fases possíveis. Em cada par de partições, exatamente uma fase passa pelas equações de sinais, com nove bits de sinais livres nos planos. A parte quadrática em $w$ permanece de grau quatro em $z$ e o teste de $(Z,K)$ exclui $\mathcal M^\#$.
+
+As entradas isoladas formam dez órbitas. Em cada comprimento, contamos os emparelhamentos equivariantes pelo permanente da matriz de fases. Uma fase é admissível quando a soma de $z_5\beta_5$ ao longo da órbita é par. Cada órbita admissível deixa um sinal livre. Para comprimentos 1, 2, 3 e 6, os permanentes são $(1,1,3,45.472)$ para oito pares e $(1,1,3,35.832)$ para os outros oito. O total é
+$$
+8\cdot 3\cdot(45.472+35.832)\cdot2^{10+9}
+=1.023.041.077.248.
+$$
+`partition_switching.py` confere os permanentes por enumeração direta das permutações, reconstrói uma tabela por par de partições e verifica a rotação e o Walsh completo. Uma auditoria independente por modelo conferiu o argumento de sinais e a exclusão de $\mathcal M^\#$. Os pares de partições são recuperáveis do suporte de Walsh, logo a soma não duplica funções. Essa família contém a de 218.103.808 funções. Somados os quatro casos disjuntos com coluna de suporte maior que quatro, temos pelo menos **1.023.041.261.568 séxticas fora de $\mathcal M^\#$** e **367.898.942.164.992 séxticas** incluindo o recorte da diagonal.
+
 ## Localização das quínticas de dual quártica
 
 `dual_quintic_tops.py` extrai dos 118.520 registros representativos quárticos fora da diagonal todos os topos quínticos das duais. As 19.034.112 quínticas de dual quártica fora de $\mathcal M^\#$ ocupam exatamente 120 órbitas afins de partes altas. Em cada órbita, o número de completamentos com dual quártica é constante e pode ser recuperado pela multiplicidade ponderada do catálogo. `dual-quintic-top-orbits.json` guarda os representantes, seus tamanhos e o número de completamentos conhecidos por representante. O menor número de órbitas quínticas ativas dentro de cada classe varia de nove a 32. Assim, a enumeração de partes altas esparsas e a de duais quárticas cobrem conjuntos distintos de topos.
