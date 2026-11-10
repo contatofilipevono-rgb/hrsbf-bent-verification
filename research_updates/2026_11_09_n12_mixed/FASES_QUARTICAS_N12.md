@@ -51,3 +51,5 @@ Os planos $P_0=\{0,63,64,127\}$ e $P_{21}=\{21,42,85,106\}$ são fixos em toda a
 A lista de 32 escolhas, com os planos parceiros e as multiplicidades, está em near-antipodal-phase-analysis.json. As mudanças de coordenadas dadas pelos circulantes invertíveis, pela reflexão e pela translação de todas as coordenadas por um organizam os 1.280 mapas compatíveis em 160 órbitas de tamanho oito. A partição foi conferida na lista de mapas. A classificação analítica das escolhas de $P_a$ e a dedução dos números 64 e 48 permanecem abertas. Em particular, a igualdade $r_a=r_b$ e a automaticidade de $d_0=d_9$ estão aqui verificadas por cálculo.
 
 A reprodução roda em GitHub Actions. O artefato guarda os mapas de 128 rótulos, seguidos dos 128 bits de $H_0$ em cada registro de 144 bytes, além da análise em JSON e dos oito controles de Walsh completo.
+
+Uma nota posterior, CLASSIFICACAO_F4_BLOCO_U.md, dá uma parametrização sobre F4 do tipo q de peso 24 e deduz os números 48 e 64. Ela substitui a enumeração dos 1.280 mapas desse tipo por duas famílias e recebeu auditoria adversarial pelo Astra. A exclusão dos outros tipos de q é separada.

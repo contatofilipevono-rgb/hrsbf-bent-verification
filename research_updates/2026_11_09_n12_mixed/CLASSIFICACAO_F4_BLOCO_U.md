@@ -2,7 +2,7 @@
 
 Esta nota substitui a enumeração dos mapas do tipo de peso 24 por uma classificação por parâmetros. O total resulta de duas famílias de 768 e 512 mapas. Cada mapa admite exatamente $2^{13}$ fases. O escopo é o tipo $q$ de peso 24. A exclusão dos outros tipos de $q$ é uma etapa separada.
 
-A prova usa dois lemas de comparação de coeficientes sobre espaços de dimensão 27 e 25. O arquivo certify_near_antipodal_field.py verifica esses lemas em bases dos espaços, sem percorrer as funções bent. A construção sobre F4 reproduz exatamente os 1.280 mapas da lista anterior, que entra somente como controle opcional. A nova derivação ainda aguarda auditoria independente.
+A prova usa dois lemas de comparação de coeficientes. O primeiro trata de um espaço afim de dimensão 27. O segundo trata de 32 espaços afins, cada um com dez parâmetros de mapa e 15 de fase. O arquivo certify_near_antipodal_field.py verifica esses lemas em bases dos espaços, sem percorrer as funções bent. A construção sobre F4 reproduz exatamente os 1.280 mapas da lista anterior, que entra somente como controle opcional. A derivação recebeu auditoria adversarial pelo modelo Astra. A revisão humana permanece pendente. O escopo e as dependências da auditoria estão em PARECER_ASTRA_F4.md.
 
 ## 1. Coordenadas
 
@@ -120,13 +120,31 @@ Todos os seus quatro valores devem ser não nulos. Portanto $p$ é constante ou 
 
 Essa contagem força $c$ a ser uma constante $\varepsilon\in\mathbb F_2$ em $u\ne0$. Se alguma posição tem $p\ne1$, as duas órbitas de rótulos com esse mesmo $c$ recebem pontos, e nenhuma posição com outro $c$ pode ocorrer. Se $p=1$ em todas as posições, a alternativa de dois valores de $c$ exigiria que as duas posições com $c=0$ tivessem a mesma $\ell$, e que as outras duas tivessem o mesmo $\ell+t$, o que é impossível.
 
+Os XORs seguintes podem ser calculados por uma fórmula uniforme. Escreva $k=\omega\ell+h$, com $h\in\mathbb F_2$, e ponha
+
+$$
+W_{t\ell}=A+tF+\ell\bigl((1+D+tG)\omega+(C+tH)\omega^2+E\bigr).
+$$
+
+Na fibra de $P=1,Q=q$, a equação de $\eta$ é
+
+$$
+\eta=pq+W_{t\ell}+h(p+t).
+$$
+
+Se $p\ne1$, há uma escolha, dada por $h=\operatorname{Tr}(pq+W_{t\ell})$. Se $p=1$, há zero ou duas escolhas, e as duas diferem por $1+t$ em $\eta$.
+
 Quando os dois valores são $1,r$, com $r\in\{\omega,\omega^2\}$, e $E\ne0$, as duas posições com $p=r$ têm valores distintos de $t$. As outras duas entradas da fibra estão na mesma posição com $p=1$. O XOR das quatro coordenadas $t$ seria um, impedindo que a fibra fosse plana.
 
-Resta a possibilidade de dois valores $\omega,\omega^2$. Nesse caso, $d_0,E$ são binários. Se $E=1$ e $\varepsilon=1$, o XOR de $v$ em cada fibra com $P=1$ é um. Se $E=1$ e $\varepsilon=0$, os XORs de $\eta$ das fibras com $Q=0$ e $Q=\omega$ diferem por um. Essas possibilidades também impedem a planicidade. Se $E=0$, então $d_0=1$, e o XOR de $\eta$ é $a_0+G$. Assim $G=a_0$ e $H=a_0\ne0$, caso que é excluído pelo argumento de raízes do parágrafo seguinte. Portanto, nas possibilidades não constantes que restam, $E=0$ e os valores de $p$ são $1,r$.
+Se $p$ toma apenas valores em $\{\omega,\omega^2\}$, então $d_0,E$ são binários. Ao trocar $q=0$ por $q=\omega$, a diferença entre os XORs de $\eta$ é
+$\sum_{t,\ell}\operatorname{Tr}(p\omega)(p+t)=E$.
+Logo $E=0$. Com $E=0$, o XOR de $\eta$ é $G+a_0+1+d_0$. A planicidade força $G=a_0+1+d_0$ e, portanto, $H=a_0\ne0$. O cálculo vale tanto para $p$ constante diferente de um quanto para os dois valores $\omega,\omega^2$.
 
-Se $p$ é constante, o caso $p=1$ dá XOR um nas coordenadas $\eta$. Nos casos constantes $p\ne1$, a mesma condição de planicidade força $G=p^2$ e $H=p\ne0$. Então (4), com $E=0$, não pode ter exatamente uma linha projetiva no núcleo de $P$. Com $b=0$, há o núcleo $u=0$ e uma raiz finita adicional. Com $b\ne0$, a equação finita é afim sobre uma aplicação linearizada de posto um, com zero ou duas raízes. Nenhuma possibilidade preenche a órbita de $7$ corretamente.
+Se $p$ é constante e igual a um, as duas duplas, uma em cada $t$, têm XOR total de $\eta$ igual a um. Nos outros casos que acabamos de considerar, (4), com $E=0,H\ne0$, não pode ter exatamente uma linha projetiva no núcleo de $P$. Com $b=0$, há o núcleo $u=0$ e uma raiz finita adicional. Com $b\ne0$, a equação finita é afim sobre uma aplicação linearizada de posto um, com zero ou duas raízes. Nenhuma possibilidade preenche a órbita de $7$ corretamente.
 
-Portanto $p$ depende de $t$, toma os valores $1,r$, e (4) força $H=0$ pelo mesmo argumento de raízes. Segue $G=r$. O XOR de $\eta$ nas quatro entradas de uma fibra injetiva é $D$, logo a planicidade exige $D=0$.
+Portanto $p$ depende de $t$, toma os valores $1,r$, e (4) força $H=0$ pelo mesmo argumento de raízes. Segue $G=r$. Escreva $t=j$ para a posição em que $p=1$. A dupla nessa posição contribui $1+j$ ao XOR de $\eta$. Nas outras duas posições, a fórmula acima usa
+$W=D+(1+r)\omega+j(r+\omega^2)$.
+Para $r=\omega$ isso é $D+1+j$, e para $r=\omega^2$ é $D+\omega^2$. Em ambos os casos, o XOR total é $D$. Assim a planicidade exige $D=0$.
 
 Escreva
 
@@ -202,12 +220,14 @@ C'&=b^2(1+\rho),\qquad \rho\in K^*,\\
 \tag{9}
 $$
 
-Para conferir (9), a diferença entre as duas soluções de cada classe é
-$(\Delta u,\Delta v)=(b/\Delta,a/\Delta)$.
-Se $C'=0$, (8) dá $L=b$ e
-$\operatorname{Tr}((B'+a)/b)=0$.
-Se $C'\ne0$, o polinômio linearizado em $k$ tem imagem
-$\{0,L^2/C'\}$. A diferença entre as duas condições de (8) força novamente $L=b$. Escrever $\Delta=b\rho^2$ dá as duas últimas equações de (9).
+Para conferir (9), parametrize o corte $P=1,t=0$ por $u=bk$, $v=1/b+ak$. Ponha $\delta=1/\Delta$ e $h=L\delta+C'\delta^2\in\mathbb F_2$. Os dois representantes no corte têm parâmetros $k,k+\delta$. Ao passar aos pontos efetivos de uma fibra, suas coordenadas $t$ diferem por $h$ e suas diferenças são
+
+$$
+\Delta u=b\delta,\qquad
+\Delta v=a\delta+tb\delta+h(u+b\delta).
+$$
+
+Substituir essas diferenças em (8) dá, sob o traço, o coeficiente de $k$ igual a $b\delta^2L(b+L)$. Como a paridade deve ser constante, esse coeficiente é zero. Isso força $L=b$. Escrevendo $\Delta=b\rho^2$, obtemos $h=1+\operatorname{Tr}\rho$. O termo constante de (8) é então $1+\operatorname{Tr}((\rho^2 B'+\rho a)/b)$, provando (9).
 
 Para $\varepsilon=1$, temos $b=0$, $a,B'\ne0$, e $A'$ é livre. Os casos são
 
@@ -220,7 +240,7 @@ $$
 \tag{10}
 $$
 
-O primeiro caso tem quatro pares $(a,B')$. Os outros dois têm seis cada. Logo há $16\cdot4=64$ escolhas, incluindo as quatro possibilidades de $A'$.
+No corte $P=1$, a parametrização $u=1/a$, $v=ak$ dá a condição $\operatorname{Tr}(\rho/B'+h/a)=1$, com $h=1+\operatorname{Tr}\rho$. Isso prova as duas linhas de (10). O primeiro caso tem quatro pares $(a,B')$. Os outros dois têm seis cada. Logo há $16\cdot4=64$ escolhas, incluindo as quatro possibilidades de $A'$.
 
 ## 7. As fases nas linhas pares
 
@@ -291,6 +311,8 @@ $$
 
 construct_near_antipodal_field.py gera os 1.280 mapas diretamente pelas fórmulas. Não usa a lista de 10.368 mapas como entrada obrigatória. A comparação opcional com a lista reproduzida anteriormente dá igualdade exata dos conjuntos.
 
-certify_near_antipodal_field.py verifica os dois lemas de coeficientes em bases dos espaços. As contas de 48 e 64 acima são deduções sobre F4. Permanecem pendentes a auditoria independente desta classificação e a exclusão dos demais tipos de q, que não faz parte desta prova.
+certify_near_antipodal_field.py verifica os dois lemas de coeficientes em bases dos espaços. As contas de 48 e 64 acima são deduções sobre F4. A auditoria adversarial pelo Astra confirmou a classificação e as duas comparações de coeficientes. A revisão humana e a exclusão dos demais tipos de q permanecem pendentes. A exclusão não faz parte desta prova.
 
 A construção emite 40 controles determinísticos, distribuídos por suas famílias. Todos foram conferidos pela ANF completa e pelos 4.096 valores de Walsh. A etapa adicional de 2.048 configurações de coeficientes pares confere os XORs usados na classificação da seção 4 e retém 16 partes pares por valor de epsilon. Essa checagem é redundante com a prova por casos escrita na seção.
+
+Como controle negativo, somar a fase R_0 ao primeiro controle preservou a simetria de rotação e o grau quatro, mas produziu amplitudes de Walsh 0, 64 e 128, com multiplicidades 1.152, 2.560 e 384. O controle positivo correspondente tem todos os módulos de Walsh iguais a 64.

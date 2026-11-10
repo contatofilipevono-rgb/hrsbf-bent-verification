@@ -3,6 +3,18 @@
   "basis_maps_for_generic_identities": 28,
   "phase_identity_basis_cases": 352,
   "injected_phase_rows": 6,
+  "odd_field_cases": {
+    "0": {
+      "balanced": 540,
+      "odd_phases": 140,
+      "accepted": 48
+    },
+    "1": {
+      "balanced": 108,
+      "odd_phases": 64,
+      "accepted": 64
+    }
+  },
   "even_parameter_cases": 2048,
   "retained_even_parts": {
     "0": 16,

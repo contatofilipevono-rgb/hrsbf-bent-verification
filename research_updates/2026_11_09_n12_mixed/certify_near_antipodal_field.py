@@ -4,7 +4,7 @@ import itertools
 import json
 from pathlib import Path
 
-from analyse_near_antipodal_phases import phase_rows
+from analyse_near_antipodal_phases import label_action, phase_rows
 from construct_near_antipodal_field import construct, kernel_phases, lift_map
 from count_near_antipodal import image_and_kernel, split_pi_and_phase
 from higher_filter import solve, xor_terms
@@ -131,6 +131,8 @@ def phase_identities(pi_basis):
                     sum(((mask & h).bit_count() & 1) << k for k, h in enumerate(kernel)),
                     1 ^ ((phase & mask).bit_count() & 1),
                 )
+            action = label_action()
+            assert all(phase_row[action[b]] == phase_row[b] for b in occupied)
             assert phase_row[0][0] == 1 << 12
             for b in (9, 18, 27):
                 assert phase_row[b] == phase_row[0]
@@ -195,16 +197,56 @@ def even_plane_cases():
     assert retained == {0: 16, 1: 16}
     return tested, retained
 
+
+def odd_phase_cases():
+    """Check the field identities against the two-point fibre condition."""
+    from construct_near_antipodal_field import LABELS, odd_parameters
+    reports = {}
+    for eps in (0, 1):
+        expected = {
+            label for (c, P, _), label in LABELS.items()
+            if (P == 0 and c == 1) or (P != 0 and c == (1 ^ eps))
+        }
+        balanced = 0
+        odd_phases = 0
+        accepted = set()
+        for values in itertools.product(range(4), repeat=5):
+            a, b, A, B, C = values
+            fibres = {}
+            for (t, u, v), z in ODD.items():
+                P = mul(a, u) ^ mul(b, v) ^ (t * mul(b, u))
+                Q = mul(A, u) ^ mul(B, v) ^ mul(C, mul(square(u), square(v)))
+                Q ^= t * (mul(a ^ B ^ C ^ b, u) ^ mul(b, v))
+                label = LABELS[1 ^ (eps * int(u != 0)), P, Q]
+                fibres.setdefault(label, []).append(z)
+            if set(fibres) != expected or any(len(p) != 2 for p in fibres.values()):
+                continue
+            balanced += 1
+            if any(not ((label & (z[0] ^ z[1])).bit_count() & 1)
+                   for label, z in fibres.items()):
+                continue
+            odd_phases += 1
+            if not eps and trace(b) != 1:
+                continue
+            accepted.add(values)
+        assert accepted == set(odd_parameters(eps))
+        reports[eps] = {"balanced": balanced, "odd_phases": odd_phases, "accepted": len(accepted)}
+    assert reports == {0: {"balanced": 540, "odd_phases": 140, "accepted": 48},
+                       1: {"balanced": 108, "odd_phases": 64, "accepted": 64}}
+    return reports
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("output", type=Path)
     args = parser.parse_args()
     pi_basis, _ = split_pi_and_phase()
+    odd_report = odd_phase_cases()
     tested, retained = even_plane_cases()
     dimension = q24_affine_space(pi_basis)
     cases, rows = phase_identities(pi_basis)
     report = {"affine_q24_map_dimension": dimension, "basis_maps_for_generic_identities": dimension + 1,
               "phase_identity_basis_cases": cases, "injected_phase_rows": rows,
+              "odd_field_cases": odd_report,
               "even_parameter_cases": tested, "retained_even_parts": retained,
               "generic_coefficient_identities": "verified",
               "even_fibre_phase_identities": "verified"}
