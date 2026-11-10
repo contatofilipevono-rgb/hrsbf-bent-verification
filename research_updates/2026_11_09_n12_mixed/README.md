@@ -131,7 +131,21 @@ Com exatamente duas órbitas quínticas ativas, sem termos séxticos e com termo
 
 Os índices começam em zero e seguem a ordem das menores máscaras de suporte das 66 órbitas quínticas. Um teste de paridade nas uniões de tamanho dez excluiu 408 classes. A eliminação polinomial excluiu outras 14. Os 261 blocos das 179 classes restantes percorreram 2.766.805.504 pontos quárticos e 841.209.664 completamentos inferiores. `summarize_two.py` verifica a cobertura dos blocos, a unicidade dos 88 registros e o Walsh completo de cada registro. Os resultados estão em `two-quintic-counts.json` e `two-quintic-bent.tsv`. [Projeção](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42786973906) · [Enumeração](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42787349924)
 
-As três órbitas afins completas dessas partes altas dão 131.072 funções. Elas são disjuntas das órbitas fora da diagonal contadas acima. Somando o recorte da diagonal, as 19.034.112 quínticas de dual quártica fora dele e as órbitas de dual quíntica contadas separadamente, o limite inferior para o grau cinco é 6.082.627.907.584. Para o grau seis, o recorte da diagonal e a órbita da parte alta de Su dão um limite inferior de 366.875.900.923.904. As contagens globais dos graus cinco e seis seguem abertas.
+As três órbitas afins completas dessas partes altas dão 131.072 funções. Elas são disjuntas das órbitas fora da diagonal contadas acima.
+
+## Três órbitas quínticas
+
+Com exatamente três órbitas quínticas ativas e termos inferiores livres, há **13.056 bent**. Todas têm dual de grau cinco e ficam fora de $\mathcal M^\#$. Entre 45.760 padrões, 6.272 passam pelo teste de uniões de tamanho dez e formam 1.633 classes. A projeção excluiu 89 classes e os 1.632 blocos da enumeração restante visitaram 4.999.543.360 pontos quárticos e 70.539.943.808 completamentos inferiores. [Projeção](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42790009613) · [Enumeração](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42790401968)
+
+| Índices das órbitas quínticas | Completamentos no representante | Partes altas no recorte | Funções no recorte |
+| --- | ---: | ---: | ---: |
+| 11, 17 e 28 | 256 | 4 | 4.096 |
+| 35, 42 e 47 | 608 | 3 | 7.296 |
+| 7, 40 e 51 | 64 | 2 | 512 |
+| 36, 41 e 54 | 40 | 4 | 640 |
+| 30, 51 e 62 | 64 | 2 | 512 |
+
+Os 1.032 completamentos normalizados das cinco classes foram conferidos por Walsh completo. A contração dupla da parte quíntica exclui $\mathcal M^\#$ para todos. Suas órbitas afins completas dão 557.056 quínticas adicionais, disjuntas das órbitas anteriores. Incluindo as quínticas de dual quártica, há pelo menos **24.293.376 quínticas fora de $\mathcal M^\#$**. Somando também a família da diagonal, o limite inferior para grau cinco é **6.082.628.464.640**.
 
 ## Equações independentes dos graus dois a quatro
 
@@ -183,7 +197,7 @@ A enumeração dos 9.017 blocos fechou todo o recorte de 8.440 padrões. Contand
 | 100 e 133 | 11.264 | 90.112 |
 | 117 e 135 | 24 | 192 |
 
-Os índices começam em zero e ordenam primeiro as 66 órbitas quínticas, depois as 80 séxticas. Os 3.117.699.211.330 pontos quárticos e 6.099.206.658 completamentos inferiores estão cobertos pelos relatórios dos blocos. `two-sextic-bent.tsv` guarda os completamentos e `two-sextic-counts.json` guarda as multiplicidades. O transporte dos cinco topos distintos da órbita de Su dá outras 27.426.816 séxticas fora de $\mathcal M^\#$.
+Os índices começam em zero e ordenam primeiro as 66 órbitas quínticas, depois as 80 séxticas. Os 3.117.699.211.330 pontos quárticos e 6.099.206.658 completamentos inferiores estão cobertos pelos relatórios dos blocos. `two-sextic-bent.tsv` guarda os completamentos e `two-sextic-counts.json` guarda as multiplicidades. O transporte dos cinco topos em órbitas disjuntas da de Su dá outras 27.426.816 séxticas fora de $\mathcal M^\#$.
 
 ### Extensão das duas famílias maiores por adições nas somas antipodais
 

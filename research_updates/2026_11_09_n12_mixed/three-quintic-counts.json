@@ -1,0 +1,106 @@
+{
+  "scope": "exactly three active quintic orbits, no sextic terms",
+  "completed_shards": 1632,
+  "trials": {
+    "quartic_trials": 4999543360,
+    "quartic_filter_survivors": 5022460,
+    "lower_trials": 70539943808,
+    "normalized_bent": 1032
+  },
+  "positive_classes": [
+    {
+      "mask": 268568576,
+      "active_indices": [
+        11,
+        17,
+        28
+      ],
+      "patterns_in_scope": 4,
+      "full_orbit_size": 128,
+      "normalized_by_dual_degree": {
+        "5": 256
+      },
+      "outside_by_dual_degree": {
+        "5": 256
+      },
+      "previous_high_orbits": []
+    },
+    {
+      "mask": 145169894604800,
+      "active_indices": [
+        35,
+        42,
+        47
+      ],
+      "patterns_in_scope": 3,
+      "full_orbit_size": 128,
+      "normalized_by_dual_degree": {
+        "5": 608
+      },
+      "outside_by_dual_degree": {
+        "5": 608
+      },
+      "previous_high_orbits": []
+    },
+    {
+      "mask": 2252899325313152,
+      "active_indices": [
+        7,
+        40,
+        51
+      ],
+      "patterns_in_scope": 2,
+      "full_orbit_size": 64,
+      "normalized_by_dual_degree": {
+        "5": 64
+      },
+      "outside_by_dual_degree": {
+        "5": 64
+      },
+      "previous_high_orbits": []
+    },
+    {
+      "mask": 18016666252214272,
+      "active_indices": [
+        36,
+        41,
+        54
+      ],
+      "patterns_in_scope": 4,
+      "full_orbit_size": 512,
+      "normalized_by_dual_degree": {
+        "5": 40
+      },
+      "outside_by_dual_degree": {
+        "5": 40
+      },
+      "previous_high_orbits": []
+    },
+    {
+      "mask": 4613937819314814976,
+      "active_indices": [
+        30,
+        51,
+        62
+      ],
+      "patterns_in_scope": 2,
+      "full_orbit_size": 64,
+      "normalized_by_dual_degree": {
+        "5": 64
+      },
+      "outside_by_dual_degree": {
+        "5": 64
+      },
+      "previous_high_orbits": []
+    }
+  ],
+  "counts_by_dual_degree_with_affine_terms": {
+    "5": 13056
+  },
+  "outside_diagonal_by_dual_degree_with_affine_terms": {
+    "5": 13056
+  },
+  "new_outside_diagonal_in_full_high_orbits_by_dual_degree": {
+    "5": 557056
+  }
+}
