@@ -2,6 +2,7 @@
 import argparse
 import json
 from itertools import combinations
+from math import comb
 from pathlib import Path
 
 from higher_filter import orbits
@@ -34,43 +35,50 @@ def generator_group(width):
     return group
 
 
-def plan():
+def plan(weight):
     quintic = UPPER[:66]
     equations = [union_equation(s, quintic) for s, _ in orbits(12, 10)]
     syndromes = {term: sum((term in p) << i for i, p in enumerate(equations))
                  for term in set.union(*equations)}
     options = [1 << i for i in range(66)]
     remaining = {}
-    for a, b, c in combinations(options, 3):
+    for chosen in combinations(options, weight):
         syndrome = 0
-        for t in (a, b, c, a | b, a | c, b | c):
+        for t in chosen:
             syndrome ^= syndromes.get(t, 0)
+        for a, b in combinations(chosen, 2):
+            syndrome ^= syndromes.get(a | b, 0)
         if not syndrome:
-            mask = a | b | c
-            remaining[mask] = tuple(x.bit_length() - 1 for x in (a, b, c))
+            remaining[sum(chosen)] = tuple(x.bit_length() - 1 for x in chosen)
     n = len(remaining)
     group = generator_group(66)
     rows = []
     for mask in sorted(remaining):
         if mask not in remaining:
             continue
-        a, b, c = remaining[mask]
-        full_orbit = {g[a] ^ g[b] ^ g[c] for g in group}
+        active = remaining[mask]
+        full_orbit = set()
+        for cols in group:
+            v = 0
+            for i in active:
+                v ^= cols[i]
+            full_orbit.add(v)
         members = sorted(full_orbit & remaining.keys())
         assert mask == members[0]
         for m in members:
             del remaining[m]
         rows.append({'mask': mask, 'orbit_size': len(full_orbit), 'members': members})
     assert not remaining and sum(len(r['members']) for r in rows) == n
-    return {'summary': {'patterns': 45760, 'patterns_passing': n, 'classes_passing': len(rows),
+    return {'summary': {'patterns': comb(66, weight), 'patterns_passing': n, 'classes_passing': len(rows),
                         'group_size': len(group)}, 'classes': rows}
 
 
 def main():
     p = argparse.ArgumentParser()
     p.add_argument('output', type=Path)
+    p.add_argument('--weight', type=int, choices=(3, 4), default=3)
     a = p.parse_args()
-    result = plan()
+    result = plan(a.weight)
     a.output.write_text(json.dumps(result, separators=(',', ':')) + '\n')
     print(result['summary'])
 
