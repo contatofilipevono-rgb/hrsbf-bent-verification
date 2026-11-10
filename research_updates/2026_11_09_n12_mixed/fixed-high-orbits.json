@@ -1,0 +1,90 @@
+{
+  "dual5": {
+    "high_part": "0x40640b82416fcc8c",
+    "high_orbit_size": 256,
+    "normalized_completions_by_dual_degree": {
+      "5": 368,
+      "4": 16
+    },
+    "affine_normalizer_family_by_dual_degree": {
+      "5": 376832,
+      "4": 16384
+    },
+    "witnesses": {
+      "5": {
+        "source": "dual5",
+        "high_mask": "0x40640b82416fcc8c",
+        "quartic_mask": 2473996489123,
+        "lower_mask": 10453602,
+        "degree_of_dual": 5,
+        "second_derivative_on_diagonal": [
+          12,
+          65,
+          130
+        ],
+        "dual_leading_sanf_supports": [
+          31,
+          47,
+          61,
+          87,
+          93,
+          107,
+          151,
+          173,
+          181,
+          213,
+          233,
+          283,
+          285,
+          309,
+          313,
+          339,
+          345,
+          403,
+          597,
+          661
+        ]
+      },
+      "4": {
+        "source": "dual5",
+        "high_mask": "0x40640b82416fcc8c",
+        "quartic_mask": 2560147493001,
+        "lower_mask": 25132473,
+        "degree_of_dual": 4,
+        "second_derivative_on_diagonal": [
+          12,
+          65,
+          130
+        ],
+        "dual_leading_sanf_supports": []
+      }
+    }
+  },
+  "su6": {
+    "high_part": "0x80000000000000001",
+    "high_orbit_size": 1024,
+    "normalized_completions_by_dual_degree": {
+      "6": 5
+    },
+    "affine_normalizer_family_by_dual_degree": {
+      "6": 20480
+    },
+    "witnesses": {
+      "6": {
+        "source": "su6",
+        "high_mask": "0x80000000000000001",
+        "quartic_mask": 0,
+        "lower_mask": 32,
+        "degree_of_dual": 6,
+        "second_derivative_on_diagonal": [
+          29,
+          65,
+          130
+        ],
+        "dual_leading_sanf_supports": [
+          125
+        ]
+      }
+    }
+  }
+}
