@@ -1,0 +1,20 @@
+{
+  "degree_cutoffs": {
+    "3": {
+      "eligible_permutations": 112,
+      "phase_bits": 9,
+      "functions_of_degree_at_most_d": 57344
+    },
+    "4": {
+      "eligible_permutations": 70816,
+      "phase_bits": 12,
+      "functions_of_degree_at_most_d": 290062336
+    },
+    "5": {
+      "eligible_permutations": 742540800,
+      "phase_bits": 13,
+      "functions_of_degree_at_most_d": 6082894233600
+    }
+  },
+  "exact_degree_four": 290004992
+}

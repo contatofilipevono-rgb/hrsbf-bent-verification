@@ -202,6 +202,22 @@ Nos 272 topos representativos fora do recorte da diagonal, o teste do termo de g
 
 A classe $\mathcal M^\#$ é fechada por dualidade. Na forma $f(u,v)=u\cdot\pi(v)+h(v)$, a dual usa a permutação inversa e troca os blocos. Uma equivalência afim estendida de $f$ induz uma equivalência afim estendida de $f^*$ por mudança de variáveis no somatório de Walsh. Assim, as **19.034.112 quínticas de dual quártica** fora da diagonal também estão fora de $\mathcal M^\#$. A contração dupla da parte de grau máximo ainda exclui de $\mathcal M^\#$ as três órbitas afins quínticas da seção de duas órbitas, as duas órbitas quínticas de dual quíntica já contadas fora da diagonal e a órbita séxtica de Su.
 
+### Recontagem por permutações em seis variáveis
+
+Na família da diagonal, o grau de $f(z,w)=w\cdot\pi(z)+h(z)$ é no máximo $d$ exatamente quando $\deg\pi\le d-1$ e $\deg h\le d$. Para uma permutação equivariante e com fases elegíveis, a equação $h(Rz)+h(z)=z_5\pi(z)_5$ tem uma solução. Quando $\deg\pi\le d-1$, o lado direito tem grau no máximo $d$. Logo os coeficientes de $h$ acima do grau $d$ são constantes nas órbitas de monômios. Podemos anulá-los adicionando uma função invariante. As soluções restantes formam uma classe lateral das funções invariantes de grau até $d$. Há 9 órbitas de monômios até grau 3 e 12 até grau 4, contando a constante.
+
+A condição de grau de $\pi$ pode ser testada na primeira coordenada. As demais coordenadas são suas rotações, e o coeficiente de grau seis é zero porque a coordenada é balanceada. Cada fase de um emparelhamento de órbitas contribui uma síndrome de Möbius para os coeficientes a anular. Em comprimento seis, dividimos as nove órbitas em quatro e cinco, casamos as síndromes das duas metades e incorporamos as órbitas menores. Essa contagem independente da enumeração quártica dá 112 permutações de grau até dois e 70.816 de grau até três. Portanto há
+$$
+70\,816\cdot 2^{12}-112\cdot 2^9=290\,004\,992
+$$
+quárticas bent na família da diagonal. O programa antipodal_low_degree.py também reproduz o corte de grau cinco.
+
+### Um teste linear no topo quártico
+
+Nas coordenadas $(z,w)$, projetamos a parte de grau quatro sobre os monômios que contêm pelo menos dois $w$. Essa aplicação linear tem posto 23 nos 43 bits quárticos com simetria de rotação. A anulação é necessária para ser afim nas classes da diagonal. A conferência dos 2.564 topos representativos que admitem completamento bent mostra que ela é também suficiente nesse catálogo. Ela separa os 2.292 representantes na diagonal dos 272 fora dela. O programa quartic_top_diagonal.py verifica essa equivalência com o catálogo.
+
+Há uma redução algébrica para a suficiência. Suponha que a projeção de grau quatro seja zero. A meia-volta age por $(z,w)\mapsto(z,w+z)$. Comparar os termos quadráticos em $w$ da diferença elimina qualquer cúbica pura em $w$. Os coeficientes quadráticos restantes definem uma matriz polar alternada $B(z)$ afim em $z$. A invariância exige $B(z)z=0$. Comparar os coeficientes lineares e quadráticos em $z$ mostra que a parte constante de $B$ é zero e que seus coeficientes lineares formam uma 3-forma alternada $\tau$, com $B(z)=\iota_z\tau$. A rotação de um passo exige que $\tau$ seja invariante pela rotação cíclica das seis posições. O espaço dessas formas tem dimensão quatro. Uma prova da suficiência sem recorrer ao catálogo pode, portanto, focar nas 15 formas $\tau\ne0$ e nas condições de Walsh. A exclusão teórica dessas formas permanece em aberto.
+
 ## Duas órbitas altas com pelo menos uma séxtica
 
 A enumeração dos 9.017 blocos fechou todo o recorte de 8.440 padrões. Contando todas as adições afins, há **213.712 séxticas** no recorte. Seis classes têm completamentos e todos estão fora de $\mathcal M^\#$. Para cada um desses seis topos, a contração dupla da parte séxtica já exclui qualquer subespaço de dimensão seis. O teste vetorizado independente refez o Walsh e calculou a dual de cada um dos 26.681 completamentos normalizados dos seis representantes. [Enumeração séxtica](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42788649738)
