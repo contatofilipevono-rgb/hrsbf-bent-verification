@@ -1,0 +1,67 @@
+{
+  "github_run": 42792663998,
+  "audited_workers": {
+    "n12-four-quintic-complete-0": [
+      665,
+      4
+    ],
+    "n12-four-quintic-complete-1": [
+      666,
+      4
+    ],
+    "n12-four-quintic-complete-11": [
+      679,
+      7
+    ],
+    "n12-four-quintic-complete-12": [
+      680,
+      6
+    ],
+    "n12-four-quintic-complete-13": [
+      686,
+      6
+    ],
+    "n12-four-quintic-complete-14": [
+      690,
+      8
+    ],
+    "n12-four-quintic-complete-15": [
+      691,
+      8
+    ],
+    "n12-four-quintic-complete-2": [
+      666,
+      6
+    ],
+    "n12-four-quintic-complete-3": [
+      667,
+      6
+    ],
+    "n12-four-quintic-complete-4": [
+      672,
+      5
+    ],
+    "n12-four-quintic-complete-5": [
+      673,
+      5
+    ],
+    "n12-four-quintic-complete-7": [
+      676,
+      7
+    ],
+    "n12-four-quintic-complete-8": [
+      676,
+      5
+    ],
+    "n12-four-quintic-complete-9": [
+      676,
+      5
+    ]
+  },
+  "total_workers": 16,
+  "audited_shards": 9463,
+  "quartic_trials": 83923345010,
+  "lower_trials": 841187362304,
+  "normalized_representative_hits": 214377088,
+  "outside_diagonal_representative_hits": 1372288
+}
