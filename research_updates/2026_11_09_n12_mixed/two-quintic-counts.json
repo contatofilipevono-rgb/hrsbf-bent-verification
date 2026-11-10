@@ -1,0 +1,66 @@
+{
+  "scope": "exactly two active quintic orbits, no sextic terms",
+  "completed_shards": 261,
+  "trials": {
+    "quartic_trials": 2766805504,
+    "quartic_filter_survivors": 348064,
+    "lower_trials": 841209664,
+    "normalized_bent": 88
+  },
+  "positive_classes": [
+    {
+      "mask": 67108992,
+      "active_indices": [
+        7,
+        26
+      ],
+      "two_orbit_members": 4,
+      "full_orbit_size": 512,
+      "normalized_by_dual_degree": {
+        "5": 4
+      },
+      "outside_by_dual_degree": {
+        "5": 4
+      },
+      "previous_high_orbits": []
+    },
+    {
+      "mask": 4432406249472,
+      "active_indices": [
+        35,
+        42
+      ],
+      "two_orbit_members": 4,
+      "full_orbit_size": 512,
+      "normalized_by_dual_degree": {
+        "5": 36
+      },
+      "outside_by_dual_degree": {
+        "5": 36
+      },
+      "previous_high_orbits": []
+    },
+    {
+      "mask": 140771848093696,
+      "active_indices": [
+        35,
+        47
+      ],
+      "two_orbit_members": 2,
+      "full_orbit_size": 256,
+      "normalized_by_dual_degree": {
+        "5": 48
+      },
+      "outside_by_dual_degree": {
+        "5": 48
+      },
+      "previous_high_orbits": []
+    }
+  ],
+  "counts_by_dual_degree_with_affine_terms": {
+    "5": 1024
+  },
+  "new_outside_diagonal_in_full_high_orbits_by_dual_degree": {
+    "5": 131072
+  }
+}

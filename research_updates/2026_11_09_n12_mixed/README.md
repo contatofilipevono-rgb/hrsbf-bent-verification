@@ -1,6 +1,6 @@
 # Bent com simetria de rotação em 12 variáveis
 
-Nota de trabalho de 9 de novembro de 2026. Contagens de funções distintas com a rotação fixa nas doze coordenadas.
+Nota de trabalho de 10 de novembro de 2026. Contagens de funções distintas com a rotação fixa nas doze coordenadas.
 
 ## Resultado exato até grau quatro
 
@@ -112,3 +112,23 @@ Foram completadas exatamente duas partes altas fora do recorte da diagonal. A pr
 | Séxtica com parte quíntica `0x80000000000000001` | 33 | 5 | 20.480 |
 
 A órbita da parte alta usa os normalizadores lineares e a translação pelo vetor de uns. Entre os 384 completamentos quínticos, 368 têm dual quíntica e 16 têm dual quártica. Na órbita completa, isso certifica 376.832 quínticas de dual quíntica fora da diagonal. Os cinco completamentos séxticos e seus transportados ficam fora da diagonal. Os arquivos `dual5-bent.tsv`, `su6-bent.tsv` e `fixed-high-orbits.json` permitem reconstruir os exemplos e as testemunhas por segunda derivada.
+
+## Uma única órbita de grau cinco ou seis
+
+Com exatamente uma órbita quíntica ativa, sem termos séxticos, há 131.072 bent. As únicas duas órbitas possíveis têm menores máscaras de suporte 587 e 589. Cada uma dá 16.384 completamentos normalizados. Com exatamente uma órbita séxtica ativa e sem termos quínticos, não há bent. Em ambos os casos foram admitidos todos os termos de graus dois a quatro. [Execução inicial](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42747005817) · [Execução complementar](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42786490392)
+
+Dos 146 padrões, 136 terminaram na execução inicial. Para oito dos pendentes, `sparse-counts.json` registra um caminho de normalizadores até um padrão resolvido. Outro é excluído por uma identidade polinomial e o último foi completado em 16 blocos. Uma segunda implementação conferiu por Walsh os 16.384 completamentos do suporte 589. Todos têm dual de grau cinco e ficam fora da diagonal. A órbita afim dessa parte alta tem 64 membros e é disjunta da órbita quíntica da seção anterior, o que certifica outras 4.194.304 quínticas de dual quíntica fora da diagonal.
+
+## Duas órbitas quínticas
+
+Com exatamente duas órbitas quínticas ativas, sem termos séxticos e com termos livres de graus dois a quatro, há **1.024 bent**. Todas têm dual de grau cinco e estão fora da diagonal. Três das 601 classes de partes altas têm completamento.
+
+| Índices das órbitas quínticas | Completamentos normalizados no representante | Partes altas com duas órbitas na classe | Funções no recorte |
+| --- | ---: | ---: | ---: |
+| 7 e 26 | 4 | 4 | 64 |
+| 35 e 42 | 36 | 4 | 576 |
+| 35 e 47 | 48 | 2 | 384 |
+
+Os índices começam em zero e seguem a ordem das menores máscaras de suporte das 66 órbitas quínticas. Um teste de paridade nas uniões de tamanho dez excluiu 408 classes. A eliminação polinomial excluiu outras 14. Os 261 blocos das 179 classes restantes percorreram 2.766.805.504 pontos quárticos e 841.209.664 completamentos inferiores. `summarize_two.py` verifica a cobertura dos blocos, a unicidade dos 88 registros e o Walsh completo de cada registro. Os resultados estão em `two-quintic-counts.json` e `two-quintic-bent.tsv`. [Projeção](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42786973906) · [Enumeração](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42787349924)
+
+As três órbitas afins completas dessas partes altas dão 131.072 funções. Elas são disjuntas das órbitas fora da diagonal contadas acima. Somando o recorte da diagonal, as 19.034.112 quínticas de dual quártica fora dele e as órbitas de dual quíntica contadas separadamente, o limite inferior para o grau cinco é 6.082.627.907.584. Para o grau seis, o recorte da diagonal e a órbita da parte alta de Su dão um limite inferior de 366.875.900.923.904. As contagens globais dos graus cinco e seis seguem abertas.
