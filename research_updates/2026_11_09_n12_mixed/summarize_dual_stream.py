@@ -40,6 +40,8 @@ def main():
         dual4 = cls['normalized_quartic_duals']
         if complete:
             assert c['outside_diagonal'] >= dual4
+            total['functions_in_completed_orbits'] += c['normalized'] * 4 * cls['orbit_size']
+            total['outside_diagonal_dual4_exact_in_completed_orbits'] += dual4 * 4 * cls['orbit_size']
         lower = max(0, c['outside_diagonal'] - dual4) * 4 * cls['orbit_size']
         total['complete_high_orbits'] += complete
         total['completed_blocks'] += len(completed[high])
@@ -53,6 +55,11 @@ def main():
                      'all_outside_diagonal_quartic_duals_normalized': dual4,
                      'outside_diagonal_dual5_lower_bound': lower,
                      'leading_part_rules_out_m_subspace': cls['leading_part_rules_out_m_subspace']})
+    if all(r['complete'] and r['leading_part_rules_out_m_subspace'] for r in data):
+        assert all(r['normalized'] == r['outside_diagonal'] for r in data)
+        total['outside_m_class_dual5_exact_in_selected_orbits'] = total['outside_m_class_dual5_lower_bound']
+        assert total['functions_in_completed_orbits'] == (total['outside_m_class_dual5_exact_in_selected_orbits']
+                                                         + total['outside_diagonal_dual4_exact_in_completed_orbits'])
     result = {'summary': total, 'independently_checked_samples': samples, 'classes': data}
     a.output.write_text(json.dumps(result, indent=2) + '\n')
     print(dict(total), 'samples:', samples, flush=True)
