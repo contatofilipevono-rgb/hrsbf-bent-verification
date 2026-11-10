@@ -18,6 +18,7 @@ def main():
     p.add_argument('preflight', type=Path)
     p.add_argument('reports', type=Path)
     p.add_argument('output', type=Path)
+    p.add_argument('--counts-only', action='store_true', help='Skip per-record subspace tests')
     a = p.parse_args()
     projection = json.loads(a.projection.read_text())['classes']
     groups = {r['mask']: r for r in json.loads(a.preflight.read_text())['classes']}
@@ -37,12 +38,15 @@ def main():
             counts[projection[i]['mask']].update({'normalized': n, 'outside_diagonal': e})
             quartic += q
             lower += l
-        for line in file.with_suffix('.tsv').read_text().splitlines():
-            high, t, l = map(int, line.split())
-            assert (t, l) not in outside[high]
-            outside[high].add((t, l))
+        if not a.counts_only:
+            with file.with_suffix('.tsv').open() as stream:
+                for line in stream:
+                    high, t, l = map(int, line.split())
+                    assert (t, l) not in outside[high]
+                    outside[high].add((t, l))
     assert seen == expected
-    assert all(c['outside_diagonal'] == len(outside[h]) for h, c in counts.items())
+    if not a.counts_only:
+        assert all(c['outside_diagonal'] == len(outside[h]) for h, c in counts.items())
     ops = high_actions()
     known = {1 << 61, int('40640b82416fcc8c', 16)}
     for name in ('two', 'three'):
@@ -56,16 +60,16 @@ def main():
         assert degree == 5 and off
     outside_m = Counter()
     columns = [[evaluate_orbit(o) for _, o in basis] for basis in (UPPER[:66], TOP, LOW)]
-    for high, values in outside.items():
-        if not values:
+    for high, count in counts.items():
+        if not count['outside_diagonal']:
             continue
         leading = leading_kernels(high, UPPER[:66])
         potential, _ = find_m_subspace(rotate_kernels(leading))
         if potential is None:
-            outside_m[high] = len(values)
-        else:
+            outside_m[high] = count['outside_diagonal']
+        elif not a.counts_only:
             h = xor_terms(columns[0], high)
-            for t, l in values:
+            for t, l in outside[high]:
                 table = h ^ xor_terms(columns[1], t) ^ xor_terms(columns[2], l)
                 basis, _ = find_m_subspace(full_kernels(table, leading))
                 outside_m[high] += basis is None
@@ -87,13 +91,15 @@ def main():
                         'previously_counted_high_orbit': high in known})
     result = {'completed_shards': len(seen), 'quartic_trials': quartic, 'lower_trials': lower,
               'independently_checked_samples': sample, 'positive_classes': records,
+              'outside_m_class_counts_are_lower_bounds': a.counts_only,
               'four_orbit_counts_with_affine_terms': full,
               'new_quintics_in_full_high_orbits': new}
     (a.output / 'four-quintic-counts.json').write_text(json.dumps(result, indent=2) + '\n')
-    with (a.output / 'four-quintic-outside-bent.tsv').open('w') as file:
-        for h, values in sorted(outside.items()):
-            for t, l in sorted(values):
-                file.write(f'{h}\t{t}\t{l}\n')
+    if not a.counts_only:
+        with (a.output / 'four-quintic-outside-bent.tsv').open('w') as file:
+            for h, values in sorted(outside.items()):
+                for t, l in sorted(values):
+                    file.write(f'{h}\t{t}\t{l}\n')
     print({k: v for k, v in result.items() if k != 'positive_classes'})
 
 

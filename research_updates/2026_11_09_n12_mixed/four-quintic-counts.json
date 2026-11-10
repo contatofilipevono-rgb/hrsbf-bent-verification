@@ -1,0 +1,99 @@
+{
+  "completed_shards": 10815,
+  "quartic_trials": 95912390962,
+  "lower_trials": 1025147972480,
+  "independently_checked_samples": 97,
+  "positive_classes": [
+    {
+      "high_mask": 140875464179776,
+      "full_orbit_size": 16,
+      "patterns_in_scope": 2,
+      "normalized": 42039296,
+      "outside_diagonal": 2048,
+      "outside_m_class": 0,
+      "previously_counted_high_orbit": false
+    },
+    {
+      "high_mask": 299069343793152,
+      "full_orbit_size": 32,
+      "patterns_in_scope": 1,
+      "normalized": 16384,
+      "outside_diagonal": 16384,
+      "outside_m_class": 16384,
+      "previously_counted_high_orbit": false
+    },
+    {
+      "high_mask": 1125904201843200,
+      "full_orbit_size": 16,
+      "patterns_in_scope": 2,
+      "normalized": 39287808,
+      "outside_diagonal": 1024,
+      "outside_m_class": 0,
+      "previously_counted_high_orbit": false
+    },
+    {
+      "high_mask": 2252900399054976,
+      "full_orbit_size": 512,
+      "patterns_in_scope": 4,
+      "normalized": 4,
+      "outside_diagonal": 4,
+      "outside_m_class": 4,
+      "previously_counted_high_orbit": true
+    },
+    {
+      "high_mask": 2252900466163712,
+      "full_orbit_size": 128,
+      "patterns_in_scope": 4,
+      "normalized": 116736,
+      "outside_diagonal": 116736,
+      "outside_m_class": 116736,
+      "previously_counted_high_orbit": false
+    },
+    {
+      "high_mask": 18014407099483136,
+      "full_orbit_size": 8,
+      "patterns_in_scope": 1,
+      "normalized": 41779200,
+      "outside_diagonal": 0,
+      "outside_m_class": 0,
+      "previously_counted_high_orbit": false
+    },
+    {
+      "high_mask": 144115462957973504,
+      "full_orbit_size": 16,
+      "patterns_in_scope": 2,
+      "normalized": 38731776,
+      "outside_diagonal": 0,
+      "outside_m_class": 0,
+      "previously_counted_high_orbit": false
+    },
+    {
+      "high_mask": 4611687119012757632,
+      "full_orbit_size": 16,
+      "patterns_in_scope": 2,
+      "normalized": 55264768,
+      "outside_diagonal": 1672704,
+      "outside_m_class": 0,
+      "previously_counted_high_orbit": false
+    },
+    {
+      "high_mask": 9223939384854708480,
+      "full_orbit_size": 8,
+      "patterns_in_scope": 1,
+      "normalized": 41820160,
+      "outside_diagonal": 0,
+      "outside_m_class": 0,
+      "previously_counted_high_orbit": false
+    }
+  ],
+  "outside_m_class_counts_are_lower_bounds": true,
+  "four_orbit_counts_with_affine_terms": {
+    "normalized": 1738920000,
+    "outside_diagonal": 15339584,
+    "outside_m_class": 1933376
+  },
+  "new_quintics_in_full_high_orbits": {
+    "outside_diagonal": 169115648,
+    "outside_m_class": 61865984
+  }
+}

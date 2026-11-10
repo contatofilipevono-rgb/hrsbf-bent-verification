@@ -1,0 +1,34 @@
+{
+  "run": 42794028770,
+  "completed_high_mask": 165780191766564007,
+  "report": {
+    "index": 95,
+    "high_mask": 165780191766564007,
+    "shard": 0,
+    "shard_bits": 0,
+    "period4_branch": 1,
+    "linear_stages": [
+      12,
+      3,
+      1,
+      1,
+      1,
+      1
+    ],
+    "quartic_trials": 16777216,
+    "quartic_filter_survivors": 295936,
+    "lower_trials": 9697230848,
+    "normalized_bent": 126976,
+    "seconds": 152.307
+  },
+  "normalized_by_dual_degree": {
+    "5": 126720,
+    "4": 256
+  },
+  "full_high_orbit_size": 128,
+  "functions_with_affine_terms_by_dual_degree": {
+    "5": 64880640,
+    "4": 131072
+  },
+  "all_outside_completed_m_class": true
+}

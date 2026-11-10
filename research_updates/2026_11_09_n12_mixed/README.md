@@ -256,7 +256,9 @@ $$
 
 `dual_quintic_tops.py` extrai dos 118.520 registros representativos quárticos fora da diagonal todos os topos quínticos das duais. As 19.034.112 quínticas de dual quártica fora de $\mathcal M^\#$ ocupam exatamente 120 órbitas afins de partes altas. Em cada órbita, o número de completamentos com dual quártica é constante e pode ser recuperado pela multiplicidade ponderada do catálogo. `dual-quintic-top-orbits.json` guarda os representantes, seus tamanhos e o número de completamentos conhecidos por representante. O menor número de órbitas quínticas ativas dentro de cada classe varia de nove a 32. Assim, a enumeração de partes altas esparsas e a de duais quárticas cobrem conjuntos distintos de topos.
 
-Em 112 das 120 classes, a própria parte quíntica exclui $\mathcal M^\#$. As outras oito requerem os termos inferiores no teste de derivadas, embora a exclusão das quínticas de dual quártica já siga da classificação de suas duais. A projeção das 119 classes além da parte alta já completada identificou 97 com no máximo 30 bits quárticos livres nos dois ramos de período quatro. [Execução dos 97 representantes](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42794028770)
+Em 112 das 120 classes, a própria parte quíntica exclui $\mathcal M^\#$. As outras oito requerem os termos inferiores no teste de derivadas, embora a exclusão das quínticas de dual quártica já siga da classificação de suas duais. A projeção das 119 classes além da parte alta já completada identificou 97 com no máximo 30 bits quárticos livres nos dois ramos de período quatro. Os quatro trabalhos da enumeração atingiram o limite de 90 minutos. Os artefatos preservaram 349 dos 774 blocos previstos, que esgotam uma das 97 partes altas. [Execução dos 97 representantes](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42794028770)
+
+A parte alta recuperada tem máscara 165780191766564007 e órbita de tamanho 128. A rechecagem independente refez o Walsh dos 126.976 completamentos normalizados. São 256 de dual quártica e 126.720 de dual quíntica. O teste do topo exclui $\mathcal M^\#$ em toda a órbita. Com os termos afins, isso dá 131.072 quínticas de dual quártica já contadas no catálogo de duais e **64.880.640 quínticas adicionais de dual quíntica**. `dual-seeded-completed-chart.tsv.gz` contém os registros, `dual-seeded-completed-chart.json` tem a auditoria e `dual-seeded-checkpoint.json` distingue os blocos completos dos 425 pendentes.
 
 ## Extensão espectral de quínticas
 
@@ -265,6 +267,10 @@ Aplicamos a condição de afinidade em cada suporte de $B_\beta$ aos 1.120 compl
 ## Quatro órbitas quínticas
 
 Entre 720.720 padrões, 43.139 passam pelas condições de tamanho dez e formam 11.045 classes. A eliminação com o módulo oito exclui 648 classes. Nos 11 casos com pelo menos 29 bits quárticos livres, separamos os dois ramos de período quatro. Isso reduz a enumeração de 582.669.742.386 para 95.912.390.962 pontos quárticos. Por exemplo, o maior caso passa de 38 bits livres a dois ramos com 23 e 33 bits. A enumeração e a auditoria são organizadas por bloco. [Projeção](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42791593491) · [Enumeração](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42792663998)
+
+Os 16 trabalhos fecharam os 10.815 blocos e deram **1.738.920.000 quínticas com exatamente quatro órbitas ativas**, das quais **15.339.584** ficam fora da diagonal. O enumerador conferiu todos os positivos por Walsh completo. A auditoria em fluxo conferiu a cobertura, a classificação por afinidade na diagonal e 97 tabelas por uma segunda implementação de Walsh. A parte quíntica certifica que pelo menos 1.933.376 funções do recorte ficam fora de $\mathcal M^\#$. O transporte por órbitas completas de partes altas acrescenta 169.115.648 quínticas fora da diagonal aos limites inferiores anteriores. Destas, pelo menos 61.865.984 ficam fora de $\mathcal M^\#$. `four-quintic-counts.json` separa as contagens exatas dos limites inferiores.
+
+As órbitas das quínticas adicionais de quatro órbitas e da parte alta recuperada são disjuntas. Somando esses resultados ao limite anterior, obtemos **pelo menos 6.082.862.755.840 quínticas** no total.
 
 ## Formulação SAT por valores da tabela-verdade
 
