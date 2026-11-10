@@ -1,0 +1,30 @@
+name: Verify H12 period-four proof
+
+on:
+  push:
+    branches: [codex/n12-period4]
+    paths:
+      - '.github/workflows/verify_h12_period4.yml'
+      - 'research_updates/2026_11_09_h12_period4/**'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_h12_period4
+      - name: Check the orbit and Walsh identities
+        run: |
+          set -o pipefail
+          python3 research_updates/2026_11_09_h12_period4/verifica_n12_periodo4.py | tee h12-period4.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: h12-period4-verification
+          path: h12-period4.log
+          if-no-files-found: error
