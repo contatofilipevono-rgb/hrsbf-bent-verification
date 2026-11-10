@@ -1,0 +1,18 @@
+{
+  "top_count_including_zero": 949760,
+  "representative_count_including_zero": 17283,
+  "completed_lower_trials": 144980312064,
+  "representatives_with_quartic_bent": 2564,
+  "tops_with_quartic_bent": 67647,
+  "listed_normalized_quartics_on_representatives": 4014840,
+  "normalized_counts_by_exact_degree": {
+    "2": 16,
+    "3": 14320,
+    "4": 77305344
+  },
+  "all_counts_with_invariant_affine_terms": {
+    "2": 64,
+    "3": 57280,
+    "4": 309221376
+  }
+}

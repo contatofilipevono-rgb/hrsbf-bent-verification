@@ -1,0 +1,58 @@
+name: Verify n12 higher-degree reductions
+
+on:
+  push:
+    branches: [codex/n12-mixed-quartic]
+    paths:
+      - '.github/workflows/n12_mixed_higher.yml'
+      - 'research_updates/2026_11_09_n12_mixed/higher_filter.py'
+      - 'research_updates/2026_11_09_n12_mixed/mobius_rule.py'
+
+permissions:
+  contents: read
+
+env:
+  SRC: research_updates/2026_11_09_n12_mixed
+
+jobs:
+  reduction:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - name: Check the integer ANF criterion and measure the linear filter
+        run: |
+          python3 "$SRC/mobius_rule.py"
+          python3 "$SRC/higher_filter.py" --sample 4096 --output results
+      - uses: actions/upload-artifact@v4
+        with:
+          name: n12-higher-reduction
+          path: results/
+          if-no-files-found: error
+  pair_sums:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - name: Exhaustively complete three higher-degree high parts
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          first=$((8 + 3 * SHARD))
+          python3 "$SRC/higher_filter.py" --complete --first "$first" --last "$((first+3))" --output results
+      - uses: actions/upload-artifact@v4
+        with:
+          name: n12-higher-family-${{ matrix.shard }}
+          path: results/
+          if-no-files-found: error
