@@ -120,13 +120,33 @@ def test_one(i):
             "xl_contradiction_certificate": certificate}
 
 
+def project_charts(classes, shard, shards):
+    reports = []
+    for row in classes[shard::shards]:
+        low, residual = eliminate_lower(union_system(row['mask']))
+        _, basis, poly, stages, certificate = reduce_iteratively(residual)
+        reports.append({'mask': row['mask'], 'patterns': len(row['members']),
+                        'lower_rank': len(low), 'quartic_free': len(basis),
+                        'residual_equations': len(poly), 'stages': stages,
+                        'contradiction': certificate is not None,
+                        'certificate_of_final_contradiction': certificate})
+    return reports
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--shard", type=int, default=0)
     p.add_argument("--shards", type=int, default=1)
     p.add_argument("--limit", type=int)
+    p.add_argument("--plan", type=Path)
     p.add_argument("--output", type=Path, required=True)
     a = p.parse_args()
+    if a.plan is not None:
+        classes = json.loads(a.plan.read_text())['classes']
+        reports = project_charts(classes, a.shard, a.shards)
+        a.output.write_text(json.dumps(reports, indent=2) + '\n')
+        print('tested', len(reports), 'contradictions', sum(r['contradiction'] for r in reports))
+        return
     start = perf_counter()
     indices = list(range(a.shard, len(UPPER), a.shards))
     if a.limit is not None:
