@@ -10,6 +10,8 @@ import numpy as np
 from dual_catalog import dual_anf
 from higher_filter import SIZE, evaluate_orbit, xor_terms
 from higher_project import LOW, TOP, UPPER
+from m_subspaces import find_m_subspace
+from quartic_m_catalog import leading_kernels, rotate_kernels
 from three_quintic_plan import generator_group
 
 
@@ -40,17 +42,17 @@ def classify(counts):
     remaining = set(counts)
     while remaining:
         seed = min(remaining)
-        active = [i for i in range(66) if seed >> i & 1]
         orbit = {xor_terms(columns, seed) for columns in group}
         seen = remaining & orbit
         remaining -= seen
         weight = sum(counts[v] for v in seen)
         assert weight % len(orbit) == 0
         representative = min(orbit, key=lambda v: (v.bit_count(), v))
-        assert all(0 <= i < 66 for i in active)
+        basis, _ = find_m_subspace(rotate_kernels(leading_kernels(representative, UPPER[:66])))
         records.append({'mask': representative, 'min_quintic_orbits': representative.bit_count(),
                         'orbit_size': len(orbit), 'normalized_quartic_duals': weight // len(orbit),
-                        'observed_high_masks': len(seen)})
+                        'observed_high_masks': len(seen),
+                        'leading_part_rules_out_m_subspace': basis is None})
     return sorted(records, key=lambda r: (r['min_quintic_orbits'], r['mask']))
 
 

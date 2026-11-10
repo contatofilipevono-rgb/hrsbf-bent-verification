@@ -12,6 +12,7 @@ from higher_project import LOW, TOP, UPPER, signs_to_walsh
 from m_subspaces import find_m_subspace
 from mobius_rule import integer_anf
 from quartic_m_catalog import leading_kernels, rotate_kernels
+from summarize_two import audit, collect
 
 
 LOWER_WIDTH = len(LOW) + len(TOP)
@@ -66,7 +67,10 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument('results', type=Path)
     p.add_argument('output', type=Path)
+    p.add_argument('--projection', type=Path)
+    p.add_argument('--shards', type=Path)
     a = p.parse_args()
+    assert (a.projection is None) == (a.shards is None)
     groups = defaultdict(set)
     for line in a.results.read_text().splitlines():
         high, t, l, degree, outside = map(int, line.split())
@@ -143,6 +147,21 @@ def main():
         total += 4 * len(group) * len(additions[best])
     result = {'sources': source, 'generated_high_masks': {h: len(rows) for h, rows in sorted(additions.items())},
               'new_orbits': new_orbits, 'new_sextics_outside_m_class_lower_bound': total}
+    if a.projection is not None:
+        projection = json.loads(a.projection.read_text())['classes']
+        completions, totals, shards = collect(projection, a.shards)
+        assert set(completions) == {r['high_mask'] for r in new_orbits}
+        for high, _, _, degree, outside in audit(completions):
+            assert degree == 6 and outside
+        for row in new_orbits:
+            high = row['high_mask']
+            predicted = {(v >> len(LOW), v & ((1 << len(LOW)) - 1)) for v in additions[high]}
+            assert predicted <= completions[high]
+            row['normalized_total_by_enumeration'] = len(completions[high])
+            row['additional_normalized_beyond_switching'] = len(completions[high] - predicted)
+        result['enumeration'] = {'completed_shards': shards, 'trials': totals}
+        result['new_sextics_outside_m_class_exact_in_these_orbits'] = sum(
+            4 * r['high_orbit_size'] * r['normalized_total_by_enumeration'] for r in new_orbits)
     a.output.write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result, indent=2))
 

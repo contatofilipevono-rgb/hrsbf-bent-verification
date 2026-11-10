@@ -230,3 +230,19 @@ As equações nas funções $h$ das duas famílias, usando as menores máscaras 
 ## Localização das quínticas de dual quártica
 
 `dual_quintic_tops.py` extrai dos 118.520 registros representativos quárticos fora da diagonal todos os topos quínticos das duais. As 19.034.112 quínticas de dual quártica fora de $\mathcal M^\#$ ocupam exatamente 120 órbitas afins de partes altas. Em cada órbita, o número de completamentos com dual quártica é constante e pode ser recuperado pela multiplicidade ponderada do catálogo. `dual-quintic-top-orbits.json` guarda os representantes, seus tamanhos e o número de completamentos conhecidos por representante. O menor número de órbitas quínticas ativas dentro de cada classe varia de nove a 32. Assim, a enumeração de partes altas esparsas e a de duais quárticas cobrem conjuntos distintos de topos.
+
+Em 112 das 120 classes, a própria parte quíntica exclui $\mathcal M^\#$. As outras oito requerem os termos inferiores no teste de derivadas, embora a exclusão das quínticas de dual quártica já siga da classificação de suas duais. A projeção das 119 classes além da parte alta já completada identificou 97 com no máximo 30 bits quárticos livres nos dois ramos de período quatro. [Execução dos 97 representantes](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42794028770)
+
+## Extensão espectral de quínticas
+
+Aplicamos a condição de afinidade em cada suporte de $B_\beta$ aos 1.120 completamentos representativos fora da diagonal dos casos de duas e três órbitas. Para cada suporte, as relações afins entre seus pontos dão equações lineares nos coeficientes de $h(z)$. Restringimos $h$ a grau cinco e recalculamos o Walsh completo e o grau da dual para cada função em uma parte alta nova. `quintic-switching.py` certifica **294.912 quínticas adicionais** de dual quíntica fora de $\mathcal M^\#$, em seis órbitas de partes altas. As partes altas dessas órbitas exigem de 15 a 19 órbitas quínticas ativas mesmo após transporte. Elas também são disjuntas das 120 classes localizadas pelas duais quárticas. O limite inferior atual para o grau cinco, com a família da diagonal, é **6.082.628.759.552**.
+
+## Quatro órbitas quínticas
+
+Entre 720.720 padrões, 43.139 passam pelas condições de tamanho dez e formam 11.045 classes. A eliminação com o módulo oito exclui 648 classes. Nos 11 casos com pelo menos 29 bits quárticos livres, separamos os dois ramos de período quatro. Isso reduz a enumeração de 582.669.742.386 para 95.912.390.962 pontos quárticos. Por exemplo, o maior caso passa de 38 bits livres a dois ramos com 23 e 33 bits. A enumeração e a auditoria são organizadas por bloco. [Projeção](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42791593491) · [Enumeração](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42792663998)
+
+## Formulação SAT por valores da tabela-verdade
+
+Para cada órbita de pontos, tome uma variável binária $t_O$ igual ao valor de $f$ nessa órbita. O coeficiente inteiro $c_S$ é uma combinação linear dos $t_O$ com coeficiente $\sum_{X\subseteq S,\,X\in O}(-1)^{|S|-|X|}$ para a órbita $O$. As congruências do critério inteiro podem, portanto, ser codificadas por somadores binários, sem fixar previamente os coeficientes de graus cinco e seis. Em `mobius_sat.py`, a fórmula básica tem 352 variáveis de tabela, 35.670 variáveis totais e 157.670 cláusulas. O programa pode impor uma parte alta específica e a existência de uma restrição não afim numa classe da diagonal.
+
+Os controles de tabela-verdade passaram para a quadrática antipodal, a séxtica de Su e duas funções não bent. As portas de soma também foram comparadas com as congruências aritméticas em 768 atribuições pequenas. O ensaio livre com a parte alta de Su chegou ao limite de 2.500 conflitos, embora a testemunha de Su passe ao se fixar a tabela. Assim, a formulação é exata, e o ensaio ainda não mede a viabilidade de uma busca global.

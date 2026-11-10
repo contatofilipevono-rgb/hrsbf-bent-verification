@@ -1,0 +1,67 @@
+{
+  "source_functions": 1120,
+  "switching_dimensions": {
+    "1": 664,
+    "4": 256,
+    "5": 128,
+    "3": 56,
+    "2": 16
+  },
+  "new_high_orbits": [
+    {
+      "high_mask": 37253787731496405023,
+      "high_orbit_size": 128,
+      "normalized_by_dual": {
+        "5": 256
+      },
+      "min_quintic_orbits": 19,
+      "leading_part_rules_out_m_subspace": true
+    },
+    {
+      "high_mask": 37253792163634085919,
+      "high_orbit_size": 512,
+      "normalized_by_dual": {
+        "5": 24
+      },
+      "min_quintic_orbits": 18,
+      "leading_part_rules_out_m_subspace": true
+    },
+    {
+      "high_mask": 37253928503075930143,
+      "high_orbit_size": 256,
+      "normalized_by_dual": {
+        "5": 16
+      },
+      "min_quintic_orbits": 18,
+      "leading_part_rules_out_m_subspace": true
+    },
+    {
+      "high_mask": 37256040630553149599,
+      "high_orbit_size": 64,
+      "normalized_by_dual": {
+        "5": 64
+      },
+      "min_quintic_orbits": 19,
+      "leading_part_rules_out_m_subspace": true
+    },
+    {
+      "high_mask": 37271799861994586143,
+      "high_orbit_size": 512,
+      "normalized_by_dual": {
+        "5": 32
+      },
+      "min_quintic_orbits": 15,
+      "leading_part_rules_out_m_subspace": true
+    },
+    {
+      "high_mask": 41867725550542651423,
+      "high_orbit_size": 64,
+      "normalized_by_dual": {
+        "5": 64
+      },
+      "min_quintic_orbits": 19,
+      "leading_part_rules_out_m_subspace": true
+    }
+  ],
+  "additional_quintics_outside_diagonal": 294912
+}
