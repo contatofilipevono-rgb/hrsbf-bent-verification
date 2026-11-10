@@ -1,0 +1,22 @@
+{
+  "dual5": {
+    "fixed_high_mask": "0x40640b82416fcc8c",
+    "rank_lower": 12,
+    "rank_quartic": 14,
+    "quartic_trials": 536870912,
+    "quartic_filter_survivors": 512,
+    "lower_trials_after_period4": 1048576,
+    "normalized_bent": 384,
+    "all_bent": 1536
+  },
+  "su6": {
+    "fixed_high_mask": "0x80000000000000001",
+    "rank_lower": 19,
+    "rank_quartic": 10,
+    "quartic_trials": 8589934592,
+    "quartic_filter_survivors": 2332,
+    "lower_trials_after_period4": 37312,
+    "normalized_bent": 5,
+    "all_bent": 20
+  }
+}

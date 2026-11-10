@@ -1,0 +1,25 @@
+{
+  "verified_normalized_representative_records": 4029176,
+  "dual_degree_counts": {
+    "2,2": 64,
+    "3,3": 4032,
+    "3,4": 53248,
+    "4,3": 53248,
+    "4,4": 6395904,
+    "4,5": 302772224
+  },
+  "outside_diagonal_dual_degree_counts": {
+    "4,4": 182272,
+    "4,5": 19034112
+  },
+  "witnesses_outside_diagonal_by_dual_degree": {
+    "5": [
+      13896404,
+      1065441
+    ]
+  },
+  "covered_union_of_diagonal_and_dual_degree_at_most_four": {
+    "5": 6082623205376,
+    "6": 366875900903424
+  }
+}
