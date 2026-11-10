@@ -21,11 +21,16 @@ def base_action(x):
     return shift(x & 63, 1, 6) | (((x >> 6) ^ (x >> 5 & 1)) << 6)
 
 
-def phase_rows(mapping, phase, kernel):
-    fibres = [0] * 32
+def plane_fibres(mapping):
+    points = [[] for _ in range(32)]
     for x, label in enumerate(mapping):
-        fibres[label] |= 1 << x
-    assert all(f.bit_count() == 4 for f in fibres)
+        points[label].append(x)
+    assert all(len(p) == 4 and not (p[0] ^ p[1] ^ p[2] ^ p[3]) for p in points)
+    return [tuple(p) for p in points]
+
+
+def phase_rows(planes, phase, kernel):
+    fibres = [sum(1 << x for x in plane) for plane in planes]
     return [(sum(((f & h).bit_count() & 1) << j for j, h in enumerate(kernel)),
              1 ^ ((f & phase).bit_count() & 1)) for f in fibres]
 
@@ -149,6 +154,7 @@ def analyse(branches_path, maps_path):
     phase_patterns = Counter()
     rhs_patterns = Counter()
     q_patterns = set()
+    geometry = {}
     with maps_path.open("rb") as data:
         while block := data.read(144):
             assert len(block) == 144
@@ -157,7 +163,8 @@ def analyse(branches_path, maps_path):
             q_patterns.add(tuple(a ^ b for a, b in zip(mapping[:64], mapping[64:])))
             assert mapping not in phase_stats
             assert all(mapping[base_action(x)] == action[mapping[x]] for x in range(128))
-            rows = phase_rows(mapping, phase, kernel)
+            planes = plane_fibres(mapping)
+            rows = phase_rows(planes, phase, kernel)
             assert all(rows[b] == rows[o[0]] for o in orbits for b in o)
             reduced = [rows[b] for b in labels]
             rank, obstructions = certify(reduced, width)
@@ -180,8 +187,35 @@ def analyse(branches_path, maps_path):
             bits = (rows[a][1] ^ rows[b][1], rows[c][1], rows[d][1])
             assert ok == (not any(bits))
             rhs_patterns[pair, bits] += 1
+
+            assert planes[0] == (0, 63, 64, 127)
+            assert planes[21] == (21, 42, 85, 106)
+            for label in (a, b):
+                assert len({x & 63 for x in planes[label]}) == 4
+            for label in (7, 21, c, d):
+                z, other, z_high, other_high = planes[label]
+                assert z_high == z + 64 and other_high == other + 64
+                assert z.bit_count() & 1 and other.bit_count() & 1
+                assert rows[label][1] == 1 ^ ((label & (z ^ other)).bit_count() & 1)
+
+            key = (pair, planes[a])
+            partners, counts = geometry.setdefault(key, (set(), Counter()))
+            partners.add((planes[b], planes[9]))
+            counts[ok] += 1
     assert len(q_patterns) == 1
     q = q_patterns.pop()
+    for z, value in enumerate(q):
+        expected = 0
+        if not z.bit_count() & 1:
+            expected = (9 * ((z ^ (z >> 3)) >> 1 & 1)) ^ (18 * ((z ^ (z >> 3)) & 1))
+        assert value == expected
+
+    anchors = []
+    for (pair, first), (partners, counts) in sorted(geometry.items()):
+        (second, ninth), = partners
+        anchors.append({"injective_labels": pair, "first_plane": first, "second_plane": second,
+                        "plane_9": ninth, "all_maps": counts.total(),
+                        "maps_with_phase": counts[True]})
     return {
         "label_representatives": labels,
         "q_nonzero_fibres": {b: [z for z, a in enumerate(q) if a == b]
@@ -206,6 +240,7 @@ def analyse(branches_path, maps_path):
             {"injective_labels": pair, "remaining_rhs_bits": bits, "maps": n}
             for (pair, bits), n in sorted(rhs_patterns.items())
         ],
+        "injective_anchors": anchors,
         "coordinate_orbits": classify_orbits(phase_stats),
     }
 
@@ -218,7 +253,7 @@ def main():
     args = parser.parse_args()
     result = analyse(args.branches, args.maps)
     args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({k: v for k, v in result.items() if k != "coefficient_patterns"}, indent=2))
+    print(json.dumps({k: v for k, v in result.items() if k not in ("coefficient_patterns", "injective_anchors")}, indent=2))
 
 
 if __name__ == "__main__":

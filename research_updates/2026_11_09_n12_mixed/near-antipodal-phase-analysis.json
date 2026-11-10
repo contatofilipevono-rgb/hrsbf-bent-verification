@@ -1,0 +1,1439 @@
+{
+  "label_representatives": [
+    0,
+    1,
+    3,
+    5,
+    7,
+    9,
+    11,
+    21
+  ],
+  "q_nonzero_fibres": {
+    "9": [
+      6,
+      15,
+      20,
+      29,
+      34,
+      43,
+      48,
+      57
+    ],
+    "18": [
+      5,
+      12,
+      23,
+      30,
+      33,
+      40,
+      51,
+      58
+    ],
+    "27": [
+      3,
+      10,
+      17,
+      24,
+      39,
+      46,
+      53,
+      60
+    ]
+  },
+  "maps": 10368,
+  "systems": [
+    {
+      "rank": 2,
+      "consistent": false,
+      "maps": 9088
+    },
+    {
+      "rank": 2,
+      "consistent": true,
+      "maps": 1280
+    }
+  ],
+  "row_patterns": [
+    {
+      "nonzero_labels": [
+        0,
+        3,
+        5,
+        9
+      ],
+      "rank": 2,
+      "consistent": false,
+      "maps": 7872
+    },
+    {
+      "nonzero_labels": [
+        0,
+        3,
+        5,
+        9
+      ],
+      "rank": 2,
+      "consistent": true,
+      "maps": 768
+    },
+    {
+      "nonzero_labels": [
+        0,
+        1,
+        9,
+        11
+      ],
+      "rank": 2,
+      "consistent": false,
+      "maps": 1216
+    },
+    {
+      "nonzero_labels": [
+        0,
+        1,
+        9,
+        11
+      ],
+      "rank": 2,
+      "consistent": true,
+      "maps": 512
+    }
+  ],
+  "coefficient_patterns": [
+    {
+      "rows": [
+        17440,
+        0,
+        3036,
+        3036,
+        0,
+        17440,
+        0,
+        0
+      ],
+      "rank": 2,
+      "consistent": false,
+      "maps": 984
+    },
+    {
+      "rows": [
+        17440,
+        0,
+        3036,
+        3036,
+        0,
+        17440,
+        0,
+        0
+      ],
+      "rank": 2,
+      "consistent": true,
+      "maps": 96
+    },
+    {
+      "rows": [
+        17440,
+        0,
+        4060,
+        4060,
+        0,
+        17440,
+        0,
+        0
+      ],
+      "rank": 2,
+      "consistent": false,
+      "maps": 984
+    },
+    {
+      "rows": [
+        17440,
+        0,
+        4060,
+        4060,
+        0,
+        17440,
+        0,
+        0
+      ],
+      "rank": 2,
+      "consistent": true,
+      "maps": 96
+    },
+    {
+      "rows": [
+        17440,
+        0,
+        4508,
+        4508,
+        0,
+        17440,
+        0,
+        0
+      ],
+      "rank": 2,
+      "consistent": false,
+      "maps": 1968
+    },
+    {
+      "rows": [
+        17440,
+        0,
+        4508,
+        4508,
+        0,
+        17440,
+        0,
+        0
+      ],
+      "rank": 2,
+      "consistent": true,
+      "maps": 192
+    },
+    {
+      "rows": [
+        17440,
+        0,
+        19420,
+        19420,
+        0,
+        17440,
+        0,
+        0
+      ],
+      "rank": 2,
+      "consistent": false,
+      "maps": 984
+    },
+    {
+      "rows": [
+        17440,
+        0,
+        19420,
+        19420,
+        0,
+        17440,
+        0,
+        0
+      ],
+      "rank": 2,
+      "consistent": true,
+      "maps": 96
+    },
+    {
+      "rows": [
+        17440,
+        0,
+        20444,
+        20444,
+        0,
+        17440,
+        0,
+        0
+      ],
+      "rank": 2,
+      "consistent": false,
+      "maps": 984
+    },
+    {
+      "rows": [
+        17440,
+        0,
+        20444,
+        20444,
+        0,
+        17440,
+        0,
+        0
+      ],
+      "rank": 2,
+      "consistent": true,
+      "maps": 96
+    },
+    {
+      "rows": [
+        17440,
+        0,
+        20892,
+        20892,
+        0,
+        17440,
+        0,
+        0
+      ],
+      "rank": 2,
+      "consistent": false,
+      "maps": 1968
+    },
+    {
+      "rows": [
+        17440,
+        0,
+        20892,
+        20892,
+        0,
+        17440,
+        0,
+        0
+      ],
+      "rank": 2,
+      "consistent": true,
+      "maps": 192
+    },
+    {
+      "rows": [
+        17440,
+        3036,
+        0,
+        0,
+        0,
+        17440,
+        3036,
+        0
+      ],
+      "rank": 2,
+      "consistent": false,
+      "maps": 216
+    },
+    {
+      "rows": [
+        17440,
+        4060,
+        0,
+        0,
+        0,
+        17440,
+        4060,
+        0
+      ],
+      "rank": 2,
+      "consistent": false,
+      "maps": 216
+    },
+    {
+      "rows": [
+        17440,
+        4508,
+        0,
+        0,
+        0,
+        17440,
+        4508,
+        0
+      ],
+      "rank": 2,
+      "consistent": false,
+      "maps": 176
+    },
+    {
+      "rows": [
+        17440,
+        4508,
+        0,
+        0,
+        0,
+        17440,
+        4508,
+        0
+      ],
+      "rank": 2,
+      "consistent": true,
+      "maps": 256
+    },
+    {
+      "rows": [
+        17440,
+        19420,
+        0,
+        0,
+        0,
+        17440,
+        19420,
+        0
+      ],
+      "rank": 2,
+      "consistent": false,
+      "maps": 216
+    },
+    {
+      "rows": [
+        17440,
+        20444,
+        0,
+        0,
+        0,
+        17440,
+        20444,
+        0
+      ],
+      "rank": 2,
+      "consistent": false,
+      "maps": 216
+    },
+    {
+      "rows": [
+        17440,
+        20892,
+        0,
+        0,
+        0,
+        17440,
+        20892,
+        0
+      ],
+      "rank": 2,
+      "consistent": false,
+      "maps": 176
+    },
+    {
+      "rows": [
+        17440,
+        20892,
+        0,
+        0,
+        0,
+        17440,
+        20892,
+        0
+      ],
+      "rank": 2,
+      "consistent": true,
+      "maps": 256
+    }
+  ],
+  "minimal_inconsistency_certificates": [
+    {
+      "labels": [
+        1
+      ],
+      "maps": 4096
+    },
+    {
+      "labels": [
+        3
+      ],
+      "maps": 704
+    },
+    {
+      "labels": [
+        5
+      ],
+      "maps": 704
+    },
+    {
+      "labels": [
+        3,
+        5
+      ],
+      "maps": 1472
+    },
+    {
+      "labels": [
+        11
+      ],
+      "maps": 4096
+    },
+    {
+      "labels": [
+        1,
+        11
+      ],
+      "maps": 512
+    }
+  ],
+  "rhs_patterns": [
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "remaining_rhs_bits": [
+        0,
+        0,
+        0
+      ],
+      "maps": 512
+    },
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "remaining_rhs_bits": [
+        0,
+        1,
+        1
+      ],
+      "maps": 352
+    },
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "remaining_rhs_bits": [
+        1,
+        0,
+        0
+      ],
+      "maps": 512
+    },
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "remaining_rhs_bits": [
+        1,
+        1,
+        1
+      ],
+      "maps": 352
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "remaining_rhs_bits": [
+        0,
+        0,
+        0
+      ],
+      "maps": 768
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "remaining_rhs_bits": [
+        0,
+        0,
+        1
+      ],
+      "maps": 1536
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "remaining_rhs_bits": [
+        0,
+        1,
+        0
+      ],
+      "maps": 1536
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "remaining_rhs_bits": [
+        0,
+        1,
+        1
+      ],
+      "maps": 768
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "remaining_rhs_bits": [
+        1,
+        0,
+        0
+      ],
+      "maps": 1472
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "remaining_rhs_bits": [
+        1,
+        0,
+        1
+      ],
+      "maps": 768
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "remaining_rhs_bits": [
+        1,
+        1,
+        0
+      ],
+      "maps": 768
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "remaining_rhs_bits": [
+        1,
+        1,
+        1
+      ],
+      "maps": 1024
+    }
+  ],
+  "injective_anchors": [
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "first_plane": [
+        6,
+        10,
+        112,
+        124
+      ],
+      "second_plane": [
+        84,
+        87,
+        121,
+        122
+      ],
+      "plane_9": [
+        18,
+        54,
+        82,
+        118
+      ],
+      "all_maps": 108,
+      "maps_with_phase": 64
+    },
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "first_plane": [
+        6,
+        30,
+        104,
+        112
+      ],
+      "second_plane": [
+        10,
+        23,
+        39,
+        58
+      ],
+      "plane_9": [
+        36,
+        54,
+        100,
+        118
+      ],
+      "all_maps": 108,
+      "maps_with_phase": 64
+    },
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "first_plane": [
+        6,
+        40,
+        94,
+        112
+      ],
+      "second_plane": [
+        23,
+        58,
+        74,
+        103
+      ],
+      "plane_9": [
+        36,
+        54,
+        100,
+        118
+      ],
+      "all_maps": 108,
+      "maps_with_phase": 64
+    },
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "first_plane": [
+        6,
+        60,
+        74,
+        112
+      ],
+      "second_plane": [
+        20,
+        57,
+        87,
+        122
+      ],
+      "plane_9": [
+        18,
+        54,
+        82,
+        118
+      ],
+      "all_maps": 108,
+      "maps_with_phase": 64
+    },
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "first_plane": [
+        10,
+        48,
+        70,
+        124
+      ],
+      "second_plane": [
+        23,
+        58,
+        84,
+        121
+      ],
+      "plane_9": [
+        18,
+        54,
+        82,
+        118
+      ],
+      "all_maps": 108,
+      "maps_with_phase": 64
+    },
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "first_plane": [
+        12,
+        20,
+        34,
+        58
+      ],
+      "second_plane": [
+        46,
+        51,
+        67,
+        94
+      ],
+      "plane_9": [
+        36,
+        54,
+        100,
+        118
+      ],
+      "all_maps": 108,
+      "maps_with_phase": 0
+    },
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "first_plane": [
+        12,
+        58,
+        84,
+        98
+      ],
+      "second_plane": [
+        30,
+        46,
+        67,
+        115
+      ],
+      "plane_9": [
+        36,
+        54,
+        100,
+        118
+      ],
+      "all_maps": 108,
+      "maps_with_phase": 0
+    },
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "first_plane": [
+        20,
+        24,
+        34,
+        46
+      ],
+      "second_plane": [
+        29,
+        51,
+        94,
+        112
+      ],
+      "plane_9": [
+        18,
+        54,
+        82,
+        118
+      ],
+      "all_maps": 108,
+      "maps_with_phase": 0
+    },
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "first_plane": [
+        20,
+        34,
+        76,
+        122
+      ],
+      "second_plane": [
+        3,
+        51,
+        94,
+        110
+      ],
+      "plane_9": [
+        36,
+        54,
+        100,
+        118
+      ],
+      "all_maps": 108,
+      "maps_with_phase": 0
+    },
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "first_plane": [
+        20,
+        34,
+        88,
+        110
+      ],
+      "second_plane": [
+        48,
+        51,
+        93,
+        94
+      ],
+      "plane_9": [
+        18,
+        54,
+        82,
+        118
+      ],
+      "all_maps": 108,
+      "maps_with_phase": 0
+    },
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "first_plane": [
+        24,
+        46,
+        84,
+        98
+      ],
+      "second_plane": [
+        29,
+        30,
+        112,
+        115
+      ],
+      "plane_9": [
+        18,
+        54,
+        82,
+        118
+      ],
+      "all_maps": 108,
+      "maps_with_phase": 0
+    },
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "first_plane": [
+        30,
+        48,
+        70,
+        104
+      ],
+      "second_plane": [
+        10,
+        39,
+        87,
+        122
+      ],
+      "plane_9": [
+        36,
+        54,
+        100,
+        118
+      ],
+      "all_maps": 108,
+      "maps_with_phase": 64
+    },
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "first_plane": [
+        40,
+        48,
+        70,
+        94
+      ],
+      "second_plane": [
+        74,
+        87,
+        103,
+        122
+      ],
+      "plane_9": [
+        36,
+        54,
+        100,
+        118
+      ],
+      "all_maps": 108,
+      "maps_with_phase": 64
+    },
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "first_plane": [
+        48,
+        60,
+        70,
+        74
+      ],
+      "second_plane": [
+        20,
+        23,
+        57,
+        58
+      ],
+      "plane_9": [
+        18,
+        54,
+        82,
+        118
+      ],
+      "all_maps": 108,
+      "maps_with_phase": 64
+    },
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "first_plane": [
+        76,
+        84,
+        98,
+        122
+      ],
+      "second_plane": [
+        3,
+        30,
+        110,
+        115
+      ],
+      "plane_9": [
+        36,
+        54,
+        100,
+        118
+      ],
+      "all_maps": 108,
+      "maps_with_phase": 0
+    },
+    {
+      "injective_labels": [
+        1,
+        11
+      ],
+      "first_plane": [
+        84,
+        88,
+        98,
+        110
+      ],
+      "second_plane": [
+        30,
+        48,
+        93,
+        115
+      ],
+      "plane_9": [
+        18,
+        54,
+        82,
+        118
+      ],
+      "all_maps": 108,
+      "maps_with_phase": 0
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "first_plane": [
+        3,
+        15,
+        84,
+        88
+      ],
+      "second_plane": [
+        10,
+        23,
+        39,
+        58
+      ],
+      "plane_9": [
+        36,
+        54,
+        100,
+        118
+      ],
+      "all_maps": 540,
+      "maps_with_phase": 48
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "first_plane": [
+        3,
+        20,
+        79,
+        88
+      ],
+      "second_plane": [
+        23,
+        58,
+        74,
+        103
+      ],
+      "plane_9": [
+        36,
+        54,
+        100,
+        118
+      ],
+      "all_maps": 540,
+      "maps_with_phase": 48
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "first_plane": [
+        3,
+        40,
+        88,
+        115
+      ],
+      "second_plane": [
+        15,
+        34,
+        87,
+        122
+      ],
+      "plane_9": [
+        18,
+        54,
+        82,
+        118
+      ],
+      "all_maps": 540,
+      "maps_with_phase": 48
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "first_plane": [
+        3,
+        51,
+        88,
+        104
+      ],
+      "second_plane": [
+        79,
+        87,
+        98,
+        122
+      ],
+      "plane_9": [
+        18,
+        54,
+        82,
+        118
+      ],
+      "all_maps": 540,
+      "maps_with_phase": 48
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "first_plane": [
+        12,
+        23,
+        39,
+        60
+      ],
+      "second_plane": [
+        29,
+        40,
+        69,
+        112
+      ],
+      "plane_9": [
+        18,
+        54,
+        82,
+        118
+      ],
+      "all_maps": 540,
+      "maps_with_phase": 48
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "first_plane": [
+        12,
+        23,
+        103,
+        124
+      ],
+      "second_plane": [
+        5,
+        29,
+        104,
+        112
+      ],
+      "plane_9": [
+        18,
+        54,
+        82,
+        118
+      ],
+      "all_maps": 540,
+      "maps_with_phase": 48
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "first_plane": [
+        15,
+        24,
+        67,
+        84
+      ],
+      "second_plane": [
+        10,
+        39,
+        87,
+        122
+      ],
+      "plane_9": [
+        36,
+        54,
+        100,
+        118
+      ],
+      "all_maps": 540,
+      "maps_with_phase": 48
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "first_plane": [
+        20,
+        24,
+        67,
+        79
+      ],
+      "second_plane": [
+        74,
+        87,
+        103,
+        122
+      ],
+      "plane_9": [
+        36,
+        54,
+        100,
+        118
+      ],
+      "all_maps": 540,
+      "maps_with_phase": 48
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "first_plane": [
+        24,
+        40,
+        67,
+        115
+      ],
+      "second_plane": [
+        15,
+        23,
+        34,
+        58
+      ],
+      "plane_9": [
+        18,
+        54,
+        82,
+        118
+      ],
+      "all_maps": 540,
+      "maps_with_phase": 48
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "first_plane": [
+        24,
+        51,
+        67,
+        104
+      ],
+      "second_plane": [
+        23,
+        58,
+        79,
+        98
+      ],
+      "plane_9": [
+        18,
+        54,
+        82,
+        118
+      ],
+      "all_maps": 540,
+      "maps_with_phase": 48
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "first_plane": [
+        39,
+        43,
+        48,
+        60
+      ],
+      "second_plane": [
+        40,
+        53,
+        69,
+        88
+      ],
+      "plane_9": [
+        36,
+        54,
+        100,
+        118
+      ],
+      "all_maps": 540,
+      "maps_with_phase": 48
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "first_plane": [
+        39,
+        60,
+        76,
+        87
+      ],
+      "second_plane": [
+        40,
+        48,
+        69,
+        93
+      ],
+      "plane_9": [
+        18,
+        54,
+        82,
+        118
+      ],
+      "all_maps": 540,
+      "maps_with_phase": 48
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "first_plane": [
+        39,
+        60,
+        107,
+        112
+      ],
+      "second_plane": [
+        24,
+        40,
+        69,
+        117
+      ],
+      "plane_9": [
+        36,
+        54,
+        100,
+        118
+      ],
+      "all_maps": 540,
+      "maps_with_phase": 48
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "first_plane": [
+        43,
+        48,
+        103,
+        124
+      ],
+      "second_plane": [
+        5,
+        53,
+        88,
+        104
+      ],
+      "plane_9": [
+        36,
+        54,
+        100,
+        118
+      ],
+      "all_maps": 540,
+      "maps_with_phase": 48
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "first_plane": [
+        76,
+        87,
+        103,
+        124
+      ],
+      "second_plane": [
+        5,
+        48,
+        93,
+        104
+      ],
+      "plane_9": [
+        18,
+        54,
+        82,
+        118
+      ],
+      "all_maps": 540,
+      "maps_with_phase": 48
+    },
+    {
+      "injective_labels": [
+        3,
+        5
+      ],
+      "first_plane": [
+        103,
+        107,
+        112,
+        124
+      ],
+      "second_plane": [
+        5,
+        24,
+        104,
+        117
+      ],
+      "plane_9": [
+        36,
+        54,
+        100,
+        118
+      ],
+      "all_maps": 540,
+      "maps_with_phase": 48
+    }
+  ],
+  "coordinate_orbits": [
+    {
+      "rank": 2,
+      "consistent": false,
+      "size": 8,
+      "orbits": 1136
+    },
+    {
+      "rank": 2,
+      "consistent": true,
+      "size": 8,
+      "orbits": 160
+    }
+  ]
+}

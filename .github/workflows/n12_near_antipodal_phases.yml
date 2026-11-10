@@ -36,6 +36,7 @@ jobs:
           .\CountNearAntipodal.exe branches.bin phase-audit/witnesses.txt phase-audit/plane-maps.bin | Tee-Object phase-audit/counts.txt
           python count_near_antipodal.py --verify-witnesses phase-audit/witnesses.txt
           python analyse_near_antipodal_phases.py branches.bin phase-audit/plane-maps.bin phase-audit/phase-analysis.json
+          python -c "import json; from pathlib import Path; assert json.loads(Path('phase-audit/phase-analysis.json').read_text()) == json.loads(Path('near-antipodal-phase-analysis.json').read_text())"
       - uses: actions/upload-artifact@v4
         with:
           name: n12-near-antipodal-phases
