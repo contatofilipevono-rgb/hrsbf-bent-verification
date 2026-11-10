@@ -43,7 +43,7 @@ def main():
     low = [evaluate_orbit(o) for _, o in LOW]
     upper = [evaluate_orbit(o) for _, o in TOP]
     active = [i for i in range(len(UPPER)) if (a.high_mask >> i) & 1]
-    assert 2 <= len(active) <= 4
+    assert active
     high = xor_terms([evaluate_orbit(UPPER[i][1]) for i in active], (1 << len(active)) - 1)
     hp = projection(high)
     lp = [projection(v) for v in low]

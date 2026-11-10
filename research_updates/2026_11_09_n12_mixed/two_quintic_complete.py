@@ -9,7 +9,7 @@ from pathlib import Path
 HERE = Path(__file__).parent
 
 
-def assign(projection):
+def assign(projection, workers=16):
     data = json.loads(projection.read_text())
     items = []
     for index, row in enumerate(data["classes"]):
@@ -19,7 +19,7 @@ def assign(projection):
         trial_cost = 1 << (row["quartic_free"] - bits)
         for part in range(1 << bits):
             items.append((trial_cost, index, row["mask"], part, bits, row.get('period4_branch')))
-    groups = [[] for _ in range(16)]
+    groups = [[] for _ in range(workers)]
     loads = [0] * len(groups)
     for task in sorted(items, reverse=True):
         i = min(range(len(groups)), key=loads.__getitem__)
@@ -36,8 +36,9 @@ def main():
     p.add_argument("executable", type=Path)
     p.add_argument("output", type=Path)
     p.add_argument("--mod8", action='store_true')
+    p.add_argument("--workers", type=int, default=16)
     a = p.parse_args()
-    tasks = assign(a.projection)[a.worker]
+    tasks = assign(a.projection, a.workers)[a.worker]
     a.output.mkdir(parents=True, exist_ok=True)
     (a.output / "tasks.json").write_text(json.dumps(tasks) + "\n")
 
