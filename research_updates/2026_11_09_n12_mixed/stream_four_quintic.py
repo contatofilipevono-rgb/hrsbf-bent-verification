@@ -2,6 +2,7 @@
 import argparse
 import json
 from collections import Counter, defaultdict
+from contextlib import nullcontext
 from pathlib import Path
 from zipfile import Path as ZipPath, ZipFile
 
@@ -55,11 +56,13 @@ class DiagonalTest:
         return np.any(value != 0, axis=1)
 
 
-def process(root, projection, test, outside_file):
+def process(root, projection, test, outside_file, allow_incomplete=False):
     records = []
     sample = defaultdict(set)
     positive = defaultdict(Counter)
     for folder in sorted((p for p in root.iterdir() if p.is_dir()), key=lambda p: p.name):
+        if allow_incomplete and not (folder / 'report.json').is_file():
+            continue
         report = json.loads((folder / 'report.json').read_text())
         i, part, bits = report['index'], report['shard'], report['shard_bits']
         chart = projection[i]
@@ -79,8 +82,9 @@ def process(root, projection, test, outside_file):
                 table = table.reshape(-1, 3)
                 assert np.all(table[:, 0] == i)
                 deviation = test.outside(high, table)
-                for top, low in table[deviation, 1:]:
-                    outside_file.write(f'{high}\t{top}\t{low}\n')
+                if outside_file is not None:
+                    for top, low in table[deviation, 1:]:
+                        outside_file.write(f'{high}\t{top}\t{low}\n')
                 outside += int(np.count_nonzero(deviation))
                 if read == 0:
                     sample[high].add((int(table[0, 1]), int(table[0, 2])))
@@ -101,15 +105,17 @@ def main():
     p.add_argument('projection', type=Path)
     p.add_argument('source', type=Path)
     p.add_argument('output', type=Path)
+    p.add_argument('--allow-incomplete', action='store_true')
+    p.add_argument('--counts-only', action='store_true')
     a = p.parse_args()
     projection = json.loads(a.projection.read_text())['classes']
     test = DiagonalTest()
-    with a.output.with_suffix('.tsv').open('w') as outside:
+    with (nullcontext(None) if a.counts_only else a.output.with_suffix('.tsv').open('w')) as outside:
         if a.source.is_dir():
-            report = process(a.source, projection, test, outside)
+            report = process(a.source, projection, test, outside, a.allow_incomplete)
         else:
             with ZipFile(a.source) as archive:
-                report = process(ZipPath(archive), projection, test, outside)
+                report = process(ZipPath(archive), projection, test, outside, a.allow_incomplete)
     a.output.write_text(json.dumps(report, separators=(',', ':')) + '\n')
     print(a.source.name, 'shards', len(report['records']),
           'positive records', sum(c['normalized'] for c in report['positive'].values()),
