@@ -1,0 +1,135 @@
+{
+  "antipodal_quadratic": {
+    "masks": [
+      0,
+      0,
+      32
+    ],
+    "kernel_dimensions": {
+      "11": 4095
+    },
+    "m_basis": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32
+    ],
+    "visited_by_dimension": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "quartic_dual5": {
+    "masks": [
+      0,
+      13896404,
+      1065441
+    ],
+    "kernel_dimensions": {
+      "1": 3984,
+      "2": 96,
+      "4": 9,
+      "5": 6
+    },
+    "m_basis": null,
+    "visited_by_dimension": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "two_quintic_7_26": {
+    "masks": [
+      67108992,
+      1658964672512,
+      148226
+    ],
+    "kernel_dimensions": {
+      "1": 4095
+    },
+    "m_basis": null,
+    "visited_by_dimension": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "two_quintic_35_42": {
+    "masks": [
+      4432406249472,
+      137606725825,
+      15055593
+    ],
+    "kernel_dimensions": {
+      "1": 3984,
+      "2": 96,
+      "3": 11,
+      "5": 4
+    },
+    "m_basis": null,
+    "visited_by_dimension": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "fixed_quintic_dual5": {
+    "masks": [
+      4639846170169953420,
+      2473996489123,
+      10453602
+    ],
+    "kernel_dimensions": {
+      "1": 4095
+    },
+    "m_basis": null,
+    "visited_by_dimension": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "su6": {
+    "masks": [
+      147573952589676412929,
+      0,
+      32
+    ],
+    "kernel_dimensions": {
+      "1": 4095
+    },
+    "m_basis": null,
+    "visited_by_dimension": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
