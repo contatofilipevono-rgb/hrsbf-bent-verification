@@ -1,4 +1,4 @@
-"""Check the two-orbit quintic shards and verify every positive by full Walsh."""
+"""Check the two-orbit shards and verify every positive by full Walsh."""
 import argparse
 import json
 from collections import Counter, defaultdict
@@ -17,6 +17,7 @@ def main():
     parser.add_argument('preflight', type=Path)
     parser.add_argument('shards', type=Path)
     parser.add_argument('output', type=Path)
+    parser.add_argument('--with-sextic', action='store_true')
     a = parser.parse_args()
     projection = json.loads(a.projection.read_text())['classes']
     classes = {r['mask']: r for r in json.loads(a.preflight.read_text())['classes']}
@@ -45,9 +46,10 @@ def main():
                     for j in range(1 << max(0, min(4, r['quartic_free'] - 24)))}
     bases = [[evaluate_orbit(o) for _, o in basis] for basis in (UPPER, TOP, LOW)]
     operators = high_actions()
-    known = {'single_orbit': orbit(1 << 61, operators),
-             'fixed_quintic': orbit(int('40640b82416fcc8c', 16), operators)}
-    by_dual, new = Counter(), Counter()
+    known = ({'su': orbit((1 << 67) | 1, operators)} if a.with_sextic else
+             {'single_orbit': orbit(1 << 61, operators),
+              'fixed_quintic': orbit(int('40640b82416fcc8c', 16), operators)})
+    by_dual, outside_by_dual, new = Counter(), Counter(), Counter()
     lines = []
     positives = []
     for i, vals in sorted(completions.items()):
@@ -63,27 +65,33 @@ def main():
             assert all(abs(w) == 64 for w in spectrum)
             dual = sum((w < 0) << j for j, w in enumerate(spectrum))
             d = max(j.bit_count() for j, c in enumerate(integer_anf(dual)) if c & 1)
-            assert d in (4, 5)
+            assert d == 6 if a.with_sextic else d in (4, 5)
             count[d] += 1
-            outside[d] += bool(affine_deviation(table))
-            lines.append(f'{high}\t{t}\t{l}\t{d}\t{int(bool(affine_deviation(table)))}\n')
-        members = len(cls['two_orbit_members'])
+            outside_diagonal = int(bool(affine_deviation(table)))
+            outside[d] += outside_diagonal
+            lines.append(f'{high}\t{t}\t{l}\t{d}\t{outside_diagonal}\n')
+        members = len(cls['members' if a.with_sextic else 'two_orbit_members'])
         for d, n in count.items():
             by_dual[d] += 4 * members * n
+            outside_by_dual[d] += 4 * members * outside[d]
         overlaps = [label for label, group in known.items() if high in group]
         if not overlaps:
             new.update({d: 4 * cls['orbit_size'] * n for d, n in outside.items()})
-        positives.append({'mask': high, 'active_indices': [j for j in range(66) if high >> j & 1],
+        positives.append({'mask': high, 'active_indices': [j for j in range(len(UPPER)) if high >> j & 1],
                           'two_orbit_members': members, 'full_orbit_size': cls['orbit_size'],
                           'normalized_by_dual_degree': count, 'outside_by_dual_degree': outside,
                           'previous_high_orbits': overlaps})
-    result = {'scope': 'exactly two active quintic orbits, no sextic terms',
+    scope = ('exactly two active orbits above degree four, at least one sextic' if a.with_sextic else
+             'exactly two active quintic orbits, no sextic terms')
+    result = {'scope': scope,
               'completed_shards': len(seen), 'trials': totals, 'positive_classes': positives,
               'counts_by_dual_degree_with_affine_terms': by_dual,
+              'outside_diagonal_by_dual_degree_with_affine_terms': outside_by_dual,
               'new_outside_diagonal_in_full_high_orbits_by_dual_degree': new}
     a.output.mkdir(parents=True, exist_ok=True)
-    (a.output / 'two-quintic-counts.json').write_text(json.dumps(result, indent=2) + '\n')
-    (a.output / 'two-quintic-bent.tsv').write_text(''.join(lines))
+    label = 'two-sextic' if a.with_sextic else 'two-quintic'
+    (a.output / f'{label}-counts.json').write_text(json.dumps(result, indent=2) + '\n')
+    (a.output / f'{label}-bent.tsv').write_text(''.join(lines))
     print(json.dumps(result, indent=2))
 
 

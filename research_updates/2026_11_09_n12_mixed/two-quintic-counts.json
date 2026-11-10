@@ -60,6 +60,9 @@
   "counts_by_dual_degree_with_affine_terms": {
     "5": 1024
   },
+  "outside_diagonal_by_dual_degree_with_affine_terms": {
+    "5": 1024
+  },
   "new_outside_diagonal_in_full_high_orbits_by_dual_degree": {
     "5": 131072
   }

@@ -32,14 +32,18 @@ def kernel_basis(columns):
     return basis
 
 
-def leading_kernels(top):
+def leading_kernels(top, monomial_orbits=TOP):
+    degree = monomial_orbits[0][0].bit_count()
+    assert all(rep.bit_count() == degree for rep, _ in monomial_orbits)
+    positions = (PAIRS if degree == 4 else
+                 {s: i for i, s in enumerate(sorted(s for _, o in orbits(N, degree - 2) for s in o))})
     columns = [[0] * N for _ in range(N)]
-    for i, (_, supports) in enumerate(TOP):
+    for i, (_, supports) in enumerate(monomial_orbits):
         if not top >> i & 1:
             continue
         for s in supports:
             for j, k in combinations((j for j in range(N) if s >> j & 1), 2):
-                coefficient = 1 << PAIRS[s ^ (1 << j) ^ (1 << k)]
+                coefficient = 1 << positions[s ^ (1 << j) ^ (1 << k)]
                 columns[j][k] ^= coefficient
                 columns[k][j] ^= coefficient
     result = {}
