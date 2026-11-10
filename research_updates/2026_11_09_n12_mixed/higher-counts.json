@@ -1,0 +1,234 @@
+{
+  "family_definition": "High part from all 24 cyclic polynomials of degrees 5 or 6 in antipodal pair sums; all RS lower parts of degree at most 3 considered.",
+  "counts_without_affine_terms": {
+    "5": 114688,
+    "6": 229376
+  },
+  "counts_with_affine_terms": {
+    "5": 458752,
+    "6": 917504
+  },
+  "charts": [
+    {
+      "chart": 8,
+      "degree": 5,
+      "rank_coordinate": 2,
+      "rank_all": 2,
+      "trials": 2097152,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 9,
+      "degree": 5,
+      "rank_coordinate": 2,
+      "rank_all": 2,
+      "trials": 2097152,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 10,
+      "degree": 5,
+      "rank_coordinate": 2,
+      "rank_all": 2,
+      "trials": 2097152,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 11,
+      "degree": 5,
+      "rank_coordinate": 2,
+      "rank_all": 2,
+      "trials": 2097152,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 12,
+      "degree": 5,
+      "rank_coordinate": 2,
+      "rank_all": 2,
+      "trials": 2097152,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 13,
+      "degree": 5,
+      "rank_coordinate": 2,
+      "rank_all": 2,
+      "trials": 2097152,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 14,
+      "degree": 5,
+      "rank_coordinate": 2,
+      "rank_all": 2,
+      "trials": 2097152,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 15,
+      "degree": 5,
+      "rank_coordinate": 2,
+      "rank_all": 2,
+      "trials": 2097152,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 16,
+      "degree": 6,
+      "rank_coordinate": 2,
+      "rank_all": 2,
+      "trials": 2097152,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 17,
+      "degree": 6,
+      "rank_coordinate": 2,
+      "rank_all": 2,
+      "trials": 2097152,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 18,
+      "degree": 6,
+      "rank_coordinate": 2,
+      "rank_all": 2,
+      "trials": 2097152,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 19,
+      "degree": 6,
+      "rank_coordinate": 2,
+      "rank_all": 2,
+      "trials": 2097152,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 20,
+      "degree": 6,
+      "rank_coordinate": 2,
+      "rank_all": 2,
+      "trials": 2097152,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 21,
+      "degree": 6,
+      "rank_coordinate": 2,
+      "rank_all": 2,
+      "trials": 2097152,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 22,
+      "degree": 6,
+      "rank_coordinate": 2,
+      "rank_all": 2,
+      "trials": 2097152,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 23,
+      "degree": 6,
+      "rank_coordinate": 2,
+      "rank_all": 2,
+      "trials": 2097152,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 24,
+      "degree": 6,
+      "rank_coordinate": 0,
+      "rank_all": 0,
+      "trials": 8388608,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 25,
+      "degree": 6,
+      "rank_coordinate": 0,
+      "rank_all": 0,
+      "trials": 8388608,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 26,
+      "degree": 6,
+      "rank_coordinate": 0,
+      "rank_all": 0,
+      "trials": 8388608,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 27,
+      "degree": 6,
+      "rank_coordinate": 0,
+      "rank_all": 0,
+      "trials": 8388608,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 28,
+      "degree": 6,
+      "rank_coordinate": 0,
+      "rank_all": 0,
+      "trials": 8388608,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 29,
+      "degree": 6,
+      "rank_coordinate": 0,
+      "rank_all": 0,
+      "trials": 8388608,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 30,
+      "degree": 6,
+      "rank_coordinate": 0,
+      "rank_all": 0,
+      "trials": 8388608,
+      "normalized_bent": 14336
+    },
+    {
+      "chart": 31,
+      "degree": 6,
+      "rank_coordinate": 0,
+      "rank_all": 0,
+      "trials": 8388608,
+      "normalized_bent": 14336
+    }
+  ],
+  "random_high_part_sample": {
+    "5": {
+      "tested": 4096,
+      "survived_coordinate": 0,
+      "survived_all": 0,
+      "rank_at_termination_histogram": {
+        "1": 4040,
+        "2": 48,
+        "3": 8
+      }
+    },
+    "6": {
+      "tested": 4096,
+      "survived_coordinate": 0,
+      "survived_all": 0,
+      "rank_at_termination_histogram": {
+        "3": 2090,
+        "4": 1892,
+        "7": 55,
+        "10": 36,
+        "13": 7,
+        "20": 1,
+        "22": 2,
+        "23": 2,
+        "24": 3,
+        "25": 8
+      }
+    }
+  }
+}

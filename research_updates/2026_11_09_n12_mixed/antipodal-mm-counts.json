@@ -1,0 +1,25 @@
+{
+  "orbit_lengths": {
+    "1": 2,
+    "6": 9,
+    "3": 2,
+    "2": 1
+  },
+  "eligible_permutations_by_block": {
+    "1": 1,
+    "2": 1,
+    "3": 3,
+    "6": 7587866112
+  },
+  "eligible_permutations": 22763598336,
+  "eligible_permutations_degree_at_most_4": 742540800,
+  "all_bent": 372958795137024,
+  "bent_degree_at_most_5": 6082894233600,
+  "by_exact_degree": {
+    "2": 64,
+    "3": 57280,
+    "4": 290004992,
+    "5": 6082604171264,
+    "6": 366875900903424
+  }
+}

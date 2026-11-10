@@ -1,0 +1,61 @@
+name: Audit n12 catalog and count dual degrees
+
+on:
+  push:
+    branches: [codex/n12-mixed-quartic]
+    paths:
+      - '.github/workflows/n12_mixed_duals.yml'
+      - 'research_updates/2026_11_09_n12_mixed/dual_catalog.py'
+      - 'research_updates/2026_11_09_n12_mixed/catalog/**'
+
+permissions:
+  contents: read
+
+env:
+  SRC: research_updates/2026_11_09_n12_mixed
+
+jobs:
+  diagonal:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - name: Verify exact fixed-diagonal counts
+        run: |
+          python3 "$SRC/antipodal_mm.py" "$SRC/catalog" diagonal.json
+          python3 -c 'import json,sys; assert json.load(open(sys.argv[1]))==json.load(open(sys.argv[2]))' diagonal.json "$SRC/antipodal-mm-counts.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: n12-diagonal-counts
+          path: diagonal.json
+          if-no-files-found: error
+  dual:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      max-parallel: 16
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install NumPy
+        run: python -m pip install numpy==2.2.6
+      - name: Verify every stored spectrum and compute its dual degree
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: python "$SRC/dual_catalog.py" "$SRC/catalog" "$SHARD" 16 dual.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: n12-dual-${{ matrix.shard }}
+          path: dual.json
+          if-no-files-found: error
