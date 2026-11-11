@@ -3,7 +3,7 @@ from functools import lru_cache
 from itertools import combinations
 
 from count_near_antipodal import image_and_kernel
-from higher_filter import solve, xor_terms
+from higher_filter import solve
 from lower_dim_model import active_indices
 
 
@@ -53,7 +53,7 @@ def exact(equations, phase):
                for subset, modulus_mask, residue in equations)
 
 
-def affine_phase_quotient(fibres, width, directions):
+def affine_phase_quotient(fibres, width, directions, signatures=None):
     """Quotient by phase shifts affine separately on every fibre."""
     degree_one = [mask for _, mask in moment_masks(width, 1)]
     projections = [0] * len(directions)
@@ -67,8 +67,11 @@ def affine_phase_quotient(fibres, width, directions):
                 if remainder >> (row.bit_length() - 1) & 1:
                     remainder ^= row
             projections[i] |= remainder << (label * size)
+    if signatures is not None:
+        for i, signature in enumerate(signatures):
+            projections[i] |= signature << (len(fibres) * size)
     image, kernel = image_and_kernel(projections)
-    return [xor_terms(directions, code) for _, code in image], len(kernel)
+    return [code for _, code in image], len(kernel)
 
 
 def signed_walsh(fibre, phase, width):
