@@ -4,9 +4,11 @@
 
 Este caderno reúne ferramentas reutilizáveis para funções booleanas, espectros de Walsh, reduções periódicas e funções bent com simetria de rotação. Cada técnica vem acompanhada de hipóteses, argumento central, aplicação e limite. O objetivo é permitir que uma prova nova seja montada com etapas verificáveis, sem transportar uma conclusão além do domínio em que foi demonstrada.
 
-Edição de 7 de novembro de 2026. O nível de revisão varia por ferramenta e está indicado em cada atualização: há argumentos candidatos ainda sem auditoria independente. Verificadores exatos e auditorias por modelos não substituem revisão humana por pares. A prioridade das adaptações e combinações próprias permanece aberta. A identificação de uma ideia nesta investigação não significa que ela seja inédita na literatura.
+Edição de 10 de novembro de 2026. O nível de revisão varia por ferramenta. As atualizações identificam as provas, os certificados computacionais e os argumentos ainda em auditoria. A prioridade das adaptações e combinações próprias permanece aberta. A auditoria por modelos e a revisão humana por pares são etapas distintas.
 
-**Estado atual:** p=17, Q1 geral e a conjectura geral continuam abertos. As atualizações de 07/11 abaixo prevalecem sobre estados históricos de casos abertos. O fechamento de produtos de duas quadráticas com resto cúbico é uma prova candidata sob I6; não deve ser usado como resultado estabelecido antes da auditoria. Não se aplica a uma quártica arbitrária nem somente às condições de peso e pico.
+**Estado em 07/11.** p=17, Q1 geral e a conjectura geral continuam abertos. As atualizações de 07/11 abaixo prevalecem sobre estados históricos de casos abertos. O fechamento de produtos de duas quadráticas com resto cúbico é uma prova candidata sob I6; não deve ser usado como resultado estabelecido antes da auditoria. Não se aplica a uma quártica arbitrária nem somente às condições de peso e pico.
+
+**Atualização de 10/11.** Para as quárticas RS bent em 12 variáveis, as técnicas 33 a 40 ao fim do caderno prevalecem sobre os registros históricos desta frente. Entre as funções exteriores à família afim na diagonal antipodal inteira, 10.485.760 são afins nas classes do hiperplano antipodal invariante de dimensão cinco. O tipo de peso 24 recebeu classificação algébrica com duas comparações finitas de coeficientes e auditoria adversarial por Astra. A exclusão dos demais tipos usa paridade e contagem exata, com recontagem independente comunicada pelo Fable. As 8.730.624 quárticas exteriores restantes ainda aguardam classificação algébrica. O Fable confirmou o critério local para fibras de 16 pontos e reproduziu a contagem de 2.326.528 funções exclusivas de V₂.
 
 Usamos três indicações de origem: **literatura**, para ferramentas clássicas com fonte identificada; **adaptação**, para sua especialização e combinação nesta pesquisa; **argumento local**, para uma dedução escrita aqui e auditada, ainda sem prioridade estabelecida. Os créditos entre Argon, Claude, Codex, Astra e os agentes de auditoria são preservados na seção final.
 
@@ -558,3 +560,114 @@ Foram construídas testemunhas I6 nas classes semissimples F4+F4 e repetida (t²
 | Buscas GPU | Exclusões apenas nas amostras e famílias documentadas | Não extrapolar ausência nem somar lotes sobrepostos |
 
 A versão congelada para revisão está em fechamento_produto_cubico_07nov. Não alterar esse instantâneo ao incorporar observações posteriores; produzir uma revisão nova. Conservar créditos a Opus pelos lemas de absorção e níveis, a Astra pela origem espectral e a Codex pela redução por hiperplanos, pareamento e certificados aqui descritos. Ferramentas clássicas continuam atribuídas à literatura. Nenhuma alegação de novidade está sendo feita.
+
+## Técnica 33 — Walsh parcial nas fibras de um mapa
+
+**Origem e hipótese.** A ortogonalidade dos caracteres dá a construção de Maiorana–McFarland e suas extensões com fibras maiores. Seja n par e suponha que f é afim nas classes de um subespaço fixo de dimensão d. Escolha um complemento e escreva f(y,v)=v·π(y)+H(y), com y ∈ F₂^(n−d) e v ∈ F₂^d. A técnica também vale sem simetria de rotação.
+
+**Argumento.** Somar primeiro em v seleciona a fibra P_β=π⁻¹(β). Obtém-se
+
+    W_f(α,β) = 2^d · Σ_(y∈P_β) (−1)^(H(y)+α·y).
+
+Para bentness, cada soma da direita, sem o fator 2^d, deve ter módulo 2^(n/2−d). Parseval no espaço de y dá |P_β|=2^(n−2d). Para cada fibra desse tamanho, a condição completa é que o sinal apoiado nela tenha esse módulo em **todas** as frequências. De modo equivalente, sua autocorrelação deve se anular em cada deslocamento não nulo.
+
+**Aplicação e limite.** Em n=12, d=5 dá quatro pontos e módulo dois. Para d=4, são 16 pontos e módulo quatro. A cardinalidade restringe os mapas candidatos. A escolha de um único H compatível com todas as fibras, com a rotação e com o grau exige uma etapa global. [Derivação e referência à construção de fibras de quatro pontos](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/blob/695da6501b82ab9c7c654eee0f796406bf2371ed/research_updates/2026_11_09_n12_mixed/EXTERIOR_QUARTICO_N12.md)
+
+## Técnica 34 — Reconhecer exatamente uma fibra de quatro pontos
+
+**Origem e hipótese.** Adaptação elementar do Walsh parcial para n-2d=2. Considere quatro pontos distintos y₁,…,y₄, com valores de fase h_i.
+
+**Argumento.** A soma de quatro sinais tem módulo dois exatamente quando seu produto vale -1. Na frequência α, o expoente do produto é Σ_i h_i+α·Σ_i y_i em F₂. Na frequência zero obtém-se Σ_i h_i=1. Nas demais frequências, exige-se Σ_i y_i=0. Quatro pontos distintos com essa última propriedade formam um plano afim. Reciprocamente, a paridade ímpar no plano dá o módulo exigido para todo α.
+
+**Aplicação e alcance.** Para cada rótulo de π, testam-se quatro pontos distintos, sua soma vetorial e uma equação binária para a fase. Isso substitui uma transformada por fibra por um critério necessário e suficiente. Sua equivalência depende do número quatro. [Prova do critério](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/blob/695da6501b82ab9c7c654eee0f796406bf2371ed/research_updates/2026_11_09_n12_mixed/EXTERIOR_QUARTICO_N12.md)
+
+## Técnica 35 — Reduzir o grau nas variáveis antipodais
+
+**Origem e hipótese.** Redução local certificada para toda RS bent em 12 variáveis de grau total até quatro. Use duas metades a,b ∈ F₂⁶ e as coordenadas z=a+b, w=b. O grau em w conta apenas os fatores de coordenadas de w no monômio.
+
+**Argumento.** Pela inversão de Walsh de uma função bent, o coeficiente multilinear inteiro de (-1)^f em qualquer suporte de peso oito é múltiplo de oito. Pela expansão em produtos de monômios da ANF, isso força paridade zero para os pares de monômios quárticos disjuntos cuja união é esse suporte. Nas coordenadas de órbita, essas paridades dão equações quadráticas nos coeficientes de topo. Dois certificados somam equações e seus múltiplos por coeficientes de topo para anular as duas formas lineares que podem ocorrer nos monômios quárticos com pelo menos três fatores de w. A verificação cobre as 135 máscaras relevantes, das quais 87 já têm coeficiente identicamente zero.
+
+Restam possíveis cúbicos puros em w. A meia-volta envia w a w+z. Na diferença de um cúbico w_iw_jw_k, o coeficiente de w_iw_j ganha z_k. As diferenças dos termos de grau até dois em w têm grau em w no máximo um. A independência das coordenadas z_k anula os coeficientes cúbicos restantes. Portanto
+
+    f(z,w) = h(z) + ℓ(z)·w + Σ_(i<j) B_ij(z) w_i w_j, com grau(B_ij) ≤ 2.
+
+**Aplicação e limite.** A matriz polar alternada B(z) satisfaz B(z)z=0. Para z ≠ 0, seu posto é par e vale no máximo quatro. Um subespaço V dá afinidade nas suas classes exatamente quando B(z) se anula em V × V para todo z. A derivação dos dois certificados usa explicitamente as órbitas de 12 variáveis. [Identidades, máscaras e verificador](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/blob/695da6501b82ab9c7c654eee0f796406bf2371ed/research_updates/2026_11_09_n12_mixed/EXTERIOR_QUARTICO_N12.md)
+
+## Técnica 36 — Linearizar as condições de sinal e certificar somas incompatíveis
+
+**Sinais em uma fibra geral.** Seja M_(α,y)=(-1)^(α·y) a matriz de caracteres restrita às colunas da fibra P, e seja A o módulo exigido pela técnica 33. Introduzir sinais s_y,τ_α ∈ {-1,1} escreve simultaneamente todas as condições como Ms=Aτ. A igualdade é linear sobre os inteiros nos dois grupos de sinais. O domínio binário dos sinais continua essencial. Uma combinação inteira de linhas fornece uma identidade entre somas assinadas, e uma incompatibilidade de resíduos nessa identidade certifica a exclusão da configuração considerada.
+
+**Origem e hipótese.** Álgebra linear binária aplicada à técnica 34. Fixado um mapa com fibras planas e um levantamento RS H₀ do grau desejado, escreva toda fase possível como H=H₀+Σ_(j=1,…,m) x_j h_j. As funções h_j formam uma base do núcleo das fases que preservam o mapa.
+
+**Argumento.** O produto dos quatro sinais da fibra deve valer -1. Em expoentes binários, isso dá Rx=b, com R_(β,j)=Σ_(y∈P_β) h_j(y) e b_β=1+Σ_(y∈P_β) H₀(y). Um vetor λ com λᵀR=0 e λᵀb=1 é um certificado de impossibilidade. Basta somar as equações indicadas e conferir 0=1. Quando o sistema é compatível, há 2^(m−posto(R)) fases.
+
+**Aplicação.** No bloco exterior afim no hiperplano U, o núcleo tem dimensão 15. A rotação permite agrupar as equações por órbita porque a correção de fase entre planos consecutivos soma zero. Essa verificação inclui o lado direito. Para os mapas planos do tipo de peso 24, as linhas não nulas assumem duas formas independentes. Nos mapas compatíveis, restam 2¹³ fases. A igualdade das linhas em dois planos injetivos deixa a soma dos respectivos lados direitos como obstrução explícita.
+
+**Limite.** A paridade de cada fibra vira uma equação linear graças ao critério de quatro pontos. Em fibras maiores, a passagem aos expoentes binários exige um novo argumento para o módulo espectral pedido. [Equações e certificados de fase](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/blob/695da6501b82ab9c7c654eee0f796406bf2371ed/research_updates/2026_11_09_n12_mixed/FASES_QUARTICAS_N12.md) · [Demonstração posterior para o tipo de peso 24](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/blob/695da6501b82ab9c7c654eee0f796406bf2371ed/research_updates/2026_11_09_n12_mixed/CLASSIFICACAO_F4_BLOCO_U.md)
+
+## Técnica 37 — Acoplar as linhas pares e ímpares sobre F₄
+
+**Origem e hipótese.** Classificação de Codex para o tipo de peso 24, com auditoria adversarial por Astra. Em n=12, tome U=ker σ no espaço antipodal, s=σ(w), q(z)=π(z,0)+π(z,1). O peso de q conta os z com valor vetorial não nulo. Separe as linhas pela paridade σ(z). No tipo considerado, q se anula nas linhas ímpares e em oito linhas pares.
+
+**Argumento.** Agrupar as coordenadas de índices pares e ímpares em triplas produz duas coordenadas em K=F₄, com ω²=ω+1. A rotação de duas posições escala essas coordenadas por ω. Norma N(u)=u³ e traço Tr(u)=u+u² exprimem os termos escalares. Os coeficientes nas duas paridades vêm de um só polinômio RS. Impor os planos fixos, a ocupação dos rótulos e a soma zero nos planos pares reduz a parte par a 16 escolhas para cada valor de um bit ε. A parte ímpar precisa preencher os rótulos disponíveis e satisfazer a paridade da fase. A comparação de fases entre dois planos pares ainda impõe uma condição sobre os coeficientes ímpares.
+
+**Aplicação e revisão.** Com ε=0, as 16 escolhas pares admitem 48 escolhas ímpares cada. Com ε=1, oito admitem 64 escolhas cada. Assim 16·48+8·64=1.280 mapas admitem fase. A primeira comparação finita de coeficientes verifica as identidades na origem de um espaço afim de mapas e em 27 direções. A segunda verifica, em cada uma das 32 partes pares, a origem e dez direções de mapas, juntamente com a ação das 15 direções de fase. A extensão a esses espaços inteiros usa a dependência afim das identidades verificadas. [Classificação, parâmetros e auditoria](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/blob/695da6501b82ab9c7c654eee0f796406bf2371ed/research_updates/2026_11_09_n12_mixed/CLASSIFICACAO_F4_BLOCO_U.md)
+
+## Técnica 38 — Identificar a mesma parametrização por um quociente de rótulos
+
+**Origem e hipótese.** Dicionário entre a descrição em K e as funções ψ do parecer independente do Fable para o mesmo tipo de peso 24. Represente o rótulo β=π(z,0) por seis bits com β₅=0. Defina y_i=β_i+β_(i+3) para 0 ≤ i<3 e ψ(z)=(y₀,y₁,y₂). A projeção anula q(z), logo π(z,1) dá o mesmo resultado.
+
+**Argumento.** As três componentes determinam inversivelmente o bit c=y₀+y₁+y₂ e o elemento P=y₀+ω²y₁+ω y₂ de K. Para cada ε, há quatro restrições pares distintas de ψ. Fixado ε, a restrição ímpar depende de um par (a,b) de K, com 15 possibilidades se ε=0 e três se ε=1. Assim há 4·15+4·3=72 funções ψ. Para cada uma, em coordenadas da parte ímpar, duas condições L ≠ 0, L+(C')² ≠ 0 deixam nove pares (L,C'). A equação linear que fixa L tem quatro soluções nos outros dois coeficientes. Seguem 36 escolhas ímpares por ψ e quatro orientações pares independentes, totalizando 72·36·4=10.368 mapas planos.
+
+| Número de funções ψ | Escolhas ímpares com fase por ψ | Mapas com fase, com as quatro orientações |
+|---:|---:|---:|
+| 32 | 6 | 768 |
+| 4 | 20 | 320 |
+| 2 | 24 | 192 |
+| 34 | 0 | 0 |
+
+**Aplicação e limite.** As condições de traço explicam a tabela. Para ε=0, Tr(b)=1 deixa oito pares e seis escolhas ímpares por par. Para ε=1, permanecem duas restrições pares. Cada uma admite 24 escolhas para a=1 e 20 para cada a ∈ {ω,ω²}. A tabela conta mapas com pelo menos uma fase. Multiplicar a última coluna por 2¹³ dá o número de funções booleanas. O dicionário foi conferido nos 10.368 mapas. [Seção 9 da classificação e verificador](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/blob/695da6501b82ab9c7c654eee0f796406bf2371ed/research_updates/2026_11_09_n12_mixed/CLASSIFICACAO_F4_BLOCO_U.md)
+
+## Técnica 39 — Documentar o alcance de classificação, contagem e controle
+
+**Origem e hipótese.** Procedimento de revisão aplicado à classificação das quárticas exteriores afins em U. O caso q=0 corresponde à afinidade na diagonal inteira. Para o bloco exterior, a cobertura exige tratar todos os sete valores não nulos do espaço de q, de dimensão três.
+
+**Argumento e aplicação.** A parametrização do tipo de peso 24 explica a cobertura das duas famílias e suas multiplicidades. A exclusão dos outros tipos tem evidência própria. Em uma fibra plana, uma dupla vertical obriga que o plano seja a união de duas duplas verticais. As linhas em que q ≠ 0 fornecem duas entradas cada, distribuídas em planos injetivos de quatro pontos. Seu número é wt(q)/2, o que exclui os dois tipos de peso 31. Nos tipos de pesos 16, 28 e 30, a contagem exata por ramos deu zero mapas planos. O Fable comunicou uma recontagem independente dos cinco tipos de peso par, com 2²⁸ mapas por tipo. A consolidação registra esse relato e a ausência de importação dos arquivos dessas execuções.
+
+**Alcance.** O total do bloco exterior afim em U é 1.280·2¹³=10.485.760. A exclusão inteiramente algébrica dos tipos de pesos 16, 28 e 30 permanece aberta. A conferência da ANF e dos 4.096 valores de Walsh valida cada testemunha examinada. A cobertura do bloco vem da classificação e das exclusões anteriores. Das outras 8.730.624 quárticas exteriores, o catálogo atribui 4.227.072 à dimensão máxima de afinidade antipodal invariante quatro, 4.194.304 à dimensão três e 309.248 à dimensão dois. A classificação algébrica desses três blocos permanece aberta. [Consolidação e atribuição da recontagem](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/blob/695da6501b82ab9c7c654eee0f796406bf2371ed/research_updates/2026_11_09_n12_mixed/CONSOLIDACAO_BLOCO_U.md) · [Escopo dos blocos seguintes](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/blob/695da6501b82ab9c7c654eee0f796406bf2371ed/research_updates/2026_11_09_n12_mixed/MISSAO_FABLE_DIM4.md)
+
+## Técnica 40 — Códigos em fibras de 16 pontos
+
+**Estado em 10/11.** O Fable confirmou a derivação e conferiu as 65.536 escolhas de sinais em cada um de 12 conjuntos de controle. A pesquisa de prioridade permanece pendente.
+
+**Hipótese e enunciado.** Seja P ⊆ F₂⁸ um conjunto de 16 pontos distintos. Enumere seus pontos e forme o código binário C de comprimento 16 gerado pela constante e pelas avaliações das coordenadas em P. Então k=dim C=1+dimensão afim de P. O critério para a existência de sinais sobre P com módulo de Walsh quatro em todas as frequências é C ⊆ C⊥ e k ≤ 7. Sob auto-ortogonalidade, o número de fases locais é
+
+    2^(15−k) − 128.
+
+**Derivação.** Escreva os sinais como (-1)^(h_i). Módulo espectral quatro implica que as somas são congruentes a quatro módulo oito. Na direção inversa, a congruência torna cada quadrado pelo menos 16, e Parseval dá média dos quadrados exatamente 16. Traduzida no código, a congruência exige wt(h) ≡ 2 mod 4 e h· c=wt(c)/2 mod 2 para todo c ∈ C, com pesos de C pares. A polarização de wt(c)/2 dá o produto escalar, de modo que a linearidade exige auto-ortogonalidade. Quando ela vale, as soluções da condição linear formam um trasladado de C⊥, com 2^(16−k) palavras, todas de peso par. A soma de (-1)^(wt(h)/2) no trasladado, calculada por projeção de Fourier, dá 256. As palavras de peso dois módulo quatro são (2^(16−k)−256)/2.
+
+| Dimensão afim de P | k | Fases locais se C for auto-ortogonal |
+|---:|---:|---:|
+| 4 | 5 | 896 |
+| 5 | 6 | 384 |
+| 6 | 7 | 128 |
+| 7 | 8 | 0 |
+
+**Aplicação e limite.** Para afinidade em dimensão quatro, o lema permite filtrar cada suporte sem supor que todo suporte é um subespaço afim. A compatibilidade entre as fibras continua a depender de um único polinômio H que preserve o grau e a rotação. Os dois subespaços invariantes de dimensão quatro dão núcleos globais de fase de dimensões 19 e 21. Multiplicar as contagens de fases locais como se as escolhas fossem independentes perderia essas restrições. [Enunciado, derivação completa e perguntas de auditoria](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/blob/695da6501b82ab9c7c654eee0f796406bf2371ed/research_updates/2026_11_09_n12_mixed/MISSAO_FABLE_DIM4.md)
+
+**Resultado comunicado pelo Fable para V₂.** A contagem independente percorreu os 2³¹ mapas e reproduziu 2.326.528 funções exclusivas. Dos 17.040 mapas exclusivos com fibras auto-ortogonais, 4.032 foram excluídos pelo posto oito, 10.224 pelo sistema linear global e 2.016 pela condição quadrática. Restaram 768 mapas. Em cada mapa sobrevivente, uma fibra é um flat de dimensão quatro. As outras 15 têm dimensão afim cinco ou seis. O Fable conferiu oito testemunhas por Walsh completo.
+
+## Técnica 41 — Momentos de ordem maior nas fibras
+
+**Origem e hipótese.** A expansão inteira usada para 16 pontos se estende a um conjunto P de 2^(2t) pontos distintos em F₂ᵇ, com t ≥ 1. Escreva x_I para o produto das coordenadas de I. Sejam N_I a soma de x_I em P e B_I a soma de x_I H em P.
+
+**Critério exato.** O Walsh do suporte sinalizado tem módulo 2ᵗ em todas as frequências se e somente se
+
+    B_∅ ≡ 2^(t−1) mod 2ᵗ.
+    Para 1 ≤ |I| ≤ t, N_I é par e B_I ≡ N_I/2 mod 2^(t−|I|).
+
+Expanda o caráter como produto de 1−2x_i a_i, onde a é a frequência. O coeficiente inteiro na máscara I é (−2)^|I| (N_I−2B_I). A inversão de Möbius inteira permite impor a congruência do espectro a 2ᵗ módulo 2^(t+1) coeficiente a coeficiente. A congruência torna todos os módulos pelo menos 2ᵗ. Parseval dá média dos quadrados igual a 2^(2t).
+
+**Consequência para o suporte.** Todas as somas de x_I com |I| ≤ t são pares. Assim 1_P pertence ao dual de RM(t,b), isto é, a RM(b−t−1,b). Em n=12, com afinidade ao longo de r dimensões, temos b=12−r e t=6−r. Toda fibra tem indicador de grau no máximo cinco. A condição equivale a exigir grau no máximo cinco em todos os produtos de coordenadas distintas de π. Isso segue da expansão dos indicadores 1_(π=β) e da identidade inversa que soma os indicadores em que as coordenadas escolhidas do rótulo valem um.
+
+**Aplicação e limite.** Para r=3, as fibras têm 64 pontos. Após a paridade, as condições de fase envolvem graus dois e quatro nos coeficientes de H. Para r=2, as fibras têm 256 pontos e a condição final tem grau oito. Essas cotas vêm dos bits do peso, que são os polinômios simétricos elementares de graus 1, 2, 4 e 8 sobre F₂. O grau cinco do indicador filtra o suporte. A contagem global exige compatibilidade das fases em todas as fibras.
