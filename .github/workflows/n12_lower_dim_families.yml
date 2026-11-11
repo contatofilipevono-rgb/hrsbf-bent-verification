@@ -1,0 +1,45 @@
+name: Describe phases on the 18 successful map orbits
+on:
+  push:
+    branches: [codex/n12-mixed-quartic]
+    paths:
+      - '.github/workflows/n12_lower_dim_families.yml'
+      - 'research_updates/2026_11_09_n12_mixed/lower_dim_phase_families.py'
+permissions:
+  contents: read
+jobs:
+  describe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {space: 1, summary: lower-dim-v3-summary.json}
+          - {space: 3, summary: lower-dim-v2-summary.json}
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - name: Describe the exact phase sets
+        env:
+          SPACE: ${{ matrix.space }}
+          SUMMARY: ${{ matrix.summary }}
+        run: |
+          mkdir -p families
+          python3 -u lower_dim_phase_families.py --space "$SPACE" --summary "$SUMMARY" --representatives reps.bin
+          python3 -u lower_dim_phase_prepare.py --space "$SPACE" --supports reps.bin --output tasks.bin --shift-basis-output shifts.json
+          g++ -O3 -march=native -std=c++17 -Wall -Wextra lower_dim_phase_count.cpp -o phase_count
+          ./phase_count tasks.bin families/result 32 phases.bin
+          python3 -u lower_dim_phase_verify.py --tasks tasks.bin --prefix families/result
+          python3 -u lower_dim_phase_families.py --space "$SPACE" --summary "$SUMMARY" --phases phases.bin --shift-basis shifts.json --output families/description.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lower-dim-phase-families-${{ matrix.space }}
+          path: research_updates/2026_11_09_n12_mixed/families/
+          if-no-files-found: error

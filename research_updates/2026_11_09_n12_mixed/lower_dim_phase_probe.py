@@ -52,7 +52,7 @@ def inspect(space, support_file, limit, output):
             stats[f"free_{len(free)}"] += 1
             directions = [xor_terms(model.phases, f) for f in free]
             representatives, shifts = affine_phase_quotient(selected, width, directions)
-            assert len(representatives) + shifts == len(free)
+            assert len(representatives) + len(shifts) == len(free)
             stats[f"quotient_{len(representatives)}"] += 1
             witness = phase ^ xor_terms(model.phases, root)
             if exact(equations, witness):

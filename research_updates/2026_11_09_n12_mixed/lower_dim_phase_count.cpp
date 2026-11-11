@@ -155,8 +155,8 @@ void print_histogram(std::ostream& out, const std::map<int, Word>& data) {
 }
 
 int main(int argc, char** argv) {
-    if (argc != 4) {
-        std::cerr << "Usage: lower_dim_phase_count TASKS OUTPUT_PREFIX MAX_RESIDUAL_DIMENSION\n";
+    if (argc != 4 && argc != 5) {
+        std::cerr << "Usage: lower_dim_phase_count TASKS OUTPUT_PREFIX MAX_RESIDUAL_DIMENSION [PHASES]\n";
         return 2;
     }
     auto start = std::chrono::steady_clock::now();
@@ -175,6 +175,9 @@ int main(int argc, char** argv) {
     const int max_residual_dimension = std::stoi(argv[3]);
     std::ofstream witnesses(prefix + ".witnesses.bin", std::ios::binary);
     std::ofstream deferred(prefix + ".deferred.bin", std::ios::binary);
+    std::ofstream phases;
+    if (argc == 5) phases.open(argv[4], std::ios::binary);
+    if (argc == 5 && !phases) throw std::runtime_error("Cannot open phase output");
     Statistics result;
     while (input.peek() != EOF) {
         Word code;
@@ -234,6 +237,10 @@ int main(int argc, char** argv) {
             if (word) add(root, directions[__builtin_ctzll(word)], words, properties);
             if (!compatible(root, moments, properties)) continue;
             if (!count) first = root;
+            if (argc == 5) {
+                phases.write(reinterpret_cast<char*>(&code), 8);
+                phases.write(reinterpret_cast<char*>(root.value.data()), 8 * words);
+            }
             count++;
         }
         if (count) {
@@ -245,7 +252,8 @@ int main(int argc, char** argv) {
             witnesses.write(reinterpret_cast<char*>(first.value.data()), 8 * words);
         }
     }
-    if (!witnesses || !deferred) throw std::runtime_error("Cannot write phase output");
+    if (!witnesses || !deferred || (argc == 5 && !phases))
+        throw std::runtime_error("Cannot write phase output");
     std::ofstream out(prefix + ".json");
     out << "{\n\"space\":" << space << ",\"tasks\":" << result.tasks
         << ",\"inconsistent\":" << result.inconsistent << ",\"deferred\":" << result.deferred

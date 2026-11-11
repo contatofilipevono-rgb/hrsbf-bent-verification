@@ -71,7 +71,7 @@ def affine_phase_quotient(fibres, width, directions, signatures=None):
         for i, signature in enumerate(signatures):
             projections[i] |= signature << (len(fibres) * size)
     image, kernel = image_and_kernel(projections)
-    return [code for _, code in image], len(kernel)
+    return [code for _, code in image], kernel
 
 
 def signed_walsh(fibre, phase, width):

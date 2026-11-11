@@ -1,0 +1,69 @@
+[
+  {
+    "space": 2,
+    "basis": [
+      27,
+      54
+    ],
+    "maps_after_cubic_filter": 884736,
+    "support_maps": 277653,
+    "support_orbits": 6047,
+    "phase_tasks": 98,
+    "quadratic_inconsistent": 85,
+    "tested_phase_orbits": 13,
+    "admitted_orbits": [],
+    "functions": 0
+  },
+  {
+    "space": 3,
+    "basis": [
+      21,
+      42
+    ],
+    "maps_after_cubic_filter": 4063232,
+    "support_maps": 386016,
+    "support_orbits": 5874,
+    "phase_tasks": 344,
+    "quadratic_inconsistent": 307,
+    "tested_phase_orbits": 37,
+    "admitted_orbits": [
+      {
+        "map_code": 1,
+        "orbit_size": 1,
+        "phases_per_map": 71680,
+        "functions": 71680
+      },
+      {
+        "map_code": 19,
+        "orbit_size": 64,
+        "phases_per_map": 3072,
+        "functions": 196608
+      },
+      {
+        "map_code": 822549,
+        "orbit_size": 32,
+        "phases_per_map": 512,
+        "functions": 16384
+      },
+      {
+        "map_code": 115044639,
+        "orbit_size": 32,
+        "phases_per_map": 256,
+        "functions": 8192
+      },
+      {
+        "map_code": 115044803,
+        "orbit_size": 32,
+        "phases_per_map": 256,
+        "functions": 8192
+      },
+      {
+        "map_code": 202149121,
+        "orbit_size": 2,
+        "phases_per_map": 4096,
+        "functions": 8192
+      }
+    ],
+    "functions": 309248
+  }
+]

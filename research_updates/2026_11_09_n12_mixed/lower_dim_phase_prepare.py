@@ -62,7 +62,7 @@ def words(value, width):
     return value.to_bytes(width, "little")
 
 
-def prepare(space, support_file, output, start, stop):
+def prepare(space, support_file, output, start, stop, shift_basis_output=None):
     elapsed = perf_counter()
     model = build(BASES[space - 1])
     r = len(model.basis)
@@ -73,6 +73,7 @@ def prepare(space, support_file, output, start, stop):
     labels = orbit_representatives(model.basis)
     map_signatures, phase_signatures, nprop = properties(model, space)
     stats = Counter()
+    shift_bases = {}
     with support_file.open("rb") as source, output.open("wb") as target:
         target.write(b"PHS3451\0")
         target.write(struct.pack("<4I", space, size // 64, nprop, 0))
@@ -110,6 +111,8 @@ def prepare(space, support_file, output, start, stop):
                 stats["excluded_after_linear"] += 1
                 continue
             reps, symmetry = affine_phase_quotient(selected, model.nbase, directions, signatures)
+            if shift_basis_output is not None:
+                shift_bases[str(code)] = [hex(xor_terms(directions, v)) for v in symmetry]
             directions = [xor_terms(directions, v) for v in reps]
             signatures = [xor_terms(signatures, v) for v in reps]
             residual = set()
@@ -133,7 +136,7 @@ def prepare(space, support_file, output, start, stop):
             stats["tasks"] += 1
             stats[f"phase_dimension_{len(directions)}"] += 1
             stats["phase_evaluations"] += 1 << len(directions)
-            target.write(struct.pack("<QIII", code, len(directions), symmetry, len(ordered)))
+            target.write(struct.pack("<QIII", code, len(directions), len(symmetry), len(ordered)))
             target.write(words(base, size // 8))
             target.write(words(signature, nprop * 8))
             for h, value in zip(directions, signatures):
@@ -146,6 +149,8 @@ def prepare(space, support_file, output, start, stop):
               "labels": labels, "properties": nprop, "statistics": dict(stats),
               "seconds": perf_counter() - elapsed}
     output.with_suffix(".json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    if shift_basis_output is not None:
+        shift_basis_output.write_text(json.dumps(shift_bases, indent=2) + "\n", encoding="utf-8")
     print(result)
     return result
 
@@ -157,8 +162,9 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--start", type=int, default=0)
     parser.add_argument("--stop", type=int)
+    parser.add_argument("--shift-basis-output", type=Path)
     args = parser.parse_args()
-    prepare(args.space, args.supports, args.output, args.start, args.stop)
+    prepare(args.space, args.supports, args.output, args.start, args.stop, args.shift_basis_output)
 
 
 if __name__ == "__main__":
