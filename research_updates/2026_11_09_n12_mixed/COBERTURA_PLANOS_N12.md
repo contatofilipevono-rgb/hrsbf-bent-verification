@@ -58,3 +58,16 @@ No relatório de V1, 290.062.336 é o total antipodal até grau quatro. Aqui usa
 [Relatório de V1 e V2](https://github.com/contatofilipevono-rgb/n1-sat-cubos/blob/6471480/bloco_dim4_n12/RESULTADOS_DIM4.md)
 
 O teorema dá uma cobertura computacional independente da classificação por catálogo. As formas fechadas dos mapas e a explicação algébrica das multiplicidades das fases permanecem em investigação.
+
+## Interseção de V1 e V2
+
+Para somar os dois blocos de dimensão quatro, é preciso controlar a afinidade simultânea. A imposição das duas restrições de afinidade deixa um espaço RS de dimensão 45, cuja imagem polar tem dimensão dois. A comparação de coeficientes identifica quatro classes no sistema de V2.
+
+| M | κ | Afinidade em U |
+|---|---:|---|
+| 0 | 0 | Sim |
+| 0 | 1 | Sim |
+| I+R³ | 0 | Não |
+| I+R³ | 1 | Não |
+
+As duas últimas classes têm contagem de fases zero na enumeração exata por classe de V2. Isso mostra que, entre as funções bent afins em V1 e V2, a interseção é exatamente o bloco afim em U, que inclui a diagonal. Assim 1.900.544 e 2.326.528 podem ser somados depois de excluir U de cada lado. O teste da interseção está em dim4_wedge_obstruction.py. [Tabela das fases por classe de V2](https://github.com/contatofilipevono-rgb/n1-sat-cubos/blob/1488a48/bloco_dim4_n12/PROVA_POLAR_DIM4.md)
