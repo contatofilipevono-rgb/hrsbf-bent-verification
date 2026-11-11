@@ -11,6 +11,7 @@ on:
       - 'research_updates/2026_11_09_n12_mixed/near_antipodal_field.py'
       - 'research_updates/2026_11_09_n12_mixed/construct_near_antipodal_field.py'
       - 'research_updates/2026_11_09_n12_mixed/certify_near_antipodal_field.py'
+      - 'research_updates/2026_11_09_n12_mixed/compare_fable_psi.py'
 
 permissions:
   contents: read
@@ -53,6 +54,11 @@ jobs:
           python construct_near_antipodal_field.py phase-audit/field-counts.json --compare-planes phase-audit/plane-maps.bin --witnesses phase-audit/field-witnesses.txt
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
           python count_near_antipodal.py --verify-witnesses phase-audit/field-witnesses.txt
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+      - name: Match the 72 psi functions and the 6, 20, 24 phase counts
+        shell: pwsh
+        run: |
+          python compare_fable_psi.py phase-audit/fable-comparison.json --compare-planes phase-audit/plane-maps.bin
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
       - uses: actions/upload-artifact@v4
         with:

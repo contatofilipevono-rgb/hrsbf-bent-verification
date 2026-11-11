@@ -311,8 +311,64 @@ $$
 
 construct_near_antipodal_field.py gera os 1.280 mapas diretamente pelas fórmulas. Não usa a lista de 10.368 mapas como entrada obrigatória. A comparação opcional com a lista reproduzida anteriormente dá igualdade exata dos conjuntos.
 
-certify_near_antipodal_field.py verifica os dois lemas de coeficientes em bases dos espaços. As contas de 48 e 64 acima são deduções sobre F4. A auditoria adversarial pelo Astra confirmou a classificação e as duas comparações de coeficientes. A revisão humana e a exclusão dos demais tipos de q permanecem pendentes. A exclusão não faz parte desta prova.
+certify_near_antipodal_field.py verifica os dois lemas de coeficientes em bases dos espaços. As contas de 48 e 64 acima são deduções sobre F4. A auditoria adversarial pelo Astra confirmou a classificação e as duas comparações de coeficientes. A revisão humana permanece pendente. A exclusão dos demais tipos de q foi relatada pelo Fable por recontagem exaustiva independente e fica registrada em CONSOLIDACAO_BLOCO_U.md. Essa exclusão não é uma consequência da classificação sobre F4.
 
 A construção emite 40 controles determinísticos, distribuídos por suas famílias. Todos foram conferidos pela ANF completa e pelos 4.096 valores de Walsh. A etapa adicional de 2.048 configurações de coeficientes pares confere os XORs usados na classificação da seção 4 e retém 16 partes pares por valor de epsilon. Essa checagem é redundante com a prova por casos escrita na seção.
 
 Como controle negativo, somar a fase R_0 ao primeiro controle preservou a simetria de rotação e o grau quatro, mas produziu amplitudes de Walsh 0, 64 e 128, com multiplicidades 1.152, 2.560 e 384. O controle positivo correspondente tem todos os módulos de Walsh iguais a 64.
+
+
+## 9. Dicionário com as 72 funções psi do parecer do Fable
+
+Seja $\beta=\pi(z,0)$, lido como um vetor de seis coordenadas com $\beta_5=0$. Então
+
+$$
+\psi(z)=(\beta_0+\beta_3,\ \beta_1+\beta_4,\ \beta_2+\beta_5).
+$$
+
+A passagem da função afim em $U$ para o termo linear na ANF em todo $w$ acrescenta múltiplos do vetor de uns e o termo diagonal de $s\,q(z)\cdot w$. Ambos têm somas antipodais zero no tipo de peso 24. Por isso a fórmula acima coincide com a definição de psi pelo termo linear nas coordenadas da forma 9. Ela independe da escolha de $s$, pois $q$ também tem somas antipodais zero.
+
+Escreva $\psi=(y_0,y_1,y_2)$. O dicionário é
+
+$$
+c=y_0+y_1+y_2,\qquad P=y_0+\omega^2y_1+\omega y_2.
+$$
+
+Essa aplicação linear é invertível. Assim psi contém exatamente $c,P$, e esquece $Q$.
+
+Na parte par, psi depende apenas de $(\varepsilon,r,j)$. Há quatro restrições pares por valor de epsilon, num total de oito. Os dois parâmetros $\lambda,\mu$ são as quatro orientações invisíveis em psi.
+
+Na parte ímpar, psi depende apenas de $(a,b)$. Para $\varepsilon=0$, são os 15 pares não nulos. Para $\varepsilon=1$, são os três pares com $a\ne0,b=0$. Consequentemente,
+
+$$
+\#\psi=4\cdot15+4\cdot3=72.
+$$
+
+Para cada psi, as equações de $L$ e $\Delta$ da seção 5 dão nove escolhas de $(L,C')$ e quatro de $(A',B')$. Isso prova as 36 escolhas ímpares por psi. As quatro orientações pares são independentes. Logo
+
+$$
+10.368=72\cdot36\cdot4.
+$$
+
+O filtro de fase também fica explícito.
+
+- Na família $\varepsilon=0$, a condição $\operatorname{Tr}b=1$ deixa oito pares $(a,b)$. Para cada um deles, (9) dá três escolhas de $\rho$ e duas de $B'$, portanto seis escolhas. Com as quatro partes pares, são 32 funções psi e $32\cdot6\cdot4=768$ mapas.
+- Na família $\varepsilon=1$, é necessário $j=1$. Restam duas partes pares. Se $a=1$, há dois pares $(a,B')$ no caso $\rho=1$ e quatro nos outros dois casos. As quatro escolhas de $A'$ dão 24 possibilidades. Isso explica as duas funções psi com 24 escolhas.
+- Se $a=\omega$ ou $a=\omega^2$, há uma escolha de $B'$ no caso $\rho=1$ e quatro nos outros casos. São $5\cdot4=20$ possibilidades, dando quatro funções psi com 20 escolhas.
+- Sem fase ficam $4(15-8)+2\cdot3=34$ funções psi.
+
+Portanto a tabela do Fable fica deduzida pelos parâmetros.
+
+| Família | Funções psi | Escolhas ímpares com fase | Orientações | Mapas |
+|---|---:|---:|---:|---:|
+| $b\ne0,\ \operatorname{Tr}b=1,\ \varepsilon=0$ | 32 | 6 | 4 | 768 |
+| $a\in\{\omega,\omega^2\},\ b=0,\ \varepsilon=1,\ j=1$ | 4 | 20 | 4 | 320 |
+| $a=1,\ b=0,\ \varepsilon=1,\ j=1$ | 2 | 24 | 4 | 192 |
+| Sem fase | 34 | 0 | 4 | 0 |
+
+O gerador $\mu\mapsto\mu+1$ troca a orientação por $tq$, enquanto $\lambda\mapsto\lambda+1$ a troca por $(1+t)q$. Nas linhas em que $q\ne0$, os geradores do parecer do Fable satisfazem
+$\chi_1=\operatorname{orb}(z_0z_1)+\operatorname{orb}(z_0z_3)=t$ e
+$\chi_2=\operatorname{orb}(z_0z_2)+\operatorname{orb}(z_0z_3)=1+t$.
+Assim as duas descrições dão o mesmo grupo de quatro orientações.
+
+compare_fable_psi.py gera pelas fórmulas os 10.368 mapas, recupera as 72 funções psi e verifica a tabela. A comparação com a lista anterior é opcional e dá igualdade exata dos 10.368 mapas. O argumento de contagem acima usa a parametrização e as equações de traço.

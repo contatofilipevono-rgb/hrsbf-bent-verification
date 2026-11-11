@@ -1,0 +1,31 @@
+{
+  "plane_maps": 10368,
+  "psi_functions": 72,
+  "even_psi_restrictions": 8,
+  "maps_per_psi": 144,
+  "odd_choices_per_psi": 36,
+  "s_orientations": 4,
+  "families": [
+    {
+      "odd_choices_with_phase": 0,
+      "psi_functions": 34,
+      "maps_with_phase": 0
+    },
+    {
+      "odd_choices_with_phase": 6,
+      "psi_functions": 32,
+      "maps_with_phase": 768
+    },
+    {
+      "odd_choices_with_phase": 20,
+      "psi_functions": 4,
+      "maps_with_phase": 320
+    },
+    {
+      "odd_choices_with_phase": 24,
+      "psi_functions": 2,
+      "maps_with_phase": 192
+    }
+  ],
+  "selected_maps": 1280
+}
