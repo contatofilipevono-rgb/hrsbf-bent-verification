@@ -18,6 +18,41 @@ SIZE = 512
 MASK = (1 << SIZE) - 1
 HIGH = sum(1 << i for i in range(SIZE) if i.bit_count() >= 6)
 FIXED = frozenset(z for z in range(64) if (z & 7) == z >> 3)
+NORMAL_FORMS = {0: ("zero", 0), 351: ("A", 0), 492: ("A", 1), 179: ("A", 2),
+                157: ("B", 0), 325: ("B", 1), 472: ("B", 2),
+                315: ("C", 1), 56: ("C", 2)}
+
+
+def rotate_three(value, power):
+    if power == 0:
+        return value
+    return ((value << power) | (value >> (3 - power))) & 7
+
+
+def cross_three(a, b):
+    return sum(((((a >> ((i + 1) % 3)) & 1) & ((b >> ((i + 2) % 3)) & 1))
+                 ^ (((a >> ((i + 2) % 3)) & 1) & ((b >> ((i + 1) % 3)) & 1))) << i
+               for i in range(3))
+
+
+def normal_form_q(family, power):
+    columns = []
+    for z in range(64):
+        r = (z & 7) ^ (z >> 3)
+        parity = r.bit_count() & 1
+        if family == "zero":
+            values = [0, 0, 0]
+        elif family == "A":
+            values = [rotate_three(((1 << i) ^ r) * parity, power) for i in range(3)]
+        elif family == "B":
+            e = r ^ (7 * parity)
+            v = rotate_three(e, power)
+            values = [v if e >> i & 1 else 0 for i in range(3)]
+        else:
+            a = cross_three(r, rotate_three(r, power))
+            values = [7 if a >> i & 1 else 0 for i in range(3)]
+        columns.append(values)
+    return sum(columns[z][i] << (3 * (64 * i + z)) for i in range(3) for z in range(64))
 
 
 def decompose(mapping):
@@ -276,7 +311,10 @@ def main():
             continue
         reduced, balance = result
         root, directions, equations = reduced
-        row = {"q_code": code, "map_root": root, "map_directions": directions,
+        family, power = NORMAL_FORMS[code]
+        assert xor_terms(space.q_values, code) == normal_form_q(family, power)
+        row = {"q_code": code, "normal_form": [family, power],
+               "map_root": root, "map_directions": directions,
                "equations": [sorted(eq) for eq in equations],
                "balance": balance, "dimension": len(directions)}
         if args.construct:

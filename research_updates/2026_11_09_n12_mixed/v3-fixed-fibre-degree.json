@@ -1,0 +1,97 @@
+{
+  "coefficient_identity_basis_checks": 60,
+  "fixed_zero_high_degree_basis_checks": 54,
+  "quartic_orbit_masks": [
+    15,
+    23,
+    39
+  ],
+  "cases": [
+    {
+      "q_code": 0,
+      "normal_form": [
+        "zero",
+        0
+      ],
+      "affine_in_larger_V1": true,
+      "forced_quartic_coefficient": null
+    },
+    {
+      "q_code": 351,
+      "normal_form": [
+        "A",
+        0
+      ],
+      "affine_in_larger_V1": false,
+      "forced_quartic_coefficient": 0
+    },
+    {
+      "q_code": 492,
+      "normal_form": [
+        "A",
+        1
+      ],
+      "affine_in_larger_V1": false,
+      "forced_quartic_coefficient": 1
+    },
+    {
+      "q_code": 179,
+      "normal_form": [
+        "A",
+        2
+      ],
+      "affine_in_larger_V1": false,
+      "forced_quartic_coefficient": 1
+    },
+    {
+      "q_code": 157,
+      "normal_form": [
+        "B",
+        0
+      ],
+      "affine_in_larger_V1": true,
+      "forced_quartic_coefficient": null
+    },
+    {
+      "q_code": 325,
+      "normal_form": [
+        "B",
+        1
+      ],
+      "affine_in_larger_V1": true,
+      "forced_quartic_coefficient": null
+    },
+    {
+      "q_code": 472,
+      "normal_form": [
+        "B",
+        2
+      ],
+      "affine_in_larger_V1": true,
+      "forced_quartic_coefficient": null
+    },
+    {
+      "q_code": 315,
+      "normal_form": [
+        "C",
+        1
+      ],
+      "affine_in_larger_V1": false,
+      "forced_quartic_coefficient": null
+    },
+    {
+      "q_code": 56,
+      "normal_form": [
+        "C",
+        2
+      ],
+      "affine_in_larger_V1": false,
+      "forced_quartic_coefficient": null
+    }
+  ],
+  "remaining_Q": [
+    351,
+    315,
+    56
+  ]
+}

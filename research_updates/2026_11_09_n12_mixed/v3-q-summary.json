@@ -1,0 +1,1000 @@
+{
+  "supports": 21582,
+  "phase_tasks": 592,
+  "phase_orbits": 31,
+  "maps_with_phase": 256,
+  "functions": 4194304,
+  "generators": [
+    "11",
+    "13",
+    "19",
+    "25",
+    "31",
+    "reflection",
+    "multiplier_5"
+  ],
+  "cases": [
+    {
+      "q_code": 0,
+      "supports": 9966,
+      "maps_with_phase": 0,
+      "functions": 0
+    },
+    {
+      "q_code": 56,
+      "supports": 3168,
+      "maps_with_phase": 56,
+      "functions": 655360
+    },
+    {
+      "q_code": 157,
+      "supports": 928,
+      "maps_with_phase": 0,
+      "functions": 0
+    },
+    {
+      "q_code": 179,
+      "supports": 832,
+      "maps_with_phase": 0,
+      "functions": 0
+    },
+    {
+      "q_code": 315,
+      "supports": 3168,
+      "maps_with_phase": 56,
+      "functions": 655360
+    },
+    {
+      "q_code": 325,
+      "supports": 928,
+      "maps_with_phase": 0,
+      "functions": 0
+    },
+    {
+      "q_code": 351,
+      "supports": 832,
+      "maps_with_phase": 144,
+      "functions": 2883584
+    },
+    {
+      "q_code": 472,
+      "supports": 928,
+      "maps_with_phase": 0,
+      "functions": 0
+    },
+    {
+      "q_code": 492,
+      "supports": 832,
+      "maps_with_phase": 0,
+      "functions": 0
+    }
+  ],
+  "phase_details": [
+    {
+      "map_code": 1583270,
+      "orbit_size": 32,
+      "phases_per_map": 0,
+      "dimension": 0,
+      "quadratics": [],
+      "gauss_sums": []
+    },
+    {
+      "map_code": 1583330,
+      "orbit_size": 32,
+      "phases_per_map": 12288,
+      "dimension": 13,
+      "quadratics": [
+        [
+          0,
+          4,
+          8,
+          9,
+          16,
+          24,
+          32,
+          40,
+          64,
+          72,
+          136,
+          256,
+          2048,
+          2049,
+          2052,
+          2176,
+          2304,
+          4096,
+          4104
+        ],
+        [
+          0,
+          1,
+          5,
+          8,
+          9,
+          17,
+          24,
+          33,
+          40,
+          65,
+          72,
+          136,
+          256,
+          2048,
+          2049,
+          2052,
+          2176,
+          2304,
+          4100,
+          4104,
+          4112,
+          4128,
+          4160
+        ],
+        [
+          1,
+          4,
+          8,
+          128,
+          256,
+          2049,
+          2052,
+          2056,
+          2176,
+          2304
+        ]
+      ],
+      "gauss_sums": [
+        {
+          "sum": 8192,
+          "rank": 0
+        },
+        {
+          "sum": -2048,
+          "rank": 4
+        },
+        {
+          "sum": -4096,
+          "rank": 2
+        },
+        {
+          "sum": 1024,
+          "rank": 6
+        },
+        {
+          "sum": 2048,
+          "rank": 4
+        },
+        {
+          "sum": -2048,
+          "rank": 4
+        },
+        {
+          "sum": -4096,
+          "rank": 2
+        },
+        {
+          "sum": 4096,
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "map_code": 225448085,
+      "orbit_size": 32,
+      "phases_per_map": 24576,
+      "dimension": 12,
+      "quadratics": [
+        [
+          6,
+          12,
+          16,
+          20,
+          32,
+          68,
+          130,
+          132,
+          136,
+          160,
+          192,
+          514,
+          516,
+          520,
+          544,
+          576,
+          1026,
+          1028,
+          1032,
+          1056,
+          1088
+        ],
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          8,
+          9,
+          16,
+          17,
+          65,
+          66,
+          68,
+          72,
+          80,
+          129,
+          130,
+          132,
+          136,
+          144,
+          257,
+          258,
+          260,
+          264,
+          272,
+          512,
+          514,
+          516,
+          520,
+          528,
+          576,
+          640,
+          768,
+          1024,
+          1025,
+          1026,
+          1028,
+          1032,
+          1040,
+          1536
+        ]
+      ],
+      "gauss_sums": [
+        {
+          "sum": 4096,
+          "rank": 0
+        },
+        {
+          "sum": -1024,
+          "rank": 4
+        },
+        {
+          "sum": 0,
+          "rank": 6
+        },
+        {
+          "sum": 0,
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "map_code": 225448110,
+      "orbit_size": 32,
+      "phases_per_map": 0,
+      "dimension": 0,
+      "quadratics": [],
+      "gauss_sums": []
+    },
+    {
+      "map_code": 225448170,
+      "orbit_size": 32,
+      "phases_per_map": 12288,
+      "dimension": 14,
+      "quadratics": [
+        [
+          0,
+          8,
+          24,
+          40,
+          64,
+          80,
+          96,
+          128,
+          144,
+          160,
+          514,
+          516,
+          520,
+          544,
+          640,
+          768,
+          2048,
+          2050,
+          2052,
+          2056,
+          2080,
+          2176,
+          2304,
+          2560,
+          4096,
+          4098,
+          4100,
+          4128,
+          4160,
+          4352,
+          4608,
+          8194,
+          8196,
+          8200,
+          8224,
+          8320,
+          8448,
+          10240,
+          12288
+        ],
+        [
+          0,
+          4,
+          6,
+          8,
+          10,
+          32,
+          34,
+          128,
+          130,
+          512,
+          513,
+          520,
+          528,
+          544,
+          576,
+          640,
+          2048,
+          2049,
+          2056,
+          2064,
+          2080,
+          2112,
+          2176,
+          8192,
+          8193,
+          8200,
+          8208,
+          8224,
+          8256,
+          8320
+        ],
+        [
+          0,
+          24,
+          40,
+          80,
+          96,
+          144,
+          160,
+          4112,
+          4128
+        ]
+      ],
+      "gauss_sums": [
+        {
+          "sum": 16384,
+          "rank": 0
+        },
+        {
+          "sum": -4096,
+          "rank": 4
+        },
+        {
+          "sum": 1024,
+          "rank": 8
+        },
+        {
+          "sum": -4096,
+          "rank": 4
+        },
+        {
+          "sum": 2048,
+          "rank": 6
+        },
+        {
+          "sum": 0,
+          "rank": 6
+        },
+        {
+          "sum": 0,
+          "rank": 4
+        },
+        {
+          "sum": -8192,
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "map_code": 225448212,
+      "orbit_size": 32,
+      "phases_per_map": 24576,
+      "dimension": 12,
+      "quadratics": [
+        [
+          1,
+          2,
+          4,
+          5,
+          6,
+          10,
+          16,
+          17,
+          32,
+          33,
+          34,
+          64,
+          65,
+          130
+        ],
+        [
+          0,
+          2,
+          3,
+          6,
+          8,
+          9,
+          12,
+          16,
+          18,
+          24,
+          34,
+          40,
+          64,
+          65,
+          66,
+          68,
+          72,
+          80,
+          96,
+          129,
+          132,
+          144,
+          160,
+          192,
+          256,
+          257,
+          258,
+          260,
+          264,
+          272,
+          288,
+          384,
+          512,
+          514,
+          520,
+          576,
+          640,
+          768,
+          1024,
+          2048,
+          2050,
+          2056,
+          2112,
+          2176,
+          2304
+        ]
+      ],
+      "gauss_sums": [
+        {
+          "sum": 4096,
+          "rank": 0
+        },
+        {
+          "sum": -1024,
+          "rank": 4
+        },
+        {
+          "sum": 0,
+          "rank": 6
+        },
+        {
+          "sum": 0,
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "map_code": 225448239,
+      "orbit_size": 16,
+      "phases_per_map": 32768,
+      "dimension": 13,
+      "quadratics": [
+        [
+          0,
+          6,
+          8,
+          9,
+          16,
+          17,
+          18,
+          66,
+          4096,
+          4097,
+          4098
+        ],
+        [
+          1,
+          2,
+          8,
+          9,
+          10,
+          16,
+          17,
+          18,
+          2048,
+          2049,
+          2050
+        ]
+      ],
+      "gauss_sums": [
+        {
+          "sum": 8192,
+          "rank": 0
+        },
+        {
+          "sum": -2048,
+          "rank": 4
+        },
+        {
+          "sum": 2048,
+          "rank": 4
+        },
+        {
+          "sum": -4096,
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "map_code": 447615023,
+      "orbit_size": 16,
+      "phases_per_map": 0,
+      "dimension": 0,
+      "quadratics": [],
+      "gauss_sums": []
+    },
+    {
+      "map_code": 447615048,
+      "orbit_size": 16,
+      "phases_per_map": 0,
+      "dimension": 0,
+      "quadratics": [],
+      "gauss_sums": []
+    },
+    {
+      "map_code": 447615148,
+      "orbit_size": 16,
+      "phases_per_map": 16384,
+      "dimension": 10,
+      "quadratics": [
+        [
+          0,
+          1,
+          4,
+          5,
+          17,
+          20,
+          128,
+          129,
+          144,
+          257,
+          260,
+          384,
+          516,
+          528,
+          640,
+          768
+        ],
+        [
+          0,
+          1,
+          2,
+          5,
+          12,
+          68,
+          128
+        ]
+      ],
+      "gauss_sums": [
+        {
+          "sum": 1024,
+          "rank": 0
+        },
+        {
+          "sum": 0,
+          "rank": 2
+        },
+        {
+          "sum": 0,
+          "rank": 4
+        },
+        {
+          "sum": 0,
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "map_code": 447615179,
+      "orbit_size": 16,
+      "phases_per_map": 8192,
+      "dimension": 8,
+      "quadratics": [
+        [
+          0,
+          1,
+          5,
+          6,
+          8,
+          9,
+          10,
+          12,
+          16,
+          17,
+          18,
+          20,
+          65,
+          66,
+          72,
+          80,
+          128,
+          129,
+          130,
+          132,
+          192
+        ]
+      ],
+      "gauss_sums": [
+        {
+          "sum": 256,
+          "rank": 0
+        },
+        {
+          "sum": 0,
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "map_code": 447615748,
+      "orbit_size": 16,
+      "phases_per_map": 8192,
+      "dimension": 8,
+      "quadratics": [
+        [
+          2,
+          3,
+          4,
+          5,
+          16,
+          17,
+          18,
+          20,
+          32,
+          33,
+          34,
+          36,
+          64,
+          66,
+          68,
+          80,
+          96,
+          128,
+          129,
+          130,
+          132,
+          192
+        ]
+      ],
+      "gauss_sums": [
+        {
+          "sum": 256,
+          "rank": 0
+        },
+        {
+          "sum": 0,
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "map_code": 447615843,
+      "orbit_size": 16,
+      "phases_per_map": 0,
+      "dimension": 0,
+      "quadratics": [],
+      "gauss_sums": []
+    },
+    {
+      "map_code": 447615879,
+      "orbit_size": 16,
+      "phases_per_map": 0,
+      "dimension": 0,
+      "quadratics": [],
+      "gauss_sums": []
+    },
+    {
+      "map_code": 447615968,
+      "orbit_size": 16,
+      "phases_per_map": 0,
+      "dimension": 0,
+      "quadratics": [],
+      "gauss_sums": []
+    },
+    {
+      "map_code": 447616276,
+      "orbit_size": 16,
+      "phases_per_map": 0,
+      "dimension": 0,
+      "quadratics": [],
+      "gauss_sums": []
+    },
+    {
+      "map_code": 447616277,
+      "orbit_size": 16,
+      "phases_per_map": 0,
+      "dimension": 0,
+      "quadratics": [],
+      "gauss_sums": []
+    },
+    {
+      "map_code": 447616370,
+      "orbit_size": 16,
+      "phases_per_map": 0,
+      "dimension": 0,
+      "quadratics": [],
+      "gauss_sums": []
+    },
+    {
+      "map_code": 447616371,
+      "orbit_size": 16,
+      "phases_per_map": 0,
+      "dimension": 0,
+      "quadratics": [],
+      "gauss_sums": []
+    },
+    {
+      "map_code": 447616406,
+      "orbit_size": 16,
+      "phases_per_map": 0,
+      "dimension": 0,
+      "quadratics": [],
+      "gauss_sums": []
+    },
+    {
+      "map_code": 447616407,
+      "orbit_size": 16,
+      "phases_per_map": 8192,
+      "dimension": 8,
+      "quadratics": [
+        [
+          4,
+          5,
+          8,
+          9,
+          16,
+          17,
+          20,
+          24,
+          32,
+          33,
+          48,
+          128,
+          129,
+          132,
+          136,
+          160
+        ]
+      ],
+      "gauss_sums": [
+        {
+          "sum": 256,
+          "rank": 0
+        },
+        {
+          "sum": 0,
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "map_code": 447616496,
+      "orbit_size": 16,
+      "phases_per_map": 16384,
+      "dimension": 10,
+      "quadratics": [
+        [
+          5,
+          8,
+          16,
+          20,
+          32,
+          33,
+          48,
+          64,
+          68,
+          96,
+          128,
+          129,
+          144,
+          192,
+          257,
+          272,
+          320
+        ],
+        [
+          4,
+          16,
+          17,
+          20,
+          64,
+          65,
+          68,
+          128,
+          129,
+          132,
+          144,
+          192,
+          512,
+          513,
+          516,
+          528,
+          576
+        ]
+      ],
+      "gauss_sums": [
+        {
+          "sum": 1024,
+          "rank": 0
+        },
+        {
+          "sum": 0,
+          "rank": 2
+        },
+        {
+          "sum": 0,
+          "rank": 4
+        },
+        {
+          "sum": 0,
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "map_code": 447616497,
+      "orbit_size": 16,
+      "phases_per_map": 0,
+      "dimension": 0,
+      "quadratics": [],
+      "gauss_sums": []
+    },
+    {
+      "map_code": 447616574,
+      "orbit_size": 16,
+      "phases_per_map": 0,
+      "dimension": 0,
+      "quadratics": [],
+      "gauss_sums": []
+    },
+    {
+      "map_code": 447616575,
+      "orbit_size": 16,
+      "phases_per_map": 0,
+      "dimension": 0,
+      "quadratics": [],
+      "gauss_sums": []
+    },
+    {
+      "map_code": 447616600,
+      "orbit_size": 16,
+      "phases_per_map": 8192,
+      "dimension": 8,
+      "quadratics": [
+        [
+          0,
+          1,
+          5,
+          9,
+          20,
+          24,
+          64,
+          65,
+          68,
+          72,
+          80,
+          128,
+          129,
+          132,
+          136,
+          144
+        ]
+      ],
+      "gauss_sums": [
+        {
+          "sum": 256,
+          "rank": 0
+        },
+        {
+          "sum": 0,
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "map_code": 447616601,
+      "orbit_size": 16,
+      "phases_per_map": 0,
+      "dimension": 0,
+      "quadratics": [],
+      "gauss_sums": []
+    },
+    {
+      "map_code": 447616700,
+      "orbit_size": 16,
+      "phases_per_map": 0,
+      "dimension": 0,
+      "quadratics": [],
+      "gauss_sums": []
+    },
+    {
+      "map_code": 447616701,
+      "orbit_size": 16,
+      "phases_per_map": 0,
+      "dimension": 0,
+      "quadratics": [],
+      "gauss_sums": []
+    },
+    {
+      "map_code": 447616730,
+      "orbit_size": 16,
+      "phases_per_map": 16384,
+      "dimension": 9,
+      "quadratics": [
+        [
+          0,
+          5,
+          8,
+          12,
+          16,
+          20,
+          32,
+          36,
+          65,
+          68,
+          72,
+          80,
+          96,
+          129,
+          132,
+          136,
+          144,
+          160,
+          257,
+          264,
+          272,
+          288,
+          320,
+          384
+        ]
+      ],
+      "gauss_sums": [
+        {
+          "sum": 512,
+          "rank": 0
+        },
+        {
+          "sum": 0,
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "map_code": 447616731,
+      "orbit_size": 16,
+      "phases_per_map": 0,
+      "dimension": 0,
+      "quadratics": [],
+      "gauss_sums": []
+    }
+  ]
+}

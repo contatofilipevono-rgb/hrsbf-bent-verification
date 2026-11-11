@@ -1,0 +1,22 @@
+{
+  "basis_functions": 60,
+  "kappa_point_checks": 30720,
+  "candidate_maps_checked": 384,
+  "geometry_G1_G2": true,
+  "square_system_solutions": [
+    [
+      0,
+      16,
+      0,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16
+    ]
+  ],
+  "character_support_xor": 63,
+  "scope": "The other 14 nonzero fixed-slice classes still use the support enumeration."
+}

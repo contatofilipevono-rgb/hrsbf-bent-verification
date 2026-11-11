@@ -60,7 +60,14 @@ jobs:
           path: research_updates/2026_11_09_n12_mixed/q-artifacts
       - name: Check support coverage and count phases by quadratic sums
         run: python3 -u lower_dim_v3_q_summary.py --artifacts q-artifacts --output v3-q-summary.json
+      - name: Check the algebraic classification and fixed-fibre degree obstruction
+        run: |
+          python3 -u lower_dim_v3_q_classify.py --output v3-q-classification.json
+          python3 -u v3_fixed_fibre_degree.py v3-fixed-fibre-degree.json
       - uses: actions/upload-artifact@v4
         with:
           name: v3-q-summary
-          path: research_updates/2026_11_09_n12_mixed/v3-q-summary.json
+          path: |
+            research_updates/2026_11_09_n12_mixed/v3-q-summary.json
+            research_updates/2026_11_09_n12_mixed/v3-q-classification.json
+            research_updates/2026_11_09_n12_mixed/v3-fixed-fibre-degree.json
