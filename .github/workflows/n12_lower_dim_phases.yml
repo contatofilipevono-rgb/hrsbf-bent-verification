@@ -43,7 +43,7 @@ jobs:
           python3 -u lower_dim_support.py --space ${{ matrix.space }} --shard ${{ matrix.shard }} --shards ${{ matrix.shards }} --output phase-output/support.json
           extra=()
           if [ "${{ matrix.limit }}" -ne 0 ]; then extra=(--stop "${{ matrix.limit }}"); fi
-          python3 -u lower_dim_phase_prepare.py --space ${{ matrix.space }} --supports phase-output/support.bin --output tasks.bin "${d}{extra[@]}"
+          python3 -u lower_dim_phase_prepare.py --space ${{ matrix.space }} --supports phase-output/support.bin --output tasks.bin "${extra[@]}"
           cp tasks.json phase-output/tasks.json
       - name: Count and verify the exact phases
         run: |
