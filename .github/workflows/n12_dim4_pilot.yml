@@ -1,0 +1,29 @@
+name: Pilot the two remaining dimension-four map spaces
+on:
+  push:
+    branches: [codex/n12-mixed-quartic]
+    paths:
+      - '.github/workflows/n12_dim4_pilot.yml'
+      - 'research_updates/2026_11_09_n12_mixed/probe_dim4.py'
+permissions:
+  contents: read
+jobs:
+  pilot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        seed: [12124, 12125]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - name: Measure independent support filters
+        run: python3 research_updates/2026_11_09_n12_mixed/probe_dim4.py --samples 262144 --seed ${{ matrix.seed }} --output pilot.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: n12-dim4-pilot-${{ matrix.seed }}
+          path: pilot.json
+          if-no-files-found: error

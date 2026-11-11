@@ -1,6 +1,7 @@
 """Size the dimension-four map spaces and sample their support filters."""
 import argparse
 import collections
+import json
 from itertools import combinations
 from pathlib import Path
 from random import Random
@@ -25,7 +26,7 @@ spaces=[b for b in cyclic_subspaces() if len(b)==4]
 even=[1|32, 2|32,4|32,8|32,16|32]
 original=[evaluate_orbit(o) for _,o in (*orbits(12,0),*orbits(12,1),*LOW,*TOP)]
 
-def analyse(basis):
+def analyse(basis, samples=32768, seed_value=12124):
     cols = all_points(complementary(basis) + basis)
     coord = [(z ^ w)|(w << 6) for w in cols for z in range(64)]
     mask=sum(1 << m for m in range(4096) if (m >> 8).bit_count() >= 2)
@@ -48,12 +49,12 @@ def analyse(basis):
     # Small uniform sample of the map space, before any phase work.
     maps = [sum(sum((p >> (256*j+x)&1)<<j for j in range(4))<<(4*x)
                 for x in range(256)) for p,_ in image]
-    seed = Random(12124)
+    seed = Random(seed_value)
     quadratics = [sum(1 << x for x in range(256) if x & ((1 << i) | (1 << j)) == ((1 << i) | (1 << j)))
                   for i,j in combinations(range(8),2)]
     stats = collections.Counter()
     start=perf_counter()
-    for _ in range(32768):
+    for _ in range(samples):
         m = xor_terms(maps, seed.getrandbits(len(maps)))
         sizes = [0]*16
         sums = [0]*16
@@ -69,7 +70,11 @@ def analyse(basis):
             stats["balanced"]+=1
             if not any(sums) and all(not (P & row).bit_count()&1 for P in fibers for row in quadratics):
                 stats["support_moments"]+=1
-    print('sample',dict(stats),'seconds',round(perf_counter()-start,3))
+    seconds = perf_counter() - start
+    print('sample',dict(stats),'seconds',round(seconds,3))
+    return {'basis': basis, 'RS_dimension': len(kernel), 'map_dimension': len(image),
+            'phase_dimension': len(phase), 'samples': samples, 'seed': seed_value,
+            'filters': dict(stats), 'seconds': seconds}
 
 def isotropic(polar,b):
     for u,v in combinations(b,2):
@@ -101,8 +106,14 @@ def compare_catalogue(path):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--catalogue", type=Path)
+    parser.add_argument('--samples', type=int, default=32768)
+    parser.add_argument('--seed', type=int, default=12124)
+    parser.add_argument('--output', type=Path)
     args = parser.parse_args()
+    reports = []
     for basis in spaces:
-        analyse(basis)
+        reports.append(analyse(basis, args.samples, args.seed))
     if args.catalogue:
         compare_catalogue(args.catalogue)
+    if args.output:
+        args.output.write_text(json.dumps(reports, indent=2) + "\n", encoding="utf-8")
