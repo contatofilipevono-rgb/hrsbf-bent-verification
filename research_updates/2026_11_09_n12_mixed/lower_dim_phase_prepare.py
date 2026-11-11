@@ -23,9 +23,15 @@ def truth_on_coordinates(mapping, phase, r):
     return sum((phase ^ xor_terms(parts, u)) << (u * size) for u in range(1 << r))
 
 
+def preceding_spaces(space):
+    if space == 4:
+        return list(BASES[1:3])
+    return [(7, 14, 28, 56), (5, 10, 20, 40)] + list(BASES[:space - 1])
+
+
 def properties(model, space):
     """Linear signatures for degree four and exclusion of preceding spaces."""
-    preceding = [(7, 14, 28, 56), (5, 10, 20, 40)] + list(BASES[:space - 1])
+    preceding = preceding_spaces(space)
     degree_four = sum(1 << m for m in range(4096) if m.bit_count() == 4)
     w_index = {model.coordinates[i] >> 6: i for i in range(0, 4096, 64)}
     z_mask = (1 << 64) - 1
@@ -157,7 +163,7 @@ def prepare(space, support_file, output, start, stop, shift_basis_output=None):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--space", type=int, choices=range(1, 4), required=True)
+    parser.add_argument("--space", type=int, choices=range(1, len(BASES) + 1), required=True)
     parser.add_argument("--supports", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--start", type=int, default=0)

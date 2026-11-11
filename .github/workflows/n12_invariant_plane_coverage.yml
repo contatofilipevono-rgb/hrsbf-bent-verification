@@ -1,0 +1,38 @@
+name: Check for quartics outside both invariant planes
+on:
+  push:
+    branches: [codex/n12-mixed-quartic]
+    paths:
+      - '.github/workflows/n12_invariant_plane_coverage.yml'
+permissions:
+  contents: read
+jobs:
+  coverage:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - name: Prepare all maps along the invariant line
+        run: |
+          mkdir -p coverage
+          python3 -u lower_dim_support.py --space 4 --output coverage/support.json
+          python3 -u lower_dim_orbits.py --space 4 --supports coverage/support.bin --output coverage/orbits.json
+          python3 -u lower_dim_phase_prepare.py --space 4 --supports coverage/orbits.bin --output tasks.bin
+          cp tasks.json coverage/tasks.json
+      - name: Test phases outside both invariant planes
+        run: |
+          g++ -O3 -march=native -std=c++17 -Wall -Wextra lower_dim_phase_count.cpp -o phase_count
+          ./phase_count tasks.bin coverage/result 23
+          python3 -u lower_dim_phase_verify.py --tasks tasks.bin --prefix coverage/result
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: n12-invariant-plane-coverage
+          path: research_updates/2026_11_09_n12_mixed/coverage/
+          if-no-files-found: error

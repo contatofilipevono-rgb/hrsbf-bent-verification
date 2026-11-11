@@ -113,7 +113,7 @@ def classify(space, paths, output):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--space", type=int, choices=range(1, 4), required=True)
+    parser.add_argument("--space", type=int, choices=range(1, len(BASES) + 1), required=True)
     parser.add_argument("--supports", type=Path, nargs="+", required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()

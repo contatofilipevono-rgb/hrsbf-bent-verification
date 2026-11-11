@@ -7,7 +7,7 @@ from pathlib import Path
 from higher_filter import shift, xor_terms
 from higher_project import signs_to_walsh
 from lower_dim_model import active_indices, anf, build
-from lower_dim_phase_prepare import truth_on_coordinates
+from lower_dim_phase_prepare import preceding_spaces, truth_on_coordinates
 from lower_dim_plan import BASES
 
 
@@ -31,7 +31,7 @@ def verify_walsh(space, output):
     if len(selected) > 24:
         selected = [selected[i * (len(selected) - 1) // 23] for i in range(24)]
     maps = [p for p, _ in model.maps]
-    preceding = [(7, 14, 28, 56), (5, 10, 20, 40)] + list(BASES[:space - 1])
+    preceding = preceding_spaces(space)
     for code in selected:
         _, phase = output[code]
         mapping = xor_terms(maps, code)

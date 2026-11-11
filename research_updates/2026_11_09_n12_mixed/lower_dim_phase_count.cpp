@@ -9,10 +9,10 @@
 #include <string>
 #include <vector>
 
-constexpr int max_words = 16;
+constexpr int max_words = 32;
 constexpr int max_properties = 5;
-constexpr int max_dimension = 37;
-constexpr int quadratic_words = 12;
+constexpr int max_dimension = 50;
+constexpr int quadratic_words = 20;
 using Word = uint64_t;
 using Form = std::array<Word, quadratic_words>;
 

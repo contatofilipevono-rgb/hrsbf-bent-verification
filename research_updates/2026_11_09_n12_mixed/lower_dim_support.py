@@ -26,6 +26,8 @@ def balanced(packed, size, r):
     parts = [(packed >> (i * size)) & mask for i in range(r)]
     if any(part.bit_count() != target for part in parts):
         return False, 0
+    if r == 1:
+        return True, 0
     target //= 2
     if (parts[0] & parts[1]).bit_count() != target:
         return False, 0
@@ -86,7 +88,7 @@ def run(space, shard, shards, output):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--space", type=int, choices=range(1, 4), required=True)
+    parser.add_argument("--space", type=int, choices=range(1, len(BASES) + 1), required=True)
     parser.add_argument("--shard", type=int, default=0)
     parser.add_argument("--shards", type=int, default=1)
     parser.add_argument("--output", type=Path, required=True)

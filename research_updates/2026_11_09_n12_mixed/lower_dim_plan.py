@@ -10,7 +10,7 @@ from lower_dim_cubic_filter import filter_cubic_basis, survivor_indices
 from lower_dim_model import build, cubic
 
 
-BASES = ((9, 18, 36), (27, 54), (21, 42))
+BASES = ((9, 18, 36), (27, 54), (21, 42), (63,))
 
 
 def plan(basis):
@@ -25,7 +25,7 @@ def plan(basis):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--space", type=int, choices=range(1, 4), required=True)
+    parser.add_argument("--space", type=int, choices=range(1, len(BASES) + 1), required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     model, null, survivors = plan(BASES[args.space - 1])
