@@ -1,0 +1,53 @@
+name: Sieve the maps in the remaining antipodal dimensions
+on:
+  push:
+    branches: [codex/n12-mixed-quartic]
+    paths:
+      - '.github/workflows/n12_lower_dim_support.yml'
+      - 'research_updates/2026_11_09_n12_mixed/lower_dim_model.py'
+      - 'research_updates/2026_11_09_n12_mixed/lower_dim_cubic_filter.py'
+      - 'research_updates/2026_11_09_n12_mixed/lower_dim_support.py'
+      - 'research_updates/2026_11_09_n12_mixed/lower_dim_moments.py'
+      - 'research_updates/2026_11_09_n12_mixed/lower_dim_phase_probe.py'
+permissions:
+  contents: read
+jobs:
+  support:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {space: 1, shard: 0, shards: 8}
+          - {space: 1, shard: 1, shards: 8}
+          - {space: 1, shard: 2, shards: 8}
+          - {space: 1, shard: 3, shards: 8}
+          - {space: 1, shard: 4, shards: 8}
+          - {space: 1, shard: 5, shards: 8}
+          - {space: 1, shard: 6, shards: 8}
+          - {space: 1, shard: 7, shards: 8}
+          - {space: 2, shard: 0, shards: 1}
+          - {space: 3, shard: 0, shards: 2}
+          - {space: 3, shard: 1, shards: 2}
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - name: Verify the moment criterion on four sizes
+        run: python3 lower_dim_moments.py
+      - name: Enumerate balanced maps with support degree at most five
+        run: |
+          mkdir -p support
+          python3 -u lower_dim_support.py --space ${{ matrix.space }} --shard ${{ matrix.shard }} --shards ${{ matrix.shards }} --output support/support.json
+      - name: Measure linear phase consistency and the affine quotient
+        run: python3 -u lower_dim_phase_probe.py --space ${{ matrix.space }} --supports support/support.bin --limit 8192 --output support/phase-probe.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lower-dim-${{ matrix.space }}-${{ matrix.shard }}
+          path: research_updates/2026_11_09_n12_mixed/support/
+          if-no-files-found: error

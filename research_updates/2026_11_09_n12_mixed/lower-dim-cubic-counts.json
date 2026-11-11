@@ -1,0 +1,42 @@
+[
+  {
+    "basis": [
+      9,
+      18,
+      36
+    ],
+    "map_dimension": 34,
+    "phase_dimension": 26,
+    "cubic_dimension": 22,
+    "tested_cubic_parts": 4194304,
+    "surviving_cubic_parts": 12160,
+    "maps_after_filter": 49807360,
+    "seconds": 10.072768500016537
+  },
+  {
+    "basis": [
+      27,
+      54
+    ],
+    "map_dimension": 28,
+    "phase_dimension": 37,
+    "cubic_dimension": 19,
+    "tested_cubic_parts": 524288,
+    "surviving_cubic_parts": 1728,
+    "maps_after_filter": 884736,
+    "seconds": 0.9398871000157669
+  },
+  {
+    "basis": [
+      21,
+      42
+    ],
+    "map_dimension": 30,
+    "phase_dimension": 35,
+    "cubic_dimension": 20,
+    "tested_cubic_parts": 1048576,
+    "surviving_cubic_parts": 3968,
+    "maps_after_filter": 4063232,
+    "seconds": 1.5803538000036497
+  }
+]
