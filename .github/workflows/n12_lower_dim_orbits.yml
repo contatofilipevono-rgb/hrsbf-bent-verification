@@ -36,7 +36,7 @@ jobs:
       - name: Count phases on orbit representatives
         run: |
           g++ -O3 -march=native -std=c++17 -Wall -Wextra lower_dim_phase_count.cpp -o phase_count
-          ./phase_count tasks.bin orbit-output/result 25
+          ./phase_count tasks.bin orbit-output/result 32
           python3 -u lower_dim_phase_verify.py --tasks tasks.bin --prefix orbit-output/result
       - uses: actions/upload-artifact@v4
         if: always()
