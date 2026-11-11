@@ -1,0 +1,48 @@
+[
+  {
+    "basis": [
+      7,
+      14,
+      28,
+      56
+    ],
+    "distinct_pairs": 8,
+    "groups": [
+      {
+        "equal": false,
+        "wedge_degree": 2,
+        "pairs": 7,
+        "mixed_polar_classes": 224
+      },
+      {
+        "equal": true,
+        "wedge_degree": -1,
+        "pairs": 1,
+        "mixed_polar_classes": 32
+      }
+    ]
+  },
+  {
+    "basis": [
+      5,
+      10,
+      20,
+      40
+    ],
+    "distinct_pairs": 16,
+    "groups": [
+      {
+        "equal": false,
+        "wedge_degree": 2,
+        "pairs": 12,
+        "mixed_polar_classes": 192
+      },
+      {
+        "equal": true,
+        "wedge_degree": -1,
+        "pairs": 4,
+        "mixed_polar_classes": 64
+      }
+    ]
+  }
+]

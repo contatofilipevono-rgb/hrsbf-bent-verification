@@ -1,0 +1,48 @@
+{
+  "model_controls": {
+    "model_dimension": 68,
+    "map_dimension": 18,
+    "phase_dimension": 50,
+    "direct_signature_comparisons": 136,
+    "signature_kernel_ranks": [
+      41,
+      3,
+      3
+    ],
+    "all_functions_quadratic_in_w": true
+  },
+  "coverage": {
+    "all_map_codes": 262144,
+    "balanced_maps": 30781,
+    "map_orbits": 452,
+    "phase_tasks": 49,
+    "quadratic_inconsistent": 8,
+    "phase_tasks_completed": 41,
+    "phase_intervals": 16,
+    "phase_combinations_tested": 187498496000,
+    "functions_outside_both_planes": 0,
+    "deferred": 0,
+    "residual_dimensions": {
+      "19": 1,
+      "22": 3,
+      "23": 6,
+      "24": 8,
+      "25": 4,
+      "26": 3,
+      "27": 5,
+      "28": 2,
+      "30": 1,
+      "32": 1,
+      "33": 1,
+      "34": 4,
+      "35": 1,
+      "36": 1
+    },
+    "input_hashes": {
+      "support.bin": "f49b5e5de25304e23bf6ba6c6c953f7b4ad4b1a1bf7198714725cc81787c45a4",
+      "orbits.bin": "c7be208381a51d7f249223369efc2d519a7f251d4b41f561cb67628e590ff9ce",
+      "orbits.weights.bin": "5c516d0ecbdf901750a5d3d916dd679e3fcbde8f1d542517674c0f418450b3b2",
+      "tasks.bin": "44b01dc208bf109c5bf6f07367de239d9bfbfdf1a6a410090982b7d74e6ee812"
+    }
+  }
+}

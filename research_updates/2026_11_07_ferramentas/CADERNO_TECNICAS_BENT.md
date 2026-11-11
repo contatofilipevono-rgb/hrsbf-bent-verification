@@ -4,7 +4,7 @@
 
 Este caderno reúne ferramentas reutilizáveis para funções booleanas, espectros de Walsh, reduções periódicas e funções bent com simetria de rotação. Cada técnica vem acompanhada de hipóteses, argumento central, aplicação e limite. O objetivo é permitir que uma prova nova seja montada com etapas verificáveis, sem transportar uma conclusão além do domínio em que foi demonstrada.
 
-Edição de 10 de novembro de 2026. O nível de revisão varia por ferramenta. As atualizações identificam as provas, os certificados computacionais e os argumentos ainda em auditoria. A prioridade das adaptações e combinações próprias permanece aberta. A auditoria por modelos e a revisão humana por pares são etapas distintas.
+Edição de 11 de novembro de 2026. O nível de revisão varia por ferramenta. A atualização de 11/11 inclui as técnicas 41 a 44 e a cobertura computacional das quárticas de 12 variáveis. As atualizações identificam as provas, os certificados computacionais e os argumentos ainda em auditoria. A prioridade das adaptações e combinações próprias permanece aberta. A auditoria por modelos e a revisão humana por pares são etapas distintas.
 
 **Estado em 07/11.** p=17, Q1 geral e a conjectura geral continuam abertos. As atualizações de 07/11 abaixo prevalecem sobre estados históricos de casos abertos. O fechamento de produtos de duas quadráticas com resto cúbico é uma prova candidata sob I6; não deve ser usado como resultado estabelecido antes da auditoria. Não se aplica a uma quártica arbitrária nem somente às condições de peso e pico.
 
@@ -671,3 +671,30 @@ Expanda o caráter como produto de 1−2x_i a_i, onde a é a frequência. O coef
 **Consequência para o suporte.** Todas as somas de x_I com |I| ≤ t são pares. Assim 1_P pertence ao dual de RM(t,b), isto é, a RM(b−t−1,b). Em n=12, com afinidade ao longo de r dimensões, temos b=12−r e t=6−r. Toda fibra tem indicador de grau no máximo cinco. A condição equivale a exigir grau no máximo cinco em todos os produtos de coordenadas distintas de π. Isso segue da expansão dos indicadores 1_(π=β) e da identidade inversa que soma os indicadores em que as coordenadas escolhidas do rótulo valem um.
 
 **Aplicação e limite.** Para r=3, as fibras têm 64 pontos. Após a paridade, as condições de fase envolvem graus dois e quatro nos coeficientes de H. Para r=2, as fibras têm 256 pontos e a condição final tem grau oito. Essas cotas vêm dos bits do peso, que são os polinômios simétricos elementares de graus 1, 2, 4 e 8 sobre F₂. O grau cinco do indicador filtra o suporte. A contagem global exige compatibilidade das fases em todas as fibras.
+
+
+## Técnica 42 — Quociente por fases afins em cada fibra
+
+**Hipótese.** Fixe o mapa π e o espaço afim de fases que passou pelas equações lineares de momentos. Uma direção K desse espaço pode restringir a uma função afim em cada fibra P_β.
+
+**Argumento.** Em P_β, somar K a H desloca a frequência e troca possivelmente o sinal da soma de Walsh. Os módulos são preservados. As restrições afins por fibra são condições lineares em K. Acrescentar as assinaturas lineares de grau e de afinidade dos espaços já contados faz com que cada direção eliminada também preserve o bloco. Passar ao quociente reduz a busca e dá multiplicidade 2^d para uma família de direções de dimensão d.
+
+**Aplicação.** Para dimensão três e dois, a eliminação dos termos quadráticos do segundo bit dos momentos produziu novas equações lineares. A contagem após essa redução deu 4.194.304 funções na dimensão três e 309.248 na dimensão dois. Os mapas válidos se agrupam em 12 e seis órbitas. As fases de cada representante foram registradas por espaços de translações e por condições exatas no quociente. A derivação algébrica da lista de órbitas permanece aberta.
+
+**Validação.** O Astra conferiu o critério de momentos, o quociente de fases, as ações nas coordenadas e a eliminação quadrática. Uma função por órbita foi reconstruída e passou por Walsh completo, ANF e rotação. [Contagem de dimensão três](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42948057001) · [Contagem de dimensão dois](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42948658054)
+
+## Técnica 43 — Cobertura universal a partir de uma reta
+
+**Hipótese.** Toda função é afim nas classes de uma reta, pois há dois pontos em cada classe. Para n=12, a reta antipodal de direção 63 é invariante. Os dois planos invariantes são os gerados por 27,54 e por 21,42, em máscaras de seis bits. Todo subespaço cíclico de dimensão pelo menos dois contém um desses planos.
+
+**Aplicação.** O modelo RS de grau até quatro na reta tem 18 coordenadas de mapa e 50 de fase após as duas relações universais de topo. Para excluir a afinidade nos dois planos, use a derivada mista correspondente a cada base. As assinaturas comprimidas têm o mesmo núcleo que as derivadas completas. O teste examinou 262.144 mapas, agrupou os 30.781 balanceados em 452 órbitas e resolveu todas as 49 tarefas de fase. As 16 fatias cobriram 187.498.496.000 combinações residuais e deram zero funções fora dos dois planos. A repetição conferiu hashes iguais dos sistemas de fase em todas as fatias.
+
+**Alcance.** Trata-se de um teorema computacional de cobertura, com prova dos filtros e auditoria do código por modelo. Juntando as contagens dos blocos, dá 309.221.376 RS bent de grau exatamente quatro em 12 variáveis, igual ao catálogo anterior. [Cobertura com hashes](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/42951139664)
+
+## Técnica 44 — A cunha das derivadas do mapa no complemento
+
+**Hipótese.** Para um espaço antipodal invariante V de dimensão quatro, escreva π(z,s₁,s₂)=g(z)+s₁q₁(z)+s₂q₂(z). Se V=ker r ∩ ker s em complemento dual, a meia-volta dá r(z)q₁(z)+s(z)q₂(z)=0. Escreva A e E para as restrições de q₁ e q₂ a z∈V.
+
+**Argumento.** O produto πᵢπⱼ tem grau no máximo cinco pela Técnica 41. Seu coeficiente de s₁s₂ é a coordenada i,j de q₁∧q₂, de grau no máximo três. A cunha zera fora de V, onde q₁,q₂ são proporcionais. A extensão de A∧E a z multiplica suas coordenadas por (1+r)(1+s), portanto A∧E tem grau no máximo um.
+
+**Aplicação.** Uma comparação de coeficientes sobre os 8 pares possíveis em V1 e os 16 em V2 mostra que todo par desigual tem cunha de grau dois. Logo A=E nas duas famílias bent. A decomposição da polar então dá posto no máximo dois em cada z. Essa exclusão evita a enumeração dos mapas completos. A seleção das matrizes M que admitem as fases globais é o próximo passo da prova. [Redução da polar do Fable](https://github.com/contatofilipevono-rgb/n1-sat-cubos/blob/1488a48/bloco_dim4_n12/PROVA_POLAR_DIM4.md)

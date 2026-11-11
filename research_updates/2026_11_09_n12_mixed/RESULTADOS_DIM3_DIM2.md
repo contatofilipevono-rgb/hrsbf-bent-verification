@@ -1,6 +1,6 @@
 # Contagem independente dos blocos de dimensão três e dois
 
-Atualização de 11 de novembro de 2026. Os espaços de mapas, os suportes e as fases foram reconstruídos sem ler o catálogo de funções bent. Os números do catálogo foram usados ao final como comparação. A cobertura de todas as quárticas RS bent, inclusive fora dos espaços considerados, é uma etapa separada.
+Atualização de 11 de novembro de 2026. Os espaços de mapas, os suportes e as fases foram reconstruídos sem ler o catálogo de funções bent. Os números do catálogo foram usados ao final como comparação. A cobertura de todas as quárticas RS bent foi verificada separadamente em COBERTURA_PLANOS_N12.md.
 
 ## Método e classificação usada
 
@@ -102,4 +102,6 @@ As mudanças de coordenadas que agrupam mapas são verificadas nas bases dos esp
 
 As duas contagens reproduzem, de maneira independente dentro desses espaços, os 4.194.304 e 309.248 casos do catálogo. Foram obtidos também 12 e seis representantes de órbitas, com conjuntos exatos de fases. A dedução algébrica de por que só esses representantes sobrevivem continua aberta.
 
-Os testes são reproduzíveis nos programas lower_dim_* e nas execuções do GitHub. A enumeração inicial de mapas e a eliminação quadrática são etapas finitas da prova computacional. A cobertura de todos os casos fora dos dois planos invariantes está sendo examinada pelo modelo universal na reta da meia-volta.
+Os testes são reproduzíveis nos programas lower_dim_* e nas execuções do GitHub. A enumeração inicial de mapas e a eliminação quadrática são etapas finitas da prova computacional. O modelo universal na reta da meia-volta excluiu todos os casos fora dos dois planos invariantes. O relatório COBERTURA_PLANOS_N12.md documenta essa etapa.
+
+Os arquivos phase-families-dimension-3.json e phase-families-dimension-2.json guardam as fases em cosets de espaços de translações, com predicados de aceitação ou listas exatas no quociente. construct_lower_dim.py usa esses dados e as ações nas coordenadas para reconstruir funções. Uma função por órbita foi conferida pelo Walsh completo, pela ANF e pela rotação.

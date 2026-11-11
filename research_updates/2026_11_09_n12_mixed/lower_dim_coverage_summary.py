@@ -4,7 +4,6 @@ import hashlib
 import json
 from pathlib import Path
 
-from higher_filter import xor_terms
 from count_near_antipodal import image_and_kernel
 from lower_dim_model import active_indices, anf, build
 from lower_dim_phase_prepare import preceding_spaces, properties, truth_on_coordinates
@@ -22,7 +21,6 @@ def xor_translate(table, displacement):
 
 def validate_line_model():
     model = build(BASES[3])
-    nbase = model.nbase
     signatures, phase_signatures, n = properties(model, 4)
     assert n == 3
     columns = model.maps + [(0, h) for h in model.phases]
@@ -70,13 +68,15 @@ def aggregate(root):
     counts = [json.loads((p / "result.json").read_bytes()) for p in folders]
     assert {d["phase_shard"] for d in counts} == set(range(16))
     prototype = counts[0]
-    manifests = [(folder / "inputs.sha256").read_bytes() for folder in folders]
-    assert len(set(manifests)) == 1
-    first = folders[0]
-    for line in manifests[0].decode().splitlines():
-        digest, name = line.split(maxsplit=1)
-        target = first / Path(name).name
-        assert hashlib.sha256(target.read_bytes()).hexdigest() == digest
+    hashes = {}
+    for name in ("support.bin", "orbits.bin", "orbits.weights.bin"):
+        digests = {hashlib.sha256((p / name).read_bytes()).hexdigest() for p in folders}
+        assert len(digests) == 1
+        hashes[name] = digests.pop()
+    if all((p / "tasks.bin").exists() for p in folders):
+        digests = {hashlib.sha256((p / "tasks.bin").read_bytes()).hexdigest() for p in folders}
+        assert len(digests) == 1
+        hashes["tasks.bin"] = digests.pop()
     assert all(d["space"] == 4 and d["phase_shards"] == 16 and not d["deferred"] for d in counts)
     for p, result in zip(folders, counts):
         support = json.loads((p / "support.json").read_bytes())
@@ -100,7 +100,7 @@ def aggregate(root):
             "phase_tasks": 49, "quadratic_inconsistent": 8, "phase_tasks_completed": 41,
             "phase_intervals": 16, "phase_combinations_tested": tested,
             "functions_outside_both_planes": 0, "deferred": 0,
-            "residual_dimensions": prototype["residual_dimensions"]}
+            "residual_dimensions": prototype["residual_dimensions"], "input_hashes": hashes}
 
 
 def main():
