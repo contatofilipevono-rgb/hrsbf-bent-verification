@@ -2,6 +2,7 @@
 #include <array>
 #include <chrono>
 #include <cstdint>
+#include <cstdlib>
 #include <fstream>
 #include <iostream>
 #include <map>
@@ -173,6 +174,11 @@ int main(int argc, char** argv) {
         throw std::runtime_error("Invalid dimensions");
     const std::string prefix = argv[2];
     const int max_residual_dimension = std::stoi(argv[3]);
+    const char* shard_env = std::getenv("PHASE_SHARD");
+    const char* shards_env = std::getenv("PHASE_SHARDS");
+    const Word shard = shard_env ? std::stoull(shard_env) : 0;
+    const Word shards = shards_env ? std::stoull(shards_env) : 1;
+    if (!shards || shard >= shards) throw std::runtime_error("Invalid phase shard");
     std::ofstream witnesses(prefix + ".witnesses.bin", std::ios::binary);
     std::ofstream deferred(prefix + ".deferred.bin", std::ios::binary);
     std::ofstream phases;
@@ -230,11 +236,16 @@ int main(int argc, char** argv) {
         }
         result.tested_maps++;
         const Word trials = Word(1) << residual;
-        result.phase_trials += trials;
+        const Word first_ordinal = trials * shard / shards;
+        const Word stop_ordinal = trials * (shard + 1) / shards;
+        const Word initial_gray = first_ordinal ^ (first_ordinal >> 1);
+        for (int i = 0; i < residual; ++i)
+            if (initial_gray & (Word(1) << i)) add(root, directions[i], words, properties);
+        result.phase_trials += stop_ordinal - first_ordinal;
         Word count = 0;
         Phase first;
-        for (Word word = 0; word < trials; ++word) {
-            if (word) add(root, directions[__builtin_ctzll(word)], words, properties);
+        for (Word word = first_ordinal; word < stop_ordinal; ++word) {
+            if (word != first_ordinal) add(root, directions[__builtin_ctzll(word)], words, properties);
             if (!compatible(root, moments, properties)) continue;
             if (!count) first = root;
             if (argc == 5) {
@@ -256,6 +267,7 @@ int main(int argc, char** argv) {
         throw std::runtime_error("Cannot write phase output");
     std::ofstream out(prefix + ".json");
     out << "{\n\"space\":" << space << ",\"tasks\":" << result.tasks
+        << ",\"phase_shard\":" << shard << ",\"phase_shards\":" << shards
         << ",\"inconsistent\":" << result.inconsistent << ",\"deferred\":" << result.deferred
         << ",\"tested_maps\":" << result.tested_maps << ",\"maps\":" << result.maps
         << ",\"functions\":" << result.functions << ",\"phase_trials\":" << result.phase_trials

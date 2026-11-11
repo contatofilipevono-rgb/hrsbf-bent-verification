@@ -10,6 +10,10 @@ jobs:
   coverage:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     defaults:
       run:
         working-directory: research_updates/2026_11_09_n12_mixed
@@ -25,14 +29,17 @@ jobs:
           python3 -u lower_dim_orbits.py --space 4 --supports coverage/support.bin --output coverage/orbits.json
           python3 -u lower_dim_phase_prepare.py --space 4 --supports coverage/orbits.bin --output tasks.bin
           cp tasks.json coverage/tasks.json
-      - name: Test phases outside both invariant planes
+      - name: Test an exact interval of the phases outside both invariant planes
+        env:
+          PHASE_SHARD: ${{ matrix.shard }}
+          PHASE_SHARDS: 16
         run: |
           g++ -O3 -march=native -std=c++17 -Wall -Wextra lower_dim_phase_count.cpp -o phase_count
-          ./phase_count tasks.bin coverage/result 23
+          ./phase_count tasks.bin coverage/result 40
           python3 -u lower_dim_phase_verify.py --tasks tasks.bin --prefix coverage/result
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: n12-invariant-plane-coverage
+          name: n12-invariant-plane-coverage-${{ matrix.shard }}
           path: research_updates/2026_11_09_n12_mixed/coverage/
           if-no-files-found: error
