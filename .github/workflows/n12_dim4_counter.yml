@@ -1,0 +1,38 @@
+name: Validate the independent dimension-four counter
+on:
+  push:
+    branches: [codex/n12-mixed-quartic]
+    paths:
+      - '.github/workflows/n12_dim4_counter.yml'
+      - 'research_updates/2026_11_09_n12_mixed/dim4_*.py'
+      - 'research_updates/2026_11_09_n12_mixed/dim4_count.cpp'
+permissions:
+  contents: read
+jobs:
+  counter:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        space: [1, 2]
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - name: Compile and build the map space
+        run: |
+          g++ -O3 -march=native -std=c++17 -Wall -Wextra dim4_count.cpp -o dim4_count
+          python3 dim4_model.py --space ${{ matrix.space }} --output dim4.bin
+      - name: Check controls and measure the map and phase filters
+        run: python3 -u dim4_remote_check.py --space ${{ matrix.space }} --counter ./dim4_count --model dim4.bin --output dim4-check
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: n12-dim4-counter-${{ matrix.space }}
+          path: research_updates/2026_11_09_n12_mixed/dim4-check/
+          if-no-files-found: error
