@@ -29,6 +29,8 @@ jobs:
           python3 -u lower_dim_orbits.py --space 4 --supports coverage/support.bin --output coverage/orbits.json
           python3 -u lower_dim_phase_prepare.py --space 4 --supports coverage/orbits.bin --output tasks.bin
           cp tasks.json coverage/tasks.json
+          cp tasks.bin coverage/tasks.bin
+          sha256sum coverage/tasks.bin coverage/support.bin coverage/orbits.bin coverage/orbits.weights.bin > coverage/inputs.sha256
       - name: Test an exact interval of the phases outside both invariant planes
         env:
           PHASE_SHARD: ${{ matrix.shard }}
