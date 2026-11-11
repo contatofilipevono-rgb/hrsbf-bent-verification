@@ -1,0 +1,102 @@
+{
+  "totals": {
+    "tested": 49807360,
+    "balanced": 883994,
+    "support_degree_at_most_five": 97530,
+    "tasks": 976,
+    "maps": 256,
+    "functions": 4194304,
+    "phase_trials": 4980736,
+    "quadratic_inconsistent": 512
+  },
+  "orbits": [
+    {
+      "code": 1583330,
+      "maps": 32,
+      "phases_per_map": 12288
+    },
+    {
+      "code": 225448085,
+      "maps": 32,
+      "phases_per_map": 24576
+    },
+    {
+      "code": 225448170,
+      "maps": 32,
+      "phases_per_map": 12288
+    },
+    {
+      "code": 225448212,
+      "maps": 32,
+      "phases_per_map": 24576
+    },
+    {
+      "code": 225448239,
+      "maps": 16,
+      "phases_per_map": 32768
+    },
+    {
+      "code": 447615148,
+      "maps": 16,
+      "phases_per_map": 16384
+    },
+    {
+      "code": 447615179,
+      "maps": 16,
+      "phases_per_map": 8192
+    },
+    {
+      "code": 447615748,
+      "maps": 16,
+      "phases_per_map": 8192
+    },
+    {
+      "code": 447616407,
+      "maps": 16,
+      "phases_per_map": 8192
+    },
+    {
+      "code": 447616496,
+      "maps": 16,
+      "phases_per_map": 16384
+    },
+    {
+      "code": 447616600,
+      "maps": 16,
+      "phases_per_map": 8192
+    },
+    {
+      "code": 447616730,
+      "maps": 16,
+      "phases_per_map": 16384
+    }
+  ],
+  "orbit_count": 12,
+  "phase_count_distribution": [
+    {
+      "orbit_size": 16,
+      "phases_per_map": 8192,
+      "orbits": 4
+    },
+    {
+      "orbit_size": 16,
+      "phases_per_map": 16384,
+      "orbits": 3
+    },
+    {
+      "orbit_size": 16,
+      "phases_per_map": 32768,
+      "orbits": 1
+    },
+    {
+      "orbit_size": 32,
+      "phases_per_map": 12288,
+      "orbits": 2
+    },
+    {
+      "orbit_size": 32,
+      "phases_per_map": 24576,
+      "orbits": 2
+    }
+  ]
+}

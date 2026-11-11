@@ -1,0 +1,46 @@
+name: Count the dimension-two block by map orbits
+on:
+  push:
+    branches: [codex/n12-mixed-quartic]
+    paths:
+      - '.github/workflows/n12_lower_dim_orbits.yml'
+      - 'research_updates/2026_11_09_n12_mixed/lower_dim_orbits.py'
+      - 'research_updates/2026_11_09_n12_mixed/lower_dim_phase_count.cpp'
+permissions:
+  contents: read
+jobs:
+  phase-orbits:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        space: [2, 3]
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - name: Build the support orbits
+        env:
+          SPACE: ${{ matrix.space }}
+        run: |
+          mkdir -p orbit-output
+          python3 -u lower_dim_support.py --space "$SPACE" --output orbit-output/support.json
+          python3 -u lower_dim_orbits.py --space "$SPACE" --supports orbit-output/support.bin --output orbit-output/orbits.json
+          python3 -u lower_dim_phase_prepare.py --space "$SPACE" --supports orbit-output/orbits.bin --output tasks.bin
+          cp tasks.json orbit-output/tasks.json
+      - name: Count phases on orbit representatives
+        run: |
+          g++ -O3 -march=native -std=c++17 -Wall -Wextra lower_dim_phase_count.cpp -o phase_count
+          ./phase_count tasks.bin orbit-output/result 25
+          python3 -u lower_dim_phase_verify.py --tasks tasks.bin --prefix orbit-output/result
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lower-dim-phase-orbits-${{ matrix.space }}
+          path: research_updates/2026_11_09_n12_mixed/orbit-output/
+          if-no-files-found: error
