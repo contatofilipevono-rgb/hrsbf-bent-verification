@@ -1,0 +1,66 @@
+name: Verify the nine V3 matrix forms
+on:
+  push:
+    branches: [codex/n12-mixed-quartic]
+    paths:
+      - '.github/workflows/n12_v3_q_normal_form.yml'
+      - 'research_updates/2026_11_09_n12_mixed/lower_dim_v3_q_classify.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  construct:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        q: [0, 56, 157, 179, 315, 325, 351, 472, 492]
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - name: Install the finite Boolean solver
+        run: python3 -m pip install python-sat
+      - name: Construct the supports in the prescribed matrix form
+        run: |
+          mkdir -p q-output
+          python3 -u lower_dim_v3_q_classify.py --q-code ${{ matrix.q }} --construct --output q-output/support.json
+      - name: Prepare and count exact phases
+        run: |
+          g++ -O3 -march=native -std=c++17 -Wall -Wextra lower_dim_phase_count.cpp -o phase_count
+          python3 -u lower_dim_phase_prepare.py --space 1 --supports q-output/support.bin --output q-output/tasks.bin
+          ./phase_count q-output/tasks.bin q-output/result 25
+          python3 -u lower_dim_phase_verify.py --tasks q-output/tasks.bin --prefix q-output/result
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v3-q-${{ matrix.q }}
+          path: research_updates/2026_11_09_n12_mixed/q-output/
+          if-no-files-found: error
+  aggregate:
+    needs: construct
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: v3-q-*
+          path: research_updates/2026_11_09_n12_mixed/q-artifacts
+      - name: Check support coverage and count phases by quadratic sums
+        run: python3 -u lower_dim_v3_q_summary.py --artifacts q-artifacts --output v3-q-summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v3-q-summary
+          path: research_updates/2026_11_09_n12_mixed/v3-q-summary.json
