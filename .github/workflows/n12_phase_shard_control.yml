@@ -1,0 +1,28 @@
+name: Verify the phase interval partition on a nonempty family
+on:
+  push:
+    branches: [codex/n12-mixed-quartic]
+    paths:
+      - '.github/workflows/n12_phase_shard_control.yml'
+      - 'research_updates/2026_11_09_n12_mixed/lower_dim_shard_control.py'
+permissions:
+  contents: read
+jobs:
+  shard-control:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - run: |
+          g++ -O3 -march=native -std=c++17 -Wall -Wextra lower_dim_phase_count.cpp -o phase_count
+          python3 lower_dim_shard_control.py --counter ./phase_count --output shard-control
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phase-interval-control
+          path: research_updates/2026_11_09_n12_mixed/shard-control/

@@ -1,0 +1,218 @@
+[
+  {
+    "map_code": 1,
+    "orbit_size": 1,
+    "polar_count": 12,
+    "top_count": 1664,
+    "counts_per_polar": [
+      [
+        1536,
+        4
+      ],
+      [
+        4096,
+        2
+      ],
+      [
+        8192,
+        4
+      ],
+      [
+        12288,
+        2
+      ]
+    ],
+    "counts_per_top": [
+      [
+        16,
+        128
+      ],
+      [
+        32,
+        1152
+      ],
+      [
+        64,
+        256
+      ],
+      [
+        128,
+        128
+      ]
+    ],
+    "rank_patterns": [
+      {
+        "ranks": [
+          0,
+          64,
+          0,
+          0
+        ],
+        "phases": 14336
+      },
+      {
+        "ranks": [
+          4,
+          60,
+          0,
+          0
+        ],
+        "phases": 32768
+      },
+      {
+        "ranks": [
+          24,
+          40,
+          0,
+          0
+        ],
+        "phases": 24576
+      }
+    ]
+  },
+  {
+    "map_code": 19,
+    "orbit_size": 64,
+    "polar_count": 8,
+    "top_count": 32,
+    "counts_per_polar": [
+      [
+        384,
+        8
+      ]
+    ],
+    "counts_per_top": [
+      [
+        96,
+        32
+      ]
+    ],
+    "rank_patterns": [
+      {
+        "ranks": [
+          1,
+          7,
+          56,
+          0
+        ],
+        "phases": 3072
+      }
+    ]
+  },
+  {
+    "map_code": 822549,
+    "orbit_size": 32,
+    "polar_count": 2,
+    "top_count": 32,
+    "counts_per_polar": [
+      [
+        256,
+        2
+      ]
+    ],
+    "counts_per_top": [
+      [
+        16,
+        32
+      ]
+    ],
+    "rank_patterns": [
+      {
+        "ranks": [
+          4,
+          60,
+          0,
+          0
+        ],
+        "phases": 512
+      }
+    ]
+  },
+  {
+    "map_code": 115044639,
+    "orbit_size": 32,
+    "polar_count": 1,
+    "top_count": 16,
+    "counts_per_polar": [
+      [
+        256,
+        1
+      ]
+    ],
+    "counts_per_top": [
+      [
+        16,
+        16
+      ]
+    ],
+    "rank_patterns": [
+      {
+        "ranks": [
+          4,
+          60,
+          0,
+          0
+        ],
+        "phases": 256
+      }
+    ]
+  },
+  {
+    "map_code": 115044803,
+    "orbit_size": 32,
+    "polar_count": 1,
+    "top_count": 16,
+    "counts_per_polar": [
+      [
+        256,
+        1
+      ]
+    ],
+    "counts_per_top": [
+      [
+        16,
+        16
+      ]
+    ],
+    "rank_patterns": [
+      {
+        "ranks": [
+          4,
+          60,
+          0,
+          0
+        ],
+        "phases": 256
+      }
+    ]
+  },
+  {
+    "map_code": 202149121,
+    "orbit_size": 2,
+    "polar_count": 1,
+    "top_count": 64,
+    "counts_per_polar": [
+      [
+        4096,
+        1
+      ]
+    ],
+    "counts_per_top": [
+      [
+        64,
+        64
+      ]
+    ],
+    "rank_patterns": [
+      {
+        "ranks": [
+          24,
+          40,
+          0,
+          0
+        ],
+        "phases": 4096
+      }
+    ]
+  }
+]
