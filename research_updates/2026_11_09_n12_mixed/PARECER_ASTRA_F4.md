@@ -19,3 +19,5 @@ As dependências computacionais de álgebra linear foram explicitadas.
 A descrição “prova algébrica do tipo q24 com duas comparações finitas de coeficientes” corresponde ao argumento.
 
 A extensão a todo o bloco afim em U exige a exclusão separada dos demais tipos de q não nulo. Este parecer é uma auditoria por modelo. A revisão humana continua pendente.
+
+A seção 9 foi lida em uma segunda rodada. O dicionário psi para (c,P), a fórmula do termo linear na ANF, o fator 36, as quatro orientações e as multiplicidades 32·6, 4·20, 2·24 e 34·0 conferem. A redação foi ajustada para deixar epsilon fixado ao parametrizar a parte ímpar por (a,b). Essa segunda rodada não inclui auditoria dos arquivos externos das buscas do Fable para os outros tipos de q.

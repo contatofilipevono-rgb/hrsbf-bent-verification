@@ -326,7 +326,14 @@ $$
 \psi(z)=(\beta_0+\beta_3,\ \beta_1+\beta_4,\ \beta_2+\beta_5).
 $$
 
-A passagem da função afim em $U$ para o termo linear na ANF em todo $w$ acrescenta múltiplos do vetor de uns e o termo diagonal de $s\,q(z)\cdot w$. Ambos têm somas antipodais zero no tipo de peso 24. Por isso a fórmula acima coincide com a definição de psi pelo termo linear nas coordenadas da forma 9. Ela independe da escolha de $s$, pois $q$ também tem somas antipodais zero.
+A passagem da função afim em $U$ para o termo linear $\ell(z)$ na ANF em todo $w$ é, denotando a fase por $\mathcal H$,
+
+$$
+\ell(z)=\beta(z)+q(z)+
+\bigl(\mathcal H(z,0)+\mathcal H(z,1)\bigr)\mathbf1,
+$$
+
+com $\beta_5=q_5=0$. O termo $q$ vem da identidade $w_i^2=w_i$ em $s(q\cdot w)$. Tanto $q$ quanto o vetor de uns têm somas antipodais zero no tipo de peso 24. Por isso a fórmula acima coincide com a definição de psi pelo termo linear nas coordenadas da forma numerada 9 no parecer do Fable. Ela independe da escolha de $s$.
 
 Escreva $\psi=(y_0,y_1,y_2)$. O dicionário é
 
@@ -338,7 +345,7 @@ Essa aplicação linear é invertível. Assim psi contém exatamente $c,P$, e es
 
 Na parte par, psi depende apenas de $(\varepsilon,r,j)$. Há quatro restrições pares por valor de epsilon, num total de oito. Os dois parâmetros $\lambda,\mu$ são as quatro orientações invisíveis em psi.
 
-Na parte ímpar, psi depende apenas de $(a,b)$. Para $\varepsilon=0$, são os 15 pares não nulos. Para $\varepsilon=1$, são os três pares com $a\ne0,b=0$. Consequentemente,
+Na parte ímpar, para $\varepsilon$ fixado, psi depende apenas de $(a,b)$. Para $\varepsilon=0$, são os 15 pares não nulos. Para $\varepsilon=1$, são os três pares com $a\ne0,b=0$. Consequentemente,
 
 $$
 \#\psi=4\cdot15+4\cdot3=72.
