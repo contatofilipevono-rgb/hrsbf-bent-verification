@@ -1,0 +1,74 @@
+name: Cross Pfaffian and radical parity filters in N12
+on:
+  push:
+    branches: [codex/n12-mixed-quartic]
+    paths:
+      - '.github/workflows/n12_pfaffian_radical_parity.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  scan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy
+      - name: Scan a disjoint block of quadratic top parts
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          python research_updates/2026_11_09_n12_mixed/line_pfaffian_parity_scan.py \
+            --shard "$SHARD" --output "parity-$SHARD.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: radical-parity-${{ matrix.shard }}
+          path: parity-${{ matrix.shard }}.json
+          if-no-files-found: error
+  aggregate:
+    needs: scan
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: radical-parity-*
+          path: parts
+          merge-multiple: true
+      - name: Check coverage against the Pfaffian reference and summarize
+        run: |
+          python3 - <<'PY'
+          import json
+          from collections import Counter
+          from pathlib import Path
+          parts = [json.loads(p.read_text()) for p in Path('parts').glob('parity-*.json')]
+          assert sorted(p['shard'] for p in parts) == list(range(16))
+          assert sum(p['top_count'] for p in parts) == 1176
+          counts = Counter()
+          for p in parts:
+              for a,b,even,n in p['counts']:
+                  counts[a,b,even] += n
+          keys = sorted({(a,b) for a,b,_ in counts})
+          assert len(keys) == 15 and sum(counts.values()) == 6976
+          report = {
+              'tops': 1176, 'polars': 6976,
+              'even_radicals': sum(counts[a,b,True] for a,b in keys),
+              'pairs': [[a,b,counts[a,b,True],counts[a,b,False]] for a,b in keys],
+          }
+          Path('pfaffian-radical-parity.json').write_text(json.dumps(report, indent=2) + '\n')
+          print(report)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pfaffian-radical-parity-summary
+          path: pfaffian-radical-parity.json
+          if-no-files-found: error
