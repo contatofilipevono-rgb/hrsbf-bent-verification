@@ -7,6 +7,7 @@ on:
       - 'research_updates/2026_11_09_n12_mixed/line_balanced_by_walsh.py'
       - 'research_updates/2026_11_09_n12_mixed/line_column_collision.py'
       - 'research_updates/2026_11_09_n12_mixed/line_phase_algebra.py'
+      - 'research_updates/2026_11_09_n12_mixed/line_zero_column.py'
   workflow_dispatch:
 permissions:
   contents: read
@@ -30,6 +31,8 @@ jobs:
           python3 -u lower_dim_phase_prepare.py --space 4 --supports proof-output/orbits.bin --output proof-output/tasks.bin
       - name: Verify the polynomial contradictions
         run: python3 -u line_phase_algebra.py --tasks proof-output/tasks.bin --output proof-output/line-phase-algebra.json
+      - name: Verify the shorter proof by column energy
+        run: python3 -u line_phase_algebra.py --column-energy --tasks proof-output/tasks.bin --output proof-output/line-phase-energy.json
       - uses: actions/upload-artifact@v4
         with:
           name: n12-two-plane-moment-proof

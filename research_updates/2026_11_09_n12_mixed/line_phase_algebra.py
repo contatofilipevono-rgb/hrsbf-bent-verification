@@ -12,6 +12,7 @@ from lower_dim_model import build
 from lower_dim_phase_prepare import truth_on_coordinates
 from lower_dim_polar_structure import extract_polar
 from lower_dim_v3_symbolic import affine_at, echelon, product, read_tasks, substitute
+from line_zero_column import early_obstruction, final_obstruction
 
 def quadratic_moments(root, directions, moments):
     equations = []
@@ -117,7 +118,7 @@ def mod8_bit(root, directions, support, target):
     return result
 
 
-def check_phases(tasks_path):
+def check_phases(tasks_path, column_energy=False):
     model = build((63,))
     maps = [p for p, _ in model.maps]
 
@@ -151,6 +152,13 @@ def check_phases(tasks_path):
                 record["column_certificate"] = certificate
                 continue
 
+            if column_energy:
+                certificate = early_obstruction(model, mapping, phase, ds, origin_polar ^ displacement)
+                if certificate is not None:
+                    record["exclusion"] = "derivative" if "derivative" in certificate else "column_energy"
+                    record["energy_certificate"] = certificate
+                    continue
+
             equations = quadratic_moments(phase, ds, moments)
             reduced = reduce_phase(phase, ds, sig, ss, equations, 3)
             if reduced is None:
@@ -162,6 +170,14 @@ def check_phases(tasks_path):
                 continue
             record["dimension_mod4"] = len(ds)
 
+            if column_energy:
+                certificate = final_obstruction(
+                    model, mapping, phase, ds, origin_polar ^ displacement, equations, code
+                )
+                record["exclusion"] = "zero_column_after_mod4"
+                record["energy_certificate"] = certificate
+                continue
+
             equations.extend(mod8_bit(phase, ds, subset, target)
                              for subset, mask, target in moments if mask >= 7)
             reduced = reduce_phase(phase, ds, sig, ss, equations, 4)
@@ -172,7 +188,11 @@ def check_phases(tasks_path):
         print(code, len(polar_cases), dict(Counter(r["exclusion"] for r in details)), flush=True)
     assert len(details) == 2096 and len({r["map_code"] for r in details}) == 49
     counts = Counter(r["exclusion"] for r in details)
-    assert counts == {"signature": 728, "column_collision": 925, "mod4": 388, "mod8": 55}
+    if column_energy:
+        assert counts == {"signature": 728, "column_collision": 925, "derivative": 413,
+                          "column_energy": 5, "mod4": 7, "zero_column_after_mod4": 18}
+    else:
+        assert counts == {"signature": 728, "column_collision": 925, "mod4": 388, "mod8": 55}
     return {"task_count":49, "task_polar_pairs":len(details), "excluded":dict(counts),
             "phase_assignments_enumerated":0, "details":details}
 
@@ -181,8 +201,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--tasks", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--column-energy", action="store_true")
     args = parser.parse_args()
-    report = check_phases(args.tasks)
+    report = check_phases(args.tasks, args.column_energy)
     args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print({key: value for key, value in report.items() if key != "details"})
 
