@@ -8,11 +8,12 @@ from pathlib import Path
 from count_near_antipodal import all_points, image_and_kernel
 from higher_filter import solve, xor_terms
 from line_column_collision import collision
+from line_column_autocorrelation import exclude_by_autocorrelation
 from lower_dim_model import build
 from lower_dim_phase_prepare import truth_on_coordinates
 from lower_dim_polar_structure import extract_polar
 from lower_dim_v3_symbolic import affine_at, echelon, product, read_tasks, substitute
-from line_zero_column import early_obstruction, final_obstruction
+from line_zero_column import early_obstruction, final_obstruction, necessary_spectra
 
 def quadratic_moments(root, directions, moments):
     equations = []
@@ -118,7 +119,7 @@ def mod8_bit(root, directions, support, target):
     return result
 
 
-def check_phases(tasks_path, column_energy=False):
+def check_phases(tasks_path, column_energy=False, column_autocorrelation=False):
     model = build((63,))
     maps = [p for p, _ in model.maps]
 
@@ -152,11 +153,18 @@ def check_phases(tasks_path, column_energy=False):
                 record["column_certificate"] = certificate
                 continue
 
-            if column_energy:
-                certificate = early_obstruction(model, mapping, phase, ds, origin_polar ^ displacement)
+            if column_energy or column_autocorrelation:
+                spectra = list(necessary_spectra(model, mapping, phase, ds, origin_polar ^ displacement))
+                certificate = early_obstruction(spectra)
                 if certificate is not None:
                     record["exclusion"] = "derivative" if "derivative" in certificate else "column_energy"
                     record["energy_certificate"] = certificate
+                    continue
+                if column_autocorrelation:
+                    method, certificate = exclude_by_autocorrelation(model, mapping, phase, ds, spectra)
+                    assert method is not None, ("unresolved spectral case", record)
+                    record["exclusion"] = method
+                    record.update(certificate)
                     continue
 
             equations = quadratic_moments(phase, ds, moments)
@@ -188,7 +196,10 @@ def check_phases(tasks_path, column_energy=False):
         print(code, len(polar_cases), dict(Counter(r["exclusion"] for r in details)), flush=True)
     assert len(details) == 2096 and len({r["map_code"] for r in details}) == 49
     counts = Counter(r["exclusion"] for r in details)
-    if column_energy:
+    if column_autocorrelation:
+        assert counts == {"signature": 728, "column_collision": 925, "derivative": 413,
+                          "column_energy": 5, "joint_energy": 16, "column_autocorrelation": 9}
+    elif column_energy:
         assert counts == {"signature": 728, "column_collision": 925, "derivative": 413,
                           "column_energy": 5, "mod4": 7, "zero_column_after_mod4": 18}
     else:
@@ -201,9 +212,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--tasks", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--column-energy", action="store_true")
+    method = parser.add_mutually_exclusive_group()
+    method.add_argument("--column-energy", action="store_true")
+    method.add_argument("--column-autocorrelation", action="store_true")
     args = parser.parse_args()
-    report = check_phases(args.tasks, args.column_energy)
+    report = check_phases(args.tasks, args.column_energy, args.column_autocorrelation)
     args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print({key: value for key, value in report.items() if key != "details"})
 

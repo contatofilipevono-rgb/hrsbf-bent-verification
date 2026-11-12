@@ -40,4 +40,16 @@ E_0=192-48a-8b-48c-24d-24e+24de,
 
 onde \(a,b,c,d,e\) são os caracteres associados às máscaras 532, 3584, 4177, 11307, 17492 da parametrização reduzida. A última frequência é o XOR das duas anteriores. Como \(-24d-24e+24de\ge -24\), a igualdade \(E_0=64\) força \(a=b=c=1\). Basta impor \(a=c=1\). A soma das equações quadráticas de índices 0, 5, 7 e 10 se restringe ao polinômio constante 1 no subespaço definido por essas duas relações lineares. A substituição formal verifica a identidade, sem avaliar fases.
 
-A prova ainda reconstrói bases finitas, usa somas de caracteres e depende das condições módulo 4 nos últimos 25 pares. O arquivo de saída registra, por par, o espectro de caracteres ou a identidade usada para a exclusão.
+## Exclusão sem os momentos módulo 4 e módulo 8
+
+Em cada soma de caracteres, os padrões que atingem o valor prescrito vivem no dual do espaço das frequências. As equações do fecho afim desses padrões são condições lineares necessárias nos parâmetros de fase. Para transpor uma equação desse dual ao espaço de fases, some as frequências correspondentes à sua forma linear. Interseque as equações de todas as somas e repita após a substituição afim. Em 16 dos últimos 25 pares, as equações são incompatíveis já na primeira interseção.
+
+Para os nove restantes, use também a autocorrelação da coluna. Se \(f\) é bent, então para cada \(\beta\) a transformada em \(z\) de \(A(z,\beta)\) tem módulo constante. Pelo teorema da autocorrelação,
+
+\[
+\sum_z A(z,\beta)A(z+a,\beta)=0\qquad(a\ne 0).
+\]
+
+Expanda \(A(z,\beta)\) como soma de caracteres nos parâmetros de fase. A autocorrelação é o produto de duas somas de caracteres, seguido da soma sobre os pares \(z,z+a\). Os pares contribuem duas vezes, e o programa usa uma vez cada par. O mesmo procedimento de fecho afim, aplicado às autocorrelações de colunas selecionadas, resolve os nove casos. No mapa 1505 basta a coluna 0, com deslocamento 9 depois da redução linear. Os outros oito usam somente colunas de rótulo até 16, além das colunas iniciais 21 e 63.
+
+O comando `line_phase_algebra.py --column-autocorrelation` reproduz a cobertura completa. As 49 tarefas já incorporam os momentos lineares de paridade. O novo passo dispensa os momentos de ordem superior, usando apenas somas de caracteres e eliminação linear. O arquivo de saída registra as equações afins e suas fontes em cada redução. A construção das tarefas e o cálculo dos espaços de frequências ainda são verificações finitas.

@@ -53,30 +53,30 @@ def character_values(spectrum):
     return basis, values
 
 
-def early_obstruction(model, mapping, phase, directions, polar):
-    """Find a derivative or column condition impossible on the affine phase space."""
+def necessary_spectra(model, mapping, phase, directions, polar):
     by_direction = {}
     for _, v, derivative in radical_derivatives(model, mapping, phase, directions, polar):
         by_direction.setdefault(v, Counter())[derivative >> 1] += (-1)**(derivative & 1)
     for v, spectrum in sorted(by_direction.items()):
         if not v or v != min(shift(v, k, 6) for k in range(6)):
             continue
-        terms = {mask: weight for mask, weight in spectrum.items() if weight}
-        if len(image_and_kernel(terms)[0]) <= 15:
-            basis, values = character_values(terms)
-            if 0 not in values:
-                return {"derivative": v, "spectrum": terms, "character_rank": len(basis)}
+        yield ("derivative", v), 0, {mask: weight for mask, weight in spectrum.items() if weight}
     for beta in (0, 63, 21):
         spectrum = Counter()
         for v, terms in by_direction.items():
             sign = (-1)**((v & beta).bit_count() & 1)
             for mask, weight in terms.items():
                 spectrum[mask] += sign * weight
-        terms = {mask: weight for mask, weight in spectrum.items() if weight}
+        yield ("column", beta), 64, {mask: weight for mask, weight in spectrum.items() if weight}
+
+
+def early_obstruction(spectra):
+    """Find a derivative or column condition impossible on the affine phase space."""
+    for (kind, index), target, terms in spectra:
         if len(image_and_kernel(terms)[0]) <= 15:
             basis, values = character_values(terms)
-            if 64 not in values:
-                return {"column": beta, "spectrum": terms, "character_rank": len(basis)}
+            if target not in values:
+                return {kind: index, "spectrum": terms, "character_rank": len(basis)}
     return None
 
 

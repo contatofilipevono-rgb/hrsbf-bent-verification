@@ -8,6 +8,7 @@ on:
       - 'research_updates/2026_11_09_n12_mixed/line_column_collision.py'
       - 'research_updates/2026_11_09_n12_mixed/line_phase_algebra.py'
       - 'research_updates/2026_11_09_n12_mixed/line_zero_column.py'
+      - 'research_updates/2026_11_09_n12_mixed/line_column_autocorrelation.py'
   workflow_dispatch:
 permissions:
   contents: read
@@ -33,6 +34,8 @@ jobs:
         run: python3 -u line_phase_algebra.py --tasks proof-output/tasks.bin --output proof-output/line-phase-algebra.json
       - name: Verify the shorter proof by column energy
         run: python3 -u line_phase_algebra.py --column-energy --tasks proof-output/tasks.bin --output proof-output/line-phase-energy.json
+      - name: Verify coverage by column autocorrelations
+        run: python3 -u line_phase_algebra.py --column-autocorrelation --tasks proof-output/tasks.bin --output proof-output/line-phase-autocorrelation.json
       - uses: actions/upload-artifact@v4
         with:
           name: n12-two-plane-moment-proof
