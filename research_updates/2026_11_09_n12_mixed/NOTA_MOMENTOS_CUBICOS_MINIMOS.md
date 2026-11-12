@@ -19,7 +19,13 @@ Os três casos de mínimo dois são:
 
 Nos dois casos do mapa 134528, as mesmas duas condições em momentos de ordem dois da fibra 1 bastam. No mapa 2023, a solução mínima registrada usa momentos de ordem dois das fibras 0 e 1. Isso sugere começar a análise estrutural pelas duas condições do mapa 134528 e pelos conjuntos de fases de 24 elementos.
 
-`line-cubic-minimum.json` guarda as polares completas, os índices dos momentos e os polinômios na parametrização reduzida. O código `line_cubic_minimum.py` parte dos mesmos sistemas exatos do verificador da cobertura e reconta todas as atribuições dos espaços residuais. O mínimo é relativo à lista de momentos usada pelo verificador. A etapa complementar no GitHub testa quais núcleos curtos podem ser excluídos por eliminação polinomial, sem avaliar todas as atribuições.
+`line-cubic-minimum.json` guarda as polares completas, os índices dos momentos e os polinômios na parametrização reduzida. O código `line_cubic_minimum.py` parte dos mesmos sistemas exatos do verificador da cobertura e reconta todas as atribuições dos espaços residuais. O mínimo é relativo à lista de momentos usada pelo verificador.
+
+## Conferência no GitHub Actions
+
+A execução [43201673786](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/43201673786) reconstruiu as tarefas a partir do modelo e terminou com sucesso nos 55 casos. A eliminação polinomial encontrou um núcleo do tamanho mínimo em cada caso, conferido individualmente contra a cobertura exata. A fibra 0, sozinha no passo módulo 8, basta em 54 dos 55 casos. Restringindo as equações a essa fibra, o teste de cobertura exata encontrou 50 casos com uma equação e quatro com duas. A única exceção é o mapa 2023, onde duas equações da fibra 1 bastam. A fibra 1 também basta em 42 outros casos. Momentos de ordens zero e um bastam em 18 dos 55 casos.
+
+O alvo estrutural é portanto explicar por que os momentos de ordem até dois da fibra 0 excluem as fases nos 54 pares, usando as condições anteriores. Uma análise separada de um único mapa pode tratar a exceção.
 
 Para reproduzir, execute os passos de preparação do fluxo `n12_cubic_ablation.yml` e depois:
 
