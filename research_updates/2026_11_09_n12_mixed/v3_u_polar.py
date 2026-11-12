@@ -3,6 +3,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
+from count_near_antipodal import image_and_kernel
 from higher_filter import xor_terms
 from lower_dim_model import anf, build
 from lower_dim_phase_prepare import truth_on_coordinates
@@ -36,6 +37,23 @@ def verify_c_families(model, maps, lifts):
             assert derivative(truth, 10, 5) == polar_bit * parity
 
 
+def verify_constant_fixed_maps(maps, lifts):
+    values = [decompose(mapping)[1] for mapping in maps]
+    vertical = [fixed ^ sum(((fixed >> (24*x)) & 7) << (24*x + 3*u)
+                            for x in range(8) for u in range(8)) for fixed in values]
+    _, kernel = image_and_kernel(vertical)
+    assert len(kernel) == 31
+    for code in kernel:
+        q, fixed, _ = decompose(xor_terms(maps, code))
+        first = (q >> 21) & 7
+        second = (q >> (3 * (64 + 7))) & 7
+        assert second == first ^ (first >> 1) ^ ((first & 1) << 2)
+        phase = xor_terms(lifts, code)
+        polar_bit = (phase ^ (phase >> 64) ^ (phase >> 128) ^ (phase >> 192)) & 1
+        g3 = (fixed >> 72) & 7
+        assert polar_bit == ((g3 & 5).bit_count() & 1)
+
+
 def main():
     model = build((9, 18, 36))
     maps, lifts = map(list, zip(*model.maps))
@@ -65,6 +83,7 @@ def main():
                              for x in range(8)) for a in (0, 1) for b in (0, 1)}
     assert slopes == expected_slopes
     verify_c_families(model, maps, lifts)
+    verify_constant_fixed_maps(maps, lifts)
 
     forms = {normal_form_q('A', 0): 'A0', normal_form_q('C', 2): 'C2'}
     fixed_points = [9*x + 64*u for u in range(8) for x in range(8)]
