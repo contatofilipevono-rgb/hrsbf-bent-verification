@@ -41,4 +41,10 @@ O programa `v3_a0_reconstruct.py` deriva as duas equações a partir dos momento
 | 74132560 | 7 | 96 | 32 |
 | 72431560 | 7 | 96 | 32 |
 
-Os três conjuntos são disjuntos. Os 144 mapas geram exatamente as cinco órbitas acima, e os momentos de fase dão as mesmas 2.883.584 funções. Esse reprodutor parte das bases, sem carregar os 832 códigos nem o catálogo. Ele ainda usa eliminação finita de polinômios e transformadas nos espaços de parâmetros. A dedução direta dos sistemas quadráticos de fase a partir da geometria das três outras fibras permanece aberta.
+## Contagem dos mapas por subespaços afins
+
+O reprodutor atual obtém as contagens sem percorrer os pontos dos espaços de parâmetros. Escreva `χ_m(t)=(-1)^{m·t}`, com `m` dado como máscara binária em decimal. Agrupar os pontos de cada soma pelo seu caráter dá três somas distintas, para os rótulos 1, 3 e 7. A soma do rótulo 7 é `−16 ± 12χ₁₂₂`; exigir o valor −4 fixa um hiperplano. Nesse hiperplano, as somas dos rótulos 1 e 3 coincidem.
+
+Na primeira parametrização, com `a=χ₇`, `b=χ₁₀` e `c=χ₁₈₁`, a soma comum é `−2a−4b+2ab+2c−2bc`. Ela vale −4 se `b=1` ou se `(b,a,c)=(−1,1,−1)`. As três máscaras são independentes módulo a máscara do hiperplano. Logo os dois casos são subespaços afins disjuntos de dimensões 6 e 4, dando `2⁶+2⁴=80`. Nas outras duas parametrizações, a soma comum é um único caráter com coeficiente −4, e fixa um segundo hiperplano independente, dando `2⁵=32` em cada uma. As condições de grau das indicadoras se anulam identicamente nos quatro subespaços, por substituição polinomial.
+
+Os 144 mapas geram exatamente as cinco órbitas acima, e os momentos de fase dão as mesmas 2.883.584 funções. O reprodutor parte das bases, sem carregar os 832 códigos nem o catálogo. Ele lista os 144 pontos dos quatro subespaços apenas para identificar as órbitas e aplica a contagem de fases aos cinco representantes. A dedução direta dos sistemas quadráticos de fase a partir da geometria das outras três fibras permanece aberta.

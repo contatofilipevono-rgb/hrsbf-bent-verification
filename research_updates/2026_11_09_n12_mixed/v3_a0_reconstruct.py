@@ -7,12 +7,14 @@ import struct
 from tempfile import TemporaryDirectory
 
 from count_near_antipodal import all_points, image_and_kernel
-from higher_filter import xor_terms
+from higher_filter import solve, xor_terms
 from line_phase_algebra import reduce_phase
 from lower_dim_model import active_indices, anf, build
 from lower_dim_phase_prepare import prepare
 from lower_dim_v3_q_classify import classify_case, decompose, prepare_space
-from lower_dim_v3_symbolic import affine_at, count, equations_for_task, orbit_partition, read_tasks
+from lower_dim_v3_symbolic import (
+    affine_at, count, equations_for_task, orbit_partition, read_tasks, substitute,
+)
 from v3_a0_orbit_moments import consistency_equations
 from v3_u_polar import fixed_slopes
 
@@ -21,40 +23,63 @@ def pack_slopes(phase):
     return sum(v << (3*x) for x, v in enumerate(fixed_slopes(phase)))
 
 
-def walsh_histogram(dimension, base, directions, points, label):
-    table = [0] * (1 << dimension)
+def balance_spectrum(base, directions, points, label):
+    table = Counter()
     for z in points:
         column = sum(((g[z] & label).bit_count() & 1) << i for i, g in enumerate(directions))
         table[column] += 1 - 2 * ((base[z] & label).bit_count() & 1)
-    for i in range(dimension):
-        half = 1 << i
-        for lo in range(0, len(table), 2*half):
-            for a in range(lo, lo+half):
-                x, y = table[a], table[a+half]
-                table[a], table[a+half] = x+y, x-y
-    return table
+    return {frequency: value for frequency, value in table.items() if value}
+
+
+def on_hyperplane(spectrum, mask, rhs):
+    pivot = 1 << (mask.bit_length() - 1)
+    restricted = Counter()
+    for frequency, coefficient in spectrum.items():
+        if frequency & pivot:
+            frequency ^= mask
+            coefficient *= (-1)**rhs
+        restricted[frequency] += coefficient
+    return {frequency: value for frequency, value in restricted.items() if value}
+
+
+def balanced_flats(g0, gs, balance):
+    spectra = {}
+    for label, points, target in balance:
+        assert len(points) - 2*target == -4
+        spectra[label] = balance_spectrum(g0, gs, points, label)
+    assert spectra[1] == spectra[2] == spectra[4]
+    assert spectra[3] == spectra[5] == spectra[6]
+    assert spectra[7] in ({0: -16, 122: 12}, {0: -16, 122: -12})
+    rhs = int(spectra[7][122] < 0)
+    hyperplane = (122, rhs)
+    reduced = on_hyperplane(spectra[1], *hyperplane)
+    assert reduced == on_hyperplane(spectra[3], *hyperplane)
+    if len(gs) == 8:
+        assert reduced == {7: -2, 10: -4, 13: 2, 181: 2, 191: -2}
+        # With a=chi_7, b=chi_10, c=chi_181 the sum is
+        # -2a-4b+2ab+2c-2bc. It is -4 iff b=1 or (b,a,c)=(-1,1,-1).
+        return [(hyperplane, (10, 0)), (hyperplane, (10, 1), (7, 0), (181, 1))]
+    assert len(gs) == 7 and reduced in ({7: -4}, {13: -4})
+    return [(hyperplane, (next(iter(reduced)), 0))]
 
 
 def chart_maps(map_root, map_directions, equations, balance, space):
     dimension = len(map_directions)
     g0 = decompose(xor_terms(space.tables, map_root))[2]
     gs = [decompose(xor_terms(space.tables, d))[2] for d in map_directions]
-    allowed = (1 << (1 << dimension)) - 1
-    planes = [allowed ^ (allowed // ((1 << (1 << i)) + 1)) for i in range(dimension)]
-    for q in equations:
-        values = 0
-        for monomial in q:
-            term = (1 << (1 << dimension)) - 1
-            for i in active_indices(monomial):
-                term &= planes[i]
-            values ^= term
-        allowed &= ~values
-    prebalance = allowed.bit_count()
-    for label, points, target in balance:
-        values = walsh_histogram(dimension, g0, gs, points, label)
-        allowed &= sum(1 << j for j, w in enumerate(values) if w == len(points) - 2*target)
-    maps = [map_root ^ xor_terms(map_directions, word) for word in active_indices(allowed)]
-    return maps, prebalance
+    maps = set()
+    flat_dimensions = []
+    for linear_system in balanced_flats(g0, gs, balance):
+        root, directions, rank = solve(linear_system, dimension)
+        assert root is not None and rank == len(linear_system)
+        variables = [affine_at(i, root, directions) for i in range(dimension)]
+        assert not substitute(equations, variables)
+        words = all_points(directions)
+        found = {map_root ^ xor_terms(map_directions, root ^ word) for word in words}
+        assert len(found) == 1 << len(directions) and not maps.intersection(found)
+        maps.update(found)
+        flat_dimensions.append(len(directions))
+    return maps, flat_dimensions
 
 
 def reconstruct_maps(model, space):
@@ -98,11 +123,11 @@ def reconstruct_maps(model, space):
         origin, variations, _, _, residual = reduced
         chart_root = root ^ xor_terms(directions, origin)
         chart_directions = [xor_terms(directions, v) for v in variations]
-        found, prebalance = chart_maps(chart_root, chart_directions, residual, balance, space)
+        found, flat_dimensions = chart_maps(chart_root, chart_directions, residual, balance, space)
         assert not maps.intersection(found)
         maps.update(found)
         records.append({'permutation': permutation, 'dimension': len(variations),
-                        'prebalance': prebalance, 'balanced': len(found)})
+                        'flat_dimensions': flat_dimensions, 'balanced': len(found)})
     assert len(records) == 3 and len(maps) == 144
     return maps, records, [sorted(q) for q in local]
 
