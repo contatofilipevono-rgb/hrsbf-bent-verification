@@ -45,3 +45,11 @@ Os únicos pares de assinaturas que diferem exatamente no bit menos significativ
 | 23 | 105, 150 |
 
 Em z=7 nenhuma das máscaras é 90 ou 165, excluindo as quatro geometrias pela identidade de Q. Nas outras quatro, use o deslocamento d=(z,0) em (z,u), com z=3 ou 23 conforme a linha da tabela. A interseção S∩(S+d) tem oito pontos. Sua soma de fase, reduzida pela rotação, é h(0,0)+h(0,3) para a máscara 105, e h(0,1)+h(0,7) para a máscara 150. Ambas valem um pela forma de h(0,u). A autocorrelação exige soma zero módulo dois, pois 8/4=2. O verificador confere a tabela de 36 assinaturas e as quatro interseções. A demonstração usa essas contas finitas na geometria da fibra e as duas identidades estruturais, sem a enumeração dos mapas completos nem das fases.
+
+## Extensão ao perfil com 53.244 mapas
+
+Para o perfil (0,6,5,3,3,5,6,0), ainda temos Q(x,0)=0 e g(3)=3, logo a mesma dedução fixa a polar de h(0,u). A fibra zero agora tem duas linhas completas na fatia fixa, em x=0 e 7, e precisa de 48 pontos fora dela. Pelo mesmo argumento módulo seis, a órbita de tamanho dois fica vazia. A parte exterior consiste em quatro das 36 peças elementares. Uma linha não pode conter exatamente três pares, pois sua cardinalidade tem de ser potência de dois.
+
+O verificador guarda as assinaturas de grau pelo menos seis de cada soma de duas peças e usa o XOR com a assinatura da parte fixa para recuperar as somas de quatro. Restam 329 geometrias. Em cada uma, concede-se à fase liberdade independente em cada órbita da fibra, exceto em z=0, onde se usa a forma deduzida acima. Em uma linha completa de oito pontos, a soma da fase é zero módulo dois, pela quadraticidade em u. Juntam-se essas equações aos primeiros bits dos momentos e às paridades das interseções. Restam 17 geometrias com sistemas lineares compatíveis, 16 com quatro direções de fase e uma com cinco. Os momentos módulo quatro ainda são compatíveis nas 17. Os momentos completos módulo oito produzem uma linha constante igual a um após eliminação em todos os casos. Nenhuma atribuição de fase é percorrida.
+
+O argumento exclui a classe pelo suporte e pelos sinais de uma única fibra. Ainda usa a classificação finita das 329 geometrias. O total de 53.244 é o tamanho da classe na enumeração anterior, e a demonstração aplica-se a qualquer mapa que satisfaça o perfil e as hipóteses de grau e rotação.

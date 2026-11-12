@@ -6,7 +6,7 @@ No bloco exclusivo de V = ⟨9,18,36⟩, escrevemos f = h(z,u) + π(z,u)·c, com
 
 ## Hipótese e dependência restante
 
-Esta classificação de Q supõe π = 0 na fatia fixa Φ, dada por r = 0. A nota FABLE_MEIA_VOLTA_DIM3.md reduz esse enunciado ao lema da fatia fixa, à exclusão de 14 classes por enumeração e à exclusão geométrica da classe complementar. A última exclusão tem prova por Parseval. O verificador audit_fable_v3_fixed.py conferiu a ação de κ nos 60 geradores, as duas hipóteses geométricas nos 384 candidatos e o sistema de quadrados da prova. A passagem pelas outras 14 classes continua dependendo dos suportes enumerados.
+Esta classificação de Q usa π = 0 na fatia fixa Φ, dada por r = 0. A nota `n12-v3-fatia-fixa-por-duas-fibras.md` prova essa condição a partir do lema da fatia fixa de Fable e da geometria das fibras invariantes de rótulos 0 e 7. O novo verificador parte das bases e elimina as 15 restrições não nulas sem ler a lista de suportes anterior. A prova anterior por Parseval e sua auditoria ficam em `FABLE_MEIA_VOLTA_DIM3.md` e `audit_fable_v3_fixed.py`.
 
 ## Balanceamento em três variáveis
 
@@ -60,6 +60,6 @@ A execução 43022608556 do GitHub construiu os suportes nas nove formas por sis
 | C₁,C₂ | 3.168 cada | 56 cada | 655.360 cada |
 | Total | 21.582 | 256 | 4.194.304 |
 
-O contador nativo e as somas quadráticas por órbita coincidiram mapa a mapa. Essa reconstrução verifica integralmente a parcela sob a hipótese π|Φ=0. A descrição por nove formas ainda usa eliminação finita, e a seleção de g e das fases tem certificados computacionais. A cobertura universal das quárticas em n=12 continua computacional.
+O contador nativo e as somas quadráticas por órbita coincidiram mapa a mapa. Com a prova da fatia fixa por duas fibras, essa reconstrução cobre o bloco V₃ inteiro sem usar a varredura original dos 49.807.360 mapas. A descrição por nove formas ainda usa eliminação finita, e a seleção de g e das fases tem certificados computacionais. A cobertura universal das quárticas em n=12 continua computacional.
 
 [Execução das nove formas](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/43022608556)

@@ -1,0 +1,138 @@
+[
+  {
+    "profile": "06503000",
+    "constant_on_fixed_rows": true,
+    "fixed_size": 40,
+    "zero_fibre": {
+      "moments": 4
+    }
+  },
+  {
+    "profile": "72471070",
+    "constant_on_fixed_rows": false,
+    "fixed_size": 24,
+    "zero_fibre": {
+      "linear": 48,
+      "moments": 6
+    }
+  },
+  {
+    "profile": "74172070",
+    "constant_on_fixed_rows": false,
+    "fixed_size": 24,
+    "zero_fibre": {
+      "linear": 48,
+      "moments": 6
+    }
+  },
+  {
+    "profile": "02441210",
+    "constant_on_fixed_rows": true,
+    "fixed_size": 16,
+    "zero_fibre": {
+      "linear": 296,
+      "moments": 17
+    }
+  },
+  {
+    "profile": "04142210",
+    "constant_on_fixed_rows": true,
+    "fixed_size": 16,
+    "zero_fibre": {
+      "linear": 296,
+      "moments": 17
+    }
+  },
+  {
+    "profile": "70030260",
+    "constant_on_fixed_rows": false,
+    "fixed_size": 36,
+    "zero_fibre": {}
+  },
+  {
+    "profile": "76533260",
+    "constant_on_fixed_rows": false,
+    "fixed_size": 12,
+    "zero_fibre": {}
+  },
+  {
+    "profile": "72441510",
+    "constant_on_fixed_rows": false,
+    "fixed_size": 12,
+    "zero_fibre": {}
+  },
+  {
+    "profile": "74142510",
+    "constant_on_fixed_rows": false,
+    "fixed_size": 12,
+    "zero_fibre": {}
+  },
+  {
+    "profile": "00030560",
+    "constant_on_fixed_rows": true,
+    "fixed_size": 40,
+    "zero_fibre": {
+      "linear": 4
+    }
+  },
+  {
+    "profile": "06533560",
+    "constant_on_fixed_rows": true,
+    "fixed_size": 16,
+    "zero_fibre": {
+      "linear": 296,
+      "moments": 17
+    }
+  },
+  {
+    "profile": "70000700",
+    "constant_on_fixed_rows": false,
+    "fixed_size": 48,
+    "zero_fibre": {
+      "moments": 1
+    }
+  },
+  {
+    "profile": "76503700",
+    "constant_on_fixed_rows": false,
+    "fixed_size": 24,
+    "zero_fibre": {
+      "linear": 48,
+      "moments": 8
+    }
+  },
+  {
+    "profile": "02471770",
+    "constant_on_fixed_rows": true,
+    "fixed_size": 16,
+    "zero_fibre": {
+      "moments": 65,
+      "map_dimension_19": 20,
+      "linear": 224,
+      "map_linear": 4
+    },
+    "label7_geometries": 52,
+    "label7_compatible": 4,
+    "two_fibre_tests": {
+      "map_nonzero_quotient_mod2": 64,
+      "map_extra_zeros": 8
+    }
+  },
+  {
+    "profile": "04172770",
+    "constant_on_fixed_rows": true,
+    "fixed_size": 16,
+    "zero_fibre": {
+      "moments": 65,
+      "map_dimension_19": 20,
+      "linear": 224,
+      "map_linear": 4
+    },
+    "label7_geometries": 52,
+    "label7_compatible": 4,
+    "two_fibre_tests": {
+      "map_nonzero_quotient_mod2": 64,
+      "map_extra_zeros": 8
+    }
+  }
+]

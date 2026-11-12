@@ -1,0 +1,36 @@
+name: Verify the V3 fixed fibre by two invariant labels
+on:
+  push:
+    branches: [codex/n12-mixed-quartic]
+    paths:
+      - '.github/workflows/n12_v3_fixed_fibre.yml'
+      - 'research_updates/2026_11_09_n12_mixed/v3_fixed_profiles_by_zero_fibre.py'
+      - 'research_updates/2026_11_09_n12_mixed/v3_zero_fibre_geometry.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  certify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - name: Verify the geometry of the zero fibre and the phase polar
+        run: |
+          python3 -u v3_zero_fibre_geometry.py
+          python3 -u v3_u_polar.py
+      - name: Reconstruct and exclude all nonzero fixed profiles
+        run: |
+          python3 -u v3_fixed_profiles_by_zero_fibre.py --output fresh-fixed-profiles.json
+          cmp fresh-fixed-profiles.json v3-fixed-profiles.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: n12-v3-fixed-profiles
+          path: research_updates/2026_11_09_n12_mixed/fresh-fixed-profiles.json
+          if-no-files-found: error
