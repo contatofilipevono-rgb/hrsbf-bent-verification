@@ -13,7 +13,7 @@ from lower_dim_model import build
 from lower_dim_phase_prepare import truth_on_coordinates
 from lower_dim_polar_structure import extract_polar
 from lower_dim_v3_symbolic import affine_at, echelon, product, read_tasks, substitute
-from line_zero_column import early_obstruction, final_obstruction, necessary_spectra
+from line_zero_column import early_obstruction, final_obstruction, necessary_spectra, odd_radical_support
 
 def quadratic_moments(root, directions, moments):
     equations = []
@@ -137,24 +137,31 @@ def check_phases(tasks_path, column_energy=False, column_autocorrelation=False):
         kernel_signatures = [xor_terms(signatures, x) for x in kernel]
         polar_cases = sorted(all_points([v for v, _ in image]))
         for displacement in polar_cases:
+            current_polar = origin_polar ^ displacement
+            record = {"map_code": code, "polar": f"{current_polar:0240x}"}
+            details.append(record)
+            if column_autocorrelation:
+                odd_direction = odd_radical_support(current_polar)
+                if odd_direction is not None:
+                    record["exclusion"] = "odd_radical_support"
+                    record["odd_direction"] = odd_direction
+                    continue
             representative = locate(image, displacement)
             phase = root ^ xor_terms(phases, representative)
             sig = signature ^ xor_terms(signatures, representative)
             ds, ss = kernel_phases, kernel_signatures
-            record = {"map_code": code, "polar": f"{origin_polar ^ displacement:0240x}"}
-            details.append(record)
             if not signature_possible(sig, ss, properties):
                 record["exclusion"] = "signature"
                 continue
 
-            certificate = collision(model, mapping, phase, ds, origin_polar ^ displacement)
+            certificate = collision(model, mapping, phase, ds, current_polar)
             if certificate is not None:
                 record["exclusion"] = "column_collision"
                 record["column_certificate"] = certificate
                 continue
 
             if column_energy or column_autocorrelation:
-                spectra = list(necessary_spectra(model, mapping, phase, ds, origin_polar ^ displacement))
+                spectra = list(necessary_spectra(model, mapping, phase, ds, current_polar))
                 certificate = early_obstruction(spectra)
                 if certificate is not None:
                     record["exclusion"] = "derivative" if "derivative" in certificate else "column_energy"
@@ -180,7 +187,7 @@ def check_phases(tasks_path, column_energy=False, column_autocorrelation=False):
 
             if column_energy:
                 certificate = final_obstruction(
-                    model, mapping, phase, ds, origin_polar ^ displacement, equations, code
+                    model, mapping, phase, ds, current_polar, equations, code
                 )
                 record["exclusion"] = "zero_column_after_mod4"
                 record["energy_certificate"] = certificate
@@ -197,7 +204,7 @@ def check_phases(tasks_path, column_energy=False, column_autocorrelation=False):
     assert len(details) == 2096 and len({r["map_code"] for r in details}) == 49
     counts = Counter(r["exclusion"] for r in details)
     if column_autocorrelation:
-        assert counts == {"signature": 728, "column_collision": 925, "derivative": 413,
+        assert counts == {"odd_radical_support": 1196, "signature": 352, "column_collision": 429, "derivative": 89,
                           "column_energy": 5, "joint_energy": 16, "column_autocorrelation": 9}
     elif column_energy:
         assert counts == {"signature": 728, "column_collision": 925, "derivative": 413,

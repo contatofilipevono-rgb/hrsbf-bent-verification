@@ -1,11 +1,19 @@
 """Use character sums of quadratic row radicals to bound Walsh column energy."""
 from collections import Counter
+from math import gcd
 
 from count_near_antipodal import all_points, image_and_kernel
 from higher_filter import shift, solve
 from line_column_collision import radical_bases
 from lower_dim_phase_prepare import truth_on_coordinates
 from lower_dim_v3_symbolic import affine_at, substitute
+
+
+def odd_radical_support(polar):
+    odd = set()
+    for basis in radical_bases(polar):
+        odd.symmetric_difference_update(all_points(basis))
+    return min(odd) if odd else None
 
 
 def radical_derivatives(model, mapping, phase, directions, polar):
@@ -73,10 +81,32 @@ def necessary_spectra(model, mapping, phase, directions, polar):
 def early_obstruction(spectra):
     """Find a derivative or column condition impossible on the affine phase space."""
     for (kind, index), target, terms in spectra:
+        obstruction = arithmetic_obstruction(terms, target)
+        if obstruction is not None:
+            return {kind: index, "spectrum": terms, "arithmetic": obstruction}
         if len(image_and_kernel(terms)[0]) <= 15:
             basis, values = character_values(terms)
             if target not in values:
                 return {kind: index, "spectrum": terms, "character_rank": len(basis)}
+    return None
+
+
+def arithmetic_obstruction(terms, target):
+    variable = {mask: weight for mask, weight in terms.items() if mask}
+    if abs(terms.get(0, 0) - target) > sum(map(abs, variable.values())):
+        return {"inequality": "triangle"}
+    divisor = gcd(*variable.values())
+    if not divisor:
+        return None
+    delta = sum(terms.values()) - target
+    if delta % (2 * divisor):
+        return {"modulus": 2 * divisor, "residue": delta % (2 * divisor)}
+    parity = 0
+    for mask, weight in variable.items():
+        if (weight // divisor) & 1:
+            parity ^= mask
+    if not parity and delta % (4 * divisor):
+        return {"modulus": 4 * divisor, "residue": delta % (4 * divisor)}
     return None
 
 
