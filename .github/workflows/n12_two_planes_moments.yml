@@ -1,0 +1,36 @@
+name: Verify the two-plane theorem by moment elimination
+on:
+  push:
+    branches: [codex/n12-mixed-quartic]
+    paths:
+      - '.github/workflows/n12_two_planes_moments.yml'
+      - 'research_updates/2026_11_09_n12_mixed/line_balanced_by_walsh.py'
+      - 'research_updates/2026_11_09_n12_mixed/line_phase_algebra.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  certify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - name: Reconstruct the balanced maps and the 49 phase tasks
+        run: |
+          mkdir proof-output
+          python3 -u line_balanced_by_walsh.py proof-output/support.bin
+          python3 -u lower_dim_orbits.py --space 4 --supports proof-output/support.bin --output proof-output/orbits.json
+          python3 -u lower_dim_phase_prepare.py --space 4 --supports proof-output/orbits.bin --output proof-output/tasks.bin
+      - name: Verify the polynomial contradictions
+        run: python3 -u line_phase_algebra.py --tasks proof-output/tasks.bin --output proof-output/line-phase-algebra.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: n12-two-plane-moment-proof
+          path: research_updates/2026_11_09_n12_mixed/proof-output/
+          if-no-files-found: error
