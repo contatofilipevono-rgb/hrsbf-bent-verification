@@ -85,3 +85,21 @@ P+1={}&U+V+W+Q_4+Q_5+Q_6+Q_{14}\\
 \]
 
 Portanto Pf4 força \(P=1\), incompatível com a paridade necessária à bentness. O verificador recompila os coeficientes na base descrita e verifica a identidade por substituição e multiplicação polinomial. A condição \(B_0\) singular é dispensável para excluir essa classe.
+
+## Por que a equação de paridade para \(v=27\) é redundante
+
+O vetor \(v=(c,c)\), com \(c=(1,1,0)\), é fixo pela rotação de três posições. As linhas \(z\) fora da diagonal \((x,x)\) se emparelham por essa rotação. Na diagonal, \(B_z\) comuta com a troca das metades e sua restrição à diagonal é uma matriz simétrica \(T(x)\) de ordem três. Ela é covariante pela rotação de três coordenadas e satisfaz \(T(x)x=0\).
+
+Denote por \(q_{ij;kl}\) o coeficiente de \(z_kz_l\) em \(B_{ij}\). Como \(B_{03}\) é invariante pela troca das metades, ao restringir à diagonal cancelam-se os termos lineares e os produtos de duas coordenadas diagonais distintas. Restam a constante e os termos lineares em \(x\) vindos de \(z_i z_{i+3}\). Os coeficientes de \(x_1\) e \(x_2\) coincidem. Para ver isso, some os coeficientes de \(z_2z_3z_5\) na componente 0 de \(B_z z=0\) e de \(z_0z_3z_5\) na componente 2. O termo \(q_{02;35}\) aparece nos dois. Os termos \(q_{05;23}\) e \(q_{23;05}\) coincidem pela troca das metades. Sobra \(q_{03;25}=q_{25;03}=q_{03;14}\), com a última igualdade por rotação. Como \(T(e_0)e_0=0\), segue que
+
+\[
+T_{00}(x)=A(1+x_0)+B(x_1+x_2).
+\]
+
+Escreva \(C=T_{01}(0)\). As condições \(T(e_i)e_i=0\) para \(i=0,1\) fixam em \(C\) os coeficientes lineares em \(x_0,x_1\) de \(T_{01}\). A condição em \(e_0+e_1\) fixa o coeficiente de \(x_0x_1\) em \(B+C\), e a terceira componente, com a rotação, iguala os coeficientes de \(x_0x_2,x_1x_2\). Logo
+
+\[
+T_{01}(x)=C(1+x_0+x_1)+(B+C)x_0x_1+Dx_2+E(x_0+x_1)x_2.
+\]
+
+Para \(c=(1,1,0)\), as anulações de \(T(x)c\) em \(x=e_0,e_1\) são equivalentes, e as em \(x=e_0+e_2,e_1+e_2\) também. Isso se vê substituindo nessas duas expressões e usando a covariância para as outras entradas. Nos quatro pontos restantes \(0,c,e_2,111\), as condições são, respectivamente, \(A+C=0\), sempre, \(A+B+C+D=0\), \(B+D=0\). A soma dos quatro indicadores em \(\mathbb F_2\) é zero, pois cada indicador linear é \(1+\ell\) e as três formas somam zero. Isso explica a redundância sem usar Pf4 nem percorrer o espaço de polares.
