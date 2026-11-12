@@ -7,6 +7,7 @@ from pathlib import Path
 
 from count_near_antipodal import all_points, image_and_kernel
 from higher_filter import solve, xor_terms
+from line_column_collision import collision
 from lower_dim_model import build
 from lower_dim_phase_prepare import truth_on_coordinates
 from lower_dim_polar_structure import extract_polar
@@ -116,45 +117,6 @@ def mod8_bit(root, directions, support, target):
     return result
 
 
-def bit_of_weight(root, directions, support, target, bit):
-    """Expand weight as an integer multilinear polynomial and extract one bit."""
-    restricted = [value & support for value in directions]
-    mask = (1 << (bit + 1)) - 1
-    constant = ((root & support).bit_count() - target) & mask
-    buckets = [[] for _ in range(bit + 1)]
-    for j in range(bit + 1):
-        if constant >> j & 1:
-            buckets[j].append(0)
-    for degree in range(1, bit + 2):
-        for indices in itertools.combinations(range(len(directions)), degree):
-            intersection = support
-            for i in indices:
-                intersection &= restricted[i]
-            imbalance = intersection.bit_count() - 2 * (intersection & root).bit_count()
-            coefficient = (imbalance * (-2)**(degree - 1)) & mask
-            if not coefficient:
-                continue
-            term = sum(1 << i for i in indices)
-            for j in range(degree - 1, bit + 1):
-                if coefficient >> j & 1:
-                    buckets[j].append(term)
-    # For the two remaining tasks these sums are universally constant mod 4.
-    # Thus only at most three nonzero bit levels enter this calculation.
-    assert not buckets[0] and not buckets[1]
-    bits = [set() for _ in buckets]
-    for j, terms in enumerate(buckets):
-        for term in terms:
-            carry = {term}
-            for k in range(j, bit + 1):
-                if not carry:
-                    break
-                next_carry = product(bits[k], carry) if k < bit else set()
-                bits[k] ^= carry
-                carry = next_carry
-    return bits[bit]
-
-
-
 def check_phases(tasks_path):
     model = build((63,))
     maps = [p for p, _ in model.maps]
@@ -183,6 +145,12 @@ def check_phases(tasks_path):
                 record["exclusion"] = "signature"
                 continue
 
+            certificate = collision(model, mapping, phase, ds, origin_polar ^ displacement)
+            if certificate is not None:
+                record["exclusion"] = "column_collision"
+                record["column_certificate"] = certificate
+                continue
+
             equations = quadratic_moments(phase, ds, moments)
             reduced = reduce_phase(phase, ds, sig, ss, equations, 3)
             if reduced is None:
@@ -200,30 +168,11 @@ def check_phases(tasks_path):
             if reduced is None:
                 record["exclusion"] = "mod8"
                 continue
-            phase, ds, sig, ss, equations = reduced
-            record["dimension_mod8"] = len(ds)
-            assert signature_possible(sig, ss, properties)
-
-            for bit in (3, 4):
-                higher = [bit_of_weight(phase, ds, subset, target, bit)
-                          for subset, mask, target in moments if mask >= (2 << bit) - 1]
-                reduced = reduce_phase(phase, ds, sig, ss, equations + higher, 5)
-                modulus = 2 << bit
-                if reduced is None:
-                    record["exclusion"] = f"mod{modulus}"
-                    record["constant_violations"] = sum(q == {0} for q in higher)
-                    break
-                phase, ds, sig, ss, equations = reduced
-                record[f"dimension_mod{modulus}"] = len(ds)
-            else:
-                raise AssertionError(("unresolved case", record))
+            raise AssertionError(("unresolved case", record))
         print(code, len(polar_cases), dict(Counter(r["exclusion"] for r in details)), flush=True)
     assert len(details) == 2096 and len({r["map_code"] for r in details}) == 49
     counts = Counter(r["exclusion"] for r in details)
-    assert counts["mod32"] == 2
-    assert counts["mod8"] + counts["signature_after_mod4"] == 145
-    assert all(r["dimension_mod16"] == 6 and r["constant_violations"] == 2
-               for r in details if r["exclusion"] == "mod32")
+    assert counts == {"signature": 728, "column_collision": 925, "mod4": 388, "mod8": 55}
     return {"task_count":49, "task_polar_pairs":len(details), "excluded":dict(counts),
             "phase_assignments_enumerated":0, "details":details}
 

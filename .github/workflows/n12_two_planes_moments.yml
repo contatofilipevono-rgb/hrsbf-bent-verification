@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/n12_two_planes_moments.yml'
       - 'research_updates/2026_11_09_n12_mixed/line_balanced_by_walsh.py'
+      - 'research_updates/2026_11_09_n12_mixed/line_column_collision.py'
       - 'research_updates/2026_11_09_n12_mixed/line_phase_algebra.py'
   workflow_dispatch:
 permissions:

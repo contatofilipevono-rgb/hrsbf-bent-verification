@@ -20,7 +20,9 @@ As 424 transformadas de comprimento 128 recuperam exatamente 30.781 mapas balanc
 
 Em cada tarefa, a polar B_z é uma aplicação afim dos parâmetros livres da fase. Resolva essa aplicação sobre cada valor da sua imagem. Os 49 espaços geram 2.096 pares de tarefa e polar. Todas as fases com a mesma polar formam um espaço afim. As condições de grau exatamente quatro e de não afinidade nos dois planos são assinaturas não nulas. Sua compatibilidade no espaço afim é testada por inclusão-exclusão sobre os três núcleos.
 
-Os momentos são congruências sobre pesos, com módulos 4, 8, 16 e 32 após o primeiro bit. Para um suporte S, escreva a fase como h₀+Σᵢxᵢhᵢ sobre F₂. O coeficiente inteiro de x_J no peso em S, para J não vazio, é
+O primeiro teste após as assinaturas usa a transformada de Walsh parcial em w. Para uma função bent, Parseval em z dá energia 64² em cada coluna. Uma linha de polar de posto zero ocupa sozinha essa energia. Outra linha contribui à mesma coluna quando os derivados das duas linhas coincidem no radical da polar da segunda. Com a polar fixa, isso é um sistema afim na fase. Basta encontrar uma contribuição universal ou duas contribuições em hiperplanos complementares. A nota `odonnell-n12-leitura-dirigida.md` dá a dedução.
+
+Os momentos restantes são congruências sobre pesos, com módulos 4 e 8 após o primeiro bit. Para um suporte S, escreva a fase como h₀+Σᵢxᵢhᵢ sobre F₂. O coeficiente inteiro de x_J no peso em S, para J não vazio, é
 
 \[
 (-2)^{|J|-1}\bigl(|C_J|-2|C_J\cap\operatorname{supp}h_0|\bigr),
@@ -32,7 +34,7 @@ Isso segue da expansão inteira do XOR ponto a ponto. A constante é o peso de h
 
 O verificador elimina monômios por ordem de grau e resolve as equações lineares resultantes. Também multiplica equações por uma variável e elimina os termos de grau maior quando isso fornece novas consequências lineares. Uma linha constante igual a 1 certifica impossibilidade. As substituições preservam a representação afim das fases.
 
-Em uma primeira reconstrução das 49 tarefas, 728 pares caíram pelas assinaturas, 1.221 pelo módulo quatro e 145 pelo módulo oito. Os dois pares restantes têm a mesma polar e mapas de códigos 2017 e 2024. O módulo 16 deixa seis parâmetros livres em cada um. Os dois pesos nas fibras inteiras, em ambas as tarefas, são então identicamente 0 módulo 32. A condição de Walsh exige 16 módulo 32. O verificador confere que o último bit da diferença é o polinômio constante 1.
+Na ordem de aplicação, as assinaturas excluem 728 pares, a condição de coluna exclui 925, o módulo quatro exclui 388 e o módulo oito exclui 55. Dos 925 certificados de coluna, 856 usam uma contribuição universal e 69 usam duas em hiperplanos complementares. A primeira versão do verificador, no commit `83b0abc`, também exclui todos os pares usando apenas assinaturas e momentos, com dois casos chegando ao módulo 32.
 
 ## Alcance e reprodução
 
