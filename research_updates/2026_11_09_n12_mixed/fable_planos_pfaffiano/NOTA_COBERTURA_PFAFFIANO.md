@@ -2,7 +2,7 @@
 
 11 de novembro de 2026. Sem auditoria externa.
 
-**Resultado.** A cobertura não foi provada. Saiu uma redução demonstrada: uma condição necessária nova, sem fase, que vem só da bentness e do grau ≤ 2 em w, exclui **34 dos 49 pares** de classes em que as duas derivadas mistas são não nulas. Restam 15 pares (9 órbitas pelas simetrias), realizados por 6.976 formas polares. Um segundo teorema, linear na parte de f afim em w, reduz essas 6.976 a **3.984**, sem derrubar nenhum par inteiro (seção 3a).
+**Resultado.** A cobertura não foi provada. Saiu uma redução demonstrada: uma condição necessária nova, sem fase, que vem só da bentness e do grau ≤ 2 em w, exclui **34 dos 49 pares** de classes em que as duas derivadas mistas são não nulas. Restam 15 pares (9 órbitas pelas simetrias), realizados por 6.976 formas polares. Um segundo teorema, linear na parte de f afim em w, reduz essas 6.976 a **3.984**, sem derrubar nenhum par inteiro (seção 3a). Cruzadas por Codex com as 49 tarefas de fase, sobram 212, e o sistema linear de dimensão 3 deixa **198 polares em 12 pares** (seção 3b).
 
 **Atribuição.** A prova da hipótese de grau em w (seção 1a) é de Codex. Os Teoremas 2 e 5, a Proposição 3 e os verificadores desta pasta são de Fable. A cobertura computacional de referência é a de COBERTURA_PLANOS_N12.md.
 
@@ -137,6 +137,31 @@ Fixada a polar B, (L5) é um sistema linear nas 43 direções de f afins em w, c
 
 São 1.395 subespaços, 8 classes de w₀ e 7 escolhas de I. Numa amostra de 120 subespaços, somada a (L5), a classe a = (1,0,0), b = (0,0,1) passa de 218 para 170 polares compatíveis (de 256). (L3) acrescenta exclusões, mas a amostra não derruba a classe. O sistema completo (L3) não foi rodado: custa cerca de 20 segundos por polar nesta implementação.
 
+## 3b. Cruzamento com as tarefas de fase e (L3) completo
+
+**Cruzamento, por Codex.** Das 3.984 polares compatíveis com (L5), só 212 aparecem nos espaços afins de fase das 49 tarefas da execução de referência, em 35 tarefas e 408 pares de tarefa e polar. O cruzamento é álgebra linear; não o refiz. As 212 polares, lidas do arquivo de Codex, caem todas no espaço de dimensão 25 da base independente e passam em (L5) também aqui.
+
+**(L3) completo nas 212 [L], `poisson3_lista.py` (cerca de 12 minutos).** Com os 1.395 subespaços de dimensão 3, somado a (L5):
+
+| a | b | Passam | Caem |
+|---|---|---:|---:|
+| (1,0,0) | (0,0,1) | 8 | 0 |
+| (1,0,0) | (0,1,0) | 26 | 0 |
+| (1,0,0) | (1,0,0) | 26 | 0 |
+| (1,0,0) | (1,0,1) | 32 | 0 |
+| (1,0,0) | (1,1,0) | 24 | 0 |
+| (1,0,0) | (1,1,1) | 24 | 0 |
+| (0,0,1), (0,1,0), (1,0,1), (1,1,0) | (1,0,1) | 12 cada | 0 |
+| (0,1,1) | (0,1,0) | 2 | 6 |
+| (1,1,1) | (1,0,0) | 8 | 8 |
+| **Total** | | **198** | **14** |
+
+- (L3) elimina 14 das 212. Em β_a = e₁ as 140 polares passam todas.
+- Três dos 15 pares não têm nenhuma polar no cruzamento: (1,0,0) com (0,1,1), (0,1,1) com (1,0,0), e (1,1,1) com (0,1,0). Restam 12 pares.
+- O resultado por polar está em `L3_212_resultado.txt`.
+
+Os sistemas lineares (L5) e (L3) estão esgotados nessas polares: o que sobra depende de condições quadráticas na parte afim em w ou das fases de ordem superior.
+
 ## 4. O que não funcionou
 
 - **Parseval por colunas** (Σ_{z : ω ∈ ℓ_z + Im B_z} 2^{−posto B_z} = 1) e suas somas sobre subespaços de ω: reduzem-se ao balanceamento das derivadas D_v f e dependem de λ; sem λ são triviais.
@@ -146,9 +171,9 @@ São 1.395 subespaços, 8 classes de w₀ e 7 escolhas de I. Numa amostra de 120
 
 ## 5. Lacuna exata
 
-1. **Os 15 pares** continuam todos vivos, agora com 3.984 polares compatíveis com (L5). Em β_a = e₁ são 2.816 de 4.928.
-2. **Próximos sistemas lineares.** (L3) completo sobre as 3.984 polares, junto com (L5). Depois disso, o que sobrar depende de condições quadráticas na parte afim em w (o bit J do 4-flat) ou das fases.
-3. **Cruzamento com a execução de referência.** Não foi feito: os artefatos das 49 tarefas de fase e das 452 órbitas de mapas não estão acessíveis a esta sessão, que não executa o código do repositório. A tabela da seção 3a usa só a base independente.
+1. **198 polares em 12 pares** (seção 3b), 140 delas com β_a = e₁. Passam em (Pf4), (L5) e (L3) completo e estão nos espaços de fase das tarefas de referência. Hoje só caem pela verificação das fases de ordem superior.
+2. **Próximo nível.** Os sistemas lineares estão esgotados. O passo seguinte da mesma conta é o bit J do 4-flat (Σ_{z ⊇ I}(P + 2J) ≡ 0 mod 4 para |I| ≤ 1), quadrático na parte afim em w.
+3. **Dependência do cruzamento.** A redução de 3.984 para 212 é de Codex e usa os artefatos da execução de referência; sem ela, (L3) completo teria de rodar nas 3.984.
 4. **(H0)** tem agora a prova de Codex (seção 1a), não reconferida aqui.
 5. A identidade pedida entre as duas derivadas e os momentos das fibras do mapa não foi encontrada; (Pf4) e (L5) ligam as derivadas pela polar e pela parte afim em w, sem passar pelos momentos das fibras.
 
@@ -160,4 +185,5 @@ São 1.395 subespaços, 8 classes de w₀ e 7 escolhas de I. Numa amostra de 120
 - `verifica_pf4.py`: controles. `orbitas_ab.py`: simetrias.
 - `poisson5.py`: Teorema 5; `python poisson5.py controle <testemunhas.json>` e `python poisson5.py polares` (cerca de 25 minutos, grava `vivos_L5.pkl`).
 - `poisson3.py`: sonda (L3) numa classe, depois de `poisson5.py polares`.
+- `poisson3_lista.py <lista> <saída>`: (L5) + (L3) completo numa lista de polares em hexadecimal; `L3_212_resultado.txt` é a saída para as 212 do cruzamento.
 - As testemunhas são `lower-dim-family-witnesses.json` da pasta do repositório.
