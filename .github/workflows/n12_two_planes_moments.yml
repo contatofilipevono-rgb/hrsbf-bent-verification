@@ -10,6 +10,7 @@ on:
       - 'research_updates/2026_11_09_n12_mixed/line_zero_column.py'
       - 'research_updates/2026_11_09_n12_mixed/line_column_autocorrelation.py'
       - 'research_updates/2026_11_09_n12_mixed/line_radical_parity.py'
+      - 'research_updates/2026_11_09_n12_mixed/line_pfaffian_parity_identity.py'
   workflow_dispatch:
 permissions:
   contents: read
@@ -39,6 +40,8 @@ jobs:
         run: python3 -u line_phase_algebra.py --column-autocorrelation --tasks proof-output/tasks.bin --output proof-output/line-phase-autocorrelation.json
       - name: Compile and cross-check the phase-free radical parity equations
         run: python3 -u line_radical_parity.py --reference fable_planos_pfaffiano/L3_212_resultado.txt --output proof-output/line-radical-parity.json
+      - name: Check the polynomial identity for the excluded derivative class
+        run: python3 -u line_pfaffian_parity_identity.py
       - uses: actions/upload-artifact@v4
         with:
           name: n12-two-plane-moment-proof

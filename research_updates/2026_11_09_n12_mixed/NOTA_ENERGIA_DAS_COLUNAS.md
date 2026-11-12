@@ -63,3 +63,25 @@ Para uma dimensão \(m\ge4\) e uma polar cíclica com \(B_zz=0\), a condição d
 Em dimensão seis, há 13 órbitas de direções não nulas. O verificador simbólico obteve dez equações de grau quatro e duas de grau dois, para \(v=9,63\). A equação de \(v=27\) é identicamente nula no modelo de dimensão 25. A contagem simbólica e o teste direto dos radicais coincidem nas 212 polares do cruzamento de Pfaffianos. Das 198 compatíveis com os testes lineares L3 e L5, 106 são excluídas pela paridade, deixando 92 nesse cruzamento.
 
 Para uma soma \(F(t)=c_0+\sum_m c_m(-1)^{m\cdot t}\), seja \(g=\gcd_m c_m\) sobre as frequências não nulas. A diferença \(F(0)-F(t)\) é sempre múltipla de \(2g\). O quociente módulo 2 é o produto escalar com o XOR das frequências para as quais \(c_m/g\) é ímpar. Quando esse XOR é nulo, o módulo pode ser dobrado. Todas as exclusões por uma única derivada admitem desigualdade triangular ou uma dessas congruências.
+
+## Cruzamento com todos os candidatos dos Pfaffianos
+
+A execução [43206136330](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/43206136330) reproduziu os 1.176 topos que satisfazem Pf4 e as 6.976 polares com ambas as derivadas mistas não nulas e \(B_0\) singular. A paridade deixa 2.240 polares. Das 15 classes iniciais, 14 têm sobreviventes. A classe excluída tem \(\beta_a=e_1\) e \(\beta_b=1+p_2+p_3\), ou \((1,0,0)/(0,1,1)\) na convenção de Fable.
+
+A exclusão dessa classe também admite uma identidade formal sem enumerar as polares. Restringindo o modelo de dimensão 25 às duas derivadas, restam 19 parâmetros \(t_0,\ldots,t_{18}\). A paridade \(P\) para \(v=63\) fica \(1+t_3+t_4+t_5+t_6+t_7+t_{16}\). Se \(Q_i\) são as equações Pf4, indexadas pelos quartetos de \(w\) e \(z\) em ordem lexicográfica, use as somas
+
+\[
+U=Q_0+Q_9,\qquad V=Q_1+Q_8+Q_{11}+Q_{13},\qquad W=Q_2+Q_{12}+Q_{21}.
+\]
+
+Por comparação de coeficientes no anel booleano,
+
+\[
+\begin{aligned}
+P+1={}&U+V+W+Q_4+Q_5+Q_6+Q_{14}\\
+&+(t_7+t_9+t_{10}+t_{12}+t_{14}+t_{18})U\\
+&+(t_5+t_7+t_8+t_{16})V+(t_3+t_4+t_6+t_8)W.
+\end{aligned}
+\]
+
+Portanto Pf4 força \(P=1\), incompatível com a paridade necessária à bentness. O verificador recompila os coeficientes na base descrita e verifica a identidade por substituição e multiplicação polinomial. A condição \(B_0\) singular é dispensável para excluir essa classe.

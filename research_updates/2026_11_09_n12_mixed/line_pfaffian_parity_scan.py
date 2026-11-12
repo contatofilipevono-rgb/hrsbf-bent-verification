@@ -5,8 +5,6 @@ from collections import Counter
 from itertools import combinations
 from pathlib import Path
 
-import numpy as np
-
 from count_near_antipodal import all_points, image_and_kernel
 from higher_filter import xor_terms
 from line_column_collision import radical_bases
@@ -31,6 +29,8 @@ def pairings():
 
 
 def pfaffian_tops(image, shard, shard_bits):
+    import numpy as np
+
     d = len(image) - shard_bits
     base = xor_terms([top for top, _ in image], shard << d)
     top = np.empty((1 << d, 15, 15), dtype=np.uint8)
