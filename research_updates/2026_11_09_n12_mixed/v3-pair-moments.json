@@ -1,0 +1,785 @@
+[
+  {
+    "code": 1583270,
+    "size": 32,
+    "bent": false,
+    "pair_rank": 7,
+    "moment_rank": 4,
+    "joint_rank": 9,
+    "pair": [
+      13,
+      0
+    ],
+    "moment": null,
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 1583330,
+    "size": 32,
+    "bent": true,
+    "pair_rank": 7,
+    "moment_rank": 3,
+    "joint_rank": 8,
+    "pair": [
+      13,
+      0
+    ],
+    "moment": [
+      14,
+      0
+    ],
+    "joint": [
+      12,
+      0
+    ],
+    "pair_mod8": [
+      11,
+      2
+    ],
+    "pair_mod8_rank": 4,
+    "degrees_after_pair_mod8": {
+      "3": 2
+    }
+  },
+  {
+    "code": 225448085,
+    "size": 32,
+    "bent": true,
+    "pair_rank": 0,
+    "moment_rank": 3,
+    "joint_rank": 3,
+    "pair": [
+      17,
+      0
+    ],
+    "moment": [
+      14,
+      0
+    ],
+    "joint": [
+      14,
+      0
+    ],
+    "pair_mod8": [
+      12,
+      10
+    ],
+    "pair_mod8_rank": 15,
+    "degrees_after_pair_mod8": {
+      "3": 4,
+      "2": 6
+    }
+  },
+  {
+    "code": 225448110,
+    "size": 32,
+    "bent": false,
+    "pair_rank": 0,
+    "moment_rank": 3,
+    "joint_rank": 3,
+    "pair": [
+      17,
+      0
+    ],
+    "moment": null,
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 225448170,
+    "size": 32,
+    "bent": true,
+    "pair_rank": 0,
+    "moment_rank": 2,
+    "joint_rank": 2,
+    "pair": [
+      17,
+      0
+    ],
+    "moment": [
+      15,
+      0
+    ],
+    "joint": [
+      15,
+      0
+    ],
+    "pair_mod8": [
+      14,
+      9
+    ],
+    "pair_mod8_rank": 13,
+    "degrees_after_pair_mod8": {
+      "3": 4,
+      "2": 5
+    }
+  },
+  {
+    "code": 225448212,
+    "size": 32,
+    "bent": true,
+    "pair_rank": 0,
+    "moment_rank": 3,
+    "joint_rank": 3,
+    "pair": [
+      17,
+      0
+    ],
+    "moment": [
+      14,
+      0
+    ],
+    "joint": [
+      14,
+      0
+    ],
+    "pair_mod8": [
+      12,
+      9
+    ],
+    "pair_mod8_rank": 14,
+    "degrees_after_pair_mod8": {
+      "3": 4,
+      "2": 5
+    }
+  },
+  {
+    "code": 225448239,
+    "size": 16,
+    "bent": true,
+    "pair_rank": 0,
+    "moment_rank": 2,
+    "joint_rank": 2,
+    "pair": [
+      17,
+      0
+    ],
+    "moment": [
+      15,
+      0
+    ],
+    "joint": [
+      15,
+      0
+    ],
+    "pair_mod8": [
+      14,
+      9
+    ],
+    "pair_mod8_rank": 13,
+    "degrees_after_pair_mod8": {
+      "3": 4,
+      "2": 5
+    }
+  },
+  {
+    "code": 284657712,
+    "size": 32,
+    "bent": false,
+    "pair_rank": 4,
+    "moment_rank": 4,
+    "joint_rank": 6,
+    "pair": null,
+    "moment": null,
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 284657713,
+    "size": 32,
+    "bent": false,
+    "pair_rank": 4,
+    "moment_rank": 4,
+    "joint_rank": 6,
+    "pair": null,
+    "moment": null,
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 284657780,
+    "size": 32,
+    "bent": false,
+    "pair_rank": 4,
+    "moment_rank": 4,
+    "joint_rank": 6,
+    "pair": null,
+    "moment": null,
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 284657781,
+    "size": 32,
+    "bent": false,
+    "pair_rank": 4,
+    "moment_rank": 4,
+    "joint_rank": 6,
+    "pair": null,
+    "moment": null,
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 284658058,
+    "size": 32,
+    "bent": false,
+    "pair_rank": 4,
+    "moment_rank": 4,
+    "joint_rank": 6,
+    "pair": null,
+    "moment": null,
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 284658059,
+    "size": 32,
+    "bent": false,
+    "pair_rank": 4,
+    "moment_rank": 4,
+    "joint_rank": 6,
+    "pair": null,
+    "moment": null,
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 284658126,
+    "size": 32,
+    "bent": false,
+    "pair_rank": 4,
+    "moment_rank": 4,
+    "joint_rank": 6,
+    "pair": null,
+    "moment": null,
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 284658127,
+    "size": 32,
+    "bent": false,
+    "pair_rank": 4,
+    "moment_rank": 4,
+    "joint_rank": 6,
+    "pair": null,
+    "moment": null,
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447615023,
+    "size": 16,
+    "bent": false,
+    "pair_rank": 6,
+    "moment_rank": 3,
+    "joint_rank": 8,
+    "pair": null,
+    "moment": [
+      13,
+      0
+    ],
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447615048,
+    "size": 16,
+    "bent": false,
+    "pair_rank": 6,
+    "moment_rank": 4,
+    "joint_rank": 8,
+    "pair": null,
+    "moment": [
+      12,
+      0
+    ],
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447615148,
+    "size": 16,
+    "bent": true,
+    "pair_rank": 4,
+    "moment_rank": 3,
+    "joint_rank": 6,
+    "pair": [
+      14,
+      2
+    ],
+    "moment": [
+      13,
+      0
+    ],
+    "joint": [
+      13,
+      2
+    ],
+    "pair_mod8": [
+      10,
+      11
+    ],
+    "pair_mod8_rank": 12,
+    "degrees_after_pair_mod8": {
+      "2": 3,
+      "3": 8
+    }
+  },
+  {
+    "code": 447615179,
+    "size": 16,
+    "bent": true,
+    "pair_rank": 5,
+    "moment_rank": 4,
+    "joint_rank": 7,
+    "pair": [
+      11,
+      0
+    ],
+    "moment": [
+      12,
+      0
+    ],
+    "joint": [
+      10,
+      0
+    ],
+    "pair_mod8": [
+      8,
+      0
+    ],
+    "pair_mod8_rank": 1,
+    "degrees_after_pair_mod8": {},
+    "phase_upper_bound": 16384,
+    "phase_count_exact": false
+  },
+  {
+    "code": 447615205,
+    "size": 32,
+    "bent": false,
+    "pair_rank": 1,
+    "moment_rank": 5,
+    "joint_rank": 5,
+    "pair": null,
+    "moment": null,
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447615486,
+    "size": 32,
+    "bent": false,
+    "pair_rank": 1,
+    "moment_rank": 4,
+    "joint_rank": 4,
+    "pair": null,
+    "moment": null,
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447615536,
+    "size": 32,
+    "bent": false,
+    "pair_rank": 1,
+    "moment_rank": 4,
+    "joint_rank": 4,
+    "pair": null,
+    "moment": null,
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447615748,
+    "size": 16,
+    "bent": true,
+    "pair_rank": 5,
+    "moment_rank": 4,
+    "joint_rank": 7,
+    "pair": [
+      11,
+      0
+    ],
+    "moment": [
+      12,
+      0
+    ],
+    "joint": [
+      10,
+      0
+    ],
+    "pair_mod8": [
+      8,
+      0
+    ],
+    "pair_mod8_rank": 1,
+    "degrees_after_pair_mod8": {},
+    "phase_upper_bound": 16384,
+    "phase_count_exact": false
+  },
+  {
+    "code": 447615787,
+    "size": 32,
+    "bent": false,
+    "pair_rank": 1,
+    "moment_rank": 5,
+    "joint_rank": 5,
+    "pair": null,
+    "moment": null,
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447615843,
+    "size": 16,
+    "bent": false,
+    "pair_rank": 5,
+    "moment_rank": 4,
+    "joint_rank": 7,
+    "pair": null,
+    "moment": null,
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447615879,
+    "size": 16,
+    "bent": false,
+    "pair_rank": 6,
+    "moment_rank": 4,
+    "joint_rank": 8,
+    "pair": null,
+    "moment": [
+      12,
+      0
+    ],
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447615968,
+    "size": 16,
+    "bent": false,
+    "pair_rank": 6,
+    "moment_rank": 4,
+    "joint_rank": 8,
+    "pair": null,
+    "moment": null,
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447616276,
+    "size": 16,
+    "bent": false,
+    "pair_rank": 6,
+    "moment_rank": 3,
+    "joint_rank": 8,
+    "pair": null,
+    "moment": [
+      13,
+      0
+    ],
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447616277,
+    "size": 16,
+    "bent": false,
+    "pair_rank": 2,
+    "moment_rank": 3,
+    "joint_rank": 5,
+    "pair": [
+      16,
+      2
+    ],
+    "moment": [
+      13,
+      0
+    ],
+    "joint": [
+      12,
+      0
+    ],
+    "pair_mod8": null,
+    "pair_mod8_rank": 3,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447616370,
+    "size": 16,
+    "bent": false,
+    "pair_rank": 2,
+    "moment_rank": 3,
+    "joint_rank": 5,
+    "pair": [
+      16,
+      2
+    ],
+    "moment": [
+      13,
+      0
+    ],
+    "joint": [
+      13,
+      2
+    ],
+    "pair_mod8": null,
+    "pair_mod8_rank": 13,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447616371,
+    "size": 16,
+    "bent": false,
+    "pair_rank": 6,
+    "moment_rank": 4,
+    "joint_rank": 8,
+    "pair": null,
+    "moment": [
+      12,
+      0
+    ],
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447616406,
+    "size": 16,
+    "bent": false,
+    "pair_rank": 6,
+    "moment_rank": 4,
+    "joint_rank": 7,
+    "pair": null,
+    "moment": [
+      12,
+      0
+    ],
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447616407,
+    "size": 16,
+    "bent": true,
+    "pair_rank": 5,
+    "moment_rank": 4,
+    "joint_rank": 7,
+    "pair": [
+      11,
+      0
+    ],
+    "moment": [
+      12,
+      0
+    ],
+    "joint": [
+      10,
+      0
+    ],
+    "pair_mod8": [
+      8,
+      0
+    ],
+    "pair_mod8_rank": 1,
+    "degrees_after_pair_mod8": {},
+    "phase_upper_bound": 16384,
+    "phase_count_exact": false
+  },
+  {
+    "code": 447616496,
+    "size": 16,
+    "bent": true,
+    "pair_rank": 4,
+    "moment_rank": 3,
+    "joint_rank": 6,
+    "pair": [
+      14,
+      2
+    ],
+    "moment": [
+      13,
+      0
+    ],
+    "joint": [
+      13,
+      2
+    ],
+    "pair_mod8": [
+      10,
+      11
+    ],
+    "pair_mod8_rank": 12,
+    "degrees_after_pair_mod8": {
+      "2": 3,
+      "3": 8
+    }
+  },
+  {
+    "code": 447616497,
+    "size": 16,
+    "bent": false,
+    "pair_rank": 6,
+    "moment_rank": 4,
+    "joint_rank": 7,
+    "pair": null,
+    "moment": [
+      12,
+      0
+    ],
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447616574,
+    "size": 16,
+    "bent": false,
+    "pair_rank": 6,
+    "moment_rank": 4,
+    "joint_rank": 7,
+    "pair": null,
+    "moment": [
+      12,
+      0
+    ],
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447616575,
+    "size": 16,
+    "bent": false,
+    "pair_rank": 5,
+    "moment_rank": 4,
+    "joint_rank": 7,
+    "pair": null,
+    "moment": null,
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447616600,
+    "size": 16,
+    "bent": true,
+    "pair_rank": 5,
+    "moment_rank": 4,
+    "joint_rank": 7,
+    "pair": [
+      11,
+      0
+    ],
+    "moment": [
+      12,
+      0
+    ],
+    "joint": [
+      10,
+      0
+    ],
+    "pair_mod8": [
+      8,
+      0
+    ],
+    "pair_mod8_rank": 1,
+    "degrees_after_pair_mod8": {},
+    "phase_upper_bound": 16384,
+    "phase_count_exact": false
+  },
+  {
+    "code": 447616601,
+    "size": 16,
+    "bent": false,
+    "pair_rank": 6,
+    "moment_rank": 4,
+    "joint_rank": 7,
+    "pair": null,
+    "moment": [
+      12,
+      0
+    ],
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447616700,
+    "size": 16,
+    "bent": false,
+    "pair_rank": 6,
+    "moment_rank": 4,
+    "joint_rank": 8,
+    "pair": null,
+    "moment": [
+      12,
+      0
+    ],
+    "joint": null,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447616701,
+    "size": 16,
+    "bent": false,
+    "pair_rank": 2,
+    "moment_rank": 3,
+    "joint_rank": 5,
+    "pair": [
+      16,
+      2
+    ],
+    "moment": [
+      13,
+      0
+    ],
+    "joint": [
+      13,
+      2
+    ],
+    "pair_mod8": null,
+    "pair_mod8_rank": 8,
+    "phase_upper_bound": 0
+  },
+  {
+    "code": 447616730,
+    "size": 16,
+    "bent": true,
+    "pair_rank": 2,
+    "moment_rank": 3,
+    "joint_rank": 5,
+    "pair": [
+      16,
+      2
+    ],
+    "moment": [
+      13,
+      0
+    ],
+    "joint": [
+      12,
+      0
+    ],
+    "pair_mod8": [
+      9,
+      0
+    ],
+    "pair_mod8_rank": 2,
+    "degrees_after_pair_mod8": {},
+    "phase_upper_bound": 32768,
+    "phase_count_exact": false
+  },
+  {
+    "code": 447616731,
+    "size": 16,
+    "bent": false,
+    "pair_rank": 6,
+    "moment_rank": 4,
+    "joint_rank": 8,
+    "pair": null,
+    "moment": null,
+    "joint": null,
+    "phase_upper_bound": 0
+  }
+]
