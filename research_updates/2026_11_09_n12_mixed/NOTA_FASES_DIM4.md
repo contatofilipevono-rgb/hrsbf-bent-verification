@@ -35,3 +35,9 @@ SHA-256 das listas de suportes `mapas_V1.txt` e `mapas_V2.txt`, respectivamente:
 
 - `8d0eeebfd9cde035757047f220218098b697511c176614538f871c0a0a8ad7ea`
 - `95c397ebb46513fa28c17b5a1b1331c90ac18d12be883b9acd925dc3af2c16c1`
+
+## Reconstrução da lista de suportes
+
+Para cada escolha dos termos mistos, imponha a soma zero dos produtos de coordenadas do rótulo vezes os monômios de grau até dois no domínio. Cada produto de coordenadas é soma de indicadoras de fibras. As equações são polinômios nos parâmetros do mapa. Extraia as consequências lineares, substitua e repita com produtos de até quatro coordenadas. Por fim, agrupe os caracteres dos rótulos no espaço reduzido e use as relações lineares necessárias ao balanceamento.
+
+O filtro deixa 14 espaços afins e 19.922.944 mapas candidatos em V1, contra 2³³ inicialmente. Em V2 deixa 32 espaços afins e 19.267.584 candidatos, contra 2³¹. Um percurso finito nesses espaços recompõe as duas listas com os mesmos hashes acima. A recontagem algébrica das fases nessas listas reconstruídas reproduziu todos os mapas positivos e os totais 1.900.544 e 2.326.528. [Verificação completa no GitHub](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/43351994463)

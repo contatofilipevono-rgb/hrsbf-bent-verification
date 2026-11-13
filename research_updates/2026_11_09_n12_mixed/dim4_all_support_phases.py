@@ -39,6 +39,8 @@ def main():
     positive={}
     nonlinear=Counter()
     charts={}
+    parity_profiles = Counter()
+    s_coordinates = [sum(1 << x for x in range(256) if x >> i & 1) for i in (6, 7)]
     for index,line in enumerate((args.folder/f"mapas_V{space}.txt").read_text().splitlines()):
         if index%args.shards!=args.shard:continue
         code=int(line)
@@ -59,6 +61,17 @@ def main():
         moments=conditions(f,8,2)
         assert moments is not None
         origin,kernel,_=phase_linear_system(moments,h,model.phases)
+        short_moments = [
+            (subset, 1, residue)
+            for fibre in f
+            for subset, residue in [(fibre, 0), *(
+                (fibre & coordinate, (fibre & coordinate).bit_count() // 2 & 1)
+                for coordinate in s_coordinates
+            )]
+        ]
+        short_origin, _, _ = phase_linear_system(short_moments, h, model.phases)
+        parity_profiles[(origin is not None, short_origin is not None)] += 1
+        assert (origin is None) == (short_origin is None), code
         if origin is None:
             counts["linear_inconsistent"]+=1
             chart["linear_inconsistent"]+=1
@@ -107,7 +120,8 @@ def main():
         assert positive == known
         assert sum(counts.values()) - counts["functions_in_larger"] == (113040 if space == 1 else 166472)
         assert sum(positive.values()) == (1900544 if space == 1 else 2326528)
-    args.output.write_text(json.dumps({"counts":counts,"quadratic_ranks":nonlinear,"positive":positive,"charts":charts})+"\n")
+    parity = [[full, short, n] for (full, short), n in sorted(parity_profiles.items())]
+    args.output.write_text(json.dumps({"counts":counts,"quadratic_ranks":nonlinear,"positive":positive,"charts":charts,"parity_profiles":parity})+"\n")
 
 
 if __name__=="__main__":
