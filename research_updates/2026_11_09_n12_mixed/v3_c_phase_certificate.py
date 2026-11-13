@@ -1,0 +1,70 @@
+"""Verify short phase identities for the three residual type-C maps."""
+from higher_filter import xor_terms
+from line_phase_algebra import mod8_bit, quadratic_moments, reduce_phase
+from lower_dim_model import active_indices, build
+from lower_dim_moments import conditions, phase_linear_system
+from lower_dim_phase_prepare import fibre_masks, properties
+from lower_dim_v3_symbolic import product
+
+
+# Masks encode monomials in the phase coordinates after the mod-4 substitutions.
+# The two source equations are the mod-8 weights of fibres 1 and 3.
+CERTIFICATES = {
+    447616277: ([], [0], "contradiction"),
+    447616370: (
+        [128, 256, 512, 1024, 2048, 16384, 32768, 65536, 131072],
+        [0, 4, 16, 256, 512],
+        "affine",
+    ),
+    447616701: (
+        [4, 16, 64, 256, 512, 1024, 2048, 262144],
+        [0, 4, 16, 64, 256, 512, 1024, 2048, 262144],
+        "contradiction",
+    ),
+    447616730: ([64, 1024, 2048, 262144], [0], "exclusive_control"),
+}
+
+
+def verify():
+    model = build((9, 18, 36))
+    maps, lifts = map(list, zip(*model.maps))
+    map_signatures, phase_signatures, property_count = properties(model, 1)
+    assert property_count == 3
+    for code, (multiplier1, multiplier3, kind) in CERTIFICATES.items():
+        mapping = xor_terms(maps, code)
+        root = xor_terms(lifts, code)
+        signature = xor_terms(map_signatures, code)
+        fibres = fibre_masks(mapping, 512, 3)
+        moments = conditions([fibres[1], fibres[3]], 9, 3)
+        origin, basis, _ = phase_linear_system(moments, root, model.phases)
+        assert origin is not None and len(basis) == 22
+        root ^= xor_terms(model.phases, origin)
+        signature ^= xor_terms(phase_signatures, origin)
+        phases = [xor_terms(model.phases, mask) for mask in basis]
+        signatures = [xor_terms(phase_signatures, mask) for mask in basis]
+        reduced = reduce_phase(
+            root, phases, signature, signatures, quadratic_moments(root, phases, moments), 0
+        )
+        assert reduced is not None
+        root, phases, signature, signatures, remaining = reduced
+        assert len(phases) == 20 and not remaining
+        full_moments = [(subset, target) for subset, mask, target in moments if mask == 7]
+        assert full_moments == [(fibres[1], 4), (fibres[3], 4)]
+        p1, p3 = [mod8_bit(root, phases, subset, target) for subset, target in full_moments]
+        actual = product(p1, set(multiplier1)) ^ product(p3, set(multiplier3))
+        if kind == "contradiction":
+            assert actual == {0}
+        else:
+            # Property 2 is non-affinity in the invariant four-space V2.
+            bits = {(sum(((value >> bit) & 1) << i for i, value in enumerate(signatures)),
+                     (signature >> bit) & 1) for bit in range(128, 192)} - {(0, 0)}
+            (linear, constant), = bits
+            target = {1 << i for i in active_indices(linear)}
+            if constant ^ (kind == "exclusive_control"):
+                target.add(0)
+            assert actual == target
+        print(code, kind, sorted(actual), flush=True)
+
+
+if __name__ == "__main__":
+    verify()

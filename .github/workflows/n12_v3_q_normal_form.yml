@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/n12_v3_q_normal_form.yml'
       - 'research_updates/2026_11_09_n12_mixed/lower_dim_v3_q_classify.py'
+      - 'research_updates/2026_11_09_n12_mixed/v3_c_phase_certificate.py'
   workflow_dispatch:
 permissions:
   contents: read
@@ -64,6 +65,7 @@ jobs:
         run: |
           python3 -u lower_dim_v3_q_classify.py --output v3-q-classification.json
           python3 -u v3_fixed_fibre_degree.py v3-fixed-fibre-degree.json
+          python3 -u v3_c_phase_certificate.py
       - uses: actions/upload-artifact@v4
         with:
           name: v3-q-summary
