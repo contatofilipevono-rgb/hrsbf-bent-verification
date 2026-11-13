@@ -20,16 +20,21 @@ def main():
     parser.add_argument("--shard",type=int,default=0)
     parser.add_argument("--shards",type=int,default=1)
     parser.add_argument("--output",type=Path,required=True)
+    parser.add_argument("--expected", type=Path, help="Previous verification report with positive map counts")
     args=parser.parse_args()
     space=args.space
     model,basis,labels=decode(space)
     map_basis,lifts=map(list,zip(*model.maps))
     image=sorted(image_and_kernel(map_basis)[0],reverse=True)
-    records = json.loads((args.folder / f"V{space}_exclusivo_mapas.json").read_bytes())
-    known = {row["codigo"]: row["fases"] for row in records}
-    for row in records:
-        decoded = labels(xor_terms(basis, row["codigo"]))
-        assert "".join(f"{label:x}" for label in decoded) == row["rotulos"]
+    if args.expected:
+        reference = json.loads(args.expected.read_bytes())
+        known = {int(code): count for code, count in reference["positive"].items()}
+    else:
+        records = json.loads((args.folder / f"V{space}_exclusivo_mapas.json").read_bytes())
+        known = {row["codigo"]: row["fases"] for row in records}
+        for row in records:
+            decoded = labels(xor_terms(basis, row["codigo"]))
+            assert "".join(f"{label:x}" for label in decoded) == row["rotulos"]
     counts=Counter()
     positive={}
     nonlinear=Counter()
@@ -72,6 +77,7 @@ def main():
             r=reduce_phase(h,free,0,[0]*len(free),qs,3)
             if r is None:
                 counts["mod4_inconsistent"]+=1
+                chart["mod4_inconsistent"]+=1
                 continue
             h,free,_,_,qs=r
         assert len(qs)<=10,(code,len(free),len(qs),maybe_larger)
@@ -100,6 +106,7 @@ def main():
     if args.shards == 1:
         assert positive == known
         assert sum(counts.values()) - counts["functions_in_larger"] == (113040 if space == 1 else 166472)
+        assert sum(positive.values()) == (1900544 if space == 1 else 2326528)
     args.output.write_text(json.dumps({"counts":counts,"quadratic_ranks":nonlinear,"positive":positive,"charts":charts})+"\n")
 
 

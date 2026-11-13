@@ -6,6 +6,7 @@ on:
       - '.github/workflows/n12_dim4_rebuild_supports.yml'
       - 'research_updates/2026_11_09_n12_mixed/dim4_support_moments.py'
       - 'research_updates/2026_11_09_n12_mixed/dim4_rebuild_supports.cpp'
+      - 'research_updates/2026_11_09_n12_mixed/dim4_all_support_phases.py'
   workflow_dispatch:
 permissions:
   contents: read
@@ -51,6 +52,10 @@ jobs:
               Path(f'charts/mapas_V{space}.txt').write_bytes(text)
               print(space, size, digest)
           PY
+      - name: Recount all phases without enumerating assignments
+        run: |
+          python -u dim4_all_support_phases.py charts --space 1 --output charts/v1-phase-report.json --expected dim4-v1-full-charts.json
+          python -u dim4_all_support_phases.py charts --space 2 --output charts/v2-phase-report.json --expected dim4-v2-full-charts-verified.json
       - uses: actions/upload-artifact@v4
         with:
           name: dimension-four-reconstructed-supports
