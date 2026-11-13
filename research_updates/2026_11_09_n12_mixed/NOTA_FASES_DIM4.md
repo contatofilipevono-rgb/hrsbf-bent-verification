@@ -51,3 +51,11 @@ A observação de Fable sobre as 48 equações com 1, s₁ e s₂ foi reproduzid
 Os 96 suportes que exigiam contagem quadrática pertencem à classe de código 69, uma das duas classes da interseção V1 ∩ V2 fora de U. Na outra classe, de código 225, todos os suportes caem na eliminação dos momentos lineares ou módulo 4.
 
 Na classe 69, após as substituições lineares dos momentos módulo 4, a polar é fixa. Para cada um dos 96 suportes, agrupe os sinais da derivada na direção (v=1), somados sobre as linhas cujo radical contém essa direção, por caráter dos parâmetros de fase. A soma dos coeficientes é 2 módulo 4, e o XOR das frequências com coeficiente ímpar é zero. Logo a soma permanece 2 módulo 4 para toda fase nesse espaço afim. Bentness exige que seja zero. O verificador confere essas propriedades e pode excluir os 96 sem contar os zeros das quadráticas remanescentes.
+
+Equivalentemente, com (Z_v=\{z:B_zv=0\}), a congruência é a incompatibilidade da única equação afim
+
+\[
+\sum_{z\in Z_v} D_v f(z,0)=|Z_v|/2\pmod 2.
+\]
+
+A equação vem de escrever a soma inteira dos sinais como (|Z_v|-2\sum_{z\in Z_v}D_v f(z,0)). Nos 96 suportes, as relações lineares anteriores anulam a parte variável dessa equação e deixam lados direitos opostos. Essa formulação evita a expansão em caracteres quando se busca uma dedução por classe.
