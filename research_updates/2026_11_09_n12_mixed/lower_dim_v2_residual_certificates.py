@@ -29,7 +29,7 @@ EXPECTED_HASHES = {
     "result.json": "46a53100ce98db8b7e7d8a56f210735287d6690dcf1554c6664a6d2b9c1db3e6",
     "result.witnesses.bin": "24f5094481c930b8b5b8e610b36a701bc68c2f82643c050dbb9ac8ef5df029be",
     "tasks_reconstructed.bin": "9a9689d8b7934ede01c4da2625a4f7f9081302daef12fd14b1b57de00378876f",
-    "shifts.json": "fab089aa632bceece3bcc1a77e3ee4aa20061a2a90ba392fa6a6fea42ab590c0",
+    "shifts.json": "74ca034fbc01d9e5e6e8879527dd76b93b3aaa41bdc9ac12cee96fbc2f670d71",
 }
 
 POSITIVE_CODES = (1, 19, 822549, 115044639, 115044803, 202149121)
@@ -48,7 +48,10 @@ def ensure_reconstructed_inputs(artifacts_dir: Path) -> dict:
     for name, expected in EXPECTED_HASHES.items():
         fpath = artifacts_dir / name
         if fpath.exists() and (not name.endswith(".json") or name == "shifts.json"):
-            actual = sha256_file(fpath)
+            if name == "shifts.json":
+                actual = hashlib.sha256(fpath.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+            else:
+                actual = sha256_file(fpath)
             assert actual == expected, f"SHA-256 mismatch for {name}: {actual} != {expected}"
             hashes[name] = actual
     return hashes
@@ -711,7 +714,7 @@ def verify_certificates(artifacts_dir: Path, manifest_path: Path):
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     hashes = ensure_reconstructed_inputs(artifacts_dir)
     for name, expected in manifest["metadata"]["sha256_hashes"].items():
-        if not name.endswith(".json") or name == "shifts.json":
+        if not name.endswith(".json"):
             if name != "result.witnesses.bin" or name in hashes:
                 assert hashes.get(name) == expected, f"Hash mismatch for {name}"
 
