@@ -3,7 +3,7 @@ from collections import Counter
 
 from count_near_antipodal import image_and_kernel
 from higher_filter import solve, xor_terms
-from line_phase_algebra import mod8_bit, quadratic_moments, reduce_phase
+from line_phase_algebra import locate, mod8_bit, quadratic_moments, reduce_phase
 from lower_dim_model import active_indices, build
 from lower_dim_moments import conditions, phase_linear_system
 from lower_dim_phase_prepare import fibre_masks, properties
@@ -113,6 +113,29 @@ def verify():
             total, _, _, _ = count(len(basis), system, Counter())
             assert total == (24576 if kind == "affine" else 16384)
             print(code, "bent phases", total, flush=True)
+
+    image = sorted(image_and_kernel(maps)[0], reverse=True)
+    for code, expected, order_one_index in (
+        (447615148, 447615843, 8),
+        (447616496, 447616575, 9),
+    ):
+        original = xor_terms(maps, code)
+        translated = sum(
+            ((original >> (512*i + (y ^ 448))) & 1) << (512*i+y)
+            for i in range(3) for y in range(512)
+        )
+        assert locate(image, translated) == expected
+        root = xor_terms(lifts, expected)
+        fibres = fibre_masks(translated, 512, 3)
+        moments = conditions([fibres[1], fibres[3]], 9, 3)
+        origin, basis, _ = phase_linear_system(moments, root, model.phases)
+        assert origin is not None and len(basis) == 22
+        root ^= xor_terms(model.phases, origin)
+        phases = [xor_terms(model.phases, mask) for mask in basis]
+        left, = quadratic_moments(root, phases, [moments[order_one_index]])
+        right, = quadratic_moments(root, phases, [moments[53]])
+        assert left ^ right == {0}
+        print(code, "translated map has no bent phase", expected, flush=True)
 
 
 if __name__ == "__main__":

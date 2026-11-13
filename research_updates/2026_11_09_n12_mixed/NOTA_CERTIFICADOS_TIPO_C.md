@@ -26,4 +26,8 @@ As duas equações de peso dependem de no máximo quatro formas lineares da fase
 
 Em 447616701 a primeira equação força a=0 e a segunda força a=1. Em 447616370, a primeira força a=1, d=0 e a segunda fixa b=1. A terceira forma c é livre. Juntando os momentos das fibras 0 e 7 e contando por somas de Gauss, ficam 24.576 fases bent em 447616370, todas afins em V₂. O controle 447616730 tem 16.384 fases bent.
 
+## Contraexemplos à preservação da bentness pela translação em u
+
+A translação u ↦ u+111 leva os mapas positivos 447615148 e 447616496 a 447615843 e 447616575, respectivamente. Nos dois mapas traduzidos, as fases que passam nas paridades de momentos das fibras 1 e 3 ainda têm dimensão 22. Nesse espaço, dois bits de momentos módulo 4 de primeira ordem somam identicamente 1. O verificador reproduz o transporte dos mapas e confere a contradição por comparação de coeficientes. Isso certifica algebricamente o contraexemplo de Fable e dá um segundo exemplo.
+
 A verificação depende das bases finitas do modelo. A origem geométrica das formas lineares e dos multiplicadores ainda está em aberto.
