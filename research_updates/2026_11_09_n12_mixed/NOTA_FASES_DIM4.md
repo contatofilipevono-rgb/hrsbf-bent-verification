@@ -45,3 +45,9 @@ O filtro deixa 14 espaços afins e 19.922.944 mapas candidatos em V1, contra 2³
 Multiplicar as equações quadráticas restantes por cada parâmetro e eliminar os monômios cúbicos reduz V2 a 15.335.424 candidatos. Todos os 166.472 suportes de V2 passam também por esse filtro. O total dos dois blocos passa a 35.258.368 candidatos, uma redução de 99,67% sobre o espaço inicial.
 
 A observação de Fable sobre as 48 equações com 1, s₁ e s₂ é testada no mesmo verificador. A comparação exige que esse subsistema e as 144 equações tenham a mesma consistência em cada suporte analisado. Para contar as fases, o programa usa o sistema completo.
+
+## As 96 exclusões finais de V2 pela mesma direção
+
+Os 96 suportes que exigiam contagem quadrática pertencem à classe de código 69, uma das duas classes da interseção V1 ∩ V2 fora de U. Na outra classe, de código 225, todos os suportes caem na eliminação dos momentos lineares ou módulo 4.
+
+Na classe 69, após as substituições lineares dos momentos módulo 4, a polar é fixa. Para cada um dos 96 suportes, agrupe os sinais da derivada na direção (v=1), somados sobre as linhas cujo radical contém essa direção, por caráter dos parâmetros de fase. A soma dos coeficientes é 2 módulo 4, e o XOR das frequências com coeficiente ímpar é zero. Logo a soma permanece 2 módulo 4 para toda fase nesse espaço afim. Bentness exige que seja zero. O verificador confere essas propriedades e pode excluir os 96 sem contar os zeros das quadráticas remanescentes.

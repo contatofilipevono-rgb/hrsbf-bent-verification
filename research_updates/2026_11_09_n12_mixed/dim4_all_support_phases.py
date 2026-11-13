@@ -8,8 +8,10 @@ from count_near_antipodal import image_and_kernel
 from dim4_support_decode import decode
 from higher_filter import xor_terms
 from line_phase_algebra import locate, quadratic_moments, reduce_phase
+from line_zero_column import arithmetic_obstruction, radical_derivatives
 from lower_dim_moments import conditions, phase_linear_system
-from lower_dim_phase_prepare import fibre_masks
+from lower_dim_phase_prepare import fibre_masks, truth_on_coordinates
+from lower_dim_polar_structure import extract_polar
 from lower_dim_v3_symbolic import count
 
 
@@ -86,6 +88,18 @@ def main():
             continue
         h,free,_,_,qs=r
         nonlinear[len(qs)]+=1
+        if space == 2 and code >> 23 == 69 and qs:
+            polar = extract_polar(model, truth_on_coordinates(mapping, h, 4))
+            assert all(not extract_polar(model, truth_on_coordinates(0, d, 4)) for d in free)
+            spectrum = Counter()
+            for _, v, derivative in radical_derivatives(model, mapping, h, free, polar):
+                if v == 1:
+                    spectrum[derivative >> 1] += (-1)**(derivative & 1)
+            terms = {key: weight for key, weight in spectrum.items() if weight}
+            assert arithmetic_obstruction(terms, 0) == {"modulus": 4, "residue": 2}
+            counts["derivative_mod4"] += 1
+            chart["derivative_mod4"] += 1
+            continue
         if len(qs)>8:
             r=reduce_phase(h,free,0,[0]*len(free),qs,3)
             if r is None:
@@ -120,6 +134,8 @@ def main():
         assert positive == known
         assert sum(counts.values()) - counts["functions_in_larger"] == (113040 if space == 1 else 166472)
         assert sum(positive.values()) == (1900544 if space == 1 else 2326528)
+        if space == 2:
+            assert counts["derivative_mod4"] == 96 and not counts["quadratic_inconsistent"]
     parity = [[full, short, n] for (full, short), n in sorted(parity_profiles.items())]
     args.output.write_text(json.dumps({"counts":counts,"quadratic_ranks":nonlinear,"positive":positive,"charts":charts,"parity_profiles":parity})+"\n")
 

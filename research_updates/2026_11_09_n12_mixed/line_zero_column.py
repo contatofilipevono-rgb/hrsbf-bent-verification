@@ -19,8 +19,9 @@ def odd_radical_support(polar):
 def radical_derivatives(model, mapping, phase, directions, polar):
     """Yield the affine derivative on each radical vector of each row."""
     index = {model.coordinates[i] >> 6: i for i in range(0, 4096, 64)}
-    tables = [truth_on_coordinates(mapping, phase, 1)]
-    tables.extend(truth_on_coordinates(0, h, 1) for h in directions)
+    rank = len(model.basis)
+    tables = [truth_on_coordinates(mapping, phase, rank)]
+    tables.extend(truth_on_coordinates(0, h, rank) for h in directions)
     for z, basis in enumerate(radical_bases(polar)):
         for v in all_points(basis):
             derivative = sum(
