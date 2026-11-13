@@ -122,4 +122,4 @@ Os artefatos executáveis deste certificado ficam em `research_updates/2026_11_0
 - **Agregador de cobertura:** `aggregate_v1_plane_coverage.py`
   - Confere partição disjunta das **256** cartas, **0** sobreviventes, **0** testemunhas de falha e contagem **14/14** fechadas por identidade (`0` em enumeração residual).
 - **Workflow GitHub Actions:** `.github/workflows/n12_v1_common_phase_plane.yml`
-  - Matriz limitada a `max-parallel: 14` ($\le 32$ CPUs) sobre todas as 28 cartas RM-válidas, seguida do job agregador que fecha as 256 cartas e valida Etapa 1, testemunhas e testes negativos.
+  - Matriz limitada a `max-parallel: 8` ($\le 32$ CPUs mesmo em runners de 4 vCPUs) sobre todas as 28 cartas RM-válidas, seguida do job agregador que fecha as 256 cartas e valida Etapa 1, testemunhas e testes negativos.

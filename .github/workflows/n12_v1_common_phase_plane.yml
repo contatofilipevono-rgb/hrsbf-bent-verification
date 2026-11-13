@@ -15,7 +15,7 @@ jobs:
     timeout-minutes: 15
     strategy:
       fail-fast: false
-      max-parallel: 14
+      max-parallel: 8
       matrix:
         chart: [0, 1, 14, 15, 22, 23, 24, 25, 36, 37, 42, 43, 50, 51, 128, 129, 142, 143, 152, 153, 164, 165, 170, 171, 178, 179, 188, 189]
     defaults:
@@ -26,6 +26,11 @@ jobs:
         with:
           persist-credentials: false
           sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numpy for dim4_support_decode
+        run: python3 -m pip install numpy
       - name: Certify chart slice ${{ matrix.chart }}
         run: |
           mkdir -p slices
@@ -47,6 +52,11 @@ jobs:
         with:
           persist-credentials: false
           sparse-checkout: research_updates/2026_11_09_n12_mixed
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numpy for dim4_support_decode
+        run: python3 -m pip install numpy
       - uses: actions/download-artifact@v4
         with:
           pattern: v1-plane-slice-*
