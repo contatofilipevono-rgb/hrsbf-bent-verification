@@ -73,16 +73,39 @@ Com o tamanho exato, a enumeração bit a bit de cada A_κ (2^18 a 2^22 atribui�
 | classe 0, identidade | sim | sim | | sim |
 | 13 classes, x₂₄ = 0 | sim | sim | sim | sim |
 
-## O que ainda é enumeração
+## x₂₄ = 0 por células, sem enumerar os mapas
 
-Uma única afirmação linear, x₂₄ = 0, nas 13 classes, conferida por enumeração completa de A_κ.
+O argumento `--hull-only` da classe 129 se estende às 13 classes (`cells_x24.py`). Tome o hiperplano x₂₄ = 1 de A_κ. O quociente ρ = π0 mod ⟨1111⟩ é afim no código, com imagem de dimensão 12 a 16; cada valor de ρ define uma célula afim de dimensão 5. Para cada valor de ρ:
 
-Para a classe 129, o repositório já tem uma prova por células (`class129/prove_v1_class129_entry.py --hull-only`). Lá, as 272 células de ρ fora do envoltório falham no momento de s₁s₂ na fibra 0. Estender esse argumento às outras 12 classes tornaria o certificado inteiramente simbólico. Esse é o próximo passo natural, porque o fator é o mesmo, x₂₄, em todas elas.
+1. **Condições que só dependem de ρ.** São três: |Z_[t]| = 8 (tamanho, no quociente), a·e_t e b·e_t ortogonais a RM(1,6) e |Z_[t] ∩ M| par.
+2. **Em cada célula que sobra,** procura-se uma equação de suporte que vale 1 em todos os 32 pontos da célula. Cada equação é um momento booleano da fibra t contra um monômio de RM(2,8).
+
+| classe | valores de ρ | células que sobram | equação que falha (constante 1 na célula) |
+|---:|---:|---:|---|
+| 1 | 65.536 | 1.136 | momento x₀s₁ da fibra 0 |
+| 128 | 16.384 | 288 | momento x₀s₁ da fibra 0 |
+| 129 | 16.384 | 272 | momento s₁s₂ da fibra 0 (como em `--hull-only`) |
+| 22, 23, 36, 37, 50, 51 | 32.768 ou 16.384 | 0 | — |
+| 164, 165, 178, 179 | 4.096 | 0 | — |
+
+Logo **nenhum mapa com x₂₄ = 1 satisfaz as condições de suporte**. A hipótese de tamanho entra só como |Z_[t]| = 8 no quociente, e o resto é ortogonalidade. A enumeração bit a bit de A_κ fica como controle independente.
+
+Hipóteses por etapa, com o certificado por células:
+
+| etapa | H-orth | H-bal | H-size | H-RS |
+|---|:-:|:-:|:-:|:-:|
+| 242 classes vazias | sim | 14 delas | | sim |
+| identidade coluna mod L = x₂₄·w | sim | sim | | sim |
+| x₂₄ = 0 em 10 classes (nenhum ρ sobrevive) | sim, nas fatias ativas | sim | só \|Z_[t]\| = 8 | sim |
+| x₂₄ = 0 em 1, 128, 129 (célula cai num momento) | sim | sim | só \|Z_[t]\| = 8 | sim |
+
+O que resta de checagem finita é pequeno: 2^12 a 2^16 valores de ρ por classe e 32 pontos por célula sobrevivente (1.696 células no total). Uns 90 s numa CPU.
 
 ## Arquivos (`phase_plane/`)
 
 - `plane_cert.py`: espaços afins por nível de hipótese (H0 a H4) e teste de identidade de grau 4 módulo L.
 - `enum_slice.py`: enumeração bit a bit de um espaço afim, com fatias opcionais (`--fix`, `--slices`). Mede cobertura, sobreviventes, violações e devolve uma testemunha decodificável. A opção `--no-size` faz a relaxação.
+- `cells_x24.py`: o certificado por células de x₂₄ = 0; a saída é `cells_x24.json`.
 - `residues.py`: decomposição do resíduo, que tem posto 1 e é afim, por classe.
 - `ideal.py`: teste de pertença ao ideal truncado.
 - `verify_plane.py`: o verificador pequeno. Refaz tudo para as 256 classes e grava `certificate.json`, em uns 20 minutos numa CPU.
