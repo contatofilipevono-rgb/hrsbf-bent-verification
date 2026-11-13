@@ -1,0 +1,58 @@
+name: Reconstruct N12 dimension-four supports from moment constraints
+on:
+  push:
+    branches: [codex/n12-mixed-quartic]
+    paths:
+      - '.github/workflows/n12_dim4_rebuild_supports.yml'
+      - 'research_updates/2026_11_09_n12_mixed/dim4_support_moments.py'
+      - 'research_updates/2026_11_09_n12_mixed/dim4_rebuild_supports.cpp'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rebuild:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy
+      - name: Compile moment constraints
+        run: python -u dim4_support_moments.py --output charts
+      - name: Reconstruct and hash the exact support lists
+        run: |
+          g++ -std=c++17 -O3 -Wall -Wextra dim4_rebuild_supports.cpp -o rebuild
+          ./rebuild charts/charts-1.bin charts/supports-1.bin
+          ./rebuild charts/charts-2.bin charts/supports-2.bin
+          python - <<'PY'
+          import hashlib
+          import struct
+          from pathlib import Path
+          expected = {
+              1: (113040, '8d0eeebfd9cde035757047f220218098b697511c176614538f871c0a0a8ad7ea'),
+              2: (166472, '95c397ebb46513fa28c17b5a1b1331c90ac18d12be883b9acd925dc3af2c16c1'),
+          }
+          for space, (size, digest) in expected.items():
+              points = sorted(v for v, in struct.iter_unpack('<Q', Path(f'charts/supports-{space}.bin').read_bytes()))
+              assert len(points) == len(set(points)) == size
+              for newline in ('\n', '\r\n'):
+                  text = ''.join(f'{code}{newline}' for code in points).encode()
+                  if hashlib.sha256(text).hexdigest() == digest:
+                      break
+              else:
+                  raise AssertionError((space, hashlib.sha256(text).hexdigest()))
+              Path(f'charts/mapas_V{space}.txt').write_bytes(text)
+              print(space, size, digest)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dimension-four-reconstructed-supports
+          path: research_updates/2026_11_09_n12_mixed/charts/
+          if-no-files-found: error
