@@ -12,3 +12,26 @@ SHA-256 dos insumos:
 
 - V1: `1c4b463362692317f0da9edbd96376f1f8d6e7e886c23079b22bf76c3da9f72b`
 - V2: `a3e725fd2a69d48092a6091e5bf23cbe57211e05a66cb6ad7ecd2490b2ccd9ed`
+
+## Conferência de todos os suportes da enumeração original
+
+O comando `dim4_all_support_phases.py <pasta> --space <1 ou 2> --output <json>` recebe também `mapas_V1.txt` e `mapas_V2.txt`. O programa reconstrói a base original de códigos e confere a convenção de todos os 888 mapas positivos contra seus rótulos publicados. Em seguida reconstrói a fase e suas condições na base do repositório. A tabela usa a ordem de aplicação dos testes.
+
+| Resultado | V1 | V2 |
+| --- | ---: | ---: |
+| Afinidade maior já decidida pelo mapa | 0 | 149.432 |
+| Sistema linear de paridades incompatível | 49.248 | 14.064 |
+| Contradição durante a eliminação dos momentos módulo 4 | 32.200 | 2.112 |
+| Equações quadráticas remanescentes sem zeros | 0 | 96 |
+| Fases existentes, todas no bloco maior | 31.472 | 0 |
+| Mapas com fases exclusivas | 120 | 768 |
+| Total de suportes | 113.040 | 166.472 |
+
+Em V1, nos 31.472 mapas com fases em blocos maiores, as condições lineares já fixam o coeficiente misto de H no valor que caracteriza a afinidade em U. A igualdade é verificada tanto na origem quanto em todas as direções do espaço após as substituições lineares, antes de contar os zeros da quadrática. O total dessas fases é 300.548.096.
+
+Em V2, a contagem de Gauss resolve as 96 exclusões finais e as 112 admissões que têm duas quadráticas. Os outros 656 mapas positivos têm apenas equações lineares. O programa guarda também o resultado por classe de polar mista. A lista de suportes continua vindo da enumeração original. Nenhum teste percorre atribuições das fases.
+
+SHA-256 das listas de suportes `mapas_V1.txt` e `mapas_V2.txt`, respectivamente:
+
+- `8d0eeebfd9cde035757047f220218098b697511c176614538f871c0a0a8ad7ea`
+- `95c397ebb46513fa28c17b5a1b1331c90ac18d12be883b9acd925dc3af2c16c1`
