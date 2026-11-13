@@ -6,6 +6,8 @@ on:
       - '.github/workflows/n12_dim2_certificates.yml'
       - 'research_updates/2026_11_09_n12_mixed/lower_dim_v2_residual_certificates.py'
       - 'research_updates/2026_11_09_n12_mixed/lower-dim-v2-residual-certificates.json'
+      - 'research_updates/2026_11_09_n12_mixed/plane27_phase_certificates.py'
+      - 'research_updates/2026_11_09_n12_mixed/plane27-phase-certificates.json'
   workflow_dispatch:
 permissions:
   contents: read
@@ -29,3 +31,10 @@ jobs:
         run: |
           python3 -u lower_dim_v2_residual_certificates.py --artifacts inputs --verify
           python3 -u check_counts.py --artifacts inputs --manifest lower-dim-v2-residual-certificates.json
+      - name: Verify the 13 residual exclusions in the first invariant plane
+        run: |
+          mkdir first-plane
+          python3 -u lower_dim_support.py --space 2 --output first-plane/support.json
+          python3 -u lower_dim_orbits.py --space 2 --supports first-plane/support.bin --output first-plane/orbits.json
+          python3 -u lower_dim_phase_prepare.py --space 2 --supports first-plane/orbits.bin --output first-plane/tasks.bin
+          python3 -u plane27_phase_certificates.py --tasks first-plane/tasks.bin --manifest plane27-phase-certificates.json

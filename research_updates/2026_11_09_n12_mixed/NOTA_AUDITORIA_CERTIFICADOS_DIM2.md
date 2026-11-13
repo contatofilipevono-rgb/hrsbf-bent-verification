@@ -18,3 +18,7 @@ Nos seis representantes positivos, o verificador prova as reduções e a impossi
 O total ponderado é 309.248 funções. O verificador principal dispensa a enumeração das fases. A conferência independente avalia atribuições apenas nos espaços reduzidos dos casos positivos. A construção e classificação dos suportes ainda são finitas.
 
 O fluxo `n12_dim2_certificates.yml` reconstrói os suportes e as órbitas, verifica o manifesto e roda a segunda contagem. A opção `--build` do construtor requer as testemunhas binárias nativas da execução de referência. A opção `--verify` usa as testemunhas incorporadas ao manifesto e pode preparar as tarefas a partir dos representantes.
+
+## Primeiro plano, ⟨27,54⟩
+
+O mesmo método resolve as 98 tarefas do primeiro plano. Depois das 85 exclusões quadráticas, 13 ficam no manifesto `plane27-phase-certificates.json`. Dez já caem com momentos módulo 8 e assinaturas. A tarefa 1913345 cai por uma única equação módulo 16. As tarefas 1913347 e 42953732 exigem primeiro duas relações lineares, que reduzem o espaço de 19 a 17 parâmetros. No espaço reduzido, um momento dá a contradição constante. O verificador recompila cada equação usada e confere as identidades sem percorrer as fases. Assim, os dois planos de dimensão dois têm a etapa de fases certificada por álgebra.
