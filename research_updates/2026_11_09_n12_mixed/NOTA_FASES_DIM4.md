@@ -44,7 +44,7 @@ O filtro deixa 14 espaços afins e 19.922.944 mapas candidatos em V1, contra 2³
 
 Multiplicar as equações quadráticas restantes por cada parâmetro e eliminar os monômios cúbicos reduz V2 a 15.335.424 candidatos. Todos os 166.472 suportes de V2 passam também por esse filtro. O total dos dois blocos passa a 35.258.368 candidatos, uma redução de 99,67% sobre o espaço inicial.
 
-A observação de Fable sobre as 48 equações com 1, s₁ e s₂ é testada no mesmo verificador. A comparação exige que esse subsistema e as 144 equações tenham a mesma consistência em cada suporte analisado. Para contar as fases, o programa usa o sistema completo.
+A observação de Fable sobre as 48 equações com 1, s₁ e s₂ foi reproduzida. O subsistema e as 144 equações tiveram a mesma consistência nos 113.040 suportes de V1 e nos 17.040 suportes de V2 cujo mapa não força afinidade em U. Os dois testes excluem 49.248 em V1 e 14.064 em V2. Para contar as fases, o programa usa o sistema completo. [Reconstrução e conferência das paridades](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/43352540829)
 
 ## As 96 exclusões finais de V2 pela mesma direção
 
