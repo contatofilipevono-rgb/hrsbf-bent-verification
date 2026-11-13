@@ -27,6 +27,7 @@ são os 480 residuais.
 """
 import argparse, sys
 from collections import Counter
+from itertools import combinations
 from pathlib import Path
 
 M64 = (1 << 64) - 1
@@ -76,6 +77,7 @@ def main():
     from dim4_support_decode import decode
     from higher_filter import xor_terms
     from line_phase_algebra import locate
+    from lower_dim_phase_prepare import fibre_masks
     model, basis, labels = decode(1)
     maps, lifts = map(list, zip(*model.maps)); image = sorted(image_and_kernel(maps)[0], reverse=True)
     LAB = [labels(basis[i])[:64] for i in range(33)]
@@ -106,6 +108,8 @@ def main():
         else:
             rker.append(vv)
     assert len(rchg) == 14 and len(rker) == 5
+    def in_a2(lab):
+        return all(rep(lab[z]) == rep(lab[z ^ u]) for z in range(64) for u in (27, 45))
     # efeito das 5 direções da célula sobre rótulos e levantamento (afim: diferença em relação a root)
     kdir = []
     for v in rker:
@@ -115,6 +119,9 @@ def main():
     q11 = sum(((z >> 2 ^ z >> 5) & 1 & (1 ^ (z ^ z >> 1 ^ z >> 3 ^ z >> 4) & 1)) << z for z in range(64))
     A = {2, 4}; B = {1, 4}; M = {1, 2, 4}
     stats = Counter(); good_cells = {}
+    residual_profiles = Counter()
+    active_images = Counter()
+    coords = [sum(1 << x for x in range(256) if x >> i & 1) for i in (6, 7)]
     for sel in range(1 << len(rchg)):
         r = r0; vv = root
         for i, (x, v) in enumerate(rchg):
@@ -161,12 +168,67 @@ def main():
             assert all(not par(Z2 & dh[idx]) for _, dh in kdir), "constância na célula"
             vals.append(par(Z2 & (H[idx] ^ q11)))
         lm = tuple(lam(lab, d) for d in (1, 2, 4))
+        images = [{rho[zof(y, d)] for y in range(8)} for d in (1, 2, 4)]
+        sizes = [len(values) for values in images]
+        assert sizes in ([1, 1, 1], [2, 2, 2])
+        degree = Counter(label for values in images for label in values)
+        if sizes[0] == 1:
+            graph = "constant slices"
+        elif sorted(degree.values()) == [2, 2, 2]:
+            graph = "triangle"
+        else:
+            assert sorted(degree.values()) == [1] * 6
+            graph = "disjoint edges"
+        active_images[graph, tuple(vals)] += 1
         good_cells[vv] = (tuple(vals), lm)
         if vals != [0, 0]:
             stats["momento de [2] = 1"] += 1
             continue
         if lm == ((0, 0, 0),) * 3:
+            assert in_a2(lab)
             stats["(0,0) em A_2"] += 1
+            # A passive fibre invariant under the half-swap has size
+            # divisible by eight. Odd orbit parity excludes size 16
+            # simultaneously for all five selector directions.
+            z2 = Z[2]
+            if (all(dd(z) not in M and sw(z) != z and sw(z) in z2 for z in z2)
+                    and all(lab[z] == lab[sw(z)] for z in z2)
+                    and all(dl[z] == dl[sw(z)] for dl, _ in kdir for z in z2)):
+                reps = [z for z in z2 if z < sw(z)]
+                if (sum(lab[z] == 2 for z in reps) & 1
+                        and not any(sum(dl[z] & 1 for z in reps) & 1 for dl, _ in kdir)):
+                    residual_profiles["excluded by the size of fibre 2"] += 1
+                    continue
+
+            # For this passive complementary pair, swap exchanges the
+            # labels. Each swap orbit contributes one point to Z_1,
+            # regardless of which selector is chosen in the cell.
+            z1 = Z[1]
+            assert all(dd(z) in (3, 5, 6) and sw(z) in z1 for z in z1)
+            assert all(lab[z] ^ lab[sw(z)] == 15 for z in z1)
+            assert all(dl[z] == dl[sw(z)] for dl, _ in kdir for z in z1)
+            profile = tuple(sorted(dd(z) for z in z1 if z < sw(z)))
+            if len(set(profile)) == 1:
+                assert profile[0] in (3, 5, 6)
+                assert all(rep(lab[zof(y, d)]) == rep(lab[zof(0, d)])
+                           for d in range(8) for y in range(8))
+                residual_profiles["one slice in A_rho"] += 1
+            else:
+                assert profile == (3, 3, 5, 5)
+                residual_profiles["two half-slices"] += 1
+
+            # Verify the local phase obstruction independently at the
+            # level of affine coefficients in this entire selector cell.
+            coord = coords[0 if len(set(profile)) == 1 else 1]
+            fibre = fibre_masks(xor_terms(basis, vv | (129 << 25)), 256, 4)[1]
+            assert (fibre & coord).bit_count() == 8
+            for delta in [0, *rker, *(u ^ v for u, v in combinations(rker, 2))]:
+                code = (vv ^ delta) | (129 << 25)
+                shifted_fibre = fibre_masks(xor_terms(basis, code), 256, 4)[1]
+                _, lifted = gen(vv ^ delta)
+                assert (shifted_fibre & coord).bit_count() == 8
+                assert not any(par(shifted_fibre & coord & phase) for phase in model.phases)
+                assert par(shifted_fibre & coord & lifted)
             continue
         # família b): certificado de tamanho por um par par inteiro em N
         found = False
@@ -188,6 +250,10 @@ def main():
     assert stats["suporte preliminar"] == 518 and stats["momento de 5 = 1"] == 344
     assert stats["aprovadas"] == 174 and stats["(0,0) em A_2"] == 30
     assert stats["(0,0) fora de A_2, excluída por |P_t| = 8 ou 24"] == 32
+    assert residual_profiles == {"excluded by the size of fibre 2": 15,
+                                 "one slice in A_rho": 9, "two half-slices": 6}
+    print(dict(residual_profiles))
+    print("Active images and paired moments:", dict(sorted(active_images.items())))
     if a.catalogo:
         cat = [int(l) for l in a.catalogo.read_text().split() if int(l) >> 25 == 129]
         hit = Counter()

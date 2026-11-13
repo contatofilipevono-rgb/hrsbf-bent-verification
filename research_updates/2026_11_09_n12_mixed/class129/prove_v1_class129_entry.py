@@ -1,4 +1,4 @@
-"""Verify the exclusion of V1 class 129 without a support catalog."""
+"""Verify phase obstructions in selected V1 classes without a support catalog."""
 from collections import Counter
 from pathlib import Path
 import argparse
@@ -8,26 +8,42 @@ import sys
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("model_dir", type=Path)
+    parser.add_argument("--chart", type=int, choices=(1, 37, 51, 129, 164, 178), default=129)
     parser.add_argument("--hull-only", action="store_true",
                         help="Certify the dimension-19 envelope by linear support tests on quotient cells.")
     args = parser.parse_args()
+    if args.hull_only and args.chart != 129:
+        parser.error("--hull-only is available for class 129")
     sys.path.insert(0, str(args.model_dir.resolve()))
     from count_near_antipodal import image_and_kernel
     from dim4_balance_charts import character_sums
     from dim4_support_decode import decode
     from dim4_support_moments import moment_equations
-    from higher_filter import xor_terms
+    from higher_filter import solve, xor_terms
     from line_column_autocorrelation import affine_consequences
-    from line_phase_algebra import locate, reduce_phase
+    from line_phase_algebra import locate, quadratic_moments, reduce_phase
     from lower_dim_phase_prepare import fibre_masks
-    from lower_dim_moments import moment_masks
+    from lower_dim_moments import conditions, moment_masks, phase_linear_system
+    from lower_dim_orbits import code_actions
 
     model, basis, labels = decode(1)
     maps, lifts = map(list, zip(*model.maps))
     image = sorted(image_and_kernel(maps)[0], reverse=True)
-    base = xor_terms(basis, 129 << 25)
+    mirrored = {51: 37, 178: 164}
+    chart = mirrored.get(args.chart, args.chart)
+    if args.chart in mirrored:
+        map_basis = [value for value, _ in model.maps]
+        new_image = sorted(image_and_kernel(basis)[0], reverse=True)
+        reflection = next(columns for name, columns in code_actions(model) if name == "reflection")
+        reflected = [locate(new_image, xor_terms(map_basis, xor_terms(reflection, locate(image, v))))
+                     for v in basis]
+        assert not any(code >> 25 for code in reflected[:25])
+        assert xor_terms(reflected, chart << 25) >> 25 == args.chart
+        assert all(xor_terms(reflected, code) == 1 << i for i, code in enumerate(reflected))
+        print("Reflection transports class", chart, "to class", args.chart)
+    base = xor_terms(basis, chart << 25)
     directions = basis[:25]
-    code_base = 129 << 25
+    code_base = chart << 25
     code_directions = [1 << i for i in range(25)]
     s = [sum(1 << x for x in range(256) if x >> j & 1) for j in (6, 7)]
 
@@ -158,8 +174,66 @@ def main():
                     break
         for k, digit in enumerate(counter):
             remaining &= digit if k == 4 else full ^ digit
-    assert remaining.bit_count() == 11232
+    assert remaining.bit_count() == {1: 12416, 37: 1152, 129: 11232, 164: 512}[chart]
     data = remaining.to_bytes(width // 8, "little")
+    if chart == 1:
+        candidate_rows = (35, 8, 34, 38, 26, 10)
+        coverage = Counter()
+        mod4_profiles = Counter()
+        for j, byte in enumerate(data):
+            while byte:
+                bit = byte & -byte
+                byte ^= bit
+                mapping = base ^ xor_terms(directions, 8 * j + bit.bit_length() - 1)
+                fibres = fibre_masks(mapping, 256, 4)
+                lift = xor_terms(lifts, locate(image, mapping))
+                subsets = [mask for fibre in fibres for mask in (fibre, fibre & s[0], fibre & s[1])]
+                short = [(mask, 1, mask.bit_count() // 2 & 1) for mask in subsets]
+                for row in candidate_rows:
+                    mask, _, residue = short[row]
+                    if (((mask & lift).bit_count() & 1) != residue
+                            and not any((mask & phase).bit_count() & 1 for phase in model.phases)):
+                        coverage[row] += 1
+                        break
+                else:
+                    root, kernel, _ = phase_linear_system(short, lift, model.phases)
+                    assert root is not None
+                    phase = lift ^ xor_terms(model.phases, root)
+                    phase_directions = [xor_terms(model.phases, v) for v in kernel]
+                    equations = quadratic_moments(phase, phase_directions, conditions(fibres, 8, 2))
+                    # Retain only affine equations among the next-bit moments.
+                    linear = [(sum(poly - {0}), int(0 in poly)) for poly in equations
+                              if all(term.bit_count() <= 1 for term in poly)]
+                    assert solve(linear, len(phase_directions))[0] is None
+                    mod4_profiles[len(equations), len(linear)] += 1
+        assert tuple(coverage[row] for row in candidate_rows) == (6144, 2816, 1280, 576, 192, 192)
+        assert mod4_profiles == {(16, 14): 1024, (13, 11): 192}
+        print("Single-moment certificates (row index):", dict(coverage))
+        print("Residual mod-4 contradictions (equations, affine equations):", dict(mod4_profiles))
+        return
+    if chart in (37, 164):
+        candidates = {37: ((2, 0), (11, 0)),
+                      164: ((2, 0), (4, 0), (5, 0))}[chart]
+        coverage = Counter()
+        for j, byte in enumerate(data):
+            while byte:
+                bit = byte & -byte
+                byte ^= bit
+                mapping = base ^ xor_terms(directions, 8 * j + bit.bit_length() - 1)
+                fibres = fibre_masks(mapping, 256, 4)
+                lift = xor_terms(lifts, locate(image, mapping))
+                masks = [fibres[t] & s[i] for t, i in candidates]
+                assert all(mask.bit_count() % 2 == 0 for mask in masks)
+                assert not any((mask & phase).bit_count() & 1
+                               for mask in masks for phase in model.phases)
+                failures = [item for item, mask in zip(candidates, masks)
+                            if ((mask & lift).bit_count() ^ (mask.bit_count() // 2)) & 1]
+                assert failures
+                coverage[failures[0]] += 1
+        expected = {37: (960, 192), 164: (256, 128, 128)}[chart]
+        assert tuple(coverage[item] for item in candidates) == expected
+        print("Single-moment certificates (label, s index starting at zero):", dict(coverage))
+        return
     compatible = 0
     outside = 0
     admissible = 0

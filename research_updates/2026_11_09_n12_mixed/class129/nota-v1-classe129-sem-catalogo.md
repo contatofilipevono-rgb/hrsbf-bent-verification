@@ -121,9 +121,44 @@ dos dois pontos diagonais.
 
 ## Reprodução
 
+A extensão por células exclui 15 dos 30 valores de rho em A₂
+pelo tamanho da fibra 2. As 15 células restantes se dividem em
+9 com uma fatia e 6 com duas meias-fatias. O verificador confere
+o momento que exclui cada célula por interpolação de grau dois
+nas cinco direções de seletor. A geometria do par passivo
+justifica o tamanho do conjunto de soma em toda a célula.
+
+O mesmo programa de reconstrução sem catálogo aceita
+`--chart 1`, `--chart 37` e `--chart 164`. Na classe 1, seis
+momentos isolados excluem 11.200 suportes. Nos 1.216 restantes,
+as equações afins do bit seguinte módulo 4 já são incompatíveis.
+Nas classes 37 e 164, dois e três momentos isolados, respectivamente,
+excluem 1.152 e 512 suportes. A reflexão transporta as exclusões
+para 51 e 178, verificável pelas opções correspondentes.
+
 ```powershell
 python outputs/prove_v1_class129_entry.py work/n12-l3-cloud/research_updates/2026_11_09_n12_mixed
 python outputs/prove_v1_class129_entry.py work/n12-l3-cloud/research_updates/2026_11_09_n12_mixed --hull-only
 python -I outputs/verifica_entrada_A2_celulas.py work/n12-l3-cloud/research_updates/2026_11_09_n12_mixed
 python outputs/audit_v1_class129_affine_branches.py work/n12-l3-cloud/research_updates/2026_11_09_n12_mixed work/n12-mixed/v3-symbolic/dim4-reconstruction-gh/mapas_V1.txt
 ```
+
+## Plano comum dos momentos das fases de V1
+
+Nos 113.040 suportes admissíveis do catálogo, a imagem das 19 direções
+de fase nos 48 momentos está contida no plano fixo gerado pelas máscaras
+0x084006c00810 e 0x106002400c20. O bit 3t+i corresponde ao momento na
+fibra t com multiplicador 1, s₁ ou s₂, para i=0,1,2. Em cada uma das
+14 classes, as colunas observadas ao percorrer os suportes atingem
+o plano inteiro. Os postos por suporte são 0 em 1.632 casos,
+1 em 22.000 e 2 em 89.408.
+
+O teste é exaustivo no catálogo. Falta deduzir o plano das identidades
+do modelo. O plano dá uma condição necessária imediata sobre o lado
+direito. Para testar compatibilidade, ainda é preciso usar a imagem
+efetiva em cada suporte quando o posto é menor que dois.
+
+O verificador é `check_v1_common_phase_plane.py`. Seus dois argumentos
+são o diretório do modelo e o catálogo de suportes V1. O script
+`export_v1_moment_sample.py` gera os conjuntos de descoberta e teste
+cego com classes distintas e controles positivos.
