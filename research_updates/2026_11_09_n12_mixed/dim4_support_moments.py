@@ -8,6 +8,7 @@ from lower_dim_model import active_indices
 from lower_dim_v3_symbolic import affine_at, echelon, substitute
 from dim4_balance_charts import character_sums
 from line_column_autocorrelation import affine_consequences
+from line_phase_algebra import reduce_phase
 from pathlib import Path
 import json
 import argparse
@@ -57,6 +58,7 @@ def moment_equations(origin, directions, min_output_degree, max_output_degree):
 def main():
     parser = argparse.ArgumentParser(description="Compile dimension-four map charts from necessary moments.")
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--quadratic-lift", action="store_true")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     report = {}
@@ -102,6 +104,20 @@ def main():
             root4,free4,_=solve(lin4,len(free3))
             base^=xor_terms(directions,root4)
             directions=[xor_terms(directions,x) for x in free4]
+            if args.quadratic_lift:
+                variables = [affine_at(i, root4, free4) for i in range(len(free3))]
+                nonlinear = substitute([p for m, p in rows4.items() if m.bit_count() >= 2], variables)
+                dimension = len(directions)
+                reduced = reduce_phase(0, [1 << i for i in range(dimension)], 0,
+                                       [0] * dimension, nonlinear, 3)
+                if reduced is None:
+                    stats["empty_lift"] += 1
+                    continue
+                offset, extra_basis, _, _, _ = reduced
+                base ^= xor_terms(directions, offset)
+                directions = [xor_terms(directions, v) for v in extra_basis]
+                root4 ^= xor_terms(free4, offset)
+                free4 = [xor_terms(free4, v) for v in extra_basis]
             origin_balance,free_balance,_=affine_consequences(list(character_sums(base,directions)),len(directions))
             if origin_balance is None:
                 stats["empty_balance"]+=1
