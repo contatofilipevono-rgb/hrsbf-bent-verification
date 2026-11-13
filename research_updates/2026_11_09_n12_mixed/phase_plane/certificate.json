@@ -1,0 +1,1625 @@
+{
+ "plane": [
+  "0x084006c00810",
+  "0x106002400c20"
+ ],
+ "classes": {
+  "0": {
+   "dim": 21,
+   "base": 2,
+   "dirs": [
+    1,
+    12582916,
+    12582920,
+    16,
+    12582944,
+    12582976,
+    12583040,
+    256,
+    512,
+    12583936,
+    8390656,
+    4096,
+    4202496,
+    16384,
+    32768,
+    4259840,
+    131072,
+    262144,
+    4718592,
+    1048576,
+    2097152
+   ],
+   "status": "identity",
+   "admissible": 63504,
+   "seconds": 20.2
+  },
+  "1": {
+   "dim": 22,
+   "base": 58720258,
+   "dirs": [
+    1,
+    25165828,
+    25165832,
+    16,
+    25165856,
+    25165888,
+    25165952,
+    256,
+    512,
+    25166848,
+    8390656,
+    4096,
+    16785408,
+    16384,
+    32768,
+    16842752,
+    131072,
+    262144,
+    17301504,
+    1048576,
+    2097152,
+    20971520
+   ],
+   "status": "enumerated",
+   "r_mask": "0x1000000",
+   "r_const": 0,
+   "r_terms_in_H4_coordinates": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    9,
+    12,
+    15,
+    18,
+    21,
+    "1"
+   ],
+   "admissible": 12416,
+   "relaxed_no_size": {
+    "maps": 110592,
+    "violations": 25600,
+    "witness_code": 50333710,
+    "witness_fibre_sizes": [
+     28,
+     8,
+     20,
+     8,
+     20,
+     16,
+     20,
+     8,
+     8,
+     20,
+     16,
+     20,
+     8,
+     20,
+     8,
+     28
+    ]
+   },
+   "seconds": 101.0
+  },
+  "2": {
+   "status": "empty"
+  },
+  "3": {
+   "status": "empty"
+  },
+  "4": {
+   "status": "empty"
+  },
+  "5": {
+   "status": "empty"
+  },
+  "6": {
+   "status": "empty"
+  },
+  "7": {
+   "status": "empty"
+  },
+  "8": {
+   "status": "empty"
+  },
+  "9": {
+   "status": "empty"
+  },
+  "10": {
+   "status": "empty"
+  },
+  "11": {
+   "status": "empty"
+  },
+  "12": {
+   "status": "empty"
+  },
+  "13": {
+   "status": "empty"
+  },
+  "14": {
+   "status": "empty"
+  },
+  "15": {
+   "status": "empty"
+  },
+  "16": {
+   "status": "empty"
+  },
+  "17": {
+   "status": "empty"
+  },
+  "18": {
+   "status": "empty"
+  },
+  "19": {
+   "status": "empty"
+  },
+  "20": {
+   "status": "empty"
+  },
+  "21": {
+   "status": "empty"
+  },
+  "22": {
+   "dim": 21,
+   "base": 756023298,
+   "dirs": [
+    1,
+    26214404,
+    26214408,
+    16,
+    26214432,
+    26214464,
+    26214528,
+    256,
+    512,
+    26215424,
+    8390656,
+    4096,
+    16785408,
+    1064960,
+    32768,
+    16842752,
+    131072,
+    1310720,
+    18350080,
+    2097152,
+    20971520
+   ],
+   "status": "enumerated",
+   "r_mask": "0x1000000",
+   "r_const": 0,
+   "r_terms_in_H4_coordinates": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    9,
+    12,
+    15,
+    18,
+    20,
+    "1"
+   ],
+   "admissible": 2176,
+   "relaxed_no_size": {
+    "maps": 63488,
+    "violations": 6144,
+    "witness_code": 763375694,
+    "witness_fibre_sizes": [
+     28,
+     0,
+     28,
+     0,
+     28,
+     16,
+     28,
+     0,
+     0,
+     28,
+     16,
+     28,
+     0,
+     28,
+     0,
+     28
+    ]
+   },
+   "seconds": 31.5
+  },
+  "23": {
+   "dim": 21,
+   "base": 780140546,
+   "dirs": [
+    1,
+    26214404,
+    26214408,
+    16,
+    26214432,
+    26214464,
+    26214528,
+    256,
+    512,
+    26215424,
+    8390656,
+    4096,
+    16785408,
+    1064960,
+    32768,
+    16842752,
+    131072,
+    1310720,
+    18350080,
+    2097152,
+    20971520
+   ],
+   "status": "enumerated",
+   "r_mask": "0x1000000",
+   "r_const": 0,
+   "r_terms_in_H4_coordinates": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    9,
+    12,
+    15,
+    18,
+    20
+   ],
+   "admissible": 3072,
+   "relaxed_no_size": {
+    "maps": 34816,
+    "violations": 3072,
+    "witness_code": 789604370,
+    "witness_fibre_sizes": [
+     28,
+     8,
+     12,
+     8,
+     12,
+     40,
+     12,
+     8,
+     8,
+     12,
+     40,
+     12,
+     8,
+     12,
+     8,
+     28
+    ]
+   },
+   "seconds": 33.1
+  },
+  "24": {
+   "status": "empty"
+  },
+  "25": {
+   "status": "empty"
+  },
+  "26": {
+   "status": "empty"
+  },
+  "27": {
+   "status": "empty"
+  },
+  "28": {
+   "status": "empty"
+  },
+  "29": {
+   "status": "empty"
+  },
+  "30": {
+   "status": "empty"
+  },
+  "31": {
+   "status": "empty"
+  },
+  "32": {
+   "status": "empty"
+  },
+  "33": {
+   "status": "empty"
+  },
+  "34": {
+   "status": "empty"
+  },
+  "35": {
+   "status": "empty"
+  },
+  "36": {
+   "dim": 20,
+   "base": 1221591042,
+   "dirs": [
+    1,
+    26214404,
+    26214408,
+    16,
+    26214432,
+    26214464,
+    26214528,
+    256,
+    512,
+    26215424,
+    29362176,
+    20975616,
+    4202496,
+    22036480,
+    32768,
+    16842752,
+    21102592,
+    22282240,
+    5767168,
+    2097152
+   ],
+   "status": "enumerated",
+   "r_mask": "0x1000000",
+   "r_const": 0,
+   "r_terms_in_H4_coordinates": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    9,
+    10,
+    11,
+    13,
+    15,
+    16,
+    17
+   ],
+   "admissible": 1536,
+   "relaxed_no_size": {
+    "maps": 21760,
+    "violations": 1280,
+    "witness_code": 1233174531,
+    "witness_fibre_sizes": [
+     28,
+     12,
+     12,
+     12,
+     12,
+     28,
+     12,
+     12,
+     12,
+     12,
+     28,
+     12,
+     12,
+     12,
+     12,
+     28
+    ]
+   },
+   "seconds": 20.2
+  },
+  "37": {
+   "dim": 20,
+   "base": 1262485506,
+   "dirs": [
+    1,
+    26214404,
+    26214408,
+    16,
+    26214432,
+    26214464,
+    26214528,
+    256,
+    512,
+    26215424,
+    29362176,
+    20975616,
+    4202496,
+    22036480,
+    32768,
+    16842752,
+    21102592,
+    22282240,
+    5767168,
+    2097152
+   ],
+   "status": "enumerated",
+   "r_mask": "0x1000000",
+   "r_const": 0,
+   "r_terms_in_H4_coordinates": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    9,
+    10,
+    11,
+    13,
+    15,
+    16,
+    17,
+    "1"
+   ],
+   "admissible": 1152,
+   "relaxed_no_size": {
+    "maps": 27904,
+    "violations": 2816,
+    "witness_code": 1263554647,
+    "witness_fibre_sizes": [
+     28,
+     8,
+     12,
+     8,
+     12,
+     40,
+     12,
+     8,
+     8,
+     12,
+     40,
+     12,
+     8,
+     12,
+     8,
+     28
+    ]
+   },
+   "seconds": 19.5
+  },
+  "38": {
+   "status": "empty"
+  },
+  "39": {
+   "status": "empty"
+  },
+  "40": {
+   "status": "empty"
+  },
+  "41": {
+   "status": "empty"
+  },
+  "42": {
+   "status": "empty"
+  },
+  "43": {
+   "status": "empty"
+  },
+  "44": {
+   "status": "empty"
+  },
+  "45": {
+   "status": "empty"
+  },
+  "46": {
+   "status": "empty"
+  },
+  "47": {
+   "status": "empty"
+  },
+  "48": {
+   "status": "empty"
+  },
+  "49": {
+   "status": "empty"
+  },
+  "50": {
+   "dim": 20,
+   "base": 1707081730,
+   "dirs": [
+    1,
+    26214404,
+    26214408,
+    16,
+    26214432,
+    26214464,
+    26214528,
+    256,
+    512,
+    26215424,
+    29362176,
+    20975616,
+    4202496,
+    22036480,
+    32768,
+    16842752,
+    21102592,
+    22282240,
+    5767168,
+    2097152
+   ],
+   "status": "enumerated",
+   "r_mask": "0x1000000",
+   "r_const": 0,
+   "r_terms_in_H4_coordinates": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    9,
+    10,
+    11,
+    13,
+    15,
+    16,
+    17,
+    "1"
+   ],
+   "admissible": 1536,
+   "relaxed_no_size": {
+    "maps": 21760,
+    "violations": 1280,
+    "witness_code": 1698699379,
+    "witness_fibre_sizes": [
+     28,
+     16,
+     12,
+     16,
+     12,
+     16,
+     12,
+     16,
+     16,
+     12,
+     16,
+     12,
+     16,
+     12,
+     16,
+     28
+    ]
+   },
+   "seconds": 19.6
+  },
+  "51": {
+   "dim": 20,
+   "base": 1716518914,
+   "dirs": [
+    1,
+    26214404,
+    26214408,
+    16,
+    26214432,
+    26214464,
+    26214528,
+    256,
+    512,
+    26215424,
+    29362176,
+    20975616,
+    4202496,
+    22036480,
+    32768,
+    16842752,
+    21102592,
+    22282240,
+    5767168,
+    2097152
+   ],
+   "status": "enumerated",
+   "r_mask": "0x1000000",
+   "r_const": 0,
+   "r_terms_in_H4_coordinates": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    9,
+    10,
+    11,
+    13,
+    15,
+    16,
+    17
+   ],
+   "admissible": 1152,
+   "relaxed_no_size": {
+    "maps": 27904,
+    "violations": 2816,
+    "witness_code": 1732304926,
+    "witness_fibre_sizes": [
+     28,
+     0,
+     28,
+     0,
+     28,
+     16,
+     28,
+     0,
+     0,
+     28,
+     16,
+     28,
+     0,
+     28,
+     0,
+     28
+    ]
+   },
+   "seconds": 17.8
+  },
+  "52": {
+   "status": "empty"
+  },
+  "53": {
+   "status": "empty"
+  },
+  "54": {
+   "status": "empty"
+  },
+  "55": {
+   "status": "empty"
+  },
+  "56": {
+   "status": "empty"
+  },
+  "57": {
+   "status": "empty"
+  },
+  "58": {
+   "status": "empty"
+  },
+  "59": {
+   "status": "empty"
+  },
+  "60": {
+   "status": "empty"
+  },
+  "61": {
+   "status": "empty"
+  },
+  "62": {
+   "status": "empty"
+  },
+  "63": {
+   "status": "empty"
+  },
+  "64": {
+   "status": "empty"
+  },
+  "65": {
+   "status": "empty"
+  },
+  "66": {
+   "status": "empty"
+  },
+  "67": {
+   "status": "empty"
+  },
+  "68": {
+   "status": "empty"
+  },
+  "69": {
+   "status": "empty"
+  },
+  "70": {
+   "status": "empty"
+  },
+  "71": {
+   "status": "empty"
+  },
+  "72": {
+   "status": "empty"
+  },
+  "73": {
+   "status": "empty"
+  },
+  "74": {
+   "status": "empty"
+  },
+  "75": {
+   "status": "empty"
+  },
+  "76": {
+   "status": "empty"
+  },
+  "77": {
+   "status": "empty"
+  },
+  "78": {
+   "status": "empty"
+  },
+  "79": {
+   "status": "empty"
+  },
+  "80": {
+   "status": "empty"
+  },
+  "81": {
+   "status": "empty"
+  },
+  "82": {
+   "status": "empty"
+  },
+  "83": {
+   "status": "empty"
+  },
+  "84": {
+   "status": "empty"
+  },
+  "85": {
+   "status": "empty"
+  },
+  "86": {
+   "status": "empty"
+  },
+  "87": {
+   "status": "empty"
+  },
+  "88": {
+   "status": "empty"
+  },
+  "89": {
+   "status": "empty"
+  },
+  "90": {
+   "status": "empty"
+  },
+  "91": {
+   "status": "empty"
+  },
+  "92": {
+   "status": "empty"
+  },
+  "93": {
+   "status": "empty"
+  },
+  "94": {
+   "status": "empty"
+  },
+  "95": {
+   "status": "empty"
+  },
+  "96": {
+   "status": "empty"
+  },
+  "97": {
+   "status": "empty"
+  },
+  "98": {
+   "status": "empty"
+  },
+  "99": {
+   "status": "empty"
+  },
+  "100": {
+   "status": "empty"
+  },
+  "101": {
+   "status": "empty"
+  },
+  "102": {
+   "status": "empty"
+  },
+  "103": {
+   "status": "empty"
+  },
+  "104": {
+   "status": "empty"
+  },
+  "105": {
+   "status": "empty"
+  },
+  "106": {
+   "status": "empty"
+  },
+  "107": {
+   "status": "empty"
+  },
+  "108": {
+   "status": "empty"
+  },
+  "109": {
+   "status": "empty"
+  },
+  "110": {
+   "status": "empty"
+  },
+  "111": {
+   "status": "empty"
+  },
+  "112": {
+   "status": "empty"
+  },
+  "113": {
+   "status": "empty"
+  },
+  "114": {
+   "status": "empty"
+  },
+  "115": {
+   "status": "empty"
+  },
+  "116": {
+   "status": "empty"
+  },
+  "117": {
+   "status": "empty"
+  },
+  "118": {
+   "status": "empty"
+  },
+  "119": {
+   "status": "empty"
+  },
+  "120": {
+   "status": "empty"
+  },
+  "121": {
+   "status": "empty"
+  },
+  "122": {
+   "status": "empty"
+  },
+  "123": {
+   "status": "empty"
+  },
+  "124": {
+   "status": "empty"
+  },
+  "125": {
+   "status": "empty"
+  },
+  "126": {
+   "status": "empty"
+  },
+  "127": {
+   "status": "empty"
+  },
+  "128": {
+   "dim": 20,
+   "base": 4307550210,
+   "dirs": [
+    1,
+    12582916,
+    12582920,
+    16,
+    12582944,
+    12582976,
+    12583040,
+    256,
+    512,
+    12583936,
+    8390656,
+    20975616,
+    17833984,
+    16384,
+    21004288,
+    16842752,
+    21102592,
+    1310720,
+    18350080,
+    23068672
+   ],
+   "status": "enumerated",
+   "r_mask": "0x1000000",
+   "r_const": 0,
+   "r_terms_in_H4_coordinates": [
+    11,
+    12,
+    14,
+    15,
+    16,
+    18,
+    19
+   ],
+   "admissible": 12832,
+   "relaxed_no_size": {
+    "maps": 94208,
+    "violations": 8192,
+    "witness_code": 4320137234,
+    "witness_fibre_sizes": [
+     28,
+     16,
+     12,
+     16,
+     12,
+     16,
+     12,
+     16,
+     16,
+     12,
+     16,
+     12,
+     16,
+     12,
+     16,
+     28
+    ]
+   },
+   "seconds": 18.3
+  },
+  "129": {
+   "dim": 20,
+   "base": 4328521730,
+   "dirs": [
+    1,
+    12582916,
+    12582920,
+    16,
+    12582944,
+    12582976,
+    12583040,
+    256,
+    512,
+    12583936,
+    8390656,
+    20975616,
+    17833984,
+    16384,
+    21004288,
+    16842752,
+    21102592,
+    1310720,
+    18350080,
+    23068672
+   ],
+   "status": "enumerated",
+   "r_mask": "0x1000000",
+   "r_const": 0,
+   "r_terms_in_H4_coordinates": [
+    11,
+    12,
+    14,
+    15,
+    16,
+    18,
+    19
+   ],
+   "admissible": 11232,
+   "relaxed_no_size": {
+    "maps": 90112,
+    "violations": 9216,
+    "witness_code": 4358938703,
+    "witness_fibre_sizes": [
+     28,
+     0,
+     36,
+     0,
+     36,
+     16,
+     20,
+     0,
+     0,
+     36,
+     16,
+     20,
+     0,
+     20,
+     0,
+     28
+    ]
+   },
+   "seconds": 18.6
+  },
+  "130": {
+   "status": "empty"
+  },
+  "131": {
+   "status": "empty"
+  },
+  "132": {
+   "status": "empty"
+  },
+  "133": {
+   "status": "empty"
+  },
+  "134": {
+   "status": "empty"
+  },
+  "135": {
+   "status": "empty"
+  },
+  "136": {
+   "status": "empty"
+  },
+  "137": {
+   "status": "empty"
+  },
+  "138": {
+   "status": "empty"
+  },
+  "139": {
+   "status": "empty"
+  },
+  "140": {
+   "status": "empty"
+  },
+  "141": {
+   "status": "empty"
+  },
+  "142": {
+   "status": "empty"
+  },
+  "143": {
+   "status": "empty"
+  },
+  "144": {
+   "status": "empty"
+  },
+  "145": {
+   "status": "empty"
+  },
+  "146": {
+   "status": "empty"
+  },
+  "147": {
+   "status": "empty"
+  },
+  "148": {
+   "status": "empty"
+  },
+  "149": {
+   "status": "empty"
+  },
+  "150": {
+   "status": "empty"
+  },
+  "151": {
+   "status": "empty"
+  },
+  "152": {
+   "status": "empty"
+  },
+  "153": {
+   "status": "empty"
+  },
+  "154": {
+   "status": "empty"
+  },
+  "155": {
+   "status": "empty"
+  },
+  "156": {
+   "status": "empty"
+  },
+  "157": {
+   "status": "empty"
+  },
+  "158": {
+   "status": "empty"
+  },
+  "159": {
+   "status": "empty"
+  },
+  "160": {
+   "status": "empty"
+  },
+  "161": {
+   "status": "empty"
+  },
+  "162": {
+   "status": "empty"
+  },
+  "163": {
+   "status": "empty"
+  },
+  "164": {
+   "dim": 18,
+   "base": 5526011906,
+   "dirs": [
+    1,
+    12599300,
+    12599304,
+    16,
+    12599328,
+    12599360,
+    12599424,
+    256,
+    512,
+    12600320,
+    31459328,
+    20975616,
+    17850368,
+    2129920,
+    16842752,
+    21102592,
+    24379392,
+    7864320
+   ],
+   "status": "enumerated",
+   "r_mask": "0x1000000",
+   "r_const": 0,
+   "r_terms_in_H4_coordinates": [
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    "1"
+   ],
+   "admissible": 512,
+   "relaxed_no_size": {
+    "maps": 11776,
+    "violations": 512,
+    "witness_code": 5529151490,
+    "witness_fibre_sizes": [
+     28,
+     12,
+     12,
+     12,
+     12,
+     28,
+     12,
+     12,
+     12,
+     12,
+     28,
+     12,
+     12,
+     12,
+     12,
+     28
+    ]
+   },
+   "seconds": 6.6
+  },
+  "165": {
+   "dim": 18,
+   "base": 5563744258,
+   "dirs": [
+    1,
+    12599300,
+    12599304,
+    16,
+    12599328,
+    12599360,
+    12599424,
+    256,
+    512,
+    12600320,
+    31459328,
+    20975616,
+    17850368,
+    2129920,
+    16842752,
+    21102592,
+    24379392,
+    7864320
+   ],
+   "status": "enumerated",
+   "r_mask": "0x1000000",
+   "r_const": 0,
+   "r_terms_in_H4_coordinates": [
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    "1"
+   ],
+   "admissible": 704,
+   "relaxed_no_size": {
+    "maps": 17920,
+    "violations": 2560,
+    "witness_code": 5558528074,
+    "witness_fibre_sizes": [
+     28,
+     16,
+     12,
+     16,
+     12,
+     16,
+     12,
+     16,
+     16,
+     12,
+     16,
+     12,
+     16,
+     12,
+     16,
+     28
+    ]
+   },
+   "seconds": 6.6
+  },
+  "166": {
+   "status": "empty"
+  },
+  "167": {
+   "status": "empty"
+  },
+  "168": {
+   "status": "empty"
+  },
+  "169": {
+   "status": "empty"
+  },
+  "170": {
+   "status": "empty"
+  },
+  "171": {
+   "status": "empty"
+  },
+  "172": {
+   "status": "empty"
+  },
+  "173": {
+   "status": "empty"
+  },
+  "174": {
+   "status": "empty"
+  },
+  "175": {
+   "status": "empty"
+  },
+  "176": {
+   "status": "empty"
+  },
+  "177": {
+   "status": "empty"
+  },
+  "178": {
+   "dim": 18,
+   "base": 5990531074,
+   "dirs": [
+    1,
+    12599300,
+    12599304,
+    16,
+    12599328,
+    12599360,
+    12599424,
+    256,
+    512,
+    12600320,
+    31459328,
+    20975616,
+    17850368,
+    2129920,
+    16842752,
+    21102592,
+    24379392,
+    7864320
+   ],
+   "status": "enumerated",
+   "r_mask": "0x1000000",
+   "r_const": 0,
+   "r_terms_in_H4_coordinates": [
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    "1"
+   ],
+   "admissible": 512,
+   "relaxed_no_size": {
+    "maps": 11776,
+    "violations": 512,
+    "witness_code": 5992796163,
+    "witness_fibre_sizes": [
+     28,
+     12,
+     12,
+     12,
+     12,
+     28,
+     12,
+     12,
+     12,
+     12,
+     28,
+     12,
+     12,
+     12,
+     12,
+     28
+    ]
+   },
+   "seconds": 7.0
+  },
+  "179": {
+   "dim": 18,
+   "base": 6036652034,
+   "dirs": [
+    1,
+    12599300,
+    12599304,
+    16,
+    12599328,
+    12599360,
+    12599424,
+    256,
+    512,
+    12600320,
+    31459328,
+    20975616,
+    17850368,
+    2129920,
+    16842752,
+    21102592,
+    24379392,
+    7864320
+   ],
+   "status": "enumerated",
+   "r_mask": "0x1000000",
+   "r_const": 0,
+   "r_terms_in_H4_coordinates": [
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    "1"
+   ],
+   "admissible": 704,
+   "relaxed_no_size": {
+    "maps": 17920,
+    "violations": 2560,
+    "witness_code": 6036652035,
+    "witness_fibre_sizes": [
+     28,
+     12,
+     12,
+     12,
+     12,
+     28,
+     12,
+     12,
+     12,
+     12,
+     28,
+     12,
+     12,
+     12,
+     12,
+     28
+    ]
+   },
+   "seconds": 7.3
+  },
+  "180": {
+   "status": "empty"
+  },
+  "181": {
+   "status": "empty"
+  },
+  "182": {
+   "status": "empty"
+  },
+  "183": {
+   "status": "empty"
+  },
+  "184": {
+   "status": "empty"
+  },
+  "185": {
+   "status": "empty"
+  },
+  "186": {
+   "status": "empty"
+  },
+  "187": {
+   "status": "empty"
+  },
+  "188": {
+   "status": "empty"
+  },
+  "189": {
+   "status": "empty"
+  },
+  "190": {
+   "status": "empty"
+  },
+  "191": {
+   "status": "empty"
+  },
+  "192": {
+   "status": "empty"
+  },
+  "193": {
+   "status": "empty"
+  },
+  "194": {
+   "status": "empty"
+  },
+  "195": {
+   "status": "empty"
+  },
+  "196": {
+   "status": "empty"
+  },
+  "197": {
+   "status": "empty"
+  },
+  "198": {
+   "status": "empty"
+  },
+  "199": {
+   "status": "empty"
+  },
+  "200": {
+   "status": "empty"
+  },
+  "201": {
+   "status": "empty"
+  },
+  "202": {
+   "status": "empty"
+  },
+  "203": {
+   "status": "empty"
+  },
+  "204": {
+   "status": "empty"
+  },
+  "205": {
+   "status": "empty"
+  },
+  "206": {
+   "status": "empty"
+  },
+  "207": {
+   "status": "empty"
+  },
+  "208": {
+   "status": "empty"
+  },
+  "209": {
+   "status": "empty"
+  },
+  "210": {
+   "status": "empty"
+  },
+  "211": {
+   "status": "empty"
+  },
+  "212": {
+   "status": "empty"
+  },
+  "213": {
+   "status": "empty"
+  },
+  "214": {
+   "status": "empty"
+  },
+  "215": {
+   "status": "empty"
+  },
+  "216": {
+   "status": "empty"
+  },
+  "217": {
+   "status": "empty"
+  },
+  "218": {
+   "status": "empty"
+  },
+  "219": {
+   "status": "empty"
+  },
+  "220": {
+   "status": "empty"
+  },
+  "221": {
+   "status": "empty"
+  },
+  "222": {
+   "status": "empty"
+  },
+  "223": {
+   "status": "empty"
+  },
+  "224": {
+   "status": "empty"
+  },
+  "225": {
+   "status": "empty"
+  },
+  "226": {
+   "status": "empty"
+  },
+  "227": {
+   "status": "empty"
+  },
+  "228": {
+   "status": "empty"
+  },
+  "229": {
+   "status": "empty"
+  },
+  "230": {
+   "status": "empty"
+  },
+  "231": {
+   "status": "empty"
+  },
+  "232": {
+   "status": "empty"
+  },
+  "233": {
+   "status": "empty"
+  },
+  "234": {
+   "status": "empty"
+  },
+  "235": {
+   "status": "empty"
+  },
+  "236": {
+   "status": "empty"
+  },
+  "237": {
+   "status": "empty"
+  },
+  "238": {
+   "status": "empty"
+  },
+  "239": {
+   "status": "empty"
+  },
+  "240": {
+   "status": "empty"
+  },
+  "241": {
+   "status": "empty"
+  },
+  "242": {
+   "status": "empty"
+  },
+  "243": {
+   "status": "empty"
+  },
+  "244": {
+   "status": "empty"
+  },
+  "245": {
+   "status": "empty"
+  },
+  "246": {
+   "status": "empty"
+  },
+  "247": {
+   "status": "empty"
+  },
+  "248": {
+   "status": "empty"
+  },
+  "249": {
+   "status": "empty"
+  },
+  "250": {
+   "status": "empty"
+  },
+  "251": {
+   "status": "empty"
+  },
+  "252": {
+   "status": "empty"
+  },
+  "253": {
+   "status": "empty"
+  },
+  "254": {
+   "status": "empty"
+  },
+  "255": {
+   "status": "empty"
+  }
+ },
+ "residue_vector_per_phase": {
+  "6": "0x30420102180",
+  "7": "0x30420102180",
+  "13": "0x30420102180"
+ },
+ "summary": {
+  "status_counts": {
+   "identity": 1,
+   "enumerated": 13,
+   "empty": 242
+  },
+  "total_admissible": 113040
+ }
+}

@@ -1,0 +1,53 @@
+{
+ "status_counts": {
+  "identity": 1,
+  "enumerated": 13,
+  "empty": 242
+ },
+ "problems": [],
+ "admissible_by_class": {
+  "0": 63504,
+  "1": 12416,
+  "22": 2176,
+  "23": 3072,
+  "36": 1536,
+  "37": 1152,
+  "50": 1536,
+  "51": 1152,
+  "128": 12832,
+  "129": 11232,
+  "164": 512,
+  "165": 704,
+  "178": 512,
+  "179": 704
+ },
+ "total_admissible": 113040,
+ "identity_classes": [
+  0
+ ],
+ "enumerated_classes": [
+  1,
+  22,
+  23,
+  36,
+  37,
+  50,
+  51,
+  128,
+  129,
+  164,
+  165,
+  178,
+  179
+ ],
+ "catalog_control": {
+  "catalog_total": 113040,
+  "mismatch": {},
+  "catalog_classes_not_enumerated": {
+   "0": [
+    "identity",
+    63504
+   ]
+  }
+ }
+}

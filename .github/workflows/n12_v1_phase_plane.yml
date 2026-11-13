@@ -1,0 +1,80 @@
+name: Certify the common V1 phase plane without the support catalog
+on:
+  push:
+    branches: [codex/v1-phase-plane-cert]
+    paths:
+      - '.github/workflows/n12_v1_phase_plane.yml'
+      - 'research_updates/2026_11_09_n12_mixed/phase_plane/*.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: v1-phase-plane
+  cancel-in-progress: false
+jobs:
+  shard:
+    runs-on: ubuntu-24.04          # 4 vCPU per runner
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 8              # 8 x 4 vCPU = 32 CPUs at most
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed/phase_plane
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy
+      - name: Affine spaces from the support hypotheses and degree-4 identity test
+        run: python -u plane_cert.py .. --classes ${{ matrix.shard }}/8 --levels H0,H4 --out spaces-${{ matrix.shard }}.json
+      - name: Bit-sliced enumeration of every non-empty class (size + orthogonality)
+        run: python -u enum_slice.py .. spaces-${{ matrix.shard }}.json --classes nonempty --out slices-${{ matrix.shard }}.json
+      - name: Same enumeration without the fibre-size hypothesis (relaxation)
+        run: python -u enum_slice.py .. spaces-${{ matrix.shard }}.json --classes nonempty --no-size --out relaxed-${{ matrix.shard }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phase-plane-shard-${{ matrix.shard }}
+          path: research_updates/2026_11_09_n12_mixed/phase_plane/*-${{ matrix.shard }}.json
+          if-no-files-found: error
+  aggregate:
+    needs: shard
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed/phase_plane
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: phase-plane-shard-*
+          merge-multiple: true
+          path: research_updates/2026_11_09_n12_mixed/phase_plane/out
+      - name: Merge and check coverage
+        run: |
+          python - <<'PY'
+          import json, glob
+          spaces = {}
+          for f in sorted(glob.glob('out/spaces-*.json')):
+              spaces.update(json.load(open(f)))
+          json.dump(spaces, open('out/spaces.json', 'w'))
+          print(len(spaces), 'classes')
+          PY
+          python -u aggregate.py out/spaces.json out/slices-*.json --out out/aggregate.json
+          python -u aggregate.py out/spaces.json out/relaxed-*.json --out out/aggregate-relaxed.json || true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phase-plane-certificate
+          path: research_updates/2026_11_09_n12_mixed/phase_plane/out/
+          if-no-files-found: error
