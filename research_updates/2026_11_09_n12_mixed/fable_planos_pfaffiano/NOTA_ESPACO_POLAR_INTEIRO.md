@@ -61,6 +61,35 @@ Ideia para os 11: antes do Walsh, restringir as formas de ativação a cada espa
 
 **Contagem dos 212: 72 com bent, 139 mortos, 2 indefinidos (5 e 11).**
 
+### Fecho (14/11, madrugada do dia 15)
+- **Polar 11: morto.** As 8 primeiras fatias (de 9) da busca fatiada morreram. A 9ª foi dividida em 10 subpartes (i ≡ 8 mod 9 numa divisão em 90), que também morreram. A cobertura das 2²⁸ atribuições é completa.
+- **Polar 5: morto.** Nova opção `--quad` de `busca_padroes.py`: em cada subespaço de padrão, o sistema quadrático dos bits de Poisson é reescrito nas coordenadas do subespaço (`substitute`, conferida contra a avaliação direta em 200 casos aleatórios) e passado a `exclude_vec`.
+  - Controle positivo: acha bent no polar de teste em 161 s, contra 604 s sem `--quad`.
+  - No polar 5: 90 partes, 268.435.456 sobreviventes testados por Walsh completo, nenhuma bent.
+- A VM spot passou para n2-standard-96 (384 GB) antes desta etapa e foi apagada ao fim. Backup em `Downloads/analise adversarial/backup_vm_bitj96/spot_resultados.tgz`.
+
+## Veredito final do espaço de polares (`veredito212.json`)
+| | Polares |
+|---|---:|
+| passam (Pf4) | 18.816 |
+| viáveis em (L5) | 10.156 |
+| mortos por certificados elementares ((L5)+(L3), autocorrelação, linhas forçadas) | 9.944 |
+| abertos depois dos certificados | 212 |
+| … mortos pelo funil (Poisson + sistema quadrático + Walsh), inclusive fatiado | 85 |
+| … mortos pelo Parseval exato nas 64 colunas | 48 |
+| … mortos pela busca por padrões (com ou sem `--quad`) | 7 |
+| **… com bent** | **72** |
+
+Os 12 polares distintos das testemunhas bent estão entre os 72. **Fora desses 72 polares, nenhuma RS bent de grau ≤ 4 em 12 variáveis existe** neste modelo. O modelo cobre todas as RS de grau ≤ 4 que satisfazem as duas relações universais, e toda bent as satisfaz.
+
+Dependências:
+- a enumeração (Pf4) × partes baixas;
+- o modelo `base12`;
+- a correção dos funis de busca, que têm controles positivos e negativos;
+- o teorema da família da diagonal (`README.md`) para o polar nulo.
+
+O próximo passo natural é contar os completamentos bent de cada um dos 72 polares e comparar com o catálogo (309.221.376 funções).
+
 ## Nível módulo 8 (`cert_mod8.py`)
 S_d = 0 exige Σ_z ℓ_z = N_d/2 exatamente.
 - O bit 0 dá o sistema afim mod4.

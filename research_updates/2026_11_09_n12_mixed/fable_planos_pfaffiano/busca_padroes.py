@@ -17,6 +17,44 @@ from parseval_dominio import rank_radical, affine_in_w
 par6 = np.array([bin(x).count("1") & 1 for x in range(64)], dtype=np.int64)
 
 
+def substitute(polys, order, y0, Y, m):
+    """Quadratic polynomials in the m coordinates (bitmasks over the monomial list 'order') under the affine
+    substitution x = y0 + sum_j t_j Y_j.  Returns the new polynomials over t and the new monomial order."""
+    k = len(Y)
+    A = np.array([[(v >> i) & 1 for v in Y] for i in range(m)], dtype=np.int64).reshape(m, k)   # x_i = c_i + A_i . t
+    c = np.array([(y0 >> i) & 1 for i in range(m)], dtype=np.int64)
+    norder = [()] + [(p,) for p in range(k)] + [(p, q) for p in range(k) for q in range(p + 1, k)]
+    nidx = {mo: i for i, mo in enumerate(norder)}
+    out = []
+    for poly in polys:
+        const = 0; L = np.zeros(k, np.int64); Q = np.zeros((k, k), np.int64)
+        for b in range(poly.bit_length()):
+            if not poly >> b & 1:
+                continue
+            mo = order[b]
+            if len(mo) == 0:
+                const ^= 1
+            elif len(mo) == 1:
+                i = mo[0]; L ^= A[i]; const ^= c[i]
+            else:
+                i, j = mo
+                O = np.outer(A[i], A[j])
+                Q ^= (O + O.T) % 2                      # t_p t_q (p != q) coefficient, symmetric
+                L ^= (np.diag(O) + c[j] * A[i] + c[i] * A[j]) % 2
+                const ^= c[i] * c[j]
+        nb = 0
+        if const & 1:
+            nb |= 1 << nidx[()]
+        for p in range(k):
+            if L[p] & 1:
+                nb |= 1 << nidx[(p,)]
+            for q in range(p + 1, k):
+                if Q[p, q] & 1:
+                    nb |= 1 << nidx[(p, q)]
+        out.append(nb)
+    return out, norder
+
+
 def joint_hits(T0, K, maxD):
     m = len(K)
     forms = []; cz = []
@@ -136,6 +174,9 @@ if __name__ == "__main__":
             Gp = pack_table(T0); Dp = np.array([pack_table(Ki) for Ki in K])
             m = len(k2); bent = 0; pts = 0
             sh = np.arange(m, dtype=np.int64)
+            use_quad = "--quad" in sys.argv
+            if use_quad:
+                bitj.FIRST = True
             for x in hits:
                 rows = [(bvecs[t], (x >> t) & 1) for t in range(len(bvecs))]
                 sol = solve_affine(rows, m)
@@ -143,6 +184,26 @@ if __name__ == "__main__":
                     continue
                 y0, Y = sol
                 k = len(Y)
+                if use_quad:
+                    # substitute y = y0 + sum t_j Y_j into the quadratic Poisson system and reuse exclude_vec
+                    npart = p2
+                    for i in range(m):
+                        if y0 >> i & 1:
+                            npart ^= k2[i]
+                    nker = []
+                    for v in Y:
+                        w = 0
+                        for i in range(m):
+                            if v >> i & 1:
+                                w ^= k2[i]
+                        nker.append(w)
+                    npolys, norder = substitute(polys, order, y0, Y, m)
+                    s_, b_, cv = bitj.exclude_vec(G0, Gk, npart, nker, npolys, norder)
+                    pts += s_
+                    bent += b_
+                    if bent:
+                        break
+                    continue
                 Yb = ((np.array(Y, dtype=np.int64)[:, None] >> sh[None, :]) & 1).astype(np.int64) if k else np.zeros((0, m), np.int64)
                 y0b = ((y0 >> sh) & 1).astype(np.uint8)
                 for s in range(0, 1 << k, 1 << 16):
