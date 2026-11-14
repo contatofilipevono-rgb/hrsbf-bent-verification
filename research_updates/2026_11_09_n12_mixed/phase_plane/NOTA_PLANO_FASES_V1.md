@@ -97,6 +97,23 @@ Resultados corrigidos, da execução 43541725883 do CI:
 
 Em todas as classes, nenhum mapa com x₂₄ = 1 satisfaz as condições de suporte. Nas classes 1, 128 e 129, a hipótese de tamanho entra só como |Z_[t]| = 8 no quociente. Nas demais, ainda é preciso varrer os pontos de algumas células (2^9 a 2^15 pontos cada). A enumeração bit a bit de A_κ fica como controle independente.
 
+**Custo da varredura restante** (execução 43541725883; runners de 4 vCPU, no máximo 8 ao mesmo tempo, ou seja, 32 vCPU):
+
+| classe | células varridas | pontos varridos | tempo do job |
+|---:|---:|---:|---:|
+| 22 | 104 × 2^10 | 106.496 | 163 s |
+| 37 | 104 × 2^9 | 53.248 | 89 s |
+| 51 | 104 × 2^9 | 53.248 | 89 s |
+| 23 | 21 × 2^15 | 688.128 | 206 s |
+| 36 | 21 × 2^14 | 344.064 | 148 s |
+| 50 | 21 × 2^14 | 344.064 | 116 s |
+| 164, 165, 178, 179 | 5 × 2^14 cada | 81.920 cada | 48 a 69 s |
+| 1, 128, 129 | 0 | 0 | 25 a 30 s |
+
+No total, as 10 classes varrem cerca de 1,92 milhão de pontos. A rodada inteira das 13 classes levou 207 s de parede, de modo que a verificação fecha com as 32 vCPU. As 96 vCPU do Google Cloud ficam reservadas para buscar certificados mais curtos, que dispensem essa varredura.
+
+**Frente separada: balanceamento só por pares.** Nessa hipótese mais fraca, sem o tamanho exato de cada fibra, já existem mapas com x₂₄ = 1 cujos momentos de fase caem no plano. Esse teste tem alvo diferente do certificado acima e não foi misturado com ele: aqui as hipóteses são o tamanho de cada fibra e a ortogonalidade de todas as 16 fibras.
+
 **Classe 129, prova** (`prova_x24_classe129.py`). As identidades são afins no código e foram conferidas numa base de 21 pontos de A_129:
 - **I1 (diagonal):** ρ(y,0) = x₂₄·Λy, com Λ = (4,6,2) e núcleo {0,7}; π0(0) = 15 e π0(63) = 0.
 - **I2:** nas linhas 3, 5 e 6, χ = bit 0 de ρ.
