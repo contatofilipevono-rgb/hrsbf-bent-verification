@@ -1,0 +1,61 @@
+{
+  "model_dimensions": {
+    "polar": 25,
+    "affine_part": 43
+  },
+  "mixed_dim_U": 28,
+  "pilot_only": true,
+  "mixed_direction_indices": [
+    0,
+    6,
+    13,
+    20,
+    27
+  ],
+  "positive_direction_indices": [
+    0,
+    10,
+    21,
+    31,
+    42
+  ],
+  "warning": "Timings have different scopes; no speedup factor is inferred.",
+  "families": [
+    {
+      "name": "mixed actual polar",
+      "parameters": 5,
+      "assignments": 32,
+      "flats": [
+        0,
+        100,
+        400
+      ],
+      "moments_per_flat": 7,
+      "auxiliary_points": 64,
+      "original_bitj_calls": 16,
+      "direct_coefficient_checks": 462,
+      "nonzero_quadratic_coefficients": 1856,
+      "exact_reference_and_original_seconds": 2.096,
+      "direct_and_compression_seconds": 0.995,
+      "positive_control": false
+    },
+    {
+      "name": "published RS quartic bent witness",
+      "parameters": 5,
+      "assignments": 32,
+      "flats": [
+        0,
+        100,
+        400
+      ],
+      "moments_per_flat": 7,
+      "auxiliary_points": 64,
+      "original_bitj_calls": 16,
+      "direct_coefficient_checks": 462,
+      "nonzero_quadratic_coefficients": 4224,
+      "exact_reference_and_original_seconds": 1.91,
+      "direct_and_compression_seconds": 0.931,
+      "positive_control": true
+    }
+  ]
+}
