@@ -175,8 +175,9 @@ if __name__ == "__main__":
             m = len(k2); bent = 0; pts = 0
             sh = np.arange(m, dtype=np.int64)
             use_quad = "--quad" in sys.argv
+            counting = "--count" in sys.argv          # count every bent point instead of stopping at the first
             if use_quad:
-                bitj.FIRST = True
+                bitj.FIRST = not counting
             for x in hits:
                 rows = [(bvecs[t], (x >> t) & 1) for t in range(len(bvecs))]
                 sol = solve_affine(rows, m)
@@ -201,7 +202,7 @@ if __name__ == "__main__":
                     s_, b_, cv = bitj.exclude_vec(G0, Gk, npart, nker, npolys, norder)
                     pts += s_
                     bent += b_
-                    if bent:
+                    if bent and not counting:
                         break
                     continue
                 Yb = ((np.array(Y, dtype=np.int64)[:, None] >> sh[None, :]) & 1).astype(np.int64) if k else np.zeros((0, m), np.int64)
@@ -211,11 +212,12 @@ if __name__ == "__main__":
                     X = ((Tm @ Yb) & 1).astype(np.uint8) ^ y0b
                     pts += len(X)
                     bent += bent_batch_x(Gp, Dp, X)
-                    if bent:
+                    if bent and not counting:
                         break
-                if bent:
+                if bent and not counting:
                     break
-            rec.update(points_tested=pts, bent=bent, status="BENT FOUND" if bent else "dead (no bent in any pattern subspace)")
+            rec.update(points_tested=pts, bent=bent, counting=counting,
+                       status="BENT FOUND" if bent else "dead (no bent in any pattern subspace)")
     else:
         rec["status"] = "dead by analyse"
     rec["seconds"] = round(time.time() - t0, 1)
