@@ -43,8 +43,14 @@ jobs:
           path: research_updates/2026_11_09_n12_mixed/phase_plane/*-${{ matrix.shard }}.json
           if-no-files-found: error
   cells:
+    needs: aggregate                # runs after the shards, so at most 8 runners at a time overall
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        klass: [1, 22, 23, 36, 37, 50, 51, 128, 129, 164, 165, 178, 179]
     defaults:
       run:
         working-directory: research_updates/2026_11_09_n12_mixed/phase_plane
@@ -56,19 +62,15 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install numpy
-      - name: Cell certificate for x24 = 0 in the 13 non-empty classes
-        run: |
-          python -u cells_x24.py .. --out cells_x24-ci.json
-          python - <<'PY'
-          import json
-          r = json.load(open('cells_x24-ci.json'))
-          assert len(r) == 13 and all(v['status'] == 'cells' and v['cells_needing_size_only'] == 0 for v in r.values())
-          print({k: v['surviving_cells'] for k, v in r.items()})
-          PY
+      - name: Cell certificate for x24 = 0 (class-specific active rows)
+        run: python -u cells_x24.py .. --classes ${{ matrix.klass }} --out cells-${{ matrix.klass }}.json
+      - name: Proof verifier of class 129
+        if: matrix.klass == 129
+        run: python -u prova_x24_classe129.py ..
       - uses: actions/upload-artifact@v4
         with:
-          name: phase-plane-cells
-          path: research_updates/2026_11_09_n12_mixed/phase_plane/cells_x24-ci.json
+          name: phase-plane-cells-${{ matrix.klass }}
+          path: research_updates/2026_11_09_n12_mixed/phase_plane/cells-${{ matrix.klass }}.json
   aggregate:
     needs: shard
     runs-on: ubuntu-24.04

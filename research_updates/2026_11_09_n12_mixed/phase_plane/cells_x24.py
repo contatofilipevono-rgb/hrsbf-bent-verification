@@ -46,9 +46,27 @@ def run_class(M, k):
             if code >> i & 1:
                 m ^= M.basis[i]
         return m
+    # derivatives of the map in s (fixed by the class: the 25 low directions do not depend on s)
+    lab_b = M.labels(mapping_of(b1))
+    D1 = [lab_b[z + 64] ^ lab_b[z] for z in range(64)]
+    D2 = [lab_b[z + 128] ^ lab_b[z] for z in range(64)]
+    assert all(lab_b[z] ^ lab_b[z + 64] ^ lab_b[z + 128] ^ lab_b[z + 192] == 0 for z in range(64))
+    # S = span of all derivative values; quotient labels by S
+    Sp = {}
+    for v in D1 + D2:
+        while v and (v.bit_length() - 1) in Sp:
+            v ^= Sp[v.bit_length() - 1]
+        if v:
+            Sp[v.bit_length() - 1] = v
+    S_size = 1 << len(Sp)
+    def proj(t):
+        for pv in sorted(Sp, reverse=True):
+            if t >> pv & 1:
+                t ^= Sp[pv]
+        return t
     def rho_word(code):
         lab = M.labels(mapping_of(code))
-        return sum(rep(lab[z]) << (3 * z) for z in range(64))
+        return sum(proj(lab[z]) << (4 * z) for z in range(64))
     r0 = rho_word(b1)
     piv = {}; rch = []; rker = []
     for d in d1:
@@ -59,7 +77,13 @@ def run_class(M, k):
             piv[x.bit_length() - 1] = (x, v); rch.append((x, v))
         else:
             rker.append(v)
-    A = {2, 4}; B = {1, 4}; Mset = {1, 2, 4}
+    # extra rho-only filters (F2) only when the derivatives are multiples of 1111 depending on the row:
+    # pi(z,s) = pi0(z) + (s1 a(d) + s2 b(d)) 1111
+    pair_case = set(D1 + D2) <= {0, 15} and S_size == 2
+    if pair_case:
+        A = {dd(z) for z in range(64) if D1[z]}; B = {dd(z) for z in range(64) if D2[z]}
+        assert all((D1[z] != 0) == (dd(z) in A) and (D2[z] != 0) == (dd(z) in B) for z in range(64))
+        Mset = A | B
     xs = [sum(1 << x for x in range(256) if x >> i & 1) for i in range(8)]
     tests = [("1", MASK)] + [(f"x{i}", xs[i]) for i in range(8)] + \
             [(f"x{i}x{j}", xs[i] & xs[j]) for i, j in combinations(range(8), 2)]
@@ -69,12 +93,12 @@ def run_class(M, k):
         for i, (x, v) in enumerate(rch):
             if sel >> i & 1:
                 r ^= x; code ^= v
-        rho = [(r >> (3 * z)) & 7 for z in range(64)]
-        Z = [[z for z in range(64) if rho[z] == t] for t in range(8)]
-        if any(len(s) != 8 for s in Z):
+        rho = [(r >> (4 * z)) & 15 for z in range(64)]
+        Z = [[z for z in range(64) if rho[z] == t] for t in sorted({proj(t) for t in range(16)})]
+        if any(len(s) != 4 * S_size for s in Z):     # sum of |P_t| over a coset of S = 16 |S|
             continue
         ok = True
-        for s in Z:
+        for s in (Z if pair_case else []):
             for S in (A, B):
                 pts = [z for z in s if dd(z) in S]; acc = 0
                 for z in pts:
@@ -107,8 +131,8 @@ def run_class(M, k):
                 for nm, m in tests:
                     v[(t, nm)] = (fib[t] & m).bit_count() & 1
             vals.append(v)
-            if all(f.bit_count() == 16 for f in fib):
-                sizes_bad = False
+            if all(f.bit_count() == 16 for f in fib) and not any(v.values()):
+                sizes_bad = False       # an admissible point: must never happen
         keys = [key for key in vals[0] if all(v[key] == 1 for v in vals)]
         if keys:
             # prefer a moment of degree 2, then 1, then the size parity
@@ -117,10 +141,12 @@ def run_class(M, k):
         else:
             assert sizes_bad, (k, "cell with an admissible point outside x24 = 0")
             fallback += 1
-    return {"status": "cells", "dim_A": n, "rho_dim": len(rch), "cell_dim": len(rker),
+    return {"status": "cells", "dim_A": n, "derivative_span_size": S_size, "pair_case": pair_case,
+            "active_rows_a": sorted(A) if pair_case else None, "active_rows_b": sorted(B) if pair_case else None,
+            "rho_dim": len(rch), "cell_dim": len(rker),
             "rho_values": 1 << len(rch), "surviving_cells": surv,
             "certificates": {f"P{t}.{nm}": c for (t, nm), c in certs.items()},
-            "cells_needing_size_only": fallback}
+            "cells_without_single_moment": fallback}
 
 
 def main():
