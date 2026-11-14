@@ -593,6 +593,28 @@ def bent_test_packed(G0, Gk, part, ker, sols, polys, order, c=12, skip_zero=Fals
                 if v >> i & 1:
                     t ^= Dp[i]
             Kp.append(t)
+        if RESTRICT and Kp:
+            r = restrict_span(base, Kp, rad_mask(Gp))
+            if r is None:
+                continue                               # no point of this span has all S_d = 0
+            y0, ybasis = r
+            if y0:
+                skip_zero_here = False                 # the new base point is not x0
+                for j in range(len(Kp)):
+                    if y0 >> j & 1:
+                        base = base ^ Kp[j]
+            else:
+                skip_zero_here = skip_zero
+            newK = []
+            for v in ybasis:
+                t = np.zeros(64, np.uint64)
+                for j in range(len(Kp)):
+                    if v >> j & 1:
+                        t ^= Kp[j]
+                newK.append(t)
+            Kp = newK
+        else:
+            skip_zero_here = skip_zero
         lo, hi = Kp[:c], Kp[c:]
         blk = base[None, :].copy()
         for t in lo:                                   # doubling over the low kernel vectors
@@ -602,12 +624,54 @@ def bent_test_packed(G0, Gk, part, ker, sols, polys, order, c=12, skip_zero=Fals
             if g:
                 off ^= hi[(g & -g).bit_length() - 1]
             T = blk ^ off[None, :]
-            if skip_zero and g == 0:
+            if skip_zero_here and g == 0:
                 T = T[1:]                              # x0 itself was tested already
             bent += walsh_filter(T, Hf)
             if FIRST and bent:
                 return bent
     return bent
+
+
+RESTRICT = os.environ.get("BITJ_RESTRICT", "1") == "1"
+_RAD_CACHE = {}
+
+
+def rad_mask(Gp):
+    """R[z, d] = True iff d is in the radical of the polar of row z (the polar does not depend on the phase
+    directions, so the base table of the polar decides it)."""
+    key = Gp.tobytes()
+    if key not in _RAD_CACHE:
+        G = np.unpackbits(Gp.view(np.uint8).reshape(64, 8), axis=1, bitorder="little")
+        X = np.arange(64)
+        R = np.zeros((64, 64), dtype=bool)
+        for z in range(64):
+            f = G[z]
+            Bm = f[X[:, None] ^ X[None, :]] ^ f[:, None] ^ f[None, :] ^ f[0]
+            R[z] = ~Bm.any(axis=1)
+        _RAD_CACHE[key] = R
+    return _RAD_CACHE[key]
+
+
+def restrict_span(base, Kp, R):
+    """Mod-4 autocorrelation system on the span base + <Kp>:  for every d != 0,
+    XOR_{z : d in rad_z} [T(z,d) + T(z,0)] = (N_d / 2) mod 2,  T = base + sum y_j Kp_j.
+    Returns None if inconsistent, else (particular y0, kernel basis) as Python ints over len(Kp) bits."""
+    k = len(Kp)
+    W = np.array([base] + list(Kp), dtype=np.uint64)                       # (k+1) x 64 words
+    bits = ((W[:, :, None] >> np.arange(64, dtype=np.uint64)[None, None, :]) & np.uint64(1)).astype(np.uint8)
+    dif = bits ^ bits[:, :, :1]                                            # T(z,d) + T(z,0)
+    Ri = R.astype(np.uint8)
+    S = (dif * Ri[None, :, :]).sum(axis=1) & 1                             # (k+1) x 64 : XOR over z with d in rad_z
+    N = Ri.sum(axis=0)                                                     # N_d
+    rows = []
+    for d in range(1, 64):
+        mask = 0
+        for j in range(k):
+            if S[j + 1, d]:
+                mask |= 1 << j
+        rhs = int(((N[d] // 2) & 1) ^ S[0, d])
+        rows.append((mask, rhs))
+    return solve_affine(rows, k)
 
 
 def bent_test_vec(G0, Gk, part, ker, sols, polys, order, chunk=2048):
