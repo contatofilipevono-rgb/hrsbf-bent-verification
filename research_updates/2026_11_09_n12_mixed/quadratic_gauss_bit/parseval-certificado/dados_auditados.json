@@ -1,0 +1,23 @@
+{
+  "commit": "193e6dbc615bd6c470104ffba061f4b5ed812390",
+  "blob_sha": "aca14d0548b6e41f25ac074e6e3e7a8044883f21",
+  "rows": 3984,
+  "unique": 3984,
+  "counts": {
+    "possible": 144,
+    "empty_L5_L3": 2304,
+    "impossible": 1536
+  },
+  "constant_nonzero_residue": {
+    "1792": 412,
+    "768": 744,
+    "1024": 40
+  },
+  "constant_nonzero_count": 1196,
+  "other_impossible": 340,
+  "other_profiles": {
+    "minimum_above4096": 244,
+    "values_straddle4096": 96
+  },
+  "max_D": 19
+}
