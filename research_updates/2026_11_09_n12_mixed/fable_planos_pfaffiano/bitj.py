@@ -407,7 +407,64 @@ def exclude_vec(G0, Gk, part, ker, polys, order):
     cpos = {v: t for t, v in enumerate(cover)}
     free = [i for i in range(m) if i not in cpos]; fpos = {v: t for t, v in enumerate(free)}
     C = len(cover); F = len(free); N = 1 << C
-    A = np.arange(N, dtype=np.int64)
+    surv = 0; bent = 0; Dp = Gp = None
+    for start in range(0, N, CHUNK_ASG):
+        A = np.arange(start, min(N, start + CHUNK_ASG), dtype=np.int64)
+        Mx, rank, pcol, incons = _elim_block(A, polys, order, cpos, fpos, C, F)
+        surv += int(np.sum(np.where(incons, 0, 1 << (F - rank)).astype(object))) if F else int((~incons).sum())
+        if incons.all():
+            continue
+        if Dp is None:
+            Dp = np.array([pack_table(table_at(np.zeros_like(G0), Gk, ker[i])) for i in range(m)])
+            Gp = pack_table(table_at(G0, Gk, part))
+        # particular solutions of all consistent assignments of the block (non-pivot free variables = 0)
+        gl = np.nonzero(~incons)[0]; good = A[gl]
+        X = np.zeros((len(gl), m), dtype=np.uint8)
+        for t, v in enumerate(cover):
+            X[:, v] = (good >> t) & 1
+        for c in range(F):
+            pc = pcol[gl, c]; has = pc >= 0
+            X[has, free[c]] = ((Mx[gl[has], pc[has]] >> F) & 1).astype(np.uint8)
+        check_zeros(X[np.random.default_rng(0).choice(len(X), size=min(16, len(X)), replace=False)], polys, order)
+        bent += bent_batch_x(Gp, Dp, X)
+        if FIRST and bent:
+            return surv, bent, C
+        # kernels only where rank < F: enumerate the nonzero part of each kernel span
+        sols = []
+        for li in np.nonzero(~incons & (rank < F))[0]:
+            a = int(A[li]); rowsA = Mx[li]; pc = pcol[li]
+            x0 = 0
+            for t, v in enumerate(cover):
+                if (a >> t) & 1:
+                    x0 |= 1 << v
+            kk = []
+            for c in range(F):
+                if pc[c] >= 0:
+                    if (int(rowsA[pc[c]]) >> F) & 1:
+                        x0 |= 1 << free[c]
+                else:
+                    kv = 1 << free[c]
+                    for c2 in range(F):
+                        if pc[c2] >= 0 and (int(rowsA[pc[c2]]) >> c) & 1:
+                            kv |= 1 << free[c2]
+                    kk.append(kv)
+            sols.append((x0, kk))
+        blk = int(np.sum(np.where(incons, 0, 1 << (F - rank)).astype(object))) if F else int((~incons).sum())
+        assert len(gl) + sum((1 << len(kk)) - 1 for _, kk in sols) == blk
+        if sols:
+            bent += bent_test_packed(G0, Gk, part, ker, sols, polys, order, skip_zero=True)
+            if FIRST and bent:
+                return surv, bent, C
+    return surv, bent, C
+
+
+CHUNK_ASG = int(os.environ.get("BITJ_CHUNK", 1 << 18))     # cover assignments eliminated at once (bounds memory)
+
+
+def _elim_block(A, polys, order, cpos, fpos, C, F):
+    """Gaussian elimination of the affine systems of the cover assignments in A (vectorised).
+    Returns (reduced rows Mx, rank, pivot row per free column, inconsistent flag)."""
+    N = len(A)
     bitc = [((A >> t) & 1).astype(np.uint32) for t in range(C)]
     R = len(polys)
     Mx = np.zeros((N, R), dtype=np.uint32)
@@ -451,47 +508,7 @@ def exclude_vec(G0, Gk, part, ker, polys, order):
         pcol[anyc, col] = piv[anyc]
         rank += anyc
     incons = (Mx == np.uint32(1 << F)).any(axis=1)
-    surv = int(np.sum(np.where(incons, 0, 1 << (F - rank)).astype(object))) if F else int((~incons).sum())
-    bent = 0
-    if surv:
-        # particular solutions of all consistent assignments at once (non-pivot free variables = 0)
-        good = np.nonzero(~incons)[0]
-        X = np.zeros((len(good), m), dtype=np.uint8)
-        for t, v in enumerate(cover):
-            X[:, v] = (good >> t) & 1
-        for c in range(F):
-            pc = pcol[good, c]; has = pc >= 0
-            X[has, free[c]] = ((Mx[good[has], pc[has]] >> F) & 1).astype(np.uint8)
-        check_zeros(X[np.random.default_rng(0).choice(len(X), size=min(64, len(X)), replace=False)], polys, order)
-        Dp = np.array([pack_table(table_at(np.zeros_like(G0), Gk, ker[i])) for i in range(m)])
-        Gp = pack_table(table_at(G0, Gk, part))
-        bent = bent_batch_x(Gp, Dp, X)
-        if FIRST and bent:
-            return surv, bent, C
-        # kernels only where rank < F: enumerate the nonzero part of each kernel span
-        sols = []
-        for a in np.nonzero(~incons & (rank < F))[0]:
-            rowsA = Mx[a]; pc = pcol[a]
-            x0 = 0
-            for t, v in enumerate(cover):
-                if (a >> t) & 1:
-                    x0 |= 1 << v
-            kk = []
-            for c in range(F):
-                if pc[c] >= 0:
-                    if (int(rowsA[pc[c]]) >> F) & 1:
-                        x0 |= 1 << free[c]
-                else:
-                    kv = 1 << free[c]
-                    for c2 in range(F):
-                        if pc[c2] >= 0 and (int(rowsA[pc[c2]]) >> c) & 1:
-                            kv |= 1 << free[c2]
-                    kk.append(kv)
-            sols.append((x0, kk))
-        assert len(good) + sum((1 << len(kk)) - 1 for _, kk in sols) == surv
-        if sols:
-            bent += bent_test_packed(G0, Gk, part, ker, sols, polys, order, skip_zero=True)
-    return surv, bent, C
+    return Mx, rank, pcol, incons
 
 
 def check_zeros(X, polys, order):
