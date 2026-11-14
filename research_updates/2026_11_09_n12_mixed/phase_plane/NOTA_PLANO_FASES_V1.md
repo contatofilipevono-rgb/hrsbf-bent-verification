@@ -155,3 +155,27 @@ python -I plane_cert.py .. --classes all --levels H0,H4 --out spaces.json
 python -I enum_slice.py .. spaces.json --classes nonempty --out slices.json
 python -I aggregate.py spaces.json slices.json --catalog <dir>/mapas_V1.txt
 ```
+
+## Certificados curtos para as dez classes residuais
+
+Os dez JSON em `short-certificates/` vêm da execução GitHub Actions
+43543591367 (commit d4f48d0). O verificador reconstrói as células,
+confere a cobertura e verifica o XOR indicado em cada registro:
+
+```sh
+python research_updates/2026_11_09_n12_mixed/phase_plane/verify_short_certs.py research_updates/2026_11_09_n12_mixed
+```
+
+Os 1.098 certificados passam. Há 703 de um momento, 31 de dois
+momentos e 364 de um momento mais um bit de tamanho. Todos os
+364 usam a mesma forma: momento x0*x6 da fibra 0 XOR bit 2
+do tamanho da fibra 0. O verificador usa interpolação de grau
+quatro para os 734 certificados só de momentos e percorre a célula
+quando há bit de tamanho. Os registros de classe 128 ficam fora
+deste conjunto.
+
+No ramo codex/v1-common-phase-plane, o verificador da fibra 15
+constrói tabelas de verdade exatas e compara as funções ponto a
+ponto no domínio reduzido. Sua congruência tem a mesma forma
+de momento mais bit de tamanho. A equivalência por classe com
+os certificados da fibra 0 ainda precisa de uma auditoria.

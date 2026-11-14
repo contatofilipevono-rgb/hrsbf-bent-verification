@@ -1,0 +1,5898 @@
+[
+ {
+  "class": 37,
+  "cell_index": 0,
+  "cell_base_code": 1270880786,
+  "cell_dim": 9,
+  "rho_sel": 32,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 1,
+  "cell_base_code": 1270880770,
+  "cell_dim": 9,
+  "rho_sel": 34,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 2,
+  "cell_base_code": 1270880274,
+  "cell_dim": 9,
+  "rho_sel": 41,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 3,
+  "cell_base_code": 1270880258,
+  "cell_dim": 9,
+  "rho_sel": 43,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 4,
+  "cell_base_code": 1267733002,
+  "cell_dim": 9,
+  "rho_sel": 48,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 5,
+  "cell_base_code": 1267733014,
+  "cell_dim": 9,
+  "rho_sel": 51,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 6,
+  "cell_base_code": 1267733070,
+  "cell_dim": 9,
+  "rho_sel": 52,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 7,
+  "cell_base_code": 1267733074,
+  "cell_dim": 9,
+  "rho_sel": 55,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 8,
+  "cell_base_code": 1267732490,
+  "cell_dim": 9,
+  "rho_sel": 57,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x5x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 9,
+  "cell_base_code": 1267732502,
+  "cell_dim": 9,
+  "rho_sel": 58,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x5x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 10,
+  "cell_base_code": 1267732558,
+  "cell_dim": 9,
+  "rho_sel": 61,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x5x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 11,
+  "cell_base_code": 1267732562,
+  "cell_dim": 9,
+  "rho_sel": 62,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x5x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 12,
+  "cell_base_code": 1263544914,
+  "cell_dim": 9,
+  "rho_sel": 64,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 13,
+  "cell_base_code": 1263544926,
+  "cell_dim": 9,
+  "rho_sel": 65,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 14,
+  "cell_base_code": 1263544898,
+  "cell_dim": 9,
+  "rho_sel": 66,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 15,
+  "cell_base_code": 1263544910,
+  "cell_dim": 9,
+  "rho_sel": 67,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 16,
+  "cell_base_code": 1263544854,
+  "cell_dim": 9,
+  "rho_sel": 68,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 17,
+  "cell_base_code": 1263544858,
+  "cell_dim": 9,
+  "rho_sel": 69,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 18,
+  "cell_base_code": 1263544838,
+  "cell_dim": 9,
+  "rho_sel": 70,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 19,
+  "cell_base_code": 1263544842,
+  "cell_dim": 9,
+  "rho_sel": 71,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 20,
+  "cell_base_code": 1263544414,
+  "cell_dim": 9,
+  "rho_sel": 72,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 21,
+  "cell_base_code": 1263544402,
+  "cell_dim": 9,
+  "rho_sel": 73,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 22,
+  "cell_base_code": 1263544398,
+  "cell_dim": 9,
+  "rho_sel": 74,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 23,
+  "cell_base_code": 1263544386,
+  "cell_dim": 9,
+  "rho_sel": 75,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 24,
+  "cell_base_code": 1263544346,
+  "cell_dim": 9,
+  "rho_sel": 76,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 25,
+  "cell_base_code": 1263544342,
+  "cell_dim": 9,
+  "rho_sel": 77,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 26,
+  "cell_base_code": 1263544330,
+  "cell_dim": 9,
+  "rho_sel": 78,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 27,
+  "cell_base_code": 1263544326,
+  "cell_dim": 9,
+  "rho_sel": 79,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 28,
+  "cell_base_code": 1258299978,
+  "cell_dim": 9,
+  "rho_sel": 80,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 29,
+  "cell_base_code": 1258299974,
+  "cell_dim": 9,
+  "rho_sel": 81,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 30,
+  "cell_base_code": 1258299994,
+  "cell_dim": 9,
+  "rho_sel": 82,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 31,
+  "cell_base_code": 1258299990,
+  "cell_dim": 9,
+  "rho_sel": 83,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 32,
+  "cell_base_code": 1258299918,
+  "cell_dim": 9,
+  "rho_sel": 84,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 33,
+  "cell_base_code": 1258299906,
+  "cell_dim": 9,
+  "rho_sel": 85,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 34,
+  "cell_base_code": 1258299934,
+  "cell_dim": 9,
+  "rho_sel": 86,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 35,
+  "cell_base_code": 1258299922,
+  "cell_dim": 9,
+  "rho_sel": 87,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 36,
+  "cell_base_code": 1258299462,
+  "cell_dim": 9,
+  "rho_sel": 88,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 37,
+  "cell_base_code": 1258299466,
+  "cell_dim": 9,
+  "rho_sel": 89,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 38,
+  "cell_base_code": 1258299478,
+  "cell_dim": 9,
+  "rho_sel": 90,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 39,
+  "cell_base_code": 1258299482,
+  "cell_dim": 9,
+  "rho_sel": 91,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 40,
+  "cell_base_code": 1258299394,
+  "cell_dim": 9,
+  "rho_sel": 92,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 41,
+  "cell_base_code": 1258299406,
+  "cell_dim": 9,
+  "rho_sel": 93,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 42,
+  "cell_base_code": 1258299410,
+  "cell_dim": 9,
+  "rho_sel": 94,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 43,
+  "cell_base_code": 1258299422,
+  "cell_dim": 9,
+  "rho_sel": 95,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 44,
+  "cell_base_code": 1263554634,
+  "cell_dim": 9,
+  "rho_sel": 128,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 45,
+  "cell_base_code": 1263554630,
+  "cell_dim": 9,
+  "rho_sel": 129,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 46,
+  "cell_base_code": 1263554650,
+  "cell_dim": 9,
+  "rho_sel": 130,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 47,
+  "cell_base_code": 1263554646,
+  "cell_dim": 9,
+  "rho_sel": 131,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 48,
+  "cell_base_code": 1263554574,
+  "cell_dim": 9,
+  "rho_sel": 132,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 49,
+  "cell_base_code": 1263554562,
+  "cell_dim": 9,
+  "rho_sel": 133,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 50,
+  "cell_base_code": 1263554590,
+  "cell_dim": 9,
+  "rho_sel": 134,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 51,
+  "cell_base_code": 1263554578,
+  "cell_dim": 9,
+  "rho_sel": 135,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 52,
+  "cell_base_code": 1263555142,
+  "cell_dim": 9,
+  "rho_sel": 136,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 53,
+  "cell_base_code": 1263555146,
+  "cell_dim": 9,
+  "rho_sel": 137,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 54,
+  "cell_base_code": 1263555158,
+  "cell_dim": 9,
+  "rho_sel": 138,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 55,
+  "cell_base_code": 1263555162,
+  "cell_dim": 9,
+  "rho_sel": 139,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 56,
+  "cell_base_code": 1263555074,
+  "cell_dim": 9,
+  "rho_sel": 140,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 57,
+  "cell_base_code": 1263555086,
+  "cell_dim": 9,
+  "rho_sel": 141,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 58,
+  "cell_base_code": 1263555090,
+  "cell_dim": 9,
+  "rho_sel": 142,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 59,
+  "cell_base_code": 1263555102,
+  "cell_dim": 9,
+  "rho_sel": 143,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 60,
+  "cell_base_code": 1258313754,
+  "cell_dim": 9,
+  "rho_sel": 149,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 61,
+  "cell_base_code": 1258313738,
+  "cell_dim": 9,
+  "rho_sel": 151,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 62,
+  "cell_base_code": 1258314266,
+  "cell_dim": 9,
+  "rho_sel": 156,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 63,
+  "cell_base_code": 1258314250,
+  "cell_dim": 9,
+  "rho_sel": 158,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 64,
+  "cell_base_code": 1270898714,
+  "cell_dim": 9,
+  "rho_sel": 226,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x2x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 65,
+  "cell_base_code": 1270898710,
+  "cell_dim": 9,
+  "rho_sel": 227,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 66,
+  "cell_base_code": 1270898766,
+  "cell_dim": 9,
+  "rho_sel": 228,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x2x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 67,
+  "cell_base_code": 1270898754,
+  "cell_dim": 9,
+  "rho_sel": 229,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 68,
+  "cell_base_code": 1270899222,
+  "cell_dim": 9,
+  "rho_sel": 234,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x2x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 69,
+  "cell_base_code": 1270899226,
+  "cell_dim": 9,
+  "rho_sel": 235,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 70,
+  "cell_base_code": 1270899266,
+  "cell_dim": 9,
+  "rho_sel": 236,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x2x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 71,
+  "cell_base_code": 1270899278,
+  "cell_dim": 9,
+  "rho_sel": 237,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 72,
+  "cell_base_code": 1267755026,
+  "cell_dim": 9,
+  "rho_sel": 240,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 73,
+  "cell_base_code": 1267755038,
+  "cell_dim": 9,
+  "rho_sel": 241,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 74,
+  "cell_base_code": 1267755010,
+  "cell_dim": 9,
+  "rho_sel": 242,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 75,
+  "cell_base_code": 1267755022,
+  "cell_dim": 9,
+  "rho_sel": 243,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 76,
+  "cell_base_code": 1267755094,
+  "cell_dim": 9,
+  "rho_sel": 244,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 77,
+  "cell_base_code": 1267755098,
+  "cell_dim": 9,
+  "rho_sel": 245,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 78,
+  "cell_base_code": 1267755078,
+  "cell_dim": 9,
+  "rho_sel": 246,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 79,
+  "cell_base_code": 1267755082,
+  "cell_dim": 9,
+  "rho_sel": 247,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 80,
+  "cell_base_code": 1267755550,
+  "cell_dim": 9,
+  "rho_sel": 248,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 81,
+  "cell_base_code": 1267755538,
+  "cell_dim": 9,
+  "rho_sel": 249,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 82,
+  "cell_base_code": 1267755534,
+  "cell_dim": 9,
+  "rho_sel": 250,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 83,
+  "cell_base_code": 1267755522,
+  "cell_dim": 9,
+  "rho_sel": 251,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 84,
+  "cell_base_code": 1267755610,
+  "cell_dim": 9,
+  "rho_sel": 252,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 85,
+  "cell_base_code": 1267755606,
+  "cell_dim": 9,
+  "rho_sel": 253,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 86,
+  "cell_base_code": 1267755594,
+  "cell_dim": 9,
+  "rho_sel": 254,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 87,
+  "cell_base_code": 1267755590,
+  "cell_dim": 9,
+  "rho_sel": 255,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 88,
+  "cell_base_code": 1262518274,
+  "cell_dim": 9,
+  "rho_sel": 258,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 89,
+  "cell_base_code": 1262518286,
+  "cell_dim": 9,
+  "rho_sel": 259,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 90,
+  "cell_base_code": 1262518342,
+  "cell_dim": 9,
+  "rho_sel": 262,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 91,
+  "cell_base_code": 1262518346,
+  "cell_dim": 9,
+  "rho_sel": 263,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 92,
+  "cell_base_code": 1262518798,
+  "cell_dim": 9,
+  "rho_sel": 266,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 93,
+  "cell_base_code": 1262518786,
+  "cell_dim": 9,
+  "rho_sel": 267,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 94,
+  "cell_base_code": 1262518858,
+  "cell_dim": 9,
+  "rho_sel": 270,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 95,
+  "cell_base_code": 1262518854,
+  "cell_dim": 9,
+  "rho_sel": 271,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 96,
+  "cell_base_code": 1259374602,
+  "cell_dim": 9,
+  "rho_sel": 272,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 97,
+  "cell_base_code": 1259374598,
+  "cell_dim": 9,
+  "rho_sel": 273,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 98,
+  "cell_base_code": 1259374618,
+  "cell_dim": 9,
+  "rho_sel": 274,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 99,
+  "cell_base_code": 1259374614,
+  "cell_dim": 9,
+  "rho_sel": 275,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 100,
+  "cell_base_code": 1259374670,
+  "cell_dim": 9,
+  "rho_sel": 276,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 101,
+  "cell_base_code": 1259374658,
+  "cell_dim": 9,
+  "rho_sel": 277,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 102,
+  "cell_base_code": 1259374686,
+  "cell_dim": 9,
+  "rho_sel": 278,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 103,
+  "cell_base_code": 1259374674,
+  "cell_dim": 9,
+  "rho_sel": 279,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 104,
+  "cell_base_code": 1259375110,
+  "cell_dim": 9,
+  "rho_sel": 280,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 105,
+  "cell_base_code": 1259375114,
+  "cell_dim": 9,
+  "rho_sel": 281,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 106,
+  "cell_base_code": 1259375126,
+  "cell_dim": 9,
+  "rho_sel": 282,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 107,
+  "cell_base_code": 1259375130,
+  "cell_dim": 9,
+  "rho_sel": 283,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 108,
+  "cell_base_code": 1259375170,
+  "cell_dim": 9,
+  "rho_sel": 284,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 109,
+  "cell_base_code": 1259375182,
+  "cell_dim": 9,
+  "rho_sel": 285,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 110,
+  "cell_base_code": 1259375186,
+  "cell_dim": 9,
+  "rho_sel": 286,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 111,
+  "cell_base_code": 1259375198,
+  "cell_dim": 9,
+  "rho_sel": 287,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 112,
+  "cell_base_code": 1267765786,
+  "cell_dim": 9,
+  "rho_sel": 304,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 113,
+  "cell_base_code": 1267765766,
+  "cell_dim": 9,
+  "rho_sel": 307,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 114,
+  "cell_base_code": 1267765842,
+  "cell_dim": 9,
+  "rho_sel": 309,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 115,
+  "cell_base_code": 1267765838,
+  "cell_dim": 9,
+  "rho_sel": 310,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 116,
+  "cell_base_code": 1267765274,
+  "cell_dim": 9,
+  "rho_sel": 313,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x1x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 117,
+  "cell_base_code": 1267765254,
+  "cell_dim": 9,
+  "rho_sel": 314,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x1x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 118,
+  "cell_base_code": 1267765330,
+  "cell_dim": 9,
+  "rho_sel": 316,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x1x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 119,
+  "cell_base_code": 1267765326,
+  "cell_dim": 9,
+  "rho_sel": 319,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x1x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 120,
+  "cell_base_code": 1258332762,
+  "cell_dim": 9,
+  "rho_sel": 336,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 121,
+  "cell_base_code": 1258332758,
+  "cell_dim": 9,
+  "rho_sel": 337,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 122,
+  "cell_base_code": 1258332746,
+  "cell_dim": 9,
+  "rho_sel": 338,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 123,
+  "cell_base_code": 1258332742,
+  "cell_dim": 9,
+  "rho_sel": 339,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 124,
+  "cell_base_code": 1258332702,
+  "cell_dim": 9,
+  "rho_sel": 340,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 125,
+  "cell_base_code": 1258332690,
+  "cell_dim": 9,
+  "rho_sel": 341,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 126,
+  "cell_base_code": 1258332686,
+  "cell_dim": 9,
+  "rho_sel": 342,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 127,
+  "cell_base_code": 1258332674,
+  "cell_dim": 9,
+  "rho_sel": 343,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 128,
+  "cell_base_code": 1258332246,
+  "cell_dim": 9,
+  "rho_sel": 344,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 129,
+  "cell_base_code": 1258332250,
+  "cell_dim": 9,
+  "rho_sel": 345,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 130,
+  "cell_base_code": 1258332230,
+  "cell_dim": 9,
+  "rho_sel": 346,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 131,
+  "cell_base_code": 1258332234,
+  "cell_dim": 9,
+  "rho_sel": 347,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 132,
+  "cell_base_code": 1258332178,
+  "cell_dim": 9,
+  "rho_sel": 348,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 133,
+  "cell_base_code": 1258332190,
+  "cell_dim": 9,
+  "rho_sel": 349,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 134,
+  "cell_base_code": 1258332162,
+  "cell_dim": 9,
+  "rho_sel": 350,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 135,
+  "cell_base_code": 1258332174,
+  "cell_dim": 9,
+  "rho_sel": 351,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 136,
+  "cell_base_code": 1271967826,
+  "cell_dim": 9,
+  "rho_sel": 352,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x0x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 137,
+  "cell_base_code": 1271967810,
+  "cell_dim": 9,
+  "rho_sel": 354,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x0x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 138,
+  "cell_base_code": 1271967770,
+  "cell_dim": 9,
+  "rho_sel": 357,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 139,
+  "cell_base_code": 1271967754,
+  "cell_dim": 9,
+  "rho_sel": 359,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 140,
+  "cell_base_code": 1271968338,
+  "cell_dim": 9,
+  "rho_sel": 361,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x0x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 141,
+  "cell_base_code": 1271968322,
+  "cell_dim": 9,
+  "rho_sel": 363,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x0x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 142,
+  "cell_base_code": 1271968282,
+  "cell_dim": 9,
+  "rho_sel": 364,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 143,
+  "cell_base_code": 1271968266,
+  "cell_dim": 9,
+  "rho_sel": 366,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 144,
+  "cell_base_code": 1266726986,
+  "cell_dim": 9,
+  "rho_sel": 368,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 145,
+  "cell_base_code": 1266726982,
+  "cell_dim": 9,
+  "rho_sel": 369,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 146,
+  "cell_base_code": 1266727002,
+  "cell_dim": 9,
+  "rho_sel": 370,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 147,
+  "cell_base_code": 1266726998,
+  "cell_dim": 9,
+  "rho_sel": 371,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 148,
+  "cell_base_code": 1266726926,
+  "cell_dim": 9,
+  "rho_sel": 372,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 149,
+  "cell_base_code": 1266726914,
+  "cell_dim": 9,
+  "rho_sel": 373,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 150,
+  "cell_base_code": 1266726942,
+  "cell_dim": 9,
+  "rho_sel": 374,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 151,
+  "cell_base_code": 1266726930,
+  "cell_dim": 9,
+  "rho_sel": 375,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 152,
+  "cell_base_code": 1266727494,
+  "cell_dim": 9,
+  "rho_sel": 376,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 153,
+  "cell_base_code": 1266727498,
+  "cell_dim": 9,
+  "rho_sel": 377,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 154,
+  "cell_base_code": 1266727510,
+  "cell_dim": 9,
+  "rho_sel": 378,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 155,
+  "cell_base_code": 1266727514,
+  "cell_dim": 9,
+  "rho_sel": 379,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 156,
+  "cell_base_code": 1266727426,
+  "cell_dim": 9,
+  "rho_sel": 380,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 157,
+  "cell_base_code": 1266727438,
+  "cell_dim": 9,
+  "rho_sel": 381,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 158,
+  "cell_base_code": 1266727442,
+  "cell_dim": 9,
+  "rho_sel": 382,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 159,
+  "cell_base_code": 1266727454,
+  "cell_dim": 9,
+  "rho_sel": 383,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 160,
+  "cell_base_code": 1263587418,
+  "cell_dim": 9,
+  "rho_sel": 384,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 161,
+  "cell_base_code": 1263587414,
+  "cell_dim": 9,
+  "rho_sel": 385,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 162,
+  "cell_base_code": 1263587402,
+  "cell_dim": 9,
+  "rho_sel": 386,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 163,
+  "cell_base_code": 1263587398,
+  "cell_dim": 9,
+  "rho_sel": 387,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 164,
+  "cell_base_code": 1263587358,
+  "cell_dim": 9,
+  "rho_sel": 388,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 165,
+  "cell_base_code": 1263587346,
+  "cell_dim": 9,
+  "rho_sel": 389,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 166,
+  "cell_base_code": 1263587342,
+  "cell_dim": 9,
+  "rho_sel": 390,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 167,
+  "cell_base_code": 1263587330,
+  "cell_dim": 9,
+  "rho_sel": 391,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 168,
+  "cell_base_code": 1263587926,
+  "cell_dim": 9,
+  "rho_sel": 392,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 169,
+  "cell_base_code": 1263587930,
+  "cell_dim": 9,
+  "rho_sel": 393,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 170,
+  "cell_base_code": 1263587910,
+  "cell_dim": 9,
+  "rho_sel": 394,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 171,
+  "cell_base_code": 1263587914,
+  "cell_dim": 9,
+  "rho_sel": 395,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 172,
+  "cell_base_code": 1263587858,
+  "cell_dim": 9,
+  "rho_sel": 396,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 173,
+  "cell_base_code": 1263587870,
+  "cell_dim": 9,
+  "rho_sel": 397,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 174,
+  "cell_base_code": 1263587842,
+  "cell_dim": 9,
+  "rho_sel": 398,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 175,
+  "cell_base_code": 1263587854,
+  "cell_dim": 9,
+  "rho_sel": 399,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 176,
+  "cell_base_code": 1271974474,
+  "cell_dim": 9,
+  "rho_sel": 416,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 177,
+  "cell_base_code": 1271974486,
+  "cell_dim": 9,
+  "rho_sel": 419,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 178,
+  "cell_base_code": 1271974414,
+  "cell_dim": 9,
+  "rho_sel": 420,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 179,
+  "cell_base_code": 1271974418,
+  "cell_dim": 9,
+  "rho_sel": 423,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 180,
+  "cell_base_code": 1271973962,
+  "cell_dim": 9,
+  "rho_sel": 425,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x5x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 181,
+  "cell_base_code": 1271973974,
+  "cell_dim": 9,
+  "rho_sel": 426,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x5x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 182,
+  "cell_base_code": 1271973902,
+  "cell_dim": 9,
+  "rho_sel": 429,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x5x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 183,
+  "cell_base_code": 1271973906,
+  "cell_dim": 9,
+  "rho_sel": 430,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x5x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 184,
+  "cell_base_code": 1266729554,
+  "cell_dim": 9,
+  "rho_sel": 432,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 185,
+  "cell_base_code": 1266729550,
+  "cell_dim": 9,
+  "rho_sel": 435,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 186,
+  "cell_base_code": 1266729498,
+  "cell_dim": 9,
+  "rho_sel": 437,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 187,
+  "cell_base_code": 1266729478,
+  "cell_dim": 9,
+  "rho_sel": 438,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 188,
+  "cell_base_code": 1266729042,
+  "cell_dim": 9,
+  "rho_sel": 441,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 189,
+  "cell_base_code": 1266729038,
+  "cell_dim": 9,
+  "rho_sel": 442,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 190,
+  "cell_base_code": 1266728986,
+  "cell_dim": 9,
+  "rho_sel": 444,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 191,
+  "cell_base_code": 1266728966,
+  "cell_dim": 9,
+  "rho_sel": 447,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 192,
+  "cell_base_code": 1262549530,
+  "cell_dim": 9,
+  "rho_sel": 450,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x2x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 193,
+  "cell_base_code": 1262549526,
+  "cell_dim": 9,
+  "rho_sel": 451,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 194,
+  "cell_base_code": 1262549582,
+  "cell_dim": 9,
+  "rho_sel": 452,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x2x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 195,
+  "cell_base_code": 1262549570,
+  "cell_dim": 9,
+  "rho_sel": 453,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 196,
+  "cell_base_code": 1262549014,
+  "cell_dim": 9,
+  "rho_sel": 458,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x2x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 197,
+  "cell_base_code": 1262549018,
+  "cell_dim": 9,
+  "rho_sel": 459,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 198,
+  "cell_base_code": 1262549058,
+  "cell_dim": 9,
+  "rho_sel": 460,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x2x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 199,
+  "cell_base_code": 1262549070,
+  "cell_dim": 9,
+  "rho_sel": 461,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 200,
+  "cell_base_code": 1259401746,
+  "cell_dim": 9,
+  "rho_sel": 464,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x0x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 201,
+  "cell_base_code": 1259401730,
+  "cell_dim": 9,
+  "rho_sel": 466,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x0x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 202,
+  "cell_base_code": 1259401818,
+  "cell_dim": 9,
+  "rho_sel": 469,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 203,
+  "cell_base_code": 1259401802,
+  "cell_dim": 9,
+  "rho_sel": 471,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 204,
+  "cell_base_code": 1259401234,
+  "cell_dim": 9,
+  "rho_sel": 473,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x0x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 205,
+  "cell_base_code": 1259401218,
+  "cell_dim": 9,
+  "rho_sel": 475,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x0x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 206,
+  "cell_base_code": 1259401306,
+  "cell_dim": 9,
+  "rho_sel": 476,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 207,
+  "cell_base_code": 1259401290,
+  "cell_dim": 9,
+  "rho_sel": 478,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 208,
+  "cell_base_code": 1270931466,
+  "cell_dim": 9,
+  "rho_sel": 482,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x4x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 209,
+  "cell_base_code": 1270931462,
+  "cell_dim": 9,
+  "rho_sel": 483,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 210,
+  "cell_base_code": 1270931534,
+  "cell_dim": 9,
+  "rho_sel": 486,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x4x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 211,
+  "cell_base_code": 1270931522,
+  "cell_dim": 9,
+  "rho_sel": 487,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 212,
+  "cell_base_code": 1270931974,
+  "cell_dim": 9,
+  "rho_sel": 490,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x4x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 213,
+  "cell_base_code": 1270931978,
+  "cell_dim": 9,
+  "rho_sel": 491,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 214,
+  "cell_base_code": 1270932034,
+  "cell_dim": 9,
+  "rho_sel": 494,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x4x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 215,
+  "cell_base_code": 1270932046,
+  "cell_dim": 9,
+  "rho_sel": 495,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 216,
+  "cell_base_code": 1267216466,
+  "cell_dim": 9,
+  "rho_sel": 544,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x0x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 217,
+  "cell_base_code": 1267216450,
+  "cell_dim": 9,
+  "rho_sel": 546,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x0x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 218,
+  "cell_base_code": 1267216410,
+  "cell_dim": 9,
+  "rho_sel": 549,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 219,
+  "cell_base_code": 1267216394,
+  "cell_dim": 9,
+  "rho_sel": 551,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 220,
+  "cell_base_code": 1267216978,
+  "cell_dim": 9,
+  "rho_sel": 553,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x0x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 221,
+  "cell_base_code": 1267216962,
+  "cell_dim": 9,
+  "rho_sel": 555,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x0x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 222,
+  "cell_base_code": 1267216922,
+  "cell_dim": 9,
+  "rho_sel": 556,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 223,
+  "cell_base_code": 1267216906,
+  "cell_dim": 9,
+  "rho_sel": 558,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 224,
+  "cell_base_code": 1259864066,
+  "cell_dim": 9,
+  "rho_sel": 578,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 225,
+  "cell_base_code": 1259864078,
+  "cell_dim": 9,
+  "rho_sel": 579,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 226,
+  "cell_base_code": 1259864150,
+  "cell_dim": 9,
+  "rho_sel": 580,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 227,
+  "cell_base_code": 1259864154,
+  "cell_dim": 9,
+  "rho_sel": 581,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 228,
+  "cell_base_code": 1259864590,
+  "cell_dim": 9,
+  "rho_sel": 586,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 229,
+  "cell_base_code": 1259864578,
+  "cell_dim": 9,
+  "rho_sel": 587,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 230,
+  "cell_base_code": 1259864666,
+  "cell_dim": 9,
+  "rho_sel": 588,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 231,
+  "cell_base_code": 1259864662,
+  "cell_dim": 9,
+  "rho_sel": 589,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 232,
+  "cell_base_code": 1263038994,
+  "cell_dim": 9,
+  "rho_sel": 656,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x0x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 233,
+  "cell_base_code": 1263038978,
+  "cell_dim": 9,
+  "rho_sel": 658,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x0x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 234,
+  "cell_base_code": 1263039066,
+  "cell_dim": 9,
+  "rho_sel": 661,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 235,
+  "cell_base_code": 1263039050,
+  "cell_dim": 9,
+  "rho_sel": 663,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 236,
+  "cell_base_code": 1263038482,
+  "cell_dim": 9,
+  "rho_sel": 665,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x0x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 237,
+  "cell_base_code": 1263038466,
+  "cell_dim": 9,
+  "rho_sel": 667,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x0x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 238,
+  "cell_base_code": 1263038554,
+  "cell_dim": 9,
+  "rho_sel": 668,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 239,
+  "cell_base_code": 1263038538,
+  "cell_dim": 9,
+  "rho_sel": 670,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 240,
+  "cell_base_code": 1272463954,
+  "cell_dim": 9,
+  "rho_sel": 752,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 241,
+  "cell_base_code": 1272463950,
+  "cell_dim": 9,
+  "rho_sel": 755,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 242,
+  "cell_base_code": 1272463894,
+  "cell_dim": 9,
+  "rho_sel": 756,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 243,
+  "cell_base_code": 1272463882,
+  "cell_dim": 9,
+  "rho_sel": 759,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 244,
+  "cell_base_code": 1272463442,
+  "cell_dim": 9,
+  "rho_sel": 761,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 245,
+  "cell_base_code": 1272463438,
+  "cell_dim": 9,
+  "rho_sel": 762,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 246,
+  "cell_base_code": 1272463382,
+  "cell_dim": 9,
+  "rho_sel": 765,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 247,
+  "cell_base_code": 1272463370,
+  "cell_dim": 9,
+  "rho_sel": 766,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 248,
+  "cell_base_code": 1258859090,
+  "cell_dim": 9,
+  "rho_sel": 768,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 249,
+  "cell_base_code": 1258859102,
+  "cell_dim": 9,
+  "rho_sel": 769,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 250,
+  "cell_base_code": 1258859074,
+  "cell_dim": 9,
+  "rho_sel": 770,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 251,
+  "cell_base_code": 1258859086,
+  "cell_dim": 9,
+  "rho_sel": 771,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 252,
+  "cell_base_code": 1258859030,
+  "cell_dim": 9,
+  "rho_sel": 772,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 253,
+  "cell_base_code": 1258859034,
+  "cell_dim": 9,
+  "rho_sel": 773,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 254,
+  "cell_base_code": 1258859014,
+  "cell_dim": 9,
+  "rho_sel": 774,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 255,
+  "cell_base_code": 1258859018,
+  "cell_dim": 9,
+  "rho_sel": 775,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 256,
+  "cell_base_code": 1258858590,
+  "cell_dim": 9,
+  "rho_sel": 776,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 257,
+  "cell_base_code": 1258858578,
+  "cell_dim": 9,
+  "rho_sel": 777,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 258,
+  "cell_base_code": 1258858574,
+  "cell_dim": 9,
+  "rho_sel": 778,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 259,
+  "cell_base_code": 1258858562,
+  "cell_dim": 9,
+  "rho_sel": 779,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 260,
+  "cell_base_code": 1258858522,
+  "cell_dim": 9,
+  "rho_sel": 780,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 261,
+  "cell_base_code": 1258858518,
+  "cell_dim": 9,
+  "rho_sel": 781,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 262,
+  "cell_base_code": 1258858506,
+  "cell_dim": 9,
+  "rho_sel": 782,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 263,
+  "cell_base_code": 1258858502,
+  "cell_dim": 9,
+  "rho_sel": 783,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 264,
+  "cell_base_code": 1272494170,
+  "cell_dim": 9,
+  "rho_sel": 816,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 265,
+  "cell_base_code": 1272494166,
+  "cell_dim": 9,
+  "rho_sel": 817,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 266,
+  "cell_base_code": 1272494154,
+  "cell_dim": 9,
+  "rho_sel": 818,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 267,
+  "cell_base_code": 1272494150,
+  "cell_dim": 9,
+  "rho_sel": 819,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 268,
+  "cell_base_code": 1272494110,
+  "cell_dim": 9,
+  "rho_sel": 820,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 269,
+  "cell_base_code": 1272494098,
+  "cell_dim": 9,
+  "rho_sel": 821,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 270,
+  "cell_base_code": 1272494094,
+  "cell_dim": 9,
+  "rho_sel": 822,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 271,
+  "cell_base_code": 1272494082,
+  "cell_dim": 9,
+  "rho_sel": 823,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 272,
+  "cell_base_code": 1272494678,
+  "cell_dim": 9,
+  "rho_sel": 824,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 273,
+  "cell_base_code": 1272494682,
+  "cell_dim": 9,
+  "rho_sel": 825,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 274,
+  "cell_base_code": 1272494662,
+  "cell_dim": 9,
+  "rho_sel": 826,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 275,
+  "cell_base_code": 1272494666,
+  "cell_dim": 9,
+  "rho_sel": 827,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 276,
+  "cell_base_code": 1272494610,
+  "cell_dim": 9,
+  "rho_sel": 828,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 277,
+  "cell_base_code": 1272494622,
+  "cell_dim": 9,
+  "rho_sel": 829,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 278,
+  "cell_base_code": 1272494594,
+  "cell_dim": 9,
+  "rho_sel": 830,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 279,
+  "cell_base_code": 1272494606,
+  "cell_dim": 9,
+  "rho_sel": 831,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 280,
+  "cell_base_code": 1263044634,
+  "cell_dim": 9,
+  "rho_sel": 848,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 281,
+  "cell_base_code": 1263044630,
+  "cell_dim": 9,
+  "rho_sel": 849,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 282,
+  "cell_base_code": 1263044618,
+  "cell_dim": 9,
+  "rho_sel": 850,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 283,
+  "cell_base_code": 1263044614,
+  "cell_dim": 9,
+  "rho_sel": 851,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 284,
+  "cell_base_code": 1263044702,
+  "cell_dim": 9,
+  "rho_sel": 852,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 285,
+  "cell_base_code": 1263044690,
+  "cell_dim": 9,
+  "rho_sel": 853,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 286,
+  "cell_base_code": 1263044686,
+  "cell_dim": 9,
+  "rho_sel": 854,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 287,
+  "cell_base_code": 1263044674,
+  "cell_dim": 9,
+  "rho_sel": 855,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 288,
+  "cell_base_code": 1263045142,
+  "cell_dim": 9,
+  "rho_sel": 856,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 289,
+  "cell_base_code": 1263045146,
+  "cell_dim": 9,
+  "rho_sel": 857,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 290,
+  "cell_base_code": 1263045126,
+  "cell_dim": 9,
+  "rho_sel": 858,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 291,
+  "cell_base_code": 1263045130,
+  "cell_dim": 9,
+  "rho_sel": 859,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 292,
+  "cell_base_code": 1263045202,
+  "cell_dim": 9,
+  "rho_sel": 860,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 293,
+  "cell_base_code": 1263045214,
+  "cell_dim": 9,
+  "rho_sel": 861,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 294,
+  "cell_base_code": 1263045186,
+  "cell_dim": 9,
+  "rho_sel": 862,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 295,
+  "cell_base_code": 1263045198,
+  "cell_dim": 9,
+  "rho_sel": 863,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 296,
+  "cell_base_code": 1259928074,
+  "cell_dim": 9,
+  "rho_sel": 898,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x4x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 297,
+  "cell_base_code": 1259928070,
+  "cell_dim": 9,
+  "rho_sel": 899,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 298,
+  "cell_base_code": 1259928142,
+  "cell_dim": 9,
+  "rho_sel": 902,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x4x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 299,
+  "cell_base_code": 1259928130,
+  "cell_dim": 9,
+  "rho_sel": 903,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 300,
+  "cell_base_code": 1259927558,
+  "cell_dim": 9,
+  "rho_sel": 906,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x4x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 301,
+  "cell_base_code": 1259927562,
+  "cell_dim": 9,
+  "rho_sel": 907,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 302,
+  "cell_base_code": 1259927618,
+  "cell_dim": 9,
+  "rho_sel": 910,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x4x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 303,
+  "cell_base_code": 1259927630,
+  "cell_dim": 9,
+  "rho_sel": 911,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 304,
+  "cell_base_code": 1271457810,
+  "cell_dim": 9,
+  "rho_sel": 944,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 305,
+  "cell_base_code": 1271457822,
+  "cell_dim": 9,
+  "rho_sel": 945,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 306,
+  "cell_base_code": 1271457794,
+  "cell_dim": 9,
+  "rho_sel": 946,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 307,
+  "cell_base_code": 1271457806,
+  "cell_dim": 9,
+  "rho_sel": 947,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 308,
+  "cell_base_code": 1271457878,
+  "cell_dim": 9,
+  "rho_sel": 948,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 309,
+  "cell_base_code": 1271457882,
+  "cell_dim": 9,
+  "rho_sel": 949,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 310,
+  "cell_base_code": 1271457862,
+  "cell_dim": 9,
+  "rho_sel": 950,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 311,
+  "cell_base_code": 1271457866,
+  "cell_dim": 9,
+  "rho_sel": 951,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 312,
+  "cell_base_code": 1271458334,
+  "cell_dim": 9,
+  "rho_sel": 952,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 313,
+  "cell_base_code": 1271458322,
+  "cell_dim": 9,
+  "rho_sel": 953,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 314,
+  "cell_base_code": 1271458318,
+  "cell_dim": 9,
+  "rho_sel": 954,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 315,
+  "cell_base_code": 1271458306,
+  "cell_dim": 9,
+  "rho_sel": 955,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 316,
+  "cell_base_code": 1271458394,
+  "cell_dim": 9,
+  "rho_sel": 956,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 317,
+  "cell_base_code": 1271458390,
+  "cell_dim": 9,
+  "rho_sel": 957,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 318,
+  "cell_base_code": 1271458378,
+  "cell_dim": 9,
+  "rho_sel": 958,
+  "S_size": 4,
+  "kind": "moments+size",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "B",
+    "0",
+    "2"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 319,
+  "cell_base_code": 1271458374,
+  "cell_dim": 9,
+  "rho_sel": 959,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "2",
+    "x1x6"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 320,
+  "cell_base_code": 1264113746,
+  "cell_dim": 9,
+  "rho_sel": 976,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 321,
+  "cell_base_code": 1264113730,
+  "cell_dim": 9,
+  "rho_sel": 978,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 322,
+  "cell_base_code": 1264113690,
+  "cell_dim": 9,
+  "rho_sel": 981,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 323,
+  "cell_base_code": 1264113674,
+  "cell_dim": 9,
+  "rho_sel": 983,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 324,
+  "cell_base_code": 1264114258,
+  "cell_dim": 9,
+  "rho_sel": 985,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 325,
+  "cell_base_code": 1264114242,
+  "cell_dim": 9,
+  "rho_sel": 987,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x0x6"
+   ],
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 326,
+  "cell_base_code": 1264114202,
+  "cell_dim": 9,
+  "rho_sel": 988,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 327,
+  "cell_base_code": 1264114186,
+  "cell_dim": 9,
+  "rho_sel": 990,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 328,
+  "cell_base_code": 1267255898,
+  "cell_dim": 9,
+  "rho_sel": 992,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 329,
+  "cell_base_code": 1267255878,
+  "cell_dim": 9,
+  "rho_sel": 995,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 330,
+  "cell_base_code": 1267255826,
+  "cell_dim": 9,
+  "rho_sel": 997,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 331,
+  "cell_base_code": 1267255822,
+  "cell_dim": 9,
+  "rho_sel": 998,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "0",
+    "x6x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 332,
+  "cell_base_code": 1267255386,
+  "cell_dim": 9,
+  "rho_sel": 1001,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x1x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 333,
+  "cell_base_code": 1267255366,
+  "cell_dim": 9,
+  "rho_sel": 1002,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x1x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 334,
+  "cell_base_code": 1267255314,
+  "cell_dim": 9,
+  "rho_sel": 1004,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x1x7"
+   ]
+  ]
+ },
+ {
+  "class": 37,
+  "cell_index": 335,
+  "cell_base_code": 1267255310,
+  "cell_dim": 9,
+  "rho_sel": 1007,
+  "S_size": 4,
+  "kind": "moments",
+  "certificate": [
+   [
+    "M",
+    "1",
+    "x1x7"
+   ]
+  ]
+ }
+]
