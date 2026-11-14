@@ -1,0 +1,61 @@
+name: Short certificates for x24 = 0 on the residual rho-cells (V1)
+on:
+  push:
+    branches: [codex/v1-phase-plane-cert]
+    paths:
+      - '.github/workflows/n12_v1_x24_short.yml'
+      - 'research_updates/2026_11_09_n12_mixed/phase_plane/short_certs.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: v1-x24-short
+  cancel-in-progress: false
+jobs:
+  search:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 8               # 8 x 4 vCPU = 32 CPUs at most
+      matrix:
+        klass: [22, 23, 36, 37, 50, 51, 164, 165, 178, 179]
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed/phase_plane
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy
+      - run: python -u short_certs.py .. --classes ${{ matrix.klass }} --out short-${{ matrix.klass }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: x24-short-${{ matrix.klass }}
+          path: research_updates/2026_11_09_n12_mixed/phase_plane/short-${{ matrix.klass }}.json
+  summary:
+    needs: search
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: x24-short-*
+          merge-multiple: true
+          path: out
+      - run: |
+          python - <<'PY'
+          import json, glob
+          from collections import Counter
+          tot = Counter(); forms = Counter()
+          for f in sorted(glob.glob('out/short-*.json')):
+              for r in json.load(open(f)):
+                  assert r['certificate'], r
+                  tot[(r['class'], r['kind'], len(r['certificate']))] += 1
+                  forms[' + '.join('{}{}.{}'.format(*c) for c in r['certificate'])] += 1
+          for k, v in sorted(tot.items()): print(k, v)
+          print('distinct certificate forms:')
+          for k, v in forms.most_common(): print(v, k)
+          PY
