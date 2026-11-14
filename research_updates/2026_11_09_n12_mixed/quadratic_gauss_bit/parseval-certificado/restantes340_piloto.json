@@ -1,0 +1,34 @@
+{
+  "label": "first remaining340 pilot",
+  "parameters": 28,
+  "radical_points": 304,
+  "rank_profile": {
+    "2": 4,
+    "4": 60
+  },
+  "S_at_zero": 14336,
+  "nonconstant_weights_divisible8": true,
+  "xor_odd_quotient_forms": "0x0",
+  "constant_residue_proved": true,
+  "residue_mod2048": 0,
+  "certificate": {
+    "method": "weights divisible8; one XOR relation",
+    "xor_form": "0x0"
+  },
+  "excluded_by_residue": false,
+  "raw_sample_checks": 17,
+  "character_coefficients": {
+    "0x0": 192,
+    "0x18ec4": 48,
+    "0xc852780": -16
+  },
+  "triangle_lower_bound": 8192,
+  "triangle_upper_bound": 16384,
+  "source_values": [
+    8192,
+    10240,
+    14336,
+    16384
+  ],
+  "polar": "cccca55aa55a3333b81d742e1db82e74aac3c355aa3c3c5553a35cac3a35cac5e2472e7447e2742ef990f660099f066f84deb712217bed481d2e74b8d1e2478bd1741d478b2eb8e2e8d42b17d4e8172be4b1b1e48d27278d8bd147e22e741db8274e8d1b72e4d8b18421b7edde7b1248e8718e178e17e871"
+}
