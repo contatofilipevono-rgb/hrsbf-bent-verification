@@ -215,3 +215,12 @@ Somado aos 734 certificados só de momentos (já por interpolação), **nenhuma 
 3. Relação de pares: quando S = ⟨1111⟩, P₀ ∪ P₁₅ = Z × F₂² dá bit₂(|P₁₅|) = bit₂(|P₀|) e momentos z₀s₁ iguais. Mas essas são as classes 1, 128 e 129, que não usam o bit de tamanho.
 
 Nas células com bit de tamanho, as duas formas valem: ⟨P₀, z₀s₁⟩ + bit₂(|P₀|) = 1 e ⟨P₁₅, z₀s₁⟩ + bit₂(|P₁₅|) = 1, conferidas em amostras das classes 164 e 22. Mesmo assim, não existe bijeção de P₀ em P₁₅ que preserve o tamanho: na classe 22, |P₀| mod 8 ≠ |P₁₅| mod 8 em 896 pontos amostrados. Concluímos que as duas identidades são instâncias do mesmo mecanismo de blocos, aplicado a fibras diferentes. Não há transformação explícita entre elas, e a equivalência fica sem afirmação.
+
+## O fenômeno se repete em V2? (`space_probe.py`, execução 43545993898)
+
+Rodamos o mesmo pipeline nos dois blocos de dimensão 4 de n = 12. Em cada classe: as consequências afins da ortogonalidade e do balanceamento, depois a forma normal algébrica (ANF) exata de grau 4 das colunas de fase (48 momentos).
+
+- **V1** (controle, 14 classes não vazias): os coeficientes de todas as classes geram L + ⟨w⟩, de dimensão 3. As colunas têm grau ≤ 1 no código.
+- **V2** (`decode(2)`, 32 classes não vazias, o que bate com os 32 espaços afins da reconstrução): os coeficientes geram dimensão 15 em F₂⁴⁸ (12 só nos termos constantes). Por classe, o posto fica entre 11 e 15. As colunas têm grau 4 cheio, com milhares de termos.
+
+Conclusão: o plano comum com resíduo afim de posto 1 é próprio de V1. Em V2 a imagem das fases não colapsa. Isso é coerente com a nota NOTA_FASES_DIM4, segundo a qual em V2 a exclusão vem sobretudo da afinidade decidida pelo mapa e de equações quadráticas, e não do sistema linear de 48 equações.
