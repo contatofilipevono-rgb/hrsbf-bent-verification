@@ -224,3 +224,14 @@ Rodamos o mesmo pipeline nos dois blocos de dimensão 4 de n = 12. Em cada class
 - **V2** (`decode(2)`, 32 classes não vazias, o que bate com os 32 espaços afins da reconstrução): os coeficientes geram dimensão 15 em F₂⁴⁸ (12 só nos termos constantes). Por classe, o posto fica entre 11 e 15. As colunas têm grau 4 cheio, com milhares de termos.
 
 Conclusão: o plano comum com resíduo afim de posto 1 é próprio de V1. Em V2 a imagem das fases não colapsa. Isso é coerente com a nota NOTA_FASES_DIM4, segundo a qual em V2 a exclusão vem sobretudo da afinidade decidida pelo mapa e de equações quadráticas, e não do sistema linear de 48 equações.
+
+### Grau na célula de ρ fixo
+
+Escreva S para o espaço dos valores das derivadas em s. Em cada
+célula, π₀(z) varia dentro de uma classe lateral fixa de S.
+Igualdade a um rótulo é então o produto de no máximo dim(S)
+equações afins. Pertencer ao par de rótulos t, t+v_z exige
+no máximo dim(S)−1. Logo tanto a paridade de B quanto o
+momento têm grau no máximo dim(S), que é 2 ou 3 nessas
+dez classes. A ação Verify the V1 size-bit certificates
+reexecuta as dez classes em paralelo e guarda os relatórios.

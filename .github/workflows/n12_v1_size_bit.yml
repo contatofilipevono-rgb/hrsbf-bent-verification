@@ -1,0 +1,37 @@
+name: Verify the V1 size-bit certificates
+on:
+  push:
+    branches: [codex/v1-phase-plane-cert]
+    paths:
+      - '.github/workflows/n12_v1_size_bit.yml'
+      - 'research_updates/2026_11_09_n12_mixed/phase_plane/blocks_p0.py'
+      - 'research_updates/2026_11_09_n12_mixed/phase_plane/short-certificates/*.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        chart: [22, 23, 36, 37, 50, 51, 164, 165, 178, 179]
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed/phase_plane
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy
+      - run: python -I blocks_p0.py .. --classes ${{ matrix.chart }} --out size-bit-${{ matrix.chart }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v1-size-bit-${{ matrix.chart }}
+          path: research_updates/2026_11_09_n12_mixed/phase_plane/size-bit-${{ matrix.chart }}.json
+          if-no-files-found: error

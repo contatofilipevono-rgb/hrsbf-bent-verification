@@ -6,16 +6,16 @@ Block lemma.  Let pi(z,s) = pi0(z) + s1 D1(z) + s2 D2(z) (no s1 s2 term).  Suppo
   (C) if D(z) spans <v> != 0, then pi0(sw z) + pi0(z) is 0 or v   (swap compatibility; LINEAR in
       the code: its class modulo <v> vanishes),
 and sw(z) != z whenever D(z) != 0.  Then P_0 is a disjoint union of blocks of exactly 4 points:
-  {z} x F2^2 for D(z) = 0 and pi0(z) = 0;   {z, sw z} x {s : s.D = pi0(z)} for D(z) = <v>,
-  pi0(z) in {0, v}.
+  all four points over z if D(z) = 0 and pi0(z) = 0; or the two points
+  over each of z and sw(z) if D(z) = <v> and
+  pi0(z) in {0, v}. The s-solutions can differ between z and sw(z).
 Hence |P_0| = 4 B and bit2(|P_0|) = B mod 2, with
   B = sum_{z: D(z)=0} [pi0(z) = 0] + sum_{orbits {z, sw z}, D != 0} [pi0(z) in {0, v_z}],
-a polynomial of degree <= 4 in the code.  The certificate M(0, z0 s1) + bit2(|P_0|) = 1 on a cell
-becomes the polynomial identity M(0, z0 s1) + B = 1, checked by exact interpolation on the points of
-weight <= 4 of the cell (both sides have degree <= 4).
+a polynomial of degree <= dim(S) on each cell with fixed label modulo S.  The certificate M(0, z0 s1) + bit2(|P_0|) = 1 on a cell
+becomes the polynomial identity M(0, z0 s1) + B = 1, checked by exact interpolation on the points of weight at most dim(S).
 
-Checks: (T), (C) as identities on the whole affine space A_k (affine in the code: base point and all
-directions); for every size-bit certificate of short-certificates/short-k.json, the degree-4
+Checks: (T) on the class and (C) on each cell (base point and all
+directions); for every size-bit certificate of short-certificates/short-k.json, the polynomial
 identity on its cell; control: B = |P_0|/4 at sampled points.
 """
 import sys, json, time, argparse
@@ -79,6 +79,9 @@ def main():
                 if x >> p & 1:
                     x ^= Sp[p]
             return x
+        # On a rho-cell each label varies within a fixed coset of S. A label
+        # equality is therefore the product of at most dim(S) affine equations.
+        degree = len(Sp)
         # cells with a size-bit certificate
         certs = json.loads((Path(__file__).parent / "short-certificates" / f"short-{k}.json").read_text())
         sizecells = {r["cell_index"]: r for r in certs if r["kind"] == "moments+size"}
@@ -112,9 +115,9 @@ def main():
                 B = sum(1 for z in zero_d if L[z] == t) + \
                     sum(1 for z in orbit_reps if L[z] in (t, t ^ vz[z]))
                 return mom ^ (B & 1), B, fib.bit_count()
-            # exact degree-4 interpolation: f = mom + B must be the constant 1 on the cell
+            # Exact interpolation up to dim(S) tests mom + B == 1 on the cell.
             vals = {}
-            for deg in range(5):
+            for deg in range(min(degree, n) + 1):
                 for S in combinations(range(n), deg):
                     cc = code
                     for i in S:
@@ -132,13 +135,14 @@ def main():
                     sub = (sub - 1) & key
                 assert acc == (1 if key == 0 else 0), (k, idx, "identity fails", key)
             checked += 1
-        report[k] = {"size_bit_cells": len(sizecells), "checked_by_degree4_identity": checked,
+        report[k] = {"size_bit_cells": len(sizecells), "checked_by_polynomial_identity": checked,
+                     "degree_bound": degree,
                      "forms": {" + ".join("".join(c) for c in f): v for f, v in forms.items()},
                      "points_evaluated": ctrl, "seconds": round(time.time() - t0, 1)}
         assert checked == len(sizecells)
         print(k, report[k], flush=True)
     Path(a.out).write_text(json.dumps(report, indent=1))
-    print("total size-bit cells closed by the block lemma:", sum(r["checked_by_degree4_identity"] for r in report.values()))
+    print("total size-bit cells closed by the block lemma:", sum(r["checked_by_polynomial_identity"] for r in report.values()))
 
 
 if __name__ == "__main__":
