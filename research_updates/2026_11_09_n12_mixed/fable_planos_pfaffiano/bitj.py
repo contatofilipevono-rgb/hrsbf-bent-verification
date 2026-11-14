@@ -454,9 +454,23 @@ def exclude_vec(G0, Gk, part, ker, polys, order):
     surv = int(np.sum(np.where(incons, 0, 1 << (F - rank)).astype(object))) if F else int((~incons).sum())
     bent = 0
     if surv:
-        # particular solution + kernel of every consistent assignment, read off the reduced rows
+        # particular solutions of all consistent assignments at once (non-pivot free variables = 0)
+        good = np.nonzero(~incons)[0]
+        X = np.zeros((len(good), m), dtype=np.uint8)
+        for t, v in enumerate(cover):
+            X[:, v] = (good >> t) & 1
+        for c in range(F):
+            pc = pcol[good, c]; has = pc >= 0
+            X[has, free[c]] = ((Mx[good[has], pc[has]] >> F) & 1).astype(np.uint8)
+        check_zeros(X[np.random.default_rng(0).choice(len(X), size=min(64, len(X)), replace=False)], polys, order)
+        Dp = np.array([pack_table(table_at(np.zeros_like(G0), Gk, ker[i])) for i in range(m)])
+        Gp = pack_table(table_at(G0, Gk, part))
+        bent = bent_batch_x(Gp, Dp, X)
+        if FIRST and bent:
+            return surv, bent, C
+        # kernels only where rank < F: enumerate the nonzero part of each kernel span
         sols = []
-        for a in np.nonzero(~incons)[0]:
+        for a in np.nonzero(~incons & (rank < F))[0]:
             rowsA = Mx[a]; pc = pcol[a]
             x0 = 0
             for t, v in enumerate(cover):
@@ -474,9 +488,106 @@ def exclude_vec(G0, Gk, part, ker, polys, order):
                             kv |= 1 << free[c2]
                     kk.append(kv)
             sols.append((x0, kk))
-        assert sum(1 << len(kk) for _, kk in sols) == surv
-        bent = bent_test_vec(G0, Gk, part, ker, sols, polys, order)
+        assert len(good) + sum((1 << len(kk)) - 1 for _, kk in sols) == surv
+        if sols:
+            bent += bent_test_packed(G0, Gk, part, ker, sols, polys, order, skip_zero=True)
     return surv, bent, C
+
+
+def check_zeros(X, polys, order):
+    """Every row of X (0/1 over the m variables) must be a common zero of the quadratic system."""
+    for row in X:
+        for p in polys:
+            acc = 0
+            for k in range(p.bit_length()):
+                if p >> k & 1:
+                    mo = order[k]
+                    acc ^= 1 if len(mo) == 0 else (int(row[mo[0]]) if len(mo) == 1 else int(row[mo[0]]) & int(row[mo[1]]))
+            assert acc == 0
+
+
+def walsh_filter(T, Hf):
+    """T: n x 64 packed tables. Returns the number of bent tables (column-0 prefilter, then full spectrum)."""
+    rs = 64 - 2 * POP8[T.view(np.uint8).reshape(-1, 64, 8)].sum(axis=2)
+    keep = (np.abs(rs.astype(np.float32) @ Hf) == 64).all(axis=1)
+    if not keep.any():
+        return 0
+    PASSED[0] += int(keep.sum())
+    G = np.unpackbits(T[keep].view(np.uint8).reshape(-1, 64, 8), axis=2, bitorder="little")
+    S = 1.0 - 2.0 * G.astype(np.float32)
+    W = np.matmul(np.matmul(Hf, S), Hf)
+    return int((np.abs(W) == 64).all(axis=(1, 2)).sum())
+
+
+def bent_batch_x(Gp, Dp, X, chunk=1 << 15):
+    """Tables Gp + sum_i X[:, i] Dp[i] for every row of X, tested in chunks."""
+    Hf = H64.astype(np.float32); bent = 0
+    for s in range(0, len(X), chunk):
+        Xc = X[s:s + chunk]
+        T = np.repeat(Gp[None, :], len(Xc), axis=0)
+        for i in range(X.shape[1]):
+            sel = Xc[:, i].astype(bool)
+            if sel.any():
+                T[sel] ^= Dp[i]
+        bent += walsh_filter(T, Hf)
+        if FIRST and bent:
+            return bent
+    return bent
+
+
+POP8 = np.array([bin(i).count("1") for i in range(256)], dtype=np.int32)
+PASSED = [0]          # tables that pass the Walsh column-0 prefilter (for cross-checks)
+
+
+def pack_table(G):
+    """64 x 64 0/1 table -> 64 uint64 words (row z, bit w)."""
+    return np.packbits(G.astype(np.uint8), axis=1, bitorder="little").view(np.uint64).reshape(64)
+
+
+def bent_test_packed(G0, Gk, part, ker, sols, polys, order, c=12, skip_zero=False):
+    """Same as bent_test_vec, with packed tables: survivors x0 + span(K) are enumerated by doubling
+    (one XOR of 64 words per table), row sums come from popcounts, Walsh column b=0 filters,
+    and only the tables that pass get the full spectrum."""
+    m = len(ker)
+    Dp = np.array([pack_table(table_at(np.zeros_like(G0), Gk, ker[i])) for i in range(m)])
+    Gp = pack_table(table_at(G0, Gk, part))
+    Hf = H64.astype(np.float32)
+    bent = 0
+    for x0, kk in sols:
+        # sanity: x0 is a zero of every polynomial
+        for p in polys:
+            acc = 0
+            for k in range(p.bit_length()):
+                if p >> k & 1:
+                    mo = order[k]
+                    acc ^= 1 if len(mo) == 0 else ((x0 >> mo[0]) & 1 if len(mo) == 1 else (x0 >> mo[0]) & (x0 >> mo[1]) & 1)
+            assert acc == 0
+        base = Gp.copy()
+        for i in range(m):
+            if x0 >> i & 1:
+                base ^= Dp[i]
+        Kp = []
+        for v in kk:
+            t = np.zeros(64, np.uint64)
+            for i in range(m):
+                if v >> i & 1:
+                    t ^= Dp[i]
+            Kp.append(t)
+        lo, hi = Kp[:c], Kp[c:]
+        blk = base[None, :].copy()
+        for t in lo:                                   # doubling over the low kernel vectors
+            blk = np.concatenate([blk, blk ^ t[None, :]])
+        off = np.zeros(64, np.uint64)
+        for g in range(1 << len(hi)):                  # Gray code over the high kernel vectors
+            if g:
+                off ^= hi[(g & -g).bit_length() - 1]
+            T = blk ^ off[None, :]
+            if skip_zero and g == 0:
+                T = T[1:]                              # x0 itself was tested already
+            bent += walsh_filter(T, Hf)
+            if FIRST and bent:
+                return bent
+    return bent
 
 
 def bent_test_vec(G0, Gk, part, ker, sols, polys, order, chunk=2048):
@@ -500,6 +611,7 @@ def bent_test_vec(G0, Gk, part, ker, sols, polys, order, chunk=2048):
         keep = (np.abs(W0) == 64).all(axis=1)
         ok = np.zeros(len(S), dtype=bool)
         if keep.any():
+            PASSED[0] += int(keep.sum())
             W = np.matmul(np.matmul(Hf, S[keep]), Hf)
             ok[keep] = (np.abs(W) == 64).all(axis=(1, 2))
         # sanity: a few rows satisfy every polynomial
