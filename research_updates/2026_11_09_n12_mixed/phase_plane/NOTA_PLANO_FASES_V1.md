@@ -80,15 +80,34 @@ O argumento `--hull-only` da classe 129 se estende às 13 classes (`cells_x24.py
 1. **Condições que só dependem de ρ.** São três: |Z_[t]| = 8 (tamanho, no quociente), a·e_t e b·e_t ortogonais a RM(1,6) e |Z_[t] ∩ M| par.
 2. **Em cada célula que sobra,** procura-se uma equação de suporte que vale 1 em todos os 32 pontos da célula. Cada equação é um momento booleano da fibra t contra um monômio de RM(2,8).
 
-| classe | valores de ρ | células que sobram | equação que falha (constante 1 na célula) |
-|---:|---:|---:|---|
-| 1 | 65.536 | 1.136 | momento x₀s₁ da fibra 0 |
-| 128 | 16.384 | 288 | momento x₀s₁ da fibra 0 |
-| 129 | 16.384 | 272 | momento s₁s₂ da fibra 0 (como em `--hull-only`) |
-| 22, 23, 36, 37, 50, 51 | 32.768 ou 16.384 | 0 | — |
-| 164, 165, 178, 179 | 4.096 | 0 | — |
+**Correção (commit 81835f1).** A primeira versão desta tabela aplicava a todas as classes as linhas ativas da classe 129 (a nas linhas {2,4}, b nas linhas {1,4}), então ela estava errada fora da classe 129. Agora as linhas ativas são lidas das derivadas em s de cada classe.
 
-Logo **nenhum mapa com x₂₄ = 1 satisfaz as condições de suporte**. A hipótese de tamanho entra só como |Z_[t]| = 8 no quociente, e o resto é ortogonalidade. A enumeração bit a bit de A_κ fica como controle independente.
+Quando essas derivadas não são múltiplos de 1111, o quociente passa a ser pelo span S delas. Nesse caso só se usa o filtro necessário |Z_[t]| = 4|S|, e cada célula é conferida em seguida.
+
+Resultados corrigidos, da execução 43541725883 do CI:
+
+| classe | \|S\| | dim ρ | dim célula | células que sobram | fecham por um momento | precisam de varredura na célula |
+|---:|---:|---:|---:|---:|---|---:|
+| 1 | 2 | 16 | 5 | 0 | — | 0 |
+| 128 | 2 | 14 | 5 | 280 | s₁s₂ da fibra 0, nas 280 | 0 |
+| 129 | 2 | 14 | 5 | 272 | s₁s₂ da fibra 0, nas 272 | 0 |
+| 22, 37, 51 | 4 | 10 | 9–10 | 336 | 232 (fibras 0, 1, 2) | 104 |
+| 23, 36, 50 | 8 | 5 | 14–15 | 22 | 1 (s₁s₂ da fibra 0) | 21 |
+| 164, 165, 178, 179 | 8 | 3 | 14 | 6 | 1 (s₁s₂ da fibra 0) | 5 |
+
+Em todas as classes, nenhum mapa com x₂₄ = 1 satisfaz as condições de suporte. Nas classes 1, 128 e 129, a hipótese de tamanho entra só como |Z_[t]| = 8 no quociente. Nas demais, ainda é preciso varrer os pontos de algumas células (2^9 a 2^15 pontos cada). A enumeração bit a bit de A_κ fica como controle independente.
+
+**Classe 129, prova** (`prova_x24_classe129.py`). As identidades são afins no código e foram conferidas numa base de 21 pontos de A_129:
+- **I1 (diagonal):** ρ(y,0) = x₂₄·Λy, com Λ = (4,6,2) e núcleo {0,7}; π0(0) = 15 e π0(63) = 0.
+- **I2:** nas linhas 3, 5 e 6, χ = bit 0 de ρ.
+- **I3:** a linha 7 só carrega pares ímpares.
+- **I4:** ρ∘swap = ρ.
+
+Lema, sem usar o tamanho: se x₂₄ = 1 e Z_[0] não toca as linhas M = {1,2,4}, então o momento s₁s₂ da fibra 0 vale 1. As órbitas do swap contribuem χ; o ponto 63 contribui 1.
+
+Passo finito restante, só sobre ρ (2^14 valores): o balanceamento e a ortogonalidade, juntos, impedem Z_[0] de tocar M. Cada um dos dois sozinho não basta.
+
+Testemunha negativa: 4358938703 satisfaz toda a ortogonalidade, mas tem tamanhos de fibra errados; nela, Z_[0] toca as linhas 1, 2 e 4.
 
 Hipóteses por etapa, com o certificado por células:
 
