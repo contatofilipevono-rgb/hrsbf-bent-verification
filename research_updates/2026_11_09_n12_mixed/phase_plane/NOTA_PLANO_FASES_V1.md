@@ -179,3 +179,39 @@ constrói tabelas de verdade exatas e compara as funções ponto a
 ponto no domínio reduzido. Sua congruência tem a mesma forma
 de momento mais bit de tamanho. A equivalência por classe com
 os certificados da fibra 0 ainda precisa de uma auditoria.
+
+## Lema dos blocos: os 364 certificados com bit de tamanho viram identidades de grau 4
+
+Script: `blocks_p0.py`; saída: `blocks_p0.json`.
+
+Escreva π(z,s) = π0(z) + s₁D₁(z) + s₂D₂(z), sem termo s₁s₂, e seja v_z o valor da derivada no ponto z (0 se D(z) = 0). Em todas as dez classes conferimos duas propriedades:
+
+- **(T)** em cada z, D₁(z) e D₂(z) geram um espaço de dimensão 0 ou 1, e o par trocado sw(z) tem a mesma derivada. Isso vale para a classe inteira, porque as derivadas são fixadas pela classe.
+- **(C)** compatibilidade com a troca das metades: para z em Z = π0⁻¹(t + S), π0(sw z) + π0(z) ∈ {0, v_z}. Dentro de uma célula Z é fixo e a condição é afim no código, então foi conferida na base afim de cada célula. (C) não vale em todo A_κ, só em Z.
+
+Sob (T) e (C), P_t se decompõe em blocos de exatamente 4 pontos:
+- {z} × F₂², quando D(z) = 0 e π0(z) = t;
+- {z, sw z} × {s : s·D(z) = π0(z) + t}, quando D(z) = ⟨v⟩ e π0(z) ∈ {t, t + v}.
+
+Logo |P_t| = 4B, e bit₂(|P_t|) = B mod 2, onde
+
+  B = Σ_{z : D(z)=0} [π0(z) = t] + Σ_{órbitas {z, sw z}, D≠0} [π0(z) ∈ {t, t + v_z}],
+
+que é um polinômio de grau ≤ 4 no código. O certificado ⟨1_{P₀}, z₀s₁⟩ + bit₂(|P₀|) = 1 vira a identidade polinomial ⟨1_{P₀}, z₀s₁⟩ + B = 1, de grau ≤ 4. Ela foi conferida por interpolação exata nos pontos de peso ≤ 4 de cada célula. Como controle, |P₀| = 4B em todos os pontos avaliados.
+
+Resultado: as **364 células** fecham por essa identidade, sem varrer pontos (≈ 2 min numa CPU; 197.464 pontos avaliados, contra ≈ 1,92 milhão na varredura):
+
+| classes | células | pontos avaliados por célula |
+|---|---:|---:|
+| 22, 37, 51 | 96 cada | 386 (22) ou 256 (37, 51) |
+| 23, 36, 50 | 20 cada | 1.941 (23) ou 1.471 |
+| 164, 165, 178, 179 | 4 cada | 1.471 |
+
+Somado aos 734 certificados só de momentos (já por interpolação), **nenhuma célula das dez classes precisa mais de varredura de pontos**. Continuam finitos dois passos: a passagem pelos valores de ρ (2^3 a 2^16 por classe) e a conferência de (C) na base afim de cada célula.
+
+**Comparação com a fibra 15 (ramo codex/v1-common-phase-plane).** Testamos três transformações candidatas.
+1. Translação dos rótulos por 1111: o mapa constante 1111 não está no espaço de mapas de `decode(1)`, então não há essa simetria no modelo.
+2. Complemento z ↦ z ⊕ 63, que troca os pontos diagonais 0 e 63: π(z⊕63, s) = π(z,s) ⊕ 1111 falha na base afim de todas as 14 classes (só vale em 3 dos 22 pontos da classe 0).
+3. Relação de pares: quando S = ⟨1111⟩, P₀ ∪ P₁₅ = Z × F₂² dá bit₂(|P₁₅|) = bit₂(|P₀|) e momentos z₀s₁ iguais. Mas essas são as classes 1, 128 e 129, que não usam o bit de tamanho.
+
+Nas células com bit de tamanho, as duas formas valem: ⟨P₀, z₀s₁⟩ + bit₂(|P₀|) = 1 e ⟨P₁₅, z₀s₁⟩ + bit₂(|P₁₅|) = 1, conferidas em amostras das classes 164 e 22. Mesmo assim, não existe bijeção de P₀ em P₁₅ que preserve o tamanho: na classe 22, |P₀| mod 8 ≠ |P₁₅| mod 8 em 896 pontos amostrados. Concluímos que as duas identidades são instâncias do mesmo mecanismo de blocos, aplicado a fibras diferentes. Não há transformação explícita entre elas, e a equivalência fica sem afirmação.
