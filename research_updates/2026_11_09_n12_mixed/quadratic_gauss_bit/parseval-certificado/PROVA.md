@@ -100,3 +100,23 @@ conjunto de notas; execute primeiro o base12.py dessa pasta. Não é preciso
 copiar os módulos do modelo para inputs_model. Os certificados numéricos
 dos três pilotos foram auditados independentemente pela sessão
 astra_auditoria, inclusive nas coordenadas originais dos parâmetros.
+
+## Primeiro piloto fora da obstrução por resíduo
+
+Entre as outras 340 polares excluídas pelo teste de Parseval, o primeiro
+piloto, com U de dimensão 28, dá exatamente
+
+    E(theta)=64[192+48(-1)^a(theta)-16(-1)^b(theta)],
+
+com a e b as formas de máscaras 0x18ec4 e 0xc852780 na base de parâmetros
+reconstruída pelo modelo. Logo E>=64(192-48-16)=8.192>4.096. É uma exclusão
+por cota de energia, embora o resíduo módulo 2.048 seja zero. Os coeficientes
+estão em restantes340_piloto.json. Não se infere dessa cota um resultado
+para os outros 339 casos.
+
+A leitura dos valores já enumerados nas 340 polares mostra que nenhuma é
+excluída apenas pela classe de congruência determinada pelo máximo divisor
+comum das diferenças entre esses valores, incluindo potências de dois
+maiores. Assim repetir a busca de um módulo constante maior não resolverá
+essa lista. Há 244 casos com mínimo acima de 4.096 e 96 com valores dos dois
+lados; a cota por caracteres é o próximo alvo nos 244.
