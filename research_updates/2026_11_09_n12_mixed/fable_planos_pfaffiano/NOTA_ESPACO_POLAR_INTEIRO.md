@@ -35,6 +35,14 @@ Usamos duas ferramentas:
 - Os certificados elementares **não** classificam sozinhos: dos 212 abertos, ao menos 121 não são bent.
 - Ao fim da primeira rodada sobravam 41 indefinidos; a busca neles foi relançada com 90 minutos por polar.
 
+### Atualização (rodadas 2 e 3 da busca)
+- **Rodada 2:** busca nos 41 indefinidos, um processo por polar, 90 min cada. Mais 16 polares com bent e 11 mortos.
+- **Rodada 3:** os 14 polares restantes, cada um dividido em 6 processos (variável `BITJ_ASG_SHARD`, que reparte os blocos de atribuições da cobertura entre os processos), 2 h por processo. Mais 3 polares com bent; os outros 11 estão presos no teste de Walsh do caminho com núcleo, com núcleos enormes.
+
+Contagem atual dos 212: **69 com bent, 132 mortos, 11 indefinidos.** Os indefinidos são quase todos de assinatura a = b = 0 e têm D ≥ 16 (alguns com D > 22, sem o teste exato das colunas).
+
+Ideia para os 11: antes do Walsh, restringir as formas de ativação a cada espaço de sobreviventes x₀ + ⟨K⟩ e exigir as 64 colunas juntas. Isso corta quase todos os pontos (nos polares bent, os pontos comuns às 64 colunas são de 1 a 864 em U inteiro).
+
 ## Nível módulo 8 (`cert_mod8.py`)
 S_d = 0 exige Σ_z ℓ_z = N_d/2 exatamente.
 - O bit 0 dá o sistema afim mod4.

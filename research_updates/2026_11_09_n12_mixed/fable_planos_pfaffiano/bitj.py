@@ -409,6 +409,8 @@ def exclude_vec(G0, Gk, part, ker, polys, order):
     C = len(cover); F = len(free); N = 1 << C
     surv = 0; bent = 0; Dp = Gp = None
     for start in range(0, N, CHUNK_ASG):
+        if (start // CHUNK_ASG) % ASG_SM != ASG_SI:          # optional split of one polar across processes
+            continue
         A = np.arange(start, min(N, start + CHUNK_ASG), dtype=np.int64)
         Mx, rank, pcol, incons = _elim_block(A, polys, order, cpos, fpos, C, F)
         surv += int(np.sum(np.where(incons, 0, 1 << (F - rank)).astype(object))) if F else int((~incons).sum())
@@ -459,6 +461,7 @@ def exclude_vec(G0, Gk, part, ker, polys, order):
 
 
 CHUNK_ASG = int(os.environ.get("BITJ_CHUNK", 1 << 18))     # cover assignments eliminated at once (bounds memory)
+ASG_SI, ASG_SM = map(int, os.environ.get("BITJ_ASG_SHARD", "0/1").split("/"))   # this process handles blocks i mod n
 
 
 def _elim_block(A, polys, order, cpos, fpos, C, F):
