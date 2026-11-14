@@ -1,0 +1,75 @@
+name: Plane coverage (n=12) - Poisson bits of degree 2 on the 198 surviving polars
+on:
+  push:
+    branches: [codex/n12-planes-bit-j]
+    paths:
+      - '.github/workflows/n12_planes_bitj.yml'
+      - 'research_updates/2026_11_09_n12_mixed/fable_planos_pfaffiano/bitj.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: n12-planes-bitj
+  cancel-in-progress: false
+jobs:
+  polars:
+    runs-on: ubuntu-24.04           # 4 vCPU; 4 processes per runner
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      max-parallel: 8               # 8 runners x 4 vCPU = 32 CPUs
+      matrix:
+        runner: [0, 1, 2, 3, 4, 5, 6, 7]
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed/fable_planos_pfaffiano
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy
+      - name: Model and control on the 18 bent witnesses
+        run: |
+          python -u base12.py
+          python -u bitj.py controle ../lower-dim-family-witnesses.json
+      - name: Four shards per runner (32 shards in total)
+        run: |
+          r=${{ matrix.runner }}
+          for j in 0 1 2 3; do
+            s=$((4*r + j))
+            OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python -u bitj.py exclui L3_212_resultado.txt --shard $s/32 --out res-$s.json > log-$s.txt 2>&1 &
+          done
+          wait
+          tail -n 3 log-*.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bitj-${{ matrix.runner }}
+          path: research_updates/2026_11_09_n12_mixed/fable_planos_pfaffiano/res-*.json
+  summary:
+    needs: polars
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: bitj-*
+          merge-multiple: true
+          path: out
+      - run: |
+          python - <<'PY'
+          import json, glob
+          from collections import Counter
+          recs = [r for f in glob.glob('out/res-*.json') for r in json.load(open(f))]
+          print('polars processed:', len(recs))
+          print(Counter(r['status'] for r in recs))
+          print('by pair:', Counter((r['a'], r['b'], r['status']) for r in recs))
+          print('poisson survivors (max):', max(r.get('poisson_survivors', 0) for r in recs))
+          print('bent found:', sum(r.get('bent_found', 0) for r in recs))
+          assert len(recs) == 198
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bitj-all
+          path: out/
