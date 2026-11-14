@@ -29,11 +29,11 @@ Seja D a dimensão do espaço gerado por todas as formas de ativação. Todos os
 - Dos 1.680 polares que passam por (L5)+(L3), **1.536 morrem só por Parseval**.
 - Controle positivo: todos os polares das 18 testemunhas bent atingem 4096.
 - Nenhuma linha tem posto 6: B_z tem posto 0, 2 ou 4 em todos os casos.
-- **Congruência:** em 1.140 dos 1.536 casos, Σ r² tem resíduo constante módulo 2048 em todo U (768 em 744 polares, 1792 em 396), logo nunca vale 4096. Nos outros 396 casos, os valores atingíveis simplesmente pulam 4096.
+- **Congruência (contagem corrigida em 14/11; a versão anterior dizia 1.140, errado):** em 1.196 dos 1.536 casos, Σ r² tem resíduo constante não nulo módulo 2048 em todo U (768 em 744 polares, 1792 em 412, 1024 em 40), logo nunca vale 4096. Nos outros 340 casos, os valores atingíveis pulam 4096. Os certificados algébricos dos 1.196 estão em `NOTA_CERTIFICADOS_PARSEVAL.md`.
 
 ## Reformulação exata (para a prova)
 Σ_w (−1)^{f(z,w)+f(z,w+d)} = 64·(−1)^{f(z,d)+f(z,0)} se d ∈ rad B_z, e 0 caso contrário. Logo
 
   Σ_z r(z)² = 64 · Σ_{(z,d) ∈ R} (−1)^{g(z,d)},  R = {(z,d) : d ∈ rad B_z},  g(z,d) = f(z,d) + f(z,0),
 
-e 4096 ⇔ wt(g|_R) = (|R| − 64)/2. Para os 1.140 casos, a constância módulo 2048 deve ser uma divisibilidade de pesos de funções de grau baixo em R, no espírito de Ax/McEliece. Isso ainda falta provar.
+e 4096 ⇔ wt(g|_R) = (|R| − 64)/2. Para os 1.196 casos, a constância módulo 2048 está provada por certificados de caracteres (extensão do Codex): ver `NOTA_CERTIFICADOS_PARSEVAL.md`.
