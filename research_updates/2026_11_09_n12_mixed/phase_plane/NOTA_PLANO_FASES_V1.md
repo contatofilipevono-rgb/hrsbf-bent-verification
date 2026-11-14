@@ -17,6 +17,7 @@ Contagem por classe:
 | vazia depois de somar as consequências afins do balanceamento (somas de caracteres) | 14 | ortogonalidade e balanceamento |
 | plano por identidade de grau 4 no espaço afim | 1 (classe 0) | ortogonalidade e balanceamento afins; não precisa do tamanho exato das fibras |
 | plano equivalente a x₂₄ = 0, conferido por enumeração bit a bit | 13 | precisa do tamanho exato das fibras |
+| x₂₄ = 0 provado por uma identidade quadrática na fibra 0 mais H4 ⊂ {u₁ = 1} (`prova_x24_curta.py`) | 14 | sem células nem varredura |
 
 ## Estrutura do resíduo (identidade de grau 4)
 
@@ -215,6 +216,41 @@ Somado aos 734 certificados só de momentos (já por interpolação), **nenhuma 
 3. Relação de pares: quando S = ⟨1111⟩, P₀ ∪ P₁₅ = Z × F₂² dá bit₂(|P₁₅|) = bit₂(|P₀|) e momentos z₀s₁ iguais. Mas essas são as classes 1, 128 e 129, que não usam o bit de tamanho.
 
 Nas células com bit de tamanho, as duas formas valem: ⟨P₀, z₀s₁⟩ + bit₂(|P₀|) = 1 e ⟨P₁₅, z₀s₁⟩ + bit₂(|P₁₅|) = 1, conferidas em amostras das classes 164 e 22. Mesmo assim, não existe bijeção de P₀ em P₁₅ que preserve o tamanho: na classe 22, |P₀| mod 8 ≠ |P₁₅| mod 8 em 896 pontos amostrados. Concluímos que as duas identidades são instâncias do mesmo mecanismo de blocos, aplicado a fibras diferentes. Não há transformação explícita entre elas, e a equivalência fica sem afirmação.
+
+## Prova curta de x₂₄ = 0: uma identidade quadrática na fibra 0
+
+Script: `prova_x24_curta.py` (≈ 25 s numa CPU). Argumento do Argon (`RESPOSTA_FIBRAS_0_15.md`, 14/11), conferido de forma independente; as hipóteses que lá ficavam implícitas agora são afirmadas no verificador.
+
+Notação: código = (κ ≪ 25) | u, com u ∈ F₂²⁵ e u₂₄ = x₂₄; x = z + 64s. Para cada fibra t, seja
+
+  E_t = ⟨1_{P_t}, z₀s₁⟩ + bit₂(|P_t|).
+
+Uma função bent exige |P_t| = 16 e 1_{P_t} ⊥ RM(2,8), logo E_t = 0.
+
+**Passo 1 (blocos em todo F₂²⁵, sem células).** As 25 direções baixas não dependem de s. Então o rótulo de (z, s) é Lu(z) + C_κ(z, s), com Lu linear em u e C_κ fixado pela classe. Nas 14 classes, para todo z:
+- os quatro valores C_κ(z, s) formam 1 valor ou 2 valores (2 + 2);
+- no segundo caso, sw z ≠ z e sw z também é do tipo 2 + 2;
+- para t ∈ {0, 15}, os indicadores de par coincidem como polinômios: J_z(u) = J_{sw z}(u).
+
+Isso dá |P_t| = 4B em todo F₂²⁵, com B = Σ_{1 valor} I_z + Σ_{órbitas} J_z. Diferentemente do lema dos blocos, não é preciso fixar a célula de ρ nem a condição (C): a igualdade J_z = J_{sw z} vale para t = 0 e t = 15 em todo o espaço.
+
+**Passo 2 (identidade).** Como polinômios em F₂[u₀, …, u₂₄], os termos de grau 3 e 4 se cancelam, e nas 14 classes
+
+  E₀ = E₁₅ = (1 + u₂₄)(S(u) + c₄) + u₁u₂₄,  S = u₁₁+u₁₃+u₁₆+u₁₉+u₂₂+u₂₃,  c₄ = bit 4 de κ.
+
+**Passo 3 (uma consequência afim).** Em todas as 14 classes, H4 = A_κ ⊂ {u₁ = 1}. H2 sozinho não força u₁; quem força são as somas de caracteres. Além disso, H2 ⊂ {S + u₂₄ = c₄}.
+
+**Conclusão.** Em A_κ ∩ {u₂₄ = 1}, a identidade dá E₀ = u₁ = 1: a fibra 0 viola o tamanho 16 ou o momento z₀s₁. Logo **x₂₄ = 0 em todo A_κ, nas 14 classes**. Isso substitui de uma vez:
+- a passagem pelos valores de ρ;
+- a conferência de (C) nas células;
+- os 364 certificados com bit de tamanho e os 734 só de momentos;
+- a prova I1–I5 das classes 129, 128 e 1.
+
+Esses argumentos continuam válidos e ficam como controles independentes.
+
+Observações:
+- Fora de C_{L3} (32 cartas, que contêm as 14 classes), a identidade falha e aparecem fibras com 4 rótulos distintos (`confere_fibras_0_15_amostra.py`).
+- Nas dez classes com bit de tamanho, bit₂(|P₀|) e bit₂(|P₁₅|) são polinômios diferentes, mas a soma de cada um com o seu momento é a mesma. Isso explica por que as fibras 0 e 15 fecham pelo mesmo mecanismo sem haver bijeção entre elas (seção anterior).
 
 ## O fenômeno se repete em V2? (`space_probe.py`, execução 43545993898)
 
