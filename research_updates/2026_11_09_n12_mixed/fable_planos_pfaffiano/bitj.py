@@ -454,7 +454,10 @@ def exclude_vec(G0, Gk, part, ker, polys, order):
         blk = int(np.sum(np.where(incons, 0, 1 << (F - rank)).astype(object))) if F else int((~incons).sum())
         assert len(gl) + sum((1 << len(kk)) - 1 for _, kk in sols) == blk
         if sols:
-            bent += bent_test_packed(G0, Gk, part, ker, sols, polys, order, skip_zero=True)
+            if KERNEL_BATCH:
+                bent += kernel_batch(Gp, Dp, sols, m, polys, order)
+            else:
+                bent += bent_test_packed(G0, Gk, part, ker, sols, polys, order, skip_zero=True)
             if FIRST and bent:
                 return surv, bent, C
     return surv, bent, C
@@ -632,7 +635,35 @@ def bent_test_packed(G0, Gk, part, ker, sols, polys, order, c=12, skip_zero=Fals
     return bent
 
 
-RESTRICT = os.environ.get("BITJ_RESTRICT", "1") == "1"
+KERNEL_BATCH = os.environ.get("BITJ_KBATCH", "1") == "1"
+
+
+def kernel_batch(Gp, Dp, sols, m, polys, order, max_rows=1 << 16):
+    """Vectorised kernel path: group the (x0, kernel) pairs by kernel, build every point x0 + (nonzero
+    combination of the kernel) with numpy and test the tables in batches (bent_batch_x).
+    x0 itself is not repeated (it was tested with the particular solutions)."""
+    groups = {}
+    for x0, kk in sols:
+        groups.setdefault(tuple(kk), []).append(x0)
+    sh = np.arange(m, dtype=np.int64)
+    bent = 0
+    for kk, x0s in groups.items():
+        k = len(kk)
+        Kb = ((np.array(kk, dtype=np.int64)[:, None] >> sh[None, :]) & 1).astype(np.uint8)          # k x m
+        T = ((np.arange(1, 1 << k, dtype=np.int64)[:, None] >> np.arange(k)[None, :]) & 1).astype(np.uint8)
+        combos = (T.astype(np.int64) @ Kb.astype(np.int64) & 1).astype(np.uint8)                   # (2^k - 1) x m
+        X0 = ((np.array(x0s, dtype=np.int64)[:, None] >> sh[None, :]) & 1).astype(np.uint8)        # n0 x m
+        check_zeros(X0[:2] ^ combos[:1], polys, order)
+        per = max(1, max_rows // len(combos))
+        for s in range(0, len(X0), per):
+            X = (X0[s:s + per, None, :] ^ combos[None, :, :]).reshape(-1, m)
+            bent += bent_batch_x(Gp, Dp, X)
+            if FIRST and bent:
+                return bent
+    return bent
+
+
+RESTRICT = os.environ.get("BITJ_RESTRICT", "0") == "1"
 _RAD_CACHE = {}
 
 
