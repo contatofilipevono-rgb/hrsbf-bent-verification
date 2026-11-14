@@ -75,7 +75,7 @@ def bits(G):
     return (M >> 1) & 1, M & 1
 
 
-FAMS = ("F4", "F6")          # degree-2 families used in the linearisation
+FAMS = ("F4",)               # degree-2 family used (F6 added nothing on the pilots)
 MOM2 = np.array([np.ones(64, np.int64)] + [((Zs >> i) & 1) for i in range(6)] +
                 [((Zs >> i) & (Zs >> j) & 1) for i, j in itertools.combinations(range(6), 2)], dtype=np.int64)  # 22 x 64
 HYP = list(range(1, 64))                                                      # V^perp = {0, p}
@@ -239,6 +239,8 @@ def analyse(G0, Gk, part, ker, rng, max_rounds=6):
             return u
         vals = {}
         def cond(u):
+            if FAMS == ("F4",):
+                return bits(table_at(G0, Gk, u))[0].reshape(-1).astype(np.uint8)
             fam = families(table_at(G0, Gk, u))
             return np.concatenate([fam[k] for k in FAMS]).astype(np.uint8)
         for mono in mons:
@@ -378,7 +380,160 @@ def exclude(G0, Gk, part, ker, polys, order, slice_bits=24):
                         G ^= Kt[i]
                 Gs[t] = G
             bent += int(is_bent_batch(Gs).sum())
+            if FIRST and bent:
+                return surv, bent
     return surv, bent
+
+
+FIRST = False
+
+
+def exclude_vec(G0, Gk, part, ker, polys, order):
+    """Vectorised version of exclude_cover: all 2^|C| affine systems are eliminated at once with numpy.
+    Returns (survivors, bent, cover_size); the bent test runs only if survivors exist (via exclude_cover)."""
+    m = len(ker)
+    quads = set()
+    for p in polys:
+        for k in range(p.bit_length()):
+            if p >> k & 1 and len(order[k]) == 2:
+                quads.add(order[k])
+    cover = []; rem = set(quads)
+    while rem:
+        deg = {}
+        for i, j in rem:
+            deg[i] = deg.get(i, 0) + 1; deg[j] = deg.get(j, 0) + 1
+        v = max(deg, key=deg.get); cover.append(v)
+        rem = {e for e in rem if v not in e}
+    cpos = {v: t for t, v in enumerate(cover)}
+    free = [i for i in range(m) if i not in cpos]; fpos = {v: t for t, v in enumerate(free)}
+    C = len(cover); F = len(free); N = 1 << C
+    A = np.arange(N, dtype=np.int64)
+    bitc = [((A >> t) & 1).astype(np.uint32) for t in range(C)]
+    R = len(polys)
+    Mx = np.zeros((N, R), dtype=np.uint32)
+    for r, p in enumerate(polys):
+        row = np.zeros(N, dtype=np.uint32)
+        for k in range(p.bit_length()):
+            if not p >> k & 1:
+                continue
+            mo = order[k]
+            if len(mo) == 0:
+                row ^= np.uint32(1 << F)
+            elif len(mo) == 1:
+                i = mo[0]
+                if i in cpos:
+                    row ^= bitc[cpos[i]] << F
+                else:
+                    row ^= np.uint32(1 << fpos[i])
+            else:
+                i, j = mo
+                if i in cpos and j in cpos:
+                    row ^= (bitc[cpos[i]] & bitc[cpos[j]]) << F
+                elif i in cpos:
+                    row ^= bitc[cpos[i]] << fpos[j]
+                else:
+                    row ^= bitc[cpos[j]] << fpos[i]
+        Mx[:, r] = row
+    used = np.zeros((N, R), dtype=bool)
+    idx = np.arange(N)
+    rank = np.zeros(N, dtype=np.int64)
+    for col in range(F):
+        has_bit = ((Mx >> col) & 1).astype(bool)
+        cand = has_bit & ~used
+        anyc = cand.any(axis=1)
+        piv = np.argmax(cand, axis=1)
+        pivrow = Mx[idx, piv]
+        upd = has_bit & anyc[:, None]
+        upd[idx, piv] = False
+        Mx ^= np.where(upd, pivrow[:, None], 0).astype(np.uint32)
+        used[idx[anyc], piv[anyc]] = True
+        rank += anyc
+    incons = (Mx == np.uint32(1 << F)).any(axis=1)
+    surv = int(np.sum(np.where(incons, 0, 1 << (F - rank)).astype(object))) if F else int((~incons).sum())
+    bent = 0
+    if surv:
+        s2, bent, _ = exclude_cover(G0, Gk, part, ker, polys, order)
+        assert s2 == surv, (s2, surv)
+    return surv, bent, C
+
+
+def exclude_cover(G0, Gk, part, ker, polys, order, max_list=1 << 22):
+    """Same answer as exclude(), faster: choose a vertex cover C of the graph of quadratic monomials;
+    for each assignment of C the system is affine in the other variables -> Gaussian elimination.
+    Returns (survivors, bent, cover_size)."""
+    m = len(ker)
+    quads = set()
+    for p in polys:
+        for k in range(p.bit_length()):
+            if p >> k & 1 and len(order[k]) == 2:
+                quads.add(order[k])
+    # greedy vertex cover
+    cover = []; rem = set(quads)
+    while rem:
+        deg = {}
+        for i, j in rem:
+            deg[i] = deg.get(i, 0) + 1; deg[j] = deg.get(j, 0) + 1
+        v = max(deg, key=deg.get); cover.append(v)
+        rem = {e for e in rem if v not in e}
+    cset = set(cover); free = [i for i in range(m) if i not in cset]
+    fpos = {v: t for t, v in enumerate(free)}
+    surv = 0; sols = []
+    for asg in range(1 << len(cover)):
+        val = {v: (asg >> t) & 1 for t, v in enumerate(cover)}
+        rows = []
+        for p in polys:
+            r = 0; c = 0
+            for k in range(p.bit_length()):
+                if not p >> k & 1:
+                    continue
+                mo = order[k]
+                if len(mo) == 0:
+                    c ^= 1
+                elif len(mo) == 1:
+                    i = mo[0]
+                    if i in cset:
+                        c ^= val[i]
+                    else:
+                        r ^= 1 << fpos[i]
+                else:
+                    i, j = mo
+                    if i in cset and j in cset:
+                        c ^= val[i] & val[j]
+                    elif i in cset:
+                        if val[i]:
+                            r ^= 1 << fpos[j]
+                    else:
+                        if val[j]:
+                            r ^= 1 << fpos[i]
+            rows.append((r, c))
+        sol = solve_affine(rows, len(free))
+        if sol is None:
+            continue
+        p0, kk = sol
+        surv += 1 << len(kk)
+        if len(sols) < max_list:
+            sols.append((asg, p0, kk))
+    bent = 0
+    if surv:
+        # direct Walsh test on all survivors (expected rare): enumerate kernels
+        for asg, p0, kk in sols:
+            for t in range(1 << len(kk)):
+                fv = p0
+                for i, kv in enumerate(kk):
+                    if t >> i & 1:
+                        fv ^= kv
+                u = part
+                for tt, v in enumerate(cover):
+                    if (asg >> tt) & 1:
+                        u ^= ker[v]
+                for t2, v in enumerate(free):
+                    if fv >> t2 & 1:
+                        u ^= ker[v]
+                if is_bent_batch(table_at(G0, Gk, u)[None])[0]:
+                    bent += 1
+                    if FIRST:
+                        return surv, bent, len(cover)
+    return surv, bent, len(cover)
 
 
 def main():
@@ -386,7 +541,10 @@ def main():
     ap.add_argument("mode"); ap.add_argument("path")
     ap.add_argument("--shard", default="0/1"); ap.add_argument("--out", default="bitj.json")
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--first", action="store_true", help="stop at the first bent function found (positive control)")
     a = ap.parse_args()
+    global FIRST
+    FIRST = a.first
     if a.mode == "controle":
         controle(a.path); return
     from base12 import pack, forma
@@ -397,7 +555,7 @@ def main():
     si, sm = map(int, a.shard.split("/"))
     Bb, Gb, Gk, piv = load_model()
     Vs = todos_subespacos3()
-    lines = [l.split() for l in open(a.path) if "L5+L3=1" in l]
+    lines = [l.split() for l in open(a.path) if "L5+L3=1" in l or (l.strip() and "L5" not in l)]
     rng = np.random.default_rng(1)
     out = []
     for n, parts in enumerate(lines):
@@ -434,8 +592,8 @@ def main():
             if status == "alive" and a.mode == "exclui":
                 p2, k2, polys, order = analyse.final
                 t1 = time.time()
-                s_, b_ = exclude(G0, Gk, p2, k2, polys, order)
-                rec.update(final_dim=len(k2), poisson_survivors=s_, bent_found=b_,
+                s_, b_, cv = exclude_vec(G0, Gk, p2, k2, polys, order)
+                rec.update(final_dim=len(k2), cover=cv, poisson_survivors=s_, bent_found=b_,
                            exclusion_seconds=round(time.time() - t1, 1),
                            status="dead by Poisson bits + direct Walsh" if b_ == 0 else "BENT FOUND")
         rec["seconds"] = round(time.time() - t0, 1)
