@@ -94,3 +94,9 @@ sejam bent.
 
 Reprodução: primeiro execute ../piloto-gauss-real/inputs_model/base12.py;
 depois execute python certifica.py. Saídas completas em resultado.json.
+
+No GitHub, os scripts localizam a pasta fable_planos_pfaffiano existente no
+conjunto de notas; execute primeiro o base12.py dessa pasta. Não é preciso
+copiar os módulos do modelo para inputs_model. Os certificados numéricos
+dos três pilotos foram auditados independentemente pela sessão
+astra_auditoria, inclusive nas coordenadas originais dos parâmetros.
