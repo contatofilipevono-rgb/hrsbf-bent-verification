@@ -495,8 +495,13 @@ def bent_test_vec(G0, Gk, part, ker, sols, polys, order, chunk=2048):
         nonlocal bent
         G = (np.rint(X.astype(np.float32) @ D).astype(np.int64) & 1).astype(np.uint8) ^ Gp
         S = 1.0 - 2.0 * G.reshape(-1, 64, 64).astype(np.float32)
-        W = np.matmul(np.matmul(Hf, S), Hf)
-        ok = (np.abs(W) == 64).all(axis=(1, 2))
+        # cheap necessary test first: the Walsh column b = 0 is H @ (row sums of S)
+        W0 = S.sum(axis=2) @ Hf
+        keep = (np.abs(W0) == 64).all(axis=1)
+        ok = np.zeros(len(S), dtype=bool)
+        if keep.any():
+            W = np.matmul(np.matmul(Hf, S[keep]), Hf)
+            ok[keep] = (np.abs(W) == 64).all(axis=(1, 2))
         # sanity: a few rows satisfy every polynomial
         for row in X[:2]:
             for p in polys:
