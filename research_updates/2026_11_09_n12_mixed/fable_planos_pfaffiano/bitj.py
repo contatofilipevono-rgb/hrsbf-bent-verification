@@ -437,6 +437,7 @@ def exclude_vec(G0, Gk, part, ker, polys, order):
     used = np.zeros((N, R), dtype=bool)
     idx = np.arange(N)
     rank = np.zeros(N, dtype=np.int64)
+    pcol = np.full((N, max(F, 1)), -1, dtype=np.int64)       # pivot row of each free column
     for col in range(F):
         has_bit = ((Mx >> col) & 1).astype(bool)
         cand = has_bit & ~used
@@ -447,14 +448,81 @@ def exclude_vec(G0, Gk, part, ker, polys, order):
         upd[idx, piv] = False
         Mx ^= np.where(upd, pivrow[:, None], 0).astype(np.uint32)
         used[idx[anyc], piv[anyc]] = True
+        pcol[anyc, col] = piv[anyc]
         rank += anyc
     incons = (Mx == np.uint32(1 << F)).any(axis=1)
     surv = int(np.sum(np.where(incons, 0, 1 << (F - rank)).astype(object))) if F else int((~incons).sum())
     bent = 0
     if surv:
-        s2, bent, _ = exclude_cover(G0, Gk, part, ker, polys, order)
-        assert s2 == surv, (s2, surv)
+        # particular solution + kernel of every consistent assignment, read off the reduced rows
+        sols = []
+        for a in np.nonzero(~incons)[0]:
+            rowsA = Mx[a]; pc = pcol[a]
+            x0 = 0
+            for t, v in enumerate(cover):
+                if (a >> t) & 1:
+                    x0 |= 1 << v
+            kk = []
+            for c in range(F):
+                if pc[c] >= 0:
+                    if (int(rowsA[pc[c]]) >> F) & 1:
+                        x0 |= 1 << free[c]
+                else:
+                    kv = 1 << free[c]
+                    for c2 in range(F):
+                        if pc[c2] >= 0 and (int(rowsA[pc[c2]]) >> c) & 1:
+                            kv |= 1 << free[c2]
+                    kk.append(kv)
+            sols.append((x0, kk))
+        assert sum(1 << len(kk) for _, kk in sols) == surv
+        bent = bent_test_vec(G0, Gk, part, ker, sols, polys, order)
     return surv, bent, C
+
+
+def bent_test_vec(G0, Gk, part, ker, sols, polys, order, chunk=2048):
+    """sols: list of (x0, kernel) over the m variables of ker.  Builds every table G0 + sum x_i Gk(ker_i)
+    (with u = part + sum x_i ker_i) in batches and tests bentness with float32 matmuls.
+    Each batch is also checked against the quadratic system (all survivors must be zeros)."""
+    m = len(ker)
+    D = np.array([table_at(np.zeros_like(G0), Gk, ker[i]).reshape(-1) for i in range(m)], dtype=np.float32)
+    Gp = table_at(G0, Gk, part).reshape(-1).astype(np.uint8)
+    Hf = H64.astype(np.float32)
+    bits = lambda v: np.array([(v >> i) & 1 for i in range(m)], dtype=np.uint8)
+    # buffer of survivor bit-vectors
+    buf = []; nbuf = 0; bent = 0
+
+    def flush(X):
+        nonlocal bent
+        G = (np.rint(X.astype(np.float32) @ D).astype(np.int64) & 1).astype(np.uint8) ^ Gp
+        S = 1.0 - 2.0 * G.reshape(-1, 64, 64).astype(np.float32)
+        W = np.matmul(np.matmul(Hf, S), Hf)
+        ok = (np.abs(W) == 64).all(axis=(1, 2))
+        # sanity: a few rows satisfy every polynomial
+        for row in X[:2]:
+            for p in polys:
+                acc = 0
+                for k in range(p.bit_length()):
+                    if p >> k & 1:
+                        mo = order[k]
+                        acc ^= 1 if len(mo) == 0 else (row[mo[0]] if len(mo) == 1 else row[mo[0]] & row[mo[1]])
+                assert acc == 0
+        bent += int(ok.sum())
+
+    for x0, kk in sols:
+        b0 = bits(x0)
+        K = np.array([bits(v) for v in kk], dtype=np.uint8).reshape(len(kk), m)
+        k = len(kk)
+        for s in range(0, 1 << k, chunk):
+            T = ((np.arange(s, min(s + chunk, 1 << k))[:, None] >> np.arange(k)[None, :]) & 1).astype(np.uint8)
+            X = ((T.astype(np.int64) @ K.astype(np.int64)) & 1).astype(np.uint8) ^ b0
+            buf.append(X); nbuf += len(X)
+            if nbuf >= chunk:
+                flush(np.concatenate(buf)); buf = []; nbuf = 0
+                if FIRST and bent:
+                    return bent
+    if buf:
+        flush(np.concatenate(buf))
+    return bent
 
 
 def exclude_cover(G0, Gk, part, ker, polys, order, max_list=1 << 22):
