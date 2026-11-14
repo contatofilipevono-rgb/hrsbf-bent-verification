@@ -1,0 +1,69 @@
+{
+  "four_dimensional": {
+    "0": 1,
+    "2": 35,
+    "4": 28
+  },
+  "other_dimensions": [
+    {
+      "dimension": 2,
+      "rank": 0,
+      "degree": 2
+    },
+    {
+      "dimension": 2,
+      "rank": 2,
+      "degree": 2
+    },
+    {
+      "dimension": 6,
+      "rank": 0,
+      "degree": -1
+    },
+    {
+      "dimension": 6,
+      "rank": 2,
+      "degree": -1
+    },
+    {
+      "dimension": 6,
+      "rank": 4,
+      "degree": 2
+    },
+    {
+      "dimension": 6,
+      "rank": 6,
+      "degree": 2
+    },
+    {
+      "dimension": 8,
+      "rank": 0,
+      "degree": -1
+    },
+    {
+      "dimension": 8,
+      "rank": 2,
+      "degree": -1
+    },
+    {
+      "dimension": 8,
+      "rank": 4,
+      "degree": -1
+    },
+    {
+      "dimension": 8,
+      "rank": 6,
+      "degree": 2
+    },
+    {
+      "dimension": 8,
+      "rank": 8,
+      "degree": 2
+    }
+  ],
+  "sum_checks": 4096,
+  "local_assignments_4d": 2048,
+  "affine_substitutions": 64,
+  "direct_coefficient_constructions": 64,
+  "result": "all exact checks passed"
+}
