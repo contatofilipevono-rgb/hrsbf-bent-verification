@@ -44,3 +44,10 @@ Reprodução local:
 O script também usa o extrator arquivado em
 ../auditoria-argon-poisson/argon_prova_poisson_bitj.py. O arquivo
 input_pilots.json preserva a polar e a ANF da testemunha utilizadas.
+
+Na cópia do GitHub, a pasta inputs_model não é necessária: os scripts usam
+a pasta fable_planos_pfaffiano existente no mesmo conjunto de notas. Execute
+primeiro base12.py dessa pasta para gerar base12.pkl. O extrator é localizado
+em quadratic_gauss_bit/audit_argon. As funções bits, load_model, table_at e
+solve_affine da versão-base do ramo e da cópia usada no piloto têm ASTs
+idênticas; as alterações posteriores de enumeração não entram neste teste.
