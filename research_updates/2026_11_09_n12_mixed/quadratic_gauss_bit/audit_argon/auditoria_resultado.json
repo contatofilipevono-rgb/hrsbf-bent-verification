@@ -1,0 +1,44 @@
+{
+  "joint": {
+    "families": 64,
+    "parameter_dimension": 3,
+    "auxiliary_dimension": 6,
+    "all_parameter_auxiliary_points": 32768,
+    "compressed_equivalence_checks": 512,
+    "coefficient_checks": 1408,
+    "shuffled_basis_checks": 192
+  },
+  "false_mod8_counterexamples": {
+    "F4": {
+      "I": [
+        2
+      ],
+      "V": [
+        1,
+        2,
+        4,
+        8
+      ],
+      "w0": 0,
+      "omega": 1,
+      "M": -4,
+      "Walsh_abs": 64
+    },
+    "F6": {
+      "I": [
+        0,
+        1
+      ],
+      "omega": 0,
+      "M": -4,
+      "Walsh_abs": 64
+    }
+  },
+  "integer_degree_counterexample": {
+    "boolean_phase_degree": 1,
+    "integer_kappa_degree": 6,
+    "top_coefficient": 128,
+    "kappa_mod4": 2
+  },
+  "result": "main lemma and compression pass; stronger mod8 claims refuted"
+}
