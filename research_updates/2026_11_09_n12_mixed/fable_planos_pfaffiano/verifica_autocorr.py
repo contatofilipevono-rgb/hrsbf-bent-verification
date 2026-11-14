@@ -96,6 +96,20 @@ def check(c, T0, K):
             A[d - 1] ^= vec; b[d - 1] ^= g
     if c["level"] == "mod4":
         return gf2_rank(np.concatenate([A, b[:, None]], axis=1)) > gf2_rank(A)
+    if c["level"] == "forced":
+        sol = gf2_solve(A, b)
+        if sol is None:
+            return False
+        x0, ker = sol
+        col = c["column"]; tot = 0
+        for z in range(64):
+            zs = [(d, vec, g) for (zz, d, vec, g) in pairs if zz == z]
+            rk = 6 - (len(zs).bit_length() - 1)          # |rad| = 2^(6 - rank)
+            okz = all(all((int(vec @ kv) & 1) == 0 for kv in ker) and
+                      (g ^ (bin(col & d).count("1") & 1) ^ (int(vec @ x0) & 1)) == 0 for d, vec, g in zs)
+            if okz:
+                tot += 1 << (12 - rk)
+        return tot > 4096
     K_ = int(c["level"][3:]); k = K_.bit_length() - 1
     sol = gf2_solve(A, b)
     if sol is None:

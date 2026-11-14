@@ -55,10 +55,28 @@ Também testei se algum dos 144 tinha uma coluna isolada com resíduo constante 
 
 Em aberto: derivar as duas formas lineares de W diretamente das equações (L5), sem passar pela lista dos 3.984.
 
-## Quadro da cobertura pelos planos depois desta nota
-| Condição | Polares | Certificado |
+## Os 340 restantes (rodado com autorização do usuário, 14/11)
+O mesmo método foi aplicado aos 340 polares que estavam com o Codex (`polares_outros340.txt`):
+- 208 caem pela paridade, 104 pelo sistema mod4 e 8 pelo resíduo mod64, no total 320. O verificador independente não aponta falhas.
+- Os 20 restantes (`polares_abertos20.txt`) caem por uma **cota inferior por linhas forçadas** (`cert_forcado.py`).
+  - No espaço solução do sistema mod4, uma linha z é forçadamente ativa na coluna b se todas as suas formas de ativação se anulam ali e as constantes dão 0.
+  - Nos 20 polares, as linhas forçadas da coluna 0 somam 5120 (16 polares) ou 7168 (4), ambos acima de 4096. Logo E₀ > 4096 em todo o espaço.
+  - Isso é só álgebra linear.
+  - Verificador: 20 de 20. Teste negativo: os 18 polares bent marcados como "forçados" são rejeitados; as bent têm soma forçada ≤ 4096.
+
+## Quadro final da cobertura pelos planos: todos os 3.984 polares com certificado elementar
+| Certificado | Polares | Natureza |
 |---|---:|---|
 | (L5)+(L3) sem solução | 2.304 | álgebra linear |
-| autocorrelação em (0,d), níveis odd/mod4/mod8/mod64 | 1.340 | elementar, verificado (este documento) |
-| Parseval na coluna 0 sem resíduo constante | 340 | com o Codex |
-| **Total** | **3.984** | |
+| N_d ímpar para algum d ≠ 0 | 1.152 | só o polar (paridade) |
+| sistema afim mod4 inconsistente | 396 | álgebra linear |
+| resíduo constante mod 8 | 10 | coeficientes inteiros de caracteres |
+| resíduo constante mod 64 (de fato, S_d constante ≠ 0) | 102 | coeficientes inteiros de caracteres |
+| linhas forçadas, soma > 4096 | 20 | álgebra linear |
+| **Total** | **3.984** | **nenhum polar sobrevive; nenhuma enumeração de parâmetros** |
+
+Hipóteses de que isso ainda depende:
+- a lista dos 3.984 polares compatíveis com (L5), produzida por `poisson5.py`, e as reduções que levam a ela ((Pf4) à mão: 15 pares (a,b));
+- o modelo (`base12.pkl`), com a afinidade das direções em w afirmada em cada polar.
+
+O lema dos postos (Pf₆ ≡ 0 em W) explica por que só aparecem os postos 0, 2 e 4, mas os certificados não dependem dele.
