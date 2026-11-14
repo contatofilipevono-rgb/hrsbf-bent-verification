@@ -1,0 +1,11 @@
+{
+  "replay": {
+    "mod4": 3,
+    "odd": 3,
+    "mod64": 3,
+    "mod8": 3,
+    "forced": 20
+  },
+  "l5_only_outside_W": [],
+  "l5_candidate_masks": 72
+}
