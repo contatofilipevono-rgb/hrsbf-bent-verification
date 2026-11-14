@@ -1,0 +1,29 @@
+{
+  "coverage": 3984,
+  "linear": 2304,
+  "certificates": 1680,
+  "overlap_linear": 0,
+  "overlap_cert": 0,
+  "outside_input": 0,
+  "without_record": 0,
+  "open_replaced_by_forced": true,
+  "old_rows": 3984,
+  "old_agrees": true,
+  "old_status": {
+    "dead by L5+L3": 2304,
+    "dead by Poisson bits + direct Walsh": 1356,
+    "dead": 324
+  },
+  "nonzero_bent": 0,
+  "residue_agrees": true,
+  "other340_agrees": true,
+  "git_blobs": {
+    "certificados_autocorr.json": "7ccec6b1df55eb4c87695e551a69192df30e7c1d",
+    "certificados_autocorr_340.json": "282d24ad8c4cf4ae8325e88ed1c809eb4337523e",
+    "certificados_forcado_20.json": "ec62ae536f97f1bd96819dce8ee2c4fc49864778",
+    "certificados_parseval.json": "1eade057f50a44113b298d88181eb46bab681e0c",
+    "parseval_L5.json": "aca14d0548b6e41f25ac074e6e3e7a8044883f21",
+    "funil_final_3984.json": "0068e2623cf416d1d8320a7a4fd4d0f17aff8b96",
+    "polares_L5.txt": "126d5d9c0b70acd5f8bec34151dfc03768e80808"
+  }
+}
