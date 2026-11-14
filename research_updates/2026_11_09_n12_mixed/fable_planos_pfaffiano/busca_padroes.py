@@ -93,6 +93,34 @@ if __name__ == "__main__":
     rec = {"polar": hx, "analyse": status}
     if status == "alive":
         p2, k2, polys, order = analyse.final
+        if "--mod4" in sys.argv:
+            # restrict p2 + span(k2) by the mod-4 autocorrelation system (necessary for bent)
+            T0 = table_at(G0, Gk, p2); K = [table_at(np.zeros_like(G0), Gk, v) for v in k2]
+            Gp0 = pack_table(T0); Kp0 = [pack_table(Ki) for Ki in K]
+            rs = bitj.restrict_span(Gp0, Kp0, bitj.rad_mask(Gp0))
+            rec_m4 = None
+            if rs is None:
+                rec_m4 = "inconsistent"
+            else:
+                y0, Y = rs
+                np2 = p2
+                for j in range(len(k2)):
+                    if y0 >> j & 1:
+                        np2 ^= k2[j]
+                nk2 = []
+                for v in Y:
+                    w = 0
+                    for j in range(len(k2)):
+                        if v >> j & 1:
+                            w ^= k2[j]
+                    nk2.append(w)
+                rec_m4 = "%d -> %d" % (len(k2), len(nk2))
+                p2, k2 = np2, nk2
+            rec["mod4_restriction"] = rec_m4
+            if rs is None:
+                rec["status"] = "dead (mod-4 autocorrelation system inconsistent)"
+                rec["seconds"] = round(time.time() - t0, 1)
+                json.dump(rec, open(out_path, "w")); print(json.dumps(rec)); sys.exit(0)
         T0 = table_at(G0, Gk, p2); K = [table_at(np.zeros_like(G0), Gk, v) for v in k2]
         res, D = joint_hits(T0, K, maxD)
         rec.update(dim_after_analyse=len(k2), D=D)
@@ -101,6 +129,10 @@ if __name__ == "__main__":
         else:
             hits, bvecs = res
             rec["hits"] = len(hits)
+            if "--hitshard" in sys.argv:
+                hi_, hn_ = map(int, sys.argv[sys.argv.index("--hitshard") + 1].split("/"))
+                hits = hits[hi_::hn_]
+                rec["hitshard"] = "%d/%d" % (hi_, hn_); rec["hits_here"] = len(hits)
             Gp = pack_table(T0); Dp = np.array([pack_table(Ki) for Ki in K])
             m = len(k2); bent = 0; pts = 0
             sh = np.arange(m, dtype=np.int64)

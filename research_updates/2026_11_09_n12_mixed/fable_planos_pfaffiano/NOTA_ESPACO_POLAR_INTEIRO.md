@@ -43,6 +43,24 @@ Contagem atual dos 212: **69 com bent, 132 mortos, 11 indefinidos.** Os indefini
 
 Ideia para os 11: antes do Walsh, restringir as formas de ativação a cada espaço de sobreviventes x₀ + ⟨K⟩ e exigir as 64 colunas juntas. Isso corta quase todos os pontos (nos polares bent, os pontos comuns às 64 colunas são de 1 a 864 em U inteiro).
 
+### Atualização (rodadas 4 a 7)
+- **Busca por padrões** (`busca_padroes.py`, exata):
+  - toda bent está no espaço linearizado p₂ + ⟨k₂⟩ e tem padrão de ativação entre os pontos comuns às 64 colunas;
+  - cada padrão corta um subespaço afim, que é varrido inteiro com Walsh completo.
+  
+  Controle positivo: acha bent num polar bent conhecido. A varredura de um mesmo polar é dividida entre processos (`--hitshard`).
+- Resultados por polar:
+  - **com bent:** polar 6;
+  - **mortos sem nenhum padrão comum às 64 colunas:** polares 13 e 4;
+  - **mortos com todos os subespaços varridos sem bent:** polares 1, 2, 7 e 9, com 38 a 67 milhões de pontos cada.
+- **Polar nulo** (hex `0`): f(z,w) é afim em w, nas coordenadas z = a + b e w = b de `base12.py`. É a família afim nas classes da diagonal antipodal, que tem 290.004.992 quárticas bent (`README.md`). Conta como **com bent** pela teoria. Na busca, 8 de 9 fatias morreram, e a fatia que faltava foi cortada pelo limite.
+- **Ainda indefinidos:**
+  - polar 5 (dimensão 43, D = 20, 496 padrões), em busca por padrões;
+  - polar 11 (D = 28, grande demais para os padrões), cuja última fatia da busca lenta foi dividida em 10 subpartes.
+- A VM spot foi interrompida uma vez e religada sem perda. Alguns processos morreram por falta de memória (cerca de 2 GB cada na enumeração dos padrões) e foram relançados com no máximo 36 simultâneos.
+
+**Contagem dos 212: 72 com bent, 139 mortos, 2 indefinidos (5 e 11).**
+
 ## Nível módulo 8 (`cert_mod8.py`)
 S_d = 0 exige Σ_z ℓ_z = N_d/2 exatamente.
 - O bit 0 dá o sistema afim mod4.
