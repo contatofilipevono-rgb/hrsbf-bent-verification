@@ -33,6 +33,7 @@ def famW_polys(T, Kp, c=None, batch=256):
     if c is None:
         c = choose_degree(D)
     c = min(c, D) if D else 0
+    famW_polys.last_c = c
     mons = monomials(D, c)
     nJ = len(mons)
     sgn = (1 - 2 * T.astype(np.int64))

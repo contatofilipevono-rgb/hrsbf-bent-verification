@@ -53,6 +53,50 @@ def transport(P, t0, M):
     return frozenset(m for m, v in acc.items() if v)
 
 
+def fwht(a):
+    """In-place integer Walsh-Hadamard butterfly along the last axis (length 4096)."""
+    h = 1
+    n = a.shape[-1]
+    while h < n:
+        a = a.reshape(a.shape[0], -1, 2, h)
+        x = a[:, :, 0, :].copy(); y = a[:, :, 1, :]
+        a[:, :, 0, :] = x + y; a[:, :, 1, :] = x - y
+        a = a.reshape(a.shape[0], n)
+        h *= 2
+    return a
+
+
+def all_bent(P, x0, B):
+    """True iff for every (u,b) the expansion of W(u,b) - 64 on x0 + rowspace(B) has all |J| + v2(N_J) >= 7
+    (then W = 64 mod 128 at every point, hence |W| = 64 by Parseval: every point is bent)."""
+    D = B.shape[0]
+    Kx = P.Kt.reshape(P.m, 4096).astype(np.int64)                  # index x = z*64 + w
+    base = (P.T0.reshape(4096).astype(np.int64) + x0 @ Kx) % 2
+    C = (B @ Kx) % 2 if D else np.zeros((0, 4096), np.int64)       # D x 4096
+    sg = 1 - 2 * base
+    import itertools
+    for k in range(0, min(6, D) + 1):
+        Js = list(itertools.combinations(range(D), k))
+        for s in range(0, len(Js), 512):
+            chunk = Js[s:s + 512]
+            A = np.empty((len(chunk), 4096), np.int64)
+            for r, J in enumerate(chunk):
+                col = sg.copy()
+                for i in J:
+                    col = col * C[i]
+                A[r] = col
+            N = fwht(A)
+            if k == 0:
+                N[0] -= 64
+            a = np.abs(N)
+            nz = a != 0
+            v = np.zeros(a.shape, np.int64)
+            v[nz] = np.log2(a[nz] & -a[nz]).round().astype(np.int64)
+            if (nz & (v + k < 7)).any():
+                return False
+    return True
+
+
 class Checker:
     def __init__(self, P):
         self.P = P; self.events = {}; self.cache = {}
@@ -94,6 +138,11 @@ class Checker:
                     return False
             return True
         leaf = n["leaf"]; stats[leaf] = stats.get(leaf, 0) + 1
+        if leaf == "allbent":
+            if n.get("dim") != B.shape[0] or not all_bent(self.P, x0, B):
+                return False
+            stats["bent"] = stats.get("bent", 0) + (1 << B.shape[0])
+            return True
         polys = [self.get(u, x0, B) for u in n.get("use", [])]
         if leaf == "const":
             return polys[0] == frozenset({()})

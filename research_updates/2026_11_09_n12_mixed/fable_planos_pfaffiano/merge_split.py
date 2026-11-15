@@ -31,6 +31,12 @@ def leaves(n, acc):
     return acc
 
 
+def bent_count(n):
+    if "kids" in n:
+        return sum(bent_count(k) for k in n["kids"])
+    return (1 << n["dim"]) if n.get("leaf") == "allbent" else 0
+
+
 def size(n):
     return 1 + sum(size(k) for k in n.get("kids", []))
 
@@ -54,6 +60,6 @@ for hx, recs in by_polar.items():
     lv = leaves(root, {})
     status = "certified" if not missing and "point-open" not in lv and "skip" not in lv else "open"
     out.append({"polar": hx, "dim_U": recs[0]["dim_U"], "format": "arvore3", "status": status,
-                "nodes": size(root), "leaves": lv, "cert": root, "workers": len(recs)})
-    print(hx[:12], status, "workers", len(recs), "nodes", size(root), lv, "missing", len(missing))
+                "nodes": size(root), "leaves": lv, "bent_count": bent_count(root), "cert": root, "workers": len(recs)})
+    print(hx[:12], status, "workers", len(recs), "nodes", size(root), lv, "missing", len(missing), "bent", bent_count(root))
 json.dump(out, open(sys.argv[1], "w"))

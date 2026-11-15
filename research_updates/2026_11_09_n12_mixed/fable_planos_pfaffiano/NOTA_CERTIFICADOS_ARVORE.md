@@ -82,6 +82,29 @@ Testes:
 
   A aceita tirava de uma folha `lin` uma referência redundante, e o certificado continuava válido.
 
+## (L5)+(L3) verificadas de forma independente (`verifica_L5L3.py`)
+As duas famílias lineares são somas de Poisson, como a família F.
+- **(L5):** hiperplanos V = η^⊥, com dim V^⊥ = 1 e |I| ≤ 2. A bentness dá C ≡ 0 mod 16. Como todo K_z ≡ 0 mod 8, a condição é que o bit 3 de C seja 0.
+- **(L3):** os 1.395 subespaços de dimensão 3, com dim V^⊥ = 3 e |I| ≤ 1. A bentness dá C ≡ 0 mod 8. Como todo K_z ≡ 0 mod 4, a condição é que o bit 2 de C seja 0.
+
+Com a polar fixa, esses bits são afins na fase. Pelas somas de Gauss, a magnitude de K_z só depende da polar, e K_z/8 (ou K_z/4) é ímpar exatamente quando z está ativo, que é uma condição afim.
+
+O verificador:
+- soma K_z diretamente sobre os pontos de V, sem usar `poisson5.py` nem `poisson3.py`;
+- interpola cada bit a partir de θ = 0 e dos 43 vetores unitários;
+- confere a afinidade em pontos aleatórios;
+- para cada um dos **18.816** polares de (Pf4) × partes baixas, ou mostra que o sistema é inconsistente (o polar morre), ou confere que o seu espaço solução U_ind está contido no U usado pelos certificados.
+
+Resultado: RESULT_L5L3.
+
+## Contagens certificadas: folhas "toda bent"
+- **Nova folha `allbent`:** num subespaço, se para os 4.096 pares (u,b) o polinômio de W(u,b) − 64 tem todos os monômios com |J| + v₂N_J ≥ 7, então W ≡ 64 mod 128 em todo ponto. Por Parseval, isso força |W| = 64, ou seja, todos os pontos do subespaço são bent.
+- **Grau calculado:** os monômios vão até o grau min(6, D). Acima disso, |J| ≥ 7 vale sozinho.
+- **Verificação:** o verificador refaz a conta com uma transformada de Walsh inteira em borboleta, um algoritmo diferente do provador.
+- **Contagem:** as folhas são disjuntas, então a contagem de bent de um polar é a soma de 2^dim sobre as folhas `allbent`.
+
+Resultado: RESULT_CONTAGEM.
+
 ## Dependências e o que ainda é computacional
 - O modelo `base12`, a enumeração (Pf4) × partes baixas e a verificação de (L5)+(L3) polar a polar (as mesmas dos 9.944 certificados elementares).
 - O polar nulo vem do teorema da diagonal.

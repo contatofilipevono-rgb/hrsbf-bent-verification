@@ -150,6 +150,12 @@ class Prover3:
                 if self.verbose:
                     print("  depth", depth, "dim", len(Q), "family", "SWF"[level], len(fam), "polys",
                           round(time.time() - t_), "s", file=sys.stderr, flush=True)
+                if level == 1 and not fam:
+                    from cert_famW import famW_polys
+                    if famW_polys.last_c >= min(6, len(Q)):
+                        # every W(u,b) - 64 has lowest bit >= 7 identically: all points of the subspace are bent
+                        node.update(leaf="allbent", dim=len(Q))
+                        return node
                 level += 1
             fresh_needed = True
             for ev, ref, P in pool:
@@ -248,6 +254,12 @@ def size(n):
     return 1 + sum(size(k) for k in n.get("kids", []))
 
 
+def bent_count(n):
+    if "kids" in n:
+        return sum(bent_count(k) for k in n["kids"])
+    return (1 << n["dim"]) if n.get("leaf") == "allbent" else 0
+
+
 def leaves(n, acc):
     if "kids" in n:
         for k in n["kids"]:
@@ -284,7 +296,7 @@ if __name__ == "__main__":
         else:
             lv = leaves(cert, {})
             rec["status"] = "open" if "point-open" in lv else ("partial" if "skip" in lv else "certified")
-            rec["nodes"] = size(cert); rec["leaves"] = lv; rec["cert"] = cert
+            rec["nodes"] = size(cert); rec["leaves"] = lv; rec["bent_count"] = bent_count(cert); rec["cert"] = cert
         rec["calls"] = pr.calls; rec["seconds"] = round(time.time() - t0, 1)
         res.append(rec)
         print(hx[:12], "dimU", m, rec["status"], rec.get("nodes"), rec.get("leaves"), pr.calls, rec["seconds"], "s", flush=True)
