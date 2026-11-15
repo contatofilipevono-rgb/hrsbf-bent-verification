@@ -75,18 +75,18 @@ Seja N_d = #{z : d ∈ rad B_z} e P_B(d) = N_d mod 2, uma função booleana de d
 **Estado.** A anulação do grau 3 está conferida nos 18.816 polares, mas **não está provada à mão**. Ela não segue de uma identidade pontual com multiplicadores de grau baixo. Deve usar ou a equivariância RS de B(z), ou termos cúbicos cujo topo em z se reduz por γ₂(T) = 0. Fica como lema conferido.
 
 ## 3b. Caso homogêneo (H12): medição e mecanismo (`mede_homogeneo.py`, `homog_L5L3_motivo.py`; GitHub run 43756856424)
-**Dimensões.** As quárticas RS homogêneas no modelo formam um espaço de dimensão 41. A polar delas é só o topo, e ocupa o espaço de topos inteiro (dim 21). A fase homogênea tem dimensão 20. Os 1.176 topos de γ₂(T) = 0 aparecem todos, em 545 órbitas de Γ.
+**Dimensões.** As quárticas RS homogêneas no modelo formam um espaço de dimensão 41. O espaço dos polares delas tem dimensão 21. **Correção (16/11):** a polar NÃO é só de topo. Em (z,w) = (a+b, b), uma quártica homogênea em x deixa de ser homogênea, porque (z_i + w_i)·w_i = z_i w_i + w_i. Os monômios em (z,w) têm graus (z,w) = (0,2), (1,2), (2,1), (2,2), (3,1) e (4,0), e 21 das 41 funções da base têm polar com parte de grau ≤ 1 em z. A fase homogênea tem dimensão 20. Os 1.176 topos de γ₂(T) = 0 aparecem todos, em 545 órbitas de Γ.
 
 **Como morrem os 1.176:**
 - (L5)+(L3): 1.006 polares. Desses, 726 morrem por uma única equação sem fase (646 delas são de (L3) com |I| = 1), e 280 por combinações de 2 a 12 equações.
 - Paridade: 74. Mod 4: 73. Resíduo mod 8, 16 ou 64: 17.
 - Sobram 6: o polar nulo e mais 5.
 
-**O polar nulo morre à mão.** A homogênea é f = λ(z)·w + h(z), com λ cúbica homogênea. Uma cúbica homogênea anula todo z de peso ≤ 2, então λ não é injetora e, por Maiorana–McFarland, f não é bent.
+**O polar nulo morre à mão** (argumento corrigido em 16/11). A função é f = λ(z)·w + h(z). Entre os monômios das quárticas homogêneas, os de grau 1 em w têm grau ≥ 2 em z: só aparecem (2,1) e (3,1). Logo λ(z) = 0 para z = 0 e para os 6 vetores e_i. Assim λ não é injetora e, por Maiorana–McFarland, f não é bent.
 
 **Por que tantas equações perdem a fase.**
-- Em (L3), o radical de B_z|_V é r_z = b₂₃v₁ + b₁₃v₂ + b₁₂v₃. Ele é linear em B, logo quadrático homogêneo em z.
-- Com λ cúbica homogênea, λ(z)·r_z é homogêneo de grau 5.
+- Em (L3), o radical de B_z|_V é r_z = b₂₃v₁ + b₁₃v₂ + b₁₂v₃, linear em B.
+- **Correção (16/11):** o argumento de grau que eu tinha escrito supunha λ cúbica homogênea e B homogênea quadrática em z, e isso é falso, pelo mesmo motivo acima. Fica a observação empírica: muitas equações de (L3) e (L5) perdem a fase no caso homogêneo. O motivo ainda está em aberto.
 - A soma num subcubo {z ⊇ {i}}, de dimensão 5, só lê o coeficiente de z_{[6]∖i} em λ·r_z.
 - Quando esse coeficiente é nulo, a equação vira uma condição só da polar.
 - Em (L5), as equações com w₀ = 0 e w₀ = w₁ ∉ V têm a mesma parte de fase. A soma das duas dá a condição só da polar Σ_{z⊇I, z∈Z_V} B_z(w₁, r_z) ≡ 0, que vale para qualquer bent.

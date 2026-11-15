@@ -69,6 +69,6 @@ Os textos completos estão em `texto_d4e871b24d8e.md`, `texto_142841824182.md` e
 Só a família S foi usada (16 folhas `const` e 48 `lin`). Precisa ser reorganizado, por exemplo com a simetria Γ ou escolhendo melhor os cortes, antes de caber à mão.
 
 ## Situação do H12 sem computador
-- **Feito à mão:** a redução (relações universais, γ₂(T) = 0, homogeneidade ⇒ polar só de topo), o polar nulo (Maiorana–McFarland) e o polar 124812….
+- **Feito à mão:** a redução (relações universais e (Pf4) ⇔ γ₂(T) = 0; a homogeneidade NÃO torna a polar só de topo, correção de 16/11), o polar nulo (Maiorana–McFarland, porque λ se anula em z de peso ≤ 1) e o polar 124812….
 - **Conferível à mão, falta escrever:** 3 polares especiais (5, 11 e 13 nós).
 - **Computacional:** a lista dos 1.176 topos, os níveis simples um topo de cada vez, e o polar c0c030… (127 nós).
