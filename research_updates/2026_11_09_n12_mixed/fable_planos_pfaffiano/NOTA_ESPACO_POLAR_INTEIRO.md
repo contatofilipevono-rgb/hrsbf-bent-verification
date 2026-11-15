@@ -88,7 +88,35 @@ Dependências:
 - a correção dos funis de busca, que têm controles positivos e negativos;
 - o teorema da família da diagonal (`README.md`) para o polar nulo.
 
-O próximo passo natural é contar os completamentos bent de cada um dos 72 polares e comparar com o catálogo (309.221.376 funções).
+## Contagem dos completamentos: reprodução exata do catálogo (`contagem72.json`)
+Para cada um dos 71 polares não nulos, contamos todas as bent com `busca_padroes.py --quad --count`:
+- todo ponto bent está no espaço linearizado de Poisson e tem um único padrão de ativação entre os pontos comuns às 64 colunas;
+- os subespaços dos padrões são disjuntos;
+- em cada um, o sistema quadrático reescrito é enumerado por `exclude_vec`, e todos os sobreviventes passam por Walsh completo.
+
+Cada ponto θ do espaço de fase dá uma função diferente, e cada função tem um único polar.
+
+**Validação:** em três polares (dois com D = 4, um com D = 12), a contagem com `--quad` e a força bruta (Walsh em todos os pontos dos subespaços) dão exatamente 6.144, 6.144 e 8.192.
+
+| | Funções bent |
+|---|---:|
+| 71 polares não nulos (contados aqui) | **19.216.384** |
+| polar nulo: família da diagonal (`README.md`: 64 + 57.280 + 290.004.992) | 290.062.336 |
+| **total** | **309.278.720** |
+| catálogo: quárticas fora da diagonal | 19.216.384 |
+| catálogo: todas as RS bent de grau ≤ 4 (64 + 57.280 + 309.221.376) | 309.278.720 |
+
+As contagens por polar vão de 1.536 a 10.485.760. O polar de D = 25 tem 10.485.760, que é o mesmo número da recontagem do bloco afim em U de 10/11. Distribuição: 1.536 (4 polares), 4.096 (2), 6.144 (32), 8.192 (8), 16.384 (2), 90.112 (4), 196.608 (3), 262.144 (3), 393.216 (4), 524.288 (2), 589.824 (2), 655.360 (2), 786.432 (2) e 10.485.760 (1).
+
+**Conclusão:** a classificação pelos polares reproduz exatamente a contagem do catálogo, sem usar o catálogo como entrada. Ele só aparece na comparação final.
+
+O que ainda é computacional:
+- a enumeração (Pf4) × partes baixas;
+- a verificação de (L5) polar a polar;
+- as buscas nos 212 abertos;
+- as contagens.
+
+O polar nulo vem do teorema da diagonal. Os certificados elementares, que cobrem 9.944 polares, são verificáveis à mão.
 
 ## Nível módulo 8 (`cert_mod8.py`)
 S_d = 0 exige Σ_z ℓ_z = N_d/2 exatamente.
