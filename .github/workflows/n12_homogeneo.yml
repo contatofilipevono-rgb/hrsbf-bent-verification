@@ -1,0 +1,33 @@
+name: n=12 homogeneous quartic (H12) - why (L5)+(L3) kill the homogeneous polars
+on:
+  push:
+    branches: [claude/n12-parseval-certificados]
+    paths:
+      - '.github/workflows/n12_homogeneo.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  measure:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 240
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed/fable_planos_pfaffiano
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install "numpy>=2"
+      - name: Rebuild the model
+        run: python -u base12.py
+      - name: Phase-free contradictions of (L5)+(L3) on the homogeneous phase
+        run: python -u homog_L5L3_motivo.py | tee homog_motivo.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: homogeneo
+          path: research_updates/2026_11_09_n12_mixed/fable_planos_pfaffiano/homog_motivo.log
