@@ -1,0 +1,79 @@
+name: n=12 degree 4 - independent re-verification of all certificates (clean environment)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: n12-verifica-certificados
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-24.04           # 4 vCPU; 4 processes per runner
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      max-parallel: 8               # 8 runners x 4 vCPU = 32 CPUs
+      matrix:
+        runner: [0, 1, 2, 3, 4, 5, 6, 7]
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed/fable_planos_pfaffiano
+    env:
+      OMP_NUM_THREADS: 1
+      OPENBLAS_NUM_THREADS: 1
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install "numpy>=2"
+      - name: Rebuild the model from scratch (base12.pkl)
+        run: python -u base12.py && ls -la base12.pkl
+      - name: Universal relations and Pf4 enumeration (runner 0 only)
+        if: matrix.runner == 0
+        run: |
+          python -u verifica_relacoes_universais.py | tee rel.log
+          python -c "import gzip,shutil; shutil.copyfileobj(gzip.open('certificado_pf4_enumeracao.json.gz'), open('pf4.json','wb'))"
+          python -u verifica_pf4_arvore.py pf4.json polares_18816.txt | tee pf4.log
+      - name: Split the tree certificates of the 140 dead polars into 32 shards
+        run: |
+          python - <<'EOF'
+          import gzip, json
+          B = json.load(gzip.open("certificados_arvore_140.json.gz"))
+          B.sort(key=lambda r: -r["nodes"])
+          for i in range(32):
+              part = B[i::32]
+              json.dump([r for r in part if r.get("format") != "arvore3"], open("dead2-%d.json" % i, "w"))
+              json.dump([r for r in part if r.get("format") == "arvore3"], open("dead3-%d.json" % i, "w"))
+          print(len(B), "certificates")
+          EOF
+      - name: Four shards per runner (L5/L3 on the 18,816 polars, and the tree certificates)
+        run: |
+          r=${{ matrix.runner }}
+          for k in 0 1 2 3; do
+            s=$((4*r+k))
+            ( python -u verifica_L5L3.py polares_18816.txt --shard $s/32 --out l5-$s.json > l5-$s.log 2>&1
+              python -u verifica_arvore.py dead2-$s.json > d2-$s.log 2>&1
+              python -u verifica_arvore3.py dead3-$s.json > d3-$s.log 2>&1 ) &
+          done
+          wait
+          tail -n 1 l5-*.log d2-*.log d3-*.log
+          ! grep -h "FAIL\|NOT CERTIFIED\|Traceback" l5-*.log d2-*.log d3-*.log
+          python - <<'EOF'
+          import glob, json, collections
+          c = collections.Counter()
+          for f in glob.glob("l5-*.json"):
+              for r in json.load(open(f)):
+                  c[(r["independent"], r.get("contained"))] += 1
+          print("L5/L3:", dict(c))
+          assert all(k[1] in (None, True) for k in c), "a polar is not contained"
+          EOF
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: logs-${{ matrix.runner }}
+          path: |
+            research_updates/2026_11_09_n12_mixed/fable_planos_pfaffiano/*.log
+            research_updates/2026_11_09_n12_mixed/fable_planos_pfaffiano/l5-*.json
