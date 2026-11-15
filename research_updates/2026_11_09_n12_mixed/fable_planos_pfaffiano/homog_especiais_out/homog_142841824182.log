@@ -1,0 +1,4 @@
+142841824182 homogeneous (Pf4) polars with this prefix surviving the simple levels: 1
+142841824182 homogeneous phase after (L5)+(L3): dim 18
+142841824182 certified nodes 11 {'const': 4, 'lin': 2} {'S': 8, 'W': 0, 'F': 0} 1.3 s
+142841824182 verified: True

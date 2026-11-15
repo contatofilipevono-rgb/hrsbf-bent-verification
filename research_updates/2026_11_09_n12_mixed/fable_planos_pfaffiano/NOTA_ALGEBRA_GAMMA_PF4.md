@@ -91,6 +91,21 @@ Seja N_d = #{z : d ∈ rad B_z} e P_B(d) = N_d mod 2, uma função booleana de d
 - Quando esse coeficiente é nulo, a equação vira uma condição só da polar.
 - Em (L5), as equações com w₀ = 0 e w₀ = w₁ ∉ V têm a mesma parte de fase. A soma das duas dá a condição só da polar Σ_{z⊇I, z∈Z_V} B_z(w₁, r_z) ≡ 0, que vale para qualquer bent.
 
+**Os 5 polares especiais morrem pela família S** (`homog_especiais.py`, GitHub run 43759496977, `homog_especiais_out/`).
+
+Cada certificado fica dentro da fase homogênea restante e foi conferido pelo verificador independente:
+
+| Polar | dim da fase | Nós | Folhas |
+|---|---:|---:|---|
+| 124812481248 | 14 | 1 | 1 `const` (S_d constante igual a ±64) |
+| d4e871b24d8e | 18 | 5 | 2 `const`, 1 `lin` |
+| 142841824182 | 18 | 11 | 4 `const`, 2 `lin` |
+| 124821844812 | 17 | 13 | 6 `const`, 1 `lin` |
+| c0c030300c0c | 18 | 127 | 16 `const`, 48 `lin` |
+| polar nulo (controle) | 20 | 403 | já morto à mão por Maiorana–McFarland |
+
+Só a família S foi usada, isto é, Parseval nas 64 colunas, sem W nem F. Os quatro primeiros têm árvores de no máximo 13 nós, o que é conferível à mão. O de 127 nós ainda pede organização para caber à mão.
+
 **O que isso NÃO resolve.** As condições só da polar ainda precisam ser avaliadas em cada um dos 1.176 topos, e a lista dos topos (as soluções de γ₂(T) = 0) continua computacional. Os 5 polares especiais também não foram tratados. **O H12 não está fechado à mão.** O que existe é uma redução estrutural mais uma tabela por órbita.
 
 ## 4. O que isso muda no mapa da prova
