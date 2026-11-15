@@ -1,5 +1,9 @@
 name: n=12 degree 4 - independent re-verification of all certificates (clean environment)
 on:
+  push:
+    branches: [claude/n12-parseval-certificados]
+    paths:
+      - '.github/workflows/n12_verifica_certificados.yml'
   workflow_dispatch:
 permissions:
   contents: read
