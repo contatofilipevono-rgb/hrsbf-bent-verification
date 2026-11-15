@@ -62,6 +62,18 @@ Seja N_d = #{z : d ∈ rad B_z} e P_B(d) = N_d mod 2, uma função booleana de d
 - nos 9.088 polares com algum N_d ímpar, P_B tem grau 1 (2.752 polares) ou 2 (6.336);
 - **um polar morre por paridade se e só se a sua forma quadrática P_B é não nula.** São 21 coeficientes, cada um polinomial na polar.
 
+### Tentativa de prova do grau 3 (`grau3_teste.py`, `grau3_identidade.py`, `grau3_identidade_z.py`, `grau3_linear.py`)
+**Reformulação.** O coeficiente de grau 3 de P_B na direção E (dim 3) é a_E = Σ_z q_E(B_z), com q_E(B) = [rad B ∩ E = 0]. Para B de posto 4, Pf_V(B) = [rad B ∩ V = 0], e (Pf4) diz que deg_z Pf_V(B_z) ≤ 3.
+
+**O que foi testado:**
+- **Sem (Pf4), o grau 3 não some:** em 366 de 400 polares aleatórios do modelo há parte de grau 3. Então a anulação vem de (Pf4), e não só da estrutura do modelo.
+- **Não há identidade pontual simples.** Procurei q_E = Σ λ·Pf_V + R com todo termo de grau ≤ 5 em z, o que bastaria para a soma sobre z se anular:
+  - com λ e R só nas entradas de B (deg λ ≤ 1, deg R ≤ 2), nas 18.880 matrizes alternadas de posto ≤ 4: não existe;
+  - com λ e R dependendo também de z, nos 83.392 pares (z,B) com Bz = 0 (1.983 funções candidatas): também não existe.
+- **Caso linear:** para B(z) com entradas lineares e B(z)·z = 0, que satisfaz (Pf4) automaticamente, as partes de grau 3 e 4 se anulam sempre (300 de 300 amostras).
+
+**Estado.** A anulação do grau 3 está conferida nos 18.816 polares, mas **não está provada à mão**. Ela não segue de uma identidade pontual com multiplicadores de grau baixo. Deve usar ou a equivariância RS de B(z), ou termos cúbicos cujo topo em z se reduz por γ₂(T) = 0. Fica como lema conferido.
+
 ## 4. O que isso muda no mapa da prova
 | Elo | Antes | Agora |
 |---|---|---|
