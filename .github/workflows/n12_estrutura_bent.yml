@@ -1,0 +1,53 @@
+name: n=12 degree 4 - structure of the bent sets (stabilizers and quotients of the 71 bent polars)
+on:
+  push:
+    branches: [claude/n12-parseval-certificados]
+    paths:
+      - '.github/workflows/n12_estrutura_bent.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: n12-estrutura-bent
+  cancel-in-progress: false
+jobs:
+  structure:
+    runs-on: ubuntu-24.04           # 4 vCPU, 16 GB; 4 processes per runner
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      max-parallel: 8               # 8 runners x 4 vCPU = 32 CPUs
+      matrix:
+        runner: [0, 1, 2, 3, 4, 5, 6, 7]
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed/fable_planos_pfaffiano
+    env:
+      OMP_NUM_THREADS: 1
+      OPENBLAS_NUM_THREADS: 1
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install "numpy>=2"
+      - name: Rebuild the model
+        run: python -u base12.py
+      - name: Four shards per runner (32 in total)
+        run: |
+          r=${{ matrix.runner }}
+          for k in 0 1 2 3; do
+            s=$((4*r+k))
+            python -u analise_estrutura_bent.py certificados_bent71.json.gz --shard $s/32 --out estr-$s.json > estr-$s.log 2>&1 &
+          done
+          wait
+          cat estr-*.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: estrutura-${{ matrix.runner }}
+          path: |
+            research_updates/2026_11_09_n12_mixed/fable_planos_pfaffiano/estr-*.json
+            research_updates/2026_11_09_n12_mixed/fable_planos_pfaffiano/estr-*.log
