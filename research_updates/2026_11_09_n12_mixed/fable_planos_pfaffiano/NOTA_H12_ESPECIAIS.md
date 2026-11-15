@@ -2,6 +2,33 @@
 
 Data: 15/11/2026. Dados: `homog_especiais_out/` (certificados verificados) e `explica_especiais.py` (leitura dos certificados).
 
+## Atualização (16/11): as linhas fixas resolvem todos os especiais
+**Fato estrutural**, conferido nas 41 funções da base (`homog_baixo_peso.py`). Nas coordenadas (z,w), os monômios das quárticas homogêneas do modelo têm graus (z,w) ∈ {(0,2), (1,2), (2,1), (2,2), (3,1), (4,0)}. Logo, para z de peso ≤ 1, f(z,·) é uma forma quadrática pura em w, sem parte linear e sem constante.
+
+Além disso, a fase homogênea é constante em w em exatamente 8 linhas: z = 0, z = e_i (i = 0, …, 5) e z = 63 (`homog_linhas_fixas.py`). Nessas linhas, |r_b(z)| = |Σ_w (−1)^{f(z,w) + b·w}| depende só da polar.
+
+**Teste das 8 linhas (à mão, só da polar).** Parseval na coluna b exige Σ_z r_b(z)² = 4.096. Se, para algum b, as 8 linhas fixas somam mais que 4.096, o polar não tem bent homogênea. Cada linha contribui 2^{12 − posto B_z} nas colunas b em que está ativa, isto é:
+- 4.096 se B_z tem posto 0;
+- 1.024 se tem posto 2;
+- 256 se tem posto 4.
+
+**Resultado:**
+- o teste mata **788 dos 1.176** polares candidatos: 648 já com as 7 linhas de peso ≤ 1, e mais 140 com z = 63;
+- **os 6 polares especiais estão entre eles**, inclusive o polar nulo e o c0c030… de 127 nós. Nenhum deles precisa mais de árvore.
+
+### O funil do H12 depois desta volta (`homog_resto.py`)
+| Critério | Depende da fase? | Polares | Acumulado |
+|---|---|---:|---:|
+| 8 linhas fixas excedem 4.096 numa coluna | não | 788 | 788 |
+| paridade: algum N_d ímpar, logo S_d ≠ 0 | não | 290 | 1.078 |
+| sistema linear de (L5)+(L3) na fase homogênea | sim (linear) | 95 | 1.173 |
+| níveis mod 4 ou resíduo | sim | 3 | 1.176 |
+
+**92% dos candidatos (1.078) morrem por critérios que dependem só da polar e se conferem por conta curta.** O que ainda impede a prova à mão:
+- a lista dos 1.176 candidatos, isto é, as soluções de γ₂(T) = 0 combinadas com a homogeneidade;
+- a aplicação dos critérios polar a polar: são contas curtas, mas são 1.176 (ou as órbitas de Γ correspondentes);
+- os 98 casos que precisam da fase.
+
 ## Ferramenta comum
 Seja f uma RS bent homogênea quártica. Pelas relações universais, f é quadrática em w: f(z,w) = h(z) + λ(z)·w + q_z(w), onde q_z é a forma quadrática de polar B_z. Para d ≠ 0, seja Z_d = {z : B_z d = 0} e N_d = |Z_d|.
 
