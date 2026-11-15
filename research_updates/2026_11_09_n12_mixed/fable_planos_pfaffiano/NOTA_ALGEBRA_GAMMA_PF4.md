@@ -47,12 +47,28 @@ que são 15 × 15 = 225 quádricas no topo. As 9.726 condições sobre os 651 su
 
 **(d) Não há separação em produto.** A polarização de γ₂ é β(T,T′) = T∧T′ e é não degenerada no espaço dos topos: o radical é 0 e o grafo de cruzamentos é conexo. Logo 1.176 = 24·49 não vem de uma decomposição A ⊕ B com β(A,B) = 0.
 
-## 3. O que isso muda no mapa da prova
+## 3. Lema da paridade dos radicais (`paridade_radicais.py`, `lema_paridade.py`)
+Seja N_d = #{z : d ∈ rad B_z} e P_B(d) = N_d mod 2, uma função booleana de d ∈ F₂⁶.
+
+**(a) À mão.** 1_{rad B_z}(d) = Π_{i=0}^{5} (1 + (B_z d)_i) tem grau posto(B_z) ≤ 4, logo deg P_B ≤ 4. Uma função não nula que se anula fora de 0 tem grau 6. Portanto
+
+  **N_d é par para todo d ≠ 0 ⟺ P_B ≡ 0.**
+
+**(b) À mão.** Para B_z de posto 4, a parte de grau 4 de Π(1 + (B_z d)_i) é o 4-vetor da imagem de B_z, isto é, γ₂(B_z). Logo a parte de grau 4 de P_B é Σ_z γ₂(B_z), que é justamente a soma de Pfaffianos de (Pf4) com I = ∅. **(Pf4) e o nível de paridade são partes da mesma identidade polinomial.**
+
+**(c) Conferido nos 18.816 polares:**
+- a parte de grau 3 de P_B também se anula em todos. Falta a prova à mão; a candidata natural é a família (Pf4) com |I| = 1;
+- logo, em todos os polares, **P_B é uma forma quadrática em d**, ℓ(d) + q(d), porque P_B(0) = 64 mod 2 = 0;
+- nos 9.088 polares com algum N_d ímpar, P_B tem grau 1 (2.752 polares) ou 2 (6.336);
+- **um polar morre por paridade se e só se a sua forma quadrática P_B é não nula.** São 21 coeficientes, cada um polinomial na polar.
+
+## 4. O que isso muda no mapa da prova
 | Elo | Antes | Agora |
 |---|---|---|
 | Γ age nos polares, e morte e contagens são constantes nas órbitas | conferido por máquina | **lema provado**, com conferência linear finita em 8 geradores |
 | (Pf4): de quantas condições se precisa | 9.726 quádricas, 25 variáveis | **225 quádricas γ₂(T) = 0 em 21 variáveis** (à mão) |
 | partes baixas | enumeradas | **livres** (à mão) |
 | as 1.176 soluções de γ₂(T) = 0 | árvore | árvore, ou 346 casos de órbita; **ainda não há prova à mão** |
+| nível de paridade (N_d ímpar): 9.088 polares | um certificado por polar | **um critério:** P_B ≠ 0, com P_B quadrática em d. Graus 4 e 3 nulos: o grau 4 à mão, o grau 3 conferido |
 
 O passo restante de (Pf4), contar as soluções de γ₂(T) = 0 no espaço RS de Λ²W ⊗ Λ²Z, exige uma teoria estrutural: por exemplo, decompor o espaço sob a rotação, via F₂[X]/(X⁶ − 1) ≅ F₂[u]/(u²) × F₄[v]/(v²). Não é um passo curto.
