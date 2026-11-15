@@ -23,7 +23,7 @@ Isso é uma equação linear na fase (λ, h).
 - d = 63 = (1,1,1,1,1,1) satisfaz B_z·63 = 0 para todo z, logo N₆₃ = 64.
 - A fase homogênea que sobra depois de (L5)+(L3) tem dimensão 14.
 
-**Argumento** (em coeficientes de órbita, f = Σ_j t_j O_j; texto completo em \	exto_124812481248.md\):
+**Argumento** (em coeficientes de órbita, f = Σ_j t_j O_j; texto completo em `texto_124812481248.md`):
 1. A fase homogênea depois de (L5)+(L3) tem coeficientes livres t0, …, t11, t16, t33.
 2. Para d ∈ {1, 5, 7, 9, 11, 13, 21}, S_d ≡ 0 (mod 4) vale sempre. A condição S_d = 0 exige também o bit seguinte, S_d ≡ 0 (mod 8), que é uma forma quadrática em t (nível k0 = 2). **Não são equações de paridade simples.** A parte afim do span dessas 7 quadráticas dá três equações lineares: t11 + t16 = 0, t2 + t4 + t6 + t33 = 0 e t1 + t2 + t3 + t4 + t5 + t6 + t7 = 0.
 3. Com essas equações, D₆₃f(z,0) = Σ_j t_j·c_j(z,63) = 0 para os 64 valores de z, onde c_j(z,d) = O_j(x(z,d)) + O_j(x(z,0)). Então S₆₃ = 64 ≠ 0, contra o Lema. ∎
