@@ -27,26 +27,46 @@ PB = [Bs[i.bit_length() - 1] for i in pind]; PF = [HV[i.bit_length() - 1] for i 
 KH = [np.bitwise_xor.reduce([HV[j] for j in range(len(HV)) if k >> j & 1], axis=0) for k in pker]
 Ktab = [tabela(k) for k in KH]
 Pint = [int(hexB(B), 16) for B in PB]
-target = None
+here = os.path.dirname(os.path.abspath(__file__))
+listed = {int(h, 16) for h in open(os.path.join(here, "polares_18816.txt")).read().split()}
 cur = [0]
 for v in Pint:
     cur = cur + [x ^ v for x in cur]
+from cert_autocorr import analyse as simple_levels
+targets = []
 for code, x in enumerate(cur):
-    if format(x, "x").startswith(pref) and (pref != "0" or x == 0):
-        target = (code, format(x, "x")); break
-assert target is not None, "polar not found among the homogeneous polars"
-code, hx = target
-f = np.zeros(4096, dtype=np.uint8)
-for i in range(len(PB)):
-    if code >> i & 1:
-        f ^= PF[i]
-G0 = tabela(f)
-b0 = l5bits(G0)
-M = np.stack([l5bits(G0 ^ K) ^ b0 for K in Ktab], axis=1)
-rows = {}
-for r in range(M.shape[0]):
-    rows[(int(sum(1 << k for k in np.flatnonzero(M[r]))), int(b0[r]))] = 1
-part, kerv = gf2_solve(list(rows), len(Ktab))
+    if x not in listed or not format(x, "x").startswith(pref):
+        continue
+    f = np.zeros(4096, dtype=np.uint8)
+    for i in range(len(PB)):
+        if code >> i & 1:
+            f ^= PF[i]
+    G0 = tabela(f)
+    b0 = l5bits(G0)
+    M = np.stack([l5bits(G0 ^ K) ^ b0 for K in Ktab], axis=1)
+    rows = {}
+    for r in range(M.shape[0]):
+        rows[(int(sum(1 << k for k in np.flatnonzero(M[r]))), int(b0[r]))] = 1
+    sol = gf2_solve(list(rows), len(Ktab))
+    if sol is None:
+        continue
+    pt, kv = sol
+    T0_ = G0.copy()
+    for j in range(len(Ktab)):
+        if pt >> j & 1:
+            T0_ ^= Ktab[j]
+    Kp_ = []
+    for v in kv:
+        t = np.zeros_like(G0)
+        for j in range(len(Ktab)):
+            if v >> j & 1:
+                t ^= Ktab[j]
+        Kp_.append(t)
+    if simple_levels(T0_, Kp_)["level"] == "open":
+        targets.append((format(x, "x"), G0, sol))
+print(pref, "homogeneous (Pf4) polars with this prefix surviving the simple levels:", len(targets), flush=True)
+assert len(targets) == 1, "expected exactly one special polar with this prefix"
+hx, G0, (part, kerv) = targets[0]
 T0 = G0.copy()
 for j in range(len(Ktab)):
     if part >> j & 1:

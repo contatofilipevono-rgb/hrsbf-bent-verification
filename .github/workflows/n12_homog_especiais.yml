@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        polar: ['124812481248', '142841824182', 'c0c030300c0c', 'd4e871b24d8e', '124821844812']
+        polar: ['0', '124812481248', '142841824182', 'c0c030300c0c', 'd4e871b24d8e', '124821844812']
     defaults:
       run:
         working-directory: research_updates/2026_11_09_n12_mixed/fable_planos_pfaffiano
