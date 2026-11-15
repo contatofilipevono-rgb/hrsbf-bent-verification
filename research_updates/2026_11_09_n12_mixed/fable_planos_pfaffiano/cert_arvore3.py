@@ -57,6 +57,8 @@ class Prover3:
     def __init__(self, T0, K, by_d):
         self.T0, self.K, self.by_d = T0, K, by_d
         self.nev = 0; self.calls = {"S": 0, "W": 0, "F": 0}
+        self.split_depth = int(os.environ.get("CERT_SPLIT_DEPTH", "-1")); self.split_count = -1
+        self.split_i, self.split_n = map(int, os.environ.get("CERT_SPLIT", "0/1").split("/"))
         self.verbose = bool(os.environ.get("CERT_VERBOSE"))
         self.maxlevel = int(os.environ.get("CERT_MAXLEVEL", "2"))
         self.R = int(os.environ.get("CERT_RECOMPUTE", "6"))
@@ -120,10 +122,16 @@ class Prover3:
             out.append([ev["id"], ref])
         return out
 
-    def prove(self, p, Q, pool, budget, depth=0, computed=-1, since=0):
+    def prove(self, p, Q, pool, budget, depth=0, computed=-1, since=0, path="r"):
         """pool: list of (event, ref, P) valid on the current subspace, in its coordinates.
         computed: highest family level already evaluated on exactly this subspace."""
         node = {"actions": []}
+        if depth == self.split_depth:
+            self.split_count += 1
+            node["split"] = path
+            if self.split_count % self.split_n != self.split_i:
+                node.update(leaf="skip"); return node
+        nloc = 0
         level = computed + 1 if computed >= 0 else 0
         fresh_needed = False
         while True:
@@ -135,7 +143,7 @@ class Prover3:
                     break
                 t_ = time.time()
                 fam = self.family(level, p, Q)
-                ev = {"id": self.nev, "compute": []}; self.nev += 1
+                ev = {"id": "%s:%d" % (path, nloc), "compute": []}; self.nev += 1; nloc += 1
                 node["actions"].append(ev)
                 newrefs = {tuple(map(str, r)) for r, P in fam}
                 pool = [e for e in pool if tuple(map(str, e[1])) not in newrefs] + [(ev, r, P) for r, P in fam]
@@ -229,7 +237,7 @@ class Prover3:
             p2, Q2 = to_U(part, ker, p, Q)
             pool2 = [(ev, ref, subst(P, part, ker)) for ev, ref, P in pool]
             pool2 = [e for e in pool2 if e[2]]
-            k = self.prove(p2, Q2, pool2, budget, depth + 1, computed=-1, since=since + 1)
+            k = self.prove(p2, Q2, pool2, budget, depth + 1, computed=-1, since=since + 1, path=path + str(c))
             if k is None:
                 return None
             node["kids"].append(k)
@@ -275,7 +283,7 @@ if __name__ == "__main__":
             rec["status"] = "budget"
         else:
             lv = leaves(cert, {})
-            rec["status"] = "open" if "point-open" in lv else "certified"
+            rec["status"] = "open" if "point-open" in lv else ("partial" if "skip" in lv else "certified")
             rec["nodes"] = size(cert); rec["leaves"] = lv; rec["cert"] = cert
         rec["calls"] = pr.calls; rec["seconds"] = round(time.time() - t0, 1)
         res.append(rec)
