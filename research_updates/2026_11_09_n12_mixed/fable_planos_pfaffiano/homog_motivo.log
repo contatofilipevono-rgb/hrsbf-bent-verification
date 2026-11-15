@@ -1,0 +1,10 @@
+{'survives (L5)+(L3)': 170, 'dies by a phase-free row': 726, 'needs a combination': 280}
+labels of the phase-free contradictory rows (polars having one):
+   ('L3', '|I|=1', '') 646
+   ('L5', '|I|=1', 'w0=0') 172
+   ('L5', '|I|=1', 'w0=1') 172
+   ('L5', '|I|=2', 'w0=1') 132
+   ('L5', '|I|=2', 'w0=0') 132
+   ('L5', '|I|=0', 'w0=0') 64
+   ('L5', '|I|=0', 'w0=1') 64
+combination sizes (when needed): [(2, 88), (3, 11), (4, 50), (5, 62), (6, 14), (7, 8), (8, 13), (9, 18), (10, 9), (11, 1), (12, 6)]

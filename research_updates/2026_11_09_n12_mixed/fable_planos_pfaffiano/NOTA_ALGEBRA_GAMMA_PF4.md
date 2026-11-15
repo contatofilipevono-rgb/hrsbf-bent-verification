@@ -74,6 +74,25 @@ Seja N_d = #{z : d ∈ rad B_z} e P_B(d) = N_d mod 2, uma função booleana de d
 
 **Estado.** A anulação do grau 3 está conferida nos 18.816 polares, mas **não está provada à mão**. Ela não segue de uma identidade pontual com multiplicadores de grau baixo. Deve usar ou a equivariância RS de B(z), ou termos cúbicos cujo topo em z se reduz por γ₂(T) = 0. Fica como lema conferido.
 
+## 3b. Caso homogêneo (H12): medição e mecanismo (`mede_homogeneo.py`, `homog_L5L3_motivo.py`; GitHub run 43756856424)
+**Dimensões.** As quárticas RS homogêneas no modelo formam um espaço de dimensão 41. A polar delas é só o topo, e ocupa o espaço de topos inteiro (dim 21). A fase homogênea tem dimensão 20. Os 1.176 topos de γ₂(T) = 0 aparecem todos, em 545 órbitas de Γ.
+
+**Como morrem os 1.176:**
+- (L5)+(L3): 1.006 polares. Desses, 726 morrem por uma única equação sem fase (646 delas são de (L3) com |I| = 1), e 280 por combinações de 2 a 12 equações.
+- Paridade: 74. Mod 4: 73. Resíduo mod 8, 16 ou 64: 17.
+- Sobram 6: o polar nulo e mais 5.
+
+**O polar nulo morre à mão.** A homogênea é f = λ(z)·w + h(z), com λ cúbica homogênea. Uma cúbica homogênea anula todo z de peso ≤ 2, então λ não é injetora e, por Maiorana–McFarland, f não é bent.
+
+**Por que tantas equações perdem a fase.**
+- Em (L3), o radical de B_z|_V é r_z = b₂₃v₁ + b₁₃v₂ + b₁₂v₃. Ele é linear em B, logo quadrático homogêneo em z.
+- Com λ cúbica homogênea, λ(z)·r_z é homogêneo de grau 5.
+- A soma num subcubo {z ⊇ {i}}, de dimensão 5, só lê o coeficiente de z_{[6]∖i} em λ·r_z.
+- Quando esse coeficiente é nulo, a equação vira uma condição só da polar.
+- Em (L5), as equações com w₀ = 0 e w₀ = w₁ ∉ V têm a mesma parte de fase. A soma das duas dá a condição só da polar Σ_{z⊇I, z∈Z_V} B_z(w₁, r_z) ≡ 0, que vale para qualquer bent.
+
+**O que isso NÃO resolve.** As condições só da polar ainda precisam ser avaliadas em cada um dos 1.176 topos, e a lista dos topos (as soluções de γ₂(T) = 0) continua computacional. Os 5 polares especiais também não foram tratados. **O H12 não está fechado à mão.** O que existe é uma redução estrutural mais uma tabela por órbita.
+
 ## 4. O que isso muda no mapa da prova
 | Elo | Antes | Agora |
 |---|---|---|
