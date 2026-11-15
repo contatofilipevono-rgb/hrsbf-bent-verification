@@ -82,6 +82,8 @@ Ideia para os 11: antes do Walsh, restringir as formas de ativação a cada espa
 
 Os 12 polares distintos das testemunhas bent estão entre os 72. **Fora desses 72 polares, nenhuma RS bent de grau ≤ 4 em 12 variáveis existe** neste modelo. O modelo cobre todas as RS de grau ≤ 4 que satisfazem as duas relações universais, e toda bent as satisfaz.
 
+**Atualização (15/11):** os 140 mortos da tabela acima já não dependem das buscas. Cada um tem um certificado em árvore, verificado de forma independente (`NOTA_CERTIFICADOS_ARVORE.md`, `certificados_arvore_140.json.gz`).
+
 Dependências:
 - a enumeração (Pf4) × partes baixas;
 - o modelo `base12`;

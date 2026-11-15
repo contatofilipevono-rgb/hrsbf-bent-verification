@@ -1,0 +1,164 @@
+d4e871b24d8e172b OK {'nodes': 58495, 'lin': 8768, 'affine': 20480}
+b884478421e2211d OK {'nodes': 1279, 'const': 640}
+3c3c9696f0f05a5a OK {'nodes': 1, 'const': 1}
+a6cc6a0fa9cc9af4 OK {'nodes': 1, 'const': 1}
+2814418241822814 OK {'nodes': 1, 'const': 1}
+af360a6c36506cf5 OK {'nodes': 1, 'const': 1}
+8b2e1248124874d1 OK {'nodes': 1, 'lin': 1}
+a55a66660000c33c OK {'nodes': 1, 'lin': 1}
+d244771e78ee224b OK {'nodes': 1, 'const': 1}
+88b41e2244782d11 OK {'nodes': 1, 'const': 1}
+polars: 10 failures: 0 totals: {'nodes': 59782, 'lin': 8770, 'affine': 20480, 'const': 646}
+d1de2ede7b747b8b OK {'nodes': 45055, 'const': 13312, 'lin': 6144, 'affine': 3072}
+96cc3396cc969633 OK {'nodes': 1023, 'affine': 512}
+d74e27bed8bed7b1 OK {'nodes': 1, 'const': 1}
+ffaa00aa550055ff OK {'nodes': 1, 'const': 1}
+2e742e742e742e74 OK {'nodes': 1, 'lin': 1}
+e41414e427282827 OK {'nodes': 1, 'const': 1}
+9c50c60a9c50c60a OK {'nodes': 1, 'lin': 1}
+c366663c993cc399 OK {'nodes': 1, 'lin': 1}
+b7e2842e1d482e84 OK {'nodes': 1, 'lin': 1}
+polars: 9 failures: 0 totals: {'nodes': 46085, 'const': 13315, 'lin': 6148, 'affine': 3584}
+82e472148d14821b OK {'nodes': 2047, 'lin': 1024}
+7e188ee84224b2d4 OK {'nodes': 1, 'lin': 1}
+a06ca06c93a093a0 OK {'nodes': 1, 'lin': 1}
+c9faa06c93a0fa36 OK {'nodes': 1, 'lin': 1}
+b7121248124848ed OK {'nodes': 1, 'lin': 1}
+9ff6a3ca533a6f06 OK {'nodes': 1, 'lin': 1}
+a06c93a0c9fafa36 OK {'nodes': 1, 'lin': 1}
+82d87dd81bbe1b41 OK {'nodes': 1, 'const': 1}
+cccc66660000aaaa OK {'nodes': 1, 'lin': 1}
+polars: 9 failures: 0 totals: {'nodes': 2055, 'lin': 1031, 'const': 1}
+2b8e71d42b8e71d4 OK {'nodes': 1535, 'const': 640, 'affine': 128}
+87d2b41e1eb4d287 OK {'nodes': 1, 'lin': 1}
+f5c6c60a9c50af9c OK {'nodes': 1, 'lin': 1}
+95a60cc0033065a9 OK {'nodes': 1, 'const': 1}
+c9fa93a0c9fa93a0 OK {'nodes': 1, 'lin': 1}
+390a36fa5f6c509c OK {'nodes': 1, 'const': 1}
+f5c6f5c6c60ac60a OK {'nodes': 1, 'lin': 1}
+4478221e78441e22 OK {'nodes': 1, 'lin': 1}
+a6c36500a6c36502 OK {'nodes': 1, 'affine': 1}
+polars: 9 failures: 0 totals: {'nodes': 1543, 'const': 642, 'affine': 129, 'lin': 5}
+84747b742ede2e21 OK {'nodes': 40959, 'const': 9216, 'lin': 2560, 'affine': 8704}
+e8184d4242b21817 OK {'nodes': 1023, 'const': 512}
+2b427118188e42d4 OK {'nodes': 1, 'affine': 1}
+6a309530306acf6a OK {'nodes': 1, 'const': 1}
+ca5cc5ac5cca533a OK {'nodes': 1, 'lin': 1}
+2b42188e711842d4 OK {'nodes': 1, 'const': 1}
+b7e2b7e247124712 OK {'nodes': 1, 'lin': 1}
+b2d442248ee87e18 OK {'nodes': 1, 'lin': 1}
+3c3cccccc33c33cc OK {'nodes': 1, 'const': 1}
+polars: 9 failures: 0 totals: {'nodes': 41989, 'const': 9731, 'lin': 2563, 'affine': 8705}
+8214148241282841 OK {'nodes': 27647, 'const': 6656, 'lin': 7168}
+c650a0360a9c9305 OK {'nodes': 1023, 'lin': 512}
+6ca0053636fa5f6c OK {'nodes': 1, 'lin': 1}
+2e742e742e742e74 OK {'nodes': 1, 'const': 1}
+2e841d48842eb7e2 OK {'nodes': 1, 'const': 1}
+3366693c3c9666cc OK {'nodes': 1, 'lin': 1}
+d2881e442278114b OK {'nodes': 1, 'const': 1}
+5fc6930aaf369c05 OK {'nodes': 1, 'const': 1}
+996600000ff09696 OK {'nodes': 1, 'lin': 1}
+polars: 9 failures: 0 totals: {'nodes': 28677, 'const': 6660, 'lin': 7683}
+78444b8811d2221e OK {'nodes': 6311, 'const': 3156}
+7ee824b24d24177e OK {'nodes': 63, 'const': 16, 'lin': 16}
+3650fa9cc6a0f593 OK {'nodes': 1, 'const': 1}
+2418d4e8e8d4e7db OK {'nodes': 1, 'const': 1}
+e248d18448e27b2e OK {'nodes': 1, 'lin': 1}
+365036500a6c0a6c OK {'nodes': 1, 'affine': 1}
+9ac065c0c09a3f9a OK {'nodes': 1, 'lin': 1}
+a55a55aa5a5aaaaa OK {'nodes': 1, 'lin': 1}
+7dbe142814287dbe OK {'nodes': 1, 'const': 1}
+polars: 9 failures: 0 totals: {'nodes': 6381, 'const': 3175, 'lin': 19, 'affine': 1}
+4182281428144182 OK {'nodes': 5135, 'lin': 1024, 'const': 776, 'affine': 768}
+d278e1b44b1e872d OK {'nodes': 63, 'affine': 32}
+60606f9009f60606 OK {'nodes': 1, 'affine': 1}
+42d47118188e2b42 OK {'nodes': 1, 'const': 1}
+cf6a03a6cf6a03a6 OK {'nodes': 1, 'lin': 1}
+1824e8d4d4e8dbe7 OK {'nodes': 1, 'const': 1}
+14e428d81b142728 OK {'nodes': 1, 'lin': 1}
+f5a693c3c965af00 OK {'nodes': 1, 'lin': 1}
+9ac0560c9ac0560c OK {'nodes': 1, 'lin': 1}
+polars: 9 failures: 0 totals: {'nodes': 5205, 'lin': 1028, 'const': 778, 'affine': 801}
+28d8414e72821b14 OK {'nodes': 3583, 'const': 1792}
+dbb27118188e4ddb OK {'nodes': 55, 'const': 26, 'lin': 2}
+39a59c0039a59c04 OK {'nodes': 1, 'lin': 1}
+2d221eee777844b4 OK {'nodes': 1, 'affine': 1}
+c53a060660605ca3 OK {'nodes': 1, 'const': 1}
+6ca05f6c053636fa OK {'nodes': 1, 'lin': 1}
+7bde7bde7bde7bde OK {'nodes': 1, 'const': 1}
+ca5cf66006903aac OK {'nodes': 1, 'lin': 1}
+cccc55aa5a5ac33c OK {'nodes': 1, 'lin': 1}
+polars: 9 failures: 0 totals: {'nodes': 3645, 'const': 1820, 'lin': 6, 'affine': 1}
+7b127b1248de48de OK {'nodes': 3071, 'const': 1280, 'affine': 256}
+c9fa5f6c36fa5f93 OK {'nodes': 31, 'lin': 16}
+4d8ebd7e81428e4d OK {'nodes': 1, 'const': 1}
+9ff6900609600690 OK {'nodes': 1, 'lin': 1}
+e77e244281184224 OK {'nodes': 1, 'lin': 1}
+5306530660ca60ca OK {'nodes': 1, 'lin': 1}
+e248e24812b812b8 OK {'nodes': 1, 'lin': 1}
+3aac0690f660ca5c OK {'nodes': 1, 'lin': 1}
+14287dbe7dbe1428 OK {'nodes': 1, 'const': 1}
+polars: 9 failures: 0 totals: {'nodes': 3109, 'const': 1282, 'affine': 256, 'lin': 21}
+42d4188e71182b42 OK {'nodes': 2559, 'lin': 128, 'const': 1152}
+111e22d24b447888 OK {'nodes': 29, 'affine': 8, 'const': 7}
+c0c030300c0c0303 OK {'nodes': 1, 'const': 1}
+b2d471e8d4b2178e OK {'nodes': 1, 'lin': 1}
+e77e178edb422bb2 OK {'nodes': 1, 'lin': 1}
+f0f033cc55aa9696 OK {'nodes': 1, 'lin': 1}
+9c50f5c6c60aaf9c OK {'nodes': 1, 'lin': 1}
+78884b4422d2111e OK {'nodes': 1, 'affine': 1}
+f0f000000ff0ff00 OK {'nodes': 1, 'lin': 1}
+polars: 9 failures: 0 totals: {'nodes': 2595, 'lin': 133, 'const': 1160, 'affine': 9}
+1248124812481248 OK {'nodes': 2049, 'lin': 1024, 'const': 1}
+93faf59c5f36c6af OK {'nodes': 1, 'const': 1}
+71b28142bd7eb271 OK {'nodes': 1, 'const': 1}
+cc065566aa603302 OK {'nodes': 1, 'affine': 1}
+996633cc55aaff00 OK {'nodes': 1, 'lin': 1}
+7ee824b24d24177e OK {'nodes': 1, 'affine': 1}
+cf6a306a95306a30 OK {'nodes': 1, 'lin': 1}
+63faaf36930aa039 OK {'nodes': 1, 'const': 1}
+5360ac663506ca04 OK {'nodes': 1, 'const': 1}
+polars: 9 failures: 0 totals: {'nodes': 2057, 'lin': 1026, 'const': 5, 'affine': 2}
+8142241818244281 OK {'nodes': 379097, 'const': 117591, 'lin': 71958}
+fa5063366cc60a5f OK {'nodes': 275, 'const': 90, 'lin': 48}
+f5c65f6c36fa63af OK {'nodes': 77, 'const': 22, 'lin': 17}
+polars: 3 failures: 0 totals: {'nodes': 379449, 'const': 117703, 'lin': 72023}
+66ccf05aa5f0cc99 OK {'nodes': 73727, 'const': 36288, 'lin': 576}
+2b8e4de817b271d4 OK {'nodes': 255, 'const': 94, 'lin': 34}
+e78e7118188e71e7 OK {'nodes': 67, 'lin': 15, 'const': 19}
+polars: 3 failures: 0 totals: {'nodes': 74049, 'const': 36401, 'lin': 625}
+3a90530660ca095c OK {'nodes': 719, 'const': 224, 'lin': 136}
+ff663c5a5a3c66ff OK {'nodes': 79, 'lin': 14, 'const': 26}
+polars: 2 failures: 0 totals: {'nodes': 798, 'const': 250, 'lin': 150}
+aacc69f00f963355 OK {'nodes': 275, 'const': 90, 'lin': 48}
+affa369c396c5ff5 OK {'nodes': 79, 'const': 26, 'lin': 14}
+polars: 2 failures: 0 totals: {'nodes': 354, 'const': 116, 'lin': 62}
+212e8b84de2e8b7b OK {'nodes': 30207, 'const': 12544, 'lin': 2560}
+ee7822b42d441e77 OK {'nodes': 239, 'const': 77, 'lin': 43}
+390a0ac6509c6350 OK {'nodes': 55, 'const': 21, 'lin': 7}
+polars: 3 failures: 0 totals: {'nodes': 30501, 'const': 12642, 'lin': 2610}
+5af0cc6699ccf0a5 OK {'nodes': 28671, 'const': 13824, 'lin': 512}
+bee428724e14277d OK {'nodes': 239, 'const': 77, 'lin': 43}
+390a509c63500ac6 OK {'nodes': 55, 'const': 22, 'lin': 6}
+polars: 3 failures: 0 totals: {'nodes': 28965, 'const': 13923, 'lin': 561}
+f5a99cccc66a50f6 OK {'nodes': 24831, 'const': 10880, 'lin': 1536}
+7b12472e74e248de OK {'nodes': 159, 'const': 70, 'lin': 10}
+6f06533aa3ca9ff6 OK {'nodes': 53, 'const': 21, 'lin': 6}
+polars: 3 failures: 0 totals: {'nodes': 25043, 'const': 10971, 'lin': 1552}
+1d12b7b8e212b747 OK {'nodes': 15615, 'const': 5248, 'lin': 2560}
+bbd2771e78ee4bdd OK {'nodes': 137, 'lin': 57, 'const': 12}
+2bb2db42178ee77e OK {'nodes': 53, 'lin': 6, 'const': 21}
+polars: 3 failures: 0 totals: {'nodes': 15805, 'const': 5281, 'lin': 2623}
+956a659a59a656a9 OK {'nodes': 10009, 'lin': 1452, 'const': 3553}
+eb4e7dd81bbe72d7 OK {'nodes': 133, 'lin': 45, 'const': 22}
+47e247e247e247e2 OK {'nodes': 1, 'const': 1}
+polars: 3 failures: 0 totals: {'nodes': 10143, 'lin': 1497, 'const': 3576}
+55aa55aa55aa55aa OK {'nodes': 6787, 'const': 912, 'lin': 2482}
+48b8e212b7b8e2ed OK {'nodes': 127, 'lin': 64}
+polars: 2 failures: 0 totals: {'nodes': 6914, 'const': 912, 'lin': 2546}
+4182142814284182 OK {'nodes': 4215, 'const': 1398, 'lin': 710}
+7484de2e8b84ded1 OK {'nodes': 127, 'lin': 64}
+polars: 2 failures: 0 totals: {'nodes': 4342, 'const': 1398, 'lin': 774}
+6a0c59c0039a3056 OK {'nodes': 819, 'const': 359, 'lin': 51}
+3366a5f0f05a9933 OK {'nodes': 127, 'lin': 64}
+polars: 2 failures: 0 totals: {'nodes': 946, 'const': 359, 'lin': 115}
