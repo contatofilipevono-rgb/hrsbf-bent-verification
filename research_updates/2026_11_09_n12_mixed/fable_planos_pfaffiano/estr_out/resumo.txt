@@ -1,0 +1,65 @@
+71 of 71 polars analysed
+images outside the bent list: 0 | polars whose sample images split into several polars: 0
+orbits under x_i -> x_{k i} (k = 5, 7, 11): 42 sizes [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+  orbit of 2 polars: {(1536, 33, 17, 4, 96, None): 2}
+  orbit of 2 polars: {(1536, 33, 17, 4, 96, None): 2}
+  orbit of 1 polars: {(4096, 36, 15, 8, 16, 7): 1}
+  orbit of 1 polars: {(4096, 36, 15, 8, 16, 7): 1}
+  orbit of 2 polars: {(6144, 28, 18, 2, 1536, None): 2}
+  orbit of 2 polars: {(6144, 28, 18, 2, 1536, None): 2}
+  orbit of 2 polars: {(6144, 30, 18, 2, 1536, None): 2}
+  orbit of 2 polars: {(6144, 30, 18, 2, 1536, None): 2}
+  orbit of 2 polars: {(6144, 28, 18, 2, 1536, None): 2}
+  orbit of 2 polars: {(6144, 28, 18, 2, 1536, None): 2}
+  orbit of 2 polars: {(6144, 28, 18, 2, 1536, None): 2}
+  orbit of 2 polars: {(6144, 30, 18, 2, 1536, None): 2}
+  orbit of 2 polars: {(6144, 28, 18, 2, 1536, None): 2}
+  orbit of 2 polars: {(6144, 28, 18, 2, 1536, None): 2}
+  orbit of 2 polars: {(6144, 30, 18, 2, 1536, None): 2}
+  orbit of 2 polars: {(6144, 30, 18, 2, 1536, None): 2}
+  orbit of 2 polars: {(6144, 30, 18, 2, 1536, None): 2}
+  orbit of 2 polars: {(6144, 30, 18, 2, 1536, None): 2}
+  orbit of 2 polars: {(6144, 30, 18, 2, 1536, None): 2}
+  orbit of 2 polars: {(6144, 28, 18, 2, 1536, None): 2}
+  orbit of 1 polars: {(8192, 33, 21, 4, 512, None): 1}
+  orbit of 1 polars: {(8192, 33, 21, 5, 256, None): 1}
+  orbit of 2 polars: {(8192, 33, 21, 4, 512, None): 2}
+  orbit of 2 polars: {(8192, 33, 21, 4, 512, None): 2}
+  orbit of 2 polars: {(8192, 33, 21, 4, 512, None): 2}
+  orbit of 1 polars: {(16384, 36, 23, 6, 256, None): 1}
+  orbit of 1 polars: {(16384, 36, 23, 6, 256, None): 1}
+  orbit of 2 polars: {(90112, 35, 24, 5, 2816, None): 2}
+  orbit of 2 polars: {(90112, 35, 24, 5, 2816, None): 2}
+  orbit of 1 polars: {(196608, 39, 20, 14, 12, 6): 1}
+  orbit of 2 polars: {(196608, 38, 21, 11, 96, None): 2}
+  orbit of 1 polars: {(262144, 39, 21, 6, 4096, None): 1}
+  orbit of 2 polars: {(262144, 38, 23, 8, 1024, None): 2}
+  orbit of 2 polars: {(393216, 38, 23, 9, 768, None): 2}
+  orbit of 2 polars: {(393216, 39, 24, 8, 1536, None): 2}
+  orbit of 2 polars: {(524288, 38, 23, 8, 2048, None): 2}
+  orbit of 2 polars: {(589824, 39, 24, 9, 1152, None): 2}
+  orbit of 1 polars: {(655360, 36, 27, 9, 1280, None): 1}
+  orbit of 1 polars: {(655360, 36, 27, 9, 1280, None): 1}
+  orbit of 1 polars: {(786432, 36, 27, 5, 24576, None): 1}
+  orbit of 1 polars: {(786432, 36, 27, 5, 24576, None): 1}
+  orbit of 1 polars: {(10485760, 41, 29, None, None, None): 1}
+families (count, dim U, hull, stab, cosets, quotient hull):
+   (1536, 33, 17, 4, 96, None) x 4
+   (4096, 36, 15, 8, 16, 7) x 2
+   (6144, 28, 18, 2, 1536, None) x 16
+   (6144, 30, 18, 2, 1536, None) x 16
+   (8192, 33, 21, 4, 512, None) x 7
+   (8192, 33, 21, 5, 256, None) x 1
+   (16384, 36, 23, 6, 256, None) x 2
+   (90112, 35, 24, 5, 2816, None) x 4
+   (196608, 39, 20, 14, 12, 6) x 1
+   (196608, 38, 21, 11, 96, None) x 2
+   (262144, 39, 21, 6, 4096, None) x 1
+   (262144, 38, 23, 8, 1024, None) x 2
+   (393216, 38, 23, 9, 768, None) x 2
+   (393216, 39, 24, 8, 1536, None) x 2
+   (524288, 38, 23, 8, 2048, None) x 2
+   (589824, 39, 24, 9, 1152, None) x 2
+   (655360, 36, 27, 9, 1280, None) x 2
+   (786432, 36, 27, 5, 24576, None) x 2
+   (10485760, 41, 29, None, None, None) x 1

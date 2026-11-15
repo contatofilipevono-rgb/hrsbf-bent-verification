@@ -31,6 +31,30 @@ class Collect(V3.Checker):
         return super().node(n, x0, B, stats)
 
 
+PAIRS6 = [(i, j) for i in range(6) for j in range(i + 1, 6)]
+XS = np.arange(4096)
+
+
+def image_polar(G, k):
+    """G[z, w] (z = a + b, w = b; x = a | b << 6).  Permute x_i -> x_{k i mod 12} and return the polar hex."""
+    Z = np.arange(64)[:, None]; Wd = np.arange(64)[None, :]
+    t = np.zeros(4096, dtype=np.uint8)
+    t[((Z ^ Wd) | (Wd << 6)).reshape(-1)] = G.reshape(-1)         # truth table in x
+    perm = np.zeros(4096, dtype=np.int64)                          # y = sigma(x): bit (k i mod 12) of y = bit i of x
+    for i in range(12):
+        perm |= ((XS >> i) & 1) << ((k * i) % 12)
+    t2 = np.zeros(4096, dtype=np.uint8); t2[perm] = t                # f'(sigma x) = f(x)
+    G2 = t2[((Z ^ Wd) | (Wd << 6))]                                  # back to (z, w)
+    v = 0
+    for kk, (i, j) in enumerate(PAIRS6):
+        ei, ej = 1 << i, 1 << j
+        col = G2[:, ei ^ ej] ^ G2[:, ei] ^ G2[:, ej] ^ G2[:, 0]
+        for z in range(64):
+            if col[z]:
+                v |= 1 << (64 * kk + z)
+    return format(v, "x")
+
+
 def gf2_rank_rows(M):
     M = M.copy() % 2; r = 0; piv = []
     for c in range(M.shape[1]):
@@ -66,7 +90,8 @@ def analyse(leaves, m):
     diffs = ((sample[:, None] >> np.arange(m, dtype=np.uint64)) & np.uint64(1)).astype(np.int64)
     H, piv = gf2_rank_rows(diffs)
     a = len(H)
-    if a > 26:
+    analyse.sample = [int(pts[i]) for i in np.linspace(0, N - 1, min(N, 6)).astype(np.int64)]
+    if a > int(os.environ.get("ESTR_MAXHULL", "26")):
         return {"N": N, "hull_dim": a, "note": "hull too large for the transform"}
     idx = np.zeros(N, dtype=np.int64)
     for k, c in enumerate(piv):
@@ -131,6 +156,19 @@ if __name__ == "__main__":
         C.node(r["cert"], np.zeros(P.m, np.int64), np.eye(P.m, dtype=np.int64), {})
         info = analyse(C.leaves, P.m)
         info.update(polar=r["polar"][:12], dim_U=P.m, count=r["bent_count"])
+        # symmetry: images of sample bent functions under x_i -> x_{k i mod 12}
+        imgs = {}
+        for k in (5, 7, 11):
+            seen = set()
+            for pt in analyse.sample:
+                G = T0.copy()
+                for j in range(P.m):
+                    if pt >> j & 1:
+                        G ^= K[j]
+                seen.add(image_polar(G, k))
+            imgs[k] = sorted(seen)
+        info["sigma_images"] = {str(k): [h[:12] for h in v] for k, v in imgs.items()}
+        info["sigma_images_full"] = {str(k): v for k, v in imgs.items()}
         res.append(info)
         print(json.dumps(info), flush=True)
         if out_path:
