@@ -1,0 +1,40 @@
+name: n=12 homogeneous quartic (H12) - certificates for the 5 special polars
+on:
+  push:
+    branches: [claude/n12-parseval-certificados]
+    paths:
+      - '.github/workflows/n12_homog_especiais.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  special:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix:
+        polar: ['124812481248', '142841824182', 'c0c030300c0c', 'd4e871b24d8e', '124821844812']
+    defaults:
+      run:
+        working-directory: research_updates/2026_11_09_n12_mixed/fable_planos_pfaffiano
+    env:
+      OMP_NUM_THREADS: 4
+      CERT_VERBOSE: 1
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install "numpy>=2"
+      - run: python -u base12.py
+      - name: Certificate on the homogeneous phase
+        run: python -u homog_especiais.py ${{ matrix.polar }} --out homog_${{ matrix.polar }}.json 2> homog_${{ matrix.polar }}.err | tee homog_${{ matrix.polar }}.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: homog-${{ matrix.polar }}
+          path: |
+            research_updates/2026_11_09_n12_mixed/fable_planos_pfaffiano/homog_${{ matrix.polar }}.*
