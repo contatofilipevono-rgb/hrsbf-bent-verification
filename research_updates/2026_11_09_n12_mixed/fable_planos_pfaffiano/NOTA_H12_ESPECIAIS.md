@@ -29,6 +29,14 @@ Além disso, a fase homogênea é constante em w em exatamente 8 linhas: z = 0, 
 - a aplicação dos critérios polar a polar: são contas curtas, mas são 1.176 (ou as órbitas de Γ correspondentes);
 - os 98 casos que precisam da fase.
 
+### Estrutura do teste das 8 linhas (`oito_linhas_estrutura.py`)
+- Nas linhas z = 0 e z = e_i, f(z,·) é uma forma quadrática pura. Na linha z = 63 pode haver parte linear λ(63)·w, que depende só da polar, e o teste a inclui.
+- **Entre todos os 2²¹ polares homogêneos**, 1.211.392 passam no teste. Os postos (B₀; B_{e_i}; B₆₃) dos que passam variam: B₀ ∈ {2, 4, 6} e B_{e_i} todos 4 ou todos 2. **B₀ = 0 nunca passa.**
+- **Entre os 1.176 de (Pf4)**, 388 passam, e todos têm **posto B₀ = 2 e posto B_{e_i} = 4 para os seis i**. O posto de B₆₃ é 4 (260 polares), 2 (126) ou 0 (2).
+- O conjunto que passa não é fechado por soma: 0 de 79.800 pares numa amostra.
+
+**Leitura.** A rigidez dentro de (Pf4) vem da interação com γ₂(T) = 0. Uma prova à mão do H12 por este caminho exigiria classificar à mão as soluções de γ₂(T) = 0 com posto B₀ = 2 e posto B_{e_i} = 4, e depois tratar os 388 polares (paridade em 290, fase em 98). O primeiro passo é viável como objetivo, mas não é curto.
+
 ## Ferramenta comum
 Seja f uma RS bent homogênea quártica. Pelas relações universais, f é quadrática em w: f(z,w) = h(z) + λ(z)·w + q_z(w), onde q_z é a forma quadrática de polar B_z. Para d ≠ 0, seja Z_d = {z : B_z d = 0} e N_d = |Z_d|.
 
