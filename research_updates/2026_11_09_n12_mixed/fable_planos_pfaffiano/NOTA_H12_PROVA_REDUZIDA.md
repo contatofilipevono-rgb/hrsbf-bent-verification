@@ -38,4 +38,10 @@ Os conjuntos de sobreviventes não têm estrutura linear:
 - os 14.184 pares geram o espaço todo e não têm estabilizador por translação;
 - os 6.367 que passam na paridade e nas 8 linhas, e os 98, não são fechados por soma.
 
-São variedades definidas por polinômios de grau 2 a 4 em 21 variáveis sobre F₂. Classificá-las à mão exigiria uma ideia nova, por exemplo decompor o espaço sob a rotação, via F₂[X]/(X⁶ − 1).
+São variedades definidas por polinômios de grau 2 a 4 em 21 variáveis sobre F₂. Classificá-las à mão exigiria uma ideia nova.
+
+### Tentativa: decompor pela rotação (`h12_blocos.py`, `h12_f4.py`, `h12_invariancia.py`)
+- **Invariância.** A polar satisfaz B(Rz) = R^{−T}·B(z)·R^{−1}, com R o 6-ciclo agindo igualmente em z e em w (conferido nas 41 funções da base).
+- **Sobre F₂:** W = ker(R+1)² ⊕ ker(R²+R+1)², de dimensões 2 e 4. As projeções do espaço dos topos (dim 21) nos 9 blocos de Alt(W) ⊗ Alt(Z) têm postos que somam 29.
+- **Sobre F₄:** R² se diagonaliza, W ⊗ F₄ = E₁ ⊕ E_ω ⊕ E_{ω²}, cada um de dimensão 2. Todas as coordenadas não nulas dos topos têm caráter 1, como a invariância exige. Mas as projeções nos blocos de caráter somam 37 dimensões sobre F₂, contra os 21 graus de liberdade.
+- **Conclusão:** o espaço dos topos não é soma direta das suas projeções nos blocos. As relações que ligam blocos diferentes vêm do modelo e da homogeneidade, não da rotação. Logo γ₂(T) = 0 não se separa em equações por bloco, e este caminho não dá uma classificação curta. Fechar o H12 sem computador continua em aberto.
