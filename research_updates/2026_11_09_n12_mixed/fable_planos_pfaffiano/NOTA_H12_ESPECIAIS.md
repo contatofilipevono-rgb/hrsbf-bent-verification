@@ -30,7 +30,7 @@ Isso é uma equação linear na fase (λ, h).
 
 **Reformulação mais conceitual.** e(z) := D₆₃f(z,0) é uma função de grau ≤ 3 em z ∈ F₂⁶, e S₆₃ = 64 − 2·wt(e). A coluna exige que e seja balanceada. As 7 equações de paridade forçam e ≡ 0. Para virar uma prova sem nenhuma álgebra linear em coordenadas, falta escrever essas 7 equações como condições sobre e.
 
-## Polares d4e871… (5 nós), 142841… (11 nós) e 124821… (12 nós)
+## Polares d4e871… (5 nós), 142841… (11 nós) e 124821… (13 nós)
 Mesmo esquema: equações de paridade, alguns cortes por um funcional φ (casos φ = 0 e φ = 1) e folhas.
 
 | Polar | Perfil de posto de B_z | Fase | Cortes | Folhas `const` | Folhas `lin` |
@@ -57,5 +57,5 @@ Só a família S foi usada (16 folhas `const` e 48 `lin`). Precisa ser reorganiz
 
 ## Situação do H12 sem computador
 - **Feito à mão:** a redução (relações universais, γ₂(T) = 0, homogeneidade ⇒ polar só de topo), o polar nulo (Maiorana–McFarland) e o polar 124812….
-- **Conferível à mão, falta escrever:** 3 polares especiais (5, 11 e 12 nós).
+- **Conferível à mão, falta escrever:** 3 polares especiais (5, 11 e 13 nós).
 - **Computacional:** a lista dos 1.176 topos, os níveis simples um topo de cada vez, e o polar c0c030… (127 nós).
