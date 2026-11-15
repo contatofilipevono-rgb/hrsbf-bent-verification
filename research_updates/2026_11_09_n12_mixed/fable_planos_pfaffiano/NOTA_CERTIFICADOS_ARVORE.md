@@ -95,7 +95,11 @@ O verificador:
 - confere a afinidade em pontos aleatórios;
 - para cada um dos **18.816** polares de (Pf4) × partes baixas, ou mostra que o sistema é inconsistente (o polar morre), ou confere que o seu espaço solução U_ind está contido no U usado pelos certificados.
 
-Resultado: RESULT_L5L3.
+**Resultado:** os 18.816 polares foram conferidos sem nenhuma divergência (`verificacao_L5L3_18816.json.gz`).
+- 14.284 morrem porque o sistema independente é inconsistente.
+- Nos 4.532 vivos, U_ind ⊆ U, e as dimensões coincidem.
+
+A conta fecha com a tabela anterior: 10.156 viáveis em (L5) − 5.624 mortos por (L5)+(L3) = 4.532.
 
 ## Contagens certificadas: folhas "toda bent"
 - **Nova folha `allbent`:** num subespaço, se para os 4.096 pares (u,b) o polinômio de W(u,b) − 64 tem todos os monômios com |J| + v₂N_J ≥ 7, então W ≡ 64 mod 128 em todo ponto. Por Parseval, isso força |W| = 64, ou seja, todos os pontos do subespaço são bent.
@@ -103,10 +107,46 @@ Resultado: RESULT_L5L3.
 - **Verificação:** o verificador refaz a conta com uma transformada de Walsh inteira em borboleta, um algoritmo diferente do provador.
 - **Contagem:** as folhas são disjuntas, então a contagem de bent de um polar é a soma de 2^dim sobre as folhas `allbent`.
 
-Resultado: RESULT_CONTAGEM.
+**Resultado:** os 71 polares bent não nulos têm contagem certificada, e as 71 coincidem com o catálogo. Ao todo são **19.216.384**. O verificador independente conferiu as 71 árvores sem falha (`certificados_bent71.json.gz`, `verificacao_bent71.log`).
+- O maior caso, o polar 142841…, tem 10.485.760 bent em 1.052 folhas `allbent`, com 49.501 nós (17 subárvores juntadas).
+- Os polares 3c3c55… e 7dbe41… dão 786.432 cada.
+- Os polares 281414… e 699600… dão 655.360 cada.
 
-## Dependências e o que ainda é computacional
-- O modelo `base12`, a enumeração (Pf4) × partes baixas e a verificação de (L5)+(L3) polar a polar (as mesmas dos 9.944 certificados elementares).
-- O polar nulo vem do teorema da diagonal.
-- As **contagens** dos 71 polares bent não nulos ainda são enumeração (`contagem72.json`).
-- Os certificados por árvore são verificados por máquina, mas cada passo é elementar (polinômios sobre F₂ e eliminação). Não há busca nem teste de Walsh ponto a ponto.
+## O polar nulo: Maiorana–McFarland e um censo (`censo_polar_nulo.py`)
+Com polar nulo, f(z,w) = λ(z)·w + h(z).
+- **Fórmula:** W_f(u,b) = 64·Σ_{z : λ(z) = b} (−1)^{h(z) + u·z}.
+- **Critério:** Parseval em u numa fibra λ⁻¹(b) dá Σ_u W(u,b)² = 2^{18}·|λ⁻¹(b)|. Logo |W| = 64 para todo (u,b) se e só se toda fibra tem um ponto, ou seja, se e só se λ é bijetora, seja qual for h.
+- **Dimensões:** o espaço de fase do polar nulo tem dimensão 43, e (L5)+(L3) são vazias. A projeção θ ↦ λ é linear, com imagem Λ de dimensão 31 e núcleo de dimensão 12, só com termos em h.
+- **Contagem:** o número de bent é #{λ ∈ Λ bijetoras}·2^{12}.
+- **Censo:** a varredura dos 2^{31} elementos de Λ usa o critério de que λ é bijetora se e só se as 63 combinações não nulas das coordenadas de saída são balanceadas. Resultado: **70.816** bijeções, logo **290.062.336** bent, igual à família da diagonal do `README`.
+
+## As duas relações universais (`verifica_relacoes_universais.py`)
+O modelo `base12` supõe que f é quadrática em w. Isso vem de `EXTERIOR_QUARTICO_N12.md`.
+- **Necessidade do filtro:** para f bent e |S| = 8, o coeficiente inteiro de x^S em (−1)^f vale, pela fórmula do dual, 4·Σ_{v⊇S} (±1), com 16 parcelas, logo é ≡ 0 mod 8. Pela expansão Π(1 − 2x^m), o mesmo coeficiente é ≡ 4·#{pares de quárticos disjuntos com união S} mod 8. Daí as quádricas Q_S = 0 nos coeficientes de órbita t_j.
+- **Certificado:** L₄₅₆ e L₄₆₄ estão no F₂-span de {Q_S, t_j·Q_S}.
+- **Troca de coordenadas:** na troca x ↦ (z,w), os 135 monômios quárticos com pelo menos três w têm coeficiente 0 (87 deles), L₄₅₆ (24) ou L₄₆₄ (24).
+- **Meia-volta:** ela mata os cúbicos puros em w.
+
+O verificador novo refaz tudo isso do zero e confere.
+
+## A enumeração dos polares (`pf4_cert.py`, `verifica_pf4_arvore.py`)
+- **Origem de (Pf4):** κ_z = K_z/4 é ímpar exatamente quando B_z|_V é não degenerada. Então a condição de Poisson nos 4-flats, módulo 2, é Σ_{z⊇I} Pf_V(B_z) = 0, para os 651 subespaços V de dimensão 4 e |I| ≤ 2.
+- **O sistema:** são quádricas nas 25 coordenadas da polar, ao todo 9.726 condições e 1.420 polinômios distintos.
+- **Resultado:** uma árvore de 3.575 nós (1.077 folhas `lin` e 711 folhas de soluções) mostra que **as soluções são exatamente os 18.816 polares** de `polares_18816.txt`.
+- **Verificação independente:** cada condição é avaliada diretamente pelo Pfaffiano e interpolada como forma quadrática. Ela confirmou a árvore e a igualdade dos conjuntos.
+
+## Reprodução num ambiente limpo
+O workflow `n12_verifica_certificados.yml` ([run 43713458745](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/43713458745)) refez tudo a partir do repositório, com 8 runners: reconstruiu `base12.pkl`, verificou as relações universais e a enumeração (Pf4), (L5)+(L3) nos 18.816 polares e os 140 certificados de árvore. Os 8 lotes foram aprovados.
+
+## Estado da classificação (n = 12, RS, grau ≤ 4)
+| Elo | Como está fechado |
+|---|---|
+| Toda RS bent de grau ≤ 4 é quadrática em w (modelo `base12`, 68 dimensões) | prova à mão (quadrado dividido + meia-volta) + verificador independente |
+| Os polares possíveis são exatamente 18.816 | árvore (Pf4) + verificador independente |
+| (L5)+(L3) em cada polar | verificador independente, direto das somas de Poisson |
+| 10.084 polares sem bent | 9.944 certificados elementares + 140 certificados em árvore, todos verificados |
+| 71 polares bent não nulos: 19.216.384 bent | árvores com folhas `allbent`, verificadas |
+| polar nulo: 290.062.336 bent | Maiorana–McFarland (à mão) + censo de 2^{31} mapas |
+| **total: 309.278.720 = 64 + 57.280 + 309.221.376** | igual ao catálogo, que só entra na comparação final |
+
+**O que continua computacional:** o censo das 2^{31} bijeções do polar nulo e a execução dos verificadores. Cada passo dos verificadores é elementar: polinômios sobre F₂, eliminação gaussiana e a transformada de Walsh das folhas `allbent`. Não há busca. Falta uma auditoria externa (Codex) desta nota.

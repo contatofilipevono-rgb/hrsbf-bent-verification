@@ -1,0 +1,16 @@
+﻿dim Lambda 31 | h-kernel 12
+shard 0 / 8 : bijective lambda 9322 3199.2 s
+dim Lambda 31 | h-kernel 12
+shard 1 / 8 : bijective lambda 8434 3176.3 s
+dim Lambda 31 | h-kernel 12
+shard 2 / 8 : bijective lambda 9106 3196.1 s
+dim Lambda 31 | h-kernel 12
+shard 3 / 8 : bijective lambda 8794 3199.5 s
+dim Lambda 31 | h-kernel 12
+shard 4 / 8 : bijective lambda 8730 3197.0 s
+dim Lambda 31 | h-kernel 12
+shard 5 / 8 : bijective lambda 8818 3198.2 s
+dim Lambda 31 | h-kernel 12
+shard 6 / 8 : bijective lambda 8410 3198.0 s
+dim Lambda 31 | h-kernel 12
+shard 7 / 8 : bijective lambda 9202 3191.1 s

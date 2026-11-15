@@ -1,0 +1,83 @@
+5af0a5f0f05af0a5 OK {'nodes': 147583, 'lin': 49040, 'const': 23488, 'allbent': 1264, 'bent': 6144}
+3650930aaf36f593 OK {'nodes': 20479, 'const': 5888, 'allbent': 1280, 'bent': 6144, 'lin': 3072}
+3fa60c6a563065fc OK {'nodes': 12445, 'const': 971, 'lin': 4, 'allbent': 5248, 'bent': 524288}
+5f0afa50f5a0af05 OK {'nodes': 6087, 'const': 1120, 'lin': 825, 'allbent': 1099, 'bent': 6144}
+3a6560c9530c09a1 OK {'nodes': 4451, 'lin': 39, 'const': 11, 'allbent': 2176, 'bent': 393216}
+5365f6c36fa6ca02 OK {'nodes': 2799, 'lin': 23, 'allbent': 1360, 'bent': 262144, 'const': 17}
+9f63a3a5c5c6f900 OK {'nodes': 1309, 'const': 4, 'lin': 11, 'allbent': 640, 'bent': 8192}
+c0c00c0c30300303 OK {'nodes': 587, 'const': 118, 'lin': 46, 'allbent': 130, 'bent': 16384}
+c3963c96693c69c3 OK {'nodes': 37, 'allbent': 16, 'bent': 4096, 'lin': 3}
+polars: 9 failures: 0 totals: {'nodes': 195777, 'lin': 53063, 'const': 31617, 'allbent': 13213, 'bent': 1226752}
+66cc99cccc66cc99 OK {'nodes': 65535, 'const': 25152, 'lin': 6080, 'allbent': 1536, 'bent': 6144}
+59a6956aa9569a65 OK {'nodes': 20479, 'allbent': 1536, 'bent': 6144, 'lin': 2752, 'const': 5952}
+596a95a69a56a965 OK {'nodes': 12319, 'lin': 1648, 'allbent': 1224, 'bent': 6144, 'const': 3288}
+5a3ca53cc35ac3a5 OK {'nodes': 5895, 'const': 1326, 'lin': 507, 'allbent': 1115, 'bent': 6144}
+6336c66cc99c9339 OK {'nodes': 3937, 'const': 945, 'allbent': 815, 'bent': 6144, 'lin': 209}
+4224422481188118 OK {'nodes': 1831, 'const': 58, 'lin': 58, 'allbent': 800, 'bent': 393216}
+2eb8128421481d74 OK {'nodes': 1303, 'const': 251, 'lin': 17, 'allbent': 384, 'bent': 196608}
+930a36500a6c50c9 OK {'nodes': 547, 'lin': 58, 'const': 92, 'allbent': 124, 'bent': 16384}
+905c06ca53603a09 OK {'nodes': 21, 'allbent': 8, 'bent': 4096, 'lin': 3}
+polars: 9 failures: 0 totals: {'nodes': 111867, 'const': 37064, 'lin': 11332, 'allbent': 7542, 'bent': 641024}
+3366cc6699cc9933 OK {'nodes': 49151, 'lin': 13312, 'const': 9728, 'allbent': 1536, 'bent': 6144}
+3030fcfcc0c0f3f3 OK {'nodes': 20175, 'lin': 8334, 'const': 1074, 'allbent': 680, 'bent': 6144}
+30fcfc30f3c0c0f3 OK {'nodes': 8191, 'allbent': 1152, 'bent': 6144, 'const': 1920, 'lin': 1024}
+369c93c69c36c693 OK {'nodes': 5841, 'lin': 704, 'const': 1131, 'allbent': 1086, 'bent': 6144}
+66009900ff66ff99 OK {'nodes': 3933, 'const': 681, 'lin': 359, 'allbent': 927, 'bent': 6144}
+39c6639c39c6639c OK {'nodes': 1809, 'const': 6, 'lin': 3, 'allbent': 896, 'bent': 8192}
+7e2418424218247e OK {'nodes': 1175, 'lin': 17, 'const': 251, 'allbent': 320, 'bent': 196608}
+3f9ac09a65c09ac0 OK {'nodes': 523, 'const': 14, 'lin': 16, 'allbent': 232, 'bent': 90112}
+polars: 8 failures: 0 totals: {'nodes': 90798, 'lin': 23769, 'const': 14805, 'allbent': 6829, 'bent': 325632}
+5fc6fa9cc6a09c05 OK {'nodes': 40959, 'lin': 11376, 'allbent': 1536, 'bent': 6144, 'const': 7568}
+a6caf36930ac9af4 OK {'nodes': 18431, 'lin': 4096, 'const': 3776, 'allbent': 1344, 'bent': 6144}
+5c5ccacaacacc5c5 OK {'nodes': 7519, 'lin': 528, 'allbent': 1144, 'bent': 6144, 'const': 2088}
+3506a390f63a9f53 OK {'nodes': 5775, 'const': 1064, 'allbent': 840, 'bent': 6144, 'lin': 984}
+aa0affaa00afaaf3 OK {'nodes': 3713, 'allbent': 919, 'bent': 6144, 'lin': 433, 'const': 505}
+695a695a5a965a96 OK {'nodes': 1809, 'const': 7, 'lin': 2, 'allbent': 896, 'bent': 8192}
+6996996696966666 OK {'nodes': 1167, 'const': 54, 'allbent': 500, 'bent': 90112, 'lin': 30}
+aacc55cc33aa3355 OK {'nodes': 451, 'lin': 2, 'allbent': 216, 'bent': 1536, 'const': 8}
+polars: 8 failures: 0 totals: {'nodes': 79824, 'lin': 17451, 'allbent': 7395, 'bent': 130560, 'const': 15070}
+659aa956956aa659 OK {'nodes': 32767, 'lin': 4608, 'const': 10240, 'allbent': 1536, 'bent': 6144}
+9f69f60f906906f6 OK {'nodes': 16383, 'const': 5952, 'allbent': 1536, 'bent': 6144, 'lin': 704}
+6556a99aa66a9559 OK {'nodes': 7503, 'const': 1936, 'lin': 528, 'allbent': 1288, 'bent': 6144}
+93a9facca06a36f1 OK {'nodes': 5695, 'allbent': 836, 'bent': 6144, 'lin': 996, 'const': 1016}
+12b8d1844712842e OK {'nodes': 3489, 'const': 61, 'lin': 44, 'allbent': 1640, 'bent': 589824}
+6909006069090063 OK {'nodes': 1797, 'lin': 68, 'const': 31, 'allbent': 800, 'bent': 393216}
+6996c33ca55a0ff0 OK {'nodes': 1159, 'const': 42, 'lin': 14, 'allbent': 524, 'bent': 90112}
+fa505f0a50fa0a5f OK {'nodes': 411, 'lin': 2, 'allbent': 196, 'bent': 1536, 'const': 8}
+polars: 8 failures: 0 totals: {'nodes': 69204, 'lin': 6964, 'const': 19286, 'allbent': 8356, 'bent': 1099264}
+f5af05aa5f0a50f6 OK {'nodes': 32767, 'lin': 4864, 'const': 9984, 'allbent': 1536, 'bent': 6144}
+60acf63aa390caf9 OK {'nodes': 14703, 'const': 1736, 'allbent': 1504, 'bent': 6144, 'lin': 4112}
+cc0c00ccffcfccf4 OK {'nodes': 6743, 'allbent': 1264, 'bent': 6144, 'const': 1952, 'lin': 156}
+33aaccaaaaccaa33 OK {'nodes': 5447, 'allbent': 1020, 'bent': 6144, 'lin': 920, 'const': 784}
+560c03a6c09a9530 OK {'nodes': 3417, 'const': 25, 'lin': 44, 'allbent': 1640, 'bent': 589824}
+11d2221e78444b88 OK {'nodes': 1677, 'lin': 5, 'const': 34, 'allbent': 800, 'bent': 8192}
+356309a590c6ac05 OK {'nodes': 947, 'const': 19, 'allbent': 448, 'bent': 8192, 'lin': 7}
+a99a65566aa65995 OK {'nodes': 179, 'lin': 2, 'allbent': 84, 'bent': 1536, 'const': 4}
+polars: 8 failures: 0 totals: {'nodes': 65880, 'lin': 10110, 'const': 14538, 'allbent': 8296, 'bent': 632320}
+63fac6a0fa9ca039 OK {'nodes': 29183, 'const': 7712, 'allbent': 1280, 'bent': 6144, 'lin': 5600}
+6f3a06ac35605cf6 OK {'nodes': 13965, 'const': 451, 'lin': 4, 'allbent': 6528, 'bent': 524288}
+6060f6f69090f9f9 OK {'nodes': 6703, 'allbent': 1312, 'bent': 6144, 'const': 1884, 'lin': 156}
+f96f09696f0960f1 OK {'nodes': 4769, 'const': 1313, 'allbent': 751, 'bent': 6144, 'lin': 321}
+4712842e12b8d184 OK {'nodes': 3171, 'lin': 39, 'const': 11, 'allbent': 1536, 'bent': 393216}
+655630fc3f0c6aa6 OK {'nodes': 1549, 'lin': 4, 'const': 35, 'allbent': 736, 'bent': 8192}
+53ca3a5c3a5c53ca OK {'nodes': 825, 'lin': 12, 'const': 129, 'allbent': 272, 'bent': 8192}
+f9066f9009f6609f OK {'nodes': 179, 'lin': 2, 'allbent': 84, 'bent': 1536, 'const': 4}
+polars: 8 failures: 0 totals: {'nodes': 60344, 'const': 11539, 'allbent': 12499, 'bent': 953856, 'lin': 6138}
+c0cc0c0fcfccfcf3 OK {'nodes': 28203, 'const': 7520, 'lin': 5101, 'allbent': 1481, 'bent': 6144}
+5c90ca069facf6c5 OK {'nodes': 13623, 'const': 3554, 'lin': 1814, 'allbent': 1444, 'bent': 6144}
+178e178ed4b2d4b2 OK {'nodes': 6223, 'const': 6, 'lin': 34, 'allbent': 3072, 'bent': 262144}
+35caa35cc53aac53 OK {'nodes': 4647, 'lin': 724, 'allbent': 1108, 'bent': 6144, 'const': 492}
+533ac5ac533ac5ac OK {'nodes': 3145, 'const': 6, 'lin': 31, 'allbent': 1536, 'bent': 262144}
+414e28d81b147282 OK {'nodes': 1485, 'lin': 5, 'const': 2, 'allbent': 736, 'bent': 8192}
+7b2e48e2d184e248 OK {'nodes': 587, 'const': 14, 'lin': 16, 'allbent': 264, 'bent': 90112}
+509c0ac66350390a OK {'nodes': 129, 'const': 51, 'allbent': 2, 'bent': 196608, 'lin': 12}
+polars: 8 failures: 0 totals: {'nodes': 58042, 'const': 11645, 'lin': 7737, 'allbent': 9643, 'bent': 837632}
+1428418241821428 OK {'nodes': 49501, 'const': 19734, 'lin': 3965, 'allbent': 1052, 'bent': 10485760}
+polars: 1 failures: 0 totals: {'nodes': 49501, 'const': 19734, 'lin': 3965, 'allbent': 1052, 'bent': 10485760}
+3c3c55aa55aa3c3c OK {'nodes': 282993, 'const': 82057, 'allbent': 53080, 'bent': 786432, 'lin': 6360}
+polars: 1 failures: 0 totals: {'nodes': 282993, 'const': 82057, 'allbent': 53080, 'bent': 786432, 'lin': 6360}
+7dbe418241827dbe OK {'nodes': 81441, 'allbent': 24288, 'bent': 786432, 'const': 15649, 'lin': 784}
+polars: 1 failures: 0 totals: {'nodes': 81441, 'allbent': 24288, 'bent': 786432, 'const': 15649, 'lin': 784}
+2814142814282814 OK {'nodes': 13571, 'const': 3679, 'lin': 155, 'allbent': 2952, 'bent': 655360}
+6996000000006996 OK {'nodes': 16693, 'allbent': 3015, 'bent': 655360, 'const': 4048, 'lin': 1284}
+polars: 2 failures: 0 totals: {'nodes': 30264, 'const': 7727, 'lin': 1439, 'allbent': 5967, 'bent': 1310720}
