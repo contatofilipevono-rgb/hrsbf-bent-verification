@@ -96,3 +96,21 @@ for _ in range(1500):
     p = R.tobytes()
     assert prof.setdefault(key, p) == p
 print("Lema 8 (teste das 8 linhas depende de 8 parametros alem do caso): ok;", len(prof), "chaves vistas")
+
+# Lema 9 (localizacao de Sylow nas colunas): com S_d = soma_{z: B_z d = 0} (-1)^{f(z,d)+f(z,0)},
+#   d em Fix(R^3) = {9,18,36,27,45,54,63}:  S_d = N_d - 2 #{z em Fix(R^3): B_z d = 0, f(z,d)+f(z,0) = 1}  (mod 4)
+#   d em Fix(R^2) = {21,42,63}:             S_d = soma restrita a z em {0,21,42,63}                      (mod 3)
+FIX2 = [0, 9, 18, 36, 27, 45, 54, 63]; FIX3 = [0, 21, 42, 63]
+for _ in range(200):
+    t = rand_model(); F = ftab_zw(t); K = Bd_zero(polar_of(t))
+    for d in (9, 18, 36, 27, 45, 54, 63):
+        e = F[:, d] ^ F[:, 0]
+        S = sum(1 - 2 * int(e[z]) for z in range(64) if K[z, d])
+        EF = sum(1 for z in FIX2 if K[z, d] and e[z])
+        assert (S - (int(K[:, d].sum()) - 2 * EF)) % 4 == 0
+    for d in (21, 42, 63):
+        e = F[:, d] ^ F[:, 0]
+        S = sum(1 - 2 * int(e[z]) for z in range(64) if K[z, d])
+        S3 = sum(1 - 2 * int(e[z]) for z in FIX3 if K[z, d])
+        assert (S - S3) % 3 == 0
+print("Lema 9 (localizacao: S_d mod 4 nas 8 linhas fixas por R^3, S_d mod 3 nas linhas 0,21,42,63): ok")
