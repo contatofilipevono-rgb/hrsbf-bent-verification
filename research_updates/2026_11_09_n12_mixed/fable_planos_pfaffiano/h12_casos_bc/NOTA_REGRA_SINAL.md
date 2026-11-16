@@ -78,4 +78,8 @@ Ficam de fora os n com primos pequenos: 12, 24, 30, 36, 40, 56, … O primeiro �
   - Logo a classificação de (Pf4) por subcaso, que era o gargalo, vira certificado conferível à mão em todos os subcasos (23 a 34 folhas).
   - B(0,0) fecha com as 8 linhas aplicadas em cada folha afim (sobram 2) e a paridade.
   - O núcleo que ainda pede (L5)+(L3) polar a polar continua sendo B(1,1), com 94 → 66 polares.
+- **B(1,1) organizado pelas folhas** (`b11_folhas_l5l3.py`). Nas 15 folhas afins de (Pf4), os 94 polares que passam nas 8 linhas e na paridade se cobrem com **26 linhas de (L5)/(L3) sem fase** (constante 1), mais 6 polares que exigem combinação: 32 verificações no total.
+  - Duas folhas já morrem nas 8 linhas e na paridade.
+  - Quatro folhas morrem inteiras com uma única linha.
+  - Para ficar à mão de verdade, falta mostrar que cada linha escolhida é sem fase em toda a sua folha (hoje isso está conferido polar a polar).
 - **Alvo à mão:** provar R(12) mataria o caso C do H12 de uma vez. Basta provar para grau ≤ 4. Só a sombra não basta, porque o tipo ponto é aritmeticamente possível; falta combinar com outra informação.

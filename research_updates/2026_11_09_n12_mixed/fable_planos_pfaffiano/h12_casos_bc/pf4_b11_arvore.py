@@ -36,7 +36,7 @@ system = list(set(system))
 freevars = sorted(set(range(21)) - set(start))
 print("C(1,1): equations", len(system), "variables", len(freevars))
 
-stats = collections.Counter()
+stats = collections.Counter(); LEAVES = []
 def span_linear(eqs):
     """F2-span of the equations: return (contradiction?, list of linear consequences)."""
     mons = sorted({m for e in eqs for m in e}, key=lambda m: (-len(m), sorted(m)))
@@ -90,7 +90,7 @@ def solve(eqs, assigned, depth, path):
     if not quad:
         if any(e == C1 for e in eqs):
             stats["leaf_contra"] += 1; return 0
-        stats["leaf_lin"] += 1
+        stats["leaf_lin"] += 1; LEAVES.append(path)
         stats["maxdepth"] = max(stats["maxdepth"], depth)
         return 2 ** len([v for v in remaining])
     qvars = sorted({v for e in quad for m in e if len(m) >= 2 for v in m})
@@ -155,3 +155,5 @@ for bits_ in range(1 << len(freevars)):
 print("brute force solutions:", cnt)
 import json
 json.dump(sols, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "pf4_b11_solucoes.json"), "w"))
+
+json.dump([[(v, (list(o) if isinstance(o, tuple) else o), val) for (v, o, val) in [(N[a], b, c) for (a, b, c) in p]] for p in LEAVES], open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'pf4_b11_folhas.json'), 'w'))
