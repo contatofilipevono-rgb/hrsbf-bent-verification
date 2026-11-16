@@ -51,4 +51,18 @@ Ficam de fora os n com primos pequenos: 12, 24, 30, 36, 40, 56, … O primeiro �
   - O caso C (t₄₂ = 1) é exatamente a violação de R(12).
   - Conferido: nas funções do caso C, a sombra só passa no teste mod 3 quando é do tipo ponto. No caso B, só quando é bent. No caso A, nunca.
 - **Na classificação completa de grau ≤ 4 em n = 12, R vale:** os 72 polares bent têm todos t₄₂ = 0 (a parte C₃ de B₀ é nula).
+- **Lema 10 (sombra no caso C, à mão; 16/11).** Se f no caso C fosse bent, então g = f|_{4-per} = [y = 1111]. Em particular:
+  - Λ(t) = 0 e M(t) = 0;
+  - W_f(0) = −64, W_f(1) = +64 e W_f(rep b) = 64·(−1)^{|b|} para b ≠ 0.
+
+  *Prova:*
+  1. W_g ≢ 0 (mod 3) dá g bent ou do tipo ponto. À mão: os valores são ≡ entre si mod 4 e Parseval deixa só {4¹⁶} ou {14, 2¹⁵}; o caso {10², 2¹⁴} exigiria peso 3, que produz |W| = 6.
+  2. No caso C, g = y₀y₁ na linha 0, 0 nas palavras de peso 1, Λ nas de peso 3 e M na linha 63. Logo wt(g) = 1 + 4Λ + 4M, que nunca é 6 nem 10.
+  3. A variante g + σ₁ vale 1 nas 4 palavras de peso 1 e não pode ter peso 1 ou 15.
+- **Tentativa de fechar o caso C à mão (16/11, `caso_c_mao.py`).** Em C com α = β = 1, há 2¹⁶ polares × 128 classes de fase. As condições à mão juntas (8 linhas, a quádrica linear de (Pf4), mod 4, mod 3, a sombra Λ = M = 0, os sinais mod 3 e o mod 32 da coluna 0) deixam **3.088 polares**.
+  - Desses, (Pf4) mata 3.076 (cobertura gulosa com 8 quádricas).
+  - Os 12 restantes morrem por N_{e₀} ímpar, uma linha cada.
+  - Os 3.088 não têm estrutura afim (envoltória de dimensão 15, fibras por chave não afins). Então esse caminho não é uma prova à mão.
+  - O esqueleto que funciona continua passando pela classificação de (Pf4): em C(1,1), os 40 polares de (Pf4) → 8 linhas: 32 → N_{e₀} ímpar: 4 → Lema 9 (mod 4): 0.
+  - **Gargalo:** classificar à mão (Pf4) em C(1,1), isto é, as 25 quádricas em 16 variáveis com 40 soluções.
 - **Alvo à mão:** provar R(12) mataria o caso C do H12 de uma vez. Basta provar para grau ≤ 4. Só a sombra não basta, porque o tipo ponto é aritmeticamente possível; falta combinar com outra informação.
