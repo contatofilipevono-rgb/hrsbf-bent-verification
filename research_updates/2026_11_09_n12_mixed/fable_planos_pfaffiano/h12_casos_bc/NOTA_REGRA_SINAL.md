@@ -72,4 +72,10 @@ Ficam de fora os n com primos pequenos: 12, 24, 30, 36, 40, 56, … O primeiro �
   - Os ramos são quase todos diferenças de coordenadas pareadas: B2 = B1, A3 = A1, n = k, h = a, g = b, e = c (mais a = 0, k = 0, c = b).
   - Isso já é um certificado conferível à mão, mas ainda tem 23 folhas, acima da meta de 20.
   - **Com isso, o caso C fica:** Lemas 6 e 7, depois esta árvore (40 polares), depois as 8 linhas (32), N_{e₀} ímpar (4) e o Lema 9 (0). Os três últimos passos são verificações por polar, numa lista explícita de 40.
+- **A mesma técnica no caso B** (`pf4_b11_arvore.py`, `pf4_b00_arvore.py`), conferida por força bruta:
+  - B(1,1): 33 nós e 34 folhas; 15 folhas lineares dão os 152 polares de (Pf4).
+  - B(0,0): 32 nós e 33 folhas; 19 folhas lineares dão os 164.
+  - Logo a classificação de (Pf4) por subcaso, que era o gargalo, vira certificado conferível à mão em todos os subcasos (23 a 34 folhas).
+  - B(0,0) fecha com as 8 linhas aplicadas em cada folha afim (sobram 2) e a paridade.
+  - O núcleo que ainda pede (L5)+(L3) polar a polar continua sendo B(1,1), com 94 → 66 polares.
 - **Alvo à mão:** provar R(12) mataria o caso C do H12 de uma vez. Basta provar para grau ≤ 4. Só a sombra não basta, porque o tipo ponto é aritmeticamente possível; falta combinar com outra informação.
