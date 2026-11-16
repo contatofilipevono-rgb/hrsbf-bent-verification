@@ -65,4 +65,11 @@ Ficam de fora os n com primos pequenos: 12, 24, 30, 36, 40, 56, … O primeiro �
   - Os 3.088 não têm estrutura afim (envoltória de dimensão 15, fibras por chave não afins). Então esse caminho não é uma prova à mão.
   - O esqueleto que funciona continua passando pela classificação de (Pf4): em C(1,1), os 40 polares de (Pf4) → 8 linhas: 32 → N_{e₀} ímpar: 4 → Lema 9 (mod 4): 0.
   - **Gargalo:** classificar à mão (Pf4) em C(1,1), isto é, as 25 quádricas em 16 variáveis com 40 soluções.
+- **Classificação de (Pf4) em C(1,1) por árvore curta (16/11, `pf4_c11_arvore.py`).** São 25 quádricas em 16 variáveis.
+  - Em cada nó: substituir o ramo, eliminar as equações lineares e tomar o span F₂ das quádricas para extrair consequências lineares, inclusive 0 = 1 (Técnica 37).
+  - O ramo é escolhido com um passo de antecipação.
+  - **Resultado:** 22 nós de ramificação, 23 folhas e profundidade 5. Dezenove folhas dão contradição (8 pelo span, 11 diretas) e 4 são sistemas lineares com as **40 soluções**. A força bruta nos 2¹⁶ pontos confere exatamente 40.
+  - Os ramos são quase todos diferenças de coordenadas pareadas: B2 = B1, A3 = A1, n = k, h = a, g = b, e = c (mais a = 0, k = 0, c = b).
+  - Isso já é um certificado conferível à mão, mas ainda tem 23 folhas, acima da meta de 20.
+  - **Com isso, o caso C fica:** Lemas 6 e 7, depois esta árvore (40 polares), depois as 8 linhas (32), N_{e₀} ímpar (4) e o Lema 9 (0). Os três últimos passos são verificações por polar, numa lista explícita de 40.
 - **Alvo à mão:** provar R(12) mataria o caso C do H12 de uma vez. Basta provar para grau ≤ 4. Só a sombra não basta, porque o tipo ponto é aritmeticamente possível; falta combinar com outra informação.
