@@ -43,6 +43,24 @@ Seja R(m) a afirmação: toda RS bent h em F₂^m satisfaz h(0) + h(1) ≡ m/2 (
 
 Ficam de fora os n com primos pequenos: 12, 24, 30, 36, 40, 56, … O primeiro é n = 12, com m = 4 e p = 3 ≤ 4.
 
+## Prioridade (conferido em 16/11 no PDF de Sun et al.)
+- **A regra já está em Sun, Shi, Liu e Fu**, DCC 94 (2026), art. 93, Teorema 1. Para n = 2^{n₀}·p₁^{n₁}⋯p_t^{n_t} com p₁ > 2^{2^{n₀}} e p_i > 2^{2^{n₀}} p₁^{n₁}⋯p_{i−1}^{n_{i−1}}, toda RS bent satisfaz:
+  - n₀ = 1: f(0ⁿ) ≠ f(1ⁿ);
+  - n₀ ≥ 2: f(0ⁿ) = f(1ⁿ).
+
+  Isso é exatamente h(0) + h(1) ≡ n/2.
+  - Eles provam mais duas relações: para n₀ = 2, f((1000)^{n/4}) ≠ f((1110)^{n/4}); para n₀ ≥ 3, igualdade.
+  - O método é outro: a autocorrelação em 1ⁿ, Σ(−1)^{f(x)+f(x+1)} = 0, decomposta por período.
+- **O que é nosso, de fato:**
+  - **Limiar menor quando a parte ímpar é potência de um primo:** p > 2^{2^{n₀−1}} em vez de p > 2^{2^{n₀}}.
+    - n₀ = 1: p ≥ 3 em vez de p ≥ 5 (inclui n = 2·3^a);
+    - n₀ = 2: p ≥ 5 em vez de p ≥ 17 (casos novos: n = 4·5^a, 4·7^a, 4·11^a, 4·13^a);
+    - n₀ = 3: p ≥ 17 em vez de p ≥ 257.
+  - Com vários primos ímpares, o limiar de Sun et al. (linear na parte já usada) é melhor que o nosso (exponencial).
+  - A classificação do primo excepcional p = 3 em m = 4 (bent ou tipo ponto) e a ligação com o H12: caso C ⇔ violação da regra em n = 12. n = 12 não é coberto por nenhuma das duas versões.
+- **Observação.** Se a segunda relação de Sun et al., f((1000)^{n/4}) ≠ f((1110)^{n/4}), valesse em n = 12, ela daria Λ = 1 (é o valor da sombra numa palavra de peso 3). O Lema 10 força Λ = 0 no caso C. Logo essa relação em n = 12 também mataria o caso C.
+- **Leitura:** o teorema não é novo. O ganho é uma melhoria de limiar para potências de primo e a análise do primo excepcional. Isso cabe como proposição numa nota maior, não como artigo isolado.
+
 ## O caso n = 12 e o H12
 - **Classificação no primo excepcional p = 3, m = 4 (exaustiva):** as funções g em F₂⁴ com W_g(b) ≢ 0 (mod 3) para todo b são bent (896) ou do **tipo ponto** (512): |W| = 14 uma vez e 2 nas outras 15, ou seja, indicador de um ponto a menos de complemento e parte afim.
 - Para as RS do tipo ponto, sinal(W(0)·W(1)) = −1.
