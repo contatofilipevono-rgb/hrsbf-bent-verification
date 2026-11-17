@@ -1,0 +1,64 @@
+{
+  "dp_counts": {
+    "k0_4": 1359552,
+    "k5": 29508240
+  },
+  "validation_checks": 240,
+  "control_k0_4": {
+    "presentes": {
+      "total_tuples": 6445069,
+      "admissible": 1359552,
+      "fail_hist": {
+        "0": 1359552
+      },
+      "fwht_checked": 0,
+      "bent_found": 0,
+      "elapsed_sec": 0.098857
+    },
+    "ausentes": {
+      "total_tuples": 6445069,
+      "admissible": 1359552,
+      "fail_hist": {
+        "0": 1359480,
+        "1": 72
+      },
+      "fwht_checked": 0,
+      "bent_found": 0,
+      "elapsed_sec": 0.097455
+    }
+  },
+  "workers": 8,
+  "k5_partition_rule": "Disjoint partition by smallest long-orbit position i0 in 0..107 (108 batches per side)",
+  "k5_execution": {
+    "elapsed_sec": 4.398,
+    "max_rss_mb_per_process": 36.07,
+    "sides": {
+      "presentes": {
+        "batches_ok": 108,
+        "total_tuples": 134153712,
+        "admissible": 29508240,
+        "fail_hist": {
+          "0": 29508216,
+          "1": 24
+        },
+        "fwht_checked": 0,
+        "fwht_fail": 0,
+        "bent_found": 0
+      },
+      "ausentes": {
+        "batches_ok": 108,
+        "total_tuples": 134153712,
+        "admissible": 29508240,
+        "fail_hist": {
+          "0": 29504628,
+          "1": 3612
+        },
+        "fwht_checked": 0,
+        "fwht_fail": 0,
+        "bent_found": 0
+      }
+    },
+    "bent_candidates_verified": []
+  },
+  "total_wall_sec": 9.6352
+}

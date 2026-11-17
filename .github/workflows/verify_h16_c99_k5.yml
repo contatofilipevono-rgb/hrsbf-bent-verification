@@ -1,0 +1,25 @@
+name: Verify H16 c99=1 (k=5 long orbits)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_k5/**'
+      - '.github/workflows/verify_h16_c99_k5.yml'
+
+jobs:
+  verify-h16-c99-k5:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run exhaustive H16 c99=1 k=0..4 control and k=5 search
+        run: |
+          python3 research_updates/2026_11_17_h16_c99_k5/run_h16_study.py \
+            --work-dir /tmp/h16_work \
+            --workers $(nproc) \
+            --run-full
+      - name: Upload verification report
+        uses: actions/upload-artifact@v4
+        with:
+          name: h16-c99-k5-report
+          path: /tmp/h16_work/h16_c99_k5_report.json
