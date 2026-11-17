@@ -1,0 +1,39 @@
+apiVersion: run.googleapis.com/v1
+kind: Job
+metadata:
+  name: h16-c99-interior-pilot
+spec:
+  template:
+    spec:
+      template:
+        spec:
+          containers:
+          - image: mirror.gcr.io/library/python:3.11
+            command: ["python3"]
+            args:
+            - "-c"
+            - |
+              import json, urllib.request
+              req = urllib.request.Request(
+                  "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token",
+                  headers={"Metadata-Flavor": "Google"},
+              )
+              tok = json.loads(urllib.request.urlopen(req).read())["access_token"]
+              code = urllib.request.urlopen(
+                  urllib.request.Request(
+                      "https://storage.googleapis.com/storage/v1/b/h16-c99-5orbits-342eeb2f/o/interior%2Fcloud_run_interior_entry.py?alt=media",
+                      headers={"Authorization": "Bearer " + tok},
+                  )
+              ).read()
+              exec(compile(code, "cloud_run_interior_entry.py", "exec"), {"__name__": "__main__"})
+            env:
+            - name: GCS_BUCKET
+              value: "h16-c99-5orbits-342eeb2f"
+            - name: WORKERS
+              value: "8"
+            resources:
+              limits:
+                cpu: "8"
+                memory: "4Gi"
+          maxRetries: 0
+          timeoutSeconds: 600
