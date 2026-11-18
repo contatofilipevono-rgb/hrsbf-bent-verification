@@ -1,0 +1,26 @@
+name: Search H16 c99=1 (7-of-8 and 0xff weight-2)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_7of8_0xff/**'
+      - '.github/workflows/search_h16_c99_7of8_0xff.yml'
+
+jobs:
+  search-h16-7of8-0xff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run 7-of-8 and 0xff search on GitHub runner
+        run: |
+          python3 research_updates/2026_11_17_h16_c99_7of8_0xff/run_7of8_search.py \
+            --cert-path quartic_audit_2026_10_17/archive/T28_SEXTA_CERTIFICADO.json \
+            --work-dir /tmp/h16_7of8 \
+            --workers $(nproc) \
+            --max-seconds 360
+      - name: Upload 7-of-8 and 0xff search report
+        uses: actions/upload-artifact@v4
+        with:
+          name: h16-c99-7of8-0xff-report
+          path: /tmp/h16_7of8/search_7of8_0xff_report.json
