@@ -1,0 +1,39 @@
+{
+  "branch_results": {
+    "K1_u0": {
+      "vars": 326022,
+      "clauses": 1159099,
+      "sat": true,
+      "solve_sec": 5.3429,
+      "audit": {
+        "coefficients_hex": "0x20008100002000604002000804002",
+        "W_f_0": 3072,
+        "W_f_e0": 2048,
+        "is_bent": false,
+        "first_fail": {
+          "mask_hex": "0x0",
+          "weight": 0,
+          "val": 3072
+        }
+      }
+    },
+    "K1_u1": {
+      "vars": 326022,
+      "clauses": 1159099,
+      "sat": true,
+      "solve_sec": 29.6854,
+      "audit": {
+        "coefficients_hex": "0x373bdfa0085fa4b6d34a0517e4f4a",
+        "W_f_0": 1024,
+        "W_f_e0": 320,
+        "is_bent": false,
+        "first_fail": {
+          "mask_hex": "0x0",
+          "weight": 0,
+          "val": 1024
+        }
+      }
+    }
+  },
+  "elapsed_sec": 47.2722
+}
