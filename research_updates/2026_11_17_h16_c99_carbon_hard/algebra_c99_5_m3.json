@@ -1,0 +1,36 @@
+{
+  "linear_law_discovered": "K = 1 (c57 = c113 = 1) forced by L = I1 U J1 = 1 and I1*J1 = K ^ 1",
+  "sub_branches": {
+    "K1_u0_v1": {
+      "remaining_dim": 108,
+      "m3_input_rows": 113,
+      "m3_rank": 113,
+      "one_in_m3_span": false,
+      "deg1_pivots": 0,
+      "deg2_pivots": 1,
+      "deg3_pivots": 112
+    },
+    "K1_u1_v0": {
+      "remaining_dim": 108,
+      "m3_input_rows": 113,
+      "m3_rank": 113,
+      "one_in_m3_span": false,
+      "deg1_pivots": 0,
+      "deg2_pivots": 1,
+      "deg3_pivots": 112
+    }
+  },
+  "witness_branches": {
+    "0xd7": {
+      "K": 1,
+      "u1": 1,
+      "v1": 0
+    },
+    "0xf5": {
+      "K": 1,
+      "u1": 0,
+      "v1": 1
+    }
+  },
+  "elapsed_sec": 0.9454
+}
