@@ -1,0 +1,21 @@
+name: Run H16 c99=0 Step 4A (V_6 Poisson-Lucas + Macaulay)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_C99_0_POISSON_C.py'
+      - '.github/workflows/run_step4_c99_0_poisson.yml'
+  workflow_dispatch:
+
+jobs:
+  step4-c99-0-poisson:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run SOLVE_C99_0_POISSON_C.py
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_C99_0_POISSON_C.py
