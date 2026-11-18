@@ -10,6 +10,7 @@ import subprocess
 import time
 from pathlib import Path
 
+from pysat.card import CardEnc, EncType
 from pysat.solvers import Solver
 
 from SOLVE_C99_0_STEP4B import I1, J1, build_basis_c99_0_k
@@ -331,6 +332,26 @@ def main():
             row_slice = [rows[r_idx * n_col_words + w] for w in range(n_col_words)]
             pset = decode_row_to_pset(row_slice, n_cols, off2, off1, off0, pair2_list, col3_list)
             encode_poly_zero_vars(clauses, pset, new_var, pair_cache)
+
+        # Enforce 6 <= k <= 106 over the 112 long orbits
+        long_lits = []
+        for j in range(116):
+            if j in (57, 99, 113, 115):
+                continue
+            idxs = [i + 1 for i, c in enumerate(cb_k) if (c >> j) & 1]
+            const = (origin_k >> j) & 1
+            if len(idxs) == 1 and const == 0:
+                long_lits.append(idxs[0])
+            else:
+                lv = new_var()
+                add_long_xor(clauses, idxs + [lv], const, new_var)
+                long_lits.append(lv)
+        c_lo = CardEnc.atleast(lits=long_lits, bound=6, top_id=v_cnt[0], encoding=EncType.seqcounter)
+        v_cnt[0] = max(v_cnt[0], c_lo.nv)
+        clauses.extend(c_lo.clauses)
+        c_hi = CardEnc.atmost(lits=long_lits, bound=106, top_id=v_cnt[0], encoding=EncType.seqcounter)
+        v_cnt[0] = max(v_cnt[0], c_hi.nv)
+        clauses.extend(c_hi.clauses)
 
         ts = time.perf_counter()
         with Solver(name="cadical195", bootstrap_with=clauses) as slv:
