@@ -728,10 +728,10 @@ def main():
         v6_linear_closed = (piv_row_idx[off0] >= 0)
         v6_linear_pivs = dict(deg_pivs)
 
-        # Pass 2: If not closed by linear V6 x V6 alone, scan diagonal affine shifts a = (a0, a0) + interleaved!
+        # Pass 2: If not closed by linear V6 x V6 alone, scan diagonal affine shifts a = (a0, a0) + interleaved (budget 30s per cell)!
         if not v6_linear_closed:
             for pts8 in v6_list:
-                if piv_row_idx[off0] >= 0 or cur_row >= max_rows - 150:
+                if (time.perf_counter() - tc) > 30.0 or piv_row_idx[off0] >= 0 or cur_row >= max_rows - 150:
                     break
                 pts_set = set(pts8)
                 coset_reps8 = [0]

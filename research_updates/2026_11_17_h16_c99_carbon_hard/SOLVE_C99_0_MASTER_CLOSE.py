@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""
+r"""
 Step 3: Master Closer for B0_00 (c57=0) and B0_11 (c57=1) (and any other open cell)
 combining ALL proven algebraic & primal-dual discoveries from the 12 Carbon analyses:
   1. Corrected Affine Cosets (a + W, u) hierarchy (a02_affine_cosets.md):
@@ -29,7 +29,6 @@ import time
 from pathlib import Path
 
 from pysat.card import CardEnc, EncType
-from pysat.pb import PBEnc, EncType as PBEncType
 from pysat.solvers import Solver
 
 from AUDIT_ALL_CELLS_111 import C_SRC as C_SRC_AUDIT, interleave16, rot8, rot16
@@ -750,10 +749,15 @@ def solve_master_cell(c57_val: int, budget_sec: float = 360.0):
         s0_var = new_var()
         s_vars = [new_var() for _ in range(30)]
 
-        pb_s = PBEnc.equals(lits=[s0_var] + s_vars, weights=[2] + [1] * 30, bound=8,
-                            top_id=v_cnt[0], encoding=PBEncType.bdd)
-        v_cnt[0] = max(v_cnt[0], pb_s.nv)
-        clauses.extend(pb_s.clauses)
+        def add_weighted_equals(w_lits, w_vals, bound):
+            exp_lits = []
+            for lit, w in zip(w_lits, w_vals):
+                exp_lits.extend([lit] * int(w))
+            enc = CardEnc.equals(lits=exp_lits, bound=bound, top_id=v_cnt[0], encoding=EncType.totalizer)
+            v_cnt[0] = max(v_cnt[0], enc.nv)
+            clauses.extend(enc.clauses)
+
+        add_weighted_equals([s0_var] + s_vars, [2] + [1] * 30, 8)
 
         add_long_xor(clauses, [
             s_vars[s_rep_to_idx[0x01]],
@@ -762,10 +766,7 @@ def solve_master_cell(c57_val: int, budget_sec: float = 360.0):
             s0_var,
         ], 0, new_var)
 
-        pb_q0 = PBEnc.equals(lits=lits_0x0 + [-s0_var], weights=[1] * 240 + [8], bound=124,
-                             top_id=v_cnt[0], encoding=PBEncType.bdd)
-        v_cnt[0] = max(v_cnt[0], pb_q0.nv)
-        clauses.extend(pb_q0.clauses)
+        add_weighted_equals(lits_0x0 + [-s0_var], [1] * 240 + [8], 124)
 
         _, forms_ff = fiber_forms[0xFF]
         flits_ff = [make_lin_lit(wm, ob) for wm, ob in forms_ff]
@@ -804,10 +805,7 @@ def solve_master_cell(c57_val: int, budget_sec: float = 360.0):
                         elif kw < 0:
                             pb_lits.append(s_vars[m])
                             pb_wts.append(-kw)
-                    pb_f = PBEnc.equals(lits=pb_lits, weights=pb_wts, bound=rhs,
-                                        top_id=v_cnt[0], encoding=PBEncType.bdd)
-                    v_cnt[0] = max(v_cnt[0], pb_f.nv)
-                    clauses.extend(pb_f.clauses)
+                    add_weighted_equals(pb_lits, pb_wts, rhs)
 
     # Encode C6 (T28 branch 0)
     c6_lits, c6_rhs, c6_cache = [], 0, {}
