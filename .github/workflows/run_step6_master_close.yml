@@ -21,7 +21,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Run Step 11A (Root Schur-D4: CG16+CG15 + Quads*pairs + 116xCG12*vars) on ${{ matrix.cell }}
+      - name: Run Step 11A Root Schur-D4 (CG16+CG15 + Quads*pairs + 116xCG12*vars) on ${{ matrix.cell }}
         run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP11_CG_SCHUR_DEG4.py --cells ${{ matrix.cell }} --budget 360
 
   step11b-cg389-probe-walksat:
