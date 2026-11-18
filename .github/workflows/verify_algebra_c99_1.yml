@@ -1,0 +1,22 @@
+name: Verify Algebra C99=1 (Stage 1 Certificate)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/VERIFICAR_ALGEBRA_C99_1.py'
+      - '.github/workflows/verify_algebra_c99_1.yml'
+
+jobs:
+  verify-algebra-c99-1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run VERIFICAR_ALGEBRA_C99_1.py
+        run: |
+          python3 research_updates/2026_11_17_h16_c99_carbon_hard/VERIFICAR_ALGEBRA_C99_1.py
+      - name: Upload algebra certificate
+        uses: actions/upload-artifact@v4
+        with:
+          name: algebra-c99-1-certificate
+          path: research_updates/2026_11_17_h16_c99_carbon_hard/algebra_c99_1_certificate.json
