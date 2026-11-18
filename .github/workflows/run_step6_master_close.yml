@@ -1,17 +1,17 @@
-name: Run H16 Step 10 Carlet-Guillot NNF (389 Cubics) + 8-Branch Cascade
+name: Run H16 Step 11 Orchestrated Multi-Path (12 Parallel Runners)
 
 on:
   push:
     branches: [ main ]
     paths:
-      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP10_CARLET_GUILLOT_NNF.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP11*.py'
       - '.github/workflows/run_step6_master_close.yml'
   workflow_dispatch:
 
 jobs:
-  step10-cg-nnf:
+  step11a-cg-schur-deg4-root:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     strategy:
       fail-fast: false
       matrix:
@@ -21,7 +21,52 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install python-sat
-        run: pip install -q python-sat
-      - name: Run SOLVE_STEP10_CARLET_GUILLOT_NNF.py on ${{ matrix.cell }}
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP10_CARLET_GUILLOT_NNF.py --cells ${{ matrix.cell }}
+      - name: Run Step 11A (Root Schur-D4: CG16+CG15 + Quads*pairs + 116xCG12*vars) on ${{ matrix.cell }}
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP11_CG_SCHUR_DEG4.py --cells ${{ matrix.cell }} --budget 360
+
+  step11b-cg389-probe-walksat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B0_00, B0_11, B1_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run Step 11B (1-lit Probe + k-Collapse Curve + C WalkSAT on V3) on ${{ matrix.cell }}
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP11B_CG389_BRANCH_PROBE.py --cells ${{ matrix.cell }}
+
+  step11c-b000-tree-and-branch-schur4:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B0_00, B0_11, B1_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run Step 11C (B0_00 Recursive Symplectic Tree + Branch Schur-D4 with CG16+CG15+8xCG14) on ${{ matrix.cell }}
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP11C_B0_00_TREE_AND_BRANCH_SCHUR4.py --cells ${{ matrix.cell }} --budget 360
+
+  step11d-deg4-poisson-and-structured-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B0_00, B0_11, B1_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numpy
+        run: pip install -q numpy
+      - name: Run Step 11D (Deg-4 V13/V14 Poisson Rank Census + Structured Hi/Lo Collapse + 2-Lit Hub Probe) on ${{ matrix.cell }}
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP11D_DEG4_POISSON_AND_STRUCTURED_PROBE.py --cells ${{ matrix.cell }}
