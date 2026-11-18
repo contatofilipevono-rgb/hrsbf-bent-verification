@@ -16,10 +16,34 @@ import time
 from itertools import combinations
 from pathlib import Path
 
-from SOLVE_C99_1_CSA_CEGAR import I2, I3, I4, J2, J3, J4
-from SOLVE_C99_1_MACAULAY_AND_CMS import mul_polys, poly_from_lin_expr
 from VERIFICAR_ALGEBRA_C99_1 import K_INDICES, R_INDICES, build_basis_111, setup_orbits
 from VERIFICAR_ALGEBRA_C99_5_M3 import gf2_macaulay_reduce, substitute_linear_vars
+
+I2 = [1, 9, 15, 28, 53, 67, 76, 103]
+J2 = [3, 11, 34, 45, 55, 69, 78, 89]
+I3 = [2, 10, 25, 37, 54, 68, 83, 104]
+J3 = [12, 20, 29, 33, 41, 48, 96, 110]
+I4 = [13, 21, 38, 70, 74, 93, 97, 109]
+J4 = [24, 32, 47, 72, 80, 86, 91, 107]
+
+
+def poly_from_lin_expr(idxs, const):
+    p = {1 << i for i in idxs}
+    if const:
+        p.add(0)
+    return p
+
+
+def mul_polys(p1, p2):
+    out = set()
+    for a in p1:
+        for b in p2:
+            m = a | b
+            if m in out:
+                out.remove(m)
+            else:
+                out.add(m)
+    return out
 
 
 C_SRC = r"""
