@@ -6,6 +6,7 @@ on:
     paths:
       - 'research_updates/2026_11_17_h16_c99_carbon_hard/VERIFICAR_ALGEBRA_C99_1.py'
       - 'research_updates/2026_11_17_h16_c99_carbon_hard/VERIFICAR_ALGEBRA_C99_2_COSETS.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/VERIFICAR_ALGEBRA_C99_3_COMBINE.py'
       - '.github/workflows/verify_algebra_c99_1.yml'
 
 jobs:
@@ -13,10 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Run VERIFICAR_ALGEBRA_C99_1.py and VERIFICAR_ALGEBRA_C99_2_COSETS.py
+      - name: Run algebraic certificate extractors (Stages 1-3)
         run: |
           python3 research_updates/2026_11_17_h16_c99_carbon_hard/VERIFICAR_ALGEBRA_C99_1.py
           python3 research_updates/2026_11_17_h16_c99_carbon_hard/VERIFICAR_ALGEBRA_C99_2_COSETS.py
+          python3 research_updates/2026_11_17_h16_c99_carbon_hard/VERIFICAR_ALGEBRA_C99_3_COMBINE.py
       - name: Upload algebra certificates
         uses: actions/upload-artifact@v4
         with:
@@ -24,3 +26,4 @@ jobs:
           path: |
             research_updates/2026_11_17_h16_c99_carbon_hard/algebra_c99_1_certificate.json
             research_updates/2026_11_17_h16_c99_carbon_hard/algebra_c99_2_cosets.json
+            research_updates/2026_11_17_h16_c99_carbon_hard/algebra_c99_3_combine.json
