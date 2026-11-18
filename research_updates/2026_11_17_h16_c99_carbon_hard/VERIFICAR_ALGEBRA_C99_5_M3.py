@@ -157,8 +157,9 @@ def main():
     f_u1 = lin_form(I1)
     f_v1 = lin_form(J1)
 
-    branches = [(0, 1, 1), (1, 0, 0), (1, 0, 1), (1, 1, 0)]
-    results = {"sub_branches": {}, "witness_branches": {}}
+    # Since L = I1 U J1 = 1, u1 ^ v1 = 1 => I1 * J1 = 0 => K = 1 (c57 = c113 = 1) ALWAYS!
+    branches = [(1, 0, 1), (1, 1, 0)]
+    results = {"linear_law_discovered": "K = 1 (c57 = c113 = 1) forced by L = I1 U J1 = 1 and I1*J1 = K ^ 1", "sub_branches": {}, "witness_branches": {}}
 
     for wn in ("0xd7", "0xf5"):
         cint = WITNESSES[wn]
@@ -169,13 +170,12 @@ def main():
         }
 
     for k_val, u1_val, v1_val in branches:
-        # Solve 3 linear equations by GF(2) RREF
+        # Only 2 independent linear equations: K == 1 and u1 == u1_val (v1 == 1 ^ u1 is automatic)
         eqs = [
             f_K ^ ({0} if k_val else set()),
             f_u1 ^ ({0} if u1_val else set()),
-            f_v1 ^ ({0} if v1_val else set()),
         ]
-        # Simple RREF over 3 equations
+        # Simple RREF over 2 equations
         pivs = {}
         for eq in eqs:
             cur = set(eq)
@@ -183,7 +183,7 @@ def main():
                 if (1 << p) in cur:
                     cur ^= pexpr
             vars_in = sorted(m.bit_length() - 1 for m in cur if m > 0)
-            assert vars_in, "Linear dependency in (K, u1, v1)!"
+            assert vars_in, "Linear dependency in (K, u1)!"
             p = vars_in[-1]
             pivs[p] = cur ^ {1 << p}
         # Back-substitute so pivot_map RHS has no pivot variables
@@ -197,7 +197,7 @@ def main():
                         changed = True
 
         rem_vars = [v for v in free if v not in pivs]
-        assert len(rem_vars) == 107
+        assert len(rem_vars) == 108
 
         # Restrict L_coset and the 4 cubics to the 107 variables
         L_sub = substitute_linear_vars(L_coset, pivs)
