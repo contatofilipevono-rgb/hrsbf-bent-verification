@@ -71,13 +71,13 @@ def extract_poly_mod4(basis, O_word, free, const_shift=0):
         else:
             P.add(m)
 
-    assert O_word.bit_count() % 4 == 0
+    assert O_word.bit_count() % 2 == 0
     for i, w in enumerate(basis):
         assert w.bit_count() % 2 == 0 and (w.bit_count() - 2 * (w & O_word).bit_count()) % 4 == 0, i
     for v, w in combinations(basis, 2):
         assert (v & w).bit_count() % 2 == 0
 
-    if (O_word.bit_count() // 4 + const_shift) % 2:
+    if ((O_word.bit_count() // 2) // 2 + const_shift) % 2:
         toggle(0)
     for i, w in enumerate(basis):
         if ((w.bit_count() - 2 * (w & O_word).bit_count()) // 4) % 2:
