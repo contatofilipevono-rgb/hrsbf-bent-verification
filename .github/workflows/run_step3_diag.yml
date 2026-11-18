@@ -17,10 +17,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install python-sat
-        run: pip install python-sat
+      - name: Install python-sat & cryptominisat
+        run: |
+          pip install python-sat
+          sudo apt-get update -qq && sudo apt-get install -y -qq cryptominisat || true
       - name: Run SOLVE_C99_1_DIAG.py
         run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_C99_1_DIAG.py
+      - name: Benchmark cryptominisat5 on Mode D Cube 0 (30s)
+        run: |
+          if command -v cryptominisat5 >/dev/null 2>&1; then
+            timeout 30 cryptominisat5 --threads=4 research_updates/2026_11_17_h16_c99_carbon_hard/mode_d_cube0.cnf || true
+          else
+            echo "cryptominisat5 not available"
+          fi
       - name: Upload Diag report
         if: always()
         uses: actions/upload-artifact@v4

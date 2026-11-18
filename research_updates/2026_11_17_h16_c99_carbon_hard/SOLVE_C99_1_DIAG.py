@@ -160,11 +160,16 @@ def main():
         return v_cnt[0], clauses, assump
 
     results = {}
-    for mode in ("A", "B", "C", "D"):
+    for mode in ("A",):
         tb = time.perf_counter()
         nvars, clauses, assump = build_base(mode)
         bsec = round(time.perf_counter() - tb, 3)
-        res, ssec, stats, model = solve_with_budget(clauses, assump, budget_sec=30.0)
+        ts = time.perf_counter()
+        with Solver(name="cadical195", bootstrap_with=clauses) as slv:
+            res = slv.solve(assumptions=assump)
+            ssec = round(time.perf_counter() - ts, 4)
+            stats = slv.accum_stats()
+            model = slv.get_model() if res is True else None
         aud = None
         if res is True and model is not None:
             cint = origin
@@ -176,12 +181,23 @@ def main():
             "vars": nvars,
             "clauses": len(clauses),
             "build_sec": bsec,
-            "res": "SAT" if res is True else ("UNSAT" if res is False else "TIMEOUT"),
+            "res": "SAT" if res is True else "UNSAT",
             "solve_sec": ssec,
             "stats": stats,
             "audit": aud,
         }
-        print(f"Mode {mode}: vars={nvars} clauses={len(clauses)} build={bsec}s res={results[mode]['res']} solve={ssec}s stats={stats}", flush=True)
+        print(f"Mode {mode}: vars={nvars} clauses={len(clauses)} build={bsec}s res={results[mode]['res']} solve={ssec}s aud={aud}", flush=True)
+
+    # Write Mode D DIMACS CNF for external solver benchmark (cryptominisat5 / kissat)
+    nvars_d, clauses_d, assump_d = build_base("D")
+    cnf_path = repo / "research_updates/2026_11_17_h16_c99_carbon_hard/mode_d_cube0.cnf"
+    with cnf_path.open("w", encoding="utf-8") as f:
+        f.write(f"p cnf {nvars_d} {len(clauses_d) + len(assump_d)}\n")
+        for cl in clauses_d:
+            f.write(" ".join(map(str, cl)) + " 0\n")
+        for a in assump_d:
+            f.write(f"{a} 0\n")
+    print(f"Wrote Mode D CNF: vars={nvars_d} clauses={len(clauses_d) + len(assump_d)}", flush=True)
 
     out_path = repo / "research_updates/2026_11_17_h16_c99_carbon_hard/diag_c99_1_report.json"
     out_path.write_text(json.dumps(results, indent=2), encoding="utf-8")
