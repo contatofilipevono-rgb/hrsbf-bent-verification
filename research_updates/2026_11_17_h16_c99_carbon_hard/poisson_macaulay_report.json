@@ -1,0 +1,13 @@
+{
+  "n_subspaces": 120,
+  "n_extracted": 240,
+  "diag_stats": {
+    "[0]": 240
+  },
+  "has_one": false,
+  "deg_counts": {
+    "3": 95
+  },
+  "total_pivots": 95,
+  "elapsed_sec": 204.302
+}
