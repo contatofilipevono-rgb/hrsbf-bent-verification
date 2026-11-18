@@ -1,0 +1,17 @@
+polar rank 10, minimum lower-rank margin 249/128, full-rank margin 775/1024
+polar rank 12, minimum lower-rank margin 19/1024, full-rank margin 823/1024
+polar rank 14, minimum lower-rank margin 163/1024, full-rank margin 847/1024
+polar rank 16, minimum lower-rank margin 235/1024, full-rank margin 859/1024
+polar rank 18, minimum lower-rank margin 271/1024, full-rank margin 865/1024
+polar rank 20, minimum lower-rank margin 289/1024, full-rank margin 217/256
+All lattice and exact rational checks passed.
+Possible heavy H values: (112, 127, 145, 162, 495, 526, 562, 595, 1150, 1197, 1251, 1300, 2077, 2140)
+Mass 1920: {0: 80, 1024: 1}
+Mass 2176: {0: 138, 1024: 9, 1920: 1, 2032: 1, 2050: 1}
+Hyperplane step 0: modulus=256, weight=2050
+Hyperplane step 1: modulus=128, weight=1026
+Hyperplane step 2: modulus=64, weight=514
+Hyperplane step 3: modulus=32, weight=258
+Hyperplane step 4: modulus=16, weight=130
+Normalized Q=1 finite arithmetic verified.
+PASS: CRT, moment ranks, weight bounds, energy comparisons and saturation divisibility.

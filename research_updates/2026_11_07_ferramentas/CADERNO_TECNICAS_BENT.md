@@ -4,11 +4,26 @@
 
 Este caderno reúne ferramentas reutilizáveis para funções booleanas, espectros de Walsh, reduções periódicas e funções bent com simetria de rotação. Cada técnica vem acompanhada de hipóteses, argumento central, aplicação e limite. O objetivo é permitir que uma prova nova seja montada com etapas verificáveis, sem transportar uma conclusão além do domínio em que foi demonstrada.
 
-Edição de 7 de novembro de 2026. O nível de revisão varia por ferramenta e está indicado em cada atualização: há argumentos candidatos ainda sem auditoria independente. Verificadores exatos e auditorias por modelos não substituem revisão humana por pares. A prioridade das adaptações e combinações próprias permanece aberta. A identificação de uma ideia nesta investigação não significa que ela seja inédita na literatura.
+Edição de 18 de novembro de 2026, com atualização de p=17 baseada na investigação de 17 de novembro. O nível de revisão varia por ferramenta e está indicado em cada atualização: há argumentos candidatos ainda sem auditoria independente. Verificadores exatos e auditorias por modelos não substituem revisão humana por pares. A prioridade das adaptações e combinações próprias permanece aberta. A identificação de uma ideia nesta investigação não significa que ela seja inédita na literatura.
 
-**Estado atual:** p=17, Q1 geral e a conjectura geral continuam abertos. As atualizações de 07/11 abaixo prevalecem sobre estados históricos de casos abertos. O fechamento de produtos de duas quadráticas com resto cúbico é uma prova candidata sob I6; não deve ser usado como resultado estabelecido antes da auditoria. Não se aplica a uma quártica arbitrária nem somente às condições de peso e pico.
+**Estado atual:** p=17, Q1 geral e a conjectura geral continuam abertos. O estado de p=17 consta da atualização de 17/11 abaixo. O fechamento de produtos de duas quadráticas com resto cúbico é uma prova candidata sob I6; não deve ser usado como resultado estabelecido antes da auditoria. Não se aplica a uma quártica arbitrária nem somente às condições de peso e pico.
 
 Usamos três indicações de origem: **literatura**, para ferramentas clássicas com fonte identificada; **adaptação**, para sua especialização e combinação nesta pesquisa; **argumento local**, para uma dedução escrita aqui e auditada, ainda sem prioridade estabelecida. Os créditos entre Argon, Claude, Codex, Astra e os agentes de auditoria são preservados na seção final.
+
+## Estado de $p=17$ — 17 de novembro
+
+Seja $f:\mathbb F_2^{20}\to\mathbb F_2$, de grau no máximo quatro, com $W_f(b)\equiv\pm1024\pmod {17}$ em toda frequência. Defina $X=W_f/32$. Os resultados abaixo valem sem hipótese de homogeneidade ou simetria de rotação. A [prova de cada ramo e os verificadores](../2026_11_17_p17/LEIA_PRIMEIRO.md) estão disponíveis em código aberto.
+
+| Região | Exclusões e faixa residual |
+|---|---|
+| Ímpar, $X\equiv1\pmod4$ após normalização | O caso $Q=1$ e os postos polares 10 a 20 de $Q$ estão excluídos, inclusive o peso $127/256$. |
+| Par, $X\equiv0\pmod4$ no espaço todo | Bentness segue pelo módulo mínimo e Parseval. |
+| Par, $X\equiv2\pmod4$ no espaço todo e $w(D)\ge1/8$ | Restam o posto 18 com $47/256\le w(D)\le29/144$ e o posto 20 com $47/256\le w(D)\le5/24$. |
+| Par, segundo bit afim não constante | Na fatia $X\equiv2\pmod4$, com $w(D)\ge1/8$ medido na fatia, restam os postos 8, 16 e 18. |
+
+O enunciado geral permanece aberto. O pacote de 17/11 também deixa fora da sua cobertura alguns casos ímpares de posto baixo e a faixa par $w(D)<1/8$. As exclusões anteriores conservam as hipóteses e os níveis de revisão indicados nas respectivas notas. O caso $Q=1$ da rigidez modular é diferente do problema auxiliar chamado Q1, definido por restrições de peso e pico. Os três verificadores passaram em aritmética exata. As provas aguardam revisão humana independente.
+
+As [técnicas 33 a 36](#técnica-33--correlacionar-o-quociente-quadrático-com-walsh) detalham os argumentos desta atualização.
 
 ## Notação comum
 
@@ -297,7 +312,7 @@ Se uma restrição deixa t monômios de grau d em blocos disjuntos e q variávei
 1. Rigidez quártica para n=4m e módulo ímpar p>2M/3, m≥4, incluindo o caso especial m=4,p=11 pela prova integrada de Claude. Não se exige RS. A prova mais antiga tinha uma condição adicional no caso m=4; usar a versão integrada auditada [L10].
 2. Caso M=32,p=19 fechado pelos dois ramos auditados. A consequência380→20→4 exclui pelo menos7/8 dos vetores de coeficientes de quárticas homogêneas RS em380 variáveis. Não decide o1/8 restante.
 3. Limiar161/272 derivado e verificado para o ramo par, m≥5. Isso não estabelece automaticamente o teorema com ramo ímpar.
-4. p=17 permanece aberto. No ramo ímpar, Q=0 e pesos1/4,3/8,7/16,15/32,31/64,63/128,33/64,65/128 estão excluídos. A fatoração controlada está justificada para h≥5, mas ainda faltam outros pesos, incluindo127/256. No ramo par, restam D sem hiperplano de zeros, com peso em[1/8,5/24], fora das condições adicionais já fechadas.
+4. O caso geral p=17 permanece aberto. A atualização de 17/11 registra as exclusões de Q=1 e dos postos altos do ramo ímpar, além dos intervalos residuais no ramo par.
 
 ## Regras para combinar técnicas
 
@@ -305,9 +320,9 @@ Antes de usar um lema, registrar dimensão, domínio, grau, média ou soma, codi
 
 Para cada execução, preservar código, parâmetros, equivalências removidas, cobertura e resultado real. Uma família restrita sem sobreviventes não é enumeração global. Separar a construção de valores espectrais da prova de que sua inversão é booleana. Revisões de modelos e concordância numérica auxiliam a prova, mas não estabelecem prioridade ou revisão por pares.
 
-## Próximo problema recomendado ao Claude
+## Nota histórica — investigação do peso 127/256
 
-Trabalhar a compatibilidade global entre Q e R em h=7, peso127/256, com a fatoração D=QR já justificada pela Técnica20. A missão MISSAO_CLAUDE_OPUS_ALTO_H7_TEORICO.md é complementada por ADENDO_CLAUDE_FATORACAO_A7_LITERATURA.md. Não usar74% ou25,22% como limites demonstrados de incidência: a derivação energética corrigida usa o limiar612 e garante apenas9503/19431≈48,906% de flats com3/8 de zeros, e essa condição sozinha admite contraexemplos geométricos.
+A missão para o peso 127/256 orientou a investigação de posto 14. A demonstração de 17/11 exclui esse peso pelo argumento de correlações de Walsh da técnica 33.
 
 ## Redução espectral em espaços fixos de grupos ímpares
 
@@ -432,7 +447,7 @@ O mesmo argumento vale em dimensões de restrição m=4r ou 4r−1, com paridade
 H16: posto >=359 dos filtros em cada flat do estado zero, certificado por avaliações. Pesos generalizados de Reed–Muller dão cota local 1963295531054157779722829825/9903520314283042199192993792. Ver U38_ZERO_PESOS_GENERALIZADOS.md e u38_zero_rank_avaliacoes.py.
 
 
-p17: nova prova exclui Q balanceada de posto polar 2..18 sob normalização ímpar herdada. Provas P17_BALANCEADA_POSTOS_2_A_14.md e P17_BALANCEADA_POSTOS_16_E_18.md. Posto zero e ramo par abertos. Aguardam auditoria independente. P17_RASCUNHO_POSTOS_ALTOS.md preserva extensão não balanceada em revisão.
+Nota de 07/11 sobre p=17: a prova candidata exclui Q balanceada de posto polar 2..18 sob normalização ímpar herdada. Provas P17_BALANCEADA_POSTOS_2_A_14.md e P17_BALANCEADA_POSTOS_16_E_18.md. Para o estado posterior dos ramos, ver a atualização de 17/11. Aguardam auditoria independente. P17_RASCUNHO_POSTOS_ALTOS.md preserva extensão não balanceada em revisão.
 
 Anuladores de quadráticas: prova por contração e levantamento na filtração, incluindo termo radical balanceado. ANULADORES_QUADRICAS_FILTRACAO.md e verificador 90 perfis/570 dimensões. Caso não degenerado consta da literatura DHK. Q1: AUDITORIA_Q1_PRODUTO_EM_FATIA.md e Q1_TRES_BLOCOS_CORRECAO_CUBICA.md.
 
@@ -558,3 +573,19 @@ Foram construídas testemunhas I6 nas classes semissimples F4+F4 e repetida (t²
 | Buscas GPU | Exclusões apenas nas amostras e famílias documentadas | Não extrapolar ausência nem somar lotes sobrepostos |
 
 A versão congelada para revisão está em fechamento_produto_cubico_07nov. Não alterar esse instantâneo ao incorporar observações posteriores; produzir uma revisão nova. Conservar créditos a Opus pelos lemas de absorção e níveis, a Astra pela origem espectral e a Codex pela redução por hiperplanos, pareamento e certificados aqui descritos. Ferramentas clássicas continuam atribuídas à literatura. Nenhuma alegação de novidade está sendo feita.
+
+## Técnica 33 — Correlacionar o quociente quadrático com Walsh
+
+**Origem.** Argumento local a partir da fatoração da técnica 20 e da cota de Fourier da técnica 9. No ramo ímpar, o orçamento de energia e o baixo peso em Reed–Muller dão $D(1+Q)=0$ para posto polar de $Q$ pelo menos dez. A fatoração fornece $D=QR$ com $\deg R\le2$. Em $Q=1$, $X$ aproxima $17+36(-1)^R$ com erro ponderado pela energia. Use a correlação com $1_{R=0}$ quando $R$ ou $1+Q+R$ tem posto inferior a 20. Se $R$ e $Q+R$ têm posto 20, a norma espectral normalizada de $Q(-1)^R$ é exatamente $1024w(Q)$, por Parseval cruzado aplicado às duas fases quadráticas. O caso $R=1$ é resolvido pela filtração inteira módulo 32. [Demonstração e margens exatas](../2026_11_17_p17/P17_RAMO_IMPAR_POSTOS_10_A_20.md)
+
+## Técnica 34 — Converter a energia residual em peso de Reed–Muller
+
+**Origem.** Argumento local que retém a origem espectral de $X$. Em $Q=1$, os bits de erro são anulados por distância mínima, dando $X\equiv53-8D\pmod{64}$. A função inteira não negativa $H=(X-53)(X+19)/8704$ tem massa 1920 ou 2176. A autocorrelação de $f$ e sua divisibilidade dão $\deg(H\bmod2)\le10$. A enumeração dos perfis de massa usa a classificação de Kasami–Tokura e a exclusão do peso 66 em $\mathrm{RM}(10,15)$ pelo Teorema 3 de Carlet. A hipótese de que $X$ é um espectro de Walsh é usada para obter as congruências de $W_H$. [Demonstração e perfis exatos](../2026_11_17_p17/P17_Q1_PROVA.md) · [Carlet](https://doi.org/10.1109/TIT.2023.3343697)
+
+## Técnica 35 — Usar os momentos do bit de erro em blocos simpléticos
+
+**Origem.** Adaptação das somas de Poisson e da geometria de Reed–Muller. No ramo par, ponha $Y=(-1)^Q X$ e $L=Y^2-68Y+132-9792D\ge0$. Sobre um flat $D=0$, $Y\not\equiv2\pmod{32}$ custa pelo menos 56576. A paridade desse bit em cada 6-flat é determinada pelo posto da polar restringida de $Q$. Em blocos simpléticos de dimensões 8, 10, 12 e 14, os postos das matrizes de momentos impõem pelo menos 10, 66, 364 e 1820 pontos de erro, respectivamente. Klein–Storme fornece flats de zeros de codimensão $c$ com $w(D)<(3-2^{1-c})/16$, para $c\ge2$. A comparação da energia nesses flats com o orçamento global usa a codimensão correta e a multiplicidade das coberturas. [Demonstração e verificador](../2026_11_17_p17/P17_RAMO_PAR_CORRELACAO.md) · [Klein–Storme](https://doi.org/10.3934/amc.2011.5.333)
+
+## Técnica 36 — Medir a saturação da correlação pela fase dual
+
+**Origem.** Argumento local aplicado aos postos 18 e 20 do ramo par global. Compare o sinal de $f$ com o oposto da fase quadrática dual no suporte afim da transformada de $(-1)^Q$. Uma divergência de peso relativo menor que $1/8$ teria uma das formas de Kasami–Tokura. A divisibilidade das somas quadráticas sobre esses suportes contradiz o resíduo de $Y$, forçando peso pelo menos $1/8$. Com isso, os orçamentos para $\mathbb E L$ baixam a $1972-9792w(D)$ no posto 18 e a $2788-9792w(D)$ no posto 20. Quando o segundo bit é afim não constante, use médias na fatia e a cota de Fourier $1/16$ nessa fatia, em vez de aplicar o orçamento global. [Ramo par global](../2026_11_17_p17/P17_RAMO_PAR_CORRELACAO.md) · [Segundo bit afim](../2026_11_17_p17/P17_RAMO_PAR_SEGUNDO_BIT_AFIM.md)

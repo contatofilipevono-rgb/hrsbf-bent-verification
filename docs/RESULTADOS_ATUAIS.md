@@ -46,6 +46,8 @@ Estas linhas tratam de índices relaxados e equivalência EA e devem permanecer 
 
 ## 5. Pesquisa em aberto e itens não localizados
 
+A [atualização de p=17](../research_updates/2026_11_17_p17/LEIA_PRIMEIRO.md) exclui o ramo ímpar com Q=1 e os postos polares 10 a 20, além de restringir os pesos remanescentes no ramo par. O caso geral segue aberto. Consulte o [caderno atualizado](../research_updates/2026_11_07_ferramentas/CADERNO_TECNICAS_BENT.md) para as hipóteses e o estado de revisão.
+
 O [panorama de 07/11](../research_updates/2026_11_07_panorama/PANORAMA_ATUAL.md) mantém separados p=17, Q1, período 20 e H16. As exclusões de subclasses e amostras não são resolução dos casos gerais.
 
 A nota de grau ímpar / dicotomia 8∣n mencionada no planejamento não foi identificada como manuscrito atual separado na árvore principal examinada. Seus enunciados, provas e referências precisam ser localizados antes de promovê-la a resultado deste catálogo. Isso não afirma que o trabalho inexista em outras branches ou arquivos.

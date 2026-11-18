@@ -1,6 +1,6 @@
-# Caderno de ferramentas — encerramento de 7 de novembro de 2026
+# Caderno de ferramentas
 
-Caderno em Markdown e PDF, técnicas 1–32, com incorporação seletiva de material auditado. Q1 geral, p=17 e o Lema L geral permanecem abertos. Não há alegação de prioridade nem revisão humana por pares.
+[Caderno em Markdown](CADERNO_TECNICAS_BENT.md) e [PDF](CADERNO_TECNICAS_BENT.pdf), técnicas 1–36. A edição de 18/11 incorpora as [provas e verificadores de p=17](../2026_11_17_p17/LEIA_PRIMEIRO.md), com exclusões no ramo ímpar e novos intervalos residuais no ramo par. Q1 geral, p=17 e o Lema L geral permanecem abertos. Não há alegação de prioridade nem revisão humana por pares.
 
 ## Resultado decisivo do Astra
 
@@ -25,5 +25,3 @@ A nota ASTRA_AUDITORIA_A_MAIS_POSTO8_07NOV.md contém provas locais de suporte p
 O pacote congelado fechamento_produto_cubico_07nov continua sendo prova candidata da família produto sob I6. Reprodução: `cd fechamento_produto_cubico_07nov` e `python verificar_tudo.py` (Python e NumPy). Não foi alterado.
 
 Créditos: autores clássicos conforme caderno; Opus pelos lemas de níveis/absorção e propostas de extensão; Argon pelas equações e certificados sujeitos às correções; Astra pelo contraexemplo G7 e argumentos de suporte; Codex pela coordenação, controles independentes, catálogo e outras contribuições identificadas. Publicação dos arquivos não equivale a publicação científica.
-
-Sessão encerrada a pedido do usuário. Não iniciar nova janela nem continuar automaticamente.
