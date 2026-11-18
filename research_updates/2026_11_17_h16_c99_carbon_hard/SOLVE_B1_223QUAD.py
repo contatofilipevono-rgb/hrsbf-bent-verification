@@ -521,12 +521,12 @@ int run_schur_mutant_xl_quads(
                         ctx.deg_pivs[d]++; \
                         if (d == 0) ctx.has_one = 1; \
                         ret_deg = d; \
-                        goto low_done_##__LINE__; \
+                        w = ctx.low_words; \
+                        break; \
                     } \
                 } \
             } \
         } \
-        low_done_##__LINE__: ; \
     } while (0)
 
     // Precompute unranking table for low_cols -> (lo, hi) mask so any mutant deg <= 2 can be multiplied by x_i!

@@ -2289,7 +2289,7 @@ def solve_cell_schur_deg4(
         O_r4_arr[w] = (O_r4_N >> (64 * w)) & mask64
         O_r4_chi_arr[w] = (O_r4_chi_N >> (64 * w)) & mask64
 
-    r4_idxs_c = (ctypes.c_int * 1024)()
+    r4_idxs_c = (ctypes.c_int * 2048)()
     out_p2_c = (ctypes.c_uint32 * 16384)()
     out_q4_c = (ctypes.c_uint32 * 524288)()
     out_r4_c = (ctypes.c_uint32 * 524288)()
