@@ -87,20 +87,28 @@ gh run view 44420596691 --repo contatofilipevono-rgb/hrsbf-bent-verification
 gh api --allow-escape-sequences repos/contatofilipevono-rgb/hrsbf-bent-verification/actions/jobs/<JOB_ID>/logs
 ```
 
-### The 4 Parallel Fronts Launched in Run `44420596691`:
-1. **Front 11A — `SOLVE_STEP11_CG_SCHUR_DEG4.py` (Root Schur-D4, `N=109`):**
-   - **Already completed for `B0_00` (`135212192516`, `2m42s`) and `B0_11` (`135212192387`, `3m10s`); `B1_11` (`135212192588`) finishing:**
-   - `B0_00`: `has_one=false`, `CG(|I|=16)` vanished (`rc=-1`), `CG(|I|=15)` inserted (`rc=4`). `quads*pairs` alone consumed `4000 MB` (`piv4=33388`), leaving room for only `~35/112` `CG12*vars` before the `5722 MB` arena filled (`mutants=[0,0,0,0]`).
-   - `B0_11`: `has_one=false`, `quads*pairs` ate `4635 MB` (`piv4=22676`, produced **`8` deg-3 mutants**), arena filled at `45/112` `CG12*vars`, `0` deg $\le 2$ mutants.
-   - **Key takeaway:** Running Schur-D4 at root wastes `4.0–4.6 GB` on `quads*pairs`! That is why **Front 11C** (inside the linearized branch with `0` quads!) is critical.
-2. **Front 11B — `SOLVE_STEP11B_CG389_BRANCH_PROBE.py` (`135212192349`, `135212192393`, `135212192431`):**
-   - Exact 1-literal probing (`2*N` probes), exact `k`-depth collapse curve (`k = 10..90`) on all `388` CG cubics, AND **C WalkSAT directly on `V_3`** (`25 x 1500` steps) to see if `V_3` has reachable solutions or hits a hard UNSAT floor!
-3. **Front 11C — `SOLVE_STEP11C_B0_00_TREE_AND_BRANCH_SCHUR4.py` (`135212192488`, `135212192726`, `135212192018`):**
-   - **(a) `B0_00` Recursive Symplectic DFS** on all 5 non-zero branches (`001, 010, 011, 101, 110`) with all `389` CG cubics (checks if all 5 non-zero branches close 100% UNSAT, isolating `B0_00` to `branch 000` alone!).
-   - **(b) Branch Schur-D4 (`N=104`, `0` quads!)** with **zero-trust verified `CG(|I|=16)` + `CG(|I|=15)` + ALL `8` `CG(|I|=14)` pure deg-4 equations** + all `112` `CG12*vars` (no RAM wasted on `quads*pairs`!).
-4. **Front 11D — `SOLVE_STEP11D_DEG4_POISSON_AND_STRUCTURED_PROBE.py` (`135212192251`, `135212192409`, `135212192461`):**
-   - **(a) Exact Degree-4 Poisson Rank Census:** measures GF(2) rank of all `45` coordinate deg-4 Carlet–Guillot equations (`|I|=13,14,15,16`) + `150` random linear $V_{13}$ + `150` random affine $a + V_{13}$ + `100` $V_{14}$ (`(wt(f|_{a+V_{13}})/8) mod 2 = 0`). Reveals immediately whether non-coordinate $V_{13}/V_{14}$ unlocks a large new space of pure degree-4 equations!
-   - **(b) Structured hi-freq / lo-freq variable ordering collapse curve** + **2-literal hub probing** (`264` pairs on top 12 `CG12` hub variables).
+### The 4 Parallel Fronts Launched in Run `44420596691` (8/12 Completed, 4/12 Finishing):
+1. **Front 11A — `SOLVE_STEP11_CG_SCHUR_DEG4.py` (Root Schur-D4, `N=109`) — ALL 3 COMPLETED:**
+   - `B0_00` (`135212192516`, `2m42s`): `has_one=false`, `piv4=37325`, `mutants=[0,0,0,0]`, arena full at `45/112` `CG12*vars`.
+   - `B0_11` (`135212192387`, `3m10s`): `has_one=false`, `piv4=26071`, `mutants=[0,0,0,8]` (8 deg-3 mutants from `quads*pairs`, 0 deg $\le 2$), arena full at `45/112`.
+   - `B1_11` (`135212192588`, `6m14s`): `has_one=false`, `piv4=29013`, `mutants=[0,0,0,8]`, arena full at `75/112`.
+2. **Front 11C — `SOLVE_STEP11C_B0_00_TREE_AND_BRANCH_SCHUR4.py` (`B0_11` & `B1_11` COMPLETED; `B0_00` `135212192488` FINISHING):**
+   - Zero-trust verified in both `B0_11` and `B1_11` (`0/6` mismatches): **`CG(|I|=16)` cancels identically (`0` terms!)**, `CG(|I|=15)` has `~2.37M` terms, `CG(|I|=14)` has `~2.38M` terms (7 of 8 nonzero).
+   - `B1_11` (`135212192018`, `6m31s`, branch `N=104`, 0 quads): `piv4=5859` filled 6 GB arena at `70/112` `CG12*vars`, `mutants=[0,0,0,0]`.
+   - `B0_11` (`135212192726`, `13m5s`, branch `N=104`, 0 quads): `piv4=1986`, `20/112` `CG12*vars` in 360s budget, `mutants=[0,0,0,0]`.
+   - **ELIMINATED:** Dense degree-4 Schur-XL in `N=104` (`4.6M` deg-4 columns vs `~40k` rows) cannot trigger degree $\le 2$ mutants.
+   - **STILL FINISHING:** `135212192488` (`11C B0_00` — contains the **recursive symplectic DFS on all 5 non-zero branches of `B0_00`**!).
+3. **Front 11D — `SOLVE_STEP11D_DEG4_POISSON_AND_STRUCTURED_PROBE.py` — ALL 3 COMPLETED (`8m40s–10m26s`):**
+   - **PART 1 (MAJOR DISCOVERY — Exact Degree-4 Poisson Rank):**
+     - `B0_00` (`135212192251`): `rk_coord_deg4 = 44` $\to$ **`rk_plus_150_lin_V13 = 156 (+112 NEW pure deg-4 eqs!)`**, `aff_V13: +0`, `V14: +0`.
+     - `B0_11` (`135212192409`): `rk_coord_deg4 = 44` $\to$ **`rk_plus_150_lin_V13 = 156 (+112 NEW!)`**, `aff_V13: +0`, `V14: +0`.
+     - `B1_11` (`135212192461`): `rk_coord_deg4 = 44` $\to$ **`rk_plus_150_lin_V13 = 157 (+113 NEW!)`**, `aff_V13: +0`, `V14: +0`.
+     - **Immediate local check (`test_v13_has_one.py`):** `CONSTANT_1_IN_SPAN = False` in all 3 cells (`156`, `156`, `157`), so `1 = 0` is NOT in the linear span of these 156–157 pure deg-4 equations alone.
+   - **PART 2 (DEFINITIVE ELIMINATION of Pure `V_3` Cube-and-Conquer & 2-Lit Hub Probing):**
+     - `probe_2lit_top12` (`264` pairs on top 12 `CG12` hubs): `0` closed, `0` lin, `0` quad drops in ALL 3 cells.
+     - Structured collapse curve (`lo_freq`): `0/3` closed up to `k = 80` (`24` vars remaining), collapsing `3/3` only at **`k_* = 85`** (`19` vars remaining, where $\binom{19}{3}=969$ meets `388` cubics). Pure `V_3` Cube-and-Conquer would require $\sim 2^{82}$ cubes — **ELIMINATED**.
+4. **Front 11B — `SOLVE_STEP11B_CG389_BRANCH_PROBE.py` — STILL FINISHING (3 jobs: `135212192349` `B0_00`, `135212192393` `B0_11`, `135212192431` `B1_11`):**
+   - Check these 3 logs FIRST for **C WalkSAT on `V_3`** (`min_violated_of_M`): tells whether `V_3` (`388` CG cubics) has reachable solutions or hits a hard UNSAT floor!
 
 ---
 
