@@ -1,15 +1,15 @@
-name: Run H16 Step 9 8-Branch Cubic-Drop & Degree-3 Radical Audit
+name: Run H16 Step 10 Carlet-Guillot NNF (389 Cubics) + 8-Branch Cascade
 
 on:
   push:
     branches: [ main ]
     paths:
-      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP9_8BRANCH_CUBIC_DROP.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP10_CARLET_GUILLOT_NNF.py'
       - '.github/workflows/run_step6_master_close.yml'
   workflow_dispatch:
 
 jobs:
-  step9-cubic-drop:
+  step10-cg-nnf:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     strategy:
@@ -23,5 +23,5 @@ jobs:
           python-version: '3.12'
       - name: Install python-sat
         run: pip install -q python-sat
-      - name: Run SOLVE_STEP9_8BRANCH_CUBIC_DROP.py on ${{ matrix.cell }}
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP9_8BRANCH_CUBIC_DROP.py --cells ${{ matrix.cell }}
+      - name: Run SOLVE_STEP10_CARLET_GUILLOT_NNF.py on ${{ matrix.cell }}
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP10_CARLET_GUILLOT_NNF.py --cells ${{ matrix.cell }}
