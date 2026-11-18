@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""
+r"""
 SOLVE_STEP9_8BRANCH_CUBIC_DROP.py
 
 Novel Algebraic Attack & Exact Degree-3 Structural Audit on H(16,4) Open Cells
@@ -1474,9 +1474,7 @@ def main():
     print("[Init] Precomputing orbits, V6, rot^4, fibers, cyclotomic layers, and col tables...", flush=True)
     orbits = diag_v2.build_orbits_116()
     v6_list = diag_v2.all_v6_orbits()
-    c8_orbs = diag_v2.build_c8_orbits()
-    nonzero_z = [(rep, orb) for rep, orb in c8_orbs if rep != 0]
-    u8_size8 = [(rep, orb) for rep, orb in c8_orbs if len(orb) == 8]
+    _, u8_size8, nonzero_z = diag_v2.build_c8_orbits()
     M_rows = []
     for rep_z, _ in nonzero_z:
         row_mask = 0
@@ -1505,24 +1503,6 @@ def main():
             seen_x[y] = 1
             rep_of_x[y] = r_idx
 
-    orb_diag, orb_pair, orb_r4 = [0] * 116, [0] * 116, [0] * 116
-    for j, orb in enumerate(orbits):
-        vd, vp, vr = 0, 0, 0
-        for v in range(256):
-            x = v | (v << 8)
-            if sum((x & m) == m for m in orb) & 1:
-                vd |= (1 << v)
-        orb_diag[j] = vd
-        for k, x in enumerate(all_pairs):
-            if sum((x & m) == m for m in orb) & 1:
-                vp |= (1 << k)
-        orb_pair[j] = vp
-        for k, x in enumerate(rot4_reps):
-            if sum((x & m) == m for m in orb) & 1:
-                vr |= (1 << k)
-        orb_r4[j] = vr
-    chi_r4 = sum((1 << k) for k, x in enumerate(rot4_reps) if x.bit_count() & 1)
-
     coset_0xf_reps = []
     vis16 = bytearray(65536)
     for x in range(65536):
@@ -1537,10 +1517,22 @@ def main():
             vnib = (x & 0xF) ^ ((x >> 4) & 0xF) ^ ((x >> 8) & 0xF) ^ ((x >> 12) & 0xF)
             if vnib == 0xF:
                 coset_0xf_reps.append(mem[0])
-    orb_0xf_parity = [sum((sum((x & m) == m for m in orb) & 1) for x in coset_0xf_reps) & 1 for orb in orbits]
+
+    orb_tts = [bytearray(65536) for _ in range(116)]
+    orb_diag, orb_pair, orb_r4, orb_0xf_parity = [0] * 116, [0] * 116, [0] * 116, [0] * 116
+    for j, orb in enumerate(orbits):
+        tt = orb_tts[j]
+        for x in range(65536):
+            if sum((x & m) == m for m in orb) & 1:
+                tt[x] = 1
+        orb_diag[j] = sum((1 << v) for v in range(256) if tt[v | (v << 8)])
+        orb_pair[j] = sum((1 << k) for k, x in enumerate(all_pairs) if tt[x])
+        orb_r4[j] = sum((1 << k) for k, x in enumerate(rot4_reps) if tt[x])
+        orb_0xf_parity[j] = sum(tt[x] for x in coset_0xf_reps) & 1
+    chi_r4 = sum((1 << k) for k, x in enumerate(rot4_reps) if x.bit_count() & 1)
 
     def eval_orb_at_x(j, x):
-        return sum((x & m) == m for m in orbits[j]) & 1
+        return orb_tts[j][x]
 
     rot4_data = (pair_idx, orb_diag, orb_pair, orb_r4, chi_r4, rep_of_x, orb_0xf_parity, eval_orb_at_x)
     layers, c0x0 = build_cyclotomic_layers()
