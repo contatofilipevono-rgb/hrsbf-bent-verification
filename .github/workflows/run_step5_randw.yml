@@ -1,0 +1,25 @@
+name: Run H16 c99=0 Step 5A (random rot8-invariant W)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_C99_0_RANDW.py'
+      - '.github/workflows/run_step5_randw.yml'
+  workflow_dispatch:
+
+jobs:
+  randw:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [0, 1]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run SOLVE_C99_0_RANDW.py cell ${{ matrix.cell }}
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_C99_0_RANDW.py ${{ matrix.cell }} 420
