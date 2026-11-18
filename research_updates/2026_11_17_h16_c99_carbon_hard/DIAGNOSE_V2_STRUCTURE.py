@@ -1929,7 +1929,7 @@ def diagnose_v2_cell(sys_data, lib, n_samples=100, n_flat_seeds=15):
         for i in range(N):
             u = q_U[a][i]
             while u:
-                lb = u & -lb
+                lb = u & -u
                 j = lb.bit_length() - 1
                 u ^= lb
                 hm |= 1 << pair_to_col[(i, j)]

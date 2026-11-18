@@ -43,6 +43,7 @@ from AUDIT_ALL_CELLS_111 import (
 )
 
 C_FWHT_CHECK_SRC = r"""
+#include <stddef.h>
 #include <stdint.h>
 
 int is_bent_65536_c(const uint64_t *orb_tts, uint64_t clo, uint64_t chi) {

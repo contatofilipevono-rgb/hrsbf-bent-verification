@@ -1,17 +1,19 @@
-name: Run H16 Step 8C Carbon-32 Fixed & Unblocked Solvers
+name: Run H16 Step 8D Focused Diagnostics & Unblocked Solvers
 
 on:
   push:
     branches: [ main ]
     paths:
-      - 'research_updates/2026_11_17_h16_c99_carbon_hard/**'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/DIAGNOSE_V2_STRUCTURE.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B1_223QUAD.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B09_DUAL_S_ELIM.py'
       - '.github/workflows/run_step6_master_close.yml'
   workflow_dispatch:
 
 jobs:
-  c01-b09-dual-s-and-b29-k5:
+  d01-diagnose-v2-structure:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -19,16 +21,12 @@ jobs:
           python-version: '3.12'
       - name: Install python-sat
         run: pip install -q python-sat
-      - name: 1. Run VERIFY_K5_BOUNDARY_C99_0.py
-        continue-on-error: true
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/VERIFY_K5_BOUNDARY_C99_0.py
-      - name: 2. Run SOLVE_B09_DUAL_S_ELIM.py (Exact Mod-4/Mod-8 Krawtchouk Dual-s Elimination)
-        continue-on-error: true
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B09_DUAL_S_ELIM.py 120
+      - name: Run DIAGNOSE_V2_STRUCTURE.py (B0_00, B0_11, B1_11)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/DIAGNOSE_V2_STRUCTURE.py --cells B0_00,B0_11,B1_11 --samples 60 --flat-seeds 10
 
-  c02-b01-223quad-b1:
+  d02-b1-223quad:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -36,18 +34,12 @@ jobs:
           python-version: '3.12'
       - name: Install python-sat
         run: pip install -q python-sat
-      - name: 1. Run SOLVE_B1_223QUAD.py on B1_00 and B1_11
-        continue-on-error: true
+      - name: Run SOLVE_B1_223QUAD.py (B1_00 & B1_11 Schur-D4 + 223-Quad SAT)
         run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B1_223QUAD.py all 240
-      - name: 2. Run SOLVE_H16_FINAL_CLOSE.py on B1_00 and B1_11
-        continue-on-error: true
-        run: |
-          python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_H16_FINAL_CLOSE.py --cell B1_00 --budget 60
-          python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_H16_FINAL_CLOSE.py --cell B1_11 --budget 240
 
-  c03-b20-deg4-schur-c:
+  d03-b09-dual-s-elim:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -55,73 +47,5 @@ jobs:
           python-version: '3.12'
       - name: Install python-sat
         run: pip install -q python-sat
-      - name: Run SOLVE_DEG4_SCHUR_C.py (C11 Schur-Mutant-XL Degree-4 Reducer)
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_DEG4_SCHUR_C.py
-
-  c04-b05-b06-symplectic-gl:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Install python-sat
-        run: pip install -q python-sat
-      - name: 1. Run SOLVE_B05_SYMPLECTIC_KERNEL.py (b05)
-        continue-on-error: true
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B05_SYMPLECTIC_KERNEL.py
-      - name: 2. Run SOLVE_B06_GL_SIMULTANEOUS_LIN.py (b06)
-        continue-on-error: true
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B06_GL_SIMULTANEOUS_LIN.py ALL
-
-  c05-b11-b12-8d-projections:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Install python-sat
-        run: pip install -q python-sat
-      - name: 1. Run SOLVE_B11_0X3333_DUALITY.py (b11)
-        continue-on-error: true
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B11_0X3333_DUALITY.py 120
-      - name: 2. Run SOLVE_B12_C16_AND_TWISTED8D.py (b12)
-        continue-on-error: true
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B12_C16_AND_TWISTED8D.py 120
-
-  c06-b18-b19-algebraic-rings:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Install python-sat
-        run: pip install -q python-sat
-      - name: 1. Run SOLVE_B18_DIHEDRAL_DECOMP.py (b18)
-        continue-on-error: true
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B18_DIHEDRAL_DECOMP.py 90
-      - name: 2. Run SOLVE_B19_Z16_JORDAN.py (b19)
-        continue-on-error: true
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B19_Z16_JORDAN.py all 90
-
-  c07-b16-b28-derivatives:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Install python-sat
-        run: pip install -q python-sat
-      - name: 1. Run SOLVE_B16_SECOND_DERIV_AND_CLOSE.py (b16)
-        continue-on-error: true
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B16_SECOND_DERIV_AND_CLOSE.py 120 ALL
-      - name: 2. Run SOLVE_B28_FORMAL_DERIV_DEG4.py (b28)
-        continue-on-error: true
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B28_FORMAL_DERIV_DEG4.py
+      - name: Run SOLVE_B09_DUAL_S_ELIM.py (Exact Mod-4/Mod-8 Krawtchouk Dual-s Elimination)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B09_DUAL_S_ELIM.py 180

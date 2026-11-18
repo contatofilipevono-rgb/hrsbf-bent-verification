@@ -46,6 +46,7 @@ C_KERNEL_SRC = r"""
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 static inline void pack_subset(
     const uint64_t *src_510,
@@ -628,11 +629,11 @@ int run_schur_mutant_xl_quads(
                     } \
                 } else { \
                     new_p4 = (int)c; \
-                    goto p4_stop_##__LINE__; \
+                    w = deg4_limit_w; \
+                    break; \
                 } \
             } \
         } \
-        p4_stop_##__LINE__: ; \
         if (new_p4 < 0) { \
             memset(ctx.low_buf, 0, ctx.low_words * sizeof(uint64_t)); \
             uint32_t sh = ctx.off3 & 63; \
