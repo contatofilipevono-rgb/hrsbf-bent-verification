@@ -1,0 +1,185 @@
+{
+  "polynomial_names": [
+    "0x3f3f",
+    "0x5f5f",
+    "0x6f6f",
+    "Q_0x0",
+    "Q_0xf"
+  ],
+  "lowest_degree_combinations": [
+    {
+      "subset": [
+        "Q_0x0",
+        "Q_0xf"
+      ],
+      "terms": 196,
+      "degree": 2,
+      "deg_counts": {
+        "1": 4,
+        "2": 192
+      }
+    },
+    {
+      "subset": [
+        "0x5f5f",
+        "Q_0x0",
+        "Q_0xf"
+      ],
+      "terms": 6507,
+      "degree": 3,
+      "deg_counts": {
+        "1": 48,
+        "2": 1395,
+        "3": 5064
+      }
+    },
+    {
+      "subset": [
+        "0x5f5f"
+      ],
+      "terms": 6695,
+      "degree": 3,
+      "deg_counts": {
+        "1": 44,
+        "2": 1587,
+        "3": 5064
+      }
+    },
+    {
+      "subset": [
+        "0x3f3f",
+        "0x6f6f",
+        "Q_0x0",
+        "Q_0xf"
+      ],
+      "terms": 11260,
+      "degree": 3,
+      "deg_counts": {
+        "0": 1,
+        "3": 9968,
+        "1": 43,
+        "2": 1248
+      }
+    },
+    {
+      "subset": [
+        "0x3f3f",
+        "0x6f6f"
+      ],
+      "terms": 11322,
+      "degree": 3,
+      "deg_counts": {
+        "0": 1,
+        "3": 9968,
+        "1": 41,
+        "2": 1312
+      }
+    },
+    {
+      "subset": [
+        "0x6f6f"
+      ],
+      "terms": 11762,
+      "degree": 3,
+      "deg_counts": {
+        "1": 78,
+        "2": 2388,
+        "3": 9296
+      }
+    },
+    {
+      "subset": [
+        "0x6f6f",
+        "Q_0x0",
+        "Q_0xf"
+      ],
+      "terms": 11838,
+      "degree": 3,
+      "deg_counts": {
+        "1": 82,
+        "2": 2460,
+        "3": 9296
+      }
+    },
+    {
+      "subset": [
+        "0x3f3f"
+      ],
+      "terms": 14702,
+      "degree": 3,
+      "deg_counts": {
+        "0": 1,
+        "1": 47,
+        "2": 2638,
+        "3": 12016
+      }
+    },
+    {
+      "subset": [
+        "0x3f3f",
+        "Q_0x0",
+        "Q_0xf"
+      ],
+      "terms": 14744,
+      "degree": 3,
+      "deg_counts": {
+        "0": 1,
+        "1": 49,
+        "2": 2678,
+        "3": 12016
+      }
+    },
+    {
+      "subset": [
+        "0x3f3f",
+        "0x5f5f",
+        "0x6f6f"
+      ],
+      "terms": 16165,
+      "degree": 3,
+      "deg_counts": {
+        "0": 1,
+        "3": 14256,
+        "2": 1891,
+        "1": 17
+      }
+    },
+    {
+      "subset": [
+        "0x3f3f",
+        "0x5f5f",
+        "0x6f6f",
+        "Q_0x0",
+        "Q_0xf"
+      ],
+      "terms": 16231,
+      "degree": 3,
+      "deg_counts": {
+        "0": 1,
+        "3": 14256,
+        "2": 1955,
+        "1": 19
+      }
+    },
+    {
+      "subset": [
+        "0x5f5f",
+        "0x6f6f",
+        "Q_0x0",
+        "Q_0xf"
+      ],
+      "terms": 16269,
+      "degree": 3,
+      "deg_counts": {
+        "3": 13928,
+        "1": 38,
+        "2": 2303
+      }
+    }
+  ],
+  "witnesses_passing_3f3f_5f5f_6f6f_Q0xf": [
+    "0xd7",
+    "0xf5"
+  ],
+  "elapsed_sec": 0.8613
+}

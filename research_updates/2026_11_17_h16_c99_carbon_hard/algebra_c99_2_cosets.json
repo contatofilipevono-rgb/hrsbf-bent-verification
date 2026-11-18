@@ -1,0 +1,121 @@
+{
+  "coset_polynomials": {
+    "0x0": {
+      "terms": 27654,
+      "degree": 3,
+      "required_value_for_bent": 1,
+      "witness_evals": {
+        "0xbf": 0,
+        "0xef": 0,
+        "0xfb": 0,
+        "0xfe": 0,
+        "0xfd": 0,
+        "0xf7": 1,
+        "0xdf": 0,
+        "0x7f": 0,
+        "0x5f": 1,
+        "0x77": 1,
+        "0x7d": 1,
+        "0xd7": 1,
+        "0xf5": 1,
+        "0xdd": 1
+      },
+      "witnesses_passing": [
+        "0xf7",
+        "0x5f",
+        "0x77",
+        "0x7d",
+        "0xd7",
+        "0xf5",
+        "0xdd"
+      ],
+      "witnesses_failing": [
+        "0xbf",
+        "0xef",
+        "0xfb",
+        "0xfe",
+        "0xfd",
+        "0xdf",
+        "0x7f"
+      ]
+    },
+    "0xf": {
+      "terms": 27654,
+      "degree": 3,
+      "required_value_for_bent": 0,
+      "witness_evals": {
+        "0xbf": 1,
+        "0xef": 1,
+        "0xfb": 1,
+        "0xfe": 1,
+        "0xfd": 0,
+        "0xf7": 0,
+        "0xdf": 0,
+        "0x7f": 1,
+        "0x5f": 1,
+        "0x77": 0,
+        "0x7d": 1,
+        "0xd7": 0,
+        "0xf5": 0,
+        "0xdd": 0
+      },
+      "witnesses_passing": [
+        "0xfd",
+        "0xf7",
+        "0xdf",
+        "0x77",
+        "0xd7",
+        "0xf5",
+        "0xdd"
+      ],
+      "witnesses_failing": [
+        "0xbf",
+        "0xef",
+        "0xfb",
+        "0xfe",
+        "0x7f",
+        "0x5f",
+        "0x7d"
+      ]
+    },
+    "0x5": {
+      "terms": 0,
+      "degree": 0,
+      "required_value_for_bent": 0,
+      "witness_evals": {
+        "0xbf": 0,
+        "0xef": 0,
+        "0xfb": 0,
+        "0xfe": 0,
+        "0xfd": 0,
+        "0xf7": 0,
+        "0xdf": 0,
+        "0x7f": 0,
+        "0x5f": 0,
+        "0x77": 0,
+        "0x7d": 0,
+        "0xd7": 0,
+        "0xf5": 0,
+        "0xdd": 0
+      },
+      "witnesses_passing": [
+        "0xbf",
+        "0xef",
+        "0xfb",
+        "0xfe",
+        "0xfd",
+        "0xf7",
+        "0xdf",
+        "0x7f",
+        "0x5f",
+        "0x77",
+        "0x7d",
+        "0xd7",
+        "0xf5",
+        "0xdd"
+      ],
+      "witnesses_failing": []
+    }
+  },
+  "elapsed_sec": 0.353
+}

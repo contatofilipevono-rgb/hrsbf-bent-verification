@@ -1,0 +1,238 @@
+{
+  "free_dim_after_T20_C5_C7": 110,
+  "supports": {
+    "0x3f3f_no_chi": {
+      "diag_vals_ab": [
+        64,
+        16,
+        32,
+        -16
+      ],
+      "terms": 14701,
+      "degree": 3,
+      "linear_only": false,
+      "witness_evals": {
+        "0xbf": 1,
+        "0xef": 1,
+        "0xfb": 1,
+        "0xfe": 1,
+        "0xfd": 1,
+        "0xf7": 1,
+        "0xdf": 1,
+        "0x7f": 1,
+        "0x5f": 1,
+        "0x77": 1,
+        "0x7d": 1,
+        "0xd7": 1,
+        "0xf5": 1,
+        "0xdd": 1
+      }
+    },
+    "0x3f3f_with_chi": {
+      "diag_vals_ab": [
+        64,
+        16,
+        32,
+        -16
+      ],
+      "terms": 14701,
+      "degree": 3,
+      "linear_only": false,
+      "witness_evals": {
+        "0xbf": 1,
+        "0xef": 1,
+        "0xfb": 1,
+        "0xfe": 1,
+        "0xfd": 1,
+        "0xf7": 1,
+        "0xdf": 1,
+        "0x7f": 1,
+        "0x5f": 1,
+        "0x77": 1,
+        "0x7d": 1,
+        "0xd7": 1,
+        "0xf5": 1,
+        "0xdd": 1
+      }
+    },
+    "0x5f5f_no_chi": {
+      "diag_vals_ab": [
+        64,
+        16,
+        32,
+        -16
+      ],
+      "terms": 6696,
+      "degree": 3,
+      "linear_only": false,
+      "witness_evals": {
+        "0xbf": 0,
+        "0xef": 0,
+        "0xfb": 0,
+        "0xfe": 0,
+        "0xfd": 0,
+        "0xf7": 0,
+        "0xdf": 0,
+        "0x7f": 1,
+        "0x5f": 0,
+        "0x77": 1,
+        "0x7d": 0,
+        "0xd7": 1,
+        "0xf5": 1,
+        "0xdd": 1
+      }
+    },
+    "0x5f5f_with_chi": {
+      "diag_vals_ab": [
+        64,
+        16,
+        32,
+        -16
+      ],
+      "terms": 6696,
+      "degree": 3,
+      "linear_only": false,
+      "witness_evals": {
+        "0xbf": 0,
+        "0xef": 0,
+        "0xfb": 0,
+        "0xfe": 0,
+        "0xfd": 0,
+        "0xf7": 0,
+        "0xdf": 0,
+        "0x7f": 1,
+        "0x5f": 0,
+        "0x77": 1,
+        "0x7d": 0,
+        "0xd7": 1,
+        "0xf5": 1,
+        "0xdd": 1
+      }
+    },
+    "0x6f6f_no_chi": {
+      "diag_vals_ab": [
+        64,
+        16,
+        32,
+        -16
+      ],
+      "terms": 11763,
+      "degree": 3,
+      "linear_only": false,
+      "witness_evals": {
+        "0xbf": 1,
+        "0xef": 1,
+        "0xfb": 1,
+        "0xfe": 1,
+        "0xfd": 1,
+        "0xf7": 1,
+        "0xdf": 1,
+        "0x7f": 1,
+        "0x5f": 1,
+        "0x77": 0,
+        "0x7d": 1,
+        "0xd7": 1,
+        "0xf5": 1,
+        "0xdd": 0
+      }
+    },
+    "0x6f6f_with_chi": {
+      "diag_vals_ab": [
+        64,
+        16,
+        32,
+        -16
+      ],
+      "terms": 11763,
+      "degree": 3,
+      "linear_only": false,
+      "witness_evals": {
+        "0xbf": 1,
+        "0xef": 1,
+        "0xfb": 1,
+        "0xfe": 1,
+        "0xfd": 1,
+        "0xf7": 1,
+        "0xdf": 1,
+        "0x7f": 1,
+        "0x5f": 1,
+        "0x77": 0,
+        "0x7d": 1,
+        "0xd7": 1,
+        "0xf5": 1,
+        "0xdd": 0
+      }
+    }
+  },
+  "cosets": {
+    "0x0": {
+      "num_size16_orbits": 240,
+      "linear_parity_const": 0,
+      "linear_parity_terms": 0,
+      "mod4_quadratic_clean": true,
+      "witness_parities": {
+        "0xbf": 0,
+        "0xef": 0,
+        "0xfb": 0,
+        "0xfe": 0,
+        "0xfd": 0,
+        "0xf7": 0,
+        "0xdf": 0,
+        "0x7f": 0,
+        "0x5f": 0,
+        "0x77": 0,
+        "0x7d": 0,
+        "0xd7": 0,
+        "0xf5": 0,
+        "0xdd": 0
+      }
+    },
+    "0xf": {
+      "num_size16_orbits": 256,
+      "linear_parity_const": 0,
+      "linear_parity_terms": 0,
+      "mod4_quadratic_clean": true,
+      "witness_parities": {
+        "0xbf": 0,
+        "0xef": 0,
+        "0xfb": 0,
+        "0xfe": 0,
+        "0xfd": 0,
+        "0xf7": 0,
+        "0xdf": 0,
+        "0x7f": 0,
+        "0x5f": 0,
+        "0x77": 0,
+        "0x7d": 0,
+        "0xd7": 0,
+        "0xf5": 0,
+        "0xdd": 0
+      }
+    },
+    "0x5": {
+      "num_size16_orbits": 512,
+      "linear_parity_const": 0,
+      "linear_parity_terms": 0,
+      "mod4_quadratic_clean": true,
+      "witness_parities": {
+        "0xbf": 0,
+        "0xef": 0,
+        "0xfb": 0,
+        "0xfe": 0,
+        "0xfd": 0,
+        "0xf7": 0,
+        "0xdf": 0,
+        "0x7f": 0,
+        "0x5f": 0,
+        "0x77": 0,
+        "0x7d": 0,
+        "0xd7": 0,
+        "0xf5": 0,
+        "0xdd": 0
+      }
+    }
+  },
+  "witness_checks": {},
+  "new_linear_support_laws": [],
+  "elapsed_sec": 3.096
+}
