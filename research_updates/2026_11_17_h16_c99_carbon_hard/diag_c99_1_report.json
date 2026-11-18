@@ -1,0 +1,36 @@
+{
+  "A": {
+    "vars": 135589,
+    "clauses": 788172,
+    "build_sec": 6.666,
+    "res": "SAT",
+    "solve_sec": 1.5269,
+    "stats": {
+      "restarts": 141,
+      "conflicts": 1678,
+      "decisions": 50170,
+      "propagations": 9387891
+    },
+    "audit": {
+      "coefficients_hex": "0x629ac7fffffffffffffffffffffdf",
+      "W_f_0": -2816,
+      "W_f_e0": -1184,
+      "w2_8_signed": [
+        -1088,
+        -512,
+        128,
+        -448,
+        -192,
+        448,
+        -64,
+        -64
+      ],
+      "is_bent": false,
+      "first_fail": {
+        "mask_hex": "0x0",
+        "weight": 0,
+        "val": -2816
+      }
+    }
+  }
+}

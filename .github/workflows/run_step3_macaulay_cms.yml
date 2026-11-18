@@ -1,0 +1,34 @@
+name: Run H16 c99=1 Step 3D (Macaulay + Native-XOR CMS)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_C99_1_MACAULAY_AND_CMS.py'
+      - '.github/workflows/run_step3_macaulay_cms.yml'
+  workflow_dispatch:
+
+jobs:
+  step3-macaulay-cms:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat & cryptominisat
+        run: |
+          pip install python-sat
+          sudo apt-get update -qq && sudo apt-get install -y -qq cryptominisat
+      - name: Run SOLVE_C99_1_MACAULAY_AND_CMS.py
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_C99_1_MACAULAY_AND_CMS.py
+      - name: Run cryptominisat5 with native XOR + Gauss-Jordan (60s)
+        run: |
+          timeout 60 cryptominisat5 --threads=4 --maxmatrixrows=5000 research_updates/2026_11_17_h16_c99_carbon_hard/mode_d_cube0_native_xor.cnf || true
+      - name: Upload Step 3D report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: h16-c99-step3-macaulay-cms
+          path: research_updates/2026_11_17_h16_c99_carbon_hard/macaulay_cms_report.json
