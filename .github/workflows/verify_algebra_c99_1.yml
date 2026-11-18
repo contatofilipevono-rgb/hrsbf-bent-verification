@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - 'research_updates/2026_11_17_h16_c99_carbon_hard/VERIFICAR_ALGEBRA_C99_1.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/VERIFICAR_ALGEBRA_C99_2_COSETS.py'
       - '.github/workflows/verify_algebra_c99_1.yml'
 
 jobs:
@@ -12,11 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Run VERIFICAR_ALGEBRA_C99_1.py
+      - name: Run VERIFICAR_ALGEBRA_C99_1.py and VERIFICAR_ALGEBRA_C99_2_COSETS.py
         run: |
           python3 research_updates/2026_11_17_h16_c99_carbon_hard/VERIFICAR_ALGEBRA_C99_1.py
-      - name: Upload algebra certificate
+          python3 research_updates/2026_11_17_h16_c99_carbon_hard/VERIFICAR_ALGEBRA_C99_2_COSETS.py
+      - name: Upload algebra certificates
         uses: actions/upload-artifact@v4
         with:
           name: algebra-c99-1-certificate
-          path: research_updates/2026_11_17_h16_c99_carbon_hard/algebra_c99_1_certificate.json
+          path: |
+            research_updates/2026_11_17_h16_c99_carbon_hard/algebra_c99_1_certificate.json
+            research_updates/2026_11_17_h16_c99_carbon_hard/algebra_c99_2_cosets.json
