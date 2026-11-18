@@ -1,4 +1,4 @@
-name: Run H16 Step 8 Carbon-32 Final Closure
+name: Run H16 Step 8B Carbon-32 All-Weapons Parallel Suite
 
 on:
   push:
@@ -9,9 +9,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  step8-b1-and-dual-s-audit:
+  j01-b09-dual-s-and-b29-k5:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -19,20 +19,31 @@ jobs:
           python-version: '3.12'
       - name: Install python-sat
         run: pip install -q python-sat
-      - name: 1. Run VERIFY_B1_00_AND_LINEAR_PIVOTS_111.py (Zero-Trust B1_00 & B1_11 Linear Pivot Proof)
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/VERIFY_B1_00_AND_LINEAR_PIVOTS_111.py
-      - name: 2. Run SOLVE_B09_DUAL_S_ELIM.py (Exact Mod-4/Mod-8 Krawtchouk Dual-s Elimination on B1_00, B1_11, B0_11)
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B09_DUAL_S_ELIM.py 90
-      - name: 3. Run SOLVE_B1_223QUAD.py (B1_00 & B1_11 223-Quadratic Schur-Mutant-XL + Fast SAT)
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B1_223QUAD.py all 120
-      - name: 4. Run SOLVE_H16_FINAL_CLOSE.py on B1_00 and B1_11
+      - name: 1. Run VERIFY_K5_BOUNDARY_C99_0.py
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/VERIFY_K5_BOUNDARY_C99_0.py
+      - name: 2. Run SOLVE_B09_DUAL_S_ELIM.py (Exact Mod-4/Mod-8 Krawtchouk Dual-s Elimination)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B09_DUAL_S_ELIM.py 120
+
+  j02-b01-223quad-b1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat
+        run: pip install -q python-sat
+      - name: 1. Run SOLVE_B1_223QUAD.py on B1_00 and B1_11
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B1_223QUAD.py all 240
+      - name: 2. Run SOLVE_H16_FINAL_CLOSE.py on B1_00 and B1_11
         run: |
           python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_H16_FINAL_CLOSE.py --cell B1_00 --budget 60
-          python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_H16_FINAL_CLOSE.py --cell B1_11 --budget 150
+          python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_H16_FINAL_CLOSE.py --cell B1_11 --budget 240
 
-  step8-b0-cyclotomic-tower:
+  j03-b20-deg4-schur-c:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -40,16 +51,12 @@ jobs:
           python-version: '3.12'
       - name: Install python-sat
         run: pip install -q python-sat
-      - name: Run SOLVE_B13_CYCLOTOMIC_TOWER_MASTER.py on all cells
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B13_CYCLOTOMIC_TOWER_MASTER.py all 180 0/1
+      - name: Run SOLVE_DEG4_SCHUR_C.py (C11 Schur-Mutant-XL Degree-4 Reducer)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_DEG4_SCHUR_C.py
 
-  step8-b0-00-sharded:
+  j04-b04-b05-b06-symplectic-gl:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-    strategy:
-      fail-fast: false
-      matrix:
-        job_id: [0, 1, 2, 3, 4, 5, 6, 7]
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -57,27 +64,16 @@ jobs:
           python-version: '3.12'
       - name: Install python-sat
         run: pip install -q python-sat
-      - name: Run 4 parallel workers of SOLVE_H16_FINAL_CLOSE.py on B0_00 (32 workers total)
-        run: |
-          J=${{ matrix.job_id }}
-          for k in 0 1 2 3; do
-            W=$(( J * 4 + k ))
-            python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_H16_FINAL_CLOSE.py --cell B0_00 --worker-id $W --num-workers 32 --depth-vc 3 --budget 360 > b0_00_w${W}.log 2>&1 &
-          done
-          wait
-          for k in 0 1 2 3; do
-            W=$(( J * 4 + k ))
-            echo "=== WORKER $W ==="
-            cat b0_00_w${W}.log
-          done
+      - name: 1. Run DIAGNOSE_V2_STRUCTURE.py (b04)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/DIAGNOSE_V2_STRUCTURE.py
+      - name: 2. Run SOLVE_B05_SYMPLECTIC_KERNEL.py (b05)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B05_SYMPLECTIC_KERNEL.py
+      - name: 3. Run SOLVE_B06_GL_SIMULTANEOUS_LIN.py (b06)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B06_GL_SIMULTANEOUS_LIN.py ALL
 
-  step8-b0-11-sharded:
+  j05-b10-b11-b12-8d-projections:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-    strategy:
-      fail-fast: false
-      matrix:
-        job_id: [0, 1, 2, 3, 4, 5, 6, 7]
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -85,16 +81,88 @@ jobs:
           python-version: '3.12'
       - name: Install python-sat
         run: pip install -q python-sat
-      - name: Run 4 parallel workers of SOLVE_H16_FINAL_CLOSE.py on B0_11 (32 workers total)
-        run: |
-          J=${{ matrix.job_id }}
-          for k in 0 1 2 3; do
-            W=$(( J * 4 + k ))
-            python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_H16_FINAL_CLOSE.py --cell B0_11 --worker-id $W --num-workers 32 --depth-vc 3 --budget 360 > b0_11_w${W}.log 2>&1 &
-          done
-          wait
-          for k in 0 1 2 3; do
-            W=$(( J * 4 + k ))
-            echo "=== WORKER $W ==="
-            cat b0_11_w${W}.log
-          done
+      - name: 1. Run SOLVE_B10_O8_DUAL.py (b10)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B10_O8_DUAL.py
+      - name: 2. Run SOLVE_B11_0X3333_DUALITY.py (b11)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B11_0X3333_DUALITY.py 120
+      - name: 3. Run SOLVE_B12_C16_AND_TWISTED8D.py (b12)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B12_C16_AND_TWISTED8D.py 120
+
+  j06-b14-b17-b18-b19-algebraic-rings:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat
+        run: pip install -q python-sat
+      - name: 1. Run SOLVE_B14_NILPOTENT_RING.py (b14)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B14_NILPOTENT_RING.py --cell ALL --budget 90
+      - name: 2. Run SOLVE_B18_DIHEDRAL_DECOMP.py (b18)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B18_DIHEDRAL_DECOMP.py 90
+      - name: 3. Run SOLVE_B19_Z16_JORDAN.py (b19)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B19_Z16_JORDAN.py all 90
+
+  j07-b15-b16-b28-derivatives:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat
+        run: pip install -q python-sat
+      - name: 1. Run SOLVE_B15_DERIVATIVE_AUTOCORR.py (b15)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B15_DERIVATIVE_AUTOCORR.py all 90
+      - name: 2. Run SOLVE_B16_SECOND_DERIV_AND_CLOSE.py (b16)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B16_SECOND_DERIV_AND_CLOSE.py 120 ALL
+      - name: 3. Run SOLVE_B28_FORMAL_DERIV_DEG4.py (b28)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B28_FORMAL_DERIV_DEG4.py
+
+  j08-b03-b25-b26-b27-probing-2sat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat
+        run: pip install -q python-sat
+      - name: 1. Run SOLVE_B03_CUBIC_QUOTIENT_MOD32.py (b03)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B03_CUBIC_QUOTIENT_MOD32.py all 90
+      - name: 2. Run SOLVE_ALGEBRAIC_PROBE.py (b26)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_ALGEBRAIC_PROBE.py
+      - name: 3. Run PROBE_2SAT_CLOSURE.py (b27)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/PROBE_2SAT_CLOSURE.py
+
+  j09-b07-b22-b23-b31-lazy-hybrid:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat
+        run: pip install -q python-sat
+      - name: 1. Run SOLVE_ALL_REMAINING_FAST.py (b31)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_ALL_REMAINING_FAST.py
+      - name: 2. Run SOLVE_LAZY_K_OF_M_MASTER.py (b22)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_LAZY_K_OF_M_MASTER.py
+      - name: 3. Run SOLVE_B23_LAZY_PB_B0_11.py (b23)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B23_LAZY_PB_B0_11.py
+
+  j10-b02-pure-python-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run VERIFY_B1_00_AND_LINEAR_PIVOTS_111.py (b02 complete)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/VERIFY_B1_00_AND_LINEAR_PIVOTS_111.py
