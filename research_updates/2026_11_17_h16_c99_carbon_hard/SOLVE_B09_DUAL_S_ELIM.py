@@ -454,11 +454,11 @@ def derive_b09_pure_c_equations(orbits, origin, cb, dih):
     sys_rows.append((1 if poly_deg(rhs_01) <= 1 else 2, "mod4_0x01_with_0xff",
                      pack_s_mask_to_y25(smask_01, 0), rhs_01, None))
 
-    # (e) Level mod-8 exact linear-in-s equation from z = 0x55 + 0xff + sum_s=8 (Eq. 32a)!
+    # (e) Level mod-8 exact linear-in-s equation from z = 0x55 + 0xff + D_8 (wt(f|_{D_8})=64 => q_0xff=12-S_odd, q_0x55=24-2*S_55- - S_odd => S_55- == e2_55 ^ e2_ff mod 2, NO +1 offset!)
     even_minus_mask = sum(
         1 << m for m in range(30) if M_int[z_rep_to_idx[0x55]][m] == -4
     )
-    rhs_32a = {0} ^ e2_ff ^ e2_55
+    rhs_32a = e2_ff ^ e2_55
     sys_rows.append((1 if poly_deg(rhs_32a) <= 1 else 2, "mod8_0x55_eq32a",
                      pack_s_mask_to_y25(even_minus_mask, 0), rhs_32a, None))
 
