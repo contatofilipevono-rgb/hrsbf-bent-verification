@@ -1,0 +1,31 @@
+{
+  "model": "gemini-4-carbon",
+  "project_id": "gen-lang-client-0116770270",
+  "location": "global",
+  "thinking_level": "HIGH",
+  "include_thoughts": true,
+  "max_output_tokens": null,
+  "prompt_chars": 43997,
+  "answer_chars": 0,
+  "thoughts_chars": 25035,
+  "usageMetadata": {
+    "promptTokenCount": 19611,
+    "candidatesTokenCount": 3,
+    "totalTokenCount": 85147,
+    "trafficType": "ON_DEMAND",
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 19611
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 3
+      }
+    ],
+    "thoughtsTokenCount": 65533
+  },
+  "finishReason": "MAX_TOKENS"
+}
