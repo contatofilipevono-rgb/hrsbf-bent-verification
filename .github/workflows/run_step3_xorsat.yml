@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_C99_1_XORSAT.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_C99_1_XORSAT_FULL.py'
       - '.github/workflows/run_step3_xorsat.yml'
 
 jobs:
@@ -14,10 +14,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install python-sat
         run: pip install python-sat
-      - name: Run SOLVE_C99_1_XORSAT.py
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_C99_1_XORSAT.py
+      - name: Run SOLVE_C99_1_XORSAT_FULL.py
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_C99_1_XORSAT_FULL.py
       - name: Upload Step 3 report
         uses: actions/upload-artifact@v4
         with:
-          name: h16-c99-step3-xorsat
-          path: research_updates/2026_11_17_h16_c99_carbon_hard/xorsat_c99_1_report.json
+          name: h16-c99-step3-xorsat-full
+          path: research_updates/2026_11_17_h16_c99_carbon_hard/xorsat_c99_1_full_report.json

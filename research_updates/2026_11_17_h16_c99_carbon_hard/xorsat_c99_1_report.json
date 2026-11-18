@@ -1,0 +1,49 @@
+{
+  "witness_coset_weights": {
+    "0xd7": {
+      "0x0": {
+        "wt": 126,
+        "total": 240
+      },
+      "0xf": {
+        "wt": 128,
+        "total": 256
+      },
+      "0x5": {
+        "wt": 240,
+        "total": 512
+      }
+    },
+    "0xf5": {
+      "0x0": {
+        "wt": 126,
+        "total": 240
+      },
+      "0xf": {
+        "wt": 128,
+        "total": 256
+      },
+      "0x5": {
+        "wt": 240,
+        "total": 512
+      }
+    }
+  },
+  "branch_results": {
+    "K1_u0": {
+      "vars": 80736,
+      "clauses": 248069,
+      "sat": true,
+      "solve_sec": 0.133,
+      "sample_solution_hex": "0x2040c00020004061d1c02800401c2"
+    },
+    "K1_u1": {
+      "vars": 80736,
+      "clauses": 248069,
+      "sat": true,
+      "solve_sec": 0.1329,
+      "sample_solution_hex": "0x2040c00000004071d1882000001c2"
+    }
+  },
+  "elapsed_sec": 0.7523
+}
