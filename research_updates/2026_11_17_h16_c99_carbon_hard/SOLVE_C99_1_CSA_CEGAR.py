@@ -370,7 +370,7 @@ def main():
     # Step 0B: Sanity check rotation-orbit Walsh formula on archived witnesses
     sanity = {}
     for wname in ("0xd7", "0xf5", "0xbf"):
-        cint = int(WITNESSES[wname], 16)
+        cint = WITNESSES[wname] if isinstance(WITNESSES[wname], int) else int(WITNESSES[wname], 16)
         aud = audit_65536(cint, orbits)
         y_vals = []
         for members in rot_orbits:
