@@ -1,15 +1,15 @@
-name: Run H16 c99=0 Step 4F (Quad Pivots + C6 + Enum CEGAR)
+name: Run H16 c99=0 Step 4G (C-FWHT + Quad Pivots + C6)
 
 on:
   push:
     branches: [ main ]
     paths:
-      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_C99_0_ENUM_CEGAR.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_C99_0_CLOSE.py'
       - '.github/workflows/run_step4_c99_0_poisson.yml'
   workflow_dispatch:
 
 jobs:
-  step4-c99-0-enum:
+  step4-c99-0-close:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -19,5 +19,5 @@ jobs:
           python-version: '3.12'
       - name: Install python-sat
         run: pip install python-sat
-      - name: Run SOLVE_C99_0_ENUM_CEGAR.py
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_C99_0_ENUM_CEGAR.py
+      - name: Run SOLVE_C99_0_CLOSE.py
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_C99_0_CLOSE.py
