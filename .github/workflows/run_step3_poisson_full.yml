@@ -1,15 +1,15 @@
-name: Run H16 c99=1 Step 3I (Pure-C V_6 Poisson-Lucas + Macaulay)
+name: Run H16 c99=1 Step 3J (Verify Nullstellensatz Certificate)
 
 on:
   push:
     branches: [ main ]
     paths:
-      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_C99_1_POISSON_C.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/VERIFY_C99_1_NULLSTELLENSATZ.py'
       - '.github/workflows/run_step3_poisson_full.yml'
   workflow_dispatch:
 
 jobs:
-  step3-poisson-c:
+  step3-verify-cert:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -17,11 +17,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Run SOLVE_C99_1_POISSON_C.py
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_C99_1_POISSON_C.py
-      - name: Upload Step 3I report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: h16-c99-step3-poisson-c
-          path: research_updates/2026_11_17_h16_c99_carbon_hard/poisson_c_report.json
+      - name: Run VERIFY_C99_1_NULLSTELLENSATZ.py
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/VERIFY_C99_1_NULLSTELLENSATZ.py
