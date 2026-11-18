@@ -368,11 +368,12 @@ def main():
             p_idxs_arr[k] = v
         for use_chi in (0, 1):
             base = cur_row * n_col_words
-            ctypes.memset(ctypes.byref(rows, base * 8), 0, n_col_words * 8)
+            row_ptr = ctypes.cast(ctypes.byref(rows, base * 8), ctypes.POINTER(ctypes.c_uint64))
+            ctypes.memset(row_ptr, 0, n_col_words * 8)
             rc = lib.extract_and_fill_row(
                 all_pair_bits, p_idxs_arr, n, use_chi,
                 col3_base, off2, off1, off0,
-                ctypes.byref(rows, base * 8), None
+                row_ptr, None
             )
             if rc == 0:
                 n_extracted += 1
