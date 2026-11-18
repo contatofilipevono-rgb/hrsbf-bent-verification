@@ -1,0 +1,27 @@
+name: Run H16 c99=1 Steps 1 & 2 (Macaulay M3 & 8D Projections)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/VERIFICAR_ALGEBRA_C99_5_M3.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/proj8d_core.c'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/VERIFICAR_PROJECOES_8D.py'
+      - '.github/workflows/run_steps_1_2.yml'
+
+jobs:
+  steps-1-2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Step 1 (Macaulay M3) and Step 2 (8D Projections)
+        run: |
+          python3 research_updates/2026_11_17_h16_c99_carbon_hard/VERIFICAR_ALGEBRA_C99_5_M3.py
+          python3 research_updates/2026_11_17_h16_c99_carbon_hard/VERIFICAR_PROJECOES_8D.py
+      - name: Upload Step 1 & 2 reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: h16-c99-steps-1-2
+          path: |
+            research_updates/2026_11_17_h16_c99_carbon_hard/algebra_c99_5_m3.json
+            research_updates/2026_11_17_h16_c99_carbon_hard/proj8d_c99_1_report.json
