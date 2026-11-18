@@ -168,14 +168,13 @@ def main():
             for b in form(prod["J"]):
                 toggle(q4_poly, a | b)
 
-    # Check GF(2) span of {Q4} U deg2_laws (adjusted to == 0 equations)
+    # Check GF(2) span of {Q4} U unique deg2_laws (adjusted to == 0 equations)
     eq_polys = [q4_poly]
     for law in deg2_laws:
-        # For Q_0x0 ^ Q_0xf: Q_0x0 == 1 and Q_0xf == 0 => sum == 1
-        p = {int(h, 16) for h in law["monomials_hex"]}
         if law["subset"] == ["0x0", "0xf"]:
-            toggle(p, 0)
-        eq_polys.append(p)
+            p = {int(h, 16) for h in law["monomials_hex"]}
+            toggle(p, 0)  # Q_0x0 == 1 and Q_0xf == 0 => Q_0x0 ^ Q_0xf == 1
+            eq_polys.append(p)
 
     one_in_deg2_span, deg2_rank = gf2_span_has_one(eq_polys, free)
 
