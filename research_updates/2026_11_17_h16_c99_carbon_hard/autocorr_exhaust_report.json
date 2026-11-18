@@ -1,0 +1,34 @@
+{
+  "D_0xffff": {
+    "n_orbs": 2068,
+    "rank": 32,
+    "sanity_wt_0xd7": 32768,
+    "exhaust": {
+      "skipped": true,
+      "reason": "rank 32 > 29"
+    }
+  },
+  "D_0x5555": {
+    "n_orbs": 4134,
+    "rank": 57
+  },
+  "macaulay_tilde": {
+    "poly_lens": {
+      "0x3f3f": 14702,
+      "0x5f5f": 6695,
+      "0x6f6f": 11762,
+      "tilde_3f3f": 14701,
+      "tilde_5f5f": 6696,
+      "tilde_6f6f": 11763
+    },
+    "has_one": true,
+    "deg_counts": {
+      "3": 209937,
+      "0": 1,
+      "1": 109,
+      "2": 5886
+    },
+    "total_pivots": 215933
+  },
+  "elapsed_sec": 7.7976
+}
