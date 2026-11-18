@@ -84,7 +84,7 @@ def main():
             # And wt(w_eval) mod 4 == 2 * eval_poly(P, cint) ? Let's check!
             # Wait: wt(A ^ B) = wt(A) + wt(B) - 2*wt(A & B). Since wt(A) % 4 == 0 and wt(B) % 4 == 0? No, wt(B) % 2 == 0, and extract_poly_mod4 checks (wt(B) - 2*wt(B&O)) % 4 == 0!
             # Thus wt(w_eval) // 2 % 2 == eval_poly(P, cint) when O_word.bit_count() % 4 == 0!
-            assert (wt // 2) % 2 == eval_poly(P, cint), (hex(cname), wt, eval_poly(P, cint))
+            assert (wt // 4) % 2 == eval_poly(P, cint), (hex(cname), wt, eval_poly(P, cint))
 
         # For H(0xf)=0: 16*(256 - 2*wt) = 0 => wt = 128 => wt//2 = 64 => (wt//2)%2 == 0!
         # For H(0x5)=0: 16*(512 - 2*wt) = 0 => wt = 256 => wt//2 = 128 => (wt//2)%2 == 0!
