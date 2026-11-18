@@ -1,0 +1,39 @@
+name: Run H16 8-Cell Audit (Pure 111-Var) and Master B0_00 / B0_11 Closer
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/AUDIT_ALL_CELLS_111.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_C99_0_MASTER_CLOSE.py'
+      - '.github/workflows/run_step6_master_close.yml'
+  workflow_dispatch:
+
+jobs:
+  audit-all-8-cells:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run Pure 111-Variable Audit on All 8 Cells
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/AUDIT_ALL_CELLS_111.py
+
+  master-close-b0:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [0, 1]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat
+        run: pip install python-sat
+      - name: Run Master Closer on B0_${{ matrix.cell }}${{ matrix.cell }}
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_C99_0_MASTER_CLOSE.py ${{ matrix.cell }} 420
