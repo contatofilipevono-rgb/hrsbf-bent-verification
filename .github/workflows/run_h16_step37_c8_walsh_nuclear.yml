@@ -1,0 +1,26 @@
+name: Run H16 Step 37 C8-Orbit Dual-Walsh Congruences Nuclear Test (B1_11, B0_11, B0_00)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP37_C8_WALSH_CONGRUENCES_NUCLEAR.py'
+      - '.github/workflows/run_h16_step37_c8_walsh_nuclear.yml'
+
+jobs:
+  step37-c8-walsh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B1_11, B0_11, B0_00]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat and numpy
+        run: pip install python-sat numpy
+      - name: Run Step 37 C8-Orbit Dual-Walsh Congruences (${{ matrix.cell }})
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP37_C8_WALSH_CONGRUENCES_NUCLEAR.py --cells ${{ matrix.cell }}
