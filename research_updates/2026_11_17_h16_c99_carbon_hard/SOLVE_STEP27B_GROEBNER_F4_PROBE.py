@@ -97,7 +97,7 @@ def run_msolve_gb(var_names, poly_strs, timeout_sec=90, tag="ms"):
 
 
 def run_step27b_cell(cell_name, lib_diag, lib9, lib_cg, lib_sh, lib_d8, orbits, layer_vecs, orb_tt_np,
-                     v6_list, rot4_data, fiber_meta, layers, c0x0, mon_to_orb_arr, reps12, reps11, tbl):
+                     v6_list, rot4_data, fiber_meta, layers, c0x0, mon_to_orb_arr, reps12, reps11, tbl, probe=None):
     t0 = time.perf_counter()
     print(f"\n==================== [{cell_name}] STEP 27B: GROEBNER / F4 PROBE (Singular & msolve) ====================", flush=True)
     print(f"  Available binaries: Singular={shutil.which('Singular')}, msolve={shutil.which('msolve')}", flush=True)
@@ -273,6 +273,10 @@ def run_step27b_cell(cell_name, lib_diag, lib9, lib_cg, lib_sh, lib_d8, orbits, 
         linR_psets = [s9.row_to_pset(std_ech, r_id, tbl) for r_id in ech_linR]
         print(f"  [{cell_name}] Extracted {len(linR_psets)} exact deg_R<=1 polynomials (nW={nW}, nR={nR})", flush=True)
 
+        if probe is not None:
+            probe(cell_name, linR_psets, w_idx, r_idx)
+            return
+
         rng = random.Random(272727)
         w_rand = rng.getrandbits(nW)
         for k_fix in [42, 40, 38, 35, 30, 0]:
@@ -312,7 +316,7 @@ def run_step27b_cell(cell_name, lib_diag, lib9, lib_cg, lib_sh, lib_d8, orbits, 
     print(f"[{cell_name}] STEP 27B DONE ({time.perf_counter()-t0:.1f}s)", flush=True)
 
 
-def main():
+def main(probe=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("--cells", type=str, default="B0_00,B0_11,B1_11")
     args = parser.parse_args()
@@ -476,7 +480,7 @@ def main():
     for cname in [c.strip() for c in args.cells.split(",") if c.strip()]:
         run_step27b_cell(
             cname, lib_diag, lib9, lib_cg, lib_sh, lib_d8, orbits, layer_vecs, orb_tt_np,
-            v6_list, rot4_data, fiber_meta, layers, c0x0, mon_to_orb_arr, reps12, reps11, tbl
+            v6_list, rot4_data, fiber_meta, layers, c0x0, mon_to_orb_arr, reps12, reps11, tbl, probe=probe
         )
 
 
