@@ -1,17 +1,18 @@
-name: Run H16 Step 18 Decode L2b Explosion (Reverse/Shuffled/W_ess + E_even)
+name: Run H16 Step 19 Zero-Trust RREF Audit + True W_ess 3-Block + B0_00 Full Eta-64
 
 on:
   push:
     branches: [ main ]
     paths:
-      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP18*.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP9*.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP19*.py'
       - '.github/workflows/run_step6_master_close.yml'
   workflow_dispatch:
 
 jobs:
-  step18-decode-l2b-explosion:
+  step19-zerotrust-audit-wess:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     strategy:
       fail-fast: false
       matrix:
@@ -23,5 +24,18 @@ jobs:
           python-version: '3.12'
       - name: Install python-sat and numpy
         run: pip install -q python-sat numpy
-      - name: Run Step 18 Decode L2b Explosion on ${{ matrix.cell }}
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP18_DECODE_L2B_EXPLOSION.py --cells ${{ matrix.cell }}
+      - name: Run Step 19 Zero-Trust Audit & True W_ess on ${{ matrix.cell }}
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP19_ZEROTRUST_AUDIT_AND_TRUE_WESS_CRUSH.py --cells ${{ matrix.cell }}
+
+  step19b-b000-full-eta64:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat and numpy
+        run: pip install -q python-sat numpy
+      - name: Run Step 19B B0_00 Full Eta-64 + 40 D8-Coset Cubics Attack
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP19B_B000_FULL_ETA64_ATTACK.py

@@ -770,24 +770,25 @@ def find_minimal_linearizers(quad_psets, n):
 
 
 def add_linear_rref(lin_pivs, vm, rhs):
-    """Insert linear equation <vm, x> == rhs into dict lin_pivs: piv_bit -> (vm, rhs).
+    """Insert linear equation <vm, x> == rhs into dict lin_pivs: piv_bit -> (vm, rhs)
+    maintaining STRICT Gauss-Jordan RREF (no existing pivot bit appears in any other pivot row).
     Returns False if 1 = 0 contradiction, True otherwise."""
     cur_v, cur_r = vm, rhs & 1
-    while cur_v:
-        b = (cur_v & -cur_v).bit_length() - 1
-        if b in lin_pivs:
-            pv, pr = lin_pivs[b]
+    # Step 1: Eliminate ALL existing pivots from cur_v FIRST!
+    for p, (pv, pr) in lin_pivs.items():
+        if (cur_v >> p) & 1:
             cur_v ^= pv
             cur_r ^= pr
-        else:
-            # Back-substitute into existing pivots
-            for ob in list(lin_pivs.keys()):
-                ov, orhs = lin_pivs[ob]
-                if (ov >> b) & 1:
-                    lin_pivs[ob] = (ov ^ cur_v, orhs ^ cur_r)
-            lin_pivs[b] = (cur_v, cur_r)
-            return True
-    return cur_r == 0
+    if cur_v == 0:
+        return cur_r == 0
+    # Step 2: Pick LSB of reduced cur_v (guaranteed NOT in lin_pivs) and back-substitute!
+    b = (cur_v & -cur_v).bit_length() - 1
+    for ob in list(lin_pivs.keys()):
+        ov, orhs = lin_pivs[ob]
+        if (ov >> b) & 1:
+            lin_pivs[ob] = (ov ^ cur_v, orhs ^ cur_r)
+    lin_pivs[b] = (cur_v, cur_r)
+    return True
 
 
 def compute_degree3_radicals(lib9, buf, cub_ids, quad_ids, lin_pivs, tbl):
