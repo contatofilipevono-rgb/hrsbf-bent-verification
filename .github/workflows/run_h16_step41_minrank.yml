@@ -2,6 +2,7 @@ name: H16 Step 41 reduced pencil and low rank
 on:
   push:
     branches: [codex/h16-step41-minrank]
+    paths: ['research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP41_REDUCED_MINRANK.py', 'research_updates/2026_11_17_h16_c99_carbon_hard/H16_COMMON_KERNEL_MINRANK.py', 'research_updates/2026_11_17_h16_c99_carbon_hard/h16_minrank_sparse.cpp']
 permissions:
   contents: read
 jobs:

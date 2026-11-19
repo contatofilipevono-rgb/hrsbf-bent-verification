@@ -32,6 +32,7 @@ def independent(vectors):
 
 def polynomial_rows(polys, w_idx, t_idx, rf_idx, matrix, slices):
     rhs = []
+    quadratic = {}
     for p in polys:
         const = set()
         i = len(rhs)
@@ -44,9 +45,12 @@ def polynomial_rows(polys, w_idx, t_idx, rf_idx, matrix, slices):
             if not rcols:
                 const.add(mon)
                 continue
-            assert len(rcols) == 1 and len(ids) <= 2
+            assert len(rcols) == 1 and len(ids) <= 3
             variables = [j for j in ids if j not in rf_idx]
-            if variables:
+            if len(variables) == 2:
+                key = tuple(sorted(w_idx[j] for j in variables))
+                quadratic.setdefault(key, np.zeros_like(matrix))[i, rcols[0]] ^= 1
+            elif variables:
                 (j,) = variables
                 assert j in w_idx
                 mms[w_idx[j], rcols[0]] ^= 1
@@ -54,7 +58,7 @@ def polynomial_rows(polys, w_idx, t_idx, rf_idx, matrix, slices):
                 mm0[rcols[0]] ^= 1
         assert np.array_equal(mm0, matrix[i]) and np.array_equal(mms, slices[:, i])
         rhs.append(const)
-    return rhs
+    return rhs, quadratic
 
 
 def tail_solution(rows, w_idx, t_idx, nullspace):
@@ -142,9 +146,11 @@ def explore(matrices, rref, nullspace, max_weight):
 
 
 def analyze(cell, matrix, slices, polys, quads, w_idx, t_idx, rf_idx, rref, nullspace):
-    rhs = polynomial_rows(polys, w_idx, t_idx, rf_idx, matrix, slices)
+    rhs, quadratic = polynomial_rows(polys, w_idx, t_idx, rf_idx, matrix, slices)
     tails = tail_solution(quads, w_idx, t_idx, nullspace)
-    k = nullspace(slices.reshape(-1, slices.shape[-1]))
+    affine_k = nullspace(slices.reshape(-1, slices.shape[-1]))
+    coefficients = np.concatenate([*slices, *quadratic.values()], axis=0)
+    k = nullspace(coefficients)
     constants = matmul(matrix, k.T)
     _, active = rref(constants)
     eliminated = k[active]
@@ -157,7 +163,8 @@ def analyze(cell, matrix, slices, polys, quads, w_idx, t_idx, rf_idx, rref, null
     reduced0 = matmul(matmul(projector, matrix), complement.T)
     reducedk = matmul(matmul(projector, slices), complement.T)
     assert not matmul(projector, constants).any()
-    assert not matmul(slices, k.T).any()
+    assert not matmul(coefficients, k.T).any()
+    reduced_q = {ij: matmul(matmul(projector, m), complement.T) for ij, m in quadratic.items()}
     assert reduced0.shape[0] == matrix.shape[0] - len(active)
     gauge = len(k) - len(eliminated)
     # In coordinates [a,b,g], a=eliminated, b=complement, g=gauge; g never occurs.
@@ -170,6 +177,8 @@ def analyze(cell, matrix, slices, polys, quads, w_idx, t_idx, rf_idx, rref, null
     assert np.array_equal(matmul(projector, lift_equations)[:,len(active):], reduced0)
     print("STEP41_REDUCED", json.dumps({"cell": cell, "original": list(matrix.shape),
         "eliminated": len(active), "gauge": gauge, "effective": list(reduced0.shape),
+        "affine_common_kernel": len(affine_k), "full_common_kernel": len(k),
+        "quadratic_slices": len(quadratic), "projected_quadratic_slices": sum(x.any().item() for x in reduced_q.values()),
         "retaining_gauge": [len(projector), len(complement) + gauge]}), flush=True)
 
     output = {"w_vars": list(w_idx), "tail_vars": list(t_idx), "r_vars": list(rf_idx),
@@ -178,10 +187,29 @@ def analyze(cell, matrix, slices, polys, quads, w_idx, t_idx, rf_idx, rref, null
               "projector": encode(projector), "complement": encode(complement),
               "eliminated": encode(eliminated), "gauge_basis": encode(gauge_basis),
               "reduced_constant": encode(reduced0),
-              "reduced_slices": [encode(m) for m in reducedk]}
+              "reduced_slices": [encode(m) for m in reducedk],
+              "reduced_quadratic_slices": [[i, j, encode(m)] for (i, j), m in reduced_q.items() if m.any()]}
     path = Path(f"step41_{cell}.json")
     path.write_text(json.dumps(output))
     result = explore(reducedk, rref, nullspace, 4)
+    contrasts = []
+    for w in ([1 << 16 ^ 1 << 27] if cell == "B1_11" else [1 << 15, 1 << 26 ^ 1 << 30]):
+        projected = direction(reducedk, w)
+        derivative = np.zeros_like(reducedk)
+        for (i, j), q in reduced_q.items():
+            if w >> i & 1:
+                derivative[j] ^= q
+            if w >> j & 1:
+                derivative[i] ^= q
+            if (w >> i & 1) and (w >> j & 1):
+                projected ^= q
+        contrasts.append({"support": [i for i in range(len(slices)) if w >> i & 1],
+                          "source_affine_rank": len(rref(direction(slices, w))[1]),
+                          "projected_affine_rank": len(rref(direction(reducedk, w))[1]),
+                          "derivative_rank_at_zero": len(rref(projected)[1]),
+                          "derivative_depends_on_w": bool(derivative.any())})
+    assert all(x["source_affine_rank"] >= x["projected_affine_rank"] for x in contrasts)
+    result["contrasts"] = contrasts
     output["search"] = result
     path.write_text(json.dumps(output))
     print("STEP41_MINRANK", json.dumps({k: v for k, v in result.items() if k != "witnesses"}), flush=True)

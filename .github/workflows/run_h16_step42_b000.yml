@@ -1,0 +1,22 @@
+name: H16 Step 42 eta 42 joint balance
+on:
+  push:
+    branches: [codex/h16-step41-minrank]
+    paths: ['research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP42_B000_JOINT_COSETS.py']
+permissions:
+  contents: read
+jobs:
+  balance:
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy python-sat
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP42_B000_JOINT_COSETS.py --etas 42 --shard ${{ matrix.shard }} --shards 8
