@@ -23,4 +23,4 @@ jobs:
       - name: Install python-sat and numpy
         run: pip install python-sat numpy
       - name: Run Step 31 Non-Coord V12 Nuclear Crush (${{ matrix.cell }})
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP31_NONCOORD_V12_NUCLEAR_CRUSH.py --cells ${{ matrix.cell }} --n_v12 600
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP31_NONCOORD_V12_NUCLEAR_CRUSH.py --cells ${{ matrix.cell }} --n_v12 1500

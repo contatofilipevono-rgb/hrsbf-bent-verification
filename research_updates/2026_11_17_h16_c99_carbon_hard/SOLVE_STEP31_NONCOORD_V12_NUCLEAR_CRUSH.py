@@ -119,7 +119,6 @@ int extract_v12_bit2_cubic_row(
     uint64_t xij[64];
     for (int i = 0; i < n; i++) {
         int b2_i = col2_base[i];
-        int b3_i = col3_base[i];
         for (int j = i + 1; j < n; j++) {
             for (int w = 0; w < 64; w++) {
                 xij[w] = base_w[w] ^ basis_w[i][w] ^ basis_w[j][w];
@@ -131,11 +130,7 @@ int extract_v12_bit2_cubic_row(
             if (cij) toggle_bit(out_row, off2 + b2_i + (j - i - 1));
 
             /* Cubic c_{i,j,k} = popcount(basis_w[i] & basis_w[j] & basis_w[k]) & 1 */
-            /* Wait: col3 index for (i < j < k) is col3_base[i] + sum_{t=i+1}^{j-1}(n-1-t) + (k-j-1) */
-            int dj = j - i - 1;
-            int rem = n - 1 - i;
-            /* sum_{m=0}^{dj-1} (rem - 1 - m) = dj*(rem - 1) - dj*(dj - 1)/2 */
-            int c3_ij = b3_i + dj * (rem - 1) - (dj * (dj - 1)) / 2;
+            int c3_ij = col3_base[i * n + j];
             for (int k = j + 1; k < n; k++) {
                 int p = 0;
                 const uint64_t *bk = basis_w[k];
@@ -303,8 +298,8 @@ def run_cell(cell_name, lib_diag, lib9, lib_cg, lib_v12, orbits, layer_vecs, orb
     )
     assert zt_mis == 0
 
-    # Test root cascade progressively at k_v12 = 50, 100, 200, 400!
-    for k_use in [50, 100, 200, n_v12]:
+    # Test root cascade progressively at k_v12 = 50, 150, 400, 800, n_v12!
+    for k_use in [50, 150, 400, 800, n_v12]:
         if k_use > n_v12: continue
         total_raw = n_base + len(cyc_cubs) + n_cg + k_use
         raw_buf = (ctypes.c_uint64 * (total_raw * n_cw))()
