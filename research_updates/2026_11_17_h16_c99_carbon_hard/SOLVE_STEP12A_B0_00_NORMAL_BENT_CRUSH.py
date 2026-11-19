@@ -325,7 +325,7 @@ def main():
         mm = 0
         for zmask in test_zs:
             got = lib9.eval_row_s9(
-                d8_buf, idx, n_cw, tbl["col_deg"], tbl["col_v0"], tbl["col_v1"], tbl["col_v2"],
+                rptr, n_cw, tbl["off0"], tbl["col_deg"], tbl["col_v0"], tbl["col_v1"], tbl["col_v2"],
                 zmask & mask64, zmask >> 64
             )
             fv = np.zeros(256, dtype=np.uint8)
