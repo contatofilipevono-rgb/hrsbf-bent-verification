@@ -1,0 +1,57 @@
+name: H16 Step 64 full census of reduced fiber 64
+on:
+  push:
+    branches: [codex/h16-step43-specialized-kernel]
+    paths: ['research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP64_FULL_FIBER_CENSUS.py', '.github/workflows/run_h16_step64_full_fiber_census.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  shard:
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      H16_SHARD: ${{ matrix.shard }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44594052302
+          name: h16-step60-fiber-64
+          path: fiber
+          github-token: ${{ github.token }}
+      - run: g++ -O3 -std=c++20 -march=native research_updates/2026_11_17_h16_c99_carbon_hard/H16_STEP63_FIBER_CENSUS.cpp -o h16_step63
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP64_FULL_FIBER_CENSUS.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: h16-step64-shard-${{ matrix.shard }}
+          path: step64_shard_*.json
+  collect:
+    needs: shard
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: h16-step64-shard-*
+          path: shards
+          merge-multiple: true
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP64_FULL_FIBER_CENSUS.py shards
+      - uses: actions/upload-artifact@v4
+        with:
+          name: h16-step64-fiber-64-coverage
+          path: |
+            step64_summary.json
+            shards
