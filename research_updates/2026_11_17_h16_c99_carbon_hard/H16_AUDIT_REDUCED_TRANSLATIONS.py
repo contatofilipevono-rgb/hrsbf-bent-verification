@@ -1,6 +1,7 @@
 """Exact global translation symmetries of reduced coefficient matrices."""
 
 import json
+import random
 from pathlib import Path
 
 
@@ -95,14 +96,32 @@ def audit(path):
     polar_dim, kernel = matrix_kernel(data)
     samples = []
     width = len(data["complement"])
-    for k in kernel:
-        columns = evaluate_matrix(data, 0)
-        assert columns == evaluate_matrix(data, k)
-        a, b = evaluate_rhs(data, 0), evaluate_rhs(data, k)
-        delta = [i ^ j for i, j in zip(a, b)]
-        samples.append({"direction": list(indices(k)), "rhs_delta_weight_at_zero": sum(delta),
-                        "rhs_delta_outside_image_at_zero":
-                            rank([m | (v << width) for m, v in zip(columns, delta)]) > rank(columns)})
+    n = len(data["w_vars"])
+    rng = random.Random(4127)
+    points = [0] + [1 << j for j in range(n)] + [rng.getrandbits(n) for _ in range(12)]
+    directions = kernel if path.stem.endswith("B1_11") else [1 << 26 ^ 1 << 30]
+    for d in directions:
+        first = None
+        outside = None
+        tested = 0
+        for w in points:
+            m = evaluate_matrix(data, w)
+            shifted = evaluate_matrix(data, w ^ d)
+            dm = [i ^ j for i, j in zip(m, shifted)]
+            assert rank(dm) == (0 if path.stem.endswith("B1_11") else 6)
+            a, b = evaluate_rhs(data, w), evaluate_rhs(data, w ^ d)
+            dc = [i ^ j for i, j in zip(a, b)]
+            tested += 1
+            if sum(dc) and first is None:
+                first = {"w_support": list(indices(w)), "rhs_delta_weight": sum(dc)}
+            if rank([i | (v << width) for i, v in zip(dm, dc)]) > rank(dm):
+                outside = {"w_support": list(indices(w)), "rhs_delta_weight": sum(dc),
+                           "outside_matrix_update_image": True,
+                           "outside_original_matrix_image":
+                             rank([i | (v << width) for i, v in zip(m, dc)]) > rank(m)}
+                break
+        samples.append({"direction": list(indices(d)), "sample_count": tested,
+                        "first_rhs_difference": first, "outside": outside})
     print("STEP41_TRANSLATION", json.dumps({"matrix": path.stem,
         "polar_radical_dim": polar_dim, "matrix_translation_dim": len(kernel),
         "directions": samples}), flush=True)
