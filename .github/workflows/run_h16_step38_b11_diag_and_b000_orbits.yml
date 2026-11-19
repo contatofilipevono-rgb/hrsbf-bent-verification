@@ -1,0 +1,48 @@
+name: H(16,4) Step 38 — B1_11/B0_11 Threshold & DegReg + B0_00 Z_16* Orbit Map
+
+on:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP38A_B11_THRESHOLD_DEGREG_AND_ETA_DEG4_DROP.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP38B_B000_Z16_ORBIT_MAP.py'
+      - '.github/workflows/run_h16_step38_b11_diag_and_b000_orbits.yml'
+  workflow_dispatch:
+
+jobs:
+  step38b_b000_orbits:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python deps
+        run: python -m pip install --upgrade pip && pip install numpy python-sat
+      - name: Run Step 38B B0_00 Z_16* Orbit Map
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP38B_B000_Z16_ORBIT_MAP.py
+
+  step38a_b11_diag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B1_11, B0_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Singular and Python deps
+        run: |
+          for attempt in 1 2 3; do
+            sudo apt-get update -qq && sudo apt-get install -y -qq --fix-missing singular && break
+            sleep 5
+          done
+          which Singular || true
+          python -m pip install --upgrade pip && pip install numpy python-sat
+      - name: Run Step 38A (${{ matrix.cell }})
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP38A_B11_THRESHOLD_DEGREG_AND_ETA_DEG4_DROP.py --cells ${{ matrix.cell }}
