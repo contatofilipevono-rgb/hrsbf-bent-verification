@@ -1,6 +1,7 @@
 """Extract and test the exact reduced linear-in-R_free system after tail substitution."""
 
 import json
+import os
 import random
 import time
 from pathlib import Path
@@ -151,11 +152,72 @@ def pivot_units(polynomials, r_mask, seconds=60):
     return "TIME_BUDGET", pivot_trace, [], 0
 
 
+def gaussian_fiber(rows, r_count):
+    pivots = {}
+    inconsistent = False
+    r_mask = (1 << r_count) - 1
+    for value in rows:
+        while value & r_mask:
+            bit = (value & r_mask) & -(value & r_mask)
+            if bit not in pivots:
+                pivots[bit] = value
+                break
+            value ^= pivots[bit]
+        else:
+            inconsistent |= bool(value)
+    return len(pivots), inconsistent
+
+
+def analyze_factored(cell, quads, before, tails, w_idx, t_idx, r_idx, w_mask, r_mask):
+    symbolic = []
+    for row in before:
+        coeff_source = {m for m in row if m & r_mask}
+        const = row - coeff_source
+        coeff = substitute(coeff_source, tails)
+        assert all(not m & ~(w_mask | r_mask) and (m & r_mask).bit_count() == 1 for m in coeff)
+        symbolic.append((coeff, const))
+    # Save the exact formulation before any pivot/search budget can be reached.
+    output = {"W": list(w_idx), "T": list(t_idx), "R": list(r_idx),
+              "tails": {str(bit): sorted(poly) for bit, poly in tails.items()},
+              "rows": [[sorted(p), sorted(c)] for p, c in symbolic]}
+    path = Path(f"step32_{cell}_unit.json")
+    path.write_text(json.dumps(output), encoding="utf-8")
+    matrix_deg = max(((m & w_mask).bit_count() for p, _ in symbolic for m in p), default=0)
+    row_counts = (len(symbolic), len(w_idx), len(t_idx), len(r_idx))
+    print(f"STEP32_FACTORED rows,W,T,R={row_counts} deg_M={matrix_deg}", flush=True)
+
+    rng = random.Random(3256)
+    rank_samples = []
+    for w in [0] + [sum(rng.getrandbits(1) << i for i in w_idx) for _ in range(10)]:
+        lift = w | sum(evaluate(q, w) * bit for bit, q in tails.items())
+        assert all(not evaluate(q, lift) for q in quads)
+        r = sum(rng.getrandbits(1) << i for i in r_idx)
+        values = []
+        for (poly, const), source in zip(symbolic, before):
+            assert evaluate(poly, w | r) ^ evaluate(const, lift) == evaluate(source, lift | r)
+            row = 0
+            for mon in poly:
+                if ((w & mon) | (mon & r_mask)) == mon:
+                    row ^= 1 << r_idx[(mon & r_mask).bit_length() - 1]
+            values.append(row | (evaluate(const, lift) << len(r_idx)))
+        rank_samples.append(gaussian_fiber(values, len(r_idx)))
+    print(f"STEP32_FIBERS {json.dumps(rank_samples)}", flush=True)
+
+    status, trace, _, pure = pivot_units([a for a, _ in symbolic], r_mask, seconds=35)
+    print(f"STEP32_COEFF_PIVOTS result={status} pivots={len(trace)} pure_W={pure}", flush=True)
+    output.update(rank_samples=rank_samples, coefficient_status=status,
+                  coefficient_pure_rows=pure, trace=trace)
+    path.write_text(json.dumps(output), encoding="utf-8")
+
+
 def analyze(cell, quads, before, w_idx, t_idx, r_idx):
     w_mask = sum(1 << i for i in w_idx)
     t_mask = sum(1 << i for i in t_idx)
     r_mask = sum(1 << i for i in r_idx)
     tails = reduce_tails(quads, w_mask, t_mask)
+    if os.environ.get("H16_FACTORED_RHS") == "1":
+        analyze_factored(cell, quads, before, tails, w_idx, t_idx, r_idx, w_mask, r_mask)
+        return
     after = [substitute(p, tails) for p in before]
     assert all(not m & ~(w_mask | r_mask) and (m & r_mask).bit_count() <= 1
                for row in after for m in row)
