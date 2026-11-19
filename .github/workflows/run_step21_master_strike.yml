@@ -1,0 +1,57 @@
+name: Run H16 Step 21 Master 6-Runner Strike (True 3-Block + W-XL + B0_00 Pure-36 + A(w) Anatomy)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP21*.py'
+      - '.github/workflows/run_step21_master_strike.yml'
+  workflow_dispatch:
+
+jobs:
+  step21a-true-3block-wxl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B0_00, B0_11, B1_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat and numpy
+        run: pip install -q python-sat numpy
+      - name: Run Step 21A True 3-Block + W-XL + V13 on ${{ matrix.cell }}
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP21A_TRUE_3BLOCK_AND_W_XL_SYZYGY.py --cells ${{ matrix.cell }}
+
+  step21b-b000-pure36-crush:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat and numpy
+        run: pip install -q python-sat numpy
+      - name: Run Step 21B B0_00 All-64 Pure-W + Eta=20 Pure-36 Crush
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP21B_B000_ETA20_PURE36_CRUSH.py
+
+  step21c-aw-kernel-minrank:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B0_11, B1_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat and numpy
+        run: pip install -q python-sat numpy
+      - name: Run Step 21C A(w) Right Kernel + Bilinear Rank + All-64 Eta on ${{ matrix.cell }}
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP21C_AW_RIGHT_KERNEL_AND_MINRANK.py --cells ${{ matrix.cell }}
