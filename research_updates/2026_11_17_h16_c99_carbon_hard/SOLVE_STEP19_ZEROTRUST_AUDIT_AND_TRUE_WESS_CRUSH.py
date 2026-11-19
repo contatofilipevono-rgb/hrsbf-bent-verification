@@ -132,7 +132,8 @@ def run_step19_cell(cell_name, lib_diag, lib9, lib_cg, lib_sh, orbits, layer_vec
     # PART 1: ZERO-TRUST AUDIT OF ALL 2^{n_ef} = 64 ETA STATES!
     # --------------------------------------------------------------------------
     closed_eta, q_hist, n_hist, target_sr, target_em = 0, {}, {}, None, None
-    for em in range(1 << n_ef):
+    eta_values = range(1 << n_ef) if probe is None else (0,)
+    for em in eta_values:
         ex = [(eta_free[k], (em >> k) & 1) for k in range(n_ef)]
         sr = s9.run_branch_cascade(
             lib9, root["_buf"], root["_quad_ids"], root["_cub_ids"], root["_lin_pivs"],
@@ -148,7 +149,7 @@ def run_step19_cell(cell_name, lib_diag, lib9, lib_cg, lib_sh, orbits, layer_vec
             n_hist[na] = n_hist.get(na, 0) + 1
             if target_sr is None and q > 0:
                 target_sr, target_em = sr, em
-    print(f"[{cell_name}] PART 1 (ALL {1<<n_ef} eta-states, ZT-verified): closed={closed_eta}/{1<<n_ef} | q_hist={dict(sorted(q_hist.items()))} | N_hist={dict(sorted(n_hist.items()))}", flush=True)
+    print(f"[{cell_name}] PART 1 ({len(eta_values)} eta-states, ZT-verified): closed={closed_eta}/{len(eta_values)} | q_hist={dict(sorted(q_hist.items()))} | N_hist={dict(sorted(n_hist.items()))}", flush=True)
 
     if target_sr is None:
         print(f"[{cell_name}] NO SURVIVING q>0 ETA STATE! DONE!", flush=True)
@@ -172,33 +173,34 @@ def run_step19_cell(cell_name, lib_diag, lib9, lib_cg, lib_sh, orbits, layer_vec
     # PART 2: ZERO-TRUST AUDIT OF L2b_FORWARD, L2b_REVERSE, W_ess_PREFIX!
     # --------------------------------------------------------------------------
     rng = random.Random(2026111919)
-    for label, flist, ks in [
-        ("W_ess_PREFIX", W_forms, [10, 20, 30, 35, 40, len(W_forms)]),
-        ("L2b_FORWARD", l2b_free, [10, 20, 30, 35, 40, len(l2b_free)]),
-        ("L2b_REVERSE", list(reversed(l2b_free)), [10, 20, 30, 35, 40, len(l2b_free)]),
-    ]:
-        for kf in ks:
-            if kf <= 0 or kf > len(flist): continue
-            cl_c, qs, ls, ns, sample_rlog = 0, [], [], [], None
-            for tr in range(4):
-                ex = [(flist[k], rng.randint(0, 1)) for k in range(kf)]
-                sub = s9.run_branch_cascade(
-                    lib9, sr["_buf"], sr["_quad_ids"], sr["_cub_ids"], sr["_lin_pivs"],
-                    ex, tbl, max_xl_rounds=12, verify_subst=True
-                )
-                if sub["closed_unsat"]:
-                    cl_c += 1
-                    if sample_rlog is None:
-                        sample_rlog = {"closed_by": sub.get("closed_by"), "logs": sub.get("round_logs", [])[-3:]}
-                else:
-                    verify_lin_pivs_rref(sub["_lin_pivs"])
-                    q_s = sub.get("n_quad_surviving", -1)
-                    qs.append(q_s); ls.append(sub.get("total_lin_dropped", 0)); ns.append(sub["N_active"])
-                    if (q_s > 50 or sub.get("total_lin_dropped", 0) > 0) and sample_rlog is None:
-                        sample_rlog = {"q": q_s, "l": sub.get("total_lin_dropped", 0), "logs": sub.get("round_logs", [])[-3:]}
-            print(f"  [{cell_name}] {label:12s} k={kf:2d}: closed={cl_c}/4, max_q={max(qs) if qs else 0}, max_l={max(ls) if ls else 0}, min_N={min(ns) if ns else 0}", flush=True)
-            if sample_rlog:
-                print(f"      rlog: {sample_rlog}", flush=True)
+    if probe is None:
+        for label, flist, ks in [
+            ("W_ess_PREFIX", W_forms, [10, 20, 30, 35, 40, len(W_forms)]),
+            ("L2b_FORWARD", l2b_free, [10, 20, 30, 35, 40, len(l2b_free)]),
+            ("L2b_REVERSE", list(reversed(l2b_free)), [10, 20, 30, 35, 40, len(l2b_free)]),
+        ]:
+            for kf in ks:
+                if kf <= 0 or kf > len(flist): continue
+                cl_c, qs, ls, ns, sample_rlog = 0, [], [], [], None
+                for tr in range(4):
+                    ex = [(flist[k], rng.randint(0, 1)) for k in range(kf)]
+                    sub = s9.run_branch_cascade(
+                        lib9, sr["_buf"], sr["_quad_ids"], sr["_cub_ids"], sr["_lin_pivs"],
+                        ex, tbl, max_xl_rounds=12, verify_subst=True
+                    )
+                    if sub["closed_unsat"]:
+                        cl_c += 1
+                        if sample_rlog is None:
+                            sample_rlog = {"closed_by": sub.get("closed_by"), "logs": sub.get("round_logs", [])[-3:]}
+                    else:
+                        verify_lin_pivs_rref(sub["_lin_pivs"])
+                        q_s = sub.get("n_quad_surviving", -1)
+                        qs.append(q_s); ls.append(sub.get("total_lin_dropped", 0)); ns.append(sub["N_active"])
+                        if (q_s > 50 or sub.get("total_lin_dropped", 0) > 0) and sample_rlog is None:
+                            sample_rlog = {"q": q_s, "l": sub.get("total_lin_dropped", 0), "logs": sub.get("round_logs", [])[-3:]}
+                print(f"  [{cell_name}] {label:12s} k={kf:2d}: closed={cl_c}/4, max_q={max(qs) if qs else 0}, max_l={max(ls) if ls else 0}, min_N={min(ns) if ns else 0}", flush=True)
+                if sample_rlog:
+                    print(f"      rlog: {sample_rlog}", flush=True)
 
     # --------------------------------------------------------------------------
     # PART 3: TRUE STRICT-RREF 3-BLOCK BASIS CHANGE (R_free > R_tail > W_ess)!
