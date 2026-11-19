@@ -907,7 +907,7 @@ def compute_degree3_radicals(lib9, buf, cub_ids, quad_ids, lin_pivs, tbl):
 
 
 def run_branch_cascade(lib9, base_buf, base_quad_ids, base_cub_ids, base_lin_pivs,
-                       extra_lin_eqs, tbl, max_xl_rounds=4, verify_subst=False):
+                       extra_lin_eqs, tbl, max_xl_rounds=4, verify_subst=False, linear_conflict=None):
     """
     Copy base_quad_ids + base_cub_ids into a fresh workspace, impose extra_lin_eqs
     (and eliminate all linear equations in-place), re-echelonize ALL polynomials,
@@ -961,6 +961,10 @@ def run_branch_cascade(lib9, base_buf, base_quad_ids, base_cub_ids, base_lin_piv
                 tbl["col_deg"], tbl["col_v0"], tbl["col_v1"], tbl["col_v2"],
                 p, m & mask64, m >> 64, pr
             )
+
+    if linear_conflict is not None and (hit := linear_conflict(lin_pivs)):
+        return {"closed_unsat": True, "closed_by": "normal_balance_after_assignment",
+                "rounds": 0, "balance_witness": hit}
 
     apply_pivs_in_place(work, n_init, new_pivs_to_subst)
 
@@ -1057,6 +1061,9 @@ def run_branch_cascade(lib9, base_buf, base_quad_ids, base_cub_ids, base_lin_piv
                 src = ctypes.cast(ctypes.byref(ech, r_id * n_cw * 8), ctypes.POINTER(ctypes.c_uint64))
                 ctypes.memmove(dst, src, n_cw * 8)
             cur_count = len(keep)
+            if linear_conflict is not None and (hit := linear_conflict(lin_pivs)):
+                return {"closed_unsat": True, "closed_by": "normal_balance_after_linear_drop",
+                        "rounds": rnd, "balance_witness": hit}
             apply_pivs_in_place(work, cur_count, added_bits)
             continue
 

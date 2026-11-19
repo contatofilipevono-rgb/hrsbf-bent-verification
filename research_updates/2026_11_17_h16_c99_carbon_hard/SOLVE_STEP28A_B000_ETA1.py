@@ -34,6 +34,7 @@ import SOLVE_STEP22A_B000_ENUM_CLOSE_ETA62_63_42_AND_ETA0 as s22a
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--scan", action="store_true")
+    parser.add_argument("--focus-eta", type=int)
     parser.add_argument("--eta", type=int, default=1, choices=(0, 1))
     parser.add_argument("--shard", type=int, default=0)
     parser.add_argument("--shards", type=int, default=1)
@@ -310,12 +311,13 @@ def main():
     eta_free = s16.reduce_forms_mod_pivs(forms_L1, root["_lin_pivs"])
     n_ef = len(eta_free)
 
-    if args.scan:
+    if args.scan or args.focus_eta is not None:
         def cascade(state, constraints, rounds=24):
             return s9.run_branch_cascade(
                 lib9, state["_buf"], state["_quad_ids"], state["_cub_ids"],
                 state["_lin_pivs"], constraints, tbl,
                 max_xl_rounds=rounds, verify_subst=True,
+                linear_conflict=exclude_on_balance if args.focus_eta is not None and state is not root else None,
             )
 
         def assign(forms, value):
@@ -352,11 +354,12 @@ def main():
             return n_w, pure_count, best
 
         summary = []
-        for eta in range(args.shard, 1 << n_ef, args.shards):
+        eta_values = range(args.shard, 1 << n_ef, args.shards) if args.focus_eta is None else (args.focus_eta,)
+        for eta in eta_values:
             if eta in (0, 1):
                 continue
             started = time.perf_counter()
-            deadline = started + 65
+            deadline = started + (210 if args.focus_eta is not None else 65)
             record = {"eta": eta, "status": "open"}
             print(f"eta={eta} starting", flush=True)
             state = cascade(root, assign(eta_free, eta))
@@ -372,8 +375,13 @@ def main():
                 record.update(nW=n_w, pure_models=pure_count)
                 if option is not None:
                     count, rank, label, forms, values = option
-                    record.update(projection=label, rank=rank, cases=count, tested=0, remaining=[])
-                    for value in values:
+                    values = sorted(values)
+                    anchor = hashlib.sha256(json.dumps([eta_free, forms, values]).encode()).hexdigest()
+                    assigned_values = values if args.focus_eta is None else values[args.shard::args.shards]
+                    record.update(projection=label, rank=rank, cases=count, anchor=anchor,
+                                  assigned=assigned_values, tested=0, remaining=[], shard=args.shard)
+                    for value in assigned_values:
+
                         if time.perf_counter() >= deadline:
                             break
                         assignments = assign(forms, value)
@@ -388,12 +396,15 @@ def main():
                         if "_lin_pivs" in child and exclude_on_balance(child["_lin_pivs"]):
                             continue
                         record["remaining"].append(value)
-                    if record["tested"] == count and not record["remaining"]:
-                        record["status"] = "projection_unsat"
+                    if record["tested"] == len(assigned_values) and not record["remaining"]:
+                        record["status"] = "projection_unsat" if args.focus_eta is None else "shard_unsat"
             record["seconds"] = round(time.perf_counter() - started, 2)
             summary.append(record)
-            print("STEP31_RESULT " + json.dumps(record), flush=True)
-            (WORK_DIR / f"step31_b000_scan_{args.shard}.json").write_text(
+            kind = "STEP31" if args.focus_eta is None else "STEP33"
+            print(kind + "_RESULT " + json.dumps(record), flush=True)
+            filename = (f"step31_b000_scan_{args.shard}.json" if args.focus_eta is None else
+                        f"step33_b000_eta{eta}_{args.shard}.json")
+            (WORK_DIR / filename).write_text(
                 json.dumps({"eta_forms": eta_free, "summary": summary}, indent=2),
                 encoding="utf-8",
             )
