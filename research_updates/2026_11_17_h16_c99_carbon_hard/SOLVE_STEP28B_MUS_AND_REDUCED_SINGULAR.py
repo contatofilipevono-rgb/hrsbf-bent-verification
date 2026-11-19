@@ -440,76 +440,78 @@ def run_step27b_cell(cell_name, lib_diag, lib9, lib_cg, lib_sh, lib_d8, orbits, 
         print(f"  [{cell_name}] 3-block shear: nW={nW}, nT={nT} (Q_subs={len(Q_subs)}), nRF={nRF} | M1={len(M1_raw)}, M1T={len(M1T_raw)}", flush=True)
         assert len(Q_subs) == nT
 
-        # Convert M1_raw and M1T_raw (after substituting r_t = Q_t(w) for ANY number of t_vars!) into linear-in-r_free eqs
-        def subst_ps_to_lin_rf(ps):
-            coeff_dict = {}  # rfi -> set of W bitmasks
-            rhs_p = set()
+        # Pre-parse M1_raw and M1T_raw into fast tuples: list of (rf_id_or_-1, t_mask, w_mask)
+        def parse_lin_rf_raw(ps):
+            terms = []
             for m in ps:
                 vs = [b for b in range(n) if (m >> b) & 1]
                 rfvs = [rf_idx[v] for v in vs if v in RF_set]
                 tvs = [t_idx[v] for v in vs if v in T_set]
                 wvs = [w_idx[v] for v in vs if v in w_idx]
                 assert len(rfvs) <= 1, f"Unexpected RF^2 term in drf<=1 row!"
+                tm = 0
+                for ti in tvs: tm |= (1 << ti)
                 wm = 0
                 for wi in wvs: wm |= (1 << wi)
-                wp = {wm}
-                for ti in tvs:
-                    wp = mul_w_polys(wp, Q_subs[ti])
-                if len(rfvs) == 1:
-                    rfi = rfvs[0]
-                    coeff_dict[rfi] = xor_w_polys(coeff_dict.get(rfi, set()), wp)
-                else:
-                    rhs_p = xor_w_polys(rhs_p, wp)
-            coeff_dict = {k: v for k, v in coeff_dict.items() if v}
-            return coeff_dict, rhs_p
+                terms.append((rfvs[0] if rfvs else -1, tm, wm))
+            return terms
 
-        M1_eqs = [subst_ps_to_lin_rf(ps) for ps in M1_raw]
-        M1T_eqs = [subst_ps_to_lin_rf(ps) for ps in M1T_raw]
-        M_full_eqs = M1_eqs + M1T_eqs
+        M1_parsed = [parse_lin_rf_raw(ps) for ps in M1_raw]
+        M1T_parsed = [parse_lin_rf_raw(ps) for ps in M1T_raw]
+        M_full_parsed = M1_parsed + M1T_parsed
 
-        # ZERO-TRUST CHECK: verify M1_eqs & M1T_eqs against original sheared polynomials on 20 random (w, r_free) points!
+        # Fast evaluation of M(w)*r_free = c(w) at fixed wb (evaluating t_bits = Q_t(wb) in microseconds!)
+        def eval_sys_at_w(parsed_sys, wb):
+            t_bits = 0
+            for ti in range(nT):
+                if eval_w_poly(Q_subs[ti], wb):
+                    t_bits |= (1 << ti)
+            rows_A, rhs_b = [], []
+            for terms in parsed_sys:
+                rv = 0
+                rb = 0
+                for rfi, tm, wm in terms:
+                    if ((tm & t_bits) == tm) and ((wm & wb) == wm):
+                        if rfi >= 0: rv ^= (1 << rfi)
+                        else: rb ^= 1
+                rows_A.append(rv)
+                rhs_b.append(rb)
+            return rows_A, rhs_b, t_bits
+
+        # ZERO-TRUST CHECK: verify eval_sys_at_w matches original sheared polynomials on 20 random (w, r_free) points!
         rng_zt = random.Random(282828)
         zt_mis = 0
         for _ in range(20):
             wb = rng_zt.getrandbits(nW)
             rfb = rng_zt.getrandbits(nRF)
+            rows_A, rhs_b, t_bits = eval_sys_at_w(M_full_parsed, wb)
             x_full = 0
             for i, v in enumerate(W_pivs):
                 if (wb >> i) & 1: x_full |= (1 << v)
             for i, v in enumerate(RF_vars):
                 if (rfb >> i) & 1: x_full |= (1 << v)
             for ti, v in enumerate(T_pivs):
-                if eval_w_poly(Q_subs[ti], wb): x_full |= (1 << v)
-            for ps, (cd, rp) in zip(M1_raw + M1T_raw, M_full_eqs):
+                if (t_bits >> ti) & 1: x_full |= (1 << v)
+            for ps, rv, rb in zip(M1_raw + M1T_raw, rows_A, rhs_b):
                 v_orig = 0
                 for m in ps:
                     if (m & x_full) == m: v_orig ^= 1
-                v_sub = eval_w_poly(rp, wb)
-                for rfi, wp in cd.items():
-                    if ((rfb >> rfi) & 1) and eval_w_poly(wp, wb):
-                        v_sub ^= 1
+                v_sub = (((rv & rfb).bit_count()) & 1) ^ rb
                 if v_orig != v_sub: zt_mis += 1
-        print(f"  [{cell_name}] ZERO-TRUST r_t=Q_t(w) substitution check (20 pts x {len(M_full_eqs)} eqs): mismatches = {zt_mis}", flush=True)
+        print(f"  [{cell_name}] ZERO-TRUST r_t=Q_t(w) substitution check (20 pts x {len(M_full_parsed)} eqs): mismatches = {zt_mis}", flush=True)
         assert zt_mis == 0
 
         # PART 1: EXACT MUS ANATOMY ACROSS 30 RANDOM w
         print(f"\n  --- PART 1: MUS ANATOMY ACROSS 30 RANDOM w ({cell_name}) ---", flush=True)
-        for label, eq_sys in [("M1_only", M1_eqs), ("M_full(M1+M1T)", M_full_eqs)]:
+        for label, parsed_sys in [("M1_only", M1_parsed), ("M_full(M1+M1T)", M_full_parsed)]:
             rng_m = random.Random(123456)
             n_inc = 0
             mus_wts, r_supps, ranks = [], [], []
-            row_freq = [0] * len(eq_sys)
+            row_freq = [0] * len(parsed_sys)
             union_rows = set()
             for _ in range(30):
                 wb = rng_m.getrandbits(nW)
-                rows_A, rhs_b = [], []
-                for cd, rp in eq_sys:
-                    rv = 0
-                    for rfi, wp in cd.items():
-                        if eval_w_poly(wp, wb): rv |= (1 << rfi)
-                    rows_A.append(rv)
-                    rhs_b.append(eval_w_poly(rp, wb))
-                # Compute rank(A)
+                rows_A, rhs_b, _ = eval_sys_at_w(parsed_sys, wb)
                 piv_r = {}
                 for rv in rows_A:
                     v = rv
@@ -533,30 +535,81 @@ def run_step27b_cell(cell_name, lib_diag, lib9, lib_cg, lib_sh, lib_d8, orbits, 
                         rs |= rows_A[ri]
                     r_supps.append(rs.bit_count())
             top_rows = sorted([(cnt, ri) for ri, cnt in enumerate(row_freq) if cnt > 0], reverse=True)[:10]
+            avg_m = (sum(mus_wts) / len(mus_wts)) if mus_wts else -1.0
             print(
-                f"    [{label:14s}] m={len(eq_sys):3d} x nRF={nRF}: incons={n_inc}/30 | rank={min(ranks)}..{max(ranks)} | "
-                f"MUS_size={min(mus_wts) if mus_wts else -1}..{max(mus_wts) if mus_wts else -1} (avg={sum(mus_wts)/len(mus_wts):.1f}) | "
-                f"|supp_RF|={min(r_supps) if r_supps else -1}..{max(r_supps) if r_supps else -1} | union_rows={len(union_rows)}/{len(eq_sys)}",
+                f"    [{label:14s}] m={len(parsed_sys):3d} x nRF={nRF}: incons={n_inc}/30 | rank={min(ranks)}..{max(ranks)} | "
+                f"MUS_size={min(mus_wts) if mus_wts else -1}..{max(mus_wts) if mus_wts else -1} (avg={avg_m:.1f}) | "
+                f"|supp_RF|={min(r_supps) if r_supps else -1}..{max(r_supps) if r_supps else -1} | union_rows={len(union_rows)}/{len(parsed_sys)}",
                 flush=True,
             )
             print(f"      top10 row freqs (cnt, row_id): {top_rows}", flush=True)
+
+        # Helper: substitute w[0..k_fix-1]=w_rand FIRST into Q_subs, then build exact Singular strings in (r_free, w_free)!
+        def build_fixed_singular_strs(parsed_sys, w_rand, k_fix):
+            fix_mask = (1 << k_fix) - 1
+            w_fix_val = w_rand & fix_mask
+            # Reduce each Q_subs[ti] to a tiny polynomial in free_W bits (shifted by k_fix)
+            Q_fixed = []
+            for ti in range(nT):
+                qf = set()
+                for wm in Q_subs[ti]:
+                    if (wm & fix_mask) == (wm & w_fix_val):
+                        fm = wm >> k_fix
+                        if fm in qf: qf.remove(fm)
+                        else: qf.add(fm)
+                Q_fixed.append(qf)
+            pstrs = []
+            for terms in parsed_sys:
+                coeff_dict = {}
+                rhs_p = set()
+                for rfi, tm, wm in terms:
+                    if (wm & fix_mask) != (wm & w_fix_val):
+                        continue
+                    wp = {wm >> k_fix}
+                    tmp = tm
+                    while tmp:
+                        lb = tmp & -tmp
+                        ti = lb.bit_length() - 1
+                        tmp ^= lb
+                        wp = mul_w_polys(wp, Q_fixed[ti])
+                        if not wp: break
+                    if not wp: continue
+                    if rfi >= 0:
+                        coeff_dict[rfi] = xor_w_polys(coeff_dict.get(rfi, set()), wp)
+                    else:
+                        rhs_p = xor_w_polys(rhs_p, wp)
+                mon_terms = []
+                for rfi, wp in coeff_dict.items():
+                    for fm in wp:
+                        if fm == 0: mon_terms.append(f"r{rfi}")
+                        else:
+                            ws = [f"w{k_fix + b}" for b in range(nW - k_fix) if (fm >> b) & 1]
+                            mon_terms.append(f"r{rfi}*" + "*".join(ws))
+                for fm in rhs_p:
+                    if fm == 0: mon_terms.append("1")
+                    else:
+                        ws = [f"w{k_fix + b}" for b in range(nW - k_fix) if (fm >> b) & 1]
+                        mon_terms.append("*".join(ws))
+                if mon_terms:
+                    pstrs.append("+".join(mon_terms))
+            return pstrs
 
         # PART 2: REDUCED SINGULAR SLIMGB (39 r_free vars instead of 56!) — dp vs block elim!
         print(f"\n  --- PART 2: REDUCED SINGULAR SLIMGB ({cell_name}, nRF={nRF}) ---", flush=True)
         rng_s = random.Random(272727)
         w_rand = rng_s.getrandbits(nW)
-        for reg_name, eq_sys, bsplit in [
-            ("M1_dp", M1_eqs, None),
-            ("M1_block", M1_eqs, nRF),
-            ("Mfull_dp", M_full_eqs, None),
-            ("Mfull_block", M_full_eqs, nRF),
+        for reg_name, parsed_sys, bsplit in [
+            ("M1_dp", M1_parsed, None),
+            ("M1_block", M1_parsed, nRF),
+            ("Mfull_dp", M_full_parsed, None),
+            ("Mfull_block", M_full_parsed, nRF),
         ]:
             for free_target in [5, 7, 9, 11]:
                 k_fix = nW - free_target
                 if k_fix < 0: continue
                 free_w = list(range(k_fix, nW))
                 vnames = [f"r{i}" for i in range(nRF)] + [f"w{j}" for j in free_w]
-                pstrs = linear_sys_to_singular_strs(eq_sys, w_rand, k_fix, nW, nRF)
+                pstrs = build_fixed_singular_strs(parsed_sys, w_rand, k_fix)
                 st_s, dt_s, out_s = run_singular_gb(
                     vnames, pstrs, timeout_sec=75, tag=f"{cell_name}_{reg_name}_fw{free_target}", block_split=bsplit
                 )

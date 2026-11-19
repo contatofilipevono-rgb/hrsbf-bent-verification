@@ -282,66 +282,9 @@ def main():
     n_ef = len(eta_free)
 
     # --------------------------------------------------------------------------
-    # PART 1: FULL CLOSURE OF B0_00 eta = 1 (ALL 288 MODELS + RECURSIVE W_ess)
+    # PART 1: AFFINE SPAN & CO-DIMENSION OF eta=62, 63 & 42 MODELS (FAST!)
     # --------------------------------------------------------------------------
-    print("\n--- PART 1: FULL CLOSURE OF B0_00 eta = 1 (288 models of W_ess(12)) ---", flush=True)
-    ex1 = [(eta_free[k], (1 >> k) & 1) for k in range(n_ef)]
-    sr1 = s9.run_branch_cascade(
-        lib9, root["_buf"], root["_quad_ids"], root["_cub_ids"], root["_lin_pivs"],
-        ex1, tbl, max_xl_rounds=20, verify_subst=True
-    )
-    qps1 = [s9.row_to_pset(sr1["_buf"], qr, tbl) for qr in sr1["_quad_ids"]]
-    ana1 = s16.analyze_quad_system(qps1)
-    W_rref1 = s19.strict_rref_masks(list(ana1["W_piv"].values()))
-    W_pivs1, pure_y1 = s22a.extract_pure_w_quads(lib_sh, sr1, W_rref1, tbl)
-    W_forms1 = [W_rref1[p] for p in W_pivs1]
-    nW1 = len(W_pivs1)
-    exh1, models1, _ = s22a.enumerate_pure_w_models(pure_y1, nW1, max_models=5000, time_budget=30.0)
-    assert exh1
-    n_cl1, n_rec_cl, n_still_open = 0, 0, 0
-    open_details = []
-    for idx_m, y in enumerate(models1):
-        ex_w = [(W_forms1[j], (y >> j) & 1) for j in range(nW1)]
-        sub = s9.run_branch_cascade(
-            lib9, sr1["_buf"], sr1["_quad_ids"], sr1["_cub_ids"], sr1["_lin_pivs"],
-            ex_w, tbl, max_xl_rounds=12, verify_subst=(idx_m < 2)
-        )
-        if sub["closed_unsat"]:
-            n_cl1 += 1
-        else:
-            nqps = [s9.row_to_pset(sub["_buf"], qr, tbl) for qr in sub.get("_quad_ids", [])]
-            nana = s16.analyze_quad_system(nqps) if nqps else {"dim_W_ess": 99, "W_piv": {}}
-            ndw = nana["dim_W_ess"]
-            n_act = sub.get("N_final", n - len(sub.get("_lin_pivs", {})))
-            if 0 < ndw <= 14:
-                W2_rref = s19.strict_rref_masks(list(nana["W_piv"].values()))
-                W2_pivs, pure_y2 = s22a.extract_pure_w_quads(lib_sh, sub, W2_rref, tbl)
-                W2_forms = [W2_rref[p] for p in W2_pivs]
-                exh2, mods2, _ = s22a.enumerate_pure_w_models(pure_y2, len(W2_pivs), max_models=4096, time_budget=15.0)
-                sub_op = 0
-                for y2 in mods2:
-                    ex_w2 = [(W2_forms[j], (y2 >> j) & 1) for j in range(len(W2_pivs))]
-                    sub2 = s9.run_branch_cascade(
-                        lib9, sub["_buf"], sub["_quad_ids"], sub["_cub_ids"], sub["_lin_pivs"],
-                        ex_w2, tbl, max_xl_rounds=10, verify_subst=False
-                    )
-                    if not sub2["closed_unsat"]:
-                        sub_op += 1
-                if exh2 and sub_op == 0:
-                    n_rec_cl += 1
-                    continue
-                open_details.append((y, n_act, len(nqps), ndw, len(mods2), sub_op))
-            else:
-                open_details.append((y, n_act, len(nqps), ndw, -1, -1))
-            n_still_open += 1
-    print(f"  [eta=1] TOTAL MODELS = {len(models1)}: direct_closed={n_cl1}, rec_W_closed={n_rec_cl}, STILL_OPEN={n_still_open}", flush=True)
-    for od in open_details[:20]:
-        print(f"      OPEN y=0x{od[0]:03x}: N={od[1]}, q={od[2]}, new_dimW={od[3]}, mods2={od[4]}, open2={od[5]}", flush=True)
-
-    # --------------------------------------------------------------------------
-    # PART 2: AFFINE SPAN & CO-DIMENSION OF eta=62, 63 & 42 MODELS
-    # --------------------------------------------------------------------------
-    print("\n--- PART 2: SOLUTION VARIETY ANATOMY OF eta = 62, 63 & 42 ---", flush=True)
+    print("\n--- PART 1: SOLUTION VARIETY ANATOMY OF eta = 62, 63 & 42 ---", flush=True)
     for em in [62, 63, 42]:
         ex = [(eta_free[k], (em >> k) & 1) for k in range(n_ef)]
         sr = s9.run_branch_cascade(
@@ -353,7 +296,7 @@ def main():
         W_rref = s19.strict_rref_masks(list(ana["W_piv"].values()))
         W_pivs, pure_y = s22a.extract_pure_w_quads(lib_sh, sr, W_rref, tbl)
         nW = len(W_pivs)
-        exh, models, dt = s22a.enumerate_pure_w_models(pure_y, nW, max_models=128, time_budget=40.0)
+        exh, models, dt = s22a.enumerate_pure_w_models(pure_y, nW, max_models=128, time_budget=30.0)
         if models:
             y0 = models[0]
             diffs = [y ^ y0 for y in models[1:]]
@@ -361,9 +304,9 @@ def main():
             print(f"  [eta={em}] nW={nW}, pure_q={len(pure_y)}: sampled {len(models)} (exh={exh}, {dt:.1f}s) -> affine_span_dim = {aff_dim}/{nW} (co-dim = {nW - aff_dim})", flush=True)
 
     # --------------------------------------------------------------------------
-    # PART 3: FULL 64-STATE CENSUS + EXHAUSTIVE CLOSURE OF ALL SMALL-DIMW STATES
+    # PART 2: FULL 64-STATE CENSUS + EXHAUSTIVE CLOSURE OF ALL SMALL-DIMW STATES
     # --------------------------------------------------------------------------
-    print("\n--- PART 3: FULL 64-STATE B0_00 CENSUS & SMALL-DIMW EXHAUSTIVE CLOSURE ---", flush=True)
+    print("\n--- PART 2: FULL 64-STATE B0_00 CENSUS & SMALL-DIMW EXHAUSTIVE CLOSURE ---", flush=True)
     n_dir_cl, n_exh_cl, n_open_all = 0, 0, 0
     for em in range(1 << n_ef):
         ex = [(eta_free[k], (em >> k) & 1) for k in range(n_ef)]
@@ -382,14 +325,14 @@ def main():
             W_rref = s19.strict_rref_masks(list(ana["W_piv"].values()))
             W_pivs, pure_y = s22a.extract_pure_w_quads(lib_sh, sr, W_rref, tbl)
             W_forms = [W_rref[p] for p in W_pivs]
-            exh, mods, dt = s22a.enumerate_pure_w_models(pure_y, len(W_pivs), max_models=2048, time_budget=15.0)
-            if exh and len(mods) <= 1024:
+            exh, mods, dt = s22a.enumerate_pure_w_models(pure_y, len(W_pivs), max_models=1024, time_budget=10.0)
+            if exh and len(mods) <= 512:
                 op = 0
                 for y in mods:
                     ex_w = [(W_forms[j], (y >> j) & 1) for j in range(len(W_pivs))]
                     sub = s9.run_branch_cascade(
                         lib9, sr["_buf"], sr["_quad_ids"], sr["_cub_ids"], sr["_lin_pivs"],
-                        ex_w, tbl, max_xl_rounds=12, verify_subst=False
+                        ex_w, tbl, max_xl_rounds=10, verify_subst=False
                     )
                     if not sub["closed_unsat"]:
                         op += 1
