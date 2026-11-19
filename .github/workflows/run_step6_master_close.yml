@@ -1,68 +1,30 @@
-name: Run H16 Step 11 Orchestrated Multi-Path (12 Parallel Runners)
+name: Run H16 Step 12 Normal-Bent B0_00 Crush + Fast WalkSAT V3 & 0xFF Split
 
 on:
   push:
     branches: [ main ]
     paths:
-      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP11*.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP12*.py'
       - '.github/workflows/run_step6_master_close.yml'
   workflow_dispatch:
 
 jobs:
-  step11a-cg-schur-deg4-root:
+  step12a-b000-normal-bent-crush:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
-    strategy:
-      fail-fast: false
-      matrix:
-        cell: [B0_00, B0_11, B1_11]
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install python-sat
-        run: pip install -q python-sat
-      - name: Run Step 11A Root Schur-D4 (CG16+CG15 + Quads*pairs + 116xCG12*vars) on ${{ matrix.cell }}
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP11_CG_SCHUR_DEG4.py --cells ${{ matrix.cell }} --budget 360
+      - name: Install python-sat and numpy
+        run: pip install -q python-sat numpy
+      - name: Run Step 12A B0_00 Normal-Bent D8-Coset Cubics + 0xFF 102-State Split
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP12A_B0_00_NORMAL_BENT_CRUSH.py
 
-  step11b-cg389-probe-walksat:
+  step12b-fast-walksat-v3-and-ff-split:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
-    strategy:
-      fail-fast: false
-      matrix:
-        cell: [B0_00, B0_11, B1_11]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Install python-sat
-        run: pip install -q python-sat
-      - name: Run Step 11B (1-lit Probe + k-Collapse Curve + C WalkSAT on V3) on ${{ matrix.cell }}
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP11B_CG389_BRANCH_PROBE.py --cells ${{ matrix.cell }}
-
-  step11c-b000-tree-and-branch-schur4:
-    runs-on: ubuntu-latest
-    timeout-minutes: 25
-    strategy:
-      fail-fast: false
-      matrix:
-        cell: [B0_00, B0_11, B1_11]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Install python-sat
-        run: pip install -q python-sat
-      - name: Run Step 11C (B0_00 Recursive Symplectic Tree + Branch Schur-D4 with CG16+CG15+8xCG14) on ${{ matrix.cell }}
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP11C_B0_00_TREE_AND_BRANCH_SCHUR4.py --cells ${{ matrix.cell }} --budget 360
-
-  step11d-deg4-poisson-and-structured-probe:
-    runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 20
     strategy:
       fail-fast: false
       matrix:
@@ -74,5 +36,5 @@ jobs:
           python-version: '3.12'
       - name: Install python-sat and numpy
         run: pip install -q python-sat numpy
-      - name: Run Step 11D (Deg-4 V13/V14 Poisson Rank Census + Structured Hi/Lo Collapse + 2-Lit Hub Probe) on ${{ matrix.cell }}
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP11D_DEG4_POISSON_AND_STRUCTURED_PROBE.py --cells ${{ matrix.cell }}
+      - name: Run Step 12B Fast WalkSAT on CG12 & CG388 + 0xFF Split on ${{ matrix.cell }}
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP12B_FAST_WALKSAT_V3_AND_F0XFF_SPLIT.py --cells ${{ matrix.cell }}
