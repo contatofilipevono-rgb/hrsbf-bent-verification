@@ -1,0 +1,44 @@
+name: Run H16 Step 34 Idle-vCPU Assault (B1_11/B0_11 C16-Coset Split + B0_00 eta=42 Adaptive 3-Coset Closure)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP34A_B11_COSET_AND_C16_SPLIT.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP34B_B000_ETA42_CLOSE.py'
+      - '.github/workflows/run_h16_step34_idle_vcpus_assault.yml'
+
+jobs:
+  step34a-b11-coset-split:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B1_11, B0_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat and numpy
+        run: pip install python-sat numpy
+      - name: Run Step 34A C16-Invariant Coset Split (${{ matrix.cell }})
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP34A_B11_COSET_AND_C16_SPLIT.py --cells ${{ matrix.cell }}
+
+  step34b-b000-eta42-close:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat and numpy
+        run: pip install python-sat numpy
+      - name: Run Step 34B B0_00 eta=42 Adaptive 3-Coset Closure Shard ${{ matrix.shard }}/4
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP34B_B000_ETA42_CLOSE.py --etas 42 --shard ${{ matrix.shard }} --shards 4
