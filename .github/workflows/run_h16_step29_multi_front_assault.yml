@@ -1,0 +1,57 @@
+name: Run H16 Step 29 Multi-Front Assault (Hidden Linears + Non-Coord V12 + Kernel u(w) & Deg2 GB)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP29A_B000_HIDDEN_LINEARS_CLOSE.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP29B_NONCOORD_V12_AND_D8_COSET_BITS.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP29C_B011_KERNEL_AND_DEG2_SINGULAR.py'
+      - '.github/workflows/run_h16_step29_multi_front_assault.yml'
+
+jobs:
+  step29a-b000-hidden-linears:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat and numpy
+        run: pip install python-sat numpy
+      - name: Run Step 29A B0_00 Exact Affine Hull + Hidden Linear Injection
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP29A_B000_HIDDEN_LINEARS_CLOSE.py
+
+  step29b-v12-noncoord-and-d8:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat and numpy
+        run: pip install python-sat numpy
+      - name: Run Step 29B Non-Coord V12 & D8-Coset Rank Sweep (B1_11, B0_11, B0_00)
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP29B_NONCOORD_V12_AND_D8_COSET_BITS.py --cells B1_11,B0_11,B0_00
+
+  step29c-kernel-and-deg2-gb:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B0_11, B1_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat, numpy, and Singular
+        run: |
+          pip install python-sat numpy
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq singular
+      - name: Run Step 29C Right-Kernel u(w) Interpolation + Deg2 Singular (${{ matrix.cell }})
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP29C_B011_KERNEL_AND_DEG2_SINGULAR.py --cells ${{ matrix.cell }}
