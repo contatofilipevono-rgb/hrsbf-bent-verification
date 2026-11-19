@@ -1,0 +1,33 @@
+name: H16 Step 61 targeted quadratic multipliers
+on:
+  push:
+    branches: [codex/h16-step43-specialized-kernel]
+    paths: ['research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP61_TARGETED_MULTIPLIERS.py', '.github/workflows/run_h16_step61_targeted_multipliers.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  cert:
+    strategy:
+      fail-fast: false
+      matrix:
+        offset: [0, 64]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44594052302
+          name: h16-step60-fiber-${{ matrix.offset }}
+          path: fiber
+          github-token: ${{ github.token }}
+      - run: python -m pip install -q numpy python-sat
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP61_TARGETED_MULTIPLIERS.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: h16-step61-certificate-${{ matrix.offset }}
+          path: step61_certificate.json
