@@ -26,7 +26,7 @@ from H16_SPECIALIZED_KERNEL import singular
 import json
 import os
 from H16_POLAR_FLAGS import add, encode, null, radical_flag, rref, unpack
-from H16_SPECIALIZED_KERNEL import mul, rank, transform
+from H16_SPECIALIZED_KERNEL import mul, rank, specialize, transform
 
 WORK_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(WORK_DIR))
