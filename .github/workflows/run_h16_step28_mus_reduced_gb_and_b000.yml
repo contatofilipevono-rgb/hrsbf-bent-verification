@@ -1,0 +1,43 @@
+name: Run H16 Step 28 B0_00 Eta=1/Census + MUS Anatomy & Reduced Singular (B1_11/B0_11)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP28A_B000_ETA1_CLOSE_AND_SMALL_DIMW.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP28B_MUS_AND_REDUCED_SINGULAR.py'
+      - '.github/workflows/run_h16_step28_mus_reduced_gb_and_b000.yml'
+
+jobs:
+  step28a-b000-eta1-and-census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat and numpy
+        run: pip install python-sat numpy
+      - name: Run Step 28A B0_00 Eta=1 Closure + Eta=62/42 Span + Full 64-State Census
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP28A_B000_ETA1_CLOSE_AND_SMALL_DIMW.py
+
+  step28b-mus-reduced-singular:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B1_11, B0_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat, numpy, and Singular
+        run: |
+          pip install python-sat numpy
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq singular
+      - name: Run Step 28B MUS Anatomy + Reduced Singular slimgb (${{ matrix.cell }})
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP28B_MUS_AND_REDUCED_SINGULAR.py --cells ${{ matrix.cell }}
