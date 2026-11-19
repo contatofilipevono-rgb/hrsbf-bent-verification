@@ -1,0 +1,28 @@
+name: H16 Step 46 residual quadratics after verified cascade
+on:
+  push:
+    branches: [codex/h16-step43-specialized-kernel]
+    paths: ['research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP46_CASCADE_THEN_SINGULAR.py']
+permissions:
+  contents: read
+jobs:
+  cascade:
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B0_11, B1_11]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy python-sat
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends singular
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP46_CASCADE_THEN_SINGULAR.py --cells ${{ matrix.cell }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: h16-step46-${{ matrix.cell }}
+          path: step46_${{ matrix.cell }}.json
