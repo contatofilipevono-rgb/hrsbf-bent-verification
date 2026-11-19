@@ -1,0 +1,27 @@
+name: Run H16 Step 25 2-Adic Autocorrelation A_f((r,r))=0 Forced Linears + CG(389)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP25*.py'
+      - '.github/workflows/run_step25_autocorr_forced_lin.yml'
+  workflow_dispatch:
+
+jobs:
+  step25-autocorr-2adic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B0_00, B0_11, B1_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat and numpy
+        run: pip install -q python-sat numpy
+      - name: Run Step 25 2-Adic Autocorrelation + CG(389) on ${{ matrix.cell }}
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP25_AUTOCORR_2ADIC_ON_ETA64_AND_V13_SYZYGY.py --cells ${{ matrix.cell }}
