@@ -233,7 +233,16 @@ def run_cell(cell_name, lib_diag, lib9, lib_cg, lib_v12, orbits, orb_tt_np,
         s9.pset_to_row(poly, raw_buf, n_base + idx_c, tbl)
     ctypes.memmove(ctypes.byref(raw_buf, (n_base + len(cyc_cubs)) * n_cw * 8), cg_buf, n_cg * n_cw * 8)
 
-    # Generate R = 700 random points in F_2^111 and evaluate all total_raw equations (plus constant 1!)
+    # Echelonize raw_buf first so we only evaluate the ~450 independent basis rows!
+    n_cols = tbl["off0"] + 1
+    piv_idx = (ctypes.c_int * n_cols)(*([-1] * n_cols))
+    ech_ids = []
+    for r_id in range(total_raw):
+        pc = lib9.gf2_echelon_insert_s9(raw_buf, r_id, n_cw, piv_idx, n_cols)
+        if pc >= 0:
+            ech_ids.append(r_id)
+
+    # Generate R = 700 random points in F_2^111 and evaluate all independent baseline equations!
     R = 700
     rng = random.Random(292929)
     x_pts = [rng.getrandbits(111) for _ in range(R)]
@@ -241,22 +250,23 @@ def run_cell(cell_name, lib_diag, lib9, lib_cg, lib_v12, orbits, orb_tt_np,
     x_hi = (ctypes.c_uint64 * R)(*[x >> 64 for x in x_pts])
 
     base_piv = {}
-    # Insert constant 1 vector? No: constant 1 is NOT a valid equation! Only insert valid equations!
-    for r_id in range(total_raw):
+    for r_id in ech_ids:
+        rptr = ctypes.cast(ctypes.byref(raw_buf, r_id * n_cw * 8), ctypes.POINTER(ctypes.c_uint64))
         ev = 0
         for p_i in range(R):
             val = lib9.eval_row_s9(
-                raw_buf, r_id, n_cw, tbl["col_deg"], tbl["col_v0"], tbl["col_v1"], tbl["col_v2"],
+                rptr, n_cw, tbl["off0"], tbl["col_deg"], tbl["col_v0"], tbl["col_v1"], tbl["col_v2"],
                 x_lo[p_i], x_hi[p_i]
             )
             if val: ev |= (1 << p_i)
         gf2_rank_insert(base_piv, ev)
-    print(f"  [{cell_name}] Baseline CG(389)+root eval rank on {R} pts = {len(base_piv)} / {total_raw}", flush=True)
+    print(f"  [{cell_name}] Baseline CG(389)+root echelon rows={len(ech_ids)}, eval rank on {R} pts = {len(base_piv)}", flush=True)
+    assert len(base_piv) == len(ech_ids), f"Rank mismatch: {len(base_piv)} vs {len(ech_ids)}"
 
-    # Prepare ctypes pointers for orb_tt, origin111, cb111
+    # Prepare ctypes pointers for orb_tt, origin111 (116-bit mask), cb111 (list of 111 116-bit masks)
     orb_tt_flat = np.ascontiguousarray(orb_tt_np.reshape(-1), dtype=np.uint8)
-    orig_u8 = np.ascontiguousarray(origin111, dtype=np.uint8)
-    cb_u8 = np.ascontiguousarray(cb111.reshape(-1), dtype=np.uint8)
+    orig_u8 = np.array([(origin111 >> o) & 1 for o in range(116)], dtype=np.uint8)
+    cb_u8 = np.array([(cb111[i] >> o) & 1 for i in range(111) for o in range(116)], dtype=np.uint8)
     free_c = (ctypes.c_int * 111)(*free111)
     out_wt = (ctypes.c_int * R)()
 
@@ -411,6 +421,11 @@ def main():
     c_s9.write_text(s9.C_STEP9_SRC, encoding="utf-8")
     subprocess.run(["gcc", "-O3", "-march=native", "-shared", "-fPIC", str(c_s9), "-o", str(so_s9)], check=True)
     lib9 = ctypes.CDLL(str(so_s9))
+    lib9.gf2_echelon_insert_s9.argtypes = [
+        ctypes.POINTER(ctypes.c_uint64), ctypes.c_int, ctypes.c_int,
+        ctypes.POINTER(ctypes.c_int), ctypes.c_int,
+    ]
+    lib9.gf2_echelon_insert_s9.restype = ctypes.c_int
     lib9.eval_row_s9.argtypes = [
         ctypes.POINTER(ctypes.c_uint64), ctypes.c_int, ctypes.c_int,
         ctypes.POINTER(ctypes.c_uint8), ctypes.POINTER(ctypes.c_uint8),
