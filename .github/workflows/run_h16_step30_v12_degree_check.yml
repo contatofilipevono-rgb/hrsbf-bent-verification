@@ -1,0 +1,26 @@
+name: Run H16 Step 30 Non-Coord V12 Bit2 & Exact Degree Check (B1_11, B0_11, B0_00)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP30_NONCOORD_V12_BIT2_AND_DEGREE_CHECK.py'
+      - '.github/workflows/run_h16_step30_v12_degree_check.yml'
+
+jobs:
+  step30-v12-deg-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B1_11, B0_11, B0_00]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat and numpy
+        run: pip install python-sat numpy
+      - name: Run Step 30 Non-Coord V12 Bit2 + Bit3 Exact Degree Check (${{ matrix.cell }})
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP30_NONCOORD_V12_BIT2_AND_DEGREE_CHECK.py --cells ${{ matrix.cell }}
