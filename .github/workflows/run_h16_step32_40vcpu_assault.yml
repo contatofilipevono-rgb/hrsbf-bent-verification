@@ -1,0 +1,61 @@
+name: Run H16 Step 32 40-vCPU Multi-Front Assault (V12>=D8 Bit3 Cubics + B0_00 Multi-Coset Closure)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP32A_V12_SUP_D8_BIT3_CUBICS.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP32B_B000_COSET_BALANCE_SHARDED.py'
+      - '.github/workflows/run_h16_step32_40vcpu_assault.yml'
+
+jobs:
+  step32a-v12-d8-bit3:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B1_11, B0_11, B0_00]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat and numpy
+        run: pip install python-sat numpy
+      - name: Run Step 32A V_12 superset D_8 Bit-3 Cubics (${{ matrix.cell }})
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP32A_V12_SUP_D8_BIT3_CUBICS.py --cells ${{ matrix.cell }} --n_sub 120
+
+  step32b-b000-eta0-sharded:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat and numpy
+        run: pip install python-sat numpy
+      - name: Run Step 32B B0_00 eta=0 3-Coset Balancedness Shard ${{ matrix.shard }}/4
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP32B_B000_COSET_BALANCE_SHARDED.py --etas 0 --shard ${{ matrix.shard }} --shards 4
+
+  step32b-b000-hot-etas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        etas: ["62,63", "42,43", "21,22"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat and numpy
+        run: pip install python-sat numpy
+      - name: Run Step 32B B0_00 Multi-Coset Balancedness (etas=${{ matrix.etas }})
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP32B_B000_COSET_BALANCE_SHARDED.py --etas ${{ matrix.etas }} --shard 0 --shards 1
