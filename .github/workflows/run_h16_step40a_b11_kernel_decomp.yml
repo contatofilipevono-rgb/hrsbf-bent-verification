@@ -1,0 +1,27 @@
+name: H(16,4) Step 40A — B1_11/B0_11 Common Kernel & Bilinear Pencil Decomposition
+
+on:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP40A_B11_COMMON_KERNEL_AND_DECOMPOSITION.py'
+      - '.github/workflows/run_h16_step40a_b11_kernel_decomp.yml'
+  workflow_dispatch:
+
+jobs:
+  step40a_kernel_decomp:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B1_11, B0_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python deps
+        run: python -m pip install --upgrade pip && pip install numpy python-sat
+      - name: Run Step 40A (${{ matrix.cell }})
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP40A_B11_COMMON_KERNEL_AND_DECOMPOSITION.py --cells ${{ matrix.cell }}
