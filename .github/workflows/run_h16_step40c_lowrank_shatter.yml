@@ -1,0 +1,27 @@
+name: H(16,4) Step 40C — B0_11/B1_11 Low-Rank Subspace L Block Invariants & Live Shatter
+
+on:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP40C_B11_LOWRANK_BASIS_SHATTER.py'
+      - '.github/workflows/run_h16_step40c_lowrank_shatter.yml'
+  workflow_dispatch:
+
+jobs:
+  step40c_lowrank_shatter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B0_11, B1_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python deps
+        run: python -m pip install --upgrade pip && pip install numpy python-sat
+      - name: Run Step 40C (${{ matrix.cell }})
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP40C_B11_LOWRANK_BASIS_SHATTER.py --cells ${{ matrix.cell }}
