@@ -2,6 +2,7 @@ name: H16 Step 43 exact specialization and residual kernels
 on:
   push:
     branches: [codex/h16-step43-specialized-kernel]
+    paths: ['research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP43_SPECIALIZED_KERNEL.py', 'research_updates/2026_11_17_h16_c99_carbon_hard/H16_SPECIALIZED_KERNEL.py']
 permissions:
   contents: read
 jobs:
