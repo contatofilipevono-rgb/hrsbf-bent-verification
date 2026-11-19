@@ -1,0 +1,44 @@
+name: Run H16 Step 27 B0_00 Eta=0/1 Closure + Industrial Groebner/F4 (Singular & msolve)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP27*.py'
+      - '.github/workflows/run_step27_b000_and_f4.yml'
+  workflow_dispatch:
+
+jobs:
+  step27a-b000-eta0-eta1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat and numpy
+        run: pip install -q python-sat numpy
+      - name: Run Step 27A B0_00 Eta=0 Shatter + Eta=1 Closure + Eta=62/42 Variety
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP27A_B000_ETA0_SHATTER_AND_ETA1_CLOSE.py
+
+  step27b-groebner-f4:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B0_00, B0_11, B1_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Singular, msolve (if available), python-sat, and numpy
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq singular || true
+          sudo apt-get install -y -qq msolve || true
+          pip install -q python-sat numpy
+      - name: Run Step 27B Groebner/F4 Probe on ${{ matrix.cell }}
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP27B_GROEBNER_F4_PROBE.py --cells ${{ matrix.cell }}
