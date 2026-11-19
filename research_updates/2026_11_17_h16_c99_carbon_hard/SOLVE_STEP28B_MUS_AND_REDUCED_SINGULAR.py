@@ -414,7 +414,7 @@ def run_step27b_cell(cell_name, lib_diag, lib9, lib_cg, lib_sh, lib_d8, orbits, 
         Q_subs = {}
         for ti in range(nT):
             piv_i = None
-            for i in range(len(q_rows)):
+            for i in range(ti, len(q_rows)):
                 if (q_rows[i][0] >> ti) & 1:
                     piv_i = i; break
             assert piv_i is not None, f"T_piv {ti} missing from quadratics!"
