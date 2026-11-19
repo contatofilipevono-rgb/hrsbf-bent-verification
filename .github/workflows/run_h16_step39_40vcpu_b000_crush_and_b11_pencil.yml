@@ -1,0 +1,53 @@
+name: H(16,4) Step 39 — 40 vCPU B0_00 All-20-Orbits Closure + B1_11/B0_11 Pencil Anatomy
+
+on:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP39B_B11_PENCIL_RANK_AND_Z16_EXACT.py'
+      - '.github/workflows/run_h16_step39_40vcpu_b000_crush_and_b11_pencil.yml'
+  workflow_dispatch:
+
+jobs:
+  step39a_b000_20orbits:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        batch:
+          - "2,3,4"
+          - "5,6,7"
+          - "8,9,10"
+          - "11,12,13"
+          - "18,19"
+          - "26,27"
+          - "30,31"
+          - "46,47"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python deps
+        run: python -m pip install --upgrade pip && pip install numpy python-sat
+      - name: Run B0_00 z=0xFF x z=0x55 + 3rd coset on orbits (${{ matrix.batch }})
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP32B_B000_COSET_BALANCE_SHARDED.py --etas "${{ matrix.batch }}" --shard 0 --shards 1
+
+  step39b_b11_pencil:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B1_11, B0_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python deps
+        run: python -m pip install --upgrade pip && pip install numpy python-sat
+      - name: Run Step 39B Pencil Rank Anatomy & Exact Z_16* Proof (${{ matrix.cell }})
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP39B_B11_PENCIL_RANK_AND_Z16_EXACT.py --cells ${{ matrix.cell }}
