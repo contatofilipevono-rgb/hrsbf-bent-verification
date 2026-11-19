@@ -1,15 +1,15 @@
-name: Run H16 Step 17 Elimination Order (R > B > A) + Pure-45-Var Schur-D4
+name: Run H16 Step 18 Decode L2b Explosion (Reverse/Shuffled/W_ess + E_even)
 
 on:
   push:
     branches: [ main ]
     paths:
-      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP17*.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP18*.py'
       - '.github/workflows/run_step6_master_close.yml'
   workflow_dispatch:
 
 jobs:
-  step17-elim-order-pure-b-schur4:
+  step18-decode-l2b-explosion:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     strategy:
@@ -23,5 +23,5 @@ jobs:
           python-version: '3.12'
       - name: Install python-sat and numpy
         run: pip install -q python-sat numpy
-      - name: Run Step 17 Elimination Order (R > B > A) + Pure-45-Var Schur-D4 on ${{ matrix.cell }}
-        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP17_ELIM_ORDER_R_GT_B_SCHUR4.py --cells ${{ matrix.cell }}
+      - name: Run Step 18 Decode L2b Explosion on ${{ matrix.cell }}
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP18_DECODE_L2B_EXPLOSION.py --cells ${{ matrix.cell }}
