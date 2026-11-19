@@ -205,48 +205,8 @@ def run_step19_cell(cell_name, lib_diag, lib9, lib_cg, lib_sh, orbits, layer_vec
     # --------------------------------------------------------------------------
     # PART 3: TRUE STRICT-RREF 3-BLOCK BASIS CHANGE (R_free > R_tail > W_ess)!
     # --------------------------------------------------------------------------
-    # Extract the linear tails of the quads (reduced mod W_rref) as R_tail forms!
-    tail_forms_raw = []
-    for ps in qps:
-        lmask = 0
-        for m in ps:
-            if m.bit_count() == 1:
-                lmask |= m
-        # reduce lmask mod W_rref
-        rem = lmask
-        for p, pm in W_rref.items():
-            if (rem >> p) & 1:
-                rem ^= pm
-        if rem:
-            tail_forms_raw.append(rem)
-
-    # Build combined strict RREF for W_forms + tail_forms!
-    # Wait: keep W_pivs = sorted(W_rref.keys())! Then reduce tail_forms mod W_rref so they ONLY
-    # touch active_vars \ W_pivs, then strict-RREF those tail_forms to get T_pivs!
-    T_rref = strict_rref_masks(tail_forms_raw)
-    W_pivs = sorted(W_rref.keys())
-    T_pivs = sorted(T_rref.keys())
-    assert len(set(W_pivs) & set(T_pivs)) == 0, "W_pivs and T_pivs must be disjoint!"
-
-    # Now back-substitute T_rref into W_rref so combined (W_rref U T_rref) is STRICT RREF?
-    # NO!! If we shear-subst W_pivs FIRST using W_rref (where rest ONLY uses active \ W_pivs),
-    # and THEN shear-subst T_pivs using T_rref (where rest ONLY uses active \ (W_pivs U T_pivs)):
-    # Check what happens to a quadratic q(x) = Q(W_forms(x)) + L_tail(x) + L_W(x)!
-    # Wait: T_rref[t] is a linear combo of x outside W_pivs.
-    # For a single combined invertible shear map y_p = rref[p](x) for p in (W_pivs U T_pivs) and y_r = x_r for r in R_free:
-    # We need STRICT RREF of BOTH W_rref AND T_rref? Wait: if we back-sub T_rref into W_rref,
-    # then W_rref[w] changes by adding T_rref[t], which mixes T into W! We DON'T want to mix T into W!
-    # Instead, do TWO sequential invertible transformations:
-    #   Step A: Transform x -> x' by shear-substituting x_p <- x'_p ^ (W_rref[p] ^ (1<<p)) for p in W_pivs.
-    #           Since W_rref[p] has NO other W_pivs, these ALL commute, and after Step A:
-    #             - EVERY form in span(W_forms) is a pure linear combo of {x'_p : p in W_pivs}!
-    #             - EVERY quadratic Q_a(W_forms(x)) has deg_2 terms ONLY in W_pivs!
-    #             - EVERY x_j for j not in W_pivs is UNCHANGED (x'_j = x_j), so T_rref[t](x') == T_rref[t](x)!
-    #   Step B: Transform x' -> y by shear-substituting x'_t <- y_t ^ (T_rref[t] ^ (1<<t)) for t in T_pivs.
-    #           Since T_rref[t] has ZERO bits in W_pivs and ZERO other bits in T_pivs:
-    #             - ALL W_pivs variables x'_p are UNCHANGED (y_p = x'_p)!
-    #             - ALL T_rref[t](x') become pure single variables y_t!
-    #             - EVERY quadratic becomes:  y_t + Q_a(y_W) + L_a(y_W) = 0 !! (ZERO R_free, deg_T=1, deg_W=2!)
+    W_pivs = sorted(W_rref)
+    w_mask = sum(1 << p for p in W_pivs)
     eq_ids = list(sr["_quad_ids"]) + list(sr["_cub_ids"])
     M_eq = len(eq_ids)
     work = (ctypes.c_uint64 * (M_eq * n_cw))()
@@ -262,6 +222,18 @@ def run_step19_cell(cell_name, lib_diag, lib9, lib_cg, lib_sh, orbits, layer_vec
                 tbl["col2_base"], tbl["col3_base"], tbl["col_deg"], tbl["col_v0"], tbl["col_v1"], tbl["col_v2"],
                 p, rest & mask64, rest >> 64
             )
+    # Take the radical linear tails after Step A in the Boolean ring.
+    # Products in a quadratic can generate linear terms when x_i^2 = x_i.
+    tail_forms = []
+    for qi in range(len(sr["_quad_ids"])):
+        transformed = s9.row_to_pset(work, qi, tbl)
+        assert all(m.bit_count() < 2 or not m & ~w_mask for m in transformed)
+        tail_forms.append(sum(m for m in transformed if m.bit_count() == 1 and not m & w_mask))
+    T_rref = strict_rref_masks(tail_forms)
+    T_pivs = sorted(T_rref)
+    assert not (set(W_pivs) & set(T_pivs))
+    assert len(T_pivs) == len(sr["_quad_ids"]), "tail equations are not independent after the W shear"
+
     # Step B: T_rref shear
     for t in T_pivs:
         rest = T_rref[t] ^ (1 << t)
