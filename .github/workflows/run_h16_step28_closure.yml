@@ -2,13 +2,13 @@ name: H16 Step 28 targeted closure
 on:
   push:
     branches: [codex/h16-step28-closure]
-  workflow_dispatch:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
-  eta-symmetry:
+  verify-b000-ledger:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -16,9 +16,38 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44512627590
+          pattern: 'h16-step29-b000-eta1-*'
+          path: h16_ci_evidence
+          merge-multiple: true
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44514773657
+          pattern: 'h16-step31-b000-scan-*'
+          path: h16_ci_evidence
+          merge-multiple: true
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44515528475
+          pattern: 'h16-step33-b000-*'
+          path: h16_ci_evidence
+          merge-multiple: true
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44516285614
+          pattern: 'h16-step34-b000-multipliers'
+          path: h16_ci_evidence
+          merge-multiple: true
+          github-token: ${{ github.token }}
       - run: python -m pip install -q numpy python-sat
-      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP28A_B000_ETA1.py --multipliers
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP28A_B000_ETA1.py --profile-eta1
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/VERIFY_STEP35_B000_LEDGER.py h16_ci_evidence step35_eta1_profile.json
       - uses: actions/upload-artifact@v4
         with:
-          name: h16-step34-b000-multipliers
-          path: research_updates/2026_11_17_h16_c99_carbon_hard/step34_b000_multipliers.json
+          name: h16-step35-b000-ledger
+          path: step35_b000_ledger.json

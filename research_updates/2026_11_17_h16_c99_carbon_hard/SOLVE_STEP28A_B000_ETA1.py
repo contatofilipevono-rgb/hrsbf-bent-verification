@@ -34,6 +34,7 @@ import SOLVE_STEP22A_B000_ENUM_CLOSE_ETA62_63_42_AND_ETA0 as s22a
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--profile-eta1", action="store_true")
     parser.add_argument("--multipliers", action="store_true")
     parser.add_argument("--scan", action="store_true")
     parser.add_argument("--focus-eta", type=int)
@@ -449,6 +450,13 @@ def main():
         assert exh1
     models1 = sorted(set(models1))
     anchor = hashlib.sha256(json.dumps([eta_free, W_forms1, models1]).encode()).hexdigest()
+    if args.profile_eta1:
+        assert args.eta == 1
+        Path("step35_eta1_profile.json").write_text(
+            json.dumps({"anchor": anchor, "eta_forms": eta_free, "models": models1}),
+            encoding="utf-8",
+        )
+        return
     assigned = models1[args.shard::args.shards]
     print(f"eta={args.eta} shard={args.shard}/{args.shards} | {len(assigned)}/{len(models1)} models | anchor={anchor}",
           flush=True)
