@@ -1,0 +1,50 @@
+name: H16 Step 56 sharp bound and syzygies on the isotropic fibers
+on:
+  push:
+    branches: [codex/h16-step43-specialized-kernel]
+    paths: ['research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP56_ISOTROPIC_RANK_BOUND.py']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  images:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      H16_FREE_DIM: '30'
+      H16_CASE: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44570020591
+          name: h16-step41-B0_11
+          path: pencil
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44587467630
+          name: h16-step52-left-inverse
+          path: inverse
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44587836638
+          name: h16-step53-global-residual
+          path: residual
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44590106242
+          name: h16-step55-isotropic-flag
+          path: flag
+          github-token: ${{ github.token }}
+      - run: python -m pip install -q numpy python-sat
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP56_ISOTROPIC_RANK_BOUND.py --cells B0_11
+      - uses: actions/upload-artifact@v4
+        with:
+          name: h16-step56-rank-bound
+          path: step56_rank_bound.json

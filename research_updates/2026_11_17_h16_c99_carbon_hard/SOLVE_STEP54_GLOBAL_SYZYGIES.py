@@ -66,15 +66,15 @@ def encoding(terms):
     return lambda p: 1 << loc[p]
 
 
-def dependencies(matrix, rhs, n, include_adjusted, pure):
+def dependencies(matrix, rhs, n, include_adjusted, pure, affine_rows=50):
     base = [[] for _ in rhs]
     for monomial, A in matrix.items():
         for row, col in zip(*np.nonzero(A)):
             base[row].append((int(col), monomial))
     multipliers = [0] + [1 << j for j in range(n)]
-    generators = [(i, m) for i in range(50) for m in multipliers]
+    generators = [(i, m) for i in range(affine_rows) for m in multipliers]
     if include_adjusted:
-        generators.extend((i, 0) for i in range(50, 64))
+        generators.extend((i, 0) for i in range(affine_rows, 64))
     left_terms = sorted({(c, p | m) for i, m in generators for c, p in base[i]},
                         key=lambda cp: (cp[1].bit_count(), cp))
     code = encoding(left_terms)
@@ -102,7 +102,7 @@ def dependencies(matrix, rhs, n, include_adjusted, pure):
     consequences = []
     projected = {}
     for proof in relations:
-        add(projected, proof >> (50 * (n + 1)))
+        add(projected, proof >> (affine_rows * (n + 1)))
         combination = []
         lhs = 0
         poly = set()
