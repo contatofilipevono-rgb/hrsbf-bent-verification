@@ -1,0 +1,32 @@
+name: H(16,4) Step 40B — B1_11/B0_11 K_R-Eliminated Core Singular + MinRank Pencil Hunt
+
+on:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP40B_B11_REDUCED_CORE_AND_MINRANK.py'
+      - '.github/workflows/run_h16_step40b_reduced_core_singular.yml'
+  workflow_dispatch:
+
+jobs:
+  step40b_reduced_core:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B1_11, B0_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Singular and Python deps
+        run: |
+          for attempt in 1 2 3; do
+            sudo apt-get update -qq && sudo apt-get install -y -qq --fix-missing singular && break
+            sleep 5
+          done
+          python -m pip install --upgrade pip && pip install numpy python-sat
+      - name: Run Step 40B (${{ matrix.cell }})
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP40B_B11_REDUCED_CORE_AND_MINRANK.py --cells ${{ matrix.cell }}
