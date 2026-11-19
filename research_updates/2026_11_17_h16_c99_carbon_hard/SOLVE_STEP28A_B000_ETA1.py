@@ -7,7 +7,12 @@ import subprocess
 import sys
 import time
 from pathlib import Path
+import argparse
+import hashlib
 import json
+from itertools import combinations
+
+from H16_NORMAL_BALANCE_PROJECTION import normal_balance_count
 import numpy as np
 from pysat.solvers import Solver
 
@@ -26,8 +31,14 @@ import SOLVE_STEP22A_B000_ENUM_CLOSE_ETA62_63_42_AND_ETA0 as s22a
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--shard", type=int, default=0)
+    parser.add_argument("--shards", type=int, default=1)
+    args = parser.parse_args()
+    if not 0 <= args.shard < args.shards:
+        parser.error("expected 0 <= shard < shards")
     t0 = time.perf_counter()
-    print("==================== [B0_00] STEP 28A: ETA=1 FULL CLOSURE ====================", flush=True)
+    print("==================== [B0_00] STEP 29A: ETA=1 FULL CLOSURE ====================", flush=True)
 
     c_diag, so_diag = WORK_DIR / "s27a_diag.c", WORK_DIR / "libs27a_diag.so"
     c_diag.write_text(diag_v2.C_DIAG_SRC, encoding="utf-8")
@@ -189,6 +200,33 @@ def main():
         tmp = m
         while tmp: lb = tmp & -tmp; b_tt[i] ^= orb_tt_np[lb.bit_length() - 1]; tmp ^= lb
 
+    # q = 0 in B0_00. Every nonzero diagonal coset must be balanced.
+    origin_tt = np.zeros(65536, dtype=np.uint8)
+    origin_mask = origin111
+    while origin_mask:
+        bit = origin_mask & -origin_mask
+        origin_mask ^= bit
+        origin_tt ^= orb_tt_np[bit.bit_length() - 1]
+
+    def pack_256(values):
+        return int.from_bytes(np.packbits(values, bitorder="little").tobytes(), "little")
+
+    cosets = (0x55, 0xFF, 0x11, 0x33, 0x77, 0x01)
+    truth = {}
+    for z in cosets:
+        pts = [u | ((u ^ z) << 8) for u in range(256)]
+        truth[z] = (pack_256(origin_tt[pts]),
+                    [pack_256(row[pts]) for row in b_tt])
+
+    groups = [(z,) for z in cosets] + list(combinations(cosets, 2))
+
+    def exclude_on_balance(pivots):
+        for group in groups:
+            count = normal_balance_count([truth[z] for z in group], pivots)
+            if count is not None and count[1] == 0:
+                return group, count[0]
+        return None
+
     seen_a, d8_specs = set(), []
     for a in range(1, 256):
         if a in seen_a: continue
@@ -272,9 +310,18 @@ def main():
     nW1 = len(W_pivs1)
     exh1, models1, _ = s22a.enumerate_pure_w_models(pure_y1, nW1, max_models=5000, time_budget=30.0)
     assert exh1
+    models1 = sorted(set(models1))
+    anchor = hashlib.sha256(json.dumps([eta_free, W_forms1, models1]).encode()).hexdigest()
+    assigned = models1[args.shard::args.shards]
+    print(f"eta=1 shard={args.shard}/{args.shards} | {len(assigned)}/{len(models1)} models | anchor={anchor}",
+          flush=True)
     n_cl1, n_rec_cl, n_still_open = 0, 0, 0
     open_details = []
-    for idx_m, y in enumerate(models1):
+    coset_closed = []
+    for idx_m, y in enumerate(assigned):
+        if idx_m % 24 == 0:
+            print(f"eta=1 progress: {idx_m}/{len(assigned)} direct={n_cl1} "
+                  f"recursive={n_rec_cl} balance={len(coset_closed)}", flush=True)
         ex_w = [(W_forms1[j], (y >> j) & 1) for j in range(nW1)]
         sub = s9.run_branch_cascade(
             lib9, sr1["_buf"], sr1["_quad_ids"], sr1["_cub_ids"], sr1["_lin_pivs"],
@@ -292,6 +339,13 @@ def main():
         if sub["closed_unsat"]:
             n_cl1 += 1
         else:
+            hit = exclude_on_balance(sub["_lin_pivs"])
+            if hit is not None:
+                group, rank = hit
+                coset_closed.append((y, group, rank))
+                print(f"eta=1 balance contradiction: w_mask={y:#x} cosets={group} rank={rank}",
+                      flush=True)
+                continue
             # Inspect new W_ess! If new_dimW <= 12, exhaustively close recursively!!
             nqps = [s9.row_to_pset(sub["_buf"], qr, tbl) for qr in sub.get("_quad_ids", [])]
             nana = s16.analyze_quad_system(nqps) if nqps else {"dim_W_ess": 99, "W_piv": {}}
@@ -317,16 +371,19 @@ def main():
             else:
                 open_details.append((y, sub["N_active"], len(nqps), ndw, -1, -1))
             n_still_open += 1
-    print(f"  [eta=1] TOTAL MODELS = {len(models1)}: direct_closed={n_cl1}, rec_W_closed={n_rec_cl}, STILL_OPEN={n_still_open}", flush=True)
-    (WORK_DIR / "step28_b000_eta1.json").write_text(
-        json.dumps({"models": len(models1), "direct_closed": n_cl1,
-                    "recursive_closed": n_rec_cl, "open": open_details}, indent=2),
+    assert n_cl1 + n_rec_cl + len(coset_closed) + n_still_open == len(assigned)
+    print(f"  [eta=1] SHARD MODELS = {len(assigned)} / {len(models1)}: direct_closed={n_cl1}, rec_W_closed={n_rec_cl}, balance_closed={len(coset_closed)}, STILL_OPEN={n_still_open}", flush=True)
+    (WORK_DIR / f"step29_b000_eta1_{args.shard}.json").write_text(
+        json.dumps({"models": len(models1), "anchor": anchor, "shard": args.shard,
+                    "shards": args.shards, "assigned": assigned, "direct_closed": n_cl1,
+                    "recursive_closed": n_rec_cl, "balance_closed": coset_closed,
+                    "open": open_details}, indent=2),
         encoding="utf-8",
     )
     for od in open_details:
         print(f"      OPEN y=0x{od[0]:03x}: N={od[1]}, q={od[2]}, new_dimW={od[3]}, mods2={od[4]}, open2={od[5]}", flush=True)
 
-    print(f"\n[B0_00] STEP 28A DONE ({time.perf_counter()-t0:.1f}s)", flush=True)
+    print(f"\n[B0_00] STEP 29A DONE ({time.perf_counter()-t0:.1f}s)", flush=True)
 
 
 if __name__ == "__main__":
