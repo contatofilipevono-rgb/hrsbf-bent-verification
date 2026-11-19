@@ -8,29 +8,7 @@ permissions:
   contents: read
 
 jobs:
-  b000-focus:
-    strategy:
-      fail-fast: false
-      matrix:
-        eta: [22, 23, 43, 60, 61]
-        shard: [0, 1, 2]
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - run: python -m pip install -q numpy python-sat
-      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP28A_B000_ETA1.py --focus-eta ${{ matrix.eta }} --shard ${{ matrix.shard }} --shards 3
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: h16-step33-b000-${{ matrix.eta }}-${{ matrix.shard }}
-          path: research_updates/2026_11_17_h16_c99_carbon_hard/step33_b000_eta${{ matrix.eta }}_${{ matrix.shard }}.json
-
-  b111-coverage:
-    if: github.event_name == 'workflow_dispatch'
+  eta-symmetry:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -39,9 +17,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install -q numpy python-sat
-      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP28B_COVERAGE.py --cells B1_11
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP28A_B000_ETA1.py --multipliers
       - uses: actions/upload-artifact@v4
-        if: always()
         with:
-          name: h16-step28-b111-eta0
-          path: step28_B1_11_eta0_*.json
+          name: h16-step34-b000-multipliers
+          path: research_updates/2026_11_17_h16_c99_carbon_hard/step34_b000_multipliers.json

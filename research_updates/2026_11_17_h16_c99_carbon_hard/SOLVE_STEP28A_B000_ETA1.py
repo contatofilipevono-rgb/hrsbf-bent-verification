@@ -13,6 +13,7 @@ import json
 from itertools import combinations
 
 from H16_ANF_SMALL import anf_solutions
+from H16_ODD_MULTIPLIERS import odd_multiplier_maps
 from H16_NORMAL_BALANCE_PROJECTION import normal_balance_count, normal_balance_options
 import numpy as np
 from pysat.solvers import Solver
@@ -33,6 +34,7 @@ import SOLVE_STEP22A_B000_ENUM_CLOSE_ETA62_63_42_AND_ETA0 as s22a
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--multipliers", action="store_true")
     parser.add_argument("--scan", action="store_true")
     parser.add_argument("--focus-eta", type=int)
     parser.add_argument("--eta", type=int, default=1, choices=(0, 1))
@@ -310,6 +312,15 @@ def main():
     forms_L1 = s16.extract_forms_from_orb_vecs(cb111, layer_vecs["L1"][1], layer_vecs["L1"][0])
     eta_free = s16.reduce_forms_mod_pivs(forms_L1, root["_lin_pivs"])
     n_ef = len(eta_free)
+
+    if args.multipliers:
+        maps = odd_multiplier_maps(orbits, free111, origin111, cb111, eta_free,
+                                   root["_lin_pivs"], s9.add_linear_rref)
+        (WORK_DIR / "step34_b000_multipliers.json").write_text(
+            json.dumps({"eta_forms": eta_free, "root_pivots": root["_lin_pivs"],
+                        "maps": maps}, indent=2), encoding="utf-8",
+        )
+        return
 
     if args.scan or args.focus_eta is not None:
         def cascade(state, constraints, rounds=24):
