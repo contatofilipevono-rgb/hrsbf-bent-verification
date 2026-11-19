@@ -1,0 +1,27 @@
+name: Run H16 Step 26 V_13 Degree-4 Linear-Combo Drops on Eta (5 Filtrations)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP26*.py'
+      - '.github/workflows/run_step26_v13_on_eta.yml'
+  workflow_dispatch:
+
+jobs:
+  step26-v13-on-eta:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B0_00, B0_11, B1_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install python-sat and numpy
+        run: pip install -q python-sat numpy
+      - name: Run Step 26 V_13 Deg-4 Linear-Combo Drops on ${{ matrix.cell }}
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP26_V13_DEG4_LINEAR_COMBO_DROPS_ON_ETA.py --cells ${{ matrix.cell }}
