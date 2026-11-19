@@ -1,0 +1,42 @@
+name: H16 Step 63 exhaustive post-transfer pilot
+on:
+  push:
+    branches: [codex/h16-step43-specialized-kernel]
+    paths: ['research_updates/2026_11_17_h16_c99_carbon_hard/H16_STEP63_FIBER_CENSUS.cpp', 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP63_FIBER_CENSUS.py', '.github/workflows/run_h16_step63_fiber_census.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  census:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - offset: 0
+            prefix: 0
+          - offset: 64
+            prefix: 853
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      H16_OFFSET: ${{ matrix.offset }}
+      H16_PREFIX: ${{ matrix.prefix }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44594052302
+          name: h16-step60-fiber-${{ matrix.offset }}
+          path: fiber
+          github-token: ${{ github.token }}
+      - run: g++ -O3 -std=c++20 -march=native research_updates/2026_11_17_h16_c99_carbon_hard/H16_STEP63_FIBER_CENSUS.cpp -o h16_step63
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP63_FIBER_CENSUS.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: h16-step63-census-${{ matrix.offset }}
+          path: |
+            step63_slice.txt
+            step63_census.json
