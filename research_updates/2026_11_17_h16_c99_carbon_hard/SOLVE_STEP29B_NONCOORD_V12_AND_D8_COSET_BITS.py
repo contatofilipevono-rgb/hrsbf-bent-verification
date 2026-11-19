@@ -425,7 +425,7 @@ def main():
     lib_cg = ctypes.CDLL(str(so_cg))
     for fn in (lib_cg.build_cg12_row_c, lib_cg.build_cg11_row_c):
         fn.argtypes = [
-            ctypes.c_int, ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int),
+            ctypes.c_int, ctypes.POINTER(ctypes.c_int16), ctypes.POINTER(ctypes.c_int),
             ctypes.c_int, ctypes.POINTER(ctypes.c_int), ctypes.c_int,
             ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int,
             ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_uint64),
@@ -448,13 +448,66 @@ def main():
         ctypes.c_int, ctypes.POINTER(ctypes.c_int),
     ]
 
-    orbits, _ = diag_v2.get_orbits_16_4()
-    orb_tt_np = s12a.build_orbit_truth_tables(orbits)
-    v6_list, _, rot4_data, fiber_meta = diag_v2.build_v6_and_rot4_data(orbits)
-    layers, c0x0 = s9.build_cyclotomic_layers(orbits)
-    mon_to_orb_arr = s10.build_mon_to_orb_array(orbits)
-    reps12, reps11 = s10.get_cg_orbit_reps()
-    tbl = s9.build_col_tables_111(111)
+    orbits = diag_v2.build_orbits_116()
+    mon_to_orb_arr = (ctypes.c_int16 * 65536)(*([-1] * 65536))
+    for j, orb in enumerate(orbits):
+        for m in orb: mon_to_orb_arr[m] = j
+    reps12, reps11 = s10.subset_orbits(12), s10.subset_orbits(11)
+
+    v6_list = diag_v2.all_v6_orbits()
+    _, u8_size8, nonzero_z = diag_v2.build_c8_orbits()
+    M_rows = []
+    for rep_z, _ in nonzero_z:
+        row_mask = 0
+        for m_idx, (_, u_orb) in enumerate(u8_size8):
+            s = sum(1 if ((u & rep_z).bit_count() & 1) == 0 else -1 for u in u_orb)
+            if (s // 2) & 1: row_mask |= (1 << m_idx)
+        M_rows.append(row_mask)
+    fiber_meta = (nonzero_z, diag_v2.gf2_nullspace_left(M_rows))
+
+    pair_idx, all_pairs = {}, []
+    for v in range(256):
+        for w in range(v + 1, 256):
+            pair_idx[(v, w)] = len(all_pairs)
+            all_pairs.append(v | (w << 8))
+    seen_x = bytearray(65536)
+    rot4_reps, rep_of_x = [], [-1] * 65536
+    for x in range(65536):
+        if (x & 0xFF) == (x >> 8) or seen_x[x]: continue
+        r_idx = len(rot4_reps); rot4_reps.append(x)
+        for y in (x, diag_v2.rot16(x, 4), diag_v2.rot16(x, 8), diag_v2.rot16(x, 12)):
+            seen_x[y] = 1; rep_of_x[y] = r_idx
+
+    coset_0xf_reps = []
+    vis16 = bytearray(65536)
+    for x in range(65536):
+        if vis16[x]: continue
+        cur, mem = x, []
+        while not vis16[cur]:
+            vis16[cur] = 1; mem.append(cur); cur = diag_v2.rot16(cur)
+        if len(mem) == 16:
+            vnib = (x & 0xF) ^ ((x >> 4) & 0xF) ^ ((x >> 8) & 0xF) ^ ((x >> 12) & 0xF)
+            if vnib == 0xF: coset_0xf_reps.append(mem[0])
+
+    X = np.arange(65536, dtype=np.uint16)
+    orb_tts = [bytearray(65536) for _ in range(116)]
+    orb_tt_np = np.zeros((116, 65536), dtype=np.uint8)
+    orb_diag, orb_pair, orb_r4, orb_0xf_parity = [0] * 116, [0] * 116, [0] * 116, [0] * 116
+    for j, orb in enumerate(orbits):
+        acc = np.zeros(65536, dtype=np.uint8)
+        for m in orb: acc ^= ((X & m) == m).astype(np.uint8)
+        orb_tt_np[j] = acc
+        tt = bytearray(acc.tolist())
+        orb_tts[j] = tt
+        orb_diag[j] = sum((1 << v) for v in range(256) if tt[v | (v << 8)])
+        orb_pair[j] = sum((1 << k) for k, x in enumerate(all_pairs) if tt[x])
+        orb_r4[j] = sum((1 << k) for k, x in enumerate(rot4_reps) if tt[x])
+        orb_0xf_parity[j] = sum(tt[x] for x in coset_0xf_reps) & 1
+    chi_r4 = sum((1 << k) for k, x in enumerate(rot4_reps) if x.bit_count() & 1)
+    rot4_data = (pair_idx, orb_diag, orb_pair, orb_r4, chi_r4, rep_of_x, orb_0xf_parity, lambda j, x: orb_tts[j][x])
+
+    layers, c0x0 = s9.build_cyclotomic_layers()
+    tbl = s9.build_col_tables(111)
 
     for cell in [c.strip() for c in args.cells.split(",") if c.strip()]:
         run_cell(
