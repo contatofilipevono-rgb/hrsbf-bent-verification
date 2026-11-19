@@ -2,7 +2,7 @@ name: H16 Step 59 branch-free pivot from constant fiber equations
 on:
   push:
     branches: [codex/h16-step43-specialized-kernel]
-    paths: ['research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP59_BRANCH_FREE_PIVOT.py']
+    paths: ['research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP59_BRANCH_FREE_PIVOT.py', '.github/workflows/run_h16_step59_branch_free_pivot.yml']
 permissions:
   contents: read
   actions: read
@@ -26,13 +26,13 @@ jobs:
           github-token: ${{ github.token }}
       - uses: actions/download-artifact@v4
         with:
-          run-id: 44597467630
+          run-id: 44587467630
           name: h16-step52-left-inverse
           path: inverse
           github-token: ${{ github.token }}
       - uses: actions/download-artifact@v4
         with:
-          run-id: 44597836638
+          run-id: 44587836638
           name: h16-step53-global-residual
           path: residual
           github-token: ${{ github.token }}
