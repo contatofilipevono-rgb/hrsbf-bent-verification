@@ -286,6 +286,7 @@ def main():
     parser.add_argument("--etas", type=str, default="62,63")
     parser.add_argument("--shard", type=int, default=0)
     parser.add_argument("--shards", type=int, default=1)
+    parser.add_argument("--ff_only", action="store_true")
     args = parser.parse_args()
 
     def get_coset_bal_states(sr_cur, z_val, max_dim=8):
@@ -353,6 +354,8 @@ def main():
         print(f"    [eta={em:2d}] after z=0xFF cascade: CLOSED={n_cl_ff}/{len(bal_ff)}, OPEN={len(open_ff)}", flush=True)
         if not open_ff:
             print(f"  [eta={em:2d}] *** BOOM!! 100% FORMALLY CLOSED UNSAT BY z=0xFF + CASCADE!! ***", flush=True)
+            continue
+        if args.ff_only:
             continue
 
         # Step 2: For each open_ff branch, split on z=0x55 balancedness (sharded across args.shards!)
