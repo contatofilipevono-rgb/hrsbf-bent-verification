@@ -1,0 +1,30 @@
+name: H16 Step 32 exact reduced systems
+on:
+  push:
+    branches: [codex/h16-step32-reduced]
+
+permissions:
+  contents: read
+
+jobs:
+  reduced:
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B1_11, B0_11]
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy python-sat
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP32_REDUCED.py --cells ${{ matrix.cell }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: h16-step32-${{ matrix.cell }}
+          path: |
+            step32_${{ matrix.cell }}_unit.json
+            step28_${{ matrix.cell }}_eta0_*.json

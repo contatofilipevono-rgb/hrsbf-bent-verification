@@ -75,7 +75,7 @@ def verify_lin_pivs_rref(lin_pivs):
 
 
 def run_step19_cell(cell_name, lib_diag, lib9, lib_cg, lib_sh, orbits, layer_vecs,
-                    v6_list, rot4_data, fiber_meta, layers, c0x0, mon_to_orb_arr, reps12, reps11, tbl):
+                    v6_list, rot4_data, fiber_meta, layers, c0x0, mon_to_orb_arr, reps12, reps11, tbl, probe=None):
     t0 = time.perf_counter()
     print(f"\n==================== [{cell_name}] STEP 19: ZERO-TRUST AUDIT + TRUE (R_free > R_tail > W_ess) ====================", flush=True)
     c99, c57, c113 = int(cell_name[1]), int(cell_name[3]), int(cell_name[4])
@@ -343,12 +343,15 @@ def run_step19_cell(cell_name, lib_diag, lib9, lib_cg, lib_sh, orbits, layer_vec
     lib_sh.remap_rows_by_perm(work, perm_buf, M_eq, n_cw, n_cols, orig_to_perm)
     piv_idx = (ctypes.c_int * n_cols)(*([-1] * n_cols))
     spec = {}
+    linear_rows = []
     pure_WT, pure_W = 0, 0
     for r in range(M_eq):
         pc = lib9.gf2_echelon_insert_s9(perm_buf, r, n_cw, piv_idx, n_cols)
         if pc < 0: continue
         oc = perm_to_orig[pc]
         drf, dt, dw, td = col_meta[oc]
+        if drf <= 1:
+            linear_rows.append(r)
         key = f"RF={drf}_T={dt}_W={dw}_d={td}"
         spec[key] = spec.get(key, 0) + 1
         if drf == 0:
@@ -359,10 +362,21 @@ def run_step19_cell(cell_name, lib_diag, lib9, lib_cg, lib_sh, orbits, layer_vec
     for k in sorted(spec.keys()):
         print(f"      {k}: {spec[k]}", flush=True)
 
+    if probe is not None:
+        unpermuted = (ctypes.c_uint64 * (M_eq * n_cw))()
+        inverse = (ctypes.c_int * n_cols)(*perm_to_orig)
+        lib_sh.remap_rows_by_perm(perm_buf, unpermuted, M_eq, n_cw, n_cols, inverse)
+        quads = [s9.row_to_pset(work, q, tbl) for q in range(len(sr["_quad_ids"]))]
+        linear = [s9.row_to_pset(unpermuted, q, tbl) for q in linear_rows]
+        # The tail equations are eliminated by substitution in the callback.
+        probe(cell_name, quads, [p for p in linear if p not in quads],
+              {v: i for i, v in enumerate(W_pivs)}, {v: i for i, v in enumerate(T_pivs)},
+              {v: i for i, v in enumerate(R_free)})
+
     print(f"[{cell_name}] STEP 19 DONE ({time.perf_counter()-t0:.1f}s)", flush=True)
 
 
-def main():
+def main(probe=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("--cells", type=str, default="B0_00,B0_11,B1_11")
     args = parser.parse_args()
@@ -514,7 +528,7 @@ def main():
     for cname in [c.strip() for c in args.cells.split(",") if c.strip()]:
         run_step19_cell(
             cname, lib_diag, lib9, lib_cg, lib_sh, orbits, layer_vecs,
-            v6_list, rot4_data, fiber_meta, layers, c0x0, mon_to_orb_arr, reps12, reps11, tbl
+            v6_list, rot4_data, fiber_meta, layers, c0x0, mon_to_orb_arr, reps12, reps11, tbl, probe=probe
         )
 
 
