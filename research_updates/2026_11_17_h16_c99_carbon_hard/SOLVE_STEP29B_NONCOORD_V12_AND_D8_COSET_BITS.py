@@ -233,25 +233,31 @@ def run_cell(cell_name, lib_diag, lib9, lib_cg, lib_v12, orbits, orb_tt_np,
         s9.pset_to_row(poly, raw_buf, n_base + idx_c, tbl)
     ctypes.memmove(ctypes.byref(raw_buf, (n_base + len(cyc_cubs)) * n_cw * 8), cg_buf, n_cg * n_cw * 8)
 
-    # Echelonize raw_buf first so we only evaluate the ~450 independent basis rows!
-    n_cols = tbl["off0"] + 1
-    piv_idx = (ctypes.c_int * n_cols)(*([-1] * n_cols))
-    ech_ids = []
-    for r_id in range(total_raw):
-        pc = lib9.gf2_echelon_insert_s9(raw_buf, r_id, n_cw, piv_idx, n_cols)
-        if pc >= 0:
-            ech_ids.append(r_id)
+    # Run root cascade so we have the ~460 surviving nonlinear eqs on the root affine subspace!
+    root = s9.run_branch_cascade(lib9, raw_buf, [], list(range(total_raw)), {}, [], tbl, max_xl_rounds=10, verify_subst=False)
+    root_eq_ids = list(root["_quad_ids"]) + list(root["_cub_ids"])
+    lin_pivs = root["_lin_pivs"]
+    active_vars = [i for i in range(111) if i not in lin_pivs]
 
-    # Generate R = 700 random points in F_2^111 and evaluate all independent baseline equations!
-    R = 700
+    # Generate R = 1000 random points ON THE ROOT AFFINE SUBSPACE (all root linear eqs satisfied!)
+    R = 1000
     rng = random.Random(292929)
-    x_pts = [rng.getrandbits(111) for _ in range(R)]
+    x_pts = []
+    for _ in range(R):
+        x = 0
+        for av in active_vars:
+            if rng.getrandbits(1): x |= (1 << av)
+        # Fill in linear pivots (strict RREF: each pivot depends only on active_vars!)
+        for lp, (pmask, prhs) in lin_pivs.items():
+            val = prhs ^ (((pmask ^ (1 << lp)) & x).bit_count() & 1)
+            if val: x |= (1 << lp)
+        x_pts.append(x)
     x_lo = (ctypes.c_uint64 * R)(*[x & mask64 for x in x_pts])
     x_hi = (ctypes.c_uint64 * R)(*[x >> 64 for x in x_pts])
 
     base_piv = {}
-    for r_id in ech_ids:
-        rptr = ctypes.cast(ctypes.byref(raw_buf, r_id * n_cw * 8), ctypes.POINTER(ctypes.c_uint64))
+    for r_id in root_eq_ids:
+        rptr = ctypes.cast(ctypes.byref(root["_buf"], r_id * n_cw * 8), ctypes.POINTER(ctypes.c_uint64))
         ev = 0
         for p_i in range(R):
             val = lib9.eval_row_s9(
@@ -260,8 +266,8 @@ def run_cell(cell_name, lib_diag, lib9, lib_cg, lib_v12, orbits, orb_tt_np,
             )
             if val: ev |= (1 << p_i)
         gf2_rank_insert(base_piv, ev)
-    print(f"  [{cell_name}] Baseline CG(389)+root echelon rows={len(ech_ids)}, eval rank on {R} pts = {len(base_piv)}", flush=True)
-    assert len(base_piv) == len(ech_ids), f"Rank mismatch: {len(base_piv)} vs {len(ech_ids)}"
+    print(f"  [{cell_name}] Root surviving eqs={len(root_eq_ids)} (N_act={len(active_vars)}), eval rank on {R} pts = {len(base_piv)}", flush=True)
+    assert len(base_piv) == len(root_eq_ids), f"Rank mismatch: {len(base_piv)} vs {len(root_eq_ids)}"
 
     # Prepare ctypes pointers for orb_tt, origin111 (116-bit mask), cb111 (list of 111 116-bit masks)
     orb_tt_flat = np.ascontiguousarray(orb_tt_np.reshape(-1), dtype=np.uint8)
@@ -421,6 +427,20 @@ def main():
     c_s9.write_text(s9.C_STEP9_SRC, encoding="utf-8")
     subprocess.run(["gcc", "-O3", "-march=native", "-shared", "-fPIC", str(c_s9), "-o", str(so_s9)], check=True)
     lib9 = ctypes.CDLL(str(so_s9))
+    lib9.subst_one_linear_var_batch.argtypes = [
+        ctypes.POINTER(ctypes.c_uint64), ctypes.c_int, ctypes.c_int, ctypes.c_int,
+        ctypes.c_int, ctypes.c_int, ctypes.c_int,
+        ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int),
+        ctypes.POINTER(ctypes.c_uint8), ctypes.POINTER(ctypes.c_uint8),
+        ctypes.POINTER(ctypes.c_uint8), ctypes.POINTER(ctypes.c_uint8),
+        ctypes.c_int, ctypes.c_uint64, ctypes.c_uint64, ctypes.c_int,
+    ]
+    lib9.mul_deg2_row_by_var.argtypes = [
+        ctypes.POINTER(ctypes.c_uint64), ctypes.POINTER(ctypes.c_uint64),
+        ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int,
+        ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int),
+        ctypes.POINTER(ctypes.c_uint8), ctypes.POINTER(ctypes.c_uint8), ctypes.POINTER(ctypes.c_uint8),
+    ]
     lib9.gf2_echelon_insert_s9.argtypes = [
         ctypes.POINTER(ctypes.c_uint64), ctypes.c_int, ctypes.c_int,
         ctypes.POINTER(ctypes.c_int), ctypes.c_int,
