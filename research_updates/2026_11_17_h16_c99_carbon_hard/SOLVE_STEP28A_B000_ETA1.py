@@ -12,6 +12,7 @@ import hashlib
 import json
 from itertools import combinations
 
+from H16_ANF_SMALL import anf_solutions
 from H16_NORMAL_BALANCE_PROJECTION import normal_balance_count, normal_balance_options
 import numpy as np
 from pysat.solvers import Solver
@@ -32,6 +33,7 @@ import SOLVE_STEP22A_B000_ENUM_CLOSE_ETA62_63_42_AND_ETA0 as s22a
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--scan", action="store_true")
     parser.add_argument("--eta", type=int, default=1, choices=(0, 1))
     parser.add_argument("--shard", type=int, default=0)
     parser.add_argument("--shards", type=int, default=1)
@@ -307,6 +309,95 @@ def main():
     forms_L1 = s16.extract_forms_from_orb_vecs(cb111, layer_vecs["L1"][1], layer_vecs["L1"][0])
     eta_free = s16.reduce_forms_mod_pivs(forms_L1, root["_lin_pivs"])
     n_ef = len(eta_free)
+
+    if args.scan:
+        def cascade(state, constraints, rounds=24):
+            return s9.run_branch_cascade(
+                lib9, state["_buf"], state["_quad_ids"], state["_cub_ids"],
+                state["_lin_pivs"], constraints, tbl,
+                max_xl_rounds=rounds, verify_subst=True,
+            )
+
+        def assign(forms, value):
+            return [(form, (value >> i) & 1) for i, form in enumerate(forms)]
+
+        def pure_w_options(state):
+            qps = [s9.row_to_pset(state["_buf"], qr, tbl) for qr in state["_quad_ids"]]
+            if not qps:
+                return 0, None
+            analysis = s16.analyze_quad_system(qps)
+            w_rref = s19.strict_rref_masks(list(analysis["W_piv"].values()))
+            n_w = len(w_rref)
+            if n_w > 14:
+                return n_w, None
+            pivots, polys = s22a.extract_pure_w_quads(lib_sh, state, w_rref, tbl)
+            forms = [w_rref[p] for p in pivots]
+            values = anf_solutions(polys, len(forms))
+            return n_w, (forms, values, len(polys))
+
+        def pick_projection(state, cap):
+            n_w, pure = pure_w_options(state)
+            options = []
+            pure_count = None
+            if pure is not None:
+                forms, values, n_eqs = pure
+                pure_count = len(values)
+                if pure_count <= cap and (pure_count < 1 << len(forms) or pure_count == 0):
+                    options.append((len(values), len(forms), f"pure_W_{n_eqs}", forms, values))
+            balance = choose_balance_split(state["_lin_pivs"], max_states=cap)
+            if balance is not None:
+                count, rank, group, forms, values = balance
+                options.append((count, rank, ",".join(f"{z:#04x}" for z in group), forms, values))
+            best = min(options, key=lambda item: item[:3]) if options else None
+            return n_w, pure_count, best
+
+        summary = []
+        for eta in range(args.shard, 1 << n_ef, args.shards):
+            if eta in (0, 1):
+                continue
+            started = time.perf_counter()
+            deadline = started + 65
+            record = {"eta": eta, "status": "open"}
+            print(f"eta={eta} starting", flush=True)
+            state = cascade(root, assign(eta_free, eta))
+            if state["closed_unsat"]:
+                record.update(status="root_unsat", reason=state["closed_by"])
+            elif "_buf" not in state:
+                record.update(status="capped", reason=state.get("note"))
+            elif hit := exclude_on_balance(state["_lin_pivs"]):
+                record.update(status="balance_unsat", group=hit[0], rank=hit[1])
+            else:
+                record.update(active=state["N_active"], quads=len(state["_quad_ids"]))
+                n_w, pure_count, option = pick_projection(state, cap=40)
+                record.update(nW=n_w, pure_models=pure_count)
+                if option is not None:
+                    count, rank, label, forms, values = option
+                    record.update(projection=label, rank=rank, cases=count, tested=0, remaining=[])
+                    for value in values:
+                        if time.perf_counter() >= deadline:
+                            break
+                        assignments = assign(forms, value)
+                        pivots = state["_lin_pivs"].copy()
+                        feasible = all(s9.add_linear_rref(pivots, mask, rhs) for mask, rhs in assignments)
+                        record["tested"] += 1
+                        if not feasible or exclude_on_balance(pivots):
+                            continue
+                        child = cascade(state, assignments, rounds=18)
+                        if child["closed_unsat"]:
+                            continue
+                        if "_lin_pivs" in child and exclude_on_balance(child["_lin_pivs"]):
+                            continue
+                        record["remaining"].append(value)
+                    if record["tested"] == count and not record["remaining"]:
+                        record["status"] = "projection_unsat"
+            record["seconds"] = round(time.perf_counter() - started, 2)
+            summary.append(record)
+            print("STEP31_RESULT " + json.dumps(record), flush=True)
+            (WORK_DIR / f"step31_b000_scan_{args.shard}.json").write_text(
+                json.dumps({"eta_forms": eta_free, "summary": summary}, indent=2),
+                encoding="utf-8",
+            )
+        return
 
     # --------------------------------------------------------------------------
     # PART 2: FULL CLOSURE ATTEMPT ON B0_00 eta = 1 (ALL 288 MODELS + RECURSIVE W_ess!)
