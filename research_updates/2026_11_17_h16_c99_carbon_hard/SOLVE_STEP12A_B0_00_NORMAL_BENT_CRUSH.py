@@ -86,7 +86,7 @@ void extract_deg3_coset_poly(
             g2[i][j] = v;
             uint8_t c2 = v ^ g1[i] ^ g1[j];
             if (c2) {
-                int col = off2 + col2_base[j] + i;
+                int col = off2 + col2_base[i] + (j - i - 1);
                 out_row[col >> 6] ^= (1ULL << (col & 63));
             }
         }
@@ -100,6 +100,7 @@ void extract_deg3_coset_poly(
             uint64_t x0 = bi[0] ^ bj[0], x1 = bi[1] ^ bj[1];
             uint64_t x2 = bi[2] ^ bj[2], x3 = bi[3] ^ bj[3];
             uint8_t pre = g2[i][j] ^ g1[i] ^ g1[j];
+            int c3_base = col3_base[i * n + j];
             for (int k = j + 1; k < n; k++) {
                 const uint64_t *bk = b_words + 4 * k;
                 int w = __builtin_popcountll(x0 ^ bk[0]) + __builtin_popcountll(x1 ^ bk[1])
@@ -107,7 +108,7 @@ void extract_deg3_coset_poly(
                 uint8_t v = (uint8_t)((w >> shift_bit) & 1);
                 uint8_t c3 = v ^ pre ^ g2[i][k] ^ g2[j][k] ^ g1[k];
                 if (c3) {
-                    int col = col3_base[k] + col2_base[j] + i;
+                    int col = c3_base + (k - j - 1);
                     out_row[col >> 6] ^= (1ULL << (col & 63));
                 }
             }
