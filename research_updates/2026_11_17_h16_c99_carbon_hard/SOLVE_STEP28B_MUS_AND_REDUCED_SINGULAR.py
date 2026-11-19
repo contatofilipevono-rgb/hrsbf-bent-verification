@@ -389,46 +389,58 @@ def run_step27b_cell(cell_name, lib_diag, lib9, lib_cg, lib_sh, lib_d8, orbits, 
         t_idx = {v: i for i, v in enumerate(T_pivs)}
         rf_idx = {v: i for i, v in enumerate(RF_vars)}
 
-        # Separate into: Q_t(w) substitutions (drf=0, dt=1), M1 (drf=1, dt=0), M1T (drf=1, dt=1), RF2 (drf=2, dt=0, d=2)
-        Q_subs = {}  # ti -> set of W bitmasks
-        M1_raw, M1T_raw, RF2_raw = [], [], []
-        for r_id, (drf, dt_c, d_lead) in ech_rows:
-            ps = s9.row_to_pset(std_ech, r_id, tbl)
-            max_rf, max_t = 0, 0
+        # Step A: Exact 17x17 Gauss-Jordan on the n_q quadratics in work[0..n_q-1] to get ALL 17 r_t = Q_t(w)!
+        q_rows = []
+        for qi in range(n_q):
+            ps = s9.row_to_pset(work, qi, tbl)
+            tmask = 0
+            w_poly = set()
             for m in ps:
                 vs = [b for b in range(n) if (m >> b) & 1]
-                max_rf = max(max_rf, sum(1 for v in vs if v in RF_set))
-                max_t = max(max_t, sum(1 for v in vs if v in T_set))
-            if max_rf == 0 and max_t == 1:
-                # Extract unique T_piv variable!
-                t_terms = []
-                w_poly = set()
-                for m in ps:
-                    vs = [b for b in range(n) if (m >> b) & 1]
-                    tvs = [t_idx[v] for v in vs if v in T_set]
-                    wvs = [w_idx[v] for v in vs if v in w_idx]
-                    if len(tvs) == 1 and len(wvs) == 0:
-                        t_terms.append(tvs[0])
-                    elif len(tvs) == 0:
-                        wm = 0
-                        for wi in wvs: wm |= (1 << wi)
-                        w_poly ^= {wm}
-                    else:
-                        t_terms = None; break
-                if t_terms is not None and len(t_terms) == 1:
-                    Q_subs[t_terms[0]] = w_poly
-            elif max_rf == 1 and max_t == 0:
-                M1_raw.append(ps)
-            elif max_rf == 1 and max_t == 1:
-                M1T_raw.append(ps)
-            elif max_rf == 2 and max_t == 0 and d_lead == 2:
-                RF2_raw.append(ps)
+                rfvs = [v for v in vs if v in RF_set]
+                tvs = [t_idx[v] for v in vs if v in T_set]
+                wvs = [w_idx[v] for v in vs if v in w_idx]
+                assert len(rfvs) == 0, f"Unexpected RF var in quadratic {qi}"
+                if len(tvs) == 1 and len(wvs) == 0:
+                    tmask ^= (1 << tvs[0])
+                elif len(tvs) == 0:
+                    wm = 0
+                    for wi in wvs: wm |= (1 << wi)
+                    w_poly ^= {wm}
+                else:
+                    raise AssertionError(f"Unexpected T*W term in quadratic {qi}: tvs={tvs}, wvs={wvs}")
+            q_rows.append([tmask, w_poly])
+        # Full Gauss-Jordan elimination on q_rows (17x17)
+        Q_subs = {}
+        for ti in range(nT):
+            piv_i = None
+            for i in range(len(q_rows)):
+                if (q_rows[i][0] >> ti) & 1:
+                    piv_i = i; break
+            assert piv_i is not None, f"T_piv {ti} missing from quadratics!"
+            q_rows[ti], q_rows[piv_i] = q_rows[piv_i], q_rows[ti]
+            for j in range(len(q_rows)):
+                if j != ti and ((q_rows[j][0] >> ti) & 1):
+                    q_rows[j][0] ^= q_rows[ti][0]
+                    q_rows[j][1] ^= q_rows[ti][1]
+        for ti in range(nT):
+            assert q_rows[ti][0] == (1 << ti), f"Row {ti} not unit vector: {bin(q_rows[ti][0])}"
+            Q_subs[ti] = q_rows[ti][1]
 
-        # Back-substitute Q_subs if any T_pivs had upper-triangular dependencies (should already be exact!)
-        print(f"  [{cell_name}] 3-block shear: nW={nW}, nT={nT} (Q_subs={len(Q_subs)}), nRF={nRF} | M1={len(M1_raw)}, M1T={len(M1T_raw)}, RF2_d2={len(RF2_raw)}", flush=True)
-        assert len(Q_subs) == nT, f"Expected {nT} exact Q_subs, got {len(Q_subs)}"
+        # Step B: Classify ech_rows by leading column (drf, dt_c):
+        #   M1:  leading (drf=1, dt_c=0) -> linear in r_free, affine coeff in w (after r_t=Q_t(w) in tail)
+        #   M1T: leading (drf=1, dt_c=1) -> linear in r_free, quadratic coeff in w (after r_t=Q_t(w))
+        M1_raw, M1T_raw = [], []
+        for r_id, (drf, dt_c, d_lead) in ech_rows:
+            if drf == 1 and dt_c == 0:
+                M1_raw.append(s9.row_to_pset(std_ech, r_id, tbl))
+            elif drf == 1 and dt_c == 1:
+                M1T_raw.append(s9.row_to_pset(std_ech, r_id, tbl))
 
-        # Convert M1_raw and M1T_raw (after substituting r_t = Q_t(w)) into exact linear-in-r_free equations!
+        print(f"  [{cell_name}] 3-block shear: nW={nW}, nT={nT} (Q_subs={len(Q_subs)}), nRF={nRF} | M1={len(M1_raw)}, M1T={len(M1T_raw)}", flush=True)
+        assert len(Q_subs) == nT
+
+        # Convert M1_raw and M1T_raw (after substituting r_t = Q_t(w) for ANY number of t_vars!) into linear-in-r_free eqs
         def subst_ps_to_lin_rf(ps):
             coeff_dict = {}  # rfi -> set of W bitmasks
             rhs_p = set()
@@ -437,12 +449,12 @@ def run_step27b_cell(cell_name, lib_diag, lib9, lib_cg, lib_sh, lib_d8, orbits, 
                 rfvs = [rf_idx[v] for v in vs if v in RF_set]
                 tvs = [t_idx[v] for v in vs if v in T_set]
                 wvs = [w_idx[v] for v in vs if v in w_idx]
-                assert len(rfvs) <= 1 and len(tvs) <= 1
+                assert len(rfvs) <= 1, f"Unexpected RF^2 term in drf<=1 row!"
                 wm = 0
                 for wi in wvs: wm |= (1 << wi)
                 wp = {wm}
-                if len(tvs) == 1:
-                    wp = mul_w_polys(wp, Q_subs[tvs[0]])
+                for ti in tvs:
+                    wp = mul_w_polys(wp, Q_subs[ti])
                 if len(rfvs) == 1:
                     rfi = rfvs[0]
                     coeff_dict[rfi] = xor_w_polys(coeff_dict.get(rfi, set()), wp)
