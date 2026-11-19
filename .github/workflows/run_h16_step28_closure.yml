@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 jobs:
-  b000-eta1:
+  b000-eta0:
     strategy:
       fail-fast: false
       matrix:
@@ -21,14 +21,15 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install -q numpy python-sat
-      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP28A_B000_ETA1.py --shard ${{ matrix.shard }} --shards 8
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP28A_B000_ETA1.py --eta 0 --shard ${{ matrix.shard }} --shards 8
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: h16-step29-b000-eta1-${{ matrix.shard }}
-          path: research_updates/2026_11_17_h16_c99_carbon_hard/step29_b000_eta1_${{ matrix.shard }}.json
+          name: h16-step30-b000-eta0-${{ matrix.shard }}
+          path: research_updates/2026_11_17_h16_c99_carbon_hard/step30_b000_eta0_${{ matrix.shard }}.json
 
   b111-coverage:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:

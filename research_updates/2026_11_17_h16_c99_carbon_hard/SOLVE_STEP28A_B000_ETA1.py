@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exhaust the pure-W projection of B0_00 eta=1 and report all unresolved branches."""
+"""Verify projected branches of B0_00 eta=0 or eta=1."""
 
 import ctypes
 import random
@@ -12,7 +12,7 @@ import hashlib
 import json
 from itertools import combinations
 
-from H16_NORMAL_BALANCE_PROJECTION import normal_balance_count
+from H16_NORMAL_BALANCE_PROJECTION import normal_balance_count, normal_balance_options
 import numpy as np
 from pysat.solvers import Solver
 
@@ -32,6 +32,7 @@ import SOLVE_STEP22A_B000_ENUM_CLOSE_ETA62_63_42_AND_ETA0 as s22a
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--eta", type=int, default=1, choices=(0, 1))
     parser.add_argument("--shard", type=int, default=0)
     parser.add_argument("--shards", type=int, default=1)
     args = parser.parse_args()
@@ -220,6 +221,20 @@ def main():
 
     groups = [(z,) for z in cosets] + list(combinations(cosets, 2))
 
+    def choose_balance_split(pivots, max_states):
+        best = None
+        for group in groups:
+            result = normal_balance_options([truth[z] for z in group], pivots, rank_cap=9)
+            if result is None:
+                continue
+            forms, states = result
+            if form_count := len(forms):
+                if len(states) < 1 << form_count and len(states) <= max_states:
+                    candidate = (len(states), form_count, group, forms, states)
+                    if best is None or candidate[:3] < best[:3]:
+                        best = candidate
+        return best
+
     def exclude_on_balance(pivots):
         for group in groups:
             count = normal_balance_count([truth[z] for z in group], pivots)
@@ -296,31 +311,40 @@ def main():
     # --------------------------------------------------------------------------
     # PART 2: FULL CLOSURE ATTEMPT ON B0_00 eta = 1 (ALL 288 MODELS + RECURSIVE W_ess!)
     # --------------------------------------------------------------------------
-    print("\n--- PART 2: FULL CLOSURE OF B0_00 eta = 1 (288 models of W_ess(12)) ---", flush=True)
-    ex1 = [(eta_free[k], (1 >> k) & 1) for k in range(n_ef)]
+    print(f"\n--- B0_00 eta={args.eta} ---", flush=True)
+    ex1 = [(eta_free[k], (args.eta >> k) & 1) for k in range(n_ef)]
     sr1 = s9.run_branch_cascade(
         lib9, root["_buf"], root["_quad_ids"], root["_cub_ids"], root["_lin_pivs"],
         ex1, tbl, max_xl_rounds=20, verify_subst=True
     )
-    qps1 = [s9.row_to_pset(sr1["_buf"], qr, tbl) for qr in sr1["_quad_ids"]]
-    ana1 = s16.analyze_quad_system(qps1)
-    W_rref1 = s19.strict_rref_masks(list(ana1["W_piv"].values()))
-    W_pivs1, pure_y1 = s22a.extract_pure_w_quads(lib_sh, sr1, W_rref1, tbl)
-    W_forms1 = [W_rref1[p] for p in W_pivs1]
-    nW1 = len(W_pivs1)
-    exh1, models1, _ = s22a.enumerate_pure_w_models(pure_y1, nW1, max_models=5000, time_budget=30.0)
-    assert exh1
+    if args.eta == 0:
+        groups0 = (0xFF, 0x55)
+        options = normal_balance_options([truth[z] for z in groups0], sr1["_lin_pivs"])
+        assert options is not None, "joint coset image exceeded rank cap"
+        W_forms1, models1 = options
+        nW1 = len(W_forms1)
+        print(f"eta=0 joint cosets={groups0} rank={nW1} balanced={len(models1)}/{1<<nW1}",
+              flush=True)
+    else:
+        qps1 = [s9.row_to_pset(sr1["_buf"], qr, tbl) for qr in sr1["_quad_ids"]]
+        ana1 = s16.analyze_quad_system(qps1)
+        W_rref1 = s19.strict_rref_masks(list(ana1["W_piv"].values()))
+        W_pivs1, pure_y1 = s22a.extract_pure_w_quads(lib_sh, sr1, W_rref1, tbl)
+        W_forms1 = [W_rref1[p] for p in W_pivs1]
+        nW1 = len(W_pivs1)
+        exh1, models1, _ = s22a.enumerate_pure_w_models(pure_y1, nW1, max_models=5000, time_budget=30.0)
+        assert exh1
     models1 = sorted(set(models1))
     anchor = hashlib.sha256(json.dumps([eta_free, W_forms1, models1]).encode()).hexdigest()
     assigned = models1[args.shard::args.shards]
-    print(f"eta=1 shard={args.shard}/{args.shards} | {len(assigned)}/{len(models1)} models | anchor={anchor}",
+    print(f"eta={args.eta} shard={args.shard}/{args.shards} | {len(assigned)}/{len(models1)} models | anchor={anchor}",
           flush=True)
     n_cl1, n_rec_cl, n_still_open = 0, 0, 0
     open_details = []
     coset_closed = []
     for idx_m, y in enumerate(assigned):
         if idx_m % 24 == 0:
-            print(f"eta=1 progress: {idx_m}/{len(assigned)} direct={n_cl1} "
+            print(f"eta={args.eta} progress: {idx_m}/{len(assigned)} direct={n_cl1} "
                   f"recursive={n_rec_cl} balance={len(coset_closed)}", flush=True)
         ex_w = [(W_forms1[j], (y >> j) & 1) for j in range(nW1)]
         sub = s9.run_branch_cascade(
@@ -343,8 +367,33 @@ def main():
             if hit is not None:
                 group, rank = hit
                 coset_closed.append((y, group, rank))
-                print(f"eta=1 balance contradiction: w_mask={y:#x} cosets={group} rank={rank}",
+                print(f"eta={args.eta} balance contradiction: w_mask={y:#x} cosets={group} rank={rank}",
                       flush=True)
+                continue
+            if args.eta == 0:
+                split = choose_balance_split(sub["_lin_pivs"], max_states=12)
+                if split is not None:
+                    _, _, coset_group, forms, admissible = split
+                    still_open = 0
+                    for b in admissible:
+                        constraints = [(form, (b >> i) & 1) for i, form in enumerate(forms)]
+                        child = s9.run_branch_cascade(
+                            lib9, sub["_buf"], sub["_quad_ids"], sub["_cub_ids"],
+                            sub["_lin_pivs"], constraints, tbl,
+                            max_xl_rounds=20, verify_subst=True
+                        )
+                        if not child["closed_unsat"]:
+                            if "_lin_pivs" not in child or exclude_on_balance(child["_lin_pivs"]) is None:
+                                still_open += 1
+                    if still_open == 0:
+                        n_rec_cl += 1
+                        continue
+                    open_details.append((y, sub["N_active"], sub["n_quad_surviving"],
+                                         "coset", coset_group, still_open))
+                else:
+                    open_details.append((y, sub["N_active"], sub["n_quad_surviving"],
+                                         "coset", None, 1))
+                n_still_open += 1
                 continue
             # Inspect new W_ess! If new_dimW <= 12, exhaustively close recursively!!
             nqps = [s9.row_to_pset(sub["_buf"], qr, tbl) for qr in sub.get("_quad_ids", [])]
@@ -372,8 +421,8 @@ def main():
                 open_details.append((y, sub["N_active"], len(nqps), ndw, -1, -1))
             n_still_open += 1
     assert n_cl1 + n_rec_cl + len(coset_closed) + n_still_open == len(assigned)
-    print(f"  [eta=1] SHARD MODELS = {len(assigned)} / {len(models1)}: direct_closed={n_cl1}, rec_W_closed={n_rec_cl}, balance_closed={len(coset_closed)}, STILL_OPEN={n_still_open}", flush=True)
-    (WORK_DIR / f"step29_b000_eta1_{args.shard}.json").write_text(
+    print(f"  [eta={args.eta}] SHARD MODELS = {len(assigned)} / {len(models1)}: direct_closed={n_cl1}, rec_W_closed={n_rec_cl}, balance_closed={len(coset_closed)}, STILL_OPEN={n_still_open}", flush=True)
+    (WORK_DIR / f"step30_b000_eta{args.eta}_{args.shard}.json").write_text(
         json.dumps({"models": len(models1), "anchor": anchor, "shard": args.shard,
                     "shards": args.shards, "assigned": assigned, "direct_closed": n_cl1,
                     "recursive_closed": n_rec_cl, "balance_closed": coset_closed,
@@ -383,7 +432,7 @@ def main():
     for od in open_details:
         print(f"      OPEN y=0x{od[0]:03x}: N={od[1]}, q={od[2]}, new_dimW={od[3]}, mods2={od[4]}, open2={od[5]}", flush=True)
 
-    print(f"\n[B0_00] STEP 29A DONE ({time.perf_counter()-t0:.1f}s)", flush=True)
+    print(f"\n[B0_00] STEP 30A DONE ({time.perf_counter()-t0:.1f}s)", flush=True)
 
 
 if __name__ == "__main__":
