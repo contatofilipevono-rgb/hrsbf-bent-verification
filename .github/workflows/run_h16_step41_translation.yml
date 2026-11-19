@@ -1,0 +1,22 @@
+name: H16 Step 41 translation audit
+on:
+  push:
+    branches: [codex/h16-step41-minrank]
+    paths: ['research_updates/2026_11_17_h16_c99_carbon_hard/H16_AUDIT_REDUCED_TRANSLATIONS.py']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44570020591
+          pattern: 'h16-step41-*'
+          path: pencils
+          merge-multiple: true
+          github-token: ${{ github.token }}
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/H16_AUDIT_REDUCED_TRANSLATIONS.py
