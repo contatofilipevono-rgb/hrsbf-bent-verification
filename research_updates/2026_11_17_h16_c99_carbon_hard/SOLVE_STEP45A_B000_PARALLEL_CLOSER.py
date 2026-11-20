@@ -83,52 +83,10 @@ def _setup_lib9(so_path):
     return lib9
 
 
-def _tbl_from_spec(spec):
-    n = spec["n"]
-    col2_base = (ctypes.c_int * len(spec["col2_base"]))(*spec["col2_base"])
-    col3_base = (ctypes.c_int * len(spec["col3_base"]))(*spec["col3_base"])
-    col_deg = (ctypes.c_uint8 * len(spec["col_deg"]))(*spec["col_deg"])
-    col_v0 = (ctypes.c_uint8 * len(spec["col_v0"]))(*spec["col_v0"])
-    col_v1 = (ctypes.c_uint8 * len(spec["col_v1"]))(*spec["col_v1"])
-    col_v2 = (ctypes.c_uint8 * len(spec["col_v2"]))(*spec["col_v2"])
-    return {
-        "n": n,
-        "off2": spec["off2"],
-        "off1": spec["off1"],
-        "off0": spec["off0"],
-        "n_cols": spec["n_cols"],
-        "n_col_words": spec["n_col_words"],
-        "col2_base": col2_base,
-        "col3_base": col3_base,
-        "col_deg": col_deg,
-        "col_v0": col_v0,
-        "col_v1": col_v1,
-        "col_v2": col_v2,
-    }
-
-
-def _tbl_to_spec(tbl):
-    n_cols = tbl["off0"] + 1
-    return {
-        "n": int(tbl["n"]),
-        "off2": int(tbl["off2"]),
-        "off1": int(tbl["off1"]),
-        "off0": int(tbl["off0"]),
-        "n_cols": int(tbl["n_cols"]),
-        "n_col_words": int(tbl["n_col_words"]),
-        "col2_base": list(tbl["col2_base"]),
-        "col3_base": list(tbl["col3_base"]),
-        "col_deg": list(tbl["col_deg"][:n_cols]),
-        "col_v0": list(tbl["col_v0"][:n_cols]),
-        "col_v1": list(tbl["col_v1"][:n_cols]),
-        "col_v2": list(tbl["col_v2"][:n_cols]),
-    }
-
-
 def _init_worker():
     global _W_LIB9, _W_BUF, _W_TBL
     _W_LIB9 = _setup_lib9(_W_CTX["so_s9_path"])
-    _W_TBL = _tbl_from_spec(_W_CTX["tbl_spec"])
+    _W_TBL = s9.build_col_tables(111)
     buf_bytes = _W_CTX["buf_bytes"]
     n_u64 = len(buf_bytes) // 8
     _W_BUF = (ctypes.c_uint64 * n_u64)()
@@ -399,7 +357,7 @@ def build_fix_and_rescue_forms(info, k_fix):
     return fix_forms, rescue_forms, fix_sha
 
 
-def run_parallel_shard(label, eta, sr, info, k_fix, shard_idx, n_shards, workers, so_s9_path, tbl_spec, deadline, cert_dir):
+def run_parallel_shard(label, eta, sr, info, k_fix, shard_idx, n_shards, workers, so_s9_path, n_col_words, deadline, cert_dir):
     t0 = time.perf_counter()
     fix_forms, rescue_forms, fix_sha = build_fix_and_rescue_forms(info, k_fix)
     n_branches = 1 << k_fix
@@ -413,13 +371,12 @@ def run_parallel_shard(label, eta, sr, info, k_fix, shard_idx, n_shards, workers
     )
 
     max_active_row = max([-1] + list(sr["_quad_ids"]) + list(sr["_cub_ids"])) + 1
-    n_bytes = max_active_row * tbl_spec["n_col_words"] * 8
+    n_bytes = max_active_row * n_col_words * 8
     buf_bytes = ctypes.string_at(ctypes.addressof(sr["_buf"]), n_bytes)
 
     _W_CTX.clear()
     _W_CTX.update({
         "so_s9_path": str(so_s9_path),
-        "tbl_spec": tbl_spec,
         "buf_bytes": buf_bytes,
         "quad_ids": list(sr["_quad_ids"]),
         "cub_ids": list(sr["_cub_ids"]),
@@ -553,7 +510,7 @@ def find_kfix_threshold(label, sr, info, lib9, tbl, rng_seed):
     return best
 
 
-def run_eta0_full(root, eta_free, b_tt, lib9, lib_sh, so_s9_path, tbl, tbl_spec, workers, deadline, cert_dir):
+def run_eta0_full(root, eta_free, b_tt, lib9, lib_sh, so_s9_path, tbl, n_col_words, workers, deadline, cert_dir):
     t0 = time.perf_counter()
     print("\n--- STEP 45A ETA=0 FULL BALANCED (0xFF x 0x55) SUB-STATE AUDIT & CLOSER ---", flush=True)
 
@@ -693,7 +650,7 @@ def run_eta0_full(root, eta_free, b_tt, lib9, lib_sh, so_s9_path, tbl, tbl_spec,
         best_k, avg_dt = th
         if best_k <= 6:
             c_sub = run_parallel_shard(
-                lbl, 0, sub2, info, best_k, 0, 1, workers, so_s9_path, tbl_spec, deadline, cert_dir
+                lbl, 0, sub2, info, best_k, 0, 1, workers, so_s9_path, n_col_words, deadline, cert_dir
             )
             if c_sub["verdict"] == "ORBIT_FORMALLY_CLOSED_100%":
                 closed_100 += 1
@@ -882,7 +839,6 @@ def main():
 
     layers, c0x0 = s9.build_cyclotomic_layers()
     tbl = s9.build_col_tables(111)
-    tbl_spec = _tbl_to_spec(tbl)
     free111, origin111, cb111 = b09.build_pure_111_basis(0, 0, 0)
     n, n_cw = tbl["n"], tbl["n_col_words"]
 
@@ -983,11 +939,11 @@ def main():
             k_fix = th[0]
         run_parallel_shard(
             lbl, em, sr, info, k_fix, args.shard_idx, args.n_shards, args.workers,
-            so_s9, tbl_spec, deadline, cert_dir
+            so_s9, n_cw, deadline, cert_dir
         )
 
     if args.close_eta0:
-        run_eta0_full(root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, tbl_spec, args.workers, deadline, cert_dir)
+        run_eta0_full(root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, args.workers, deadline, cert_dir)
 
     print(f"\n[B0_00] STEP 45A DONE ({time.perf_counter()-t_start:.1f}s)", flush=True)
 

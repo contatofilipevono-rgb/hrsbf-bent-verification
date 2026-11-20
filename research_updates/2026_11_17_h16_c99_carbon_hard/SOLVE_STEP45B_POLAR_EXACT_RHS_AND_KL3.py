@@ -172,6 +172,14 @@ def extract_eta_exact_system(em, root, eta_free, lib9, lib_sh, tbl, rng_seed=450
         t_piv_map[b] = (tv, ws)
     assert len(t_piv_map) == nT, f"Expected full rank nT={nT}, got {len(t_piv_map)}"
     Q_t = [sorted(t_piv_map[ti][1]) for ti in range(nT)]
+    q_res_w = []
+    for tvec, wset in zip(q_t_vecs, q_w_polys):
+        rw = set(wset)
+        for ti in range(nT):
+            if (tvec >> ti) & 1:
+                rw ^= set(Q_t[ti])
+        q_res_w.append(sorted(rw))
+    print(f"    [eta={em}] n_q={n_q}, nT={nT}, n_pure_w_quads={len(pure_w_quads)}", flush=True)
 
     # Compile vectorized evaluator for Q_t on W_mat (B, nW) -> T_mat (B, nT)
     qt_c0 = np.zeros(nT, dtype=np.uint8)
@@ -214,8 +222,11 @@ def extract_eta_exact_system(em, root, eta_free, lib9, lib_sh, tbl, rng_seed=450
             if W_test[bi, k]: val_bits |= (1 << v)
         for ti, v in enumerate(T_pivs):
             if T_test[bi, ti]: val_bits |= (1 << v)
-        for ps in q_sheared_psets:
-            if _eval_pset_point(ps, val_bits) != 0:
+        w_bits = sum((1 << k) for k in range(nW) if W_test[bi, k])
+        for qi, ps in enumerate(q_sheared_psets):
+            lhs_val = _eval_pset_point(ps, val_bits)
+            rhs_val = sum(1 for wm in q_res_w[qi] if (wm & w_bits) == wm) & 1
+            if lhs_val != rhs_val:
                 zt_q_mis += 1
     assert zt_q_mis == 0, f"t=Q(w) ZT mismatches={zt_q_mis}"
 
@@ -602,6 +613,23 @@ def eval_kl3_and_anf(cell_tag, sys_ex, p1, df2, t1_list, rng_seed=4550):
     U1 = p1["U"]
     rng = random.Random(rng_seed + 77)
 
+    def _specialize_p2_at_t2(p2_cur, nR2_cur, nC2_cur, NU1_cur, NU2_cur, U2_cur, t2_vec):
+        t2_int = sum((1 << k) for k in range(NU1_cur) if t2_vec[k])
+        Mu2_0, Mu2_a = s44a.specialize_poly_mat_affine_shift(p2_cur["M_res"], nR2_cur, nC2_cur, NU1_cur, t2_int, U2_cur)
+        stack_ua_cur = (
+            np.transpose(Mu2_a, (0, 2, 1)).reshape(NU2_cur * nC2_cur, nR2_cur)
+            if NU2_cur > 0 else np.zeros((0, nR2_cur), dtype=np.uint8)
+        )
+        K_L3_p = (
+            s40a.gf2_nullspace_np(np.vstack([Mu2_0.T, stack_ua_cur]))
+            if nR2_cur > 0 else np.zeros((0, 0), dtype=np.uint8)
+        )
+        K_L3_a = (
+            s40a.gf2_nullspace_np(stack_ua_cur)
+            if nR2_cur > 0 else np.zeros((0, 0), dtype=np.uint8)
+        )
+        return Mu2_0, Mu2_a, K_L3_p, K_L3_a
+
     for idx_t1, t1_int in enumerate(t1_list):
         t1_vec = np.array([(t1_int >> k) & 1 for k in range(nW)], dtype=np.uint8)
         Mu0_t, Mua_t = s44a.specialize_poly_mat_affine_shift(p1["M_res"], nR1, nC1, nW, t1_int, U1)
@@ -612,38 +640,34 @@ def eval_kl3_and_anf(cell_tag, sys_ex, p1, df2, t1_list, rng_seed=4550):
         NU2, nR2, nC2 = p2["NU"], p2["n_res_rows"], p2["nRC_res"]
         U2 = p2["U"]
 
-        # Exact pure-u left kernel of M_res_2 (BOTH M_u2_0 and M_u2_a must be zero on K_L3!)
-        # Wait: Wait a second! In Step 44A, K_L3 was left nullspace of M_ua ONLY (giving affine eqs (K_L3 @ M_u0) rC ^ K_L3 b_res2 = 0)!
-        # Check BOTH: K_L3_quad (kills ONLY M_u2_a, leaving linear in rC2!) AND K_L3_pure (kills BOTH M_u2_0 and M_u2_a -> ZERO rC2!!)!
-        stack_ua = np.transpose(p2["M_ua"], (0, 2, 1)).reshape(NU2 * nC2, nR2) if NU2 > 0 else np.zeros((0, nR2), dtype=np.uint8)
-        K_L3_pure = s40a.gf2_nullspace_np(np.vstack([p2["M_u0"].T, stack_ua])) if nR2 > 0 else np.zeros((0, 0), dtype=np.uint8)
-        K_L3_aff = s40a.gf2_nullspace_np(stack_ua) if nR2 > 0 else np.zeros((0, 0), dtype=np.uint8)
-
+        _, _, K_L3_pure_0, K_L3_aff_0 = _specialize_p2_at_t2(
+            p2, nR2, nC2, NU1, NU2, U2, np.zeros(NU1, dtype=np.uint8)
+        )
         print(
             f"    [{cell_tag} t1_idx={idx_t1} df2={df2}] R2 r_elim={p2['r_elim']} -> {nR2}x{nC2} "
             f"(NU_2={NU2}, NT_2={p2['NT']}, TOTAL_NT={p1['NT']+p2['NT']}) | "
-            f"K_L3_aff={K_L3_aff.shape[0]}, K_L3_PURE_U={K_L3_pure.shape[0]}",
+            f"K_L3_aff={K_L3_aff_0.shape[0]}, K_L3_PURE_U={K_L3_pure_0.shape[0]}",
             flush=True,
         )
 
         # End-to-end pipeline W_of(u2) and b_res2(u2) for a fiber shift t2 in F_2^{NU1}
-        def eval_u2_fiber(U2_mat, t2_vec):
-            # u1 = t2 ^ U2_mat @ U2
+        def eval_u2_fiber(U2_mat, t2_vec, K_L3_pure_t2):
             u1_mat = ((U2_mat @ U2) & 1) ^ t2_vec
             w_mat = ((u1_mat @ U1) & 1) ^ t1_vec
             b_orig, p0_vals = sys_ex["eval_b_and_p0_batch"](w_mat)
             b_c = (b_orig @ L_core_T) & 1
             b_res1 = p1["push_rhs_batch"](w_mat, b_c)
             b_res2 = p2["push_rhs_batch"](u1_mat, b_res1)
-            kl3_vals = (b_res2 @ K_L3_pure.T) & 1 if K_L3_pure.shape[0] > 0 else np.zeros((U2_mat.shape[0], 0), dtype=np.uint8)
+            kl3_vals = (b_res2 @ K_L3_pure_t2.T) & 1 if K_L3_pure_t2.shape[0] > 0 else np.zeros((U2_mat.shape[0], 0), dtype=np.uint8)
             k0_vals = (b_c @ sys_ex["K_L0"].T) & 1 if sys_ex["K_L0"].shape[0] > 0 else np.zeros((U2_mat.shape[0], 0), dtype=np.uint8)
             return w_mat, u1_mat, b_c, b_res1, b_res2, kl3_vals, k0_vals, p0_vals
 
         # End-to-end Zero-Trust check on 10 random (u2, r_C2) points!
         if idx_t1 == 0:
             t2_zt = np.array([rng.getrandbits(1) for _ in range(NU1)], dtype=np.uint8)
+            Mu2_0_zt, Mu2_a_zt, K_L3_pure_zt, _ = _specialize_p2_at_t2(p2, nR2, nC2, NU1, NU2, U2, t2_zt)
             U2_zt = np.array([[rng.getrandbits(1) for _ in range(NU2)] for _ in range(10)], dtype=np.uint8)
-            w_zt, u1_zt, bc_zt, br1_zt, br2_zt, kl3_zt, k0_zt, p0_zt = eval_u2_fiber(U2_zt, t2_zt)
+            w_zt, u1_zt, bc_zt, br1_zt, br2_zt, kl3_zt, k0_zt, p0_zt = eval_u2_fiber(U2_zt, t2_zt, K_L3_pure_zt)
             for bi in range(10):
                 rC2 = np.array([rng.getrandbits(1) for _ in range(p2["nRC_res"])], dtype=np.uint8)
                 M2_w = Mu0_t.copy()
@@ -652,14 +676,16 @@ def eval_kl3_and_anf(cell_tag, sys_ex, p1, df2, t1_list, rng_seed=4550):
                 D2 = (M2_w @ p2["C"]) & 1
                 rK2 = (p2["L"] @ ((D2 @ rC2) ^ br1_zt[bi])) & 1
                 rC1 = ((p2["C"] @ rC2) ^ (p2["K_use"].T @ rK2)) & 1
-                assert not ((p2["L"] @ ((M2_w @ rC1) ^ br1_zt[bi])) & 1).any()
-                M_u2 = p2["M_u0"].copy()
+                lhs_m2 = ((M2_w @ rC1) & 1) ^ br1_zt[bi]
+                assert not ((p2["L"] @ lhs_m2) & 1).any()
+                M_u2 = Mu2_0_zt.copy()
                 for g in range(NU2):
-                    if U2_zt[bi, g]: M_u2 ^= p2["M_ua"][g]
-                assert not ((p2["NH"] @ ((M2_w @ rC1) ^ br1_zt[bi])) ^ ((M_u2 @ rC2) & 1) ^ br2_zt[bi]).any()
-                if K_L3_pure.shape[0] > 0:
-                    # K_L3_pure annihilates both M_u0 and M_ua, so K_L3_pure @ NH2 @ (M2 rC1 ^ br1) MUST equal kl3_zt!
-                    lhs_direct = (K_L3_pure @ p2["NH"] @ ((M2_w @ rC1) ^ br1_zt[bi])) & 1
+                    if U2_zt[bi, g]: M_u2 ^= Mu2_a_zt[g]
+                lhs_nh = (p2["NH"] @ lhs_m2) & 1
+                rhs_u2 = ((M_u2 @ rC2) & 1) ^ br2_zt[bi]
+                assert np.array_equal(lhs_nh, rhs_u2)
+                if K_L3_pure_zt.shape[0] > 0:
+                    lhs_direct = (K_L3_pure_zt @ lhs_nh) & 1
                     assert np.array_equal(lhs_direct, kl3_zt[bi]), "End-to-end K_L3_pure ZT mismatch!"
             print(f"      [ZT PASSED] End-to-end 2-round polar RHS + K_L3_pure verified (0 mismatches across 10 points)!", flush=True)
 
@@ -673,8 +699,11 @@ def eval_kl3_and_anf(cell_tag, sys_ex, p1, df2, t1_list, rng_seed=4550):
             ints = np.arange(N_pts, dtype=np.uint32)[:, None]
             U2_all = ((ints >> np.arange(NU2, dtype=np.uint32)) & 1).astype(np.uint8)
             surv_list = []
+            kl3_dims = []
             for j2, t2v in enumerate(t2_shifts):
-                _, _, _, _, _, kl3_all, k0_all, p0_all = eval_u2_fiber(U2_all, t2v)
+                _, _, K_L3_pure_t2, _ = _specialize_p2_at_t2(p2, nR2, nC2, NU1, NU2, U2, t2v)
+                kl3_dims.append(K_L3_pure_t2.shape[0])
+                _, _, _, _, _, kl3_all, k0_all, p0_all = eval_u2_fiber(U2_all, t2v, K_L3_pure_t2)
                 comb = np.hstack([kl3_all, k0_all, p0_all])
                 ok_kl3 = int(np.sum(np.all(kl3_all == 0, axis=1))) if kl3_all.shape[1] > 0 else N_pts
                 ok_all = int(np.sum(np.all(comb == 0, axis=1))) if comb.shape[1] > 0 else N_pts
@@ -685,27 +714,30 @@ def eval_kl3_and_anf(cell_tag, sys_ex, p1, df2, t1_list, rng_seed=4550):
                     print(f"      [EXACT FULL-FIBER t2=0 (N=2^{NU2}={N_pts})]", flush=True)
                     print(f"        KL3_PURE ({kl3_all.shape[1]} eqs): surv={ok_kl3}/{N_pts}, ANF={anf_kl3}", flush=True)
                     print(f"        KL3+K0+P0 ({comb.shape[1]} eqs): surv={ok_all}/{N_pts}, ANF={anf_all}", flush=True)
-            print(f"      [EXACT SURVIVORS across {len(t2_shifts)} t2 fibers (kl3_only, total)]: {surv_list[:10]} (max_total={max(x[1] for x in surv_list)})", flush=True)
+            print(f"      [EXACT SURVIVORS across {len(t2_shifts)} t2 fibers (kl3_only, total)]: {surv_list[:10]} (max_total={max(x[1] for x in surv_list)}, kl3_dims={sorted(set(kl3_dims))})", flush=True)
         else:
             # Sample 4096 random u2 points on each t2 shift + exact ANF on 12-dim slices
             U2_samp = np.array([[rng.getrandbits(1) for _ in range(NU2)] for _ in range(4096)], dtype=np.uint8)
             stats = []
+            kl3_dims = []
             for j2, t2v in enumerate(t2_shifts):
-                _, _, _, _, _, kl3_s, k0_s, p0_s = eval_u2_fiber(U2_samp, t2v)
+                _, _, K_L3_pure_t2, _ = _specialize_p2_at_t2(p2, nR2, nC2, NU1, NU2, U2, t2v)
+                kl3_dims.append(K_L3_pure_t2.shape[0])
+                _, _, _, _, _, kl3_s, k0_s, p0_s = eval_u2_fiber(U2_samp, t2v, K_L3_pure_t2)
                 comb = np.hstack([kl3_s, k0_s, p0_s])
                 rk_k = len(s40a.gf2_rref_np(kl3_s.T)[1]) if kl3_s.shape[1] > 0 else 0
                 rk_c = len(s40a.gf2_rref_np(comb.T)[1]) if comb.shape[1] > 0 else 0
                 ok_k = int(np.sum(np.all(kl3_s == 0, axis=1))) if kl3_s.shape[1] > 0 else 4096
                 ok_c = int(np.sum(np.all(comb == 0, axis=1))) if comb.shape[1] > 0 else 4096
                 stats.append((ok_k, ok_c, rk_k, rk_c))
-            print(f"      [SAMPLE 4096 across {len(t2_shifts)} t2 fibers (ok_kl3, ok_tot, rk_kl3, rk_tot)]: {stats}", flush=True)
+            print(f"      [SAMPLE 4096 across {len(t2_shifts)} t2 fibers (ok_kl3, ok_tot, rk_kl3, rk_tot)]: {stats} (kl3_dims={sorted(set(kl3_dims))})", flush=True)
             # 12-dim affine slice ANF audit
             ints12 = np.arange(4096, dtype=np.uint32)[:, None]
             S12 = ((ints12 >> np.arange(12, dtype=np.uint32)) & 1).astype(np.uint8)
             cols_pick = rng.sample(range(NU2), 12)
             U2_sl = np.zeros((4096, NU2), dtype=np.uint8)
             U2_sl[:, cols_pick] = S12
-            _, _, _, _, _, kl3_sl, k0_sl, p0_sl = eval_u2_fiber(U2_sl, np.zeros(NU1, dtype=np.uint8))
+            _, _, _, _, _, kl3_sl, k0_sl, p0_sl = eval_u2_fiber(U2_sl, np.zeros(NU1, dtype=np.uint8), K_L3_pure_0)
             print(f"      [12-DIM SLICE ANF] KL3={anf_mobius_audit(kl3_sl, 12)}, ALL={anf_mobius_audit(np.hstack([kl3_sl, k0_sl, p0_sl]), 12)}", flush=True)
 
 
