@@ -299,19 +299,13 @@ def run_iterative_sysb_v0_kr_cascade(label, M0_init, Mk_init, eval_b_init, lib9,
             )
             break
 
-        V0_now = s40a.gf2_nullspace_np(np.hstack(Mk).T)
         V00_now = s40a.gf2_nullspace_np(np.hstack([M0] + Mk).T)
         if V00_now.shape[0] > 0:
             V00_T = V00_now.T.copy()
             prev_eb = cur_eval_b
             pure_w_evals.append((lambda eb, VT: lambda X: (eb(X) @ VT) & 1)(prev_eb, V00_T))
 
-        # Step E: Solve extra_SysB on the reduced pencil (M0, Mk)
-        t_sb = time.perf_counter()
-        sysb_sols = solve_sysb_basis_c(lib9, Mk, V0_now)
-        n_extra_b = sysb_sols.shape[0]
-
-        M0_plus_Mk = [(M0 ^ Mk[k]) for k in range(mW)]
+        # Deduplicate rows of (M0, Mk) BEFORE computing V0_now and solving SysB!
         existing_concat = np.hstack([M0] + Mk)
         _, exist_pivs = s40a.gf2_rref_np(existing_concat.T)
         if len(exist_pivs) < mR:
@@ -321,9 +315,16 @@ def run_iterative_sysb_v0_kr_cascade(label, M0_init, Mk_init, eval_b_init, lib9,
             prev_eb = cur_eval_b
             cur_eval_b = (lambda eb, kr: lambda X: eb(X)[:, kr])(prev_eb, keep_r)
             mR = len(keep_r)
-            sysb_sols = sysb_sols[:, :, keep_r]
-            M0_plus_Mk = [(M0 ^ Mk[k]) for k in range(mW)]
             existing_concat = np.hstack([M0] + Mk)
+
+        V0_now = s40a.gf2_nullspace_np(np.hstack(Mk).T)
+
+        # Step E: Solve extra_SysB on the deduplicated reduced pencil (M0, Mk)
+        t_sb = time.perf_counter()
+        sysb_sols = solve_sysb_basis_c(lib9, Mk, V0_now)
+        n_extra_b = sysb_sols.shape[0]
+
+        M0_plus_Mk = [(M0 ^ Mk[k]) for k in range(mW)]
 
         new_M0_rows = []
         new_Mk_rows = [[] for _ in range(mW)]
@@ -349,6 +350,8 @@ def run_iterative_sysb_v0_kr_cascade(label, M0_init, Mk_init, eval_b_init, lib9,
                 for k in range(mW):
                     new_Mk_rows[k].append(mk_r[k])
                 accepted_v.append(v_arr.copy())
+                if len(accepted_v) >= 64:
+                    break
 
         if pure_sysb_v:
             pv_arr = np.array(pure_sysb_v, dtype=np.uint8)
