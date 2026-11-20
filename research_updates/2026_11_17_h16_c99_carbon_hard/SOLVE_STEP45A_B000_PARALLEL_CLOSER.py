@@ -107,6 +107,15 @@ def _eval_branch_worker(rb):
     )
     if sub["closed_unsat"]:
         return ("DIRECT", rb, 0)
+    if "_quad_ids" not in sub:
+        sub = s9.run_branch_cascade(
+            _W_LIB9, _W_BUF, ctx["quad_ids"], ctx["cub_ids"], ctx["lin_pivs"],
+            ex_w, _W_TBL, max_xl_rounds=80, verify_subst=False
+        )
+        if sub["closed_unsat"]:
+            return ("DIRECT", rb, 0)
+        if "_quad_ids" not in sub:
+            return ("OPEN", rb, (-1, -1))
 
     sub_q_forms = []
     if sub["_quad_ids"]:

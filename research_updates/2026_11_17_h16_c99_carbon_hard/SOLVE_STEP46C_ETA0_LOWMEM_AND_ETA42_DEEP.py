@@ -73,8 +73,8 @@ def _worker_eval_st_46c(st):
         ex, g["tbl"], max_xl_rounds=g["max_xl"], verify_subst=verify
     )
     closed = bool(sub["closed_unsat"])
-    n_act = 0 if closed else g["tbl"]["n"] - len(sub["_lin_pivs"])
-    n_q = 0 if closed else len(sub["_quad_ids"])
+    n_act = 0 if closed else (g["tbl"]["n"] - len(sub["_lin_pivs"]) if "_lin_pivs" in sub else -1)
+    n_q = 0 if closed else (len(sub["_quad_ids"]) if "_quad_ids" in sub else -1)
     del sub
     return (st, closed, n_act, n_q)
 
@@ -96,6 +96,8 @@ def parallel_filter_open_states(parent_st, forms, st_list, so_s9, tbl, workers, 
             )
             if sub["closed_unsat"]:
                 direct_closed += 1
+            elif "_quad_ids" not in sub:
+                open_entries.append((st, -1, -1))
             else:
                 open_entries.append((st, tbl["n"] - len(sub["_lin_pivs"]), len(sub["_quad_ids"])))
             del sub
@@ -184,6 +186,8 @@ def close_open_substate_deep(
     """
     if sub["closed_unsat"]:
         return True, "ALREADY_CLOSED"
+    if "_quad_ids" not in sub:
+        return False, "XL_ROUNDS_EXHAUSTED"
 
     # Strategy 1: Check D8 cosets for weight-128 balance filtering
     best_coset = None
