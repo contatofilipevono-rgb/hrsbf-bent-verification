@@ -1,35 +1,36 @@
-name: H(16,4) Step 46C — B0_00 eta=0 Low-Mem Stream & eta=42 Deep 2-Level Closer
+﻿name: H(16,4) Step 46C-v2 — B0_00 eta=0 (3 shards) & eta=42 (2 shards) Parallel Closer
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP46C_ETA0_LOWMEM_AND_ETA42_DEEP.py'
       - '.github/workflows/run_h16_step46c_eta0_and_eta42_deep.yml'
-  workflow_dispatch:
 
 jobs:
-  step46c_b000_targeted:
-    name: step46c (${{ matrix.mode }})
+  step46c:
+    name: step46c (${{ matrix.job.name }})
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 90
     strategy:
       fail-fast: false
       matrix:
-        mode: [eta0_lowmem, eta42_deep]
+        job:
+          - { name: "eta0_s0_of_3", mode: "eta0_lowmem", s: 0, n: 3 }
+          - { name: "eta0_s1_of_3", mode: "eta0_lowmem", s: 1, n: 3 }
+          - { name: "eta0_s2_of_3", mode: "eta0_lowmem", s: 2, n: 3 }
+          - { name: "eta42_s0_of_2", mode: "eta42_deep", s: 0, n: 2 }
+          - { name: "eta42_s1_of_2", mode: "eta42_deep", s: 1, n: 2 }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install Python deps
-        run: python -m pip install --upgrade pip && pip install numpy python-sat
-      - name: Run Step 46C (${{ matrix.mode }})
-        run: |
-          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP46C_ETA0_LOWMEM_AND_ETA42_DEEP.py --mode ${{ matrix.mode }} --workers 4 --budget-min 38 --cert-dir step46c_certs
-      - name: Upload certificates
-        if: always()
+      - run: python -m pip install --upgrade pip && pip install numpy python-sat
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP46C_ETA0_LOWMEM_AND_ETA42_DEEP.py --mode ${{ matrix.job.mode }} --shard-idx ${{ matrix.job.s }} --n-shards ${{ matrix.job.n }} --workers 4 --budget-min 85 --cert-dir step46c_certs
+      - if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: step46c-certs-${{ matrix.mode }}
+          name: step46c-certs-${{ matrix.job.name }}
           path: step46c_certs/
           if-no-files-found: ignore

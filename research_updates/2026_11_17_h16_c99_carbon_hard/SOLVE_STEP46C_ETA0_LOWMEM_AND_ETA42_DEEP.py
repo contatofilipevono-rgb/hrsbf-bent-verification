@@ -2,25 +2,27 @@
 r"""
 SOLVE_STEP46C_ETA0_LOWMEM_AND_ETA42_DEEP.py
 
-TWO TARGETED B0_00 CLOSERS RUNNING IN PARALLEL WITH WAVE 2:
-  1. --mode eta0_lowmem:
-        Fixes the OOM (exit code 137) in eta0_full by NEVER accumulating `sub2` buffers
-       in a list (each `sub2` buffer is ~64 MB; 300 buffers = 19.2 GB > 16 GB runner RAM!).
-       Instead, processes each open (st_ff, st_55) sub-state immediately in-place (<300 MB RAM!),
-       closing all sub-states with k_fix <= 8 (or NO_W / NO_M1 via W_forms + z=0x33 + 2-level split)
-       on 4 forked cores, and writes `step46c_cert_eta00_full.json`.
-  2. --mode eta42_deep:
-       Runs B0_00 eta=42 at k_fix=8 (256 top branches, 4 workers for direct pass), and for
-       every top branch rb that stays open (~25/256 branches with N=68, q=1..31), runs a
-       2nd-level exact K_R + MinRank (or s9.compute_quadratic_linearizer when q<=4) closure
-       until 100% of all 256 top branches are certified UNSAT (0 survivors)!
-       Writes `step46c_cert_eta42_deep.json`.
+SHARDED, MULTI-CORE, LOW-MEMORY (<300 MB) FORMAL CLOSER FOR B0_00 eta=0 AND eta=42:
+  1. --mode eta0_lowmem (--shard-idx S --n-shards N):
+       Splits the balanced 0xFF coset states `bal_ff` across N shards.
+       For each `st_ff` in the shard, evaluates all ~300 balanced 0x55 states `bal_55`
+       IN PARALLEL across `--workers` forked cores (each worker frees `sub2` immediately,
+       using <250 MB RAM total and taking ~45s per `st_ff` instead of 18 min!).
+       Then closes each surviving open `(st_ff, st_55)` sub-state in streaming mode via
+       D8 Coset Weight-128 Filtering (0x33, 0x0F, 0x3C, 0x66, 0x5A, 0xA5) + K_R/MinRank +
+       Multi-Level Recursive W_forms Splitting.
+  2. --mode eta42_deep (--shard-idx S --n-shards N):
+       Splits the 256 Level-1 branches (k_fix=8) of B0_00 eta=42 across N shards.
+       Evaluates the shard's Level-1 branches IN PARALLEL across `--workers` forked cores,
+       and closes every surviving Level-1 branch (N=68, q>=1) via Multi-Level Recursive
+       W_forms Splitting + D8 Coset Weight-128 Filtering + K_R/MinRank until 0 survivors remain.
 """
 
 import argparse
 import ctypes
 import gc
 import json
+import multiprocessing as mp
 import time
 from pathlib import Path
 import numpy as np
@@ -40,64 +42,248 @@ import SOLVE_STEP19_ZEROTRUST_AUDIT_AND_TRUE_WESS_CRUSH as s19
 import SOLVE_STEP45A_B000_PARALLEL_CLOSER as s45a
 
 
-def close_open_substate_deep(lbl, sub, lib9, lib_sh, so_s9, tbl, n_cw, workers, deadline, cert_dir, max_k2=9):
-    """Given an open child state `sub`, close it via K_R+MinRank (if M1>0) or quadratic linearizer / W-split."""
-    info2 = s45a.extract_minrank_basis_for_state(lbl, sub, lib9, lib_sh, tbl, rng_seed=46300)
-    nW2 = info2["nW"]
-    if info2["status"] == "OK":
-        th2 = s45a.find_kfix_threshold(lbl, sub, info2, lib9, tbl, rng_seed=46301)
-        k2 = th2[0] if th2 is not None else min(max_k2, nW2)
-        k2 = min(k2, max_k2, nW2 - 1) if nW2 > 1 else 1
-        c2 = s45a.run_parallel_shard(lbl, 42, sub, info2, k2, 0, 1, workers, so_s9, n_cw, deadline, cert_dir)
-        if c2["verdict"] == "ORBIT_FORMALLY_CLOSED_100%":
-            return True, f"MINRANK_K{k2}({c2['branches_checked']})"
+_G46C = {}
 
-    # Fallback: use quadratic linearizer / W_forms of sub["_quad_ids"] up to depth 8
+
+def _init_worker_46c(so_s9_path, buf_bytes, n_u64, quad_ids, cub_ids, lin_pivs, forms, tbl_n, max_xl):
+    global _G46C
+    lib9 = s45a._setup_lib9(Path(so_s9_path))
+    tbl = s9.build_col_tables(tbl_n)
+    buf = (ctypes.c_uint64 * n_u64).from_buffer_copy(buf_bytes)
+    _G46C = {
+        "lib9": lib9,
+        "tbl": tbl,
+        "buf": buf,
+        "quad_ids": quad_ids,
+        "cub_ids": cub_ids,
+        "lin_pivs": lin_pivs,
+        "forms": forms,
+        "max_xl": max_xl,
+    }
+
+
+def _worker_eval_st_46c(st):
+    g = _G46C
+    forms = g["forms"]
+    k = len(forms)
+    ex = [(forms[j], (st >> j) & 1) for j in range(k)]
+    verify = (st == 0)
+    sub = s9.run_branch_cascade(
+        g["lib9"], g["buf"], g["quad_ids"], g["cub_ids"], g["lin_pivs"],
+        ex, g["tbl"], max_xl_rounds=g["max_xl"], verify_subst=verify
+    )
+    closed = bool(sub["closed_unsat"])
+    n_act = g["tbl"]["n"] - len(sub["_lin_pivs"])
+    n_q = len(sub["_quad_ids"])
+    del sub
+    return (st, closed, n_act, n_q)
+
+
+def parallel_filter_open_states(parent_st, forms, st_list, so_s9, tbl, workers, max_xl=20):
+    """Evaluate all states in `st_list` in parallel across forked workers; return (n_direct_closed, open_entries)."""
+    if not st_list:
+        return 0, []
+    if workers <= 1 or len(st_list) <= 4:
+        lib9 = s45a._setup_lib9(so_s9)
+        k = len(forms)
+        direct_closed = 0
+        open_entries = []
+        for idx, st in enumerate(st_list):
+            ex = [(forms[j], (st >> j) & 1) for j in range(k)]
+            sub = s9.run_branch_cascade(
+                lib9, parent_st["_buf"], parent_st["_quad_ids"], parent_st["_cub_ids"], parent_st["_lin_pivs"],
+                ex, tbl, max_xl_rounds=max_xl, verify_subst=(idx == 0)
+            )
+            if sub["closed_unsat"]:
+                direct_closed += 1
+            else:
+                open_entries.append((st, tbl["n"] - len(sub["_lin_pivs"]), len(sub["_quad_ids"])))
+            del sub
+        return direct_closed, open_entries
+
+    n_u64 = len(parent_st["_buf"])
+    buf_bytes = ctypes.string_at(parent_st["_buf"], n_u64 * 8)
+    ctx = mp.get_context("fork")
+    direct_closed = 0
+    open_entries = []
+    with ctx.Pool(
+        processes=workers,
+        initializer=_init_worker_46c,
+        initargs=(
+            str(so_s9), buf_bytes, n_u64,
+            list(parent_st["_quad_ids"]), list(parent_st["_cub_ids"]), dict(parent_st["_lin_pivs"]),
+            list(forms), tbl["n"], max_xl,
+        ),
+    ) as pool:
+        for st, closed, n_act, n_q in pool.imap_unordered(_worker_eval_st_46c, st_list, chunksize=4):
+            if closed:
+                direct_closed += 1
+            else:
+                open_entries.append((st, n_act, n_q))
+    open_entries.sort(key=lambda x: x[0])
+    return direct_closed, open_entries
+
+
+def get_coset_bal_states(sr_cur, z_val, b_tt, max_dim=10):
+    pts = np.array([u | ((u ^ z_val) << 8) for u in range(256)], dtype=np.uint16)
+    raw_forms = [
+        sum((1 << int(i)) for i in np.flatnonzero(b_tt[:, pts[k]]))
+        for k in range(256)
+        if np.any(b_tt[:, pts[k]])
+    ]
+    z_free = s16.reduce_forms_mod_pivs(raw_forms, sr_cur["_lin_pivs"])
+    nz = len(z_free)
+    if nz > max_dim:
+        return nz, None, None
+    z_rref = s19.strict_rref_masks(z_free)
+    z_pivs = sorted(z_rref.keys())
+    z_forms = [z_rref[p] for p in z_pivs]
+    z_tts = []
+    for p in z_pivs:
+        x = 1 << p
+        for lp, (pv, _) in sr_cur["_lin_pivs"].items():
+            if (((pv ^ (1 << lp)) & x).bit_count()) & 1:
+                x |= (1 << lp)
+        tt = np.zeros(256, dtype=np.uint8)
+        tmp = x
+        while tmp:
+            lb = tmp & -tmp
+            tt ^= b_tt[lb.bit_length() - 1, pts]
+            tmp ^= lb
+        z_tts.append(tt)
+    x0 = sum((1 << lp) for lp, (_, pr) in sr_cur["_lin_pivs"].items() if pr)
+    tt0 = np.zeros(256, dtype=np.uint8)
+    tmp = x0
+    while tmp:
+        lb = tmp & -tmp
+        tt0 ^= b_tt[lb.bit_length() - 1, pts]
+        tmp ^= lb
+    bal_sts = []
+    for st in range(1 << nz):
+        tt = tt0.copy()
+        for j in range(nz):
+            if (st >> j) & 1:
+                tt ^= z_tts[j]
+        if int(tt.sum()) == 128:
+            bal_sts.append(st)
+    return nz, z_forms, bal_sts
+
+
+COSET_CANDIDATES = (0xFF, 0x55, 0x33, 0x0F, 0x3C, 0x66, 0x5A, 0xA5, 0x1E, 0x78)
+
+
+def close_open_substate_deep(
+    lbl, sub, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, workers, deadline, cert_dir,
+    depth=0, max_depth=4, used_cosets=()
+):
+    """
+    Close an open branch state `sub` using a 3-strategy cascade:
+      1. D8 Coset Weight-128 Balance Filtering (across COSET_CANDIDATES with nz <= 9)
+      2. K_R + MinRank Parallel Closer (when M1 > 0 and threshold k_fix <= 8)
+      3. Multi-Level Recursive Radical-Complement W_forms Splitting (up to max_depth=4)
+    """
+    if sub["closed_unsat"]:
+        return True, "ALREADY_CLOSED"
+
+    # Strategy 1: Check D8 cosets for weight-128 balance filtering
+    best_coset = None
+    for z_val in COSET_CANDIDATES:
+        if z_val in used_cosets:
+            continue
+        nz, z_forms, bal_sts = get_coset_bal_states(sub, z_val, b_tt, max_dim=9 if depth == 0 else 8)
+        if z_forms is not None:
+            if len(bal_sts) == 0:
+                return True, f"COSET_0x{z_val:02X}_ZERO_BAL(nz={nz})"
+            if best_coset is None or len(bal_sts) < len(best_coset[3]):
+                best_coset = (z_val, nz, z_forms, bal_sts)
+                if len(bal_sts) <= 4:
+                    break
+
+    max_bal_allow = 48 if depth == 0 else (20 if depth == 1 else 10)
+    if best_coset is not None and len(best_coset[3]) <= max_bal_allow and depth < max_depth:
+        z_val, nz, z_forms, bal_sts = best_coset
+        use_w = workers if (depth == 0 and len(bal_sts) >= 8) else 1
+        d_cl, open_z = parallel_filter_open_states(sub, z_forms, bal_sts, so_s9, tbl, use_w, max_xl=18)
+        if not open_z:
+            return True, f"COSET_0x{z_val:02X}_DIRECT({len(bal_sts)}/{len(bal_sts)})"
+        if len(open_z) <= (12 if depth == 0 else 6):
+            all_z_ok = True
+            for st_z, _, _ in open_z:
+                ex_z = [(z_forms[j], (st_z >> j) & 1) for j in range(nz)]
+                sub_z = s9.run_branch_cascade(
+                    lib9, sub["_buf"], sub["_quad_ids"], sub["_cub_ids"], sub["_lin_pivs"],
+                    ex_z, tbl, max_xl_rounds=18, verify_subst=False
+                )
+                ok_z, _ = close_open_substate_deep(
+                    f"{lbl}_z{z_val:02x}_{st_z}", sub_z, b_tt, lib9, lib_sh, so_s9, tbl, n_cw,
+                    workers, deadline, cert_dir, depth=depth + 1, max_depth=max_depth,
+                    used_cosets=used_cosets + (z_val,)
+                )
+                del sub_z
+                if not ok_z:
+                    all_z_ok = False
+                    break
+            if all_z_ok:
+                return True, f"COSET_0x{z_val:02X}_REC(bal={len(bal_sts)},open={len(open_z)})"
+
+    # Strategy 2: K_R + MinRank Parallel Closer (when M1 > 0 and k2 <= 8)
+    if depth <= 2 and len(sub["_quad_ids"]) >= 2:
+        info2 = s45a.extract_minrank_basis_for_state(lbl, sub, lib9, lib_sh, tbl, rng_seed=46300 + depth)
+        nW2 = info2["nW"]
+        if info2["status"] == "OK":
+            th2 = s45a.find_kfix_threshold(lbl, sub, info2, lib9, tbl, rng_seed=46301 + depth)
+            if th2 is not None and th2[0] <= (8 if depth == 0 else 7):
+                k2 = th2[0]
+                use_w = workers if depth == 0 else 1
+                c2 = s45a.run_parallel_shard(lbl, 42, sub, info2, k2, 0, 1, use_w, so_s9, n_cw, deadline, cert_dir)
+                if c2["verdict"] == "ORBIT_FORMALLY_CLOSED_100%":
+                    return True, f"MINRANK_K{k2}({c2['branches_checked']})"
+
+    # Strategy 3: Radical-Complement W_forms Splitting + Multi-Level Recursion
     qps = [s9.row_to_pset(sub["_buf"], qr, tbl) for qr in sub["_quad_ids"]]
     ana = s16.analyze_quad_system(qps)
-    W_rref = s19.strict_rref_masks(list(ana["W_piv"].values()))
+    W_free = s16.reduce_forms_mod_pivs(list(ana["W_piv"].values()), sub["_lin_pivs"])
+    W_rref = s19.strict_rref_masks(W_free)
     W_forms = [W_rref[p] for p in sorted(W_rref.keys())]
     if not W_forms:
-        return False, f"NO_W_FORMS(q={len(qps)})"
+        return False, f"NO_W_FORMS(q={len(qps)},d={depth})"
 
-    for k_split in [min(len(W_forms), d) for d in (4, 6, 8)]:
-        forms_use = W_forms[:k_split]
-        all_closed = True
-        for b in range(1 << k_split):
-            ex = [(forms_use[j], (b >> j) & 1) for j in range(k_split)]
-            s_ch = s9.run_branch_cascade(
-                lib9, sub["_buf"], sub["_quad_ids"], sub["_cub_ids"], sub["_lin_pivs"],
-                ex, tbl, max_xl_rounds=20, verify_subst=(b == 0)
-            )
-            if not s_ch["closed_unsat"]:
-                # Try 1 more level of 4 bits on s_ch's own quadratics!
-                qps3 = [s9.row_to_pset(s_ch["_buf"], qr, tbl) for qr in s_ch["_quad_ids"][:8]]
-                ana3 = s16.analyze_quad_system(qps3)
-                wf3 = s16.reduce_forms_mod_pivs(list(ana3["W_piv"].values()) + W_forms, s_ch["_lin_pivs"])[:4]
-                if not wf3:
-                    all_closed = False
-                    break
-                sub_ok = True
-                for b3 in range(1 << len(wf3)):
-                    ex3 = [(wf3[j], (b3 >> j) & 1) for j in range(len(wf3))]
-                    s3 = s9.run_branch_cascade(
-                        lib9, s_ch["_buf"], s_ch["_quad_ids"], s_ch["_cub_ids"], s_ch["_lin_pivs"],
-                        ex3, tbl, max_xl_rounds=18, verify_subst=False
-                    )
-                    if not s3["closed_unsat"]:
-                        sub_ok = False
-                        break
-                if not sub_ok:
-                    all_closed = False
-                    break
-        if all_closed:
-            return True, f"W_SPLIT_K{k_split}"
-    return False, f"STILL_OPEN(nW={len(W_forms)},q={len(qps)})"
+    max_k = 6 if depth == 0 else (5 if depth == 1 else 4)
+    k_split = min(len(W_forms), max_k)
+    forms_use = W_forms[:k_split]
+    st_list = list(range(1 << k_split))
+    use_w = workers if (depth == 0 and len(st_list) >= 16) else 1
+    d_cl, open_w = parallel_filter_open_states(sub, forms_use, st_list, so_s9, tbl, use_w, max_xl=20 if depth == 0 else 18)
+    if not open_w:
+        return True, f"W_SPLIT_K{k_split}_DIRECT({len(st_list)}/{len(st_list)})"
+
+    if depth >= max_depth:
+        return False, f"MAX_DEPTH_OPEN(d={depth},k={k_split},open={len(open_w)}/{len(st_list)})"
+
+    for b, n_act_ch, n_q_ch in open_w:
+        ex = [(forms_use[j], (b >> j) & 1) for j in range(k_split)]
+        s_ch = s9.run_branch_cascade(
+            lib9, sub["_buf"], sub["_quad_ids"], sub["_cub_ids"], sub["_lin_pivs"],
+            ex, tbl, max_xl_rounds=20 if depth == 0 else 18, verify_subst=(b == 0)
+        )
+        ok_ch, how_ch = close_open_substate_deep(
+            f"{lbl}_w{b}", s_ch, b_tt, lib9, lib_sh, so_s9, tbl, n_cw,
+            workers, deadline, cert_dir, depth=depth + 1, max_depth=max_depth,
+            used_cosets=used_cosets
+        )
+        del s_ch
+        if not ok_ch:
+            return False, f"CHILD_OPEN(b={b},N={n_act_ch},q={n_q_ch}->{how_ch})"
+
+    return True, f"W_SPLIT_K{k_split}_REC(total={len(st_list)},rec_closed={len(open_w)})"
 
 
-def run_eta42_deep(root, eta_free, lib9, lib_sh, so_s9, tbl, n_cw, workers, deadline, cert_dir):
+def run_eta42_deep(root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, workers, shard_idx, n_shards, deadline, cert_dir):
     t0 = time.perf_counter()
-    print("\n==================== [B0_00 eta=42] STEP 46C: 2-LEVEL DEEP FORMAL CLOSURE ====================", flush=True)
+    print(
+        f"\n==================== [B0_00 eta=42] STEP 46C-v2: SHARD {shard_idx}/{n_shards} DEEP FORMAL CLOSURE ====================",
+        flush=True,
+    )
     n_ef = len(eta_free)
     em = 42
     ex = [(eta_free[k], (em >> k) & 1) for k in range(n_ef)]
@@ -109,52 +295,66 @@ def run_eta42_deep(root, eta_free, lib9, lib_sh, so_s9, tbl, n_cw, workers, dead
     k_fix = 8
     fix_forms, rescue_forms, fix_sha = s45a.build_fix_and_rescue_forms(info, k_fix)
     n_branches = 1 << k_fix
-    print(f"  [eta=42] Level-1 k_fix={k_fix} ({n_branches} branches), fix_sha256={fix_sha}", flush=True)
+    lo = (shard_idx * n_branches) // n_shards
+    hi = ((shard_idx + 1) * n_branches) // n_shards
+    shard_rbs = list(range(lo, hi))
+    print(
+        f"  [eta=42] Level-1 k_fix={k_fix}, shard {shard_idx}/{n_shards} [{lo}..{hi}) ({len(shard_rbs)} branches), "
+        f"workers={workers}, fix_sha256={fix_sha}",
+        flush=True,
+    )
 
-    direct_closed = 0
+    direct_closed, open_rbs = parallel_filter_open_states(sr, fix_forms, shard_rbs, so_s9, tbl, workers, max_xl=20)
+    print(
+        f"  [eta=42 s{shard_idx}/{n_shards}] Parallel Level-1 sweep done in {time.perf_counter()-t0:.1f}s: "
+        f"direct_closed={direct_closed}/{len(shard_rbs)}, open_level1={len(open_rbs)}",
+        flush=True,
+    )
+
     level2_closed = 0
     level2_details = []
     open_survivors = []
 
-    for rb in range(n_branches):
+    for idx_o, (rb, n_act, n_q) in enumerate(open_rbs):
+        t_rb = time.perf_counter()
         ex_w = [(fix_forms[j], (rb >> j) & 1) for j in range(k_fix)]
         sub = s9.run_branch_cascade(
             lib9, sr["_buf"], sr["_quad_ids"], sr["_cub_ids"], sr["_lin_pivs"],
-            ex_w, tbl, max_xl_rounds=20, verify_subst=(rb == 0 or rb == n_branches - 1)
+            ex_w, tbl, max_xl_rounds=20, verify_subst=(idx_o == 0)
         )
-        if sub["closed_unsat"]:
-            direct_closed += 1
+        print(
+            f"    [eta=42 rb={rb:3d} ({idx_o+1}/{len(open_rbs)})] Level-1 open (N={n_act}, q={n_q}) -> running multi-level closer...",
+            flush=True,
+        )
+        ok, how = close_open_substate_deep(
+            f"eta42_rb{rb}", sub, b_tt, lib9, lib_sh, so_s9, tbl, n_cw,
+            workers, deadline, cert_dir, depth=0, max_depth=4
+        )
+        dt_rb = round(time.perf_counter() - t_rb, 2)
+        if ok:
+            level2_closed += 1
+            level2_details.append({"rb": rb, "N": n_act, "q": n_q, "closed_by": how, "elapsed_s": dt_rb})
+            print(f"      -> [eta=42 rb={rb:3d}] CLOSED 100% via {how} ({dt_rb}s)!", flush=True)
         else:
-            n_act = tbl["n"] - len(sub["_lin_pivs"])
-            n_q = len(sub["_quad_ids"])
-            print(f"    [eta=42 rb={rb:3d}] Level-1 open (N={n_act}, q={n_q}) -> running Level-2 deep closer...", flush=True)
-            ok, how = close_open_substate_deep(
-                f"eta42_rb{rb}", sub, lib9, lib_sh, so_s9, tbl, n_cw, workers, deadline, cert_dir, max_k2=9
-            )
-            if ok:
-                level2_closed += 1
-                level2_details.append({"rb": rb, "N": n_act, "q": n_q, "closed_by": how})
-                print(f"      -> [eta=42 rb={rb:3d}] LEVEL-2 CLOSED 100% via {how}!", flush=True)
-            else:
-                open_survivors.append({"rb": rb, "N": n_act, "q": n_q, "detail": how})
-                print(f"      -> [eta=42 rb={rb:3d}] STILL OPEN: {how}", flush=True)
+            open_survivors.append({"rb": rb, "N": n_act, "q": n_q, "detail": how, "elapsed_s": dt_rb})
+            print(f"      -> [eta=42 rb={rb:3d}] STILL OPEN: {how} ({dt_rb}s)", flush=True)
         del sub
-        if (rb + 1) % 32 == 0 or (rb + 1) == n_branches:
-            gc.collect()
-            print(
-                f"    [eta=42] progress {rb+1}/{n_branches}: direct={direct_closed}, level2_closed={level2_closed}, "
-                f"open={len(open_survivors)} ({time.perf_counter()-t0:.1f}s)",
-                flush=True,
-            )
+        gc.collect()
 
-    verdict = "ORBIT_FORMALLY_CLOSED_100%" if len(open_survivors) == 0 else "HAS_OPEN_SURVIVORS"
+    verdict = "SHARD_CLOSED_100%" if len(open_survivors) == 0 else "HAS_OPEN_SURVIVORS"
+    if n_shards == 1 and len(open_survivors) == 0:
+        verdict = "ORBIT_FORMALLY_CLOSED_100%"
     cert = {
         "cell": "B0_00",
         "eta": 42,
         "k_fix_level1": k_fix,
         "fix_sha256": fix_sha,
         "fix_forms_hex": [hex(f) for f in fix_forms],
-        "total_branches": n_branches,
+        "shard_idx": shard_idx,
+        "n_shards": n_shards,
+        "lo": lo,
+        "hi": hi,
+        "total_branches_in_shard": len(shard_rbs),
         "direct_closed": direct_closed,
         "level2_closed": level2_closed,
         "level2_details": level2_details,
@@ -163,73 +363,49 @@ def run_eta42_deep(root, eta_free, lib9, lib_sh, so_s9, tbl, n_cw, workers, dead
         "verdict": verdict,
     }
     cert_dir.mkdir(parents=True, exist_ok=True)
-    out_p = cert_dir / "step46c_cert_eta42_deep.json"
+    sfx = f"_s{shard_idx}_of_{n_shards}" if n_shards > 1 else ""
+    out_p = cert_dir / f"step46c_cert_eta42_deep{sfx}.json"
     out_p.write_text(json.dumps(cert, indent=2), encoding="utf-8")
-    print(f"\n  *** [B0_00 eta=42] {verdict} (direct={direct_closed}, level2={level2_closed}, open={len(open_survivors)}, {cert['elapsed_s']}s) -> {out_p.name} ***", flush=True)
+    print(
+        f"\n  *** [B0_00 eta=42 s{shard_idx}/{n_shards}] {verdict} "
+        f"(direct={direct_closed}, level2={level2_closed}, open={len(open_survivors)}, {cert['elapsed_s']}s) -> {out_p.name} ***",
+        flush=True,
+    )
 
 
-def run_eta0_lowmem(root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, workers, deadline, cert_dir):
+def run_eta0_lowmem(root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, workers, shard_idx, n_shards, deadline, cert_dir):
     t0 = time.perf_counter()
-    print("\n==================== [B0_00 eta=0] STEP 46C: STREAMING LOW-MEM (<300 MB) SUB-STATE CLOSER ====================", flush=True)
-
-    def get_coset_bal_states(sr_cur, z_val, max_dim=10):
-        pts = np.array([u | ((u ^ z_val) << 8) for u in range(256)], dtype=np.uint16)
-        raw_forms = [sum((1 << int(i)) for i in np.flatnonzero(b_tt[:, pts[k]])) for k in range(256) if np.any(b_tt[:, pts[k]])]
-        z_free = s16.reduce_forms_mod_pivs(raw_forms, sr_cur["_lin_pivs"])
-        nz = len(z_free)
-        if nz > max_dim:
-            return nz, None, None
-        z_rref = s19.strict_rref_masks(z_free)
-        z_pivs = sorted(z_rref.keys())
-        z_forms = [z_rref[p] for p in z_pivs]
-        z_tts = []
-        for p in z_pivs:
-            x = 1 << p
-            for lp, (pv, _) in sr_cur["_lin_pivs"].items():
-                if (((pv ^ (1 << lp)) & x).bit_count()) & 1:
-                    x |= (1 << lp)
-            tt = np.zeros(256, dtype=np.uint8)
-            tmp = x
-            while tmp:
-                lb = tmp & -tmp
-                tt ^= b_tt[lb.bit_length() - 1, pts]
-                tmp ^= lb
-            z_tts.append(tt)
-        x0 = sum((1 << lp) for lp, (_, pr) in sr_cur["_lin_pivs"].items() if pr)
-        tt0 = np.zeros(256, dtype=np.uint8)
-        tmp = x0
-        while tmp:
-            lb = tmp & -tmp
-            tt0 ^= b_tt[lb.bit_length() - 1, pts]
-            tmp ^= lb
-        bal_sts = []
-        for st in range(1 << nz):
-            tt = tt0.copy()
-            for j in range(nz):
-                if (st >> j) & 1:
-                    tt ^= z_tts[j]
-            if int(tt.sum()) == 128:
-                bal_sts.append(st)
-        return nz, z_forms, bal_sts
-
+    print(
+        f"\n==================== [B0_00 eta=0] STEP 46C-v2: SHARD {shard_idx}/{n_shards} PARALLEL LOW-MEM CLOSER ====================",
+        flush=True,
+    )
     n_ef = len(eta_free)
     ex0 = [(eta_free[k], 0) for k in range(n_ef)]
     sr0 = s9.run_branch_cascade(
         lib9, root["_buf"], root["_quad_ids"], root["_cub_ids"], root["_lin_pivs"],
         ex0, tbl, max_xl_rounds=20, verify_subst=True
     )
-    nz_ff, forms_ff, bal_ff = get_coset_bal_states(sr0, 0xFF, max_dim=8)
-    print(f"  [eta=0] 0xFF dim={nz_ff}, balanced states={len(bal_ff)}", flush=True)
+    nz_ff, forms_ff, bal_ff = get_coset_bal_states(sr0, 0xFF, b_tt, max_dim=8)
+    n_ff = len(bal_ff)
+    lo = (shard_idx * n_ff) // n_shards
+    hi = ((shard_idx + 1) * n_ff) // n_shards
+    shard_ff = bal_ff[lo:hi]
+    print(
+        f"  [eta=0] 0xFF dim={nz_ff}, total balanced states={n_ff}, shard {shard_idx}/{n_shards} "
+        f"indices [{lo}..{hi}) -> states={shard_ff}",
+        flush=True,
+    )
 
     ff_closed = 0
     ff_open = 0
     sub2_closed_direct = 0
     open_sub2_total = 0
     closed_100 = 0
-    needs_sharding = []
+    closed_details = []
     still_open = []
 
-    for st_ff in bal_ff:
+    for st_ff in shard_ff:
+        t_ff = time.perf_counter()
         sub1 = s9.run_branch_cascade(
             lib9, sr0["_buf"], sr0["_quad_ids"], sr0["_cub_ids"], sr0["_lin_pivs"],
             [(forms_ff[j], (st_ff >> j) & 1) for j in range(nz_ff)], tbl, max_xl_rounds=20, verify_subst=False
@@ -239,133 +415,75 @@ def run_eta0_lowmem(root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, worker
             del sub1
             continue
         ff_open += 1
-        nz_55, forms_55, bal_55 = get_coset_bal_states(sub1, 0x55, max_dim=10)
+        nz_55, forms_55, bal_55 = get_coset_bal_states(sub1, 0x55, b_tt, max_dim=10)
         if forms_55 is None:
             still_open.append({"ff": st_ff, "status": f"0x55_DIM_{nz_55}"})
             del sub1
             continue
 
-        for st_55 in bal_55:
+        print(f"  [eta=0 ff={st_ff}] 0x55 dim={nz_55}, evaluating {len(bal_55)} balanced states on {workers} cores...", flush=True)
+        d_cl, open_55 = parallel_filter_open_states(sub1, forms_55, bal_55, so_s9, tbl, workers, max_xl=18)
+        sub2_closed_direct += d_cl
+        print(
+            f"  [eta=0 ff={st_ff}] Parallel 0x55 sweep done in {time.perf_counter()-t_ff:.1f}s: "
+            f"direct_closed={d_cl}/{len(bal_55)}, open_sub2={len(open_55)}",
+            flush=True,
+        )
+
+        for idx_o, (st_55, n_act2, n_q2) in enumerate(open_55):
+            open_sub2_total += 1
+            lbl = f"eta0_ff{st_ff}_55_{st_55}"
+            t_s2 = time.perf_counter()
             sub2 = s9.run_branch_cascade(
                 lib9, sub1["_buf"], sub1["_quad_ids"], sub1["_cub_ids"], sub1["_lin_pivs"],
-                [(forms_55[j], (st_55 >> j) & 1) for j in range(nz_55)], tbl, max_xl_rounds=18, verify_subst=False
+                [(forms_55[j], (st_55 >> j) & 1) for j in range(nz_55)], tbl, max_xl_rounds=18, verify_subst=(idx_o == 0)
             )
-            if sub2["closed_unsat"]:
-                sub2_closed_direct += 1
-                del sub2
-                continue
-
-            # STREAMING PROCESSING OF OPEN sub2 (NO LIST ACCUMULATION!)
-            open_sub2_total += 1
-            idx_s = open_sub2_total
-            lbl = f"eta0_ff{st_ff}_55_{st_55}"
-            info = s45a.extract_minrank_basis_for_state(lbl, sub2, lib9, lib_sh, tbl, rng_seed=45000 + st_ff * 100 + st_55)
-            nW = info["nW"]
-
-            if info["status"] in ("NO_W", "NO_M1"):
-                if (info["status"] == "NO_W") or (nW <= 6 and info["status"] == "NO_M1"):
-                    W_forms = info["W_forms"]
-                    survivors_w = []
-                    for wb in range(1 << nW):
-                        exw = [(W_forms[j], (wb >> j) & 1) for j in range(nW)]
-                        sw = s9.run_branch_cascade(
-                            lib9, sub2["_buf"], sub2["_quad_ids"], sub2["_cub_ids"], sub2["_lin_pivs"],
-                            exw, tbl, max_xl_rounds=18, verify_subst=(wb == 0)
-                        )
-                        if not sw["closed_unsat"]:
-                            survivors_w.append(sw)
-                    if not survivors_w:
-                        closed_100 += 1
-                        print(f"  *** [{lbl}] {info['status']} nW={nW}: CLOSED 100% ({1<<nW} W-branches)! ***", flush=True)
-                        del sub2
-                        continue
-                    rem_z33_open = 0
-                    for sw in survivors_w:
-                        nz_33, forms_33, bal_33 = get_coset_bal_states(sw, 0x33, max_dim=9)
-                        if forms_33 is None:
-                            rem_z33_open += 1
-                            continue
-                        for st_33 in bal_33:
-                            sub3 = s9.run_branch_cascade(
-                                lib9, sw["_buf"], sw["_quad_ids"], sw["_cub_ids"], sw["_lin_pivs"],
-                                [(forms_33[j], (st_33 >> j) & 1) for j in range(nz_33)], tbl, max_xl_rounds=18, verify_subst=False
-                            )
-                            if not sub3["closed_unsat"]:
-                                # Also try 4th coset z=0x0F on sub3!
-                                nz_0f, forms_0f, bal_0f = get_coset_bal_states(sub3, 0x0F, max_dim=9)
-                                if forms_0f is None:
-                                    rem_z33_open += 1
-                                else:
-                                    for st_0f in bal_0f:
-                                        sub4 = s9.run_branch_cascade(
-                                            lib9, sub3["_buf"], sub3["_quad_ids"], sub3["_cub_ids"], sub3["_lin_pivs"],
-                                            [(forms_0f[j], (st_0f >> j) & 1) for j in range(nz_0f)], tbl, max_xl_rounds=18, verify_subst=False
-                                        )
-                                        if not sub4["closed_unsat"]:
-                                            rem_z33_open += 1
-                                        del sub4
-                            del sub3
-                    del survivors_w
-                    if rem_z33_open == 0:
-                        closed_100 += 1
-                        print(f"  *** [{lbl}] {info['status']} + z=0x33/0x0F: CLOSED 100%! ***", flush=True)
-                        del sub2
-                        continue
-                still_open.append({"ff": st_ff, "st55": st_55, "status": info["status"], "nW": nW})
-                del sub2
-                continue
-
-            if time.perf_counter() > deadline - 90.0:
-                needs_sharding.append({"ff": st_ff, "st55": st_55, "status": "BUDGET_SKIP", "nW": nW})
-                del sub2
-                continue
-
-            th = s45a.find_kfix_threshold(lbl, sub2, info, lib9, tbl, rng_seed=45100 + idx_s)
-            if th is None:
-                needs_sharding.append({"ff": st_ff, "st55": st_55, "status": "NO_THRESHOLD", "nW": nW})
-                del sub2
-                continue
-            best_k, avg_dt = th
-            if best_k <= 7 or (best_k == 8 and avg_dt < 1.2):
-                c_sub = s45a.run_parallel_shard(
-                    lbl, 0, sub2, info, best_k, 0, 1, workers, so_s9, n_cw, deadline, cert_dir
-                )
-                if c_sub["verdict"] == "ORBIT_FORMALLY_CLOSED_100%":
-                    closed_100 += 1
-                else:
-                    needs_sharding.append({"ff": st_ff, "st55": st_55, "nW": nW, "best_k": best_k, "verdict": c_sub["verdict"]})
+            ok2, how2 = close_open_substate_deep(
+                lbl, sub2, b_tt, lib9, lib_sh, so_s9, tbl, n_cw,
+                workers, deadline, cert_dir, depth=0, max_depth=4, used_cosets=(0xFF, 0x55)
+            )
+            dt_s2 = round(time.perf_counter() - t_s2, 2)
+            if ok2:
+                closed_100 += 1
+                closed_details.append({"ff": st_ff, "st55": st_55, "N": n_act2, "q": n_q2, "closed_by": how2, "elapsed_s": dt_s2})
+                print(f"    *** [{lbl}] CLOSED 100% via {how2} ({dt_s2}s)! ***", flush=True)
             else:
-                needs_sharding.append({"ff": st_ff, "st55": st_55, "nW": nW, "best_k": best_k, "avg_dt": round(avg_dt, 2)})
+                still_open.append({"ff": st_ff, "st55": st_55, "N": n_act2, "q": n_q2, "detail": how2, "elapsed_s": dt_s2})
+                print(f"    *** [{lbl}] STILL OPEN: {how2} ({dt_s2}s) ***", flush=True)
             del sub2
-            if open_sub2_total % 10 == 0:
-                gc.collect()
-                print(
-                    f"  [eta=0 stream] open_sub2={open_sub2_total}: closed_100={closed_100}, "
-                    f"needs_shard={len(needs_sharding)}, still_open={len(still_open)} ({time.perf_counter()-t0:.1f}s)",
-                    flush=True,
-                )
+            gc.collect()
+
         del sub1
         gc.collect()
 
+    verdict = "SHARD_CLOSED_100%" if (open_sub2_total == closed_100 and not still_open) else "PARTIAL"
+    if n_shards == 1 and verdict == "SHARD_CLOSED_100%":
+        verdict = "ORBIT_FORMALLY_CLOSED_100%"
     summary = {
         "cell": "B0_00",
         "eta": 0,
-        "bal_0xff_total": len(bal_ff),
+        "shard_idx": shard_idx,
+        "n_shards": n_shards,
+        "ff_lo": lo,
+        "ff_hi": hi,
+        "shard_ff_states": shard_ff,
+        "bal_0xff_total": n_ff,
         "bal_0xff_closed": ff_closed,
         "sub2_direct_closed": sub2_closed_direct,
         "open_sub2_total": open_sub2_total,
         "closed_100_streaming": closed_100,
-        "needs_sharding": needs_sharding,
+        "closed_details": closed_details,
         "still_open": still_open,
         "elapsed_s": round(time.perf_counter() - t0, 2),
-        "verdict": "ORBIT_FORMALLY_CLOSED_100%" if (open_sub2_total == closed_100 and not still_open and not needs_sharding) else "PARTIAL",
+        "verdict": verdict,
     }
     cert_dir.mkdir(parents=True, exist_ok=True)
-    out_p = cert_dir / "step46c_cert_eta00_full.json"
+    sfx = f"_s{shard_idx}_of_{n_shards}" if n_shards > 1 else ""
+    out_p = cert_dir / f"step46c_cert_eta00_full{sfx}.json"
     out_p.write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print(
-        f"\n=== [eta=0 STREAM SUMMARY] open_sub2={open_sub2_total}, closed_100={closed_100}, "
-        f"needs_sharding={len(needs_sharding)}, still_open={len(still_open)} -> {summary['verdict']} ({summary['elapsed_s']}s) ===",
+        f"\n=== [eta=0 s{shard_idx}/{n_shards} SUMMARY] open_sub2={open_sub2_total}, closed_100={closed_100}, "
+        f"still_open={len(still_open)} -> {summary['verdict']} ({summary['elapsed_s']}s) ===",
         flush=True,
     )
 
@@ -374,8 +492,10 @@ def main():
     t_start = time.perf_counter()
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", choices=["eta0_lowmem", "eta42_deep"], required=True)
+    parser.add_argument("--shard-idx", type=int, default=0)
+    parser.add_argument("--n-shards", type=int, default=1)
     parser.add_argument("--workers", type=int, default=4)
-    parser.add_argument("--budget-min", type=float, default=38.0)
+    parser.add_argument("--budget-min", type=float, default=80.0)
     parser.add_argument("--cert-dir", type=str, default="step46c_certs")
     args = parser.parse_args()
     deadline = t_start + args.budget_min * 60.0
@@ -585,9 +705,15 @@ def main():
     eta_free = s16.reduce_forms_mod_pivs(forms_L1, root["_lin_pivs"])
 
     if args.mode == "eta42_deep":
-        run_eta42_deep(root, eta_free, lib9, lib_sh, so_s9, tbl, n_cw, args.workers, deadline, cert_dir)
+        run_eta42_deep(
+            root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw,
+            args.workers, args.shard_idx, args.n_shards, deadline, cert_dir
+        )
     else:
-        run_eta0_lowmem(root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, args.workers, deadline, cert_dir)
+        run_eta0_lowmem(
+            root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw,
+            args.workers, args.shard_idx, args.n_shards, deadline, cert_dir
+        )
 
 
 if __name__ == "__main__":

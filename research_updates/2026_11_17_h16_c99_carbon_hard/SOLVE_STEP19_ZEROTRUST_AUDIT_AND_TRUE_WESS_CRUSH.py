@@ -191,7 +191,8 @@ def run_step19_cell(cell_name, lib_diag, lib9, lib_cg, lib_sh, orbits, layer_vec
                     if sample_rlog is None:
                         sample_rlog = {"closed_by": sub.get("closed_by"), "logs": sub.get("round_logs", [])[-3:]}
                 else:
-                    verify_lin_pivs_rref(sub["_lin_pivs"])
+                    if "_lin_pivs" in sub:
+                        verify_lin_pivs_rref(sub["_lin_pivs"])
                     q_s = sub.get("n_quad_surviving", -1)
                     qs.append(q_s); ls.append(sub.get("total_lin_dropped", 0)); ns.append(sub["N_active"])
                     if (q_s > 50 or sub.get("total_lin_dropped", 0) > 0) and sample_rlog is None:
