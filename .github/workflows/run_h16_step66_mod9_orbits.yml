@@ -1,0 +1,20 @@
+name: H16 Step 66 Walsh mod-9 orbit self-test
+on:
+  push:
+    branches: [codex/h16-step65-mod9-cert]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/H16_WALSH_MOD9_ORBITS.py'
+      - '.github/workflows/run_h16_step66_mod9_orbits.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/H16_WALSH_MOD9_ORBITS.py
