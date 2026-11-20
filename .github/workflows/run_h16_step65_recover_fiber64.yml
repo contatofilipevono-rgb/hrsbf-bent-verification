@@ -1,0 +1,78 @@
+name: H16 Step 65 recover missing fiber 64 prefixes
+on:
+  push:
+    branches: [codex/h16-step65-mod9-cert]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP65_RECOVER_FIBER64.py'
+      - '.github/workflows/run_h16_step65_recover_fiber64.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    timeout-minutes: 15
+    env:
+      H16_RECOVERY_SHARD: ${{ matrix.shard }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44594052302
+          name: h16-step60-fiber-64
+          path: fiber
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44597394429
+          pattern: h16-step64-shard-*
+          merge-multiple: true
+          path: old
+          github-token: ${{ github.token }}
+      - run: g++ -O3 -std=c++20 -march=native research_updates/2026_11_17_h16_c99_carbon_hard/H16_STEP63_FIBER_CENSUS.cpp -o h16_step63
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP65_RECOVER_FIBER64.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: h16-step65-recovery-${{ matrix.shard }}
+          path: step65_recovery_*.json
+  collect:
+    runs-on: ubuntu-latest
+    needs: recover
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44594052302
+          name: h16-step60-fiber-64
+          path: fiber
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44597394429
+          pattern: h16-step64-shard-*
+          merge-multiple: true
+          path: old
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: h16-step65-recovery-*
+          merge-multiple: true
+          path: recoveries
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP65_RECOVER_FIBER64.py collect
+      - uses: actions/upload-artifact@v4
+        with:
+          name: h16-step65-fiber64-coverage
+          path: step65_fiber64_summary.json
