@@ -1,0 +1,42 @@
+name: H(16,4) Step 42 — Independent 64-eta Audit (B0_11, B1_11) + B0_00 K_R/MinRank Pilot
+
+on:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP42A_B011_B111_ETA64_ORBIT_AUDIT.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP42B_B000_KR_MINRANK_PILOT.py'
+      - '.github/workflows/run_h16_step42_eta_audit_and_b000_minrank.yml'
+  workflow_dispatch:
+
+jobs:
+  step42a_eta_audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B0_11, B1_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python deps
+        run: python -m pip install --upgrade pip && pip install numpy python-sat
+      - name: Run Step 42A 64-eta Completeness Audit (${{ matrix.cell }})
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP42A_B011_B111_ETA64_ORBIT_AUDIT.py --cells ${{ matrix.cell }}
+
+  step42b_b000_minrank:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python deps
+        run: python -m pip install --upgrade pip && pip install numpy python-sat
+      - name: Run Step 42B B0_00 K_R + MinRank Pilot
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP42B_B000_KR_MINRANK_PILOT.py --etas "42,4,5,2,46"
