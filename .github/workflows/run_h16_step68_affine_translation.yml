@@ -1,0 +1,37 @@
+name: H16 Step 68 certify affine translation candidate
+on:
+  push:
+    branches: [codex/h16-step65-mod9-cert]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP68_AFFINE_TRANSLATION.py'
+      - '.github/workflows/run_h16_step68_affine_translation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44594052302
+          name: h16-step60-fiber-0
+          path: fiber0
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44594052302
+          name: h16-step60-fiber-64
+          path: fiber64
+          github-token: ${{ github.token }}
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP68_AFFINE_TRANSLATION.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: h16-step68-affine-translation
+          path: step68_affine_translation.json
