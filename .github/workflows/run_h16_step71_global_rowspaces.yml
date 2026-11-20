@@ -1,0 +1,44 @@
+name: H16 Step 71 classify 512 reduced fiber row spaces
+on:
+  push:
+    branches: [codex/h16-step65-mod9-cert]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP71_GLOBAL_FIBER_ROWSPANS.py'
+      - '.github/workflows/run_h16_step71_global_rowspaces.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  classify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44745594647
+          name: h16-step70-global-ideal
+          path: global
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44594052302
+          name: h16-step60-fiber-0
+          path: fiber0
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44594052302
+          name: h16-step60-fiber-64
+          path: fiber64
+          github-token: ${{ github.token }}
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP71_GLOBAL_FIBER_ROWSPANS.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: h16-step71-rowspace-classes
+          path: step71_fiber_rowspaces_summary.json
