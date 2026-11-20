@@ -1,0 +1,67 @@
+name: H(16,4) Step 45A — B0_00 Parallel Mass Closure (64 Free vCPUs)
+
+on:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP45A_B000_PARALLEL_CLOSER.py'
+      - '.github/workflows/run_h16_step45a_b000_mass_close.yml'
+  workflow_dispatch:
+
+jobs:
+  step45a_b000_mass_close:
+    name: step45a (${{ matrix.name }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: eta42_2
+            args: '--etas 42,2 --kfix-map 42:8,2:8 --workers 4'
+          - name: eta13_26
+            args: '--etas 13,26 --kfix-map 13:8,26:8 --workers 4'
+          - name: eta12_30
+            args: '--etas 12,30 --kfix-map 12:8,30:8 --workers 4'
+          - name: eta5_s0
+            args: '--etas 5 --kfix-map 5:8 --shard-idx 0 --n-shards 2 --workers 4'
+          - name: eta5_s1
+            args: '--etas 5 --kfix-map 5:8 --shard-idx 1 --n-shards 2 --workers 4'
+          - name: eta31_full
+            args: '--etas 31 --kfix-map 31:10 --workers 4'
+          - name: eta46_s0
+            args: '--etas 46 --kfix-map 46:10 --shard-idx 0 --n-shards 2 --workers 4'
+          - name: eta46_s1
+            args: '--etas 46 --kfix-map 46:10 --shard-idx 1 --n-shards 2 --workers 4'
+          - name: eta47_s0
+            args: '--etas 47 --kfix-map 47:10 --shard-idx 0 --n-shards 2 --workers 4'
+          - name: eta47_s1
+            args: '--etas 47 --kfix-map 47:10 --shard-idx 1 --n-shards 2 --workers 4'
+          - name: eta4_s0
+            args: '--etas 4 --kfix-map 4:10 --shard-idx 0 --n-shards 2 --workers 4'
+          - name: eta4_s1
+            args: '--etas 4 --kfix-map 4:10 --shard-idx 1 --n-shards 2 --workers 4'
+          - name: eta6_s0
+            args: '--etas 6 --kfix-map 6:10 --shard-idx 0 --n-shards 3 --workers 4'
+          - name: eta6_s1
+            args: '--etas 6 --kfix-map 6:10 --shard-idx 1 --n-shards 3 --workers 4'
+          - name: eta6_s2
+            args: '--etas 6 --kfix-map 6:10 --shard-idx 2 --n-shards 3 --workers 4'
+          - name: eta0_full
+            args: '--etas "" --close-eta0 --workers 4'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python deps
+        run: python -m pip install --upgrade pip && pip install numpy python-sat
+      - name: Run Step 45A (${{ matrix.name }})
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP45A_B000_PARALLEL_CLOSER.py ${{ matrix.args }} --budget-min 40 --cert-dir step45a_certs
+      - name: Upload certificates
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: step45a-certs-${{ matrix.name }}
+          path: step45a_certs/
+          if-no-files-found: ignore

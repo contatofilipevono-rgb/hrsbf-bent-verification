@@ -1,0 +1,28 @@
+name: H(16,4) Step 45B — Exact Polar RHS + K_L3 Audit & B0_00 Hard Orbits
+
+on:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP45B_POLAR_EXACT_RHS_AND_KL3.py'
+      - '.github/workflows/run_h16_step45b_polar_exact_rhs.yml'
+  workflow_dispatch:
+
+jobs:
+  step45b_polar_exact_rhs:
+    name: step45b (${{ matrix.mode }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [B0_11, B1_11, B0_00_hard]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python deps
+        run: python -m pip install --upgrade pip && pip install numpy python-sat
+      - name: Run Step 45B (${{ matrix.mode }})
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP45B_POLAR_EXACT_RHS_AND_KL3.py --mode ${{ matrix.mode }}
