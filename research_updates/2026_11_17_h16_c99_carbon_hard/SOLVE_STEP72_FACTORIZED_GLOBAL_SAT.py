@@ -1,8 +1,8 @@
-"""Global B0_11 SAT with FACTORIZED 64 cubic equations in 69 variables.
+"""Global B0_11 SAT with FACTORIZED 64 equations (degrees 3/4) in 69 variables.
 
 Unlike Step70, retain the universal pivot R0 as a variable: the 63 resultant
 degree-4/5 equations expand to 2M monomials, whereas 64 parent equations remain
-degree <=3. EXACTLY verify symbolic R0 elimination reproduces archived Step70
+degree <=4. EXACTLY verify symbolic R0 elimination reproduces archived Step70
 all-512 quotient-bit ideal, then run the same XOR-aware SAT solver.
 
 UNSAT would eliminate only the parent algebraic B0_11 case whose hypotheses
@@ -49,7 +49,7 @@ def main_probe(coeff,S,rhs,pure,_fixed_bits,_trial):
             equations[int(i)].symmetric_difference_update({m|(1<<(BASE+int(j)))})
     assert all(all(term.bit_length()<=TOTAL_VARIABLES for term in p) for p in equations)
     degree=Counter(max((m.bit_count() for m in p),default=-1) for p in equations)
-    assert max(degree)<=3,degree
+    assert max(degree)<=4,degree\n    assert degree[3]==50 and degree[4]==14,degree
     # Explicit exact algebraic equivalence with Step70 global 63 equations.
     pivot=json.loads(Path("pivot/step59_branch_free_pivot.json").read_text())
     assert pivot["rhs_source_row"]==PIVOT and pivot["pivot_R_index"]==0
