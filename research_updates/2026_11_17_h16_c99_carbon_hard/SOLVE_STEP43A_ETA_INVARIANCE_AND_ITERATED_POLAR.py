@@ -447,7 +447,7 @@ def run_cell(cell_name, lib_diag, lib9, lib_cg, lib_sh, orbits, layer_vecs,
         # Column complement C (nRC x nRC_res)
         _, k_col_pivs = s40a.gf2_rref_np(K_use)
         comp_cols = [c for c in range(nRC) if c not in set(k_col_pivs)]
-        C = np.eye(nRC, dtype=np.uint8)[comp_cols]
+        C = np.eye(nRC, dtype=np.uint8)[:, comp_cols]
         nRC_res = C.shape[1]
 
         # Build polynomial matrices D(w) = M_core(w) @ C, B(w) = M_core(w) @ K_use.T

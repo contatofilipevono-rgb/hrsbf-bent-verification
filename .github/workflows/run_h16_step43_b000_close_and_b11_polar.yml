@@ -4,7 +4,6 @@ on:
   push:
     paths:
       - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP43B_B000_MINRANK_EXHAUSTIVE_CLOSE.py'
-      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP43A_ETA_INVARIANCE_AND_ITERATED_POLAR.py'
       - '.github/workflows/run_h16_step43_b000_close_and_b11_polar.yml'
   workflow_dispatch:
 
