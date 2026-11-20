@@ -103,7 +103,12 @@ def main():
     else:
         eqs=[]
         for (_,src),(_,dst) in zip(left,right):
+            # Include ALL quadratic submasks of every cubic monomial:
+            # translations can create previously absent quadratic terms.
             all_quads={m for m in src|dst if m.bit_count()==2}
+            for cub in (m for m in src if m.bit_count()==3):
+                for j in range(N):
+                    if cub>>j&1: all_quads.add(cub ^ (1<<j))
             for m in all_quads:
                 # A translation of a cubic term with variables m + j contributes
                 # delta_j to quadratic coefficient of m.
