@@ -246,9 +246,8 @@ def probe_cell(cell_name, etas, lib_diag, lib9, lib_cg, lib_d8, lib_sh, orbits, 
     t0 = time.perf_counter()
     print(f"\n==================== [{cell_name}] STEP 48B: BREAKTHROUGH PROBE (etas={etas}) ====================", flush=True)
     n, n_cw = tbl["n"], tbl["n_col_words"]
-    c113_val = 1 if cell_name == "B1_11" else 0
-    c57_val = 1 if cell_name in ("B0_11", "B1_11") else 0
-    free111, origin111, cb111 = b09.build_pure_111_basis(0, c57_val, c113_val)
+    c99, c57, c113 = int(cell_name[1]), int(cell_name[3]), int(cell_name[4])
+    free111, origin111, cb111 = b09.build_pure_111_basis(c99, c57, c113)
 
     b_tt = np.zeros((111, 65536), dtype=np.uint8)
     for i, m in enumerate(cb111):
@@ -258,44 +257,14 @@ def probe_cell(cell_name, etas, lib_diag, lib9, lib_cg, lib_d8, lib_sh, orbits, 
             b_tt[i] ^= orb_tt_np[lb.bit_length() - 1]
             tmp ^= lb
 
-    # D8 coset cubics
-    seen_a, d8_specs = set(), []
-    for a in range(1, 256):
-        if a in seen_a:
-            continue
-        orb_a = [((a << s) | (a >> (8 - s))) & 0xFF for s in range(8)]
-        seen_a.update(orb_a)
-        olen = len(set(orb_a))
-        d8_specs.append((a, 3))
-        if olen == 4: d8_specs.append((a, 4))
-        elif olen == 2: d8_specs.append((a, 5))
-        elif olen == 1: d8_specs.append((a, 6))
-
-    d8_buf = (ctypes.c_uint64 * (len(d8_specs) * n_cw))()
-    for idx_d, (a, sb) in enumerate(d8_specs):
-        pts = np.array([v | ((v ^ a) << 8) for v in range(256)], dtype=np.uint16)
-        b_words = (ctypes.c_uint64 * (111 * 4))()
-        for i in range(111):
-            bits = b_tt[i, pts]
-            for w in range(4):
-                val = 0
-                for b in range(64):
-                    if bits[w * 64 + b]: val |= (1 << b)
-                b_words[i * 4 + w] = val
-        rptr = ctypes.cast(ctypes.byref(d8_buf, idx_d * n_cw * 8), ctypes.POINTER(ctypes.c_uint64))
-        lib_d8.extract_deg3_coset_poly(
-            b_words, sb, n, tbl["off2"], tbl["off1"], tbl["off0"], n_cw,
-            tbl["col2_base"], tbl["col3_base"], rptr
-        )
-
     orb_map = (ctypes.c_int * 116)(*([-1] * 116))
     for i, j in enumerate(free111):
         orb_map[j] = i
     orb_map[0] = -3
     orb_map[115] = -1
-    orb_map[99] = -1
-    orb_map[57] = -2 if c57_val else -1
-    orb_map[113] = -2 if c113_val else -1
+    orb_map[99] = -2 if c99 else -1
+    orb_map[57] = -2 if c57 else -1
+    orb_map[113] = -2 if c113 else -1
     L_set = set(diag_v2.L_INDICES)
     L_vars_py = [i for i, j in enumerate(free111) if j in L_set]
     L_vars_arr = (ctypes.c_int * len(L_vars_py))(*L_vars_py)
@@ -305,26 +274,25 @@ def probe_cell(cell_name, etas, lib_diag, lib9, lib_cg, lib_d8, lib_sh, orbits, 
     for idx, I_m in enumerate(reps12):
         rptr = ctypes.cast(ctypes.byref(cg_buf, idx * n_cw * 8), ctypes.POINTER(ctypes.c_uint64))
         lib_cg.build_cg12_row_c(
-            I_m, mon_to_orb_arr, orb_map, c57_val, L_vars_arr, len(L_vars_py),
+            I_m, mon_to_orb_arr, orb_map, c99, L_vars_arr, len(L_vars_py),
             n, tbl["off2"], tbl["off1"], tbl["off0"], n_cw, tbl["col2_base"], tbl["col3_base"], rptr
         )
     for idx, I_m in enumerate(reps11):
         rptr = ctypes.cast(ctypes.byref(cg_buf, (len(reps12) + idx) * n_cw * 8), ctypes.POINTER(ctypes.c_uint64))
         lib_cg.build_cg11_row_c(
-            I_m, mon_to_orb_arr, orb_map, c57_val, L_vars_arr, len(L_vars_py),
+            I_m, mon_to_orb_arr, orb_map, c99, L_vars_arr, len(L_vars_py),
             n, tbl["off2"], tbl["off1"], tbl["off0"], n_cw, tbl["col2_base"], tbl["col3_base"], rptr
         )
 
     sys_data = diag_v2.build_cell_algebraic_system(cell_name, lib_diag, orbits, v6_list, rot4_data, fiber_meta, extract_sec=18.0)
     cyc_cubs = s9.extract_verified_cyclotomic_cubics(cell_name, orbits, origin111, cb111, layers, c0x0)
     n_base = sum(sys_data["deg_pivs_111"].values())
-    total_raw = n_base + len(cyc_cubs) + n_cg + len(d8_specs)
+    total_raw = n_base + len(cyc_cubs) + n_cg
     raw_buf = (ctypes.c_uint64 * (total_raw * n_cw))()
     ctypes.memmove(raw_buf, sys_data["rows_c"], n_base * n_cw * 8)
     for idx_c, (_, poly) in enumerate(cyc_cubs):
         s9.pset_to_row(poly, raw_buf, n_base + idx_c, tbl)
     ctypes.memmove(ctypes.byref(raw_buf, (n_base + len(cyc_cubs)) * n_cw * 8), cg_buf, n_cg * n_cw * 8)
-    ctypes.memmove(ctypes.byref(raw_buf, (n_base + len(cyc_cubs) + n_cg) * n_cw * 8), d8_buf, len(d8_specs) * n_cw * 8)
 
     root = s9.run_branch_cascade(lib9, raw_buf, [], list(range(total_raw)), {}, [], tbl, max_xl_rounds=10, verify_subst=True)
     forms_L1 = s16.extract_forms_from_orb_vecs(cb111, layer_vecs["L1"][1], layer_vecs["L1"][0])
