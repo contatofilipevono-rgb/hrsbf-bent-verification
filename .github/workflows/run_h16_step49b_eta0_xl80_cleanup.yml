@@ -1,4 +1,4 @@
-name: H(16,4) Step 49B — B0_00 eta=0 XL80 Cleanup (6 XL_ROUNDS_EXHAUSTED pairs)
+name: H(16,4) Step 49B — B0_00 eta=0 Final 2 XL80 Pairs (ff2_55_1 & ff2_55_2)
 
 on:
   push:
@@ -16,12 +16,8 @@ jobs:
       fail-fast: false
       matrix:
         item:
-          - { id: "ff1_55_28", pair: "1:28" }
-          - { id: "ff1_55_31", pair: "1:31" }
-          - { id: "ff5_55_60", pair: "5:60" }
-          - { id: "ff5_55_63", pair: "5:63" }
-          - { id: "ff6_55_33", pair: "6:33" }
-          - { id: "ff6_55_34", pair: "6:34" }
+          - { id: "ff2_55_1", pair: "2:1" }
+          - { id: "ff2_55_2", pair: "2:2" }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -29,7 +25,7 @@ jobs:
           python-version: '3.12'
       - name: Install NumPy & PySAT
         run: python -m pip install --upgrade pip && pip install numpy python-sat
-      - name: Close targeted eta=0 pair (${{ matrix.item.pair }}) with max_xl_rounds=80
+      - name: Close final eta=0 pair (${{ matrix.item.pair }}) with max_xl_rounds=80
         run: |
           python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP46C_ETA0_LOWMEM_AND_ETA42_DEEP.py \
             --mode eta0_lowmem \
