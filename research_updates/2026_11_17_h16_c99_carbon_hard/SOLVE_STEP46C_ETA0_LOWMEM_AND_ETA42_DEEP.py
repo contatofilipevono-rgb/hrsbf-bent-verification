@@ -269,8 +269,11 @@ def close_open_substate_deep(
         ex = [(forms_use[j], (b >> j) & 1) for j in range(k_split)]
         s_ch = s9.run_branch_cascade(
             lib9, sub["_buf"], sub["_quad_ids"], sub["_cub_ids"], sub["_lin_pivs"],
-            ex, tbl, max_xl_rounds=20 if depth == 0 else 18, verify_subst=(b == 0)
+            ex, tbl, max_xl_rounds=80, verify_subst=(b == 0)
         )
+        if s_ch["closed_unsat"]:
+            del s_ch
+            continue
         ok_ch, how_ch = close_open_substate_deep(
             f"{lbl}_w{b}", s_ch, b_tt, lib9, lib_sh, so_s9, tbl, n_cw,
             workers, deadline, cert_dir, depth=depth + 1, max_depth=max_depth,
@@ -378,10 +381,10 @@ def run_eta42_deep(root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, workers
     )
 
 
-def run_eta0_lowmem(root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, workers, shard_idx, n_shards, sub55_idx, sub55_n, deadline, cert_dir):
+def run_eta0_lowmem(root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, workers, shard_idx, n_shards, sub55_idx, sub55_n, deadline, cert_dir, target_pairs=None):
     t0 = time.perf_counter()
     print(
-        f"\n==================== [B0_00 eta=0] STEP 49A: FF-SHARD {shard_idx}/{n_shards} SUB55 {sub55_idx}/{sub55_n} ====================",
+        f"\n==================== [B0_00 eta=0] STEP 49A: FF-SHARD {shard_idx}/{n_shards} SUB55 {sub55_idx}/{sub55_n} TARGET={target_pairs} ====================",
         flush=True,
     )
     n_ef = len(eta_free)
@@ -392,9 +395,14 @@ def run_eta0_lowmem(root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, worker
     )
     nz_ff, forms_ff, bal_ff = get_coset_bal_states(sr0, 0xFF, b_tt, max_dim=8)
     n_ff = len(bal_ff)
-    lo = (shard_idx * n_ff) // n_shards
-    hi = ((shard_idx + 1) * n_ff) // n_shards
-    shard_ff = bal_ff[lo:hi]
+    if target_pairs:
+        target_ffs = sorted({ff for ff, _ in target_pairs})
+        shard_ff = [ff for ff in bal_ff if ff in target_ffs]
+        lo, hi = 0, n_ff
+    else:
+        lo = (shard_idx * n_ff) // n_shards
+        hi = ((shard_idx + 1) * n_ff) // n_shards
+        shard_ff = bal_ff[lo:hi]
     print(
         f"  [eta=0] 0xFF dim={nz_ff}, total balanced states={n_ff}, ff-shard {shard_idx}/{n_shards} "
         f"indices [{lo}..{hi}) -> states={shard_ff}, sub55={sub55_idx}/{sub55_n}",
@@ -427,18 +435,24 @@ def run_eta0_lowmem(root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, worker
             del sub1
             continue
 
-        print(f"  [eta=0 ff={st_ff}] 0x55 dim={nz_55}, evaluating {len(bal_55)} balanced states on {workers} cores...", flush=True)
-        d_cl, open_55 = parallel_filter_open_states(sub1, forms_55, bal_55, so_s9, tbl, workers, max_xl=18)
-        sub2_closed_direct += d_cl
-        open_sub2_total_all += len(open_55)
-        s55_lo = (sub55_idx * len(open_55)) // sub55_n
-        s55_hi = ((sub55_idx + 1) * len(open_55)) // sub55_n
-        open_55_slice = open_55[s55_lo:s55_hi]
-        print(
-            f"  [eta=0 ff={st_ff}] Parallel 0x55 sweep done in {time.perf_counter()-t_ff:.1f}s: "
-            f"direct_closed={d_cl}/{len(bal_55)}, open_sub2_all={len(open_55)}, slice [{s55_lo}..{s55_hi})={len(open_55_slice)}",
-            flush=True,
-        )
+        if target_pairs:
+            want_55 = sorted({s55 for ff, s55 in target_pairs if ff == st_ff})
+            open_55_slice = [(s55, -1, -1) for s55 in want_55]
+            open_sub2_total_all += len(open_55_slice)
+            print(f"  [eta=0 ff={st_ff}] TARGET mode: closing {len(open_55_slice)} targeted st55={want_55}", flush=True)
+        else:
+            print(f"  [eta=0 ff={st_ff}] 0x55 dim={nz_55}, evaluating {len(bal_55)} balanced states on {workers} cores...", flush=True)
+            d_cl, open_55 = parallel_filter_open_states(sub1, forms_55, bal_55, so_s9, tbl, workers, max_xl=18)
+            sub2_closed_direct += d_cl
+            open_sub2_total_all += len(open_55)
+            s55_lo = (sub55_idx * len(open_55)) // sub55_n
+            s55_hi = ((sub55_idx + 1) * len(open_55)) // sub55_n
+            open_55_slice = open_55[s55_lo:s55_hi]
+            print(
+                f"  [eta=0 ff={st_ff}] Parallel 0x55 sweep done in {time.perf_counter()-t_ff:.1f}s: "
+                f"direct_closed={d_cl}/{len(bal_55)}, open_sub2_all={len(open_55)}, slice [{s55_lo}..{s55_hi})={len(open_55_slice)}",
+                flush=True,
+            )
 
         for idx_o, (st_55, n_act2, n_q2) in enumerate(open_55_slice):
             open_sub2_in_slice += 1
@@ -510,6 +524,7 @@ def main():
     parser.add_argument("--n-shards", type=int, default=1)
     parser.add_argument("--sub55-idx", type=int, default=0)
     parser.add_argument("--sub55-n", type=int, default=1)
+    parser.add_argument("--target-pairs", type=str, default="")
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--budget-min", type=float, default=80.0)
     parser.add_argument("--cert-dir", type=str, default="step46c_certs")
@@ -726,9 +741,13 @@ def main():
             args.workers, args.shard_idx, args.n_shards, deadline, cert_dir
         )
     else:
+        tp = None
+        if args.target_pairs.strip():
+            tp = [tuple(int(x) for x in pair.split(":")) for pair in args.target_pairs.split(",") if pair.strip()]
         run_eta0_lowmem(
             root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw,
-            args.workers, args.shard_idx, args.n_shards, args.sub55_idx, args.sub55_n, deadline, cert_dir
+            args.workers, args.shard_idx, args.n_shards, args.sub55_idx, args.sub55_n, deadline, cert_dir,
+            target_pairs=tp,
         )
 
 
