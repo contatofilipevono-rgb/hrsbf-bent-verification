@@ -1,0 +1,44 @@
+name: H(16,4) Step 49A — B0_00 eta=0 Final 18-Shard Complete Closure
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/run_h16_step49a_b000_eta0_18shards.yml'
+  workflow_dispatch:
+
+jobs:
+  step49a:
+    name: step49a (ff${{ matrix.ff }}_sub${{ matrix.sub }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        ff: [0, 1, 2, 3, 4, 5]
+        sub: [0, 1, 2]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install NumPy & PySAT
+        run: python -m pip install --upgrade pip && pip install numpy python-sat
+      - name: Run Step 49A B0_00 eta=0 (ff=${{ matrix.ff }}/6, sub55=${{ matrix.sub }}/3)
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP46C_ETA0_LOWMEM_AND_ETA42_DEEP.py \
+            --mode eta0_lowmem \
+            --shard-idx ${{ matrix.ff }} \
+            --n-shards 6 \
+            --sub55-idx ${{ matrix.sub }} \
+            --sub55-n 3 \
+            --workers 4 \
+            --budget-min 82 \
+            --cert-dir step49a_certs
+      - name: Upload Step 49A JSON Certificates
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: step49a-certs-ff${{ matrix.ff }}_sub${{ matrix.sub }}
+          path: step49a_certs/
+          if-no-files-found: ignore

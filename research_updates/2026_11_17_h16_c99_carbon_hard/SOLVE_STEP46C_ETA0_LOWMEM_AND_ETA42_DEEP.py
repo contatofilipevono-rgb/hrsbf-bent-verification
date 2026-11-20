@@ -239,7 +239,8 @@ def close_open_substate_deep(
             if th2 is not None and th2[0] <= (8 if depth == 0 else 7):
                 k2 = th2[0]
                 use_w = workers if depth == 0 else 1
-                c2 = s45a.run_parallel_shard(lbl, 42, sub, info2, k2, 0, 1, use_w, so_s9, n_cw, deadline, cert_dir)
+                sub_cert_dir = cert_dir / "sub_certs"
+                c2 = s45a.run_parallel_shard(lbl, 0, sub, info2, k2, 0, 1, use_w, so_s9, n_cw, deadline, sub_cert_dir)
                 if c2["verdict"] == "ORBIT_FORMALLY_CLOSED_100%":
                     return True, f"MINRANK_K{k2}({c2['branches_checked']})"
 
@@ -377,10 +378,10 @@ def run_eta42_deep(root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, workers
     )
 
 
-def run_eta0_lowmem(root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, workers, shard_idx, n_shards, deadline, cert_dir):
+def run_eta0_lowmem(root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, workers, shard_idx, n_shards, sub55_idx, sub55_n, deadline, cert_dir):
     t0 = time.perf_counter()
     print(
-        f"\n==================== [B0_00 eta=0] STEP 46C-v2: SHARD {shard_idx}/{n_shards} PARALLEL LOW-MEM CLOSER ====================",
+        f"\n==================== [B0_00 eta=0] STEP 49A: FF-SHARD {shard_idx}/{n_shards} SUB55 {sub55_idx}/{sub55_n} ====================",
         flush=True,
     )
     n_ef = len(eta_free)
@@ -395,15 +396,16 @@ def run_eta0_lowmem(root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, worker
     hi = ((shard_idx + 1) * n_ff) // n_shards
     shard_ff = bal_ff[lo:hi]
     print(
-        f"  [eta=0] 0xFF dim={nz_ff}, total balanced states={n_ff}, shard {shard_idx}/{n_shards} "
-        f"indices [{lo}..{hi}) -> states={shard_ff}",
+        f"  [eta=0] 0xFF dim={nz_ff}, total balanced states={n_ff}, ff-shard {shard_idx}/{n_shards} "
+        f"indices [{lo}..{hi}) -> states={shard_ff}, sub55={sub55_idx}/{sub55_n}",
         flush=True,
     )
 
     ff_closed = 0
     ff_open = 0
     sub2_closed_direct = 0
-    open_sub2_total = 0
+    open_sub2_total_all = 0
+    open_sub2_in_slice = 0
     closed_100 = 0
     closed_details = []
     still_open = []
@@ -428,14 +430,18 @@ def run_eta0_lowmem(root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, worker
         print(f"  [eta=0 ff={st_ff}] 0x55 dim={nz_55}, evaluating {len(bal_55)} balanced states on {workers} cores...", flush=True)
         d_cl, open_55 = parallel_filter_open_states(sub1, forms_55, bal_55, so_s9, tbl, workers, max_xl=18)
         sub2_closed_direct += d_cl
+        open_sub2_total_all += len(open_55)
+        s55_lo = (sub55_idx * len(open_55)) // sub55_n
+        s55_hi = ((sub55_idx + 1) * len(open_55)) // sub55_n
+        open_55_slice = open_55[s55_lo:s55_hi]
         print(
             f"  [eta=0 ff={st_ff}] Parallel 0x55 sweep done in {time.perf_counter()-t_ff:.1f}s: "
-            f"direct_closed={d_cl}/{len(bal_55)}, open_sub2={len(open_55)}",
+            f"direct_closed={d_cl}/{len(bal_55)}, open_sub2_all={len(open_55)}, slice [{s55_lo}..{s55_hi})={len(open_55_slice)}",
             flush=True,
         )
 
-        for idx_o, (st_55, n_act2, n_q2) in enumerate(open_55):
-            open_sub2_total += 1
+        for idx_o, (st_55, n_act2, n_q2) in enumerate(open_55_slice):
+            open_sub2_in_slice += 1
             lbl = f"eta0_ff{st_ff}_55_{st_55}"
             t_s2 = time.perf_counter()
             sub2 = s9.run_branch_cascade(
@@ -460,21 +466,24 @@ def run_eta0_lowmem(root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, worker
         del sub1
         gc.collect()
 
-    verdict = "SHARD_CLOSED_100%" if (open_sub2_total == closed_100 and not still_open) else "PARTIAL"
-    if n_shards == 1 and verdict == "SHARD_CLOSED_100%":
+    verdict = "SHARD_CLOSED_100%" if (open_sub2_in_slice == closed_100 and not still_open) else "PARTIAL"
+    if n_shards == 1 and sub55_n == 1 and verdict == "SHARD_CLOSED_100%":
         verdict = "ORBIT_FORMALLY_CLOSED_100%"
     summary = {
         "cell": "B0_00",
         "eta": 0,
         "shard_idx": shard_idx,
         "n_shards": n_shards,
+        "sub55_idx": sub55_idx,
+        "sub55_n": sub55_n,
         "ff_lo": lo,
         "ff_hi": hi,
         "shard_ff_states": shard_ff,
         "bal_0xff_total": n_ff,
         "bal_0xff_closed": ff_closed,
         "sub2_direct_closed": sub2_closed_direct,
-        "open_sub2_total": open_sub2_total,
+        "open_sub2_total_all": open_sub2_total_all,
+        "open_sub2_in_slice": open_sub2_in_slice,
         "closed_100_streaming": closed_100,
         "closed_details": closed_details,
         "still_open": still_open,
@@ -482,11 +491,12 @@ def run_eta0_lowmem(root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, worker
         "verdict": verdict,
     }
     cert_dir.mkdir(parents=True, exist_ok=True)
-    sfx = f"_s{shard_idx}_of_{n_shards}" if n_shards > 1 else ""
-    out_p = cert_dir / f"step46c_cert_eta00_full{sfx}.json"
+    sfx = f"_ff{shard_idx}of{n_shards}_s{sub55_idx}of{sub55_n}"
+    out_p = cert_dir / f"step49a_cert_eta00{sfx}.json"
     out_p.write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print(
-        f"\n=== [eta=0 s{shard_idx}/{n_shards} SUMMARY] open_sub2={open_sub2_total}, closed_100={closed_100}, "
+        f"\n=== [eta=0 ff{shard_idx}/{n_shards} sub55 {sub55_idx}/{sub55_n} SUMMARY] "
+        f"open_slice={open_sub2_in_slice}, closed_100={closed_100}, "
         f"still_open={len(still_open)} -> {summary['verdict']} ({summary['elapsed_s']}s) ===",
         flush=True,
     )
@@ -498,6 +508,8 @@ def main():
     parser.add_argument("--mode", choices=["eta0_lowmem", "eta42_deep"], required=True)
     parser.add_argument("--shard-idx", type=int, default=0)
     parser.add_argument("--n-shards", type=int, default=1)
+    parser.add_argument("--sub55-idx", type=int, default=0)
+    parser.add_argument("--sub55-n", type=int, default=1)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--budget-min", type=float, default=80.0)
     parser.add_argument("--cert-dir", type=str, default="step46c_certs")
@@ -716,7 +728,7 @@ def main():
     else:
         run_eta0_lowmem(
             root, eta_free, b_tt, lib9, lib_sh, so_s9, tbl, n_cw,
-            args.workers, args.shard_idx, args.n_shards, deadline, cert_dir
+            args.workers, args.shard_idx, args.n_shards, args.sub55_idx, args.sub55_n, deadline, cert_dir
         )
 
 

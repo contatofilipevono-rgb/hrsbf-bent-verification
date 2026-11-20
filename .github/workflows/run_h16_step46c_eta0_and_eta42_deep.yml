@@ -1,11 +1,7 @@
-﻿name: H(16,4) Step 46C-v2 — B0_00 eta=0 (3 shards) & eta=42 (2 shards) Parallel Closer
+﻿name: H(16,4) Step 46C-v2 — B0_00 eta=0 & eta=42 (Manual Dispatch Only)
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP46C_ETA0_LOWMEM_AND_ETA42_DEEP.py'
-      - '.github/workflows/run_h16_step46c_eta0_and_eta42_deep.yml'
 
 jobs:
   step46c:
@@ -16,9 +12,6 @@ jobs:
       fail-fast: false
       matrix:
         job:
-          - { name: "eta0_s0_of_3", mode: "eta0_lowmem", s: 0, n: 3 }
-          - { name: "eta0_s1_of_3", mode: "eta0_lowmem", s: 1, n: 3 }
-          - { name: "eta0_s2_of_3", mode: "eta0_lowmem", s: 2, n: 3 }
           - { name: "eta42_s0_of_2", mode: "eta42_deep", s: 0, n: 2 }
           - { name: "eta42_s1_of_2", mode: "eta42_deep", s: 1, n: 2 }
     steps:
