@@ -1,0 +1,60 @@
+name: H(16,4) Step 45A — B0_00 Parallel Mass Closure (64 Free vCPUs)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP45A_B000_PARALLEL_CLOSER.py'
+      - '.github/workflows/run_h16_step45a_b000_mass_closure.yml'
+  workflow_dispatch:
+
+jobs:
+  step45a:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        job:
+          # Final 2 sub-shards of eta=30 ([128..192) and [192..256) to complete [0..256))
+          - { name: "eta30_s2_of_4", etas: "30", kfix: "30:8",  s: 2, n: 4 }
+          - { name: "eta30_s3_of_4", etas: "30", kfix: "30:8",  s: 3, n: 4 }
+          # Final gap sub-shard of eta=31 ([384..512) to complete [0..1024))
+          - { name: "eta31_s3_of_8", etas: "31", kfix: "31:10", s: 3, n: 8 }
+          # Final 3 half-shards of eta=7 ([682..1365), [2048..2730), [3413..4096) to complete [0..4096))
+          - { name: "eta7_s1_of_6",  etas: "7",  kfix: "7:12",  s: 1, n: 6 }
+          - { name: "eta7_s3_of_6",  etas: "7",  kfix: "7:12",  s: 3, n: 6 }
+          - { name: "eta7_s5_of_6",  etas: "7",  kfix: "7:12",  s: 5, n: 6 }
+    name: step45a (${{ matrix.job.name }})
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install NumPy & PySAT
+        run: |
+          python -m pip install --upgrade pip
+          pip install numpy python-sat
+
+      - name: Run Step 45A Wave-3 Cleanup (${{ matrix.job.name }})
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP45A_B000_PARALLEL_CLOSER.py \
+            --etas "${{ matrix.job.etas }}" \
+            --kfix-map "${{ matrix.job.kfix }}" \
+            --shard-idx ${{ matrix.job.s }} \
+            --n-shards ${{ matrix.job.n }} \
+            --workers 4 \
+            --budget-min 80 \
+            --cert-dir step45a_certs
+
+      - name: Upload Step 45A JSON Certificates
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: step45a-w3-certs-${{ matrix.job.name }}
+          path: step45a_certs/
+          if-no-files-found: ignore
