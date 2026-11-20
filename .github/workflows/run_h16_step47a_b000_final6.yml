@@ -1,0 +1,77 @@
+name: H(16,4) Step 47A — B0_00 Final 6 Orbits Mass Closure (eta=8,9,10,11,18,19)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP45A_B000_PARALLEL_CLOSER.py'
+      - '.github/workflows/run_h16_step47a_b000_final6.yml'
+  workflow_dispatch:
+
+jobs:
+  step47a:
+    runs-on: ubuntu-latest
+    timeout-minutes: 95
+    strategy:
+      fail-fast: false
+      matrix:
+        job:
+          # eta=9 (k_fix=12 -> 4096 branches across 3 shards = 1365 branches/shard)
+          - { name: "eta9_s0_of_3",  etas: "9",  kfix: "9:12",  s: 0, n: 3 }
+          - { name: "eta9_s1_of_3",  etas: "9",  kfix: "9:12",  s: 1, n: 3 }
+          - { name: "eta9_s2_of_3",  etas: "9",  kfix: "9:12",  s: 2, n: 3 }
+          # eta=11 (k_fix=12 -> 4096 branches across 3 shards = 1365 branches/shard)
+          - { name: "eta11_s0_of_3", etas: "11", kfix: "11:12", s: 0, n: 3 }
+          - { name: "eta11_s1_of_3", etas: "11", kfix: "11:12", s: 1, n: 3 }
+          - { name: "eta11_s2_of_3", etas: "11", kfix: "11:12", s: 2, n: 3 }
+          # eta=10 (k_fix=14 -> 16384 branches across 3 shards = 5461 branches/shard)
+          - { name: "eta10_s0_of_3", etas: "10", kfix: "10:14", s: 0, n: 3 }
+          - { name: "eta10_s1_of_3", etas: "10", kfix: "10:14", s: 1, n: 3 }
+          - { name: "eta10_s2_of_3", etas: "10", kfix: "10:14", s: 2, n: 3 }
+          # eta=8 (k_fix=14 -> 16384 branches across 4 shards = 4096 branches/shard)
+          - { name: "eta8_s0_of_4",  etas: "8",  kfix: "8:14",  s: 0, n: 4 }
+          - { name: "eta8_s1_of_4",  etas: "8",  kfix: "8:14",  s: 1, n: 4 }
+          - { name: "eta8_s2_of_4",  etas: "8",  kfix: "8:14",  s: 2, n: 4 }
+          - { name: "eta8_s3_of_4",  etas: "8",  kfix: "8:14",  s: 3, n: 4 }
+          # eta=18 (k_fix=12 -> 4096 branches across 3 shards = 1365 branches/shard)
+          - { name: "eta18_s0_of_3", etas: "18", kfix: "18:12", s: 0, n: 3 }
+          - { name: "eta18_s1_of_3", etas: "18", kfix: "18:12", s: 1, n: 3 }
+          - { name: "eta18_s2_of_3", etas: "18", kfix: "18:12", s: 2, n: 3 }
+          # eta=19 (k_fix=12 -> 4096 branches across 4 shards = 1024 branches/shard)
+          - { name: "eta19_s0_of_4", etas: "19", kfix: "19:12", s: 0, n: 4 }
+          - { name: "eta19_s1_of_4", etas: "19", kfix: "19:12", s: 1, n: 4 }
+          - { name: "eta19_s2_of_4", etas: "19", kfix: "19:12", s: 2, n: 4 }
+          - { name: "eta19_s3_of_4", etas: "19", kfix: "19:12", s: 3, n: 4 }
+    name: step47a (${{ matrix.job.name }})
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install NumPy
+        run: |
+          python -m pip install --upgrade pip
+          pip install numpy
+
+      - name: Run Step 47A B0_00 Final-6 Parallel Shard (${{ matrix.job.name }})
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP45A_B000_PARALLEL_CLOSER.py \
+            --etas "${{ matrix.job.etas }}" \
+            --kfix-map "${{ matrix.job.kfix }}" \
+            --shard-idx ${{ matrix.job.s }} \
+            --n-shards ${{ matrix.job.n }} \
+            --workers 4 \
+            --budget-min 85 \
+            --cert-dir step47a_certs
+
+      - name: Upload Step 47A JSON Certificates
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: step47a-certs-${{ matrix.job.name }}
+          path: step47a_certs/
+          if-no-files-found: ignore
