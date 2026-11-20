@@ -1,0 +1,67 @@
+name: H(16,4) Step 43 — B0_00 All-21-Orbit MinRank Close (32 vCPU) + B0_11/B1_11 Eta-Invariance & Iterated Polar
+
+on:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP43B_B000_MINRANK_EXHAUSTIVE_CLOSE.py'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP43A_ETA_INVARIANCE_AND_ITERATED_POLAR.py'
+      - '.github/workflows/run_h16_step43_b000_close_and_b11_polar.yml'
+  workflow_dispatch:
+
+jobs:
+  step43b_b000_close:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        batch:
+          - "42,2,3"
+          - "4,5,6"
+          - "7,8,9"
+          - "10,11,12"
+          - "13,18,19"
+          - "26,27,30"
+          - "31,46,47"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python deps
+        run: python -m pip install --upgrade pip && pip install numpy python-sat
+      - name: Run Step 43B B0_00 Exhaustive MinRank Close (${{ matrix.batch }})
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP43B_B000_MINRANK_EXHAUSTIVE_CLOSE.py --etas "${{ matrix.batch }}" --max-kfix 10
+
+  step43b_b000_eta0_pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python deps
+        run: python -m pip install --upgrade pip && pip install numpy python-sat
+      - name: Run Step 43B B0_00 eta=0 K_R + MinRank Pilot
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP43B_B000_MINRANK_EXHAUSTIVE_CLOSE.py --etas "" --probe-eta0
+
+  step43a_b11_polar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B0_11, B1_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python deps
+        run: python -m pip install --upgrade pip && pip install numpy python-sat
+      - name: Run Step 43A Eta-Invariance & Iterated Polar (${{ matrix.cell }})
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP43A_ETA_INVARIANCE_AND_ITERATED_POLAR.py --cells ${{ matrix.cell }}
