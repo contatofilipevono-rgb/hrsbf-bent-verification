@@ -1,0 +1,37 @@
+name: H16 Step 67 compare B0_11 fibers zero and 64
+on:
+  push:
+    branches: [codex/h16-step65-mod9-cert]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP67_COMPARE_FIBERS.py'
+      - '.github/workflows/run_h16_step67_compare_fibers.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44594052302
+          name: h16-step60-fiber-0
+          path: fiber0
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44594052302
+          name: h16-step60-fiber-64
+          path: fiber64
+          github-token: ${{ github.token }}
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP67_COMPARE_FIBERS.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: h16-step67-fiber-equivalence
+          path: step67_fiber_compare.json
