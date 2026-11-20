@@ -1,0 +1,64 @@
+name: H16 Step 69 full census of reduced B0_11 fiber 0
+on:
+  push:
+    branches: [codex/h16-step65-mod9-cert]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP69_FIBER0_CENSUS.py'
+      - '.github/workflows/run_h16_step69_fiber0_census.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  shard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+    env:
+      H16_SHARD: ${{ matrix.shard }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44594052302
+          name: h16-step60-fiber-0
+          path: fiber
+          github-token: ${{ github.token }}
+      - run: g++ -O3 -std=c++20 -march=native research_updates/2026_11_17_h16_c99_carbon_hard/H16_STEP63_FIBER_CENSUS.cpp -o h16_step63
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP69_FIBER0_CENSUS.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: h16-step69-shard-${{ matrix.shard }}
+          path: step69_shard_*.json
+  collect:
+    needs: shard
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44594052302
+          name: h16-step60-fiber-0
+          path: fiber
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: h16-step69-shard-*
+          merge-multiple: true
+          path: shards
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP69_FIBER0_CENSUS.py collect
+      - uses: actions/upload-artifact@v4
+        with:
+          name: h16-step69-fiber0-coverage
+          path: step69_fiber0_summary.json
