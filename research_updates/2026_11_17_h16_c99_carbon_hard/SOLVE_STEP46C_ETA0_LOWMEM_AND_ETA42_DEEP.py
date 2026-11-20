@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 r"""
 SOLVE_STEP46C_ETA0_LOWMEM_AND_ETA42_DEEP.py
 
@@ -73,8 +73,8 @@ def _worker_eval_st_46c(st):
         ex, g["tbl"], max_xl_rounds=g["max_xl"], verify_subst=verify
     )
     closed = bool(sub["closed_unsat"])
-    n_act = g["tbl"]["n"] - len(sub["_lin_pivs"])
-    n_q = len(sub["_quad_ids"])
+    n_act = 0 if closed else g["tbl"]["n"] - len(sub["_lin_pivs"])
+    n_q = 0 if closed else len(sub["_quad_ids"])
     del sub
     return (st, closed, n_act, n_q)
 
