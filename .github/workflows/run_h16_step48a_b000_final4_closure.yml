@@ -1,0 +1,75 @@
+name: H(16,4) Step 48A — B0_00 Final 4 Non-Zero Orbits Strict Zero-Trust Closure (eta=7,8,10,31)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/run_h16_step48a_b000_final4_closure.yml'
+  workflow_dispatch:
+
+jobs:
+  step48a:
+    runs-on: ubuntu-latest
+    timeout-minutes: 105
+    strategy:
+      fail-fast: false
+      matrix:
+        job:
+          # eta=31 missing [0..384): s0/4 [0..256) + s2/8 [256..384)
+          - { name: "eta31_s0_of_4", etas: "31", kfix: "31:10", s: 0, n: 4 }
+          - { name: "eta31_s2_of_8", etas: "31", kfix: "31:10", s: 2, n: 8 }
+          # eta=7 missing even sixths: s0/6, s2/6, s4/6
+          - { name: "eta7_s0_of_6",  etas: "7",  kfix: "7:12",  s: 0, n: 6 }
+          - { name: "eta7_s2_of_6",  etas: "7",  kfix: "7:12",  s: 2, n: 6 }
+          - { name: "eta7_s4_of_6",  etas: "7",  kfix: "7:12",  s: 4, n: 6 }
+          # eta=8 (k_fix=14 -> 16384 branches across 8 shards = 2048 branches/shard, ~60 min)
+          - { name: "eta8_s0_of_8",  etas: "8",  kfix: "8:14",  s: 0, n: 8 }
+          - { name: "eta8_s1_of_8",  etas: "8",  kfix: "8:14",  s: 1, n: 8 }
+          - { name: "eta8_s2_of_8",  etas: "8",  kfix: "8:14",  s: 2, n: 8 }
+          - { name: "eta8_s3_of_8",  etas: "8",  kfix: "8:14",  s: 3, n: 8 }
+          - { name: "eta8_s4_of_8",  etas: "8",  kfix: "8:14",  s: 4, n: 8 }
+          - { name: "eta8_s5_of_8",  etas: "8",  kfix: "8:14",  s: 5, n: 8 }
+          - { name: "eta8_s6_of_8",  etas: "8",  kfix: "8:14",  s: 6, n: 8 }
+          - { name: "eta8_s7_of_8",  etas: "8",  kfix: "8:14",  s: 7, n: 8 }
+          # eta=10 (k_fix=14 -> 16384 branches across 8 shards = 2048 branches/shard, ~60 min)
+          - { name: "eta10_s0_of_8", etas: "10", kfix: "10:14", s: 0, n: 8 }
+          - { name: "eta10_s1_of_8", etas: "10", kfix: "10:14", s: 1, n: 8 }
+          - { name: "eta10_s2_of_8", etas: "10", kfix: "10:14", s: 2, n: 8 }
+          - { name: "eta10_s3_of_8", etas: "10", kfix: "10:14", s: 3, n: 8 }
+          - { name: "eta10_s4_of_8", etas: "10", kfix: "10:14", s: 4, n: 8 }
+          - { name: "eta10_s5_of_8", etas: "10", kfix: "10:14", s: 5, n: 8 }
+          - { name: "eta10_s6_of_8", etas: "10", kfix: "10:14", s: 6, n: 8 }
+          - { name: "eta10_s7_of_8", etas: "10", kfix: "10:14", s: 7, n: 8 }
+    name: step48a (${{ matrix.job.name }})
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install NumPy & PySAT
+        run: |
+          python -m pip install --upgrade pip
+          pip install numpy python-sat
+
+      - name: Run Step 48A Strict Zero-Trust Shard (${{ matrix.job.name }})
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP45A_B000_PARALLEL_CLOSER.py \
+            --etas "${{ matrix.job.etas }}" \
+            --kfix-map "${{ matrix.job.kfix }}" \
+            --shard-idx ${{ matrix.job.s }} \
+            --n-shards ${{ matrix.job.n }} \
+            --workers 4 \
+            --budget-min 95 \
+            --cert-dir step48a_certs
+
+      - name: Upload Step 48A JSON Certificates
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: step48a-certs-${{ matrix.job.name }}
+          path: step48a_certs/
+          if-no-files-found: ignore
