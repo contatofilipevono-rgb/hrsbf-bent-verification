@@ -1,0 +1,28 @@
+name: H(16,4) Step 46B — Global Deg-1 Syzygies (NT=0) & Telescoping K_R-Quotient Tower
+
+on:
+  push:
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP46B_GLOBAL_SYZYGY_AND_KR_TOWER.py'
+      - '.github/workflows/run_h16_step46b_global_syzygy_kr_tower.yml'
+  workflow_dispatch:
+
+jobs:
+  step46b_global_syzygy_kr_tower:
+    name: step46b (${{ matrix.mode }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [B0_11, B1_11, B0_00_hard]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python deps
+        run: python -m pip install --upgrade pip && pip install numpy python-sat
+      - name: Run Step 46B (${{ matrix.mode }})
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP46B_GLOBAL_SYZYGY_AND_KR_TOWER.py --mode ${{ matrix.mode }}

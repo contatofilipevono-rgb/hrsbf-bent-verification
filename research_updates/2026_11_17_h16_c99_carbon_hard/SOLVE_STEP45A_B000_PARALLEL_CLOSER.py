@@ -108,7 +108,12 @@ def _eval_branch_worker(rb):
     if sub["closed_unsat"]:
         return ("DIRECT", rb, 0)
 
-    rem_f = s16.reduce_forms_mod_pivs(rescue_pool, sub["_lin_pivs"])[:4]
+    sub_q_forms = []
+    if sub["_quad_ids"]:
+        sub_qps = [s9.row_to_pset(sub["_buf"], qr, _W_TBL) for qr in sub["_quad_ids"][:8]]
+        sub_ana = s16.analyze_quad_system(sub_qps)
+        sub_q_forms = list(sub_ana["W_piv"].values())
+    rem_f = s16.reduce_forms_mod_pivs(sub_q_forms + rescue_pool, sub["_lin_pivs"])[:4]
     for ns in range(1, min(4, len(rem_f)) + 1):
         op_ns = False
         for sb in range(1 << ns):

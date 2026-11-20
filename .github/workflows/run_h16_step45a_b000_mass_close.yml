@@ -16,36 +16,36 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: eta42_2
-            args: '--etas 42,2 --kfix-map 42:8,2:8 --workers 4'
-          - name: eta13_26
-            args: '--etas 13,26 --kfix-map 13:8,26:8 --workers 4'
-          - name: eta12_30
-            args: '--etas 12,30 --kfix-map 12:8,30:8 --workers 4'
-          - name: eta5_s0
-            args: '--etas 5 --kfix-map 5:8 --shard-idx 0 --n-shards 2 --workers 4'
-          - name: eta5_s1
-            args: '--etas 5 --kfix-map 5:8 --shard-idx 1 --n-shards 2 --workers 4'
-          - name: eta31_full
-            args: '--etas 31 --kfix-map 31:10 --workers 4'
-          - name: eta46_s0
-            args: '--etas 46 --kfix-map 46:10 --shard-idx 0 --n-shards 2 --workers 4'
-          - name: eta46_s1
-            args: '--etas 46 --kfix-map 46:10 --shard-idx 1 --n-shards 2 --workers 4'
-          - name: eta47_s0
-            args: '--etas 47 --kfix-map 47:10 --shard-idx 0 --n-shards 2 --workers 4'
-          - name: eta47_s1
-            args: '--etas 47 --kfix-map 47:10 --shard-idx 1 --n-shards 2 --workers 4'
-          - name: eta4_s0
-            args: '--etas 4 --kfix-map 4:10 --shard-idx 0 --n-shards 2 --workers 4'
-          - name: eta4_s1
-            args: '--etas 4 --kfix-map 4:10 --shard-idx 1 --n-shards 2 --workers 4'
-          - name: eta6_s0
-            args: '--etas 6 --kfix-map 6:10 --shard-idx 0 --n-shards 3 --workers 4'
-          - name: eta6_s1
-            args: '--etas 6 --kfix-map 6:10 --shard-idx 1 --n-shards 3 --workers 4'
-          - name: eta6_s2
-            args: '--etas 6 --kfix-map 6:10 --shard-idx 2 --n-shards 3 --workers 4'
+          - name: eta42_k10
+            args: '--etas 42 --kfix-map 42:10 --workers 4'
+          - name: eta26_full
+            args: '--etas 26 --kfix-map 26:8 --workers 4'
+          - name: eta30_s0
+            args: '--etas 30 --kfix-map 30:8 --shard-idx 0 --n-shards 2 --workers 4'
+          - name: eta30_s1
+            args: '--etas 30 --kfix-map 30:8 --shard-idx 1 --n-shards 2 --workers 4'
+          - name: eta5_s0_of_4
+            args: '--etas 5 --kfix-map 5:8 --shard-idx 0 --n-shards 4 --workers 4'
+          - name: eta5_s1_of_4
+            args: '--etas 5 --kfix-map 5:8 --shard-idx 1 --n-shards 4 --workers 4'
+          - name: eta5_s2_of_4
+            args: '--etas 5 --kfix-map 5:8 --shard-idx 2 --n-shards 4 --workers 4'
+          - name: eta5_s3_of_4
+            args: '--etas 5 --kfix-map 5:8 --shard-idx 3 --n-shards 4 --workers 4'
+          - name: eta31_s0
+            args: '--etas 31 --kfix-map 31:10 --shard-idx 0 --n-shards 2 --workers 4'
+          - name: eta31_s1
+            args: '--etas 31 --kfix-map 31:10 --shard-idx 1 --n-shards 2 --workers 4'
+          - name: eta6_s4_of_6
+            args: '--etas 6 --kfix-map 6:10 --shard-idx 4 --n-shards 6 --workers 4'
+          - name: eta6_s5_of_6
+            args: '--etas 6 --kfix-map 6:10 --shard-idx 5 --n-shards 6 --workers 4'
+          - name: eta7_s0_of_3
+            args: '--etas 7 --kfix-map 7:12 --shard-idx 0 --n-shards 3 --workers 4'
+          - name: eta7_s1_of_3
+            args: '--etas 7 --kfix-map 7:12 --shard-idx 1 --n-shards 3 --workers 4'
+          - name: eta7_s2_of_3
+            args: '--etas 7 --kfix-map 7:12 --shard-idx 2 --n-shards 3 --workers 4'
           - name: eta0_full
             args: '--etas "" --close-eta0 --workers 4'
     steps:
@@ -55,13 +55,13 @@ jobs:
           python-version: '3.12'
       - name: Install Python deps
         run: python -m pip install --upgrade pip && pip install numpy python-sat
-      - name: Run Step 45A (${{ matrix.name }})
+      - name: Run Step 45A Wave 2 (${{ matrix.name }})
         run: |
           python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP45A_B000_PARALLEL_CLOSER.py ${{ matrix.args }} --budget-min 40 --cert-dir step45a_certs
       - name: Upload certificates
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: step45a-certs-${{ matrix.name }}
+          name: step45a-w2-certs-${{ matrix.name }}
           path: step45a_certs/
           if-no-files-found: ignore
