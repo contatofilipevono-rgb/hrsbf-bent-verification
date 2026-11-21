@@ -2,6 +2,9 @@ name: H16 Step 60B Block-B + Block-D + Block-A3 Algebraic Feedback
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - swarm/blockb-feedback
 
 jobs:
   step60b_blockb_feedback:
