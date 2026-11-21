@@ -2524,8 +2524,8 @@ def main():
         if len(use_subs) > 45:
             run_mod_Qt_exact_block_test(rows_sh, len(use_subs), len(active_now), nW, nT, nRF, Q_quad_vecs, lib_d4, tag=f"eta{em}_ALL175")
 
-        # (2C) Direct V(Q) restriction 4th-diff drop test (catches arbitrary higher-degree Q_t syzygies!)
-        test_vq_4th_diff_drops(orig_sh, basis_sh, Q_polys_W, use_subs, nW, nT, nRF, tag=f"eta{em}", rng_seed=6040 + em)
+        # (2C) Direct V(Q) restriction 4th-diff drop test on coord_subs (45 eqs = full 43-dim deg-4 span!)
+        test_vq_4th_diff_drops(orig_sh, basis_sh, Q_polys_W, coord_subs, nW, nT, nRF, tag=f"eta{em}_COORD45", rng_seed=6040 + em)
 
         # (PART 3) C_8-Walsh v2=5..10 audit on fixed-eta (including deg-4 extraction & joint combo on eta=0!)
         orig_act, basis_act, _, _ = build_affine_tt_basis(o_tt_111, b_tt_111, sr["_lin_pivs"], active_now)
@@ -2658,7 +2658,21 @@ def main():
                         hb_div16 += 1
                 print(f"      [f{tr} Higher-Bit V13..16 mod32/64/128]: const_nonzero={hb_const_nz}/45, 16|wt_all48={hb_div16}/45", flush=True)
 
-                # (4D) Shattered-fiber quadratic geometry & mod-Q_fiber block check!
+                # Combine ALL verified deg<=3 drops (from V13..16 + C8-Walsh + joint) and INJECT into s9 FIRST!
+                all_new_ps = list(drops_f175) + [p for _, _, p in c8_f_ps] + list(joint_f_drops)
+                if all_new_ps:
+                    sub_new, chg = inject_psets_into_s9(sub, all_new_ps, lib9, tbl)
+                    print(
+                        f"      [f{tr} *** INJECT {len(all_new_ps)} NEW DEG<=3 EQS INTO s9 ***]: "
+                        f"changed={chg}, CLOSED_UNSAT={sub_new['closed_unsat']}, "
+                        f"N={111-len(sub_new['_lin_pivs'])} (was {N_f}), "
+                        f"q={len(sub_new['_quad_ids'])} (was {nq_f}), c={len(sub_new['_cub_ids'])} (was {nc_f})",
+                        flush=True,
+                    )
+                else:
+                    print(f"      [f{tr} INJECT]: 0 deg<=3 drops to inject on this open fiber.", flush=True)
+
+                # (4D) Shattered-fiber quadratic geometry (only run block-mod-QF when small enough for exact Python check!)
                 if nq_f > 0:
                     qps_f = [s9.row_to_pset(sub["_buf"], qr, tbl) for qr in sub["_quad_ids"]]
                     ana_f = s16.analyze_quad_system(qps_f)
@@ -2666,15 +2680,13 @@ def main():
                     Wf_pivs = sorted(Wf_rref.keys())
                     Rf_vars = [v for v in f_act if v not in set(Wf_pivs)]
                     print(f"      [f{tr} Quad Geometry]: n_q={nq_f}, dim_W_ess={len(Wf_pivs)}, dim_R_rem={len(Rf_vars)}", flush=True)
-                    if 0 < len(Rf_vars) < N_f and len(Wf_pivs) > 0:
-                        # Build sheared basis (Wf, Rf) on sub and check (0,4)+(1,3) & (2,2) mod Q_fiber!
+                    if 0 < len(Rf_vars) < N_f and 0 < len(Wf_pivs) <= 46 and nq_f <= 40:
                         orig_fs, basis_fs, _, _ = build_sheared_tt_basis(
                             o_tt_111, b_tt_111, sub["_lin_pivs"], Wf_rref, Wf_pivs, {}, [], Rf_vars
                         )
                         rows_fs, _, _ = extract_and_audit_deg4_family(
                             orig_fs, basis_fs, all_subs[:45], lib_d4, tag=f"f{tr}_SH45", rng_seed=6400 + tr
                         )
-                        # Extract pure-W quad vectors from sheared qps_f
                         work_qf = (ctypes.c_uint64 * (nq_f * n_cw))()
                         for qi_f, rid in enumerate(sub["_quad_ids"]):
                             ctypes.memmove(ctypes.byref(work_qf, qi_f * n_cw * 8), ctypes.byref(sub["_buf"], rid * n_cw * 8), n_cw * 8)
@@ -2705,20 +2717,6 @@ def main():
                             if qv:
                                 Qf_quad_vecs.append(qv)
                         run_mod_Qt_exact_block_test(rows_fs, 45, N_f, len(Wf_pivs), 0, len(Rf_vars), Qf_quad_vecs, lib_d4, tag=f"f{tr}_MOD_QF")
-
-                # Combine ALL verified deg<=3 drops (from V13..16 + C8-Walsh + joint) and INJECT into s9!
-                all_new_ps = list(drops_f175) + [p for _, _, p in c8_f_ps] + list(joint_f_drops)
-                if all_new_ps:
-                    sub_new, chg = inject_psets_into_s9(sub, all_new_ps, lib9, tbl)
-                    print(
-                        f"      [f{tr} *** INJECT {len(all_new_ps)} NEW DEG<=3 EQS INTO s9 ***]: "
-                        f"changed={chg}, CLOSED_UNSAT={sub_new['closed_unsat']}, "
-                        f"N={111-len(sub_new['_lin_pivs'])} (was {N_f}), "
-                        f"q={len(sub_new['_quad_ids'])} (was {nq_f}), c={len(sub_new['_cub_ids'])} (was {nc_f})",
-                        flush=True,
-                    )
-                else:
-                    print(f"      [f{tr} INJECT]: 0 deg<=3 drops to inject on this open fiber.", flush=True)
 
     print(f"\n[STEP 60C {cell_name}] COMPLETED ALL PARTS in {time.perf_counter()-t0:.1f}s!", flush=True)
 
