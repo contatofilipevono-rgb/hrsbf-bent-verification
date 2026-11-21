@@ -1,0 +1,48 @@
+{
+  "cell": "B0_11",
+  "eta": 5,
+  "nW": 44,
+  "total_points_certified": 17592186044416,
+  "status": "FORMALLY_ZERO_TRUST_CERTIFIED_UNSAT",
+  "full_389_survivors": 0,
+  "bent_witnesses": 0,
+  "verification_chain": {
+    "stage_1_m1_strict_exhaustive_scan": {
+      "script": "research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP59A_FULL_ORBIT_FES_AVX2_CLOSER.py",
+      "commit": "f08d417",
+      "github_actions_run_id": 44921087085,
+      "n_shards": 16,
+      "points_per_shard": 1099511627776,
+      "planted_solution_audit": "10/10 PASS on all 16/16 shards (160/160 total)",
+      "shards_1_to_15_survivors": 0,
+      "shard_0_m1_strict_survivors": 2,
+      "shard_0_degenerate_fallbacks": 6
+    },
+    "stage_2_shard0_survivor_extraction_and_full_389_audit": {
+      "script": "research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP59B_EXTRACT_SHARD0_SURVIVORS.py",
+      "commit": "263306eab79de0d4d66d0731428279fca74608aa",
+      "github_actions_run_id": 44934375686,
+      "n_subblocks": 8,
+      "subblocks_green": "8/8",
+      "extracted_m1_strict_survivors": [
+        {
+          "w_mask": "0x043146a796d1",
+          "u_mask": "0x0227ae",
+          "t_mask": "0x1234c",
+          "stage_1_block_a_rank": "37/40 (SAT)",
+          "stage_2a_block_a_plus_block_d_rank": "40/40 (1 = 0 UNSAT)"
+        },
+        {
+          "w_mask": "0x043902a716d1",
+          "u_mask": "0x0227af",
+          "t_mask": "0x10f05",
+          "stage_1_block_a_rank": "37/40 (SAT)",
+          "stage_2a_block_a_plus_block_d_rank": "40/40 (1 = 0 UNSAT)"
+        }
+      ],
+      "twin_pair_xor": "0x000844008000 (v_ker[0])",
+      "any_bent": false
+    },
+    "independent_verifier_audit": "PASS (swarm verifier #13, merged to main at f9e750a)"
+  }
+}

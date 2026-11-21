@@ -259,6 +259,14 @@ static int verify_full_point_exact(
         }
         if (row == rhs_bit) return 0;
     }
+    if ((plant_delta_core.lo | plant_delta_core.hi) == 0ULL) {
+        uint64_t wm = 0ULL, um = 0ULL;
+        for (int w = 0; w < nW; w++) if (w_vec[w]) wm |= (1ULL << w);
+        for (int a = 0; a < d1; a++) if (u_vec[a]) um |= (1ULL << a);
+        printf("\n  [REAL_SURVIVOR_FOUND] w_mask=0x%012llx u_mask=0x%06llx\n",
+               (unsigned long long)wm, (unsigned long long)um);
+        fflush(stdout);
+    }
     return 1;
 }
 
@@ -436,8 +444,35 @@ static int64_t process_one_fiber(
         return surv;
     }
 
-    // 5. Build E_core_masks (r_elim,) over n_core: E_mat @ L_kr!
-    int n_fast = (mR_1 < 28) ? mR_1 : 28;
+    // 5. Select n_fast <= 28 rows of L_kr LINEARLY INDEPENDENT of V0 (avoids 0==0 rows after V0 subst!)
+    int is_v0_piv[128];
+    memset(is_v0_piv, 0, sizeof(is_v0_piv));
+    m128_t Vtmp[128];
+    for (int i = 0; i < n_v0; i++) Vtmp[i] = V0_masks[i];
+    int vr = 0;
+    for (int c = 0; c < mR_1 && vr < n_v0; c++) {
+        int piv = -1;
+        for (int i = vr; i < n_v0; i++) {
+            int bit = (c < 64) ? (int)((Vtmp[i].lo >> c) & 1ULL) : (int)((Vtmp[i].hi >> (c - 64)) & 1ULL);
+            if (bit) { piv = i; break; }
+        }
+        if (piv < 0) continue;
+        if (piv != vr) { m128_t t = Vtmp[vr]; Vtmp[vr] = Vtmp[piv]; Vtmp[piv] = t; }
+        for (int i = vr + 1; i < n_v0; i++) {
+            int bit = (c < 64) ? (int)((Vtmp[i].lo >> c) & 1ULL) : (int)((Vtmp[i].hi >> (c - 64)) & 1ULL);
+            if (bit) Vtmp[i] = m128_xor(Vtmp[i], Vtmp[vr]);
+        }
+        is_v0_piv[c] = 1;
+        vr++;
+    }
+    int fast_rows[32], n_fast = 0;
+    for (int r = 0; r < mR_1 && n_fast < 28; r++) {
+        if (!is_v0_piv[r]) fast_rows[n_fast++] = r;
+    }
+    for (int r = 0; r < mR_1 && n_fast < 28; r++) {
+        if (is_v0_piv[r]) fast_rows[n_fast++] = r;
+    }
+
     int K = r_elim + n_fast;
     m128_t P_fiber[64];
     for (int e = 0; e < r_elim; e++) {
@@ -447,7 +482,7 @@ static int64_t process_one_fiber(
         while (thi) { int r = 64 + __builtin_ctzll(thi); acc = m128_xor(acc, L_kr_masks[r]); thi &= thi - 1; }
         P_fiber[e] = acc;
     }
-    for (int r = 0; r < n_fast; r++) P_fiber[r_elim + r] = L_kr_masks[r];
+    for (int fi = 0; fi < n_fast; fi++) P_fiber[r_elim + fi] = L_kr_masks[fast_rows[fi]];
 
     uint32_t EM0_keep[32];
     for (int e = 0; e < r_elim; e++) {
@@ -458,14 +493,15 @@ static int64_t process_one_fiber(
 
     uint32_t Cm0_masks[32], Cmk_masks[32 * 32];
     uint32_t M0_rem_masks[32], Mk_rem_masks[32 * 32];
-    for (int r = 0; r < n_fast; r++) {
+    for (int fi = 0; fi < n_fast; fi++) {
+        int r = fast_rows[fi];
         uint32_t cm0 = 0, m0k = 0;
         for (int e = 0; e < r_elim; e++) {
             if ((M0_1[r] >> piv_v0[e]) & 1U) { cm0 |= (1U << e); m0k ^= EM0_keep[e]; }
         }
         for (int c = 0; c < rK_rem; c++) if ((M0_1[r] >> keep_c[c]) & 1U) m0k ^= (1U << c);
-        Cm0_masks[r] = cm0;
-        M0_rem_masks[r] = m0k;
+        Cm0_masks[fi] = cm0;
+        M0_rem_masks[fi] = m0k;
 
         for (int a = 0; a < d1; a++) {
             uint32_t mu_ar = Mu_1[a * mR_1 + r];
@@ -474,8 +510,8 @@ static int64_t process_one_fiber(
                 if ((mu_ar >> piv_v0[e]) & 1U) { cma |= (1U << e); mka ^= EM0_keep[e]; }
             }
             for (int c = 0; c < rK_rem; c++) if ((mu_ar >> keep_c[c]) & 1U) mka ^= (1U << c);
-            Cmk_masks[a * n_fast + r] = cma;
-            Mk_rem_masks[a * n_fast + r] = mka;
+            Cmk_masks[a * n_fast + fi] = cma;
+            Mk_rem_masks[a * n_fast + fi] = mka;
         }
     }
 
