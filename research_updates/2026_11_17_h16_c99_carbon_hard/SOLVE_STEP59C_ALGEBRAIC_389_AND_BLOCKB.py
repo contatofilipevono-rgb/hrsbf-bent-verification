@@ -32,7 +32,7 @@ import SOLVE_STEP9_8BRANCH_CUBIC_DROP as s9
 import SOLVE_STEP10_CARLET_GUILLOT_NNF as s10
 import SOLVE_STEP16_LAYER2A_AND_W44_CRUSH as s16
 import SOLVE_STEP17_ELIM_ORDER_R_GT_B_SCHUR4 as s17
-import SOLVE_STEP19_STRICT_RREF_N42 as s19
+import SOLVE_STEP19_ZEROTRUST_AUDIT_AND_TRUE_WESS_CRUSH as s19
 import SOLVE_STEP40A_B11_COMMON_KERNEL_AND_DECOMPOSITION as s40a
 import SOLVE_STEP45A_B000_PARALLEL_CLOSER as s45a
 import SOLVE_STEP45B_POLAR_EXACT_RHS_AND_KL3 as s45b
@@ -40,10 +40,21 @@ import SOLVE_STEP55B_UNCAP_SYSB_AND_KERNEL_BASIS as s55b
 import SOLVE_STEP57B_GREEDY_BASIS_AND_BLOCKB_INJECT as s57b
 
 
-def solve_residual_with_cadical(buf, q_ids, c_ids, tbl, max_conf_budget=500000):
-    """Encode surviving quadratic & cubic ANF equations in `buf` into CaDiCaL CNF and solve!"""
-    psets = [s9.row_to_pset(buf, rid, tbl) for rid in list(q_ids) + list(c_ids)]
-    active_vars = sorted({b for ps in psets for m in ps if m > 0 for b in range(tbl["n"]) if (m >> b) & 1})
+def _eval_pset_bits(ps, val_bits):
+    acc = 0
+    for m in ps:
+        if (m & val_bits) == m:
+            acc ^= 1
+    return acc
+
+
+def solve_psets_with_cadical(psets, n_vars, max_conf_budget=80000, assumptions_bits=None):
+    """Encode ANF equations `psets` (each `sum_{m in ps} x^m == 0`) into CaDiCaL CNF and solve!
+    If `assumptions_bits` is provided, fixes all active variable literals to `assumptions_bits`
+    to Zero-Trust verify clause satisfaction in O(clauses) time.
+    Returns (status, dt, model_bits_or_None).
+    """
+    active_vars = sorted({b for ps in psets for m in ps if m > 0 for b in range(n_vars) if (m >> b) & 1})
     var_to_sat = {v: i + 1 for i, v in enumerate(active_vars)}
     next_sat_var = len(active_vars) + 1
     mon_to_sat = {}
@@ -51,7 +62,7 @@ def solve_residual_with_cadical(buf, q_ids, c_ids, tbl, max_conf_budget=500000):
 
     def get_mon_var(m):
         nonlocal next_sat_var
-        vs = [b for b in range(tbl["n"]) if (m >> b) & 1]
+        vs = [b for b in range(n_vars) if (m >> b) & 1]
         if len(vs) == 1:
             return var_to_sat[vs[0]]
         if m not in mon_to_sat:
@@ -89,22 +100,80 @@ def solve_residual_with_cadical(buf, q_ids, c_ids, tbl, max_conf_budget=500000):
         if not ps:
             continue
         if ps == {0}:
-            return "UNSAT_1EQ0", 0
-        rhs = 1 ^ (1 if 0 in ps else 0)
+            return "UNSAT_1EQ0", 0.0, None
+        # ANF equation is (1 if 0 in ps else 0) ^ XOR_{m > 0} x^m == 0  <=>  XOR_{m > 0} x^m == (1 if 0 in ps else 0)
+        rhs = 1 if 0 in ps else 0
         lits = [get_mon_var(m) for m in sorted(ps) if m > 0]
         add_xor_clauses(lits, rhs)
 
     t0 = time.perf_counter()
     with Cadical195(bootstrap_with=clauses) as slv:
-        slv.conf_budget(max_conf_budget)
-        res = slv.solve_limited()
+        if assumptions_bits is not None:
+            assump = [var_to_sat[v] if ((assumptions_bits >> v) & 1) else -var_to_sat[v] for v in active_vars]
+            res = slv.solve(assumptions=assump)
+        else:
+            slv.conf_budget(max_conf_budget)
+            res = slv.solve_limited()
+        model = slv.get_model() if res is True else None
     dt = time.perf_counter() - t0
     if res is False:
-        return "CADICAL_UNSAT", dt
+        return "CADICAL_UNSAT", dt, None
     elif res is True:
-        return "CADICAL_SAT", dt
+        pos = {lit for lit in model if lit > 0}
+        val_bits = 0
+        for v, sv in var_to_sat.items():
+            if sv in pos:
+                val_bits |= (1 << v)
+        # Zero-Trust verify every single ANF equation on the returned SAT assignment
+        for ps in psets:
+            assert _eval_pset_bits(ps, val_bits) == 0, "CaDiCaL SAT model failed ANF check!"
+        return "CADICAL_SAT", dt, val_bits
     else:
-        return "CADICAL_BUDGET", dt
+        return "CADICAL_BUDGET", dt, None
+
+
+def solve_residual_with_cadical(buf, q_ids, c_ids, tbl, max_conf_budget=80000):
+    """Encode surviving quadratic & cubic ANF equations in `buf` into CaDiCaL CNF and solve!"""
+    psets = [s9.row_to_pset(buf, rid, tbl) for rid in list(q_ids) + list(c_ids)]
+    st, dt, _ = solve_psets_with_cadical(psets, tbl["n"], max_conf_budget=max_conf_budget)
+    return st, dt
+
+
+def audit_cadical_encoder_zerotrust(rng):
+    """Zero-Trust planted-solution & contradiction audit of `solve_psets_with_cadical`."""
+    # 1. Explicit 1 == 0
+    st, _, _ = solve_psets_with_cadical([{0}], 16)
+    assert st == "UNSAT_1EQ0", f"Expected UNSAT_1EQ0, got {st}"
+    # 2. Explicit contradiction: x0 ^ x1 = 0 and x0 ^ x1 = 1
+    st, _, _ = solve_psets_with_cadical([{1, 2}, {0, 1, 2}], 16)
+    assert st == "CADICAL_UNSAT", f"Expected CADICAL_UNSAT, got {st}"
+    # 3. 10 random planted-solution quadratic + cubic systems (including long 8-term XORs)
+    n_test = 18
+    for trial in range(10):
+        x_plant = int(rng.integers(0, 1 << n_test))
+        psets = []
+        for _ in range(32):
+            ps = set()
+            n_terms = int(rng.integers(2, 9))
+            for _ in range(n_terms):
+                deg = int(rng.integers(1, 4))
+                vs = rng.choice(n_test, size=deg, replace=False)
+                m = 0
+                for v in vs:
+                    m |= (1 << int(v))
+                if m in ps:
+                    ps.remove(m)
+                else:
+                    ps.add(m)
+            if _eval_pset_bits(ps, x_plant) == 1:
+                ps.add(0)
+            psets.append(ps)
+        st, _, model_bits = solve_psets_with_cadical(psets, n_test, max_conf_budget=200000)
+        assert st == "CADICAL_SAT", f"Planted trial {trial} returned {st} (FALSE NEGATIVE!)"
+        assert model_bits is not None
+        for ps in psets:
+            assert _eval_pset_bits(ps, model_bits) == 0
+    print("  [ZERO-TRUST AUDIT] CaDiCaL ANF encoder passed: 10/10 planted SAT + UNSAT_1EQ0 + explicit UNSAT!", flush=True)
 
 
 def main():
@@ -278,6 +347,10 @@ def main():
 
     test_etas = [5, 0, 9, 11] if cell_name == "B0_11" else [3, 0, 8, 10]
     rng = np.random.default_rng(5930)
+    audit_cadical_encoder_zerotrust(rng)
+    live_planted_done = False
+
+    n_cols = tbl["off0"] + 1
 
     for em in test_etas:
         print(f"\n  ================================ [{cell_name} eta={em}] ================================", flush=True)
@@ -337,8 +410,8 @@ def main():
                     p, rest & mask64, rest >> 64
                 )
 
-        # 1. Exact (drf, dt_c, deg) census of all M_eq equations!
-        census = {}
+        # 1. Exact (drf, dt_c, deg) census of all M_eq equations — BOTH raw `work` AND echelonized `std_ech`!
+        raw_census = {}
         for ri in range(M_eq):
             ps = s9.row_to_pset(work, ri, tbl)
             max_drf, max_dtc, max_deg = 0, 0, 0
@@ -350,12 +423,66 @@ def main():
                 max_drf = max(max_drf, sum(1 for v in vs if v in RF_set))
                 max_dtc = max(max_dtc, sum(1 for v in vs if v in T_set))
             key = (max_drf, max_dtc, max_deg)
-            census[key] = census.get(key, 0) + 1
-        print(f"    [Census nW={nW}, nT={nT}, nRF={nRF}, M_eq={M_eq}]: {sorted(census.items())}", flush=True)
+            raw_census[key] = raw_census.get(key, 0) + 1
+        print(f"    [Raw Census nW={nW}, nT={nT}, nRF={nRF}, M_eq={M_eq}]: {sorted(raw_census.items())}", flush=True)
+
+        # Echelonize `work` in elimination order (drf, dt_c, deg) descending to match Step 45B/56B!
+        col_keys, col_meta = [], []
+        for c in range(n_cols):
+            d = int(tbl["col_deg"][c])
+            vs = []
+            if d >= 1: vs.append(int(tbl["col_v0"][c]))
+            if d >= 2: vs.append(int(tbl["col_v1"][c]))
+            if d >= 3: vs.append(int(tbl["col_v2"][c]))
+            drf = sum(1 for v in vs if v in RF_set)
+            dt_c = sum(1 for v in vs if v in T_set)
+            col_meta.append((drf, dt_c, d))
+            col_keys.append((3 - drf, 3 - dt_c, 3 - d, c))
+        col_keys.sort()
+        orig_to_perm = (ctypes.c_int * n_cols)()
+        perm_to_orig = [0] * n_cols
+        for pc, (_, _, _, oc) in enumerate(col_keys):
+            orig_to_perm[oc] = pc
+            perm_to_orig[pc] = oc
+        perm_buf = (ctypes.c_uint64 * (M_eq * n_cw))()
+        lib_sh.remap_rows_by_perm(work, perm_buf, M_eq, n_cw, n_cols, orig_to_perm)
+        piv_idx = (ctypes.c_int * n_cols)(*([-1] * n_cols))
+        ech_rows = []
+        for r in range(M_eq):
+            pc = lib9.gf2_echelon_insert_s9(perm_buf, r, n_cw, piv_idx, n_cols)
+            if pc >= 0:
+                ech_rows.append((r, col_meta[perm_to_orig[pc]]))
+        inv_perm = (ctypes.c_int * n_cols)(*perm_to_orig)
+        std_ech = (ctypes.c_uint64 * (M_eq * n_cw))()
+        lib_sh.remap_rows_by_perm(perm_buf, std_ech, M_eq, n_cw, n_cols, inv_perm)
+
+        ech_census = {}
+        n_m1_strict, n_m1_w2r = 0, 0
+        for r_id, (drf, dt_c, lead_d) in ech_rows:
+            ech_census[(drf, dt_c, lead_d)] = ech_census.get((drf, dt_c, lead_d), 0) + 1
+            if drf == 1 and dt_c == 0:
+                ps = s9.row_to_pset(std_ech, r_id, tbl)
+                has_w2r = any(
+                    sum(1 for b in range(n) if (m >> b) & 1 and b in RF_set) == 1
+                    and sum(1 for b in range(n) if (m >> b) & 1 and b in W_set) >= 2
+                    for m in ps if m > 0
+                )
+                if has_w2r:
+                    n_m1_w2r += 1
+                else:
+                    n_m1_strict += 1
+        print(f"    [Ech Census (lead drf,dt_c,deg) rk={len(ech_rows)}/{M_eq}]: {sorted(ech_census.items())}", flush=True)
+        print(f"    [M1 split] total_drf1_dtc0={n_m1_strict + n_m1_w2r} -> M1_strict={n_m1_strict}, M1_w2r(deg3)={n_m1_w2r}", flush=True)
 
         # 2. Extract pencil (M0_c, Mk_c) and check pencil kernel {v : sum_k v_k Mk_c == 0}
         sys_ex = s45b.extract_eta_exact_system(em, root, eta_free, lib9, lib_sh, tbl, rng_seed=5930 + em)
+        if sys_ex.get("closed_unsat"):
+            print(f"    [eta={em}] ALREADY CLOSED UNSAT AT ROOT!", flush=True)
+            continue
         M0_c, Mk_c = sys_ex["M0_c"], sys_ex["Mk_c"]
+        if M0_c.shape[0] == 0 or M0_c.shape[1] == 0:
+            print(f"    [M1_strict] EMPTY CORE shape={M0_c.shape}, skipping U_opt", flush=True)
+            continue
         Mk_flat = np.array([Mk_c[k].reshape(-1) for k in range(nW)], dtype=np.uint8)
         p_ker = s40a.gf2_nullspace_np(Mk_flat.T)
         print(f"    [M1_strict] shape={M0_c.shape}, dim(ker(w -> M(w)))={p_ker.shape[0]}", flush=True)
@@ -368,6 +495,8 @@ def main():
             U1 = U_opt[:d_free]
             F_sub = s40a.gf2_nullspace_np(U1)  # (k_fix, nW) TRUE ANNIHILATOR U1^perp!
             k_fix = F_sub.shape[0]
+            assert k_fix == nW - d_free, f"Expected k_fix={nW - d_free}, got {k_fix}"
+            assert np.all(((U1 @ F_sub.T) & 1) == 0), "Dual annihilator U1 @ F_sub^T != 0!"
             fix_forms = []
             for row in F_sub:
                 fm = 0
@@ -378,12 +507,12 @@ def main():
 
             f_logs = []
             for tr in range(3):
-                rb = 0 if tr == 0 else int(rng.integers(1, 1 << min(30, k_fix)))
+                rb = 0 if tr == 0 else sum(int(rng.integers(0, 2)) << j for j in range(k_fix))
                 ex_w = [(fix_forms[j], (rb >> j) & 1) for j in range(k_fix)]
                 t_s9 = time.perf_counter()
                 sub = s9.run_branch_cascade(
                     lib9, sr["_buf"], sr["_quad_ids"], sr["_cub_ids"], sr["_lin_pivs"],
-                    ex_w, tbl, max_xl_rounds=25, verify_subst=False
+                    ex_w, tbl, max_xl_rounds=25, verify_subst=(tr == 0)
                 )
                 dt_s9 = time.perf_counter() - t_s9
                 if sub["closed_unsat"]:
@@ -392,8 +521,22 @@ def main():
                     n_act = 111 - len(sub["_lin_pivs"])
                     nq_s = len(sub["_quad_ids"])
                     nc_s = len(sub["_cub_ids"])
-                    if n_act <= 85:
-                        sat_st, dt_sat = solve_residual_with_cadical(sub["_buf"], sub["_quad_ids"], sub["_cub_ids"], tbl)
+                    if (not live_planted_done) and n_act <= 75 and (nq_s + nc_s) > 0:
+                        # Live Zero-Trust planted-solution audit on a real shattered residual (via exact assumptions = O(clauses))!
+                        raw_ps = [s9.row_to_pset(sub["_buf"], rid, tbl) for rid in list(sub["_quad_ids"]) + list(sub["_cub_ids"])]
+                        x_pl = sum(int(rng.integers(0, 2)) << b for b in range(n))
+                        pl_ps = []
+                        for ps in raw_ps:
+                            ps2 = set(ps)
+                            if _eval_pset_bits(ps2, x_pl) == 1:
+                                ps2.symmetric_difference_update({0})
+                            pl_ps.append(ps2)
+                        pl_st, pl_dt, _ = solve_psets_with_cadical(pl_ps, n, assumptions_bits=x_pl)
+                        assert pl_st == "CADICAL_SAT", f"LIVE PLANTED AUDIT FAILED: {pl_st} on N={n_act},q={nq_s},c={nc_s}"
+                        print(f"      [LIVE PLANTED AUDIT] Passed on real residual (N={n_act}, q={nq_s}, c={nc_s}) -> {pl_st} in {pl_dt:.3f}s!", flush=True)
+                        live_planted_done = True
+                    if n_act <= 45:
+                        sat_st, dt_sat = solve_residual_with_cadical(sub["_buf"], sub["_quad_ids"], sub["_cub_ids"], tbl, max_conf_budget=50000)
                         f_logs.append(f"f{tr}:N={n_act},q={nq_s},c={nc_s}->{sat_st}({dt_s9:.1f}+{dt_sat:.1f}s)")
                     else:
                         f_logs.append(f"f{tr}:N={n_act},q={nq_s},c={nc_s}({dt_s9:.1f}s)")
