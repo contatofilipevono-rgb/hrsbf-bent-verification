@@ -1,0 +1,6 @@
+s0=-1: N1=(8287947, 25067776), wt(C9)=(8421120, 25067776)
+s0=+1: N1=(8354003, 25132800), wt(C9)=(8487168, 25132800)
+0 exceptions: feasible Walsh coefficients [32512]
+1 exceptions: feasible Walsh coefficients [16128, 16384]
+2 exceptions: feasible Walsh coefficients [-256, 0, 256]
+Dimension 26: only nine monomials covering all coordinates can contribute.
