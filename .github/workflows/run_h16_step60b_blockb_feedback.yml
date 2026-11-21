@@ -1,0 +1,23 @@
+name: H16 Step 60B Block-B + Block-D + Block-A3 Algebraic Feedback
+
+on:
+  workflow_dispatch:
+
+jobs:
+  step60b_blockb_feedback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: ["B0_11", "B1_11"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install numpy
+        run: pip install numpy
+      - name: Run Step 60B Block-B + Block-D + Block-A3 Algebraic Feedback (${{ matrix.cell }})
+        run: |
+          python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP60B_BLOCKB_BLOCKD_ALGEBRAIC_FEEDBACK.py --cell ${{ matrix.cell }}
