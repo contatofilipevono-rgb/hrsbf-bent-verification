@@ -62,6 +62,23 @@ Como (x_i y_i\ge\max(x_i,y_i)), temos (x_i+y_i\le2Q_i\), de modo que a enumeraç
 
 Pela fórmula de Poisson antes de reduzir módulo 127, (A_1A_2= -1+L\sum_{u\in\mathbb F_2^r}k(u,b_1,b_2)\). Logo os quatro produtos (x_1x_2,-x_1y_2,-y_1x_2,y_1y_2) devem reduzir, módulo 127, a elementos de (\{-1+Ls:0\le s\le2^r\}\). O arquivo `verifica_invariante_M8.py` enumera todos os parâmetros e as cotas com inteiros e não encontra nenhuma solução para (r=0,1,2,3,4). A rotina usa somente condições necessárias. Como controle de calibração, para (r=5) ela deixa um único perfil de dimensões e valorações, ( (d_1,d_2,v_1,v_2)=(4,23,1,8)\), a menos de permutação dos blocos. Esse perfil aritmético por si só não produz uma função.
 
-## 4. Escopo
+## 4. Identidades de contração e a primeira codimensão possível
+
+Trabalhe agora na álgebra exterior sobre os inteiros e escreva \(\Gamma_j\) para as potências divididas de um levantamento integral orientado \(A\) de \(a\). Pelo cálculo de sinais da Seção 2, \(\Gamma_8(A)\equiv2\operatorname{vol}_{32}\bmod4\). Em particular, \(\gamma_4(a)\ne0\). Se \(\Gamma_4(A)\) fosse par, sua segunda potência dividida seria múltipla de quatro, mas \(\Gamma_2(\Gamma_4(A))=35\Gamma_8(A)\).
+
+Ponha \(B=\Gamma_7(A)/2\bmod2\) e \(E=\Gamma_6(A)/2\bmod2\). Ambas as divisões são exatas. \(B\) independe do levantamento, pois a mudança \(A\mapsto A+2H\) altera \(\Gamma_7(A)/2\) por \(H\gamma_6(a)=0\bmod2\). Para vetores físicos \(v,w\), o produto exterior e as derivações interiores fornecem
+\[
+\begin{aligned}
+(\iota_v a)\wedge B&=\iota_v\operatorname{vol}_{32},\\
+(\iota_w\iota_v a)\wedge B+(\iota_v a)\wedge(\iota_w a)\wedge E&=\iota_w\iota_v\operatorname{vol}_{32}.
+\end{aligned}
+\]
+São as contrações de \(\Gamma_8(A)\) divididas por dois e reduzidas módulo dois. A primeira usa \(\iota_v\Gamma_8(A)=(\iota_v A)\wedge\Gamma_7(A)\), e a segunda usa a regra do produto. Em particular, para todo \(v\ne0\), a contração \(\iota_v a\) emparelha não trivialmente com o mesmo \(B\).
+
+Suponha que \(U\) seja um subespaço físico de codimensão oito com \(a|_U=0\). Em coordenadas adaptadas, escreva \(a=\sum_{i=1}^8\tau_i c_i+\text{termos com pelo menos dois }\tau\), onde os \(c_i\) são formas cúbicas nas 24 coordenadas de \(U\). No coeficiente de cada escolha de seis controles de \(\gamma_6(a)\), todos os fatores têm de usar exatamente um desses controles. Portanto quaisquer seis \(c_i\) distintos têm produto zero sobre \(\mathbb F_2\). Fixe levantamentos exteriores integrais \(C_i\) dessas cúbicas e escolha \(A\) com esses levantamentos nos termos de um controle e sem termos livres de controles. Em \(\Gamma_8(A)\), cada um dos oito fatores deve usar exatamente um controle. Assim \(\prod_i C_i\equiv2\operatorname{vol}_{24}\bmod4\) no exterior orientado de \(U\), a menos de um sinal que não altera a congruência.
+
+Para cada par \(i<j\), a forma integral \(\frac12\prod_{k\ne i,j}C_k\) existe. Sua redução em grau 18 emparelha a um com \(c_i\wedge c_j\) e a zero com todo \(c_p\wedge c_q\) de índice distinto. No primeiro caso o produto vale \(\operatorname{vol}_{24}\) após dividir por dois. No segundo, algum fator cúbico se repete e seu quadrado é zero no exterior integral, pois tem grau ímpar e o anel é livre de torção. Logo os **28 produtos** \(c_i\wedge c_j\), \(i<j\), são linearmente independentes. Também os oito \(c_i\) são independentes: qualquer relação entre eles, multiplicada por um \(c_j\) de índice diferente de um termo da relação, produziria uma relação não trivial entre os produtos de pares.
+
+## 5. Escopo
 
 O Astra encontrou a congruência da Seção 1. Ela substitui a exclusão parcial da frente de codimensão seis por uma exclusão integral em codimensões seis e sete. A congruência, junto de \(\gamma_6(a)=0\), não foi demonstrada impossível para uma 4-forma arbitrária em dimensão 32. O caso global \(D=h=0\) permanece em aberto. Uma forma que cumpra as condições algébricas deste adendo, se encontrada, ainda teria de ser levantada a uma função com todas as congruências de Walsh para constituir um contraexemplo.
