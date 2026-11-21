@@ -1,4 +1,4 @@
-name: H(16,4) Step 49B — B0_00 eta=0 Final 2 XL80 Pairs (ff2_55_1 & ff2_55_2)
+name: H(16,4) Step 49B — B0_00 eta=0 Final 2 Pairs with Exact 65536-pt FWHT Leaf Check (ff2_55_1 & ff2_55_2)
 
 on:
   push:

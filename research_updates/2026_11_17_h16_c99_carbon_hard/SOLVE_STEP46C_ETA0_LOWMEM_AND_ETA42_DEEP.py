@@ -174,12 +174,31 @@ def get_coset_bal_states(sr_cur, z_val, b_tt, max_dim=10):
 COSET_CANDIDATES = (0xFF, 0x55, 0x33, 0x0F, 0x3C, 0x66, 0x5A, 0xA5, 0x1E, 0x78)
 
 
+def _fwht_is_bent(tt_u8):
+    """Exact 65536-point Fast Walsh-Hadamard Transform check for 16-var bentness (|W_f| == 256 everywhere)."""
+    a = 1 - 2 * tt_u8.astype(np.int32)
+    h = 1
+    n = a.shape[0]
+    while h < n:
+        a = a.reshape(-1, 2, h)
+        x = a[:, 0, :].copy()
+        y = a[:, 1, :]
+        a[:, 0, :] = x + y
+        a[:, 1, :] = x - y
+        a = a.reshape(n)
+        h <<= 1
+    max_abs = int(np.max(np.abs(a)))
+    min_abs = int(np.min(np.abs(a)))
+    return (max_abs == 256 and min_abs == 256), min_abs, max_abs
+
+
 def close_open_substate_deep(
     lbl, sub, b_tt, lib9, lib_sh, so_s9, tbl, n_cw, workers, deadline, cert_dir,
     depth=0, max_depth=4, used_cosets=()
 ):
     """
-    Close an open branch state `sub` using a 3-strategy cascade:
+    Close an open branch state `sub` using a 4-strategy cascade:
+      0. Exact FWHT Leaf Enumeration when remaining active variables n_act <= 10
       1. D8 Coset Weight-128 Balance Filtering (across COSET_CANDIDATES with nz <= 9)
       2. K_R + MinRank Parallel Closer (when M1 > 0 and threshold k_fix <= 8)
       3. Multi-Level Recursive Radical-Complement W_forms Splitting (up to max_depth=4)
@@ -188,6 +207,52 @@ def close_open_substate_deep(
         return True, "ALREADY_CLOSED"
     if "_quad_ids" not in sub:
         return False, "XL_ROUNDS_EXHAUSTED"
+
+    # Strategy 0: Exact FWHT Leaf Enumeration when n_act <= 10!
+    lin_pivs = sub["_lin_pivs"]
+    free_vars = [i for i in range(tbl["n"]) if i not in lin_pivs]
+    if len(free_vars) <= 10:
+        n_fv = len(free_vars)
+        # Constant affine part from lin_pivs
+        base_x = sum((1 << lp) for lp, (_, pr) in lin_pivs.items() if pr)
+        base_tt = np.zeros(65536, dtype=np.uint8)
+        tmp = base_x
+        while tmp:
+            lb = tmp & -tmp
+            base_tt ^= b_tt[lb.bit_length() - 1]
+            tmp ^= lb
+        fv_tts = []
+        fv_masks = []
+        for fv in free_vars:
+            x = 1 << fv
+            for lp, (pv, _) in lin_pivs.items():
+                if (((pv ^ (1 << lp)) & x).bit_count()) & 1:
+                    x |= (1 << lp)
+            fv_masks.append(x)
+            tt = np.zeros(65536, dtype=np.uint8)
+            tmp = x
+            while tmp:
+                lb = tmp & -tmp
+                tt ^= b_tt[lb.bit_length() - 1]
+                tmp ^= lb
+            fv_tts.append(tt)
+        witnesses = []
+        spectra = []
+        for st in range(1 << n_fv):
+            tt = base_tt.copy()
+            x_full = base_x
+            for j in range(n_fv):
+                if (st >> j) & 1:
+                    tt ^= fv_tts[j]
+                    x_full ^= fv_masks[j]
+            is_b, mn, mx = _fwht_is_bent(tt)
+            spectra.append((st, mn, mx))
+            if is_b:
+                witnesses.append(hex(x_full))
+                print(f"    !!!!!! [{lbl}] BENT WITNESS FOUND!! x_111={hex(x_full)} !!!!!!", flush=True)
+        if not witnesses:
+            return True, f"EXACT_FWHT_UNSAT(n_act={n_fv},checked={1<<n_fv},spectra={spectra[:4]})"
+        return False, f"BENT_WITNESS_FOUND({witnesses})"
 
     # Strategy 1: Check D8 cosets for weight-128 balance filtering
     best_coset = None
