@@ -1,3 +1,4 @@
 Cubic26: all 2-adic residues verified by tensor factors; modular witness = -61.
 CRT: two blocks excluded; one block forces normalized Walsh ≡ 1 mod 32.
 Dimension 15: isolated examples of zero and two large coefficients verified.
+Joint energy: at least 61 external slices and 18511 pairs with low polar rank.
