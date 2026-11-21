@@ -1,0 +1,23 @@
+name: H16 Step 55A All-35 D8 Coset Spectrum & Structure
+
+on:
+  workflow_dispatch:
+
+jobs:
+  step55a_d8_spectrum:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: ["B0_11", "B1_11"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install numpy and python-sat
+        run: pip install numpy python-sat
+      - name: Run Step 55A D8 Coset Spectrum (${{ matrix.cell }})
+        run: |
+          python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP55A_D8_SPECTRUM_AND_STRUCTURE.py --cell ${{ matrix.cell }}
