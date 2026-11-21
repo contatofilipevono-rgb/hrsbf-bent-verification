@@ -236,7 +236,7 @@ def extract_full_blocks_fast(em, root, eta_free, lib9, lib_sh, tbl, rng_seed=610
     lib_sh.remap_rows_by_perm(perm_buf, std_ech, M_eq, n_cw, n_cols, inv_perm)
 
     # View std_ech as numpy uint64 (M_eq, n_cw) -> unpackbits directly per row!
-    std_u64 = np.ctypeslib.as_array(std_ech, shape=(M_eq, n_cw))
+    std_u64 = np.ctypeslib.as_array(std_ech).reshape(M_eq, n_cw)
     std_bits = np.unpackbits(std_u64.view(np.uint8), axis=1, bitorder="little")[:, :n_cols]
 
     # Classify rows using numpy nonzero columns (instant!)
@@ -785,6 +785,8 @@ def run_untruncated_d3_macaulay_and_cadical(buf, q_ids, c_ids, tbl, lib_d3, max_
     t_sat = time.perf_counter()
     if mac_status == "MAC_D3_1EQ0":
         return mac_status, mac_new_lin, dt_mac, "UNSAT_BY_MAC", 0.0
+    if N > 45:
+        return mac_status, mac_new_lin, dt_mac, f"CADICAL_SKIP(N={N})", 0.0
 
     def build_cnf(polys_in, flip_rhs=None):
         next_v = N + 1
