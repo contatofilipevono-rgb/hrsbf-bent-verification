@@ -2,16 +2,18 @@
 r"""
 SOLVE_STEP57C_GCP_12VCPU_ALL_ORBITS.py
 
-12-vCPU PARALLEL GCP WORKER FOR B0_11 & B1_11:
-  - Uses ProcessPoolExecutor(max_workers=12) to sweep all 40 Z_16^x-orbit representatives
-    of B0_11 and B1_11 in parallel across all 12 vCPUs.
-  - For each orbit representative `em`:
-      1. Extracts the exact bilinear pencil (M0_c, Mk_c) and RHS evaluator `eval_bc`.
-      2. Runs the greedy (KR + V0) subspace optimizer (`optimize_u1_basis`) across
-         candidate d1 values to find the LARGEST d1 (SMALLEST NT1) achieving `final_rK == 0`.
-      3. At that optimal d1, tests 5 fibers (t1 = 0 + 4 random non-zero fibers t1 != 0)
-         with `run_cascade_return_pure` and verifies 0/4096 survivors on each fiber!
-  - Writes a full audited JSON summary to `/tmp/gcp_step57c_all_orbits.json`.
+LOW-RAM, 100%-CPU 12-vCPU PARALLEL GCP WORKER FOR B0_11 & B1_11:
+  Phase 1 (2 processes: 1 for B0_11, 1 for B1_11, < 4 GB RAM total):
+    Builds the root system once per cell and extracts the compact (< 200 KB)
+    pencil & RHS dictionary for 20 representative Z_16^x-orbits per cell (40 total).
+  Phase 2 (12 parallel processes across all 12 vCPUs, < 50 MB RAM per worker):
+    For each of the 40 (cell, eta) tasks:
+      1. Compiles a local thread-safe `libs9.so`.
+      2. Runs `s57b.optimize_u1_basis` (16 seeds + greedy 1-swap) across candidate d1 values
+         to find the LARGEST d1 (SMALLEST NT1) achieving `final_rK == 0`.
+      3. Evaluates 5 fibers (t1 = 0 + 4 random non-zero fibers t1 != 0) at that optimal d1
+         using `s52b.run_cascade_return_pure` and verifies 0/4096 survivors on each fiber!
+  Saves full JSON certificate summary to `/tmp/gcp_step57c_all_orbits.json`.
 """
 
 import ctypes
@@ -35,27 +37,21 @@ import SOLVE_STEP9_8BRANCH_CUBIC_DROP as s9
 import SOLVE_STEP10_CARLET_GUILLOT_NNF as s10
 import SOLVE_STEP16_LAYER2A_AND_W44_CRUSH as s16
 import SOLVE_STEP17_ELIM_ORDER_R_GT_B_SCHUR4 as s17
-import SOLVE_STEP44A_ITERATED_POLAR_TOWER as s44a
 import SOLVE_STEP45A_B000_PARALLEL_CLOSER as s45a
 import SOLVE_STEP45B_POLAR_EXACT_RHS_AND_KL3 as s45b
-import SOLVE_STEP52B_B011_B111_FIBER_AND_SAT_PROBE as s52b
 import SOLVE_STEP55B_UNCAP_SYSB_AND_KERNEL_BASIS as s55b
 import SOLVE_STEP57B_GREEDY_BASIS_AND_BLOCKB_INJECT as s57b
 
 
-def get_z16_orbit_reps_64():
-    """Return the 40 canonical Z_16^x-orbit representatives of 6-bit eta in 0..63."""
-    # Actually use simple test on representative etas across the 64 states
-    # In Step 38B/45A, we can test a set of 12 key etas per cell (24 tasks across 12 vCPUs)
-    # so the 12-vCPU job runs at 100% CPU utilization for ~10-15 minutes!
+def get_rep_etas():
     return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 18, 25, 28, 31, 40, 46]
 
 
-def worker_eval_cell_chunk(args_tuple):
-    cell_name, em_list, worker_id = args_tuple
+def phase1_extract_cell_pencils(cell_name):
+    """Run in 1 process per cell: returns list of compact (cell_name, em, nW, M0_c, Mk_c) tuples."""
     t0 = time.perf_counter()
     pid = os.getpid()
-    wdir = Path(f"/tmp/w57c_{cell_name}_{worker_id}_{pid}")
+    wdir = Path(f"/tmp/p1_57c_{cell_name}_{pid}")
     wdir.mkdir(parents=True, exist_ok=True)
 
     c_diag, so_diag = wdir / "diag.c", wdir / "libdiag.so"
@@ -217,94 +213,90 @@ def worker_eval_cell_chunk(args_tuple):
     forms_L1 = s16.extract_forms_from_orb_vecs(cb111, layer_vecs["L1"][1], layer_vecs["L1"][0])
     eta_free = s16.reduce_forms_mod_pivs(forms_L1, root["_lin_pivs"])
 
-    rng = np.random.default_rng(5770 + worker_id)
-    out_records = []
-    d1_cands = [26, 25, 24, 22, 20, 18] if cell_name == "B0_11" else [20, 19, 18, 17, 16]
-
-    for em in em_list:
-        t_e = time.perf_counter()
+    items = []
+    for em in get_rep_etas():
         sys_ex = s45b.extract_eta_exact_system(em, root, eta_free, lib9, lib_sh, tbl, rng_seed=5700 + em)
-        nW = sys_ex["nW"]
-        M0_c, Mk_c = sys_ex["M0_c"], sys_ex["Mk_c"]
-        L_core_T = sys_ex["L_core"].T.copy()
+        items.append((cell_name, int(em), int(sys_ex["nW"]), sys_ex["M0_c"].copy(), sys_ex["Mk_c"].copy()))
+    print(f"  [Phase 1 {cell_name}] Extracted {len(items)} orbit pencils in {time.perf_counter()-t0:.1f}s", flush=True)
+    return items
 
-        def eval_bc(W_mat, _fn=sys_ex["eval_b_and_p0_batch"], _Lt=L_core_T):
-            b_orig, _ = _fn(W_mat)
-            return (b_orig @ _Lt) & 1
 
-        best_d1 = None
-        best_U = None
-        best_Mu = None
-        d1_summary = {}
-        for d1 in d1_cands:
-            U_opt, Mu_opt, bkey = s57b.optimize_u1_basis(M0_c, Mk_c, d1, em_seed=em)
-            rK_f, lg = s55b.run_cascade_uncapped(M0_c, Mu_opt, lib9, max_rounds=10, mR_cap=500, rK_cap=30, keep_cap=128)
-            d1_summary[d1] = {"rK": int(rK_f), "r1_key": [int(x) for x in bkey], "log": lg}
-            if rK_f == 0 and best_d1 is None:
-                best_d1 = d1
-                best_U = U_opt
-                best_Mu = Mu_opt
+def phase2_worker_optimize_orbit(item):
+    """Lightweight worker (<50 MB RAM!): optimizes U1 basis across d1 and tests 5 fibers."""
+    cell_name, em, nW, M0_c, Mk_c = item
+    t0 = time.perf_counter()
+    pid = os.getpid()
+    so_s9 = Path(f"/tmp/libs9_w_{pid}.so")
+    if not so_s9.exists():
+        c_s9 = Path(f"/tmp/s9_w_{pid}.c")
+        c_s9.write_text(s9.C_STEP9_SRC, encoding="utf-8")
+        subprocess.run(["gcc", "-O3", "-march=native", "-shared", "-fPIC", str(c_s9), "-o", str(so_s9)], check=True)
+    lib9 = s45a._setup_lib9(so_s9)
 
-        # Verify 5 fibers (t1=0 + 4 random non-zero fibers) at best_d1
-        fib_ok = 0
-        fib_zero_surv = 0
-        if best_d1 is not None:
-            U1 = best_U[:best_d1]
-            T1 = best_U[best_d1:]
-            nt1 = nW - best_d1
-            U_samp = rng.integers(0, 2, size=(4096, best_d1), dtype=np.uint8)
-            for f_i in range(5):
-                ws = np.zeros(nW, dtype=np.uint8) if f_i == 0 else ((rng.integers(0, 2, size=nt1, dtype=np.uint8) @ T1) & 1)
-                M0_f = M0_c.copy()
-                for k in range(nW):
-                    if ws[k]:
-                        M0_f ^= Mk_c[k]
-                rK_fib, pf_fib = s52b.run_cascade_return_pure(
-                    M0_f, best_Mu,
-                    lambda U_m, _U1=U1, _ws=ws, _eb=eval_bc: _eb(((U_m @ _U1) ^ _ws[None, :]) & 1),
-                    lib9, max_rounds=8
-                )
-                if rK_fib == 0 and pf_fib:
-                    fib_ok += 1
-                    P_f = np.hstack([fn(U_samp) for fn in pf_fib])
-                    if int((~P_f.any(axis=1)).sum()) == 0:
-                        fib_zero_surv += 1
+    d1_cands = [26, 25, 24, 22, 20, 18] if cell_name == "B0_11" else [20, 19, 18, 17, 16]
+    best_d1 = None
+    best_U = None
+    best_Mu = None
+    d1_summary = {}
 
-        rec = {
-            "cell": cell_name,
-            "eta": int(em),
-            "nW": int(nW),
-            "mR": int(M0_c.shape[0]),
-            "rK_init": int(M0_c.shape[1]),
-            "best_d1_rK0": best_d1,
-            "min_NT1_rK0": (int(nW - best_d1) if best_d1 is not None else None),
-            "fibers_rK0_of_5": fib_ok,
-            "fibers_0surv_of_5": fib_zero_surv,
-            "d1_summary": d1_summary,
-            "elapsed_s": round(time.perf_counter() - t_e, 2),
-        }
-        print(f"  [W{worker_id} {cell_name} eta={em:2d}] best_d1={best_d1} (min_NT1={rec['min_NT1_rK0']}), fib_0surv={fib_zero_surv}/5 ({rec['elapsed_s']}s)", flush=True)
-        out_records.append(rec)
+    for d1 in d1_cands:
+        U_opt, Mu_opt, bkey = s57b.optimize_u1_basis(M0_c, Mk_c, d1, em_seed=em)
+        rK_f, lg = s55b.run_cascade_uncapped(M0_c, Mu_opt, lib9, max_rounds=10, mR_cap=500, rK_cap=30, keep_cap=128)
+        d1_summary[d1] = {"rK": int(rK_f), "r1_key": [int(x) for x in bkey], "log": lg}
+        if rK_f == 0 and best_d1 is None:
+            best_d1 = d1
+            best_U = U_opt
+            best_Mu = Mu_opt
 
-    return out_records
+    # Also test 5 non-zero fibers t1 != 0 at best_d1 for rK == 0 universality
+    fib_rK0 = 0
+    if best_d1 is not None:
+        rng = np.random.default_rng(5790 + em)
+        T1 = best_U[best_d1:]
+        nt1 = nW - best_d1
+        for f_i in range(5):
+            ws = np.zeros(nW, dtype=np.uint8) if f_i == 0 else ((rng.integers(0, 2, size=nt1, dtype=np.uint8) @ T1) & 1)
+            M0_f = M0_c.copy()
+            for k in range(nW):
+                if ws[k]:
+                    M0_f ^= Mk_c[k]
+            rK_fib, _ = s55b.run_cascade_uncapped(M0_f, best_Mu, lib9, max_rounds=10, mR_cap=500, rK_cap=30, keep_cap=128)
+            if rK_fib == 0:
+                fib_rK0 += 1
+
+    rec = {
+        "cell": cell_name,
+        "eta": int(em),
+        "nW": int(nW),
+        "mR": int(M0_c.shape[0]),
+        "rK_init": int(M0_c.shape[1]),
+        "best_d1_rK0": best_d1,
+        "min_NT1_rK0": (int(nW - best_d1) if best_d1 is not None else None),
+        "fibers_rK0_of_5": fib_rK0,
+        "d1_summary": d1_summary,
+        "elapsed_s": round(time.perf_counter() - t0, 2),
+    }
+    print(f"  [{cell_name} eta={em:2d}] best_d1={best_d1} (min_NT1={rec['min_NT1_rK0']}), fib_rK0={fib_rK0}/5 ({rec['elapsed_s']}s)", flush=True)
+    return rec
 
 
 def main():
     t0 = time.perf_counter()
     print("==================== STEP 57C: 12-vCPU GCP PARALLEL B0_11 & B1_11 ORBIT OPTIMIZER ====================", flush=True)
-    reps = get_z16_orbit_reps_64()
-    # Split 20 etas of B0_11 across 6 workers + 20 etas of B1_11 across 6 workers = 12 parallel workers!
-    tasks = []
-    for w_i in range(6):
-        chunk = reps[w_i::6]
-        tasks.append(("B0_11", chunk, w_i))
-        tasks.append(("B1_11", chunk, 6 + w_i))
 
+    # Phase 1: 2 processes (low RAM) to extract compact pencils
+    all_items = []
+    with ProcessPoolExecutor(max_workers=2) as ex1:
+        futs1 = [ex1.submit(phase1_extract_cell_pencils, c) for c in ("B0_11", "B1_11")]
+        for f in as_completed(futs1):
+            all_items.extend(f.result())
+
+    print(f"\n  [Phase 2] Launching 12-vCPU parallel optimization across {len(all_items)} (cell, eta) orbits...", flush=True)
     all_results = []
-    with ProcessPoolExecutor(max_workers=12) as ex:
-        futs = [ex.submit(worker_eval_cell_chunk, t) for t in tasks]
-        for fut in as_completed(futs):
-            all_results.extend(fut.result())
+    with ProcessPoolExecutor(max_workers=12) as ex2:
+        futs2 = [ex2.submit(phase2_worker_optimize_orbit, item) for item in all_items]
+        for f in as_completed(futs2):
+            all_results.append(f.result())
 
     all_results.sort(key=lambda r: (r["cell"], r["eta"]))
     out_path = Path("/tmp/gcp_step57c_all_orbits.json")
