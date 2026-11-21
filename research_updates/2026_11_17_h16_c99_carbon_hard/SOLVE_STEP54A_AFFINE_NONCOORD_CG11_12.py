@@ -436,8 +436,18 @@ def main():
         s9.pset_to_row(poly, base_buf, n_base + idx_c, tbl)
     ctypes.memmove(ctypes.byref(base_buf, (n_base + len(cyc_cubs)) * n_cw * 8), cg_buf, n_cg * n_cw * 8)
 
+    def _fmt_res(r):
+        if r.get("closed_unsat"):
+            return f"CLOSED_UNSAT=True (rounds={r.get('rounds')})"
+        if "N_active" not in r:
+            return f"closed_unsat=False (note={r.get('note')}, rounds={r.get('rounds')})"
+        return (
+            f"closed_unsat=False, N={r['N_active']}, n_lin={len(r['_lin_pivs'])}, "
+            f"n_quad={r['n_quad_surviving']}, n_cub={r['n_genuine_cubics']}"
+        )
+
     root0 = s9.run_branch_cascade(lib9, base_buf, [], list(range(total_base)), {}, [], tbl, max_xl_rounds=10, verify_subst=True)
-    print(f"  [BASELINE ROOT] closed={root0['closed']}, N={root0['N']}, n_lin={len(root0['_lin_pivs'])}, n_quad={len(root0['_quad_ids'])}, n_cub={len(root0['_cub_ids'])}", flush=True)
+    print(f"  [BASELINE ROOT] {_fmt_res(root0)}", flush=True)
 
     # Generate 4 families of 11-dim and 12-dim affine subspaces
     rng = np.random.default_rng(5401)
@@ -584,8 +594,7 @@ def main():
         res_m = s9.run_branch_cascade(lib9, m_buf, [], list(range(tot_m)), {}, [], tbl, max_xl_rounds=10, verify_subst=True)
         print(
             f"  [{fam_name}] built={len(fam_rows)} (div_fail={fail_div}), ZT={zt_ok}/{zt_tot} "
-            f"-> closed={res_m['closed']}, N={res_m['N']}, n_lin={len(res_m['_lin_pivs'])}, "
-            f"n_quad={len(res_m['_quad_ids'])}, n_cub={len(res_m['_cub_ids'])} ({time.perf_counter()-t_f:.1f}s)",
+            f"-> {_fmt_res(res_m)} ({time.perf_counter()-t_f:.1f}s)",
             flush=True,
         )
         all_new_rows.extend(fam_rows)
@@ -598,9 +607,7 @@ def main():
         ctypes.memmove(ctypes.byref(all_buf, (total_base + ri) * n_cw * 8), r_arr, n_cw * 8)
     res_all = s9.run_branch_cascade(lib9, all_buf, [], list(range(tot_all)), {}, [], tbl, max_xl_rounds=20, verify_subst=True)
     print(
-        f"\n  [ALL 4 FAMILIES COMBINED ({len(all_new_rows)} new cubics)] "
-        f"-> closed={res_all['closed']}, N={res_all['N']}, n_lin={len(res_all['_lin_pivs'])}, "
-        f"n_quad={len(res_all['_quad_ids'])}, n_cub={len(res_all['_cub_ids'])}",
+        f"\n  [ALL 4 FAMILIES COMBINED ({len(all_new_rows)} new cubics)] -> {_fmt_res(res_all)}",
         flush=True,
     )
     print(f"\n[{cell_name}] STEP 54A DONE ({time.perf_counter()-t0:.1f}s)", flush=True)
