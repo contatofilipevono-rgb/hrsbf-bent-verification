@@ -1,0 +1,1128 @@
+{
+  "problem": "H(16, 4) Homogeneous Quartic Rotation-Symmetric Boolean Functions (116 C16-orbits)",
+  "cell": "B0_00 (c115=0, c99=0, c57=0, c113=0)",
+  "global_verdict": "CELL_B0_00_FORMALLY_CLOSED_UNSAT_100%",
+  "total_eta_states": 64,
+  "total_z16_star_orbits": 40,
+  "orbits_closed_at_root_step38b": 18,
+  "nonzero_orbits_certified_closed": 21,
+  "eta0_orbit_certified_closed": true,
+  "total_survivors_across_all_2_pow_111_candidates": 0,
+  "nonzero_orbits": {
+    "2": {
+      "k_fix": 8,
+      "fix_sha256": "f1702954351cc241",
+      "total_branches": 256,
+      "covered_branches": 256,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "shards": [
+        {
+          "artifact_dir": "run_44768999909_step45a-certs-eta42_2",
+          "file": "step45a_cert_eta02_s0_of_1.json",
+          "k_fix": 8,
+          "fix_sha256": "f1702954351cc241",
+          "lo": 0,
+          "hi": 256,
+          "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+          "elapsed_s": 196.8
+        }
+      ]
+    },
+    "4": {
+      "k_fix": 10,
+      "fix_sha256": "0ddc1a7c11ed0d0c",
+      "total_branches": 1024,
+      "covered_branches": 1024,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "shards": [
+        {
+          "artifact_dir": "run_44768999909_step45a-certs-eta4_s0",
+          "file": "step45a_cert_eta04_s0_of_2.json",
+          "k_fix": 10,
+          "fix_sha256": "0ddc1a7c11ed0d0c",
+          "lo": 0,
+          "hi": 512,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1237.34
+        },
+        {
+          "artifact_dir": "run_44768999909_step45a-certs-eta4_s1",
+          "file": "step45a_cert_eta04_s1_of_2.json",
+          "k_fix": 10,
+          "fix_sha256": "0ddc1a7c11ed0d0c",
+          "lo": 512,
+          "hi": 1024,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1654.31
+        }
+      ]
+    },
+    "5": {
+      "k_fix": 8,
+      "fix_sha256": "4a348ab586ec4d14",
+      "total_branches": 256,
+      "covered_branches": 256,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "shards": [
+        {
+          "artifact_dir": "run_44776330596_step45a-w2-certs-eta5_s0_of_4",
+          "file": "step45a_cert_eta05_s0_of_4.json",
+          "k_fix": 8,
+          "fix_sha256": "4a348ab586ec4d14",
+          "lo": 0,
+          "hi": 64,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1223.02
+        },
+        {
+          "artifact_dir": "run_44776330596_step45a-w2-certs-eta5_s1_of_4",
+          "file": "step45a_cert_eta05_s1_of_4.json",
+          "k_fix": 8,
+          "fix_sha256": "4a348ab586ec4d14",
+          "lo": 64,
+          "hi": 128,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 899.81
+        },
+        {
+          "artifact_dir": "run_44776330596_step45a-w2-certs-eta5_s2_of_4",
+          "file": "step45a_cert_eta05_s2_of_4.json",
+          "k_fix": 8,
+          "fix_sha256": "4a348ab586ec4d14",
+          "lo": 128,
+          "hi": 192,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1224.02
+        },
+        {
+          "artifact_dir": "run_44776330596_step45a-w2-certs-eta5_s3_of_4",
+          "file": "step45a_cert_eta05_s3_of_4.json",
+          "k_fix": 8,
+          "fix_sha256": "4a348ab586ec4d14",
+          "lo": 192,
+          "hi": 256,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1392.44
+        }
+      ]
+    },
+    "6": {
+      "k_fix": 10,
+      "fix_sha256": "5ac73cd29b23b7f1",
+      "total_branches": 1024,
+      "covered_branches": 1024,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "shards": [
+        {
+          "artifact_dir": "run_44768999909_step45a-certs-eta6_s0",
+          "file": "step45a_cert_eta06_s0_of_3.json",
+          "k_fix": 10,
+          "fix_sha256": "5ac73cd29b23b7f1",
+          "lo": 0,
+          "hi": 341,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1772.76
+        },
+        {
+          "artifact_dir": "run_44768999909_step45a-certs-eta6_s1",
+          "file": "step45a_cert_eta06_s1_of_3.json",
+          "k_fix": 10,
+          "fix_sha256": "5ac73cd29b23b7f1",
+          "lo": 341,
+          "hi": 682,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 2251.63
+        },
+        {
+          "artifact_dir": "run_44776330596_step45a-w2-certs-eta6_s4_of_6",
+          "file": "step45a_cert_eta06_s4_of_6.json",
+          "k_fix": 10,
+          "fix_sha256": "5ac73cd29b23b7f1",
+          "lo": 682,
+          "hi": 853,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 929.27
+        },
+        {
+          "artifact_dir": "run_44776330596_step45a-w2-certs-eta6_s5_of_6",
+          "file": "step45a_cert_eta06_s5_of_6.json",
+          "k_fix": 10,
+          "fix_sha256": "5ac73cd29b23b7f1",
+          "lo": 853,
+          "hi": 1024,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 919.49
+        }
+      ]
+    },
+    "7": {
+      "k_fix": 12,
+      "fix_sha256": "995903f34e577e48",
+      "total_branches": 4096,
+      "covered_branches": 4096,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "shards": [
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta7_s0_of_6",
+          "file": "step45a_cert_eta07_s0_of_6.json",
+          "k_fix": 12,
+          "fix_sha256": "995903f34e577e48",
+          "lo": 0,
+          "hi": 682,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1695.88
+        },
+        {
+          "artifact_dir": "run_44783688775_step45a-w3-certs-eta7_s1_of_6",
+          "file": "step45a_cert_eta07_s1_of_6.json",
+          "k_fix": 12,
+          "fix_sha256": "995903f34e577e48",
+          "lo": 682,
+          "hi": 1365,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1112.75
+        },
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta7_s2_of_6",
+          "file": "step45a_cert_eta07_s2_of_6.json",
+          "k_fix": 12,
+          "fix_sha256": "995903f34e577e48",
+          "lo": 1365,
+          "hi": 2048,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1729.02
+        },
+        {
+          "artifact_dir": "run_44783688775_step45a-w3-certs-eta7_s3_of_6",
+          "file": "step45a_cert_eta07_s3_of_6.json",
+          "k_fix": 12,
+          "fix_sha256": "995903f34e577e48",
+          "lo": 2048,
+          "hi": 2730,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1706.64
+        },
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta7_s4_of_6",
+          "file": "step45a_cert_eta07_s4_of_6.json",
+          "k_fix": 12,
+          "fix_sha256": "995903f34e577e48",
+          "lo": 2730,
+          "hi": 3413,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1684.91
+        },
+        {
+          "artifact_dir": "run_44783688775_step45a-w3-certs-eta7_s5_of_6",
+          "file": "step45a_cert_eta07_s5_of_6.json",
+          "k_fix": 12,
+          "fix_sha256": "995903f34e577e48",
+          "lo": 3413,
+          "hi": 4096,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1744.1
+        }
+      ]
+    },
+    "8": {
+      "k_fix": 14,
+      "fix_sha256": "00b0b16aee45b972",
+      "total_branches": 16384,
+      "covered_branches": 16384,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "shards": [
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta8_s0_of_8",
+          "file": "step45a_cert_eta08_s0_of_8.json",
+          "k_fix": 14,
+          "fix_sha256": "00b0b16aee45b972",
+          "lo": 0,
+          "hi": 2048,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 3913.57
+        },
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta8_s1_of_8",
+          "file": "step45a_cert_eta08_s1_of_8.json",
+          "k_fix": 14,
+          "fix_sha256": "00b0b16aee45b972",
+          "lo": 2048,
+          "hi": 4096,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 3748.57
+        },
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta8_s2_of_8",
+          "file": "step45a_cert_eta08_s2_of_8.json",
+          "k_fix": 14,
+          "fix_sha256": "00b0b16aee45b972",
+          "lo": 4096,
+          "hi": 6144,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 3869.21
+        },
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta8_s3_of_8",
+          "file": "step45a_cert_eta08_s3_of_8.json",
+          "k_fix": 14,
+          "fix_sha256": "00b0b16aee45b972",
+          "lo": 6144,
+          "hi": 8192,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 3898.27
+        },
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta8_s4_of_8",
+          "file": "step45a_cert_eta08_s4_of_8.json",
+          "k_fix": 14,
+          "fix_sha256": "00b0b16aee45b972",
+          "lo": 8192,
+          "hi": 10240,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 3746.77
+        },
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta8_s5_of_8",
+          "file": "step45a_cert_eta08_s5_of_8.json",
+          "k_fix": 14,
+          "fix_sha256": "00b0b16aee45b972",
+          "lo": 10240,
+          "hi": 12288,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 3721.58
+        },
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta8_s6_of_8",
+          "file": "step45a_cert_eta08_s6_of_8.json",
+          "k_fix": 14,
+          "fix_sha256": "00b0b16aee45b972",
+          "lo": 12288,
+          "hi": 14336,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 2278.01
+        },
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta8_s7_of_8",
+          "file": "step45a_cert_eta08_s7_of_8.json",
+          "k_fix": 14,
+          "fix_sha256": "00b0b16aee45b972",
+          "lo": 14336,
+          "hi": 16384,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 2871.23
+        }
+      ]
+    },
+    "9": {
+      "k_fix": 12,
+      "fix_sha256": "dded91a5a6a4be33",
+      "total_branches": 4096,
+      "covered_branches": 4096,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "shards": [
+        {
+          "artifact_dir": "run_44783353337_step47a-certs-eta9_s0_of_3",
+          "file": "step45a_cert_eta09_s0_of_3.json",
+          "k_fix": 12,
+          "fix_sha256": "dded91a5a6a4be33",
+          "lo": 0,
+          "hi": 1365,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 3091.18
+        },
+        {
+          "artifact_dir": "run_44783353337_step47a-certs-eta9_s1_of_3",
+          "file": "step45a_cert_eta09_s1_of_3.json",
+          "k_fix": 12,
+          "fix_sha256": "dded91a5a6a4be33",
+          "lo": 1365,
+          "hi": 2730,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 3107.13
+        },
+        {
+          "artifact_dir": "run_44783353337_step47a-certs-eta9_s2_of_3",
+          "file": "step45a_cert_eta09_s2_of_3.json",
+          "k_fix": 12,
+          "fix_sha256": "dded91a5a6a4be33",
+          "lo": 2730,
+          "hi": 4096,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 3073.67
+        }
+      ]
+    },
+    "10": {
+      "k_fix": 14,
+      "fix_sha256": "ed8ab93aa79cda2e",
+      "total_branches": 16384,
+      "covered_branches": 16384,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "shards": [
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta10_s0_of_8",
+          "file": "step45a_cert_eta10_s0_of_8.json",
+          "k_fix": 14,
+          "fix_sha256": "ed8ab93aa79cda2e",
+          "lo": 0,
+          "hi": 2048,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 3746.79
+        },
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta10_s1_of_8",
+          "file": "step45a_cert_eta10_s1_of_8.json",
+          "k_fix": 14,
+          "fix_sha256": "ed8ab93aa79cda2e",
+          "lo": 2048,
+          "hi": 4096,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 4018.64
+        },
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta10_s2_of_8",
+          "file": "step45a_cert_eta10_s2_of_8.json",
+          "k_fix": 14,
+          "fix_sha256": "ed8ab93aa79cda2e",
+          "lo": 4096,
+          "hi": 6144,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 4012.62
+        },
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta10_s3_of_8",
+          "file": "step45a_cert_eta10_s3_of_8.json",
+          "k_fix": 14,
+          "fix_sha256": "ed8ab93aa79cda2e",
+          "lo": 6144,
+          "hi": 8192,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 3664.55
+        },
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta10_s4_of_8",
+          "file": "step45a_cert_eta10_s4_of_8.json",
+          "k_fix": 14,
+          "fix_sha256": "ed8ab93aa79cda2e",
+          "lo": 8192,
+          "hi": 10240,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 2319.73
+        },
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta10_s5_of_8",
+          "file": "step45a_cert_eta10_s5_of_8.json",
+          "k_fix": 14,
+          "fix_sha256": "ed8ab93aa79cda2e",
+          "lo": 10240,
+          "hi": 12288,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 2942.09
+        },
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta10_s6_of_8",
+          "file": "step45a_cert_eta10_s6_of_8.json",
+          "k_fix": 14,
+          "fix_sha256": "ed8ab93aa79cda2e",
+          "lo": 12288,
+          "hi": 14336,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 4073.84
+        },
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta10_s7_of_8",
+          "file": "step45a_cert_eta10_s7_of_8.json",
+          "k_fix": 14,
+          "fix_sha256": "ed8ab93aa79cda2e",
+          "lo": 14336,
+          "hi": 16384,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 3742.66
+        }
+      ]
+    },
+    "11": {
+      "k_fix": 12,
+      "fix_sha256": "4b24bdf1d9605b3b",
+      "total_branches": 4096,
+      "covered_branches": 4096,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "shards": [
+        {
+          "artifact_dir": "run_44783353337_step47a-certs-eta11_s0_of_3",
+          "file": "step45a_cert_eta11_s0_of_3.json",
+          "k_fix": 12,
+          "fix_sha256": "4b24bdf1d9605b3b",
+          "lo": 0,
+          "hi": 1365,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 2045.78
+        },
+        {
+          "artifact_dir": "run_44783353337_step47a-certs-eta11_s1_of_3",
+          "file": "step45a_cert_eta11_s1_of_3.json",
+          "k_fix": 12,
+          "fix_sha256": "4b24bdf1d9605b3b",
+          "lo": 1365,
+          "hi": 2730,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 3418.63
+        },
+        {
+          "artifact_dir": "run_44783353337_step47a-certs-eta11_s2_of_3",
+          "file": "step45a_cert_eta11_s2_of_3.json",
+          "k_fix": 12,
+          "fix_sha256": "4b24bdf1d9605b3b",
+          "lo": 2730,
+          "hi": 4096,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1935.97
+        }
+      ]
+    },
+    "12": {
+      "k_fix": 8,
+      "fix_sha256": "3bf5d1d684d84dd1",
+      "total_branches": 256,
+      "covered_branches": 256,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "shards": [
+        {
+          "artifact_dir": "run_44768999909_step45a-certs-eta12_30",
+          "file": "step45a_cert_eta12_s0_of_1.json",
+          "k_fix": 8,
+          "fix_sha256": "3bf5d1d684d84dd1",
+          "lo": 0,
+          "hi": 256,
+          "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+          "elapsed_s": 1711.15
+        }
+      ]
+    },
+    "13": {
+      "k_fix": 8,
+      "fix_sha256": "b3c36ca548c60003",
+      "total_branches": 256,
+      "covered_branches": 256,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "shards": [
+        {
+          "artifact_dir": "run_44768999909_step45a-certs-eta13_26",
+          "file": "step45a_cert_eta13_s0_of_1.json",
+          "k_fix": 8,
+          "fix_sha256": "b3c36ca548c60003",
+          "lo": 0,
+          "hi": 256,
+          "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+          "elapsed_s": 1483.89
+        }
+      ]
+    },
+    "18": {
+      "k_fix": 12,
+      "fix_sha256": "995903f34e577e48",
+      "total_branches": 4096,
+      "covered_branches": 4096,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "shards": [
+        {
+          "artifact_dir": "run_44783353337_step47a-certs-eta18_s0_of_3",
+          "file": "step45a_cert_eta18_s0_of_3.json",
+          "k_fix": 12,
+          "fix_sha256": "995903f34e577e48",
+          "lo": 0,
+          "hi": 1365,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 2615.8
+        },
+        {
+          "artifact_dir": "run_44783353337_step47a-certs-eta18_s1_of_3",
+          "file": "step45a_cert_eta18_s1_of_3.json",
+          "k_fix": 12,
+          "fix_sha256": "995903f34e577e48",
+          "lo": 1365,
+          "hi": 2730,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 4472.06
+        },
+        {
+          "artifact_dir": "run_44783353337_step47a-certs-eta18_s2_of_3",
+          "file": "step45a_cert_eta18_s2_of_3.json",
+          "k_fix": 12,
+          "fix_sha256": "995903f34e577e48",
+          "lo": 2730,
+          "hi": 4096,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 3347.33
+        }
+      ]
+    },
+    "19": {
+      "k_fix": 12,
+      "fix_sha256": "995903f34e577e48",
+      "total_branches": 4096,
+      "covered_branches": 4096,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "shards": [
+        {
+          "artifact_dir": "run_44783353337_step47a-certs-eta19_s0_of_4",
+          "file": "step45a_cert_eta19_s0_of_4.json",
+          "k_fix": 12,
+          "fix_sha256": "995903f34e577e48",
+          "lo": 0,
+          "hi": 1024,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 2476.78
+        },
+        {
+          "artifact_dir": "run_44783353337_step47a-certs-eta19_s1_of_4",
+          "file": "step45a_cert_eta19_s1_of_4.json",
+          "k_fix": 12,
+          "fix_sha256": "995903f34e577e48",
+          "lo": 1024,
+          "hi": 2048,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 2565.19
+        },
+        {
+          "artifact_dir": "run_44783353337_step47a-certs-eta19_s2_of_4",
+          "file": "step45a_cert_eta19_s2_of_4.json",
+          "k_fix": 12,
+          "fix_sha256": "995903f34e577e48",
+          "lo": 2048,
+          "hi": 3072,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 2565.75
+        },
+        {
+          "artifact_dir": "run_44783353337_step47a-certs-eta19_s3_of_4",
+          "file": "step45a_cert_eta19_s3_of_4.json",
+          "k_fix": 12,
+          "fix_sha256": "995903f34e577e48",
+          "lo": 3072,
+          "hi": 4096,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 2428.86
+        }
+      ]
+    },
+    "26": {
+      "k_fix": 8,
+      "fix_sha256": "b1ceb4db5fe220ff",
+      "total_branches": 256,
+      "covered_branches": 256,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "shards": [
+        {
+          "artifact_dir": "run_44776330596_step45a-w2-certs-eta26_full",
+          "file": "step45a_cert_eta26_s0_of_1.json",
+          "k_fix": 8,
+          "fix_sha256": "b1ceb4db5fe220ff",
+          "lo": 0,
+          "hi": 256,
+          "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+          "elapsed_s": 1034.24
+        }
+      ]
+    },
+    "30": {
+      "k_fix": 8,
+      "fix_sha256": "aa3934273f6e5aa3",
+      "total_branches": 256,
+      "covered_branches": 256,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "shards": [
+        {
+          "artifact_dir": "run_44776330596_step45a-w2-certs-eta30_s0",
+          "file": "step45a_cert_eta30_s0_of_2.json",
+          "k_fix": 8,
+          "fix_sha256": "aa3934273f6e5aa3",
+          "lo": 0,
+          "hi": 128,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1868.35
+        },
+        {
+          "artifact_dir": "run_44783688775_step45a-w3-certs-eta30_s2_of_4",
+          "file": "step45a_cert_eta30_s2_of_4.json",
+          "k_fix": 8,
+          "fix_sha256": "aa3934273f6e5aa3",
+          "lo": 128,
+          "hi": 192,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1466.28
+        },
+        {
+          "artifact_dir": "run_44783688775_step45a-w3-certs-eta30_s3_of_4",
+          "file": "step45a_cert_eta30_s3_of_4.json",
+          "k_fix": 8,
+          "fix_sha256": "aa3934273f6e5aa3",
+          "lo": 192,
+          "hi": 256,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 969.66
+        }
+      ]
+    },
+    "31": {
+      "k_fix": 10,
+      "fix_sha256": "0ddc1a7c11ed0d0c",
+      "total_branches": 1024,
+      "covered_branches": 1024,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "shards": [
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta31_s0_of_4",
+          "file": "step45a_cert_eta31_s0_of_4.json",
+          "k_fix": 10,
+          "fix_sha256": "0ddc1a7c11ed0d0c",
+          "lo": 0,
+          "hi": 256,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1555.52
+        },
+        {
+          "artifact_dir": "run_44799496242_step48a-certs-eta31_s2_of_8",
+          "file": "step45a_cert_eta31_s2_of_8.json",
+          "k_fix": 10,
+          "fix_sha256": "0ddc1a7c11ed0d0c",
+          "lo": 256,
+          "hi": 384,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 691.78
+        },
+        {
+          "artifact_dir": "run_44783688775_step45a-w3-certs-eta31_s3_of_8",
+          "file": "step45a_cert_eta31_s3_of_8.json",
+          "k_fix": 10,
+          "fix_sha256": "0ddc1a7c11ed0d0c",
+          "lo": 384,
+          "hi": 512,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 682.66
+        },
+        {
+          "artifact_dir": "GCP_12vCPU_h16-step47b-12vcpu",
+          "file": "step45a_cert_eta31_s3_of_8.json",
+          "k_fix": 10,
+          "fix_sha256": "0ddc1a7c11ed0d0c",
+          "lo": 384,
+          "hi": 512,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1049.87
+        },
+        {
+          "artifact_dir": "run_44776330596_step45a-w2-certs-eta31_s1",
+          "file": "step45a_cert_eta31_s1_of_2.json",
+          "k_fix": 10,
+          "fix_sha256": "0ddc1a7c11ed0d0c",
+          "lo": 512,
+          "hi": 1024,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 2118.13
+        }
+      ]
+    },
+    "42": {
+      "k_fix": 8,
+      "fix_sha256": "901f774aed1d1a05",
+      "total_branches": 256,
+      "covered_branches": 256,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "shards": [
+        {
+          "artifact_dir": "run_44795166654_step46c-certs-eta42_s0_of_2",
+          "file": "step46c_cert_eta42_deep_s0_of_2.json",
+          "k_fix": 8,
+          "fix_sha256": "901f774aed1d1a05",
+          "lo": 0,
+          "hi": 128,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 385.63
+        },
+        {
+          "artifact_dir": "run_44795166654_step46c-certs-eta42_s1_of_2",
+          "file": "step46c_cert_eta42_deep_s1_of_2.json",
+          "k_fix": 8,
+          "fix_sha256": "901f774aed1d1a05",
+          "lo": 128,
+          "hi": 256,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 318.74
+        }
+      ]
+    },
+    "46": {
+      "k_fix": 10,
+      "fix_sha256": "0ddc1a7c11ed0d0c",
+      "total_branches": 1024,
+      "covered_branches": 1024,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "shards": [
+        {
+          "artifact_dir": "run_44768999909_step45a-certs-eta46_s0",
+          "file": "step45a_cert_eta46_s0_of_2.json",
+          "k_fix": 10,
+          "fix_sha256": "0ddc1a7c11ed0d0c",
+          "lo": 0,
+          "hi": 512,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 2072.63
+        },
+        {
+          "artifact_dir": "run_44768999909_step45a-certs-eta46_s1",
+          "file": "step45a_cert_eta46_s1_of_2.json",
+          "k_fix": 10,
+          "fix_sha256": "0ddc1a7c11ed0d0c",
+          "lo": 512,
+          "hi": 1024,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1644.42
+        }
+      ]
+    },
+    "47": {
+      "k_fix": 10,
+      "fix_sha256": "0ddc1a7c11ed0d0c",
+      "total_branches": 1024,
+      "covered_branches": 1024,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "shards": [
+        {
+          "artifact_dir": "run_44768999909_step45a-certs-eta47_s0",
+          "file": "step45a_cert_eta47_s0_of_2.json",
+          "k_fix": 10,
+          "fix_sha256": "0ddc1a7c11ed0d0c",
+          "lo": 0,
+          "hi": 512,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1639.92
+        },
+        {
+          "artifact_dir": "run_44768999909_step45a-certs-eta47_s1",
+          "file": "step45a_cert_eta47_s1_of_2.json",
+          "k_fix": 10,
+          "fix_sha256": "0ddc1a7c11ed0d0c",
+          "lo": 512,
+          "hi": 1024,
+          "verdict": "SHARD_CLOSED_100%",
+          "elapsed_s": 1295.61
+        }
+      ]
+    },
+    "3": {
+      "k_fix": 8,
+      "total_branches": 256,
+      "covered_branches": 256,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "source_run": "GitHub Actions Step 43B Run 44753767118",
+      "elapsed_s": 747.4
+    },
+    "27": {
+      "k_fix": 8,
+      "total_branches": 256,
+      "covered_branches": 256,
+      "open_survivors": 0,
+      "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+      "source_run": "GitHub Actions Step 43B Run 44753767118",
+      "elapsed_s": 1897.2
+    }
+  },
+  "eta0_closure": {
+    "step49a_run_id": 44810448960,
+    "step49b_run_ids": [
+      44820221164,
+      44852108003
+    ],
+    "slices_verified": 18,
+    "targeted_xl80_fwht_pairs_closed": 8,
+    "unmatched_open_pairs": 0,
+    "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+    "slices": [
+      {
+        "artifact_dir": "run_44810448960_step49a-certs-ff0_sub0",
+        "ff_idx": 0,
+        "sub55_idx": 0,
+        "open_in_slice": 18,
+        "closed_in_slice": 18,
+        "still_open_pairs": [],
+        "verdict": "SHARD_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44810448960_step49a-certs-ff0_sub1",
+        "ff_idx": 0,
+        "sub55_idx": 1,
+        "open_in_slice": 18,
+        "closed_in_slice": 16,
+        "still_open_pairs": [
+          [
+            1,
+            28
+          ],
+          [
+            1,
+            31
+          ]
+        ],
+        "verdict": "PARTIAL"
+      },
+      {
+        "artifact_dir": "run_44810448960_step49a-certs-ff0_sub2",
+        "ff_idx": 0,
+        "sub55_idx": 2,
+        "open_in_slice": 18,
+        "closed_in_slice": 18,
+        "still_open_pairs": [],
+        "verdict": "SHARD_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44810448960_step49a-certs-ff1_sub0",
+        "ff_idx": 1,
+        "sub55_idx": 0,
+        "open_in_slice": 16,
+        "closed_in_slice": 14,
+        "still_open_pairs": [
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "verdict": "PARTIAL"
+      },
+      {
+        "artifact_dir": "run_44810448960_step49a-certs-ff1_sub1",
+        "ff_idx": 1,
+        "sub55_idx": 1,
+        "open_in_slice": 16,
+        "closed_in_slice": 16,
+        "still_open_pairs": [],
+        "verdict": "SHARD_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44810448960_step49a-certs-ff1_sub2",
+        "ff_idx": 1,
+        "sub55_idx": 2,
+        "open_in_slice": 16,
+        "closed_in_slice": 16,
+        "still_open_pairs": [],
+        "verdict": "SHARD_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44810448960_step49a-certs-ff2_sub0",
+        "ff_idx": 2,
+        "sub55_idx": 0,
+        "open_in_slice": 16,
+        "closed_in_slice": 16,
+        "still_open_pairs": [],
+        "verdict": "SHARD_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44810448960_step49a-certs-ff2_sub1",
+        "ff_idx": 2,
+        "sub55_idx": 1,
+        "open_in_slice": 16,
+        "closed_in_slice": 16,
+        "still_open_pairs": [],
+        "verdict": "SHARD_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44810448960_step49a-certs-ff2_sub2",
+        "ff_idx": 2,
+        "sub55_idx": 2,
+        "open_in_slice": 16,
+        "closed_in_slice": 16,
+        "still_open_pairs": [],
+        "verdict": "SHARD_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44810448960_step49a-certs-ff3_sub0",
+        "ff_idx": 3,
+        "sub55_idx": 0,
+        "open_in_slice": 18,
+        "closed_in_slice": 18,
+        "still_open_pairs": [],
+        "verdict": "SHARD_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44810448960_step49a-certs-ff3_sub1",
+        "ff_idx": 3,
+        "sub55_idx": 1,
+        "open_in_slice": 18,
+        "closed_in_slice": 18,
+        "still_open_pairs": [],
+        "verdict": "SHARD_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44810448960_step49a-certs-ff3_sub2",
+        "ff_idx": 3,
+        "sub55_idx": 2,
+        "open_in_slice": 18,
+        "closed_in_slice": 16,
+        "still_open_pairs": [
+          [
+            5,
+            60
+          ],
+          [
+            5,
+            63
+          ]
+        ],
+        "verdict": "PARTIAL"
+      },
+      {
+        "artifact_dir": "run_44810448960_step49a-certs-ff4_sub0",
+        "ff_idx": 4,
+        "sub55_idx": 0,
+        "open_in_slice": 16,
+        "closed_in_slice": 16,
+        "still_open_pairs": [],
+        "verdict": "SHARD_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44810448960_step49a-certs-ff4_sub1",
+        "ff_idx": 4,
+        "sub55_idx": 1,
+        "open_in_slice": 16,
+        "closed_in_slice": 14,
+        "still_open_pairs": [
+          [
+            6,
+            33
+          ],
+          [
+            6,
+            34
+          ]
+        ],
+        "verdict": "PARTIAL"
+      },
+      {
+        "artifact_dir": "run_44810448960_step49a-certs-ff4_sub2",
+        "ff_idx": 4,
+        "sub55_idx": 2,
+        "open_in_slice": 16,
+        "closed_in_slice": 16,
+        "still_open_pairs": [],
+        "verdict": "SHARD_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44810448960_step49a-certs-ff5_sub0",
+        "ff_idx": 5,
+        "sub55_idx": 0,
+        "open_in_slice": 16,
+        "closed_in_slice": 16,
+        "still_open_pairs": [],
+        "verdict": "SHARD_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44810448960_step49a-certs-ff5_sub1",
+        "ff_idx": 5,
+        "sub55_idx": 1,
+        "open_in_slice": 16,
+        "closed_in_slice": 16,
+        "still_open_pairs": [],
+        "verdict": "SHARD_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44810448960_step49a-certs-ff5_sub2",
+        "ff_idx": 5,
+        "sub55_idx": 2,
+        "open_in_slice": 16,
+        "closed_in_slice": 16,
+        "still_open_pairs": [],
+        "verdict": "SHARD_CLOSED_100%"
+      }
+    ],
+    "targeted_cleanup_certs": [
+      {
+        "artifact_dir": "run_44820221164_step49b-certs-ff1_55_28",
+        "ff": 1,
+        "st55": 28,
+        "closed_by": "W_SPLIT_K6_REC(total=64,rec_closed=4)",
+        "elapsed_s": 270.91,
+        "verdict": "ORBIT_FORMALLY_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44820221164_step49b-certs-ff1_55_31",
+        "ff": 1,
+        "st55": 31,
+        "closed_by": "W_SPLIT_K6_REC(total=64,rec_closed=2)",
+        "elapsed_s": 221.92,
+        "verdict": "ORBIT_FORMALLY_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44820221164_step49b-certs-ff5_55_60",
+        "ff": 5,
+        "st55": 60,
+        "closed_by": "W_SPLIT_K6_REC(total=64,rec_closed=4)",
+        "elapsed_s": 378.85,
+        "verdict": "ORBIT_FORMALLY_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44820221164_step49b-certs-ff5_55_63",
+        "ff": 5,
+        "st55": 63,
+        "closed_by": "W_SPLIT_K6_REC(total=64,rec_closed=2)",
+        "elapsed_s": 251.64,
+        "verdict": "ORBIT_FORMALLY_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44820221164_step49b-certs-ff6_55_33",
+        "ff": 6,
+        "st55": 33,
+        "closed_by": "W_SPLIT_K6_REC(total=64,rec_closed=4)",
+        "elapsed_s": 1081.1,
+        "verdict": "ORBIT_FORMALLY_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44820221164_step49b-certs-ff6_55_34",
+        "ff": 6,
+        "st55": 34,
+        "closed_by": "W_SPLIT_K6_REC(total=64,rec_closed=4)",
+        "elapsed_s": 1065.4,
+        "verdict": "ORBIT_FORMALLY_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44852108003_step49b-certs-ff2_55_1",
+        "ff": 2,
+        "st55": 1,
+        "closed_by": "W_SPLIT_K6_REC(total=64,rec_closed=4)",
+        "elapsed_s": 1038.0,
+        "verdict": "ORBIT_FORMALLY_CLOSED_100%"
+      },
+      {
+        "artifact_dir": "run_44852108003_step49b-certs-ff2_55_2",
+        "ff": 2,
+        "st55": 2,
+        "closed_by": "W_SPLIT_K6_REC(total=64,rec_closed=4)",
+        "elapsed_s": 792.86,
+        "verdict": "ORBIT_FORMALLY_CLOSED_100%"
+      }
+    ]
+  }
+}
