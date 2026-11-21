@@ -1,0 +1,14 @@
+Verificação racional concluída.
+PASS: desigualdades e tabelas racionais das Secoes 7-10.
+Cantelli interval and positive margin: 55/256 109/500 2671796851309/64000000000000
+Cantelli interval and positive margin: 109/500 221/1000 5517430132617/256000000000000
+Exterior incidence blocks: injective for h = 5,...,16.
+exception, ordinary ones, mass of k, W_restriction: (None, 16512, 16512, 32512)
+exception, ordinary ones, mass of k, W_restriction: (-127, 255, 128, -256)
+exception, ordinary ones, mass of k, W_restriction: (-126, 510, 384, 256)
+exception, ordinary ones, mass of k, W_restriction: (127, 257, 384, 256)
+exception, ordinary ones, mass of k, W_restriction: (128, 0, 128, -256)
+G2: all 18 exact CRT minima beat their square-mass budgets.
+Section 9 and F2: exact progression minima and strict margins.
+Three controls: the only valuation-nine contribution has four disjoint pairs.
+Up to four products: every sign-sum term is divisible by 1024.
