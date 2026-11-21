@@ -569,6 +569,10 @@ def main():
         rk_A2 = s55b.gf2_rank_np(A_rf2)
         print(f"    A_rf2 shape={A_rf2.shape}, rank={rk_A2}, initial left_kernel={A_rf2.shape[0] - rk_A2}", flush=True)
 
+        n_strict = len(M1_strict_psets)
+        M0_strict = M0_ext[:n_strict].copy()
+        Mw_strict = Mw_ext[:, :n_strict, :].copy()
+
         _, full_bas1, _ = s44a.minrank_basis(Mk_c, rk_cap=24, n_rounds=3, seed=5730 + em)
         U_full = np.zeros((nW, nW), dtype=np.uint8)
         for a, cm in enumerate(full_bas1):
@@ -576,16 +580,17 @@ def main():
                 if (cm >> k) & 1:
                     U_full[a, k] = 1
 
-        # Multi-round V_0 + SysB (WITHOUT K_R quotient!) so EVERY eliminated R_F variable
-        # across ALL rounds satisfies r_all = G @ r_keep + d(u_1) with a 100% CONSTANT matrix G!
+        # Multi-round V_0 + SysB directly on the un-quotiented (n_strict x nRF) pencil (M0_strict, Mw_strict)
+        # so EVERY eliminated R_F variable across ALL rounds satisfies r_all = G @ r_keep + d(u_1)
+        # with a 100% CONSTANT matrix G of shape (nRF, rK_rem)!
         for d1 in [16, 18, 20, 22, 24, 26, 28, 30]:
             U1 = U_full[:d1]
-            M0_v = M0_c.copy()
-            Mk_v = [np.zeros_like(M0_c) for _ in range(d1)]
+            M0_v = M0_strict.copy()
+            Mk_v = [np.zeros_like(M0_strict) for _ in range(d1)]
             for a in range(d1):
                 for k in range(nW):
                     if U1[a, k]:
-                        Mk_v[a] ^= Mk_c[k]
+                        Mk_v[a] ^= Mw_strict[k]
 
             G = np.eye(nRF, dtype=np.uint8)  # maps current r_keep (size rK_cur) -> original nRF vars
             v_log = []
