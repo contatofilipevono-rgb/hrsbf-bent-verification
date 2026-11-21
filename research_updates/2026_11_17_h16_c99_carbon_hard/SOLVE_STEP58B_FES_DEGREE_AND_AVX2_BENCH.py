@@ -565,96 +565,124 @@ def main():
     lib_cg = ctypes.CDLL(str(so_cg))
     for fn in (lib_cg.build_cg12_row_c, lib_cg.build_cg11_row_c):
         fn.argtypes = [
-            ctypes.POINTER(ctypes.c_uint64), ctypes.POINTER(ctypes.c_int),
-            ctypes.c_int, ctypes.c_int, ctypes.POINTER(ctypes.c_int), ctypes.c_int,
-            ctypes.POINTER(ctypes.c_uint64), ctypes.POINTER(ctypes.c_uint64),
-            ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int),
-            ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int), ctypes.c_int,
+            ctypes.c_int, ctypes.POINTER(ctypes.c_int16), ctypes.POINTER(ctypes.c_int),
+            ctypes.c_int, ctypes.POINTER(ctypes.c_int), ctypes.c_int,
+            ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int,
+            ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_uint64),
         ]
-        fn.restype = ctypes.c_int
 
     c_sh, so_sh = WORK_DIR / "s58b_sh.c", WORK_DIR / "libs58b_sh.so"
-    c_sh.write_text(s17.C_SCHUR_SRC, encoding="utf-8")
+    c_sh.write_text(s17.C_SHEAR_SRC, encoding="utf-8")
     subprocess.run(["gcc", "-O3", "-march=native", "-shared", "-fPIC", str(c_sh), "-o", str(so_sh)], check=True)
     lib_sh = ctypes.CDLL(str(so_sh))
-    lib_sh.run_schur_elim_c.argtypes = [
-        ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int,
+    lib_sh.shear_subst_var_batch.argtypes = [
+        ctypes.POINTER(ctypes.c_uint64), ctypes.c_int, ctypes.c_int, ctypes.c_int,
+        ctypes.c_int, ctypes.c_int, ctypes.c_int,
         ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int),
-        ctypes.POINTER(ctypes.c_uint64), ctypes.c_int,
-        ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_uint64),
-        ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int),
-        ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int),
-        ctypes.POINTER(ctypes.c_int),
+        ctypes.POINTER(ctypes.c_uint8), ctypes.POINTER(ctypes.c_uint8),
+        ctypes.POINTER(ctypes.c_uint8), ctypes.POINTER(ctypes.c_uint8),
+        ctypes.c_int, ctypes.c_uint64, ctypes.c_uint64,
     ]
-    lib_sh.run_schur_elim_c.restype = ctypes.c_int
+    lib_sh.remap_rows_by_perm.argtypes = [
+        ctypes.POINTER(ctypes.c_uint64), ctypes.POINTER(ctypes.c_uint64),
+        ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.POINTER(ctypes.c_int),
+    ]
 
-    _, _, all_orbs_116 = b09.build_orbits_16_4()
-    c115_idx = next(i for i, o in enumerate(all_orbs_116) if 0xFFFF in o)
-    orbs_115 = [o for i, o in enumerate(all_orbs_116) if i != c115_idx]
-    c99_idx = next(i for i, o in enumerate(orbs_115) if 0x5555 in o)
+    orbits = diag_v2.build_orbits_116()
+    layer_vecs = s16.build_orb_degu_degz_vecs(orbits)
+    mon_to_orb_arr = (ctypes.c_int16 * 65536)(*([-1] * 65536))
+    for j, orb in enumerate(orbits):
+        for m in orb: mon_to_orb_arr[m] = j
+    reps12, reps11 = s10.subset_orbits(12), s10.subset_orbits(11)
+    v6_list = diag_v2.all_v6_orbits()
+    _, u8_size8, nonzero_z = diag_v2.build_c8_orbits()
+    M_rows = []
+    for rep_z, _ in nonzero_z:
+        row_mask = 0
+        for m_idx, (_, u_orb) in enumerate(u8_size8):
+            s = sum(1 if ((u & rep_z).bit_count() & 1) == 0 else -1 for u in u_orb)
+            if (s // 2) & 1: row_mask |= (1 << m_idx)
+        M_rows.append(row_mask)
+    fiber_meta = (nonzero_z, diag_v2.gf2_nullspace_left(M_rows))
 
-    s9_orbs, s9_masks, _ = b09.build_orbits_16_4()
-    _, s9_c_arr, s9_t_arr, s9_o_arr, s9_f_arr = b09.build_subspaces_even_odd(s9_orbs, s9_masks)
-    s9_c99 = next(i for i, o in enumerate(s9_orbs) if 0x5555 in o)
-    s9_c115 = next(i for i, o in enumerate(s9_orbs) if 0xFFFF in o)
-    s9_free_orbs = [i for i in range(len(s9_orbs)) if i != s9_c99 and i != s9_c115]
-    s9_B_sub, _, _, s9_L2_vars, s9_L2_c0 = b09.build_L1_L2_matrices(s9_c_arr, s9_t_arr, s9_o_arr, s9_f_arr, s9_free_orbs)
-    s9_R_pivs = b09.gf2_rref_rows(s9_B_sub)
-    s9_lin_eqs = []
-    for r in s9_R_pivs:
-        vs = [i for i in range(114) if (r >> i) & 1]
-        c0_bit = (r >> 114) & 1
-        s9_lin_eqs.append((vs, c0_bit))
-    for vs, c0_bit in zip(s9_L2_vars, s9_L2_c0):
-        s9_lin_eqs.append((vs, c0_bit))
-    orig_to_free_114 = {o: i for i, o in enumerate(s9_free_orbs)}
-    n_orbs_rem = len(orbs_115)
-    cb111 = np.zeros((n_orbs_rem, 115), dtype=np.uint8)
-    for o_orig, f_idx in orig_to_free_114.items():
-        o_rem = o_orig if o_orig < c115_idx else o_orig - 1
-        cb111[o_rem, f_idx] = 1
-    if cell_name == "B0_11":
-        cb111[c99_idx, 114] = 0
-        s9_lin_eqs.append(([orig_to_free_114[28]], 1))
-        s9_lin_eqs.append(([orig_to_free_114[39]], 1))
-    else:
-        cb111[c99_idx, 114] = 1
-        s9_lin_eqs.append(([orig_to_free_114[28]], 1))
-        s9_lin_eqs.append(([orig_to_free_114[39]], 1))
+    pair_idx, all_pairs = {}, []
+    for v in range(256):
+        for w in range(v + 1, 256):
+            pair_idx[(v, w)] = len(all_pairs)
+            all_pairs.append(v | (w << 8))
+    seen_x = bytearray(65536)
+    rot4_reps, rep_of_x = [], [-1] * 65536
+    for x in range(65536):
+        if (x & 0xFF) == (x >> 8) or seen_x[x]: continue
+        r_idx = len(rot4_reps); rot4_reps.append(x)
+        for y in (x, diag_v2.rot16(x, 4), diag_v2.rot16(x, 8), diag_v2.rot16(x, 12)):
+            seen_x[y] = 1; rep_of_x[y] = r_idx
+    coset_0xf_reps = []
+    vis16 = bytearray(65536)
+    for x in range(65536):
+        if vis16[x]: continue
+        cur, mem = x, []
+        while not vis16[cur]:
+            vis16[cur] = 1; mem.append(cur); cur = diag_v2.rot16(cur)
+        if len(mem) == 16:
+            vnib = (x & 0xF) ^ ((x >> 4) & 0xF) ^ ((x >> 8) & 0xF) ^ ((x >> 12) & 0xF)
+            if vnib == 0xF: coset_0xf_reps.append(mem[0])
 
-    layer_vecs, N_sub, free_cols, c115_orb = s16.build_layer_vectors(orbs_115, cb111, s9_lin_eqs)
-    orb_masks_np, orb_cnt_np, n_orbs_116 = s45a.build_orb_tables()
-    s10_lin_eqs = [(vs, int(c0)) for vs, c0 in s9_lin_eqs]
-    cb116_c, free_vars_109, N109 = s10.build_cb116_from_lin_eqs(s10_lin_eqs, s9_free_orbs, s9_c99, 1 if cell_name == "B1_11" else 0)
-    tbl = s9.MonomialTable(N109)
-    n_words = tbl.n_words
+    X = np.arange(65536, dtype=np.uint16)
+    orb_tts = [bytearray(65536) for _ in range(116)]
+    orb_diag, orb_pair, orb_r4, orb_0xf_parity = [0] * 116, [0] * 116, [0] * 116, [0] * 116
+    for j, orb in enumerate(orbits):
+        acc = np.zeros(65536, dtype=np.uint8)
+        for m in orb: acc ^= ((X & m) == m).astype(np.uint8)
+        tt = bytearray(acc.tolist())
+        orb_tts[j] = tt
+        orb_diag[j] = sum((1 << v) for v in range(256) if tt[v | (v << 8)])
+        orb_pair[j] = sum((1 << k) for k, x in enumerate(all_pairs) if tt[x])
+        orb_r4[j] = sum((1 << k) for k, x in enumerate(rot4_reps) if tt[x])
+        orb_0xf_parity[j] = sum(tt[x] for x in coset_0xf_reps) & 1
+    chi_r4 = sum((1 << k) for k, x in enumerate(rot4_reps) if x.bit_count() & 1)
+    rot4_data = (pair_idx, orb_diag, orb_pair, orb_r4, chi_r4, rep_of_x, orb_0xf_parity, lambda j, x: orb_tts[j][x])
 
-    raw_rows = []
-    seen_cg = set()
-    for d in [12, 11]:
-        for mask in s10.generate_coord_subspaces(d):
-            row_buf = np.zeros(n_words, dtype=np.uint64)
-            fn_c = lib_cg.build_cg12_row_c if d == 12 else lib_cg.build_cg11_row_c
-            nz = fn_c(
-                orb_masks_np.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),
-                orb_cnt_np.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
-                n_orbs_116, mask, cb116_c.ctypes.data_as(ctypes.POINTER(ctypes.c_int)), N109,
-                row_buf.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),
-                tbl.pair_idx_c.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),
-                tbl.t_off_c.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
-                tbl.t_k_c.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
-                tbl.t_idx_c.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
-                tbl.n_lin_quad, n_words,
-            )
-            if nz:
-                key = row_buf.tobytes()
-                if key not in seen_cg:
-                    seen_cg.add(key)
-                    raw_rows.append(row_buf)
-    total_raw = len(raw_rows)
-    raw_buf = np.zeros((total_raw, n_words), dtype=np.uint64)
-    for i, r in enumerate(raw_rows):
-        raw_buf[i] = r
+    layers, c0x0 = s9.build_cyclotomic_layers()
+    tbl = s9.build_col_tables(111)
+    n, n_cw = tbl["n"], tbl["n_col_words"]
+    c99, c57, c113 = int(cell_name[1]), int(cell_name[3]), int(cell_name[4])
+    free111, origin111, cb111 = b09.build_pure_111_basis(c99, c57, c113)
+
+    orb_map = (ctypes.c_int * 116)(*([-1] * 116))
+    for i, j in enumerate(free111): orb_map[j] = i
+    orb_map[0] = -3; orb_map[115] = -1
+    orb_map[99] = -2 if c99 else -1
+    orb_map[57] = -2 if c57 else -1
+    orb_map[113] = -2 if c113 else -1
+    L_set = set(diag_v2.L_INDICES)
+    L_vars_py = [i for i, j in enumerate(free111) if j in L_set]
+    L_vars_arr = (ctypes.c_int * len(L_vars_py))(*L_vars_py)
+
+    n_cg = len(reps12) + len(reps11)
+    cg_buf = (ctypes.c_uint64 * (n_cg * n_cw))()
+    for idx, I_m in enumerate(reps12):
+        rptr = ctypes.cast(ctypes.byref(cg_buf, idx * n_cw * 8), ctypes.POINTER(ctypes.c_uint64))
+        lib_cg.build_cg12_row_c(
+            I_m, mon_to_orb_arr, orb_map, c99, L_vars_arr, len(L_vars_py),
+            n, tbl["off2"], tbl["off1"], tbl["off0"], n_cw, tbl["col2_base"], tbl["col3_base"], rptr
+        )
+    for idx, I_m in enumerate(reps11):
+        rptr = ctypes.cast(ctypes.byref(cg_buf, (len(reps12) + idx) * n_cw * 8), ctypes.POINTER(ctypes.c_uint64))
+        lib_cg.build_cg11_row_c(
+            I_m, mon_to_orb_arr, orb_map, c99, L_vars_arr, len(L_vars_py),
+            n, tbl["off2"], tbl["off1"], tbl["off0"], n_cw, tbl["col2_base"], tbl["col3_base"], rptr
+        )
+
+    sys_data = diag_v2.build_cell_algebraic_system(cell_name, lib_diag, orbits, v6_list, rot4_data, fiber_meta, extract_sec=18.0)
+    cyc_cubs = s9.extract_verified_cyclotomic_cubics(cell_name, orbits, origin111, cb111, layers, c0x0)
+    n_base = sum(sys_data["deg_pivs_111"].values())
+    total_raw = n_base + len(cyc_cubs) + n_cg
+    raw_buf = (ctypes.c_uint64 * (total_raw * n_cw))()
+    ctypes.memmove(raw_buf, sys_data["rows_c"], n_base * n_cw * 8)
+    for idx_c, (_, poly) in enumerate(cyc_cubs):
+        s9.pset_to_row(poly, raw_buf, n_base + idx_c, tbl)
+    ctypes.memmove(ctypes.byref(raw_buf, (n_base + len(cyc_cubs)) * n_cw * 8), cg_buf, n_cg * n_cw * 8)
 
     root = s9.run_branch_cascade(lib9, raw_buf, [], list(range(total_raw)), {}, [], tbl, max_xl_rounds=10, verify_subst=True)
     forms_L1 = s16.extract_forms_from_orb_vecs(cb111, layer_vecs["L1"][1], layer_vecs["L1"][0])
