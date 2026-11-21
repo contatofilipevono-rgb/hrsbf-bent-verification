@@ -67,6 +67,11 @@ def next_digit_minimum(j, residues):
 
 
 def verify_modular_exclusion():
+    for table in range(256):
+        if table.bit_count() & 1:
+            coefficients = walsh((-1)**(table >> x & 1) for x in range(8))
+            assert Counter(map(abs,coefficients)) == {2: 7, 6: 1}
+
     residues = list(range(-32,33))
     for power, expected in enumerate(((*range(-10,11),-32,32),tuple(range(-3,4))), 1):
         residues = [z for z in residues if abs(centered(3**power*z)) <= 32]
