@@ -13,7 +13,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        cell: ["B0_11", "B1_11"]
+        include:
+          - cell: "B0_11"
+            etas: "5,0"
+          - cell: "B0_11"
+            etas: "9,11"
+          - cell: "B1_11"
+            etas: "3,0"
+          - cell: "B1_11"
+            etas: "8,10"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -21,6 +29,6 @@ jobs:
           python-version: "3.12"
       - name: Install numpy and python-sat
         run: pip install numpy python-sat
-      - name: Run Step 60B Block-B + Block-D + Block-A3 Algebraic Feedback (${{ matrix.cell }})
+      - name: Run Step 60B (${{ matrix.cell }} etas=${{ matrix.etas }})
         run: |
-          python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP60B_BLOCKB_BLOCKD_ALGEBRAIC_FEEDBACK.py --cell ${{ matrix.cell }}
+          python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP60B_BLOCKB_BLOCKD_ALGEBRAIC_FEEDBACK.py --cell ${{ matrix.cell }} --etas ${{ matrix.etas }}

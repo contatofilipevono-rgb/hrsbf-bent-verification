@@ -1851,6 +1851,7 @@ def main():
     t0 = time.perf_counter()
     parser = argparse.ArgumentParser()
     parser.add_argument("--cell", choices=["B0_11", "B1_11"], required=True)
+    parser.add_argument("--etas", type=str, default="", help="Comma-separated eta list (optional)")
     args = parser.parse_args()
     cell_name = args.cell
 
@@ -2017,7 +2018,10 @@ def main():
     forms_L1 = s16.extract_forms_from_orb_vecs(cb111, layer_vecs["L1"][1], layer_vecs["L1"][0])
     eta_free = s16.reduce_forms_mod_pivs(forms_L1, root["_lin_pivs"])
 
-    test_etas = [5, 0, 9, 11] if cell_name == "B0_11" else [3, 0, 8, 10]
+    if args.etas.strip():
+        test_etas = [int(x.strip()) for x in args.etas.split(",") if x.strip()]
+    else:
+        test_etas = [5, 0, 9, 11] if cell_name == "B0_11" else [3, 0, 8, 10]
     rng_main = np.random.default_rng(6020)
 
     for em in test_etas:
@@ -2092,24 +2096,16 @@ def main():
                 max_outer_rounds=4, max_inner_rounds=6,
                 planted_data=pl_R, seed=6200 + d1,
             )
-            # (4) M1_strict + Lin(A3+D) + Affine-Y Block-B Feedback at t1=0 (check if affine y(u_1) unlocks more!)
-            res_aff_0 = run_blockb_feedback_cascade(
-                blk, U1_opt, t1_zero, M0_lin0, Mu_lin0, eval_b0,
-                lib9, enable_blockb=True, enable_affine_y=True,
-                max_outer_rounds=4, max_inner_rounds=6, seed=6300 + d1,
-            )
             # Also check standard uncapped (KR+V0+SysB) on the augmented M1_strict + Lin(A3+D) pencil!
             rK_uncap_base, _ = s55b.run_cascade_uncapped(M0_s0, Mu_s0, lib9, max_rounds=8, mR_cap=500, rK_cap=40, keep_cap=128) if ns0 > 0 else (nRF, [])
             rK_uncap_lin, _ = s55b.run_cascade_uncapped(M0_linR, Mu_linR, lib9, max_rounds=8, mR_cap=500, rK_cap=40, keep_cap=128) if M0_linR.shape[0] > 0 else (nRF, [])
 
             st_R = res_full_R["bb_stats"]
-            st_aff = res_aff_0["bb_stats"]
             print(
                 f"      U_opt d1={d1:2d}(NT1={nW-d1:2d}) [+A3D={nexR:2d}]: "
                 f"noBB_rK={res_base['final_rK']:2d}(uncap={rK_uncap_base:2d}) | "
                 f"BB_strict_t0={res_bb_s0['final_rK']:2d}(atK={res_bb_s0['bb_stats']['n_atilde_ker_max']:3d},inj={res_bb_s0['bb_stats']['n_injected_total']:2d}) | "
-                f"A3D+BB_tR={res_full_R['final_rK']:2d}(uncap={rK_uncap_lin:2d},inj={st_R['n_injected_total']:2d},ZT={st_R['planted_checks']}ok/{st_R['planted_fails']}fail) | "
-                f"AffY_t0={res_aff_0['final_rK']:2d}(affY={st_aff['n_affine_y_found']:2d},inj={st_aff['n_injected_total']:2d})",
+                f"A3D+BB_tR={res_full_R['final_rK']:2d}(uncap={rK_uncap_lin:2d},inj={st_R['n_injected_total']:2d},ZT={st_R['planted_checks']}ok/{st_R['planted_fails']}fail)",
                 flush=True,
             )
 
@@ -2194,12 +2190,13 @@ def main():
         W_forms_111 = blk["W_forms_111"]
         test_subspaces = [
             (f"U_iso(d={d_iso})", U_iso_full[:d_iso]),
-            (f"U_iso+4(d={min(nW-1, d_iso+4)})", U_iso_full[:min(nW - 1, d_iso + 4)]),
-            (f"U_iso+8(d={min(nW-1, d_iso+8)})", U_iso_full[:min(nW - 1, d_iso + 8)]),
+            (f"U_iso+6(d={min(nW-1, d_iso+6)})", U_iso_full[:min(nW - 1, d_iso + 6)]),
+            (f"U_iso+10(d={min(nW-1, d_iso+10)})", U_iso_full[:min(nW - 1, d_iso + 10)]),
         ]
-        d_uopt_test = 24 if cell_name == "B0_11" else 20
-        U1_opt_t, _ = get_u_opt(d_uopt_test)
-        test_subspaces.append((f"U_opt(d={d_uopt_test})", U1_opt_t))
+        d_uopt_list = [24, 26, 28] if cell_name == "B0_11" else [18, 20, 22]
+        for du_t in d_uopt_list:
+            U1_opt_t, _ = get_u_opt(du_t)
+            test_subspaces.append((f"U_opt(d={du_t})", U1_opt_t))
 
         for s_lbl, U_sub in test_subspaces:
             F_sub = s40a.gf2_nullspace_np(U_sub)  # TRUE annihilator U_sub^perp!
