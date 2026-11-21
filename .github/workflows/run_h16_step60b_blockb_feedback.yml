@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - swarm/blockb-feedback
+    paths:
+      - "research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP60B_BLOCKB_BLOCKD_ALGEBRAIC_FEEDBACK.py"
 
 jobs:
   step60b_blockb_feedback:
