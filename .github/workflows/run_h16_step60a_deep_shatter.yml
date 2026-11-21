@@ -2,6 +2,12 @@ name: H16 Step 60A Deep Full-389 Shatter (41A Flag + Row-Int + CMS5 + Singular)
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - swarm/shatter-389
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP60A_DEEP_SHATTER_SINGULAR_CMSAT.py'
+      - '.github/workflows/run_h16_step60a_deep_shatter.yml'
 
 jobs:
   step60a_deep_shatter:
