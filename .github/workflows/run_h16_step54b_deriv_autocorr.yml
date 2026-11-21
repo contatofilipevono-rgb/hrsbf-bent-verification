@@ -1,0 +1,23 @@
+name: H16 Step 54B Derivative Autocorrelation Mod-16 Cubics
+
+on:
+  workflow_dispatch:
+
+jobs:
+  step54b_deriv_autocorr:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: ["B0_11", "B1_11"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install numpy and python-sat
+        run: pip install numpy python-sat
+      - name: Run Step 54B Derivative Autocorrelation Mod-16 Cubics (${{ matrix.cell }})
+        run: |
+          python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP54B_DERIVATIVE_AUTOCORR_MOD16.py --cell ${{ matrix.cell }}
