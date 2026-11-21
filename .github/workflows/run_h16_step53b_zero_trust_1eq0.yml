@@ -16,8 +16,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Install numpy
-        run: pip install numpy
+      - name: Install numpy and python-sat
+        run: pip install numpy python-sat
       - name: Run Step 53B Zero-Trust 1=0 Anatomy (${{ matrix.cell }})
         run: |
           python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP53B_ZERO_TRUST_1EQ0_ANATOMY.py --cell ${{ matrix.cell }}
