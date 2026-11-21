@@ -123,14 +123,15 @@ def run_cascade_return_pure(M0_init, Mk_init, eval_b_init, lib9, max_rounds=8, r
                 _Wp = W_pure.T.copy()
                 pure_fns.append(lambda U, _eb=_eb0, _W=_Wp: (_eb(U) @ _W) & 1)
             if r_elim > 0:
+                rK_cur = M0.shape[1]
                 # Eliminate piv_c_v0 columns from M0, Mk using the r_elim pivot rows of V0
                 # Express V0 rows in RREF: T_v0 @ V0 @ M0 = R_v0
                 aug = np.hstack([V0_M0, V0])
                 aug_r, pivs_a = s40a.gf2_rref_np(aug)
-                # First r_elim rows have pivot in 0..rK-1
-                E_mat = aug_r[:r_elim, rK:]  # (r_elim, mR) so E_mat @ M0[:, piv_c_v0] == I
+                # First r_elim rows have pivot in 0..rK_cur-1
+                E_mat = aug_r[:r_elim, rK_cur:]  # (r_elim, mR) so E_mat @ M0[:, piv_c_v0] == I
                 piv_set = set(piv_c_v0)
-                keep_c = [c for c in range(M0.shape[1]) if c not in piv_set]
+                keep_c = [c for c in range(rK_cur) if c not in piv_set]
                 # For each row i of M0: subtract M0[i, piv_c_v0] @ (E_mat @ M0)
                 C_m0 = M0[:, piv_c_v0]  # (mR, r_elim)
                 M0_new = (M0[:, keep_c] ^ ((C_m0 @ (E_mat @ M0[:, keep_c])) & 1)) & 1
