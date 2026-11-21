@@ -1,6 +1,8 @@
 name: H16 Step 60C Degree-4 V13..V16 & C8-Walsh v2=5..10 XL Probe
 
 on:
+  push:
+    branches: ["swarm/deg4-invariants"]
   workflow_dispatch:
 
 jobs:
