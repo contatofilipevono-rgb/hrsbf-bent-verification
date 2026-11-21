@@ -50,9 +50,9 @@ onde o representante centrado está em \([-63,63]\). A metade da soma acima ante
 \]
 As três condições são exatas. Para uma coluna fixa \(b\), a segunda condição, com sinais recuperados pela transformada, é também suficiente para compatibilidade modular daquela coluna. Isso fornece um teste conjunto sobre as 64 fatias.
 
-**Proposição.** O candidato global não admite uma restrição a um \(26\)-espaço linear que, até termo afim e mudança de coordenadas, seja soma de uma função em 20 variáveis e dois monômios cúbicos em blocos independentes de três variáveis.
+**Proposição.** O candidato global não admite uma restrição a um \(26\)-espaço linear que, até termo afim e mudança de coordenadas, seja soma de uma função em 20 variáveis e duas funções de grau três em blocos independentes de três variáveis.
 
-**Prova.** Retire as partes afins dos blocos. Elas só deslocam frequências ou trocam um sinal constante, preservando o intervalo centrado e deixando a congruência local da forma \(\pm512\bmod2048\). Para os dois blocos, podemos selecionar produtos de Walsh de módulos \(4\), \(12\) e \(36\). A condição anterior, aplicada apenas a \(t=0\), impõe para cada frequência do núcleo de 20 variáveis que
+**Prova.** Um termo afim só desloca frequências ou troca um sinal constante, preservando o intervalo centrado e deixando a congruência local da forma \(\pm512\bmod2048\). A tabela-verdade de uma função de grau três em três variáveis tem peso ímpar, mesmo após somar qualquer função afim. Cada coeficiente de Walsh tem então módulo 2 ou 6. Parseval dá exatamente sete coeficientes de módulo 2 e um de módulo 6 por bloco. Podemos selecionar produtos de Walsh de módulos \(4\), \(12\) e \(36\). A condição anterior, aplicada apenas a \(t=0\), impõe para cada frequência do núcleo de 20 variáveis que
 \[
  |z|\le32,\qquad
  |\operatorname{cen}_{127}(3z)|\le32,\qquad
