@@ -1,5 +1,6 @@
 """Checks the modulo-127 codimension-six addendum with integer arithmetic."""
 from collections import Counter
+from fractions import Fraction
 
 
 def walsh(values):
@@ -105,7 +106,22 @@ def calibrate_dimension_15():
     print("Dimension 15: isolated examples of zero and two large coefficients verified.")
 
 
+def verify_joint_energy():
+    F = Fraction
+    counts = [int(2**24+2**15*sign + F(254,126)*(127*2**15-128*sign))
+              for sign in (-1,1)]
+    assert counts == [25_133_834,25_198_854]
+    bound = F(63*max(counts),2**26)
+    assert bound < 24
+    non_tail_minimum = 16-F(257*256,95**2)
+    assert non_tail_minimum == F(78608,9025) and 3*non_tail_minimum > bound
+    low_rank_count = (1008-bound)*F(95**2,256)-63*257
+    assert 18510 < low_rank_count < 18511
+    print("Joint energy: at least 61 external slices and 18511 pairs with low polar rank.")
+
+
 if __name__ == "__main__":
     example_cubic()
     verify_modular_exclusion()
     calibrate_dimension_15()
+    verify_joint_energy()
