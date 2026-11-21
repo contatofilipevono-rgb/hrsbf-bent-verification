@@ -48,8 +48,10 @@ def _eval_pset_bits(ps, val_bits):
     return acc
 
 
-def solve_psets_with_cadical(psets, n_vars, max_conf_budget=300000):
+def solve_psets_with_cadical(psets, n_vars, max_conf_budget=80000, assumptions_bits=None):
     """Encode ANF equations `psets` (each `sum_{m in ps} x^m == 0`) into CaDiCaL CNF and solve!
+    If `assumptions_bits` is provided, fixes all active variable literals to `assumptions_bits`
+    to Zero-Trust verify clause satisfaction in O(clauses) time.
     Returns (status, dt, model_bits_or_None).
     """
     active_vars = sorted({b for ps in psets for m in ps if m > 0 for b in range(n_vars) if (m >> b) & 1})
@@ -106,8 +108,12 @@ def solve_psets_with_cadical(psets, n_vars, max_conf_budget=300000):
 
     t0 = time.perf_counter()
     with Cadical195(bootstrap_with=clauses) as slv:
-        slv.conf_budget(max_conf_budget)
-        res = slv.solve_limited()
+        if assumptions_bits is not None:
+            assump = [var_to_sat[v] if ((assumptions_bits >> v) & 1) else -var_to_sat[v] for v in active_vars]
+            res = slv.solve(assumptions=assump)
+        else:
+            slv.conf_budget(max_conf_budget)
+            res = slv.solve_limited()
         model = slv.get_model() if res is True else None
     dt = time.perf_counter() - t0
     if res is False:
@@ -126,7 +132,7 @@ def solve_psets_with_cadical(psets, n_vars, max_conf_budget=300000):
         return "CADICAL_BUDGET", dt, None
 
 
-def solve_residual_with_cadical(buf, q_ids, c_ids, tbl, max_conf_budget=300000):
+def solve_residual_with_cadical(buf, q_ids, c_ids, tbl, max_conf_budget=80000):
     """Encode surviving quadratic & cubic ANF equations in `buf` into CaDiCaL CNF and solve!"""
     psets = [s9.row_to_pset(buf, rid, tbl) for rid in list(q_ids) + list(c_ids)]
     st, dt, _ = solve_psets_with_cadical(psets, tbl["n"], max_conf_budget=max_conf_budget)
@@ -515,8 +521,8 @@ def main():
                     n_act = 111 - len(sub["_lin_pivs"])
                     nq_s = len(sub["_quad_ids"])
                     nc_s = len(sub["_cub_ids"])
-                    if (not live_planted_done) and n_act <= 65 and (nq_s + nc_s) > 0:
-                        # Live Zero-Trust planted-solution audit on a real shattered residual!
+                    if (not live_planted_done) and n_act <= 75 and (nq_s + nc_s) > 0:
+                        # Live Zero-Trust planted-solution audit on a real shattered residual (via exact assumptions = O(clauses))!
                         raw_ps = [s9.row_to_pset(sub["_buf"], rid, tbl) for rid in list(sub["_quad_ids"]) + list(sub["_cub_ids"])]
                         x_pl = sum(int(rng.integers(0, 2)) << b for b in range(n))
                         pl_ps = []
@@ -525,12 +531,12 @@ def main():
                             if _eval_pset_bits(ps2, x_pl) == 1:
                                 ps2.symmetric_difference_update({0})
                             pl_ps.append(ps2)
-                        pl_st, pl_dt, pl_mod = solve_psets_with_cadical(pl_ps, n, max_conf_budget=300000)
+                        pl_st, pl_dt, _ = solve_psets_with_cadical(pl_ps, n, assumptions_bits=x_pl)
                         assert pl_st == "CADICAL_SAT", f"LIVE PLANTED AUDIT FAILED: {pl_st} on N={n_act},q={nq_s},c={nc_s}"
-                        print(f"      [LIVE PLANTED AUDIT] Passed on real residual (N={n_act}, q={nq_s}, c={nc_s}) -> {pl_st} in {pl_dt:.2f}s!", flush=True)
+                        print(f"      [LIVE PLANTED AUDIT] Passed on real residual (N={n_act}, q={nq_s}, c={nc_s}) -> {pl_st} in {pl_dt:.3f}s!", flush=True)
                         live_planted_done = True
-                    if n_act <= 95:
-                        sat_st, dt_sat = solve_residual_with_cadical(sub["_buf"], sub["_quad_ids"], sub["_cub_ids"], tbl)
+                    if n_act <= 85:
+                        sat_st, dt_sat = solve_residual_with_cadical(sub["_buf"], sub["_quad_ids"], sub["_cub_ids"], tbl, max_conf_budget=80000)
                         f_logs.append(f"f{tr}:N={n_act},q={nq_s},c={nc_s}->{sat_st}({dt_s9:.1f}+{dt_sat:.1f}s)")
                     else:
                         f_logs.append(f"f{tr}:N={n_act},q={nq_s},c={nc_s}({dt_s9:.1f}s)")

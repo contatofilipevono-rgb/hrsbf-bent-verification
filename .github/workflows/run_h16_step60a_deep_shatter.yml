@@ -1,0 +1,30 @@
+name: H16 Step 60A Deep Full-389 Shatter (41A Flag + Row-Int + CMS5 + Singular)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  step60a_deep_shatter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: ["B0_11", "B1_11"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install numpy, python-sat, cryptominisat5, and Singular
+        run: |
+          pip install numpy python-sat
+          for i in 1 2 3; do
+            sudo apt-get update -qq && sudo apt-get install -y -qq --fix-missing cryptominisat singular && break
+            sleep 5
+          done
+          which cryptominisat5 || true
+          which Singular || true
+      - name: Run Step 60A Deep Full-389 Shatter (${{ matrix.cell }})
+        run: |
+          python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP60A_DEEP_SHATTER_SINGULAR_CMSAT.py --cell ${{ matrix.cell }}
