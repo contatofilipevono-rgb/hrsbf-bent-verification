@@ -77,14 +77,14 @@ def run_cascade_return_pure(M0_init, Mk_init, eval_b_init, lib9, max_rounds=8, r
 
         # 1. K_R quotient
         stack_Mk = np.vstack(Mk)  # (mW*mR, rK)
-        KR = s40a.gf2_right_nullspace_np(stack_Mk)
+        KR = s40a.gf2_nullspace_np(stack_Mk)
         if KR.shape[0] > 0:
             # Eliminate columns in KR using M0 @ KR.T
             M0_KR = (M0 @ KR.T) & 1  # (mR, kr_dim)
             # Find pivot rows of M0_KR
             _, piv_c = s40a.gf2_rref_np(M0_KR.T)  # pivot rows of M0_KR
             # Left nullspace of M0_KR
-            L_kr = s40a.gf2_right_nullspace_np(M0_KR.T)  # (mR - rk, mR)
+            L_kr = s40a.gf2_nullspace_np(M0_KR.T)  # (mR - rk, mR)
             # Complement basis for columns outside KR
             _, kr_pivs = s40a.gf2_rref_np(KR)
             kr_set = set(kr_pivs)
@@ -110,13 +110,13 @@ def run_cascade_return_pure(M0_init, Mk_init, eval_b_init, lib9, max_rounds=8, r
 
         # 3. V_0 elimination
         stack_T = np.hstack(Mk).T  # (mW*rK, mR)
-        V0 = s40a.gf2_right_nullspace_np(stack_T)  # (v0_dim, mR)
+        V0 = s40a.gf2_nullspace_np(stack_T)  # (v0_dim, mR)
         if V0.shape[0] > 0:
             V0_M0 = (V0 @ M0) & 1  # (v0_dim, rK)
             R_v0, piv_c_v0 = s40a.gf2_rref_np(V0_M0)
             r_elim = len(piv_c_v0)
             # Pure rows from V0_M0 left kernel (rows where V0 @ M0 == 0 AND V0 @ Mk == 0)
-            L_v00 = s40a.gf2_right_nullspace_np(V0_M0.T)
+            L_v00 = s40a.gf2_nullspace_np(V0_M0.T)
             if L_v00.shape[0] > 0:
                 W_pure = (L_v00 @ V0) & 1
                 _eb0 = eval_b
@@ -172,7 +172,7 @@ def run_cascade_return_pure(M0_init, Mk_init, eval_b_init, lib9, max_rounds=8, r
         if mR > 190 or rK > 24:
             break
         stack_T = np.hstack(Mk).T
-        V0_now = s40a.gf2_right_nullspace_np(stack_T)
+        V0_now = s40a.gf2_nullspace_np(stack_T)
         sysb_sols = s47b.solve_sysb_basis_c(lib9, Mk, V0_now)
         if sysb_sols.shape[0] == 0:
             break
