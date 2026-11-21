@@ -529,13 +529,13 @@ def main():
         print(f"    [Boosted {n_comb}-row pencil on U_iso (d1={d_iso}, NT1={nW-d_iso})]: final_rK={rK_iso} | {' ; '.join(lg_iso)}", flush=True)
 
         # Also test sub-slices of U_iso (e.g. top d1 of minrank_basis restricted to U_iso)
-        _, iso_bas, _ = s44a.minrank_basis(Mu_iso, rk_cap=24, n_rounds=3, seed=5720 + em)
+        _, iso_bas, _ = s44a.minrank_basis(np.array(Mu_iso, dtype=np.uint8), rk_cap=24, n_rounds=3, seed=5720 + em)
         U_iso_ord = np.zeros((d_iso, d_iso), dtype=np.uint8)
         for a, cm in enumerate(iso_bas):
             for b in range(d_iso):
                 if (cm >> b) & 1:
                     U_iso_ord[a, b] = 1
-        for d_sub in [16, 18, 20, 22, 24]:
+        for d_sub in [12, 14]:
             if d_sub > d_iso:
                 continue
             Mu_sub = [np.zeros_like(M0_iso) for _ in range(d_sub)]
@@ -548,7 +548,6 @@ def main():
 
         # PART 2: BLOCK B (drf=2, dt_c=0, deg=2) CONSTANT-COEFFICIENT R_F QUADRATIC COLLAPSE
         print(f"\n  === [{cell_name} eta={em}] PART 2: BLOCK B ({len(rows_drf2_deg2)} CONSTANT R_F-QUADRATIC EQS) ===", flush=True)
-        # Extract the (n_drf2, C(nRF, 2)) constant binary matrix A_rf2
         pair_rf_map = {}
         rf_pairs = []
         for i in range(nRF):
@@ -570,10 +569,6 @@ def main():
         rk_A2 = s55b.gf2_rank_np(A_rf2)
         print(f"    A_rf2 shape={A_rf2.shape}, rank={rk_A2}, initial left_kernel={A_rf2.shape[0] - rk_A2}", flush=True)
 
-        # Now check: when we eliminate `e` variables of R_F (so rK = 29 - e remain via r_elim = C @ r_keep),
-        # what is the rank and left_kernel dimension of the substituted quadratic matrix \tilde{A}_rf2
-        # on the C(rK, 2) pairs of r_keep?!
-        # Test along the actual V_0 + KR eliminations from minrank_basis of Mk_c at d1 = 18..32!
         _, full_bas1, _ = s44a.minrank_basis(Mk_c, rk_cap=24, n_rounds=3, seed=5730 + em)
         U_full = np.zeros((nW, nW), dtype=np.uint8)
         for a, cm in enumerate(full_bas1):
@@ -581,49 +576,115 @@ def main():
                 if (cm >> k) & 1:
                     U_full[a, k] = 1
 
-        # Recall: in extract_eta_exact_system, nRF=29 (K_R at root has dim 0 on B0_11/B1_11, so nRC == nRF == 29)
-        for d1 in [18, 20, 22, 24, 26, 28, 30, 32]:
+        # Multi-round V_0 + SysB (WITHOUT K_R quotient!) so EVERY eliminated R_F variable
+        # across ALL rounds satisfies r_all = G @ r_keep + d(u_1) with a 100% CONSTANT matrix G!
+        for d1 in [16, 18, 20, 22, 24, 26, 28, 30]:
             U1 = U_full[:d1]
-            Mu1 = [np.zeros_like(M0_c) for _ in range(d1)]
+            M0_v = M0_c.copy()
+            Mk_v = [np.zeros_like(M0_c) for _ in range(d1)]
             for a in range(d1):
                 for k in range(nW):
                     if U1[a, k]:
-                        Mu1[a] ^= Mk_c[k]
-            # Round-1 V_0 ONLY (strictly constant substitution r_piv = C @ r_keep + d(u1)!)
-            V0 = s40a.gf2_nullspace_np(np.hstack(Mu1).T)
-            V0_M0 = (V0 @ M0_c) & 1
-            R_v0, piv_v0 = s40a.gf2_rref_np(V0_M0)
-            e_v0 = len(piv_v0)
-            rK_rem = nRF - e_v0
-            # Express ALL nRF variables in terms of the rK_rem keep variables:
-            # r_all = G @ r_keep (+ d(u1)), where G has shape (nRF, rK_rem):
-            piv_set = set(piv_v0)
-            keep_c = [c for c in range(nRF) if c not in piv_set]
-            G = np.zeros((nRF, rK_rem), dtype=np.uint8)
-            for idx_k, c in enumerate(keep_c):
-                G[c, idx_k] = 1
-            for idx_p, p in enumerate(piv_v0):
-                G[p, :] = R_v0[idx_p, keep_c]
+                        Mk_v[a] ^= Mk_c[k]
 
-            # Substitute r_i = sum_a G[i,a] r_keep[a] into r_i * r_j (modulo linear terms in r_keep):
-            # Coeff of r_keep[a] * r_keep[b] (a < b) in r_i * r_j is (G[i,a]&G[j,b]) ^ (G[i,b]&G[j,a])!
+            G = np.eye(nRF, dtype=np.uint8)  # maps current r_keep (size rK_cur) -> original nRF vars
+            v_log = []
+            for rd in range(1, 7):
+                mR_cur, rK_cur = M0_v.shape
+                if rK_cur == 0:
+                    break
+                # Deduplicate rows
+                cur_stack = np.hstack([M0_v] + Mk_v)
+                _, keep_r = s40a.gf2_rref_np(cur_stack.T)
+                if len(keep_r) < M0_v.shape[0]:
+                    M0_v = M0_v[keep_r]
+                    Mk_v = [M[keep_r] for M in Mk_v]
+                # V_0 elimination
+                V0 = s40a.gf2_nullspace_np(np.hstack(Mk_v).T)
+                if V0.shape[0] > 0:
+                    V0_M0 = (V0 @ M0_v) & 1
+                    R_v0, piv_v0 = s40a.gf2_rref_np(V0_M0)
+                    r_elim = len(piv_v0)
+                    if r_elim > 0:
+                        aug = np.hstack([V0_M0, V0])
+                        aug_r, _ = s40a.gf2_rref_np(aug)
+                        E_mat = aug_r[:r_elim, rK_cur:]
+                        piv_set = set(piv_v0)
+                        keep_c = [c for c in range(rK_cur) if c not in piv_set]
+                        EM0_keep = (E_mat @ M0_v[:, keep_c]) & 1  # (r_elim, len(keep_c))
+                        # Update G: r_old = G_step @ r_new
+                        G_step = np.zeros((rK_cur, len(keep_c)), dtype=np.uint8)
+                        for idx_k, c in enumerate(keep_c):
+                            G_step[c, idx_k] = 1
+                        for idx_p, p in enumerate(piv_v0):
+                            G_step[p, :] = EM0_keep[idx_p]
+                        G = (G @ G_step) & 1
+                        C_m0 = M0_v[:, piv_v0]
+                        M0_v = (M0_v[:, keep_c] ^ ((C_m0 @ EM0_keep) & 1)) & 1
+                        Mk_v = [(Mk_v[a][:, keep_c] ^ ((Mk_v[a][:, piv_v0] @ EM0_keep) & 1)) & 1 for a in range(d1)]
+                        v_log.append(f"r{rd}:V0(-{r_elim})->{M0_v.shape[1]}")
+                        if M0_v.shape[1] == 0:
+                            break
+                # SysB augmentation
+                mR_cur, rK_cur = M0_v.shape
+                if mR_cur > 400 or rK_cur == 0:
+                    break
+                V0_now = s40a.gf2_nullspace_np(np.hstack(Mk_v).T)
+                sysb_sols = s45b.s43a.s40a if False else None
+                from SOLVE_STEP47B_ITERATIVE_SYSB_CASCADE import solve_sysb_basis_c
+                sysb_sols = solve_sysb_basis_c(lib9, Mk_v, V0_now)
+                if sysb_sols.shape[0] == 0:
+                    break
+                cur_stack = np.hstack([M0_v] + Mk_v)
+                _, cur_pivs = s40a.gf2_rref_np(cur_stack)
+                cur_rk = len(cur_pivs)
+                basis_rows = cur_stack.copy()
+                new_M0, new_Mk = [], [[] for _ in range(d1)]
+                kept = 0
+                for s_i in range(sysb_sols.shape[0]):
+                    v_mat = sysb_sols[s_i]
+                    row_Mk = [(v_mat[a] @ ((M0_v ^ Mk_v[a]) & 1)) & 1 for a in range(d1)]
+                    cand = np.hstack([np.zeros(rK_cur, dtype=np.uint8)] + row_Mk)
+                    if not cand.any():
+                        continue
+                    test_mat = np.vstack([basis_rows, cand[None, :]])
+                    _, tp = s40a.gf2_rref_np(test_mat)
+                    if len(tp) > cur_rk:
+                        cur_rk = len(tp)
+                        basis_rows = test_mat
+                        new_M0.append(np.zeros(rK_cur, dtype=np.uint8))
+                        for a in range(d1):
+                            new_Mk[a].append(row_Mk[a])
+                        kept += 1
+                        if kept >= 96:
+                            break
+                if kept == 0:
+                    break
+                M0_v = np.vstack([M0_v, np.array(new_M0, dtype=np.uint8)])
+                Mk_v = [np.vstack([Mk_v[a], np.array(new_Mk[a], dtype=np.uint8)]) for a in range(d1)]
+                v_log.append(f"r{rd}:SysB(+{kept})")
+
+            rK_rem = G.shape[1]
             n_rem_pairs = rK_rem * (rK_rem - 1) // 2
-            P_trans = np.zeros((n_rf_pairs, n_rem_pairs), dtype=np.uint8)
-            col_ab = 0
-            for a in range(rK_rem):
-                Ga = G[:, a]
-                for b in range(a + 1, rK_rem):
-                    Gb = G[:, b]
-                    # For all pairs (i, j):
-                    for idx_ij, (i, j) in enumerate(rf_pairs):
-                        P_trans[idx_ij, col_ab] = (Ga[i] & Gb[j]) ^ (Ga[j] & Gb[i])
-                    col_ab += 1
-            A_tilde = (A_rf2.astype(np.uint16) @ P_trans.astype(np.uint16)) & 1
-            rk_t = s55b.gf2_rank_np(A_tilde) if n_rem_pairs > 0 else 0
+            if n_rem_pairs > 0:
+                P_trans = np.zeros((n_rf_pairs, n_rem_pairs), dtype=np.uint8)
+                col_ab = 0
+                for a in range(rK_rem):
+                    Ga = G[:, a]
+                    for b in range(a + 1, rK_rem):
+                        Gb = G[:, b]
+                        P_trans[:, col_ab] = (Ga[np.array([p[0] for p in rf_pairs])] & Gb[np.array([p[1] for p in rf_pairs])]) ^ (
+                            Ga[np.array([p[1] for p in rf_pairs])] & Gb[np.array([p[0] for p in rf_pairs])]
+                        )
+                        col_ab += 1
+                A_tilde = (A_rf2.astype(np.uint16) @ P_trans.astype(np.uint16)) & 1
+                rk_t = s55b.gf2_rank_np(A_tilde)
+            else:
+                rk_t = 0
             new_lin_rf = A_rf2.shape[0] - rk_t
             print(
-                f"    d1={d1:2d}(NT1={nW-d1:2d}): V0_elim={e_v0:2d} -> rK_rem={rK_rem:2d}, "
-                f"C(rK_rem,2)={n_rem_pairs:3d}, rk(A_tilde)={rk_t:3d} => NEW_DRF1_EQS = {new_lin_rf:3d}!",
+                f"    d1={d1:2d}(NT1={nW-d1:2d}): rK_rem={rK_rem:2d}, C(rK,2)={n_rem_pairs:3d}, "
+                f"rk(A_tilde)={rk_t:3d} => NEW_DRF1_EQS={new_lin_rf:3d} | {' ; '.join(v_log)}",
                 flush=True,
             )
 
