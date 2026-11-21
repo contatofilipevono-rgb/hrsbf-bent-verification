@@ -456,24 +456,25 @@ def extract_full_blocks_fast(em, root, eta_free, lib9, lib_sh, tbl, rng_seed=610
             if RF_zt[bi, fi]: val_bits |= (1 << v)
         v_lo, v_hi = val_bits & mask64, val_bits >> 64
 
+        def eval_std_row(rid):
+            rptr = ctypes.cast(ctypes.byref(std_ech, rid * n_cw * 8), ctypes.POINTER(ctypes.c_uint64))
+            return lib9.eval_row_s9(rptr, n_cw, tbl["off0"], tbl["col_deg"], tbl["col_v0"], tbl["col_v1"], tbl["col_v2"], v_lo, v_hi)
+
         M_a = eval_drf1_mat_point(DRF1_all_t, W_zt[bi], T_zt[bi])
         lhs_a = ((M_a @ RF_zt[bi]) & 1) ^ b_all_zt[bi]
         for ri, rid in enumerate(DRF1_all_rids):
-            ev = lib9.eval_row_s9(std_ech, rid, n_cw, tbl["col_deg"], tbl["col_v0"], tbl["col_v1"], tbl["col_v2"], v_lo, v_hi)
-            if int(lhs_a[ri]) != ev:
+            if int(lhs_a[ri]) != eval_std_row(rid):
                 zt_mis += 1
 
         rp = RF_zt[bi, p0_idx_arr] & RF_zt[bi, p1_idx_arr]
         M_b = eval_drf1_mat_point(Block_B_t, W_zt[bi], T_zt[bi])
         lhs_b = ((A_rf2 @ rp) & 1) ^ ((M_b @ RF_zt[bi]) & 1) ^ c_B_zt[bi]
         for ri, rid in enumerate(Block_B_rids):
-            ev = lib9.eval_row_s9(std_ech, rid, n_cw, tbl["col_deg"], tbl["col_v0"], tbl["col_v1"], tbl["col_v2"], v_lo, v_hi)
-            if int(lhs_b[ri]) != ev:
+            if int(lhs_b[ri]) != eval_std_row(rid):
                 zt_mis += 1
 
         for ri, rid in enumerate(P0_rids):
-            ev = lib9.eval_row_s9(std_ech, rid, n_cw, tbl["col_deg"], tbl["col_v0"], tbl["col_v1"], tbl["col_v2"], v_lo, v_hi)
-            if int(p0_zt[bi, ri]) != ev:
+            if int(p0_zt[bi, ri]) != eval_std_row(rid):
                 zt_mis += 1
     assert zt_mis == 0, f"Fast extractor Zero-Trust FAILED: {zt_mis} mismatches!"
 
