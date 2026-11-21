@@ -41,6 +41,9 @@ import SOLVE_STEP45B_POLAR_EXACT_RHS_AND_KL3 as s45b
 import SOLVE_STEP47B_ITERATIVE_SYSB_CASCADE as s47b
 
 
+POP16 = np.array([i.bit_count() for i in range(65536)], dtype=np.uint8)
+
+
 def anf_degree_16(tt_u8):
     """Exact 16-variable Fast Mobius Transform -> algebraic degree of tt_u8 (length 65536)."""
     a = tt_u8.copy()
@@ -52,13 +55,7 @@ def anf_degree_16(tt_u8):
     nz = np.flatnonzero(a)
     if len(nz) == 0:
         return -1
-    # popcount of each index in nz
-    max_d = 0
-    for idx in nz:
-        pc = int(idx).bit_count()
-        if pc > max_d:
-            max_d = pc
-    return max_d
+    return int(POP16[nz].max())
 
 
 def run_cascade_return_pure(M0_init, Mk_init, eval_b_init, lib9, max_rounds=8, rng_seed=5200):
@@ -170,7 +167,7 @@ def run_cascade_return_pure(M0_init, Mk_init, eval_b_init, lib9, max_rounds=8, r
 
         # 4. SysB augmentation (if small enough)
         mR, rK = M0.shape
-        if mR > 190 or rK > 24:
+        if mR > 260 or rK > 24:
             break
         stack_T = np.hstack(Mk).T
         V0_now = s40a.gf2_nullspace_np(stack_T)
@@ -427,8 +424,8 @@ def main():
                     if U1[a, k]:
                         Mu1[a] ^= Mk_c[k]
 
-            print(f"\n  === [{cell_name} eta={em} d1={d1}(NT1={nt1})] Testing t1=0 + 8 random non-zero fibers t1!=0 ===", flush=True)
-            for f_idx in range(9):
+            print(f"\n  === [{cell_name} eta={em} d1={d1}(NT1={nt1})] Testing t1=0 + 4 random non-zero fibers t1!=0 ===", flush=True)
+            for f_idx in range(5):
                 if f_idx == 0:
                     w_shift = np.zeros(nW, dtype=np.uint8)
                 else:
