@@ -284,7 +284,8 @@ def extract_full_blocks_fast(em, root, eta_free, lib9, lib_sh, tbl, rng_seed=610
         out = []
         for c in col_arr:
             d = int(col_deg_np[c])
-            vs = [int(col_v0_np[c])]
+            vs = []
+            if d >= 1: vs.append(int(col_v0_np[c]))
             if d >= 2: vs.append(int(col_v1_np[c]))
             if d >= 3: vs.append(int(col_v2_np[c]))
             wvs = sorted(int(var_loc[v]) for v in vs if var_grp[v] == 0)
