@@ -794,7 +794,7 @@ def main():
     Mk_rem = [(Mu_1[a][:, keep_c] ^ ((C_mk[a] @ EM0_keep) & 1)) & 1 for a in range(d1)]
 
     # Build combined K = r_elim + n_fast polynomials: [Eb[0..r_elim-1], B1[0..n_fast-1]]
-    n_fast = min(18, mR_1)
+    n_fast = min(28, mR_1)
     K = r_elim + n_fast
     C_eb = (E_mat.astype(np.uint16) @ C_b1.astype(np.uint16)) & 1
     c0_eb = (E_mat.astype(np.uint16) @ c0_b1.astype(np.uint16)) & 1
@@ -887,8 +887,9 @@ def main():
         # ZERO-TRUST PLANTED SOLUTION AUDIT (10 random solutions!)
         print("\n  --- ZERO-TRUST PLANTED SOLUTION AUDIT (10 trials) ---", flush=True)
         zt_pass = 0
-        surv_steps = np.zeros(64, dtype=np.int64)
-        surv_lanes = np.zeros(64, dtype=np.int32)
+        max_surv_buf = 4096
+        surv_steps = np.zeros(max_surv_buf, dtype=np.int64)
+        surv_lanes = np.zeros(max_surv_buf, dtype=np.int32)
         for trial in range(10):
             u_star = rng.integers(0, 2, size=d1, dtype=np.uint8)
             r_star = rng.integers(0, 2, size=rK_1, dtype=np.uint8)
@@ -918,18 +919,19 @@ def main():
                 Mk_rem_m.ctypes.data_as(ctypes.POINTER(ctypes.c_uint32)),
                 surv_steps.ctypes.data_as(ctypes.POINTER(ctypes.c_int64)),
                 surv_lanes.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
-                64,
+                max_surv_buf,
             )
             # Check if exact u_star was found!
             u_lo_star = sum(int(u_star[a]) << a for a in range(8))
             u_hi_star = sum(int(u_star[8 + b]) << b for b in range(m))
             found_exact = False
-            for idx in range(min(int(surv), 64)):
+            for idx in range(min(int(surv), max_surv_buf)):
                 st = int(surv_steps[idx])
                 g_st = st ^ (st >> 1)
                 if g_st == u_hi_star and int(surv_lanes[idx]) == u_lo_star:
                     found_exact = True
                     break
+            print(f"    trial {trial}: surv={int(surv)}, found_exact={found_exact}", flush=True)
             if found_exact:
                 zt_pass += 1
         print(f"  ZERO-TRUST FES AVX2 AUDIT: {zt_pass}/10 exact planted solutions detected!", flush=True)
