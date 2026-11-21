@@ -1,0 +1,65 @@
+name: H16 Step 59A Full-Orbit Outer+Inner FES AVX2 Closer
+
+on:
+  workflow_dispatch:
+    inputs:
+      cell:
+        description: "Cell (B0_11 or B1_11)"
+        required: true
+        default: "B0_11"
+      eta:
+        description: "Eta orbit index"
+        required: true
+        default: "5"
+      d1:
+        description: "d1 dimension"
+        required: true
+        default: "20"
+      bench_blocks:
+        description: "0 for full shard, >0 for benchmark"
+        required: true
+        default: "4"
+
+jobs:
+  step59a_bench:
+    if: ${{ inputs.bench_blocks != '0' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install numpy and python-sat
+        run: pip install numpy python-sat
+      - name: Run Step 59A End-to-End Zero-Trust Benchmark
+        run: |
+          python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP59A_FULL_ORBIT_FES_AVX2_CLOSER.py \
+            --cell ${{ inputs.cell }} --eta ${{ inputs.eta }} --d1 ${{ inputs.d1 }} \
+            --shard-idx 0 --n-shards 16 --nt-loop 10 --bench-blocks ${{ inputs.bench_blocks }}
+
+  step59a_full_orbit:
+    if: ${{ inputs.bench_blocks == '0' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install numpy and python-sat
+        run: pip install numpy python-sat
+      - name: Close Shard ${{ matrix.shard }}/16 of ${{ inputs.cell }} eta=${{ inputs.eta }}
+        run: |
+          python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP59A_FULL_ORBIT_FES_AVX2_CLOSER.py \
+            --cell ${{ inputs.cell }} --eta ${{ inputs.eta }} --d1 ${{ inputs.d1 }} \
+            --shard-idx ${{ matrix.shard }} --n-shards 16 --nt-loop 12 --bench-blocks 0 \
+            --out-json cert_${{ inputs.cell }}_eta${{ inputs.eta }}_shard${{ matrix.shard }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cert-${{ inputs.cell }}-eta${{ inputs.eta }}-shard${{ matrix.shard }}
+          path: cert_${{ inputs.cell }}_eta${{ inputs.eta }}_shard${{ matrix.shard }}.json
