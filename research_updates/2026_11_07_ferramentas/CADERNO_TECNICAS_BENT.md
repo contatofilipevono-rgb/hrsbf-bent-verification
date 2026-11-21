@@ -589,3 +589,11 @@ A versão congelada para revisão está em fechamento_produto_cubico_07nov. Não
 ## Técnica 36 — Medir a saturação da correlação pela fase dual
 
 **Origem.** Argumento local aplicado aos postos 18 e 20 do ramo par global. Compare o sinal de $f$ com o oposto da fase quadrática dual no suporte afim da transformada de $(-1)^Q$. Uma divergência de peso relativo menor que $1/8$ teria uma das formas de Kasami–Tokura. A divisibilidade das somas quadráticas sobre esses suportes contradiz o resíduo de $Y$, forçando peso pelo menos $1/8$. Com isso, os orçamentos para $\mathbb E L$ baixam a $1972-9792w(D)$ no posto 18 e a $2788-9792w(D)$ no posto 20. Quando o segundo bit é afim não constante, use médias na fatia e a cota de Fourier $1/16$ nessa fatia, em vez de aplicar o orçamento global. [Ramo par global](../2026_11_17_p17/P17_RAMO_PAR_CORRELACAO.md) · [Segundo bit afim](../2026_11_17_p17/P17_RAMO_PAR_SEGUNDO_BIT_AFIM.md)
+
+## Atualização de 21/11 sobre Walsh módulo 127
+
+A revisão de $(n,p)=(32,127)$ deixa o caso global $D=h=0$, com $W_f=-512+2^{17}k$ e $k\bmod127\in\{0,1\}$. [Revisão do ramo par](../2026_11_21_walsh_mod127/rigidez_walsh_32_127_ramo_F.md).
+
+**Contar oito quárticas disjuntas módulo quatro.** Pela expansão inteira do sinal e pela inversão de Walsh, o número de coberturas das 32 coordenadas por oito monômios quárticos disjuntos é $2\bmod4$ em toda base. Isso exclui zeros físicos do símbolo até codimensão sete e representações com até sete produtos exteriores. O Astra identificou a congruência. [Demonstração e identidades de contração](../2026_11_21_walsh_mod127/INVARIANTE_M8_WALSH_MOD127.md).
+
+**Usar o custo dos zeros de um dígito.** Um teste CRT exclui decomposições em dois blocos depois de fixar até quatro controles físicos. Em cinco controles, o único perfil aritmético é $4+23$ variáveis. No núcleo de 23 variáveis, a classe residual do dígito zero fornece um piso de energia em todo flat nulo. Subtrair esse piso do orçamento global permite reaplicar Klein–Storme e Kasami–Tokura com cotas mais fortes, chegando a $W_g\equiv-256\pmod{32768}$. O núcleo residual ainda precisa ser excluído. [Demonstração](../2026_11_21_walsh_mod127/AVANCO_MOD127_CINCO_CONTROLES.md) · [Verificador CRT](../2026_11_21_walsh_mod127/verifica_invariante_M8.py).
