@@ -38,7 +38,7 @@ import SOLVE_STEP9_8BRANCH_CUBIC_DROP as s9
 import SOLVE_STEP10_CARLET_GUILLOT_NNF as s10
 import SOLVE_STEP16_LAYER2A_AND_W44_CRUSH as s16
 import SOLVE_STEP17_ELIM_ORDER_R_GT_B_SCHUR4 as s17
-import SOLVE_STEP19_STRICT_RREF_N42 as s19
+import SOLVE_STEP19_ZEROTRUST_AUDIT_AND_TRUE_WESS_CRUSH as s19
 import SOLVE_STEP40A_B11_COMMON_KERNEL_AND_DECOMPOSITION as s40a
 import SOLVE_STEP45A_B000_PARALLEL_CLOSER as s45a
 import SOLVE_STEP45B_POLAR_EXACT_RHS_AND_KL3 as s45b
@@ -47,27 +47,77 @@ import SOLVE_STEP59A_FULL_ORBIT_FES_AVX2_CLOSER as s59a
 
 
 # Patch C_CLOSER_SRC so verify_full_point_exact prints any real survivor w_mask immediately!
+assert s59a.C_CLOSER_SRC.count("    return 1;\n}") == 1, "Expected unique return 1 in verify_full_point_exact"
 C_EXTRACT_SRC = s59a.C_CLOSER_SRC.replace(
     "    return 1;\n}",
     r"""    if ((plant_delta_core.lo | plant_delta_core.hi) == 0ULL) {
         uint64_t wm = 0ULL, um = 0ULL;
         for (int w = 0; w < nW; w++) if (w_vec[w]) wm |= (1ULL << w);
         for (int a = 0; a < d1; a++) if (u_vec[a]) um |= (1ULL << a);
-        printf("\n  [REAL_SURVIVOR_FOUND] w_mask=0x%012llx u_mask=0x%06llx\n",
-               (unsigned long long)wm, (unsigned long long)um);
-        fflush(stdout);
+        #pragma omp critical
+        {
+            printf("\n  [REAL_SURVIVOR_FOUND] w_mask=0x%012llx u_mask=0x%06llx\n",
+                   (unsigned long long)wm, (unsigned long long)um);
+            fflush(stdout);
+        }
     }
     return 1;
 }"""
 )
 
 
-def audit_w_survivor_full_389(w_mask, nW, n, n_cw, tbl, sr, lib_sh, orbits, free111, origin111, cb111):
-    """Test a 44-bit w_mask survivor against ALL 387 equations of sr + exact 65,536-pt FWHT!"""
+def exact_fwht_65536(tt_u8):
+    """Exact 65,536-point integer Walsh-Hadamard transform of (-1)^tt_u8."""
+    assert len(tt_u8) == 65536
+    spec = np.where(np.asarray(tt_u8, dtype=np.uint8) & 1, -1, 1).astype(np.int64)
+    step = 1
+    while step < 65536:
+        v = spec.reshape(-1, 2, step)
+        a = v[:, 0, :].copy()
+        b = v[:, 1, :].copy()
+        v[:, 0, :] = a + b
+        v[:, 1, :] = a - b
+        step <<= 1
+    assert int(np.sum(spec * spec)) == 65536 * 65536, "FWHT Parseval identity failed!"
+    abs_spec = np.abs(spec)
+    is_bent = bool(np.all(abs_spec == 256))
+    return spec, is_bent, int(abs_spec.min()), int(abs_spec.max()), np.unique(abs_spec)
+
+
+def verify_fwht_self_test():
+    """Zero-Trust self-test of exact_fwht_65536 on inner-product bent and zero functions."""
+    X = np.arange(65536, dtype=np.uint32)
+    bent_tt = np.zeros(65536, dtype=np.uint8)
+    for i in range(8):
+        bent_tt ^= (((X >> (2 * i)) & 1) & ((X >> (2 * i + 1)) & 1)).astype(np.uint8)
+    _, ok_bent, mn_b, mx_b, _ = exact_fwht_65536(bent_tt)
+    assert ok_bent and mn_b == 256 and mx_b == 256, "FWHT self-test failed on bent function!"
+    _, ok_zero, mn_z, mx_z, _ = exact_fwht_65536(np.zeros(65536, dtype=np.uint8))
+    assert (not ok_zero) and mn_z == 0 and mx_z == 65536, "FWHT self-test failed on zero function!"
+
+
+def audit_w_survivor_full_389(w_mask, nW, n, n_cw, tbl, sr, sys_ex, lib9, lib_sh, orbits, orb_tts, free111, origin111, cb111):
+    """Test a 44-bit w_mask survivor against ALL 387+ equations of sr + exact 65,536-pt FWHT!"""
     print(f"\n  ================ AUDITING SURVIVOR w_mask=0x{w_mask:012x} AGAINST ALL 389 EQS ================", flush=True)
     w_vec = np.array([(w_mask >> k) & 1 for k in range(nW)], dtype=np.uint8)
 
+    # Stage 0A: Independent cross-check against sys_ex M1_strict core system (exact Step 59A check!)
+    M0_c, Mk_c, L_core = sys_ex["M0_c"], sys_ex["Mk_c"], sys_ex["L_core"]
+    M_w = M0_c.copy()
+    for k in range(nW):
+        if w_vec[k]:
+            M_w ^= Mk_c[k]
+    b_orig_w, p0_w = sys_ex["eval_b_and_p0_batch"](w_vec.reshape(1, -1))
+    b_core_w = (L_core.astype(np.uint16) @ b_orig_w[0].astype(np.uint16)) & 1
+    aug_core = np.hstack([M_w, b_core_w.astype(np.uint8).reshape(-1, 1)])
+    _, pivs_core = s40a.gf2_rref_np(aug_core)
+    core_unsat = any(p == M_w.shape[1] for p in pivs_core)
+    p0_viol = int(np.sum(p0_w[0])) if p0_w.shape[1] > 0 else 0
+    print(f"    [Stage 0A: sys_ex M1_strict core cross-check] rows={M_w.shape[0]}, cols={M_w.shape[1]}, "
+          f"rank={len(pivs_core) - int(core_unsat)}, core_SAT={not core_unsat}, P0_violations={p0_viol}/{p0_w.shape[1]}", flush=True)
+
     mask64 = (1 << 64) - 1
+    n_cols = tbl["off0"] + 1
     qps = [s9.row_to_pset(sr["_buf"], qr, tbl) for qr in sr["_quad_ids"]]
     ana = s16.analyze_quad_system(qps)
     W_rref = s19.strict_rref_masks(list(ana["W_piv"].values()))
@@ -121,91 +171,141 @@ def audit_w_survivor_full_389(w_mask, nW, n, n_cw, tbl, sr, lib_sh, orbits, free
     t_idx = {v: i for i, v in enumerate(T_pivs)}
     rf_idx = {v: i for i, v in enumerate(RF_vars)}
 
-    # 1. Solve the n_q=17 quadratic equations for T_pivs at w_vec!
-    t_vec = np.zeros(nT, dtype=np.uint8)
+    # 1. Solve ALL n_q sheared quadratic equations linearly for T_pivs at w_vec via exact GF(2) RREF!
+    t_sys = np.zeros((n_q, nT + 1), dtype=np.uint8)
     for qi in range(n_q):
         ps = s9.row_to_pset(work, qi, tbl)
-        t_found = -1
-        val = 0
         for m in ps:
             if m == 0:
-                val ^= 1
+                t_sys[qi, nT] ^= 1
                 continue
             vs = [b for b in range(n) if (m >> b) & 1]
             if len(vs) == 1 and vs[0] in t_idx:
-                assert t_found == -1
-                t_found = t_idx[vs[0]]
+                t_sys[qi, t_idx[vs[0]]] ^= 1
             else:
                 prod = 1
                 for v in vs:
                     assert v in w_idx, f"Unexpected var {v} in Q_t row {qi}"
                     prod &= int(w_vec[w_idx[v]])
-                val ^= prod
-        assert t_found != -1
-        t_vec[t_found] = val
-    print(f"    Solved T = Q_t(w_vec): t_mask=0x{sum(int(t_vec[i])<<i for i in range(nT)):05x}", flush=True)
+                t_sys[qi, nT] ^= prod
+    rref_t, pivs_t = s40a.gf2_rref_np(t_sys)
+    t_unsat = any(p == nT for p in pivs_t)
+    if t_unsat:
+        print(f"    [Stage 0B: Q_t(w) quad consistency] CONTRADICTION 1=0 in pure-W quadratics!", flush=True)
+        return False
+    assert len(pivs_t) == nT, f"Expected full rank nT={nT} in Q_t, got {len(pivs_t)}"
+    t_vec = np.zeros(nT, dtype=np.uint8)
+    for r_i, p in enumerate(pivs_t):
+        t_vec[p] = rref_t[r_i, nT]
+    # Cross-check against sys_ex eval_t_batch!
+    fn_b = sys_ex["eval_b_and_p0_batch"]
+    cl_b = dict(zip(fn_b.__code__.co_freevars, [c.cell_contents for c in fn_b.__closure__]))
+    t_vec_ref = cl_b["eval_t_batch"](w_vec.reshape(1, -1))[0]
+    assert np.array_equal(t_vec, t_vec_ref), "Mismatch between RREF t_vec and sys_ex eval_t_batch!"
+    print(f"    [Stage 0B] Solved T = Q_t(w_vec): t_mask=0x{sum(int(t_vec[i])<<i for i in range(nT)):05x} (matches sys_ex!)", flush=True)
 
-    # 2. Substitute (w_vec, t_vec) into all M_eq - n_q cubic rows -> polynomials in RF_vars (0..nRF-1)!
-    lin_blockA = []     # drf=1, dt_c=0, deg<=2 (M1_strict!)
-    lin_blockD = []     # drf=1, dt_c=1, deg=2 (t_a * r_j)
-    lin_blockA3 = []    # drf=1, dt_c=0, deg=3 (w_a * w_b * r_j)
-    higher_rf_eqs = []  # drf >= 2: list of (drf_orig, dict {rf_mask: coeff})
+    # 2. Echelonize work in elimination order (3-drf, 3-dt_c, 3-d, c) IDENTICAL to Step 45B!
+    col_keys, col_meta = [], []
+    for c in range(n_cols):
+        d = int(tbl["col_deg"][c])
+        vs = []
+        if d >= 1: vs.append(int(tbl["col_v0"][c]))
+        if d >= 2: vs.append(int(tbl["col_v1"][c]))
+        if d >= 3: vs.append(int(tbl["col_v2"][c]))
+        drf = sum(1 for v in vs if v in RF_set)
+        dt_c = sum(1 for v in vs if v in T_set)
+        col_meta.append((drf, dt_c, d))
+        col_keys.append((3 - drf, 3 - dt_c, 3 - d, c))
+    col_keys.sort()
+    orig_to_perm = (ctypes.c_int * n_cols)()
+    perm_to_orig = [0] * n_cols
+    for pc, (_, _, _, oc) in enumerate(col_keys):
+        orig_to_perm[oc] = pc
+        perm_to_orig[pc] = oc
+    perm_buf = (ctypes.c_uint64 * (M_eq * n_cw))()
+    lib_sh.remap_rows_by_perm(work, perm_buf, M_eq, n_cw, n_cols, orig_to_perm)
+    piv_idx = (ctypes.c_int * n_cols)(*([-1] * n_cols))
+    ech_rows = []
+    for r in range(M_eq):
+        pc = lib9.gf2_echelon_insert_s9(perm_buf, r, n_cw, piv_idx, n_cols)
+        if pc >= 0:
+            ech_rows.append((r, col_meta[perm_to_orig[pc]]))
+    inv_perm = (ctypes.c_int * n_cols)(*perm_to_orig)
+    std_ech = (ctypes.c_uint64 * (M_eq * n_cw))()
+    lib_sh.remap_rows_by_perm(perm_buf, std_ech, M_eq, n_cw, n_cols, inv_perm)
 
-    for ri in range(n_q, M_eq):
-        ps = s9.row_to_pset(work, ri, tbl)
-        max_drf = 0
-        max_dtc = 0
-        max_deg = 0
+    # 3. Substitute (w_vec, t_vec) into ALL echelonized rows of std_ech and classify cleanly!
+    drf0_vals = []
+    lin_blockA = []     # drf=1, dt_c=0, no w_a*w_b*r_j (M1_strict!)
+    lin_blockD = []     # drf=1, dt_c=1 (t_a * r_j)
+    lin_blockA3 = []    # drf=1, dt_c=0, has w_a*w_b*r_j
+    higher_rf_eqs = []  # drf >= 2: (lead_drf, lead_dtc, lead_d, rf_poly)
+    n_blkB = n_blkC = n_blkE = 0
+
+    for r_id, (lead_drf, lead_dtc, lead_d) in ech_rows:
+        ps = s9.row_to_pset(std_ech, r_id, tbl)
+        has_w2r = False
         rf_poly = {}
         for m in ps:
             if m == 0:
                 rf_poly[0] = rf_poly.get(0, 0) ^ 1
                 continue
             vs = [b for b in range(n) if (m >> b) & 1]
-            if len(vs) > max_deg:
-                max_deg = len(vs)
-            drf = sum(1 for v in vs if v in rf_idx)
-            dtc = sum(1 for v in vs if v in t_idx)
-            if drf > max_drf:
-                max_drf = drf
-            if dtc > max_dtc:
-                max_dtc = dtc
-
-            # Evaluate W and T factors at (w_vec, t_vec)
-            wt_prod = 1
             rf_m = 0
+            wt_prod = 1
+            n_rf_m = 0
+            n_w_m = 0
             for v in vs:
                 if v in w_idx:
+                    n_w_m += 1
                     wt_prod &= int(w_vec[w_idx[v]])
                 elif v in t_idx:
                     wt_prod &= int(t_vec[t_idx[v]])
                 elif v in rf_idx:
+                    n_rf_m += 1
                     rf_m |= (1 << rf_idx[v])
                 else:
                     raise AssertionError(f"Unknown active var {v}")
+            if n_rf_m == 1 and n_w_m >= 2:
+                has_w2r = True
             if wt_prod:
                 rf_poly[rf_m] = rf_poly.get(rf_m, 0) ^ 1
 
         rf_poly = {k: v for k, v in rf_poly.items() if v}
-        if max_drf == 1:
-            # Convert to (nRF + 1,) uint8 linear equation [coeff_0 .. coeff_{nRF-1}, rhs]
+        if lead_drf == 0:
+            drf0_vals.append(1 if 0 in rf_poly else 0)
+        elif lead_drf == 1:
             row = np.zeros(nRF + 1, dtype=np.uint8)
-            for k, v in rf_poly.items():
+            for k, _ in rf_poly.items():
                 if k == 0:
                     row[nRF] ^= 1
                 else:
                     assert k.bit_count() == 1
                     row[k.bit_length() - 1] ^= 1
-            if max_dtc == 0 and max_deg <= 2:
+            if lead_dtc == 0 and (not has_w2r):
                 lin_blockA.append(row)
-            elif max_dtc == 1:
+            elif lead_dtc >= 1:
                 lin_blockD.append(row)
             else:
                 lin_blockA3.append(row)
         else:
-            higher_rf_eqs.append((max_drf, max_deg, rf_poly))
+            if lead_drf == 2 and lead_d == 2:
+                n_blkB += 1
+            elif lead_drf == 2:
+                n_blkC += 1
+            else:
+                n_blkE += 1
+            higher_rf_eqs.append((lead_drf, lead_dtc, lead_d, rf_poly))
+
+    drf0_unsat = sum(drf0_vals)
+    print(f"    [Census of {len(ech_rows)} echelonized eqs] drf0={len(drf0_vals)} (viol={drf0_unsat}), "
+          f"BlockA(M1_strict)={len(lin_blockA)}, BlockD(t*r)={len(lin_blockD)}, BlockA3(w2*r)={len(lin_blockA3)}, "
+          f"BlockB(r2)={n_blkB}, BlockC(w*r2/t*r2)={n_blkC}, BlockE(r3)={n_blkE}", flush=True)
 
     def check_lin_consistency(rows_list, label):
+        if not rows_list:
+            print(f"    [{label}] rows=0, rank=0/{nRF}, contradiction_1eq0=False", flush=True)
+            return np.zeros((0, nRF + 1), dtype=np.uint8), [], True, 0
         mat = np.array(rows_list, dtype=np.uint8)
         rref, pivs = s40a.gf2_rref_np(mat)
         unsat_rows = sum(1 for p in pivs if p == nRF)
@@ -213,23 +313,33 @@ def audit_w_survivor_full_389(w_mask, nW, n, n_cw, tbl, sr, lib_sh, orbits, free
         print(f"    [{label}] rows={len(rows_list)}, rank={rk}/{nRF}, contradiction_1eq0={unsat_rows > 0}", flush=True)
         return rref, pivs, (unsat_rows == 0), rk
 
-    # Stage 1: M1_strict alone (79 rows)
-    _, _, ok_A, rk_A = check_lin_consistency(lin_blockA, "Stage 1: Block A (M1_strict 79 rows)")
+    # Stage 1: M1_strict alone
+    _, _, ok_A, rk_A = check_lin_consistency(lin_blockA, f"Stage 1: Block A (M1_strict {len(lin_blockA)} rows)")
+    assert ok_A == (not core_unsat), f"Stage 1 consistency mismatch with sys_ex core: ok_A={ok_A}, core_unsat={core_unsat}"
+    if drf0_unsat > 0:
+        print(f"  ===> SURVIVOR 0x{w_mask:012x} KILLED AT STAGE 0 BY drf=0 (P0 / pure-WT) EQUATIONS ({drf0_unsat} violations)!!", flush=True)
+        return False
+    if not ok_A:
+        print(f"  ===> SURVIVOR 0x{w_mask:012x} FAILED STAGE 1 M1_strict!!", flush=True)
+        return False
+
     # Stage 2A: Block A + Block D (t_a * r_j)
     _, _, ok_AD, rk_AD = check_lin_consistency(lin_blockA + lin_blockD, "Stage 2A: Block A + Block D (t_a r_j)")
-    # Stage 2B: Block A + Block D + Block A3 (all 131 drf=1 rows)
+    # Stage 2B: Block A + Block D + Block A3 (all drf=1 rows)
     rref_all1, pivs_all1, ok_all1, rk_all1 = check_lin_consistency(
-        lin_blockA + lin_blockD + lin_blockA3, "Stage 2B: ALL 131 drf=1 rows (A + D + w_a w_b r_j)"
+        lin_blockA + lin_blockD + lin_blockA3,
+        f"Stage 2B: ALL {len(lin_blockA)+len(lin_blockD)+len(lin_blockA3)} drf=1 rows (A + D + w_a w_b r_j)"
     )
 
     if not ok_all1:
         print(f"  ===> SURVIVOR 0x{w_mask:012x} KILLED AT STAGE 2 BY BLOCK D / w_a w_b r_j (1 = 0 IN LINEAR R_F SYSTEM)!!", flush=True)
         return False
 
-    # Stage 3: Solve affine space of R_F and test all 237 higher-degree (Block B + Block C + Block E) equations!
+    # Stage 3: Solve affine space of R_F and test all higher-degree (Block B + Block C + Block E) equations!
     free_rf = [c for c in range(nRF) if c not in set(pivs_all1)]
     dim_free = len(free_rf)
-    print(f"    [Stage 3] Enumerating 2^{dim_free} = {1<<dim_free} R_F solutions against {len(higher_rf_eqs)} deg>=2 R_F eqs...", flush=True)
+    print(f"    [Stage 3] Affine R_F dim_free={dim_free} ({1<<dim_free} pts) against {len(higher_rf_eqs)} deg>=2 R_F eqs...", flush=True)
+    assert dim_free <= 24, f"dim_free={dim_free} too large for direct enumeration!"
     r0 = np.zeros(nRF, dtype=np.uint8)
     for r_i, p in enumerate(pivs_all1):
         r0[p] = rref_all1[r_i, nRF]
@@ -250,7 +360,7 @@ def audit_w_survivor_full_389(w_mask, nW, n, n_cw, tbl, sr, lib_sh, orbits, free
                 r_cand ^= null_vecs[b_i]
         r_mask = sum(int(r_cand[c]) << c for c in range(nRF))
         ok_hi = True
-        for _, _, poly in higher_rf_eqs:
+        for _, _, _, poly in higher_rf_eqs:
             acc = 0
             for m_rf, _ in poly.items():
                 if (r_mask & m_rf) == m_rf:
@@ -261,12 +371,84 @@ def audit_w_survivor_full_389(w_mask, nW, n, n_cw, tbl, sr, lib_sh, orbits, free
         if ok_hi:
             full_389_sols.append(r_cand)
 
-    print(f"    [Stage 3 Result] Survivors of ALL 389 equations: {len(full_389_sols)}", flush=True)
+    print(f"    [Stage 3 Result] Survivors of ALL {len(ech_rows)} equations: {len(full_389_sols)}", flush=True)
     if len(full_389_sols) == 0:
-        print(f"  ===> SURVIVOR 0x{w_mask:012x} KILLED AT STAGE 3 BY BLOCK B/C/E QUADRATIC R_F EQUATIONS!!", flush=True)
+        print(f"  ===> SURVIVOR 0x{w_mask:012x} KILLED AT STAGE 3 BY BLOCK B/C/E QUADRATIC/CUBIC R_F EQUATIONS!!", flush=True)
         return False
 
-    return True
+    # Stage 4: Invert both shears + sr["_lin_pivs"], Zero-Trust verify raw unsheared sr["_buf"],
+    #          reconstruct full 16-variable truth table, and run exact 65,536-pt FWHT!
+    verify_fwht_self_test()
+    lin_piv_mask_all = sum(1 << p for p in sr["_lin_pivs"].keys())
+    any_bent = False
+    for s_idx, r_cand in enumerate(full_389_sols):
+        # z_val = sheared coords on active_now
+        z_mask = 0
+        for i, v in enumerate(W_pivs):
+            if w_vec[i]: z_mask |= (1 << v)
+        for i, v in enumerate(T_pivs):
+            if t_vec[i]: z_mask |= (1 << v)
+        for i, v in enumerate(RF_vars):
+            if r_cand[i]: z_mask |= (1 << v)
+
+        # Invert Shear 2 (T_rref): y_p = z_p ^ parity(rest2 & z_mask) for p in T_pivs
+        y_mask = z_mask
+        for p in T_pivs:
+            rest2 = T_rref[p] ^ (1 << p)
+            if (rest2 & z_mask).bit_count() & 1:
+                y_mask ^= (1 << p)
+
+        # Invert Shear 1 (W_rref): x_p = y_p ^ parity(rest1 & y_mask) for p in W_pivs
+        x_mask = y_mask
+        for p in W_pivs:
+            rest1 = W_rref[p] ^ (1 << p)
+            if (rest1 & y_mask).bit_count() & 1:
+                x_mask ^= (1 << p)
+
+        # Back-substitute sr["_lin_pivs"] to get full 111-bit vector x_mask
+        for p, (pmask, rhs) in sr["_lin_pivs"].items():
+            rest = pmask ^ (1 << p)
+            assert (rest & lin_piv_mask_all) == 0, "sr['_lin_pivs'] not in strict RREF!"
+            val = rhs ^ ((rest & x_mask).bit_count() & 1)
+            if val:
+                x_mask |= (1 << p)
+
+        # Zero-Trust check against ALL unsheared equations of sr!
+        unsheared_viol = 0
+        for rid in list(sr["_quad_ids"]) + list(sr["_cub_ids"]):
+            ps_raw = s9.row_to_pset(sr["_buf"], rid, tbl)
+            acc = 0
+            for m in ps_raw:
+                if (m & x_mask) == m:
+                    acc ^= 1
+            if acc != 0:
+                unsheared_viol += 1
+        lin_viol = 0
+        for p, (pmask, rhs) in sr["_lin_pivs"].items():
+            if (((pmask & x_mask).bit_count() & 1) != rhs):
+                lin_viol += 1
+        assert unsheared_viol == 0 and lin_viol == 0, (
+            f"Shear inversion ZT mismatch: unsheared_viol={unsheared_viol}, lin_viol={lin_viol}"
+        )
+
+        # Reconstruct 116-orbit ANF c_bits and full 65,536-pt truth table!
+        c_bits = origin111
+        for i in range(111):
+            if (x_mask >> i) & 1:
+                c_bits ^= cb111[i]
+        tt = np.zeros(65536, dtype=np.uint8)
+        for j in range(116):
+            if (c_bits >> j) & 1:
+                tt ^= np.frombuffer(orb_tts[j], dtype=np.uint8)
+        _, is_bent, min_w, max_w, uniq_w = exact_fwht_65536(tt)
+        print(f"    [Stage 4: EXACT 65,536-pt FWHT sol #{s_idx}] c_bits=0x{c_bits:029x}, "
+              f"unsheared_389_viol=0, min|W|={min_w}, max|W|={max_w}, n_distinct|W|={len(uniq_w)}, "
+              f"IS_BENT={is_bent}!!", flush=True)
+        if is_bent:
+            any_bent = True
+            print(f"  *** DISCOVERY: GENUINE 16-VARIABLE BENT FUNCTION FOUND IN B0_11 eta=5! c_bits=0x{c_bits:029x} ***", flush=True)
+
+    return any_bent
 
 
 def main():
@@ -480,14 +662,27 @@ def main():
     Mk_flat = np.array([Mk_c[k].reshape(-1) for k in range(nW)], dtype=np.uint8)
     pencil_ker = s40a.gf2_nullspace_np(Mk_flat.T)
     print(f"  [Pencil Kernel] dim(ker(w -> M(w))) = {pencil_ker.shape[0]}", flush=True)
+    rng_pk = np.random.default_rng(5905)
+    W_rand_pk = rng_pk.integers(0, 2, size=(20, nW), dtype=np.uint8)
+    b_orig_rand, _ = sys_ex["eval_b_and_p0_batch"](W_rand_pk)
+    b_core_rand = (b_orig_rand.astype(np.uint16) @ L_core.T.astype(np.uint16)) & 1
     for ki in range(pencil_ker.shape[0]):
-        vm = sum(int(pencil_ker[ki, w]) << w for w in range(nW))
-        print(f"    v_ker[{ki}] w_mask = 0x{vm:012x} (wt={vm.bit_count()})", flush=True)
+        vk = pencil_ker[ki]
+        vm = sum(int(vk[w]) << w for w in range(nW))
+        b_orig_sh, _ = sys_ex["eval_b_and_p0_batch"]((W_rand_pk ^ vk) & 1)
+        b_core_sh = (b_orig_sh.astype(np.uint16) @ L_core.T.astype(np.uint16)) & 1
+        b_inv = bool(np.array_equal(b_core_rand, b_core_sh))
+        print(f"    v_ker[{ki}] w_mask = 0x{vm:012x} (wt={vm.bit_count()}), b_core_invariant_on_20_rand_w={b_inv}", flush=True)
 
     if args.audit_w_masks:
+        any_bent_all = False
         for wm_str in args.audit_w_masks:
             wm_val = int(wm_str, 16) if wm_str.startswith("0x") else int(wm_str)
-            audit_w_survivor_full_389(wm_val, nW, n, n_cw, tbl, sr, lib_sh, orbits, free111, origin111, cb111)
+            is_b = audit_w_survivor_full_389(
+                wm_val, nW, n, n_cw, tbl, sr, sys_ex, lib9, lib_sh, orbits, orb_tts, free111, origin111, cb111
+            )
+            any_bent_all = any_bent_all or is_b
+        print(f"\n  [AUDIT SUMMARY] Audited {len(args.audit_w_masks)} survivor(s): ANY_BENT={any_bent_all}", flush=True)
         return
 
     fn_b = sys_ex["eval_b_and_p0_batch"]

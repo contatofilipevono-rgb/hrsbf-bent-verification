@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        sub: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        sub: [0, 1, 2, 3, 4, 5, 6, 7]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -18,15 +18,17 @@ jobs:
           python-version: "3.12"
       - name: Install numpy and python-sat
         run: pip install numpy python-sat
-      - name: Scan Shard 0 Sub-block ${{ matrix.sub }}/16 & Audit Survivors
+      - name: Scan Shard 0 Sub-block ${{ matrix.sub }}/8 (32 blocks) & Audit Survivors
+        shell: bash
         run: |
-          BLK_START=$(( ${{ matrix.sub }} * 16 ))
-          BLK_END=$(( (${{ matrix.sub }} + 1) * 16 ))
+          set -o pipefail
+          BLK_START=$(( ${{ matrix.sub }} * 32 ))
+          BLK_END=$(( (${{ matrix.sub }} + 1) * 32 ))
           python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP59B_EXTRACT_SHARD0_SURVIVORS.py \
             --blk-start $BLK_START --blk-end $BLK_END | tee sub_${{ matrix.sub }}.log
           MASKS=$(grep -oP '\[REAL_SURVIVOR_FOUND\] w_mask=\K0x[0-9a-fA-F]+' sub_${{ matrix.sub }}.log || true)
           if [ -n "$MASKS" ]; then
-            echo "*** AUDITING SURVIVORS against all 389 equations: $MASKS ***"
+            echo "*** AUDITING SURVIVORS against all 389 equations + 65,536-pt FWHT: $MASKS ***"
             python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP59B_EXTRACT_SHARD0_SURVIVORS.py \
               --audit-w-masks $MASKS
           fi
