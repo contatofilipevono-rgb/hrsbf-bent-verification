@@ -106,8 +106,20 @@ static void eval_ccore_direct_256(
     }
 }
 
-// Scalar evaluation of all n_core polynomials of C_core at a single point w_vec[0..nW-1] -> uint64_t bitmask!
-static uint64_t eval_ccore_scalar(
+typedef struct { uint64_t lo, hi; } m128_t;
+static inline m128_t m128_zero(void) { m128_t r = {0ULL, 0ULL}; return r; }
+static inline m128_t m128_bit(int i) {
+    m128_t r = {0ULL, 0ULL};
+    if (i < 64) r.lo = 1ULL << i; else r.hi = 1ULL << (i - 64);
+    return r;
+}
+static inline m128_t m128_xor(m128_t a, m128_t b) { m128_t r = {a.lo ^ b.lo, a.hi ^ b.hi}; return r; }
+static inline int m128_parity_and(m128_t a, m128_t b) {
+    return __builtin_parityll(a.lo & b.lo) ^ __builtin_parityll(a.hi & b.hi);
+}
+
+// Scalar evaluation of all n_core polynomials of C_core at a single point w_vec[0..nW-1] -> m128_t bitmask!
+static m128_t eval_ccore_scalar(
     const uint8_t *w_vec, int nW, int nT, int n_um, int n_core,
     const uint8_t *qt_c0, const uint8_t *qt_lin,
     const int *qt_q_off, const int *qt_q0, const int *qt_q1,
@@ -130,24 +142,25 @@ static uint64_t eval_ccore_scalar(
         else if (dg == 2) M_vals_s[u] = WT[m_v0[u]] & WT[m_v1[u]];
         else M_vals_s[u] = WT[m_v0[u]] & WT[m_v1[u]] & WT[m_v2[u]];
     }
-    uint64_t out = 0;
+    m128_t out = m128_zero();
     for (int c = 0; c < n_core; c++) {
         uint8_t acc = c0_core[c];
         for (int p = cc_row_off[c]; p < cc_row_off[c + 1]; p++) acc ^= M_vals_s[cc_cols[p]];
-        if (acc) out |= (1ULL << c);
+        if (acc) {
+            if (c < 64) out.lo |= (1ULL << c);
+            else out.hi |= (1ULL << (c - 64));
+        }
     }
     return out;
 }
 
-// Fast exact GF(2) left nullspace of an (nrows x ncols) matrix (nrows <= 64, ncols <= 32).
-// Matrix rows are uint32_t bitmasks of length ncols.
-// Writes basis of left nullspace (vectors v of length nrows with v @ A == 0) into null_out[0..n_null-1].
-static int gf2_left_nullspace_u32(const uint32_t *rows, int nrows, int ncols, uint64_t *null_out) {
-    uint32_t A[64];
-    uint64_t I[64];
+// Fast exact GF(2) left nullspace of an (nrows x ncols) matrix (nrows <= 128, ncols <= 32).
+static int gf2_left_nullspace_u32(const uint32_t *rows, int nrows, int ncols, m128_t *null_out) {
+    uint32_t A[128];
+    m128_t I[128];
     for (int r = 0; r < nrows; r++) {
         A[r] = rows[r];
-        I[r] = 1ULL << r;
+        I[r] = m128_bit(r);
     }
     int pr = 0;
     for (int c = 0; c < ncols && pr < nrows; c++) {
@@ -158,30 +171,28 @@ static int gf2_left_nullspace_u32(const uint32_t *rows, int nrows, int ncols, ui
         if (piv < 0) continue;
         if (piv != pr) {
             uint32_t tA = A[pr]; A[pr] = A[piv]; A[piv] = tA;
-            uint64_t tI = I[pr]; I[pr] = I[piv]; I[piv] = tI;
+            m128_t tI = I[pr]; I[pr] = I[piv]; I[piv] = tI;
         }
         for (int r = 0; r < nrows; r++) {
             if (r != pr && ((A[r] >> c) & 1U)) {
                 A[r] ^= A[pr];
-                I[r] ^= I[pr];
+                I[r] = m128_xor(I[r], I[pr]);
             }
         }
         pr++;
     }
     int n_null = 0;
-    for (int r = pr; r < nrows; r++) {
-        null_out[n_null++] = I[r];
-    }
+    for (int r = pr; r < nrows; r++) null_out[n_null++] = I[r];
     return n_null;
 }
 
-// Fast exact GF(2) left nullspace of an (nrows x n_words*64) matrix (nrows <= 64, n_words <= 16).
-static int gf2_left_nullspace_wide(const uint64_t *mat, int nrows, int n_words, uint64_t *null_out) {
-    uint64_t A[64][16];
-    uint64_t I[64];
+// Fast exact GF(2) left nullspace of an (nrows x n_words*64) matrix (nrows <= 128, n_words <= 16).
+static int gf2_left_nullspace_wide(const uint64_t *mat, int nrows, int n_words, m128_t *null_out) {
+    uint64_t A[128][16];
+    m128_t I[128];
     for (int r = 0; r < nrows; r++) {
         for (int w = 0; w < n_words; w++) A[r][w] = mat[r * n_words + w];
-        I[r] = 1ULL << r;
+        I[r] = m128_bit(r);
     }
     int pr = 0;
     for (int w = 0; w < n_words && pr < nrows; w++) {
@@ -196,42 +207,39 @@ static int gf2_left_nullspace_wide(const uint64_t *mat, int nrows, int n_words, 
                 for (int k = w; k < n_words; k++) {
                     uint64_t tmp = A[pr][k]; A[pr][k] = A[piv][k]; A[piv][k] = tmp;
                 }
-                uint64_t tI = I[pr]; I[pr] = I[piv]; I[piv] = tI;
+                m128_t tI = I[pr]; I[pr] = I[piv]; I[piv] = tI;
             }
             for (int r = 0; r < nrows; r++) {
                 if (r != pr && (A[r][w] & bit)) {
                     for (int k = w; k < n_words; k++) A[r][k] ^= A[pr][k];
-                    I[r] ^= I[pr];
+                    I[r] = m128_xor(I[r], I[pr]);
                 }
             }
             pr++;
         }
     }
     int n_null = 0;
-    for (int r = pr; r < nrows; r++) {
-        null_out[n_null++] = I[r];
-    }
+    for (int r = pr; r < nrows; r++) null_out[n_null++] = I[r];
     return n_null;
 }
 
 // Exact full-row consistency check of M_1(u_1) r_1 == b_1(u_1) at a single point (w_vec)!
-// Returns 1 if consistent (TRUE SURVIVOR!), 0 if UNSAT.
 static int verify_full_point_exact(
     const uint8_t *w_vec, const uint8_t *u_vec, int d1, int nW, int nT, int n_um, int n_core,
     int mR_1, int rK_1,
-    const uint64_t *L_kr_masks,   // (mR_1,) bitmasks over n_core
-    const uint32_t *M0_1_masks,   // (mR_1,) bitmasks over rK_1
-    const uint32_t *Mu_1_masks,   // (d1 * mR_1,) bitmasks over rK_1
+    const m128_t *L_kr_masks,
+    const uint32_t *M0_1_masks,
+    const uint32_t *Mu_1_masks,
     const uint8_t *qt_c0, const uint8_t *qt_lin,
     const int *qt_q_off, const int *qt_q0, const int *qt_q1,
     const int *m_deg, const int *m_v0, const int *m_v1, const int *m_v2,
     const uint8_t *c0_core, const int *cc_row_off, const int *cc_cols,
-    uint64_t plant_delta_core,    // 0 during real scan; non-zero during Zero-Trust planted test!
+    m128_t plant_delta_core,
     uint8_t *M_vals_s
 ) {
-    uint64_t b_core = eval_ccore_scalar(w_vec, nW, nT, n_um, n_core, qt_c0, qt_lin, qt_q_off, qt_q0, qt_q1,
-                                        m_deg, m_v0, m_v1, m_v2, c0_core, cc_row_off, cc_cols, M_vals_s);
-    b_core ^= plant_delta_core;
+    m128_t b_core = eval_ccore_scalar(w_vec, nW, nT, n_um, n_core, qt_c0, qt_lin, qt_q_off, qt_q0, qt_q1,
+                                      m_deg, m_v0, m_v1, m_v2, c0_core, cc_row_off, cc_cols, M_vals_s);
+    b_core = m128_xor(b_core, plant_delta_core);
 
     uint32_t piv[32];
     memset(piv, 0, sizeof(piv));
@@ -241,7 +249,7 @@ static int verify_full_point_exact(
         for (int a = 0; a < d1; a++) {
             if (u_vec[a]) row ^= Mu_1_masks[a * mR_1 + r];
         }
-        uint32_t b_bit = (__builtin_parityll(b_core & L_kr_masks[r])) ? rhs_bit : 0U;
+        uint32_t b_bit = m128_parity_and(b_core, L_kr_masks[r]) ? rhs_bit : 0U;
         row |= b_bit;
         for (int c = 0; c < rK_1; c++) {
             if ((row >> c) & 1U) {
@@ -249,9 +257,9 @@ static int verify_full_point_exact(
                 else { piv[c] = row; row = 0; break; }
             }
         }
-        if (row == rhs_bit) return 0; // UNSAT!
+        if (row == rhs_bit) return 0;
     }
-    return 1; // CONSISTENT!
+    return 1;
 }
 
 // Per-fiber Round-1 (KR + V0) + FES AVX2 256-way scan (with exact full-row verification + fallback!)
@@ -274,9 +282,8 @@ static int64_t process_one_fiber(
     const int *qt_q_off, const int *qt_q0, const int *qt_q1,
     const int *m_deg, const int *m_v0, const int *m_v1, const int *m_v2,
     const uint8_t *c0_core, const int *cc_row_off, const int *cc_cols,
-    uint64_t plant_delta_core,       // 0 in real scan; non-zero ONLY for planted fiber in Zero-Trust audit!
+    m128_t plant_delta_core,
     const __m256i *LANE_U,
-    // Pre-allocated thread-local scratch buffers:
     __m256i *D0_p, __m256i *D1_p, __m256i *D2_p, __m256i *D3_p,
     uint8_t *M_vals_s,
     int64_t *fallback_count_out
@@ -285,7 +292,7 @@ static int64_t process_one_fiber(
     const __m256i ZERO = _mm256_setzero_si256();
 
     // 1. Compute M0_f = M0_c ^ XOR_{w: w_shift[w]=1} Mk_c[w]
-    uint32_t M0_f[64];
+    uint32_t M0_f[128];
     for (int r = 0; r < n_core; r++) M0_f[r] = M0_c_masks[r];
     for (int w = 0; w < nW; w++) {
         if (w_shift[w]) {
@@ -295,10 +302,10 @@ static int64_t process_one_fiber(
     }
 
     // 2. Compute M0_KR (n_core x n_kr) and L_kr = left_nullspace(M0_KR)
-    uint64_t L_kr_masks[64];
+    m128_t L_kr_masks[128];
     int mR_1 = 0;
     if (n_kr > 0) {
-        uint32_t M0_KR[64];
+        uint32_t M0_KR[128];
         for (int r = 0; r < n_core; r++) {
             uint32_t row = 0;
             for (int j = 0; j < n_kr; j++) {
@@ -309,11 +316,11 @@ static int64_t process_one_fiber(
         mR_1 = gf2_left_nullspace_u32(M0_KR, n_core, n_kr, L_kr_masks);
     } else {
         mR_1 = n_core;
-        for (int r = 0; r < n_core; r++) L_kr_masks[r] = 1ULL << r;
+        for (int r = 0; r < n_core; r++) L_kr_masks[r] = m128_bit(r);
     }
 
     // Extract M0_f_keep (n_core,) over rK_1
-    uint32_t M0_f_keep[64];
+    uint32_t M0_f_keep[128];
     for (int r = 0; r < n_core; r++) {
         uint32_t v = 0, src = M0_f[r];
         for (int c = 0; c < rK_1; c++) {
@@ -323,27 +330,21 @@ static int64_t process_one_fiber(
     }
 
     // Project M0_1 = L_kr @ M0_f_keep and Mu_1[a] = L_kr @ Mu_opt_keep[a]
-    uint32_t M0_1[64];
-    uint32_t Mu_1[32 * 64];
+    uint32_t M0_1[128];
+    uint32_t Mu_1[32 * 128];
     for (int r = 0; r < mR_1; r++) {
-        uint64_t lm = L_kr_masks[r];
+        m128_t lm = L_kr_masks[r];
         uint32_t v0 = 0;
-        uint64_t tmp = lm;
-        while (tmp) {
-            int j = __builtin_ctzll(tmp);
-            v0 ^= M0_f_keep[j];
-            tmp &= tmp - 1;
-        }
+        uint64_t tlo = lm.lo, thi = lm.hi;
+        while (tlo) { int j = __builtin_ctzll(tlo); v0 ^= M0_f_keep[j]; tlo &= tlo - 1; }
+        while (thi) { int j = 64 + __builtin_ctzll(thi); v0 ^= M0_f_keep[j]; thi &= thi - 1; }
         M0_1[r] = v0;
         for (int a = 0; a < d1; a++) {
             uint32_t va = 0;
             const uint32_t *mua = Mu_opt_keep + a * n_core;
-            tmp = lm;
-            while (tmp) {
-                int j = __builtin_ctzll(tmp);
-                va ^= mua[j];
-                tmp &= tmp - 1;
-            }
+            tlo = lm.lo; thi = lm.hi;
+            while (tlo) { int j = __builtin_ctzll(tlo); va ^= mua[j]; tlo &= tlo - 1; }
+            while (thi) { int j = 64 + __builtin_ctzll(thi); va ^= mua[j]; thi &= thi - 1; }
             Mu_1[a * mR_1 + r] = va;
         }
     }
@@ -351,7 +352,7 @@ static int64_t process_one_fiber(
     // 3. Compute V0 = left_nullspace(hstack(Mu_1[0..d1-1]))
     int total_cols = d1 * rK_1;
     int n_words_v0 = (total_cols + 63) / 64;
-    uint64_t H_mu[64 * 16];
+    uint64_t H_mu[128 * 16];
     memset(H_mu, 0, (size_t)mR_1 * n_words_v0 * sizeof(uint64_t));
     for (int r = 0; r < mR_1; r++) {
         int col_off = 0;
@@ -366,21 +367,18 @@ static int64_t process_one_fiber(
             col_off += rK_1;
         }
     }
-    uint64_t V0_masks[64];
+    m128_t V0_masks[128];
     int n_v0 = gf2_left_nullspace_wide(H_mu, mR_1, n_words_v0, V0_masks);
 
     // 4. RREF of [V0 @ M0_1 | V0] to get E_mat (r_elim x mR_1) and piv_v0[0..r_elim-1]
-    uint32_t VM[64];
-    uint64_t VE[64];
+    uint32_t VM[128];
+    m128_t VE[128];
     for (int i = 0; i < n_v0; i++) {
-        uint64_t vm = V0_masks[i];
+        m128_t vm = V0_masks[i];
         uint32_t acc = 0;
-        uint64_t tmp = vm;
-        while (tmp) {
-            int r = __builtin_ctzll(tmp);
-            acc ^= M0_1[r];
-            tmp &= tmp - 1;
-        }
+        uint64_t tlo = vm.lo, thi = vm.hi;
+        while (tlo) { int r = __builtin_ctzll(tlo); acc ^= M0_1[r]; tlo &= tlo - 1; }
+        while (thi) { int r = 64 + __builtin_ctzll(thi); acc ^= M0_1[r]; thi &= thi - 1; }
         VM[i] = acc;
         VE[i] = vm;
     }
@@ -396,12 +394,12 @@ static int64_t process_one_fiber(
         if (piv < 0) continue;
         if (piv != r_elim) {
             uint32_t t1 = VM[r_elim]; VM[r_elim] = VM[piv]; VM[piv] = t1;
-            uint64_t t2 = VE[r_elim]; VE[r_elim] = VE[piv]; VE[piv] = t2;
+            m128_t t2 = VE[r_elim]; VE[r_elim] = VE[piv]; VE[piv] = t2;
         }
         for (int i = 0; i < n_v0; i++) {
             if (i != r_elim && ((VM[i] >> c) & 1U)) {
                 VM[i] ^= VM[r_elim];
-                VE[i] ^= VE[r_elim];
+                VE[i] = m128_xor(VE[i], VE[r_elim]);
             }
         }
         piv_v0[r_elim] = c;
@@ -439,47 +437,33 @@ static int64_t process_one_fiber(
     }
 
     // 5. Build E_core_masks (r_elim,) over n_core: E_mat @ L_kr!
-    // And combined P_fiber_masks[0..K-1] over n_core: [E_mat @ L_kr (r_elim rows), L_kr[0..n_fast-1]]
     int n_fast = (mR_1 < 28) ? mR_1 : 28;
     int K = r_elim + n_fast;
-    uint64_t P_fiber[64];
+    m128_t P_fiber[64];
     for (int e = 0; e < r_elim; e++) {
-        uint64_t acc = 0, em = VE[e];
-        while (em) {
-            int r = __builtin_ctzll(em);
-            acc ^= L_kr_masks[r];
-            em &= em - 1;
-        }
+        m128_t acc = m128_zero(), em = VE[e];
+        uint64_t tlo = em.lo, thi = em.hi;
+        while (tlo) { int r = __builtin_ctzll(tlo); acc = m128_xor(acc, L_kr_masks[r]); tlo &= tlo - 1; }
+        while (thi) { int r = 64 + __builtin_ctzll(thi); acc = m128_xor(acc, L_kr_masks[r]); thi &= thi - 1; }
         P_fiber[e] = acc;
     }
-    for (int r = 0; r < n_fast; r++) {
-        P_fiber[r_elim + r] = L_kr_masks[r];
-    }
+    for (int r = 0; r < n_fast; r++) P_fiber[r_elim + r] = L_kr_masks[r];
 
-    // Build EM0_keep[e] (r_elim,) bitmasks over rK_rem
     uint32_t EM0_keep[32];
     for (int e = 0; e < r_elim; e++) {
         uint32_t v = 0, src = VM[e];
-        for (int c = 0; c < rK_rem; c++) {
-            if ((src >> keep_c[c]) & 1U) v |= (1U << c);
-        }
+        for (int c = 0; c < rK_rem; c++) if ((src >> keep_c[c]) & 1U) v |= (1U << c);
         EM0_keep[e] = v;
     }
 
-    // Build Cm0_masks[r], Cmk_masks[a*n_fast+r], M0_rem_masks[r], Mk_rem_masks[a*n_fast+r]
     uint32_t Cm0_masks[32], Cmk_masks[32 * 32];
     uint32_t M0_rem_masks[32], Mk_rem_masks[32 * 32];
     for (int r = 0; r < n_fast; r++) {
         uint32_t cm0 = 0, m0k = 0;
         for (int e = 0; e < r_elim; e++) {
-            if ((M0_1[r] >> piv_v0[e]) & 1U) {
-                cm0 |= (1U << e);
-                m0k ^= EM0_keep[e];
-            }
+            if ((M0_1[r] >> piv_v0[e]) & 1U) { cm0 |= (1U << e); m0k ^= EM0_keep[e]; }
         }
-        for (int c = 0; c < rK_rem; c++) {
-            if ((M0_1[r] >> keep_c[c]) & 1U) m0k ^= (1U << c);
-        }
+        for (int c = 0; c < rK_rem; c++) if ((M0_1[r] >> keep_c[c]) & 1U) m0k ^= (1U << c);
         Cm0_masks[r] = cm0;
         M0_rem_masks[r] = m0k;
 
@@ -487,56 +471,54 @@ static int64_t process_one_fiber(
             uint32_t mu_ar = Mu_1[a * mR_1 + r];
             uint32_t cma = 0, mka = 0;
             for (int e = 0; e < r_elim; e++) {
-                if ((mu_ar >> piv_v0[e]) & 1U) {
-                    cma |= (1U << e);
-                    mka ^= EM0_keep[e];
-                }
+                if ((mu_ar >> piv_v0[e]) & 1U) { cma |= (1U << e); mka ^= EM0_keep[e]; }
             }
-            for (int c = 0; c < rK_rem; c++) {
-                if ((mu_ar >> keep_c[c]) & 1U) mka ^= (1U << c);
-            }
+            for (int c = 0; c < rK_rem; c++) if ((mu_ar >> keep_c[c]) & 1U) mka ^= (1U << c);
             Cmk_masks[a * n_fast + r] = cma;
             Mk_rem_masks[a * n_fast + r] = mka;
         }
     }
 
     // 6. Project P_fiber (K x n_core) onto D0_core, D1_core, D2_core, D3_core -> D0_p, D1_p, D2_p, D3_p!
-    // Apply optional plant_delta_core to D0_p!
     for (int k = 0; k < K; k++) {
-        uint64_t pm = P_fiber[k];
-        __m256i acc = (__builtin_parityll(pm & plant_delta_core)) ? ONES : ZERO;
-        while (pm) {
-            int j = __builtin_ctzll(pm);
-            acc = _mm256_xor_si256(acc, D0_core[j]);
-            pm &= pm - 1;
-        }
+        m128_t pm = P_fiber[k];
+        __m256i acc = m128_parity_and(pm, plant_delta_core) ? ONES : ZERO;
+        uint64_t tlo = pm.lo, thi = pm.hi;
+        while (tlo) { int j = __builtin_ctzll(tlo); acc = _mm256_xor_si256(acc, D0_core[j]); tlo &= tlo - 1; }
+        while (thi) { int j = 64 + __builtin_ctzll(thi); acc = _mm256_xor_si256(acc, D0_core[j]); thi &= thi - 1; }
         D0_p[k] = acc;
     }
     for (int i = 0; i < m; i++) {
         const __m256i *src = D1_core + (size_t)i * n_core;
         __m256i *dst = D1_p + (size_t)i * K;
         for (int k = 0; k < K; k++) {
-            uint64_t pm = P_fiber[k];
+            m128_t pm = P_fiber[k];
             __m256i acc = ZERO;
-            while (pm) { int j = __builtin_ctzll(pm); acc = _mm256_xor_si256(acc, src[j]); pm &= pm - 1; }
+            uint64_t tlo = pm.lo, thi = pm.hi;
+            while (tlo) { int j = __builtin_ctzll(tlo); acc = _mm256_xor_si256(acc, src[j]); tlo &= tlo - 1; }
+            while (thi) { int j = 64 + __builtin_ctzll(thi); acc = _mm256_xor_si256(acc, src[j]); thi &= thi - 1; }
             dst[k] = acc;
         }
         for (int j = i + 1; j < m; j++) {
             const __m256i *src2 = D2_core + ((size_t)i * m + j) * n_core;
             __m256i *dst2 = D2_p + ((size_t)i * m + j) * K;
             for (int k = 0; k < K; k++) {
-                uint64_t pm = P_fiber[k];
+                m128_t pm = P_fiber[k];
                 __m256i acc = ZERO;
-                while (pm) { int q = __builtin_ctzll(pm); acc = _mm256_xor_si256(acc, src2[q]); pm &= pm - 1; }
+                uint64_t tlo = pm.lo, thi = pm.hi;
+                while (tlo) { int q = __builtin_ctzll(tlo); acc = _mm256_xor_si256(acc, src2[q]); tlo &= tlo - 1; }
+                while (thi) { int q = 64 + __builtin_ctzll(thi); acc = _mm256_xor_si256(acc, src2[q]); thi &= thi - 1; }
                 dst2[k] = acc;
             }
             for (int l = j + 1; l < m; l++) {
                 const __m256i *src3 = D3_core + (((size_t)i * m + j) * m + l) * n_core;
                 __m256i *dst3 = D3_p + (((size_t)i * m + j) * m + l) * K;
                 for (int k = 0; k < K; k++) {
-                    uint64_t pm = P_fiber[k];
+                    m128_t pm = P_fiber[k];
                     __m256i acc = ZERO;
-                    while (pm) { int q = __builtin_ctzll(pm); acc = _mm256_xor_si256(acc, src3[q]); pm &= pm - 1; }
+                    uint64_t tlo = pm.lo, thi = pm.hi;
+                    while (tlo) { int q = __builtin_ctzll(tlo); acc = _mm256_xor_si256(acc, src3[q]); tlo &= tlo - 1; }
+                    while (thi) { int q = 64 + __builtin_ctzll(thi); acc = _mm256_xor_si256(acc, src3[q]); thi &= thi - 1; }
                     dst3[k] = acc;
                 }
             }
@@ -666,7 +648,7 @@ int64_t run_outer_fes_block_c(
     const int *qt_q_off, const int *qt_q0, const int *qt_q1,
     const int *m_deg, const int *m_v0, const int *m_v1, const int *m_v2,
     const uint8_t *c0_core, const int *cc_row_off, const int *cc_cols,
-    int64_t plant_t_gray_val, uint64_t plant_delta_core,
+    int64_t plant_t_gray_val, uint64_t plant_delta_lo, uint64_t plant_delta_hi,
     int64_t *fallback_count_out
 ) {
     __m256i LANE_U[8];
@@ -927,7 +909,11 @@ int64_t run_outer_fes_block_c(
         }
 
         int64_t t_gray = st ^ (st >> 1);
-        uint64_t p_delta = (plant_t_gray_val >= 0 && t_gray == plant_t_gray_val) ? plant_delta_core : 0ULL;
+        m128_t p_delta = m128_zero();
+        if (plant_t_gray_val >= 0 && t_gray == plant_t_gray_val) {
+            p_delta.lo = plant_delta_lo;
+            p_delta.hi = plant_delta_hi;
+        }
 
         total_surv += process_one_fiber(
             d1, m, nW, nT, n_um, n_core, rK_init, n_kr, rK_1,
@@ -970,7 +956,7 @@ int64_t run_shard_omp_c(
             M0_c_masks, Mk_c_masks, KR_masks, keep_c_kr, Mu_opt_keep,
             qt_c0, qt_lin, qt_q_off, qt_q0, qt_q1,
             m_deg, m_v0, m_v1, m_v2, c0_core, cc_row_off, cc_cols,
-            -1LL, 0ULL, &fb
+            -1LL, 0ULL, 0ULL, &fb
         );
         grand_surv += s;
         grand_fb += fb;
@@ -1012,7 +998,7 @@ def main():
         ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int),
         ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int),
         ctypes.POINTER(ctypes.c_uint8), ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int),
-        ctypes.c_int64, ctypes.c_uint64, ctypes.POINTER(ctypes.c_int64),
+        ctypes.c_int64, ctypes.c_uint64, ctypes.c_uint64, ctypes.POINTER(ctypes.c_int64),
     ]
     lib_c.run_outer_fes_block_c.restype = ctypes.c_int64
 
@@ -1194,7 +1180,7 @@ def main():
     M0_c, Mk_c = sys_ex["M0_c"], sys_ex["Mk_c"]
     L_core = sys_ex["L_core"]
     n_core, rK_init = M0_c.shape
-    assert n_core <= 64 and rK_init <= 31
+    assert n_core <= 128 and rK_init <= 31, f"n_core={n_core}, rK_init={rK_init}"
 
     fn_b = sys_ex["eval_b_and_p0_batch"]
     cl_b = dict(zip(fn_b.__code__.co_freevars, [c.cell_contents for c in fn_b.__closure__]))
@@ -1292,7 +1278,8 @@ def main():
             if w_star[w]: M_star ^= Mk_c[w]
         target_core = (M_star @ r_star) & 1
         delta_core = (b_core_star ^ target_core) & 1
-        delta_mask = sum(int(delta_core[c]) << c for c in range(n_core))
+        delta_lo = sum(int(delta_core[c]) << c for c in range(min(64, n_core)))
+        delta_hi = sum(int(delta_core[c]) << (c - 64) for c in range(64, n_core))
         fb_zt = ctypes.c_int64(0)
         surv = int(lib_c.run_outer_fes_block_c(
             d1, m, nt_zt, nW, nT, n_um, n_core, rK_init, n_kr, rK_1,
@@ -1316,7 +1303,7 @@ def main():
             c0_core.ctypes.data_as(ctypes.POINTER(ctypes.c_uint8)),
             cc_off.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
             cc_cols.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
-            ctypes.c_int64(t_star_val), ctypes.c_uint64(delta_mask),
+            ctypes.c_int64(t_star_val), ctypes.c_uint64(delta_lo), ctypes.c_uint64(delta_hi),
             ctypes.byref(fb_zt),
         ))
         if surv >= 1:
