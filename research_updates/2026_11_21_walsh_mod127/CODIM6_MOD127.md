@@ -73,6 +73,31 @@ Com efeito, suponha já \(A\equiv1\bmod2^j\) e ponha \(B_j=((A-1)/2^j)\bmod2\). 
 \]
 Contradição, pois Parseval dá \(\mathbb E A^2=128\). Portanto \(B_2,B_3,B_4\) zeram e \(A\equiv1\bmod32\). Essa redução ainda permite um bloco.
 
+### Energia concentrada nas 63 fatias externas
+
+Escreva \(W_{g_t}(b)=-512\mathbf1_{\{t=0\}}+2048R_t(b)\), com \(R_t(b)\) inteiro. No teste por coluna acima, \(r_b(t)=\operatorname{cen}_{127}R_t(b)\) para \(t\ne0\) e \(r_b(0)=s-32\), onde \(s=R_0(b)\bmod127\) pertence a \(\{0,\ldots,64\}\). A última igualdade decorre de \(W_{g_0}/16\equiv R_0-32\bmod127\). Segue que
+\[
+ \sum_{t\ne0}r_b(t)^2=s(64-s)\le63s .
+\]
+Aqui \(s\) é exatamente o número de \(k(u,b)\) congruentes a um entre as 64 frequências da coluna. De fato, \(R_0(b)=\sum_u k(u,b)\) por Poisson. Globalmente, ponha \(\varepsilon(k)=\mathbf1_{\{k\equiv1\bmod127\}}\). Ponto a ponto,
+\[
+ \varepsilon(k)-k\le k(k-1)/126 .
+\]
+Para \(k=0,1\) há igualdade. Para \(k\ge127\) o lado esquerdo é não positivo. E para \(k=-a\) com \(a\ge126\), \(a(a+1)/126\ge a+1\). Usando \(\sum k=2^{24}+2^{15}s_0\) e \(\sum k(k-1)=254(127\cdot2^{15}-128s_0)\), segue que \(\sum_b s\le25\,198\,854\), onde \(s_0=(-1)^{f(0)}\). Portanto
+\[
+ \mathbb E_b\sum_{t\ne0}r_b(t)^2\le B:=63\cdot25\,198\,854/2^{26}<24,\qquad
+ \mathbb E_b\sum_{t\ne0}R_t(b)^2=63\cdot16=1008 .
+\]
+Se \(R_t\ne r_b(t)\), então \(|R_t|\ge127-32=95\). Consequentemente mais de \(984/1008\) da energia nas 63 fatias externas está em coeficientes de módulo pelo menos \(95\cdot2048=194560\). O limite exato para a energia fora da cauda é \(B\).
+
+Se \(a_f|_U=0\), as fatias são cúbicas. Escreva \(\Delta_{g_t}\) para a autocorrelação não normalizada. Por Parseval e Wiener–Khinchin,
+\[
+ \sum_{v\in U}(\Delta_{g_t}(v)/2^{26})^2 = \mathbb E_b R_t(b)^4/256 .
+\]
+Se toda derivada não nula da fatia for balanceada ou tiver posto polar pelo menos 18, cada termo com \(v\ne0\) é no máximo \(2^{-18}\), pois a derivada é quadrática. Logo o lado esquerdo é no máximo \(257\). Na cauda \(|R_t|\ge95\), temos \(R_t^4\ge95^2 R_t^2\). Fora dela \(R_t=r_b(t)\). Assim cada fatia desse tipo pagaria mais de \(8{,}70\) em \(\mathbb E_b r_b(t)^2\), já que o piso é \(16-257\cdot256/95^2=78608/9025\). Como o orçamento conjunto é inferior a \(24\), há no máximo duas fatias desse tipo. Portanto **em pelo menos 61 das 63 fatias externas existe uma direção \(v\ne0\) com derivada quadrática não balanceada e posto polar no máximo 16**.
+
+Somando os quartos momentos sobre as fatias, a energia na cauda força \(\sum_{t\ne0}\sum_v(\Delta_{g_t}(v)/2^{26})^2\ge(1008-B)\cdot95^2/256\). Se \(Q\) conta os pares \((t,v\ne0)\) de derivada não balanceada e posto até 16, o mesmo somatório é no máximo \(63\cdot257+Q\), pois cada um desses pares contribui no máximo um. Segue \(Q\ge18511\). Este argumento de concentração e quarto momento foi obtido pelo Astra e as comparações foram checadas com racionais.
+
 ## 3. Condições simultâneas sobre os símbolos cúbicos das fatias
 
 Se \(a_f|_U=0\), todas as \(g_t\) têm grau no máximo três. Seus símbolos têm a forma \(c(t)=c_0+\sum_{i=1}^6t_ic_i\). Por Poisson, \(W_{g_t}\equiv-512\,\mathbf1_{\{t=0\}}\pmod{2048}\). Além disso, cada restrição física de dimensão 24 tem soma de sinais divisível por \(512\). O termo de valoração oito nessa dimensão é a avaliação de \(\gamma_8\). Portanto \(\gamma_8(c(t))=0\) para todos os \(t\).
