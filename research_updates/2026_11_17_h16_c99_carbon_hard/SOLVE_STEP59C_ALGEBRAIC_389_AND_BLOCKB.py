@@ -535,8 +535,8 @@ def main():
                         assert pl_st == "CADICAL_SAT", f"LIVE PLANTED AUDIT FAILED: {pl_st} on N={n_act},q={nq_s},c={nc_s}"
                         print(f"      [LIVE PLANTED AUDIT] Passed on real residual (N={n_act}, q={nq_s}, c={nc_s}) -> {pl_st} in {pl_dt:.3f}s!", flush=True)
                         live_planted_done = True
-                    if n_act <= 85:
-                        sat_st, dt_sat = solve_residual_with_cadical(sub["_buf"], sub["_quad_ids"], sub["_cub_ids"], tbl, max_conf_budget=80000)
+                    if n_act <= 45:
+                        sat_st, dt_sat = solve_residual_with_cadical(sub["_buf"], sub["_quad_ids"], sub["_cub_ids"], tbl, max_conf_budget=50000)
                         f_logs.append(f"f{tr}:N={n_act},q={nq_s},c={nc_s}->{sat_st}({dt_s9:.1f}+{dt_sat:.1f}s)")
                     else:
                         f_logs.append(f"f{tr}:N={n_act},q={nq_s},c={nc_s}({dt_s9:.1f}s)")

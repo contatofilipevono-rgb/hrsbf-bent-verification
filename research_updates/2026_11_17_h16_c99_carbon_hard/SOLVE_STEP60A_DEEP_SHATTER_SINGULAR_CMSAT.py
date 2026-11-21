@@ -815,8 +815,8 @@ def test_subspace_shatter(label, U1, W_forms_111, sr, lib9, tbl, rng, n_trials=3
         q_psets = [s9.row_to_pset(sub["_buf"], rid, tbl) for rid in sub["_quad_ids"]]
         full_psets = q_psets + [s9.row_to_pset(sub["_buf"], rid, tbl) for rid in sub["_cub_ids"]]
 
-        # Stage 2: UNTRUNCATED COMPACT DEGREE-3 XL!
-        xl_st, xl_dt, n_after_xl, q_xl, c_xl = compact_d3_xl_shatter(full_psets, n, lib9, max_n=74)
+        # Stage 2: UNTRUNCATED COMPACT DEGREE-3 XL (for N <= 70 where D3 matrix fits cleanly & runs in <45s)!
+        xl_st, xl_dt, n_after_xl, q_xl, c_xl = compact_d3_xl_shatter(full_psets, n, lib9, max_n=70)
         if xl_st == "XL3_UNSAT":
             n_xl3_closed += 1
             n_any_closed += 1
@@ -851,21 +851,21 @@ def test_subspace_shatter(label, U1, W_forms_111, sr, lib9, tbl, rng, n_trials=3
         res_parts = []
         closed_here = False
 
-        # Stage 3: CryptoMiniSat 5 (native XOR + GF(2) Gauss-Jordan!)
-        if do_cms and n_act_post <= 85:
+        # Stage 3: CryptoMiniSat 5 (native XOR + GF(2) Gauss-Jordan!) on first 2 fibers if N <= 72
+        if do_cms and tr < 2 and n_act_post <= 72:
             cms_st, cms_dt = None, 0.0
             if nq_post >= 100 and nc_post > 0:
-                q_st, q_dt, _ = solve_psets_with_cms5(q_psets, n, max_time=10, tag="qonly")
+                q_st, q_dt, _ = solve_psets_with_cms5(q_psets, n, max_time=8, tag="qonly")
                 if q_st in ("CMS_UNSAT", "UNSAT_1EQ0"):
                     cms_st, cms_dt = "CMS_QONLY_UNSAT", q_dt
             if cms_st is None:
-                cms_st, cms_dt, _ = solve_psets_with_cms5(full_psets, n, max_time=20, tag="full")
+                cms_st, cms_dt, _ = solve_psets_with_cms5(full_psets, n, max_time=15, tag="full")
             res_parts.append(f"{cms_st}({cms_dt:.1f}s)")
             if "UNSAT" in cms_st:
                 closed_here = True
 
-        # Stage 4: Singular slimgb (over GF(2)) on first 2 fibers if N <= 65
-        if do_singular and tr < 2 and n_act_post <= 65 and (not closed_here or tr == 0):
+        # Stage 4: Singular slimgb (over GF(2)) on tr == 0 if N <= 70
+        if do_singular and tr == 0 and n_act_post <= 70 and (not closed_here):
             sing_st, sing_dt = None, 0.0
             if nq_post >= 15:
                 q_st, q_dt, _ = solve_psets_with_singular(q_psets, n, timeout_sec=25, tag="sq")
@@ -882,9 +882,9 @@ def test_subspace_shatter(label, U1, W_forms_111, sr, lib9, tbl, rng, n_trials=3
                 if "UNSAT" in sing_st:
                     closed_here = True
 
-        # Stage 5: CaDiCaL 195 fast comparison
-        if do_cadical and n_act_post <= 85 and (not closed_here) and tr == 0:
-            cad_st, cad_dt, _ = solve_psets_with_cadical(full_psets, n, max_conf_budget=60000)
+        # Stage 5: CaDiCaL 195 only when N <= 45 (we proved dense N >= 57 3-XOR CNF times out)
+        if do_cadical and n_act_post <= 45 and (not closed_here):
+            cad_st, cad_dt, _ = solve_psets_with_cadical(full_psets, n, max_conf_budget=50000)
             res_parts.append(f"{cad_st}({cad_dt:.1f}s)")
             if "UNSAT" in cad_st:
                 closed_here = True
@@ -1108,7 +1108,7 @@ def main():
         ri_str = ", ".join(f"r{nr}->d{dm}" for nr, dm, _ in rowint_list[:12])
         print(f"    [Exact Row-Int Chain]: {ri_str}", flush=True)
 
-        d_ladder = [24, 26, 28, 30, 32] if cell_name == "B0_11" else [18, 20, 22, 24, 26, 28]
+        d_ladder = [24, 26, 28] if cell_name == "B0_11" else [18, 20, 22, 24]
 
         print(f"    --- Strategy A: Step 41A Greedy-Untouched Flag ---", flush=True)
         for d_free in d_ladder:
