@@ -1,0 +1,37 @@
+name: H16 Step 61A Joint Opt, True d1 Ceiling & Algebraic 1=0 Closure
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - swarm/blockb-feedback
+    paths:
+      - "research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP61A_EXTENDED_OPT_AND_ALGEBRAIC_CEILING.py"
+      - ".github/workflows/run_h16_step61a_ceiling.yml"
+
+jobs:
+  step61a_ceiling:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - cell: "B0_11"
+            etas: "5,0"
+          - cell: "B0_11"
+            etas: "9,11"
+          - cell: "B1_11"
+            etas: "3,0"
+          - cell: "B1_11"
+            etas: "8,10"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install numpy and python-sat
+        run: pip install numpy python-sat
+      - name: Run Step 61A (${{ matrix.cell }} etas=${{ matrix.etas }})
+        run: |
+          python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP61A_EXTENDED_OPT_AND_ALGEBRAIC_CEILING.py --cell ${{ matrix.cell }} --etas ${{ matrix.etas }}
