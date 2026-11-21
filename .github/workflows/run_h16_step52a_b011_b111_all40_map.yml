@@ -1,0 +1,27 @@
+name: H(16,4) Step 52A — B0_11 & B1_11 All-64 Eta-States SysB Cascade Map (16 Free Runners)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP52A_B011_B111_ALL40_ORBITS_SYSB_MAP.py'
+      - '.github/workflows/run_h16_step52a_b011_b111_all40_map.yml'
+  workflow_dispatch:
+
+jobs:
+  step52a:
+    name: step52a (${{ matrix.cell }}_s${{ matrix.s }}_of_8)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: ["B0_11", "B1_11"]
+        s: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip && pip install numpy python-sat
+      - run: python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP52A_B011_B111_ALL40_ORBITS_SYSB_MAP.py --cell ${{ matrix.cell }} --shard-idx ${{ matrix.s }} --n-shards 8
