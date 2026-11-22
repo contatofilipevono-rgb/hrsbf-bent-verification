@@ -341,7 +341,7 @@ def zt_audit_uniserial_on_real_bent(k, mk_pts, a_orbs, w_orbs, K):
         assert len(vals) == 1, f"ZT FAIL M_{k}: real bent dual not constant on orbit {iw}!"
         t_vec[iw] = next(iter(vals))
     base = np.zeros(len(a_orbs), dtype=np.int32)
-    base[0] = 1 << k
+    base[0] = 256
     C_pred = base - (1 << (k - 7)) * (K @ t_vec)
     sgn = np.where(tt == 0, 1, -1).astype(np.int32)
     for ia, (a_rep, _) in enumerate(a_orbs):
@@ -410,7 +410,7 @@ def run_uniserial_filtration_suite(orig_u8, basis_u8, active_vars, sub_state, un
         # Exhaustively enumerate ALL 2^{nw} dual slices f_dual|_{M_{16-k}}!
         N_all = 1 << nw
         base = np.zeros(na, dtype=np.int32)
-        base[0] = 1 << k
+        base[0] = 256
         scale = 1 << (k - 7)
         K_T = np.ascontiguousarray(K.T, dtype=np.int32)
 
