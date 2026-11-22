@@ -1485,7 +1485,7 @@ def run_autocorr_and_parseval_suite(
 
         # 5. If deg==4 derivative equations exist, extract & ZT-verify & compare with V_13..V_16!
         if do_deg4_compare and res_ac["deg4"] and N <= 109:
-            sub_d4 = res_ac["deg4"][:32]
+            sub_d4 = res_ac["deg4"][:40]
             sh_d4 = [int(all_shifts_py[m]) for m, _ in sub_d4]
             bt_d4 = [int(b) for _, b in sub_d4]
             K4 = len(sub_d4)
@@ -1606,8 +1606,8 @@ def main():
         ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int),
     ]
     lib_d4.gf2_echelon_deg4_c.argtypes = [
-        ctypes.POINTER(ctypes.c_uint64), ctypes.c_int, ctypes.c_uint64, ctypes.c_uint64,
-        ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_uint64),
+        ctypes.POINTER(ctypes.c_uint64), ctypes.c_int, ctypes.c_uint64, ctypes.c_uint64, ctypes.c_uint64,
+        ctypes.POINTER(ctypes.c_int64), ctypes.POINTER(ctypes.c_uint64), ctypes.c_int,
     ]
     lib_d4.gf2_echelon_deg4_c.restype = ctypes.c_int
 
