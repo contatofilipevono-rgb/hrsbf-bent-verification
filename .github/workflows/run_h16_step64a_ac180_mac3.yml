@@ -22,6 +22,6 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install deps
-        run: pip install numpy
+        run: pip install numpy python-sat
       - name: Run Step 64A AC180+D8 -> MAC_D3/D4 Fusion (${{ matrix.cell }})
         run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP64A_AC180_MAC3_FUSION.py --cell ${{ matrix.cell }}
