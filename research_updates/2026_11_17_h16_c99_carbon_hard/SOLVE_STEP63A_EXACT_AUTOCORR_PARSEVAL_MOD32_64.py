@@ -1130,7 +1130,7 @@ def run_autocorr_and_parseval_suite(
     """
     N = len(active_vars)
     is_vq = (vq_ctx is not None)
-    R_rand, T4, T5, T6 = 64, 16, 10, 6
+    R_rand, T4, T5, T6 = 64, 24, 24, 10
     if is_vq:
         nW, nT, nRF, Q_polys_W = vq_ctx
         _, pts_lo, pts_hi = gen_points_vq(nW, nT, nRF, Q_polys_W, R_rand, T4, T5, T6, seed)
@@ -1190,7 +1190,7 @@ def run_autocorr_and_parseval_suite(
         wt_c.ctypes.data_as(ctypes.POINTER(ctypes.c_int32)),
     )
     b_lows_s = [res_ac["spotlight"][idx][1] for idx in struct_indices]
-    detect_linear_combo_drops(
+    (valid_ac, null4_ac), _ = detect_linear_combo_drops(
         wt_c[:T4_c * 16].reshape(T4_c, 16, len(struct_u16)),
         wt_c[T4_c * 16:].reshape(T5_c, 32, len(struct_u16)),
         b_lows_s,
@@ -1229,16 +1229,193 @@ def run_autocorr_and_parseval_suite(
         pq_c.ctypes.data_as(ctypes.POINTER(ctypes.c_int64)),
     )
     b_lows_pq = [res_P["spotlight"][i][1] for i in range(36)] + [res_Q["spotlight"][i][1] for i in range(36)]
-    detect_linear_combo_drops(
+    (valid_pq, null4_pq), _ = detect_linear_combo_drops(
         pq_c[:T4_c * 16].reshape(T4_c, 16, 72),
         pq_c[T4_c * 16:].reshape(T5_c, 32, 72),
         b_lows_pq,
         tag=f"{tag}_D8_PQ72",
     )
 
-    # 4. Extract, Zero-Trust verify, and inject ANY deg<=3 equations (when affine, not V(Q))
+    # 4. Extract, Zero-Trust verify, and inject ALL deg<=3 equations (single + linear combos!)
     injected_psets = []
     if not is_vq:
+        # (4A) Linear-combo deg<=3 drops from AC180!
+        if null4_ac:
+            used_pos = sorted({ki for cm in null4_ac for ki in range(len(valid_ac)) if (cm >> ki) & 1})
+            used_sidx = [valid_ac[ki] for ki in used_pos]
+            pos_to_local = {ki: li for li, ki in enumerate(used_pos)}
+            sh_u = [int(struct_set[si]) for si in used_sidx]
+            bt_u = [int(b_lows_s[si]) for si in used_sidx]
+            Ku = len(used_pos)
+            n3_cols = s60c.comb3(N) + s60c.comb2(N) + N + 1
+            n3_words = (n3_cols + 63) // 64
+            out_u = np.zeros((Ku, n3_words), dtype=np.uint64)
+            out_stu = np.zeros(Ku, dtype=np.int32)
+            lib_ac.extract_deriv_bit_anf_batch_c(
+                orig_tt.ctypes.data_as(ctypes.POINTER(ctypes.c_uint8)),
+                basis_tt.ctypes.data_as(ctypes.POINTER(ctypes.c_uint8)),
+                np.ascontiguousarray(sh_u, dtype=np.uint16).ctypes.data_as(ctypes.POINTER(ctypes.c_uint16)),
+                np.ascontiguousarray(bt_u, dtype=np.int32).ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                Ku, N, 3, n3_words,
+                out_u.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),
+                out_stu.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+            )
+            # Zero-Trust verify every combo on 50 fresh random points (direct 65,536-pt TT)!
+            R_zt = 50
+            rng_z = random.Random(seed + 411)
+            mask64 = (1 << 64) - 1
+            zt_pts = [rng_z.getrandbits(N) for _ in range(R_zt)]
+            zt_lo = np.array([p & mask64 for p in zt_pts], dtype=np.uint64)
+            zt_hi = np.array([p >> 64 for p in zt_pts], dtype=np.uint64)
+            wt_dir = np.zeros((R_zt, Ku), dtype=np.int32)
+            lib_ac.direct_wt15_verify_c(
+                orig_tt.ctypes.data_as(ctypes.POINTER(ctypes.c_uint8)),
+                basis_tt.ctypes.data_as(ctypes.POINTER(ctypes.c_uint8)),
+                N,
+                zt_lo.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),
+                zt_hi.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),
+                R_zt,
+                np.ascontiguousarray(sh_u, dtype=np.uint16).ctypes.data_as(ctypes.POINTER(ctypes.c_uint16)),
+                Ku,
+                wt_dir.ctypes.data_as(ctypes.POINTER(ctypes.c_int32)),
+            )
+            zt_111 = []
+            for y in zt_pts:
+                x = 0
+                for i in range(N):
+                    if (y >> i) & 1:
+                        x |= (1 << active_vars[i])
+                zt_111.append(x)
+            n_zero, n_1eq0, n_nontriv, n_mis = 0, 0, 0, 0
+            for cm in null4_ac:
+                kis = [ki for ki in range(len(valid_ac)) if (cm >> ki) & 1]
+                lis = [pos_to_local[ki] for ki in kis]
+                if any(out_stu[li] != 0 for li in lis):
+                    continue
+                comb_row = np.zeros(n3_words, dtype=np.uint64)
+                for li in lis:
+                    comb_row ^= out_u[li]
+                ps = s60c.deg3_subrow_to_111_pset(comb_row, N, active_vars, is_deg4_buf=False)
+                ok = True
+                for r in range(R_zt):
+                    actual = 0
+                    for li in lis:
+                        actual ^= int((wt_dir[r, li] >> bt_u[li]) & 1)
+                    pe = 0
+                    x111 = zt_111[r]
+                    for mon in ps:
+                        if (mon & x111) == mon:
+                            pe ^= 1
+                    if pe != actual:
+                        ok = False
+                        n_mis += 1
+                        break
+                if ok:
+                    if len(ps) == 0:
+                        n_zero += 1
+                    elif ps == {0}:
+                        n_1eq0 += 1
+                        injected_psets.append(ps)
+                    else:
+                        n_nontriv += 1
+                        injected_psets.append(ps)
+            print(
+                f"    [{tag}_AC180_COMBO_DEG3 ZT 50-PT DIRECT TT]: "
+                f"total={len(null4_ac)} -> id_0eq0={n_zero}, *** 1=0={n_1eq0} ***, nontriv={n_nontriv}, mismatches={n_mis}",
+                flush=True,
+            )
+            assert n_mis == 0, f"AC180 combo ZT mismatch in {tag}!"
+
+        # (4B) Linear-combo deg<=3 drops from D8_PQ72!
+        if null4_pq:
+            used_pos = sorted({ki for cm in null4_pq for ki in range(len(valid_pq)) if (cm >> ki) & 1})
+            used_pidx = [valid_pq[ki] for ki in used_pos]
+            pos_to_local = {ki: li for li, ki in enumerate(used_pos)}
+            bt_p = [int(b_lows_pq[pi]) for pi in used_pidx]
+            Kp = len(used_pos)
+            n3_cols = s60c.comb3(N) + s60c.comb2(N) + N + 1
+            n3_words = (n3_cols + 63) // 64
+            out_p = np.zeros((Kp, n3_words), dtype=np.uint64)
+            out_mfp = np.zeros(Kp, dtype=np.int32)
+            lib_ac.extract_d8_pq_deg3_c(
+                orig_36w.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),
+                basis_36w.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),
+                c8_idx_256.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                z_reps_36.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                np.ascontiguousarray(used_pidx, dtype=np.int32).ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                np.ascontiguousarray(bt_p, dtype=np.int32).ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                Kp, N, n3_words,
+                out_p.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),
+                out_mfp.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+            )
+            # Zero-Trust 50-pt direct verification
+            R_zt = 50
+            rng_z = random.Random(seed + 422)
+            zt_pts = [rng_z.getrandbits(N) for _ in range(R_zt)]
+            u_arr = np.arange(256, dtype=np.uint16)
+            z_pts = [(u_arr | ((u_arr ^ z) << 8)) for z in range(256)]
+            PQ_ex = np.zeros((R_zt, 72), dtype=np.int64)
+            zt_111 = []
+            for r, y in enumerate(zt_pts):
+                x = 0
+                ftt = orig_tt.copy()
+                for i in range(N):
+                    if (y >> i) & 1:
+                        x |= (1 << active_vars[i])
+                        ftt ^= basis_tt[i]
+                zt_111.append(x)
+                S_full = np.array([256 - 2 * int(ftt[z_pts[z]].sum()) for z in range(256)], dtype=np.int64)
+                for d in range(36):
+                    dv = int(z_reps_36[d])
+                    acc = sum(int(S_full[z]) * int(S_full[z ^ dv]) for z in range(256))
+                    if dv == 0:
+                        acc -= 65536
+                    PQ_ex[r, d] = acc
+                for v in range(36):
+                    vv = int(z_reps_36[v])
+                    wv = sum(int(S_full[z]) * (-1 if ((z & vv).bit_count() & 1) else 1) for z in range(256))
+                    PQ_ex[r, 36 + v] = wv * wv - 65536
+            n_zero, n_1eq0, n_nontriv, n_mis = 0, 0, 0, 0
+            for cm in null4_pq:
+                kis = [ki for ki in range(len(valid_pq)) if (cm >> ki) & 1]
+                lis = [pos_to_local[ki] for ki in kis]
+                if any(out_mfp[li] != 0 for li in lis):
+                    continue
+                comb_row = np.zeros(n3_words, dtype=np.uint64)
+                for li in lis:
+                    comb_row ^= out_p[li]
+                ps = s60c.deg3_subrow_to_111_pset(comb_row, N, active_vars, is_deg4_buf=False)
+                ok = True
+                for r in range(R_zt):
+                    actual = 0
+                    for li in lis:
+                        actual ^= int((int(PQ_ex[r, used_pidx[li]]) >> bt_p[li]) & 1)
+                    pe = 0
+                    x111 = zt_111[r]
+                    for mon in ps:
+                        if (mon & x111) == mon:
+                            pe ^= 1
+                    if pe != actual:
+                        ok = False
+                        n_mis += 1
+                        break
+                if ok:
+                    if len(ps) == 0:
+                        n_zero += 1
+                    elif ps == {0}:
+                        n_1eq0 += 1
+                        injected_psets.append(ps)
+                    else:
+                        n_nontriv += 1
+                        injected_psets.append(ps)
+            print(
+                f"    [{tag}_D8_PQ72_COMBO_DEG3 ZT 50-PT DIRECT TT]: "
+                f"total={len(null4_pq)} -> id_0eq0={n_zero}, *** 1=0={n_1eq0} ***, nontriv={n_nontriv}, mismatches={n_mis}",
+                flush=True,
+            )
+            assert n_mis == 0, f"D8_PQ72 combo ZT mismatch in {tag}!"
+
+        # (4C) Single-shift deg<=3 equations (if any outside AC180)
         if res_ac["deg3"]:
             sub_d3 = res_ac["deg3"][:64]
             sh_d3 = [int(all_shifts_py[m]) for m, _ in sub_d3]
