@@ -1,0 +1,29 @@
+name: Step 71A - Pure-Theoretical 4-Frontier X-Ray (drf>=2, E_8 Split, D_8 Cubic Tensor, Krawtchouk MILP)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  step71a:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install numpy scipy python-sat
+      - name: Run Step 71A
+        env:
+          OMP_NUM_THREADS: "4"
+        run: |
+          python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP71A_THEORETICAL_FRONTIERS.py \
+            --cells B0_00 B0_11 B1_11 \
+            | tee step71a_theoretical_frontiers.log
+      - name: Upload log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: step71a-theoretical-frontiers-log
+          path: step71a_theoretical_frontiers.log
