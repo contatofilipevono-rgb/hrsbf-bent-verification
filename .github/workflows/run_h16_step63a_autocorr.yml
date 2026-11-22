@@ -1,0 +1,25 @@
+name: H16 Step 63A Exact Autocorr Mod-32/64/128+ & D8 Parseval Probe
+
+on:
+  push:
+    branches: ["swarm/autocorr-integral"]
+  workflow_dispatch:
+
+jobs:
+  step63a_autocorr:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: ["B0_11", "B1_11"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install numpy and python-sat
+        run: pip install -q numpy python-sat
+      - name: Run Step 63A Exact Autocorr & D8 Parseval (${{ matrix.cell }})
+        run: |
+          python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP63A_EXACT_AUTOCORR_PARSEVAL_MOD32_64.py --cell ${{ matrix.cell }}
