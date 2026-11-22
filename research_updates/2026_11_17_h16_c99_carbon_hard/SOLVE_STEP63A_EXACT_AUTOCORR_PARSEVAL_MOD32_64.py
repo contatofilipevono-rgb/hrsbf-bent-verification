@@ -1117,7 +1117,7 @@ def run_autocorr_and_parseval_suite(
     all_shifts_u16, all_shifts_py, d8_shifts, struct_set, struct_indices,
     c8_idx_256, z_reps_36, z_reps_py,
     lib_ac, lib_d4, lib9, tbl, coord_subs,
-    tag="", seed=63100, vq_ctx=None, do_deg4_compare=False
+    tag="", seed=63100, vq_ctx=None, do_deg4_compare=False, out_states=None
 ):
     """
     Full suite on an N-variable affine subspace (or V(Q) variety when vq_ctx is given!):
@@ -1474,6 +1474,9 @@ def run_autocorr_and_parseval_suite(
 
         if injected_psets and sub_state is not None:
             sub_new, chg = s60c.inject_psets_into_s9(sub_state, injected_psets, lib9, tbl)
+            if out_states is not None:
+                out_states["sub_ac"] = sub_new
+                out_states["injected_psets"] = list(injected_psets)
             print(
                 f"    [{tag} *** INJECT {len(injected_psets)} ZT-VERIFIED DEG<=3 EQS INTO s9 ***]: "
                 f"changed={chg}, CLOSED_UNSAT={sub_new['closed_unsat']}, "
@@ -1527,6 +1530,8 @@ def run_autocorr_and_parseval_suite(
                         joint, n4, ntot, N, active_vars, lib_d4, tag=f"{tag}_JOINT_V13(45)+AC_DEG4({len(ac_rows4)})"
                     )
                     if j_drops and sub_state is not None:
+                        if out_states is not None:
+                            out_states["j_drops"] = list(j_drops)
                         sub_j, chg = s60c.inject_psets_into_s9(sub_state, j_drops, lib9, tbl)
                         print(
                             f"    [{tag} *** JOINT V13+AC DEG<=3 INJECT ({len(j_drops)} drops) ***]: "
@@ -1541,15 +1546,10 @@ def run_autocorr_and_parseval_suite(
 # ==============================================================================
 # Main Driver
 # ==============================================================================
-def main():
+def setup_cell_env(cell_name):
     t0 = time.perf_counter()
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--cell", choices=["B0_11", "B1_11"], required=True)
-    args = parser.parse_args()
-    cell_name = args.cell
-
     print(f"\n================================================================================", flush=True)
-    print(f"  [{cell_name}] STEP 63A: EXACT AUTOCORR MOD-32/64/128+ & D_8 PARSEVAL/DUAL-SQ", flush=True)
+    print(f"  [{cell_name}] STEP 63A ENV SETUP", flush=True)
     print(f"================================================================================", flush=True)
 
     # Compile C libraries
@@ -1808,6 +1808,32 @@ def main():
     all_shifts_u16, all_shifts_py, d8_shifts, struct_set, struct_indices = build_all_4115_c16_shifts()
     c8_idx_256, z_reps_36, z_reps_py = build_c8_orbit_tables()
     coord_subs = s60c.build_coordinate_subspaces()
+
+    return {
+        "t0": t0, "lib_ac": lib_ac, "lib_d4": lib_d4, "lib9": lib9, "lib_sh": lib_sh,
+        "tbl": tbl, "root": root, "root_act": root_act, "N_root": N_root,
+        "eta_free": eta_free, "o_tt_111": o_tt_111, "b_tt_111": b_tt_111,
+        "all_shifts_u16": all_shifts_u16, "all_shifts_py": all_shifts_py,
+        "d8_shifts": d8_shifts, "struct_set": struct_set, "struct_indices": struct_indices,
+        "c8_idx_256": c8_idx_256, "z_reps_36": z_reps_36, "z_reps_py": z_reps_py,
+        "coord_subs": coord_subs,
+    }
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--cell", choices=["B0_11", "B1_11"], required=True)
+    args = parser.parse_args()
+    cell_name = args.cell
+    env = setup_cell_env(cell_name)
+    t0 = env["t0"]
+    lib_ac, lib_d4, lib9, lib_sh = env["lib_ac"], env["lib_d4"], env["lib9"], env["lib_sh"]
+    tbl, root, root_act, N_root = env["tbl"], env["root"], env["root_act"], env["N_root"]
+    eta_free, o_tt_111, b_tt_111 = env["eta_free"], env["o_tt_111"], env["b_tt_111"]
+    all_shifts_u16, all_shifts_py = env["all_shifts_u16"], env["all_shifts_py"]
+    d8_shifts, struct_set, struct_indices = env["d8_shifts"], env["struct_set"], env["struct_indices"]
+    c8_idx_256, z_reps_36, z_reps_py = env["c8_idx_256"], env["z_reps_36"], env["z_reps_py"]
+    coord_subs = env["coord_subs"]
 
     # ==========================================================================
     # ZERO-TRUST KERNEL SELF-TEST (FWHT vs Direct 65536-pt TT, and D8-PQ vs Direct)

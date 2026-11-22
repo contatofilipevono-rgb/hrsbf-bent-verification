@@ -1,0 +1,27 @@
+name: H16 Step 64A AC180+D8 Autocorr -> Deep IR6 MAC_D3 & Targeted MAC_D4 Fusion
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP64A_AC180_MAC3_FUSION.py'
+      - '.github/workflows/run_h16_step64a_ac180_mac3.yml'
+
+jobs:
+  step64a_fusion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B0_11, B1_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: pip install numpy
+      - name: Run Step 64A AC180+D8 -> MAC_D3/D4 Fusion (${{ matrix.cell }})
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP64A_AC180_MAC3_FUSION.py --cell ${{ matrix.cell }}
