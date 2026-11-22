@@ -1,0 +1,58 @@
+name: Step 70 - SYZ-2A Stage 2 Exact Boolean Lift + Unified WSYZ-3 + B0_11 SYZ-1C Injection
+
+on:
+  workflow_dispatch:
+
+jobs:
+  step70:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: B0_00_e5
+            cell: B0_00
+            etas: "5"
+            modes: "syz1a_h syz2a wsyz3"
+          - name: B0_11_e5
+            cell: B0_11
+            etas: "5"
+            modes: "syz1a_h partc syz2a wsyz3"
+          - name: B0_11_e0
+            cell: B0_11
+            etas: "0"
+            modes: "syz1a_h partc syz2a wsyz3"
+          - name: B0_11_e9_e11
+            cell: B0_11
+            etas: "9 11"
+            modes: "syz1a_h partc syz2a"
+          - name: B1_11_e3
+            cell: B1_11
+            etas: "3"
+            modes: "syz1a_h wsyz3"
+          - name: B1_11_e8_e0_e10
+            cell: B1_11
+            etas: "8 0 10"
+            modes: "syz1a_h wsyz3"
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install numpy python-sat
+      - name: Run Step 70 (${{ matrix.name }})
+        env:
+          OMP_NUM_THREADS: "4"
+        run: |
+          python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP70_SYZ2A_STAGE2_AND_WSYZ3.py \
+            --cell ${{ matrix.cell }} --etas ${{ matrix.etas }} --modes ${{ matrix.modes }} \
+            | tee step70_${{ matrix.name }}.log
+      - name: Upload log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: step70-${{ matrix.name }}-log
+          path: step70_${{ matrix.name }}.log

@@ -1,0 +1,71 @@
+
+================================================================================
+  [B0_00] STEP 69: DEGREE-2 MATRIX-PENCIL LEFT-SYZYGY MODULE (SYZ-2A)
+================================================================================
+
+================================================================================
+  [B0_00] STEP 63A ENV SETUP
+================================================================================
+  [ROOT CG(389)] N=109, q=6, c=389 (50.1s)
+
+  ======== [B0_00 eta=5] SYZ-2A HOMOG TOP (deg(v)<=2 on M1_strict): nW=39, r1=53, nRF_act=41/43 -> vars=39,273, triples=9,139, eqs=374,699 ========
+      [SYZ-2A progress] trips=2000/9139 | rank=35719/39273
+      [SYZ-2A progress] trips=4000/9139 | rank=36378/39273
+      [SYZ-2A progress] trips=6000/9139 | rank=36574/39273
+      [SYZ-2A progress] trips=8000/9139 | rank=36722/39273
+  *** [B0_00 eta=5 SYZ-2A HOMOG RESULT] ***: rank=36,817/39,273 | *** NULLITY_HOMOG=2456 *** | trips_used=9139/9139 (117.0s)
+    [ZT-SYZ2A-HOMOG]: Verified 512 null vectors across 200 triples (0 mismatches)!
+
+================================================================================
+  [B0_11] STEP 69: DEGREE-2 MATRIX-PENCIL LEFT-SYZYGY MODULE (SYZ-2A)
+================================================================================
+
+================================================================================
+  [B0_11] STEP 63A ENV SETUP
+================================================================================
+  [ROOT CG(389)] N=109, q=4, c=388 (49.6s)
+  [AUDIT B0_11 eta=5 SYZ-1C vs P0]: P0_cols=17 (rk=0) | SYZ1C_rk=2 | JOINT_rk=2 -> *** NEW_OUTSIDE_P0 = 2 ***!
+
+  ======== [B0_11 eta=5] SYZ-2A HOMOG TOP (deg(v)<=2 on M1_strict): nW=44, r1=79, nRF_act=37/40 -> vars=74,734, triples=13,244, eqs=490,028 ========
+      [SYZ-2A progress] trips=2000/13244 | rank=53176/74734
+      [SYZ-2A progress] trips=4000/13244 | rank=74647/74734
+      [SYZ-2A progress] trips=6000/13244 | rank=74686/74734
+      [SYZ-2A progress] trips=8000/13244 | rank=74689/74734
+      [SYZ-2A progress] trips=10000/13244 | rank=74689/74734
+      [SYZ-2A progress] trips=12000/13244 | rank=74689/74734
+  *** [B0_11 eta=5 SYZ-2A HOMOG RESULT] ***: rank=74,689/74,734 | *** NULLITY_HOMOG=45 *** | trips_used=13244/13244 (630.6s)
+    [ZT-SYZ2A-HOMOG]: Verified 45 null vectors across 200 triples (0 mismatches)!
+  [AUDIT B0_11 eta=0 SYZ-1C vs P0]: P0_cols=17 (rk=0) | SYZ1C_rk=2 | JOINT_rk=2 -> *** NEW_OUTSIDE_P0 = 2 ***!
+
+  ======== [B0_11 eta=0] SYZ-2A HOMOG TOP (deg(v)<=2 on M1_strict): nW=44, r1=71, nRF_act=38/40 -> vars=67,166, triples=13,244, eqs=503,272 ========
+      [SYZ-2A progress] trips=2000/13244 | rank=53843/67166
+      [SYZ-2A progress] trips=4000/13244 | rank=67118/67166
+      [SYZ-2A progress] trips=6000/13244 | rank=67123/67166
+      [SYZ-2A progress] trips=8000/13244 | rank=67123/67166
+      [SYZ-2A progress] trips=10000/13244 | rank=67123/67166
+      [SYZ-2A progress] trips=12000/13244 | rank=67123/67166
+  *** [B0_11 eta=0 SYZ-2A HOMOG RESULT] ***: rank=67,123/67,166 | *** NULLITY_HOMOG=43 *** | trips_used=13244/13244 (473.7s)
+    [ZT-SYZ2A-HOMOG]: Verified 43 null vectors across 200 triples (0 mismatches)!
+
+================================================================================
+  [B1_11] STEP 69: DEGREE-2 MATRIX-PENCIL LEFT-SYZYGY MODULE (SYZ-2A)
+================================================================================
+
+================================================================================
+  [B1_11] STEP 63A ENV SETUP
+================================================================================
+  [ROOT CG(389)] N=109, q=4, c=387 (27.0s)
+
+  ======== [B1_11 eta=3] SYZ-2A HOMOG TOP (deg(v)<=2 on M1_strict): nW=45, r1=103, nRF_act=36/39 -> vars=101,970, triples=14,190, eqs=510,840 ========
+      [SYZ-2A progress] trips=2000/14190 | rank=57743/101970
+      [SYZ-2A progress] trips=4000/14190 | rank=101966/101970
+      [SYZ-2A progress] trips=5149/14190 | rank=101970/101970
+  *** [B1_11 eta=3 SYZ-2A HOMOG RESULT] ***: rank=101,970/101,970 | *** NULLITY_HOMOG=0 *** | trips_used=5149/14190 (240.8s)
+
+  ======== [B1_11 eta=8] SYZ-2A HOMOG TOP (deg(v)<=2 on M1_strict): nW=45, r1=57, nRF_act=37/39 -> vars=56,430, triples=14,190, eqs=525,030 ========
+      [SYZ-2A progress] trips=2000/14190 | rank=56033/56430
+      [SYZ-2A progress] trips=4000/14190 | rank=56428/56430
+      [SYZ-2A progress] trips=4429/14190 | rank=56430/56430
+  *** [B1_11 eta=8 SYZ-2A HOMOG RESULT] ***: rank=56,430/56,430 | *** NULLITY_HOMOG=0 *** | trips_used=4429/14190 (76.2s)
+
+[STEP 69 ALL CELLS] COMPLETED in 1753.9s!
