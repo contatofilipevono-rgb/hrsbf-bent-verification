@@ -19,21 +19,35 @@
 \newcommand{\rot}{\operatorname{rot}}
 \newcommand{\Fix}{\operatorname{Fix}}
 
+\hypersetup{
+  pdftitle={Antipodal Coset Decomposition, Degree-3 Saturation, and Structural Rigidity in Quartic Homogeneous Rotation-Symmetric Bent Functions},
+  pdfauthor={Filipe Martins Vono, Andr\'e Oliveira Naufel de Toledo, and Val\'eria Gonzaga Santos}
+}
+
 \title{Antipodal Coset Decomposition, Degree-3 Saturation, and Structural Rigidity in Quartic Homogeneous Rotation-Symmetric Bent Functions}
 
-\author{Valer et al.\thanks{Author details and contact email to be finalized prior to submission. Source code, reproducible verification scripts, and Zero-Trust certificates are publicly available at \url{https://github.com/contatofilipevono-rgb/hrsbf-bent-verification}.}}
+\author{Filipe Martins Vono $^{1}$ \and Andr\'e Oliveira Naufel de Toledo $^{1}$ \and Val\'eria Gonzaga Santos $^{2}$}
 
-\date{November 2026 --- Preprint for IACR ePrint Archive}
+\date{November 22, 2026 --- Preprint for IACR ePrint Archive}
 
 \begin{document}
 \maketitle
+\begin{center}\small
+$^{1}$ Centro Universit\'ario de Belo Horizonte (UniBH), Belo Horizonte, Brazil\\
+$^{2}$ American Global Tech University (AGTU)\\
+ORCID: \href{https://orcid.org/0009-0009-4994-8533}{0009-0009-4994-8533}\quad
+\href{https://orcid.org/0000-0002-0619-6820}{0000-0002-0619-6820}\quad
+\href{https://orcid.org/0009-0009-1333-2518}{0009-0009-1333-2518}\\
+Correspondence: \href{mailto:contatofilipevono@gmail.com}{contatofilipevono@gmail.com} \quad|\quad
+Code \& Certificates: \url{https://github.com/contatofilipevono-rgb/hrsbf-bent-verification}
+\end{center}
 
 \begin{abstract}
-St\u{a}nic\u{a} and Maitra (2008) conjectured that no homogeneous rotation-symmetric bent Boolean function (HRSBF) of algebraic degree $d \ge 3$ exists in any even dimension $n$. While substantial progress has been made for cubic functions ($d=3$), the quartic space $H(16,4)$ ($116$ cyclic $C_{16}$-orbits, $2^{116}$ functions) lies far beyond direct exhaustive enumeration and remains open.
+St\u{a}nic\u{a} and Maitra (2008) conjectured that no homogeneous rotation-symmetric bent Boolean function (HRSBF) of algebraic degree $d \ge 3$ exists in any even dimension $n$. While the cubic case ($d=3$) has recently been resolved in all even dimensions via antipodal necessity, the quartic space $H(16,4)$ ($116$ cyclic $C_{16}$-orbits, $2^{116}$ functions) lies far beyond direct exhaustive enumeration and remains open.
 
-We establish a general structural theory for quartic HRSBFs in arbitrary even dimension $n = 2m$, and combine it with exact computer-assisted algebraic and certificate-verified analysis in $H(16,4)$. First, for every even $n=2m$, we prove that restricting any $f \in H(2m,4)$ to the antipodal diagonal $D_m = \{(v,v)\}$ always produces a purely quadratic function, forcing every coset restriction $g_y(v) = f(v, v \oplus y)$ ($y \in \F^m$) to have degree at most $3$ in $v$, with $g_y(v \oplus y) = g_y(v)$ and a cubic part linear in $y$ determined by a single homogeneous cubic tensor $\Phi_0(v)$. Consequently, the pure-$y$ quartic layer $L_4$ ($c_y = f(0,y)$) cancels identically from all $D_m$-shift autocorrelations $\Delta_f(u,u)=0$ and all twisted $D_m$-Parseval identities $\sum_y W_{g_y}(\gamma)^2 = 2^{2m}$; moreover, once $\Phi_0$ is fixed, the symplectic matrix $B_{u,y}$ of every quadratic derivative $D_u g_y(v)$ is constant across all remaining coefficients.
+We establish a general structural theory for quartic HRSBFs in arbitrary even dimension $n = 2m$, and combine it with exact computer-assisted algebraic and certificate-verified analysis in $H(16,4)$. First, for every even $n=2m$, we prove purely analytically that restricting any $f \in H(2m,4)$ to the antipodal diagonal $D_m = \{(v,v)\}$ always produces a purely quadratic function, forcing every coset restriction $g_y(v) = f(v, v \oplus y)$ ($y \in \F^m$) to have degree at most $3$ in $v$, with period $y$ and a cubic part linear in $y$ determined by a single homogeneous cubic tensor $\Phi_0(v)$. Consequently, the pure-$y$ quartic layer $L_4$ ($c_y = f(0,y)$) cancels identically from all $D_m$-shift autocorrelations $\Delta_f(u,u)=0$ and all twisted $D_m$-Parseval identities $\sum_y W_{g_y}(\gamma)^2 = 2^{2m}$; moreover, once $\Phi_0$ is fixed, the symplectic matrix $B_{u,y}$ of every quadratic derivative $D_u g_y(v)$ is constant across all remaining coefficients.
 
-Applying this framework to $H(16,4)$, we reduce all $2^{116}$ functions to three canonical affine cells (\texttt{B0\_00}, \texttt{B0\_11}, \texttt{B1\_11}) of active dimension $N=109$ (and $N=101$ after fixing the $6$-bit cubic-tensor parameter $\eta$). We provide a complete, Zero-Trust certified proof of nonexistence for the entire cell \texttt{B0\_00} (all $64$ $\eta$-states, zero bent witnesses) and certify the first $\Z_{16}^\times$-orbit ($\eta=5$, $2^{44}$ points) of \texttt{B0\_11}. Finally, we uncover a sharp three-way algebraic phase transition explaining the computational gap between the three cells: (i) the number of $C_8$-orbits of diagonal shifts $u \in D_8 \setminus \{0\}$ with maximal Dickson symplectic rank $\le 4$ separates the cells into exactly $5$ (\texttt{B0\_00}), $2$ (\texttt{B0\_11}), and $0$ (\texttt{B1\_11}); (ii) the cubic Carlet--Guillot ideal $\mathrm{CG}(389)+\mathrm{XL}$ is $100\%$ saturated in degree $\le 3$ against all $4{,}116$ Walsh orbits, $4{,}115$ autocorrelations, $36$ twisted $D_8$ duals, $7$ uniserial $\F[C_{16}]$-filtrations, $1{,}866$ chiral mod-$512$ differences, and all $64$ $C_8$-invariant $8$-dimensional subspaces (both at $N=109$ and at fixed $\eta$, $N=101$); and (iii) the unified weighted-degree-$3$ Boolean-ring matrix-pencil left-syzygy module (\texttt{WSYZ-3}) yields $116$ pure-$W$ equations on \texttt{B0\_00}, exactly $2$ genuinely new global pure-$W$ cubics on \texttt{B0\_11} ($c: 370 \to 372$), and functional rank $0$ on \texttt{B1\_11}, establishing a degree-$\ge 5$ algebraic rigidity barrier for the remaining open orbits.
+In $H(16,4)$, we study the three canonical affine cells (\texttt{B0\_00}, \texttt{B0\_11}, \texttt{B1\_11}) of active dimension $N=109$ (and $N=101$ after fixing the $6$-bit cubic-tensor parameter $\eta \in \F^6$). We present a complete, Zero-Trust certified proof of nonexistence for the entire cell \texttt{B0\_00} (all $64$ $\eta$-states, zero bent witnesses) and certify the first $\Z_{16}^\times$-orbit ($\eta=5$, $2^{44}$ points) of \texttt{B0\_11}. Finally, we uncover a sharp three-way algebraic phase transition explaining the computational gap between the three cells: (i) deterministically across \emph{all} $64$ $\eta$-states of each cell, the number of $C_8$-orbits of diagonal shifts $u \in D_8 \setminus \{0\}$ with maximal Dickson symplectic rank $\le 4$ is always $\ge 5$ on \texttt{B0\_00} ($\{5:32, 7:4, 15:4, 35:24\}$), identically $2$ on \texttt{B0\_11} ($64/64$), and identically $0$ on \texttt{B1\_11} ($64/64$); (ii) the cubic ideal $\mathrm{CG}(389)+\mathrm{XL}$ exhibits $100\%$ degree-$\le 3$ saturation (with Reed--Muller false-negative bound $< 2^{-295}$ at $N=109$ and $< 2^{-591}$ at $N=101$) against all $4{,}116$ Walsh orbits, $4{,}115$ autocorrelations, $36$ twisted $D_8$ duals, $7$ uniserial $\F[C_{16}]$-filtrations, $1{,}866$ chiral mod-$512$ differences, and all $64$ $C_8$-invariant $8$-dimensional subspaces; and (iii) the unified weighted-degree-$3$ Boolean-ring matrix-pencil left-syzygy module (\texttt{WSYZ-3}) yields $116$ pure-$W$ equations on \texttt{B0\_00}, exactly $2$ symbolically extracted new global pure-$W$ cubics on \texttt{B0\_11} ($c: 370 \to 372$), and functional rank $0$ on \texttt{B1\_11}, establishing a degree-$\ge 5$ algebraic rigidity barrier for the remaining $39$ open orbits. A standalone Python verifier (\texttt{verify\_h16\_quartic\_eprint.py}) reproduces the universal theorems, the $64$-state Dickson phase transition, positive controls, and manifest audits in under $3$ seconds.
 \end{abstract}
 
 \noindent\textbf{Keywords:} Boolean functions; bent functions; rotation symmetry; St\u{a}nic\u{a}--Maitra conjecture; antipodal decomposition; Dickson rank; matrix-pencil syzygies; algebraic rigidity.
@@ -43,7 +57,7 @@ Applying this framework to $H(16,4)$, we reduce all $2^{116}$ functions to three
 \label{sec:intro}
 % ==============================================================================
 
-A Boolean function $f:\F^n \to \F$ in an even number of variables $n = 2m$ is called \emph{bent}~\cite{rothaus} if every Walsh--Hadamard coefficient
+A Boolean function $f:\F^n \to \F$ in an even number of variables $n = 2m$ is called \emph{bent}~\cite{rothaus,carlet_book,mesnager_book} if every Walsh--Hadamard coefficient
 \[
   W_f(\omega) = \sum_{x \in \F^n} (-1)^{f(x) + \omega \cdot x}, \qquad \omega \in \F^n,
 \]
@@ -55,19 +69,19 @@ vanishes for all $a \neq 0$. A bent function $f$ induces a unique \emph{dual ben
 
 Let $\sigma:\F^n \to \F^n$ be the cyclic coordinate shift $\sigma(x_0, x_1, \dots, x_{n-1}) = (x_{n-1}, x_0, \dots, x_{n-2})$. A function $f$ is \emph{rotation-symmetric} (RSBF) if $f \circ \sigma = f$. It is \emph{homogeneous of degree $d$} if every nonzero term in its algebraic normal form (ANF) has degree $d$; we denote the $\F$-vector space of homogeneous degree-$d$ RSBFs in $n$ variables by $H(n,d)$.
 
-In 2008, St\u{a}nic\u{a} and Maitra~\cite{stanica} posed their celebrated conjecture asserting that $H(n,d)$ contains no bent functions for any $d \ge 3$ and any even $n$. (Nonhomogeneous RSBF bent functions of arbitrary degree up to $n/2$ do exist~\cite{sutang}, so homogeneity is essential.) For cubic functions ($d=3$), nonexistence has been established across broad infinite families, including $n=2p$ for odd primes $p$~\cite{cusick}, short-ANF and derivative families~\cite{meng,zhang,sun}, and recently all even dimensions $n$ not divisible by $32$ via odd-order reduction and $16$-divisible codes~\cite{valer_cubic}. By contrast, the odd-order restriction lemma for $d=3$ relies on the bilinearity of quadratic derivatives $D_a f$ and does not extend directly to quartic functions ($d=4$), whose derivatives are cubic. For $d=4$, exhaustive searches rule out $n=8, 10, 12$, whereas $H(16,4)$ has $\dim_{\F} H(16,4) = 116$ (comprising $112$ full $C_{16}$-orbits of length $16$, three antipodal orbits of length $8$, and one orbit of length $4$), yielding a space of $2^{116} \approx 8.3 \times 10^{34}$ functions far beyond direct enumeration.
+In 2008, St\u{a}nic\u{a} and Maitra~\cite{stanica} posed their conjecture asserting that $H(n,d)$ contains no bent functions for any $d \ge 3$ and any even $n$. (Nonhomogeneous RSBF bent functions of arbitrary degree up to $n/2$ do exist~\cite{sutang}, so homogeneity is essential.) For cubic functions ($d=3$), partial exclusions~\cite{meng,zhang,cusick,sun} culminated in a uniform antipodal-necessity proof settling $H(n,3)$ for all even $n$~\cite{vono_cubic}. By contrast, the odd-order restriction lemma for $d=3$ relies on the bilinearity of quadratic derivatives $D_a f$ and does not extend directly to quartic functions ($d=4$), whose derivatives are cubic. For $d=4$, exhaustive and certificate-verified searches rule out $n=8, 10, 12$~\cite{vono_h12}, whereas $H(16,4)$ has $\dim_{\F} H(16,4) = 116$ (comprising $112$ full $C_{16}$-orbits of length $16$, three antipodal orbits of length $8$, and one orbit of length $4$), yielding a space of $2^{116} \approx 8.3 \times 10^{34}$ functions far beyond direct enumeration.
 
 \paragraph{Contributions and Scientific Scope.}
 This work advances both the general algebraic theory of quartic HRSBFs in arbitrary even dimension $n=2m$ and the concrete structural and computational classification of $H(16,4)$:
 \begin{enumerate}
   \item \textbf{Universal Antipodal Theory for $H(2m,4)$ (Section~\ref{sec:universal}):} We prove (purely analytically, for all even $n=2m$) that $f|_{D_m}$ is always purely quadratic, that every coset restriction $g_y(v) = f(v, v \oplus y)$ has degree $\le 3$ in $v$ with period $y$, that the pure-$y$ quartic layer $L_4$ vanishes identically from all $D_m$-shift autocorrelations and twisted $D_m$-Parseval identities, and that fixing the cubic tensor $\Phi_0$ freezes the symplectic Dickson matrix $B_{u,y}$ of every derivative $D_u g_y(v)$ across all remaining variables. We also formulate a general mod-$2^k$ Walsh-kernel syzygy criterion for $G$-invariant $m$-dimensional subspaces ($G \le C_{2m}$).
-  \item \textbf{Reduction of $H(16,4)$ and Certified Exclusion of \texttt{B0\_00} (Section~\ref{sec:reduction_b000}):} We reduce $H(16,4)$ to three canonical affine cells (\texttt{B0\_00}, \texttt{B0\_11}, \texttt{B1\_11}) of active dimension $N=109$ ($N=101$ at fixed $\eta \in \F^6$), and present a complete, Zero-Trust certified proof of nonexistence for the entire cell \texttt{B0\_00} (all $64$ $\eta$-states, $0$ survivors) together with a complete certified exclusion of the orbit $\eta=5$ of \texttt{B0\_11} ($2^{44}$ points).
-  \item \textbf{Exact Layer Identification and Dickson-Rank Phase Transition (Section~\ref{sec:phase_transition}):} In $H(16,4)$ at fixed $\eta$, we prove that the antipodal layer $L_2$ coincides identically with the quadratic-ideal variable subspace $W$ on \texttt{B1\_11} ($45/45$) and has codimension $1$ on \texttt{B0\_11} ($44/45$), with $\dim(L_3 \setminus L_2) = 46$ and $\dim(L_4 \setminus (L_2+L_3)) = 10$. The count of $C_8$-orbits of diagonal shifts $u \in D_8 \setminus \{0\}$ with maximal Dickson rank $\le 4$ cleanly separates the three cells: $5$ (\texttt{B0\_00}), $2$ (\texttt{B0\_11}), and $0$ (\texttt{B1\_11}).
-  \item \textbf{Universal Degree-$\le 3$ Saturation and Degree-$4$ Matrix-Pencil Rigidity (Sections~\ref{sec:saturation}--\ref{sec:rigidity}):} Using exact positive controls on real $C_{16}$-RSB bent functions, we prove that the Carlet--Guillot cubic ideal $\mathrm{CG}(389)+\mathrm{XL}$ is $100\%$ saturated in degree $\le 3$ across all classical $2$-adic, Walsh, autocorrelation, twisted-dual, uniserial-filtration, chiral-Walsh, and $C_8$-invariant $8$-dimensional subspace constraints (at both $N=109$ and $N=101$). Computing the exact Boolean-ring weighted-degree-$3$ left-syzygy module (\texttt{WSYZ-3}) of the linear-in-$R_F$ matrix pencil (up to $102{,}960$ unknowns) mirrors the Dickson phase transition exactly: $116$ pure-$W$ equations on \texttt{B0\_00}, exactly $2$ brand-new global pure-$W$ cubics on \texttt{B0\_11}, and functional rank $0$ on \texttt{B1\_11}. Untruncated degree-$4$ Macaulay reduction ($73{,}884$ pivots on shattered fibers) confirms a degree-$\ge 5$ algebraic refutation barrier.
+  \item \textbf{Canonical Cells of $H(16,4)$ and Certified Exclusion of \texttt{B0\_00} (Section~\ref{sec:reduction_b000}):} We detail the three canonical affine cells (\texttt{B0\_00}, \texttt{B0\_11}, \texttt{B1\_11}) of active dimension $N=109$ ($N=101$ at fixed $\eta \in \F^6$), and present a complete, Zero-Trust certified proof of nonexistence for the entire cell \texttt{B0\_00} (all $64$ $\eta$-states, $0$ survivors) together with a complete certified exclusion of the orbit $\eta=5$ of \texttt{B0\_11} ($2^{44}$ points).
+  \item \textbf{Exact Layer Identification and Complete $64$-State Dickson-Rank Phase Transition (Section~\ref{sec:phase_transition}):} In $H(16,4)$ at fixed $\eta$, we prove that the antipodal layer $L_2$ coincides identically with the quadratic-ideal variable subspace $W$ on \texttt{B1\_11} ($45/45$) and has codimension $1$ on \texttt{B0\_11} ($44/45$), with $\dim(L_3 \setminus L_2) = 46$ and $\dim(L_4 \setminus (L_2+L_3)) = 10$. Deterministically across \emph{all} $64$ $\eta$-states of each cell, the number of $C_8$-orbits of diagonal shifts $u \in D_8 \setminus \{0\}$ with maximal Dickson rank $\le 4$ cleanly separates the three cells: always $\ge 5$ on \texttt{B0\_00}, identically $2$ on \texttt{B0\_11}, and identically $0$ on \texttt{B1\_11}.
+  \item \textbf{Degree-$\le 3$ Saturation and Degree-$4$ Matrix-Pencil Rigidity (Sections~\ref{sec:saturation}--\ref{sec:rigidity}):} Using degree-independent positive controls on real $C_{16}$-RSB bent functions, we establish degree-$\le 3$ saturation of $\mathrm{CG}(389)+\mathrm{XL}$ across all classical $2$-adic, Walsh, autocorrelation, twisted-dual, uniserial-filtration, chiral-Walsh, and $C_8$-invariant $8$-dimensional subspace constraints (at both $N=109$ and $N=101$, with explicit Reed--Muller false-negative bounds $< 2^{-295}$ and $< 2^{-591}$). Computing the exact deterministic Boolean-ring weighted-degree-$3$ left-syzygy module (\texttt{WSYZ-3}, up to $102{,}960$ unknowns) mirrors the Dickson phase transition exactly: $116$ pure-$W$ equations on \texttt{B0\_00}, exactly $2$ symbolically extracted new global pure-$W$ cubics on \texttt{B0\_11}, and functional rank $0$ on \texttt{B1\_11}. Untruncated degree-$4$ Macaulay reduction ($73{,}884$ pivots on shattered fibers) confirms a degree-$\ge 5$ algebraic refutation barrier.
 \end{enumerate}
 
 \paragraph{Explicit Limitations.}
-We do not claim complete nonexistence of bent functions in all of $H(16,4)$: after eliminating \texttt{B0\_00} completely and $\eta=5$ of \texttt{B0\_11}, $19$ $\Z_{16}^\times$-orbits of \texttt{B0\_11} and $20$ $\Z_{16}^\times$-orbits of \texttt{B1\_11} remain open. All computational theorems in this paper are backed by reproducible scripts and Zero-Trust positive-control audits (checking real $C_{16}$-RSB bent functions and planted solutions with zero mismatches).
+We do not claim complete nonexistence of bent functions in all of $H(16,4)$: after eliminating \texttt{B0\_00} completely and $\eta=5$ of \texttt{B0\_11}, $19$ $\Z_{16}^\times$-orbits of \texttt{B0\_11} and $20$ $\Z_{16}^\times$-orbits of \texttt{B1\_11} remain open. All computational results are backed by reproducible scripts, positive-control audits, and explicit error/scope disclosures.
 
 % ==============================================================================
 \section{Universal Antipodal Coset Structure of $H(2m, 4)$}
@@ -163,7 +177,7 @@ Let $f \in H(2m,4)$ have antipodal decomposition~\eqref{eq:layers}. Then:
       0 & \text{otherwise},
     \end{cases}
   \]
-  where $r_{u,y} = \rk(B_{u,y})$ is constant and $\ell_{u,y}(L_2)$ is linear in $L_2$ alone. In particular, whenever $r_{u,y} = m - 2$ and $y \notin \{0,u\}$, we have $\ker(B_{u,y}) = \langle u, y \rangle$ and $|\Delta_{g_y}(u)| = 2^{(m+2)/2}$ unconditionally for all $(L_2, L_3, L_4)$.
+  where $r_{u,y} = \rk(B_{u,y})$ is constant and $\ell_{u,y}(L_2)$ is linear in $L_2$ alone. In particular, for even $m$, whenever $r_{u,y} = m - 2$ and $y \notin \{0,u\}$, we have $\ker(B_{u,y}) = \langle u, y \rangle$ and $|\Delta_{g_y}(u)| = 2^{(m+2)/2}$ unconditionally for all $(L_2, L_3, L_4)$.
 \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -179,7 +193,7 @@ Bentness of $f$ states that $W_f(\gamma \oplus \beta, \beta) = \pm 2^m$ for all 
 \]
 and $(-1)^{2 c_y} = 1$ cancels $L_4$ identically.
 
-(3) The quadratic part of $D_u g_y(v)$ comes solely from $D_u C_y(v; L_1)$, so its symplectic matrix $B_{u,y}$ depends only on $L_1$, while its linear part $\ell_{u,y}$ depends only on $L_1$ and $L_2$. Since $D_u g_y(v \oplus u) = D_u g_y(v)$ and (by Theorem~\ref{thm:coset_cubic}(1)) $D_u g_y(v \oplus y) = D_u g_y(v)$, both $u$ and $y$ lie in $\ker(B_{u,y})$ and satisfy $\ell_{u,y} \cdot u = \ell_{u,y} \cdot y = 0$ identically. When $y \notin \{0,u\}$ and $r_{u,y} = m-2$, $\dim \ker(B_{u,y}) = 2 = \dim\langle u,y\rangle$, so $\ell_{u,y}$ vanishes identically on $\ker(B_{u,y})$ and Dickson's theorem gives $|\Delta_{g_y}(u)| = 2^{m - (m-2)/2} = 2^{(m+2)/2}$.
+(3) The quadratic part of $D_u g_y(v)$ comes solely from $D_u C_y(v; L_1)$, so its symplectic matrix $B_{u,y}$ depends only on $L_1$, while its linear part $\ell_{u,y}$ depends only on $L_1$ and $L_2$. Since $D_u g_y(v \oplus u) = D_u g_y(v)$ and (by Theorem~\ref{thm:coset_cubic}(1)) $D_u g_y(v \oplus y) = D_u g_y(v)$, both $u$ and $y$ lie in $\ker(B_{u,y})$ and satisfy $\ell_{u,y} \cdot u = \ell_{u,y} \cdot y = 0$ identically. When $m$ is even, $y \notin \{0,u\}$, and $r_{u,y} = m-2$, $\dim \ker(B_{u,y}) = 2 = \dim\langle u,y\rangle$, so $\ell_{u,y}$ vanishes identically on $\ker(B_{u,y})$ and Dickson's theorem gives $|\Delta_{g_y}(u)| = 2^{m - (m-2)/2} = 2^{(m+2)/2}$.
 \end{proof}
 
 We also record the general subgroup Walsh-kernel criterion used throughout Section~\ref{sec:saturation}.
@@ -201,19 +215,25 @@ By Poisson summation on $V$, $\sum_{x \in V} (-1)^{f(x \oplus a) \oplus \gamma \
 \end{proof}
 
 % ==============================================================================
-\section{Reduction of $H(16,4)$ and Certified Exclusion of \texttt{B0\_00}}
+\section{Canonical Cells of $H(16,4)$ and Certified Exclusion of \texttt{B0\_00}}
 \label{sec:reduction_b000}
 % ==============================================================================
 
-In dimension $n=16$ ($m=8$), $\binom{16}{4} = 1{,}820$ quartic monomials partition under $C_{16}$ into $116$ orbits: $112$ full orbits of length $16$, three antipodal orbits of length $8$ with representatives $\{0,1,8,9\}$ ($c_{57}$), $\{0,2,8,10\}$ ($c_{99}$), and $\{0,3,8,11\}$ ($c_{113}$), and one orbit of length $4$ with representative $\{0,4,8,12\}$ ($c_{115}$). By Lemma~\ref{lem:quad_diag}, for every $f \in H(16,4)$,
+In dimension $n=16$ ($m=8$), $\binom{16}{4} = 1{,}820$ quartic monomials partition under $C_{16}$ into $116$ orbits (indexed in lexicographic order of their minimal $4$-subset representative): $112$ full orbits of length $16$, three antipodal orbits of length $8$ with representatives $\{0,1,8,9\}$ ($c_{57}$), $\{0,2,8,10\}$ ($c_{99}$), and $\{0,3,8,11\}$ ($c_{113}$), and one orbit of length $4$ with representative $\{0,4,8,12\}$ ($c_{115}$). By Lemma~\ref{lem:quad_diag}, for every $f \in H(16,4)$,
 \[
   f(v,v) = c_{57} Q_1(v) \oplus c_{99} Q_2(v) \oplus c_{113} Q_3(v) \oplus c_{115} Q_4(v), \qquad v \in \F^8.
 \]
-Using the Carlet--Guillot numerical normal form (NNF)~\cite{carlet_guillot} and diagonal-fiber divisibility constraints, all functions with $c_{115}=1$, with $L \neq c_{99}$ (where $L = \sum_{j \in L_{\mathrm{idx}}} c_j$ is the $16$-orbit antipodal linear form eliminating $c_0$), or with $c_{57} \neq c_{113}$ (up to $\Z_{16}^\times$ equivalence, where multiplication by $3 \pmod{16}$ swaps $c_{57} \leftrightarrow c_{113}$ and fixes $c_{99}, c_{115}$) are excluded, leaving three canonical affine cells of dimension $111$ inside $H(16,4)$:
+Note that $f|_{D_8}$ is \emph{not} required to be bent in general (indeed $f|_{D_8} \equiv 0$ on \texttt{B0\_00}). Instead, define the two explicit linear forms on the $116$ orbit coefficients:
 \begin{align*}
-  \texttt{B0\_00}: &\quad (c_{115}, c_{99}, c_{57}, c_{113}) = (0, 0, 0, 0), \\
-  \texttt{B0\_11}: &\quad (c_{115}, c_{99}, c_{57}, c_{113}) = (0, 0, 1, 1), \\
-  \texttt{B1\_11}: &\quad (c_{115}, c_{99}, c_{57}, c_{113}) = (0, 1, 1, 1).
+  L &:= \sum_{j \in L_{\mathrm{idx}}} c_j, \qquad L_{\mathrm{idx}} = \{0,4,8,14,18,22,42,46,52,56,71,81,85,94,98,106\}, \\
+  K &:= \sum_{j \in K_{\mathrm{idx}}} c_j, \qquad K_{\mathrm{idx}} = \{1,3,9,11,13,15,21,24,28,32,34,38,45,47,53,55,\\
+    &\hspace{9.4em} 67,69,70,72,74,76,78,80,86,89,91,93,97,103,107,109\}.
+\end{align*}
+In the Carlet--Guillot numerical normal form (NNF)~\cite{carlet_guillot} and diagonal-fiber mod-$16$/mod-$32$ constraints implemented in \texttt{DIAGNOSE\_V2\_STRUCTURE.py} and the accompanying $H(16,4)$ reduction suite, the short-orbit divisibility conditions force $c_{115} = 0$, $L = c_{99}$ (eliminating $c_0$), $K = c_{57}$ (from $C_5$ parity), and $c_{57} = c_{113}$ (up to $\Z_{16}^\times$, where multiplication by $3 \pmod{16}$ swaps $c_{57} \leftrightarrow c_{113}$ and fixes $c_{99}, c_{115}$). Notice that the case $(c_{115}, c_{99}, c_{57}, c_{113}) = (0,1,0,0)$ is excluded by the $C_{\texttt{0xf}}$ parity condition ($K = 1$ when $c_{99}=1$, contradicting $K = c_{57} = 0$). This leaves exactly three canonical $111$-dimensional affine cells inside $H(16,4)$:
+\begin{align*}
+  \texttt{B0\_00}: &\quad (c_{115}, c_{99}, c_{57}, c_{113}) = (0, 0, 0, 0) \quad (L=0,\, K=0), \\
+  \texttt{B0\_11}: &\quad (c_{115}, c_{99}, c_{57}, c_{113}) = (0, 0, 1, 1) \quad (L=0,\, K=1), \\
+  \texttt{B1\_11}: &\quad (c_{115}, c_{99}, c_{57}, c_{113}) = (0, 1, 1, 1) \quad (L=1,\, K=1).
 \end{align*}
 Extracting the degree-$\le 3$ Carlet--Guillot NNF equations together with $C_{16}$ cyclotomic cubics and running iterated linear/quadratic XL reduction (\texttt{IR6}) produces our baseline cubic ideal $\mathrm{CG}(389)$ at the cell root:
 \begin{itemize}
@@ -221,7 +241,11 @@ Extracting the degree-$\le 3$ Carlet--Guillot NNF equations together with $C_{16
   \item \texttt{B0\_11}: $N = 109$ active variables, $q = 4$ quadratics, $c = 388$ cubics;
   \item \texttt{B1\_11}: $N = 109$ active variables, $q = 4$ quadratics, $c = 387$--$389$ cubics.
 \end{itemize}
-Fixing the $6$-bit cubic tensor $\eta \in \F^6$ (layer $L_1$; cf.\ Section~\ref{sec:phase_transition}) eliminates $8$--$11$ variables via \texttt{IR6} and splits each cell into $2^6 = 64$ $\eta$-states, reduced by $\Z_{16}^\times$ symmetry (preserving $c_{57}=c_{113}$) to $40$ certified orbit classes on \texttt{B0\_00} and $20$ $\Z_{16}^\times$-orbits on \texttt{B0\_11} and \texttt{B1\_11}. At fixed $\eta$, the quadratic equations define a triangular shear decomposition of the active variables into three disjoint blocks:
+\begin{remark}[Determinism of the Root Ideal]
+The deterministic Carlet--Guillot NNF and cyclotomic core is fixed across all runs; the $1$--$2$ row variation ($c = 387$--$389$) on \texttt{B1\_11} at root stems solely from a fixed wall-clock sampling budget (\texttt{extract\_sec=18.0}) in the auxiliary $V_6/\mathrm{Rot}_4$ seed loop of \texttt{DIAGNOSE\_V2\_STRUCTURE.py}. Upon fixing $\eta$ and running \texttt{IR6}, the reduced ideal stabilizes to exact counts ($c = 370$ on \texttt{B0\_11}, $c = 369$--$370$ on \texttt{B1\_11}).
+\end{remark}
+
+Across all $116$ orbits, the cubic tensor $\Phi_0(v)$ of Theorem~\ref{thm:coset_cubic}(3) has exact $\F$-rank $8$. Since $L = c_{99}$ and $K = c_{57}$ fix $2$ linear combinations of $\Phi_0$ in each cell, the remaining $6$ bits form the parameter $\eta \in \F^6$ ($2^6 = 64$ states per cell), reduced by $\Z_{16}^\times$ symmetry to $40$ certified orbit classes on \texttt{B0\_00} and $20$ $\Z_{16}^\times$-orbits on \texttt{B0\_11} and \texttt{B1\_11}. At fixed $\eta$, the quadratic equations define a triangular shear decomposition of the active variables into three disjoint blocks:
 \[
   (W,\, T,\, R_F), \qquad T_a = Q_a(W) \text{ (quadratic in } W\text{)},
 \]
@@ -244,23 +268,23 @@ with dimensions $(n_W, n_T, n_{R_F}) = (39, 16, 43)$ on \texttt{B0\_00} ($\eta=5
 \end{theorem}
 
 % ==============================================================================
-\section{Exact Layer Identification and the Dickson-Rank Phase Transition}
+\section{Exact Layer Identification and the $64$-State Dickson Phase Transition}
 \label{sec:phase_transition}
 % ==============================================================================
 
 Applying Theorems~\ref{thm:coset_cubic} and~\ref{thm:l4_dickson} explicitly to the three cells of $H(16,4)$ reveals both the exact geometric meaning of the shear variables $(W, T, R_F)$ and the root cause of the stark computational gap separating \texttt{B0\_00}, \texttt{B0\_11}, and \texttt{B1\_11}.
 
-\begin{theorem}[Layer Identification and Dickson Phase Transition in $H(16,4)$]
+\begin{theorem}[Layer Identification and Complete $64$-State Dickson Phase Transition]
 \label{thm:phase_transition}
 For all three cells \texttt{B0\_00}, \texttt{B0\_11}, and \texttt{B1\_11}:
 \begin{enumerate}
-  \item \textbf{Coset cubic tensor:} Across all $256$ cosets $y \in \F^8$ and all $N=109$ root variables, $\deg_v(g_y) \le 3$ holds identically, and the $56$-monomial cubic tensor $\Phi_0(v)$ has exact $\F$-rank $6$ at root and rank $0$ (constant) upon fixing $\eta \in \F^6$. Thus the $6$-bit parameter $\eta$ parameterizes $\Phi_0(v)$ bijectively.
+  \item \textbf{Coset cubic tensor:} Across all $256$ cosets $y \in \F^8$ and all $116$ orbits of $H(16,4)$, $\deg_v(g_y) \le 3$ and $g_y(v \oplus y) = g_y(v)$ hold identically. Inside each cell ($L, K$ fixed), the $56$-monomial cubic tensor $\Phi_0(v)$ has exact $\F$-rank $6$ at root and rank $0$ (constant) upon fixing $\eta \in \F^6$.
   \item \textbf{Exact alignment of $(L_2, L_3, L_4)$ with $(W, T, R_F)$:} At fixed $\eta$, the antipodal layers in~\eqref{eq:layers} satisfy the exact dimensions in Table~\ref{tab:layers}. In particular, on \texttt{B1\_11}, $L_2$ coincides \emph{identically} with $W$ ($\rk_W = 45/45$, $\rk_T = \rk_{R_F} = 0$); on \texttt{B0\_11}, $W$ is a codimension-$1$ hyperplane of $L_2$ ($44/45$); and on all three cells, the $L_4$-eliminated quotient $\dim(L_4 \setminus (L_2+L_3)) = 10$ consists exclusively of variables in $T + R_F$ (zero pure-$W$ contribution).
-  \item \textbf{Three-way Dickson-rank separation:} Across all $35$ $C_8$-orbits of nonzero diagonal shifts $u \in D_8 \setminus \{0\}$, the number of orbits for which the constant symplectic matrix $B_{u,y}(\eta)$ never attains rank $6$ (i.e., $\max_{y \in \F^8} \rk(B_{u,y}(\eta)) \le 4$) is:
+  \item \textbf{Complete $64$-state three-way Dickson-rank separation:} Deterministically across \emph{all} $64$ $\eta$-states of each cell and all $35$ $C_8$-orbits of nonzero diagonal shifts $u \in D_8 \setminus \{0\}$, let $N_{\le 4}(\eta)$ denote the number of $C_8$-orbits of $u$ for which $\max_{y \in \F^8} \rk(B_{u,y}(\eta)) \le 4$. Then:
   \begin{itemize}
-    \item \texttt{B0\_00} ($\eta=5$): \textbf{$5$ orbits} ($u \in \{\texttt{0x11}, \texttt{0x33}, \texttt{0x55}, \texttt{0x77}, \texttt{0xFF}\}$), with $120$ rank-$2$ cosets on $u \in \{\texttt{0x55}, \texttt{0xFF}\}$;
-    \item \texttt{B0\_11} ($\eta \in \{5,0\}$): \textbf{$2$ orbits} ($u \in \{\texttt{0x55}, \texttt{0xFF}\}$), with rank histogram $\{0:4,\, 2:28,\, 4:224\}$;
-    \item \texttt{B1\_11} ($\eta \in \{3,0\}$): \textbf{$0$ orbits} (all $35$ shifts reach rank $6$; on $u \in \{\texttt{0x55}, \texttt{0xFF}\}$, $192$ of $256$ cosets have rank $6$).
+    \item \texttt{B0\_00} ($L=0, K=0$): $N_{\le 4}(\eta) \ge 5$ for \textbf{all $64/64$ states}, with exact histogram $\{5:32,\, 7:4,\, 15:4,\, 35:24\}$;
+    \item \texttt{B0\_11} ($L=0, K=1$): $N_{\le 4}(\eta) = 2$ identically for \textbf{all $64/64$ states} ($u \in \{\texttt{0x55}, \texttt{0xFF}\}$);
+    \item \texttt{B1\_11} ($L=1, K=1$): $N_{\le 4}(\eta) = 0$ identically for \textbf{all $64/64$ states} (every one of the $35$ shifts attains rank $6$ on every $\eta$-state).
   \end{itemize}
 \end{enumerate}
 \end{theorem}
@@ -282,23 +306,25 @@ Cell ($\eta$) & $(n_W, n_T, n_{R_F})$ & $\dim L_2$ (pure $W$) & $\dim(L_3 \setmi
 \end{table}
 
 \begin{remark}[Mechanism of the Phase Transition]
-By Theorem~\ref{thm:l4_dickson}(3), every rank-$6$ coset ($r_{u,y} = 6$, $y \notin \{0,u\}$) contributes $\pm 32$ unconditionally regardless of $L_2$, so low-degree pure-$L_2$ parity constraints from~\eqref{eq:diag_ac} only arise cleanly when $r_{u,y} \le 4$ across all cosets (producing degree-$2$ Dickson indicators $(1+\alpha_1(L_2))(1+\alpha_2(L_2))$ on rank-$4$ cosets). The exact progression $5 \to 2 \to 0$ of $\max\text{-rank}\le 4$ shifts explains from first principles why \texttt{B0\_00} generates rich low-degree pure-$W$ constraints, \texttt{B0\_11} leaks only a narrow residual, and \texttt{B1\_11} is maximally rigid.
+By Theorem~\ref{thm:l4_dickson}(3) (for even $m=8$), every rank-$6$ coset ($r_{u,y} = 6$, $y \notin \{0,u\}$) contributes $\pm 32$ unconditionally regardless of $L_2$, so low-degree pure-$L_2$ parity constraints from~\eqref{eq:diag_ac} only arise cleanly when $r_{u,y} \le 4$ across all cosets (producing degree-$2$ Dickson indicators $(1+\alpha_1(L_2))(1+\alpha_2(L_2))$ on rank-$4$ cosets). The exact universal progression $\ge 5 \to 2 \to 0$ across all $64/64$ $\eta$-states explains from first principles why \texttt{B0\_00} generates rich low-degree pure-$W$ constraints, \texttt{B0\_11} leaks only a narrow residual, and \texttt{B1\_11} is maximally rigid.
 \end{remark}
 
 % ==============================================================================
-\section{Universal Degree-$\le 3$ Saturation of $\mathrm{CG}(389)+\mathrm{XL}$}
+\section{Degree-$\le 3$ Saturation of $\mathrm{CG}(389)+\mathrm{XL}$}
 \label{sec:saturation}
 % ==============================================================================
 
-A natural pure-theoretical strategy to close \texttt{B0\_11} and \texttt{B1\_11} without branching is to adjoin stronger $2$-adic, Fourier, or subgroup-restriction invariants to $\mathrm{CG}(389)$ in order to obtain new degree-$\le 3$ equations in the $109$ (or $101$) active coefficients. We systematically tested every major family of such constraints using exact integer arithmetic, OpenMP C M\"obius ANF extraction, and mandatory Zero-Trust positive controls on two explicit real $C_{16}$-RSB bent functions:
+A natural pure-theoretical strategy to close \texttt{B0\_11} and \texttt{B1\_11} without branching is to adjoin stronger $2$-adic, Fourier, or subgroup-restriction invariants to $\mathrm{CG}(389)$ in order to obtain new degree-$\le 3$ equations in the $109$ (or $101$) active coefficients. We systematically audited every major family of such constraints using exact integer arithmetic, OpenMP C M\"obius ANF extraction, and mandatory Zero-Trust positive controls on two explicit real $C_{16}$-RSB bent functions:
 \[
   q_{b1}(x) = \sum_{i=0}^7 x_i x_{i+8}, \qquad q_{d1}(x) = q_{b1}(x) \oplus \sum_{i=0}^{15} x_i x_{(i+1)\bmod 16}.
 \]
-Every derived congruence was verified to hold with zero violations on both $q_{b1}$ and $q_{d1}$ before evaluating it on $H(16,4)$.
+Because Proposition~\ref{prop:subgroup_syz} and all Walsh, autocorrelation, twisted-dual, uniserial-filtration, and $C_8$-subspace congruences depend \emph{only} on bentness and $C_{16}$-invariance—not on algebraic degree—every derived congruence must hold with zero violations on $q_{b1}$ and $q_{d1}$ regardless of their quadratic degree. This positive-control discipline caught subtle implementation bugs during development (including cyclic vs.\ negacyclic $\sigma$-orbits on $D_8 + (0,\texttt{0xFF})$ and Poisson normalization constants on $M_k$) before any $H(16,4)$ inference was made.
 
-\begin{theorem}[Universal Degree-$\le 3$ Saturation of $\mathrm{CG}(389)+\mathrm{XL}$]
+\begin{theorem}[Degree-$\le 3$ Saturation of $\mathrm{CG}(389)+\mathrm{XL}$]
 \label{thm:saturation}
-On cells \texttt{B0\_00}, \texttt{B0\_11}, and \texttt{B1\_11}, let $\mathcal{I}_{\le 3}$ denote the $\F$-linear span of $\mathrm{CG}(389)$ together with all degree-$3$ XL multiples $x_k Q_a(x)$ of its quadratics ($\dim \mathcal{I}_{\le 3} = 1{,}031$, $820$, $819$ at root $N=109$; and $1{,}953$, $2{,}104$, $2{,}103$ at fixed $\eta$, $N=101$). Across all families listed in Table~\ref{tab:saturation}, \textbf{zero} new degree-$\le 3$ equations escape $\mathcal{I}_{\le 3}$ at root $N=109$, and all $64$ $C_8$-invariant $8$-dimensional subspaces likewise yield \textbf{zero} new degree-$\le 3$ equations at fixed $\eta$ ($N=101$).
+On cells \texttt{B0\_00}, \texttt{B0\_11}, and \texttt{B1\_11}, let $\mathcal{I}_{\le 3}$ denote the $\F$-linear span of $\mathrm{CG}(389)$ together with all degree-$3$ XL multiples $x_k Q_a(x)$ of its quadratics ($\dim \mathcal{I}_{\le 3} = 1{,}031$, $820$, $819$ at root $N=109$; and $1{,}953$, $2{,}104$, $2{,}103$ at fixed $\eta$, $N=101$). Across all families listed in Table~\ref{tab:saturation}, \textbf{zero} new degree-$\le 3$ equations escape $\mathcal{I}_{\le 3}$ at root $N=109$, and all $64$ $C_8$-invariant $8$-dimensional subspaces likewise yield \textbf{zero} new degree-$\le 3$ equations at fixed $\eta$ ($N=101$, tested on $\eta=5$ for \texttt{B0\_00}, $\eta \in \{5,0\}$ for \texttt{B0\_11}, and $\eta \in \{3,0\}$ for \texttt{B1\_11}).
+
+\smallskip\noindent\emph{Statistical soundness note.} Functional linear independence from $\mathcal{I}_{\le 3}$ was tested on $P = 1{,}536$ (root) and $P = 3{,}072$ (fixed $\eta$) independent uniform points in $\F^N$. By the minimum distance $2^{N-3}$ of the Reed--Muller code $\mathrm{RM}(3,N)$, any nonzero polynomial of degree $\le 3$ vanishes at a uniform random point with probability at most $7/8$, so the false-negative probability per candidate is bounded above by $(7/8)^{1536} < 2^{-295}$ (root) and $(7/8)^{3072} < 2^{-591}$ (fixed $\eta$). Every candidate passing degree-$\le 3$ screening is symbolically extracted via exact M\"obius inversion and deterministically verified.
 \end{theorem}
 
 \begin{table}[t]
@@ -321,8 +347,8 @@ All $64$ $C_8$-inv.\ $8$-dim subs. & $36$ graphs $V_p$ + $21$ twists + $7$ mixed
 \end{tabular}
 \end{table}
 
-\paragraph{Remark on Anti-Diagonal Negacyclic Counts and Characteristic-$0$ Krawtchouk LP.}
-On the anti-diagonal coset $D_8 + (0,\texttt{0xFF})$, $\sigma$ acts \emph{negacyclically} via $\tau(v) = \rot_8(v) \oplus \texttt{0xFF}$, partitioning the $256$ points into $16$ orbits of length $16$ ($2^{16} = 65{,}536$ dual states). Exact enumeration yields precisely $\binom{16}{12} = 1{,}820$ survivors on \texttt{B0\_11} and $\binom{16}{10} = 8{,}008$ on \texttt{B1\_11}, reflecting fixed anti-diagonal dual Hamming weights ($192$ or $64$ on \texttt{B0\_11}; $160$ or $96$ on \texttt{B1\_11}). We also tested an exact characteristic-$0$ integer linear program (HiGHS MILP) coupling the $17$ Krawtchouk identities $\sum_{w=0}^{16} K_k(w;16)(\binom{16}{w}-2A_w) = 256(\binom{16}{k}-2B_k)$ with $A_0=A_1=A_2=A_3=0$, exact $C_{16}$-orbit size multiplicities, and the exact fixed $D_8$ weight distributions of \texttt{B0\_11} ($\{4:16, 8:32, 12:16\}$) and \texttt{B1\_11} ($\{4:24, 6:32, 8:48, 10:32, 12:24\}$); both MILPs remain feasible with unrestricted weight-$4$ orbit count $n_{16,A}[4] \in [0, 112]$.
+\paragraph{Anti-Diagonal Negacyclic Counts and Characteristic-$0$ Krawtchouk MILP.}
+On the anti-diagonal coset $D_8 + (0,\texttt{0xFF})$, $\sigma$ acts \emph{negacyclically} via $\tau(v) = \rot_8(v) \oplus \texttt{0xFF}$, partitioning the $256$ points into $16$ orbits of length $16$ ($2^{16} = 65{,}536$ dual states). Exact enumeration yields precisely $\binom{16}{12} = 1{,}820$ survivors on \texttt{B0\_11} and $\binom{16}{10} = 8{,}008$ on \texttt{B1\_11}, reflecting fixed anti-diagonal dual Hamming weights ($192$ or $64$ on \texttt{B0\_11}; $160$ or $96$ on \texttt{B1\_11}). We also solved an exact characteristic-$0$ integer linear program (HiGHS MILP) coupling the $17$ Krawtchouk identities $\sum_{w=0}^{16} K_k(w;16)(\binom{16}{w}-2A_w) = 256(\binom{16}{k}-2B_k)$ with $A_0=A_1=A_2=A_3=0$, exact $C_{16}$-orbit size multiplicities, and the exact fixed $D_8$ weight distributions of \texttt{B0\_11} ($\{4:16, 8:32, 12:16\}$) and \texttt{B1\_11} ($\{4:24, 6:32, 8:48, 10:32, 12:24\}$); both MILPs remain feasible with unrestricted weight-$4$ orbit count $n_{16,A}[4] \in [0, 112]$.
 
 % ==============================================================================
 \section{Matrix-Pencil Left-Syzygy Hierarchy and the Degree-4 Barrier}
@@ -335,7 +361,7 @@ Because Theorem~\ref{thm:certified_exclusions}(2) proves that the linear-in-$R_F
 \]
 yields sound, global ($k_{\mathrm{fix}} = 0$) pure-$W$ polynomial equations without branching.
 
-We solved the complete hierarchy of exact Boolean-ring left-syzygy modules globally at $k_{\mathrm{fix}}=0$ using a two-stage OpenMP/AVX2 GF(2) solver: Stage~1 extracts the exact homogeneous top-degree nullspace of dimension $H$ (up to $102{,}960$ unknowns and $525{,}030$ equations), and Stage~2 substitutes the $H$-dimensional basis into the complete lower-degree Boolean-ring conditions ($W_k^2 = W_k$) across \emph{all} $n_{R_F}$ columns, with Zero-Trust verification of every returned syzygy on $64$ random points $W \in \F^{n_W}$ ($0$ mismatches):
+We solved the complete hierarchy of exact deterministic Boolean-ring left-syzygy modules globally at $k_{\mathrm{fix}}=0$ using a two-stage OpenMP/AVX2 GF(2) solver: Stage~1 extracts the exact homogeneous top-degree nullspace of dimension $H$ (up to $102{,}960$ unknowns and $525{,}030$ equations), and Stage~2 substitutes the $H$-dimensional basis into the complete lower-degree Boolean-ring conditions ($W_k^2 = W_k$) across \emph{all} $n_{R_F}$ columns, with Zero-Trust verification of every returned syzygy on $64$ random points $W \in \F^{n_W}$ ($0$ mismatches):
 \begin{itemize}
   \item \texttt{SYZ-1A}: $\deg(v) \le 1$ on \texttt{M1\_strict} alone;
   \item \texttt{SYZ-1C}: $\deg(v) \le 1$ on full $\mathrm{DRF}_1^{\mathrm{quad}} = \texttt{M1\_strict} \cup \texttt{Block\_A3} \cup \texttt{Block\_D2}$;
@@ -345,11 +371,11 @@ We solved the complete hierarchy of exact Boolean-ring left-syzygy modules globa
 
 \begin{theorem}[Exact Matrix-Pencil Syzygy Spectrum and Degree-4 Rigidity]
 \label{thm:syzygy_rigidity}
-At global $k_{\mathrm{fix}} = 0$, the exact Boolean-ring left-syzygy modules satisfy Table~\ref{tab:syzygies}. Specifically:
+At global $k_{\mathrm{fix}} = 0$, the exact deterministic Boolean-ring left-syzygy modules satisfy Table~\ref{tab:syzygies}. Specifically:
 \begin{enumerate}
   \item \texttt{SYZ-1A} and \texttt{SYZ-2A} have exact Boolean-ring nullity $0$ across all tested orbits of all three cells (every homogeneous degree-$2$ null vector—$2{,}456$ on \texttt{B0\_00} and $43$--$45$ on \texttt{B0\_11}—arises from homogeneous degree-$1$ lifts $W_c u(W)$ that fail the idempotence relation $W_k^2 = W_k$).
   \item In \texttt{WSYZ-3}, \texttt{B0\_00} ($\eta=5$) yields $116$ linearly independent pure-$W$ equations ($1$ cubic, $34$ quartics, $81$ quintics).
-  \item On \texttt{B0\_11} ($\eta \in \{5, 0, 9, 11\}$), \texttt{SYZ-1C} and \texttt{WSYZ-3} yield exact $512$-point functional rank $2$: two genuinely new global pure-$W$ cubics outside $\mathrm{CG}(389)$ (verified with $0/512$ ANF mismatches; pulling back to the $109$ original variables increases the fixed-$\eta$ cubic count from $c=370$ to $c=372$ on all $4/4$ tested orbits, without triggering an immediate linear/quadratic cascade at $k_{\mathrm{fix}}=0$).
+  \item On \texttt{B0\_11} ($\eta \in \{5, 0, 9, 11\}$), \texttt{SYZ-1C} and \texttt{WSYZ-3} yield exact $512$-point functional rank $2$: two genuinely new global pure-$W$ cubics outside $\mathrm{CG}(389)$ (symbolically extracted in exact degree-$3$ ANF with $0/512$ verification mismatches; pulling back to the $109$ original variables increases the fixed-$\eta$ cubic count from $c=370$ to $c=372$ on all $4/4$ tested orbits, without triggering an immediate linear/quadratic cascade at $k_{\mathrm{fix}}=0$).
   \item On \texttt{B1\_11} ($\eta \in \{3, 0, 8, 10\}$), \texttt{SYZ-1C} and \texttt{WSYZ-3} yield \textbf{exact functional rank $0$}: every single Boolean-ring syzygy ($35$ on $\eta=3$; $7$ on $\eta \in \{0, 8, 10\}$) annihilates $b(W)$ identically ($0 = 0$).
 \end{enumerate}
 \end{theorem}
@@ -382,25 +408,31 @@ Even after fixing $k_{\mathrm{fix}} = 16$ linear forms on \texttt{B0\_11} ($\eta
 \label{sec:repro}
 % ==============================================================================
 
-All scripts, GitHub Actions workflow logs, GCP high-memory logs, and Zero-Trust JSON certificates are archived at \url{https://github.com/contatofilipevono-rgb/hrsbf-bent-verification} under \texttt{research\_updates/2026\_11\_17\_h16\_c99\_carbon\_hard/}:
+A self-contained, zero-C-dependency Python verifier (\texttt{verify\_h16\_quartic\_eprint.py}) at the root of \url{https://github.com/contatofilipevono-rgb/hrsbf-bent-verification} reproduces Lemma~\ref{lem:quad_diag}, Theorems~\ref{thm:coset_cubic}--\ref{thm:l4_dickson}, the complete $64$-state Dickson phase transition (Theorem~\ref{thm:phase_transition}(3)), the $q_{b1}, q_{d1}$ positive controls, and both JSON certificate manifest integrity checks in under $3$ seconds. All full-scale OpenMP/C scripts, GitHub Actions logs, GCP high-memory logs, and JSON certificates are archived under \texttt{research\_updates/2026\_11\_17\_h16\_c99\_carbon\_hard/}:
 \begin{itemize}
   \item \texttt{B0\_00\_GLOBAL\_UNSAT\_CERT\_MANIFEST.json} and \texttt{B0\_11\_eta5\_UNSAT\_CERT.json}: complete sharded certificates for Theorem~\ref{thm:certified_exclusions}.
-  \item \texttt{SOLVE\_STEP63A}--\texttt{SOLVE\_STEP67B} and \texttt{SOLVE\_STEP71A}--\texttt{SOLVE\_STEP71C}: exact $2$-adic saturation, antipodal layer identification, constant-Dickson-rank census, and $64$ $C_8$-invariant subspace audits (Theorems~\ref{thm:phase_transition} and~\ref{thm:saturation}).
+  \item \texttt{SOLVE\_STEP63A}--\texttt{SOLVE\_STEP67B} and \texttt{SOLVE\_STEP71A}--\texttt{SOLVE\_STEP71C}: $2$-adic saturation, antipodal layer identification, constant-Dickson-rank census, and $64$ $C_8$-invariant subspace audits (Theorems~\ref{thm:phase_transition} and~\ref{thm:saturation}).
   \item \texttt{SOLVE\_STEP64A}, \texttt{SOLVE\_STEP68}--\texttt{SOLVE\_STEP70}: global matrix-pencil syzygy modules (\texttt{SYZ-1A/C}, \texttt{SYZ-2A}, \texttt{WSYZ-3}), pullback of the $2$ new \texttt{B0\_11} cubics, and untruncated $64$-GB \texttt{MAC\_D4} audit (Theorem~\ref{thm:syzygy_rigidity}).
 \end{itemize}
 
 \paragraph{Open Problem for Complete Closure of $H(16,4)$.}
 Only $39$ $\Z_{16}^\times$-orbits remain open ($19$ in \texttt{B0\_11}, $20$ in \texttt{B1\_11}). Our results show that closing them requires moving strictly beyond degree-$\le 4$ polynomial elimination on $\mathrm{DRF}_1$: either (i) incorporating the quadratic-in-$R_F$ block \texttt{Block\_B} ($113$ rows on \texttt{B0\_11}, $147$ rows on \texttt{B1\_11}) inside XOR-native CDCL/Gaussian solvers (such as CryptoMiniSat~5) on the $91$-variable $L_4$-eliminated subsystem, or (ii) discovering a genuinely higher-degree or non-modular obstruction on the integer Dickson sums~\eqref{eq:diag_ac}.
 
-\begin{thebibliography}{10}
+\begin{thebibliography}{12}
 \bibitem{carlet_guillot}
 C.~Carlet and P.~Guillot, A new representation of Boolean functions, in \emph{Applied Algebra, Algebraic Algorithms and Error-Correcting Codes (AAECC-13)}, LNCS 1719, Springer (1999), 94--103.
+
+\bibitem{carlet_book}
+C.~Carlet, \emph{Boolean Functions for Cryptography and Coding Theory}, Cambridge University Press (2021).
 
 \bibitem{cusick}
 T.~W.~Cusick and E.~M.~Sanger, Rotation symmetric bent Boolean functions for $n=2p$, \href{https://arxiv.org/abs/1708.09313}{arXiv:1708.09313} (2017).
 
 \bibitem{meng}
 Q.~Meng, L.~Chen and F.-W.~Fu, On homogeneous rotation symmetric bent functions, \emph{Discrete Applied Mathematics} 158(10) (2010), 1111--1117.
+
+\bibitem{mesnager_book}
+S.~Mesnager, \emph{Bent Functions: Fundamentals and Results}, Springer (2016).
 
 \bibitem{rothaus}
 O.~S.~Rothaus, On ``bent'' functions, \emph{Journal of Combinatorial Theory, Series A} 20(3) (1976), 300--305.
@@ -414,8 +446,11 @@ S.~Su and X.~Tang, On the systematic constructions of rotation symmetric bent fu
 \bibitem{sun}
 L.~Sun, Z.~Shi, J.~Liu and F.-W.~Fu, On the conjecture about the nonexistence of homogeneous rotation symmetric bent functions, \emph{Designs, Codes and Cryptography} 94, article 93 (2026).
 
-\bibitem{valer_cubic}
-Valer et al., Odd-order reduction and a divisibility obstruction for cubic homogeneous rotation-symmetric bent functions, working manuscript (2026), \url{https://github.com/contatofilipevono-rgb/hrsbf-bent-verification}.
+\bibitem{vono_cubic}
+F.~M.~Vono, Antipodal necessity and the cubic case of the homogeneous rotation-symmetric bent function conjecture, preprint (2026), \href{https://doi.org/10.6084/m9.figshare.34165260.v2}{doi:10.6084/m9.figshare.34165260.v2}.
+
+\bibitem{vono_h12}
+F.~M.~Vono, A.~O.~N.~de Toledo and V.~G.~Santos, Nonexistence of quartic homogeneous rotation-symmetric bent functions in twelve variables, preprint and Lean verification package (2026), \url{https://github.com/contatofilipevono-rgb/hrsbf-bent-verification}.
 
 \bibitem{ward}
 H.~N.~Ward, Weight polarization and divisibility, \emph{Discrete Mathematics} 83(2--3) (1990), 315--326.
