@@ -918,9 +918,10 @@ def run_all4116_walsh_probe(
                 flush=True,
             )
 
-            # Quick 50-point non-triviality filter on true_drops (eliminates identical 0=0 syzygies before ANF!)
-            # Also detects INSTANT 1=0 (constant 1 on all 50 points)!
-            R_nt = 64
+            # Functional basis reduction over 512 random points: pick ALL linearly independent
+            # non-trivial deg<=3 combo drops (NOT redundant first 256!) + detect instant 1=0!
+            R_nt = 512
+            R_nt_w = R_nt // 64
             lo_nt, hi_nt = rand_u128_pts(N, R_nt, rng)
             W_nt = np.zeros((R_nt, M4), dtype=np.int32)
             lib65.walsh_batch_c(
@@ -931,24 +932,24 @@ def run_all4116_walsh_probe(
                 om4.ctypes.data_as(ctypes.POINTER(ctypes.c_uint16)), M4,
                 W_nt.ctypes.data_as(ctypes.POINTER(ctypes.c_int32)),
             )
-            # Residual bit matrix res_nt[M4, 1] over 64 points
-            res_nt = np.zeros(M4, dtype=np.uint64)
+            # Build res_nt[M4, R_nt_w]
+            res_nt = np.zeros((M4, R_nt_w), dtype=np.uint64)
             for j in range(M4):
                 col = W_nt[:, j].astype(np.uint32)
                 b = int(bt4[j])
                 t = int(tg4[j])
-                bits64 = ((col >> b) & 1) ^ t
-                val = np.uint64(0)
-                for p in range(R_nt):
-                    if bits64[p]:
-                        val |= np.uint64(1 << p)
-                res_nt[j] = val
+                bits_arr = ((col >> b) & 1) ^ t
+                packed = np.packbits(bits_arr.astype(np.uint8), bitorder="little").view(np.uint64)
+                res_nt[j] = packed
 
+            all_ones = np.full(R_nt_w, np.uint64(0xFFFFFFFFFFFFFFFF), dtype=np.uint64)
             n_id0, n_const1, n_nontriv = 0, 0, 0
-            nontriv_drop_ks = []
+            # Online GF(2) echelon over 512-bit functional eval vectors -> exact independent basis!
+            piv_eval = {}
+            indep_drop_ks = []
             for k in true_drops:
                 mask_row = out_null[k]
-                acc = np.uint64(0)
+                acc = np.zeros(R_nt_w, dtype=np.uint64)
                 for w in range(R_w):
                     bits_w = int(mask_row[w])
                     while bits_w:
@@ -956,27 +957,37 @@ def run_all4116_walsh_probe(
                         idx_r = (w << 6) + lb.bit_length() - 1
                         acc ^= res_nt[idx_r]
                         bits_w ^= lb
-                if acc == 0:
+                if not np.any(acc):
                     n_id0 += 1
-                elif acc == np.uint64(0xFFFFFFFFFFFFFFFF):
+                    continue
+                if np.array_equal(acc, all_ones):
                     n_const1 += 1
-                    nontriv_drop_ks.append(k)
                 else:
                     n_nontriv += 1
-                    nontriv_drop_ks.append(k)
+                # Echelonize acc against piv_eval (using Python int for fast 512-bit XOR)
+                v_int = 0
+                for ww in range(R_nt_w):
+                    v_int |= int(acc[ww]) << (64 * ww)
+                while v_int:
+                    lb = v_int & -v_int
+                    if lb in piv_eval:
+                        v_int ^= piv_eval[lb]
+                    else:
+                        piv_eval[lb] = v_int
+                        indep_drop_ks.append(k)
+                        break
 
             print(
-                f"  [{tag}] *** 64-PT FUNCTIONAL CLASSIFICATION OF {len(true_drops)} COMBO DROPS ***: "
-                f"id_0eq0={n_id0}, *** CONST_1EQ0={n_const1} ***, NONTRIV_DEG<=3={n_nontriv}!",
+                f"  [{tag}] *** 512-PT FUNCTIONAL CLASSIFICATION OF {len(true_drops)} COMBO DROPS ***: "
+                f"id_0eq0={n_id0}, *** CONST_1EQ0={n_const1} ***, NONTRIV={n_nontriv}, "
+                f"EXACT_FUNC_RANK={len(indep_drop_ks)}!",
                 flush=True,
             )
 
-            # Keep up to 256 non-trivial combo drops (plus all single_d3) for exact B(0,3) ANF extraction!
-            # Build unified eq list: [all M4 deg4 eqs] + [all single_d3 eqs]
             used_om = list(om4.tolist())
             used_bt = list(bt4.tolist())
             used_tg = list(tg4)
-            for k in nontriv_drop_ks[:256]:
+            for k in indep_drop_ks[:512]:
                 verified_combo_masks.append(out_null[k].copy())
 
     # Add single_d3 equations (filter out identical 0=0 on 64 pts first!)
@@ -1246,7 +1257,7 @@ def main():
     print(f"\n==================== PART 2: [{cell_name}] FIXED-ETA (k_fix=0) ====================", flush=True)
     etas_p2 = [5, 0] if cell_name == "B0_11" else [3, 0]
     for em in etas_p2:
-        ex_eta = [(1 << eta_free[b], (em >> b) & 1) for b in range(len(eta_free))]
+        ex_eta = [(eta_free[b], (em >> b) & 1) for b in range(len(eta_free))]
         sr = s9.run_branch_cascade(
             lib9, root["_buf"], root["_quad_ids"], root["_cub_ids"], root["_lin_pivs"],
             ex_eta, tbl, max_xl_rounds=25, verify_subst=False,
