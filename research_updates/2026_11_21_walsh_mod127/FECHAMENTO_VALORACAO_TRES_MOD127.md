@@ -6,34 +6,29 @@ W_f(b)=-512+2^{17}k(b),\qquad k(b)\bmod127\in\{0,1\}.
 \]
 Ponha \(T(b)=k(b)(k(b)-1)/2\). Provamos que a menor valoração dos valores não nulos de \(T\) **não pode ser três**. Esta nota usa os limites de [árvore de encurtamento de R19](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/blob/be3964511c9220891daca44cf88caa43532c1ea9/research_updates/2026_11_21_walsh_mod127/VALORACAO_TRES_DELSARTE_MOD127.md) e acrescenta uma cota de energia para a célula de codimensão dois que fica fora das três fatias de \(P\).
 
-## 1. Energia mínima numa célula sem pontos com \(32\nmid T\)
+## 1. Energia mínima em codimensão dois
 
 Para um conjunto espectral \(J\), defina a energia normalizada
 \[
 \mathcal E(J)=2^{-64}\sum_{b\in J}W_f(b)^2.
 \]
-Se \(J\) é um subespaço afim de codimensão dois e \(32\mid T\) em todo \(J\), afirmamos que
+Para todo subespaço afim \(J\) de codimensão dois, vale
 \[
 \mathcal E(J)>\frac{5}{128},\qquad \sum_{b\in J}T(b)>18\,866\,304.                 \tag{1}
 \]
 As duas cotas valem em todo o ramo global, em qualquer valoração mínima.
 
-Escolha duas formas afins \(\ell_1,\ell_2\) de partes lineares \(v,w\) cujo produto de bits é o indicador de \(J\). A identidade de momentos de ordem quatro é
-\[
-\sum_b T(b)\ell_1(b)\ell_2(b)\ell_3(b)\ell_4(b)
-\equiv 16 [f]_4(v,w,v_3,v_4)\pmod {32}.
-\]
-Ela segue tomando diferenças da congruência \(\widehat T(x)\equiv128+256f(x)\pmod{512}\); na expansão afim, os momentos inferiores zeram módulo 32. A hipótese sobre \(J\) dá \(\iota_{v,w}[f]_4=0\). Logo a segunda derivada \(D_vD_wf\) tem grau no máximo um e é periódica nas direções \(v,w\). [Identidades de momentos e de autocorrelação](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/blob/b6a94b168a62fd31cc4286b4d838bc7fb1dda209/research_updates/2026_11_21_walsh_mod127/CORTES_E_POSTO_VALORACAO_TRES_MOD127.md).
+Sejam \(v,w\) duas normais independentes à direção de \(J\). A segunda derivada \(D_vD_w f\) tem grau no máximo dois e é periódica nas direções \(v,w\).
 
 Escreva o espaço físico como \(\langle v,w\rangle\oplus V'\), com \(\dim V'=30\), e ponha
 \[
 f(x,y)=F(y)+x_1g_1(y)+x_2g_2(y)+x_1x_2 h(y)
 \]
-em coordenadas \(x\) na primeira parcela e \(y\) na segunda. Aqui \(g_1,g_2\) têm grau no máximo três e \(h=D_vD_w f\) é afim em \(y\). Seja \(\alpha\in\mathbb F_2^2\) a frequência em \(x\) de \(J\). Por Parseval em \(V'\), a energia em \(J\) é a média em \(y\) do quadrado do coeficiente parcial normalizado
+em coordenadas \(x\) na primeira parcela e \(y\) na segunda. Aqui \(g_1,g_2\) têm grau no máximo três e \(h=D_vD_w f\) tem grau no máximo dois em \(y\). Seja \(\alpha\in\mathbb F_2^2\) a frequência em \(x\) de \(J\). Por Parseval em \(V'\), a energia em \(J\) é a média em \(y\) do quadrado do coeficiente parcial normalizado
 \[
 F_{\alpha}(y)=\frac14\sum_{x\in\mathbb F_2^2}(-1)^{f(x,y)+\alpha\cdot x}.
 \]
-Se \(h\) é não nula, há pelo menos metade dos \(y\) com \(h=1\). Suas restrições em \(x\) são quadráticas bent em duas variáveis e contribuem \(1/4\) para cada quadrado parcial. Então \(\mathcal E(J)\ge1/8\).
+Se \(h\) é não nula, a distância mínima de Reed–Muller dá pelo menos um quarto dos \(y\) com \(h=1\). Suas restrições em \(x\) são quadráticas bent em duas variáveis e contribuem \(1/4\) para cada quadrado parcial. Então \(\mathcal E(J)\ge1/16>5/128\).
 
 Se \(h=0\), vale \(F_\alpha^2=I_\alpha=(1+g_1+\alpha_1)(1+g_2+\alpha_2)\) como função binária, de grau no máximo seis em 30 variáveis. Assim \(2^{30}\mathcal E(J)\) é o peso de \(I_\alpha\). Como \(W_f(b)^2\equiv16\bmod127\),
 \[
@@ -55,7 +50,7 @@ Logo \(\sum_{b\in J}T(b)>(5\cdot2^{23}-4\,210\,432)/2=18\,866\,304\), completand
 
 Suponha a valoração mínima três e escreva \(P=\{\nu_2(T)=3\}\), \(Q=\{T\equiv16\bmod32\}\), \(N=|P|\), \(q=|Q|\). R19 dá \(N\) par entre 274 e 288, \(q\le3\), \(\dim\operatorname{aff}P=32\) e \(d(C(P))\ge84\), onde \(C(P)\) é o código das avaliações afins. No encurtamento, cada suporte retirado é um corte afim de \(P\); o complemento dos cortes retirados também é um corte, pois sua palavra é a constante um mais a soma dos suportes retirados. A recorrência reproduzida no apêndice verifica que toda partição necessária nessa faixa tem três blocos. O limite \(N\le288<4\cdot84\) já impede quatro blocos não vazios.
 
-Para tal partição escreva \(P_i=P\cap H_i\), com \(H_i\) hiperplanos afins, \(i=1,2,3\). Se \(u_i\) é o indicador afim binário de \(H_i\), então \(u_1+u_2+u_3=1\) em \(P\). Pela dimensão afim plena de \(P\), a identidade vale no espaço espectral inteiro. As partes lineares dos dois primeiros indicadores são não nulas e distintas, pois os dois suportes são disjuntos e há um terceiro bloco não vazio. Surgem quatro células de codimensão dois, com padrões \(100,010,001,111\). A célula \(J\) de padrão \(111\) não encontra \(P\). O produto \(u_1u_2\) é uma quadrática que zera em \(P\). Como \(q\le3\), R19 mostra que toda quadrática que zera em \(P\) zera também em \(Q\). Portanto \(J\cap Q=\varnothing\), e (1) se aplica. Os pontos de \(Q\) passam a se distribuir pelas três células exclusivas.
+Para tal partição escreva \(P_i=P\cap H_i\), com \(H_i\) hiperplanos afins, \(i=1,2,3\). Se \(u_i\) é o indicador afim binário de \(H_i\), então \(u_1+u_2+u_3=1\) em \(P\). Pela dimensão afim plena de \(P\), a identidade vale no espaço espectral inteiro. As partes lineares dos dois primeiros indicadores são não nulas e distintas, pois os dois suportes são disjuntos e há um terceiro bloco não vazio. Surgem quatro células de codimensão dois, com padrões \(100,010,001,111\). A célula \(J\) de padrão \(111\) não encontra \(P\). O produto \(u_1u_2\) é uma quadrática que zera em \(P\). Como \(q\le3\), R19 mostra que toda quadrática que zera em \(P\) zera também em \(Q\). Portanto \(J\cap Q=\varnothing\). Os pontos de \(Q\) passam a se distribuir pelas três células exclusivas.
 
 Ponha \(L=T/(8\cdot127)\), inteiro pois \(k(k-1)\) é múltiplo de 127 e a valoração mínima é três. Os custos mínimos para \(P,Q\) em unidades de \(T\) são \(c_3=1\,813\,560\) e \(c_4=7\,748\,016\), e \(\sum_b T\le B=528\,531\,328\). Como \(N\ge274\), qualquer ponto fora de \(P\) custa no máximo \(B-274c_3=31\,615\,888\); cada ponto de \(P\) custa no máximo \(B-273c_3\). Os valores possíveis de \(k\) estão em \([-32768,32768]\), pela cota trivial \(|W_f|\le 2^{32}\). Conferindo \(k\bmod127\in\{0,1\}\) e os limites de custo, o catálogo de \(L\) é
 
