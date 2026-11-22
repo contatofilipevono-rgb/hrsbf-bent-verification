@@ -1,0 +1,27 @@
+name: H16 Step 68 Global (k_fix=0) Matrix-Pencil Left-Syzygy Module Elimination
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP68_MATRIX_PENCIL_SYZYGY_ELIM.py'
+      - '.github/workflows/run_h16_step68_pencil_syzygy.yml'
+
+jobs:
+  step68_pencil_syzygy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B0_00, B0_11, B1_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: pip install numpy python-sat
+      - name: Run Step 68 Matrix-Pencil Left-Syzygy Module (${{ matrix.cell }})
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP68_MATRIX_PENCIL_SYZYGY_ELIM.py --cell ${{ matrix.cell }}
