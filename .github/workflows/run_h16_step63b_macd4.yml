@@ -2,6 +2,12 @@ name: H16 Step 63B Pure-u1 MAC_D4, Deep IR6 MAC_D3 & Targeted MAC_D4
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - swarm/mac-d4-shatter
+    paths:
+      - "research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP63B_MAC_D4_AND_DEEP_XL_SHATTER.py"
+      - ".github/workflows/run_h16_step63b_macd4.yml"
 
 jobs:
   step63b_macd4:
