@@ -1,0 +1,27 @@
+name: H16 Step 67B Extract & Inject Chiral Walsh Mod-512 + Uniserial M_k
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP67B_EXTRACT_CHIRAL_AND_UNISERIAL.py'
+      - '.github/workflows/run_h16_step67b_extract.yml'
+
+jobs:
+  step67b_extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B0_11, B1_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: pip install numpy python-sat
+      - name: Run Step 67B Extract & Inject Chiral Walsh + Uniserial M_k (${{ matrix.cell }})
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP67B_EXTRACT_CHIRAL_AND_UNISERIAL.py --cell ${{ matrix.cell }}
