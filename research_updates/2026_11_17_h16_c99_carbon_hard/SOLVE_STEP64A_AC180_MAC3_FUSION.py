@@ -41,7 +41,7 @@ import SOLVE_STEP63A_EXACT_AUTOCORR_PARSEVAL_MOD32_64 as s63a
 import SOLVE_STEP63B_MAC_D4_AND_DEEP_XL_SHATTER as s63b
 
 
-def run_mac_on_substate(sub, tbl, lib9, lib63, max_outer=4, max_ir=6, do_d4=True, tag=""):
+def run_mac_on_substate(sub, tbl, lib9, lib63, max_outer=4, max_ir=6, do_d4=True, d4_k=10, d4_max_pivs=75000, tag=""):
     """Run Iterative Deep IR6 MAC_D3 <-> s9 + optional Targeted MAC_D4 on an already-built s9 state."""
     if sub["closed_unsat"]:
         return "S9_AC_UNSAT", "s9_closed_after_ac"
@@ -124,25 +124,50 @@ def run_mac_on_substate(sub, tbl, lib9, lib63, max_outer=4, max_ir=6, do_d4=True
                     return f"S9_AFTER_MAC_R{out_rd}_UNSAT", " -> ".join(trace)
                 continue
 
-        # No linear drops -> optional Targeted MAC_D4 on final open state
+        # No linear drops -> optional Targeted / High-RAM MAC_D4 on final open state
         if do_d4 and len(c_ids) == 0 and N <= 74:
-            # ZT planted check on MAC_D4
+            q_lim = min(250, len(compact_polys))
+            # ZT planted check on MAC_D4 (use K=min(10, d4_k) for fast planted check + full K)
             rng_d4 = random.Random(6499 + N)
             x_pl = [rng_d4.getrandbits(1) for _ in range(N)]
-            hit_p4, lp4, qp4, _, _, _ = s63b.run_mac_d4_c(
-                compact_polys, N, K=10, lib63=lib63, do_d4_mults=True,
-                q_sub_limit=min(240, len(compact_polys)), max_pivs=75000, planted_x=x_pl
+            hit_p4, lp4, qp4, _, _, _, _ = s63b.run_mac_d4_c(
+                compact_polys, N, K=min(10, d4_k), lib63=lib63, do_d4_mults=True,
+                q_sub_limit=min(150, q_lim), max_pivs=25000, planted_x=x_pl
             )
             assert not hit_p4, f"ZT FAIL [{tag}]: Planted MAC_D4_SUB false 1=0!"
             t_d4 = time.perf_counter()
-            hit4, l4, q4, rk4, nc4, _ = s63b.run_mac_d4_c(
-                compact_polys, N, K=10, lib63=lib63, do_d4_mults=True,
-                q_sub_limit=min(240, len(compact_polys)), max_pivs=75000, planted_x=None
+            hit4, l4, q4, c4_new, rk4, nc4, ovf4 = s63b.run_mac_d4_c(
+                compact_polys, N, K=d4_k, lib63=lib63, do_d4_mults=True,
+                q_sub_limit=q_lim, max_pivs=d4_max_pivs, planted_x=None
             )
             dt4 = time.perf_counter() - t_d4
-            trace.append(f"MAC_D4_SUB(N={N},K=10,q={min(240,len(compact_polys))}):hit={hit4},rk={rk4}/{nc4},l={len(l4)},q+={len(q4)}({dt4:.1f}s)")
+            trace.append(
+                f"MAC_D4_SUB(N={N},K={d4_k},q={q_lim}):hit={hit4},rk={rk4}/{nc4},"
+                f"l={len(l4)},q+={len(q4)},c+={c4_new},ovf={ovf4}({dt4:.1f}s)"
+            )
             if hit4:
                 return f"MAC_D4_1EQ0_R{out_rd}", " -> ".join(trace)
+            # If High-RAM MAC_D4 found new linear or quadratic equations, feed back into s9!
+            if l4 or q4:
+                ex_new = []
+                for lp in l4:
+                    fm, rhs = 0, 0
+                    for t in lp:
+                        if len(t) == 0:
+                            rhs ^= 1
+                        else:
+                            fm ^= (1 << active_vars[t[0]])
+                    if fm != 0 or rhs != 0:
+                        ex_new.append((fm, rhs))
+                if ex_new:
+                    sub = s9.run_branch_cascade(
+                        lib9, sub["_buf"], sub["_quad_ids"], sub["_cub_ids"], sub["_lin_pivs"],
+                        ex_new, tbl, max_xl_rounds=25, verify_subst=False
+                    )
+                    if sub["closed_unsat"]:
+                        trace.append("S9_AFTER_D4_UNSAT(1=0!)")
+                        return f"S9_AFTER_D4_R{out_rd}_UNSAT", " -> ".join(trace)
+                    continue
         break
 
     return "OPEN", " -> ".join(trace)
@@ -151,11 +176,19 @@ def run_mac_on_substate(sub, tbl, lib9, lib63, max_outer=4, max_ir=6, do_d4=True
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--cell", choices=["B0_11", "B1_11"], required=True)
+    ap.add_argument("--highmem-k", type=int, default=10)
+    ap.add_argument("--max-pivs", type=int, default=75000)
+    ap.add_argument("--only-frontier", action="store_true")
     args = ap.parse_args()
     cell_name = args.cell
+    d4_k = args.highmem_k
+    d4_max_pivs = args.max_pivs
     t0 = time.perf_counter()
 
-    print(f"==================== [{cell_name}] STEP 64A: AC180+D8 -> DEEP IR6 MAC_D3 + TARGETED MAC_D4 ====================", flush=True)
+    print(
+        f"==================== [{cell_name}] STEP 64A: AC180+D8 -> DEEP IR6 MAC_D3 + MAC_D4(K={d4_k}, max_pivs={d4_max_pivs}) ====================",
+        flush=True,
+    )
 
     # Setup environment identically to Step 63A + compile Step 63B MAC_D3/D4 C engine
     env = s63a.setup_cell_env(cell_name)
@@ -171,7 +204,9 @@ def main():
     s63b.zt_audit_c_engines(lib63)
     print(f"  [{cell_name}] Env + C engines ready ({time.perf_counter()-t0:.1f}s)", flush=True)
 
-    if cell_name == "B0_11":
+    if args.only_frontier:
+        jobs = [(5, [28]), (0, [28])] if cell_name == "B0_11" else [(0, [22, 24])]
+    elif cell_name == "B0_11":
         jobs = [(5, [28]), (0, [28, 30])]
     else:
         jobs = [(3, [22, 24]), (0, [22, 24]), (10, [22, 24])]
@@ -262,7 +297,8 @@ def main():
 
                     status, tr_str = run_mac_on_substate(
                         sub_fused, tbl, lib9, lib63, max_outer=4, max_ir=6,
-                        do_d4=(tr == 0), tag=f"{cell_name}_e{em}_{bname}_d{d_free}_f{tr}"
+                        do_d4=(tr == 0), d4_k=d4_k, d4_max_pivs=d4_max_pivs,
+                        tag=f"{cell_name}_e{em}_{bname}_d{d_free}_f{tr}"
                     )
                     if status != "OPEN":
                         closed_cnt += 1
