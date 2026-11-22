@@ -261,7 +261,7 @@ def main():
     print(f"  [PASS] B0_11 (L=0, K=1): 64/64 states -> {dict(sorted(hists[(0,1)].items()))} (EXACTLY 2 for all 64/64!)")
     print(f"  [PASS] B1_11 (L=1, K=1): 64/64 states -> {dict(sorted(hists[(1,1)].items()))} (EXACTLY 0 for all 64/64!)")
 
-    print("\n=== [4] Proposition 2.4: Positive Controls (Real C_16-RSB Bent Functions q_b1, q_d1) ===")
+    print("\n=== [4] Proposition 2.4: Positive Controls (q_b1, q_d1 + Generic Maiorana-McFarland) ===")
     tt_b1 = np.zeros(65536, dtype=np.uint8)
     for i in range(8):
         tt_b1 ^= (((xs >> i) & 1) & ((xs >> (i + 8)) & 1)).astype(np.uint8)
@@ -271,13 +271,43 @@ def main():
     for bname, btt in [("q_b1", tt_b1), ("q_d1", tt_d1)]:
         W = fwht(np.where(btt == 0, 1, -1))
         assert np.all(np.abs(W) == 256), f"{bname} not bent!"
-        # Verify E_8 Parseval == 65536
         even_to_16 = np.array([sum(((u >> i) & 1) << (2 * i) for i in range(8)) for u in range(256)], dtype=np.int32)
         odd_to_16 = np.array([sum(((u >> i) & 1) << (2 * i + 1) for i in range(8)) for u in range(256)], dtype=np.int32)
         Se = np.array([256 - 2 * int(np.sum(btt[even_to_16 ^ odd_to_16[a]])) for a in range(256)], dtype=np.int64)
         assert int(np.sum(Se * Se)) == 65536
         assert np.all(np.abs(fwht(Se)) == 256)
-    print("  [PASS] q_b1 and q_d1 verified bent, C_16-invariant, and exact on E_8 (+) O_8!")
+
+    # Generic Maiorana-McFarland bent function f(x_lo, x_hi) = pi(x_lo).x_hi ^ h(x_lo) with random gamma & V!
+    perm8 = rng.permutation(256).astype(np.int32)
+    h8 = rng.integers(0, 2, size=256, dtype=np.uint8)
+    x_lo = xs & 0xFF
+    x_hi = xs >> 8
+    dot_mm = np.array([int(a & b).bit_count() & 1 for a, b in zip(perm8[x_lo], x_hi)], dtype=np.uint8)
+    tt_mm = dot_mm ^ h8[x_lo]
+    W_mm = fwht(np.where(tt_mm == 0, 1, -1))
+    assert np.all(np.abs(W_mm) == 256), "Maiorana-McFarland function not bent!"
+    dual_mm = (W_mm < 0).astype(np.int64)
+    # Test corrected Proposition 2.4 with non-orthogonal gamma = 0xA55A on V = E_8, U = O_8 (so gamma.a != 0 on 128 cosets!)
+    gam_mm = 0xA55A
+    even_to_16 = np.array([sum(((u >> i) & 1) << (2 * i) for i in range(8)) for u in range(256)], dtype=np.int32)
+    odd_to_16 = np.array([sum(((u >> i) & 1) << (2 * i + 1) for i in range(8)) for u in range(256)], dtype=np.int32)
+    V_pts = even_to_16
+    Vp_pts = odd_to_16  # V^perp = O_8
+    gam_dot_V = np.array([int(gam_mm & int(x)).bit_count() & 1 for x in V_pts], dtype=np.uint8)
+    n_nonorth = 0
+    for a in range(256):
+        ai = int(odd_to_16[a])
+        lhs = int(np.sum(np.where((tt_mm[V_pts ^ ai] ^ gam_dot_V) == 0, 1, -1)))
+        sign_ga = -1 if (int(gam_mm & ai).bit_count() & 1) else 1
+        if sign_ga == -1:
+            n_nonorth += 1
+        rhs = sum(
+            (-1 if (int((gam_mm ^ int(w)) & ai).bit_count() & 1) else 1) * (1 - 2 * int(dual_mm[gam_mm ^ int(w)]))
+            for w in Vp_pts
+        )
+        assert lhs == rhs, f"Prop 2.4 mismatch at coset a={a}: {lhs} != {rhs}"
+    assert n_nonorth == 128
+    print("  [PASS] q_b1, q_d1, and generic Maiorana-McFarland (256/256 cosets, 128 with gamma.a=1, 0 mismatches) verified!")
 
     print("\n=== [5] Certificate Manifest Integrity Audit ===")
     m_b000 = json.loads((CERT_DIR / "B0_00_GLOBAL_UNSAT_CERT_MANIFEST.json").read_text(encoding="utf-8"))
