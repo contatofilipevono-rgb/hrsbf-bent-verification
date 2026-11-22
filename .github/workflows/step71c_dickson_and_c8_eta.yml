@@ -1,0 +1,34 @@
+name: Step 71C - (L2,L3,L4) vs (W,T,R_F) + Constant-B Dickson Theorem + Fixed-eta C_8 Harvest
+
+on:
+  workflow_dispatch:
+
+jobs:
+  step71c:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B0_00, B0_11, B1_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install numpy scipy python-sat
+      - name: Run Step 71C (${{ matrix.cell }})
+        env:
+          OMP_NUM_THREADS: "4"
+        run: |
+          set -o pipefail
+          python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP71C_L2L3L4_DICKSON_AND_FIXED_ETA_C8.py \
+            --cell ${{ matrix.cell }} \
+            | tee step71c_${{ matrix.cell }}.log
+      - name: Upload log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: step71c-${{ matrix.cell }}-log
+          path: step71c_${{ matrix.cell }}.log
