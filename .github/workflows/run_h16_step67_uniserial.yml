@@ -1,0 +1,27 @@
+name: H16 Step 67 Uniserial F2[C16] Filtration M_k & Chiral Walsh Mod-512 Probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP67_UNISERIAL_MK_AND_CHIRAL_WALSH.py'
+      - '.github/workflows/run_h16_step67_uniserial.yml'
+
+jobs:
+  step67_uniserial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B0_11, B1_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: pip install numpy python-sat
+      - name: Run Step 67 Uniserial M_k Filtration & Chiral Walsh (${{ matrix.cell }})
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP67_UNISERIAL_MK_AND_CHIRAL_WALSH.py --cell ${{ matrix.cell }}
