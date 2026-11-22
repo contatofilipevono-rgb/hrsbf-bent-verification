@@ -642,9 +642,11 @@ def run_cell(cell_name, specs, lib71b):
     N = len(active_vars)
     n_cw = tbl["n_col_words"]
 
-    # 1. Pre-generate 512 random root points + 12 random 5-dim cubes (384 pts) for instant screening!
+    # 1. Pre-generate 1536 random root points + 12 random 5-dim cubes (384 pts) for saturation-free screening!
+    #    (CG(389) + XL(Q_root) has dim ~820-1040 at root, so 1536 points guarantees ZERO saturation!)
+    P_scr = 1536
     rng = np.random.default_rng(71500)
-    C_512 = rng.integers(0, 2, size=(512, N), dtype=np.uint8)
+    C_scr = rng.integers(0, 2, size=(P_scr, N), dtype=np.uint8)
     bits5 = np.array([[(m >> b) & 1 for b in range(5)] for m in range(32)], dtype=np.uint8)
     n_cubes = 12
     C_cubes = np.zeros((n_cubes * 32, N), dtype=np.uint8)
@@ -653,7 +655,7 @@ def run_cell(cell_name, specs, lib71b):
         dr = rng.integers(0, 2, size=(5, N), dtype=np.uint8)
         C_cubes[ti * 32 : (ti + 1) * 32] = (bc ^ ((bits5 @ dr) & 1)).astype(np.uint8)
 
-    C_all = np.vstack([C_512, C_cubes])  # [896, N]
+    C_all = np.vstack([C_scr, C_cubes])  # [1920, N]
     P_all = C_all.shape[0]
     pts_lo = np.zeros(P_all, dtype=np.uint64)
     pts_hi = np.zeros(P_all, dtype=np.uint64)
@@ -664,23 +666,38 @@ def run_cell(cell_name, specs, lib71b):
         else:
             pts_hi |= (col << np.uint64(k - 64))
 
-    # Build GF(2) pivot table initialized with ALL root CG(389) equations on C_512!
-    cg_512 = s71a.eval_root_cg_on_batch(env, C_512)  # [512, n_cg]
-    piv_512 = {}
-    for j in range(cg_512.shape[1]):
+    # Build GF(2) pivot table initialized with ALL root CG(389) equations + ALL XL multiples x_k * Q_a(x) on C_scr!
+    cg_scr = s71a.eval_root_cg_on_batch(env, C_scr)  # [P_scr, n_q + n_c]
+    n_q_root = len(root["_quad_ids"])
+
+    def vec_to_int(col_u8):
         v = 0
-        for i in range(512):
-            if cg_512[i, j]:
-                v |= (1 << i)
+        for i in np.flatnonzero(col_u8):
+            v |= (1 << int(i))
+        return v
+
+    piv_scr = {}
+    def insert_piv(col_u8):
+        v = vec_to_int(col_u8)
         while v:
             lb = v & -v
-            if lb in piv_512:
-                v ^= piv_512[lb]
+            if lb in piv_scr:
+                v ^= piv_scr[lb]
             else:
-                piv_512[lb] = v
-                break
-    rk_cg_base = len(piv_512)
-    print(f"  [{cell_name} ROOT N={N}] Baseline CG(389) 512-pt rank = {rk_cg_base}", flush=True)
+                piv_scr[lb] = v
+                return True
+        return False
+
+    for j in range(cg_scr.shape[1]):
+        insert_piv(cg_scr[:, j])
+    rk_cg_raw = len(piv_scr)
+    # Add ALL XL degree-3 multiples x_k * Q_a(x) for a=0..n_q_root-1, k=0..N-1!
+    for a in range(n_q_root):
+        qa = cg_scr[:, a]
+        for k in range(N):
+            insert_piv(qa & C_scr[:, k])
+    rk_cg_xl = len(piv_scr)
+    print(f"  [{cell_name} ROOT N={N}] Baseline CG(389) {P_scr}-pt rank: raw={rk_cg_raw} | +XL(Q_root)={rk_cg_xl}", flush=True)
 
     # Also build independent 256-pt verification set C_zt!
     C_zt = rng.integers(0, 2, size=(256, N), dtype=np.uint8)
@@ -746,8 +763,8 @@ def run_cell(cell_name, specs, lib71b):
             pts_hi.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),
             S_all.ctypes.data_as(ctypes.POINTER(ctypes.c_int32)),
         )
-        S_512 = S_all[:512].astype(np.int64)
-        S_cub = S_all[512:].astype(np.int64)
+        S_512 = S_all[:P_scr].astype(np.int64)
+        S_cub = S_all[P_scr:].astype(np.int64)
         orb_sz = sp["orb_sz"].astype(np.int64)
 
         # Build candidate equations (syzygies + Parseval)
@@ -771,9 +788,9 @@ def run_cell(cell_name, specs, lib71b):
         if not cands:
             continue
 
-        # Compute exact degree (on 12 5-dim cubes) and 512-pt independence for each candidate!
+        # Compute exact degree (on 12 5-dim cubes) and P_scr-pt independence for each candidate!
         nC = len(cands)
-        F_512 = np.zeros((512, nC), dtype=np.uint8)
+        F_512 = np.zeros((P_scr, nC), dtype=np.uint8)
         F_cub = np.zeros((n_cubes * 32, nC), dtype=np.uint8)
         pars_cub = np.sum((S_cub * S_cub) * orb_sz[None, :], axis=1) - 65536
         for ci, (is_p, vm, c0, u_vec) in enumerate(cands):
@@ -803,7 +820,7 @@ def run_cell(cell_name, specs, lib71b):
                 if len(nz):
                     max_deg[nz] = np.maximum(max_deg[nz], d)
 
-        # Pick linearly independent deg<=3 candidates outside current piv_512!
+        # Pick linearly independent deg<=3 candidates outside current piv_scr (CG(389)+XL(Q_root))!
         sel_cands = []
         n_d4_here = 0
         for ci in range(nC):
@@ -817,18 +834,8 @@ def run_cell(cell_name, specs, lib71b):
             if d == 0 and np.all(F_512[:, ci] == 1):
                 hit_1_root = True
                 print(f"  !!! INSTANT 1=0 DETECTED IN {sname} cand #{ci} !!!", flush=True)
-            v = 0
-            for i in range(512):
-                if F_512[i, ci]:
-                    v |= (1 << i)
-            while v:
-                lb = v & -v
-                if lb in piv_512:
-                    v ^= piv_512[lb]
-                else:
-                    piv_512[lb] = v
-                    sel_cands.append((ci, d))
-                    break
+            if insert_piv(F_512[:, ci]):
+                sel_cands.append((ci, d))
         deg4_count_total += n_d4_here
 
         if not sel_cands:
