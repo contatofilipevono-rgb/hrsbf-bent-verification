@@ -22,6 +22,7 @@ jobs:
         env:
           OMP_NUM_THREADS: "4"
         run: |
+          set -o pipefail
           python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP71B_C8_SUBSPACES_EXACT_ANF_AND_CASCADE.py \
             --cell ${{ matrix.cell }} \
             | tee step71b_${{ matrix.cell }}.log

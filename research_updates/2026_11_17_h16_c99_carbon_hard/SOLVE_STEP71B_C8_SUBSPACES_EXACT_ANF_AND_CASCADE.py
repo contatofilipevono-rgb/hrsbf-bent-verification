@@ -623,11 +623,9 @@ def build_all_c8_subspace_specs(real_bents):
 
 def pack_subspace_tt_bits(base_tt, basis_u8, coset_pts):
     """Pack base_tt and basis_u8 restricted to coset_pts [M_cos, 256] into uint64 [M_cos*4] and [N, M_cos*4]."""
-    N = basis_u8.shape[0]
-    M_cos = coset_pts.shape[0]
     flat = coset_pts.reshape(-1)
-    b0 = np.packbits(base_tt[flat], bitorder="little").view(np.uint64).copy()
-    bs = np.packbits(basis_u8[:, flat], axis=1, bitorder="little").view(np.uint64).copy()
+    b0 = np.ascontiguousarray(np.packbits(base_tt[flat], bitorder="little")).view(np.uint64).copy()
+    bs = np.ascontiguousarray(np.packbits(basis_u8[:, flat], axis=1, bitorder="little")).view(np.uint64).copy()
     return np.ascontiguousarray(b0, dtype=np.uint64), np.ascontiguousarray(bs, dtype=np.uint64)
 
 
