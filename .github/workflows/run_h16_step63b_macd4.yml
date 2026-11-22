@@ -18,9 +18,15 @@ jobs:
       matrix:
         include:
           - cell: "B0_11"
-            etas: "5,0,9"
+            etas: "0"
+          - cell: "B0_11"
+            etas: "9"
           - cell: "B1_11"
-            etas: "3,0,8,10"
+            etas: "3"
+          - cell: "B1_11"
+            etas: "8"
+          - cell: "B1_11"
+            etas: "10"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

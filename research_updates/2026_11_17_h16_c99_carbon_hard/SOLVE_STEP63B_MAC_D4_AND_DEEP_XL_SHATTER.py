@@ -1535,6 +1535,14 @@ def run_pure_u1_ball4_anf_and_macd4(d1, eval_tape_batch, lib63, planted_shift=No
     _, col_pivs = s40a.gf2_rref_np(E_ver1)
     col_pivs_arr = np.array(col_pivs, dtype=np.int32)
     M_bas = len(col_pivs)
+    if M_bas == 0:
+        return {
+            "M_raw": M_raw, "rk_syz": 0, "N4": N4,
+            "deg_counts": {0: 0, 1: 0, 2: 0, 3: 0, 4: 0},
+            "by_deg": {0: 0, 1: 0, 2: 0, 3: 0, 4: 0}, "n_polys_d4": 0,
+            "hit3": False, "hit4": False, "mac3_res": "SKIP", "mac4_res": "SKIP",
+            "dt": time.perf_counter() - t0,
+        }
     E1_bas = E_ver1[:, col_pivs_arr]
     E2_bas = E_ver2[:, col_pivs_arr]
     n_w = (M_bas + 63) // 64
@@ -1768,10 +1776,10 @@ def run_deep_mac_d3_and_targeted_d4(
             for p in compact_polys:
                 remapped.append([tuple(sorted(inv_p[v] for v in t)) for t in p])
             # Sort quadratics by fewest terms outside 0..K-1 (most concentrated on S first!)
-            K = min(N, 14 if N <= 64 else 12)
+            K = min(N, 12 if N <= 66 else 10)
             remapped.sort(key=lambda p: (sum(1 for t in p if any(v >= K for v in t)), len(p)))
             q_sub = min(len(remapped), 200)
-            max_pivs_d4 = 32000
+            max_pivs_d4 = 75000
 
             # ZERO-TRUST PLANTED AUDIT ON TARGETED MAC_D4 (subset of 40 quadratics for speed)
             rng_p4 = random.Random(6399 + N)
