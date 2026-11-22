@@ -1,0 +1,27 @@
+name: H16 Step 65A All 4116 Walsh 2-Adic Orbits & Twisted D8 Integer Spectrum
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP65A_ALL4116_WALSH_2ADIC_AND_INTEGER_SPECTRUM.py'
+      - '.github/workflows/run_h16_step65a_walsh4116.yml'
+
+jobs:
+  step65a_walsh4116:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [B0_11, B1_11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: pip install numpy python-sat
+      - name: Run Step 65A All-4116 Walsh 2-Adic & Twisted D8 Spectrum (${{ matrix.cell }})
+        run: python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP65A_ALL4116_WALSH_2ADIC_AND_INTEGER_SPECTRUM.py --cell ${{ matrix.cell }}
