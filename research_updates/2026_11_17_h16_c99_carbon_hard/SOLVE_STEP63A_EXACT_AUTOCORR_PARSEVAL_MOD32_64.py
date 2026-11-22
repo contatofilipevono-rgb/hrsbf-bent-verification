@@ -602,7 +602,7 @@ def canon_c16(a):
 
 
 def build_all_4115_c16_shifts():
-    """Return all 4,115 C_16-orbit representatives of a in F_2^16 \ {0}, plus structured subsets."""
+    r"""Return all 4,115 C_16-orbit representatives of a in F_2^16 \ {0}, plus structured subsets."""
     seen = set()
     all_reps = []
     for a in range(1, 65536):
@@ -1624,14 +1624,8 @@ def main():
     print(f"  [ROOT CG(389)] N={N_root}, q={len(root['_quad_ids'])}, c={len(root['_cub_ids'])} ({time.perf_counter()-t0:.1f}s)", flush=True)
 
     # Eta basis (Layer 1: deg_u=3, deg_z=1)
-    l1_forms = []
-    for v_vec in layer_vecs[(3, 1)]:
-        fm = 0
-        for i in range(111):
-            if (cb111[i] & v_vec).bit_count() & 1:
-                fm |= (1 << i)
-        l1_forms.append(fm)
-    eta_free = s16.reduce_forms_mod_pivs(l1_forms, root["_lin_pivs"])
+    forms_L1 = s16.extract_forms_from_orb_vecs(cb111, layer_vecs["L1"][1], layer_vecs["L1"][0])
+    eta_free = s16.reduce_forms_mod_pivs(forms_L1, root["_lin_pivs"])
 
     # Precompute shift lists, C_8 tables, and 45 coord V_13..V_16 subspaces
     all_shifts_u16, all_shifts_py, d8_shifts, struct_set, struct_indices = build_all_4115_c16_shifts()
