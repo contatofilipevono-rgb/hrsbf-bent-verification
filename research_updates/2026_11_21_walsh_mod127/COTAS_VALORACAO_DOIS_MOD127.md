@@ -57,13 +57,19 @@ Nas quatro primeiras linhas, o último bloco tem suporte exterior pleno e dimens
 
 Para \(64+64+64+64+64+96\), o bloco de 96 está na soma das primeiras cinco direções pelos momentos de ordem seis. A soma dessas direções tem no máximo 24 dimensões pela seção 2. Assim o fecho afim tem dimensão no máximo 29. Na partição \(64+64+64+96+128\), se o último bloco tem momento exterior pleno, a demonstração das primeiras quatro linhas se aplica, pois sua dimensão é no máximo 13 pela seção 3. Se o momento não é pleno, há uma coordenada que anula o dual da parte superior do indicador. Na escolha dessa coordenada, toda a parte superior do indicador é divisível por ela. Cortar pelas duas fatias reduz o grau e preserva a ordem cinco dos momentos. Como o fecho afim é pleno no espaço onde se trabalha, ambas as fatias são não vazias. Cada uma tem pelo menos 64 pontos. Logo o bloco de 128 se parte em dois espaços afins de tamanho 64, retornando à partição já excluída.
 
-Após essas exclusões, o verificador não encontra partições até \(N=422\) para \(s\ge31\), nem até \(N=424\) para \(s=32\). Isso prova os novos limites da tabela. O verificador da seção 6 usa aritmética inteira.
+Após essas exclusões, o verificador não encontra partições até \(N=422\) para \(s\ge31\), nem até \(N=424\) para \(s=32\). Isso prova os novos limites da tabela. O verificador da seção 7 usa aritmética inteira.
 
 ## 5. Cotas superiores condicionais
 
 Se o fecho afim de \(P_2\) tem codimensão \(u=32-s\), sua massa total está limitada por \(F+2^{-u}(B-F)\), com \(B=528531328\) e \(F=3\cdot2^{26}+16256\), pela média de Fourier da autocorrelação. Como cada ponto de \(P_2\) custa pelo menos 394716 e \(N\) é par, obtemos \(N\le612,716,924,1338\) para \(s=29,30,31,32\), respectivamente. [Cota de massa afim](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/blob/dcb2f41901844379880f0efa2fb9aefc1fe50a6e/research_updates/2026_11_21_walsh_mod127/AUTOCORRELACAO_E_DIMENSAO_AFIM_MOD127.md).
 
-## 6. Verificador
+## 6. Exclusão de 1338 pontos pela aritmética dos custos
+
+A comparação exata dos custos exclui \(N=1338\). Os dois totais possíveis de \(T\) são \(B\) e \(B-32512\). Após pagar \(394716\cdot1338\), sobram no máximo 401320 unidades. Em unidades de \(508=4\cdot127\), os incrementos possíveis em cada ponto de \(P_2\) são \(0,238,240,510\), e os custos fora de \(P_2\) são \(0,16\). São as possibilidades que cabem na sobra para \(k\bmod127\in\{0,1\}\).
+
+A sobra, em unidades de 508, vale seis módulo 16 para ambos os totais possíveis. Há no máximo três incrementos de resíduo não nulo, pois cada um vale 14 módulo 16 e custa pelo menos 238 das 790 unidades disponíveis. Os quatro resíduos possíveis \(0,14,12,10\) não incluem seis. Portanto \(N\le1336\) em todo o ramo de valoração dois.
+
+## 7. Verificador
 
 Extraia o bloco Python e passe como argumento o caminho da nota de R19. O programa confere o SHA-256 da nota de referência antes de executar a recorrência.
 
@@ -139,4 +145,29 @@ for k, lower in ((32,424),(33,426)):
                if n != 416 and m.allowed_weight(6,n))
     assert partitions(lower,k,64)
 print("Val2: affine dimensions 30, 31, 32 require N >= 418, 424, 426 respectively.")
+
+# Exact cost residue at the largest even count in the original budget.
+c2 = 394_716
+N = 1338
+budget = 528_531_328
+slack = budget - N*c2
+p2_increments, outside = set(), set()
+for k in range(-32768,32769):
+    if k % 127 not in (0,1):
+        continue
+    T = k*(k-1)//2
+    if T % 8 == 4 and c2 <= T <= c2+slack:
+        assert (T-c2) % 508 == 0
+        p2_increments.add((T-c2)//508)
+    if T % 8 == 0 and T <= slack:
+        assert T % 508 == 0
+        outside.add(T//508)
+assert p2_increments == {0,238,240,510}
+assert outside == {0,16}
+for total in (budget,budget-32512):
+    remainder = (total-N*c2)//508
+    assert remainder % 16 == 6
+    assert remainder//238 <= 3
+    assert all((14*i)%16 != 6 for i in range(remainder//238+1))
+print("Val2: N=1338 excluded by exact cost residues; universal upper bound N <= 1336.")
 ~~~~
