@@ -402,12 +402,13 @@ def expand_quad_pencil_in_W(tens, qt_c0, qt_lin, B_qt, nW, nT, nRF):
         for a in np.flatnonzero(qt_lin[:, k]):
             Mw_w[k] ^= tens["Mt"][a]
 
+    B_qt_arr = np.asarray(B_qt, dtype=np.uint8) if nT > 0 else np.zeros((0, nW, nW), dtype=np.uint8)
     pidx = 0
     for i in range(nW):
         for j in range(i + 1, nW):
             if (i, j) in tens["Mww"]:
                 Mww_w[pidx] ^= tens["Mww"][(i, j)]
-            for a in np.flatnonzero(B_qt[:, i, j]):
+            for a in np.flatnonzero(B_qt_arr[:, i, j]):
                 Mww_w[pidx] ^= tens["Mt"][a]
             pidx += 1
 
