@@ -1,0 +1,27 @@
+name: H16 Step 63B Pure-u1 MAC_D4, Deep IR6 MAC_D3 & Targeted MAC_D4
+
+on:
+  workflow_dispatch:
+
+jobs:
+  step63b_macd4:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - cell: "B0_11"
+            etas: "5,0,9"
+          - cell: "B1_11"
+            etas: "3,0,8,10"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install numpy and python-sat
+        run: pip install numpy python-sat
+      - name: Run Step 63B (${{ matrix.cell }} etas=${{ matrix.etas }})
+        run: |
+          python3 research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_STEP63B_MAC_D4_AND_DEEP_XL_SHATTER.py --cell ${{ matrix.cell }} --etas ${{ matrix.etas }}
