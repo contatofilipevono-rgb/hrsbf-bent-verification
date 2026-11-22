@@ -54,30 +54,35 @@ import SOLVE_STEP65A_ALL4116_WALSH_2ADIC_AND_INTEGER_SPECTRUM as s65a
 
 def build_antidiag_18_orbits():
     """
-    Build the exact orbits of F_2^8 under:
-      - Dual domain v: C_8 x <v -> v ^ 0xFF> (should be 18 orbits!)
-      - Even-weight coset domain z (wt(z) even): C_8 (should be 18 orbits!)
-    Also build the exact 18 x 18 integer Krawtchouk matrix K[iz, iv] = sum_{v in O_v} (-1)^{v . z_rep}.
+    Build the EXACT, BUG-PROOF orbits of the anti-diagonal dual domain:
+      A = { v | ((v ^ 0xFF) << 8) : v in 0..255 }
+    directly under the true 16-bit cyclic rotation `diag_v2.rot16(x)`!
+    Because x_i ^ x_{i+8} == 1 is invariant under rot16, rot16 maps A onto A,
+    acting as the NEGACYCLIC shift tau(v) of order 16 -> EXACTLY 16 orbits of size 16!
+    (2^16 = 65,536 total states in the entire universe!)
+
+    Also builds the 20 C_8-orbits of even-weight z (with exact sign-tracking, noting
+    S_{0xFF}(z) = sum_v (-1)^{v.z} (-1)^{h(v)} where v = x & 0xFF).
     """
-    # Dual v orbits under C_8 and complement v ^ 0xFF
-    seen_v = set()
+    # Exact rot16-orbits on A = {(v, v ^ 0xFF)}
+    seen_x = set()
     v_orbs = []
     for v in range(256):
-        if v in seen_v:
+        x0 = v | ((v ^ 0xFF) << 8)
+        if x0 in seen_x:
             continue
-        orb = set()
-        stack = [v]
-        while stack:
-            x = stack.pop()
-            if x in orb:
-                continue
-            orb.add(x)
-            stack.append(diag_v2.rot8(x))
-            stack.append(x ^ 0xFF)
-        seen_v |= orb
-        v_orbs.append(sorted(orb))
+        orb_v = []
+        cur = x0
+        while cur not in seen_x:
+            seen_x.add(cur)
+            assert ((cur & 0xFF) ^ (cur >> 8)) == 0xFF, "rot16 left anti-diagonal!"
+            orb_v.append(cur & 0xFF)
+            cur = diag_v2.rot16(cur)
+        v_orbs.append(sorted(orb_v))
 
-    # Even-weight z orbits under C_8
+    assert len(v_orbs) == 16 and all(len(o) == 16 for o in v_orbs), f"Expected 16 negacyclic orbits of size 16, got {[len(o) for o in v_orbs]}"
+
+    # Even-weight z orbits under C_8 (representatives zr = min(orb))
     seen_z = set()
     z_orbs = []
     for z in range(256):
@@ -91,20 +96,54 @@ def build_antidiag_18_orbits():
         seen_z.update(orb)
         z_orbs.append(sorted(orb))
 
-    # Sort z_orbs so z=0 is index 0
     z_orbs.sort(key=lambda o: o[0])
     v_orbs.sort(key=lambda o: o[0])
 
-    # Build exact Krawtchouk matrix: S_{0xFF}(z_rep) = sum_{iv} K[iz, iv] * (-1)^{t_iv}
-    # Since h(v) = t_iv in {0,1}, (-1)^{t_iv} = 1 - 2*t_iv, so:
-    #   S_{0xFF}(z_rep) = sum_{v} (-1)^{v.z} - 2 * sum_{iv} K[iz, iv] * t_iv
-    #                  = 256*delta_{z,0} - 2 * sum_{iv} K[iz, iv] * t_iv.
+    # Exact Krawtchouk matrix: S_{0xFF}(z_rep) = 256*delta_{z,0} - 2 * sum_{iv} K[iz, iv] * t_iv
     nz, nv = len(z_orbs), len(v_orbs)
     K = np.zeros((nz, nv), dtype=np.int32)
     for iz, zo in enumerate(z_orbs):
         zr = zo[0]
         for iv, vo in enumerate(v_orbs):
             K[iz, iv] = sum(-1 if ((v & zr).bit_count() & 1) else 1 for v in vo)
+
+    # MANDATORY ZERO-TRUST AUDIT ON REAL C_16-ROTATION-SYMMETRIC BENT FUNCTION!
+    # f_bent(x) = sum_{i=0}^7 x_i x_{i+8} (exact C_16-RSB quadratic bent function!)
+    X = np.arange(65536, dtype=np.uint16)
+    tt_bent = np.zeros(65536, dtype=np.uint8)
+    for i in range(8):
+        tt_bent ^= (((X >> i) & 1) & ((X >> (i + 8)) & 1)).astype(np.uint8)
+    # Direct FWHT of f_bent
+    spec = np.where(tt_bent == 0, 1, -1).astype(np.int32)
+    step = 1
+    while step < 65536:
+        spec = spec.reshape(-1, 2, step)
+        u, w = spec[:, 0, :].copy(), spec[:, 1, :].copy()
+        spec[:, 0, :] = u + w
+        spec[:, 1, :] = u - w
+        spec = spec.reshape(-1)
+        step <<= 1
+    assert np.all(np.abs(spec) == 256), "Self-test f_bent is not bent!"
+    # Check h_{0xFF}(v) is CONSTANT on every one of our 16 negacyclic orbits!
+    t_vec = np.zeros(nv, dtype=np.int32)
+    for iv, vo in enumerate(v_orbs):
+        vals = set(0 if spec[v | ((v ^ 0xFF) << 8)] == 256 else 1 for v in vo)
+        assert len(vals) == 1, f"ZT FAIL: real C16-RSB bent function NOT constant on v_orb {iv}!"
+        t_vec[iv] = next(iter(vals))
+    # Verify our K matrix formula reproduces exact S_{0xFF}(z_rep) of f_bent!
+    base_vec = np.zeros(nz, dtype=np.int32)
+    base_vec[0] = 256
+    S_pred = base_vec - 2 * (K @ t_vec)
+    for iz, zo in enumerate(z_orbs):
+        zr = zo[0]
+        s_dir = 0
+        for u in range(256):
+            y = u ^ zr
+            fbit = int(tt_bent[u | (y << 8)])
+            abit = y.bit_count() & 1
+            s_dir += -1 if (fbit ^ abit) else 1
+        assert s_dir == int(S_pred[iz]), f"ZT FAIL: K matrix mismatch at z=0x{zr:02x}: {s_dir} vs {S_pred[iz]}"
+    print("  [ZT-REAL-BENT AUDIT]: C16-RSB bent function constant on all 16 negacyclic orbits & K-matrix 20/20 EXACT!", flush=True)
     return z_orbs, v_orbs, K
 
 
