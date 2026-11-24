@@ -4,7 +4,7 @@
 
 Este caderno reúne ferramentas reutilizáveis para funções booleanas, espectros de Walsh, reduções periódicas e funções bent com simetria de rotação. Cada técnica vem acompanhada de hipóteses, argumento central, aplicação e limite. O objetivo é permitir que uma prova nova seja montada com etapas verificáveis, sem transportar uma conclusão além do domínio em que foi demonstrada.
 
-Edição de 18 de novembro de 2026, com atualização de p=17 baseada na investigação de 17 de novembro. O nível de revisão varia por ferramenta e está indicado em cada atualização: há argumentos candidatos ainda sem auditoria independente. Verificadores exatos e auditorias por modelos não substituem revisão humana por pares. A prioridade das adaptações e combinações próprias permanece aberta. A identificação de uma ideia nesta investigação não significa que ela seja inédita na literatura.
+Edição de 23 de novembro de 2026, com a auditoria do perfil de Walsh em H(16,4) na Técnica 37 e a atualização de p=17 de 17 de novembro. O nível de revisão varia por ferramenta e está indicado em cada atualização: há argumentos candidatos ainda sem auditoria independente. Verificadores exatos e auditorias por modelos não substituem revisão humana por pares. A prioridade das adaptações e combinações próprias permanece aberta. A identificação de uma ideia nesta investigação não significa que ela seja inédita na literatura.
 
 **Estado atual:** p=17, Q1 geral e a conjectura geral continuam abertos. O estado de p=17 consta da atualização de 17/11 abaixo. O fechamento de produtos de duas quadráticas com resto cúbico é uma prova candidata sob I6; não deve ser usado como resultado estabelecido antes da auditoria. Não se aplica a uma quártica arbitrária nem somente às condições de peso e pico.
 
@@ -47,6 +47,7 @@ Escrevemos E_A para média uniforme em A e wt_A(f)=|{x∈A:f(x)=1}|/|A|. A soma 
 | Precisar de posto quadrático | Fourier no flat | Codimensão total e posto após restrição |
 | Cauda de valores grandes | Orçamento ponderado | Controlar energia, não só cardinalidade |
 | Sexticas e fibras | Convolução das fibras | Parseval escalar é apenas uma condição |
+| Quártica bent com meia-volta em 16 variáveis | [Perfil crítico da diagonal dual](#técnica-37--perfilar-a-diagonal-dual-e-os-bits-de-walsh-em-h164) | Congruências necessárias e ganho medido na carta reduzida |
 | Alegação de inexistência por busca | Certificado de cobertura | Família enumerada e equivalências provadas |
 
 ## Técnica 1 Walsh Parseval e derivadas
@@ -589,3 +590,55 @@ A versão congelada para revisão está em fechamento_produto_cubico_07nov. Não
 ## Técnica 36 — Medir a saturação da correlação pela fase dual
 
 **Origem.** Argumento local aplicado aos postos 18 e 20 do ramo par global. Compare o sinal de $f$ com o oposto da fase quadrática dual no suporte afim da transformada de $(-1)^Q$. Uma divergência de peso relativo menor que $1/8$ teria uma das formas de Kasami–Tokura. A divisibilidade das somas quadráticas sobre esses suportes contradiz o resíduo de $Y$, forçando peso pelo menos $1/8$. Com isso, os orçamentos para $\mathbb E L$ baixam a $1972-9792w(D)$ no posto 18 e a $2788-9792w(D)$ no posto 20. Quando o segundo bit é afim não constante, use médias na fatia e a cota de Fourier $1/16$ nessa fatia, em vez de aplicar o orçamento global. [Ramo par global](../2026_11_17_p17/P17_RAMO_PAR_CORRELACAO.md) · [Segundo bit afim](../2026_11_17_p17/P17_RAMO_PAR_SEGUNDO_BIT_AFIM.md)
+
+## Técnica 37 — Perfilar a diagonal dual e os bits de Walsh em H(16,4)
+
+**Origem e revisão.** Adaptação das Técnicas 3–5 e de Plancherel. Codex obteve a ponte espectral e o limite quadrático do bit crítico. Gemini propôs a redução cíclica a três bits, o momento vetorial e a fatoração de $[M_A]$. Codex conferiu as identidades por prova e enumeração independente e mediu o ganho em uma carta reduzida. Atualização de 23/11/2026.
+
+### Ponte espectral e grau do bit
+
+Seja $f$ bent de grau no máximo quatro em $\mathbb F_2^8\times\mathbb F_2^8$, invariante pela troca das metades. Defina $g_z(u)=f(u,u+z)$ e $h_w(\alpha)=\tilde f(\alpha,\alpha+w)$, onde $\tilde f$ é a dual bent. A mudança de variáveis na soma de Walsh dá $W_{h_w}(z)=W_{g_z}(w)$. A fase intermediária $(-1)^{w\cdot z}$ vale 1 no suporte, pois $g_z(u+z)=g_z(u)$. Os coeficientes são múltiplos de 16. Para $z\ne0$, o quociente de dimensão sete tem grau no máximo três e fornece um fator 8, multiplicado por 2 ao voltar à fibra. Para $z=0$, a restrição é quadrática em oito variáveis.
+
+Ponha $\beta_z(w)=W_{g_z}(w)/16$ e $c(z)=\beta_z(0)\bmod2$. A dual tem grau no máximo seis. Em cada 7-plano afim, sua soma de sinais é metade da soma de uma quártica torcida em nove variáveis, portanto é múltipla de 4. Pela simetria, $H=h_0$ tem grau no máximo três. Como $c=W_H/16\bmod2$, o coeficiente inteiro de suporte $S$ antes da divisão é $(-2)^{|S|}$ vezes a soma de sinais de $H$ sobre $\alpha_i=1$ para $i\in S$. Para $|S|\ge3$ ele é múltiplo de 32. Assim $\deg c\le2$ em todo o espaço. Para $|S|=2$, o coeficiente de $c$ é o coeficiente complementar do quadrado dividido $T^{[2]}$ do símbolo cúbico $T$ de $H$.
+
+### Redução cíclica e segundo bit
+
+O símbolo cúbico de $g_z$ é $\iota_z A$, com $A$ a 4-forma obtida dos termos quárticos com quatro índices de coordenadas distintos. Para $z\cdot w=0$, a expansão da diferença de Walsh sobre o hiperplano do quociente dá
+$$
+\beta_z(w)\bmod2=c(z)+z^{\mathsf T}M_Aw,\qquad
+w\wedge(\iota_z A)^{[2]}=(z^{\mathsf T}M_Aw)\iota_z\mathrm{vol}_8.
+$$
+A classe de $M_A$ é tomada módulo a identidade. Sob $C_{16}$, a parte fora da diagonal é circulante e a diagonal normalizada pode alternar entre 0 e $\delta$. Em $K_4=\{z:z_{i+4}=z_i\}$, o emparelhamento de blocos dá $z^{\mathsf T}M_Aw=0$ para $z,w\in K_4$. A rotação por quatro posições anula $W_{g_z}(w)$ quando os blocos de quatro coordenadas de $z,w$ têm produto escalar 1. Segue que $c|_{K_4}=0$ e que os coeficientes cíclicos constante e quadrático de distância 4 são zero. Na classe homogênea a condição na origem recupera $c_{115}=0$, já usado na base reduzida.
+
+Com as triplas $012,013,023,014,024,034,025$ na ordem $t_1,\ldots,t_7$, as dez bipartições em triplas dão $q_4=t_1+t_2+t_3+t_7$ e $q_1+q_3=q_4(t_1+t_4+t_6+t_7)$. A conferência cobriu as 128 atribuições de $T$. Assim, no caso cíclico,
+$$
+c(z)=\lambda\sum_i z_i
+ +q_1\sum_{i\in\mathbb Z_8}z_i(z_{i+1}+z_{i+3})
+ +q_2\sum_{i\in\mathbb Z_8}z_i z_{i+2}.
+$$
+A polar tem posto 0, 2 ou 4, pois seu símbolo circulante é $q_1 x(x+1)^6+q_2x^2(x+1)^4$ em $\mathbb F_2[x]/(x+1)^8$.
+
+Para $w\ne0$, ponha $p_z=\beta_z(w)\bmod2$ e $b_z=\lfloor\beta_z(w)/2\rfloor\bmod2$. Plancherel na fibra dual e a divisibilidade por 16 da autocorrelação dão
+$$
+\sum_{z\in w^\perp}(1+p_z)b_z\,z=0.
+$$
+De fato, a diferença de autocorrelações é duas vezes a soma de $\beta_z(w)^2$ sobre cada semiespaço de dimensão seis. Módulo 8, o quadrado é $p_z+4(1+p_z)b_z$. O peso de $p$ no semiespaço é múltiplo de 8 pelo limite de posto. Os 126 valores não triviais de deslocamento indexam 63 semiespaços distintos. A mudança de sinal sob rotação preserva $(1+p_z)b_z$, levando a 35 momentos vetoriais por órbita de $w$, com no máximo 225 coordenadas escalares após estabilizadores e ortogonalidade.
+
+### Classe de $M_A$
+
+Rotule por $b_1,\ldots,b_8$ as órbitas de $A$ com representantes $0123,0124,0134,0234,0125,0135,0235,0245$. Ponha $\delta=b_1+b_7$, $u=b_3+b_5$, $v=b_2+b_8$ e $s=b_4+b_6$. Os sete deslocamentos da primeira linha normalizada são
+$$
+(\delta b_4+uv,\ \delta u+v,\ \delta b_8+us,\ \delta+u,\
+ \delta b_6+uv,\ \delta u+s,\ \delta b_2+us).
+$$
+A enumeração independente das 256 atribuições deu 8 classes com $\delta=0$, 32 com $\delta=1$ e 16 preimagens da classe zero. O produto $40\cdot 8=320$ é uma cota para os pares $([M_A],c)$ antes de testar sua realização por funções bent.
+
+### Aplicação medida em B0_11, eta=0
+
+Catálogo exato da diagonal dual: enumere as $2^{13}=8192$ ANFs de grau no máximo três invariantes por $C_8$ (uma órbita constante, uma linear, quatro quadráticas e sete cúbicas). Calcule as transformadas inteiras em 256 pontos e retenha as que satisfazem $W_H/16\bmod2=0$ em $K_4$ e o valor fixado de $W_H(0)=W_{g_0}(0)$. Para $W_{g_0}(0)=128$, restam 24 espectros, oito para cada perfil $(\lambda,q_1,q_2)\in\{000,010,100\}$. Logo $q_2=0$ e $\lambda q_1=0$. Todos os 24 espectros exigem $W_{g_z}(0)=0$ nas órbitas de $z=\mathtt{0x0f},\mathtt{0x2d},\mathtt{0x33}$.
+
+A medição usou a carta B0_11, eta=0 no commit-base $d78dcb4$. Fixar eta fixa o símbolo cúbico da fibra. A variação dos parâmetros é quadrática em $u$. Em $z\ne0$, o bit usa o peso no quociente de dimensão sete dividido por 4. Na expansão desse peso módulo 8, o coeficiente cúbico em parâmetros desaparece, pois a interseção de três variações quadráticas tem peso par em sete variáveis. A interpolação em pontos de peso 0, 1 e 2 é, assim, exata. A implementação também conferiu 64 avaliações mistas diretamente nas fibras.
+
+A eliminação exata no espaço XL até grau 3 elevou o posto de 2.104 para 2.106. Os incrementos foram $c(\mathtt{0x09})+c(\mathtt{0x03})=0$ e $q_2=0$. A cascata passou de 17 para 21 quadráticas. Ao fixar cada um dos três perfis, chegou a 23 quadráticas por perfil. As 101 variáveis e as 370 cúbicas permaneceram, e nenhum perfil fechou. A independência perante o XL completo de grau 4 permanece por medir. A carta continua aberta. Use os 24 espectros inteiros como o próximo corte e preserve a distinção entre redução de uma carta e fechamento da célula.
+
+[Sistema de referência para a carta](../2026_11_17_h16_c99_carbon_hard/SOLVE_STEP63A_EXACT_AUTOCORR_PARSEVAL_MOD32_64.py) · [Decomposição em camadas](../2026_11_17_h16_c99_carbon_hard/SOLVE_STEP71C_L2L3L4_DICKSON_AND_FIXED_ETA_C8.py)
