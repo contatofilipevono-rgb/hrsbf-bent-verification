@@ -642,3 +642,18 @@ A medição usou a carta B0_11, eta=0 no commit-base $d78dcb4$. Fixar eta fixa o
 A eliminação exata no espaço XL até grau 3 elevou o posto de 2.104 para 2.106. Os incrementos foram $c(\mathtt{0x09})+c(\mathtt{0x03})=0$ e $q_2=0$. A cascata passou de 17 para 21 quadráticas. Ao fixar cada um dos três perfis, chegou a 23 quadráticas por perfil. As 101 variáveis e as 370 cúbicas permaneceram, e nenhum perfil fechou. A independência perante o XL completo de grau 4 permanece por medir. A carta continua aberta. Use os 24 espectros inteiros como o próximo corte e preserve a distinção entre redução de uma carta e fechamento da célula.
 
 [Sistema de referência para a carta](../2026_11_17_h16_c99_carbon_hard/SOLVE_STEP63A_EXACT_AUTOCORR_PARSEVAL_MOD32_64.py) · [Decomposição em camadas](../2026_11_17_h16_c99_carbon_hard/SOLVE_STEP71C_L2L3L4_DICKSON_AND_FIXED_ETA_C8.py)
+
+
+## Atualização H16 de 24 de novembro — A13 e A14
+
+O [pacote autônomo de dualidade diagonal e órbitas](../2026_11_24_h16_diagonal_orbits/README.md) estende a investigação da Técnica 37. Os resultados são reduções exatas sob as premissas indicadas, não um fechamento de H(16,4).
+
+- **A13:** para uma bent invariante pela troca de dois blocos de dimensão \(2m\), se \(\deg f<2m\), a restrição diagonal da dual tem grau no máximo \(m-1\). Em H16 as congruências de Poisson e o catálogo exato de grau três eliminam 32 fibras brutas de B0_11, cada uma de dimensão 104 antes das outras condições.
+- **A14:** o corte \(E=\{x_0=x_1,\ x_4=x_5,\ x_8=x_9,\ x_{12}=x_{13}\}\) fornece, no espaço afim inicial \(c_{115}=0,\ L(c)=c_{99}\), a identidade
+  \[
+  \mathrm{wt}(f|_E)\equiv8(c_{57}+c_{113}+c_{99}(K+c_{57}))\pmod {16},
+  \]
+  com o parêntese avaliado em \(\mathbb F_2\). Junto com o multiplicador 3, isso recertifica os quatro setores mistos e a condição C5 no ramo \(c_{99}=1\). O quociente exato por multiplicadores ímpares reduz as 160 fibras brutas ainda restantes de B0_11/B1_11 a 52 representantes (36 e 16). A propagação afim reduz 400 pares fibra/perfil central à dimensão 99.
+- **Alerta de escopo:** T27 prova C5 condicionalmente em \(c_{99}=1\). A extensão empregada por um código histórico a \(c_{99}=0\) ainda precisa de demonstração autônoma. A parte \(K=1\) de B0_00 tem 16 representantes por equivalência e permanece em auditoria. Não se deve transportar o antigo placar de fechamento sem sanar essa questão.
+
+[Prova A13](../2026_11_24_h16_diagonal_orbits/A13_diagonal_duality.md) · [Prova e auditoria A14](../2026_11_24_h16_diagonal_orbits/A14_orbit_transfer.md) · [Verificador autônomo](../2026_11_24_h16_diagonal_orbits/verify_h16_two_cuts_and_multipliers.py).
