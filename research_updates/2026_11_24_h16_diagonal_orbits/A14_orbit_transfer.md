@@ -4,14 +4,15 @@
 
 **Lema geral.** Seja \(f\) bent em \(2h\) variáveis, invariante por uma transformação linear ortogonal \(R\) de ordem \(L=2^k\), \(k\ge1\). Então sua dual \(f^*\) é igualmente invariante. Ponha \(D=\ker(R^{L/2}-I)\). Fora de \(D\), todas as órbitas têm comprimento exatamente \(L\). Para um espaço linear \(E\) de dimensão \(d\ge h\) e um coset \(E+a\), ambos invariantes por \(R\), escreva \(Q=E^\perp\), \(F=2^{d-h}\). A fase \(a\cdot x\) é constante nas órbitas de \(Q\): \(R^{-1}a+a\in E\). Por Poisson, com normalização bent,
 \[
- \mathrm{wt}(f|_{E+a})=F\,\mathrm{wt}((f^*+a\cdot x)|_Q).
+ \mathrm{wt}(f|_{E+a})=B+F\,\mathrm{wt}((f^*+a\cdot x)|_Q),
+ \qquad B=2^{d-1}-2^{h-1}.
 \]
 Defina \(w_D=\mathrm{wt}(f|_{(E+a)\cap D})\), \(w_D^*=\mathrm{wt}((f^*+a\cdot x)|_{Q\cap D})\), e sejam \(N,N^*\) os números de órbitas exteriores a \(D\) com valor 1 nas duas restrições. A identidade exata é
 \[
- w_D+L N=F(w_D^*+L N^*),\qquad
- N\equiv\frac{F w_D^*-w_D}{L}\pmod F.
+ w_D+L N=B+F(w_D^*+L N^*),\qquad
+ N\equiv\frac{B+F w_D^*-w_D}{L}\pmod F.
 \]
-A segunda fórmula exige primeiro a integralidade do quociente. Vale também com primal e dual trocadas. Esta filtragem incorpora bits adicionais além da congruência apenas no espaço fixo. Para \(d=h\), a igualdade reduz a uma equação de paridade em ambos os conjuntos de órbitas; para \(d\ge h+1\), a paridade de \(N\) já não depende de \(N^*\). Quando o espaço fixo está determinado, cada bit de \(N\) é um polinômio nas entradas booleanas dos representantes das órbitas. Em particular os dois primeiros bits são \(\sum_i y_i\) e \(\sum_{i<j} y_i y_j\), respectivamente. Substitua as formas afins de ANF da família estudada. Se as variáveis livres têm tabela de direções \(v_j\) nos representantes, a parte polar do segundo bit na posição \(i,j\) é
+A segunda fórmula exige primeiro a integralidade do quociente. Vale também com primal e dual trocadas. **Correção de normalização (auditoria posterior):** o termo \(B\) é indispensável para \(d>h\), porque a soma de sinais no complemento é multiplicada por \(F\), mas \(F|Q|=2^h\), não \(2^d\). Em H16, \(B\) é múltiplo de 128, de modo que as congruências de paridade, os dois primeiros bits e o teste de peso módulo 64 em cortes invariantes por \(R^4\) utilizados abaixo não se alteram. Não se deve omitir \(B\) para módulos maiores. Esta filtragem incorpora bits adicionais além da congruência apenas no espaço fixo. Para \(d=h\), a igualdade reduz a uma equação de paridade em ambos os conjuntos de órbitas; para \(d\ge h+1\), a paridade de \(N\) já não depende de \(N^*\). Quando o espaço fixo está determinado, cada bit de \(N\) é um polinômio nas entradas booleanas dos representantes das órbitas. Em particular os dois primeiros bits são \(\sum_i y_i\) e \(\sum_{i<j} y_i y_j\), respectivamente. Substitua as formas afins de ANF da família estudada. Se as variáveis livres têm tabela de direções \(v_j\) nos representantes, a parte polar do segundo bit na posição \(i,j\) é
 \[
  (\mathrm{wt}(v_i)\mathrm{wt}(v_j)+\mathrm{wt}(v_i v_j))\bmod2.
 \]
