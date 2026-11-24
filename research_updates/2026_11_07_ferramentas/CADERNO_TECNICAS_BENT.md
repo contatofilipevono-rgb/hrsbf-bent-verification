@@ -657,3 +657,22 @@ O [pacote autônomo de dualidade diagonal e órbitas](../2026_11_24_h16_diagonal
 - **Alerta de escopo:** T27 prova C5 condicionalmente em \(c_{99}=1\). A extensão empregada por um código histórico a \(c_{99}=0\) ainda precisa de demonstração autônoma. A parte \(K=1\) de B0_00 tem 16 representantes por equivalência e permanece em auditoria. Não se deve transportar o antigo placar de fechamento sem sanar essa questão.
 
 [Prova A13](../2026_11_24_h16_diagonal_orbits/A13_diagonal_duality.md) · [Prova e auditoria A14](../2026_11_24_h16_diagonal_orbits/A14_orbit_transfer.md) · [Verificador autônomo](../2026_11_24_h16_diagonal_orbits/verify_h16_two_cuts_and_multipliers.py).
+
+## Técnica 38 — Paridade da frequência módulo 64 e critério global módulo 512 em H16
+
+**Origem e alcance.** A Frente C do Antigravity propôs a identidade abaixo. A derivação foi conferida por expansão inteira. Ela vale para toda função booleana cíclica em 16 variáveis de grau no máximo 4, inclusive as não homogêneas.
+
+Seja \(N_{k,r}\) a contagem de subconjuntos de \(k\) monômios da ANF cuja união tem tamanho \(r\). Para \(r=15\), escreva \(N_{4,15}^{\mathrm{om}}\) para a contagem com uma coordenada omitida **fixada**. Ela independe da escolha da coordenada por rotação. Ao expandir \((-1)^f\), uma seleção com união \(S\) contribui ao Walsh na frequência \(a\) somente quando \(\operatorname{supp}(a)\subseteq S\). Nesse caso, a contribuição é \((-1)^{k+\mathrm{wt}(a)}2^{k+16-|S|}\). Como \(|S|\le\min(4k,16)\), só os tipos \((4,16),(4,15),(5,16)\) contribuem módulo 64. Logo,
+\[
+ W_f(a)\equiv
+ 16(-1)^{\mathrm{wt}(a)}N_{4,16}
+ +32N_{5,16}
+ +32(\mathrm{wt}(a)\bmod 2)N_{4,15}^{\mathrm{om}}\pmod{64}.
+\]
+Em particular, o resíduo depende só da paridade da frequência. Pela ponte da Técnica 37, \(\sum_{z\in w^\perp}\beta_z(w)=W_f(0,w)/16\). O momento escalar equivale a \(W_f(0,w)\equiv0\pmod{64}\). Isso prova a coincidência dos 16 momentos escalares de peso ímpar em H16, inclusive antes de impor Q17. A identidade diz respeito a esse momento escalar. Os momentos vetoriais e os bits superiores pedem análise própria.
+
+**Codificação global.** Em cada órbita de entrada \(O\), use o coeficiente inteiro \(A_O(a)=\sum_{x\in O}(-1)^{a\cdot x}\). Então \(W_f(a)=\sum_O A_O(a)(1-2f(O))\). Agrupe avaliações afins iguais antes de construir o contador modular. Para decidir bentness, imponha \(W_f(a)\equiv256\pmod{512}\) nos 4.116 representantes das órbitas espectrais. A congruência dá \(|W_f(a)|\ge256\) em todas as frequências. Parseval força a igualdade em todas elas. Para a busca incremental, escolha uma frequência que efetivamente viole a congruência no modelo corrente. Um coeficiente de magnitude superior a 256 pode, isoladamente, satisfazer a congruência.
+
+**Simetria e instância incremental.** A equipe reportou um estabilizador \(C_4\) que preserva cada um dos oito espectros da carta `B0_11, e=27`. Para impor um representante lexicográfico, verifique também a invariância das restrições ativas. Feche o conjunto de cortes por essa ação ou prove que seus transportes já são implicados. A redundância reportada de Q17 vale para os 30 alvos específicos da rodada 14 em `k=2`. Recalcule a implicação antes de retirar Q17 de outra instância.
+
+**Estado da execução.** O relatório do Antigravity descreve a validação do encoder global e resultados inconclusivos nos oito \(k\) de `e=27` e nos 16 representantes de `B0_00, K=1` tratados sem C5. Nenhuma dessas órbitas foi fechada nessa rodada. A rejeição de modelos pelo trio de frequências `0x0f0f, 0x2d2d, 0x1b1b` é uma medição no lote usado. O roteiro de continuação prioriza `B0_00, K=1, e=11` e `B0_11, e=27, k=15`. Os logs e reprodutores dessa rodada foram citados no relatório como arquivos locais, com base no [commit 7434dfd](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/commit/7434dfde192e994ee3672f887ad1b1ea4ff783d2).
