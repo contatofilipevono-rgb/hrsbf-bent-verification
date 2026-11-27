@@ -1,0 +1,85 @@
+name: H16 B0_00 K=0 Formal Gap Re-Certification (7 proved_extra + Orbits 3, 27)
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_kfix:
+        description: "Max k_fix per job"
+        required: true
+        default: "12"
+
+jobs:
+  recert_orbit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { eta: 1,  kfix: 0 }
+          - { eta: 21, kfix: 0 }
+          - { eta: 22, kfix: 0 }
+          - { eta: 23, kfix: 0 }
+          - { eta: 43, kfix: 0 }
+          - { eta: 62, kfix: 0 }
+          - { eta: 63, kfix: 0 }
+          - { eta: 3,  kfix: 8 }
+          - { eta: 27, kfix: 8 }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Python deps
+        run: pip install --quiet numpy python-sat
+      - name: Re-certify B0_00 K=0 eta=${{ matrix.eta }} from scratch (verify_subst=True on EVERY branch)
+        run: |
+          python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B000_K0_RECERT_GAPS.py \
+            --eta "${{ matrix.eta }}" --kfix "${{ matrix.kfix }}" \
+            --max-kfix "${{ inputs.max_kfix }}" --workers 4 --out-dir k0_recert_out
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k0-recert-eta-${{ matrix.eta }}
+          path: k0_recert_out/k0_recert_eta*.json
+
+  merge_recert:
+    needs: recert_orbit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: k0-recert-eta-*
+          merge-multiple: true
+          path: results
+      - name: Verify and merge all 9 K=0 re-certification certificates
+        run: |
+          python3 - <<'EOF'
+          import glob, json
+
+          certs = [json.loads(open(p).read()) for p in sorted(glob.glob("results/k0_recert_eta*.json"))]
+          certs.sort(key=lambda c: c["eta_rep"])
+          root_shas = {c["root_sha256"] for c in certs}
+          passed = [c["eta_rep"] for c in certs if c["verdict"] == "ORBIT_FORMALLY_CLOSED_100%"
+                    and c["covered_branches"] == c["total_branches"]
+                    and c["verified_subst_branches"] == c["total_branches"]
+                    and len(c["open_survivors"]) == 0]
+          failed = [c["eta_rep"] for c in certs if c["eta_rep"] not in passed]
+          summary = {
+              "total_orbits": len(certs),
+              "passed_count": len(passed),
+              "passed_orbits": passed,
+              "failed_orbits": failed,
+              "unique_root_sha256": sorted(root_shas),
+              "certs": certs,
+          }
+          open("k0_recert_summary.json", "w").write(json.dumps(summary, indent=2) + "\n")
+          print(json.dumps(summary, indent=2))
+          assert len(root_shas) == 1, f"Multiple root_sha256: {root_shas}"
+          assert len(certs) == 9 and len(failed) == 0, f"Incomplete/failed recert: {failed}"
+          EOF
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k0-recert-summary
+          path: k0_recert_summary.json
