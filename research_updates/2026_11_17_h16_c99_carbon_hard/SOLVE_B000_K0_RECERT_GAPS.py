@@ -256,6 +256,8 @@ def main():
     ap.add_argument("--eta", type=int, required=True)
     ap.add_argument("--kfix", type=int, default=0, help="Fixed k_fix (0 = auto)")
     ap.add_argument("--max-kfix", type=int, default=12, help="Max k_fix to run in 1 job")
+    ap.add_argument("--shard-idx", type=int, default=0)
+    ap.add_argument("--n-shards", type=int, default=1)
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--out-dir", type=str, default="k0_recert_out")
     args = ap.parse_args()
@@ -359,9 +361,13 @@ def main():
             rescued_closed = 0
             open_list = []
             checked = 0
+            n_branches = 1 << k_fix
+            lo = (n_branches * args.shard_idx) // args.n_shards
+            hi = (n_branches * (args.shard_idx + 1)) // args.n_shards
+            total_shard = hi - lo
             ctx = multiprocessing.get_context("fork")
             with ctx.Pool(processes=args.workers, initializer=_init_recert_worker) as pool:
-                for tag_r, rb, payload in pool.imap_unordered(_eval_recert_branch, range(n_branches), chunksize=2):
+                for tag_r, rb, payload in pool.imap_unordered(_eval_recert_branch, range(lo, hi), chunksize=2):
                     checked += 1
                     if tag_r == "DIRECT":
                         direct_closed += 1
@@ -369,10 +375,10 @@ def main():
                         rescued_closed += 1
                     else:
                         open_list.append({"rb": rb, "N": payload[0], "q": payload[1]})
-                    if checked % 64 == 0 or checked == n_branches:
-                        print(f"  [{lbl}] {checked}/{n_branches} direct={direct_closed} rescued={rescued_closed} open={len(open_list)} ({time.perf_counter()-t0:.1f}s)", flush=True)
+                    if checked % 64 == 0 or checked == total_shard:
+                        print(f"  [{lbl} s{args.shard_idx}/{args.n_shards}] {checked}/{total_shard} direct={direct_closed} rescued={rescued_closed} open={len(open_list)} ({time.perf_counter()-t0:.1f}s)", flush=True)
 
-            verdict = "ORBIT_FORMALLY_CLOSED_100%" if (checked == n_branches and not open_list) else "HAS_OPEN_SURVIVORS"
+            verdict = ("ORBIT_FORMALLY_CLOSED_100%" if args.n_shards == 1 else "SHARD_CLOSED_100%") if (checked == total_shard and not open_list) else "HAS_OPEN_SURVIVORS"
             cert = {
                 "eta_rep": em,
                 "root_sha256": root_sha256,
@@ -381,7 +387,11 @@ def main():
                 "k_fix": k_fix,
                 "fix_forms_hex": [hex(f) for f in fix_forms],
                 "fix_sha256": fix_sha,
-                "total_branches": n_branches,
+                "shard_idx": args.shard_idx,
+                "n_shards": args.n_shards,
+                "lo": lo,
+                "hi": hi,
+                "total_branches": total_shard,
                 "covered_branches": checked,
                 "direct_closed": direct_closed,
                 "rescued_closed": rescued_closed,
@@ -391,7 +401,8 @@ def main():
                 "elapsed_s": round(time.perf_counter() - t0, 2),
             }
 
-    out_p = out_dir / f"k0_recert_eta{em:02d}.json"
+    suffix = f"_s{args.shard_idx}_of_{args.n_shards}" if args.n_shards > 1 else ""
+    out_p = out_dir / f"k0_recert_eta{em:02d}{suffix}.json"
     out_p.write_text(json.dumps(cert, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(cert, indent=2), flush=True)
 
