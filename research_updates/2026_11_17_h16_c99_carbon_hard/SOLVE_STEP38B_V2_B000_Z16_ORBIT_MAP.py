@@ -315,6 +315,13 @@ def main():
         x_new = 0
         for i, j in enumerate(free111):
             if (c_new >> j) & 1: x_new |= (1 << i)
+        decoded = origin111
+        tmp = x_new
+        while tmp:
+            lb = tmp & -tmp
+            decoded ^= cb111[lb.bit_length() - 1]
+            tmp ^= lb
+        assert decoded == c_new, f"Physical coefficient mask left B0_00 for k={k}"
         return x_new
 
     def eval_eta_of_x111(x111):
@@ -325,12 +332,11 @@ def main():
         return em
 
     # Verify root linear pivots are preserved by pi_k, AND build exact lookup table eta -> pi_k(eta) for all 64 eta!
-    rng = random.Random(3838)
-    # Construct one canonical root-valid x111 for each of the 64 eta states!
+    # For an affine map, an origin and one point per basis direction suffice.
     # Solve linear system: lin_pivs + eta_free[j](x) = bit_j
     eta_map = {k: {} for k in perms}
     for em in range(64):
-        # Find 2 distinct random root-valid points with this eta to verify pi_k(eta) depends ONLY on eta!
+        # Construct an affine basis of this root-valid eta fiber.
         # Build strict RREF of lin_pivs + eta_free
         piv_all = dict(lin_pivs)
         for j in range(n_ef):
@@ -349,18 +355,22 @@ def main():
                 if hb != b and ((piv_all[hb][0] >> b) & 1):
                     piv_all[hb] = (piv_all[hb][0] ^ piv_all[b][0], piv_all[hb][1] ^ piv_all[b][1])
         free_rem = [i for i in range(111) if i not in piv_all]
-        pts_test = []
-        for _ in range(3):
-            x = 0
-            for fr in free_rem:
-                if rng.getrandbits(1): x |= (1 << fr)
-            for b, (pv, pr) in piv_all.items():
-                if pr ^ (((pv ^ (1 << b)) & x).bit_count() & 1): x |= (1 << b)
+        origin_x = sum(1 << p for p, (_, rhs) in piv_all.items() if rhs)
+        points = [origin_x]
+        for fr in free_rem:
+            direction = 1 << fr
+            for pivot, (row, _) in piv_all.items():
+                if row & (1 << fr):
+                    direction |= 1 << pivot
+            points.append(origin_x ^ direction)
+
+        for x in points:
+            assert all((row & x).bit_count() % 2 == rhs
+                       for row, rhs in piv_all.values())
             assert eval_eta_of_x111(x) == em
-            pts_test.append(x)
         for k in perms:
             imgs = set()
-            for x in pts_test:
+            for x in points:
                 x2 = apply_pi_k_to_x111(x, k)
                 # Verify root linear pivots hold on x2!
                 for lp, (pv, pr) in lin_pivs.items():
@@ -368,6 +378,15 @@ def main():
                 imgs.add(eval_eta_of_x111(x2))
             assert len(imgs) == 1, f"eta not well-defined under k={k}: {imgs}"
             eta_map[k][em] = next(iter(imgs))
+
+    assert eta_map[1] == dict(enumerate(range(64)))
+    for a in perms:
+        assert set(eta_map[a].values()) == set(range(64))
+        for b in perms:
+            for em in range(64):
+                assert eta_map[a][eta_map[b][em]] == eta_map[(a * b) & 15][em]
+
+    print("EXACT AFFINE ACTION verified for all 64 eta states", flush=True)
 
     # Run direct closure check on all 64 eta to get exact signatures & direct-closed set!
     direct_closed = set()
@@ -393,11 +412,15 @@ def main():
     for em in range(64):
         if em in seen_e: continue
         o = sorted({eta_map[k][em] for k in perms})
+        assert not seen_e.intersection(o), f"Overlapping eta orbits: {o}"
         seen_e |= set(o)
         orbs.append(o)
         # Zero-Trust check: ALL members of the orbit must have IDENTICAL (status, N, q) signature!
         s_set = {sigs[e] for e in o}
         assert len(s_set) == 1, f"Signature mismatch inside Z_16^* orbit {o}: {s_set}"
+
+    assert seen_e == set(range(64))
+    assert len(orbs) == 40
 
     n_closed_by_sym = 0
     open_orbs = []
@@ -415,6 +438,13 @@ def main():
 
     print(f"\n  *** B0_00 SYMMETRY SCOREBOARD: {n_closed_by_sym} / 64 eta-states FORMALLY CLOSED! ***", flush=True)
     print(f"  *** REMAINING DISTINCT OPEN ORBITS = {len(open_orbs)} (covering {64 - n_closed_by_sym} states): {[o[0] for o in open_orbs]} ***", flush=True)
+    import json
+    manifest = json.loads((WORK_DIR / "B0_00_GLOBAL_UNSAT_CERT_MANIFEST.json").read_text(encoding="utf-8"))
+    manifest_open = {0, *map(int, manifest["nonzero_orbits"])}
+    computed_open = {o[0] for o in open_orbs}
+    assert computed_open == manifest_open, f"Manifest eta representative mismatch: {sorted(computed_open ^ manifest_open)}"
+    assert len(orbs) - len(open_orbs) == manifest["orbits_closed_at_root_step38b"]
+    print("MANIFEST ORBIT REPRESENTATIVES verified", flush=True)
     print(f"[B0_00] STEP 38B DONE ({time.perf_counter()-t0:.1f}s)", flush=True)
 
 
