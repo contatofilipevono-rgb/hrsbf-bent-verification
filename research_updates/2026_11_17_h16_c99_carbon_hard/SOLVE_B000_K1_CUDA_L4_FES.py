@@ -443,6 +443,7 @@ CUDA_KERNEL_SRC = r"""
 #define MAX_K    60
 #define MAX_FAST 24
 #define MAX_M    8
+#define MAX_RK_GPU 10
 #define STRIP_BITS 6
 #define STRIP_LEN  (1 << STRIP_BITS)
 #define MAX_MON  93  // 1 + 8 + 28 + 56
@@ -582,6 +583,17 @@ __global__ void fes_l4_strip_kernel(
     __shared__ int      s_hi_bits[32];
     __shared__ int      s_n_hi;
     __shared__ uint8_t  s_w_hi[64];
+    __shared__ uint8_t  s_w_shift[64];
+    __shared__ uint32_t s_M0_f_keep[MAX_CORE];
+    __shared__ int      s_piv_row;
+    __shared__ int      s_pr;
+    __shared__ int      s_n_v0;
+    __shared__ uint32_t s_VM[MAX_CORE];
+    __shared__ m128_t   s_VE[MAX_CORE];
+    __shared__ int      s_piv_v0[32];
+    __shared__ int      s_keep_c[32];
+    __shared__ uint32_t s_EM0_keep[32];
+    __shared__ int      s_fast_rows[MAX_FAST];
 
     int tid = threadIdx.x; // 0..255
     int strip_local = blockIdx.x;
@@ -721,25 +733,31 @@ __global__ void fes_l4_strip_kernel(
     for (int t_lo = 0; t_lo < STRIP_LEN; t_lo++) {
         uint64_t fiber_idx = (strip_global << STRIP_BITS) | (uint64_t)t_lo;
 
-        // 2A. Thread 0 runs exact Round-1 GF(2) reduction (L_kr + V0 + E_mat) for this fiber
+        // 2A. Parallel Round-1 GF(2) reduction (L_kr + V0 + E_mat) across all 256 threads!
+        if (tid < nW) {
+            uint8_t v = s_w_hi[tid];
+            for (int p = 0; p < STRIP_BITS; p++) {
+                if ((t_lo >> p) & 1) v ^= c_T1[p * 64 + tid];
+            }
+            s_w_shift[tid] = v;
+        }
+        __syncthreads();
+
+        if (tid < n_core) {
+            uint32_t m0v = c_M0_c[tid];
+            for (int w = 0; w < nW; w++) {
+                if (s_w_shift[w]) m0v ^= d_Mk_c[w * n_core + tid];
+            }
+            s_M0_f[tid] = m0v;
+            uint32_t mk = 0;
+            for (int c = 0; c < rK_1; c++) {
+                if ((m0v >> c_keep_c_kr[c]) & 1U) mk |= (1U << c);
+            }
+            s_M0_f_keep[tid] = mk;
+        }
+        __syncthreads();
+
         if (tid == 0) {
-            uint8_t w_shift[64];
-            for (int w = 0; w < nW; w++) {
-                uint8_t v = s_w_hi[w];
-                for (int p = 0; p < STRIP_BITS; p++) {
-                    if ((t_lo >> p) & 1) v ^= c_T1[p * 64 + w];
-                }
-                w_shift[w] = v;
-            }
-
-            for (int r = 0; r < n_core; r++) s_M0_f[r] = c_M0_c[r];
-            for (int w = 0; w < nW; w++) {
-                if (w_shift[w]) {
-                    const uint32_t *mkw = d_Mk_c + w * n_core;
-                    for (int r = 0; r < n_core; r++) s_M0_f[r] ^= mkw[r];
-                }
-            }
-
             int mR_1 = 0;
             if (n_kr > 0) {
                 uint32_t M0_KR[MAX_CORE];
@@ -755,95 +773,125 @@ __global__ void fes_l4_strip_kernel(
                 mR_1 = n_core;
                 for (int r = 0; r < n_core; r++) s_L_kr[r] = m128_bit(r);
             }
+            s_meta[5] = mR_1;
+            s_pr = 0;
+        }
+        __syncthreads();
 
-            uint32_t M0_f_keep[MAX_CORE];
-            for (int r = 0; r < n_core; r++) {
-                uint32_t v = 0, src = s_M0_f[r];
-                for (int c = 0; c < rK_1; c++) {
-                    if ((src >> c_keep_c_kr[c]) & 1U) v |= (1U << c);
+        int mR_1 = s_meta[5];
+        int total_cols = d1 * rK_1;
+        int n_words_v0 = (total_cols + 63) / 64;
+
+        // Parallel projection of M0_1, Mu_1, and s_H_mu across rows r = tid < mR_1!
+        if (tid < mR_1) {
+            m128_t lm = s_L_kr[tid];
+            uint32_t v0 = 0;
+            uint64_t tlo = lm.lo, thi = lm.hi;
+            while (tlo) { int j = __ffsll(tlo) - 1; v0 ^= s_M0_f_keep[j]; tlo &= tlo - 1; }
+            while (thi) { int j = 64 + __ffsll(thi) - 1; v0 ^= s_M0_f_keep[j]; thi &= thi - 1; }
+            s_M0_1[tid] = v0;
+
+            for (int w = 0; w < n_words_v0; w++) s_H_mu[tid * n_words_v0 + w] = 0ULL;
+            int col_off = 0;
+            for (int a = 0; a < d1; a++) {
+                uint32_t va = 0;
+                const uint32_t *mua = d_Mu_opt_keep + a * n_core;
+                tlo = lm.lo; thi = lm.hi;
+                while (tlo) { int j = __ffsll(tlo) - 1; va ^= mua[j]; tlo &= tlo - 1; }
+                while (thi) { int j = 64 + __ffsll(thi) - 1; va ^= mua[j]; thi &= thi - 1; }
+                s_Mu_1[a * mR_1 + tid] = va;
+                uint32_t val = va;
+                while (val) {
+                    int c = __ffs(val) - 1;
+                    int gcol = col_off + c;
+                    s_H_mu[tid * n_words_v0 + (gcol >> 6)] |= (1ULL << (gcol & 63));
+                    val &= val - 1;
                 }
-                M0_f_keep[r] = v;
+                col_off += rK_1;
             }
+            s_tmp_I[tid] = m128_bit(tid);
+        }
+        __syncthreads();
 
-            for (int r = 0; r < mR_1; r++) {
-                m128_t lm = s_L_kr[r];
-                uint32_t v0 = 0;
-                uint64_t tlo = lm.lo, thi = lm.hi;
-                while (tlo) { int j = __ffsll(tlo) - 1; v0 ^= M0_f_keep[j]; tlo &= tlo - 1; }
-                while (thi) { int j = 64 + __ffsll(thi) - 1; v0 ^= M0_f_keep[j]; thi &= thi - 1; }
-                s_M0_1[r] = v0;
-                for (int a = 0; a < d1; a++) {
-                    uint32_t va = 0;
-                    const uint32_t *mua = d_Mu_opt_keep + a * n_core;
-                    tlo = lm.lo; thi = lm.hi;
-                    while (tlo) { int j = __ffsll(tlo) - 1; va ^= mua[j]; tlo &= tlo - 1; }
-                    while (thi) { int j = 64 + __ffsll(thi) - 1; va ^= mua[j]; thi &= thi - 1; }
-                    s_Mu_1[a * mR_1 + r] = va;
-                }
-            }
-
-            int total_cols = d1 * rK_1;
-            int n_words_v0 = (total_cols + 63) / 64;
-            for (int i = 0; i < mR_1 * n_words_v0; i++) s_H_mu[i] = 0ULL;
-            for (int r = 0; r < mR_1; r++) {
-                int col_off = 0;
-                for (int a = 0; a < d1; a++) {
-                    uint32_t val = s_Mu_1[a * mR_1 + r];
-                    while (val) {
-                        int c = __ffs(val) - 1;
-                        int gcol = col_off + c;
-                        s_H_mu[r * n_words_v0 + (gcol >> 6)] |= (1ULL << (gcol & 63));
-                        val &= val - 1;
+        // Parallel GF(2) left nullspace of s_H_mu (mR_1 x n_words_v0*64) across rows tid < mR_1!
+        for (int w = 0; w < n_words_v0; w++) {
+            for (int b = 0; b < 64; b++) {
+                int pr = s_pr;
+                if (pr >= mR_1) break;
+                uint64_t bit = 1ULL << b;
+                if (tid == 0) {
+                    int piv = -1;
+                    for (int r = pr; r < mR_1; r++) {
+                        if (s_H_mu[r * n_words_v0 + w] & bit) { piv = r; break; }
                     }
-                    col_off += rK_1;
+                    s_piv_row = piv;
+                    if (piv >= 0 && piv != pr) {
+                        for (int k = w; k < n_words_v0; k++) {
+                            uint64_t tmp = s_H_mu[pr * n_words_v0 + k];
+                            s_H_mu[pr * n_words_v0 + k] = s_H_mu[piv * n_words_v0 + k];
+                            s_H_mu[piv * n_words_v0 + k] = tmp;
+                        }
+                        m128_t tI = s_tmp_I[pr]; s_tmp_I[pr] = s_tmp_I[piv]; s_tmp_I[piv] = tI;
+                    }
                 }
+                __syncthreads();
+                int piv = s_piv_row;
+                if (piv < 0) continue;
+                if (tid < mR_1 && tid != pr && (s_H_mu[tid * n_words_v0 + w] & bit)) {
+                    for (int k = w; k < n_words_v0; k++) s_H_mu[tid * n_words_v0 + k] ^= s_H_mu[pr * n_words_v0 + k];
+                    s_tmp_I[tid] = m128_xor(s_tmp_I[tid], s_tmp_I[pr]);
+                }
+                if (tid == 0) s_pr = pr + 1;
+                __syncthreads();
             }
-            int n_v0 = dev_gf2_left_nullspace_wide(s_H_mu, mR_1, n_words_v0, s_V0, s_tmp_I);
+        }
 
-            uint32_t VM[MAX_CORE];
-            m128_t VE[MAX_CORE];
-            for (int i = 0; i < n_v0; i++) {
-                m128_t vm = s_V0[i];
-                uint32_t acc = 0;
-                uint64_t tlo = vm.lo, thi = vm.hi;
-                while (tlo) { int r = __ffsll(tlo) - 1; acc ^= s_M0_1[r]; tlo &= tlo - 1; }
-                while (thi) { int r = 64 + __ffsll(thi) - 1; acc ^= s_M0_1[r]; thi &= thi - 1; }
-                VM[i] = acc;
-                VE[i] = vm;
-            }
-            int piv_v0[32], is_piv[32];
+        int n_v0 = mR_1 - s_pr;
+        if (tid < n_v0) {
+            m128_t vm = s_tmp_I[s_pr + tid];
+            s_V0[tid] = vm;
+            uint32_t acc = 0;
+            uint64_t tlo = vm.lo, thi = vm.hi;
+            while (tlo) { int r = __ffsll(tlo) - 1; acc ^= s_M0_1[r]; tlo &= tlo - 1; }
+            while (thi) { int r = 64 + __ffsll(thi) - 1; acc ^= s_M0_1[r]; thi &= thi - 1; }
+            s_VM[tid] = acc;
+            s_VE[tid] = vm;
+        }
+        __syncthreads();
+
+        if (tid == 0) {
+            int is_piv[32];
             for (int c = 0; c < 32; c++) is_piv[c] = 0;
             int r_elim = 0;
             for (int c = 0; c < rK_1 && r_elim < n_v0; c++) {
                 int piv = -1;
                 for (int i = r_elim; i < n_v0; i++) {
-                    if ((VM[i] >> c) & 1U) { piv = i; break; }
+                    if ((s_VM[i] >> c) & 1U) { piv = i; break; }
                 }
                 if (piv < 0) continue;
                 if (piv != r_elim) {
-                    uint32_t t1 = VM[r_elim]; VM[r_elim] = VM[piv]; VM[piv] = t1;
-                    m128_t t2 = VE[r_elim]; VE[r_elim] = VE[piv]; VE[piv] = t2;
+                    uint32_t t1 = s_VM[r_elim]; s_VM[r_elim] = s_VM[piv]; s_VM[piv] = t1;
+                    m128_t t2 = s_VE[r_elim]; s_VE[r_elim] = s_VE[piv]; s_VE[piv] = t2;
                 }
                 for (int i = 0; i < n_v0; i++) {
-                    if (i != r_elim && ((VM[i] >> c) & 1U)) {
-                        VM[i] ^= VM[r_elim];
-                        VE[i] = m128_xor(VE[i], VE[r_elim]);
+                    if (i != r_elim && ((s_VM[i] >> c) & 1U)) {
+                        s_VM[i] ^= s_VM[r_elim];
+                        s_VE[i] = m128_xor(s_VE[i], s_VE[r_elim]);
                     }
                 }
-                piv_v0[r_elim] = c;
+                s_piv_v0[r_elim] = c;
                 is_piv[c] = 1;
                 r_elim++;
             }
-            int keep_c[32], rK_rem = 0;
-            for (int c = 0; c < rK_1; c++) if (!is_piv[c]) keep_c[rK_rem++] = c;
+            int rK_rem = 0;
+            for (int c = 0; c < rK_1; c++) if (!is_piv[c]) s_keep_c[rK_rem++] = c;
 
-            if (rK_rem > 6) {
-                s_meta[4] = 1; // degenerate -> log to CPU fallback!
+            if (rK_rem > MAX_RK_GPU) {
+                s_meta[4] = 1; // ultra-rare degenerate -> log to CPU fallback!
                 int slot = atomicAdd(d_deg_count, 1);
                 if (slot < max_deg) d_deg_fibs[slot] = fiber_idx;
             } else {
                 s_meta[4] = 0;
-                // Select n_fast <= MAX_FAST rows linearly independent of V0
                 uint8_t is_v0_piv[MAX_CORE];
                 for (int c = 0; c < mR_1; c++) is_v0_piv[c] = 0;
                 for (int i = 0; i < n_v0; i++) s_tmp_I[i] = s_V0[i];
@@ -863,60 +911,59 @@ __global__ void fes_l4_strip_kernel(
                     is_v0_piv[c] = 1;
                     vr++;
                 }
-                int fast_rows[MAX_FAST], n_fast = 0;
-                for (int r = 0; r < mR_1 && n_fast < MAX_FAST; r++) if (!is_v0_piv[r]) fast_rows[n_fast++] = r;
-                for (int r = 0; r < mR_1 && n_fast < MAX_FAST; r++) if (is_v0_piv[r]) fast_rows[n_fast++] = r;
+                int n_fast = 0;
+                for (int r = 0; r < mR_1 && n_fast < MAX_FAST; r++) if (!is_v0_piv[r]) s_fast_rows[n_fast++] = r;
+                for (int r = 0; r < mR_1 && n_fast < MAX_FAST; r++) if (is_v0_piv[r]) s_fast_rows[n_fast++] = r;
 
-                int K = r_elim + n_fast;
                 for (int e = 0; e < r_elim; e++) {
-                    m128_t acc = m128_zero(), em = VE[e];
-                    uint64_t tlo = em.lo, thi = em.hi;
-                    while (tlo) { int r = __ffsll(tlo) - 1; acc = m128_xor(acc, s_L_kr[r]); tlo &= tlo - 1; }
-                    while (thi) { int r = 64 + __ffsll(thi) - 1; acc = m128_xor(acc, s_L_kr[r]); thi &= thi - 1; }
-                    s_P_fiber[e] = acc;
-                }
-                for (int fi = 0; fi < n_fast; fi++) s_P_fiber[r_elim + fi] = s_L_kr[fast_rows[fi]];
-
-                uint32_t EM0_keep[32];
-                for (int e = 0; e < r_elim; e++) {
-                    uint32_t v = 0, src = VM[e];
-                    for (int c = 0; c < rK_rem; c++) if ((src >> keep_c[c]) & 1U) v |= (1U << c);
-                    EM0_keep[e] = v;
-                }
-                for (int fi = 0; fi < n_fast; fi++) {
-                    int r = fast_rows[fi];
-                    uint32_t cm0 = 0, m0k = 0;
-                    for (int e = 0; e < r_elim; e++) {
-                        if ((s_M0_1[r] >> piv_v0[e]) & 1U) { cm0 |= (1U << e); m0k ^= EM0_keep[e]; }
-                    }
-                    for (int c = 0; c < rK_rem; c++) if ((s_M0_1[r] >> keep_c[c]) & 1U) m0k ^= (1U << c);
-                    s_Cm0[fi] = cm0;
-                    s_M0_rem[fi] = m0k;
-                    for (int a = 0; a < d1; a++) {
-                        uint32_t mu_ar = s_Mu_1[a * mR_1 + r];
-                        uint32_t cma = 0, mka = 0;
-                        for (int e = 0; e < r_elim; e++) {
-                            if ((mu_ar >> piv_v0[e]) & 1U) { cma |= (1U << e); mka ^= EM0_keep[e]; }
-                        }
-                        for (int c = 0; c < rK_rem; c++) if ((mu_ar >> keep_c[c]) & 1U) mka ^= (1U << c);
-                        s_Cmk[a * MAX_FAST + fi] = cma;
-                        s_Mk_rem[a * MAX_FAST + fi] = mka;
-                    }
+                    uint32_t v = 0, src = s_VM[e];
+                    for (int c = 0; c < rK_rem; c++) if ((src >> s_keep_c[c]) & 1U) v |= (1U << c);
+                    s_EM0_keep[e] = v;
                 }
                 s_meta[0] = r_elim;
                 s_meta[1] = n_fast;
                 s_meta[2] = rK_rem;
-                s_meta[3] = K;
-                s_meta[5] = mR_1;
+                s_meta[3] = r_elim + n_fast;
             }
         }
         __syncthreads();
-        if (s_meta[4] != 0) continue; // degenerate fiber already logged to CPU!
+        if (s_meta[4] != 0) continue; // ultra-rare degenerate fiber already logged to CPU!
 
         int r_elim = s_meta[0];
         int n_fast = s_meta[1];
         int rK_rem = s_meta[2];
         int K      = s_meta[3];
+
+        // Parallel build of s_P_fiber, s_Cm0, s_M0_rem, s_Cmk, s_Mk_rem!
+        if (tid < r_elim) {
+            m128_t acc = m128_zero(), em = s_VE[tid];
+            uint64_t tlo = em.lo, thi = em.hi;
+            while (tlo) { int r = __ffsll(tlo) - 1; acc = m128_xor(acc, s_L_kr[r]); tlo &= tlo - 1; }
+            while (thi) { int r = 64 + __ffsll(thi) - 1; acc = m128_xor(acc, s_L_kr[r]); thi &= thi - 1; }
+            s_P_fiber[tid] = acc;
+        } else if (tid < K) {
+            int fi = tid - r_elim;
+            int r = s_fast_rows[fi];
+            s_P_fiber[tid] = s_L_kr[r];
+            uint32_t cm0 = 0, m0k = 0;
+            for (int e = 0; e < r_elim; e++) {
+                if ((s_M0_1[r] >> s_piv_v0[e]) & 1U) { cm0 |= (1U << e); m0k ^= s_EM0_keep[e]; }
+            }
+            for (int c = 0; c < rK_rem; c++) if ((s_M0_1[r] >> s_keep_c[c]) & 1U) m0k ^= (1U << c);
+            s_Cm0[fi] = cm0;
+            s_M0_rem[fi] = m0k;
+            for (int a = 0; a < d1; a++) {
+                uint32_t mu_ar = s_Mu_1[a * mR_1 + r];
+                uint32_t cma = 0, mka = 0;
+                for (int e = 0; e < r_elim; e++) {
+                    if ((mu_ar >> s_piv_v0[e]) & 1U) { cma |= (1U << e); mka ^= s_EM0_keep[e]; }
+                }
+                for (int c = 0; c < rK_rem; c++) if ((mu_ar >> s_keep_c[c]) & 1U) mka ^= (1U << c);
+                s_Cmk[a * MAX_FAST + fi] = cma;
+                s_Mk_rem[a * MAX_FAST + fi] = mka;
+            }
+        }
+        __syncthreads();
 
         // 2B. All 256 threads compute cur_a0, cur_a1, cur_a2 for this t_lo (popcount <= 6)!
         int lo_bits[STRIP_BITS], nlo = 0;
@@ -1049,7 +1096,7 @@ __global__ void fes_l4_strip_kernel(
             }
 
             uint64_t b_new[MAX_FAST];
-            uint64_t Mrem[MAX_FAST][6];
+            uint64_t Mrem[MAX_FAST][MAX_RK_GPU];
             for (int r = 0; r < n_fast; r++) {
                 uint64_t v = 0ULL;
                 for (int q = 0; q < n_act; q++) v ^= g_ap[act_mon[q] * MAX_K + (r_elim + r)];
@@ -1645,6 +1692,9 @@ def run_one_rep(rep, root_bundle, lib_cpu, lib_gpu, args, gpu_name):
 
     t_sweep = time.perf_counter()
     t_last_log = t_sweep
+    tot_gpu_s = 0.0
+    tot_cand_s = 0.0
+    tot_deg_s = 0.0
     grand_cands = 0
     grand_deg = 0
     grand_surv = 0
@@ -1652,16 +1702,19 @@ def run_one_rep(rep, root_bundle, lib_cpu, lib_gpu, args, gpu_name):
 
     while strips_done < strips_to_run:
         n_cur = min(max_strips_batch, strips_to_run - strips_done)
+        tg0 = time.perf_counter()
         rc = lib_gpu.gpu_run_strips(
             gctx, ctypes.c_uint64(strips_done), n_cur,
             ctypes.c_int64(-1), ctypes.c_uint64(0), ctypes.c_uint64(0),
             h_cands, ctypes.byref(h_cand_cnt), h_deg_fibs, ctypes.byref(h_deg_cnt)
         )
+        tot_gpu_s += time.perf_counter() - tg0
         assert rc == 0, f"gpu_run_strips failed with rc={rc} at strip {strips_done}"
         nc, nd = h_cand_cnt.value, h_deg_cnt.value
         grand_cands += nc
         grand_deg += nd
         if nc > 0:
+            tc0 = time.perf_counter()
             grand_surv += int(lib_cpu.verify_candidates_omp(
                 nc, h_cands, d1, nW, nt1, nT, n_um, n_core, rK_init,
                 U1.ctypes.data_as(ctypes.POINTER(ctypes.c_uint8)),
@@ -1683,7 +1736,9 @@ def run_one_rep(rep, root_bundle, lib_cpu, lib_gpu, args, gpu_name):
                 ctypes.c_int64(-1), ctypes.c_uint64(0), ctypes.c_uint64(0),
                 dummy_surv, 4
             ))
+            tot_cand_s += time.perf_counter() - tc0
         if nd > 0:
+            td0 = time.perf_counter()
             grand_surv += int(lib_cpu.close_degenerate_fibers_omp(
                 nd, h_deg_fibs, d1, nW, nt1, nT, n_um, n_core, rK_init,
                 U1.ctypes.data_as(ctypes.POINTER(ctypes.c_uint8)),
@@ -1704,9 +1759,10 @@ def run_one_rep(rep, root_bundle, lib_cpu, lib_gpu, args, gpu_name):
                 cc_cols.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
                 ctypes.c_int64(-1), ctypes.c_uint64(0), ctypes.c_uint64(0),
             ))
+            tot_deg_s += time.perf_counter() - td0
         strips_done += n_cur
         now = time.perf_counter()
-        if (now - t_last_log) >= 5.0 or strips_done == strips_to_run:
+        if (now - t_last_log) >= 5.0 or strips_done == strips_to_run or strips_done == n_cur:
             el = max(now - t_sweep, 1e-6)
             pts_done = strips_done * 64 * (1 << d1)
             gpts = (pts_done / el) / 1e9
@@ -1714,7 +1770,8 @@ def run_one_rep(rep, root_bundle, lib_cpu, lib_gpu, args, gpu_name):
             eta_s = el * (strips_to_run - strips_done) / max(strips_done, 1)
             print(
                 f"  [e={rep}] {pct:6.2f}% ({strips_done:,}/{strips_to_run:,} strips) | "
-                f"{gpts:6.2f} Gpts/s | cands={grand_cands:,} deg={grand_deg:,} surv={grand_surv} | ETA={eta_s:.1f}s",
+                f"{gpts:6.2f} Gpts/s (gpu={tot_gpu_s:.2f}s cand={tot_cand_s:.2f}s deg={tot_deg_s:.2f}s) | "
+                f"cands={grand_cands:,} deg={grand_deg:,} surv={grand_surv} | ETA={eta_s:.1f}s",
                 flush=True,
             )
             t_last_log = now
@@ -1748,6 +1805,9 @@ def run_one_rep(rep, root_bundle, lib_cpu, lib_gpu, args, gpu_name):
         "full_survivors": int(grand_surv),
         "verdict": ("ORBIT_FORMALLY_CLOSED_UNSAT_100%" if (is_full and grand_surv == 0) else ("BENCHMARK_ONLY" if args.bench_only else "SURVIVOR_FOUND")),
         "sweep_wall_s": round(dt_sweep, 3),
+        "gpu_s": round(tot_gpu_s, 3),
+        "cpu_cand_s": round(tot_cand_s, 3),
+        "cpu_deg_s": round(tot_deg_s, 3),
         "rate_gpts_per_s": round(gpts_per_s, 3),
         "projected_full_orbit_min": round(eta_full_s / 60.0, 2),
         "total_rep_s": round(time.perf_counter() - t0, 2),
@@ -1762,9 +1822,9 @@ def main():
     ap.add_argument("--reps", type=str, default="", help="Comma-separated list of A14 K=1 reps")
     ap.add_argument("--d1", type=int, default=0, help="Override d1 <= 14 (0 = auto-select largest d1 <= 14 with rK_rem <= 6)")
     ap.add_argument("--arch", type=str, default="", help="Override nvcc -arch (default: auto-detect via nvidia-smi)")
-    ap.add_argument("--batch-blocks", type=int, default=2048, help="CUDA blocks (64 fibers/block) per kernel launch")
+    ap.add_argument("--batch-blocks", type=int, default=512, help="CUDA blocks (64 fibers/block) per kernel launch")
     ap.add_argument("--bench-only", action="store_true", help="Run quick throughput benchmark instead of full sweep")
-    ap.add_argument("--bench-strips", type=int, default=2048, help="Number of 64-fiber strips for --bench-only (2048 = 2.15B pts)")
+    ap.add_argument("--bench-strips", type=int, default=128, help="Number of 64-fiber strips for --bench-only (128 = 134M pts)")
     ap.add_argument("--out-json", type=str, default="cert_k1_l4.json", help="Output JSON certificate/benchmark path")
     args = ap.parse_args()
 
