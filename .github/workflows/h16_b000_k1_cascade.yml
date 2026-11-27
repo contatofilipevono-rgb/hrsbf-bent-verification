@@ -1,0 +1,99 @@
+name: H16 B0_00 K=1 C5-Free Full Algebraic Cascade (16 Z16*-Reps)
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_xl:
+        description: "Max XL cascade rounds per rep"
+        required: true
+        default: "25"
+
+jobs:
+  k1_cascade_shard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - shard: 0
+            reps: "1,3,9,11"
+            control: "--run-control"
+          - shard: 1
+            reps: "21,23,29,31"
+            control: ""
+          - shard: 2
+            reps: "33,35,41,43"
+            control: ""
+          - shard: 3
+            reps: "53,55,61,63"
+            control: ""
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python deps
+        run: pip install --quiet numpy python-sat
+
+      - name: Run C5-free B0_00 K=1 cascade (shard ${{ matrix.shard }}, reps=${{ matrix.reps }})
+        run: |
+          python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B000_K1_CASCADE.py \
+            --reps "${{ matrix.reps }}" \
+            --max-xl "${{ inputs.max_xl }}" \
+            ${{ matrix.control }} \
+            --out "k1_shard_${{ matrix.shard }}.json"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: h16-b000-k1-shard-${{ matrix.shard }}
+          path: k1_shard_${{ matrix.shard }}.json
+
+  aggregate_k1_results:
+    needs: k1_cascade_shard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: h16-b000-k1-shard-*
+          merge-multiple: true
+          path: results
+
+      - name: Merge all 16 K=1 representative results
+        run: |
+          python3 - <<'EOF'
+          import glob, json
+
+          all_reps = []
+          controls = {}
+          k1_root = {}
+          for p in sorted(glob.glob("results/k1_shard_*.json")):
+              d = json.loads(open(p).read())
+              if d.get("controls"):
+                  controls = d["controls"]
+              if d.get("k1_root"):
+                  k1_root = d["k1_root"]
+              all_reps.extend(d["reps"])
+          all_reps.sort(key=lambda r: r["e"])
+          closed = [r["e"] for r in all_reps if r["status"].startswith("CLOSED")]
+          opened = [r["e"] for r in all_reps if r["status"] == "OPEN"]
+          summary = {
+              "total_reps": len(all_reps),
+              "closed_count": len(closed),
+              "open_count": len(opened),
+              "closed_reps": closed,
+              "open_reps": opened,
+              "controls": controls,
+              "k1_root": k1_root,
+              "reps": all_reps,
+          }
+          open("k1_summary.json", "w").write(json.dumps(summary, indent=2) + "\n")
+          print(json.dumps(summary, indent=2))
+          EOF
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: h16-b000-k1-summary
+          path: k1_summary.json

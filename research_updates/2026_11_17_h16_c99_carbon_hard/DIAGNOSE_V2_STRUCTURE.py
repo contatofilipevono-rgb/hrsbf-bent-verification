@@ -892,7 +892,7 @@ def dickson_symplectic_factorization(pset, N):
 # ==============================================================================
 # Build Full Algebraic System & Extract Exact Reduced V_2 for a Given Cell
 # ==============================================================================
-def build_cell_algebraic_system(cell_name: str, lib, orbits, v6_list, rot4_data, fiber_meta, extract_sec=18.0):
+def build_cell_algebraic_system(cell_name: str, lib, orbits, v6_list, rot4_data, fiber_meta, extract_sec=18.0, force_k=None):
     t0 = time.perf_counter()
     c99_val = int(cell_name[1])
     c57_val = int(cell_name[3])
@@ -1072,10 +1072,12 @@ def build_cell_algebraic_system(cell_name: str, lib, orbits, v6_list, rot4_data,
     insert_pset(p_0xf)
 
     k_mask = sum(1 << j for j in K_INDICES)
-    p_c5 = {1 << i for i, cdir in enumerate(cb) if (cdir & k_mask).bit_count() & 1}
-    if ((origin & k_mask).bit_count() ^ c57_val) & 1:
-        p_c5.add(0)
-    insert_pset(p_c5)
+    if force_k is None or force_k in (0, 1):
+        k_target = c57_val if force_k is None else int(force_k)
+        p_c5 = {1 << i for i, cdir in enumerate(cb) if (cdir & k_mask).bit_count() & 1}
+        if ((origin & k_mask).bit_count() ^ k_target) & 1:
+            p_c5.add(0)
+        insert_pset(p_c5)
 
     # 2. Seed Q4 (C4)
     def lin_expr(indices):
