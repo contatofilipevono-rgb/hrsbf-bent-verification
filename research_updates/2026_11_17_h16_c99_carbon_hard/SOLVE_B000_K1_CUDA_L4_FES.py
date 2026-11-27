@@ -43,6 +43,11 @@ WORK_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(WORK_DIR))
 
 import SOLVE_B000_K1_WESS_PILOT as pilot
+import SOLVE_B09_DUAL_S_ELIM as b09
+import DIAGNOSE_V2_STRUCTURE as diag_v2
+import SOLVE_STEP9_8BRANCH_CUBIC_DROP as s9
+import SOLVE_STEP16_LAYER2A_AND_W44_CRUSH as s16
+import SOLVE_STEP19_ZEROTRUST_AUDIT_AND_TRUE_WESS_CRUSH as s19
 import SOLVE_STEP40A_B11_COMMON_KERNEL_AND_DECOMPOSITION as s40a
 import SOLVE_STEP45B_POLAR_EXACT_RHS_AND_KL3 as s45b
 import SOLVE_STEP57B_GREEDY_BASIS_AND_BLOCKB_INJECT as s57b
@@ -442,7 +447,7 @@ CUDA_KERNEL_SRC = r"""
 #define MAX_CORE 128
 #define MAX_K    64
 #define MAX_FAST 32
-#define N_STAGE1 10
+#define N_STAGE1 16
 #define MAX_M    8
 #define MAX_RK_GPU 10
 #define STRIP_BITS 6
@@ -467,12 +472,17 @@ struct CandRec {
     uint32_t pad;
 };
 
-__constant__ uint64_t c_LANE_U64[6];
+__constant__ uint64_t c_AFF64_LUT[128];    // 1 KB: 7-bit affine (lin6 | const<<6) -> 64-lane mask!
 __constant__ uint8_t  c_U1[16 * 64];       // d1 <= 14, nW <= 64
 __constant__ uint8_t  c_T1[36 * 64];       // nt1 <= 36, nW <= 64
 __constant__ uint32_t c_M0_c[MAX_CORE];
 __constant__ uint32_t c_KR[32];
 __constant__ int      c_keep_c_kr[32];
+__constant__ uint32_t c_e0_bitset[512];    // 2 KB: exact z=0x01 balancedness bitset (16,384 bits)
+__constant__ uint16_t c_e0_u_lo[64];       // 128 B: e0 syndrome for each of 64 u_lo lanes
+__constant__ uint16_t c_e0_u_hi[256];      // 512 B: e0 syndrome for each of 256 u_hi threads
+__constant__ uint16_t c_e0_t[36];          // 72 B: e0 syndrome delta for each T1[p]
+__constant__ uint16_t c_e0_base[1];        // 2 B: base e0 syndrome at w=0
 
 // Per-block workspace in global memory (avoids >48KB shared memory limits, stays in L4 48MB L2!)
 // Stride per block (in uint64_t):
@@ -527,11 +537,11 @@ __global__ void fes_l4_strip_kernel(
     const uint64_t * __restrict__ d_G2,          // (n_pairs * n_core)
     const uint64_t * __restrict__ d_G3,          // (n_tris * n_core)
     uint64_t       * __restrict__ d_ws_all,      // (gridDim.x * BLK_WS_STRIDE)
-    int64_t plant_fiber_idx, uint64_t plant_delta_lo, uint64_t plant_delta_hi,
+    int64_t plant_fiber_idx, uint64_t plant_delta_lo, uint64_t plant_delta_hi, int use_e0,
     CandRec  * __restrict__ d_cands, int max_cands, int * __restrict__ d_cand_count,
     uint64_t * __restrict__ d_deg_fibs, int max_deg, int * __restrict__ d_deg_count
 ) {
-    // Shared memory for per-fiber linear algebra (~14 KB total)
+    // Shared memory for per-fiber linear algebra (~19 KB total)
     __shared__ uint32_t s_M0_f[MAX_CORE];
     __shared__ uint32_t s_M0_1[MAX_CORE];
     __shared__ uint32_t s_Mu_1[16 * MAX_CORE];
@@ -539,13 +549,15 @@ __global__ void fes_l4_strip_kernel(
     __shared__ m128_t   s_tmp_I[MAX_CORE];
     __shared__ m128_t   s_L_kr[MAX_CORE];
     __shared__ m128_t   s_V0[MAX_CORE];
-    __shared__ uint64_t s_H_mu[MAX_CORE * 8]; // d1 <= 14, rK_1 <= 31 -> <= 434 bits <= 7 u64s!
+    __shared__ uint64_t s_H_mu[MAX_CORE * 8];
     __shared__ m128_t   s_P_fiber[MAX_K];
     __shared__ uint32_t s_Cm0[MAX_FAST];
     __shared__ uint32_t s_Cmk[16 * MAX_FAST];
     __shared__ uint32_t s_M0_rem[MAX_FAST];
     __shared__ uint32_t s_Mk_rem[16 * MAX_FAST];
-    __shared__ int      s_meta[6]; // [0]=r_elim, [1]=n_fast, [2]=rK_rem, [3]=K, [4]=is_deg, [5]=mR_1
+    __shared__ uint8_t  s_Cmk_lo6[MAX_FAST * 32];         // 1 KB: 6-bit u_lo linear code for Cmk[r][e]
+    __shared__ uint8_t  s_Mk_lo6[MAX_FAST * MAX_RK_GPU];  // 320 B: 6-bit u_lo linear code for Mk_rem[r][c]
+    __shared__ int      s_meta[6];
     __shared__ int      s_hi_bits[32];
     __shared__ int      s_n_hi;
     __shared__ uint8_t  s_w_hi[64];
@@ -560,6 +572,7 @@ __global__ void fes_l4_strip_kernel(
     __shared__ int      s_keep_c[32];
     __shared__ uint32_t s_EM0_keep[32];
     __shared__ int      s_fast_rows[MAX_FAST];
+    __shared__ uint16_t s_e0_hi;
 
     int tid = threadIdx.x; // 0..255
     int strip_local = blockIdx.x;
@@ -587,14 +600,17 @@ __global__ void fes_l4_strip_kernel(
     // Step 0: Collect set bits of t_hi_mask (as global indices in 0..M_all-1) and w_hi[0..nW-1]
     if (tid == 0) {
         int nh = 0;
+        uint16_t e0h = c_e0_base[0];
         for (int w = 0; w < nW; w++) s_w_hi[w] = 0;
         for (int p = STRIP_BITS; p < nt1; p++) {
             if ((t_hi_mask >> (p - STRIP_BITS)) & 1ULL) {
                 s_hi_bits[nh++] = m + p;
+                e0h ^= c_e0_t[p];
                 for (int w = 0; w < nW; w++) s_w_hi[w] ^= c_T1[p * 64 + w];
             }
         }
         s_n_hi = nh;
+        s_e0_hi = e0h;
     }
     __syncthreads();
 
@@ -939,6 +955,20 @@ __global__ void fes_l4_strip_kernel(
                 s_Cmk[a * MAX_FAST + fi] = cma;
                 s_Mk_rem[a * MAX_FAST + fi] = mka;
             }
+            for (int e = 0; e < r_elim; e++) {
+                uint8_t code = 0;
+                for (int a = 0; a < 6; a++) {
+                    if ((s_Cmk[a * MAX_FAST + fi] >> e) & 1U) code |= (uint8_t)(1U << a);
+                }
+                s_Cmk_lo6[fi * 32 + e] = code;
+            }
+            for (int c = 0; c < rK_rem; c++) {
+                uint8_t code = 0;
+                for (int a = 0; a < 6; a++) {
+                    if ((s_Mk_rem[a * MAX_FAST + fi] >> c) & 1U) code |= (uint8_t)(1U << a);
+                }
+                s_Mk_lo6[fi * MAX_RK_GPU + c] = code;
+            }
         }
         __syncthreads();
 
@@ -1038,122 +1068,127 @@ __global__ void fes_l4_strip_kernel(
         }
         __syncthreads();
 
-        // 2D. ALL 256 threads simultaneously evaluate u_hi = tid (64 points/thread -> 16,384 pts in 1 pass!)
+        // 2D. ALL 256 threads simultaneously evaluate u_hi = tid (ZERO register spill via c_AFF64_LUT + N_STAGE1=16 + e0 5x filter!)
         if (tid < n_u_hi) {
-            int u_bits[MAX_M], nu = 0;
-            for (int b = 0; b < m; b++) if ((tid >> b) & 1) u_bits[nu++] = b;
-
-            // Collect active monomial indices for this u_hi (avg ~15 entries)
-            int act_mon[93], n_act = 0;
-            act_mon[n_act++] = 0;
-            for (int x = 0; x < nu; x++) {
-                int bx = u_bits[x];
-                act_mon[n_act++] = 1 + bx;
-                for (int y = x + 1; y < nu; y++) {
-                    int by = u_bits[y];
-                    int p2 = bx * (2 * m - bx - 1) / 2 + (by - bx - 1);
-                    act_mon[n_act++] = 1 + m + p2;
-                    for (int z = y + 1; z < nu; z++) {
-                        int bz = u_bits[z];
-                        // rank of (bx, by, bz) among 0 <= i < j < l < m
-                        int t3 = 0;
-                        for (int i = 0; i < bx; i++) t3 += (m - 1 - i) * (m - 2 - i) / 2;
-                        for (int j = bx + 1; j < by; j++) t3 += (m - 1 - j);
-                        t3 += (bz - by - 1);
-                        act_mon[n_act++] = 1 + m + n_u2 + t3;
-                    }
+            uint64_t e0_mask = ~0ULL;
+            if (use_e0) {
+                uint16_t e0_fib_u = s_e0_hi ^ c_e0_u_hi[tid];
+                for (int p = 0; p < STRIP_BITS; p++) {
+                    if ((t_lo >> p) & 1) e0_fib_u ^= c_e0_t[p];
                 }
+                uint64_t em = 0ULL;
+                #pragma unroll 8
+                for (int lane = 0; lane < 64; lane++) {
+                    uint32_t syn = (uint32_t)(e0_fib_u ^ c_e0_u_lo[lane]);
+                    if ((c_e0_bitset[syn >> 5] >> (syn & 31U)) & 1U) em |= (1ULL << lane);
+                }
+                e0_mask = em;
             }
+            if (e0_mask != 0ULL) {
+                int u_bits[MAX_M], nu = 0;
+                for (int b = 0; b < m; b++) if ((tid >> b) & 1) u_bits[nu++] = b;
 
-            uint64_t Eb[32];
-            for (int e = 0; e < r_elim; e++) {
-                uint64_t v = 0ULL;
-                for (int q = 0; q < n_act; q++) v ^= g_ap[act_mon[q] * MAX_K + e];
-                Eb[e] = v;
-            }
+                // Helper macro: evaluate g_ap at u_hi = tid for column col_k WITHOUT act_mon[93] local-memory array!
+                #define EVAL_AP_COL(col_k, out_var) do { \
+                    uint64_t _acc = g_ap[(col_k)]; \
+                    for (int _x = 0; _x < nu; _x++) { \
+                        int _bx = u_bits[_x]; \
+                        _acc ^= g_ap[(1 + _bx) * MAX_K + (col_k)]; \
+                        for (int _y = _x + 1; _y < nu; _y++) { \
+                            int _by = u_bits[_y]; \
+                            int _p2 = _bx * (2 * m - _bx - 1) / 2 + (_by - _bx - 1); \
+                            _acc ^= g_ap[(1 + m + _p2) * MAX_K + (col_k)]; \
+                            for (int _z = _y + 1; _z < nu; _z++) { \
+                                int _bz = u_bits[_z]; \
+                                int _t3 = 0; \
+                                for (int _i = 0; _i < _bx; _i++) _t3 += (m - 1 - _i) * (m - 2 - _i) / 2; \
+                                for (int _j = _bx + 1; _j < _by; _j++) _t3 += (m - 1 - _j); \
+                                _t3 += (_bz - _by - 1); \
+                                _acc ^= g_ap[(1 + m + n_u2 + _t3) * MAX_K + (col_k)]; \
+                            } \
+                        } \
+                    } \
+                    (out_var) = _acc; \
+                } while (0)
 
-            // Two-stage lazy filter (ZERO register spill!):
-            // Stage 1: precompute ONLY first n_s1 = min(N_STAGE1, n_fast) rows in registers.
-            // Stage 2: ONLY when ok != 0 after Stage 1, evaluate rows n_s1..n_fast-1 on the fly!
-            int n_s1 = (n_fast < N_STAGE1) ? n_fast : N_STAGE1;
-            uint64_t eq_cur[N_STAGE1];
-            uint64_t Mrem1[N_STAGE1][MAX_RK_GPU];
-            for (int r = 0; r < n_s1; r++) {
-                uint64_t v = 0ULL;
-                for (int q = 0; q < n_act; q++) v ^= g_ap[act_mon[q] * MAX_K + (r_elim + r)];
-
-                uint32_t cm_const = s_Cm0[r];
-                for (int x = 0; x < nu; x++) cm_const ^= s_Cmk[(6 + u_bits[x]) * MAX_FAST + r];
+                uint64_t Eb[32];
                 for (int e = 0; e < r_elim; e++) {
-                    uint64_t ce = ((cm_const >> e) & 1U) ? ~0ULL : 0ULL;
-                    for (int a = 0; a < 6; a++) {
-                        if ((s_Cmk[a * MAX_FAST + r] >> e) & 1U) ce ^= c_LANE_U64[a];
-                    }
-                    v ^= (ce & Eb[e]);
+                    EVAL_AP_COL(e, Eb[e]);
                 }
-                eq_cur[r] = v;
 
-                uint32_t mr_const = s_M0_rem[r];
-                for (int x = 0; x < nu; x++) mr_const ^= s_Mk_rem[(6 + u_bits[x]) * MAX_FAST + r];
-                for (int c = 0; c < rK_rem; c++) {
-                    uint64_t mc = ((mr_const >> c) & 1U) ? ~0ULL : 0ULL;
-                    for (int a = 0; a < 6; a++) {
-                        if ((s_Mk_rem[a * MAX_FAST + r] >> c) & 1U) mc ^= c_LANE_U64[a];
-                    }
-                    Mrem1[r][c] = mc;
-                }
-            }
-
-            int n_r = 1 << rK_rem;
-            uint64_t any_surv = 0ULL;
-            for (int rv = 0; rv < n_r; rv++) {
-                if (rv > 0) {
-                    int bc = __ffs(rv) - 1;
-                    for (int r = 0; r < n_s1; r++) eq_cur[r] ^= Mrem1[r][bc];
-                }
-                uint64_t ok = ~0ULL;
+                // Stage 1 (N_STAGE1 = 16 rows): precompute eq_cur[0..n_s1-1] and 1-byte Mrem LUT codes!
+                // ZERO Mrem[16][10] uint64_t array -> ZERO register spill!
+                int n_s1 = (n_fast < N_STAGE1) ? n_fast : N_STAGE1;
+                uint64_t eq_cur[N_STAGE1];
+                uint32_t mr_const_s1[N_STAGE1];
                 for (int r = 0; r < n_s1; r++) {
-                    ok &= ~eq_cur[r];
-                    if (!ok) break;
+                    uint64_t v;
+                    EVAL_AP_COL(r_elim + r, v);
+                    uint32_t cm_const = s_Cm0[r];
+                    for (int x = 0; x < nu; x++) cm_const ^= s_Cmk[(6 + u_bits[x]) * MAX_FAST + r];
+                    const uint8_t *cmk_lo = s_Cmk_lo6 + r * 32;
+                    for (int e = 0; e < r_elim; e++) {
+                        uint32_t code = (uint32_t)cmk_lo[e] | (((cm_const >> e) & 1U) << 6);
+                        v ^= (c_AFF64_LUT[code] & Eb[e]);
+                    }
+                    eq_cur[r] = v;
+
+                    uint32_t mr_c = s_M0_rem[r];
+                    for (int x = 0; x < nu; x++) mr_c ^= s_Mk_rem[(6 + u_bits[x]) * MAX_FAST + r];
+                    mr_const_s1[r] = mr_c;
                 }
-                if (ok && n_fast > n_s1) {
-                    int r_gray = rv ^ (rv >> 1);
-                    for (int r = n_s1; r < n_fast; r++) {
-                        uint64_t v = 0ULL;
-                        for (int q = 0; q < n_act; q++) v ^= g_ap[act_mon[q] * MAX_K + (r_elim + r)];
-                        uint32_t cm_const = s_Cm0[r];
-                        for (int x = 0; x < nu; x++) cm_const ^= s_Cmk[(6 + u_bits[x]) * MAX_FAST + r];
-                        for (int e = 0; e < r_elim; e++) {
-                            uint64_t ce = ((cm_const >> e) & 1U) ? ~0ULL : 0ULL;
-                            for (int a = 0; a < 6; a++) {
-                                if ((s_Cmk[a * MAX_FAST + r] >> e) & 1U) ce ^= c_LANE_U64[a];
-                            }
-                            v ^= (ce & Eb[e]);
+
+                int n_r = 1 << rK_rem;
+                uint64_t any_surv = 0ULL;
+                for (int rv = 0; rv < n_r; rv++) {
+                    if (rv > 0) {
+                        int bc = __ffs(rv) - 1;
+                        for (int r = 0; r < n_s1; r++) {
+                            uint32_t code = (uint32_t)s_Mk_lo6[r * MAX_RK_GPU + bc] | (((mr_const_s1[r] >> bc) & 1U) << 6);
+                            eq_cur[r] ^= c_AFF64_LUT[code];
                         }
-                        uint32_t mr_const = s_M0_rem[r];
-                        for (int x = 0; x < nu; x++) mr_const ^= s_Mk_rem[(6 + u_bits[x]) * MAX_FAST + r];
-                        for (int c = 0; c < rK_rem; c++) {
-                            if ((r_gray >> c) & 1) {
-                                uint64_t mc = ((mr_const >> c) & 1U) ? ~0ULL : 0ULL;
-                                for (int a = 0; a < 6; a++) {
-                                    if ((s_Mk_rem[a * MAX_FAST + r] >> c) & 1U) mc ^= c_LANE_U64[a];
-                                }
-                                v ^= mc;
-                            }
-                        }
-                        ok &= ~v;
+                    }
+                    uint64_t ok = e0_mask;
+                    for (int r = 0; r < n_s1; r++) {
+                        ok &= ~eq_cur[r];
                         if (!ok) break;
                     }
+                    if (ok && n_fast > n_s1) {
+                        int r_gray = rv ^ (rv >> 1);
+                        for (int r = n_s1; r < n_fast; r++) {
+                            uint64_t v;
+                            EVAL_AP_COL(r_elim + r, v);
+                            uint32_t cm_const = s_Cm0[r];
+                            for (int x = 0; x < nu; x++) cm_const ^= s_Cmk[(6 + u_bits[x]) * MAX_FAST + r];
+                            const uint8_t *cmk_lo = s_Cmk_lo6 + r * 32;
+                            for (int e = 0; e < r_elim; e++) {
+                                uint32_t code = (uint32_t)cmk_lo[e] | (((cm_const >> e) & 1U) << 6);
+                                v ^= (c_AFF64_LUT[code] & Eb[e]);
+                            }
+                            uint32_t mr_c = s_M0_rem[r];
+                            for (int x = 0; x < nu; x++) mr_c ^= s_Mk_rem[(6 + u_bits[x]) * MAX_FAST + r];
+                            const uint8_t *mk_lo = s_Mk_lo6 + r * MAX_RK_GPU;
+                            for (int c = 0; c < rK_rem; c++) {
+                                if ((r_gray >> c) & 1) {
+                                    uint32_t code = (uint32_t)mk_lo[c] | (((mr_c >> c) & 1U) << 6);
+                                    v ^= c_AFF64_LUT[code];
+                                }
+                            }
+                            ok &= ~v;
+                            if (!ok) break;
+                        }
+                    }
+                    any_surv |= ok;
                 }
-                any_surv |= ok;
-            }
-            if (any_surv != 0ULL) {
-                int slot = atomicAdd(d_cand_count, 1);
-                if (slot < max_cands) {
-                    d_cands[slot].fiber_idx = fiber_idx;
-                    d_cands[slot].mask64 = any_surv;
-                    d_cands[slot].u_hi = (uint32_t)tid;
-                    d_cands[slot].pad = 0;
+                #undef EVAL_AP_COL
+                if (any_surv != 0ULL) {
+                    int slot = atomicAdd(d_cand_count, 1);
+                    if (slot < max_cands) {
+                        d_cands[slot].fiber_idx = fiber_idx;
+                        d_cands[slot].mask64 = any_surv;
+                        d_cands[slot].u_hi = (uint32_t)tid;
+                        d_cands[slot].pad = 0;
+                    }
                 }
             }
         }
@@ -1195,7 +1230,9 @@ extern "C" void* gpu_init(
     const uint8_t *U1, const uint8_t *T1,
     const uint32_t *M0_c, const uint32_t *Mk_c, const uint32_t *KR, const int *keep_c_kr,
     const uint32_t *Mu_opt_keep, const int *pair_idx, const int *tri_idx,
-    const uint64_t *G0, const uint64_t *G1, const uint64_t *G2, const uint64_t *G3
+    const uint64_t *G0, const uint64_t *G1, const uint64_t *G2, const uint64_t *G3,
+    const uint32_t *e0_bitset, const uint16_t *e0_u_lo, const uint16_t *e0_u_hi,
+    const uint16_t *e0_t, uint16_t e0_base
 ) {
     GpuCtx *ctx = (GpuCtx *)calloc(1, sizeof(GpuCtx));
     ctx->d1 = d1; ctx->m = m; ctx->nW = nW; ctx->nt1 = nt1;
@@ -1211,17 +1248,30 @@ extern "C" void* gpu_init(
         for (int l = 0; l < 64; l++) if ((l >> a) & 1) v |= (1ULL << l);
         lane64[a] = v;
     }
+    uint64_t aff64[128];
+    for (int code = 0; code < 128; code++) {
+        uint64_t v = (code & 64) ? ~0ULL : 0ULL;
+        for (int a = 0; a < 6; a++) if ((code >> a) & 1) v ^= lane64[a];
+        aff64[code] = v;
+    }
     uint8_t u1_pad[16 * 64] = {0};
     for (int a = 0; a < d1; a++) for (int w = 0; w < nW; w++) u1_pad[a * 64 + w] = U1[a * nW + w];
     uint8_t t1_pad[36 * 64] = {0};
     for (int p = 0; p < nt1; p++) for (int w = 0; w < nW; w++) t1_pad[p * 64 + w] = T1[p * nW + w];
+    uint16_t e0_t_pad[36] = {0};
+    for (int p = 0; p < nt1; p++) e0_t_pad[p] = e0_t[p];
 
-    CUDA_CHECK(cudaMemcpyToSymbol(c_LANE_U64, lane64, sizeof(lane64)));
+    CUDA_CHECK(cudaMemcpyToSymbol(c_AFF64_LUT, aff64, sizeof(aff64)));
     CUDA_CHECK(cudaMemcpyToSymbol(c_U1, u1_pad, sizeof(u1_pad)));
     CUDA_CHECK(cudaMemcpyToSymbol(c_T1, t1_pad, sizeof(t1_pad)));
     CUDA_CHECK(cudaMemcpyToSymbol(c_M0_c, M0_c, (size_t)n_core * sizeof(uint32_t)));
     if (n_kr > 0) CUDA_CHECK(cudaMemcpyToSymbol(c_KR, KR, (size_t)n_kr * sizeof(uint32_t)));
     CUDA_CHECK(cudaMemcpyToSymbol(c_keep_c_kr, keep_c_kr, (size_t)rK_1 * sizeof(int)));
+    CUDA_CHECK(cudaMemcpyToSymbol(c_e0_bitset, e0_bitset, 512 * sizeof(uint32_t)));
+    CUDA_CHECK(cudaMemcpyToSymbol(c_e0_u_lo, e0_u_lo, 64 * sizeof(uint16_t)));
+    CUDA_CHECK(cudaMemcpyToSymbol(c_e0_u_hi, e0_u_hi, 256 * sizeof(uint16_t)));
+    CUDA_CHECK(cudaMemcpyToSymbol(c_e0_t, e0_t_pad, sizeof(e0_t_pad)));
+    CUDA_CHECK(cudaMemcpyToSymbol(c_e0_base, &e0_base, sizeof(uint16_t)));
 
     CUDA_CHECK(cudaMalloc(&ctx->d_Mk_c, (size_t)nW * n_core * sizeof(uint32_t)));
     CUDA_CHECK(cudaMemcpy(ctx->d_Mk_c, Mk_c, (size_t)nW * n_core * sizeof(uint32_t), cudaMemcpyHostToDevice));
@@ -1251,7 +1301,7 @@ extern "C" void* gpu_init(
 
 extern "C" int gpu_run_strips(
     void *vctx, uint64_t start_strip_idx, int n_strips,
-    int64_t plant_fiber_idx, uint64_t plant_delta_lo, uint64_t plant_delta_hi,
+    int64_t plant_fiber_idx, uint64_t plant_delta_lo, uint64_t plant_delta_hi, int use_e0,
     CandRec *h_cands, int *h_cand_count_out,
     uint64_t *h_deg_fibs, int *h_deg_count_out
 ) {
@@ -1265,7 +1315,7 @@ extern "C" int gpu_run_strips(
         ctx->d1, ctx->m, ctx->nW, ctx->nt1, ctx->n_core, ctx->rK_init, ctx->n_kr, ctx->rK_1, ctx->M_all,
         ctx->d_Mk_c, ctx->d_Mu_opt_keep, ctx->d_pair_idx, ctx->d_tri_idx,
         ctx->d_G0, ctx->d_G1, ctx->d_G2, ctx->d_G3, ctx->d_ws_all,
-        plant_fiber_idx, plant_delta_lo, plant_delta_hi,
+        plant_fiber_idx, plant_delta_lo, plant_delta_hi, use_e0,
         ctx->d_cands, ctx->max_cands, ctx->d_cand_count,
         ctx->d_deg_fibs, ctx->max_deg, ctx->d_deg_count
     );
@@ -1391,17 +1441,211 @@ def compile_cpu_and_cuda(tag, arch):
         ctypes.POINTER(ctypes.c_uint32), ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int),
         ctypes.POINTER(ctypes.c_uint64), ctypes.POINTER(ctypes.c_uint64),
         ctypes.POINTER(ctypes.c_uint64), ctypes.POINTER(ctypes.c_uint64),
+        ctypes.POINTER(ctypes.c_uint32), ctypes.POINTER(ctypes.c_uint16), ctypes.POINTER(ctypes.c_uint16),
+        ctypes.POINTER(ctypes.c_uint16), ctypes.c_uint16,
     ]
     lib_gpu.gpu_init.restype = ctypes.c_void_p
     lib_gpu.gpu_run_strips.argtypes = [
         ctypes.c_void_p, ctypes.c_uint64, ctypes.c_int,
-        ctypes.c_int64, ctypes.c_uint64, ctypes.c_uint64,
+        ctypes.c_int64, ctypes.c_uint64, ctypes.c_uint64, ctypes.c_int,
         ctypes.POINTER(CandRec), ctypes.POINTER(ctypes.c_int),
         ctypes.POINTER(ctypes.c_uint64), ctypes.POINTER(ctypes.c_int),
     ]
     lib_gpu.gpu_run_strips.restype = ctypes.c_int
     lib_gpu.gpu_free.argtypes = [ctypes.c_void_p]
     return lib_cpu, lib_gpu
+
+
+def build_e0_filter(sr, origin111, U1, T1, nW, d1, nt1, tbl, rep):
+    """
+    Exact z=0x01 (e0) balancedness pre-filter for B0_00 (Sign Lemma: f|_Delta == 0 => wt(g_0x01) == 128).
+    Computes the exact affine map (w, r) -> g_0x01(u) in sheared s45b coordinates.
+    SOUNDNESS GUARD: Only enables the filter if g_0x01 (mod global bit-flip) has ZERO dependence on R_vars
+    AND passes 1,000/1,000 random (w, r) Zero-Trust truth-table checks!
+    """
+    n = tbl["n"]
+    qps = [s9.row_to_pset(sr["_buf"], qr, tbl) for qr in sr["_quad_ids"]]
+    ana = s16.analyze_quad_system(qps)
+    W_rref = s19.strict_rref_masks(list(ana["W_piv"].values()))
+    W_pivs = sorted(W_rref.keys())
+    W_set = set(W_pivs)
+    assert len(W_pivs) == nW, f"W_pivs mismatch: {len(W_pivs)} vs {nW}"
+    active_now = sorted(i for i in range(n) if i not in sr["_lin_pivs"])
+    R_vars = [v for v in active_now if v not in W_set]
+    lin_pivs = sr["_lin_pivs"]
+
+    # Build exact 256-bit truth tables on z=0x01 coset {(u, u ^ 0x01) : u in 0..255}
+    orbits = diag_v2.build_orbits_116()
+    pts = np.array([u | ((u ^ 0x01) << 8) for u in range(256)], dtype=np.uint16)
+    orb_z1 = np.zeros(116, dtype=object)
+    for j, orb in enumerate(orbits):
+        acc = np.zeros(256, dtype=np.uint8)
+        for mm in orb:
+            acc ^= ((pts & mm) == mm).astype(np.uint8)
+        val = 0
+        for u in range(256):
+            if acc[u]: val |= (1 << u)
+        orb_z1[j] = val
+
+    _, _, cb111 = b09.build_pure_111_basis(0, 0, 0)
+    b_z1 = [0] * 111
+    for i, cm in enumerate(cb111):
+        v = 0
+        tmp = cm
+        while tmp:
+            lb = tmp & -tmp; v ^= orb_z1[lb.bit_length() - 1]; tmp ^= lb
+        b_z1[i] = v
+    orig_z1 = 0
+    tmp = origin111
+    while tmp:
+        lb = tmp & -tmp; orig_z1 ^= orb_z1[lb.bit_length() - 1]; tmp ^= lb
+
+    def x111_to_z1(x111):
+        v = orig_z1
+        t = x111
+        while t:
+            lb = t & -t; v ^= b_z1[lb.bit_length() - 1]; t ^= lb
+        return v
+
+    def sheared_to_x111(w_vec, r_vec):
+        x = 0
+        for idx_r, vr in enumerate(R_vars):
+            if r_vec[idx_r]: x |= (1 << vr)
+        for idx_w, pw in enumerate(W_pivs):
+            rest = W_rref[pw] ^ (1 << pw)
+            bit = int(w_vec[idx_w]) ^ ((rest & x).bit_count() & 1)
+            if bit: x |= (1 << pw)
+        for lp, (pv, pr) in lin_pivs.items():
+            bit = int(pr) ^ (((pv ^ (1 << lp)) & x).bit_count() & 1)
+            if bit: x |= (1 << lp)
+        return x
+
+    z_zero = x111_to_z1(sheared_to_x111(np.zeros(nW, dtype=np.uint8), np.zeros(len(R_vars), dtype=np.uint8)))
+    ALL256 = (1 << 256) - 1
+
+    # Check coupling to R_vars (mod global bit-flip ALL256, since wt(g ^ ALL256) = 256 - wt(g) preserves 128!)
+    r_vecs = []
+    for j in range(len(R_vars)):
+        rv = np.zeros(len(R_vars), dtype=np.uint8); rv[j] = 1
+        d = x111_to_z1(sheared_to_x111(np.zeros(nW, dtype=np.uint8), rv)) ^ z_zero
+        if d & 1: d ^= ALL256
+        if d: r_vecs.append(d)
+    # GF(2) rank of r_vecs
+    rpivs = {}
+    for v in r_vecs:
+        x = v
+        while x:
+            b = x.bit_length() - 1
+            if b in rpivs: x ^= rpivs[b]
+            else: rpivs[b] = x; break
+    r_coupling = len(rpivs)
+
+    empty = (
+        0, r_coupling, 0, 0,
+        np.full(512, 0xFFFFFFFF, dtype=np.uint32),
+        np.zeros(64, dtype=np.uint16),
+        np.zeros(256, dtype=np.uint16),
+        np.zeros(nt1, dtype=np.uint16),
+        0,
+        None,
+    )
+    if r_coupling > 0:
+        print(f"  [e0 filter] DISABLED: z=0x01 has R-coupling rank={r_coupling} > 0", flush=True)
+        return empty
+
+    # Purely in W! Build exact basis & syndrome map W -> k_e0 bits (mod global bit-flip)
+    w_dirs = []
+    for i in range(nW):
+        wv = np.zeros(nW, dtype=np.uint8); wv[i] = 1
+        d = x111_to_z1(sheared_to_x111(wv, np.zeros(len(R_vars), dtype=np.uint8))) ^ z_zero
+        if d & 1: d ^= ALL256
+        w_dirs.append(d)
+
+    basis_vecs = []
+    piv_bit_to_idx = {}
+    basis_piv_rows = {} # piv_bit -> (reduced_vec, coord_mask_in_basis)
+    w_syn = [0] * nW
+    for i, d in enumerate(w_dirs):
+        x = d
+        cm = 0
+        while x:
+            b = x.bit_length() - 1
+            if b in basis_piv_rows:
+                pv, pm = basis_piv_rows[b]
+                x ^= pv; cm ^= pm
+            else:
+                idx_new = len(basis_vecs)
+                basis_vecs.append(d)
+                basis_piv_rows[b] = (x, cm ^ (1 << idx_new))
+                piv_bit_to_idx[b] = idx_new
+                cm = 1 << idx_new
+                break
+        w_syn[i] = cm
+
+    k_e0 = len(basis_vecs)
+    if k_e0 == 0 or k_e0 > 14:
+        print(f"  [e0 filter] DISABLED: k_e0={k_e0} out of range 1..14", flush=True)
+        return empty
+
+    # Build 2 KB balancedness bitset over all 2^{k_e0} states (using Gray code for instant speed!)
+    n_states = 1 << k_e0
+    e0_bitset = np.zeros(512, dtype=np.uint32)
+    cur = z_zero
+    valid_cnt = 0
+    for s in range(n_states):
+        if s > 0:
+            b = (s & -s).bit_length() - 1
+            cur ^= basis_vecs[b]
+        st = s ^ (s >> 1)
+        if cur.bit_count() == 128:
+            e0_bitset[st >> 5] |= np.uint32(1 << (st & 31))
+            valid_cnt += 1
+
+    # Precompute syndromes for U1[0..5] (64 u_lo lanes), U1[6..d1-1] (256 u_hi threads), T1[0..nt1-1]
+    def vec_to_syn(wv):
+        s = 0
+        for i in range(nW):
+            if wv[i]: s ^= w_syn[i]
+        return s
+
+    u_lo_syn_basis = [vec_to_syn(U1[a]) for a in range(6)]
+    e0_u_lo = np.zeros(64, dtype=np.uint16)
+    for lane in range(64):
+        s = 0
+        for a in range(6):
+            if (lane >> a) & 1: s ^= u_lo_syn_basis[a]
+        e0_u_lo[lane] = s
+
+    m = d1 - 6
+    u_hi_syn_basis = [vec_to_syn(U1[6 + b]) for b in range(m)]
+    e0_u_hi = np.zeros(256, dtype=np.uint16)
+    for uhi in range(1 << m):
+        s = 0
+        for b in range(m):
+            if (uhi >> b) & 1: s ^= u_hi_syn_basis[b]
+        e0_u_hi[uhi] = s
+
+    e0_t = np.array([vec_to_syn(T1[p]) for p in range(nt1)], dtype=np.uint16)
+    e0_base = 0
+
+    # Zero-Trust verification on 1,000 random (w, r) points directly against exact g_0x01 truth table!
+    rng_e0 = np.random.default_rng(8800 + rep)
+    e0_mis = 0
+    for _ in range(1000):
+        wv = rng_e0.integers(0, 2, size=nW, dtype=np.uint8)
+        rv = rng_e0.integers(0, 2, size=len(R_vars), dtype=np.uint8)
+        wt = x111_to_z1(sheared_to_x111(wv, rv)).bit_count()
+        syn = vec_to_syn(wv)
+        bit = int((e0_bitset[syn >> 5] >> np.uint32(syn & 31)) & np.uint32(1))
+        if (wt == 128) != (bit == 1):
+            e0_mis += 1
+    print(
+        f"  [e0 filter] ENABLED (r_coupling=0, k_e0={k_e0}, valid={valid_cnt}/{n_states} = "
+        f"{100.0*valid_cnt/n_states:.2f}%, {n_states/max(valid_cnt,1):.2f}x prune) | ZT 1000/1000 mismatches={e0_mis}",
+        flush=True,
+    )
+    assert e0_mis == 0, f"CRITICAL: e0 filter had {e0_mis}/1000 ZT mismatches!"
+    return (1, 0, k_e0, valid_cnt, e0_bitset, e0_u_lo, e0_u_hi, e0_t, e0_base, vec_to_syn)
 
 
 def run_one_rep(rep, root_bundle, lib_cpu, lib_gpu, args, gpu_name):
@@ -1585,6 +1829,14 @@ def run_one_rep(rep, root_bundle, lib_cpu, lib_gpu, args, gpu_name):
     print(f"  [ANF ZT] 100 random W points vs direct eval: {anf_mismatches} mismatches", flush=True)
     assert anf_mismatches == 0, "CRITICAL: C_core has degree > 3 in W!"
 
+    # Build & Zero-Trust verify exact z=0x01 (e0) 5x pre-filter (auto-disables if R-coupled!)
+    use_e0, e0_rcoup, k_e0, e0_valid, e0_bitset, e0_u_lo, e0_u_hi, e0_t, e0_base, vec_to_syn_e0 = build_e0_filter(
+        sr, origin111, U1, T1, nW, d1, nt1, tbl, rep
+    )
+    if args.no_e0:
+        use_e0 = 0
+        print("  [e0 filter] Disabled by --no-e0 flag", flush=True)
+
     # Initialize GPU context
     total_strips = 1 << (nt1 - 6)
     max_strips_batch = min(args.batch_blocks, total_strips)
@@ -1607,6 +1859,11 @@ def run_one_rep(rep, root_bundle, lib_cpu, lib_gpu, args, gpu_name):
         G1.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),
         G2.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),
         G3.ctypes.data_as(ctypes.POINTER(ctypes.c_uint64)),
+        e0_bitset.ctypes.data_as(ctypes.POINTER(ctypes.c_uint32)),
+        e0_u_lo.ctypes.data_as(ctypes.POINTER(ctypes.c_uint16)),
+        e0_u_hi.ctypes.data_as(ctypes.POINTER(ctypes.c_uint16)),
+        e0_t.ctypes.data_as(ctypes.POINTER(ctypes.c_uint16)),
+        ctypes.c_uint16(e0_base),
     )
     assert gctx, "gpu_init failed!"
 
@@ -1616,8 +1873,8 @@ def run_one_rep(rep, root_bundle, lib_cpu, lib_gpu, args, gpu_name):
     h_deg_cnt = ctypes.c_int(0)
     dummy_surv = (ctypes.c_uint64 * 4)()
 
-    # Zero-Trust check 2: 10/10 GPU->CPU planted-solution audit!
-    print("  --- GPU ZERO-TRUST PLANTED-SOLUTION AUDIT (10 trials) ---", flush=True)
+    # Zero-Trust check 2: 10/10 GPU->CPU planted-solution audit (algebraic kernel, use_e0=0)
+    print("  --- GPU ZERO-TRUST PLANTED-SOLUTION AUDIT (10 trials, algebraic) ---", flush=True)
     rng_zt = np.random.default_rng(9900 + rep)
     zt_pass = 0
     for trial in range(10):
@@ -1638,7 +1895,7 @@ def run_one_rep(rep, root_bundle, lib_cpu, lib_gpu, args, gpu_name):
 
         rc = lib_gpu.gpu_run_strips(
             gctx, ctypes.c_uint64(strip_star), 1,
-            ctypes.c_int64(f_star), ctypes.c_uint64(d_lo), ctypes.c_uint64(d_hi),
+            ctypes.c_int64(f_star), ctypes.c_uint64(d_lo), ctypes.c_uint64(d_hi), 0,
             h_cands, ctypes.byref(h_cand_cnt), h_deg_fibs, ctypes.byref(h_deg_cnt)
         )
         assert rc == 0, f"gpu_run_strips failed with rc={rc}"
@@ -1689,6 +1946,81 @@ def run_one_rep(rep, root_bundle, lib_cpu, lib_gpu, args, gpu_name):
     print(f"  GPU ZERO-TRUST AUDIT: {zt_pass}/10 PASS!", flush=True)
     assert zt_pass == 10, "CRITICAL: GPU FES missed a planted solution!"
 
+    # Zero-Trust check 3 (when e0 filter enabled): 5/5 planted solutions WITH use_e0=1 on e0-balanced w_star!
+    zt_e0_pass = 0
+    if use_e0:
+        print("  --- GPU ZERO-TRUST E0-FILTERED PLANTED AUDIT (5 trials, use_e0=1) ---", flush=True)
+        for trial in range(5):
+            while True:
+                f_star = int(rng_zt.integers(0, 1 << nt1))
+                t_bits = np.array([(f_star >> p) & 1 for p in range(nt1)], dtype=np.uint8)
+                u_star = rng_zt.integers(0, 2, size=d1, dtype=np.uint8)
+                w_star = (((t_bits @ T1) ^ (u_star @ U1)) & 1).astype(np.uint8)
+                syn = vec_to_syn_e0(w_star)
+                if (int(e0_bitset[syn >> 5]) >> (syn & 31)) & 1:
+                    break
+            strip_star = f_star >> 6
+            r_star = rng_zt.integers(0, 2, size=rK_init, dtype=np.uint8)
+            b_orig_s, _ = sys_ex["eval_b_and_p0_batch"](w_star.reshape(1, -1))
+            b_core_s = (L_core @ b_orig_s[0]) & 1
+            M_s = M0_c.copy()
+            for w in range(nW):
+                if w_star[w]: M_s ^= Mk_c[w]
+            delta_core = (b_core_s ^ ((M_s @ r_star) & 1)) & 1
+            d_lo = sum(int(delta_core[c]) << c for c in range(min(64, n_core)))
+            d_hi = sum(int(delta_core[c]) << (c - 64) for c in range(64, n_core))
+            rc = lib_gpu.gpu_run_strips(
+                gctx, ctypes.c_uint64(strip_star), 1,
+                ctypes.c_int64(f_star), ctypes.c_uint64(d_lo), ctypes.c_uint64(d_hi), 1,
+                h_cands, ctypes.byref(h_cand_cnt), h_deg_fibs, ctypes.byref(h_deg_cnt)
+            )
+            assert rc == 0
+            s_cand = int(lib_cpu.verify_candidates_omp(
+                h_cand_cnt.value, h_cands, d1, nW, nt1, nT, n_um, n_core, rK_init,
+                U1.ctypes.data_as(ctypes.POINTER(ctypes.c_uint8)),
+                T1.ctypes.data_as(ctypes.POINTER(ctypes.c_uint8)),
+                M0_c_masks.ctypes.data_as(ctypes.POINTER(ctypes.c_uint32)),
+                Mk_c_masks.ctypes.data_as(ctypes.POINTER(ctypes.c_uint32)),
+                qt_c0.ctypes.data_as(ctypes.POINTER(ctypes.c_uint8)),
+                qt_lin.ctypes.data_as(ctypes.POINTER(ctypes.c_uint8)),
+                qt_q_off.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                qt_q0.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                qt_q1.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                m_deg.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                m_v0.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                m_v1.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                m_v2.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                c0_core.ctypes.data_as(ctypes.POINTER(ctypes.c_uint8)),
+                cc_off.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                cc_cols.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                ctypes.c_int64(f_star), ctypes.c_uint64(d_lo), ctypes.c_uint64(d_hi),
+                None, 0
+            ))
+            s_deg = int(lib_cpu.close_degenerate_fibers_omp(
+                h_deg_cnt.value, h_deg_fibs, d1, nW, nt1, nT, n_um, n_core, rK_init,
+                U1.ctypes.data_as(ctypes.POINTER(ctypes.c_uint8)),
+                T1.ctypes.data_as(ctypes.POINTER(ctypes.c_uint8)),
+                M0_c_masks.ctypes.data_as(ctypes.POINTER(ctypes.c_uint32)),
+                Mk_c_masks.ctypes.data_as(ctypes.POINTER(ctypes.c_uint32)),
+                qt_c0.ctypes.data_as(ctypes.POINTER(ctypes.c_uint8)),
+                qt_lin.ctypes.data_as(ctypes.POINTER(ctypes.c_uint8)),
+                qt_q_off.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                qt_q0.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                qt_q1.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                m_deg.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                m_v0.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                m_v1.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                m_v2.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                c0_core.ctypes.data_as(ctypes.POINTER(ctypes.c_uint8)),
+                cc_off.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                cc_cols.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                ctypes.c_int64(f_star), ctypes.c_uint64(d_lo), ctypes.c_uint64(d_hi),
+            ))
+            if (s_cand + s_deg) >= 1: zt_e0_pass += 1
+            print(f"    ZT e0 trial {trial}: fiber={f_star}, cands={h_cand_cnt.value}, deg={h_deg_cnt.value} -> surv={s_cand+s_deg}", flush=True)
+        print(f"  GPU ZERO-TRUST E0 AUDIT: {zt_e0_pass}/5 PASS!", flush=True)
+        assert zt_e0_pass == 5, "CRITICAL: GPU e0 filter missed a planted e0-balanced solution!"
+
     # Main sweep (or --bench-only)
     strips_to_run = min(args.bench_strips, total_strips) if args.bench_only else total_strips
     total_fibs_target = strips_to_run * 64
@@ -1710,7 +2042,7 @@ def run_one_rep(rep, root_bundle, lib_cpu, lib_gpu, args, gpu_name):
         tg0 = time.perf_counter()
         rc = lib_gpu.gpu_run_strips(
             gctx, ctypes.c_uint64(strips_done), n_cur,
-            ctypes.c_int64(-1), ctypes.c_uint64(0), ctypes.c_uint64(0),
+            ctypes.c_int64(-1), ctypes.c_uint64(0), ctypes.c_uint64(0), use_e0,
             h_cands, ctypes.byref(h_cand_cnt), h_deg_fibs, ctypes.byref(h_deg_cnt)
         )
         tot_gpu_s += time.perf_counter() - tg0
@@ -1800,6 +2132,10 @@ def run_one_rep(rep, root_bundle, lib_cpu, lib_gpu, args, gpu_name):
         "pencil": {"nW": nW, "nT": nT, "n_core": n_core, "rK_init": rK_init, "d1": d1, "nt1": nt1, "rK_rem": rK_rem_nom},
         "anf_zt_mismatches": anf_mismatches,
         "gpu_zt_planted_audit": f"{zt_pass}/10 PASS",
+        "e0_filter": {
+            "enabled": bool(use_e0), "r_coupling": e0_rcoup, "k_e0": k_e0,
+            "valid_states": e0_valid, "gpu_zt_e0_audit": (f"{zt_e0_pass}/5 PASS" if use_e0 else "N/A"),
+        },
         "is_full_orbit": is_full,
         "strips_closed": int(strips_to_run),
         "total_strips": int(total_strips),
@@ -1830,6 +2166,7 @@ def main():
     ap.add_argument("--batch-blocks", type=int, default=4096, help="CUDA blocks (64 fibers/block) per kernel launch")
     ap.add_argument("--bench-only", action="store_true", help="Run quick throughput benchmark instead of full sweep")
     ap.add_argument("--bench-strips", type=int, default=1024, help="Number of 64-fiber strips for --bench-only (1024 = 1.07B pts)")
+    ap.add_argument("--no-e0", action="store_true", help="Disable z=0x01 (e0) balancedness pre-filter")
     ap.add_argument("--out-json", type=str, default="cert_k1_l4.json", help="Output JSON certificate/benchmark path")
     args = ap.parse_args()
 
