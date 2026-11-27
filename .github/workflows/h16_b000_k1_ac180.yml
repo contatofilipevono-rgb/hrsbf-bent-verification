@@ -1,0 +1,70 @@
+name: H16 B0_00 K=1 Step 63A AC180 + D8-PQ72 Injection (e=11, e=3, K0 e=0)
+
+on:
+  workflow_dispatch:
+    inputs:
+      auto_close_max_kfix:
+        description: "Auto-close e=11 if post-AC180 k_fix <= this value"
+        required: true
+        default: "10"
+
+jobs:
+  ac180_target:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: "e11"
+            extra: "--run-root"
+          - target: "e3"
+            extra: ""
+          - target: "k0_e0"
+            extra: ""
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Python deps
+        run: pip install --quiet numpy python-sat
+      - name: Run Step 63A AC180 + D8-PQ72 on ${{ matrix.target }}
+        run: |
+          OMP_NUM_THREADS=$(nproc) python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B000_K1_AC180.py \
+            --target "${{ matrix.target }}" ${{ matrix.extra }} \
+            --auto-close-max-kfix "${{ inputs.auto_close_max_kfix }}" \
+            --budget-min 38 --out-dir k1_ac180_out | tee "ac180_${{ matrix.target }}.log"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k1-ac180-${{ matrix.target }}
+          path: |
+            k1_ac180_out/
+            ac180_${{ matrix.target }}.log
+
+  aggregate_ac180:
+    needs: ac180_target
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: k1-ac180-*
+          merge-multiple: true
+          path: results
+      - name: Merge AC180 results
+        run: |
+          python3 - <<'EOF'
+          import glob, json
+
+          merged = {}
+          for p in sorted(glob.glob("results/ac180_*.json")):
+              d = json.loads(open(p).read())
+              merged[d["target"]] = d
+          open("ac180_summary.json", "w").write(json.dumps(merged, indent=2) + "\n")
+          print(json.dumps(merged, indent=2))
+          EOF
+      - uses: actions/upload-artifact@v4
+        with:
+          name: k1-ac180-summary
+          path: ac180_summary.json
