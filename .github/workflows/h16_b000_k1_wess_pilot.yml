@@ -1,0 +1,65 @@
+name: H16 B0_00 K=1 W_ess MinRank Pilot & Sharded Closer
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "probe (e=11,3 + auto-close e=11 if k_fix<=10) or close (8-shard parallel)"
+        required: true
+        default: "probe"
+      rep:
+        description: "A14 e-rep for close mode (e.g. 11)"
+        required: true
+        default: "11"
+      kfix:
+        description: "k_fix for close mode (0 = auto)"
+        required: true
+        default: "0"
+
+jobs:
+  k1_probe:
+    if: ${{ inputs.mode == 'probe' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Python deps
+        run: pip install --quiet numpy python-sat
+      - name: Run K=1 W_ess probe on e=11 and e=3 (auto-close e=11 if k_fix <= 10)
+        run: |
+          python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B000_K1_WESS_PILOT.py \
+            --mode probe --reps "11,3" --auto-close-max-kfix 10 --workers 4 --budget-min 38 --cert-dir k1_wess_certs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: h16-b000-k1-wess-probe
+          path: k1_wess_certs/
+
+  k1_close_shard:
+    if: ${{ inputs.mode == 'close' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Python deps
+        run: pip install --quiet numpy python-sat
+      - name: Close K=1 e=${{ inputs.rep }} shard ${{ matrix.shard }}/8
+        run: |
+          python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B000_K1_WESS_PILOT.py \
+            --mode close --rep "${{ inputs.rep }}" --kfix "${{ inputs.kfix }}" \
+            --shard-idx "${{ matrix.shard }}" --n-shards 8 --workers 4 --budget-min 80 --cert-dir k1_wess_certs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: h16-b000-k1-e${{ inputs.rep }}-shard-${{ matrix.shard }}
+          path: k1_wess_certs/
