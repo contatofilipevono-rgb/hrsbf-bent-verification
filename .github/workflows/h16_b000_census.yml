@@ -1,0 +1,144 @@
+name: H16 B0_00 Polar Census (Sharded Weight 10-13+ C++20/OpenMP)
+
+on:
+  workflow_dispatch:
+    inputs:
+      weight:
+        description: "Exact polar weight to enumerate (e.g. 10, 11, 12, 13)"
+        required: true
+        default: "12"
+      n_shards:
+        description: "Number of parallel matrix shards (must match matrix below)"
+        required: true
+        default: "16"
+      data_dir:
+        description: "Relative path to H16 B0_00 polar census assets in repo"
+        required: true
+        default: "h16_b000_censo_polar"
+
+jobs:
+  census_shard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python verification dependencies and Z3
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libz3-4 g++
+          pip install --quiet numpy
+
+      - name: Compile buscar_fast.cpp (C++20 + AVX2/native + OpenMP)
+        run: |
+          g++ -O3 -std=c++20 -march=native -fopenmp \
+            "${{ inputs.data_dir }}/buscar_fast.cpp" -o buscar_fast
+
+      - name: Run self-check on weight <= 9 (shard 0 only)
+        if: ${{ matrix.shard == 0 }}
+        run: |
+          ./buscar_fast "${{ inputs.data_dir }}/instancia.txt" 9 surv_check9.txt > censo_check9.txt
+          sort surv_check9.txt > surv_check9_sorted.txt
+          sort "${{ inputs.data_dir }}/sobreviventes9.txt" > surv_ref9_sorted.txt
+          diff -u surv_ref9_sorted.txt surv_check9_sorted.txt
+          echo "Self-check PASSED: exact 407/407 match on weights 0..9."
+
+      - name: Run sharded exact polar census (weight=${{ inputs.weight }}, shard=${{ matrix.shard }}/${{ inputs.n_shards }})
+        run: |
+          OMP_NUM_THREADS=$(nproc) ./buscar_fast \
+            "${{ inputs.data_dir }}/instancia.txt" \
+            "${{ inputs.weight }}" \
+            "surv_w${{ inputs.weight }}_s${{ matrix.shard }}.txt" \
+            --exact-weight \
+            --shard "${{ matrix.shard }}" \
+            --n-shards "${{ inputs.n_shards }}" \
+            > "censo_w${{ inputs.weight }}_s${{ matrix.shard }}.txt"
+          cat "censo_w${{ inputs.weight }}_s${{ matrix.shard }}.txt"
+
+      - name: Verify all shard survivors (Pfaffians + 6 targets + 2 residues + 35 autocorrelations)
+        run: |
+          python3 "${{ inputs.data_dir }}/verify_weight_batch.py" \
+            "surv_w${{ inputs.weight }}_s${{ matrix.shard }}.txt" \
+            --out "verif_w${{ inputs.weight }}_s${{ matrix.shard }}.json"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: h16-b000-w${{ inputs.weight }}-shard${{ matrix.shard }}
+          path: |
+            surv_w${{ inputs.weight }}_s${{ matrix.shard }}.txt
+            censo_w${{ inputs.weight }}_s${{ matrix.shard }}.txt
+            verif_w${{ inputs.weight }}_s${{ matrix.shard }}.json
+
+  aggregate_certificate:
+    needs: census_shard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: h16-b000-w${{ inputs.weight }}-shard*
+          merge-multiple: true
+          path: results
+
+      - name: Aggregate shard counts and verification certificate
+        run: |
+          python3 - <<'EOF'
+          import glob, json
+          from collections import Counter
+
+          total_surv = 0
+          statuses = Counter()
+          unresolved = []
+          all_polars = set()
+          for p in sorted(glob.glob("results/verif_w*_s*.json")):
+              d = json.loads(open(p).read())
+              for k, v in d.get("contagens", {}).items():
+                  statuses[k] += v
+              for c in d.get("casos", []):
+                  total_surv += 1
+                  all_polars.add(c["polar"])
+                  if c.get("status") not in ("excluido_paridade", "excluido_intervalo", "excluido_energia_w0", "excluido_sat"):
+                      unresolved.append(c)
+
+          censo_all = 0
+          censo_short = 0
+          censo_pf = 0
+          for p in sorted(glob.glob("results/censo_w*_s*.txt")):
+              for line in open(p):
+                  parts = line.split()
+                  if len(parts) == 4 and int(parts[0]) == int("${{ inputs.weight }}"):
+                      censo_all = int(parts[1]) # C(48, w) reported per shard
+                      censo_short += int(parts[2])
+                      censo_pf += int(parts[3])
+
+          summary = {
+              "weight": int("${{ inputs.weight }}"),
+              "shards_merged": len(glob.glob("results/verif_w*_s*.json")),
+              "censo_total_combinations": censo_all,
+              "censo_short_tests": censo_short,
+              "censo_pfaffian_survivors": censo_pf,
+              "total_survivors_verified": total_surv,
+              "unique_survivors_verified": len(all_polars),
+              "statuses": dict(statuses),
+              "unresolved_count": len(unresolved),
+              "unresolved": unresolved,
+          }
+          open("certificate_summary.json", "w").write(json.dumps(summary, indent=2) + "\n")
+          print(json.dumps(summary, indent=2))
+          if total_surv != censo_pf or len(all_polars) != total_surv:
+              raise SystemExit(f"MISMATCH: censo_pf={censo_pf}, total_surv={total_surv}, unique={len(all_polars)}")
+          if unresolved:
+              raise SystemExit(f"FOUND {len(unresolved)} UNRESOLVED/SAT SURVIVORS!")
+          EOF
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: h16-b000-w${{ inputs.weight }}-certificate
+          path: certificate_summary.json
