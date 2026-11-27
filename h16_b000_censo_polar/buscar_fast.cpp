@@ -44,8 +44,8 @@ static u64 constLo = 0, constHi = 0;
 static u64 L_lo[N]{}, L_hi[N]{};
 static u64 Q_lo[N * N]{}, Q_hi[N * N]{};
 static u64 T_lo[N * N * N]{}, T_hi[N * N * N]{};
-static alignas(64) u64 Q_c[N * NC]{};
-static alignas(64) u64 T_c[N * N * NC]{};
+alignas(64) static u64 Q_c[N * NC]{};
+alignas(64) static u64 T_c[N * N * NC]{};
 
 static u32 d0[N]{}, d2[N]{}, d3[N]{}, d4[N]{}, d5[N]{};
 static std::vector<u8> l0, l2, l3, l4, l5;
