@@ -440,8 +440,9 @@ CUDA_KERNEL_SRC = r"""
 #include <cuda_runtime.h>
 
 #define MAX_CORE 128
-#define MAX_K    60
-#define MAX_FAST 24
+#define MAX_K    64
+#define MAX_FAST 32
+#define N_STAGE1 10
 #define MAX_M    8
 #define MAX_RK_GPU 10
 #define STRIP_BITS 6
@@ -514,41 +515,6 @@ __device__ static int dev_gf2_left_nullspace_u32(
     return n_null;
 }
 
-__device__ static int dev_gf2_left_nullspace_wide(
-    uint64_t *A, int nrows, int n_words, m128_t *null_out, m128_t *I
-) {
-    for (int r = 0; r < nrows; r++) I[r] = m128_bit(r);
-    int pr = 0;
-    for (int w = 0; w < n_words && pr < nrows; w++) {
-        for (int b = 0; b < 64 && pr < nrows; b++) {
-            uint64_t bit = 1ULL << b;
-            int piv = -1;
-            for (int r = pr; r < nrows; r++) {
-                if (A[r * n_words + w] & bit) { piv = r; break; }
-            }
-            if (piv < 0) continue;
-            if (piv != pr) {
-                for (int k = w; k < n_words; k++) {
-                    uint64_t tmp = A[pr * n_words + k];
-                    A[pr * n_words + k] = A[piv * n_words + k];
-                    A[piv * n_words + k] = tmp;
-                }
-                m128_t tI = I[pr]; I[pr] = I[piv]; I[piv] = tI;
-            }
-            for (int r = 0; r < nrows; r++) {
-                if (r != pr && (A[r * n_words + w] & bit)) {
-                    for (int k = w; k < n_words; k++) A[r * n_words + k] ^= A[pr * n_words + k];
-                    I[r] = m128_xor(I[r], I[pr]);
-                }
-            }
-            pr++;
-        }
-    }
-    int n_null = 0;
-    for (int r = pr; r < nrows; r++) null_out[n_null++] = I[r];
-    return n_null;
-}
-
 __global__ void fes_l4_strip_kernel(
     uint64_t start_strip_idx, int n_strips,
     int d1, int m, int nW, int nt1, int n_core, int rK_init, int n_kr, int rK_1, int M_all,
@@ -587,7 +553,7 @@ __global__ void fes_l4_strip_kernel(
     __shared__ uint32_t s_M0_f_keep[MAX_CORE];
     __shared__ int      s_piv_row;
     __shared__ int      s_pr;
-    __shared__ int      s_n_v0;
+    __shared__ uint64_t s_col_or;
     __shared__ uint32_t s_VM[MAX_CORE];
     __shared__ m128_t   s_VE[MAX_CORE];
     __shared__ int      s_piv_v0[32];
@@ -813,11 +779,22 @@ __global__ void fes_l4_strip_kernel(
         }
         __syncthreads();
 
-        // Parallel GF(2) left nullspace of s_H_mu (mR_1 x n_words_v0*64) across rows tid < mR_1!
+        // Parallel GF(2) left nullspace of s_H_mu (mR_1 x n_words_v0*64) skipping empty bit-columns!
         for (int w = 0; w < n_words_v0; w++) {
-            for (int b = 0; b < 64; b++) {
-                int pr = s_pr;
+            int pr = s_pr;
+            if (pr >= mR_1) break;
+            if (tid == 0) {
+                uint64_t orv = 0ULL;
+                for (int r = pr; r < mR_1; r++) orv |= s_H_mu[r * n_words_v0 + w];
+                s_col_or = orv;
+            }
+            __syncthreads();
+            uint64_t rem_bits = s_col_or;
+            while (rem_bits) {
+                pr = s_pr;
                 if (pr >= mR_1) break;
+                int b = __ffsll(rem_bits) - 1;
+                rem_bits &= rem_bits - 1;
                 uint64_t bit = 1ULL << b;
                 if (tid == 0) {
                     int piv = -1;
@@ -1095,13 +1072,16 @@ __global__ void fes_l4_strip_kernel(
                 Eb[e] = v;
             }
 
-            uint64_t b_new[MAX_FAST];
-            uint64_t Mrem[MAX_FAST][MAX_RK_GPU];
-            for (int r = 0; r < n_fast; r++) {
+            // Two-stage lazy filter (ZERO register spill!):
+            // Stage 1: precompute ONLY first n_s1 = min(N_STAGE1, n_fast) rows in registers.
+            // Stage 2: ONLY when ok != 0 after Stage 1, evaluate rows n_s1..n_fast-1 on the fly!
+            int n_s1 = (n_fast < N_STAGE1) ? n_fast : N_STAGE1;
+            uint64_t eq_cur[N_STAGE1];
+            uint64_t Mrem1[N_STAGE1][MAX_RK_GPU];
+            for (int r = 0; r < n_s1; r++) {
                 uint64_t v = 0ULL;
                 for (int q = 0; q < n_act; q++) v ^= g_ap[act_mon[q] * MAX_K + (r_elim + r)];
 
-                // Add Cmk_cur[r][e] & Eb[e]
                 uint32_t cm_const = s_Cm0[r];
                 for (int x = 0; x < nu; x++) cm_const ^= s_Cmk[(6 + u_bits[x]) * MAX_FAST + r];
                 for (int e = 0; e < r_elim; e++) {
@@ -1111,9 +1091,8 @@ __global__ void fes_l4_strip_kernel(
                     }
                     v ^= (ce & Eb[e]);
                 }
-                b_new[r] = v;
+                eq_cur[r] = v;
 
-                // Build Mrem[r][c] for c in 0..rK_rem-1
                 uint32_t mr_const = s_M0_rem[r];
                 for (int x = 0; x < nu; x++) mr_const ^= s_Mk_rem[(6 + u_bits[x]) * MAX_FAST + r];
                 for (int c = 0; c < rK_rem; c++) {
@@ -1121,24 +1100,50 @@ __global__ void fes_l4_strip_kernel(
                     for (int a = 0; a < 6; a++) {
                         if ((s_Mk_rem[a * MAX_FAST + r] >> c) & 1U) mc ^= c_LANE_U64[a];
                     }
-                    Mrem[r][c] = mc;
+                    Mrem1[r][c] = mc;
                 }
             }
 
-            // Sweep all 2^{rK_rem} values of r_rem in Gray code!
-            uint64_t eq_cur[MAX_FAST];
-            for (int r = 0; r < n_fast; r++) eq_cur[r] = b_new[r];
             int n_r = 1 << rK_rem;
             uint64_t any_surv = 0ULL;
             for (int rv = 0; rv < n_r; rv++) {
                 if (rv > 0) {
                     int bc = __ffs(rv) - 1;
-                    for (int r = 0; r < n_fast; r++) eq_cur[r] ^= Mrem[r][bc];
+                    for (int r = 0; r < n_s1; r++) eq_cur[r] ^= Mrem1[r][bc];
                 }
                 uint64_t ok = ~0ULL;
-                for (int r = 0; r < n_fast; r++) {
+                for (int r = 0; r < n_s1; r++) {
                     ok &= ~eq_cur[r];
                     if (!ok) break;
+                }
+                if (ok && n_fast > n_s1) {
+                    int r_gray = rv ^ (rv >> 1);
+                    for (int r = n_s1; r < n_fast; r++) {
+                        uint64_t v = 0ULL;
+                        for (int q = 0; q < n_act; q++) v ^= g_ap[act_mon[q] * MAX_K + (r_elim + r)];
+                        uint32_t cm_const = s_Cm0[r];
+                        for (int x = 0; x < nu; x++) cm_const ^= s_Cmk[(6 + u_bits[x]) * MAX_FAST + r];
+                        for (int e = 0; e < r_elim; e++) {
+                            uint64_t ce = ((cm_const >> e) & 1U) ? ~0ULL : 0ULL;
+                            for (int a = 0; a < 6; a++) {
+                                if ((s_Cmk[a * MAX_FAST + r] >> e) & 1U) ce ^= c_LANE_U64[a];
+                            }
+                            v ^= (ce & Eb[e]);
+                        }
+                        uint32_t mr_const = s_M0_rem[r];
+                        for (int x = 0; x < nu; x++) mr_const ^= s_Mk_rem[(6 + u_bits[x]) * MAX_FAST + r];
+                        for (int c = 0; c < rK_rem; c++) {
+                            if ((r_gray >> c) & 1) {
+                                uint64_t mc = ((mr_const >> c) & 1U) ? ~0ULL : 0ULL;
+                                for (int a = 0; a < 6; a++) {
+                                    if ((s_Mk_rem[a * MAX_FAST + r] >> c) & 1U) mc ^= c_LANE_U64[a];
+                                }
+                                v ^= mc;
+                            }
+                        }
+                        ok &= ~v;
+                        if (!ok) break;
+                    }
                 }
                 any_surv |= ok;
             }
@@ -1822,9 +1827,9 @@ def main():
     ap.add_argument("--reps", type=str, default="", help="Comma-separated list of A14 K=1 reps")
     ap.add_argument("--d1", type=int, default=0, help="Override d1 <= 14 (0 = auto-select largest d1 <= 14 with rK_rem <= 6)")
     ap.add_argument("--arch", type=str, default="", help="Override nvcc -arch (default: auto-detect via nvidia-smi)")
-    ap.add_argument("--batch-blocks", type=int, default=512, help="CUDA blocks (64 fibers/block) per kernel launch")
+    ap.add_argument("--batch-blocks", type=int, default=4096, help="CUDA blocks (64 fibers/block) per kernel launch")
     ap.add_argument("--bench-only", action="store_true", help="Run quick throughput benchmark instead of full sweep")
-    ap.add_argument("--bench-strips", type=int, default=128, help="Number of 64-fiber strips for --bench-only (128 = 134M pts)")
+    ap.add_argument("--bench-strips", type=int, default=1024, help="Number of 64-fiber strips for --bench-only (1024 = 1.07B pts)")
     ap.add_argument("--out-json", type=str, default="cert_k1_l4.json", help="Output JSON certificate/benchmark path")
     args = ap.parse_args()
 
