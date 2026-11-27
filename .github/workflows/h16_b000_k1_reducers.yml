@@ -1,0 +1,103 @@
+name: H16 B0_00 K=1 e=11 k_fix Reducers (0xFF Pre-Split + Step 47B SysB)
+
+on:
+  workflow_dispatch:
+    inputs:
+      rep:
+        description: "A14 K=1 e-rep (default 11)"
+        required: true
+        default: "11"
+
+jobs:
+  reducer_a_0xff:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Python deps
+        run: pip install --quiet numpy python-sat
+      - name: Run Reducer A (z=0xFF pre-split shard ${{ matrix.shard }}/4)
+        run: |
+          python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B000_K1_REDUCERS.py \
+            --mode 0xff --rep "${{ inputs.rep }}" --shard-idx "${{ matrix.shard }}" --n-shards 4 \
+            --out "reducer_a_s${{ matrix.shard }}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k1-reducer-a-s${{ matrix.shard }}
+          path: reducer_a_s${{ matrix.shard }}.json
+
+  reducer_b_sysb:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Python deps
+        run: pip install --quiet numpy python-sat
+      - name: Run Reducer B (Step 47B iterative SysB on e=${{ inputs.rep }} and first 0xFF)
+        run: |
+          python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B000_K1_REDUCERS.py \
+            --mode sysb --rep "${{ inputs.rep }}" --out reducer_b_sysb.json | tee reducer_b_sysb.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k1-reducer-b-sysb
+          path: |
+            reducer_b_sysb.json
+            reducer_b_sysb.log
+
+  aggregate_reducers:
+    needs: [reducer_a_0xff, reducer_b_sysb]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: k1-reducer-*
+          merge-multiple: true
+          path: results
+      - name: Summarize Reducer A (0xFF) and Reducer B (SysB)
+        run: |
+          python3 - <<'EOF'
+          import glob, json
+
+          states = []
+          for p in sorted(glob.glob("results/reducer_a_s*.json")):
+              d = json.loads(open(p).read())
+              states.extend(d["states"])
+          states.sort(key=lambda r: r["ff_idx"])
+          closed_direct = sum(1 for s in states if s["status"] == "CLOSED_DIRECT")
+          total_branches = sum(s["branches"] for s in states if s["branches"] is not None)
+          no_thresh = [s["st_ff"] for s in states if s["status"] == "OPEN" and s["branches"] is None]
+          est_4core_s = sum((s["branches"] * s["avg_branch_s"] / 4.0) for s in states if s["branches"] and s["avg_branch_s"])
+          summary = {
+              "rep": int("${{ inputs.rep }}"),
+              "total_0xff_states": len(states),
+              "closed_direct": closed_direct,
+              "open_states": len(states) - closed_direct,
+              "no_threshold_states": no_thresh,
+              "sum_2_pow_kfix": total_branches,
+              "baseline_2_pow_18": 262144,
+              "branch_reduction_factor": round(262144 / total_branches, 2) if total_branches else None,
+              "est_4core_s_total": round(est_4core_s, 1),
+              "states": states,
+              "sysb": json.loads(open("results/reducer_b_sysb.json").read()),
+          }
+          open("reducers_summary.json", "w").write(json.dumps(summary, indent=2) + "\n")
+          print(json.dumps(summary, indent=2))
+          EOF
+      - uses: actions/upload-artifact@v4
+        with:
+          name: k1-reducers-summary
+          path: |
+            reducers_summary.json
+            results/reducer_b_sysb.log
