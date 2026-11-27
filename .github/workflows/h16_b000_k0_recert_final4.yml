@@ -1,0 +1,89 @@
+name: H16 B0_00 K=0 Final 4 proved_extra Re-Certification (eta=1, 22, 23, 43)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  recert_final4:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: "eta22_k6",      eta: 22, kfix: 6,  s: 0, n: 1 }
+          - { name: "eta23_k8",      eta: 23, kfix: 8,  s: 0, n: 1 }
+          - { name: "eta01_k10",     eta: 1,  kfix: 10, s: 0, n: 1 }
+          - { name: "eta43_k12_s0",  eta: 43, kfix: 12, s: 0, n: 4 }
+          - { name: "eta43_k12_s1",  eta: 43, kfix: 12, s: 1, n: 4 }
+          - { name: "eta43_k12_s2",  eta: 43, kfix: 12, s: 2, n: 4 }
+          - { name: "eta43_k12_s3",  eta: 43, kfix: 12, s: 3, n: 4 }
+    name: recert (${{ matrix.name }})
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Python deps
+        run: pip install --quiet numpy python-sat
+      - name: Re-certify B0_00 K=0 ${{ matrix.name }} (100% verify_subst=True)
+        run: |
+          python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B000_K0_RECERT_GAPS.py \
+            --eta "${{ matrix.eta }}" --kfix "${{ matrix.kfix }}" \
+            --shard-idx "${{ matrix.s }}" --n-shards "${{ matrix.n }}" \
+            --max-kfix 14 --workers 4 --out-dir k0_recert_out
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k0-recert-f4-${{ matrix.name }}
+          path: k0_recert_out/k0_recert_eta*.json
+
+  merge_final4:
+    needs: recert_final4
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: k0-recert-f4-*
+          merge-multiple: true
+          path: results
+      - name: Verify and merge all 4 remaining K=0 orbits
+        run: |
+          python3 - <<'EOF'
+          import glob, json
+
+          certs = [json.loads(open(p).read()) for p in sorted(glob.glob("results/k0_recert_eta*.json"))]
+          by_eta = {}
+          for c in certs:
+              by_eta.setdefault(c["eta_rep"], []).append(c)
+          summary = {"orbits": {}, "all_passed": True}
+          for eta, clist in sorted(by_eta.items()):
+              clist.sort(key=lambda x: x.get("shard_idx", 0))
+              tot_br = sum(c["total_branches"] for c in clist)
+              cov_br = sum(c["covered_branches"] for c in clist)
+              ver_br = sum(c["verified_subst_branches"] for c in clist)
+              opens = sum(len(c["open_survivors"]) for c in clist)
+              ok = (cov_br == tot_br == (1 << clist[0]["k_fix"]) and ver_br == tot_br and opens == 0)
+              if not ok:
+                  summary["all_passed"] = False
+              summary["orbits"][str(eta)] = {
+                  "k_fix": clist[0]["k_fix"],
+                  "fix_sha256": clist[0]["fix_sha256"],
+                  "shards": len(clist),
+                  "total_branches": tot_br,
+                  "covered_branches": cov_br,
+                  "verified_subst_branches": ver_br,
+                  "direct_closed": sum(c["direct_closed"] for c in clist),
+                  "rescued_closed": sum(c["rescued_closed"] for c in clist),
+                  "open_count": opens,
+                  "passed": ok,
+              }
+          open("k0_recert_final4_summary.json", "w").write(json.dumps(summary, indent=2) + "\n")
+          print(json.dumps(summary, indent=2))
+          assert summary["all_passed"], f"Some orbits did not close: {summary}"
+          EOF
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k0-recert-final4-summary
+          path: k0_recert_final4_summary.json
