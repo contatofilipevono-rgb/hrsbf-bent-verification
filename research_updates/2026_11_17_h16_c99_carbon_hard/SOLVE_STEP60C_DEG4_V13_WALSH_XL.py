@@ -1824,7 +1824,10 @@ def inject_psets_into_s9(sub_state, new_psets, lib9, tbl):
     """Inject a list of verified 111-var deg<=3 psets into an existing s9 state and run cascade!"""
     if not new_psets:
         return sub_state, False
+    n = tbl["n"]
     n_cw = tbl["n_col_words"]
+    off2, off1, off0 = tbl["off2"], tbl["off1"], tbl["off0"]
+    mask64 = (1 << 64) - 1
     old_q = list(sub_state["_quad_ids"])
     old_c = list(sub_state["_cub_ids"])
     n_old_q = len(old_q)
@@ -1839,9 +1842,20 @@ def inject_psets_into_s9(sub_state, new_psets, lib9, tbl):
     for i, ps in enumerate(new_psets):
         s9.pset_to_row(ps, buf, n_old_q + n_old_c + i, tbl)
 
+    if sub_state["_lin_pivs"]:
+        new_ptr = ctypes.cast(ctypes.byref(buf, (n_old_q + n_old_c) * n_cw * 8), ctypes.POINTER(ctypes.c_uint64))
+        for p, (pv, pr) in sub_state["_lin_pivs"].items():
+            m = pv ^ (1 << p)
+            lib9.subst_one_linear_var_batch(
+                new_ptr, n_new, n_cw, n, off2, off1, off0,
+                tbl["col2_base"], tbl["col3_base"],
+                tbl["col_deg"], tbl["col_v0"], tbl["col_v1"], tbl["col_v2"],
+                p, m & mask64, m >> 64, pr
+            )
+
     new_st = s9.run_branch_cascade(
         lib9, buf, list(range(n_old_q)), list(range(n_old_q, tot)),
-        sub_state["_lin_pivs"], [], tbl, max_xl_rounds=25, verify_subst=False
+        sub_state["_lin_pivs"], [], tbl, max_xl_rounds=80, verify_subst=False
     )
     changed = (
         new_st["closed_unsat"]

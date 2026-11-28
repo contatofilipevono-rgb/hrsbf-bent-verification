@@ -1057,8 +1057,10 @@ def run_branch_cascade(lib9, base_buf, base_quad_ids, base_cub_ids, base_lin_piv
                 src = ctypes.cast(ctypes.byref(ech, r_id * n_cw * 8), ctypes.POINTER(ctypes.c_uint64))
                 ctypes.memmove(dst, src, n_cw * 8)
             cur_count = len(keep)
-            apply_pivs_in_place(work, cur_count, added_bits)
-            continue
+            if added_bits:
+                apply_pivs_in_place(work, cur_count, added_bits)
+                if rnd < max_xl_rounds:
+                    continue
 
         # No deg-1 drops in this round!
         # Check if we have deg-2 equations (`d2_rows`) whose XL multiples y_i * q_a generate NEW drops!
@@ -1102,7 +1104,7 @@ def run_branch_cascade(lib9, base_buf, base_quad_ids, base_cub_ids, base_lin_piv
             "N_active": len(active_vars),
         })
 
-        if xl_new_d1 or xl_new_d2:
+        if (xl_new_d1 or xl_new_d2) and rnd < max_xl_rounds:
             total_quad_dropped += len(xl_new_d2)
             # Feed ech[0..e_rows] back into work for next fixpoint round
             for idx in range(e_rows):
