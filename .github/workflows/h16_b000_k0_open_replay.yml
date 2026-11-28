@@ -1,0 +1,66 @@
+name: H16 B0_00 K0 open leaf replay
+
+on:
+  push:
+    branches: ['cert/k0-proved-extra-closed']
+    paths:
+      - '.github/workflows/h16_b000_k0_open_replay.yml'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B000_K0_OPEN_REPLAY.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { eta: 1, shard: 0, shards: 1 }
+          - { eta: 22, shard: 0, shards: 1 }
+          - { eta: 23, shard: 0, shards: 1 }
+          - { eta: 43, shard: 0, shards: 16 }
+          - { eta: 43, shard: 1, shards: 16 }
+          - { eta: 43, shard: 2, shards: 16 }
+          - { eta: 43, shard: 3, shards: 16 }
+          - { eta: 43, shard: 4, shards: 16 }
+          - { eta: 43, shard: 5, shards: 16 }
+          - { eta: 43, shard: 6, shards: 16 }
+          - { eta: 43, shard: 7, shards: 16 }
+          - { eta: 43, shard: 8, shards: 16 }
+          - { eta: 43, shard: 9, shards: 16 }
+          - { eta: 43, shard: 10, shards: 16 }
+          - { eta: 43, shard: 11, shards: 16 }
+          - { eta: 43, shard: 12, shards: 16 }
+          - { eta: 43, shard: 13, shards: 16 }
+          - { eta: 43, shard: 14, shards: 16 }
+          - { eta: 43, shard: 15, shards: 16 }
+    name: replay (eta${{ matrix.eta }}-s${{ matrix.shard }})
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies and build pinned proof checker
+        run: |
+          pip install --quiet numpy python-sat
+          git clone -q https://github.com/marijnheule/drat-trim.git /tmp/drat-trim
+          git -C /tmp/drat-trim checkout -q 2e3b2dc0ecf938addbd779d42877b6ed69d9a985
+          gcc -O2 /tmp/drat-trim/drat-trim.c -o /tmp/drat-trim/check
+      - name: Replay open leaves
+        env:
+          ETA: ${{ matrix.eta }}
+          SHARD: ${{ matrix.shard }}
+          SHARDS: ${{ matrix.shards }}
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B000_K0_OPEN_REPLAY.py \
+            --eta "$ETA" --shard "$SHARD" --shards "$SHARDS" \
+            --drat-trim /tmp/drat-trim/check --out "k0_replay_eta${ETA}_s${SHARD}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k0-open-replay-eta${{ matrix.eta }}-s${{ matrix.shard }}
+          path: k0_replay_eta*
