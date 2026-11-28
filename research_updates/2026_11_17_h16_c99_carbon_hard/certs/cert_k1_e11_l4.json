@@ -1,0 +1,47 @@
+{
+  "cell": "B0_00",
+  "K": 1,
+  "rep": 11,
+  "c5_free": true,
+  "gpu": "NVIDIA L4",
+  "root_state": {
+    "dim": 99,
+    "quads": 20,
+    "cubs": 370
+  },
+  "pencil": {
+    "nW": 43,
+    "nT": 19,
+    "n_core": 78,
+    "rK_init": 27,
+    "d1": 14,
+    "nt1": 29,
+    "rK_rem": 6
+  },
+  "anf_zt_mismatches": 0,
+  "gpu_zt_planted_audit": "10/10 PASS",
+  "e0_filter": {
+    "enabled": true,
+    "r_coupling": 0,
+    "k_e0": 14,
+    "valid_states": 3296,
+    "gpu_zt_e0_audit": "5/5 PASS"
+  },
+  "is_full_orbit": true,
+  "strips_closed": 8388608,
+  "total_strips": 8388608,
+  "fibers_closed": 536870912,
+  "points_closed": 8796093022208,
+  "gpu_candidates_verified": 13275,
+  "degenerate_fibers_closed_cpu": 0,
+  "full_survivors": 0,
+  "verdict": "ORBIT_FORMALLY_CLOSED_UNSAT_100%",
+  "sweep_wall_s": 6713.767,
+  "gpu_s": 6700.373,
+  "cpu_cand_s": 13.296,
+  "cpu_deg_s": 0.0,
+  "rate_gpts_per_s": 1.31,
+  "projected_full_orbit_min": 111.9,
+  "total_rep_s": 6771.89,
+  "sha256": "1bd02f56f7bb8deb1db5c5a957c2bec64a41a7fb2a43158e0710ad8d5e54a0a5"
+}
