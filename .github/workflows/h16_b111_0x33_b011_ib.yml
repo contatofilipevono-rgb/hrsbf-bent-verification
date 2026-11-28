@@ -1,0 +1,91 @@
+name: H16 B1_11 3-Coset (0xff,0x55,0x33) & B0_11 Class I-B Gamma Cascade
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_filter:
+        description: "Target to run: ALL, B111_E1_0X33, or B011_IB_E3_GAMMA"
+        required: false
+        default: "ALL"
+
+jobs:
+  triple_cascade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: "B111_E1_0X33"
+            shard_idx: "0"
+            num_shards: "3"
+            slug: "B111_E1_0X33_s0"
+          - target: "B111_E1_0X33"
+            shard_idx: "1"
+            num_shards: "3"
+            slug: "B111_E1_0X33_s1"
+          - target: "B111_E1_0X33"
+            shard_idx: "2"
+            num_shards: "3"
+            slug: "B111_E1_0X33_s2"
+          - target: "B011_IB_E3_GAMMA"
+            shard_idx: "0"
+            num_shards: "1"
+            slug: "B011_IB_E3_GAMMA"
+    steps:
+      - name: Skip if filtered out
+        if: inputs.target_filter != 'ALL' && inputs.target_filter != '' && inputs.target_filter != matrix.target
+        run: echo "Skipping ${{ matrix.slug }} (target_filter=${{ inputs.target_filter }})"
+      - uses: actions/checkout@v4
+        if: inputs.target_filter == 'ALL' || inputs.target_filter == '' || inputs.target_filter == matrix.target
+      - uses: actions/setup-python@v5
+        if: inputs.target_filter == 'ALL' || inputs.target_filter == '' || inputs.target_filter == matrix.target
+        with:
+          python-version: "3.12"
+      - name: Install Python deps
+        if: inputs.target_filter == 'ALL' || inputs.target_filter == '' || inputs.target_filter == matrix.target
+        run: pip install --quiet numpy python-sat
+      - name: Run 3-Coset / Class I-B Cascade on ${{ matrix.slug }}
+        if: inputs.target_filter == 'ALL' || inputs.target_filter == '' || inputs.target_filter == matrix.target
+        run: |
+          set -o pipefail
+          OMP_NUM_THREADS=$(nproc) python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B111_0X33_AND_B011_IB.py \
+            --target "${{ matrix.target }}" \
+            --shard-idx "${{ matrix.shard_idx }}" \
+            --num-shards "${{ matrix.num_shards }}" \
+            --out-json "out_${{ matrix.slug }}.json" 2>&1 | tee "out_${{ matrix.slug }}.log"
+      - uses: actions/upload-artifact@v4
+        if: always() && (inputs.target_filter == 'ALL' || inputs.target_filter == '' || inputs.target_filter == matrix.target)
+        with:
+          name: triple-${{ matrix.slug }}
+          path: |
+            out_${{ matrix.slug }}.json
+            out_${{ matrix.slug }}.log
+
+  aggregate_triple:
+    needs: triple_cascade
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: triple-*
+          merge-multiple: true
+          path: results
+      - name: Merge 3-Coset / Class I-B results
+        run: |
+          python3 - <<'EOF'
+          import glob, json
+
+          merged = {"B111_E1_0X33": [], "B011_IB_E3_GAMMA": []}
+          for p in sorted(glob.glob("results/out_*.json")):
+              d = json.loads(open(p).read())
+              tgt = d.get("target", p)
+              merged.setdefault(tgt, []).extend(d.get("results", []))
+          open("triple_cascade_summary.json", "w").write(json.dumps(merged, indent=2) + "\n")
+          print(json.dumps(merged, indent=2))
+          EOF
+      - uses: actions/upload-artifact@v4
+        with:
+          name: triple-cascade-summary
+          path: triple_cascade_summary.json
