@@ -1,0 +1,44 @@
+name: H16 B0_00 K0 exact coset projection
+
+on:
+  push:
+    branches: ['cert/k0-proved-extra-closed']
+    paths: ['.github/workflows/h16_b000_k0_coset_projection.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  project:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {eta: 22, leaves: '12 55'}
+          - {eta: 23, leaves: '170 250'}
+          - {eta: 43, leaves: '1025 1123 1265'}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy python-sat
+      - env:
+          ETA: ${{ matrix.eta }}
+          LEAVES: ${{ matrix.leaves }}
+        run: |
+          read -ra leaves <<< "$LEAVES"
+          driver=research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B000_K0_COSET_PROJECTION.py
+          python -u "$driver" --eta "$ETA" --rb "${leaves[@]}" --out coset.json
+          python -u "$driver" --eta "$ETA" --rb "${leaves[@]}" --out replayed.json
+          cmp coset.json replayed.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k0-coset-projection-eta${{ matrix.eta }}
+          path: |
+            coset.json
+            replayed.json
