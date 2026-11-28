@@ -25,7 +25,7 @@
   "retry_eta1_run": 46153316781,
   "sparse_run": 46154153103,
   "pending_leaves": {
-    "1": 21,
+    "1": 20,
     "22": 2,
     "23": 2,
     "43": 448
@@ -43,7 +43,6 @@
   "eta1_observed_open": [
     4,
     39,
-    199,
     202,
     285,
     307,
@@ -72,5 +71,24 @@
   "eta1_subcases": {
     "linear_contradiction": 3,
     "unknown": 26
+  },
+  "eta1_verified_closed_leaves": [
+    199
+  ],
+  "eta1_leaf199": {
+    "file": "cert_k0_eta01_rb199.json",
+    "certificate_sha256": "f95cf3118debbb8948d5922b1246e954d9cb71ebb3d89bb2efa9b30cc104224c",
+    "whole_leaf_run": 46164642940,
+    "pilot_run": 46164216826,
+    "w": [
+      271,
+      775,
+      2495
+    ]
+  },
+  "wess_zero_dimension": {
+    "file": "k0_wess_zero_dimension.json",
+    "run": 46164642940,
+    "retry_run": 46164935335
   }
 }

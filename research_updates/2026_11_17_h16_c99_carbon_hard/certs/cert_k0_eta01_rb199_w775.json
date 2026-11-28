@@ -1,0 +1,862 @@
+{
+  "children": [
+    {
+      "proof": {
+        "children": [
+          {
+            "proof": {
+              "children": [
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 0
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 1
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 2
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 3
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 4
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 5
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 6
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 7
+                }
+              ],
+              "closed": true,
+              "domain": {
+                "forms_hex": [
+                  "0x14028000000000000000000",
+                  "0x5488a104100b400000000000000",
+                  "0x5110800010528440000000000000"
+                ],
+                "low_rank_basis_dim": 25,
+                "points": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ]
+              },
+              "method": "minrank_partition",
+              "open_values": [],
+              "state": {
+                "active": 60,
+                "cubics": 92,
+                "dim_w": 25,
+                "quadratics": 18
+              }
+            },
+            "value": 0
+          },
+          {
+            "proof": {
+              "closed": true,
+              "method": "cascade_contradiction",
+              "reason": "xl_quad_has_one_round_6",
+              "rounds": 6
+            },
+            "value": 1
+          },
+          {
+            "proof": {
+              "children": [
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 0
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 1
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 2
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 3
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 4
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 5
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 6
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 7
+                }
+              ],
+              "closed": true,
+              "domain": {
+                "forms_hex": [
+                  "0x14028000000000000000000",
+                  "0x5488a104100b400000000000000",
+                  "0x5110800010528440000000000000"
+                ],
+                "low_rank_basis_dim": 25,
+                "points": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ]
+              },
+              "method": "minrank_partition",
+              "open_values": [],
+              "state": {
+                "active": 60,
+                "cubics": 92,
+                "dim_w": 25,
+                "quadratics": 18
+              }
+            },
+            "value": 2
+          },
+          {
+            "proof": {
+              "closed": true,
+              "method": "cascade_contradiction",
+              "reason": "xl_quad_has_one_round_6",
+              "rounds": 6
+            },
+            "value": 3
+          },
+          {
+            "proof": {
+              "closed": true,
+              "method": "cascade_contradiction",
+              "reason": "xl_quad_has_one_round_6",
+              "rounds": 6
+            },
+            "value": 4
+          },
+          {
+            "proof": {
+              "children": [
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 0
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 1
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 2
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 3
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 4
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 5
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 6
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 7
+                }
+              ],
+              "closed": true,
+              "domain": {
+                "forms_hex": [
+                  "0x14028000000000000000000",
+                  "0x5488a104100b400000000000000",
+                  "0x5110800010528440000000000000"
+                ],
+                "low_rank_basis_dim": 25,
+                "points": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ]
+              },
+              "method": "minrank_partition",
+              "open_values": [],
+              "state": {
+                "active": 60,
+                "cubics": 92,
+                "dim_w": 25,
+                "quadratics": 18
+              }
+            },
+            "value": 5
+          },
+          {
+            "proof": {
+              "closed": true,
+              "method": "cascade_contradiction",
+              "reason": "xl_quad_has_one_round_6",
+              "rounds": 6
+            },
+            "value": 6
+          },
+          {
+            "proof": {
+              "children": [
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 0
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 1
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 2
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 3
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 4
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 5
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 6
+                },
+                {
+                  "proof": {
+                    "closed": true,
+                    "method": "cascade_contradiction",
+                    "reason": "xl_quad_has_one_round_2",
+                    "rounds": 2
+                  },
+                  "value": 7
+                }
+              ],
+              "closed": true,
+              "domain": {
+                "forms_hex": [
+                  "0x14028000000000000000000",
+                  "0x5488a104100b400000000000000",
+                  "0x5110800010528440000000000000"
+                ],
+                "low_rank_basis_dim": 25,
+                "points": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ]
+              },
+              "method": "minrank_partition",
+              "open_values": [],
+              "state": {
+                "active": 60,
+                "cubics": 92,
+                "dim_w": 25,
+                "quadratics": 18
+              }
+            },
+            "value": 7
+          }
+        ],
+        "closed": true,
+        "domain": {
+          "forms_hex": [
+            "0x106b198852632602a0000000000",
+            "0x6509a8c9434a526660000000000",
+            "0x5050995cb93d6b34660000000000"
+          ],
+          "low_rank_basis_dim": 10,
+          "points": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "method": "minrank_partition",
+        "open_values": [],
+        "state": {
+          "active": 67,
+          "cubics": 106,
+          "dim_w": 10,
+          "quadratics": 11
+        }
+      },
+      "w": 775
+    }
+  ],
+  "conditional_on": "C5",
+  "eta_rep": 1,
+  "first_w_domain": {
+    "forms_hex": [
+      "0x50220891011088000",
+      "0x40000800000000000000000",
+      "0x1100800004880224444220000",
+      "0x4010022000000000000000000",
+      "0xa0a8141437a111c268c11c400",
+      "0x108a1004516a1448040411c040",
+      "0x42880410102045100000110440",
+      "0x1022a8011021055442288144040",
+      "0x400888011082004100000010040",
+      "0xa20402200004a20004455088000",
+      "0x1000880010100440100022100400",
+      "0x4000880010108040108800100400"
+    ],
+    "full_model_count": 288,
+    "full_model_sha256": "a509e81f6d814605525f448a42a901d22fb959abb460616d3904c1d1d2809d66",
+    "models": [
+      271,
+      775,
+      2495
+    ],
+    "prefix_masks": [
+      1,
+      2,
+      4,
+      48,
+      64,
+      144,
+      256,
+      520,
+      1024,
+      2064
+    ],
+    "quadratics": [
+      [
+        2,
+        3,
+        6,
+        128,
+        192,
+        256,
+        320,
+        1024,
+        1088,
+        2048,
+        2112
+      ],
+      [
+        0,
+        1,
+        4,
+        5,
+        6,
+        80,
+        96,
+        128,
+        256,
+        1024,
+        2048
+      ],
+      [
+        1,
+        2,
+        3,
+        6,
+        10,
+        17,
+        18,
+        20,
+        24,
+        33,
+        34,
+        36,
+        40,
+        65,
+        66,
+        68,
+        72,
+        128,
+        129,
+        130,
+        132,
+        136,
+        256,
+        257,
+        258,
+        260,
+        264,
+        1025,
+        1026,
+        1032,
+        1040,
+        1056,
+        2048,
+        2050,
+        2056,
+        2064,
+        2080,
+        2176,
+        2304,
+        3072
+      ],
+      [
+        0,
+        1,
+        2,
+        4,
+        65,
+        66,
+        68,
+        72,
+        1024,
+        1025,
+        1026,
+        1028,
+        1088,
+        2112
+      ],
+      [
+        1,
+        2,
+        3,
+        6,
+        10,
+        17,
+        18,
+        20,
+        24,
+        33,
+        34,
+        36,
+        40,
+        65,
+        66,
+        68,
+        72,
+        128,
+        129,
+        130,
+        132,
+        136,
+        256,
+        257,
+        258,
+        260,
+        264,
+        1025,
+        1026,
+        1040,
+        1056,
+        1088,
+        2050,
+        2064,
+        2080,
+        2112,
+        2176,
+        2304
+      ],
+      [
+        1,
+        2,
+        5,
+        6,
+        8,
+        10,
+        17,
+        18,
+        20,
+        33,
+        34,
+        36,
+        64,
+        65,
+        72,
+        80,
+        96,
+        128,
+        129,
+        130,
+        132,
+        192,
+        256,
+        257,
+        258,
+        260,
+        272,
+        288,
+        384,
+        512,
+        513,
+        1024,
+        1028,
+        1032,
+        1152,
+        2048,
+        2049,
+        2050,
+        2056,
+        2304
+      ],
+      [
+        2,
+        66,
+        129,
+        130,
+        132,
+        257,
+        258,
+        260,
+        1025,
+        1026,
+        1028,
+        2049,
+        2050,
+        2052
+      ],
+      [
+        2,
+        3,
+        6,
+        130,
+        258,
+        1026,
+        2050
+      ],
+      [
+        129,
+        132,
+        257,
+        260,
+        1025,
+        1028,
+        2049,
+        2052
+      ],
+      [
+        1,
+        2,
+        3,
+        5,
+        6,
+        8,
+        10,
+        16,
+        18,
+        33,
+        36,
+        65,
+        66,
+        96,
+        128,
+        129,
+        130,
+        144,
+        160,
+        192,
+        260,
+        320,
+        384,
+        512,
+        513,
+        1024,
+        1032,
+        1040,
+        1056,
+        1152,
+        2056,
+        2064,
+        2080,
+        2304
+      ],
+      [
+        2,
+        6,
+        18,
+        34,
+        66,
+        128,
+        132,
+        144,
+        160,
+        192,
+        256,
+        260,
+        272,
+        288,
+        320,
+        1024,
+        1028,
+        1040,
+        1056,
+        1088,
+        2048,
+        2052,
+        2064,
+        2080,
+        2112
+      ],
+      [
+        1,
+        2,
+        17,
+        18,
+        20,
+        24,
+        33,
+        34,
+        36,
+        40,
+        65,
+        66,
+        68,
+        72,
+        129,
+        132,
+        257,
+        260,
+        1024,
+        1025,
+        1032,
+        1040,
+        1056,
+        1088,
+        2050,
+        2056,
+        2064,
+        2080,
+        2112,
+        3072
+      ],
+      [
+        10,
+        136,
+        264,
+        1024,
+        1026,
+        1032,
+        1152,
+        1280,
+        2048,
+        2050,
+        2056,
+        2176,
+        2304
+      ]
+    ]
+  },
+  "fix_sha256": "83a44b956b8c2e33",
+  "max_depth": 3,
+  "open_survivors": [],
+  "rb": 199,
+  "root_sha256": "71e50178f909fd6749333ca043eb96b4514a6d77d6dc0c6d0bcf2ea4b8e0c655",
+  "schema": 1,
+  "sha256": "d5a4c5446530dc4a67338fabbdb0f5a060c776de80d37c343919d86caf49613f",
+  "target_w": 775,
+  "verified_cascade_calls_after_root": 43,
+  "verify_subst": true,
+  "other_w_models": [
+    271,
+    2495
+  ]
+}
