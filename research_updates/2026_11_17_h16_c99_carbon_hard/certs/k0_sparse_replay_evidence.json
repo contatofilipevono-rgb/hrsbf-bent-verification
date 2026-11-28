@@ -1,0 +1,118 @@
+[
+  {
+    "eta_rep": 23,
+    "root_sha256": "71e50178f909fd6749333ca043eb96b4514a6d77d6dc0c6d0bcf2ea4b8e0c655",
+    "fix_sha256": "53a91f8c79172a9a",
+    "shard": 0,
+    "shards": 2,
+    "selected": [
+      170
+    ],
+    "verify_subst": true,
+    "results": [
+      {
+        "rb": 170,
+        "status": "UNKNOWN",
+        "exact_balance_fibers": [
+          255,
+          85,
+          51
+        ],
+        "polynomial_count": 51,
+        "cegar_iterations": 1
+      }
+    ],
+    "open_survivors": [
+      170
+    ],
+    "job_id": 141006980480,
+    "run_id": 46154153103
+  },
+  {
+    "eta_rep": 23,
+    "root_sha256": "71e50178f909fd6749333ca043eb96b4514a6d77d6dc0c6d0bcf2ea4b8e0c655",
+    "fix_sha256": "53a91f8c79172a9a",
+    "shard": 1,
+    "shards": 2,
+    "selected": [
+      250
+    ],
+    "verify_subst": true,
+    "results": [
+      {
+        "rb": 250,
+        "status": "UNKNOWN",
+        "exact_balance_fibers": [
+          255,
+          85,
+          51
+        ],
+        "polynomial_count": 51,
+        "cegar_iterations": 1
+      }
+    ],
+    "open_survivors": [
+      250
+    ],
+    "job_id": 141006980711,
+    "run_id": 46154153103
+  },
+  {
+    "eta_rep": 22,
+    "root_sha256": "71e50178f909fd6749333ca043eb96b4514a6d77d6dc0c6d0bcf2ea4b8e0c655",
+    "fix_sha256": "afe4b4c6dbbc5eb9",
+    "shard": 0,
+    "shards": 2,
+    "selected": [
+      12
+    ],
+    "verify_subst": true,
+    "results": [
+      {
+        "rb": 12,
+        "status": "UNKNOWN",
+        "exact_balance_fibers": [
+          255,
+          85,
+          51
+        ],
+        "polynomial_count": 51,
+        "cegar_iterations": 1
+      }
+    ],
+    "open_survivors": [
+      12
+    ],
+    "job_id": 141006980716,
+    "run_id": 46154153103
+  },
+  {
+    "eta_rep": 22,
+    "root_sha256": "71e50178f909fd6749333ca043eb96b4514a6d77d6dc0c6d0bcf2ea4b8e0c655",
+    "fix_sha256": "afe4b4c6dbbc5eb9",
+    "shard": 1,
+    "shards": 2,
+    "selected": [
+      55
+    ],
+    "verify_subst": true,
+    "results": [
+      {
+        "rb": 55,
+        "status": "UNKNOWN",
+        "exact_balance_fibers": [
+          255,
+          85,
+          51
+        ],
+        "polynomial_count": 51,
+        "cegar_iterations": 1
+      }
+    ],
+    "open_survivors": [
+      55
+    ],
+    "job_id": 141006980768,
+    "run_id": 46154153103
+  }
+]
