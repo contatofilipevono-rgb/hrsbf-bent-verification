@@ -21,5 +21,6 @@
     43
   ],
   "legacy_manifest": "../B0_00_GLOBAL_UNSAT_CERT_MANIFEST.json",
-  "status": "PARTIAL_RECERTIFICATION"
+  "status": "PARTIAL_RECERTIFICATION",
+  "retry_eta1_run": 46153316781
 }
