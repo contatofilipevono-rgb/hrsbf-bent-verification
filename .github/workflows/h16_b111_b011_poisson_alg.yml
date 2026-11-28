@@ -32,13 +32,14 @@ jobs:
         run: pip install --quiet numpy python-sat
       - name: Run Generalized Poisson Algebra on ${{ matrix.cell }} e=${{ matrix.rep }}
         run: |
+          set -o pipefail
           EXTRA=""
           if [ "${{ inputs.wide_b111 }}" = "true" ] && [ "${{ matrix.cell }}" = "B1_11" ]; then
             EXTRA="--wide-b111"
           fi
           OMP_NUM_THREADS=$(nproc) python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B111_B011_POISSON_ALGEBRA.py \
             --cell "${{ matrix.cell }}" --rep "${{ matrix.rep }}" $EXTRA \
-            --out-json "poisson_${{ matrix.slug }}.json" | tee "poisson_${{ matrix.slug }}.log"
+            --out-json "poisson_${{ matrix.slug }}.json" 2>&1 | tee "poisson_${{ matrix.slug }}.log"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
