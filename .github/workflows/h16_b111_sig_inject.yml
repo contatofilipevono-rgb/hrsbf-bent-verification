@@ -1,0 +1,77 @@
+name: H16 B1_11 e=1 Multi-Coset Signature Injection (S11/S00/S01 + e0)
+
+on:
+  workflow_dispatch:
+    inputs:
+      job_filter:
+        description: "Job to run: ALL, S11_E0_0, S00_E0_0, S00_E0_M32, or S01_E0_0"
+        required: false
+        default: "ALL"
+
+jobs:
+  b111_sig_inject:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        job:
+          - S11_E0_0
+          - S00_E0_0
+          - S00_E0_M32
+          - S01_E0_0
+    steps:
+      - name: Skip if filtered out
+        if: inputs.job_filter != 'ALL' && inputs.job_filter != '' && inputs.job_filter != matrix.job
+        run: echo "Skipping ${{ matrix.job }} (job_filter=${{ inputs.job_filter }})"
+      - uses: actions/checkout@v4
+        if: inputs.job_filter == 'ALL' || inputs.job_filter == '' || inputs.job_filter == matrix.job
+      - uses: actions/setup-python@v5
+        if: inputs.job_filter == 'ALL' || inputs.job_filter == '' || inputs.job_filter == matrix.job
+        with:
+          python-version: "3.12"
+      - name: Install Python deps
+        if: inputs.job_filter == 'ALL' || inputs.job_filter == '' || inputs.job_filter == matrix.job
+        run: pip install --quiet numpy python-sat
+      - name: Run B1_11 Signature Injection on ${{ matrix.job }}
+        if: inputs.job_filter == 'ALL' || inputs.job_filter == '' || inputs.job_filter == matrix.job
+        run: |
+          set -o pipefail
+          OMP_NUM_THREADS=$(nproc) python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B111_SIG_INJECT.py \
+            --job "${{ matrix.job }}" \
+            --out-json "b111_sig_${{ matrix.job }}.json" 2>&1 | tee "b111_sig_${{ matrix.job }}.log"
+      - uses: actions/upload-artifact@v4
+        if: always() && (inputs.job_filter == 'ALL' || inputs.job_filter == '' || inputs.job_filter == matrix.job)
+        with:
+          name: b111-sig-${{ matrix.job }}
+          path: |
+            b111_sig_${{ matrix.job }}.json
+            b111_sig_${{ matrix.job }}.log
+
+  aggregate_b111_sig:
+    needs: b111_sig_inject
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: b111-sig-*
+          merge-multiple: true
+          path: results
+      - name: Merge B1_11 Signature Injection results
+        run: |
+          python3 - <<'EOF'
+          import glob, json
+
+          merged = {}
+          for p in sorted(glob.glob("results/b111_sig_*.json")):
+              d = json.loads(open(p).read())
+              key = d.get("job", p) if isinstance(d, dict) else p
+              merged[key] = d
+          open("b111_sig_summary.json", "w").write(json.dumps(merged, indent=2) + "\n")
+          print(json.dumps(merged, indent=2))
+          EOF
+      - uses: actions/upload-artifact@v4
+        with:
+          name: b111-sig-summary
+          path: b111_sig_summary.json
