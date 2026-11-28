@@ -1,0 +1,78 @@
+name: H16 B0_11 Gamma Generator Injection & 36-Rep Profile Scan
+
+on:
+  workflow_dispatch:
+    inputs:
+      job_filter:
+        description: "Job to run: ALL, E2_GP, E2_GM, E13_GP, E13_GM, or SCAN36"
+        required: false
+        default: "ALL"
+
+jobs:
+  gamma_inject:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        job:
+          - E2_GP
+          - E2_GM
+          - E13_GP
+          - E13_GM
+          - SCAN36
+    steps:
+      - name: Skip if filtered out
+        if: inputs.job_filter != 'ALL' && inputs.job_filter != '' && inputs.job_filter != matrix.job
+        run: echo "Skipping ${{ matrix.job }} (job_filter=${{ inputs.job_filter }})"
+      - uses: actions/checkout@v4
+        if: inputs.job_filter == 'ALL' || inputs.job_filter == '' || inputs.job_filter == matrix.job
+      - uses: actions/setup-python@v5
+        if: inputs.job_filter == 'ALL' || inputs.job_filter == '' || inputs.job_filter == matrix.job
+        with:
+          python-version: "3.12"
+      - name: Install Python deps
+        if: inputs.job_filter == 'ALL' || inputs.job_filter == '' || inputs.job_filter == matrix.job
+        run: pip install --quiet numpy python-sat
+      - name: Run Gamma Injection / Scan36 on ${{ matrix.job }}
+        if: inputs.job_filter == 'ALL' || inputs.job_filter == '' || inputs.job_filter == matrix.job
+        run: |
+          set -o pipefail
+          OMP_NUM_THREADS=$(nproc) python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B011_GAMMA_INJECT.py \
+            --job "${{ matrix.job }}" \
+            --out-json "gamma_${{ matrix.job }}.json" 2>&1 | tee "gamma_${{ matrix.job }}.log"
+      - uses: actions/upload-artifact@v4
+        if: always() && (inputs.job_filter == 'ALL' || inputs.job_filter == '' || inputs.job_filter == matrix.job)
+        with:
+          name: gamma-${{ matrix.job }}
+          path: |
+            gamma_${{ matrix.job }}.json
+            gamma_${{ matrix.job }}.log
+
+  aggregate_gamma:
+    needs: gamma_inject
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: gamma-*
+          merge-multiple: true
+          path: results
+      - name: Merge Gamma Injection results
+        run: |
+          python3 - <<'EOF'
+          import glob, json
+
+          merged = {}
+          for p in sorted(glob.glob("results/gamma_*.json")):
+              d = json.loads(open(p).read())
+              key = d.get("job", p) if isinstance(d, dict) else p
+              merged[key] = d
+          open("gamma_inject_summary.json", "w").write(json.dumps(merged, indent=2) + "\n")
+          print(json.dumps(merged, indent=2))
+          EOF
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gamma-inject-summary
+          path: gamma_inject_summary.json
