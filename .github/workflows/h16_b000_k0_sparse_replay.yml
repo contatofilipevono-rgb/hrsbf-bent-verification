@@ -1,0 +1,52 @@
+name: H16 B0_00 K0 sparse replay for eta 22 and 23
+
+on:
+  push:
+    branches: ['cert/k0-proved-extra-closed']
+    paths:
+      - '.github/workflows/h16_b000_k0_sparse_replay.yml'
+      - 'research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B000_K0_SPARSE_REPLAY.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { eta: 22, shard: 0, shards: 2 }
+          - { eta: 22, shard: 1, shards: 2 }
+          - { eta: 23, shard: 0, shards: 2 }
+          - { eta: 23, shard: 1, shards: 2 }
+    name: replay (eta${{ matrix.eta }}-s${{ matrix.shard }})
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies and build pinned proof checker
+        run: |
+          pip install --quiet numpy python-sat
+          git clone -q https://github.com/marijnheule/drat-trim.git /tmp/drat-trim
+          git -C /tmp/drat-trim checkout -q 2e3b2dc0ecf938addbd779d42877b6ed69d9a985
+          gcc -O2 /tmp/drat-trim/drat-trim.c -o /tmp/drat-trim/check
+      - name: Replay open leaves
+        env:
+          ETA: ${{ matrix.eta }}
+          SHARD: ${{ matrix.shard }}
+          SHARDS: ${{ matrix.shards }}
+        run: |
+          python -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B000_K0_SPARSE_REPLAY.py \
+            --eta "$ETA" --shard "$SHARD" --shards "$SHARDS" --workers 1 --conflicts 8000 \
+            --only-open research_updates/2026_11_17_h16_c99_carbon_hard/certs/k0_sparse_pending.json \
+            --drat-trim /tmp/drat-trim/check --out "k0_replay_eta${ETA}_s${SHARD}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k0-sparse-replay-eta${{ matrix.eta }}-s${{ matrix.shard }}
+          path: k0_replay_eta*
