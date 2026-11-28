@@ -41,13 +41,36 @@
     ]
   },
   "eta1_observed_open": [
+    4,
+    39,
+    199,
     202,
+    285,
+    307,
+    318,
     467,
+    478,
+    509,
     522,
-    798
+    798,
+    829
   ],
   "replay_evidence": {
     "46154153103": "k0_sparse_replay_evidence.json",
     "46153316781": "k0_eta01_partial_evidence.json"
+  },
+  "eta1_unreported_leaves": [
+    519,
+    548,
+    743,
+    787,
+    816,
+    989,
+    1011,
+    1022
+  ],
+  "eta1_subcases": {
+    "linear_contradiction": 3,
+    "unknown": 26
   }
 }

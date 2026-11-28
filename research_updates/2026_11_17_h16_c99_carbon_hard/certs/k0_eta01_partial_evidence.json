@@ -1,137 +1,475 @@
 {
-  "root_sha256": "71e50178f909fd6749333ca043eb96b4514a6d77d6dc0c6d0bcf2ea4b8e0c655",
   "eta_rep": 1,
   "run_id": 46153316781,
-  "job_id": 141004448422,
+  "root_sha256": "71e50178f909fd6749333ca043eb96b4514a6d77d6dc0c6d0bcf2ea4b8e0c655",
+  "fix_sha256": "83a44b956b8c2e33",
   "W_dimension": 12,
   "W_models": 288,
-  "job_conclusion": "cancelled",
-  "results": [
+  "jobs": [
     {
-      "rb": 467,
-      "status": "OPEN_W_CHILDREN",
-      "children": [
+      "job_id": 141004448315,
+      "conclusion": "cancelled",
+      "exact_W_truth_table_observed": true,
+      "final_replay_record": false,
+      "results": [
         {
-          "w": 1355,
-          "status": "UNKNOWN",
-          "exact_balance_fibers": [
-            255,
-            85,
-            51,
-            17,
-            119,
-            1
+          "rb": 307,
+          "status": "OPEN_W_CHILDREN",
+          "children": [
+            {
+              "w": 1739,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            },
+            {
+              "w": 3187,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            }
           ]
         },
         {
-          "w": 4083,
-          "status": "UNKNOWN",
-          "exact_balance_fibers": [
-            255,
-            85,
-            51,
-            17,
-            119,
-            1
+          "rb": 509,
+          "status": "OPEN_W_CHILDREN",
+          "children": [
+            {
+              "w": 1517,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            },
+            {
+              "w": 3925,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "rb": 39,
+          "status": "OPEN_W_CHILDREN",
+          "children": [
+            {
+              "w": 135,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            },
+            {
+              "w": 655,
+              "status": "CASCADE_CONTRADICTION",
+              "closed_by": "linear_contradiction"
+            },
+            {
+              "w": 2623,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "rb": 829,
+          "status": "OPEN_W_CHILDREN",
+          "children": [
+            {
+              "w": 1629,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            },
+            {
+              "w": 3301,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            }
           ]
         }
       ]
     },
     {
-      "rb": 202,
-      "status": "OPEN_W_CHILDREN",
-      "children": [
+      "job_id": 141004448422,
+      "conclusion": "cancelled",
+      "exact_W_truth_table_observed": true,
+      "final_replay_record": false,
+      "results": [
         {
-          "w": 802,
-          "status": "UNKNOWN",
-          "exact_balance_fibers": [
-            255,
-            85,
-            51,
-            17,
-            119,
-            1
+          "rb": 467,
+          "status": "OPEN_W_CHILDREN",
+          "children": [
+            {
+              "w": 1355,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            },
+            {
+              "w": 4083,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            }
           ]
         },
         {
-          "w": 2458,
-          "status": "UNKNOWN",
-          "exact_balance_fibers": [
-            255,
-            85,
-            51,
-            17,
-            119,
-            1
+          "rb": 202,
+          "status": "OPEN_W_CHILDREN",
+          "children": [
+            {
+              "w": 802,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            },
+            {
+              "w": 2458,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "rb": 798,
+          "status": "OPEN_W_CHILDREN",
+          "children": [
+            {
+              "w": 1758,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            },
+            {
+              "w": 3174,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "rb": 522,
+          "status": "OPEN_W_CHILDREN",
+          "children": [
+            {
+              "w": 146,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            },
+            {
+              "w": 2602,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            }
           ]
         }
       ]
     },
     {
-      "rb": 798,
-      "status": "OPEN_W_CHILDREN",
-      "children": [
+      "job_id": 141004448440,
+      "conclusion": "cancelled",
+      "exact_W_truth_table_observed": true,
+      "final_replay_record": false,
+      "results": [
         {
-          "w": 1758,
-          "status": "UNKNOWN",
-          "exact_balance_fibers": [
-            255,
-            85,
-            51,
-            17,
-            119,
-            1
+          "rb": 285,
+          "status": "OPEN_W_CHILDREN",
+          "children": [
+            {
+              "w": 1645,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            },
+            {
+              "w": 3285,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            }
           ]
         },
         {
-          "w": 3174,
-          "status": "UNKNOWN",
-          "exact_balance_fibers": [
-            255,
-            85,
-            51,
-            17,
-            119,
-            1
+          "rb": 4,
+          "status": "OPEN_W_CHILDREN",
+          "children": [
+            {
+              "w": 4,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            },
+            {
+              "w": 524,
+              "status": "CASCADE_CONTRADICTION",
+              "closed_by": "linear_contradiction"
+            },
+            {
+              "w": 2748,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "rb": 478,
+          "status": "OPEN_W_CHILDREN",
+          "children": [
+            {
+              "w": 1390,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            },
+            {
+              "w": 4054,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            }
           ]
         }
       ]
     },
     {
-      "rb": 522,
-      "status": "OPEN_W_CHILDREN",
-      "children": [
+      "job_id": 141004448441,
+      "conclusion": "cancelled",
+      "exact_W_truth_table_observed": true,
+      "final_replay_record": false,
+      "results": [
         {
-          "w": 146,
-          "status": "UNKNOWN",
-          "exact_balance_fibers": [
-            255,
-            85,
-            51,
-            17,
-            119,
-            1
+          "rb": 318,
+          "status": "OPEN_W_CHILDREN",
+          "children": [
+            {
+              "w": 1774,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            },
+            {
+              "w": 3158,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            }
           ]
         },
         {
-          "w": 2602,
-          "status": "UNKNOWN",
-          "exact_balance_fibers": [
-            255,
-            85,
-            51,
-            17,
-            119,
-            1
+          "rb": 199,
+          "status": "OPEN_W_CHILDREN",
+          "children": [
+            {
+              "w": 271,
+              "status": "CASCADE_CONTRADICTION",
+              "closed_by": "linear_contradiction"
+            },
+            {
+              "w": 775,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            },
+            {
+              "w": 2495,
+              "status": "UNKNOWN",
+              "exact_balance_fibers": [
+                255,
+                85,
+                51,
+                17,
+                119,
+                1
+              ]
+            }
           ]
         }
       ]
     }
   ],
+  "reported_prefix_leaves": 13,
+  "linear_contradictions": 3,
+  "unknown_children": 26,
   "open_survivors": [
+    4,
+    39,
+    199,
     202,
+    285,
+    307,
+    318,
     467,
+    478,
+    509,
     522,
-    798
+    798,
+    829
+  ],
+  "unreported_leaves": [
+    519,
+    548,
+    743,
+    787,
+    816,
+    989,
+    1011,
+    1022
   ]
 }
