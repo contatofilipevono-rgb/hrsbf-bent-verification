@@ -1,0 +1,59 @@
+name: H16 B0_00 K0 archive replayed algebraic certificates
+
+on:
+  push:
+    branches: ['cert/k0-proved-extra-closed']
+    paths: ['.github/workflows/h16_b000_k0_archive_wess.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 'cert/k0-proved-extra-closed'
+      - name: Wait for all three source runs to publish artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          for id in 46164935335 46165388555 46165444194; do
+            for poll in {1..38}; do
+              status=$(gh api "repos/$GH_REPO/actions/runs/$id" --jq .status)
+              test "$status" = completed && break
+              sleep 40
+            done
+            test "$status" = completed
+          done
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 46164935335
+          github-token: ${{ github.token }}
+          path: downloads/cubic
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 46165388555
+          github-token: ${{ github.token }}
+          path: downloads/eta1
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 46165444194
+          github-token: ${{ github.token }}
+          path: downloads/eta43
+      - name: Audit coverage, compare replayed files, and archive accepted certificates
+        run: |
+          certs=research_updates/2026_11_17_h16_c99_carbon_hard/certs
+          python research_updates/2026_11_17_h16_c99_carbon_hard/VERIFY_B000_K0_WESS_COVERAGE.py --certs "$certs" downloads/{cubic,eta1,eta43} | tee -a "$GITHUB_STEP_SUMMARY"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$certs"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Archive verified K0 W_ess branch proofs'
+          git pull --rebase origin 'cert/k0-proved-extra-closed'
+          git push origin 'HEAD:refs/heads/cert/k0-proved-extra-closed'
