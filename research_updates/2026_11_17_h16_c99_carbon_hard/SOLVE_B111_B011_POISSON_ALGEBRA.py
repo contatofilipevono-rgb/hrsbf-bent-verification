@@ -343,7 +343,7 @@ def fix_a14_fiber(env, e_val, lib9):
     ex_e = []
     for fm in a14_forms:
         mask_111 = sum((((v & fm).bit_count() & 1) << i) for i, v in enumerate(cb111))
-        rhs = ((val_e & fm).bit_count() ^ (origin111 & fm).bit_count()) & 1
+        rhs = (val_e & fm).bit_count() & 1
         if mask_111 or rhs:
             ex_e.append((mask_111, rhs))
     root = env["root"]
@@ -575,10 +575,10 @@ def run_pilot(cell_name, rep_e, libs, wide_b111=False):
 
     sr_base = fix_a14_fiber(env, rep_e, lib9)
     base_sig = {
-        "closed": sr_base["closed_unsat"],
-        "dim": 111 - len(sr_base["_lin_pivs"]),
-        "quads": len(sr_base["_quad_ids"]),
-        "cubs": len(sr_base["_cub_ids"]),
+        "closed": bool(sr_base["closed_unsat"]),
+        "dim": 0 if sr_base["closed_unsat"] else 111 - len(sr_base["_lin_pivs"]),
+        "quads": 0 if sr_base["closed_unsat"] else len(sr_base["_quad_ids"]),
+        "cubs": 0 if sr_base["closed_unsat"] else len(sr_base["_cub_ids"]),
     }
     print(f"\n[{cell_name} e={rep_e}] BASELINE (CG+Q4+V6+Rot4+Cyc+XL): {base_sig}", flush=True)
     res = {"cell": cell_name, "rep": rep_e, "c99": env["c99"], "force_k": env["force_k"], "baseline": base_sig}
@@ -601,10 +601,10 @@ def run_pilot(cell_name, rep_e, libs, wide_b111=False):
     if pois["psets_le2"]:
         sr_p2, _ = s60c.inject_psets_into_s9(sr_base, pois["psets_le2"], lib9, tbl)
     res["after_poisson_le2"] = {
-        "closed": sr_p2["closed_unsat"],
-        "dim": 111 - len(sr_p2["_lin_pivs"]),
-        "quads": len(sr_p2["_quad_ids"]),
-        "cubs": len(sr_p2["_cub_ids"]),
+        "closed": bool(sr_p2["closed_unsat"]),
+        "dim": 0 if sr_p2["closed_unsat"] else 111 - len(sr_p2["_lin_pivs"]),
+        "quads": 0 if sr_p2["closed_unsat"] else len(sr_p2["_quad_ids"]),
+        "cubs": 0 if sr_p2["closed_unsat"] else len(sr_p2["_cub_ids"]),
     }
     print(f"  [AFTER POISSON deg<=2]: {res['after_poisson_le2']}", flush=True)
 
@@ -613,10 +613,10 @@ def run_pilot(cell_name, rep_e, libs, wide_b111=False):
     if not sr_p2["closed_unsat"] and pois["psets_deg3"]:
         sr_p3, _ = s60c.inject_psets_into_s9(sr_p2, pois["psets_deg3"], lib9, tbl)
     res["after_poisson_le3"] = {
-        "closed": sr_p3["closed_unsat"],
-        "dim": 111 - len(sr_p3["_lin_pivs"]),
-        "quads": len(sr_p3["_quad_ids"]),
-        "cubs": len(sr_p3["_cub_ids"]),
+        "closed": bool(sr_p3["closed_unsat"]),
+        "dim": 0 if sr_p3["closed_unsat"] else 111 - len(sr_p3["_lin_pivs"]),
+        "quads": 0 if sr_p3["closed_unsat"] else len(sr_p3["_quad_ids"]),
+        "cubs": 0 if sr_p3["closed_unsat"] else len(sr_p3["_cub_ids"]),
     }
     print(f"  [AFTER POISSON deg<=3]: {res['after_poisson_le3']}", flush=True)
 
@@ -636,10 +636,10 @@ def run_pilot(cell_name, rep_e, libs, wide_b111=False):
         )
         sr_ac = out_st.get("sub_ac", sr_p3)
     res["after_poisson_plus_ac180"] = {
-        "closed": sr_ac["closed_unsat"],
-        "dim": 111 - len(sr_ac["_lin_pivs"]),
-        "quads": len(sr_ac["_quad_ids"]),
-        "cubs": len(sr_ac["_cub_ids"]),
+        "closed": bool(sr_ac["closed_unsat"]),
+        "dim": 0 if sr_ac["closed_unsat"] else 111 - len(sr_ac["_lin_pivs"]),
+        "quads": 0 if sr_ac["closed_unsat"] else len(sr_ac["_quad_ids"]),
+        "cubs": 0 if sr_ac["closed_unsat"] else len(sr_ac["_cub_ids"]),
     }
     print(f"  [AFTER POISSON + AC180]: {res['after_poisson_plus_ac180']}", flush=True)
 
