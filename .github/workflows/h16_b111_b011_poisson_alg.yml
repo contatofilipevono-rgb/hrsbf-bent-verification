@@ -1,0 +1,78 @@
+name: H16 B1_11 & B0_11 Generalized Poisson Algebra Pilot
+
+on:
+  workflow_dispatch:
+    inputs:
+      wide_b111:
+        description: "Use wide 6-tuple admissible set for B1_11"
+        type: boolean
+        required: false
+        default: false
+
+jobs:
+  poisson_pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - cell: "B1_11"
+            rep: "1"
+            slug: "b111_e1"
+          - cell: "B0_11"
+            rep: "2"
+            slug: "b011_e2"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Python deps
+        run: pip install --quiet numpy python-sat
+      - name: Run Generalized Poisson Algebra on ${{ matrix.cell }} e=${{ matrix.rep }}
+        run: |
+          EXTRA=""
+          if [ "${{ inputs.wide_b111 }}" = "true" ] && [ "${{ matrix.cell }}" = "B1_11" ]; then
+            EXTRA="--wide-b111"
+          fi
+          OMP_NUM_THREADS=$(nproc) python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B111_B011_POISSON_ALGEBRA.py \
+            --cell "${{ matrix.cell }}" --rep "${{ matrix.rep }}" $EXTRA \
+            --out-json "poisson_${{ matrix.slug }}.json" | tee "poisson_${{ matrix.slug }}.log"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: poisson-${{ matrix.slug }}
+          path: |
+            poisson_${{ matrix.slug }}.json
+            poisson_${{ matrix.slug }}.log
+
+  aggregate_poisson:
+    needs: poisson_pilot
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: poisson-*
+          merge-multiple: true
+          path: results
+      - name: Merge Poisson pilot results
+        run: |
+          python3 - <<'EOF'
+          import glob, json
+
+          merged = []
+          for p in sorted(glob.glob("results/poisson_*.json")):
+              d = json.loads(open(p).read())
+              if isinstance(d, list):
+                  merged.extend(d)
+              else:
+                  merged.append(d)
+          open("poisson_summary.json", "w").write(json.dumps(merged, indent=2) + "\n")
+          print(json.dumps(merged, indent=2))
+          EOF
+      - uses: actions/upload-artifact@v4
+        with:
+          name: poisson-summary
+          path: poisson_summary.json
