@@ -1,0 +1,106 @@
+[
+  {
+    "conditional_on": "C5",
+    "eta_rep": 22,
+    "fix_sha256": "afe4b4c6dbbc5eb9",
+    "max_depth": 3,
+    "open_survivors": [
+      55
+    ],
+    "proof": {
+      "closed": false,
+      "method": "no_w",
+      "state": {
+        "active": 72,
+        "cubics": 112,
+        "dim_w": 0,
+        "quadratics": 0
+      }
+    },
+    "rb": 55,
+    "root_sha256": "71e50178f909fd6749333ca043eb96b4514a6d77d6dc0c6d0bcf2ea4b8e0c655",
+    "schema": 1,
+    "sha256": "9018d58377792fe0666853b065200637ed7f969d330d3a2591900584cc240b3b",
+    "target_w": null,
+    "verified_cascade_calls_after_root": 2,
+    "verify_subst": true
+  },
+  {
+    "conditional_on": "C5",
+    "eta_rep": 23,
+    "fix_sha256": "53a91f8c79172a9a",
+    "max_depth": 3,
+    "open_survivors": [
+      250
+    ],
+    "proof": {
+      "closed": false,
+      "method": "no_w",
+      "state": {
+        "active": 72,
+        "cubics": 112,
+        "dim_w": 0,
+        "quadratics": 0
+      }
+    },
+    "rb": 250,
+    "root_sha256": "71e50178f909fd6749333ca043eb96b4514a6d77d6dc0c6d0bcf2ea4b8e0c655",
+    "schema": 1,
+    "sha256": "9e50482c95931fcd6f43c96375289a4096cd97a7112b632c90b89336d30049a1",
+    "target_w": null,
+    "verified_cascade_calls_after_root": 2,
+    "verify_subst": true
+  },
+  {
+    "conditional_on": "C5",
+    "eta_rep": 23,
+    "fix_sha256": "53a91f8c79172a9a",
+    "max_depth": 3,
+    "open_survivors": [
+      170
+    ],
+    "proof": {
+      "closed": false,
+      "method": "no_w",
+      "state": {
+        "active": 72,
+        "cubics": 112,
+        "dim_w": 0,
+        "quadratics": 0
+      }
+    },
+    "rb": 170,
+    "root_sha256": "71e50178f909fd6749333ca043eb96b4514a6d77d6dc0c6d0bcf2ea4b8e0c655",
+    "schema": 1,
+    "sha256": "b631f166a8d0dfccb00b2326ecf45f7de5c64abd19a8aa5d4279456556ff22ec",
+    "target_w": null,
+    "verified_cascade_calls_after_root": 2,
+    "verify_subst": true
+  },
+  {
+    "conditional_on": "C5",
+    "eta_rep": 22,
+    "fix_sha256": "afe4b4c6dbbc5eb9",
+    "max_depth": 3,
+    "open_survivors": [
+      12
+    ],
+    "proof": {
+      "closed": false,
+      "method": "no_w",
+      "state": {
+        "active": 72,
+        "cubics": 112,
+        "dim_w": 0,
+        "quadratics": 0
+      }
+    },
+    "rb": 12,
+    "root_sha256": "71e50178f909fd6749333ca043eb96b4514a6d77d6dc0c6d0bcf2ea4b8e0c655",
+    "schema": 1,
+    "sha256": "84c6f3112942d8a1c5b370221c06bc93d964c24995d61b41027db27efbd37db0",
+    "target_w": null,
+    "verified_cascade_calls_after_root": 2,
+    "verify_subst": true
+  }
+]
