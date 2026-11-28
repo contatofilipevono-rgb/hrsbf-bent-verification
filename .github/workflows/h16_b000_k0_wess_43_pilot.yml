@@ -1,0 +1,47 @@
+name: H16 B0_00 K0 W_ess eta 43 strata pilot
+
+on:
+  push:
+    branches: ['cert/k0-proved-extra-closed']
+    paths: ['.github/workflows/h16_b000_k0_wess_43_pilot.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {eta: 43, rb: 1025}
+          - {eta: 43, rb: 1123}
+          - {eta: 43, rb: 1265}
+    name: eta ${{ matrix.eta }} rb ${{ matrix.rb }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy python-sat
+      - name: Generate and independently replay the branch tree
+        env:
+          ETA: ${{ matrix.eta }}
+          RB: ${{ matrix.rb }}
+        run: |
+          driver=research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B000_K0_WESS_REPLAY.py
+          python -u "$driver" --eta "$ETA" --rb "$RB" --cubic-split --depth 6 --seconds 300 --out cert.json
+          python -c 'import base64,gzip; print("CERT_GZIP_BASE64 " + base64.b64encode(gzip.compress(open("cert.json","rb").read(),mtime=0)).decode())'
+          if python -c 'import json,sys; sys.exit(bool(json.load(open("cert.json"))["open_survivors"]))'; then
+            python -u "$driver" --eta "$ETA" --rb "$RB" --cubic-split --depth 6 --seconds 300 --out replayed.json --verify cert.json
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k0-wess-strata-eta${{ matrix.eta }}-rb${{ matrix.rb }}
+          path: |
+            cert.json
+            replayed.json
