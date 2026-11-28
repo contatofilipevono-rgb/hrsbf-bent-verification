@@ -1,0 +1,77 @@
+name: H16 B0_11 & B1_11 Central Profile Algebra Cascade
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_filter:
+        description: "Target to run: ALL, B011_III_ALPHA, B011_III_BETA, B011_I_BETA, or B111_3TUPLE"
+        required: false
+        default: "ALL"
+
+jobs:
+  profile_cascade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - B011_III_ALPHA
+          - B011_III_BETA
+          - B011_I_BETA
+          - B111_3TUPLE
+    steps:
+      - name: Skip if filtered out
+        if: inputs.target_filter != 'ALL' && inputs.target_filter != '' && inputs.target_filter != matrix.target
+        run: echo "Skipping ${{ matrix.target }} (target_filter=${{ inputs.target_filter }})"
+      - uses: actions/checkout@v4
+        if: inputs.target_filter == 'ALL' || inputs.target_filter == '' || inputs.target_filter == matrix.target
+      - uses: actions/setup-python@v5
+        if: inputs.target_filter == 'ALL' || inputs.target_filter == '' || inputs.target_filter == matrix.target
+        with:
+          python-version: "3.12"
+      - name: Install Python deps
+        if: inputs.target_filter == 'ALL' || inputs.target_filter == '' || inputs.target_filter == matrix.target
+        run: pip install --quiet numpy python-sat
+      - name: Run Central Profile Cascade on ${{ matrix.target }}
+        if: inputs.target_filter == 'ALL' || inputs.target_filter == '' || inputs.target_filter == matrix.target
+        run: |
+          set -o pipefail
+          OMP_NUM_THREADS=$(nproc) python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B011_B111_PROFILE_CASCADE.py \
+            --target "${{ matrix.target }}" \
+            --out-json "profile_${{ matrix.target }}.json" 2>&1 | tee "profile_${{ matrix.target }}.log"
+      - uses: actions/upload-artifact@v4
+        if: always() && (inputs.target_filter == 'ALL' || inputs.target_filter == '' || inputs.target_filter == matrix.target)
+        with:
+          name: profile-${{ matrix.target }}
+          path: |
+            profile_${{ matrix.target }}.json
+            profile_${{ matrix.target }}.log
+
+  aggregate_profiles:
+    needs: profile_cascade
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: profile-*
+          merge-multiple: true
+          path: results
+      - name: Merge Profile Cascade results
+        run: |
+          python3 - <<'EOF'
+          import glob, json
+
+          merged = {}
+          for p in sorted(glob.glob("results/profile_*.json")):
+              d = json.loads(open(p).read())
+              key = d.get("target", p) if isinstance(d, dict) else p
+              merged[key] = d
+          open("profile_cascade_summary.json", "w").write(json.dumps(merged, indent=2) + "\n")
+          print(json.dumps(merged, indent=2))
+          EOF
+      - uses: actions/upload-artifact@v4
+        with:
+          name: profile-cascade-summary
+          path: profile_cascade_summary.json
