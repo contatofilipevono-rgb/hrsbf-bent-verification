@@ -1,0 +1,137 @@
+{
+  "root_sha256": "71e50178f909fd6749333ca043eb96b4514a6d77d6dc0c6d0bcf2ea4b8e0c655",
+  "eta_rep": 1,
+  "run_id": 46153316781,
+  "job_id": 141004448422,
+  "W_dimension": 12,
+  "W_models": 288,
+  "job_conclusion": "cancelled",
+  "results": [
+    {
+      "rb": 467,
+      "status": "OPEN_W_CHILDREN",
+      "children": [
+        {
+          "w": 1355,
+          "status": "UNKNOWN",
+          "exact_balance_fibers": [
+            255,
+            85,
+            51,
+            17,
+            119,
+            1
+          ]
+        },
+        {
+          "w": 4083,
+          "status": "UNKNOWN",
+          "exact_balance_fibers": [
+            255,
+            85,
+            51,
+            17,
+            119,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "rb": 202,
+      "status": "OPEN_W_CHILDREN",
+      "children": [
+        {
+          "w": 802,
+          "status": "UNKNOWN",
+          "exact_balance_fibers": [
+            255,
+            85,
+            51,
+            17,
+            119,
+            1
+          ]
+        },
+        {
+          "w": 2458,
+          "status": "UNKNOWN",
+          "exact_balance_fibers": [
+            255,
+            85,
+            51,
+            17,
+            119,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "rb": 798,
+      "status": "OPEN_W_CHILDREN",
+      "children": [
+        {
+          "w": 1758,
+          "status": "UNKNOWN",
+          "exact_balance_fibers": [
+            255,
+            85,
+            51,
+            17,
+            119,
+            1
+          ]
+        },
+        {
+          "w": 3174,
+          "status": "UNKNOWN",
+          "exact_balance_fibers": [
+            255,
+            85,
+            51,
+            17,
+            119,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "rb": 522,
+      "status": "OPEN_W_CHILDREN",
+      "children": [
+        {
+          "w": 146,
+          "status": "UNKNOWN",
+          "exact_balance_fibers": [
+            255,
+            85,
+            51,
+            17,
+            119,
+            1
+          ]
+        },
+        {
+          "w": 2602,
+          "status": "UNKNOWN",
+          "exact_balance_fibers": [
+            255,
+            85,
+            51,
+            17,
+            119,
+            1
+          ]
+        }
+      ]
+    }
+  ],
+  "open_survivors": [
+    202,
+    467,
+    522,
+    798
+  ]
+}

@@ -39,5 +39,15 @@
       170,
       250
     ]
+  },
+  "eta1_observed_open": [
+    202,
+    467,
+    522,
+    798
+  ],
+  "replay_evidence": {
+    "46154153103": "k0_sparse_replay_evidence.json",
+    "46153316781": "k0_eta01_partial_evidence.json"
   }
 }
