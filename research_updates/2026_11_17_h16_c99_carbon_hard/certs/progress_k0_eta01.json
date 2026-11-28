@@ -1,0 +1,33 @@
+{
+  "conditional_on": "C5",
+  "eta_rep": 1,
+  "first_level_source": "k0_recert_source.json",
+  "fix_sha256": "83a44b956b8c2e33",
+  "open_survivors": [
+    4,
+    307,
+    318,
+    467,
+    478,
+    522,
+    548,
+    743,
+    787,
+    798,
+    829,
+    1011,
+    1022
+  ],
+  "root_sha256": "71e50178f909fd6749333ca043eb96b4514a6d77d6dc0c6d0bcf2ea4b8e0c655",
+  "second_level_certificates": {
+    "39": "cert_k0_eta01_rb39.json",
+    "199": "cert_k0_eta01_rb199.json",
+    "202": "cert_k0_eta01_rb202.json",
+    "285": "cert_k0_eta01_rb285.json",
+    "509": "cert_k0_eta01_rb509.json",
+    "519": "cert_k0_eta01_rb519.json",
+    "816": "cert_k0_eta01_rb816.json",
+    "989": "cert_k0_eta01_rb989.json"
+  },
+  "verify_subst": true
+}

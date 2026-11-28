@@ -1,0 +1,13 @@
+{
+  "conditional_on": "C5",
+  "eta_rep": 22,
+  "first_level_source": "k0_recert_source.json",
+  "fix_sha256": "afe4b4c6dbbc5eb9",
+  "open_survivors": [
+    12,
+    55
+  ],
+  "root_sha256": "71e50178f909fd6749333ca043eb96b4514a6d77d6dc0c6d0bcf2ea4b8e0c655",
+  "second_level_certificates": {},
+  "verify_subst": true
+}

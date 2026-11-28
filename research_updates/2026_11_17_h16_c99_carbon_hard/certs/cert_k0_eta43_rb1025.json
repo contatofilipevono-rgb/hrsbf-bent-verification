@@ -1,0 +1,480 @@
+{
+  "conditional_on": "C5",
+  "cubic_split": true,
+  "eta_rep": 43,
+  "fix_sha256": "f3526fbd955b749e",
+  "max_depth": 6,
+  "open_survivors": [],
+  "proof": {
+    "children": [
+      {
+        "proof": {
+          "children": [
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 0
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 1
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 2
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 3
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 4
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 5
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 6
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 7
+            }
+          ],
+          "closed": true,
+          "domain": {
+            "forms_hex": [
+              "0x4010022000000000000000000",
+              "0x2580885545b4a52000000000000",
+              "0x5002200000000104000000000000"
+            ],
+            "low_rank_basis_dim": 15,
+            "points": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          },
+          "method": "minrank_partition",
+          "open_values": [],
+          "state": {
+            "active": 60,
+            "cubics": 106,
+            "dim_w": 15,
+            "quadratics": 4
+          }
+        },
+        "value": 0
+      },
+      {
+        "proof": {
+          "children": [
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_11",
+                "rounds": 11
+              },
+              "value": 0
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_11",
+                "rounds": 11
+              },
+              "value": 1
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_11",
+                "rounds": 11
+              },
+              "value": 2
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_11",
+                "rounds": 11
+              },
+              "value": 3
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_11",
+                "rounds": 11
+              },
+              "value": 4
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_11",
+                "rounds": 11
+              },
+              "value": 5
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_11",
+                "rounds": 11
+              },
+              "value": 6
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_11",
+                "rounds": 11
+              },
+              "value": 7
+            }
+          ],
+          "closed": true,
+          "domain": {
+            "forms_hex": [
+              "0x4010022000000000000000000",
+              "0x2580885545b4a52000000000000",
+              "0x5002200000000104000000000000"
+            ],
+            "low_rank_basis_dim": 15,
+            "points": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          },
+          "method": "minrank_partition",
+          "open_values": [],
+          "state": {
+            "active": 60,
+            "cubics": 106,
+            "dim_w": 15,
+            "quadratics": 4
+          }
+        },
+        "value": 1
+      },
+      {
+        "proof": {
+          "children": [
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 0
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 1
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 2
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 3
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 4
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 5
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 6
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 7
+            }
+          ],
+          "closed": true,
+          "domain": {
+            "forms_hex": [
+              "0x4010022000000000000000000",
+              "0x2580885545b4a52000000000000",
+              "0x5002200000000104000000000000"
+            ],
+            "low_rank_basis_dim": 15,
+            "points": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          },
+          "method": "minrank_partition",
+          "open_values": [],
+          "state": {
+            "active": 60,
+            "cubics": 106,
+            "dim_w": 15,
+            "quadratics": 4
+          }
+        },
+        "value": 5
+      },
+      {
+        "proof": {
+          "children": [
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 0
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 1
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 2
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 3
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 4
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 5
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 6
+            },
+            {
+              "proof": {
+                "closed": true,
+                "method": "cascade_contradiction",
+                "reason": "xl_quad_has_one_round_10",
+                "rounds": 10
+              },
+              "value": 7
+            }
+          ],
+          "closed": true,
+          "domain": {
+            "forms_hex": [
+              "0x4010022000000000000000000",
+              "0x2580885545b4a52000000000000",
+              "0x5002200000000104000000000000"
+            ],
+            "low_rank_basis_dim": 15,
+            "points": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          },
+          "method": "minrank_partition",
+          "open_values": [],
+          "state": {
+            "active": 60,
+            "cubics": 106,
+            "dim_w": 15,
+            "quadratics": 4
+          }
+        },
+        "value": 6
+      }
+    ],
+    "closed": true,
+    "domain": {
+      "forms_hex": [
+        "0x4008000000000000000000",
+        "0x3bb08b6156f4a73600000000000",
+        "0x54c8b1563000000000000000000"
+      ],
+      "points": [
+        0,
+        1,
+        5,
+        6
+      ],
+      "quadratics": [
+        [
+          2,
+          4,
+          5
+        ],
+        [
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ]
+    },
+    "method": "pure_w_exhaustion",
+    "open_values": [],
+    "state": {
+      "active": 63,
+      "cubics": 110,
+      "dim_w": 3,
+      "quadratics": 3
+    }
+  },
+  "rb": 1025,
+  "root_sha256": "71e50178f909fd6749333ca043eb96b4514a6d77d6dc0c6d0bcf2ea4b8e0c655",
+  "schema": 1,
+  "sha256": "80d86ff531ffa99b510923e20a47d7c00b5c3bef826336a8a7cddb2b8956b151",
+  "target_w": null,
+  "verified_cascade_calls_after_root": 38,
+  "verify_subst": true
+}
