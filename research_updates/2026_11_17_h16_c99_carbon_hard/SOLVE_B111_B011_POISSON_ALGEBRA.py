@@ -141,8 +141,35 @@ def compile_c_libs():
         ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.POINTER(ctypes.c_int),
     ]
 
-    lib_ac = s63a.compile_step63a_c()
-    lib_d4 = s60c.compile_step60c_c()
+    c_ac, so_ac = WORK_DIR / "spois_ac.c", WORK_DIR / "libspois_ac.so"
+    c_ac.write_text(s63a.C_STEP63A_SRC, encoding="utf-8")
+    subprocess.run(["gcc", "-O3", "-march=native", "-fopenmp", "-shared", "-fPIC", str(c_ac), "-o", str(so_ac)], check=True)
+    lib_ac = ctypes.CDLL(str(so_ac))
+    lib_ac.fwht_autocorr_batch_c.argtypes = [
+        ctypes.POINTER(ctypes.c_uint8), ctypes.POINTER(ctypes.c_uint8), ctypes.c_int,
+        ctypes.POINTER(ctypes.c_uint64), ctypes.POINTER(ctypes.c_uint64), ctypes.c_int,
+        ctypes.POINTER(ctypes.c_uint16), ctypes.c_int, ctypes.POINTER(ctypes.c_int32),
+    ]
+    lib_ac.direct_wt15_verify_c.argtypes = lib_ac.fwht_autocorr_batch_c.argtypes
+    lib_ac.eval_d8_parseval_batch_c.argtypes = [
+        ctypes.POINTER(ctypes.c_uint64), ctypes.POINTER(ctypes.c_uint64), ctypes.c_int,
+        ctypes.POINTER(ctypes.c_uint64), ctypes.POINTER(ctypes.c_uint64), ctypes.c_int,
+        ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int64),
+    ]
+    lib_ac.extract_deriv_bit_anf_batch_c.argtypes = [
+        ctypes.POINTER(ctypes.c_uint8), ctypes.POINTER(ctypes.c_uint8),
+        ctypes.POINTER(ctypes.c_uint16), ctypes.POINTER(ctypes.c_int),
+        ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_uint64,
+        ctypes.POINTER(ctypes.c_uint64), ctypes.POINTER(ctypes.c_int),
+    ]
+    lib_ac.extract_d8_pq_deg3_c.argtypes = [
+        ctypes.POINTER(ctypes.c_uint64), ctypes.POINTER(ctypes.c_uint64),
+        ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int),
+        ctypes.POINTER(ctypes.c_int), ctypes.POINTER(ctypes.c_int),
+        ctypes.c_int, ctypes.c_int, ctypes.c_uint64,
+        ctypes.POINTER(ctypes.c_uint64), ctypes.POINTER(ctypes.c_int),
+    ]
+    lib_d4 = None
     lib63 = s63b.compile_step63b_c()
     s63b.zt_audit_c_engines(lib63)
     return lib_diag, lib9, lib_cg, lib_sh, lib_ac, lib_d4, lib63
