@@ -1,0 +1,76 @@
+name: H16 B1_11 S11 Deep Parseval+Syzygy & B0_11 Class I-B 8-Coset Gamma
+
+on:
+  workflow_dispatch:
+    inputs:
+      job_filter:
+        description: "Job to run: ALL, B111_S11_DEEP, B011_IB_E3_GP, or B011_IB_E3_GM"
+        required: false
+        default: "ALL"
+
+jobs:
+  deep_and_ib8:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      matrix:
+        job:
+          - B111_S11_DEEP
+          - B011_IB_E3_GP
+          - B011_IB_E3_GM
+    steps:
+      - name: Skip if filtered out
+        if: inputs.job_filter != 'ALL' && inputs.job_filter != '' && inputs.job_filter != matrix.job
+        run: echo "Skipping ${{ matrix.job }} (job_filter=${{ inputs.job_filter }})"
+      - uses: actions/checkout@v4
+        if: inputs.job_filter == 'ALL' || inputs.job_filter == '' || inputs.job_filter == matrix.job
+      - uses: actions/setup-python@v5
+        if: inputs.job_filter == 'ALL' || inputs.job_filter == '' || inputs.job_filter == matrix.job
+        with:
+          python-version: "3.12"
+      - name: Install Python deps
+        if: inputs.job_filter == 'ALL' || inputs.job_filter == '' || inputs.job_filter == matrix.job
+        run: pip install --quiet numpy python-sat
+      - name: Run ${{ matrix.job }}
+        if: inputs.job_filter == 'ALL' || inputs.job_filter == '' || inputs.job_filter == matrix.job
+        run: |
+          set -o pipefail
+          OMP_NUM_THREADS=$(nproc) python3 -u research_updates/2026_11_17_h16_c99_carbon_hard/SOLVE_B111_S11_DEEP_AND_B011_IB8.py \
+            --job "${{ matrix.job }}" \
+            --out-json "b111_s11_deep_b011_ib8_${{ matrix.job }}.json" 2>&1 | tee "b111_s11_deep_b011_ib8_${{ matrix.job }}.log"
+      - uses: actions/upload-artifact@v4
+        if: always() && (inputs.job_filter == 'ALL' || inputs.job_filter == '' || inputs.job_filter == matrix.job)
+        with:
+          name: s11-ib8-${{ matrix.job }}
+          path: |
+            b111_s11_deep_b011_ib8_${{ matrix.job }}.json
+            b111_s11_deep_b011_ib8_${{ matrix.job }}.log
+
+  aggregate_deep_ib8:
+    needs: deep_and_ib8
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: s11-ib8-*
+          merge-multiple: true
+          path: results
+      - name: Merge S11 Deep & IB8 results
+        run: |
+          python3 - <<'EOF'
+          import glob, json
+
+          merged = {}
+          for p in sorted(glob.glob("results/b111_s11_deep_b011_ib8_*.json")):
+              d = json.loads(open(p).read())
+              key = d.get("job", p) if isinstance(d, dict) else p
+              merged[key] = d
+          open("s11_deep_ib8_summary.json", "w").write(json.dumps(merged, indent=2) + "\n")
+          print(json.dumps(merged, indent=2))
+          EOF
+      - uses: actions/upload-artifact@v4
+        with:
+          name: s11-ib8-summary
+          path: s11_deep_ib8_summary.json
