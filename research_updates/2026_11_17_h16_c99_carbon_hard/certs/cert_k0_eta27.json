@@ -1,0 +1,42 @@
+{
+  "eta_rep": 27,
+  "root_sha256": "71e50178f909fd6749333ca043eb96b4514a6d77d6dc0c6d0bcf2ea4b8e0c655",
+  "eta_free_hex": [
+    "0x81000880200000200000202000",
+    "0x5008a9051580040502280901404",
+    "0xa4a6025000133078d01100d8870",
+    "0x8010080040100200000404",
+    "0x800400000000000810110080800",
+    "0x400880001100000002000101000"
+  ],
+  "pre_branch": {
+    "dim": 99,
+    "quads": 21,
+    "cubs": 369,
+    "nW": 38,
+    "low_bas_dim": 38,
+    "minrank_status": "OK"
+  },
+  "k_fix": 8,
+  "fix_forms_hex": [
+    "0x1100800054aa0ab54552a8000",
+    "0x1a849145971225dd3299088440",
+    "0x428c0410902045100000110440",
+    "0x80000080000080200000220088",
+    "0x108240150c16a44580404058440",
+    "0x224e1aaa335308c9e73402d04c0",
+    "0x802240200857a210d05040d8200",
+    "0x500220000001fe010c8c26058000"
+  ],
+  "fix_sha256": "d508d3a77a4c78ee",
+  "total_branches": 256,
+  "covered_branches": 256,
+  "direct_closed": 256,
+  "rescued_closed": 0,
+  "open_survivors": [],
+  "verified_subst_branches": 256,
+  "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+  "elapsed_s": 840.72,
+  "source_run": 46072471870,
+  "verify_subst": true
+}

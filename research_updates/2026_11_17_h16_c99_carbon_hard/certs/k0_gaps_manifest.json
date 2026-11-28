@@ -1,0 +1,25 @@
+{
+  "scope": "B0_00, K=0; conditional on the historical root equations",
+  "root_sha256": "71e50178f909fd6749333ca043eb96b4514a6d77d6dc0c6d0bcf2ea4b8e0c655",
+  "exact_orbit_map_run": 46058114045,
+  "source_runs": [
+    46072471870,
+    46077594419
+  ],
+  "replay_run": 46152367503,
+  "closed": [
+    3,
+    21,
+    27,
+    62,
+    63
+  ],
+  "pending": [
+    1,
+    22,
+    23,
+    43
+  ],
+  "legacy_manifest": "../B0_00_GLOBAL_UNSAT_CERT_MANIFEST.json",
+  "status": "PARTIAL_RECERTIFICATION"
+}

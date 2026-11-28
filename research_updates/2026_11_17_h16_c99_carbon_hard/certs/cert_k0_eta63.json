@@ -1,0 +1,36 @@
+{
+  "eta_rep": 63,
+  "root_sha256": "71e50178f909fd6749333ca043eb96b4514a6d77d6dc0c6d0bcf2ea4b8e0c655",
+  "eta_free_hex": [
+    "0x81000880200000200000202000",
+    "0x5008a9051580040502280901404",
+    "0xa4a6025000133078d01100d8870",
+    "0x8010080040100200000404",
+    "0x800400000000000810110080800",
+    "0x400880001100000002000101000"
+  ],
+  "pre_branch": {
+    "dim": 97,
+    "quads": 57,
+    "cubs": 353,
+    "nW": 38,
+    "low_bas_dim": 33,
+    "minrank_status": "OK"
+  },
+  "k_fix": 2,
+  "fix_forms_hex": [
+    "0x40000800000000000000000",
+    "0x910880250560060510100184700"
+  ],
+  "fix_sha256": "e6c1d7a61be474b4",
+  "total_branches": 4,
+  "covered_branches": 4,
+  "direct_closed": 4,
+  "rescued_closed": 0,
+  "open_survivors": [],
+  "verified_subst_branches": 4,
+  "verdict": "ORBIT_FORMALLY_CLOSED_100%",
+  "elapsed_s": 79.37,
+  "source_run": 46072471870,
+  "verify_subst": true
+}

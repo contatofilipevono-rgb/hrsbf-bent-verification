@@ -676,3 +676,29 @@ Em particular, o resíduo depende só da paridade da frequência. Pela ponte da 
 **Simetria e instância incremental.** A equipe reportou um estabilizador \(C_4\) que preserva cada um dos oito espectros da carta `B0_11, e=27`. Para impor um representante lexicográfico, verifique também a invariância das restrições ativas. Feche o conjunto de cortes por essa ação ou prove que seus transportes já são implicados. A redundância reportada de Q17 vale para os 30 alvos específicos da rodada 14 em `k=2`. Recalcule a implicação antes de retirar Q17 de outra instância.
 
 **Estado da execução.** O relatório do Antigravity descreve a validação do encoder global e resultados inconclusivos nos oito \(k\) de `e=27` e nos 16 representantes de `B0_00, K=1` tratados sem C5. Nenhuma dessas órbitas foi fechada nessa rodada. A rejeição de modelos pelo trio de frequências `0x0f0f, 0x2d2d, 0x1b1b` é uma medição no lote usado. O roteiro de continuação prioriza `B0_00, K=1, e=11` e `B0_11, e=27, k=15`. Os logs e reprodutores dessa rodada foram citados no relatório como arquivos locais, com base no [commit 7434dfd](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/commit/7434dfde192e994ee3672f887ad1b1ea4ff783d2).
+
+## Atualização H16 de 28 de novembro de 2026
+
+### B0_00, K=0. Ação afim exata e recertificação
+
+A verificação da ação dos oito multiplicadores ímpares usa uma origem e uma base das direções de cada fibra afim. Ela reproduziu 64 estados, 40 órbitas membro a membro e os 22 representantes pós-raiz do manifesto. A raiz histórica impõe C5, portanto a conclusão dessa etapa está restrita a K=0 em B0_00. [Branch permanente](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/tree/audit/step38b-exact-orbit-map) · [Step 38B exato, execução 46058114045](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/46058114045)
+
+Os nove pontos de auditoria são os representantes 1, 21, 22, 23, 43, 62, 63, 3 e 27. A raiz usa a impressão digital reproduzida abaixo, a partir dos pivôs lineares e das formas eta:
+
+    71e50178f909fd6749333ca043eb96b4514a6d77d6dc0c6d0bcf2ea4b8e0c655
+
+Os certificados de 3, 27, 21, 62 e 63 vêm da execução 46072471870. A execução 46077594419 cobre a busca de primeiro nível com substituição verificada e deixa 21, 2, 2 e 448 folhas em 1, 22, 23 e 43, respectivamente. Os certificados de origem que sustentam essa divisão estão arquivados em [k0_recert_source.json](../2026_11_17_h16_c99_carbon_hard/certs/k0_recert_source.json). [Execução 46072471870](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/46072471870) · [Execução 46077594419](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/46077594419)
+
+A nova reprodução é direcionada às 473 folhas ainda abertas, com `verify_subst=True` em cada cascata, e verificação DRAT para as refutações CaDiCaL. A certificação consolidada está em **5/9**, com 1, 22, 23 e 43 pendentes até a validação da reprodução. [Manifesto de recertificação](../2026_11_17_h16_c99_carbon_hard/certs/k0_gaps_manifest.json) · [Reprodução no GitHub](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/46152367503)
+
+### Censo polar e eliminação afim em B0_00, e=0
+
+A base física tem 48 coordenadas polares e 56 de levantamento, das quais 46 entram nas fases. A identidade de formas lineares em 116 coordenadas é \(K=L_{\mathtt{07},\mathtt{10}}+L_{\mathtt{07},\mathtt{40}}+L_{\mathtt{0b},\mathtt{20}}+L_{\mathtt{0d},\mathtt{40}}\), em que L indica os coeficientes da camada (3,1). Logo e=0 implica K=0 nessa parametrização, independentemente de invocar C5.
+
+A enumeração com podas até peso 13 cobre 293.874.981.603 máscaras antes das podas. Os 3.409 sobreviventes dos Pfaffianos foram excluídos pelas autocorrelações para todo levantamento, 2.793 por paridade e 616 por intervalo. O censo e os 42 certificados de eliminação afim têm escopo finito. Nas verificações comparativas, a máscara 0x3f trouxe 0,0% de exclusões polares adicionais no lote e=0. [Censo e verificadores](../../h16_b000_censo_polar/) · [Peso 12](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/46053081190) · [Peso 13](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/46053283832)
+
+### Resultados da equipe nas demais frentes
+
+- **B0_00, K=1, e=11.** O certificado de enumeração C5-free da NVIDIA L4 registra \(2^{43}=8.796.093.022.208\) pontos, 10/10 controles plantados, 5/5 controles do filtro e=0, zero fibras degeneradas no encerramento e zero sobreviventes. O SHA-256 registrado é `1bd02f56f7bb8deb1db5c5a957c2bec64a41a7fb2a43158e0710ad8d5e54a0a5`. O resultado cobre um dos 16 representantes de K=1. [Certificado](../2026_11_17_h16_c99_carbon_hard/certs/cert_k1_e11_l4.json)
+- **Lei de Poisson Generalizada.** A equipe registra \(G_z=W_h(z)\) para catálogos de 24 perfis em B0_11 e 446 em B1_11. O Teorema A, via código autodual [16,8,4], fixa \(G_{\mathtt{ff}}=\pm64\) em B1_11 e exclui 258 dos 446 perfis. O Teorema B dá \(G_{\mathtt{55}}\equiv0\pmod{64}\), \(G_{\mathtt{11},\mathtt{33},\mathtt{77}}\equiv0\pmod{32}\) e \(G_z\equiv0\pmod{16}\) nas demais direções não nulas, com os representantes do catálogo. [Implementação da injeção algébrica](../2026_11_17_h16_c99_carbon_hard/SOLVE_B111_B011_POISSON_ALGEBRA.py)
+- **SCAN36.** A imagem pós-cascata foi vazia em 60 dos 108 pares de B0_11, computados como 32 na união alfa, 24 em beta e 4 em gama. São exclusões de imagem, registradas como 0,00 s na etapa de busca. Na Classe II para e=2 com geradores gama e AC180, a equipe reduziu k_fix de 12 a 8, com 256+256 ramos. [Execução 46150068107](https://github.com/contatofilipevono-rgb/hrsbf-bent-verification/actions/runs/46150068107)
